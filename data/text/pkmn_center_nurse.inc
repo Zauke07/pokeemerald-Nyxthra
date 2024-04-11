@@ -1,28 +1,25 @@
 gText_WouldYouLikeToRestYourPkmn::
-	.string "Hello, and welcome to\n"
-	.string "the POKéMON CENTER.\p"
-	.string "We restore your tired POKéMON\n"
-	.string "to full health.\p"
-	.string "Would you like to rest your POKéMON?$"
+	.string "Willkommen im POKéMON-CENTER!\p"
+	.string "Wir heilen deine POKéMON und\n"
+	.string "machen sie wieder fit.\p"
+	.string "O.K. Wir benötigen deine POKéMON.$"
 
 gText_IllTakeYourPkmn::
-	.string "Okay, I'll take your POKéMON\n"
-	.string "for a few seconds.$"
+	.string "Okay, ich übernehme dein POKéMON\n"
+	.string "für ein paar Sekunden.$"
 
 gText_RestoredPkmnToFullHealth::
-	.string "Thank you for waiting.\p"
-	.string "We've restored your POKéMON\n"
-	.string "to full health.$"
+	.string "Danke!\p"
+	.string "Deine POKéMON sind wieder topfit!$"
 
 gText_WeHopeToSeeYouAgain::
-	.string "We hope to see you again!$"
+	.string "Komm jederzeit wieder vorbei!$"
 
 gText_WelcomeCutShort::
-	.string "Hello, and welcome to\n"
-	.string "the POKéMON CENTER.\p"
-	.string "We restore your tired POKéMON\n"
-	.string "to full health.\p"
-	.string "Would you like to…$"
+	.string "Willkommen im POKéMON-CENTER!\p"
+	.string "Wir heilen deine POKéMON und\n"
+	.string "machen sie wieder fit.\p"
+	.string "O.K. Wir benötigen deine POKéMON.$"
 
 gText_NoticesGoldCard::
 	.string "Th-that card…\n"
@@ -45,7 +42,7 @@ gText_IllTakeYourPkmn2::
 	.string "for a few seconds.$"
 
 gText_ThankYouForWaiting::
-	.string "Thank you for waiting.$"
+	.string "Danke für's warten.$"
 
 gText_WeHopeToSeeYouAgain2::
-	.string "We hope to see you again!$"
+	.string "Komm jederzeit wieder vorbei!$"

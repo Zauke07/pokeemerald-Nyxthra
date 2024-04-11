@@ -104,16 +104,19 @@ int main(int argc, char *argv[])
         return args.at(0)->get<string>().empty();
     });
 
-    env.add_callback("cleanString", 1, [](Arguments& args) {
-        string badChars = ".'{} \n\t-\u00e9";
-        string str = args.at(0)->get<string>();
-        for (unsigned int i = 0; i < str.length(); i++) {
-            if (badChars.find(str[i]) != std::string::npos) {
-                str[i] = '_';
-            }
+   env.add_callback("cleanString", 1, [](Arguments& args) {
+    string str = args.at(0)->get<string>();
+    for (unsigned int i = 0; i < str.length(); i++) {
+        // Allow alphanumeric characters and Umlauts (ä, ö, ü, Ä, Ö, Ü)
+        if ((i == 0 && isdigit(str[i])) || 
+            !(isalpha(str[i]) || isdigit(str[i]) || 
+              str[i] == 'ä' || str[i] == 'ö' || str[i] == 'ü' || 
+              str[i] == 'Ä' || str[i] == 'Ö' || str[i] == 'Ü')) {
+            str[i] = '_';
         }
-        return str;
-    });
+    }
+    return str;
+});
 
     try
     {

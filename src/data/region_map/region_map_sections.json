@@ -2,7 +2,7 @@
   "map_sections": [
     {
       "map_section": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "LITTLEROOT TOWN",
+      "name": "Wurzelheim",
       "x": 4,
       "y": 11,
       "width": 1,
@@ -10,7 +10,7 @@
     },
     {
       "map_section": "MAPSEC_OLDALE_TOWN",
-      "name": "OLDALE TOWN",
+      "name": "Rosaltstadt",
       "x": 4,
       "y": 9,
       "width": 1,
@@ -18,7 +18,7 @@
     },
     {
       "map_section": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "name": "Fausthaven",
       "x": 2,
       "y": 14,
       "width": 1,
@@ -26,7 +26,7 @@
     },
     {
       "map_section": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
+      "name": "Bad Lavastadt",
       "x": 5,
       "y": 3,
       "width": 1,
@@ -34,7 +34,7 @@
     },
     {
       "map_section": "MAPSEC_FALLARBOR_TOWN",
-      "name": "FALLARBOR TOWN",
+      "name": "Laubwechselfeld",
       "x": 3,
       "y": 0,
       "width": 1,
@@ -42,7 +42,7 @@
     },
     {
       "map_section": "MAPSEC_VERDANTURF_TOWN",
-      "name": "VERDANTURF TOWN",
+      "name": "Wiesenflur",
       "x": 4,
       "y": 6,
       "width": 1,
@@ -50,7 +50,7 @@
     },
     {
       "map_section": "MAPSEC_PACIFIDLOG_TOWN",
-      "name": "PACIFIDLOG TOWN",
+      "name": "Flossbrunn",
       "x": 17,
       "y": 10,
       "width": 1,
@@ -58,7 +58,7 @@
     },
     {
       "map_section": "MAPSEC_PETALBURG_CITY",
-      "name": "PETALBURG CITY",
+      "name": "Blütenburg City",
       "x": 1,
       "y": 9,
       "width": 1,
@@ -66,7 +66,7 @@
     },
     {
       "map_section": "MAPSEC_SLATEPORT_CITY",
-      "name": "SLATEPORT CITY",
+      "name": "Graphitport City",
       "x": 8,
       "y": 10,
       "width": 1,
@@ -74,7 +74,7 @@
     },
     {
       "map_section": "MAPSEC_MAUVILLE_CITY",
-      "name": "MAUVILLE CITY",
+      "name": "Malvenfroh City",
       "x": 8,
       "y": 6,
       "width": 2,
@@ -82,7 +82,7 @@
     },
     {
       "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
+      "name": "Metarost City",
       "x": 0,
       "y": 5,
       "width": 1,
@@ -90,7 +90,7 @@
     },
     {
       "map_section": "MAPSEC_FORTREE_CITY",
-      "name": "FORTREE CITY",
+      "name": "Baumhausen City",
       "x": 12,
       "y": 0,
       "width": 1,
@@ -98,7 +98,7 @@
     },
     {
       "map_section": "MAPSEC_LILYCOVE_CITY",
-      "name": "LILYCOVE CITY",
+      "name": "Seegrasulb City",
       "x": 18,
       "y": 3,
       "width": 2,
@@ -106,7 +106,7 @@
     },
     {
       "map_section": "MAPSEC_MOSSDEEP_CITY",
-      "name": "MOSSDEEP CITY",
+      "name": "Moosbach City",
       "x": 24,
       "y": 5,
       "width": 2,
@@ -114,7 +114,7 @@
     },
     {
       "map_section": "MAPSEC_SOOTOPOLIS_CITY",
-      "name": "SOOTOPOLIS CITY",
+      "name": "Xeneroville",
       "x": 21,
       "y": 7,
       "width": 1,
@@ -122,7 +122,7 @@
     },
     {
       "map_section": "MAPSEC_EVER_GRANDE_CITY",
-      "name": "EVER GRANDE CITY",
+      "name": "Prachtpolis City",
       "x": 27,
       "y": 8,
       "width": 1,
@@ -402,7 +402,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_124",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 20,
       "y": 3,
       "width": 4,
@@ -410,7 +410,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_126",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 20,
       "y": 6,
       "width": 3,
@@ -418,7 +418,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_127",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 23,
       "y": 6,
       "width": 3,
@@ -426,7 +426,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_128",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 23,
       "y": 9,
       "width": 4,
@@ -434,7 +434,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_SOOTOPOLIS",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 21,
       "y": 7,
       "width": 1,
@@ -442,7 +442,7 @@
     },
     {
       "map_section": "MAPSEC_GRANITE_CAVE",
-      "name": "GRANITE CAVE",
+      "name": "Granithöhle",
       "x": 1,
       "y": 13,
       "width": 1,
@@ -450,7 +450,7 @@
     },
     {
       "map_section": "MAPSEC_MT_CHIMNEY",
-      "name": "MT. CHIMNEY",
+      "name": "Schlotberg",
       "x": 6,
       "y": 2,
       "width": 1,
@@ -458,7 +458,7 @@
     },
     {
       "map_section": "MAPSEC_SAFARI_ZONE",
-      "name": "SAFARI ZONE",
+      "name": "Safari-Zone",
       "x": 16,
       "y": 2,
       "width": 1,
@@ -466,7 +466,7 @@
     },
     {
       "map_section": "MAPSEC_BATTLE_FRONTIER",
-      "name": "BATTLE FRONTIER",
+      "name": "Duellturm",
       "x": 22,
       "y": 12,
       "width": 1,
@@ -474,7 +474,7 @@
     },
     {
       "map_section": "MAPSEC_PETALBURG_WOODS",
-      "name": "PETALBURG WOODS",
+      "name": "Blütenburgwald",
       "x": 0,
       "y": 8,
       "width": 1,
@@ -482,7 +482,7 @@
     },
     {
       "map_section": "MAPSEC_RUSTURF_TUNNEL",
-      "name": "RUSTURF TUNNEL",
+      "name": "Metaflurtunnel",
       "x": 2,
       "y": 5,
       "width": 1,
@@ -490,7 +490,7 @@
     },
     {
       "map_section": "MAPSEC_ABANDONED_SHIP",
-      "name": "ABANDONED SHIP",
+      "name": "Schiffawack",
       "x": 6,
       "y": 14,
       "width": 1,
@@ -498,7 +498,7 @@
     },
     {
       "map_section": "MAPSEC_NEW_MAUVILLE",
-      "name": "NEW MAUVILLE",
+      "name": "Neu Malvenfroh",
       "x": 8,
       "y": 7,
       "width": 1,
@@ -506,7 +506,7 @@
     },
     {
       "map_section": "MAPSEC_METEOR_FALLS",
-      "name": "METEOR FALLS",
+      "name": "Meteorfälle",
       "x": 0,
       "y": 3,
       "width": 1,
@@ -514,7 +514,7 @@
     },
     {
       "map_section": "MAPSEC_METEOR_FALLS2",
-      "name": "METEOR FALLS",
+      "name": "Meteorfälle",
       "x": 1,
       "y": 2,
       "width": 1,
@@ -522,7 +522,7 @@
     },
     {
       "map_section": "MAPSEC_MT_PYRE",
-      "name": "MT. PYRE",
+      "name": "Pyroberg",
       "x": 16,
       "y": 4,
       "width": 1,
@@ -530,7 +530,7 @@
     },
     {
       "map_section": "MAPSEC_AQUA_HIDEOUT_OLD",
-      "name": "{AQUA} HIDEOUT",
+      "name": "{AQUA}'s Versteck",
       "name_clone": true,
       "x": 19,
       "y": 3,
@@ -539,7 +539,7 @@
     },
     {
       "map_section": "MAPSEC_SHOAL_CAVE",
-      "name": "SHOAL CAVE",
+      "name": "Küstenhöhle",
       "x": 24,
       "y": 4,
       "width": 1,
@@ -547,7 +547,7 @@
     },
     {
       "map_section": "MAPSEC_SEAFLOOR_CAVERN",
-      "name": "SEAFLOOR CAVERN",
+      "name": "Tiefseehöhle",
       "x": 24,
       "y": 9,
       "width": 1,
@@ -555,7 +555,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_SEAFLOOR_CAVERN",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 24,
       "y": 9,
       "width": 1,
@@ -563,7 +563,7 @@
     },
     {
       "map_section": "MAPSEC_VICTORY_ROAD",
-      "name": "VICTORY ROAD",
+      "name": "Siegesstrasse",
       "x": 27,
       "y": 9,
       "width": 1,
@@ -571,7 +571,7 @@
     },
     {
       "map_section": "MAPSEC_MIRAGE_ISLAND",
-      "name": "MIRAGE ISLAND",
+      "name": "Wunderisland",
       "x": 17,
       "y": 10,
       "width": 1,
@@ -579,7 +579,7 @@
     },
     {
       "map_section": "MAPSEC_CAVE_OF_ORIGIN",
-      "name": "CAVE OF ORIGIN",
+      "name": "Urzeithöhle",
       "x": 21,
       "y": 7,
       "width": 1,
@@ -587,7 +587,7 @@
     },
     {
       "map_section": "MAPSEC_SOUTHERN_ISLAND",
-      "name": "SOUTHERN ISLAND",
+      "name": "Insel im Süden",
       "x": 12,
       "y": 14,
       "width": 1,
@@ -595,7 +595,7 @@
     },
     {
       "map_section": "MAPSEC_FIERY_PATH",
-      "name": "FIERY PATH",
+      "name": "Feuriger Pfad",
       "x": 6,
       "y": 3,
       "width": 1,
@@ -603,7 +603,7 @@
     },
     {
       "map_section": "MAPSEC_FIERY_PATH2",
-      "name": "FIERY PATH",
+      "name": "Feuriger Pfad",
       "x": 7,
       "y": 3,
       "width": 1,
@@ -611,7 +611,7 @@
     },
     {
       "map_section": "MAPSEC_JAGGED_PASS",
-      "name": "JAGGED PASS",
+      "name": "Steilpass",
       "x": 6,
       "y": 3,
       "width": 1,
@@ -619,7 +619,7 @@
     },
     {
       "map_section": "MAPSEC_JAGGED_PASS2",
-      "name": "JAGGED PASS",
+      "name": "Steilpass",
       "x": 7,
       "y": 2,
       "width": 1,
@@ -627,7 +627,7 @@
     },
     {
       "map_section": "MAPSEC_SEALED_CHAMBER",
-      "name": "SEALED CHAMBER",
+      "name": "Siegelkammer",
       "x": 11,
       "y": 10,
       "width": 1,
@@ -635,7 +635,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_SEALED_CHAMBER",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 11,
       "y": 10,
       "width": 1,
@@ -643,7 +643,7 @@
     },
     {
       "map_section": "MAPSEC_SCORCHED_SLAB",
-      "name": "SCORCHED SLAB",
+      "name": "Sonnengrotte",
       "x": 13,
       "y": 0,
       "width": 1,
@@ -651,7 +651,7 @@
     },
     {
       "map_section": "MAPSEC_ISLAND_CAVE",
-      "name": "ISLAND CAVE",
+      "name": "Inselhöhle",
       "x": 0,
       "y": 10,
       "width": 1,
@@ -659,7 +659,7 @@
     },
     {
       "map_section": "MAPSEC_DESERT_RUINS",
-      "name": "DESERT RUINS",
+      "name": "Wüstenruine",
       "x": 8,
       "y": 3,
       "width": 1,
@@ -667,7 +667,7 @@
     },
     {
       "map_section": "MAPSEC_ANCIENT_TOMB",
-      "name": "ANCIENT TOMB",
+      "name": "Grabmal",
       "x": 13,
       "y": 2,
       "width": 1,
@@ -675,7 +675,7 @@
     },
     {
       "map_section": "MAPSEC_INSIDE_OF_TRUCK",
-      "name": "INSIDE OF TRUCK",
+      "name": "Im Möbelwagen",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -683,7 +683,7 @@
     },
     {
       "map_section": "MAPSEC_SKY_PILLAR",
-      "name": "SKY PILLAR",
+      "name": "Himmelturm",
       "x": 19,
       "y": 10,
       "width": 1,
@@ -691,7 +691,7 @@
     },
     {
       "map_section": "MAPSEC_SECRET_BASE",
-      "name": "SECRET BASE",
+      "name": "Geheimbasis",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -707,7 +707,7 @@
     },
     {
       "map_section": "MAPSEC_PALLET_TOWN",
-      "name": "PALLET TOWN",
+      "name": "Alabastia",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -715,7 +715,7 @@
     },
     {
       "map_section": "MAPSEC_VIRIDIAN_CITY",
-      "name": "VIRIDIAN CITY",
+      "name": "Vertania City",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -723,7 +723,7 @@
     },
     {
       "map_section": "MAPSEC_PEWTER_CITY",
-      "name": "PEWTER CITY",
+      "name": "Marmoria City",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -731,7 +731,7 @@
     },
     {
       "map_section": "MAPSEC_CERULEAN_CITY",
-      "name": "CERULEAN CITY",
+      "name": "Azuria City",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1104,7 +1104,7 @@
     },
     {
       "map_section": "MAPSEC_POKEMON_LEAGUE",
-      "name": "POKéMON LEAGUE",
+      "name": "POKéMON LIGA",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1505,7 +1505,7 @@
     },
     {
       "map_section": "MAPSEC_BIRTH_ISLAND_FRLG",
-      "name": "BIRTH ISLAND",
+      "name": "Entstehungsinsel",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1585,7 +1585,7 @@
     },
     {
       "map_section": "MAPSEC_AQUA_HIDEOUT",
-      "name": "AQUA HIDEOUT",
+      "name": "Team Aquas Versteck",
       "x": 19,
       "y": 3,
       "width": 1,
@@ -1593,7 +1593,7 @@
     },
     {
       "map_section": "MAPSEC_MAGMA_HIDEOUT",
-      "name": "MAGMA HIDEOUT",
+      "name": "Team Magmas Versteck",
       "x": 6,
       "y": 3,
       "width": 1,
@@ -1609,7 +1609,7 @@
     },
     {
       "map_section": "MAPSEC_BIRTH_ISLAND",
-      "name": "BIRTH ISLAND",
+      "name": "Entstehungsinsel",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1617,7 +1617,7 @@
     },
     {
       "map_section": "MAPSEC_FARAWAY_ISLAND",
-      "name": "FARAWAY ISLAND",
+      "name": "Ferneiland",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1641,7 +1641,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_MARINE_CAVE",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1657,7 +1657,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_105",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 0,
       "y": 10,
       "width": 1,
@@ -1665,7 +1665,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_125",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 24,
       "y": 3,
       "width": 2,
@@ -1673,7 +1673,7 @@
     },
     {
       "map_section": "MAPSEC_UNDERWATER_129",
-      "name": "UNDERWATER",
+      "name": "Unterwasser",
       "x": 24,
       "y": 10,
       "width": 2,
@@ -1697,7 +1697,7 @@
     },
     {
       "map_section": "MAPSEC_NAVEL_ROCK",
-      "name": "NAVEL ROCK",
+      "name": "Nabelfels",
       "x": 0,
       "y": 0,
       "width": 1,
