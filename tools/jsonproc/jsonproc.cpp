@@ -3,18 +3,18 @@
 #include "jsonproc.h"
 
 #include <map>
-
 #include <string>
-using std::string; using std::to_string;
-
 #include <algorithm>
-using std::replace_if;
-
 #include <inja.hpp>
+
+using std::string; 
+using std::to_string;
+using std::map;
+using std::replace_if;
 using namespace inja;
 using json = nlohmann::json;
 
-std::map<string, string> customVars;
+map<string, string> customVars;
 
 void set_custom_var(string key, string value)
 {
@@ -46,7 +46,6 @@ int main(int argc, char *argv[])
     env.add_callback("subtract", 2, [](Arguments& args) {
         int minuend = args.at(0)->get<int>();
         int subtrahend = args.at(1)->get<int>();
-
         return minuend - subtrahend;
     });
 
@@ -81,7 +80,6 @@ int main(int argc, char *argv[])
         string::size_type i = rawValue.find(prefix);
         if (i != 0)
             return rawValue;
-
         return rawValue.erase(0, prefix.length());
     });
 
@@ -91,7 +89,6 @@ int main(int argc, char *argv[])
         string::size_type i = rawValue.rfind(suffix);
         if (i == string::npos)
             return rawValue;
-
         return rawValue.substr(0, i);
     });
 
@@ -104,19 +101,19 @@ int main(int argc, char *argv[])
         return args.at(0)->get<string>().empty();
     });
 
-   env.add_callback("cleanString", 1, [](Arguments& args) {
-    string str = args.at(0)->get<string>();
-    for (unsigned int i = 0; i < str.length(); i++) {
-        // Allow alphanumeric characters and Umlauts (ä, ö, ü, Ä, Ö, Ü)
-        if ((i == 0 && isdigit(str[i])) || 
-            !(isalpha(str[i]) || isdigit(str[i]) || 
-              str[i] == 'ä' || str[i] == 'ö' || str[i] == 'ü' || 
-              str[i] == 'Ä' || str[i] == 'Ö' || str[i] == 'Ü')) {
-            str[i] = '_';
+    env.add_callback("cleanString", 1, [](Arguments& args) {
+        string str = args.at(0)->get<string>();
+        for (unsigned int i = 0; i < str.length(); i++) {
+            // Allow alphanumeric characters and Umlauts (ä, ö, ü, Ä, Ö, Ü)
+            if ((i == 0 && isdigit(str[i])) || 
+                !(isalpha(str[i]) || isdigit(str[i]) || 
+                  str[i] == 'ä' || str[i] == 'ö' || str[i] == 'ü' || 
+                  str[i] == 'Ä' || str[i] == 'Ö' || str[i] == 'Ü')) {
+                str[i] = '_';
+            }
         }
-    }
-    return str;
-});
+        return str;
+    });
 
     try
     {
