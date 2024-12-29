@@ -1018,6 +1018,7 @@ SECTIONS {
         sound/songs/midi/mus_oldale.o(.rodata);
         sound/songs/midi/mus_gym.o(.rodata);
         sound/songs/midi/mus_surf.o(.rodata);
+        sound/songs/midi/mus_conan.o(.rodata);
         sound/songs/midi/mus_petalburg_woods.o(.rodata);
         sound/songs/midi/mus_level_up.o(.rodata);
         sound/songs/midi/mus_heal.o(.rodata);

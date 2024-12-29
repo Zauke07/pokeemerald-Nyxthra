@@ -139,7 +139,7 @@ EventScript_FoundTMHM::
 	compare VAR_0x8005, 2
 	goto_if_lt EventScript_FoundTMHMMessage
 	buffernumberstring STR_VAR_3, VAR_0x8005
-	message gText_PlayerFoundTMHMs
+	message gText_PlayerFoundOneTMHM
 	goto EventScript_BufferTMHMsPocket
 	return
 EventScript_FoundTMHMMessage::
