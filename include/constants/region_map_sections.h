@@ -215,10 +215,18 @@
 #define MAPSEC_NAVEL_ROCK                   0xD3
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_NONE                         0xD5
+#define MAPSEC_BABY_BOOT_CAMP               0xD6
+#define MAPSEC_ROSALHOEHLE                  0xD7
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE
 #define METLOC_FATEFUL_ENCOUNTER            0xFF
+
+// Neuer Ort für Baby Boot Camp
+#define METLOC_BABY_BOOT_CAMP               0xE0
+
+// Neue Met-Location für Rosalhöhle
+#define METLOC_ROSALHOEHLE                  0xE1
 
 #define KANTO_MAPSEC_START  MAPSEC_PALLET_TOWN
 #define KANTO_MAPSEC_END    MAPSEC_SPECIAL_AREA

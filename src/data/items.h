@@ -185,7 +185,7 @@ const struct Item gItemsInfo[] =
     [ITEM_ULTRA_BALL] =
     {
         .name = _("Hyperball"),
-        .price = (I_PRICE >= GEN_7) ? 800 : 1200,
+        .price = (I_PRICE >= GEN_7) ? 1200 : 1200,
         .description = COMPOUND_STRING(
             "BALL mit hoher Er-\n"
             "folgsquote. Besser\n"
@@ -213,7 +213,7 @@ const struct Item gItemsInfo[] =
     [ITEM_PREMIER_BALL] =
     {
         .name = _("Premierball"),
-        .price = (I_PRICE >= GEN_7) ? 20 : 200,
+        .price = (I_PRICE >= GEN_7) ? 200 : 200,
         .description = COMPOUND_STRING(
             "Seltener BALL, als\n"
             "Reminiszenz an ir-\n"
@@ -339,7 +339,7 @@ const struct Item gItemsInfo[] =
     [ITEM_LUXURY_BALL] =
     {
         .name = _("Luxusball"),
-        .price = (I_PRICE >= GEN_8) ? 3000 : 1000,
+        .price = (I_PRICE >= GEN_8) ? 1000 : 1000,
         .description = COMPOUND_STRING(
             "Behaglicher BALL,\n"
             "der POKéMON\n"
@@ -353,7 +353,7 @@ const struct Item gItemsInfo[] =
     [ITEM_LEVEL_BALL] =
     {
         .name = _("Levelball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
             "Perfekter Ball\n"
             "für Schwache\n"
@@ -367,7 +367,7 @@ const struct Item gItemsInfo[] =
     [ITEM_LURE_BALL] =
     {
         .name = _("Köderball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 600 : 300,
         .description = COMPOUND_STRING(
             "Perfekter Ball\n"
             "für Pokémon, die\n"
@@ -381,7 +381,7 @@ const struct Item gItemsInfo[] =
     [ITEM_MOON_BALL] =
     {
         .name = _("Mondball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
             "Eignet sich gut für\n"
             "Pokémon die sich mit\n"
@@ -395,11 +395,11 @@ const struct Item gItemsInfo[] =
     [ITEM_FRIEND_BALL] =
     {
         .name = _("Freundesball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
-            "Ein Ball, der die \n"
-            "Sympathie eines Pokémon\n"
-            "schneller ansteigen lässt."),
+            "Ein Ball, der die\n"
+            "Sympathie schneller\n"
+            "ansteigen lässt."),
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,
         .battleUsage = EFFECT_ITEM_THROW_BALL,
@@ -409,7 +409,7 @@ const struct Item gItemsInfo[] =
     [ITEM_LOVE_BALL] =
     {
         .name = _("Sympaball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
             "Fängt anderes\n"
             "geschlecht besser \n"
@@ -423,7 +423,7 @@ const struct Item gItemsInfo[] =
     [ITEM_FAST_BALL] =
     {
         .name = _("Turboball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
             "Pokémon die schnell\n"
             "weglaufen, lassen sich\n"
@@ -437,7 +437,7 @@ const struct Item gItemsInfo[] =
     [ITEM_HEAVY_BALL] =
     {
         .name = _("Schwerball"),
-        .price = (I_PRICE >= GEN_7) ? 0 : 300,
+        .price = (I_PRICE >= GEN_7) ? 1000 : 300,
         .description = COMPOUND_STRING(
             "Mit diesem Ball\n"
             "fängst du schwere\n"
@@ -451,10 +451,10 @@ const struct Item gItemsInfo[] =
     [ITEM_DREAM_BALL] =
     {
         .name = _("Traumball"),
-        .price = 0,
+        .price = 1000,
         .description = COMPOUND_STRING(
         #if B_DREAM_BALL_MODIFIER >= GEN_8
-            "Ein Ball, mit dem sich \n"
+            "Ein Ball, mit dem sich\n"
             "schlafende Pokémon\n"
             "leichter fangen lassen."),
         #else
@@ -484,7 +484,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SPORT_BALL] =
     {
         .name = _("Turnierball"),
-        .price = (I_PRICE < GEN_3 || I_PRICE >= GEN_9) ? 0 : 300,
+        .price = (I_PRICE < GEN_3 || I_PRICE >= GEN_9) ? 500 : 300,
         .description = COMPOUND_STRING(
             "Ein Ball, der beim\n"
             "Käferturnier der Johto-\n"
@@ -498,7 +498,7 @@ const struct Item gItemsInfo[] =
     [ITEM_PARK_BALL] =
     {
         .name = _("Parkball"),
-        .price = 0,
+        .price = 500,
         .description = COMPOUND_STRING(
             "Ein Spezieller Ball,\n"
             "für den Freunde Park."),
@@ -511,10 +511,11 @@ const struct Item gItemsInfo[] =
     [ITEM_BEAST_BALL] =
     {
         .name = _("Ultraball"),
-        .price = 0,
+        .price = 1000,
         .description = COMPOUND_STRING(
             "Ein Ball designed zum\n"
-            "Fangen von Ultrabestien."),
+            "Fangen von\n"
+            "Ultrabestien."),
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,
         .battleUsage = EFFECT_ITEM_THROW_BALL,
@@ -524,10 +525,10 @@ const struct Item gItemsInfo[] =
     [ITEM_CHERISH_BALL] =
     {
         .name = _("Jubelball"),
-        .price = 0,
+        .price = 500,
         .description = COMPOUND_STRING(
             "Ein seltener Ball, der\n"
-            "als Reminiszenz an irgendein\n"
+            "zur Erinnerung an ein\n"
             "Ereignis hergestellt wurde."),
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,

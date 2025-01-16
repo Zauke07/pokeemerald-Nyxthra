@@ -4938,46 +4938,49 @@ Route134_Text_MarleyDefeat:
 	.string "daher mache ich mir Sorgen um ihn.$"
 
 Route134_Text_MarleyPostBattle:
-	.string "I haven't lost my passion for speed.\n"
-	.string "I will try harder.$"
+	.string "Ich habe meine Leidenschaft für die\n"
+	.string "Geschwindigkeit nicht verloren.\l"
+	.string "Ich werde mich noch mehr anstrengen.$"
 
 Route134_Text_ReynaIntro:
-	.string "My POKéMON can't be taken down\n"
-	.string "easily!$"
+	.string "Meine Pokémon lassen sich nicht so\n"
+	.string "leicht besiegen!$"
 
 Route134_Text_ReynaDefeat:
-	.string "You're kidding!\n"
-	.string "Explain how I lost!$"
+	.string "Das soll doch wohl ein Witz sein!\n"
+	.string "Erklär mir, wieso ich verloren habe!$"
 
 Route134_Text_ReynaPostBattle:
 	.string "Haha!\n"
-	.string "You won, all right!\p"
-	.string "I'll work my way back up by taking on\n"
-	.string "TRAINERS I happen to meet!$"
+	.string "Du hast gewonnen, na schön!\p"
+	.string "Ich werde besser werden, indem ich\n"
+	.string "alle TRAINER herausfordere, denen ich\l"
+	.string "begegne.$"
 
 Route134_Text_HudsonIntro:
-	.string "Listen, have you seen another SAILOR\n"
-	.string "around here?$"
+	.string "Du hast nicht zufällig einen anderen\n"
+	.string "MATROSEn hier in der Nähe gesehen?$"
 
 Route134_Text_HudsonDefeat:
-	.string "Now, that's something!$"
+	.string "Na, das ist doch mal was!$"
 
 Route134_Text_HudsonPostBattle:
-	.string "Our boat drifted out to sea.\p"
-	.string "My buddy's a timid fellow, so I'm\n"
-	.string "worried about him.$"
+	.string "Unser Schiff ist aufs Meer\n"
+	.string "hinausgetrieben.\p"
+	.string "Mein Freund ist ein ängstlicher Typ,\n"
+	.string "daher mache ich mir Sorgen um ihn.$"
 
 VSSeeker_Text_BatteryNotChargedNeedXSteps::
-	.string "The battery isn't charged enough.\p"
-	.string "No. of steps required to fully\n"
-	.string "charge the battery: {STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
+	.string "Die Batterie ist nicht genug geladen.\p"
+	.string "Anzahl der benötigten Schritte, um die\n"
+	.string "Batterie vollständig zu laden: {STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 VSSeeker_Text_NoTrainersWithinRange::
-	.string "There are no Trainers within range\n"
-	.string "who can battle…\p"
-	.string "The VS Seeker was turned off.{PAUSE_UNTIL_PRESS}$"
+	.string "Es gibt keine Trainer in Reichweite,\n"
+	.string "die kämpfen können…\p"
+	.string "Der VS-Seeker wurde ausgeschaltet.{PAUSE_UNTIL_PRESS}$"
 
 VSSeeker_Text_TrainersNotReady::
-	.string "The other Trainers don't appear\n"
-	.string "to be ready for battle.\p"
-	.string "Let's wait till later.{PAUSE_UNTIL_PRESS}$"
+	.string "Die anderen Trainer scheinen nicht\n"
+	.string "bereit für einen Kampf zu sein.\p"
+	.string "Warten wir bis später.{PAUSE_UNTIL_PRESS}$"

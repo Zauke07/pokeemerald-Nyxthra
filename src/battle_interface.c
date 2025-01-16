@@ -1126,7 +1126,7 @@ static void UpdateOpponentHpTextDoubles(u32 healthboxSpriteId, u32 barSpriteId, 
         txtPtr = ConvertIntToDecimalStringN(text + 6, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
         if (!maxOrCurrent)
             StringCopy(txtPtr, gText_Slash);
-        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text);
+        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text, 0, 0, 0, 0, 0);
 
         for (i = var; i < var + 3; i++)
         {
@@ -1170,7 +1170,7 @@ static void UpdateOpponentHpTextSingles(u32 healthboxSpriteId, s16 value, u32 ma
             var = 49;
 
         ConvertIntToDecimalStringN(text + 6, value, STR_CONV_MODE_LEADING_ZEROS, 3);
-        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text);
+        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text, 0, 0, 0, 0, 0);
 
         for (i = 0; i < 3; i++)
         {
@@ -1239,7 +1239,7 @@ static void PrintSafariMonInfo(u8 healthboxSpriteId, struct Pokemon *mon)
     var = 5;
     nature = GetNature(mon);
     StringCopy(&text[6], gNatureNamePointers[nature]);
-    RenderTextHandleBold(barFontGfx, FONT_BOLD, text);
+    RenderTextHandleBold(barFontGfx, FONT_BOLD, text, 0, 0, 0, 0, 0);
 
     for (j = 6, i = 0; i < var; i++, j++)
     {
@@ -1271,7 +1271,7 @@ static void PrintSafariMonInfo(u8 healthboxSpriteId, struct Pokemon *mon)
     ConvertIntToDecimalStringN(&text[9], gBattleStruct->safariEscapeFactor, STR_CONV_MODE_RIGHT_ALIGN, 2);
     text[5] = CHAR_SPACE;
     text[8] = CHAR_SLASH;
-    RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text);
+    RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, FONT_BOLD, text, 0, 0, 0, 0, 0);
 
     j = healthBarSpriteId; // Needed to match for some reason.
     for (j = 0; j < 5; j++)
@@ -3723,3 +3723,5 @@ void ArrowsChangeColorLastBallCycle(bool32 showArrows)
     }
 #endif
 }
+
+u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str, int a3, int a4, int a5, int a6, int a7);

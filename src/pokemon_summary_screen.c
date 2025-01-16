@@ -3359,6 +3359,8 @@ static void PrintEggMemo(void)
             text = gText_PeculiarEggTrade;
         else if (sum->metLocation == METLOC_SPECIAL_EGG)
             text = (DidMonComeFromRSE() == TRUE) ? gText_EggFromHotSprings : gText_EggFromTraveler;
+        else if (sum->metLocation == METLOC_BABY_BOOT_CAMP) // Neuer Ort für Baby Boot Camp
+            text = gText_EggFromBabyBootCamp;
         else
             text = gText_OddEggFoundByCouple;
     }

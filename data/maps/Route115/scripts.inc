@@ -144,3 +144,143 @@ Route115_Text_MeteorFallsSign:
 	.string "METEORFÄLLE\n"
 	.string "LAUBWECHSELFELD HIER ENTLANG$"
 
+Route115_EventScript_RouteSignBabyBootCamp::
+	msgbox Route115_Text_RouteSignBabyBootCamp, MSGBOX_SIGN
+	end
+
+Route115_Text_RouteSignBabyBootCamp:
+	.string "{LEFT_ARROW} Komischer Baum\n"
+	.string "{RIGHT_ARROW} Baby-Boot Camp$"
+
+Route115_EventScript_Man::
+	msgbox Route115_Text_ManIntro, MSGBOX_DEFAULT
+	end
+
+Route115_Text_ManNo:
+    .string "Ok, dann nicht.$"
+
+Route115_Text_ManIntro:
+    .string "Wenn du ins Baby-Boot Camp willst, musst\n"
+    .string "du mir 5k zahlen. Zur Info, dies musst\l"
+    .string "du jedes mal wenn du ins Camp willst.$"
+
+Route115_Text_ManYes:
+    .string "Cool Danke.$"
+
+Route115_Text_ManNoMoney:
+    .string "Haha du bist Pleite! Was ein Pech kleiner.$"
+
+Route115_Text_ManEnjoy:
+    .string "Viel Spaß im Baby-Boot Camp!$"
+
+Route115_EventScript_TriggerMan::
+    lockall
+    checkflag FLAG_ROUTE115_PAID
+    goto_if_set FLAG_ROUTE115_PAID, Route115_EventScript_TriggerMan_AlreadyPaid
+    showmoneybox 0, 0
+    msgbox Route115_Text_ManIntro, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, 0, Route115_EventScript_ManNo
+    call Route115_EventScript_Man_Pay
+    releaseall
+    end
+
+Route115_EventScript_TriggerMan_AlreadyPaid::
+    releaseall
+    end
+
+Route115_EventScript_Man_Pay::
+    checkmoney 5000
+    goto_if_lt VAR_RESULT, 1, Route115_EventScript_ManNoMoney
+    playse SE_SHOP
+    msgbox Route115_Text_ManYes, MSGBOX_DEFAULT
+    removemoney 5000
+    updatemoneybox
+    msgbox Route115_Text_ManEnjoy, MSGBOX_DEFAULT
+    closemessage
+    hidemoneybox
+    applymovement 24, Route115_Movement_Man_MoveUp
+    waitmovement 24
+    setflag FLAG_ROUTE115_PAID
+    goto Route115_EventScript_End
+
+Route115_Movement_Man_MoveUp::
+    walk_up
+    face_down
+    step_end
+
+Route115_EventScript_ManNo::
+    msgbox Route115_Text_ManNo, MSGBOX_DEFAULT
+	closemessage
+    hidemoneybox
+    applymovement OBJ_EVENT_ID_PLAYER, Route115_Movement_Player_MoveDown
+    waitmovement OBJ_EVENT_ID_PLAYER
+    releaseall
+    end
+
+Route115_EventScript_ManNoMoney::
+    msgbox Route115_Text_ManNoMoney, MSGBOX_DEFAULT
+	closemessage
+    hidemoneybox
+    applymovement OBJ_EVENT_ID_PLAYER, Route115_Movement_Player_MoveDown
+    waitmovement OBJ_EVENT_ID_PLAYER
+    releaseall
+    end
+
+Route115_Movement_Player_MoveDown::
+    walk_down
+    step_end
+
+Route115_EventScript_End::
+    releaseall
+    end
+
+Route115_Text_ClerkIntro:
+    .string "Hi, mein Name ist Winnie und ich arbeite\n"
+    .string "als selbstständiger Händler.\p"
+	.string "Bei mir kannst du alle Bälle die es\n"
+    .string "im Spiel gibt kaufen.\p"
+    .string "Bis auf den Premierball, den Safariball\n"
+	.string "und natürlich den Meisterball.$"
+
+Route115_EventScript_Clerk::
+    lock
+    faceplayer
+    msgbox Route115_Text_ClerkIntro, MSGBOX_DEFAULT
+	closemessage
+    message gText_HowMayIServeYou
+    waitmessage
+    pokemart Route115_Mart_Pokemart
+    msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+    release
+    end
+
+.align 2
+Route115_Mart_Pokemart:
+	.2byte ITEM_POKE_BALL
+    .2byte ITEM_GREAT_BALL
+    .2byte ITEM_ULTRA_BALL
+    .2byte ITEM_HEAL_BALL
+    .2byte ITEM_NET_BALL
+    .2byte ITEM_NEST_BALL
+    .2byte ITEM_DIVE_BALL
+    .2byte ITEM_DUSK_BALL
+    .2byte ITEM_TIMER_BALL
+    .2byte ITEM_QUICK_BALL
+    .2byte ITEM_REPEAT_BALL
+    .2byte ITEM_LUXURY_BALL
+    .2byte ITEM_LEVEL_BALL
+    .2byte ITEM_LURE_BALL
+    .2byte ITEM_MOON_BALL
+    .2byte ITEM_FRIEND_BALL
+    .2byte ITEM_LOVE_BALL
+    .2byte ITEM_FAST_BALL
+    .2byte ITEM_HEAVY_BALL
+    .2byte ITEM_DREAM_BALL
+    .2byte ITEM_SPORT_BALL
+    .2byte ITEM_PARK_BALL
+    .2byte ITEM_BEAST_BALL
+    .2byte ITEM_CHERISH_BALL
+    .2byte ITEM_NONE
+	release
+	end
+

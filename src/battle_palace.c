@@ -12,6 +12,7 @@
 #include "constants/battle_palace.h"
 #include "constants/frontier_util.h"
 #include "constants/trainers.h"
+#include "text.h"
 
 // This file's functions.
 static void InitPalaceChallenge(void);

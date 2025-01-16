@@ -442,3 +442,5 @@ Route120_Text_Ende:
 	.string "Ich muss dir leider sagen, dass\n"
 	.string "die aktuelle Alpha hier schon\l"
 	.string "Endet. Sorry!\p"
+	.string "Du kannst von dieser höhle aus\n"
+	.string "direkt zum Speicherort gehen.$"

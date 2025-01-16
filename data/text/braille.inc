@@ -115,3 +115,9 @@ AncientTomb_Braille_ShineInTheMiddle:
 	.braille "INHERIT OUR\n"
 	.braille "WILL, SHINE\n"
 	.braille "IN THE MIDDLE.$"
+
+BabyBootCamp_Braille_SecretMessage:
+    brailleformat 7, 6, 21, 13, 10, 9
+    .braille "DIES IST EINE\n"
+    .braille "GEHEIME\n"
+    .braille "BOTSCHAFT.$"

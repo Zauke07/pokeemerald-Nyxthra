@@ -34,6 +34,11 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 
+#define CHAR_FIXED_CASE 0xAB // Beispielwert, ersetze durch den tatsächlichen Wert
+#define PLACEHOLDER_FIXED_MASK 0xCD // Beispielwert, ersetze durch den tatsächlichen Wert
+#define CHAR_UNFIX_CASE 0xEF // Beispielwert, ersetze durch den tatsächlichen Wert
+
+
 struct BattleWindowText
 {
     u8 fillValue;
@@ -316,10 +321,10 @@ static const u8 sText_PkmnsXPreventsYsZ[] = _("{B_ATK_ABILITY} von\n{B_ATK_NAME_
 static const u8 sText_PkmnsAbilityPreventsAbility[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents {B_DEF_NAME_WITH_PREFIX}'s\l{B_DEF_ABILITY} from working!");
 static const u8 sText_PkmnsXCuredItsYProblem[] = _("{B_SCR_ACTIVE_ABILITY} von\n{B_SCR_ACTIVE_NAME_WITH_PREFIX} heilte sein\lProblem mit {B_BUFF1}!");
 static const u8 sText_PkmnsXHadNoEffectOnY[] = _("{B_SCR_ACTIVE_ABILITY} von\n{B_SCR_ACTIVE_NAME_WITH_PREFIX} hat keine\lWirkung auf {B_EFF_NAME_WITH_PREFIX}!");
-const u8 gText_StatSharply[] = _("steigt stark!");
-const u8 gText_StatRose[] = _("steigt.");
-static const u8 sText_StatHarshly[] = _("sinkt stark!");
-static const u8 sText_StatFell[] = _("sinkt.");
+const u8 gText_StatSharply[] = _("stark!");
+const u8 gText_StatRose[] = _("steigt");
+static const u8 sText_StatHarshly[] = _("stark!");
+static const u8 sText_StatFell[] = _("sinkt");
 static const u8 sText_AttackersStatRose[] = _("{B_BUFF1} von\n{B_ATK_NAME_WITH_PREFIX} {B_BUFF2}");
 const u8 gText_DefendersStatRose[] = _("{B_BUFF1} von\n{B_DEF_NAME_WITH_PREFIX} {B_BUFF2}");
 static const u8 sText_UsingItemTheStatOfPkmnRose[] = _("{B_LAST_ITEM}: {B_BUFF1 0} von\n{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_BUFF2}");

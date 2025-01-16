@@ -127,6 +127,13 @@
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_SEALED_CHAMBER_OUTER_ROOM",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

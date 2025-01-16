@@ -38,6 +38,7 @@
 #include "constants/metatile_labels.h"
 #include "constants/moves.h"
 #include "constants/trainers.h"
+#include "text.h"
 
 #define NUM_LAYOUT_OFFSETS 8
 

@@ -41,6 +41,8 @@
 #include "constants/songs.h"
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
+#include "sprite.h"
+#include "fonts.h"
 
 #define TAG_BUTTONS 0
 

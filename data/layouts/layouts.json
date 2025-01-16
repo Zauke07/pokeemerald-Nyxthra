@@ -4440,6 +4440,16 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/Speicherort/border.bin",
       "blockdata_filepath": "data/layouts/Speicherort/map.bin"
-    }
+    },
+    {
+      "id": "LAYOUT_BABY_BOOT_CAMP",
+      "name": "BabyBootCamp_Layout",
+      "width": 11,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BabyBootCamp/border.bin",
+      "blockdata_filepath": "data/layouts/BabyBootCamp/map.bin"
+  }
   ]
 }

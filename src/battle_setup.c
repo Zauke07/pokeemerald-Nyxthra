@@ -49,6 +49,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "text.h"
 
 enum {
     TRANSITION_TYPE_NORMAL,
