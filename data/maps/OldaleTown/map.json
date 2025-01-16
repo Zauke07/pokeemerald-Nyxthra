@@ -111,13 +111,6 @@
       "elevation": 0,
       "dest_map": "MAP_OLDALE_TOWN_MART",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 19,
-      "y": 9,
-      "elevation": 0,
-      "dest_map": "MAP_ROSALHOEHLE",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

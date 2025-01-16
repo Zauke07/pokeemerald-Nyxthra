@@ -33,7 +33,7 @@ static const u8 LandmarkName_WeatherInstitute[] = _("WEATHER INSTITUTE");
 static const u8 LandmarkName_MeteorFalls[] = _("METEOR FALLS");
 static const u8 LandmarkName_TunnelersRestHouse[] = _("TUNNELER'S RESTHOUSE");
 static const u8 LandmarkName_RusturfTunnel[] = _("RUSTURF TUNNEL");
-static const u8 LandmarkName_PokemonDayCare[] = _("Pokémon DAY CARE");
+static const u8 LandmarkName_PokemonDayCare[] = _("POKéMON DAY CARE");
 static const u8 LandmarkName_SafariZoneEntrance[] = _("SAFARI ZONE ENTRANCE");
 static const u8 LandmarkName_MtPyre[] = _("MT. PYRE");
 static const u8 LandmarkName_ShoalCave[] = _("SHOAL CAVE");
@@ -57,8 +57,6 @@ static const u8 LandmarkName_MirageTower[] = _("MIRAGE TOWER");
 static const u8 LandmarkName_AlteringCave[] = _("ALTERING CAVE");
 static const u8 LandmarkName_DesertUnderpass[] = _("DESERT UNDERPASS");
 static const u8 LandmarkName_TrainerHill[] = _("TRAINER HILL");
-static const u8 LandmarkName_BabyBootCamp[] = _("BABY-BOOT CAMP");
-static const u8 LandmarkName_Rosalhoehle[] = _("ROSALHOEHL");
 
 static const struct Landmark Landmark_FlowerShop = {LandmarkName_FlowerShop, FLAG_LANDMARK_FLOWER_SHOP};
 static const struct Landmark Landmark_PetalburgWoods = {LandmarkName_PetalburgWoods, -1};
@@ -101,8 +99,6 @@ static const struct Landmark Landmark_MirageTower = {LandmarkName_MirageTower, F
 static const struct Landmark Landmark_AlteringCave = {LandmarkName_AlteringCave, FLAG_LANDMARK_ALTERING_CAVE};
 static const struct Landmark Landmark_DesertUnderpass = {LandmarkName_DesertUnderpass, FLAG_LANDMARK_DESERT_UNDERPASS};
 static const struct Landmark Landmark_TrainerHill = {LandmarkName_TrainerHill, FLAG_LANDMARK_TRAINER_HILL};
-static const struct Landmark Landmark_BabyBootCamp = {LandmarkName_BabyBootCamp, FLAG_LANDMARK_BABY_BOOT_CAMP};
-static const struct Landmark Landmark_Rosalhoehle = {LandmarkName_Rosalhoehle, FLAG_LANDMARK_ROSALHOEHLE};
 
 static const struct Landmark *const Landmarks_Route103_2[]  =
 {
@@ -373,8 +369,13 @@ static const struct LandmarkList sLandmarkLists[] =
     {MAPSEC_ROUTE_120, 2, Landmarks_Route120_2},
     {MAPSEC_ROUTE_121, 2, Landmarks_Route121_2},
     {MAPSEC_ROUTE_122, 0, Landmarks_Route122_0},
+#ifdef BUGFIX
+    {MAPSEC_ROUTE_122, 1, Landmarks_Route122_0},
+    {MAPSEC_ROUTE_123, 0, Landmarks_Route123_0},
+#else
     {MAPSEC_ROUTE_123, 0, Landmarks_Route123_0},
     {MAPSEC_ROUTE_122, 1, Landmarks_Route122_0},
+#endif
     {MAPSEC_ROUTE_124, 7, Landmarks_Route124_7},
     {MAPSEC_ROUTE_125, 2, Landmarks_Route125_2},
     {MAPSEC_ROUTE_128, 1, Landmarks_Route128_1},

@@ -100,44 +100,42 @@ Route110_TrickHousePuzzle2_EventScript_Georgia::
 	end
 
 Route110_TrickHousePuzzle2_Text_WroteSecretCodeLockOpened:
-	.string "{PLAYER} hat den geheimen Code auf die\n"
-	.string "Tür geschrieben.\p"
-	.string "“RÄTSELMEISTER ist gewieft.”\n"
+	.string "{PLAYER} wrote down the secret code\n"
+	.string "on the door.\p"
+	.string "“TRICK MASTER is smart.”\n"
 	.string "… … … … … … … …\p"
-	.string "Das Schloss geht klickend auf.$"
+	.string "The lock clicked open!$"
 
 Route110_TrickHousePuzzle2_Text_TedIntro:
-	.string "Welcher Schalter schließt welches\n"
-	.string "Loch?$"
+	.string "Which switch closes which hole?$"
 
 Route110_TrickHousePuzzle2_Text_TedDefeat:
-	.string "Nach diesem Kampf bin ich nur noch\n"
-	.string "verwirrter!$"
+	.string "After that battle, I'm even more\n"
+	.string "confused!$"
 
 Route110_TrickHousePuzzle2_Text_TedPostBattle:
-	.string "Kannst du nicht alle Schalter für mich\n"
-	.string "betätigen?$"
+	.string "Can I get you to push all the buttons\n"
+	.string "for me?$"
 
 Route110_TrickHousePuzzle2_Text_PaulIntro:
-	.string "Oh! Du forderst das RÄTSELHAUS schon\n"
-	.string "zum zweiten Mal heraus!?!$"
+	.string "Oh! You're on your second TRICK HOUSE\n"
+	.string "challenge!$"
 
 Route110_TrickHousePuzzle2_Text_PaulDefeat:
-	.string "Du bist auch im Kämpfen so gut!?!$"
+	.string "You're good at battling too?$"
 
 Route110_TrickHousePuzzle2_Text_PaulPostBattle:
-	.string "Der RÄTSELMEISTER tüftelt alle Tricks\n"
-	.string "in diesem Haus selber aus.$"
+	.string "The TRICK MASTER rigged all the tricks\n"
+	.string "in this house all by himself.$"
 
 Route110_TrickHousePuzzle2_Text_GeorgiaIntro:
-	.string "Eines Tages gründe ich meine eigene\n"
-	.string "ARENA. Und hier studiere ich die Fallen.$"
+	.string "I want to make my own GYM one day.\n"
+	.string "So, I'm studying how to set traps.$"
 
 Route110_TrickHousePuzzle2_Text_GeorgiaDefeat:
-	.string "Ich habe das Kämpfen nicht genug\n"
-	.string "studiert!$"
+	.string "I didn't study battling enough!$"
 
 Route110_TrickHousePuzzle2_Text_GeorgiaPostBattle:
-	.string "Du bist stark, nicht wahr?\n"
-	.string "Stark genug, ein ARENALEITER zu sein.$"
+	.string "You're strong, aren't you?\n"
+	.string "Maybe even enough to be a GYM LEADER!$"
 

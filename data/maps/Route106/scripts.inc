@@ -42,6 +42,7 @@ Route106_EventScript_Ned::
 	end
 
 Route106_Text_TrainerTips:
-	.string "TIPPS für TRAINER\p"
-	.string "Hinweis zum Fangen von POKéMON mit der\n"
-	.string "ANGEL: Drücke A, wenn eines anbeißt.$"
+	.string "TRAINER TIPS\p"
+	.string "Advice on catching POKéMON with a ROD:\n"
+	.string "Press the A Button if you get a bite.$"
+

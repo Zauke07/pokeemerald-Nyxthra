@@ -704,84 +704,64 @@ PetalburgCity_EventScript_GymBoy::
 	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
 	end
 
-PetalburgCity_EventScript_SuchenderMann::
-	msgbox PetalburgCity_Text_SuchenderMann, MSGBOX_NPC
-	end
-
 PetalburgCity_Text_WhereIsWally:
-	.string "Wohin ist unser HEIKO nur gegangen?\p"
-	.string "Wir müssen doch bald nach WIESENFLUR\n"
-	.string "aufbrechen…$"
+	.string "Where has our WALLY gone?\p"
+	.string "We have to leave for VERDANTURF TOWN\n"
+	.string "very soon…$"
 
 PetalburgCity_Text_AreYouRookieTrainer:
-	.string "He da! Bist du vielleicht…\n"
-	.string "ein Anfänger unter den TRAINERn?\p"
-	.string "Weißt du, was POKéMON-TRAINER machen,\n"
-	.string "wenn sie in einen neuen Ort kommen?\p"
-	.string "Sie sehen sich als Erstes die ARENA\n"
-	.string "im Ort an.$"
+	.string "Hiya! Are you maybe…\n"
+	.string "A rookie TRAINER?\p"
+	.string "Do you know what POKéMON TRAINERS\n"
+	.string "do when they reach a new town?\p"
+	.string "They first check what kind of GYM\n"
+	.string "is in the town.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
-	.string "Schau. Das ist die ARENA von\n"
-	.string "BLÜTENBURG CITY.$"
+	.string "See? This is PETALBURG CITY's GYM.$"
 
 PetalburgCity_Text_ThisIsGymSign:
-	.string "Das ist das Logo der ARENA. Daran\n"
-	.string "kannst du immer eine ARENA erkennen.$"
+	.string "This is the GYM's sign. Look for it\n"
+	.string "whenever you're looking for a GYM.$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "Mein Gesicht spiegelt sich im Wasser…\p"
-	.string "Ein schimmerndes Lächeln der Hoffnung.\p"
-	.string "Oder ist es der Ausdruck düsterer\n"
-	.string "Stille, an dem die Angst nagt…\p"
-	.string "Was siehst du in deinem Spiegelbild?$"
+	.string "My face is reflected in the water.\p"
+	.string "It's a shining grin full of hope…\p"
+	.string "Or it could be a look of somber silence\n"
+	.string "struggling with fear…\p"
+	.string "What do you see reflected in your face?$"
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Nehmen wir an, du hättest 6 POKéMON.\n"
-	.string "Wenn du jetzt ein weiteres fängst…\p"
-	.string "wird es automatisch in das POKéMON-\n"
-	.string "LAGERUNGS-SYSTEM gesendet.$"
+	.string "Let's say you have six POKéMON.\n"
+	.string "If you catch another one…\p"
+	.string "It is automatically sent to a STORAGE\n"
+	.string "BOX over a PC connection.$"
 
 PetalburgCity_Text_GymSign:
-	.string "POKéMON ARENA von BLÜTENBURG CITY\n"
-	.string "LEITER: NORMAN\l"
-	.string "“Ein Mann, der nach Stärke strebt!”$"
+	.string "PETALBURG CITY POKéMON GYM\n"
+	.string "LEADER: NORMAN\l"
+	.string "“A man in pursuit of power!”$"
 
 PetalburgCity_Text_CitySign:
-	.string "BLÜTENBURG CITY\n"
-	.string "“Wo Menschen Hand in Hand\l"
-	.string "mit der Natur gehen.”$"
+	.string "PETALBURG CITY\n"
+	.string "“Where people mingle with nature.”$"
 
 PetalburgCity_Text_WallyHouseSign:
-	.string "HEIKOS HAUS$"
+	.string "WALLY'S HOUSE$"
 
 PetalburgCity_Text_AreYouATrainer:
-	.string "Entschuldige bitte!\p"
-	.string "Lass mich raten! Deine Kleidung verrät\n"
-	.string "mir, dass du ein TRAINER bist.\l"
-	.string "Habe ich Recht?$"
+	.string "Excuse me!\p"
+	.string "Let me guess, from the way you're\n"
+	.string "dressed, are you a POKéMON TRAINER?$"
 
 PetalburgCity_Text_WellMaybeNot:
-	.string "… … … … …\n"
-	.string "…\p"
-	.string "Nun, vielleicht auch nicht.\n"
-	.string "Deine Kleidung ist noch relativ sauber.\p"
-	.string "Entweder bist du gerade erst TRAINER\n"
-	.string "geworden oder du bist einfach ein ganz\l"
-	.string "normales Kind.$"
+	.string "… … … … … …\p"
+	.string "Well, maybe not.\n"
+	.string "Your clothes aren't all that dirty.\p"
+	.string "You're either a rookie TRAINER,\n"
+	.string "or maybe you're just an ordinary kid.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
-	.string "Ich reise durch das Land, immer auf der\n"
-	.string "Suche nach talentierten TRAINERn.\p"
-	.string "Tut mir Leid, wenn ich dich aufgehalten\n"
-	.string "habe.$"
-
-PetalburgCity_Text_SuchenderMann:
-	.string "Eine alte legende über diese Stadt\n"
-	.string "besagt, dass es hier irgendwo einen\l"
-	.string "alten Schatz gibt, die Alte Seekarte!\p"
-	.string "Leider habe ich sie noch nicht\n"
-	.string "gefunden.. Doof, dass ich kein\l"
-	.string "DETEKTOR habe.\p"
-	.string "Damit hätte ich sie bestimmt\n"
-	.string "schon gefunden.. :c$"
+	.string "I'm roaming the land in search of\n"
+	.string "talented TRAINERS.\p"
+	.string "I'm sorry to have taken your time.$"

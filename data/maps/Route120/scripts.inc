@@ -363,84 +363,70 @@ Route120_EventScript_Callie::
 	end
 
 Route120_Text_StevenGreeting:
-	.string "TROY: Hm? {PLAYER}{KUN}, hi.\n"
-	.string "Es ist lange her…\p"
-	.string "Hier ist etwas, das du nicht sehen\n"
-	.string "kannst, richtig?\p"
-	.string "Also, wenn ich dieses Gerät bei einem\n"
-	.string "unsichtbaren Objekt benutzen würde…\p"
-	.string "Nein, nein. Statt es zu beschreiben,\n"
-	.string "zeige ich es dir lieber.\l"
-	.string "Das macht mehr Spaß.\p"
-	.string "{PLAYER}{KUN}, sind deine Pokémon bereit\n"
-	.string "für einen Kampf?$"
+	.string "STEVEN: Hm? {PLAYER}{KUN}, hi.\n"
+	.string "It's been a while.\p"
+	.string "There's something here that you can't\n"
+	.string "see, right?\p"
+	.string "Now, if I were to use this device on\n"
+	.string "the invisible obstacle…\p"
+	.string "No, no. Rather than describing it,\n"
+	.string "I should just show you.\l"
+	.string "That would be more fun.\p"
+	.string "{PLAYER}{KUN}, are your POKéMON ready for\n"
+	.string "battle?$"
 
 Route120_Text_StevenIllWaitHere:
-	.string "TROY: Nein?\p"
-	.string "Ich warte hier, dann kannst du sie vor-\n"
-	.string "bereiten.$"
+	.string "STEVEN: No?\p"
+	.string "I'll wait here, so you can get ready.$"
 
 Route120_Text_StevenReadyForBattle:
-	.string "TROY: {PLAYER}{KUN}, sind deine\n"
-	.string "Pokémon bereit für einen Kampf?$"
+	.string "STEVEN: {PLAYER}{KUN}, are your POKéMON\n"
+	.string "ready for battle?$"
 
 Route120_Text_StevenShowMeYourPower:
-	.string "TROY: {PLAYER}{KUN}, zeig mir deine\n"
-	.string "wahre Stärke als TRAINER!$"
+	.string "STEVEN: {PLAYER}{KUN}, show me your true\n"
+	.string "power as a TRAINER!$"
 
 Route120_Text_StevenUsedDevonScope:
-	.string "TROY setzt das DEVON-SCOPE ein.\p"
-	.string "Ein unsichtbares Pokémon wird\n"
-	.string "sichtbar!\p"
-	.string "Das erschreckte Pokémon greift an!$"
+	.string "STEVEN used the DEVON SCOPE.\p"
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
 
 Route120_Text_StevenGiveDevonScope:
-	.string "TROY: Bemerkenswert… Dein\n"
-	.string "Kampfstil ist wirklich bemerkenswert.\p"
-	.string "Deine Pokémon sind offensichtlich sehr\n"
-	.string "gewachsen, seit wir uns das erste Mal in\l"
-	.string "FAUSTAUHAVEN getroffen haben.\p"
-	.string "Ich möchte dir dieses DEVON-SCOPE\n"
-	.string "geben.\p"
-	.string "Wer weiß, es gibt bestimmt noch andere\n"
-	.string "verborgene Pokémon.$"
+	.string "STEVEN: I see…\n"
+	.string "Your battle style is intriguing.\p"
+	.string "Your POKéMON have obviously grown\n"
+	.string "since I first met you in DEWFORD.\p"
+	.string "I'd like you to have this\n"
+	.string "DEVON SCOPE.\p"
+	.string "Who knows, there may be other\n"
+	.string "concealed POKéMON.$"
 
 Route120_Text_StevenGoodbye:
-	.string "TROY: {PLAYER}{KUN}.\p"
-	.string "Ich liebe es, TRAINER und Pokémon zu\n"
-	.string "sehen, die fest zusammenhalten.\p"
-	.string "Ich finde, du machst das großartig.\p"
-	.string "Nun, mach’s gut. Wir sehen uns!$"
+	.string "STEVEN: {PLAYER}{KUN}.\p"
+	.string "I enjoy seeing POKéMON and TRAINERS\n"
+	.string "who strive together.\p"
+	.string "I think you're doing great.\p"
+	.string "Well, let's meet again somewhere.$"
 
 Kecleon_Text_SomethingUnseeable:
-	.string "Etwas Unsichtbares blockiert den Weg.$"
+	.string "Something unseeable is in the way.$"
 
 Kecleon_Text_WantToUseDevonScope:
-	.string "Etwas Unsichtbares blockiert den Weg.\p"
-	.string "Willst du das DEVON-SCOPE einsetzen?$"
+	.string "Something unseeable is in the way.\p"
+	.string "Want to use the DEVON SCOPE?$"
 
 Kecleon_Text_UseDevonScopeMonAttacked:
-	.string "{PLAYER} setzt DEVON-SCOPE ein.\p"
-	.string "Ein unsichtbares Pokémon wird\n"
-	.string "sichtbar!\p"
-	.string "Das erschreckte Pokémon greift an!$"
+	.string "{PLAYER} used the DEVON SCOPE.\p"
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
 
 Route120_Text_RouteSignFortree:
 	.string "ROUTE 120\n"
-	.string "{LEFT_ARROW} BAUMHAUSEN CITY$"
+	.string "{LEFT_ARROW} FORTREE CITY$"
 
 Route120_Text_RouteSign121:
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
-
-Route120_EventScript_Ende::
-    msgbox Route120_Text_Ende, MSGBOX_NPC
-    end
-
-Route120_Text_Ende:
-	.string "Hi, {PLAYER}!\p"
-	.string "Ich muss dir leider sagen, dass\n"
-	.string "die aktuelle Alpha hier schon\l"
-	.string "Endet. Sorry!\p"
-	.string "Du kannst von dieser höhle aus\n"
-	.string "direkt zum Speicherort gehen.$"

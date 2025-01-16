@@ -87,12 +87,12 @@ Route112_CableCarStation_Movement_ExitCableCar:
 	step_end
 
 Route112_CableCarStation_Text_CableCarReadyGetOn:
-	.string "Die SEILBAHN fährt gleich hinauf.\n"
-	.string "Möchtest du mit?$"
+	.string "The CABLE CAR is ready to go up.\n"
+	.string "Would you like to be on it?$"
 
 Route112_CableCarStation_Text_StepThisWay:
-	.string "Bitte hier entlang.$"
+	.string "Please step this way.$"
 
 Route112_CableCarStation_Text_RideAnotherTime:
-	.string "Dann fahre bitte später mit uns.$"
+	.string "Please ride with us another time.$"
 

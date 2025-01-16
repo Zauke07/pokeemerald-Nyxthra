@@ -1,4 +1,6 @@
 .set LOCALID_DAYCARE_MAN, 3
+.set LOCALID_DAYCARE_MON_0, 25
+.set LOCALID_DAYCARE_MON_1, 26
 
 Route117_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route117_OnTransition
@@ -6,7 +8,41 @@ Route117_MapScripts::
 
 Route117_OnTransition:
 	call Route117_EventScript_TryMoveDayCareMan
+	@ set flags for OW daycare mons
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	getdaycaregfx VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1
+	switch VAR_RESULT
+	case 2, Route117_EventScript_ShowDaycareMon1
+	case 1, Route117_EventScript_ShowDaycareMon0
 	end
+
+Route117_EventScript_ShowDaycareMon1:
+	@ set pokemon movement type based on compatibility
+	special SetDaycareCompatibilityString
+	call_if_eq VAR_RESULT, PARENTS_INCOMPATIBLE, Route117_EventScript_DaycareMonIncompatible
+	@ Don't do anything if PARENTS_LOW_COMPATIBILITY
+	call_if_eq VAR_RESULT, PARENTS_MED_COMPATIBILITY, Route117_EventScript_DaycareMonMedCompatibility
+	call_if_eq VAR_RESULT, PARENTS_MAX_COMPATIBILITY, Route117_EventScript_DaycareMonMaxCompatibility
+	clearflag FLAG_TEMP_2
+Route117_EventScript_ShowDaycareMon0:
+	clearflag FLAG_TEMP_1
+	end
+
+Route117_EventScript_DaycareMonIncompatible: @ mons never face each other
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT
+	return
+
+Route117_EventScript_DaycareMonMedCompatibility: @ down and towards each other
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT
+	return
+
+Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
+	setobjectmovementtype LOCALID_DAYCARE_MON_0, MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT
+	setobjectmovementtype LOCALID_DAYCARE_MON_1, MOVEMENT_TYPE_WALK_IN_PLACE_LEFT
+	return
 
 Route117_EventScript_TryMoveDayCareMan::
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan
@@ -181,53 +217,27 @@ Route117_EventScript_Aisha::
 	end
 
 Route117_Text_DayCarePokemonHadNewMove:
-	.string "Ich habe mein POKéMON in der PENSION\n"
-	.string "abgegeben.\p"
-	.string "Als ich es wieder abholte, kannte es\n"
-	.string "eine Attacke, die ich ihm nicht beige-\l"
-	.string "bracht habe. Ich war total überrascht.$"
+	.string "I left my POKéMON at the DAY CARE.\p"
+	.string "When I got it back, it had a new move\n"
+	.string "that I didn't teach it.\l"
+	.string "I was really, really surprised.$"
 
 Route117_Text_ArentTheseFlowersPretty:
-	.string "Was meinst du?\n"
-	.string "Sind diese Blumen nicht wunderhübsch?\p"
-	.string "Ich habe sie alle selber gepflanzt.$"
+	.string "What do you think?\n"
+	.string "Aren't these flowers pretty?\p"
+	.string "I planted them all!$"
 
 Route117_Text_AirIsTastyHere:
-	.string "Die Luft hier ist wunderbar frisch.$"
+	.string "The air is tasty here!$"
 
 Route117_Text_RouteSignVerdanturf:
 	.string "ROUTE 117\n"
-	.string "{LEFT_ARROW} WIESENFLUR$"
+	.string "{LEFT_ARROW} VERDANTURF TOWN$"
 
 Route117_Text_RouteSignMauville:
 	.string "ROUTE 117\n"
-	.string "{RIGHT_ARROW} MALVENFROH CITY$"
+	.string "{RIGHT_ARROW} MAUVILLE CITY$"
 
 Route117_Text_DayCareSign:
-	.string "POKéMON-PENSION\n"
-	.string "“Lass uns deine POKéMON aufziehen.”$"
-
-Route117_EventScript_Hydropi::
-    msgbox Route117_Text_Hydropi, MSGBOX_NPC
-    end
-
-Route117_Text_Hydropi:
-    .string "Hey {PLAYER}, hier der Tipp:\p"
-	.string "Irgendwo auf dieser Route ver-\n"
-	.string "steckt sich ein Starter aus der\l"
-	.string "3 Generation mit einer Spawnrate\n"
-	.string "von 1%!\p"
-	.string "Welches es ist, musst du selbst\n"
-	.string "herausfinden :D !$"
-
-Route117_EventScript_Chelast::
-    msgbox Route117_Text_Chelast, MSGBOX_NPC
-    end
-
-Route117_Text_Chelast:
-	.string "Tipp:\p"
-	.string "Auf dieser Route versteckt sich ein\n"
-	.string "Starter aus der 4 Generation mit\l"
-	.string "einer Spawnrate von 1%!\p"
-	.string "Welches es ist, musst du selbst\n"
-	.string "herausfinden :D !$"
+	.string "POKéMON DAY CARE\n"
+	.string "“Let us raise your POKéMON.”$"

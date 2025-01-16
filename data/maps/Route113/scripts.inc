@@ -134,16 +134,16 @@ Route113_EventScript_Wyatt::
 	end
 
 Route113_Text_AshCanBeFashionedIntoGlass:
-	.string "Wahahaha! Die heutige Technologie ist\n"
-	.string "schon eine wundersame Sache!\p"
-	.string "Nimm zum Beispiel diese Vulkanasche\n"
-	.string "hier. Aus ihr kann man Glas machen!$"
+	.string "Wahahaha! Today's technology is a\n"
+	.string "wondrous thing!\p"
+	.string "Take this volcanic ash here.\n"
+	.string "It can be fashioned into glass.$"
 
 Route113_Text_FunWalkingThroughAsh:
-	.string "Es macht Spaß, durch die Vulkanasche zu\n"
-	.string "laufen, über Boden und Gras.\p"
-	.string "Du kannst genau erkennen, wo du her-\n"
-	.string "umgelaufen bist - total klasse!$"
+	.string "It's fun walking through the volcano's\n"
+	.string "ashes on the ground and grass.\p"
+	.string "You can see where you walked--it's\n"
+	.string "really neat!$"
 
 Route113_Text_RouteSign111:
 	.string "ROUTE 113\n"
@@ -151,27 +151,16 @@ Route113_Text_RouteSign111:
 
 Route113_Text_RouteSignFallarbor:
 	.string "ROUTE 113\n"
-	.string "{LEFT_ARROW} LAUBWECHSELFELD$"
+	.string "{LEFT_ARROW} FALLARBOR TOWN$"
 
 Route113_Text_TrainerTipsRegisterKeyItems:
-	.string "TIPPS für TRAINER\p"
-	.string "Du kannst eines deiner BASIS-ITEMs in\n"
-	.string "deinem BEUTEL auf SELECT legen.\p"
-	.string "Durch Drücken von SELECT kannst du\n"
-	.string "so ganz bequem das Item einsetzen.$"
+	.string "TRAINER TIPS\p"
+	.string "You may register one of the KEY ITEMS\n"
+	.string "in your BAG as SELECT.\p"
+	.string "Simply press SELECT to use\n"
+	.string "the registered item conveniently.$"
 
 Route113_Text_GlassWorkshopSign:
-	.string "GLASWERKSTATT\n"
-	.string "“Glasdekor aus Vulkanasche.”$"
+	.string "GLASS WORKSHOP\n"
+	.string "“Turning Volcanic Ash into Glass Items”$"
 
-Route113_EventScript_Floink::
-    msgbox Route113_Text_Floink, MSGBOX_NPC
-    end
-
-Route113_Text_Floink:
-	.string "Tipp:\p"
-	.string "Auf dieser Route versteckt sich ein\n"
-	.string "Starter aus der 5 Generation mit\l"
-	.string "einer Spawnrate von 1%!\p"
-	.string "Welches es ist, musst du selbst\n"
-	.string "herausfinden :D !$"

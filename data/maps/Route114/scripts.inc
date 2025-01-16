@@ -177,39 +177,26 @@ Route114_EventScript_Kai::
 	end
 
 Route114_Text_AllMyMonDoesIsRoarTakeThis:
-	.string "Alles, was mein Pokémon von sich gibt,\n"
-	.string "ist BRÜLLER…\l"
-	.string "Niemand wagt sich nah heran…\p"
-	.string "Seufz… Wenn du magst, dann nimm mir\n"
-	.string "diese Bürde… äh, diese TM ab…$"
+	.string "All my POKéMON does is ROAR…\n"
+	.string "No one dares to come near me…\p"
+	.string "Sigh… If you would, please take\n"
+	.string "this TM away…$"
 
 Route114_Text_ExplainRoar:
-	.string "TM05 enthält BRÜLLER.\n"
-	.string "Ein BRÜLLER schlägt Pokémon in\l"
-	.string "die Flucht.$"
+	.string "TM05 contains ROAR.\n"
+	.string "A ROAR sends POKéMON scurrying.$"
 
 Route114_Text_Poochyena:
 	.string "Bow! Bowwow!$"
 
 Route114_Text_MeteorFallsSign:
-	.string "METEORFÄLLE\n"
-	.string "HIER ENTLANG NACH METAROST CITY$"
+	.string "METEOR FALLS\n"
+	.string "RUSTBORO CITY THROUGH HERE$"
 
 Route114_Text_FossilManiacsHouseSign:
-	.string "FOSSILMANIAC\n"
-	.string "“Fossilien gesucht!”$"
+	.string "FOSSIL MANIAC'S HOUSE\n"
+	.string "“Fossils gratefully accepted!”$"
 
 Route114_Text_LanettesHouse:
-	.string "LANETTES HAUS$"
+	.string "LANETTE'S HOUSE$"
 
-Route114_EventScript_Serpifeu::
-    msgbox Route114_Text_Serpifeu, MSGBOX_NPC
-    end
-
-Route114_Text_Serpifeu:
-	.string "Tipp:\p"
-	.string "Auf dieser Route versteckt sich ein\n"
-	.string "Starter aus der 5 Generation mit\l"
-	.string "einer Spawnrate von 1%!\p"
-	.string "Welches es ist, musst du selbst\n"
-	.string "herausfinden :D !$"

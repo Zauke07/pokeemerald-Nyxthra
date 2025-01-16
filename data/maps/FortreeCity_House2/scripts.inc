@@ -42,40 +42,40 @@ FortreeCity_House2_EventScript_WrongGuess::
 	end
 
 FortreeCity_House2_Text_HiddenPowersArousedByNature:
-	.string "Menschen… Pokémon…\p"
-	.string "Ihre versteckten Kräfte werden durch\n"
-	.string "das Leben in der Natur geweckt.$"
+	.string "People… POKéMON…\p"
+	.string "Their hidden powers are aroused by\n"
+	.string "living in natural environments…$"
 
 FortreeCity_House2_Text_CoinInWhichHand:
-	.string "Lass diese alte Frau mal sehen, ob deine\n"
-	.string "versteckten Kräfte erwacht sind…\p"
-	.string "Ich halte eine Münze in meiner Hand.\p"
-	.string "Nun? In welcher Hand halte ich sie?\n"
-	.string "In der linken oder rechten Hand?$"
+	.string "Let this old woman see if your hidden\n"
+	.string "power has awoken…\p"
+	.string "I hold a coin in my hand.\p"
+	.string "Now, tell me, have I palmed it in\n"
+	.string "the right hand? Or in the left?$"
 
 FortreeCity_House2_Text_CorrectTryAgainWhichHand:
-	.string "Oh! Das stimmt!\p"
-	.string "Versuchen wir es noch einmal.\p"
-	.string "In welcher Hand halte ich die Münze?\n"
-	.string "Rechts oder links?$"
+	.string "Oh! Yes, correct!\p"
+	.string "We shall try again.\p"
+	.string "In which hand have I palmed the coin?\n"
+	.string "The right or left?$"
 
 FortreeCity_House2_Text_CorrectTryAgainWhichHand2:
-	.string "Oh! Schon wieder richtig!\p"
-	.string "Probieren wir es noch einmal.\p"
-	.string "In welcher Hand ist die Münze nun?\n"
-	.string "In der linken oder der rechten Hand?$"
+	.string "Oh! Yes, correct!\p"
+	.string "We shall try again.\p"
+	.string "In which hand have I palmed the coin?\n"
+	.string "The right or left?$"
 
 FortreeCity_House2_Text_YourHiddenPowerHasAwoken:
-	.string "Oh! Hervorragend!\n"
-	.string "Deine versteckten Kräfte sind erwacht!\p"
-	.string "Hier, das ist für dich. Wecke damit die\n"
-	.string "versteckten Kräfte deiner Pokémon.$"
+	.string "Oh! Splendid!\n"
+	.string "Your hidden power has awoken!\p"
+	.string "Here, take this and awaken the hidden\n"
+	.string "power of your POKéMON.$"
 
 FortreeCity_House2_Text_ExplainHiddenPower:
-	.string "KRAFTRESERVE ist eine Attacke, die je\n"
-	.string "nach Pokémon anders aussieht.$"
+	.string "HIDDEN POWER is a move that changes\n"
+	.string "with the POKéMON.$"
 
 FortreeCity_House2_Text_YouGuessedWrong:
-	.string "Och, zu schade!\n"
-	.string "Du hast falsch geraten.$"
+	.string "No, too bad.\n"
+	.string "You guessed wrong.$"
 

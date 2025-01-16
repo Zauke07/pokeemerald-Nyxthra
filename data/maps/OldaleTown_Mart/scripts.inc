@@ -18,9 +18,7 @@ OldaleTown_Mart_Pokemart_Basic:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 OldaleTown_Mart_ExpandedItems::
 	pokemart OldaleTown_Mart_Pokemart_Expanded
@@ -35,9 +33,7 @@ OldaleTown_Mart_Pokemart_Expanded:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_NONE
-	release
-	end
+	pokemartlistend
 
 OldaleTown_Mart_EventScript_Woman::
 	lock
@@ -57,16 +53,16 @@ OldaleTown_Mart_EventScript_Boy::
 	end
 
 OldaleTown_Mart_Text_PokeBallsAreSoldOut:
-	.string "Der Verkäufer sagt, es sei alles\n"
-	.string "ausverkauft. Jetzt stehe ich ohne\l"
-	.string "POKéBÄLLE da.$"
+	.string "The clerk says they're all sold out.\n"
+	.string "I can't buy any POKé BALLS.$"
 
 OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
-	.string "Ich will mir viele POKéBÄLLe kaufen und\n"
-	.string "damit genauso viele POKéMON fangen!$"
+	.string "I'm going to buy a bunch of POKé BALLS\n"
+	.string "and catch a bunch of POKéMON!$"
 
 OldaleTown_Mart_Text_RestoreHPWithPotion:
-	.string "Wird ein POKéMON verletzt und verliert\n"
-	.string "alle KP, so ist es kampfunfähig.\p"
-	.string "Um das zu vermeiden, solltest du die KP\n"
-	.string "bei Bedarf mit einem TRANK auffüllen.$"
+	.string "If a POKéMON gets hurt and loses its HP\n"
+	.string "and faints, it won't be able to battle.\p"
+	.string "To prevent your POKéMON from fainting,\n"
+	.string "restore its HP with a POTION.$"
+
