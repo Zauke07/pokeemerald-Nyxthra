@@ -27,8 +27,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
-      "x": 16,
-      "y": 18,
+      "x": 17,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -66,8 +66,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
-      "x": 20,
-      "y": 10,
+      "x": 23,
+      "y": 8,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
       "movement_range_x": 0,
@@ -141,12 +141,25 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
       "flag": "FLAG_HIDE_PETALBURG_CITY_SCOTT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
+      "x": 18,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PetalburgCity_EventScript_SuchenderMann",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
       "x": 10,
-      "y": 19,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_HOUSE1",
       "dest_warp_id": "0"
@@ -166,15 +179,15 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 20,
-      "y": 16,
+      "x": 21,
+      "y": 12,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "0"
     },
     {
       "x": 20,
-      "y": 24,
+      "y": 25,
       "elevation": 0,
       "dest_map": "MAP_PETALBURG_CITY_HOUSE2",
       "dest_warp_id": "0"
@@ -280,24 +293,24 @@
     },
     {
       "type": "sign",
-      "x": 21,
-      "y": 16,
+      "x": 22,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemonCenterSign"
     },
     {
       "type": "sign",
-      "x": 17,
-      "y": 16,
+      "x": 27,
+      "y": 15,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "PetalburgCity_EventScript_CitySign"
     },
     {
       "type": "sign",
-      "x": 22,
-      "y": 16,
+      "x": 23,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "Common_EventScript_ShowPokemonCenterSign"
@@ -325,6 +338,14 @@
       "elevation": 3,
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 27,
+      "y": 23,
+      "elevation": 0,
+      "item": "ITEM_OLD_SEA_MAP",
+      "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_OLD_SEA_MAP"
     }
   ]
 }

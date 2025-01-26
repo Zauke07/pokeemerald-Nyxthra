@@ -33,7 +33,7 @@ CableClub_Text_NeedTwoMonsToTrade:
 	.string "least two POKéMON with you.$"
 
 CableClub_Text_CantTradeEnigmaBerry:
-	.string "A POKéMON holding the {STR_VAR_1}\n"
+	.string "A POKéMON holding the{STR_VAR_1}\n"
 	.string "BERRY can't be traded.$"
 
 gText_PleaseWaitForLink::
@@ -46,7 +46,7 @@ gText_ConfirmLinkWhenPlayersReady::
 	.string "B Button: Cancel$"
 
 gText_ConfirmStartLinkWithXPlayers::
-	.string "Start link with {STR_VAR_1} players.\n"
+	.string "Start link with{STR_VAR_1}players.\n"
 	.string "A Button: Confirm\l"
 	.string "B Button: Cancel$"
 
@@ -87,11 +87,11 @@ CableClub_Text_IncorrectNumberOfParticipants:
 
 CableClub_Text_CantSingleBattleWithXPlayers:
 	.string "The SINGLE BATTLE Mode can't be\n"
-	.string "played by {STR_VAR_1} players.$"
+	.string "played by{STR_VAR_1}players.$"
 
 CableClub_Text_CantDoubleBattleWithXPlayers:
 	.string "The DOUBLE BATTLE Mode can't be\n"
-	.string "played by {STR_VAR_1} players.$"
+	.string "played by{STR_VAR_1}players.$"
 
 CableClub_Text_NeedFourPlayers:
 	.string "There must be four players to play\n"
@@ -115,13 +115,13 @@ CableClub_Text_TooBusyToNotice:
 	.string "notice…$"
 
 CableClub_Text_GotToLookAtTrainerCard:
-	.string "Score! Got to look at {STR_VAR_1}'s\n"
+	.string "Score! Got to look at{STR_VAR_1}'s\n"
 	.string "TRAINER CARD!$"
 
 CableClub_Text_GotToLookAtColoredTrainerCard:
-	.string "Score! Got to look at {STR_VAR_1}'s\n"
+	.string "Score! Got to look at{STR_VAR_1}'s\n"
 	.string "TRAINER CARD!\p"
-	.string "It's a {STR_VAR_2} card!$"
+	.string "It's a{STR_VAR_2}card!$"
 
 BattleColosseum_2P_Text_TakePlaceStartBattle:
 	.string "Please take your place and start\n"
@@ -158,7 +158,7 @@ RecordCorner_Text_TakeSeatAndWait:
 	.string "Please take your seat and wait.$"
 
 RecordCorner_Text_PlayerSentOverOneX:
-	.string "{STR_VAR_1} sent over one\n"
+	.string "{STR_VAR_1}sent over one\n"
 	.string "{STR_VAR_2}.$"
 
 CableClub_Text_CantMixWithJapaneseGame:
@@ -226,7 +226,7 @@ CableClub_Text_NeedTwoMonsForUnionRoom:
 	.string "have at least two POKéMON.$"
 
 CableClub_Text_NoEnigmaBerryInUnionRoom:
-	.string "No POKéMON holding the {STR_VAR_1}\n"
+	.string "No POKéMON holding the{STR_VAR_1}\n"
 	.string "BERRY may enter the UNION ROOM.$"
 
 CableClub_Text_UnionRoomAdapterNotConnected:
@@ -242,7 +242,7 @@ CableClub_Text_OhExcuseMe:
 	.string "Excuse me!$"
 
 CableClub_Text_PlayerIsWaiting:
-	.string "It appears as if {STR_VAR_1} is playing\n"
+	.string "It appears as if{STR_VAR_1}is playing\n"
 	.string "right now.\l"
 	.string "Go for it!$"
 
@@ -269,7 +269,7 @@ MossdeepCity_GameCorner_1F_Text_DodrioBerryPickingInfo:
 	.string "Command DODRIO's three heads to\n"
 	.string "catch falling BERRIES.\p"
 	.string "Press right, up, or left on the\n"
-	.string "{PLUS} Control Pad to move the heads.\p"
+	.string "{PLUS}Control Pad to move the heads.\p"
 	.string "To play this game, you must have\n"
 	.string "a DODRIO.$"
 
@@ -447,7 +447,7 @@ CableClub_Text_ExplainWirelessClubFirstTime:
 	.string "Communication System.$"
 
 CableClub_Text_AskAboutLinking:
-	.string "Hello, {PLAYER}!\p"
+	.string "Hello,{PLAYER}!\p"
 	.string "It's me, TEALA, the POKéMON\n"
 	.string "CENTER 2F attendant.\p"
 	.string "Is there something you needed to\n"

@@ -1151,3 +1151,8 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+    .include "data/maps/Rosalhoehle/scripts.inc"
+	.include "data/maps/SecretPetalburgWoods/scripts.inc"
+	.include "data/maps/Speicherort/scripts.inc"
+	.include "data/maps/BabyBootCamp/scripts.inc"

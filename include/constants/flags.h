@@ -655,6 +655,8 @@
 #define FLAG_HIDDEN_ITEM_NAVEL_ROCK_TOP_SACRED_ASH           (FLAG_HIDDEN_ITEMS_START + 0x6D)
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
+#define FLAG_HIDDEN_ITEM_PETALBURG_CITY_OLD_SEA_MAP          (FLAG_HIDDEN_ITEMS_START + 0x70)
+#define FLAG_HIDDEN_ITEM_Route_119_BIG_NUGGET                (FLAG_HIDDEN_ITEMS_START + 0x71)
 
 #define FLAG_UNUSED_0x264  0x264 // Unused Flag
 #define FLAG_UNUSED_0x265  0x265 // Unused Flag
@@ -1635,6 +1637,23 @@
 #define FLAG_UNUSED_0x95D                           (DAILY_FLAGS_START + 0x3D) // Unused Flag
 #define FLAG_UNUSED_0x95E                           (DAILY_FLAGS_START + 0x3E) // Unused Flag
 #define FLAG_UNUSED_0x95F                           (DAILY_FLAGS_START + 0x3F) // Unused Flag
+
+// Neue Flags für die Eier
+#define FLAG_GOT_EGG_ALTE_DAME                      0x960
+#define FLAG_GOT_EGG_BARD                           0x961
+#define FLAG_GOT_EGG_ARTIST                         0x962
+#define FLAG_GOT_EGG_BEAUTY                         0x963
+#define FLAG_GOT_EGG_BELT                           0x964
+#define FLAG_GOT_EGG_BOY_1                          0x965
+#define FLAG_GOT_EGG_BOY_2                          0x966
+#define FLAG_GOT_EGG_BOY_3                          0x967
+#define FLAG_GOT_EGG_BUG_CATCHER                    0x968
+
+// Neue Flags
+#define FLAG_ROUTE115_PAID                          0x969
+#define FLAG_LANDMARK_BABY_BOOT_CAMP                0x96A
+#define FLAG_LANDMARK_ROSALHOEHLE                   0x96B
+
 #define DAILY_FLAGS_END                             (FLAG_UNUSED_0x95F + (7 - FLAG_UNUSED_0x95F % 8))
 #define NUM_DAILY_FLAGS                             (DAILY_FLAGS_END - DAILY_FLAGS_START + 1)
 
