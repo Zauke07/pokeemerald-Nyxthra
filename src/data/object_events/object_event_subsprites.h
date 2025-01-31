@@ -380,6 +380,193 @@ const struct SubspriteTable sOamTables_64x64[] = {
     {ARRAY_COUNT(sOamTable_64x64_3), sOamTable_64x64_3}
 };
 
+//Firered Objekte
+const struct Subsprite gObjectEventSpriteOamTable_16x16_0[] = {
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 2
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x16_1[] = {
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 1
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x16_2[] = {
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 0,
+        .priority = 2
+    },
+    {
+        .x = -8,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 2,
+        .priority = 3
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x16_3[] = {
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 2
+    },
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 3
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x16_4[] = {
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 1
+    },
+    {
+        .x = -8,
+        .y = -8,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 3
+    }
+};
+
+const struct SubspriteTable gObjectEventSpriteOamTables_16x16[] = {
+    {0, NULL},
+    {1, gObjectEventSpriteOamTable_16x16_0},
+    {1, gObjectEventSpriteOamTable_16x16_1},
+    {2, gObjectEventSpriteOamTable_16x16_2},
+    {2, gObjectEventSpriteOamTable_16x16_3},
+    {2, gObjectEventSpriteOamTable_16x16_4},
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x32_0[] = {
+    {
+        .x = -8,
+        .y = -16,
+        .shape = SPRITE_SHAPE(16x32),
+        .size = SPRITE_SIZE(16x32),
+        .tileOffset = 0,
+        .priority = 2
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x32_1[] = {
+    {
+        .x = -8,
+        .y = -16,
+        .shape = SPRITE_SHAPE(16x32),
+        .size = SPRITE_SIZE(16x32),
+        .tileOffset = 0,
+        .priority = 1
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x32_2[] = {
+    {
+        .x = -8,
+        .y = -16,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 2
+    },
+    {
+        .x = -8,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 4,
+        .priority = 2
+    },
+    {
+        .x = -8,
+        .y = 8,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 6,
+        .priority = 3
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x32_3[] = {
+    {
+        .x = -8,
+        .y = -16,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 2
+    },
+    {
+        .x = -8,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 4,
+        .priority = 3
+    }
+};
+
+const struct Subsprite gObjectEventSpriteOamTable_16x32_4[] = {
+    {
+        .x = -8,
+        .y = -16,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 0,
+        .priority = 1
+    },
+    {
+        .x = -8,
+        .y = 0,
+        .shape = SPRITE_SHAPE(16x16),
+        .size = SPRITE_SIZE(16x16),
+        .tileOffset = 4,
+        .priority = 3
+    }
+};
+
+const struct SubspriteTable gObjectEventSpriteOamTables_16x32[] = {
+    {0, NULL},
+    {1, gObjectEventSpriteOamTable_16x32_0},
+    {1, gObjectEventSpriteOamTable_16x32_1},
+    {3, gObjectEventSpriteOamTable_16x32_2},
+    {2, gObjectEventSpriteOamTable_16x32_3},
+    {2, gObjectEventSpriteOamTable_16x32_4},
+};
+
+//firered objekte ende
+
 static const struct Subsprite sOamTable_96x40_0[] = {
     {
         .x = -48,

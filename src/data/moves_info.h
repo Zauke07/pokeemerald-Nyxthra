@@ -25,90 +25,90 @@ EFFECT_TWO_TURNS_ATTACK/EFFECT_SOLAR_BEAM: weather in which to skip charge turn 
 // Shared Move Description entries
 
 const u8 gNotDoneYetDescription[] = _(
-    "This move can't be used. Its\n"
-    "effect is in development.");
+    "Dieser Zug kann nicht verwendet werden.\n"
+    "Seine Wirkung ist in der Entwicklung.");
 
 static const u8 sNullDescription[] = _("");
 
 static const u8 sMegaDrainDescription[] = _(
-    "An attack that absorbs\n"
-    "half the damage inflicted.");
+    "Attacke, die die Hälfte des\n"
+    "Schadens absorbiert.");
 
 static const u8 sHyperBeamDescription[] = _(
-    "Powerful, but leaves the\n"
-    "user immobile the next turn.");
+    "Starke Attacke. Angreifer\n"
+    "setzt eine Runde aus.");
 
 static const u8 sRevengeDescription[] = _(
-    "An attack that gains power\n"
-    "if injured by the foe.");
+    "Attacke wird stärker, wenn\n"
+    "Anwender Schaden nimmt.");
 
 static const u8 sPluckDescription[] = _(
-    "Eats the foe's held Berry\n"
-    "gaining its effect.");
+    "Anwender pickt das Ziel, nimmt\n"
+    "die Beere und erhält ihren Effekt.");
 
 static const u8 sHealingWishDescription[] = _(
-    "The user faints to heal up\n"
-    "the recipient.");
+    "Der Benutzer fällt in Ohnmacht,\n"
+    "um den Empfänger zu heilen.");
 
 static const u8 sWringOutDescription[] = _(
-    "The higher the foe's HP\n"
-    "the more damage caused.");
+    "Je höher die KP des Zieles,\n"
+    "desto kraftvoller die Attacke.");
 
 static const u8 sUTurnDescription[] = _(
-    "Does damage then switches\n"
-    "out the user.");
+    "Fügt Schaden zu und schaltet\n"
+    "den Benutzer aus.");
 
 static const u8 sStormThrowDescription[] = _(
-    "This attack always results\n"
-    "in a critical hit.");
+    "Dieser Angriff führt immer\n"
+    "zu einem kritischen Treffer.");
 
 static const u8 sCircleThrowDescription[] = _(
-    "Knocks the foe away to end\n"
-    "the battle.");
+    "Schlägt den Gegner weg,\n"
+    "um den Kampf zu beenden.");
 
 static const u8 sChipAwayDescription[] = _(
-    "Strikes through the foe's\n"
-    "stat changes.");
+    "Schlägt durch die Status-\n"
+    "änderungen des Gegners hindurch.");
 
 static const u8 sHeavySlamDescription[] = _(
-    "Does more damage if the\n"
-    "user outweighs the foe.");
+    "Verursacht mehr Schaden, wenn\n"
+    "der Benutzer den Gegner überwiegt.");
 
 static const u8 sPsyshockDescription[] = _(
-    "Attacks with a psychic wave\n"
-    "that does physical damage.");
+    "Greift mit einer psychischen Welle\n"
+    "an, die physischen Schaden verursacht.");
 
 static const u8 sLavaPlumeDescription[] = _(
-    "Scarlet flames torch\n"
-    "everything around the user.");
+    "Scharlachrote Flammen verbrennen\n"
+    "alles um den Benutzer herum.");
 
 static const u8 sShadowForceDescription[] = _(
-    "Vanishes on the first turn\n"
-    "then strikes the next turn.");
+    "Verschwindet in der ersten Runde und\n"
+    "schlägt dann in der nächsten Runde zu.");
 
 static const u8 sFalseSwipeDescription[] = _(
-    "An attack that leaves the\n"
-    "foe with at least 1 HP.");
+    "Ein Angriff, der dem Gegner\n"
+    "mindestens 1 HP zurücklässt.");
 
 static const u8 sDrainingKissDescription[] = _(
-    "An attack that absorbs over\n"
-    "half the damage inflicted.");
+    "Ein Angriff, der mehr als die Hälfte des\n"
+    "verursachten Schadens absorbiert.");
 
 static const u8 sCloseCombatDescription[] = _(
-    "A strong attack but lowers\n"
-    "the defensive stats.");
+    "Ein starker Angriff, der jedoch\n"
+    "die Verteidigungswerte senkt.");
 
 static const u8 sHyperspaceHoleDescription[] = _(
-    "Uses a warp hole to attack.\n"
-    "Can't be evaded.");
+    "Verwendet zum Angriff ein Warploch.\n"
+    "Kann nicht umgangen werden.");
 
 static const u8 sSuckerPunchDescription[] = _(
-    "Strikes first if the foe\n"
-    "is preparing an attack.");
+    "Schlägt zuerst zu, wenn der\n"
+    "Feind einen Angriff vorbereitet.");
 
 static const u8 sFeintDescription[] = _(
-    "An attack that hits foes\n"
-    "using moves like Protect.");
+    "Ein Angriff, der Gegner mit\n"
+    "Attacken wie 'Schützen' trifft.");
 
 const struct MoveInfo gMovesInfo[MOVES_COUNT_DYNAMAX] =
 {

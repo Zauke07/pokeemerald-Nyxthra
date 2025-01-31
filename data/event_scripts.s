@@ -1156,3 +1156,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SecretPetalburgWoods/scripts.inc"
 	.include "data/maps/Speicherort/scripts.inc"
 	.include "data/maps/BabyBootCamp/scripts.inc"
+
+	.include "data/maps/BabyBootCamp_Tests/scripts.inc"

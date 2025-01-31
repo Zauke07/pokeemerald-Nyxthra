@@ -1653,6 +1653,9 @@
 #define FLAG_ROUTE115_PAID                          0x969
 #define FLAG_LANDMARK_BABY_BOOT_CAMP                0x96A
 #define FLAG_LANDMARK_ROSALHOEHLE                   0x96B
+#define FLAG_HIDE_CELEBI                            0x96C
+#define FLAG_CAUGHT_CELEBI                          0x96D
+#define FLAG_DEFEATED_CELEBI                        0x96E
 
 #define DAILY_FLAGS_END                             (FLAG_UNUSED_0x95F + (7 - FLAG_UNUSED_0x95F % 8))
 #define NUM_DAILY_FLAGS                             (DAILY_FLAGS_END - DAILY_FLAGS_START + 1)

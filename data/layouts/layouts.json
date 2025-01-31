@@ -4450,6 +4450,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/BabyBootCamp/border.bin",
       "blockdata_filepath": "data/layouts/BabyBootCamp/map.bin"
-  }
+    },
+    {
+      "id": "LAYOUT_BABY_BOOT_CAMP_TESTS",
+      "name": "BabyBootCamp_Tests_Layout",
+      "width": 70,
+      "height": 70,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BabyBootCamp_Tests/border.bin",
+      "blockdata_filepath": "data/layouts/BabyBootCamp_Tests/map.bin"
+    }
   ]
 }

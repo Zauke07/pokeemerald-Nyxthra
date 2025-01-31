@@ -152,6 +152,13 @@
       "elevation": 0,
       "dest_map": "MAP_ROUTE115",
       "dest_warp_id": "3"
+    },
+    {
+      "x": 1,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_BABY_BOOT_CAMP_TESTS",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
