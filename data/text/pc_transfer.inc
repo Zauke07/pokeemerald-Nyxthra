@@ -1,26 +1,26 @@
 gText_PkmnTransferredSomeonesPC::
-	.string "{STR_VAR_2}wurde auf JEMANDES PC\n"
-	.string "übertragen.\p"
-	.string "Es wurde in BOX\n"
-	.string "“{STR_VAR_1}” abgelegt.$"
+	.string "{STR_VAR_2} was transferred to\n"
+	.string "SOMEONE'S PC.\p"
+	.string "It was placed in \n"
+	.string "BOX “{STR_VAR_1}.”$"
 
 gText_PkmnTransferredLanettesPC::
-	.string "{STR_VAR_2}wurde auf LANETTEs PC\n"
-	.string "übertragen.\p"
-	.string "Es wurde in BOX\n"
-	.string "“{STR_VAR_1}” abgelegt.$"
+	.string "{STR_VAR_2} was transferred to\n"
+	.string "LANETTE'S PC.\p"
+	.string "It was placed in \n"
+	.string "BOX “{STR_VAR_1}.”$"
 
 gText_PkmnTransferredSomeonesPCBoxFull::
-	.string "BOX “{STR_VAR_3}” in\n"
-	.string "JEMANDES PC ist voll.\p"
-	.string "{STR_VAR_2}wurde in BOX\n"
-	.string "“{STR_VAR_1}” übertragen.$"
+	.string "BOX “{STR_VAR_3}” on\n"
+	.string "SOMEONE'S PC was full.\p"
+	.string "{STR_VAR_2} was transferred to\n"
+	.string "BOX “{STR_VAR_1}.”$"
 
 gText_PkmnTransferredLanettesPCBoxFull::
-	.string "BOX “{STR_VAR_3}” in\n"
-	.string "LANETTEs PC ist voll.\p"
-	.string "{STR_VAR_2}wurde in BOX\n"
-	.string "“{STR_VAR_1}” übertragen.$"
+	.string "BOX “{STR_VAR_3}” on\n"
+	.string "LANETTE'S PC was full.\p"
+	.string "{STR_VAR_2} was transferred to\n"
+	.string "BOX “{STR_VAR_1}.”$"
 
 gText_NoMoreRoomForPokemon::
 	.string "Es ist kein Platz mehr für POKéMON\n"

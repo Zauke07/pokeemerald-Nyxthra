@@ -373,6 +373,7 @@ const u32 gObjectEventPic_HoOhOld[] = INCBIN_U32("graphics/object_events/pics/po
 const u32 gObjectEventPic_GroudonOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/groudon.4bpp");
 const u32 gObjectEventPic_KyogreOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/kyogre.4bpp");
 const u32 gObjectEventPic_CelebiOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/celebi.4bpp");
+const u32 gObjectEventPic_CelebiOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/celebi.4bpp");
 
 const u32 gObjectEventPic_VigorothMover[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/vigoroth_mover.4bpp");
 const u32 gObjectEventPic_SudowoodoTree[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/sudowoodo_tree.4bpp");
@@ -380,10 +381,15 @@ const u32 gObjectEventPic_RayquazaCutscene[] = INCBIN_U32("graphics/object_event
 
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
+const u16 gObjectEventPal_Celebi[] = INCBIN_U16("graphics/object_events/palettes/celebi.gbapal");
+
 
 const u16 gObjectEventPal_Celebi[] = INCBIN_U16("graphics/object_events/palettes/celebi.gbapal");
 
 const u16 gObjectEventPal_Substitute[] = INCBIN_U16("graphics/pokemon/question_mark/overworld.gbapal");
+// Firered NPC
+const u16 gObjectEventPic_Agatha[] = INCBIN_U16("graphics/object_events/pics/people/agatha_firered.4bpp");
+
 
 const u16 gObjectEventPaletteEmotes[] = INCBIN_U16("graphics/misc/emotes.gbapal");
 
