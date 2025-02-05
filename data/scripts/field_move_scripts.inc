@@ -62,11 +62,6 @@ EventScript_UseRockSmash::
 	lockall
 	goto EventScript_RockSmashCommon
 
-@ Use rock smash from party menu
-EventScript_UseRockSmash::
-	lockall
-	goto EventScript_RockSmashCommon
-
 @ Interact with smashable rock
 EventScript_RockSmash::
 	lockall

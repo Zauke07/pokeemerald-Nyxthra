@@ -8,9 +8,7 @@ BabyBootCamp_Tests_MapScripts::
 BabyBootCamp_Tests_OnTransition:
     call_if_set FLAG_CAUGHT_CELEBI, BabyBootCamp_Tests_EventScript_HideCelebi
     call_if_unset FLAG_CAUGHT_CELEBI, BabyBootCamp_Tests_EventScript_TryShowCelebi
-    call_if_set FLAG_CAUGHT_LUGIA, BabyBootCamp_Tests_EventScript_HideLugia
-	call_if_unset FLAG_CAUGHT_LUGIA, BabyBootCamp_Tests_EventScript_TryShowLugia
-	end
+    end
 
 BabyBootCamp_Tests_EventScript_HideCelebi::
     setflag FLAG_HIDE_CELEBI
@@ -23,7 +21,8 @@ BabyBootCamp_Tests_EventScript_TryShowCelebi::
 
 BabyBootCamp_Tests_OnResume:
     call_if_set FLAG_SYS_CTRL_OBJ_DELETE, BabyBootCamp_Tests_EventScript_TryRemoveCelebi
-    call_if_set FLAG_SYS_CTRL_OBJ_DELETE, BabyBootCamp_Tests_EventScript_TryRemoveLugia
+    call_if_set FLAG_CAUGHT_CELEBI, BabyBootCamp_Tests_EventScript_HideCelebi
+    call_if_unset FLAG_CAUGHT_CELEBI, BabyBootCamp_Tests_EventScript_TryShowCelebi
     end
 
 BabyBootCamp_Tests_EventScript_TryRemoveCelebi::
@@ -37,26 +36,30 @@ BabyBootCamp_Tests_EventScript_Celebi::
     faceplayer
     playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
     waitmoncry
-    setflag FLAG_HIDE_CELEBI
     seteventmon SPECIES_CELEBI, 1
+    setflag FLAG_SYS_CTRL_OBJ_DELETE
     special BattleSetup_StartLegendaryBattle
     waitstate
+    clearflag FLAG_SYS_CTRL_OBJ_DELETE
     specialvar VAR_RESULT, GetBattleOutcome
     goto_if_eq VAR_RESULT, B_OUTCOME_WON, BabyBootCamp_Tests_EventScript_CelebiDefeated
     goto_if_eq VAR_RESULT, B_OUTCOME_RAN, BabyBootCamp_Tests_EventScript_CelebiRan
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, BabyBootCamp_Tests_EventScript_CelebiRan
     setflag FLAG_CAUGHT_CELEBI
+    removeobject LOCALID_CELEBI
     release
     end
 
 BabyBootCamp_Tests_EventScript_CelebiDefeated::
     setflag FLAG_CAUGHT_CELEBI
     setflag FLAG_DEFEATED_CELEBI
+    removeobject LOCALID_CELEBI
     release
     end
 
 BabyBootCamp_Tests_EventScript_CelebiRan::
     setflag FLAG_DEFEATED_CELEBI
+    removeobject LOCALID_CELEBI
     release
     end
 
@@ -67,5 +70,5 @@ BabyBootCamp_Tests_EventScript_AGATHA::
 
 BabyBootCamp_Tests_Text_AGATHA:
     .string "Hallo test.$"
-	
+
 
