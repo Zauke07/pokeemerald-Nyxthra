@@ -86,6 +86,7 @@ static void PlayerAvatarTransition_MachBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
 static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
+static void PlayerAvatarTransition_Riding(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
 
 static bool8 PlayerAnimIsMultiFrameStationary(void);
@@ -240,6 +241,9 @@ static void (*const sPlayerAvatarTransitionFuncs[])(struct ObjectEvent *) =
     [PLAYER_AVATAR_STATE_FIELD_MOVE] = PlayerAvatarTransition_ReturnToField,
     [PLAYER_AVATAR_STATE_FISHING]    = PlayerAvatarTransition_Dummy,
     [PLAYER_AVATAR_STATE_WATERING]   = PlayerAvatarTransition_Dummy,
+
+    //[PLAYER_AVATAR_STATE_RIDE_SITTING] = PlayerAvatarTransition_Dummy,
+    [PLAYER_AVATAR_STATE_RIDE_GRABBING] = PlayerAvatarTransition_Riding,
 };
 
 static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
@@ -923,6 +927,14 @@ static void PlayerAvatarTransition_Underwater(struct ObjectEvent *objEvent)
     objEvent->fieldEffectSpriteId = StartUnderwaterSurfBlobBobbing(objEvent->spriteId);
 }
 
+static void PlayerAvatarTransition_Riding(struct ObjectEvent *objEvent)
+{
+    ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_RIDE_GRABBING));
+    ObjectEventTurn(objEvent, objEvent->movementDirection);
+    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_RIDING);
+    //objEvent->fieldEffectSpriteId = StartUnderwaterSurfBlobBobbing(objEvent->spriteId);
+}
+
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *objEvent)
 {
     gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_CONTROLLABLE;
@@ -1277,6 +1289,40 @@ void StopPlayerAvatar(void)
 u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     return sRivalAvatarGfxIds[state][gender];
+}
+
+static u16 GetPlayerGraphicsIdByState(u8 state)
+{
+    switch (state)
+    {
+    case PLAYER_AVATAR_STATE_NORMAL:
+        return OBJ_EVENT_GFX_PLAYER_NORMAL;
+
+    case PLAYER_AVATAR_STATE_RIDE_GRABBING:
+        return OBJ_EVENT_GFX_PLAYER_RIDING;
+
+    case PLAYER_AVATAR_STATE_FIELD_MOVE:
+        return OBJ_EVENT_GFX_PLAYER_FIELD_MOVE;
+    }
+
+    // fallback?
+    return OBJ_EVENT_GFX_PLAYER_NORMAL;
+}
+
+static u8 GetPlayerStateByGraphicsId(u16 gfxId)
+{
+    switch (gfxId)
+    {
+    case OBJ_EVENT_GFX_PLAYER_NORMAL:
+        return PLAYER_AVATAR_STATE_NORMAL;
+
+    case OBJ_EVENT_GFX_PLAYER_RIDING:
+        return PLAYER_AVATAR_STATE_RIDE_GRABBING;
+
+    }
+
+    // fallback?
+    return PLAYER_AVATAR_STATE_NORMAL;
 }
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)

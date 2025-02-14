@@ -208,6 +208,24 @@ static const struct MenuAction MultichoiceList_Mechadoll5_Q3[] =
     {COMPOUND_STRING("8")},
 };
 
+static const struct MenuAction MultichoiceList_StyleChoice[] =
+{
+    {gText_BirchStyleA},
+    {gText_BirchStyleB},
+    {gText_BirchStyleC},
+    {gText_BirchStyleD},
+};
+
+static const struct MenuAction MultichoiceList_Style2Choice[] =
+{
+    {gText_BirchStyleA},
+    {gText_BirchStyleB},
+    {gText_BirchStyleC},
+    {gText_BirchStyleD},
+    {gText_BirchStyleE},
+    {gText_BirchStyleF},
+};
+
 static const struct MenuAction MultichoiceList_VendingMachine[] =
 {
     {gText_FreshWaterAndPrice},

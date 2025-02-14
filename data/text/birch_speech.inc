@@ -23,9 +23,18 @@ gText_Birch_BoyOrGirl::
 	.string "Bist du ein Junge?\n"
 	.string "Oder ein Mädchen?$"
 
+gText_Birch_AvatarStyle0::
+    .string "Wähle ein Aussehen$"
+
+gText_Birch_AvatarStyle1::
+    .string "Wähle einen Kleidungsstil$"
+
 gText_Birch_WhatsYourName::
 	.string "Gut.\n"
 	.string "Wie ist dein Name?$"
+
+gText_Birch_HappyWithAvatar::
+    .string "Also, das ist dein Avatar?\n(Kann später geändert werden)$"
 
 gText_Birch_SoItsPlayer::
 	.string "Also,{PLAYER}{KUN}?$"

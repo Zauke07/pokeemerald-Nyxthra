@@ -1159,3 +1159,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/BabyBootCamp/scripts.inc"
 
 	.include "data/maps/BabyBootCamp_Tests/scripts.inc"
+
+	.include "data/maps/TestWald/scripts.inc"

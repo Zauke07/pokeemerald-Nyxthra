@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/BabyBootCamp_Tests/border.bin",
       "blockdata_filepath": "data/layouts/BabyBootCamp_Tests/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_WALD",
+      "name": "TestWald_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/TestWald/border.bin",
+      "blockdata_filepath": "data/layouts/TestWald/map.bin"
     }
   ]
 }

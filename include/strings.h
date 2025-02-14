@@ -287,10 +287,23 @@ extern const u8 gText_ThisIsAPokemon[];
 extern const u8 gText_Birch_MainSpeech[];
 extern const u8 gText_Birch_AndYouAre[];
 extern const u8 gText_Birch_BoyOrGirl[];
+extern const u8 gText_BirchRed[];
+extern const u8 gText_BirchLeaf[];
+extern const u8 gText_BirchStyleA[];
+extern const u8 gText_BirchStyleB[];
+extern const u8 gText_BirchStyleC[];
+extern const u8 gText_BirchStyleD[];
+extern const u8 gText_BirchStyleE[];
+extern const u8 gText_BirchStyleF[];
+extern const u8 gText_Birch_AvatarStyle0[];
+extern const u8 gText_Birch_AvatarStyle1[];
 extern const u8 gText_Birch_WhatsYourName[];
 extern const u8 gText_Birch_SoItsPlayer[];
+extern const u8 gText_Birch_HappyWithAvatar[];
 extern const u8 gText_Birch_YourePlayer[];
 extern const u8 gText_Birch_AreYouReady[];
+
+
 
 extern const u8 gText_BirchInTrouble[];
 extern const u8 gText_ConfirmStarterChoice[];
@@ -2604,8 +2617,6 @@ extern const u8 gText_BestScore2[];
 extern const u8 gText_ExcellentsInARow[];
 
 // Berry crush
-extern const u8 gText_Var1Berry[];
-extern const u8 gText_XDotY[];
 extern const u8 gText_1DotBlueF700[];
 extern const u8 gText_1DotF700[];
 extern const u8 gText_TimeColon[];

@@ -700,6 +700,10 @@ u32 FieldEffectStart(u8 id)
     u8 *script;
     u32 val;
 
+    // RogueNote: Skip this animation
+    //if(id == FLDEFF_FIELD_MOVE_SHOW_MON_INIT)
+    //    return 0;
+
     FieldEffectActiveListAdd(id);
 
     script = gFieldEffectScriptPointers[id];
@@ -904,6 +908,25 @@ u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buf
     spriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
     spriteTemplate.callback = SpriteCallbackDummy;
     return CreateSprite(&spriteTemplate, x, y, subpriority);
+}
+
+u8 UpdateTrainerSprite(u8 spriteID, u16 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buffer)
+{
+    struct SpriteTemplate spriteTemplate;
+    u8 spriteId;
+
+    LoadCompressedSpritePaletteOverrideBuffer(&gTrainerSprites[trainerSpriteID].palette, buffer);
+    LoadCompressedSpriteSheetOverrideBuffer(&gTrainerSprites[trainerSpriteID].frontPic, buffer);
+    spriteTemplate.tileTag = gTrainerSprites[trainerSpriteID].frontPic.tag;
+    spriteTemplate.paletteTag = gTrainerSprites[trainerSpriteID].palette.tag;
+    spriteTemplate.oam = &sOam_64x64;
+    spriteTemplate.anims = gDummySpriteAnimTable;
+    spriteTemplate.images = NULL;
+    spriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
+    spriteTemplate.callback = SpriteCallbackDummy;
+
+    spriteId = CreateSpriteAt(spriteID, &spriteTemplate, x, y, subpriority);
+    return spriteId;
 }
 
 static void UNUSED LoadTrainerGfx_TrainerCard(u8 gender, u16 palOffset, u8 *dest)

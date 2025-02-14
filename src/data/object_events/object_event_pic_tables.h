@@ -1379,3 +1379,27 @@ static const struct SpriteFrameImage sPicTable_Agatha[] = {
     overworld_frame(gObjectEventPic_Agatha, 2, 4, 2),
     overworld_frame(gObjectEventPic_Agatha, 2, 4, 2),
 };
+
+static const struct SpriteFrameImage sPicTable_BrendanRiding[] = {
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanRiding, 2, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_MayRiding[] = {
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 2),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 0),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 1),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 2),
+    overworld_frame(gObjectEventPic_MayRiding, 2, 4, 2),
+};

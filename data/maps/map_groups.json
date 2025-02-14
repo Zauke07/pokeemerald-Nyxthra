@@ -627,6 +627,7 @@
     "Route124_DivingTreasureHuntersHouse"
   ],
   "gMapGroup_BabyBootCamp_Tests": [
-    "BabyBootCamp_Tests"
+    "BabyBootCamp_Tests",
+    "TestWald"
   ]
 }

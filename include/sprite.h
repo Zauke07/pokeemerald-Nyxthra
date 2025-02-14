@@ -334,5 +334,6 @@ void ResetAffineAnimData(void);
 u32 GetSpanPerImage(u32 shape, u32 size);
 void RequestSpriteFrameImageCopy(u16 index, u16 tileNum, const struct SpriteFrameImage *images);
 void SetSpriteOamFlipBits(struct Sprite *sprite, u8 hFlip, u8 vFlip);
+u32 CreateSpriteAt(u32 index, const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 
 #endif //GUARD_SPRITE_H

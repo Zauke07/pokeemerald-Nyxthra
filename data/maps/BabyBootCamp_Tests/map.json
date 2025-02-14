@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_AGATHA",
+      "graphics_id": "OBJ_EVENT_GFX_KANTO_AGATHA",
       "x": 65,
       "y": 63,
       "elevation": 0,
@@ -28,7 +28,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CELEBI",
+      "graphics_id": "OBJ_EVENT_GFX_RIVAL_HOP",
       "x": 56,
       "y": 63,
       "elevation": 0,
@@ -39,6 +39,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BabyBootCamp_Tests_EventScript_Celebi",
       "flag": "FLAG_HIDE_CELEBI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ALOLA_ACEROLA",
+      "x": 61,
+      "y": 63,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CELEBI",
+      "x": 58,
+      "y": 63,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AGATHA",
+      "x": 63,
+      "y": 63,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -62,6 +101,13 @@
       "elevation": 0,
       "dest_map": "MAP_NAVEL_ROCK_TOP",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 65,
+      "y": 58,
+      "elevation": 0,
+      "dest_map": "MAP_TEST_WALD",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
