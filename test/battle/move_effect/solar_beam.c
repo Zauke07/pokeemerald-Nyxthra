@@ -3,6 +3,7 @@
 
 ASSUMPTIONS
 {
+<<<<<<< HEAD
     ASSUME(gBattleMoves[MOVE_SOLAR_BEAM].effect == EFFECT_SOLAR_BEAM);
     ASSUME(gBattleMoves[MOVE_SOLAR_BLADE].effect == EFFECT_SOLAR_BEAM);
 }
@@ -163,5 +164,34 @@ SINGLE_BATTLE_TEST("Solar Blade's power is halved in Snow", s16 damage)
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(0.5), results[1].damage);
+=======
+    ASSUME(GetMoveEffect(MOVE_SOLAR_BEAM) == EFFECT_SOLAR_BEAM);
+    ASSUME(GetMoveTwoTurnAttackWeather(MOVE_SOLAR_BLADE) == B_WEATHER_SUN);
+}
+
+SINGLE_BATTLE_TEST("Solar Beam does not need a charging turn if Sun is up")
+{
+    u32 ability;
+
+    PARAMETRIZE { ability = ABILITY_DROUGHT; }
+    PARAMETRIZE { ability = ABILITY_WHITE_SMOKE; }
+
+    GIVEN {
+        PLAYER(SPECIES_TORKOAL) { Ability(ability); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_SOLAR_BEAM); }
+        if (ability == ABILITY_WHITE_SMOKE) {
+            TURN { SKIP_TURN(player); }
+        }
+    } SCENE {
+        if (ability == ABILITY_WHITE_SMOKE) {
+            MESSAGE("Torkoal used Solar Beam!");
+            MESSAGE("Torkoal absorbed light!");
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+        }
+        MESSAGE("Torkoal used Solar Beam!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SOLAR_BEAM, player);
+>>>>>>> upstream/master
     }
 }

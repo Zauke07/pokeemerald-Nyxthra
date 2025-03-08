@@ -34,7 +34,7 @@ gText_Birch_WhatsYourName::
 	.string "Wie ist dein Name?$"
 
 gText_Birch_HappyWithAvatar::
-    .string "Also, das ist dein Avatar?\n(Kann später geändert werden)$"
+    .string "Also, das ist dein Avatar?$"
 
 gText_Birch_SoItsPlayer::
 	.string "Also, {PLAYER}{KUN}?$"
