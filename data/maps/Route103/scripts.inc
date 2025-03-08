@@ -21,9 +21,27 @@ Route103_EventScript_OpenAlteringCave::
 
 Route103_EventScript_Rival::
 	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route103_EventScript_RivalMay
-	goto_if_eq VAR_RESULT, FEMALE, Route103_EventScript_RivalBrendan
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_MAY, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_RED, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_LEAF, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_LYRA, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_DAWN, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_HILDA, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_NATE, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_ROSA, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_CALEM, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_SERENA, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_ELIO, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_SELENE, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route103_EventScript_RivalBrendan
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route103_EventScript_RivalMay
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route103_EventScript_RivalBrendan
 	end
 
 Route103_EventScript_RivalMay::

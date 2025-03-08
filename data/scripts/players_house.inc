@@ -58,21 +58,36 @@ LittlerootTown_MaysHouse_2F_EventScript_WallClock::
 	end
 
 PlayersHouse_2F_EventScript_WallClock::
-	goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
-	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
-	call PlayersHouse_2F_EventScript_SetWallClock
-	delay 30
-	setvar VAR_LITTLEROOT_INTRO_STATE, 6
-	setflag FLAG_SET_WALL_CLOCK
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PlayersHouse_2F_EventScript_MomComesUpstairsMale
-	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
-	playse SE_EXIT
-	removeobject VAR_0x8008
-	releaseall
-	end
+    goto_if_set FLAG_SET_WALL_CLOCK, PlayersHouse_2F_EventScript_CheckWallClock
+    msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
+    call PlayersHouse_2F_EventScript_SetWallClock
+    delay 30
+    setvar VAR_LITTLEROOT_INTRO_STATE, 6
+    setflag FLAG_SET_WALL_CLOCK
+    setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
+    setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_MAY, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_RED, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_LEAF, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_NATE, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_ROSA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, PlayersHouse_2F_EventScript_MomComesUpstairsMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, PlayersHouse_2F_EventScript_MomComesUpstairsFemale
+    return
 
 PlayersHouse_2F_EventScript_MomComesUpstairsMale::
 	setvar VAR_0x8008, LOCALID_MOM_2F
@@ -421,69 +436,87 @@ PlayersHouse_1F_Movement_MovePlayerAwayFromDoor:
 	step_end
 
 PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV::
-	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-	call_if_eq VAR_RESULT, FEMALE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerEnterRoomMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerEnterRoomFemale
-	applymovement VAR_0x8009, Common_Movement_FacePlayer
-	waitmovement 0
-	playse SE_PIN
-	applymovement VAR_0x8009, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement VAR_0x8009, Common_Movement_Delay48
-	waitmovement 0
-	delay 20
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_DadApproachPlayerMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_DadApproachPlayerFemale
-	msgbox PlayersHouse_1F_Text_TicketFromBrineyCameForYou, MSGBOX_DEFAULT
-	giveitem ITEM_SS_TICKET
-	msgbox PlayersHouse_1F_Text_PortsInSlateportLilycove, MSGBOX_DEFAULT
-	closemessage
-	delay 20
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachDadMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachDadFemale
-	msgbox PlayersHouse_1F_Text_BetterGetBackToGym, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_DadExitsMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_DadExitsFemale
-	playse SE_DOOR
-	removeobject VAR_0x8009
-	setflag FLAG_RECEIVED_SS_TICKET
-	delay 30
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachPlayerMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachPlayerFemale
-	delay 20
-	msgbox PlayersHouse_1F_Text_DadShouldStayLonger, MSGBOX_DEFAULT
-	closemessage
-	setflag FLAG_SYS_TV_LATIAS_LATIOS
-	special TurnOnTVScreen
-	delay 60
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomNoticesLatiBroadcastMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomNoticesLatiBroadcastFemale
-	msgbox PlayersHouse_1F_Text_IsThatABreakingStory, MSGBOX_DEFAULT
-	closemessage
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerApproachTVForLatiMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerApproachTVForLatiFemale
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
-	closemessage
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special TurnOffTVScreen
-	call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVMale
-	call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVFemale
-	msgbox PlayersHouse_1F_Text_WhatColorDidTheySay, MSGBOX_DEFAULT
-	multichoice 22, 8, MULTI_TV_LATI, TRUE
-	copyvar VAR_0x8004, VAR_RESULT
-	special InitRoamer
-	copyvar VAR_ROAMER_POKEMON, VAR_RESULT
-	msgbox PlayersHouse_1F_Text_StillUnknownPokemon, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 4
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4
-	releaseall
-	end
+    lockall
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_MAY, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_RED, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_LEAF, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_NATE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_ROSA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    call PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale  @ Default to male if no match
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerEnterRoomMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerEnterRoomFemale
+    applymovement VAR_0x8009, Common_Movement_FacePlayer
+    waitmovement 0
+    playse SE_PIN
+    applymovement VAR_0x8009, Common_Movement_ExclamationMark
+    waitmovement 0
+    applymovement VAR_0x8009, Common_Movement_Delay48
+    waitmovement 0
+    delay 20
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_DadApproachPlayerMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_DadApproachPlayerFemale
+    msgbox PlayersHouse_1F_Text_TicketFromBrineyCameForYou, MSGBOX_DEFAULT
+    giveitem ITEM_SS_TICKET
+    msgbox PlayersHouse_1F_Text_PortsInSlateportLilycove, MSGBOX_DEFAULT
+    closemessage
+    delay 20
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachDadMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachDadFemale
+    msgbox PlayersHouse_1F_Text_BetterGetBackToGym, MSGBOX_DEFAULT
+    closemessage
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_DadExitsMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_DadExitsFemale
+    playse SE_DOOR
+    removeobject VAR_0x8009
+    setflag FLAG_RECEIVED_SS_TICKET
+    delay 30
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachPlayerMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachPlayerFemale
+    delay 20
+    msgbox PlayersHouse_1F_Text_DadShouldStayLonger, MSGBOX_DEFAULT
+    closemessage
+    setflag FLAG_SYS_TV_LATIAS_LATIOS
+    special TurnOnTVScreen
+    delay 60
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomNoticesLatiBroadcastMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomNoticesLatiBroadcastFemale
+    msgbox PlayersHouse_1F_Text_IsThatABreakingStory, MSGBOX_DEFAULT
+    closemessage
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerApproachTVForLatiMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerApproachTVForLatiFemale
+    msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
+    closemessage
+    clearflag FLAG_SYS_TV_LATIAS_LATIOS
+    setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+    special TurnOffTVScreen
+    call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVMale
+    call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVFemale
+    msgbox PlayersHouse_1F_Text_WhatColorDidTheySay, MSGBOX_DEFAULT
+    multichoice 22, 8, MULTI_TV_LATI, TRUE
+    copyvar VAR_0x8004, VAR_RESULT
+    special InitRoamer
+    copyvar VAR_ROAMER_POKEMON, VAR_RESULT
+    msgbox PlayersHouse_1F_Text_StillUnknownPokemon, MSGBOX_DEFAULT
+    closemessage
+    setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 4
+    setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4
+    releaseall
+    end
 
 @ Never called.
 PlayersHouse_1F_EventScript_AirLatiBroadcast::

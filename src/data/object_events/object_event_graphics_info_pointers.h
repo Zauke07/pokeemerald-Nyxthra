@@ -249,7 +249,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketM;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bill;
 
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Leaf;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafMachBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafAcroBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafSurfing;
@@ -257,7 +256,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafRiding;
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Red;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedMachBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedAcroBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurfing;
@@ -529,6 +527,47 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Victor;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Gloria;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Florian;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Juliana;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrendanNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrendanRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerMayNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerMayRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NateNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NateRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RosaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RosaRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SerenaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SerenaRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GloriaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GloriaRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlorianNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlorianRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JulianaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JulianaRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GalacticFNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GalacticFRiding;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DolphinNormal;
+
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -1078,6 +1117,13 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_GLORIA] =             &gObjectEventGraphicsInfo_Rival_Gloria,
     [OBJ_EVENT_GFX_RIVAL_FLORIAN] =            &gObjectEventGraphicsInfo_Rival_Florian,
     [OBJ_EVENT_GFX_RIVAL_JULIANA] =            &gObjectEventGraphicsInfo_Rival_Juliana,
+    [OBJ_EVENT_GFX_AQUA_MALE] =                 &gObjectEventGraphicsInfo_AquaMNormal,
+    [OBJ_EVENT_GFX_AQUA_MALE_RIDING] =          &gObjectEventGraphicsInfo_AquaMRiding,
+    [OBJ_EVENT_GFX_MAGMA_FEMALE] =              &gObjectEventGraphicsInfo_MagmaFNormal,
+    [OBJ_EVENT_GFX_MAGMA_FEMALE_RIDING] =       &gObjectEventGraphicsInfo_MagmaFRiding,
+    [OBJ_EVENT_GFX_GALACTIC_FEMALE] =           &gObjectEventGraphicsInfo_GalacticFNormal,
+    [OBJ_EVENT_GFX_GALACTIC_FEMALE_RIDING] =    &gObjectEventGraphicsInfo_GalacticFRiding,
+    [OBJ_EVENT_GFX_DOLPHIN] =                   &gObjectEventGraphicsInfo_DolphinNormal,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

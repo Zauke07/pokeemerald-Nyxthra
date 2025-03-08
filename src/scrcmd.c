@@ -2175,6 +2175,18 @@ bool8 ScrCmd_setrespawn(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_checkplayerstyles(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0];  // Nutzt den ersten gespeicherten Stil
+    return FALSE;
+}
+
+bool8 ScrCmd_getplayerstyle(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0];  // Nutzt den ersten gespeicherten Stil
+    return FALSE;
+}
+
 bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
 {
     gSpecialVar_Result = gSaveBlock2Ptr->playerGender;

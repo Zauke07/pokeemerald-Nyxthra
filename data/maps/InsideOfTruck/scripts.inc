@@ -14,12 +14,30 @@ InsideOfTruck_OnResume:
 	end
 
 InsideOfTruck_EventScript_SetIntroFlags::
-	lockall
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, InsideOfTruck_EventScript_SetIntroFlagsMale
-	goto_if_eq VAR_RESULT, FEMALE, InsideOfTruck_EventScript_SetIntroFlagsFemale
-	end
+    lockall
+    setflag FLAG_HIDE_MAP_NAME_POPUP
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_MAY, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_RED, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_LEAF, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_NATE, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_ROSA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, InsideOfTruck_EventScript_SetIntroFlagsMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, InsideOfTruck_EventScript_SetIntroFlagsFemale
+    end
 
 InsideOfTruck_EventScript_SetIntroFlagsMale::
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F

@@ -37,11 +37,11 @@ gText_Birch_HappyWithAvatar::
     .string "Also, das ist dein Avatar?\n(Kann später geändert werden)$"
 
 gText_Birch_SoItsPlayer::
-	.string "Also,{PLAYER}{KUN}?$"
+	.string "Also, {PLAYER}{KUN}?$"
 
 gText_Birch_YourePlayer::
 	.string "Cool!\p"
-	.string "Du bist{PLAYER}{KUN}, der dieses\n"
+	.string "Du bist {PLAYER}{KUN}, der dieses\n"
 	.string "ungewöhnliche Spiel freiwillig\l"
 	.string "Spielen will? Naja..\p"
 	.string "Deine Entscheidung.\n"

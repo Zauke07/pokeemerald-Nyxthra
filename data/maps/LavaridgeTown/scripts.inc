@@ -50,14 +50,31 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalNoticePlayer
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExitHerbShop
 	delay 20
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LavaridgeTown_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_PlayBrendanMusic
+    lockall
+    call Common_EventScript_SetupRivalMusic
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer1
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer2
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LavaridgeTown_EventScript_MayGiveGoGoggles
-	goto_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_MAY, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_RED, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_LEAF, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_NATE, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
 	end
 
 LavaridgeTown_EventScript_MayGiveGoGoggles::
@@ -90,14 +107,6 @@ LavaridgeTown_EventScript_RivalExit::
 	fadedefaultbgm
 	releaseall
 	end
-
-LavaridgeTown_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-LavaridgeTown_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
 
 LavaridgeTown_EventScript_RivalNoticePlayer::
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp
@@ -277,7 +286,7 @@ LavaridgeTown_EventScript_HerbShopSign::
 	end
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:
-	.string "Brigitte: {PLAYER}{KUN}! Lange nicht gesehen!\p"
+	.string "{RIVAL}: {PLAYER}{KUN}! Lange nicht gesehen!\p"
 	.string "Oh? Während ich die heißen Quellen\n"
 	.string "besuchte, hast du den Bad Lavastadt\n"
 	.string "ARENA-ORDEN bekommen.\p"
@@ -289,7 +298,7 @@ LavaridgeTown_Text_MayNiceBadgesTakeThis:
 	.string "du das hier hättest.$"
 
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
-	.string "Brigitte: Mit diesen GO-GOGGLES wirst\n"
+	.string "{RIVAL}: Mit diesen GO-GOGGLES wirst\n"
 	.string "du keine Probleme haben, durch die Wüste\n"
 	.string "in der Nähe von ROUTE 111 zu kommen.\p"
 	.string "Aber, wow, {PLAYER}{KUN}…\n"
@@ -302,7 +311,7 @@ LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
 	.string "Bis bald!$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
-	.string "Hans: {PLAYER}, hey, es ist eine Weile\n"
+	.string "{RIVAL}: {PLAYER}, hey, es ist eine Weile\n"
 	.string "her. Wie läuft's?\p"
 	.string "Hmm…\n"
 	.string "Das ist eine anständige Sammlung von\n"
@@ -311,7 +320,7 @@ LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
 	.string "Du kannst das hier genauso gut haben.$"
 
 LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
-	.string "Hans: Behalte die bei dir, wenn du\n"
+	.string "{RIVAL}: Behalte die bei dir, wenn du\n"
 	.string "vorhast, in die Wüste in der Nähe von\n"
 	.string "ROUTE 111 zu gehen.\p"
 	.string "Es sollte einige POKéMON geben, die\n"

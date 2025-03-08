@@ -48,6 +48,13 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "constants/rogue.h"
+#include "rogue.h"
+#include "rogue_controller.h"
+#include "rogue_multiplayer.h"
+#include "rogue_player_customisation.h"
+#include "rogue_settings.h"
+
 // Menu actions
 enum
 {

@@ -56,6 +56,9 @@ struct AnimFrameCmd
     u32 duration:6;
     u32 hFlip:1;
     u32 vFlip:1;
+    u32 enableOffset:1;
+    u32 xOffset:3;
+    u32 yOffset:3;
 };
 
 struct AnimLoopCmd

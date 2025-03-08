@@ -11903,7 +11903,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_CATCHING_CHARM] =
     {
-        .name = _("Catching Charm"),
+        .name = _("Superfangpin"),
         .price = 0,
         .importance = 1,
         .description = COMPOUND_STRING(

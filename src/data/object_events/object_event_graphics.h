@@ -392,9 +392,6 @@ const u16 gObjectEventPal_Substitute[] = INCBIN_U16("graphics/pokemon/question_m
 
 const u16 gObjectEventPaletteEmotes[] = INCBIN_U16("graphics/misc/emotes.gbapal");
 
-// Firered NPC
-const u16 gObjectEventPic_Agatha[] = INCBIN_U16("graphics/object_events/pics/people/agatha_firered.4bpp");
-
 // poeemerald-Rogue
 const u32 gObjectEventPic_Biker[] = INCBIN_U32("graphics/object_events/pics/people/biker.4bpp");
 const u32 gObjectEventPic_OldMan2[] = INCBIN_U32("graphics/object_events/pics/people/old_man_2.4bpp");
@@ -823,7 +820,7 @@ const u32 gObjectEventPic_Glitch_Raven[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_Glitch_RavenRiding[] = INCBIN_U32("graphics/object_events/pics/people/glitch/raven_riding.4bpp");
 const u16 gObjectEventPal_Glitch_NPC_Kate[] = INCBIN_U16("graphics/object_events/pics/people/glitch/kate.gbapal");
 const u16 gObjectEventPal_Glitch_NPC_Erma[] = INCBIN_U16("graphics/object_events/pics/people/glitch/erma.gbapal");
-//const u16 gObjectEventPal_Glitch_NPC_Raven[] = INCBIN_U16("graphics/object_events/pics/people/glitch/raven.gbapal");
+const u16 gObjectEventPal_Glitch_NPC_Raven[] = INCBIN_U16("graphics/object_events/pics/people/glitch/raven.gbapal");
 
 const u16 gObjectEventPal_Misc_Peonia[] = INCBIN_U16("graphics/object_events/pics/rogue/npc/misc/peonia.gbapal");
 const u32 gObjectEventPic_PC[] = INCBIN_U32("graphics/object_events/pics/rogue/pc.4bpp");

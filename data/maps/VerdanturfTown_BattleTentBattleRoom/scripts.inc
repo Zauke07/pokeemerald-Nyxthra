@@ -17,10 +17,28 @@ VerdanturfTown_BattleTentBattleRoom_OnTransition:
 	end
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-	goto_if_eq VAR_RESULT, FEMALE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-	return
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_MAY, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_RED, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_LEAF, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_NATE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_ROSA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    return
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL

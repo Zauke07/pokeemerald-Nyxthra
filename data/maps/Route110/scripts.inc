@@ -375,9 +375,7 @@ Route110_EventScript_RivalTrigger3::
 
 Route110_EventScript_RivalScene::
 	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
+    call Common_EventScript_SetupRivalMusic
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
@@ -388,19 +386,29 @@ Route110_EventScript_RivalScene::
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route110_EventScript_MayBattle
-	goto_if_eq VAR_RESULT, FEMALE, Route110_EventScript_BrendanBattle
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_MAY, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_RED, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_LEAF, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_ETHAN, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_LYRA, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_LUCAS, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_DAWN, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_HILBERT, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_HILDA, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_BrendanBattle
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_MayBattle
+	call_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_BrendanBattle
 	releaseall
 	end
-
-Route110_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route110_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
 
 Route110_EventScript_MayBattle::
 	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT

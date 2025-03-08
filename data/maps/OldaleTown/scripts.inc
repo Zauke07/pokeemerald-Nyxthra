@@ -258,9 +258,27 @@ OldaleTown_EventScript_RivalTrigger3::
 	end
 
 OldaleTown_EventScript_ShowRivalMessage::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, FEMALE, OldaleTown_EventScript_ShowBrendanMessage
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_MAY, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_RED, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_LEAF, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_LYRA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_DAWN, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_HILDA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
 	end
 
 OldaleTown_EventScript_ShowMayMessage::

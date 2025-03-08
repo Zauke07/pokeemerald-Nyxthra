@@ -418,8 +418,22 @@
 #define FACILITY_CLASS_RS_MAY                0x51
 #define FACILITY_CLASS_ETHAN                 0x52
 #define FACILITY_CLASS_LYRA                  0x53
+#define FACILITY_CLASS_LUCAS                 0x54
+#define FACILITY_CLASS_DAWN                  0x55
+#define FACILITY_CLASS_HILBERT               0x56
+#define FACILITY_CLASS_HILDA                 0x57
+#define FACILITY_CLASS_NATE                  0x58
+#define FACILITY_CLASS_ROSA                  0x59
+#define FACILITY_CLASS_CALEM                 0x5A
+#define FACILITY_CLASS_SERENA                0x5B
+#define FACILITY_CLASS_ELIO                  0x5C
+#define FACILITY_CLASS_SELENE                0x5D
+#define FACILITY_CLASS_VICTOR                0x5E
+#define FACILITY_CLASS_GLORIA                0x5F
+#define FACILITY_CLASS_FLORIAN               0x60
+#define FACILITY_CLASS_JULIANA               0x61
 
-#define FACILITY_CLASSES_COUNT               0x54
+#define FACILITY_CLASSES_COUNT               0x62
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1

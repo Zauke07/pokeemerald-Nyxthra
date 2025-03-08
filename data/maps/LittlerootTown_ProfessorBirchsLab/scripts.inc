@@ -184,9 +184,27 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterRight
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayUpgradeComment
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanUpgradeComment
 	playse SE_PC_ON
 	waitse
 	delay 20
@@ -519,9 +537,27 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
 	setvar VAR_OLDALE_TOWN_STATE, 1
@@ -584,9 +620,27 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Rival::
 	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_RivalFuturePlans
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_RivalHaveYouGoneToBattleFrontier
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhereShouldIGoNext
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext
+
 	release
 	end
 
@@ -599,9 +653,26 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalFuturePlans::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayWhatNextImStayingHere
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly
 	release
 	end
 
@@ -614,9 +685,26 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanPreferCollectingSlowly:
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalHaveYouGoneToBattleFrontier::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayHaveYouGoneToBattleFrontier
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
 	release
 	end
 
@@ -629,9 +717,26 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanHaveYouGoneToBattleFrontier
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RivalTakeBreakFromFieldwork::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_ProfessorBirchsLab_EventScript_MayTakeBreakFromFieldwork
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanTakeBreakFromFieldwork
 	release
 	end
 
@@ -664,7 +769,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
-	.string "Wie? PROF. BIRK?\p"
+	.string "Wie? Prof. Birk?\p"
 	.string "Der PROF arbeitet an einer Feld-Studie.\n"
 	.string "Also ist er nicht hier.\p"
 	.string "Oh, ich erkläre dir, was eine Feld-Studie\n"
@@ -684,13 +789,13 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "beobachten und studieren.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "PROF. BIRK studiert den Lebensraum\n"
+	.string "Prof. Birk studiert den Lebensraum\n"
 	.string "und die Verbreitung von POKéMON.\p"
 	.string "Der PROF freut sich über die Mitarbeit\n"
 	.string "von {RIVAL}. Da spürt man Zuneigung!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
-	.string "PROF. BIRK: Du bist also {PLAYER}{KUN}!\p"
+	.string "Prof. Birk: Du bist also {PLAYER}{KUN}!\p"
 	.string "Dein Vater hat mir schon viel von dir\n"
 	.string "erzählt.\p"
 	.string "Ich habe auch erfahren, dass du noch\n"
@@ -705,11 +810,11 @@ LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "{PLAYER} erhält {STR_VAR_1}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
-	.string "PROF. BIRK: Willst du dem\n"
+	.string "Prof. Birk: Willst du dem\n"
 	.string "{STR_VAR_1} einen Kosenamen geben?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
-	.string "PROF. BIRK: Wenn du dich mit POKéMON\n"
+	.string "Prof. Birk: Wenn du dich mit POKéMON\n"
 	.string "beschäftigst und Erfahrungen\p"
 	.string "sammelst, wirst du mit Sicherheit ein\n"
 	.string "sehr guter TRAINER!\p"
@@ -720,18 +825,18 @@ LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 	.string "triffst?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
-	.string "PROF. BIRK: Großartig!\n"
+	.string "Prof. Birk: Großartig!\n"
 	.string "{RIVAL} wird sich auch sehr freuen.\p"
 	.string "{RIVAL} soll dir beibringen, was es\n"
 	.string "bedeutet, ein TRAINER zu sein.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
-	.string "PROF. BIRK: Ach, sei doch nicht so!\n"
+	.string "Prof. Birk: Ach, sei doch nicht so!\n"
 	.string "Du solltest dich wirklich mit meinem\l"
 	.string "Sprössling treffen!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "PROF. BIRK: {RIVAL}? {RIVAL} ist,\n"
+	.string "Prof. Birk: {RIVAL}? {RIVAL} ist,\n"
 	.string "glaube ich, nach Hause gegangen.\p"
 	.string "Oder das Kind krabbelt mal wieder\n"
 	.string "irgendwo durch hohes Gras…\p"
@@ -739,7 +844,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
 	.string "sind, dann ruht euch zu Hause aus.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
-	.string "PROF. BIRK: Oh, hallo, {PLAYER}{KUN}!\p"
+	.string "Prof. Birk: Oh, hallo, {PLAYER}{KUN}!\p"
 	.string "Ich habe gehört, du hast {RIVAL} \n"
 	.string "besiegt! Super! Das war dein erster\l"
 	.string "Kampf gegen einen TRAINER!\p"
@@ -755,7 +860,7 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 	.string "{PLAYER} erhält den POKéDEX!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
-	.string "PROF. BIRK: Der POKéDEX ist ein hoch\n"
+	.string "Prof. Birk: Der POKéDEX ist ein hoch\n"
 	.string "entwickeltes, technisches Gerät, das\l"
 	.string "automatisch jedes POKéMON, das du\l"
 	.string "siehst oder fängst, registriert.\p"
@@ -766,7 +871,7 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "während ich draußen forsche.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
-	.string "PROF. BIRK: Unzählige POKéMON erwarten\n"
+	.string "Prof. Birk: Unzählige POKéMON erwarten\n"
 	.string "dich bereits.\p"
 	.string "Hach, ich muss jetzt auch dringend\n"
 	.string "wieder meinen Forschungen nachgehen.$"
@@ -830,7 +935,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BookTooHardToRead:
 	.string "Dieses Buch ist viel zu kompliziert…$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:
-	.string "PROF. BIRK: Nun…\p"
+	.string "Prof. Birk: Nun…\p"
 	.string "{PLAYER}{KUN} und {RIVAL}, ich hatte euch\n"
 	.string "gebeten, mir bei meinen POKéMON-\l"
 	.string "Studien zu helfen.\p"
@@ -861,14 +966,14 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
 	.string "{PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
-	.string "PROF. BIRK: Okay, fertig!$"
+	.string "Prof. Birk: Okay, fertig!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational:
 	.string "Der POKéDEX von {PLAYER} wurde mit dem\n"
 	.string "NATIONALEN MODUS ausgerüstet.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2:
-	.string "PROF. BIRK: Vergiss nicht! Du bist der\n"
+	.string "Prof. Birk: Vergiss nicht! Du bist der\n"
 	.string "CHAMP, aber deine POKéMON-Reise ist\l"
 	.string "noch lange nicht zu Ende.\p"
 	.string "Die Straße namens POKéMON findet\n"
@@ -889,7 +994,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanTakeBreakFromFieldwork:
 	.string "helfen.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
-	.string "PROF. BIRK: Oh, {PLAYER}{KUN}!\n"
+	.string "Prof. Birk: Oh, {PLAYER}{KUN}!\n"
 	.string "Lass mich einen Blick auf deinen\l"
 	.string "POKéDEX werfen.\p"
 	.string "… … … … …\n"
@@ -911,32 +1016,32 @@ LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
 	.string "aus.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CanHaveAnyOneOfRarePokemon:
-	.string "PROF. BIRK: Dies sind seltene POKéMON,\n"
+	.string "Prof. Birk: Dies sind seltene POKéMON,\n"
 	.string "die in anderen Regionen beheimatet\l"
 	.string "sind.\p"
 	.string "Such dir eines von den drei POKéMON\n"
 	.string "aus.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_YoullTakeCyndaquil:
-	.string "PROF. BIRK: Das FEUER-POKéMON\n"
+	.string "Prof. Birk: Das FEUER-POKéMON\n"
 	.string "FEURIGEL hat dein Interesse geweckt?\p"
 	.string "Du bist clever wie immer!\p"
 	.string "Du möchtest FEURIGEL haben?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_YoullTakeTotodile:
-	.string "PROF. BIRK: Das WASSER-POKéMON\n"
+	.string "Prof. Birk: Das WASSER-POKéMON\n"
 	.string "KARNIMANI hat dein Interesse geweckt?\p"
 	.string "Eine gute Wahl!\p"
 	.string "Du möchtest KARNIMANI haben?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_YoullTakeChikorita:
-	.string "PROF. BIRK: Das PFLANZEN-POKéMON\n"
+	.string "Prof. Birk: Das PFLANZEN-POKéMON\n"
 	.string "ENDIVIE hat dein Interesse geweckt?\p"
 	.string "Du weißt, was gut für dich ist!\p"
 	.string "Du möchtest ENDIVIE haben?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_TakeYourTimeAllInvaluable:
-	.string "PROF. BIRK: Lass dir Zeit, bevor du dich\n"
+	.string "Prof. Birk: Lass dir Zeit, bevor du dich\n"
 	.string "entscheidest.\p"
 	.string "Es sind alles POKéMON von\n"
 	.string "unschätzbarem Wert.$"
@@ -948,7 +1053,7 @@ LittlerootTown_ProfessorBirchsLab_Text_PickedFinePokemon:
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedJohtoStarter:
 	.string "{PLAYER} erhält\n"
-	.string "{STR_VAR_1} von PROF. BIRK!$"
+	.string "{STR_VAR_1} von Prof. Birk!$"
 
 @ Unused
 LittlerootTown_ProfessorBirchsLab_Text_NicknameJohtoStarter:
@@ -956,7 +1061,7 @@ LittlerootTown_ProfessorBirchsLab_Text_NicknameJohtoStarter:
 	.string "the {STR_VAR_1} you received?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting:
-	.string "PROF. BIRK: Vergiss nicht! Dein\n"
+	.string "Prof. Birk: Vergiss nicht! Dein\n"
 	.string "HOENN-POKéDEX ist vollständig.\p"
 	.string "Die Straße namens POKéMON findet\n"
 	.string "niemals ein Ende.\p"

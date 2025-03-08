@@ -45,9 +45,27 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	delay 40
 	setvar VAR_TEMP_1, 1
 	call EverGrandeCity_HallOfFame_EventScript_SetGameClearFlags
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-	goto_if_eq VAR_RESULT, FEMALE, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+	goto_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
 	end
 
 EverGrandeCity_HallOfFame_EventScript_GameClearMale::
@@ -84,16 +102,15 @@ EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2:
 	step_end
 
 EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
-	.string "WALLACE: This room…\p"
-	.string "This is where we keep records of\n"
-	.string "POKéMON that prevailed through\l"
-	.string "harsh battles.\p"
-	.string "It is here that the LEAGUE CHAMPIONS\n"
-	.string "are honored.$"
+	.string "Wallace: Dieser Raum…\p"
+	.string "Hier bewahren wir die Aufzeichnungen\n"
+	.string "der POKéMON auf, die sich durch harte\l"
+	.string "Kämpfe durchgesetzt haben.\p"
+	.string "Hier werden die CHAMPIONS DER LIGA\n"
+	.string "geehrt.$"
 
 EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames:
-	.string "WALLACE: Come on, let's record your\n"
-	.string "name as a TRAINER who triumphed over\l"
-	.string "the POKéMON LEAGUE, and the names of\l"
-	.string "the partners who battled with you.$"
-
+	.string "Wallace: Komm, lass uns deinen Namen\n"
+	.string "als TRAINER verewigen, der die POKéMON-\l"
+	.string "LIGA bezwungen hat, sowie die Namen\l"
+	.string "der Partner, die an deiner Seite kämpften.$"

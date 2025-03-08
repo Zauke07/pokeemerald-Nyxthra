@@ -685,18 +685,9 @@ RustboroCity_EventScript_Rival::
 	goto RustboroCity_EventScript_RivalEncounter
 
 RustboroCity_EventScript_PlayRivalMusic::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, RustboroCity_EventScript_PlayMayMusic
-	goto_if_eq VAR_RESULT, FEMALE, RustboroCity_EventScript_PlayBrendanMusic
-	return
-
-RustboroCity_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-RustboroCity_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
+    lockall
+    call Common_EventScript_SetupRivalMusic
+    return
 
 RustboroCity_EventScript_RivalTrigger0::
 	lockall
@@ -827,10 +818,28 @@ RustboroCity_EventScript_RivalTrigger7::
 	goto RustboroCity_EventScript_RivalEncounter
 
 RustboroCity_EventScript_RivalEncounter::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, RustboroCity_EventScript_MayEncounter
-	goto_if_eq VAR_RESULT, FEMALE, RustboroCity_EventScript_BrendanEncounter
-	end
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_MAY, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_RED, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_LEAF, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_LYRA, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_DAWN, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_HILDA, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_NATE, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_ROSA, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_CALEM, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_SERENA, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_ELIO, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_SELENE, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, RustboroCity_EventScript_MayEncounter
+    return
 
 RustboroCity_EventScript_MayEncounter::
 	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint

@@ -16,6 +16,10 @@
 #include "event_data.h"
 #include "constants/event_objects.h"
 
+#include "rogue_controller.h"
+#include "rogue_save.h"
+#include "rogue.h"
+
 static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
 
 #define SAVEBLOCK_MOVE_RANGE    128
@@ -45,6 +49,7 @@ COMMON_DATA struct SaveBlock1 *gSaveBlock1Ptr = NULL;
 COMMON_DATA struct SaveBlock2 *gSaveBlock2Ptr = NULL;
 IWRAM_INIT struct SaveBlock3 *gSaveBlock3Ptr = &gSaveblock3;
 COMMON_DATA struct PokemonStorage *gPokemonStoragePtr = NULL;
+struct RogueSaveBlock *gRogueSaveBlock;
 
 // code
 void CheckForFlashMemory(void)

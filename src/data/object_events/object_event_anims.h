@@ -1536,3 +1536,128 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {},
 };
+
+static const union AnimCmd sAnim_GenericOverworldMon_GoSouth[] =
+{
+    ANIMCMD_FRAME(0, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(0, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(4, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(4, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoNorth[] =
+{
+    ANIMCMD_FRAME(1, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(1, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(6, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(6, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoWest[] =
+{
+    ANIMCMD_FRAME(2, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(2, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(8, 10, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(8, 10, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoEast[] =
+{
+    ANIMCMD_FRAME(2, 10, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 10, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 10, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 10, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+
+static const union AnimCmd sAnim_GenericOverworldMon_GoSouthFast[] =
+{
+    ANIMCMD_FRAME(0, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(0, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(4, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(4, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoNorthFast[] =
+{
+    ANIMCMD_FRAME(1, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(1, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(6, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(6, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoWestFast[] =
+{
+    ANIMCMD_FRAME(2, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(2, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(8, 5, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(8, 5, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoEastFast[] =
+{
+    ANIMCMD_FRAME(2, 5, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 5, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 5, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 5, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+
+static const union AnimCmd sAnim_GenericOverworldMon_GoSouthFaster[] =
+{
+    ANIMCMD_FRAME(0, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(0, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(4, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(4, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoNorthFaster[] =
+{
+    ANIMCMD_FRAME(1, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(1, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(6, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(6, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoWestFaster[] =
+{
+    ANIMCMD_FRAME(2, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(2, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_FRAME(8, 2, .enableOffset=TRUE, .yOffset=0),
+    ANIMCMD_FRAME(8, 2, .enableOffset=TRUE, .yOffset=1),
+    ANIMCMD_JUMP(0),
+};
+static const union AnimCmd sAnim_GenericOverworldMon_GoEastFaster[] =
+{
+    ANIMCMD_FRAME(2, 2, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(2, 2, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 2, .enableOffset=TRUE, .yOffset=0, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 2, .enableOffset=TRUE, .yOffset=1, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_GenericOverworldMon[] = {
+
+    [ANIM_STD_FACE_SOUTH] = sAnim_GenericOverworldMon_GoSouth,
+    [ANIM_STD_FACE_NORTH] = sAnim_GenericOverworldMon_GoNorth,
+    [ANIM_STD_FACE_WEST] = sAnim_GenericOverworldMon_GoWest,
+    [ANIM_STD_FACE_EAST] = sAnim_GenericOverworldMon_GoEast,
+    [ANIM_STD_GO_SOUTH] = sAnim_GenericOverworldMon_GoSouth,
+    [ANIM_STD_GO_NORTH] = sAnim_GenericOverworldMon_GoNorth,
+    [ANIM_STD_GO_WEST] = sAnim_GenericOverworldMon_GoWest,
+    [ANIM_STD_GO_EAST] = sAnim_GenericOverworldMon_GoEast,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_GenericOverworldMon_GoSouthFast,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_GenericOverworldMon_GoNorthFast,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_GenericOverworldMon_GoWestFast,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_GenericOverworldMon_GoEastFast,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_GenericOverworldMon_GoSouthFaster,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_GenericOverworldMon_GoNorthFaster,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_GenericOverworldMon_GoWestFaster,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_GenericOverworldMon_GoEastFaster,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_GenericOverworldMon_GoSouthFaster,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_GenericOverworldMon_GoNorthFaster,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_GenericOverworldMon_GoWestFaster,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_GenericOverworldMon_GoEastFaster,
+};

@@ -19,8 +19,17 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckShouldUpdateMayPos::
 	goto LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos
 
 LittlerootTown_MaysHouse_2F_EventScript_TryUpdateMayPos::
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_2F_EventScript_Ret
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
 	setobjectxyperm LOCALID_RIVAL, 8, 2
 	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
@@ -30,8 +39,16 @@ LittlerootTown_MaysHouse_2F_EventScript_Ret::
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay::
@@ -43,8 +60,16 @@ LittlerootTown_MaysHouse_2F_OnWarp:
 	.2byte 0
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_MAY, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_LEAF, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_LYRA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
@@ -238,17 +263,34 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerWatchMayEast:
 RivalsHouse_2F_EventScript_Rival::
 	lockall
 	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, RivalsHouse_2F_EventScript_May
-	goto_if_eq VAR_RESULT, FEMALE, RivalsHouse_2F_EventScript_Brendan
+	goto_if_eq VAR_RESULT, STYLE_MAY, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_LEAF, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_RED, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMale
 	end
 
-RivalsHouse_2F_EventScript_May::
+RivalsHouse_2F_EventScript_RivalFemale::
 	msgbox RivalsHouse_2F_Text_MayGettingReady, MSGBOX_DEFAULT
 	releaseall
 	end
 
-RivalsHouse_2F_EventScript_Brendan::
+RivalsHouse_2F_EventScript_RivalMale::
 	msgbox RivalsHouse_2F_Text_BrendanGettingReady, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -256,19 +298,36 @@ RivalsHouse_2F_EventScript_Brendan::
 RivalsHouse_2F_EventScript_RivalPostLilycove::
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, RivalsHouse_2F_EventScript_MayPostLilycove
-	call_if_eq VAR_RESULT, FEMALE, RivalsHouse_2F_EventScript_BrendanPostLilycove
+	call_if_eq VAR_RESULT, STYLE_MAY, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_LEAF, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_RED, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
 	setflag FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE
 	releaseall
 	end
 
-RivalsHouse_2F_EventScript_MayPostLilycove::
+RivalsHouse_2F_EventScript_RivalFemalePostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_MayWhereShouldIGoNext
 	msgbox RivalsHouse_2F_Text_MayJustCheckingMyPokedex, MSGBOX_DEFAULT
 	return
 
-RivalsHouse_2F_EventScript_BrendanPostLilycove::
+RivalsHouse_2F_EventScript_RivalMalePostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext
 	msgbox RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex, MSGBOX_DEFAULT
 	return
@@ -283,9 +342,26 @@ RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext::
 
 LittlerootTown_MaysHouse_2F_EventScript_PC::
 	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC::
@@ -317,7 +393,7 @@ RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "… … … … … … … …\p"
 	.string "Ach, du bist {PLAYER}{KUN}!\n"
 	.string "Du bist heute hierher gezogen.\p"
-	.string "Ähm… Ich bin Brigitte.\n"
+	.string "Ähm… Ich bin {RIVAL}.\n"
 	.string "Schön, dich kennen zu lernen.\p"
 	.string "Ich… Ich habe diesen Traum…\n"
 	.string "Mit POKéMON in der ganzen Welt\l"
@@ -352,7 +428,7 @@ RivalsHouse_2F_Text_BrendanWhoAreYou:
 	.string "nebenan das Kind eines ARENALEITERs\p"
 	.string "einzieht und irgendwie habe ich\n"
 	.string "gedacht, du seiest ein Junge.\p"
-	.string "Ich heiße übrigens Hans.\n"
+	.string "Ich heiße übrigens {RIVAL}.\n"
 	.string "Also: Hallo, Nachbarin!\p"
 	.string "Was? {PLAYER}, du hast kein einziges\n"
 	.string "POKéMON?\p"
@@ -371,7 +447,7 @@ RivalsHouse_2F_Text_ItsRivalsPokeBall:
 	.string "Lass ihn besser liegen!$"
 
 RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
-	.string "Brigitte: {PLAYER}{KUN}!\p"
+	.string "{RIVAL}: {PLAYER}{KUN}!\p"
 	.string "Ich prüfe gerade meinen POKéDEX.\p"
 	.string "Es gibt eine Menge POKéMON, die ich\n"
 	.string "gesehen, aber nicht gefangen habe.\p"
@@ -381,13 +457,13 @@ RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
 	.string "soll, um weitere POKéMON zu fangen.$"
 
 RivalsHouse_2F_Text_MayWhereShouldIGoNext:
-	.string "Brigitte: Ich überlege, wo ich hingehen\n"
+	.string "{RIVAL}: Ich überlege, wo ich hingehen\n"
 	.string "soll, um weitere POKéMON zu fangen.\p"
 	.string "Wäre es nicht lustig, wenn wir uns dabei\n"
 	.string "über den Weg laufen würden?$"
 
 RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
-	.string "Hans: Hey, {PLAYER}!\p"
+	.string "{RIVAL}: Hey, {PLAYER}!\p"
 	.string "Ich prüfe gerade meinen POKéDEX.\p"
 	.string "Es gibt noch viele POKéMON, die ich\n"
 	.string "fangen muss, aber er sieht schon sehr\l"
@@ -396,7 +472,7 @@ RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
 	.string "bekomme ich Lust zu reisen.$"
 
 RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
-	.string "Hans: Ich habe lange überlegt, wo ich\n"
+	.string "{RIVAL}: Ich habe lange überlegt, wo ich\n"
 	.string "hingehen soll, um weitere POKéMON\l"
 	.string "zu fangen.\p"
 	.string "Hey, {PLAYER}, wenn ich dich auf meiner\n"

@@ -240,9 +240,27 @@ Route101_EventScript_BirchsBag::
 	setvar VAR_BIRCH_LAB_STATE, 2
 	setvar VAR_ROUTE101_STATE, 3
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
-	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_MAY, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_RED, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_LEAF, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_ETHAN, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_LYRA, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_LUCAS, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_DAWN, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_HILBERT, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_HILDA, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_NATE, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_ROSA, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_CALEM, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_SERENA, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_ELIO, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_SELENE, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_VICTOR, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_GLORIA, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_JULIANA, Route101_EventScript_HideBrendanInBedroom
 	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
 	waitstate
 	release

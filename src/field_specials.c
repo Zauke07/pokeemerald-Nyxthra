@@ -71,6 +71,11 @@
 #include "palette.h"
 #include "battle_util.h"
 
+#include "rogue_player_customisation_ui.h"
+#include "rogue_settings.h"
+#include "rogue_controller.h"
+#include "rogue_voltorbflip.h"
+
 #define TAG_ITEM_ICON 5500
 
 #define GFXTAG_MULTICHOICE_SCROLL_ARROWS 2000
@@ -150,7 +155,7 @@ static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer);
 
 void Special_ShowDiploma(void)
 {
-    SetMainCallback2(CB2_ShowDiploma);
+    SetMainCallback2(CB2_ShowVoltorbFlip);
     LockPlayerFieldControls();
 }
 
@@ -158,6 +163,20 @@ void Special_ViewWallClock(void)
 {
     gMain.savedCallback = CB2_ReturnToField;
     SetMainCallback2(CB2_ViewWallClock);
+    LockPlayerFieldControls();
+}
+
+void Special_ViewPlayerCustomisationMenu(void)
+{
+    gMain.savedCallback = CB2_ReturnToFieldContinueScript;
+    SetMainCallback2(CB2_InitPlayerCustomisationMenu);
+    LockPlayerFieldControls();
+}
+
+void Special_ViewVoltorbFlip(void)
+{
+    gMain.savedCallback = CB2_ReturnToField;
+    SetMainCallback2(CB2_ShowVoltorbFlip);
     LockPlayerFieldControls();
 }
 

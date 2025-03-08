@@ -10,6 +10,9 @@
 #include "constants/trainers.h"
 #include "constants/battle_ai.h"
 
+#include "constants/rogue.h"
+#include "rogue.h"
+
 const u16 gMinigameDigits_Pal[] = INCBIN_U16("graphics/link/minigame_digits.gbapal");
 const u32 gMinigameDigits_Gfx[] = INCBIN_U32("graphics/link/minigame_digits.4bpp.lz");
 static const u32 sMinigameDigitsThin_Gfx[] = INCBIN_U32("graphics/link/minigame_digits2.4bpp.lz"); // Unused
@@ -233,3 +236,5 @@ const struct Trainer gTrainers[] =
 };
 
 #include "data/text/follower_messages.h"
+
+#include "data/rogue_strings.h"

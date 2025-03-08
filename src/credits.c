@@ -24,6 +24,8 @@
 #include "event_data.h"
 #include "random.h"
 
+#include "rogue_timeofday.h"
+
 #define COLOR_DARK_GREEN RGB(7, 11, 6)
 #define COLOR_LIGHT_GREEN RGB(13, 20, 12)
 
@@ -680,11 +682,11 @@ static void Task_CreditsTheEnd6(u8 taskId)
             return;
         }
 
-        if (gTasks[taskId].tDelay == 7144)
-            FadeOutBGM(8);
-
-        if (gTasks[taskId].tDelay == 6840)
-            m4aSongNumStart(MUS_END);
+        if (gTasks[taskId].tDelay == 6990) // 6840)
+        {
+            DrawTheEnd(0x3800, 0);
+            m4aSongNumStart(MUS_HG_END);
+        }
 
         gTasks[taskId].tDelay--;
     }

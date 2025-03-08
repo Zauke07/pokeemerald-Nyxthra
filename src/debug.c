@@ -68,6 +68,10 @@
 #include "constants/weather.h"
 #include "save.h"
 
+#include "rogue_controller.h"
+#include "rogue.h"
+#include "rogue_save.h"
+
 // *******************************
 enum DebugMenu
 {
@@ -2134,6 +2138,15 @@ void CheckPokemonStorageSize(struct ScriptContext *ctx)
     ConvertIntToDecimalStringN(gStringVar1, currPkmnStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar2, maxPkmnStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar3, maxPkmnStorageSize - currPkmnStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+}
+
+void CheckRogueSaveSize(struct ScriptContext *ctx)
+{
+    u32 currStorageSize = sizeof(struct RogueSaveBlock);
+    u32 maxStorageSize = SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1) - sizeof(struct __UseablePokemonStorage);
+    ConvertIntToDecimalStringN(gStringVar1, currStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar2, maxStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar3, maxStorageSize - currStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
 static void DebugAction_Util_CheckSaveBlock(u8 taskId)
@@ -4695,6 +4708,150 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(PH_NURSE_BLEND) \
     X(PH_NURSE_HELD) \
     X(PH_NURSE_SOLO) \
+    X(MUS_HG_VS_WILD) \
+    X(MUS_HG_VS_TRAINER) \
+    X(MUS_HG_VS_TRAINER_KANTO) \
+    X(MUS_HG_VS_GYM_LEADER) \
+    X(MUS_HG_VS_GYM_LEADER_KANTO) \
+    X(MUS_HG_VS_CHAMPION) \
+    X(MUS_HG_VS_FRONTIER_BRAIN) \
+    X(MUS_HG_VICTORY_FRONTIER_BRAIN) \
+    X(MUS_HG_VICTORY_TRAINER) \
+    X(MUS_HG_VICTORY_GYM_LEADER) \
+    X(MUS_HG_VS_RIVAL) \
+    X(MUS_HG_VS_ROCKET) \
+    X(MUS_HG_VS_SUICUNE) \
+    X(MUS_HG_VS_ENTEI) \
+    X(MUS_HG_VS_RAIKOU) \
+    X(MUS_HG_VS_HO_OH) \
+    X(MUS_HG_VS_LUGIA) \
+    X(MUS_HG_ROUTE29) \
+    X(MUS_HG_ROUTE30) \
+    X(MUS_HG_ROUTE34) \
+    X(MUS_HG_ROUTE38) \
+    X(MUS_HG_ROUTE42) \
+    X(MUS_HG_ROUTE47) \
+    X(MUS_HG_ICE_PATH) \
+    X(MUS_HG_ENCOUNTER_RIVAL) \
+    X(MUS_HG_ENCOUNTER_GIRL_1) \
+    X(MUS_HG_ENCOUNTER_BOY_1) \
+    X(MUS_HG_ENCOUNTER_SUSPICIOUS_1) \
+    X(MUS_HG_ENCOUNTER_SAGE) \
+    X(MUS_HG_ENCOUNTER_KIMONO_GIRL) \
+    X(MUS_HG_ENCOUNTER_ROCKET) \
+    X(MUS_HG_ENCOUNTER_GIRL_2) \
+    X(MUS_HG_ENCOUNTER_BOY_2) \
+    X(MUS_HG_ENCOUNTER_SUSPICIOUS_2) \
+    X(MUS_HG_TITLE) \
+    X(MUS_HG_CREDITS) \
+    X(MUS_HG_END) \
+    X(MUS_HG_NEW_BARK) \
+    X(MUS_HG_NATIONAL_PARK) \
+    X(MUS_HG_DANCE_THEATER) \
+    X(MUS_HG_GAME_CORNER) \
+    X(MUS_HG_GAME_CORNER_WIN) \
+    X(MUS_HG_TEAM_ROCKET_HQ) \
+    X(MUS_HG_BUG_CONTEST_PREP) \
+    X(MUS_HG_BUG_CATCHING_CONTEST) \
+    X(MUS_HG_BUG_CONTEST_1ST_PLACE) \
+    X(MUS_HG_BUG_CONTEST_2ND_PLACE) \
+    X(MUS_HG_BUG_CONTEST_3RD_PLACE) \
+    X(MUS_HG_ROCKET_TAKEOVER) \
+    X(MUS_HG_ELM_LAB) \
+    X(MUS_HG_KIMONO_GIRL) \
+    X(MUS_HG_CARD_FLIP) \
+    X(MUS_HG_CARD_FLIP_GAME_OVER) \
+    X(MUS_HG_B_ARCADE) \
+    X(MUS_HG_B_CASTLE) \
+    X(MUS_HG_B_FACTORY) \
+    X(MUS_HG_B_HALL) \
+    X(MUS_HG_B_TOWER) \
+    X(MUS_HG_B_TOWER_RECEPTION) \
+    X(MUS_HG_EVOLUTION) \
+    X(MUS_HG_EVOLVED) \
+    X(MUS_HG_GYM) \
+    X(MUS_HG_LEVEL_UP) \
+    X(MUS_HG_MAGNET_TRAIN) \
+    X(MUS_HG_SINJOU_RUINS) \
+    X(MUS_HG_VICTORY_WILD) \
+    X(MUS_DP_ROUTE201_DAY) \
+    X(MUS_DP_ROUTE203_DAY) \
+    X(MUS_DP_ROUTE205_DAY) \
+    X(MUS_DP_ROUTE206_DAY) \
+    X(MUS_DP_ROUTE209_DAY) \
+    X(MUS_DP_ROUTE210_DAY) \
+    X(MUS_DP_ROUTE216_DAY) \
+    X(MUS_DP_ROUTE228_DAY) \
+    X(MUS_DP_ETERNA_FOREST) \
+    X(MUS_DP_MT_CORONET) \
+    X(MUS_DP_SPEAR_PILLAR) \
+    X(MUS_DP_LAKE_CAVERNS) \
+    X(MUS_DP_TITLE) \
+    X(MUS_DP_VS_WILD) \
+    X(MUS_DP_VS_GYM_LEADER) \
+    X(MUS_DP_VS_UXIE_MESPRIT_AZELF) \
+    X(MUS_DP_VS_TRAINER) \
+    X(MUS_DP_VS_GALACTIC_BOSS) \
+    X(MUS_DP_VS_DIALGA_PALKIA) \
+    X(MUS_DP_VS_CHAMPION) \
+    X(MUS_DP_VS_GALACTIC) \
+    X(MUS_DP_VS_RIVAL) \
+    X(MUS_DP_VS_ARCEUS) \
+    X(MUS_DP_VS_LEGEND) \
+    X(MUS_DP_VS_GALACTIC_COMMANDER) \
+    X(MUS_DP_VS_ELITE_FOUR) \
+    X(MUS_DP_ENCOUNTER_BOY) \
+    X(MUS_DP_ENCOUNTER_TWINS) \
+    X(MUS_DP_ENCOUNTER_INTENSE) \
+    X(MUS_DP_ENCOUNTER_GALACTIC) \
+    X(MUS_DP_ENCOUNTER_LADY) \
+    X(MUS_DP_ENCOUNTER_HIKER) \
+    X(MUS_DP_ENCOUNTER_RICH) \
+    X(MUS_DP_ENCOUNTER_SAILOR) \
+    X(MUS_DP_ENCOUNTER_SUSPICIOUS) \
+    X(MUS_DP_ENCOUNTER_ACE_TRAINER) \
+    X(MUS_DP_ENCOUNTER_GIRL) \
+    X(MUS_DP_ENCOUNTER_CYCLIST) \
+    X(MUS_DP_ENCOUNTER_ARTIST) \
+    X(MUS_DP_ENCOUNTER_ELITE_FOUR) \
+    X(MUS_DP_ENCOUNTER_CHAMPION) \
+    X(MUS_DP_VICTORY_WILD) \
+    X(MUS_DP_VICTORY_TRAINER) \
+    X(MUS_DP_VICTORY_GYM_LEADER) \
+    X(MUS_DP_VICTORY_CHAMPION) \
+    X(MUS_DP_VICTORY_GALACTIC) \
+    X(MUS_DP_VICTORY_ELITE_FOUR) \
+    X(MUS_DP_HALL_OF_ORIGIN) \
+    X(MUS_DP_FLOAROMA_DAY) \
+    X(MUS_DP_HALL_OF_FAME) \
+    X(MUS_DP_HEAL) \
+    X(MUS_DP_FIGHT_AREA_DAY) \
+    X(MUS_DP_INSIDE_POKEMON_LEAGUE) \
+    X(MUS_DP_SANDGEM_DAY) \
+    X(MUS_DP_SNOWPOINT_DAY) \
+    X(MUS_DP_SOLACEON_DAY) \
+    X(MUS_DP_UNDERGROUND) \
+    X(MUS_DP_GYM) \
+    X(MUS_DP_EVOLUTION) \
+    X(MUS_DP_EVOLVED) \
+    X(MUS_DP_GTS) \
+    X(MUS_DP_LAKE) \
+    X(MUS_DP_LEVEL_UP) \
+    X(MUS_DP_LEGEND_APPEARS) \
+    X(MUS_DP_GALACTIC_ETERNA_BUILDING) \
+    X(MUS_DP_GALACTIC_HQ) \
+    X(MUS_DP_GALACTIC_HQ_BASEMENT) \
+    X(MUS_DP_AMITY_SQUARE) \
+    X(MUS_DP_OLD_CHATEAU) \
+    X(MUS_DP_ROWAN) \
+    X(MUS_DP_OREBURGH_MINE) \
+    X(MUS_PL_MYSTERY_GIFT) \
+    X(MUS_PL_VS_GIRATINA) \
+    X(MUS_PL_DISTORTION_WORLD) \
+    X(MUS_PL_LOOKER) \
+    X(MUS_PL_VS_REGI) \
+    X(MUS_MOVE_DELETED_SLOW) \
+    X(MUS_DEBUG_TEST) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

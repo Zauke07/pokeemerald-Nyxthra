@@ -41,35 +41,43 @@ Route119_EventScript_RivalTrigger2::
 	end
 
 Route119_EventScript_RivalEncounter::
-	lockall
-	addobject LOCALID_RIVAL_ON_BIKE
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route119_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, Route119_EventScript_PlayBrendanMusic
-	delay 65
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_RivalEnter2
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	delay 30
-	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
-	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
-	removeobject LOCALID_RIVAL_ON_BIKE
-	addobject LOCALID_RIVAL
-	delay 30
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route119_EventScript_BattleMay
-	goto_if_eq VAR_RESULT, FEMALE, Route119_EventScript_BattleBrendan
-	releaseall
-	end
-
-Route119_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route119_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
+    lockall
+    addobject LOCALID_RIVAL_ON_BIKE
+    call Common_EventScript_SetupRivalMusic
+    delay 65
+    call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
+    call_if_eq VAR_TEMP_1, 2, Route119_EventScript_RivalEnter2
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+    waitmovement 0
+    delay 30
+    call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
+    call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
+    removeobject LOCALID_RIVAL_ON_BIKE
+    addobject LOCALID_RIVAL
+    delay 30
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_MAY, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_RED, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_LEAF, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_LYRA, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_DAWN, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_HILDA, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_NATE, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_ROSA, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_CALEM, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_SERENA, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_ELIO, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_SELENE, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route119_EventScript_BattleBrendan
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route119_EventScript_BattleMay
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route119_EventScript_BattleBrendan
+    releaseall
+    end
 
 Route119_EventScript_BattleMay::
 	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT

@@ -31,6 +31,9 @@
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
 
+#include "rogue_controller.h"
+#include "rogue_player_customisation.h"
+
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
 
@@ -1332,12 +1335,14 @@ u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetFRLGAvatarGraphicsIdByGender(u8 gender)
 {
-    return sFRLGAvatarGfxIds[gender];
+    // todo - rehookup, if needed
+    return OBJ_EVENT_GFX_PLAYER_NORMAL;
 }
 
 u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 {
-    return sRSAvatarGfxIds[gender];
+    // todo - rehookup, if needed
+    return OBJ_EVENT_GFX_PLAYER_NORMAL;
 }
 
 u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
@@ -1345,7 +1350,7 @@ u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
     return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
 }
 
-u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
+u8 unref_GetRivalAvatarGenderByGraphicsId(u16 gfxId)
 {
     switch (gfxId)
     {
@@ -1361,6 +1366,11 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     default:
         return MALE;
     }
+}
+
+u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
+{
+    return RoguePlayer_GetOutfitId();
 }
 
 bool8 PartyHasMonWithSurf(void)

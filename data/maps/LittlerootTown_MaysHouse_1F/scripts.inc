@@ -19,9 +19,28 @@ LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	return
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+    return
 
 LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
 	setmetatile 6, 7, METATILE_BrendansMaysHouse_BookOnTable, TRUE
