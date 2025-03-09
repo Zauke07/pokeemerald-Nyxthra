@@ -3,11 +3,7 @@
 
 #include "sprite.h"
 
-<<<<<<< HEAD
-extern u8 ALIGNED(4) gDecompressionBuffer[0x6000];
-=======
 #define MAX_DECOMPRESSION_BUFFER_SIZE 0x4000
->>>>>>> upstream/master
 
 void LZDecompressWram(const u32 *src, void *dest);
 void LZDecompressVram(const u32 *src, void *dest);

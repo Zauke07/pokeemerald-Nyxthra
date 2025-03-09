@@ -2464,26 +2464,55 @@ static void AddBirchSpeechObjects(u8 taskId)
     gSprites[birchSpriteId].oam.priority = 0;
     gSprites[birchSpriteId].invisible = TRUE;
     gTasks[taskId].tBirchSpriteId = birchSpriteId;
+
     lotadSpriteId = NewGameBirchSpeech_CreateLotadSprite(100, 0x4B);
     gSprites[lotadSpriteId].callback = SpriteCB_Null;
     gSprites[lotadSpriteId].oam.priority = 0;
     gSprites[lotadSpriteId].invisible = TRUE;
     gTasks[taskId].tLotadSpriteId = lotadSpriteId;
-<<<<<<< HEAD
 
-    CreateTrainerSprites(taskId, FALSE);
-=======
-    brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
-    gSprites[brendanSpriteId].callback = SpriteCB_Null;
-    gSprites[brendanSpriteId].invisible = TRUE;
-    gSprites[brendanSpriteId].oam.priority = 0;
-    gTasks[taskId].tBrendanSpriteId = brendanSpriteId;
-    maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, NULL);
-    gSprites[maySpriteId].callback = SpriteCB_Null;
-    gSprites[maySpriteId].invisible = TRUE;
-    gSprites[maySpriteId].oam.priority = 0;
-    gTasks[taskId].tMaySpriteId = maySpriteId;
->>>>>>> upstream/master
+    // Alle Charaktere aus Emerald Rogue hinzufügen
+    gTasks[taskId].tBrendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
+    gTasks[taskId].tMaySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, NULL);
+    gTasks[taskId].tRedSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_RED), 120, 60, 0, NULL);
+    gTasks[taskId].tLeafSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_LEAF), 120, 60, 0, NULL);
+    gTasks[taskId].tEthanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_ETHAN), 120, 60, 0, NULL);
+    gTasks[taskId].tLyraSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_LYRA), 120, 60, 0, NULL);
+    gTasks[taskId].tLucasSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_LUCAS), 120, 60, 0, NULL);
+    gTasks[taskId].tDawnSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_DAWN), 120, 60, 0, NULL);
+    gTasks[taskId].tHilbertSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_HILBERT), 120, 60, 0, NULL);
+    gTasks[taskId].tHildaSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_HILDA), 120, 60, 0, NULL);
+    gTasks[taskId].tNateSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_NATE), 120, 60, 0, NULL);
+    gTasks[taskId].tRosaSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_ROSA), 120, 60, 0, NULL);
+    gTasks[taskId].tCalemSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_CALEM), 120, 60, 0, NULL);
+    gTasks[taskId].tSerenaSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_SERENA), 120, 60, 0, NULL);
+    gTasks[taskId].tElioSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_ELIO), 120, 60, 0, NULL);
+    gTasks[taskId].tSeleneSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_SELENE), 120, 60, 0, NULL);
+    gTasks[taskId].tVictorSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_VICTOR), 120, 60, 0, NULL);
+    gTasks[taskId].tGloriaSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_GLORIA), 120, 60, 0, NULL);
+    gTasks[taskId].tFlorianSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_FLORIAN), 120, 60, 0, NULL);
+    gTasks[taskId].tJulianaSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_JULIANA), 120, 60, 0, NULL);
+
+    // Unsichtbar machen & Standardwerte setzen
+    u8 *spriteIds[] = {
+        &gTasks[taskId].tBrendanSpriteId, &gTasks[taskId].tMaySpriteId, 
+        &gTasks[taskId].tRedSpriteId, &gTasks[taskId].tLeafSpriteId, 
+        &gTasks[taskId].tEthanSpriteId, &gTasks[taskId].tLyraSpriteId, 
+        &gTasks[taskId].tLucasSpriteId, &gTasks[taskId].tDawnSpriteId, 
+        &gTasks[taskId].tHilbertSpriteId, &gTasks[taskId].tHildaSpriteId, 
+        &gTasks[taskId].tNateSpriteId, &gTasks[taskId].tRosaSpriteId, 
+        &gTasks[taskId].tCalemSpriteId, &gTasks[taskId].tSerenaSpriteId, 
+        &gTasks[taskId].tElioSpriteId, &gTasks[taskId].tSeleneSpriteId, 
+        &gTasks[taskId].tVictorSpriteId, &gTasks[taskId].tGloriaSpriteId, 
+        &gTasks[taskId].tFlorianSpriteId, &gTasks[taskId].tJulianaSpriteId
+    };
+
+    for (int i = 0; i < ARRAY_COUNT(spriteIds); i++)
+    {
+        gSprites[*spriteIds[i]].callback = SpriteCB_Null;
+        gSprites[*spriteIds[i]].invisible = TRUE;
+        gSprites[*spriteIds[i]].oam.priority = 0;
+    }
 }
 
 #undef tPlayerSpriteId

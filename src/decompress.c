@@ -5,12 +5,7 @@
 #include "pokemon.h"
 #include "pokemon_sprite_visualizer.h"
 #include "text.h"
-<<<<<<< HEAD
-
-EWRAM_DATA ALIGNED(4) u8 gDecompressionBuffer[0x6000] = {0};
-=======
 #include "menu.h"
->>>>>>> upstream/master
 
 void LZDecompressWram(const u32 *src, void *dest)
 {

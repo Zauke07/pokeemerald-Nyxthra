@@ -15297,15 +15297,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Goldene Zeiten"),
         .description = COMPOUND_STRING(
-<<<<<<< HEAD
             "Verdoppelt den erhaltenen\n"
             "Preisgeldbetrag."),
         .effect = EFFECT_DO_NOTHING,
-=======
             "Doubles the amount of\n"
             "Prize Money received."),
         .effect = EFFECT_HAPPY_HOUR,
->>>>>>> upstream/master
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
@@ -15373,15 +15370,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Ehrentag"),
         .description = COMPOUND_STRING(
-<<<<<<< HEAD
             "Herzlichen Glückwunsch zu\n"
             "deinem besonderen Tag."),
         .effect = EFFECT_DO_NOTHING,
-=======
             "Congratulates you on your\n"
             "special day."),
         .effect = EFFECT_CELEBRATE,
->>>>>>> upstream/master
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
@@ -15409,15 +15403,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Händchenhalten"),
         .description = COMPOUND_STRING(
-<<<<<<< HEAD
             "Der Benutzer und sein Verbündeter halten\n"
             "Händchen, um sie glücklich zu machen."),
         .effect = EFFECT_DO_NOTHING,
-=======
             "The user and ally hold hands\n"
             "making them happy."),
         .effect = EFFECT_HOLD_HANDS,
->>>>>>> upstream/master
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
@@ -15468,13 +15459,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Wangenrubbler"),
         .description = COMPOUND_STRING(
-<<<<<<< HEAD
             "Reibt seine Wangen am Feind\n"
             "und Paralyziert ihn."),
-=======
-            "Rubs its cheeks against\n"
-            "the foe, paralyzing it."),
->>>>>>> upstream/master
         .effect = EFFECT_HIT,
         .power = 20,
         .type = TYPE_ELECTRIC,
@@ -16876,15 +16862,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Spectral Thief"),
         .description = COMPOUND_STRING(
-<<<<<<< HEAD
             "Stiehlt die Stat-Boosts des\n"
             "Ziels und greift dann an."),
         .effect = EFFECT_HIT,
-=======
             "Steals the target's stat\n"
             "boosts, then attacks."),
         .effect = EFFECT_SPECTRAL_THIEF,
->>>>>>> upstream/master
         .power = 90,
         .type = TYPE_GHOST,
         .accuracy = 100,
