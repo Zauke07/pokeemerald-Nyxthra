@@ -293,15 +293,16 @@ typedef union // size = 0x24
 
     // TVSHOW_TREND_WATCHER
     struct {
-        /*0x00*/ u8 kind;
-        /*0x01*/ bool8 active;
-        /*0x02*/ u8 filler_02[2];
-        /*0x04*/ u16 words[2];
-        /*0x08*/ u8 gender;
-        /*0x09*/ u8 language;
-        /*0x0A*/ u8 filler_0a[9];
-        /*0x13*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
-        /*0x1B*/ //u8 padding;
+    /*0x00*/ u8 kind;
+    /*0x01*/ bool8 active;
+    /*0x02*/ u8 filler_02[2];
+    /*0x04*/ u16 words[2];
+    /*0x08*/ u8 gender;
+    /*0x09*/ u8 style;   // Neu: Charakterstil speichern
+    /*0x0A*/ u8 language;
+    /*0x0B*/ u8 filler_0a[9];
+    /*0x14*/ u8 playerName[PLAYER_NAME_LENGTH + 1];
+    /*0x1C*/ //u8 padding;
     } trendWatcher;
 
     // TVSHOW_TREASURE_INVESTIGATORS

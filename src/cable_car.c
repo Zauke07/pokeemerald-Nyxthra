@@ -789,11 +789,7 @@ static void CreateCableCarSprites(void)
 {
     u8 spriteId;
     u8 i;
-
-    u16 playerGraphicsIds[2] = {
-        [MALE]   = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
-        [FEMALE] = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
-    };
+    
     u16 rval = Random();
     u16 hikerGraphicsIds[4] = {
         OBJ_EVENT_GFX_HIKER,
@@ -811,12 +807,14 @@ static void CreateCableCarSprites(void)
         SpriteCB_HikerGoingDown
     };
 
+    u16 playerGraphicsId = GetPlayerGraphicsId(gSaveBlock2Ptr->playerStyles[0]); // Holt richtige Spieler-Sprite-ID
+
     switch (GOING_DOWN)
     {
         case FALSE:
         default:
             // Create player sprite
-            spriteId = CreateObjectGraphicsSprite(playerGraphicsIds[gSaveBlock2Ptr->playerGender], SpriteCB_Player, 200, 73, 102);
+            spriteId = CreateObjectGraphicsSprite(playerGraphicsId, SpriteCB_Player, 200, 73, 102);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].oam.priority = 2;
@@ -844,7 +842,7 @@ static void CreateCableCarSprites(void)
         case TRUE:
             CopyToBgTilemapBufferRect_ChangePalette(0, sCableCar->groundTilemap + 0x24, 24, 26, 12, 3, 17);
             // Create player sprite
-            spriteId = CreateObjectGraphicsSprite(playerGraphicsIds[gSaveBlock2Ptr->playerGender], SpriteCB_Player, 128, 39, 102);
+            spriteId = CreateObjectGraphicsSprite(playerGraphicsId, SpriteCB_Player, 128, 39, 102);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].oam.priority = 2;
@@ -880,7 +878,6 @@ static void CreateCableCarSprites(void)
     // 1/64 chance for an NPC to appear hiking on the ground below the Cable Car
     if ((rval % 64) == 0)
     {
-        // BUGFIX: The - 1 in the below ARRAY_COUNT means the Zigzagoon is never used
 #ifdef BUGFIX
         spriteId = CreateObjectGraphicsSprite(hikerGraphicsIds[rval % ARRAY_COUNT(hikerGraphicsIds)], hikerCallbacks[GOING_DOWN], hikerCoords[GOING_DOWN][0], hikerCoords[GOING_DOWN][1], 106);
 #else
@@ -892,7 +889,6 @@ static void CreateCableCarSprites(void)
             gSprites[spriteId].x2 = -gSprites[spriteId].centerToCornerVecX;
             gSprites[spriteId].y2 = -gSprites[spriteId].centerToCornerVecY;
 
-            // Randomly choose which direction the NPC is going
             if (!GOING_DOWN)
             {
                 if (rval % 2)

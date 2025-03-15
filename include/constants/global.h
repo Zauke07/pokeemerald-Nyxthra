@@ -153,6 +153,7 @@
 #define STYLE_FLORIAN      18
 #define STYLE_JULIANA      19
 #define PLAYER_STYLE_COUNT 20
+#define NUM_PLAYER_CHARACTERS PLAYER_STYLE_COUNT
 
 enum 
 {
@@ -222,6 +223,7 @@ enum
 #define NUM_BARD_SONG_WORDS    6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4
+#define NUM_PLAYER_AVATAR_STATES 4 // 4 verschiedene Zustände: Normal, Fahrrad, Surfen, Feldbewegung
 #define GIDDY_MAX_TALES       10
 #define GIDDY_MAX_QUESTIONS    8
 

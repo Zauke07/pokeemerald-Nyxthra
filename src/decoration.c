@@ -62,6 +62,19 @@
 #define DECOR_ITEMS_MENU_PLACE 0
 #define DECOR_ITEMS_MENU_PUT_AWAY 1
 
+static u16 GetPlayerDecorationSpriteId(void)
+{
+    switch (gSaveBlock2Ptr->playerStyles[0])
+    {
+        case STYLE_BRENDAN:
+            return OBJ_EVENT_GFX_BRENDAN_DECORATING;
+        case STYLE_MAY:
+            return OBJ_EVENT_GFX_MAY_DECORATING;
+        default:
+            return OBJ_EVENT_GFX_BRENDAN_DECORATING; // Fallback
+    }
+}
+
 struct DecorationItemsMenu
 {
     struct ListMenuItem items[41];
@@ -202,6 +215,7 @@ static void FreePlayerSpritePalette(void);
 static void DecorationItemsMenuAction_AttemptToss(u8 taskId);
 static void TossDecorationPrompt(u8 taskId);
 static void TossDecoration(u8 taskId);
+u16 GetPlayerDecorationSpriteId(void);
 
 #include "data/decoration/tiles.h"
 #include "data/decoration/description.h"
@@ -1406,10 +1420,10 @@ static void SetUpPlacingDecorationPlayerAvatar(u8 taskId, struct PlaceDecoration
     if (data->decoration->shape == DECORSHAPE_3x1 || data->decoration->shape == DECORSHAPE_3x3 || data->decoration->shape == DECORSHAPE_3x2)
         x -= 8;
 
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_BRENDAN_DECORATING, SpriteCallbackDummy, x, 72, 0);
-    else
-        sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MAY_DECORATING, SpriteCallbackDummy, x, 72, 0);
+    // NEUE Funktion zur Bestimmung des richtigen Sprites
+    sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(
+        GetPlayerDecorationSpriteId(), SpriteCallbackDummy, x, 72, 0
+    );
 
     gSprites[sDecor_CameraSpriteObjectIdx2].oam.priority = 1;
     DestroySprite(&gSprites[sDecor_CameraSpriteObjectIdx1]);
@@ -2310,10 +2324,11 @@ static void SetUpPuttingAwayDecorationPlayerAvatar(void)
     sDecor_CameraSpriteObjectIdx1 = gSprites[gFieldCamera.spriteId].data[0];
     LoadPlayerSpritePalette();
     gFieldCamera.spriteId = CreateSprite(&sPuttingAwayCursorSpriteTemplate, 120, 80, 0);
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_BRENDAN_DECORATING, SpriteCallbackDummy, 136, 72, 0);
-    else
-        sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MAY_DECORATING, SpriteCallbackDummy, 136, 72, 0);
+
+    // NEUE Funktion zur Bestimmung des richtigen Sprites
+    sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(
+        GetPlayerDecorationSpriteId(), SpriteCallbackDummy, 136, 72, 0
+    );
 
     gSprites[sDecor_CameraSpriteObjectIdx2].oam.priority = 1;
     DestroySprite(&gSprites[sDecor_CameraSpriteObjectIdx1]);
@@ -2706,10 +2721,10 @@ static void InitializeCameraSprite1(struct Sprite *sprite)
 
 static void LoadPlayerSpritePalette(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        LoadSpritePalette(&sSpritePal_PuttingAwayCursorBrendan);
-    else
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
         LoadSpritePalette(&sSpritePal_PuttingAwayCursorMay);
+    else
+        LoadSpritePalette(&sSpritePal_PuttingAwayCursorBrendan);
 }
 
 static void FreePlayerSpritePalette(void)

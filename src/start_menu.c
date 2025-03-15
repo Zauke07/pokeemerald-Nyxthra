@@ -1393,7 +1393,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
 static void ShowSaveInfoWindow(void)
 {
     struct WindowTemplate saveInfoWindow = sSaveInfoWindowTemplate;
-    u8 gender;
+    u8 playerStyle; // Richtig benannte Variable
     u8 color;
     u32 xOffset;
     u32 yOffset;
@@ -1406,12 +1406,40 @@ static void ShowSaveInfoWindow(void)
     sSaveInfoWindowId = AddWindow(&saveInfoWindow);
     DrawStdWindowFrame(sSaveInfoWindowId, FALSE);
 
-    gender = gSaveBlock2Ptr->playerGender;
-    color = TEXT_COLOR_RED;  // Red when female, blue when male.
+    playerStyle = gSaveBlock2Ptr->playerStyles[0]; // Korrekt: einzelne Variable nutzen
 
-    if (gender == MALE)
+    // Standard-Farbzuordnung für verschiedene Charakterstile
+    switch (playerStyle)  // Jetzt wird der richtige Typ genutzt
     {
-        color = TEXT_COLOR_BLUE;
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+        case STYLE_NATE:
+        case STYLE_CALEM:
+        case STYLE_ELIO:
+        case STYLE_VICTOR:
+        case STYLE_FLORIAN:
+            color = TEXT_COLOR_BLUE;  // Blautöne für männliche Charaktere
+            break;
+
+        case STYLE_MAY:
+        case STYLE_LEAF:
+        case STYLE_LYRA:
+        case STYLE_DAWN:
+        case STYLE_HILDA:
+        case STYLE_ROSA:
+        case STYLE_SERENA:
+        case STYLE_SELENE:
+        case STYLE_GLORIA:
+        case STYLE_JULIANA:
+            color = TEXT_COLOR_RED;  // Rottöne für weibliche Charaktere
+            break;
+
+        default:
+            color = TEXT_COLOR_GREEN; // Standardfarbe, falls Stil nicht erkannt wird
+            break;
     }
 
     // Print region name

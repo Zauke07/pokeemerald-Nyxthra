@@ -532,33 +532,33 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrend
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrendanRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerMayNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerMayRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lucas;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dawn;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hilbert;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hilda;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NateNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nate;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NateRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RosaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rosa;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RosaRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Calem;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SerenaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Serena;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SerenaRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elio;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Selene;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Victor;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GloriaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gloria;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GloriaRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlorianNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Florian;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlorianRiding;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JulianaNormal;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juliana;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JulianaRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AquaMRiding;
@@ -829,9 +829,18 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BILL] =                     &gObjectEventGraphicsInfo_Bill,
 
     // Placeholder GFX (Will be expanded later)
-    [OBJ_EVENT_GFX_PLAYER_NORMAL] =            &gObjectEventGraphicsInfo_BrendanNormal,
-    [OBJ_EVENT_GFX_PLAYER_RIDING] =            &gObjectEventGraphicsInfo_BrendanRiding,
-    [OBJ_EVENT_GFX_PLAYER_FIELD_MOVE] =        &gObjectEventGraphicsInfo_BrendanFieldMove,
+    //  Gen 3 (Brendan & May)
+    [OBJ_EVENT_GFX_BRENDAN_RIDING] =           &gObjectEventGraphicsInfo_BrendanRiding,
+    [OBJ_EVENT_GFX_MAY_RIDING] =               &gObjectEventGraphicsInfo_MayRiding,
+
+    //  Gen 1 (Red & Leaf)
+    [OBJ_EVENT_GFX_RED] =                      &gObjectEventGraphicsInfo_Red,
+    [OBJ_EVENT_GFX_RED_MACH_BIKE] =            &gObjectEventGraphicsInfo_RedMachBike,
+    [OBJ_EVENT_GFX_RED_ACRO_BIKE] =            &gObjectEventGraphicsInfo_RedAcroBike,
+    [OBJ_EVENT_GFX_RED_SURFING] =              &gObjectEventGraphicsInfo_RedSurfing,
+    [OBJ_EVENT_GFX_RED_FIELD_MOVE] =           &gObjectEventGraphicsInfo_RedFieldMove,
+    [OBJ_EVENT_GFX_RED_FISHING] =              &gObjectEventGraphicsInfo_RedFishing,
+    [OBJ_EVENT_GFX_RED_RIDING] =               &gObjectEventGraphicsInfo_RedRiding,
 
     [OBJ_EVENT_GFX_LEAF] =                     &gObjectEventGraphicsInfo_Leaf,
     [OBJ_EVENT_GFX_LEAF_MACH_BIKE] =           &gObjectEventGraphicsInfo_LeafMachBike,
@@ -841,13 +850,14 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LEAF_FISHING] =             &gObjectEventGraphicsInfo_LeafFishing,
     [OBJ_EVENT_GFX_LEAF_RIDING] =              &gObjectEventGraphicsInfo_LeafRiding,
 
-    [OBJ_EVENT_GFX_RED] =                      &gObjectEventGraphicsInfo_Red,
-    [OBJ_EVENT_GFX_RED_MACH_BIKE] =            &gObjectEventGraphicsInfo_RedMachBike,
-    [OBJ_EVENT_GFX_RED_ACRO_BIKE] =            &gObjectEventGraphicsInfo_RedAcroBike,
-    [OBJ_EVENT_GFX_RED_SURFING] =              &gObjectEventGraphicsInfo_RedSurfing,
-    [OBJ_EVENT_GFX_RED_FIELD_MOVE] =           &gObjectEventGraphicsInfo_RedFieldMove,
-    [OBJ_EVENT_GFX_RED_FISHING] =              &gObjectEventGraphicsInfo_RedFishing,
-    [OBJ_EVENT_GFX_RED_RIDING] =               &gObjectEventGraphicsInfo_RedRiding,
+    //  Gen 2 (Ethan & Lyra)
+    [OBJ_EVENT_GFX_ETHAN] =                    &gObjectEventGraphicsInfo_Ethan,
+    [OBJ_EVENT_GFX_ETHAN_MACH_BIKE] =          &gObjectEventGraphicsInfo_EthanMachBike,
+    [OBJ_EVENT_GFX_ETHAN_ACRO_BIKE] =          &gObjectEventGraphicsInfo_EthanAcroBike,
+    [OBJ_EVENT_GFX_ETHAN_SURFING] =            &gObjectEventGraphicsInfo_EthanSurfing,
+    [OBJ_EVENT_GFX_ETHAN_FIELD_MOVE] =         &gObjectEventGraphicsInfo_EthanFieldMove,
+    [OBJ_EVENT_GFX_ETHAN_FISHING] =            &gObjectEventGraphicsInfo_EthanFishing,
+    [OBJ_EVENT_GFX_ETHAN_RIDING] =             &gObjectEventGraphicsInfo_EthanRiding,
 
     [OBJ_EVENT_GFX_LYRA] =                     &gObjectEventGraphicsInfo_Lyra,
     [OBJ_EVENT_GFX_LYRA_MACH_BIKE] =           &gObjectEventGraphicsInfo_LyraMachBike,
@@ -857,16 +867,30 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LYRA_FISHING] =             &gObjectEventGraphicsInfo_LyraFishing,
     [OBJ_EVENT_GFX_LYRA_RIDING] =              &gObjectEventGraphicsInfo_LyraRiding,
 
-    [OBJ_EVENT_GFX_ETHAN] =                    &gObjectEventGraphicsInfo_Ethan,
-    [OBJ_EVENT_GFX_ETHAN_MACH_BIKE] =          &gObjectEventGraphicsInfo_EthanMachBike,
-    [OBJ_EVENT_GFX_ETHAN_ACRO_BIKE] =          &gObjectEventGraphicsInfo_EthanAcroBike,
-    [OBJ_EVENT_GFX_ETHAN_SURFING] =            &gObjectEventGraphicsInfo_EthanSurfing,
-    [OBJ_EVENT_GFX_ETHAN_FIELD_MOVE] =         &gObjectEventGraphicsInfo_EthanFieldMove,
-    [OBJ_EVENT_GFX_ETHAN_FISHING] =            &gObjectEventGraphicsInfo_EthanFishing,
-    [OBJ_EVENT_GFX_ETHAN_RIDING] =             &gObjectEventGraphicsInfo_EthanRiding,
+    //  Gen 4–9 (Lucas, Dawn, Hilbert, Hilda, etc.)
+    [OBJ_EVENT_GFX_LUCAS] =                    &gObjectEventGraphicsInfo_Lucas,
+    [OBJ_EVENT_GFX_DAWN] =                     &gObjectEventGraphicsInfo_Dawn,
+    [OBJ_EVENT_GFX_HILBERT] =                  &gObjectEventGraphicsInfo_Hilbert,
+    [OBJ_EVENT_GFX_HILDA] =                    &gObjectEventGraphicsInfo_Hilda,
+    [OBJ_EVENT_GFX_CALEM] =                    &gObjectEventGraphicsInfo_Calem,
+    [OBJ_EVENT_GFX_SERENA] =                   &gObjectEventGraphicsInfo_Serena,
+    [OBJ_EVENT_GFX_ELIO] =                     &gObjectEventGraphicsInfo_Elio,
+    [OBJ_EVENT_GFX_SELENE] =                   &gObjectEventGraphicsInfo_Selene,
 
-    [OBJ_EVENT_GFX_BRENDAN_RIDING] =           &gObjectEventGraphicsInfo_BrendanRiding,
-    [OBJ_EVENT_GFX_MAY_RIDING] =               &gObjectEventGraphicsInfo_MayRiding,
+    //  Gen 8 (Victor & Gloria)
+    [OBJ_EVENT_GFX_VICTOR] =                   &gObjectEventGraphicsInfo_Victor,
+    [OBJ_EVENT_GFX_VICTOR_RIDING] =            &gObjectEventGraphicsInfo_VictorRiding,
+
+    [OBJ_EVENT_GFX_GLORIA] =                   &gObjectEventGraphicsInfo_Gloria,
+    [OBJ_EVENT_GFX_GLORIA_RIDING] =            &gObjectEventGraphicsInfo_GloriaRiding,
+
+    //  Gen 9 (Florian & Juliana)
+    [OBJ_EVENT_GFX_FLORIAN] =                  &gObjectEventGraphicsInfo_Florian,
+    [OBJ_EVENT_GFX_FLORIAN_RIDING] =           &gObjectEventGraphicsInfo_FlorianRiding,
+
+    [OBJ_EVENT_GFX_JULIANA] =                  &gObjectEventGraphicsInfo_Juliana,
+    [OBJ_EVENT_GFX_JULIANA_RIDING] =           &gObjectEventGraphicsInfo_JulianaRiding,
+
 
     [OBJ_EVENT_GFX_BUG_CATCHER_RIDING] =       &gObjectEventGraphicsInfo_BugCatcherRiding,
 

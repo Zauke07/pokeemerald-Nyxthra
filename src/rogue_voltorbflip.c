@@ -23,6 +23,8 @@
 
 #include "rogue_voltorbflip.h"
 
+#ifdef IGNORE_THIS_FILE
+
 #define FLIP_VERTICAL (0x08 << 8)
 #define FLIP_HORIZONTAL (0x04 << 8)
 
@@ -1069,3 +1071,5 @@ static void DrawNoteTiles()
 
     ScheduleBgCopyTilemapToVram(1);
 }
+
+#endif

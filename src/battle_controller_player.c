@@ -1887,7 +1887,7 @@ static u32 PlayerGetTrainerBackPicId(void)
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         trainerPicId = LinkPlayerGetTrainerPicId(GetMultiplayerId());
     else
-        trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
+        trainerPicId = gSaveBlock2Ptr->playerStyles[0]; // Nutzt den gewählten Charakterstil direkt
 
     return trainerPicId;
 }
@@ -1929,7 +1929,7 @@ static void PlayerHandleDrawTrainerPic(u32 battler)
     // Use front pic table for any tag battles unless your partner is Steven or a custom partner.
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && gPartnerTrainerId < TRAINER_PARTNER(PARTNER_NONE))
     {
-        trainerPicId = PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender);
+        trainerPicId = gSaveBlock2Ptr->playerStyles[0];
         isFrontPic = TRUE;
     }
     else // Use back pic in all the other usual circumstances.
@@ -2293,7 +2293,7 @@ static void PlayerHandleOneReturnValue_Duplicate(u32 battler)
 
 static void PlayerHandleIntroTrainerBallThrow(u32 battler)
 {
-    const u32 *trainerPal = gTrainerBacksprites[gSaveBlock2Ptr->playerGender].palette.data;
+    const u32 *trainerPal = gTrainerBacksprites[gSaveBlock2Ptr->playerStyles[0]].palette.data;
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
 }
 

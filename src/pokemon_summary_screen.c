@@ -164,6 +164,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u8 sanity; // 0x35
         u8 OTName[17]; // 0x36
         u32 OTID; // 0x48
+        u8 OTStyle;  // 0x49 (Neu hinzugefügt – Speichert den Spielerstil)
         u8 teraType;
         u8 mintNature;
     } summary;
@@ -2499,6 +2500,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     SetMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+    SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -3553,23 +3555,28 @@ static bool8 DoesMonOTMatchOwner(void)
 {
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
     u32 trainerId;
-    u8 gender;
+    u8 playerStyle = 0;  // Initialisierung auf 0
+    // u8 gender;  // Entfernt, da nicht genutzt
 
     if (sMonSummaryScreen->monList.mons == gEnemyParty)
     {
         u8 multiID = GetMultiplayerId() ^ 1;
         trainerId = gLinkPlayers[multiID].trainerId & 0xFFFF;
-        gender = gLinkPlayers[multiID].gender;
         StringCopy(gStringVar1, gLinkPlayers[multiID].name);
     }
     else
     {
         trainerId = GetPlayerIDAsU32() & 0xFFFF;
-        gender = gSaveBlock2Ptr->playerGender;
+        playerStyle = gSaveBlock2Ptr->playerStyles[0];  // `playerStyle` wird gesetzt
         StringCopy(gStringVar1, gSaveBlock2Ptr->playerName);
     }
 
-    if (gender != sum->OTGender || trainerId != (sum->OTID & 0xFFFF) || StringCompareWithoutExtCtrlCodes(gStringVar1, sum->OTName))
+    // Falls `playerStyle` nicht korrekt gesetzt wird, standardwert setzen
+    if (sMonSummaryScreen->monList.mons == gEnemyParty)
+        playerStyle = sum->OTStyle;  // Falls Multiplayer, nehmen wir einfach den `OTStyle`
+
+    // Überprüfung: Falls der Besitzerstil nicht übereinstimmt
+    if (playerStyle != sum->OTStyle || trainerId != (sum->OTID & 0xFFFF) || StringCompareWithoutExtCtrlCodes(gStringVar1, sum->OTName))
         return FALSE;
     else
         return TRUE;

@@ -2081,15 +2081,15 @@ static void DebugAction_Util_WatchCredits(u8 taskId)
 
 static void DebugAction_Util_Player_Name(u8 taskId)
 {
-    DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldContinueScript);
+    DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerStyles[0], 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
 static void DebugAction_Util_Player_Gender(u8 taskId)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        gSaveBlock2Ptr->playerGender = FEMALE;
+    if (gSaveBlock2Ptr->playerStyles[0] == MALE)
+        gSaveBlock2Ptr->playerStyles[0] = FEMALE;
     else
-        gSaveBlock2Ptr->playerGender = MALE;
+        gSaveBlock2Ptr->playerStyles[0] = MALE;
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();
 }
@@ -3404,6 +3404,7 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
     u32 teraType    = sDebugMonData->teraType;
     u32 dmaxLevel   = sDebugMonData->dynamaxLevel;
     u32 gmaxFactor  = sDebugMonData->gmaxFactor;
+    
     for (u32 i = 0; i < MAX_MON_MOVES; i++)
     {
         moves[i] = sDebugMonData->monMoves[i];
@@ -3428,7 +3429,7 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
     // Dynamax Level
     SetMonData(&mon, MON_DATA_DYNAMAX_LEVEL, &dmaxLevel);
 
-    // tera type
+    // Tera Type
     if (teraType >= NUMBER_OF_MON_TYPES)
         teraType = TYPE_NONE;
     SetMonData(&mon, MON_DATA_TERA_TYPE, &teraType);
@@ -3468,12 +3469,12 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
 
     SetMonData(&mon, MON_DATA_ABILITY_NUM, &abilityNum);
 
-    //Update mon stats before giving it to the player
+    // Update mon stats before giving it to the player
     CalculateMonStats(&mon);
 
-    // give player the mon
+    // Give player the mon
     SetMonData(&mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
-    SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
+    SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerStyles[0]);
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE)
@@ -3491,7 +3492,7 @@ static void DebugAction_Give_Pokemon_ComplexCreateMon(u8 taskId) //https://githu
         gPlayerPartyCount = i + 1;
     }
 
-    //Pokedex entry
+    // Pokedex entry
     nationalDexNum = SpeciesToNationalPokedexNum(species);
     switch(sentToPc)
     {

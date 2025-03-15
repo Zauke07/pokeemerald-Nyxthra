@@ -25,6 +25,7 @@
 
 #include "rogue_settings.h"
 
+#ifdef IGNORE_THIS_FILE
 
 #define QUICK_JUMP_AMOUNT 4
 
@@ -2274,3 +2275,5 @@ static void DrawBgWindowFrames(void)
         CopyBgTilemapBufferToVram(bg);
     }
 }
+
+#endif

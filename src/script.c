@@ -637,3 +637,9 @@ void Script_RequestWriteVar_Internal(u32 varId)
         return;
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 }
+
+bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = (gSaveBlock2Ptr->playerStyles[0] % 2 == 1); // Falls ungerade = weiblich
+    return FALSE;
+}

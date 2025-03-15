@@ -42178,3 +42178,150 @@ F_TRAINER_FEMALE |
             },
         },
     },
+#line 16877
+    [DIFFICULTY_NORMAL][TRAINER_CHATGPT] =
+    {
+#line 16878
+        .trainerName = _("ChatGPT"),
+#line 16879
+        .trainerClass = TRAINER_CLASS_CHATGPT,
+#line 16880
+        .trainerPic = TRAINER_PIC_COOLTRAINER_M,
+        .encounterMusic_gender =
+#line 16882
+            TRAINER_ENCOUNTER_MUSIC_MUS_HG_VS_CHAMPION,
+#line 16883
+        .items = { ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_MAX_REVIVE },
+#line 16884
+        .doubleBattle = TRUE,
+#line 16885
+        .aiFlags = AI_FLAG_SMART_TRAINER | AI_FLAG_PREDICT_SWITCH | AI_FLAG_PREFER_HIGHEST_DAMAGE_MOVE | AI_FLAG_ACE_POKEMON,
+#line 16886
+        .mugshotColor = MUGSHOT_COLOR_GREEN,
+#line 16887
+        .startingStatus = STARTING_STATUS_PSYCHIC_TERRAIN,
+        .partySize = 6,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 16889
+            .species = SPECIES_AEGISLASH,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16889
+            .heldItem = ITEM_LEFTOVERS,
+#line 16891
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16890
+            .lvl = 80,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16892
+                MOVE_KINGS_SHIELD,
+                MOVE_SHADOW_BALL,
+                MOVE_IRON_HEAD,
+                MOVE_SACRED_SWORD,
+            },
+            },
+            {
+#line 16897
+            .species = SPECIES_PORYGON_Z,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16897
+            .heldItem = ITEM_CHOICE_SPECS,
+#line 16899
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16898
+            .lvl = 78,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16900
+                MOVE_HYPER_BEAM,
+                MOVE_ICE_BEAM,
+                MOVE_THUNDERBOLT,
+                MOVE_TRICK,
+            },
+            },
+            {
+#line 16905
+            .species = SPECIES_METAGROSS_MEGA,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16905
+            .heldItem = ITEM_METAGROSSITE,
+#line 16907
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16906
+            .lvl = 82,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16908
+                MOVE_METEOR_MASH,
+                MOVE_EARTHQUAKE,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_BULLET_PUNCH,
+            },
+            },
+            {
+#line 16913
+            .species = SPECIES_GARCHOMP,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16913
+            .heldItem = ITEM_ROCKY_HELMET,
+#line 16915
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16914
+            .lvl = 80,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16916
+                MOVE_SWORDS_DANCE,
+                MOVE_EARTHQUAKE,
+                MOVE_OUTRAGE,
+                MOVE_FIRE_FANG,
+            },
+            },
+            {
+#line 16921
+            .species = SPECIES_TOGEKISS,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16921
+            .heldItem = ITEM_SITRUS_BERRY,
+#line 16923
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16922
+            .lvl = 78,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16924
+                MOVE_AIR_SLASH,
+                MOVE_THUNDER_WAVE,
+                MOVE_ROOST,
+                MOVE_AURA_SPHERE,
+            },
+            },
+            {
+#line 16929
+            .species = SPECIES_BLAZIKEN,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 16929
+            .heldItem = ITEM_LIFE_ORB,
+#line 16931
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16930
+            .lvl = 80,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 16932
+                MOVE_PROTECT,
+                MOVE_FLARE_BLITZ,
+                MOVE_HIGH_JUMP_KICK,
+                MOVE_SWORDS_DANCE,
+            },
+            },
+        },
+    },

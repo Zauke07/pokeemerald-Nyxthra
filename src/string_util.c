@@ -470,10 +470,35 @@ static const u8 *ExpandPlaceholder_StringVar3(void)
 
 static const u8 *ExpandPlaceholder_KunChan(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gText_ExpandedPlaceholder_Kun;
-    else
-        return gText_ExpandedPlaceholder_Chan;
+    switch (gSaveBlock2Ptr->playerStyles[0])
+    {
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+        case STYLE_NATE:
+        case STYLE_CALEM:
+        case STYLE_ELIO:
+        case STYLE_VICTOR:
+        case STYLE_FLORIAN:
+            return gText_ExpandedPlaceholder_Kun; // "Brendan-kun", "Red-kun", etc.
+
+        case STYLE_MAY:
+        case STYLE_LEAF:
+        case STYLE_LYRA:
+        case STYLE_DAWN:
+        case STYLE_HILDA:
+        case STYLE_ROSA:
+        case STYLE_SERENA:
+        case STYLE_SELENE:
+        case STYLE_GLORIA:
+        case STYLE_JULIANA:
+            return gText_ExpandedPlaceholder_Chan; // "May-chan", "Leaf-chan", etc.
+
+        default:
+            return gText_ExpandedPlaceholder_Kun; // Standardmäßig "-kun" für unbekannte Stile
+    }
 }
 
 static const u8 *ExpandPlaceholder_RivalName(void)
@@ -517,9 +542,9 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         case PLAYER_OUTFIT_GLORIA:
             return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
         case PLAYER_OUTFIT_FLORIAN:
-            return gText_ExpandedPlaceholder_May;
+            return gText_ExpandedPlaceholder_Juliana;
         case PLAYER_OUTFIT_JULIANA:
-            return gText_ExpandedPlaceholder_Brendan;
+            return gText_ExpandedPlaceholder_Florian;
         default:
             return gText_ExpandedPlaceholder_Rival; // Fallback für unbestimmte Rivalen
     }

@@ -5036,11 +5036,11 @@ static void TryAddInterviewObjectEvents(void)
 
     // Add object for player (facing right)
     spriteId = CreateObjectGraphicsSprite(
-        gSaveBlock2Ptr->playerGender == MALE ? OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL : OBJ_EVENT_GFX_RIVAL_MAY_NORMAL,
+        GetPlayerGraphicsId(gSaveBlock2Ptr->playerStyles[0]), // Nutzt die neue Funktion zur Bestimmung des richtigen Sprites
         SpriteCallbackDummy,
         52,
         40,
-        0);
+        0);    
 
     if (spriteId != MAX_SPRITES)
     {

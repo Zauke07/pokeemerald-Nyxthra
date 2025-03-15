@@ -284,6 +284,10 @@ static bool8 MugshotTrainerPic_Slide(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideSlow(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideOffscreen(struct Sprite *);
 
+static void Task_ChatGPT(u8 taskId);
+static bool8 ChatGPT_Init(struct Task *);
+static bool8 ChatGPT_SetGfx(struct Task *);
+
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
 static u8 sTestingTransitionState;
@@ -331,6 +335,9 @@ static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCBIN_U32("graphics/battl
 static const u32 sFrontierSquares_Shrink1_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_3.4bpp.lz");
 static const u32 sFrontierSquares_Shrink2_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_4.4bpp.lz");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
+static const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.lz");
+static const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.lz");
+static const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -357,6 +364,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_MUGSHOT] = Task_Mugshot,
     [B_TRANSITION_AQUA] = Task_Aqua,
     [B_TRANSITION_MAGMA] = Task_Magma,
+    [B_TRANSITION_CHATGPT] = Task_ChatGPT,
     [B_TRANSITION_REGICE] = Task_Regice,
     [B_TRANSITION_REGISTEEL] = Task_Registeel,
     [B_TRANSITION_REGIROCK] = Task_Regirock,
@@ -1713,6 +1721,49 @@ static void VBlankCB_CircularMask(void)
     DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, B_TRANS_DMA_FLAGS);
 }
 
+static const TransitionStateFunc sChatGPT_Funcs[] =
+{
+    ChatGPT_Init,
+    ChatGPT_SetGfx,
+    PatternWeave_Blend1,
+    PatternWeave_Blend2,
+    PatternWeave_FinishAppear,
+    FramesCountdown,
+    PatternWeave_CircularMask
+};
+
+static void Task_ChatGPT(u8 taskId)
+{
+    while (sChatGPT_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 ChatGPT_Init(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    task->tEndDelay = 60;
+    InitPatternWeaveTransition(task);
+    GetBg0TilesDst(&tilemap, &tileset);
+    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
+    LZ77UnCompVram(sChatGPT_Tileset, tileset);
+    LoadPalette(sChatGPT_Palette, BG_PLTT_ID(15), sizeof(sChatGPT_Palette));
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 ChatGPT_SetGfx(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+    LZ77UnCompVram(sChatGPT_Tilemap, tilemap);
+    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+
+    task->tState++;
+    return FALSE;
+}
+
 #undef tAmplitude
 #undef tSinIndex
 #undef tBlendTarget1
@@ -2269,7 +2320,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
     LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+    LoadPalette(sPlayerMugshotsPals[IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
 
     for (i = 0; i < 20; i++)
     {
@@ -2529,7 +2580,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
                                                   0, NULL);
     gReservedSpritePaletteCount = 12;
 
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender),
+    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])),
                                                 DISPLAY_WIDTH + 32,
                                                 106,
                                                 0, NULL);

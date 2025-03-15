@@ -521,9 +521,9 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         case PLAYER_OUTFIT_GLORIA:
             return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
         case PLAYER_OUTFIT_FLORIAN:
-            return gText_ExpandedPlaceholder_May;
+            return gText_ExpandedPlaceholder_Juliana;
         case PLAYER_OUTFIT_JULIANA:
-            return gText_ExpandedPlaceholder_Brendan;
+            return gText_ExpandedPlaceholder_Florian;
         default:
             return gText_ExpandedPlaceholder_Rival; // Fallback für unbestimmte Rivalen
     }

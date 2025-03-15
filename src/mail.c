@@ -571,10 +571,22 @@ static bool8 MailReadBuildGraphics(void)
             gPlttBufferFaded[BG_PLTT_ID(15) + 11] = sMailGraphics[sMailRead->mailType].textShadow;
 
             LoadPalette(sMailGraphics[sMailRead->mailType].palette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-            gPlttBufferUnfaded[BG_PLTT_ID(0) + 10] = sBgColors[gSaveBlock2Ptr->playerGender][0];
-            gPlttBufferFaded[BG_PLTT_ID(0) + 10] = sBgColors[gSaveBlock2Ptr->playerGender][0];
-            gPlttBufferUnfaded[BG_PLTT_ID(0) + 11] = sBgColors[gSaveBlock2Ptr->playerGender][1];
-            gPlttBufferFaded[BG_PLTT_ID(0) + 11] = sBgColors[gSaveBlock2Ptr->playerGender][1];
+
+            // Hier wird nun der Charakterstil statt des binären Geschlechts verwendet
+            if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
+            {
+                gPlttBufferUnfaded[BG_PLTT_ID(0) + 10] = sBgColors[1][0]; // Weibliche Farbe
+                gPlttBufferFaded[BG_PLTT_ID(0) + 10] = sBgColors[1][0];
+                gPlttBufferUnfaded[BG_PLTT_ID(0) + 11] = sBgColors[1][1];
+                gPlttBufferFaded[BG_PLTT_ID(0) + 11] = sBgColors[1][1];
+            }
+            else
+            {
+                gPlttBufferUnfaded[BG_PLTT_ID(0) + 10] = sBgColors[0][0]; // Männliche Farbe
+                gPlttBufferFaded[BG_PLTT_ID(0) + 10] = sBgColors[0][0];
+                gPlttBufferUnfaded[BG_PLTT_ID(0) + 11] = sBgColors[0][1];
+                gPlttBufferFaded[BG_PLTT_ID(0) + 11] = sBgColors[0][1];
+            }
             break;
         case 13:
             if (sMailRead->hasText)

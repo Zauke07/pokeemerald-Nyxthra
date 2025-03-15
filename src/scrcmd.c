@@ -2657,11 +2657,11 @@ bool8 ScrCmd_getplayerstyle(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
+bool8 ScrCmd_checkplayerstyle(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = gSaveBlock2Ptr->playerGender;
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0]; // Speichert den aktuellen Spieler-Stil
     return FALSE;
 }
 

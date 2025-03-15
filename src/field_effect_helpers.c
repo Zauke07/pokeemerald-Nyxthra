@@ -275,7 +275,7 @@ u8 CreateWarpArrowSprite(void)
     {
         struct Sprite *sprite = &gSprites[spriteId];
         // Can use either gender's palette, so try to use the one that should be loaded
-        sprite->oam.paletteNum = LoadPlayerObjectEventPalette(gSaveBlock2Ptr->playerGender);
+        sprite->oam.paletteNum = LoadPlayerObjectEventPalette(GetPlayerGraphicsId(gSaveBlock2Ptr->playerStyles[0]));
         sprite->oam.priority = 1;
         sprite->coordOffsetEnabled = TRUE;
         sprite->invisible = TRUE;
@@ -1185,7 +1185,7 @@ u32 FldEff_SurfBlob(void)
         sprite->coordOffsetEnabled = TRUE;
         sprite->sPlayerObjId = gFieldEffectArguments[2];
         // Can use either gender's palette, so try to use the one that should be loaded
-        sprite->oam.paletteNum = LoadPlayerObjectEventPalette(gSaveBlock2Ptr->playerGender);
+        sprite->oam.paletteNum = LoadPlayerObjectEventPalette(GetPlayerGraphicsId(gSaveBlock2Ptr->playerStyles[0]));
         sprite->sVelocity = -1;
         sprite->sPrevX = -1;
         sprite->sPrevY = -1;

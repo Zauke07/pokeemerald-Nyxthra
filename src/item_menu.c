@@ -832,14 +832,14 @@ static bool8 LoadBagMenu_Graphics(void)
         }
         break;
     case 2:
-        if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
+        if (!IsWallysBag() && IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
             LoadCompressedPalette(gBagScreenFemale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
         else
             LoadCompressedPalette(gBagScreenMale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
         gBagMenu->graphicsLoadState++;
         break;
     case 3:
-        if (IsWallysBag() == TRUE || gSaveBlock2Ptr->playerGender == MALE)
+        if (IsWallysBag() == TRUE || !IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
             LoadCompressedSpriteSheet(&gBagMaleSpriteSheet);
         else
             LoadCompressedSpriteSheet(&gBagFemaleSpriteSheet);

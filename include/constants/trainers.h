@@ -590,6 +590,8 @@
 #define TRAINER_CLASS_BIKER                 0x48
 #define TRAINER_CLASS_TEAM_GALACTIC         0x49
 #define TRAINER_CLASS_TEAM_GALACTIC_LEADER  0x4A
+#define TRAINER_CLASS_AI_MASTER             0x4B
+#define TRAINER_CLASS_CHATGPT               0x4C
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
@@ -605,6 +607,7 @@
 #define TRAINER_ENCOUNTER_MUSIC_HIKER       11 // used for other trainer classes too
 #define TRAINER_ENCOUNTER_MUSIC_INTERVIEWER 12
 #define TRAINER_ENCOUNTER_MUSIC_RICH        13 // Rich Boys and Gentlemen
+#define TRAINER_ENCOUNTER_MUSIC_MUS_HG_VS_CHAMPION 14
 
 #define F_TRAINER_FEMALE (1 << 7)
 

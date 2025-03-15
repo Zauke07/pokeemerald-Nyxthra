@@ -39,6 +39,8 @@
 #include "rogue_player_customisation_ui.h"
 #include "rogue_timeofday.h"
 
+#ifdef IGNORE_THIS_FILE
+
 #define TOTAL_UI_PAGE_ENTRIES 9
 #define MAX_UI_PAGE_DEPTH 4
 
@@ -1089,46 +1091,45 @@ static void RoguePlayerUI_DrawTrainerSprites()
     // Free any sprites we previously had open
     RoguePlayerUI_FreeTrainerSprites();
 
-    //sPlayerOutfitUIState->trainerFrontSpriteId = CreateTrainerPicSprite(
-    //    TRAINER_PIC_MAY,
-    //    TRUE,
-    //    64, 92,
-    //    0,
-    //    TAG_NONE
-    //);
-
+    // Erstellt das Trainer-Sprite mit der neuen Speicherverwaltung
     u8 spriteId = CreateTrainerSprite(
         RoguePlayer_GetTrainerFrontPic(),
         64, 98,
         0, 
-        gDecompressionBuffer
+        NULL // Kein gDecompressionBuffer mehr
     );
 
     sPlayerOutfitUIState->trainerFrontSprite.spriteId = spriteId;
     sPlayerOutfitUIState->trainerFrontSprite.tileTag = TAG_NONE;
 
-    sPlayerOutfitUIState->trainerObjectEventGfx = OBJ_EVENT_GFX_PLAYER_NORMAL;// RoguePlayer_GetPlayerObjectGfx(PLAYER_AVATAR_STATE_NORMAL);
+    sPlayerOutfitUIState->trainerObjectEventGfx = OBJ_EVENT_GFX_PLAYER_NORMAL;
 
-    if(sPlayerOutfitUIState->trainerObjectDownSpriteId == SPRITE_NONE)
+    // Erstellt die südliche Sprite-Animation
+    if (sPlayerOutfitUIState->trainerObjectDownSpriteId == SPRITE_NONE)
     {
-        sPlayerOutfitUIState->trainerObjectDownSpriteId = CreateObjectGraphicsSprite(sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64, 38, 0);
+        sPlayerOutfitUIState->trainerObjectDownSpriteId = CreateObjectGraphicsSprite(
+            sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64, 38, 0);
 
         StartSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectDownSpriteId], ANIM_STD_GO_SOUTH);
         SeekSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectDownSpriteId], sPlayerOutfitUIState->trainerObjectDownAnimIdx);
     }
 
-    if(sPlayerOutfitUIState->trainerObjectUpSpriteId == SPRITE_NONE)
+    // Erstellt die nördliche Sprite-Animation
+    if (sPlayerOutfitUIState->trainerObjectUpSpriteId == SPRITE_NONE)
     {
-        sPlayerOutfitUIState->trainerObjectUpSpriteId = CreateObjectGraphicsSprite(sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64 - xObjectSpacing, 38, 0);
+        sPlayerOutfitUIState->trainerObjectUpSpriteId = CreateObjectGraphicsSprite(
+            sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64 - xObjectSpacing, 38, 0);
 
         StartSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectUpSpriteId], ANIM_STD_GO_NORTH);
         SeekSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectUpSpriteId], sPlayerOutfitUIState->trainerObjectUpAnimIdx);
     }
 
-    if(sPlayerOutfitUIState->trainerObjectSideSpriteId == SPRITE_NONE)
+    // Erstellt die seitliche Sprite-Animation
+    if (sPlayerOutfitUIState->trainerObjectSideSpriteId == SPRITE_NONE)
     {
-        sPlayerOutfitUIState->trainerObjectSideSpriteId = CreateObjectGraphicsSprite(sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64 + xObjectSpacing, 38, 0);
-    
+        sPlayerOutfitUIState->trainerObjectSideSpriteId = CreateObjectGraphicsSprite(
+            sPlayerOutfitUIState->trainerObjectEventGfx, SpriteCallbackDummy, 64 + xObjectSpacing, 38, 0);
+
         StartSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectSideSpriteId], ANIM_STD_GO_EAST);
         SeekSpriteAnim(&gSprites[sPlayerOutfitUIState->trainerObjectSideSpriteId], sPlayerOutfitUIState->trainerObjectSideAnimIdx);
     }
@@ -1506,3 +1507,5 @@ static void RoguePlayerUI_EntryClothesStylePreset_DrawChoices(u8 entryIdx, u8 me
 
     AddMenuValueText(menuOffset, 0, name);
 }
+
+#endif

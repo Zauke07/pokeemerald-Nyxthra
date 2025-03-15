@@ -1865,7 +1865,7 @@ void TryPutTrendWatcherOnAir(const u16 *words)
         show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
         show->trendWatcher.kind = TVSHOW_TREND_WATCHER;
         show->trendWatcher.active = FALSE; // NOTE: Show is not active until passed via Record Mix.
-        show->trendWatcher.gender = gSaveBlock2Ptr->playerGender;
+        show->trendWatcher.style = gSaveBlock2Ptr->playerStyles[0]; // Änderung: `playerGender` → `playerStyle`
         show->trendWatcher.words[0] = words[0];
         show->trendWatcher.words[1] = words[1];
         StringCopy(show->trendWatcher.playerName, gSaveBlock2Ptr->playerName);
@@ -3330,16 +3330,27 @@ u8 CheckForPlayersHouseNews(void)
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
         return PLAYERS_HOUSE_TV_NONE;
 
-    // Check if not in player's house (dependent on gender)
-    if (gSaveBlock2Ptr->playerGender == MALE)
+    // Check ob in richtiger Spieler-Wohnung basierend auf Style
+    switch (gSaveBlock2Ptr->playerStyles[0])
     {
-        if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
-            return PLAYERS_HOUSE_TV_NONE;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
-            return PLAYERS_HOUSE_TV_NONE;
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+        case STYLE_NATE:
+        case STYLE_CALEM:
+        case STYLE_ELIO:
+        case STYLE_VICTOR:
+        case STYLE_FLORIAN:
+            if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
+                return PLAYERS_HOUSE_TV_NONE;
+            break;
+
+        default: // Alle weiblichen Charaktere
+            if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
+                return PLAYERS_HOUSE_TV_NONE;
+            break;
     }
 
     if (FlagGet(FLAG_SYS_TV_LATIAS_LATIOS) == TRUE)
@@ -3353,26 +3364,38 @@ u8 CheckForPlayersHouseNews(void)
 
 void GetMomOrDadStringForTVMessage(void)
 {
-    // If the player is checking the TV in their house it will only refer to their Mom.
+    // Falls der Spieler in seinem eigenen Haus ist, wird nur die Mutter erwähnt.
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
+        switch (gSaveBlock2Ptr->playerStyles[0])
         {
-            if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
-            {
-                StringCopy(gStringVar1, gText_Mom);
-                VarSet(VAR_TEMP_3, 1);
-            }
-        }
-        else
-        {
-            if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
-            {
-                StringCopy(gStringVar1, gText_Mom);
-                VarSet(VAR_TEMP_3, 1);
-            }
+            case STYLE_BRENDAN:
+            case STYLE_RED:
+            case STYLE_ETHAN:
+            case STYLE_LUCAS:
+            case STYLE_HILBERT:
+            case STYLE_NATE:
+            case STYLE_CALEM:
+            case STYLE_ELIO:
+            case STYLE_VICTOR:
+            case STYLE_FLORIAN:
+                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
+                {
+                    StringCopy(gStringVar1, gText_Mom);
+                    VarSet(VAR_TEMP_3, 1);
+                }
+                break;
+
+            default: // Alle weiblichen Charaktere
+                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
+                {
+                    StringCopy(gStringVar1, gText_Mom);
+                    VarSet(VAR_TEMP_3, 1);
+                }
+                break;
         }
     }
+    
     if (VarGet(VAR_TEMP_3) == 1)
     {
         StringCopy(gStringVar1, gText_Mom);
@@ -3383,7 +3406,7 @@ void GetMomOrDadStringForTVMessage(void)
     }
     else if (VarGet(VAR_TEMP_3) > 2)
     {
-        // Should only happen if VAR_TEMP_3 is already in use by something else.
+        // Falls VAR_TEMP_3 durch etwas anderes genutzt wurde, wird zufällig zwischen Mom/Dad gewechselt
         if (VarGet(VAR_TEMP_3) % 2 == 0)
             StringCopy(gStringVar1, gText_Mom);
         else
@@ -3391,9 +3414,7 @@ void GetMomOrDadStringForTVMessage(void)
     }
     else
     {
-        // Randomly choose whether to refer to Mom or Dad.
-        // NOTE: Because of this, any map that has a TV in it shouldn't rely on VAR_TEMP_3.
-        //       If its value is 0, checking the TV will set it to 1 or 2.
+        // Zufällige Auswahl zwischen Mom oder Dad.
         if (Random() % 2 != 0)
         {
             StringCopy(gStringVar1, gText_Mom);

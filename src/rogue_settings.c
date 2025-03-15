@@ -18,6 +18,8 @@
 
 #include "data/rogue/pokemon_nicknames.h"
 
+#ifdef IGNORE_THIS_FILE
+
 STATIC_ASSERT(ARRAY_COUNT(sNicknameTable_Global) != 0, sNicknameTable_Global_IsntEmpty);
 
 struct RogueDifficultyLocal
@@ -579,3 +581,5 @@ bool8 Rogue_ShouldForceNicknameScreen()
 
     return FALSE;
 }
+
+#endif

@@ -11,9 +11,12 @@
 #include "string_util.h"
 #include "random.h"
 #include "strings.h"
+#include "malloc.h"
 
 #include "rogue_player_customisation.h"
 #include "rogue_multiplayer.h"
+
+#ifdef IGNORE_THIS_FILE
 
 // Make sure we round to UI range here
 #define RGB_255_CHANNEL(v) RGB_CONVERT_FROM_UI_RANGE(RGB_CONVERT_TO_UI_RANGE(min(31, (u8)(((u32)v * (u32)31) / (u32)255))))
@@ -1675,15 +1678,17 @@ static const u16* ModifyOutfitPalette(const struct PlayerOutfit* outfit, const u
         u8 i, l;
         u16 baseCol, layerCol, layerMask;
         u16 layerWhitePoint[PLAYER_OUTFIT_STYLE_COUNT];
-        u16* writeBuffer = (u16*)&gDecompressionBuffer[0];
+
+        // Allocate memory dynamically instead of using gDecompressionBuffer
+        u16* writeBuffer = Alloc(16 * sizeof(u16)); // 16 Farben in einer Palette
+        if (!writeBuffer)
+            return basePal; // Falls keine Speicherzuteilung möglich ist, verwende die Basis-Palette
 
         // Calculate the brightest colour for each layer to act as the white point
         // Do this in greyscale
+        for(i = 0; i < PLAYER_OUTFIT_STYLE_COUNT; ++i)
         {
-            for(i = 0; i < PLAYER_OUTFIT_STYLE_COUNT; ++i)
-            {
-                layerWhitePoint[i] = GreyScaleColour(CalculateWhitePointFor(outfit, i, basePal, layerPal));
-            }
+            layerWhitePoint[i] = GreyScaleColour(CalculateWhitePointFor(outfit, i, basePal, layerPal));
         }
 
         // Calculate each colour in the palette
@@ -1716,8 +1721,11 @@ static const u16* ModifyOutfitPalette(const struct PlayerOutfit* outfit, const u
 
 static const u16* ModifyOutfitCompressedPalette(const struct PlayerOutfit* outfit, const u32* basePalSrc, const u32* layerPalSrc, u16 const* layerColours)
 {
-    // Decompress into different area of decompression buffer
-    u16* tempBuffer = (u16*)&gDecompressionBuffer[0];
+    // Allocate memory dynamically instead of using gDecompressionBuffer
+    u16* tempBuffer = Alloc(48 * sizeof(u16)); // 16 für basePal, 16 für layerPal, 16 für temp
+    if (!tempBuffer)
+        return DEFAULT_PAL_TO_LOAD; // Falls keine Speicherzuteilung möglich ist
+
     u16* basePal = &tempBuffer[16];
     u16* layerPal = &tempBuffer[32];
 
@@ -1728,7 +1736,10 @@ static const u16* ModifyOutfitCompressedPalette(const struct PlayerOutfit* outfi
     else
         layerPal = NULL;
 
-    return ModifyOutfitPalette(outfit, basePal, layerPal, layerColours);
+    const u16* modifiedPalette = ModifyOutfitPalette(outfit, basePal, layerPal, layerColours);
+
+    Free(tempBuffer); // Speicher wieder freigeben
+    return modifiedPalette;
 }
 
 #define COLOR_TRANSFORM_MULTIPLY_CHANNEL(value, whitePoint, target) min(31, ((((u16)value) * (u16)target) / (u16)whitePoint))
@@ -1760,3 +1771,5 @@ static u16 ModifyColourLayer(const struct PlayerOutfit* outfit, u8 layer, u16 pl
 }
 
 #undef COLOR_TRANSFORM_MULTIPLY_CHANNEL
+
+#endif

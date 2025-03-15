@@ -1,7 +1,7 @@
 #ifndef GUARD_BARD_SOUNDS_TABLE_H
 #define GUARD_BARD_SOUNDS_TABLE_H
 
-#define NULL_BARD_SOUND { .songLengthId = 0xff }
+#define NULL_BARD_SOUND { .songId = PHONEME_ID_NONE }
 
 #include "pokemon.h"
 #include "moves.h"

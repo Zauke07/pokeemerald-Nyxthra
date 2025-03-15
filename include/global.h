@@ -20,6 +20,8 @@
 #include "constants/items.h"
 #include "config/save.h"
 #include "constants/rogue.h"
+#include "constants/event_objects.h"
+#include "constants/trainers.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -131,6 +133,15 @@
 #define STATIC_ASSERT(expr, id) typedef char id[(expr) ? 1 : -1];
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
+
+extern bool8 IsFemaleStyle(u8 style);
+extern u16 GetPlayerOverworldSpriteId(u8 style);
+extern u16 PlayerStyleToFrontTrainerPicId(u8 style);
+extern u16 GetTrainerPicFromStyle(u8 style);
+extern u16 GetPlayerGraphicsId(u8 playerStyle);
+
+
+#define PLAYER_STYLE gSaveBlock2Ptr->playerStyles
 
 #ifndef NDEBUG
 static inline void CycleCountStart()
@@ -613,7 +624,7 @@ struct SecretBase
     /*0x1AAD*/ u8 unused;
     /*0x1AAE*/ u8 decorations[DECOR_MAX_SECRET_BASE];
     /*0x1ABE*/ u8 decorationPositions[DECOR_MAX_SECRET_BASE];
-    /*0x1ACE*/ //u8 padding[2];
+    /*0x1ACE*/ u8 playerStyle; // 🔥 NEU: Speichert den Charakterstil des Geheimbasenbesitzers
     /*0x1AD0*/ struct SecretBaseParty party;
 };
 

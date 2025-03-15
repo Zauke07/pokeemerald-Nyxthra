@@ -15299,9 +15299,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Verdoppelt den erhaltenen\n"
             "Preisgeldbetrag."),
-        .effect = EFFECT_DO_NOTHING,
-            "Doubles the amount of\n"
-            "Prize Money received."),
         .effect = EFFECT_HAPPY_HOUR,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -15372,9 +15369,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Herzlichen Glückwunsch zu\n"
             "deinem besonderen Tag."),
-        .effect = EFFECT_DO_NOTHING,
-            "Congratulates you on your\n"
-            "special day."),
         .effect = EFFECT_CELEBRATE,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -15405,9 +15399,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Der Benutzer und sein Verbündeter halten\n"
             "Händchen, um sie glücklich zu machen."),
-        .effect = EFFECT_DO_NOTHING,
-            "The user and ally hold hands\n"
-            "making them happy."),
         .effect = EFFECT_HOLD_HANDS,
         .power = 0,
         .type = TYPE_NORMAL,
@@ -16865,9 +16856,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Stiehlt die Stat-Boosts des\n"
             "Ziels und greift dann an."),
         .effect = EFFECT_HIT,
-            "Steals the target's stat\n"
-            "boosts, then attacks."),
-        .effect = EFFECT_SPECTRAL_THIEF,
         .power = 90,
         .type = TYPE_GHOST,
         .accuracy = 100,

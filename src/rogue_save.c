@@ -16,6 +16,8 @@
 #include "rogue_controller.h"
 #include "rogue.h"
 
+#ifdef IGNORE_THIS_FILE
+
 #define ROGUE_SAVE_BLOCK_CAPACITY (sizeof(struct BoxPokemon) * IN_BOX_COUNT * LEFTOVER_BOXES_COUNT)
 
 enum
@@ -130,3 +132,5 @@ u16 RogueSave_GetVersionId()
 {
     return RogueSave_GetVersionIdFor(gRogueSaveBlock->saveVersion);
 }
+
+#endif

@@ -275,14 +275,23 @@ static bool8 LoadBattlerSpriteGfx(u32 battler)
             else
                 BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
         }
-        else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
-            DecompressTrainerBackPic(gSaveBlock2Ptr->playerGender, battler);
-        else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && battler == B_POSITION_PLAYER_LEFT) // Should be checking position, not battler.
+        else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT)
+        {
+            // Safari-Zone: Verwende den aktuellen Spieler-Stil
+            DecompressTrainerBackPic(gSaveBlock2Ptr->playerStyles[0], battler);
+        }
+        else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && battler == B_POSITION_PLAYER_LEFT)
+        {
             DecompressTrainerBackPic(TRAINER_BACK_PIC_WALLY, battler);
+        }
         else if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
+        {
             BattleLoadMonSpriteGfx(&gPlayerParty[gBattlerPartyIndexes[battler]], battler);
+        }
         else
+        {
             BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
+        }
 
         gBattleScripting.reshowHelperState = 0;
     }
@@ -304,7 +313,7 @@ void CreateBattlerSprite(u32 battler)
         {
             if (GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_HP) == 0)
                 return;
-            if (gBattleScripting.monCaught) // Don't create opponent sprite if it has been caught.
+            if (gBattleScripting.monCaught)
                 return;
 
             SetMultiuseSpriteTemplateToPokemon(GetMonData(&gEnemyParty[gBattlerPartyIndexes[battler]], MON_DATA_SPECIES), GetBattlerPosition(battler));
@@ -318,9 +327,10 @@ void CreateBattlerSprite(u32 battler)
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && battler == B_POSITION_PLAYER_LEFT)
         {
-            SetMultiuseSpriteTemplateToTrainerBack(gSaveBlock2Ptr->playerGender, GetBattlerPosition(B_POSITION_PLAYER_LEFT));
+            // Verwende das aktuelle Trainer-Sprite basierend auf `playerStyle`
+            SetMultiuseSpriteTemplateToTrainerBack(gSaveBlock2Ptr->playerStyles[0], GetBattlerPosition(B_POSITION_PLAYER_LEFT));
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 0x50,
-                                                (8 - gTrainerBacksprites[gSaveBlock2Ptr->playerGender].coordinates.size) * 4 + 80,
+                                                (8 - gTrainerBacksprites[gSaveBlock2Ptr->playerStyles[0]].coordinates.size) * 4 + 80,
                                                  GetBattlerSpriteSubpriority(0));
             gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;

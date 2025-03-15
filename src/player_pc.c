@@ -87,6 +87,133 @@ enum {
 
 #define SWAP_LINE_LENGTH 7
 
+u16 GetPlayerOverworldSpriteId(u8 style)
+{
+    static const u16 playerSprites[NUM_PLAYER_CHARACTERS] = {
+        OBJ_EVENT_GFX_BRENDAN_DECORATING, OBJ_EVENT_GFX_MAY_DECORATING, 
+        OBJ_EVENT_GFX_RED, OBJ_EVENT_GFX_LEAF,
+        OBJ_EVENT_GFX_ETHAN, OBJ_EVENT_GFX_LYRA,
+        OBJ_EVENT_GFX_LUCAS, OBJ_EVENT_GFX_DAWN,
+        OBJ_EVENT_GFX_HILBERT, OBJ_EVENT_GFX_HILDA,
+        OBJ_EVENT_GFX_NATE, OBJ_EVENT_GFX_ROSA,
+        OBJ_EVENT_GFX_CALEM, OBJ_EVENT_GFX_SERENA,
+        OBJ_EVENT_GFX_ELIO, OBJ_EVENT_GFX_SELENE,
+        OBJ_EVENT_GFX_VICTOR, OBJ_EVENT_GFX_GLORIA,
+        OBJ_EVENT_GFX_FLORIAN, OBJ_EVENT_GFX_JULIANA
+    };
+    
+    if (style >= NUM_PLAYER_CHARACTERS)
+        return OBJ_EVENT_GFX_BRENDAN_DECORATING; // Fallback auf Brendan
+    
+    return playerSprites[style];
+}
+
+u16 PlayerStyleToFrontTrainerPicId(u8 playerStyle)
+{
+    switch (playerStyle)
+    {
+        case STYLE_BRENDAN:  return TRAINER_PIC_BRENDAN;
+        case STYLE_MAY:      return TRAINER_PIC_MAY;
+        case STYLE_RED:      return TRAINER_PIC_RED;
+        case STYLE_LEAF:     return TRAINER_PIC_LEAF;
+        case STYLE_ETHAN:    return TRAINER_PIC_ETHAN;
+        case STYLE_LYRA:     return TRAINER_PIC_LYRA;
+        case STYLE_LUCAS:    return TRAINER_PIC_LUCAS;
+        case STYLE_DAWN:     return TRAINER_PIC_DAWN;
+        case STYLE_HILBERT:  return TRAINER_PIC_HILBERT;
+        case STYLE_HILDA:    return TRAINER_PIC_HILDA;
+        case STYLE_NATE:     return TRAINER_PIC_NATE;
+        case STYLE_ROSA:     return TRAINER_PIC_ROSA;
+        case STYLE_CALEM:    return TRAINER_PIC_CALEM;
+        case STYLE_SERENA:   return TRAINER_PIC_SERENA;
+        case STYLE_ELIO:     return TRAINER_PIC_ELIO;
+        case STYLE_SELENE:   return TRAINER_PIC_SELENE;
+        case STYLE_VICTOR:   return TRAINER_PIC_VICTOR;
+        case STYLE_GLORIA:   return TRAINER_PIC_GLORIA;
+        case STYLE_FLORIAN:  return TRAINER_PIC_FLORIAN;
+        case STYLE_JULIANA:  return TRAINER_PIC_JULIANA;
+        default:             return TRAINER_PIC_BRENDAN; // Fallback
+    }
+}
+
+u16 GetTrainerPicFromStyle(u8 style)
+{
+    switch (style)
+    {
+        case STYLE_BRENDAN:
+            return TRAINER_BACK_PIC_BRENDAN;
+        case STYLE_MAY:
+            return TRAINER_BACK_PIC_MAY;
+        case STYLE_RED:
+            return TRAINER_BACK_PIC_RED;
+        case STYLE_LEAF:
+            return TRAINER_BACK_PIC_LEAF;
+        case STYLE_ETHAN:
+            return TRAINER_BACK_PIC_ETHAN;
+        case STYLE_LYRA:
+            return TRAINER_BACK_PIC_LYRA;
+        case STYLE_LUCAS:
+            return TRAINER_BACK_PIC_LUCAS;
+        case STYLE_DAWN:
+            return TRAINER_BACK_PIC_DAWN;
+        default:
+            return TRAINER_BACK_PIC_BRENDAN; // Standardfallback
+    }
+}
+
+bool8 IsFemaleStyle(u8 style)
+{
+    return (style % 2 == 1);
+}
+
+u16 GetPlayerGraphicsId(u8 playerStyle)
+{
+    switch (playerStyle)
+    {
+        case STYLE_BRENDAN:
+            return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+        case STYLE_MAY:
+            return OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+        case STYLE_RED:
+            return OBJ_EVENT_GFX_RED;
+        case STYLE_LEAF:
+            return OBJ_EVENT_GFX_LEAF;
+        case STYLE_ETHAN:
+            return OBJ_EVENT_GFX_ETHAN;
+        case STYLE_LYRA:
+            return OBJ_EVENT_GFX_LYRA;
+        case STYLE_LUCAS:
+            return OBJ_EVENT_GFX_LUCAS;
+        case STYLE_DAWN:
+            return OBJ_EVENT_GFX_DAWN;
+        case STYLE_HILBERT:
+            return OBJ_EVENT_GFX_HILBERT;
+        case STYLE_HILDA:
+            return OBJ_EVENT_GFX_HILDA;
+        case STYLE_NATE:
+            return OBJ_EVENT_GFX_NATE;
+        case STYLE_ROSA:
+            return OBJ_EVENT_GFX_ROSA;
+        case STYLE_CALEM:
+            return OBJ_EVENT_GFX_CALEM;
+        case STYLE_SERENA:
+            return OBJ_EVENT_GFX_SERENA;
+        case STYLE_ELIO:
+            return OBJ_EVENT_GFX_ELIO;
+        case STYLE_SELENE:
+            return OBJ_EVENT_GFX_SELENE;
+        case STYLE_VICTOR:
+            return OBJ_EVENT_GFX_VICTOR;
+        case STYLE_GLORIA:
+            return OBJ_EVENT_GFX_GLORIA;
+        case STYLE_FLORIAN:
+            return OBJ_EVENT_GFX_FLORIAN;
+        case STYLE_JULIANA:
+            return OBJ_EVENT_GFX_JULIANA;
+        default:
+            return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL; // Fallback auf Brendan
+    }
+}
 struct ItemStorageMenu
 {
     struct ListMenuItem listItems[PC_ITEMS_COUNT + 1];
@@ -502,12 +629,12 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
+    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Prüfen, ob es sich um den PC im Schlafzimmer handelt
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
-        else
+        if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
             ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
+        else
+            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
     }
     else
     {

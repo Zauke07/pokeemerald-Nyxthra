@@ -157,6 +157,8 @@ bool32 Overworld_SendKeysToLinkIsRunning(void);
 bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 
+u16 GetRivalGraphicsId(u16 rivalId, u8 action);
+
 // Item Description Headers
 enum ItemObtainFlags
 {

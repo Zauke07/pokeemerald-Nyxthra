@@ -372,7 +372,10 @@ void SetPlayerSecretBase(void)
 
     VarSet(VAR_CURRENT_SECRET_BASE, 0);
     StringCopyN(gSaveBlock1Ptr->secretBases[0].trainerName, gSaveBlock2Ptr->playerName, GetNameLength(gSaveBlock2Ptr->playerName));
-    gSaveBlock1Ptr->secretBases[0].gender = gSaveBlock2Ptr->playerGender;
+    
+    // Statt playerGender wird jetzt playerStyle gespeichert
+    gSaveBlock1Ptr->secretBases[0].playerStyle = gSaveBlock2Ptr->playerStyles[0];
+
     gSaveBlock1Ptr->secretBases[0].language = GAME_LANGUAGE;
     VarSet(VAR_SECRET_BASE_MAP, gMapHeader.regionMapSectionId);
 }
@@ -1523,7 +1526,8 @@ static bool8 SecretBaseBelongsToPlayer(struct SecretBase *secretBase)
     if (secretBase->secretBaseId == 0)
         return FALSE;
 
-    if (secretBase->secretBaseId && secretBase->gender != gSaveBlock2Ptr->playerGender)
+    // Statt playerGender wird jetzt playerStyle überprüft
+    if (secretBase->secretBaseId && secretBase->playerStyle != gSaveBlock2Ptr->playerStyles[0])
         return FALSE;
 
     // Check if the player's trainer Id matches the secret base's id.

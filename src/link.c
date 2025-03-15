@@ -312,14 +312,19 @@ void SetLocalLinkPlayerId(u8 playerId)
 
 static void InitLocalLinkPlayer(void)
 {
-    gLocalLinkPlayer.trainerId = gSaveBlock2Ptr->playerTrainerId[0] | (gSaveBlock2Ptr->playerTrainerId[1] << 8) | (gSaveBlock2Ptr->playerTrainerId[2] << 16) | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+    gLocalLinkPlayer.trainerId = gSaveBlock2Ptr->playerTrainerId[0] 
+                               | (gSaveBlock2Ptr->playerTrainerId[1] << 8) 
+                               | (gSaveBlock2Ptr->playerTrainerId[2] << 16) 
+                               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
+    
     StringCopy(gLocalLinkPlayer.name, gSaveBlock2Ptr->playerName);
-    gLocalLinkPlayer.gender = gSaveBlock2Ptr->playerGender;
+    gLocalLinkPlayer.gender = IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]); // Neue Methode für Gender-Erkennung
     gLocalLinkPlayer.linkType = gLinkType;
     gLocalLinkPlayer.language = gGameLanguage;
     gLocalLinkPlayer.version = gGameVersion + 0x4000;
     gLocalLinkPlayer.lp_field_2 = 0x8000;
     gLocalLinkPlayer.progressFlags = IsNationalPokedexEnabled();
+
     if (FlagGet(FLAG_IS_CHAMPION))
     {
         gLocalLinkPlayer.progressFlags |= 0x10;

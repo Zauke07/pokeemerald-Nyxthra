@@ -708,6 +708,47 @@ PetalburgCity_EventScript_SuchenderMann::
 	msgbox PetalburgCity_Text_SuchenderMann, MSGBOX_NPC
 	end
 
+PetalburgCity_EventScript_ChatGPT::
+    lockall
+    faceplayer
+    goto_if_unset FLAG_SYS_GAME_CLEAR, PetalburgCity_EventScript_ChatGPT_NoLeague
+    goto_if_set FLAG_DEFEATED_CHATGPT, PetalburgCity_EventScript_ChatGPT_AfterBattle
+    msgbox PetalburgCity_Text_ChatGPT_Challenge, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, PetalburgCity_EventScript_ChatGPT_Battle
+    msgbox PetalburgCity_Text_ChatGPT_NotReady, MSGBOX_DEFAULT
+    releaseall
+    end
+
+PetalburgCity_EventScript_ChatGPT_Battle::
+    lockall
+    playbgm MUS_HG_VS_CHAMPION, FALSE
+    msgbox PetalburgCity_Text_ChatGPT_BattleStart, MSGBOX_DEFAULT
+    trainerbattle_no_intro TRAINER_CHATGPT, PetalburgCity_Text_ChatGPT_Defeated
+    setflag FLAG_DEFEATED_CHATGPT
+    goto PetalburgCity_EventScript_ChatGPT_AfterBattle
+    end
+
+
+PetalburgCity_EventScript_ChatGPT_AfterBattle::
+    msgbox PetalburgCity_Text_ChatGPT_Lost, MSGBOX_DEFAULT
+    releaseall
+    end
+
+PetalburgCity_EventScript_ChatGPT_NoLeague::
+    msgbox PetalburgCity_Text_ChatGPT_NoLeague, MSGBOX_NPC
+    release
+    end
+
+PetalburgCity_EventScript_ChatGPT_Defeated::
+    msgbox PetalburgCity_Text_ChatGPT_Defeated, MSGBOX_NPC
+    release
+    end
+
+PetalburgCity_EventScript_ChatGPT_Declined::
+    msgbox PetalburgCity_Text_ChatGPT_Declined, MSGBOX_NPC
+    release
+    end
+
 PetalburgCity_Text_WhereIsWally:
 	.string "Wohin ist unser HEIKO nur gegangen?\p"
 	.string "Wir müssen doch bald nach WIESENFLUR\n"
@@ -785,3 +826,56 @@ PetalburgCity_Text_SuchenderMann:
 	.string "DETEKTOR habe.\p"
 	.string "Damit hätte ich sie bestimmt\n"
 	.string "schon gefunden.. :c$"
+
+
+PetalburgCity_Text_ChatGPT_NoLeague:
+    .string "Hey, du bist also {PLAYER}?\n"
+    .string "Ich bin ChatGPT, ein starker Gegner!\p"
+    .string "Aber ich kämpfe nur gegen echte Champions.\n"
+    .string "Besiege die Liga und komm dann\l"
+    .string "zurück für den ultimativen Kampf!\p"
+    .string "Ich habe mein Team selbst ausgesucht!$"
+
+PetalburgCity_Text_ChatGPT_AfterLeague:
+    .string "Oh, du hast die Pokémon Liga geschlagen?\n"
+    .string "Beeindruckend! Dann bist du würdig,\l"
+    .string "gegen mich anzutreten!\p"
+    .string "Willst du den ultimativen Kampf?$"
+
+PetalburgCity_Text_ChatGPT_Challenge:
+    .string "Gut, dann zeige mir, was du drauf hast!\n"
+    .string "Ich werde dich nicht unterschätzen!$"
+
+PetalburgCity_Text_ChatGPT_Lost:
+    .string "Haha! Das war ein intensiver Kampf!\n"
+    .string "Aber ich habe gewonnen. Komm\l"
+    .string "wieder, wenn du stärker bist!$"
+
+PetalburgCity_Text_ChatGPT_Won:
+    .string "Wow, du hast mich geschlagen! Das war\n"
+    .string "ein unglaublicher Kampf!\p"
+    .string "Du hast dir meinen Respekt verdient.\n"
+    .string "Ich werde weiter trainieren!\p"
+    .string "Mal sehen, ob du mich noch einmal\n"
+    .string "besiegen kannst!$"
+
+PetalburgCity_Text_ChatGPT_Defeated:
+    .string "Du hast mich besiegt. Respekt!\n"
+    .string "Aber ich werde nicht aufhören\l"
+    .string "zu trainieren.!$"
+
+PetalburgCity_Text_ChatGPT_Declined:
+    .string "Oh? Du bist noch nicht bereit?\n"
+    .string "Na gut, ich warte hier auf dich.\p"
+    .string "Sag mir Bescheid, wenn du bereit bist!$"
+
+PetalburgCity_Text_ChatGPT_BattleStart:
+    .string "Sehr gut! Zeig mir, was du drauf hast!$"
+
+PetalburgCity_Text_ChatGPT_NotReady:
+    .string "Kein Problem. Trainiere weiter und\n"
+    .string "komm wieder, wenn du bereit bist.$"
+
+PetalburgCity_Text_ChatGPT_Intro:
+    .string "Bereite dich vor, {PLAYER}!\n"
+    .string "Dieser Kampf wird alles entscheiden!$"

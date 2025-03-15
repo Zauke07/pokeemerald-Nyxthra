@@ -777,8 +777,11 @@ u8 GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
 
+    if (trainerClass == TRAINER_CLASS_CHATGPT)
+        return B_TRANSITION_CHATGPT;
+
     if (IsTrainerDoubleBattle(trainerId))
-        minPartyCount = 2; // double battles always at least have 2 Pokémon.
+        minPartyCount = 2; // Doppelkämpfe haben immer mindestens 2 Pokémon.
     else
         minPartyCount = 1;
 
@@ -791,6 +794,7 @@ u8 GetTrainerBattleTransition(void)
     else
         return sBattleTransitionTable_Trainer[transitionType][1];
 }
+
 
 #define RANDOM_TRANSITION(table) (table[Random() % ARRAY_COUNT(table)])
 u8 GetSpecialBattleTransition(s32 id)

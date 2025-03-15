@@ -72,8 +72,68 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/event_objects.h"
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
+
+u16 GetRivalGraphicsId(u16 rivalId, u8 action)
+{
+    switch (rivalId)
+    {
+        // Rivalen mit eigenen Walking- & Riding-Sprites (Gen 1–9 Hauptcharaktere)
+        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+        case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
+        case OBJ_EVENT_GFX_RIVAL_RED:
+        case OBJ_EVENT_GFX_RIVAL_LEAF:
+        case OBJ_EVENT_GFX_RIVAL_ETHAN:
+        case OBJ_EVENT_GFX_RIVAL_LYRA:
+        case OBJ_EVENT_GFX_RIVAL_LUCAS:
+        case OBJ_EVENT_GFX_RIVAL_DAWN:
+        case OBJ_EVENT_GFX_RIVAL_HILBERT:
+        case OBJ_EVENT_GFX_RIVAL_HILDA:
+        case OBJ_EVENT_GFX_RIVAL_NATE:
+        case OBJ_EVENT_GFX_RIVAL_ROSA:
+        case OBJ_EVENT_GFX_RIVAL_CALEM:
+        case OBJ_EVENT_GFX_RIVAL_SERENA:
+        case OBJ_EVENT_GFX_RIVAL_ELIO:
+        case OBJ_EVENT_GFX_RIVAL_SELENE:
+        case OBJ_EVENT_GFX_RIVAL_VICTOR:
+        case OBJ_EVENT_GFX_RIVAL_GLORIA:
+        case OBJ_EVENT_GFX_RIVAL_FLORIAN:
+        case OBJ_EVENT_GFX_RIVAL_JULIANA:
+            if (action == PLAYER_AVATAR_STATE_NORMAL)
+                return rivalId;
+            else
+                return (rivalId % 2 == 0) ? OBJ_EVENT_GFX_RIVAL_RED : OBJ_EVENT_GFX_RIVAL_LEAF;
+
+        // Rivalen mit NUR einer Lauf-Animation (Nutzen für ALLES außer Walking Red/Leaf)
+        case OBJ_EVENT_GFX_RIVAL_BARRY:
+        case OBJ_EVENT_GFX_RIVAL_HOP:
+        case OBJ_EVENT_GFX_RIVAL_HAU:
+        case OBJ_EVENT_GFX_RIVAL_NEMONA:
+        case OBJ_EVENT_GFX_RIVAL_GLADION:
+        case OBJ_EVENT_GFX_RIVAL_HUGH:
+        case OBJ_EVENT_GFX_RIVAL_BIANCA:
+        case OBJ_EVENT_GFX_RIVAL_CHEREN:
+        case OBJ_EVENT_GFX_RIVAL_MARNIE:
+        case OBJ_EVENT_GFX_RIVAL_PENNY:
+        case OBJ_EVENT_GFX_RIVAL_SILVER:
+        case OBJ_EVENT_GFX_RIVAL_ARVEN:
+        case OBJ_EVENT_GFX_RIVAL_BEDE:
+        case OBJ_EVENT_GFX_RIVAL_KLARA:
+        case OBJ_EVENT_GFX_RIVAL_SHAUNA:
+        case OBJ_EVENT_GFX_RIVAL_TIERNO:
+        case OBJ_EVENT_GFX_RIVAL_TREVOR:
+            if (action == PLAYER_AVATAR_STATE_NORMAL)
+                return rivalId;
+            else
+                return (rivalId % 2 == 0) ? OBJ_EVENT_GFX_RIVAL_RED : OBJ_EVENT_GFX_RIVAL_LEAF;
+
+        // ✅ Fallback für unbekannte Rivalen
+        default:
+            return OBJ_EVENT_GFX_RIVAL_RED;
+    }
+}
 
 struct CableClubPlayer
 {
@@ -2252,7 +2312,7 @@ static void InitObjectEventsLocal(void)
     ResetObjectEvents();
     GetCameraFocusCoords(&x, &y);
     player = GetInitialPlayerAvatarState();
-    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerGender);
+    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerStyles[0]);
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
