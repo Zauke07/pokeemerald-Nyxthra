@@ -19,28 +19,31 @@ LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-    return
+	getplayerstyle
+	@special ShowFieldMessageVarObjGfxId0AndStyle
+	@waitbuttonpress
+	@closemessage
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	@goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+	return
 
 LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
 	setmetatile 6, 7, METATILE_BrendansMaysHouse_BookOnTable, TRUE
@@ -50,6 +53,9 @@ LittlerootTown_MaysHouse_1F_OnTransition:
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV
+	@special ShowFieldMessageVarObjGfxId0AndStyle
+	@waitbuttonpress
+	@closemessage
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
@@ -108,6 +114,11 @@ LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport::
 
 LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	lockall
+	getplayerstyle
+	compare VAR_RESULT, STYLE_MAY
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
+	compare VAR_RESULT, STYLE_LEAF
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
 	playse SE_PIN
 	applymovement LOCALID_RIVAL_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -120,6 +131,10 @@ LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	msgbox RivalsHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
 	setflag FLAG_MET_RIVAL_MOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 2
+	releaseall
+	end
+
+LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor:
 	releaseall
 	end
 
@@ -176,24 +191,42 @@ LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom::
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival0::
-	lockall
-	setvar VAR_0x8008, 0
-	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-	end
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End3
+    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End3
+    lockall
+    setvar VAR_0x8008, 0
+    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+RivalTrigger_End3:
+    end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival1::
-	lockall
-	setvar VAR_0x8008, 1
-	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-	end
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End4
+    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End4
+    lockall
+    setvar VAR_0x8008, 1
+    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+RivalTrigger_End4:
+    end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival2::
-	lockall
-	setvar VAR_0x8008, 2
-	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-	end
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End5
+    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End5
+    lockall
+    setvar VAR_0x8008, 2
+    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+RivalTrigger_End5:
+    end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
+	lockall
+	setvar VAR_0x8004, LOCALID_RIVAL
+	spawnrival_style
+	goto LittlerootTown_MaysHouse_1F_ContinueMeetRival
+
+LittlerootTown_MaysHouse_1F_ContinueMeetRival::
 	playse SE_EXIT
 	delay 10
 	addobject LOCALID_RIVAL
@@ -213,6 +246,10 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs2
+
+    @ HIER NEU:
+    setflag FLAG_FIX_RIVAL_DOOR_RAN_MAY
+
 	playse SE_EXIT
 	removeobject LOCALID_RIVAL
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MAY
@@ -234,15 +271,21 @@ LittlerootTown_MaysHouse_1F_EventScript_PlayerFaceMay::
 LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer0::
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer0
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer1::
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer1
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2::
 	applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_1F_Movement_MayApproachPlayer2
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	return
 
@@ -388,7 +431,7 @@ RivalsHouse_1F_Text_MayWhoAreYou:
 	.string "… … … … … … … …\p"
 	.string "Ach, du bist {PLAYER}{KUN}!\n"
 	.string "Du bist heute hierher gezogen.\p"
-	.string "Ähm… Ich bin MAIKE.\n"
+	.string "Ähm… Ich bin {RIVAL}.\n"
 	.string "Schön, dich kennen zu lernen.\p"
 	.string "Ich… Ich habe diesen Traum…\n"
 	.string "Mit POKéMON in der ganzen Welt\l"
@@ -419,7 +462,7 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "nebenan das Kind eines ARENALEITERs\p"
 	.string "einzieht und irgendwie habe ich\n"
 	.string "gedacht, du seiest ein Junge.\p"
-	.string "Ich heiße übrigens BRIX.\n"
+	.string "Ich heiße übrigens {RIVAL}.\n"
 	.string "Also: Hallo, Nachbarin!\p"
 	.string "Was? {PLAYER}, du hast kein einziges\n"
 	.string "POKéMON?\p"
