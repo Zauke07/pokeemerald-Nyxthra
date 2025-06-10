@@ -29,6 +29,7 @@
 #include "task.h"
 #include "window.h"
 #include "menu_specialized.h"
+#include "trainer_pokemon_sprites.h"
 
 // Top level PC menu options
 enum {
@@ -87,6 +88,105 @@ enum {
 
 #define SWAP_LINE_LENGTH 7
 
+u16 GetPlayerOverworldSpriteId(u8 style)
+{
+    static const u16 playerSprites[NUM_PLAYER_CHARACTERS] = {
+        OBJ_EVENT_GFX_BRENDAN_DECORATING, OBJ_EVENT_GFX_MAY_DECORATING, 
+        OBJ_EVENT_GFX_RED, OBJ_EVENT_GFX_LEAF,
+        // OBJ_EVENT_GFX_ETHAN, OBJ_EVENT_GFX_LYRA,
+        // OBJ_EVENT_GFX_LUCAS, OBJ_EVENT_GFX_DAWN,
+        // OBJ_EVENT_GFX_HILBERT, OBJ_EVENT_GFX_HILDA,
+        //OBJ_EVENT_GFX_NATE, OBJ_EVENT_GFX_ROSA,
+        // OBJ_EVENT_GFX_CALEM, OBJ_EVENT_GFX_SERENA,
+        // OBJ_EVENT_GFX_ELIO, OBJ_EVENT_GFX_SELENE,
+        // OBJ_EVENT_GFX_VICTOR, OBJ_EVENT_GFX_GLORIA,
+        // OBJ_EVENT_GFX_FLORIAN, OBJ_EVENT_GFX_JULIANA
+    };
+    
+    if (style >= NUM_PLAYER_CHARACTERS)
+        return OBJ_EVENT_GFX_BRENDAN_DECORATING; // Fallback auf Brendan
+    
+    return playerSprites[style];
+}
+
+u16 GetTrainerPicFromStyle(u8 style)
+{
+    switch (style)
+    {
+        case STYLE_BRENDAN:
+            return TRAINER_BACK_PIC_BRENDAN;
+        case STYLE_MAY:
+            return TRAINER_BACK_PIC_MAY;
+        case STYLE_RED:
+            return TRAINER_BACK_PIC_RED;
+        case STYLE_LEAF:
+            return TRAINER_BACK_PIC_LEAF;
+        // case STYLE_ETHAN:
+        //     return TRAINER_BACK_PIC_ETHAN;
+        // case STYLE_LYRA:
+        //     return TRAINER_BACK_PIC_LYRA;
+        // case STYLE_LUCAS:
+        //     return TRAINER_BACK_PIC_LUCAS;
+        // case STYLE_DAWN:
+        //     return TRAINER_BACK_PIC_DAWN;
+        default:
+            return TRAINER_BACK_PIC_BRENDAN; // Standardfallback
+    }
+}
+
+bool8 IsFemaleStyle(u8 style)
+{
+    return (style % 2 == 1);
+}
+
+u16 GetPlayerGraphicsId(u8 playerStyle)
+{
+    switch (playerStyle)
+    {
+        case STYLE_BRENDAN:
+            return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+        case STYLE_MAY:
+            return OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+        case STYLE_RED:
+            return OBJ_EVENT_GFX_RIVAL_RED;
+        case STYLE_LEAF:
+            return OBJ_EVENT_GFX_RIVAL_LEAF;
+        // case STYLE_ETHAN:
+        //     return OBJ_EVENT_GFX_ETHAN;
+        // case STYLE_LYRA:
+        //     return OBJ_EVENT_GFX_LYRA;
+        // case STYLE_LUCAS:
+        //     return OBJ_EVENT_GFX_LUCAS;
+        // case STYLE_DAWN:
+        //     return OBJ_EVENT_GFX_DAWN;
+        // case STYLE_HILBERT:
+        //     return OBJ_EVENT_GFX_HILBERT;
+        // case STYLE_HILDA:
+        //     return OBJ_EVENT_GFX_HILDA;
+        //case STYLE_NATE:
+        //    return OBJ_EVENT_GFX_NATE;
+        //case STYLE_ROSA:
+        //    return OBJ_EVENT_GFX_ROSA;
+        // case STYLE_CALEM:
+        //     return OBJ_EVENT_GFX_CALEM;
+        // case STYLE_SERENA:
+        //     return OBJ_EVENT_GFX_SERENA;
+        // case STYLE_ELIO:
+        //     return OBJ_EVENT_GFX_ELIO;
+        // case STYLE_SELENE:
+        //     return OBJ_EVENT_GFX_SELENE;
+        // case STYLE_VICTOR:
+        //     return OBJ_EVENT_GFX_VICTOR;
+        // case STYLE_GLORIA:
+        //     return OBJ_EVENT_GFX_GLORIA;
+        // case STYLE_FLORIAN:
+        //     return OBJ_EVENT_GFX_FLORIAN;
+        // case STYLE_JULIANA:
+        //     return OBJ_EVENT_GFX_JULIANA;
+        default:
+            return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL; // Fallback auf Brendan
+    }
+}
 struct ItemStorageMenu
 {
     struct ListMenuItem listItems[PC_ITEMS_COUNT + 1];
@@ -181,30 +281,30 @@ static EWRAM_DATA u8 sTopMenuNumOptions = 0;
 EWRAM_DATA struct PlayerPCItemPageStruct gPlayerPCItemPageInfo = {};
 static EWRAM_DATA struct ItemStorageMenu *sItemStorageMenu = NULL;
 
-static const u8 sText_WithdrawItem[] = _("WITHDRAW ITEM");
-static const u8 sText_DepositItem[] = _("DEPOSIT ITEM");
-static const u8 sText_TossItem[] = _("TOSS ITEM");
-static const u8 sText_Mailbox[] = _("MAILBOX");
+static const u8 sText_WithdrawItem[] = _("Item Nehmen");
+static const u8 sText_DepositItem[] = _("Item Ablegen");
+static const u8 sText_TossItem[] = _("Item Wegwerfen");
+static const u8 sText_Mailbox[] = _("Mails");
 
-static const u8 sText_WithdrawHowManyItems[] = _("Withdraw how many\n{STR_VAR_1}?");
-static const u8 sText_WithdrawXItems[] = _("Withdrew {STR_VAR_2}\n{STR_VAR_1}.");
-static const u8 sText_NoRoomInBag[] = _("There is no more\nroom in the BAG.");
-static const u8 sText_TooImportantToToss[] = _("That's much too\nimportant to toss\nout!");
+static const u8 sText_WithdrawHowManyItems[] = _("Wie viele\n{STR_VAR_1} nehmen?");
+static const u8 sText_WithdrawXItems[] = _("Nahm {STR_VAR_2}\n{STR_VAR_1}.");
+static const u8 sText_NoRoomInBag[] = _("Kein Platz mehr\nim Beutel.");
+static const u8 sText_TooImportantToToss[] = _("Das ist viel zu\nwichtig, um es\nwegzuwerfen!");
 
 static const u8 *const sItemStorage_OptionDescriptions[] =
 {
-    [MENU_WITHDRAW] = COMPOUND_STRING("Take out items from the PC."),
-    [MENU_DEPOSIT]  = COMPOUND_STRING("Store items in the PC."),
-    [MENU_TOSS]     = COMPOUND_STRING("Throw away items stored in the PC."),
+    [MENU_WITHDRAW] = COMPOUND_STRING("Nimm Items aus dem PC."),
+    [MENU_DEPOSIT]  = COMPOUND_STRING("Lagere Items im PC."),
+    [MENU_TOSS]     = COMPOUND_STRING("Wirf Items aus dem PC weg."),
     [MENU_EXIT]     = gText_GoBackPrevMenu,
 };
 
 static const struct MenuAction sPlayerPCMenuActions[] =
 {
-    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("ITEM STORAGE"), {PlayerPC_ItemStorage} },
-    [MENU_MAILBOX]     = { sText_Mailbox,                   {PlayerPC_Mailbox} },
-    [MENU_DECORATION]  = { COMPOUND_STRING("DECORATION"),   {PlayerPC_Decoration} },
-    [MENU_TURNOFF]     = { COMPOUND_STRING("TURN OFF"),     {PlayerPC_TurnOff} }
+    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("Itemlager"), {PlayerPC_ItemStorage} },
+    [MENU_MAILBOX]     = { sText_Mailbox,                      {PlayerPC_Mailbox} },
+    [MENU_DECORATION]  = { COMPOUND_STRING("Dekoration"),      {PlayerPC_Decoration} },
+    [MENU_TURNOFF]     = { COMPOUND_STRING("Ausschalten"),     {PlayerPC_TurnOff} }
 };
 
 static const u8 sBedroomPC_OptionOrder[] =
@@ -232,7 +332,7 @@ static const struct MenuAction sItemStorage_MenuActions[] =
     [MENU_EXIT]     = { gText_Cancel,       {ItemStorage_Exit} }
 };
 
-static const u16 sNewGamePCItems[][2] =
+static const u16 sNewGamePCItems[][GENDER_COUNT] =
 {
     { ITEM_POTION, 1 },
     { ITEM_NONE, 0 }
@@ -240,9 +340,9 @@ static const u16 sNewGamePCItems[][2] =
 
 const struct MenuAction gMailboxMailOptions[] =
 {
-    { COMPOUND_STRING("READ"),        {Mailbox_DoMailRead} },
-    { COMPOUND_STRING("MOVE TO BAG"), {Mailbox_MoveToBag} },
-    { COMPOUND_STRING("GIVE"),        {Mailbox_Give} },
+    { COMPOUND_STRING("Lesen"),        {Mailbox_DoMailRead} },
+    { COMPOUND_STRING("In die Tasche"), {Mailbox_MoveToBag} },
+    { COMPOUND_STRING("Geben"),        {Mailbox_Give} },
     { gText_Cancel2,                  {Mailbox_Cancel} }
 };
 

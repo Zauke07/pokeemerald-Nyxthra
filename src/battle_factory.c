@@ -142,19 +142,19 @@ static void (*const sBattleFactoryFunctions[])(void) =
     [BATTLE_FACTORY_FUNC_RESET_HELD_ITEMS]       = RestorePlayerPartyHeldItems,
 };
 
-static const u32 sWinStreakFlags[][2] =
+static const u32 sWinStreakFlags[][GENDER_COUNT] =
 {
     {STREAK_FACTORY_SINGLES_50, STREAK_FACTORY_SINGLES_OPEN},
     {STREAK_FACTORY_DOUBLES_50, STREAK_FACTORY_DOUBLES_OPEN},
 };
 
-static const u32 sWinStreakMasks[][2] =
+static const u32 sWinStreakMasks[][GENDER_COUNT] =
 {
     {~(STREAK_FACTORY_SINGLES_50), ~(STREAK_FACTORY_SINGLES_OPEN)},
     {~(STREAK_FACTORY_DOUBLES_50), ~(STREAK_FACTORY_DOUBLES_OPEN)},
 };
 
-static const u8 sFixedIVTable[][2] =
+static const u8 sFixedIVTable[][GENDER_COUNT] =
 {
     {3, 6},
     {6, 9},
@@ -166,7 +166,7 @@ static const u8 sFixedIVTable[][2] =
     {31, 31},
 };
 
-static const u16 sInitialRentalMonRanges[][2] =
+static const u16 sInitialRentalMonRanges[][GENDER_COUNT] =
 {
     // Level 50
     {FRONTIER_MON_GRIMER,     FRONTIER_MON_FURRET_1},   // 110 - 199

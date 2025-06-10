@@ -47,7 +47,13 @@
 #include "constants/map_groups.h"
 #include "constants/items.h"
 #include "difficulty.h"
-#include "follower_npc.h"
+#include "constants/battle.h"
+
+#include "mgba.h"
+
+/*
+#include "rogue_controller.h"
+*/
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -59,6 +65,11 @@ static void ResetDexNav(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
+
+void Rogue_SetDefaultOptions(void)
+{
+    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
+}
 
 static const struct ContestWinner sContestWinnerPicDummy =
 {
@@ -101,6 +112,8 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
+    VarSet(VAR_Password_TestLabor, 1337);  // Passwort-Nummer, z. B. 1337 für "openai"
+    Rogue_SetDefaultOptions();
 }
 
 static void ClearPokedexFlags(void)
@@ -175,7 +188,7 @@ void NewGameInitData(void)
     ResetGabbyAndTy();
     ClearSecretBases();
     ClearBerryTrees();
-    SetMoney(&gSaveBlock1Ptr->money, 3000);
+    SetMoney(&gSaveBlock1Ptr->money, 5000);
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();

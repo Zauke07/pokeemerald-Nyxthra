@@ -786,13 +786,13 @@ static void (*const sBattleDomeFunctions[])(void) =
     [BATTLE_DOME_FUNC_INIT_TRAINERS]            = InitDomeTrainers,
 };
 
-static const u32 sWinStreakFlags[][2] =
+static const u32 sWinStreakFlags[][GENDER_COUNT] =
 {
     {STREAK_DOME_SINGLES_50, STREAK_DOME_SINGLES_OPEN},
     {STREAK_DOME_DOUBLES_50, STREAK_DOME_DOUBLES_OPEN},
 };
 
-static const u32 sWinStreakMasks[][2] =
+static const u32 sWinStreakMasks[][GENDER_COUNT] =
 {
     {~(STREAK_DOME_SINGLES_50), ~(STREAK_DOME_SINGLES_OPEN)},
     {~(STREAK_DOME_DOUBLES_50), ~(STREAK_DOME_DOUBLES_OPEN)},

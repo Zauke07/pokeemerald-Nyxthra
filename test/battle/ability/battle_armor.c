@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Mold Breaker, Teravolt and Turboblaze ignore Battle Armor an
 {
     u32 j;
     u32 species1, species2, ability1, ability2;
-    static const u32 breakerData[][2] =
+    static const u32 breakerData[][GENDER_COUNT] =
     {
         {SPECIES_PINSIR,   ABILITY_MOLD_BREAKER},
         {SPECIES_ZEKROM,   ABILITY_TERAVOLT},

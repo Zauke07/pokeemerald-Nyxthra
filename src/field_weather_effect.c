@@ -453,7 +453,7 @@ static const struct SpriteTemplate sRainSpriteTemplate =
 };
 
 // Q28.4 fixed-point format values
-static const s16 sRainSpriteMovement[][2] =
+static const s16 sRainSpriteMovement[][GENDER_COUNT] =
 {
     {-0x68,  0xD0},
     {-0xA0, 0x140},
@@ -462,7 +462,7 @@ static const s16 sRainSpriteMovement[][2] =
 // First byte is the number of frames a raindrop falls before it splashes.
 // Second byte is the maximum number of frames a raindrop can "wait" before
 // it appears and starts falling. (This is only for the initial raindrop spawn.)
-static const u16 sRainSpriteFallingDurations[][2] =
+static const u16 sRainSpriteFallingDurations[][GENDER_COUNT] =
 {
     {18, 7},
     {12, 10},
@@ -2304,7 +2304,7 @@ static const struct SpriteSheet sWeatherBubbleSpriteSheet =
     .tag = GFXTAG_BUBBLE,
 };
 
-static const s16 sBubbleStartCoords[][2] =
+static const s16 sBubbleStartCoords[][GENDER_COUNT] =
 {
     {120, 160},
     {376, 160},

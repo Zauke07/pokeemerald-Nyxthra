@@ -42,6 +42,10 @@
 #include "fldeff.h"
 #include "battle.h"
 
+#include "debug.h"
+
+void FieldHandleDebugInput(void);
+
 static void Task_ExitNonAnimDoor(u8);
 static void Task_ExitNonDoor(u8);
 static void Task_DoContestHallWarp(u8);

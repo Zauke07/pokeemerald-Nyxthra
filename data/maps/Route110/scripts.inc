@@ -9,7 +9,7 @@ Route110_OnResume:
 	end
 
 Route110_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
@@ -370,10 +370,8 @@ Route110_EventScript_RivalTrigger3::
 
 Route110_EventScript_RivalScene::
 	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route110_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, Route110_EventScript_PlayBrendanMusic
-	applymovement LOCALID_ROUTE110_RIVAL, Common_Movement_WalkInPlaceFasterDown
+	call Common_EventScript_SetupRivalMusic
+	applymovement LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement LOCALID_ROUTE110_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -383,78 +381,11 @@ Route110_EventScript_RivalScene::
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalApproachPlayer1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalApproachPlayer2
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_RivalApproachPlayer3
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route110_EventScript_MayBattle
-	goto_if_eq VAR_RESULT, FEMALE, Route110_EventScript_BrendanBattle
-	releaseall
-	end
-
-Route110_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route110_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
-
-Route110_EventScript_MayBattle::
-	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route110_EventScript_MayBattleTreecko
-	case 1, Route110_EventScript_MayBattleTorchic
-	case 2, Route110_EventScript_MayBattleMudkip
-	end
-
-Route110_EventScript_MayBattleTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayBattleMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
-	goto Route110_EventScript_MayDefeated
-	end
-
-Route110_EventScript_MayDefeated::
-	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
-	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
-	goto Route110_EventScript_RivalExit
-	end
-
-Route110_EventScript_BrendanBattle::
-	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route110_EventScript_BrendanBattleTreecko
-	case 1, Route110_EventScript_BrendanBattleTorchic
-	case 2, Route110_EventScript_BrendanBattleMudkip
-	end
-
-Route110_EventScript_BrendanBattleTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanBattleTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanBattleMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
-	goto Route110_EventScript_BrendanDefeated
-	end
-
-Route110_EventScript_BrendanDefeated::
-	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
-	call Route110_EventScript_GiveItemfinder
-	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
-	goto Route110_EventScript_RivalExit
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route110_EventScript_MayBattleRegion
+	goto_if_eq VAR_RESULT, STYLE_MAY, Route110_EventScript_BrendanBattleRegion
+	goto_if_eq VAR_RESULT, STYLE_RED, Route110_EventScript_LeafBattleRegion
+	goto_if_eq VAR_RESULT, STYLE_LEAF, Route110_EventScript_RedBattleRegion
 	end
 
 Route110_EventScript_GiveItemfinder::
@@ -570,6 +501,914 @@ Route110_Movement_RivalExit3:
 	walk_fast_up
 	step_end
 
+Route110_EventScript_MayBattleRegion::
+	switch VAR_STARTER_REGION
+	case 0, Route110_EventScript_MayBattleKanto
+	case 1, Route110_EventScript_MayBattleJohto
+	case 2, Route110_EventScript_MayBattleHoenn
+	case 3, Route110_EventScript_MayBattleSinnoh
+	case 4, Route110_EventScript_MayBattleUnova
+	case 5, Route110_EventScript_MayBattleKalos
+	case 6, Route110_EventScript_MayBattleAlola
+	case 7, Route110_EventScript_MayBattleGalar
+	case 8, Route110_EventScript_MayBattlePaldea
+	end
+
+Route110_EventScript_BrendanBattleRegion::
+	switch VAR_STARTER_REGION
+	case 0, Route110_EventScript_BrendanBattleKanto
+	case 1, Route110_EventScript_BrendanBattleJohto
+	case 2, Route110_EventScript_BrendanBattleHoenn
+	case 3, Route110_EventScript_BrendanBattleSinnoh
+	case 4, Route110_EventScript_BrendanBattleUnova
+	case 5, Route110_EventScript_BrendanBattleKalos
+	case 6, Route110_EventScript_BrendanBattleAlola
+	case 7, Route110_EventScript_BrendanBattleGalar
+	case 8, Route110_EventScript_BrendanBattlePaldea
+	end
+
+Route110_EventScript_LeafBattleRegion::
+	switch VAR_STARTER_REGION
+	case 0, Route110_EventScript_LeafBattleKanto
+	case 1, Route110_EventScript_LeafBattleJohto
+	case 2, Route110_EventScript_LeafBattleHoenn
+	case 3, Route110_EventScript_LeafBattleSinnoh
+	case 4, Route110_EventScript_LeafBattleUnova
+	case 5, Route110_EventScript_LeafBattleKalos
+	case 6, Route110_EventScript_LeafBattleAlola
+	case 7, Route110_EventScript_LeafBattleGalar
+	case 8, Route110_EventScript_LeafBattlePaldea
+	end
+
+Route110_EventScript_RedBattleRegion::
+	switch VAR_STARTER_REGION
+	case 0, Route110_EventScript_RedBattleKanto
+	case 1, Route110_EventScript_RedBattleJohto
+	case 2, Route110_EventScript_RedBattleHoenn
+	case 3, Route110_EventScript_RedBattleSinnoh
+	case 4, Route110_EventScript_RedBattleUnova
+	case 5, Route110_EventScript_RedBattleKalos
+	case 6, Route110_EventScript_RedBattleAlola
+	case 7, Route110_EventScript_RedBattleGalar
+	case 8, Route110_EventScript_RedBattlePaldea
+	end
+
+Route110_EventScript_MayBattleKanto::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleBULBASAUR
+    case 1, Route110_EventScript_MayBattleCHARMANDER
+    case 2, Route110_EventScript_MayBattleSQUIRTLE
+    end
+
+Route110_EventScript_MayBattleJohto::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleCHIKORITA
+    case 1, Route110_EventScript_MayBattleCYNDAQUIL
+    case 2, Route110_EventScript_MayBattleTOTODILE
+    end
+
+Route110_EventScript_MayBattleHoenn::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleTREECKO
+    case 1, Route110_EventScript_MayBattleTORCHIC
+    case 2, Route110_EventScript_MayBattleMUDKIP
+    end
+
+Route110_EventScript_MayBattleSinnoh::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleTURTWIG
+    case 1, Route110_EventScript_MayBattleCHIMCHAR
+    case 2, Route110_EventScript_MayBattlePIPLUP
+    end
+
+Route110_EventScript_MayBattleUnova::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleSNIVY
+    case 1, Route110_EventScript_MayBattleTEPIG
+    case 2, Route110_EventScript_MayBattleOSHAWOTT
+    end
+
+Route110_EventScript_MayBattleKalos::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleCHESPIN
+    case 1, Route110_EventScript_MayBattleFENNEKIN
+    case 2, Route110_EventScript_MayBattleFROAKIE
+    end
+
+Route110_EventScript_MayBattleAlola::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleROWLET
+    case 1, Route110_EventScript_MayBattleLITTEN
+    case 2, Route110_EventScript_MayBattlePOPPLIO
+    end
+
+Route110_EventScript_MayBattleGalar::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleGROOKEY
+    case 1, Route110_EventScript_MayBattleSCORBUNNY
+    case 2, Route110_EventScript_MayBattleSOBBLE
+    end
+
+Route110_EventScript_MayBattlePaldea::
+    msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_MayBattleSPRIGATITO
+    case 1, Route110_EventScript_MayBattleFUECOCO
+    case 2, Route110_EventScript_MayBattleQUAXLY
+    end
+
+Route110_EventScript_BrendanBattleKanto::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleBULBASAUR
+    case 1, Route110_EventScript_BrendanBattleCHARMANDER
+    case 2, Route110_EventScript_BrendanBattleSQUIRTLE
+    end
+
+Route110_EventScript_BrendanBattleJohto::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleCHIKORITA
+    case 1, Route110_EventScript_BrendanBattleCYNDAQUIL
+    case 2, Route110_EventScript_BrendanBattleTOTODILE
+    end
+
+Route110_EventScript_BrendanBattleHoenn::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleTREECKO
+    case 1, Route110_EventScript_BrendanBattleTORCHIC
+    case 2, Route110_EventScript_BrendanBattleMUDKIP
+    end
+
+Route110_EventScript_BrendanBattleSinnoh::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleTURTWIG
+    case 1, Route110_EventScript_BrendanBattleCHIMCHAR
+    case 2, Route110_EventScript_BrendanBattlePIPLUP
+    end
+
+Route110_EventScript_BrendanBattleUnova::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleSNIVY
+    case 1, Route110_EventScript_BrendanBattleTEPIG
+    case 2, Route110_EventScript_BrendanBattleOSHAWOTT
+    end
+
+Route110_EventScript_BrendanBattleKalos::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleCHESPIN
+    case 1, Route110_EventScript_BrendanBattleFENNEKIN
+    case 2, Route110_EventScript_BrendanBattleFROAKIE
+    end
+
+Route110_EventScript_BrendanBattleAlola::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleROWLET
+    case 1, Route110_EventScript_BrendanBattleLITTEN
+    case 2, Route110_EventScript_BrendanBattlePOPPLIO
+    end
+
+Route110_EventScript_BrendanBattleGalar::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleGROOKEY
+    case 1, Route110_EventScript_BrendanBattleSCORBUNNY
+    case 2, Route110_EventScript_BrendanBattleSOBBLE
+    end
+
+Route110_EventScript_BrendanBattlePaldea::
+    msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+    switch VAR_STARTER_MON
+    case 0, Route110_EventScript_BrendanBattleSPRIGATITO
+    case 1, Route110_EventScript_BrendanBattleFUECOCO
+    case 2, Route110_EventScript_BrendanBattleQUAXLY
+    end
+
+Route110_EventScript_LeafBattleKanto::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleBULBASAUR
+	case 1, Route110_EventScript_LeafBattleCHARMANDER
+	case 2, Route110_EventScript_LeafBattleSQUIRTLE
+	end
+
+Route110_EventScript_LeafBattleJohto::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleCHIKORITA
+	case 1, Route110_EventScript_LeafBattleCYNDAQUIL
+	case 2, Route110_EventScript_LeafBattleTOTODILE
+	end
+
+Route110_EventScript_LeafBattleHoenn::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleTREECKO
+	case 1, Route110_EventScript_LeafBattleTORCHIC
+	case 2, Route110_EventScript_LeafBattleMUDKIP
+	end
+
+Route110_EventScript_LeafBattleSinnoh::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleTURTWIG
+	case 1, Route110_EventScript_LeafBattleCHIMCHAR
+	case 2, Route110_EventScript_LeafBattlePIPLUP
+	end
+
+Route110_EventScript_LeafBattleUnova::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleSNIVY
+	case 1, Route110_EventScript_LeafBattleTEPIG
+	case 2, Route110_EventScript_LeafBattleOSHAWOTT
+	end
+
+Route110_EventScript_LeafBattleKalos::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleCHESPIN
+	case 1, Route110_EventScript_LeafBattleFENNEKIN
+	case 2, Route110_EventScript_LeafBattleFROAKIE
+	end
+
+Route110_EventScript_LeafBattleAlola::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleROWLET
+	case 1, Route110_EventScript_LeafBattleLITTEN
+	case 2, Route110_EventScript_LeafBattlePOPPLIO
+	end
+
+Route110_EventScript_LeafBattleGalar::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleGROOKEY
+	case 1, Route110_EventScript_LeafBattleSCORBUNNY
+	case 2, Route110_EventScript_LeafBattleSOBBLE
+	end
+
+Route110_EventScript_LeafBattlePaldea::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_LeafBattleSPRIGATITO
+	case 1, Route110_EventScript_LeafBattleFUECOCO
+	case 2, Route110_EventScript_LeafBattleQUAXLY
+	end
+
+Route110_EventScript_RedBattleKanto::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleBULBASAUR
+	case 1, Route110_EventScript_RedBattleCHARMANDER
+	case 2, Route110_EventScript_RedBattleSQUIRTLE
+	end
+
+Route110_EventScript_RedBattleJohto::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleCHIKORITA
+	case 1, Route110_EventScript_RedBattleCYNDAQUIL
+	case 2, Route110_EventScript_RedBattleTOTODILE
+	end
+
+Route110_EventScript_RedBattleHoenn::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleTREECKO
+	case 1, Route110_EventScript_RedBattleTORCHIC
+	case 2, Route110_EventScript_RedBattleMUDKIP
+	end
+
+Route110_EventScript_RedBattleSinnoh::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleTURTWIG
+	case 1, Route110_EventScript_RedBattleCHIMCHAR
+	case 2, Route110_EventScript_RedBattlePIPLUP
+	end
+
+Route110_EventScript_RedBattleUnova::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleSNIVY
+	case 1, Route110_EventScript_RedBattleTEPIG
+	case 2, Route110_EventScript_RedBattleOSHAWOTT
+	end
+
+Route110_EventScript_RedBattleKalos::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleCHESPIN
+	case 1, Route110_EventScript_RedBattleFENNEKIN
+	case 2, Route110_EventScript_RedBattleFROAKIE
+	end
+
+Route110_EventScript_RedBattleAlola::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleROWLET
+	case 1, Route110_EventScript_RedBattleLITTEN
+	case 2, Route110_EventScript_RedBattlePOPPLIO
+	end
+
+Route110_EventScript_RedBattleGalar::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleGROOKEY
+	case 1, Route110_EventScript_RedBattleSCORBUNNY
+	case 2, Route110_EventScript_RedBattleSOBBLE
+	end
+
+Route110_EventScript_RedBattlePaldea::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_MON
+	case 0, Route110_EventScript_RedBattleSPRIGATITO
+	case 1, Route110_EventScript_RedBattleFUECOCO
+	case 2, Route110_EventScript_RedBattleQUAXLY
+	end
+
+Route110_EventScript_MayBattleBULBASAUR::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_BULBASAUR, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleCHARMANDER::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_CHARMANDER, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleSQUIRTLE::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_SQUIRTLE, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleCHIKORITA::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_CHIKORITA, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleCYNDAQUIL::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_CYNDAQUIL, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleTOTODILE::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TOTODILE, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleTREECKO::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TREECKO, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleTORCHIC::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleMUDKIP::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleTURTWIG::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TURTWIG, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleCHIMCHAR::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_CHIMCHAR, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattlePIPLUP::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_PIPLUP, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleSNIVY::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_SNIVY, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleTEPIG::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_TEPIG, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleOSHAWOTT::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_OSHAWOTT, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleCHESPIN::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_CHESPIN, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleFENNEKIN::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_FENNEKIN, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleFROAKIE::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_FROAKIE, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleROWLET::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_ROWLET, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleLITTEN::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_LITTEN, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattlePOPPLIO::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_POPPLIO, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleGROOKEY::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_GROOKEY, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleSCORBUNNY::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_SCORBUNNY, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleSOBBLE::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_SOBBLE, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleSPRIGATITO::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_SPRIGATITO, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleFUECOCO::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_FUECOCO, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_MayBattleQUAXLY::
+    trainerbattle_no_intro TRAINER_MAY_ROUTE_110_QUAXLY, Route110_Text_MayDefeated
+    goto Route110_EventScript_MayDefeated
+    end
+
+Route110_EventScript_BrendanBattleBULBASAUR::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_BULBASAUR, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleCHARMANDER::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_CHARMANDER, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleSQUIRTLE::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_SQUIRTLE, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleCHIKORITA::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_CHIKORITA, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleCYNDAQUIL::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_CYNDAQUIL, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleTOTODILE::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TOTODILE, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleTREECKO::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleTORCHIC::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleMUDKIP::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleTURTWIG::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TURTWIG, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleCHIMCHAR::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_CHIMCHAR, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattlePIPLUP::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_PIPLUP, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleSNIVY::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_SNIVY, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleTEPIG::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_TEPIG, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleOSHAWOTT::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_OSHAWOTT, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleCHESPIN::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_CHESPIN, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleFENNEKIN::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_FENNEKIN, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleFROAKIE::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_FROAKIE, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleROWLET::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_ROWLET, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleLITTEN::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_LITTEN, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattlePOPPLIO::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_POPPLIO, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleGROOKEY::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_GROOKEY, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleSCORBUNNY::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_SCORBUNNY, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleSOBBLE::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_SOBBLE, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleSPRIGATITO::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_SPRIGATITO, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleFUECOCO::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_FUECOCO, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_BrendanBattleQUAXLY::
+    trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_110_QUAXLY, Route110_Text_BrendanDefeated
+    goto Route110_EventScript_BrendanDefeated
+    end
+
+Route110_EventScript_LeafBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_BULBASAUR, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_CHARMANDER, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_SQUIRTLE, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_CHIKORITA, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_CYNDAQUIL, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_TOTODILE, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleTREECKO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_TREECKO, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_TORCHIC, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_MUDKIP, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_TURTWIG, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_CHIMCHAR, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_PIPLUP, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleSNIVY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_SNIVY, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleTEPIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_TEPIG, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_OSHAWOTT, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_CHESPIN, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_FENNEKIN, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_FROAKIE, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleROWLET::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_ROWLET, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleLITTEN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_LITTEN, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_POPPLIO, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_GROOKEY, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_SCORBUNNY, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_SOBBLE, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_SPRIGATITO, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_FUECOCO, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_LeafBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_110_QUAXLY, Route110_Text_MayDefeated
+	goto Route110_EventScript_LeafDefeated
+	end
+
+Route110_EventScript_RedBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_BULBASAUR, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_CHARMANDER, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_SQUIRTLE, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_CHIKORITA, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_CYNDAQUIL, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_TOTODILE, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleTREECKO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_TREECKO, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_TORCHIC, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_MUDKIP, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_TURTWIG, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_CHIMCHAR, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_PIPLUP, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleSNIVY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_SNIVY, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleTEPIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_TEPIG, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_OSHAWOTT, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_CHESPIN, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_FENNEKIN, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_FROAKIE, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleROWLET::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_ROWLET, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleLITTEN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_LITTEN, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_POPPLIO, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_GROOKEY, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_SCORBUNNY, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_SOBBLE, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_SPRIGATITO, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_FUECOCO, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_RedBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_110_QUAXLY, Route110_Text_BrendanDefeated
+	goto Route110_EventScript_RedDefeated
+	end
+
+Route110_EventScript_MayDefeated::
+	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveItemfinder
+	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
+	goto Route110_EventScript_RivalExit
+	end
+
+Route110_EventScript_BrendanDefeated::
+	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveItemfinder
+	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
+	goto Route110_EventScript_RivalExit
+	end
+
+Route110_EventScript_LeafDefeated::
+	msgbox Route110_Text_MayTakeThis, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveItemfinder
+	msgbox Route110_Text_MayExplainItemfinder, MSGBOX_DEFAULT
+	goto Route110_EventScript_RivalExit
+	end
+
+Route110_EventScript_RedDefeated::
+	msgbox Route110_Text_BrendanTakeThis, MSGBOX_DEFAULT
+	call Route110_EventScript_GiveItemfinder
+	msgbox Route110_Text_BrendanExplainItemfinder, MSGBOX_DEFAULT
+	goto Route110_EventScript_RivalExit
+	end
+
 Route110_EventScript_BirchScene1::
 	lockall
 	setvar VAR_0x8008, 1
@@ -675,6 +1514,64 @@ Route110_EventScript_BirchExit4::
 	waitmovement 0
 	return
 
+Route110_EventScript_BigSnorlax::
+    lockall
+    faceplayer
+    goto_if_unset FLAG_GOT_POKE_FLUTE, Route110_EventScript_SnorlaxNoFlute
+    msgbox Route110_Text_UseFlute, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Route110_EventScript_SnorlaxDontUse
+
+    call Route110_EventScript_AwakenSnorlax
+    setwildbattle SPECIES_SNORLAX, 30
+    setflag FLAG_SYS_CTRL_OBJ_DELETE
+    setflag FLAG_FORCE_SHINY_WILD_BATTLE
+    setflag FLAG_SPECIAL_BATTLE_MUSIC
+    dowildbattle
+    clearflag FLAG_SYS_CTRL_OBJ_DELETE
+    clearflag FLAG_FORCE_SHINY_WILD_BATTLE
+    clearflag FLAG_SPECIAL_BATTLE_MUSIC
+    specialvar VAR_RESULT, GetBattleOutcome
+
+    goto_if_eq VAR_RESULT, B_OUTCOME_WON, Route110_EventScript_SnorlaxDefeated
+    goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Route110_EventScript_SnorlaxDefeated
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route110_EventScript_SnorlaxDefeated
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route110_EventScript_SnorlaxDefeated
+
+    releaseall
+    end
+
+Route110_EventScript_SnorlaxDefeated::
+    fadescreen FADE_TO_BLACK
+    removeobject VAR_LAST_TALKED
+    fadescreen FADE_FROM_BLACK
+    setflag FLAG_HIDE_ROUTE_110_BIG_SNORLAX
+    setflag FLAG_WOKE_UP_BIG_SNORLAX
+    msgbox Route110_Text_SnorlaxLeft, MSGBOX_DEFAULT
+    releaseall
+    end
+
+Route110_EventScript_SnorlaxDontUse::
+    releaseall
+    end
+
+Route110_EventScript_SnorlaxNoFlute::
+    msgbox Route110_Text_SnorlaxSleeping, MSGBOX_DEFAULT
+    message Route110_Text_SnorlaxSearchBag
+    waitmessage
+    delay 20
+    message Route110_Text_SnorlaxNoFluteFound
+    waitmessage
+    releaseall
+    end
+
+Route110_EventScript_AwakenSnorlax::
+    message Route110_Text_PlayedFlute
+    waitmessage
+    playfanfare MUS_RG_POKE_FLUTE
+    waitfanfare
+    msgbox Route110_Text_SnorlaxWokeUp, MSGBOX_DEFAULT
+    return
+
 Route110_Movement_BirchEntrance:
 	walk_down
 	walk_down
@@ -755,56 +1652,59 @@ Route110_Text_AquaActionsBringSmiles:
 	.string "smiles to people's faces!$"
 
 Route110_Text_MayLetsBattle:
-	.string "MAY: Hi, {PLAYER}{KUN}, long time no see!\p"
-	.string "While I was searching for other\n"
-	.string "POKéMON, my POKéMON grew stronger.\p"
-	.string "So…\n"
-	.string "How about a little battle?$"
+	.string "{RIVAL}: Hi, {PLAYER}{KUN}, wir haben uns ja\n"
+	.string "lange nicht gesehen!\p"
+	.string "Während ich auf der Suche nach\n"
+	.string "weiteren Pokémon war, sind meine\l"
+	.string "Pokémon stärker geworden.\p"
+	.string "Daher…\n"
+	.string "Wie wäre es mit einem kleinen Kampf?$"
 
 Route110_Text_MayDefeated:
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
 Route110_Text_MayTakeThis:
-	.string "MAY: {PLAYER}{KUN}, you've been busy\n"
-	.string "training, too, haven't you?\p"
-	.string "I think you deserve a reward!\n"
-	.string "This is from me!$"
+	.string "{RIVAL}: {PLAYER}{KUN}, du hast auch fleißig\n"
+	.string "trainiert, nicht wahr?\p"
+	.string "Ich denke, du verdienst eine Belohnung!\n"
+	.string "Hier, dies ist von mir für dich!$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "MAY: That's an ITEMFINDER.\p"
-	.string "Try it out. If there is an item that's\n"
-	.string "not visible, it emits a sound.\p"
-	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
-	.string "I know it's a little silly coming from\n"
-	.string "me, but I think you should train a lot\l"
-	.string "harder for the next time.$"
+	.string "{RIVAL}: Das ist ein DETEKTOR.\p"
+	.string "Probier ihn mal aus. Wenn irgendwo ein\n"
+	.string "Item versteckt ist, gibt er ein\l"
+	.string "Geräusch von sich.\p"
+	.string "Bis zum nächsten Mal, {PLAYER}{KUN}.\p"
+	.string "Es hört sich aus meinem Munde zwar blöd\n"
+	.string "an, aber bis dahin solltest du viel mehr\l"
+	.string "trainiert haben.$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "BRENDAN: Hey, {PLAYER}.\n"
-	.string "So this is where you were.\l"
-	.string "How's it going?\p"
-	.string "Have you been raising your POKéMON?\n"
-	.string "I'll check for you.$"
+	.string "{RIVAL}: Hey, {PLAYER}.\n"
+	.string "Hier treibst du dich also herum.\l"
+	.string "Wie geht es?\p"
+	.string "Hast du deine Pokémon gut aufgezogen?\n"
+	.string "Ich werde das für dich überprüfen.$"
 
 Route110_Text_BrendanDefeated:
 	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
 Route110_Text_BrendanTakeThis:
-	.string "BRENDAN: {PLAYER}, you've trained\n"
-	.string "without me noticing…\p"
-	.string "Good enough!\n"
-	.string "Here, take this.$"
+	.string "{RIVAL}: {PLAYER}, du hast trainiert,\n"
+	.string "ohne dass ich etwas davon\l"
+	.string "mitbekommen habe…\p"
+	.string "Aber genug!\n"
+	.string "Hier, das ist für dich!$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "BRENDAN: That's an ITEMFINDER.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
-	.string "Anyway, I'm off to look for new\n"
-	.string "POKéMON.$"
+	.string "{RIVAL}: Das ist ein DETEKTOR.\p"
+	.string "Probier ihn mal aus. \p"
+	.string "Ist irgendwo ein Item versteckt, gibt\n"
+	.string "er ein Geräusch von sich.\p"
+	.string "Wie auch immer, ich suche jetzt weiter\n"
+	.string "nach Pokémon.$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wouldn't it be great to ride a BIKE\n"
@@ -981,9 +1881,54 @@ Route110_Text_RegisteredBirchInPokenav:
 	.string "in the POKéNAV.$"
 
 Route110_Text_KeepAnEyeOutForRival:
-	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
-	.string "Please keep an eye out for my {RIVAL}.\n"
-	.string "… … … … … …\p"
-	.string "Well, I had better get going.\n"
-	.string "See you again, {PLAYER}{KUN}!$"
+	.string "PROF. BIRK: {PLAYER}{KUN}…\p"
+	.string "Bitte achte ein wenig auf {RIVAL}.\n"
+	.string "… … … … …\l"
+	.string "…\p"
+	.string "Nun muss ich mich aber beeilen.\n"
+	.string "Man sieht sich, {PLAYER}{KUN}.$"
+
+Route110_EventScript_Flemmli::
+    msgbox Route110_Text_Flemmli, MSGBOX_NPC
+    end
+
+Route110_Text_Flemmli:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 3 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+
+Route110_Text_SnorlaxSleeping::
+    .string "{COLOR RED}{PLAYER}: Meine Fresse...\n"
+    .string "Was ist das denn?!\p"
+    .string "{PLAYER}: Ah, ein dickes fettes\n"
+    .string "{COLOR BLUE}Relaxo{COLOR RED}.\p"
+    .string "{PLAYER}: Wenn ich hier durch will,\n"
+    .string "muss ich wohl die Pokéflöte spielen…{COLOR WHITE}$"
+
+Route110_Text_SnorlaxSearchBag::
+    .string "{COLOR RED}{PLAYER}: Durchsucht den Beutel…\n"
+    .string "…\n"
+    .string "…\n"
+    .string "…{COLOR WHITE}$"
+
+Route110_Text_SnorlaxNoFluteFound::
+    .string "{COLOR RED}{PLAYER}: Fuck!\n"
+    .string "Ich hab noch keine Pokéflöte…{COLOR WHITE}$"
+
+Route110_Text_UseFlute::
+    .string "Willst du die Pokéflöte benutzen?$"
+
+Route110_Text_PlayedFlute::
+    .string "{PLAYER} spielt die Pokéflöte.$"
+
+Route110_Text_SnorlaxWokeUp::
+    .string "{COLOR BLUE}Relaxo{COLOR WHITE} wacht auf!\n"
+    .string "Es wirkt extrem genervt!$"
+
+Route110_Text_SnorlaxLeft::
+    .string "{COLOR BLUE}Relaxo{COLOR WHITE} beruhigte sich…\n"
+    .string "und verschwand in den Büschen.$"
 

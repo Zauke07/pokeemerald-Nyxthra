@@ -559,7 +559,7 @@ static void OpponentHandleChooseMove(u32 battler)
             if (B_WILD_NATURAL_ENEMIES == TRUE && !(GetBattlerMoveTargetType(battler, move) & MOVE_TARGET_BOTH))
             {
                 u16 i, speciesAttacker, speciesTarget, isPartnerEnemy = FALSE;
-                static const u16 naturalEnemies[][2] =
+                static const u16 naturalEnemies[][GENDER_COUNT] =
                 {
                     // Attacker         Target
                     {SPECIES_ZANGOOSE,  SPECIES_SEVIPER},

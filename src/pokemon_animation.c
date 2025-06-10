@@ -213,7 +213,7 @@ static u8 sAnimIdx;
 static bool32 sIsSummaryAnim;
 
 // Equivalent to struct YellowFlashData, but doesn't match as a struct
-static const u8 sYellowFlashData[][2] =
+static const u8 sYellowFlashData[][GENDER_COUNT] =
 {
     {FALSE,  5},
     { TRUE,  1},
@@ -231,7 +231,7 @@ static const u8 sYellowFlashData[][2] =
     {FALSE, -1}
 };
 
-static const u8 sVerticalShakeData[][2] =
+static const u8 sVerticalShakeData[][GENDER_COUNT] =
 {
     { 6,  30},
     {-2,  15},

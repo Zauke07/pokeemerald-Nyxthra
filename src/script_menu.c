@@ -24,6 +24,8 @@
 
 #include "data/script_menu.h"
 
+#include "starter_choose.h"
+
 struct DynamicListMenuEventArgs
 {
     struct ListMenuTemplate *list;

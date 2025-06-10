@@ -17,14 +17,108 @@ BattleFrontier_BattleTowerMultiBattleRoom_OnTransition:
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetObjGfx::
 	tower_setpartnergfx
-	checkplayergender
-	goto_if_eq VAR_RESULT, FEMALE, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFemale
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxBrendan
+	call_if_eq VAR_RESULT, STYLE_MAY, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxMay
+	call_if_eq VAR_RESULT, STYLE_RED, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxRed
+	call_if_eq VAR_RESULT, STYLE_LEAF, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLeaf
+    @call_if_eq VAR_RESULT, STYLE_ETHAN, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxEthan
+    @call_if_eq VAR_RESULT, STYLE_LYRA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLyra
+    @call_if_eq VAR_RESULT, STYLE_LUCAS, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLucas
+    @call_if_eq VAR_RESULT, STYLE_DAWN, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxDawn
+    @call_if_eq VAR_RESULT, STYLE_HILBERT, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxHilbert
+    @call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxHilda
+    @call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxNate
+    @call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxRosa
+    @call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxCalem
+    @call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxSerena
+    @call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxElio
+    @call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxSelene
+    @call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxVictor
+    @call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxGloria
+    @call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFlorian
+    @call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxJuliana
+	return
+
+BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxBrendan::
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_BRENDAN_NORMAL
 	return
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFemale::
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_MAY_NORMAL
 	return
+
+BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxRed::
+    setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_RED
+    return
+
+BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLeaf::
+    setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_LEAF
+    return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxEthan::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_ETHAN
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLyra::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_LYRA
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxLucas::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_LUCAS
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxDawn::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_DAWN
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxHilbert::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_HILBERT
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxHilda::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_HILDA
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxNate::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_NATE
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxRosa::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_ROSA
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxCalem::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_CALEM
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxSerena::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_SERENA
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxElio::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_ELIO
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxSelene::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_SELENE
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxVictor::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_VICTOR
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxGloria::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_GLORIA
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxFlorian::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_FLORIAN
+@	return
+
+@BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetPlayerGfxJuliana::
+@	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_JULIANA
+@   return
 
 BattleFrontier_BattleTowerMultiBattleRoom_EventScript_SetLinkPlayerGfx::
 	special SetBattleTowerLinkPlayerGfx

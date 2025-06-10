@@ -247,7 +247,7 @@ const struct SpriteTemplate gAnchorShotChainTemplate =
     .callback = AnimThunderWave
 };
 
-static const s8 sElectricChargingParticleCoordOffsets[][2] =
+static const s8 sElectricChargingParticleCoordOffsets[][GENDER_COUNT] =
 {
     { 58, -60},
     {-56, -36},

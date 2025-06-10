@@ -1823,7 +1823,7 @@ const struct SpriteTemplate gLockOnMoveTargetSpriteTemplate =
     .callback = AnimLockOnMoveTarget,
 };
 
-const s8 gInclineMonCoordTable[][2] =
+const s8 gInclineMonCoordTable[][GENDER_COUNT] =
 {
     { 64,  64},
     {  0, -64},

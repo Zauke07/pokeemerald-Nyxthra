@@ -37,6 +37,7 @@
 #include "battle.h" // to get rid of later
 #include "constants/rgb.h"
 #include "party_menu.h"
+#include "option_menu.h"
 
 #define GFXTAG_EGG       12345
 #define GFXTAG_EGG_SHARD 23456
@@ -282,7 +283,7 @@ static const struct WindowTemplate sYesNoWinTemplate =
     .baseBlock = 424
 };
 
-static const s16 sEggShardVelocities[][2] =
+static const s16 sEggShardVelocities[][GENDER_COUNT] =
 {
     // First shake
     {Q_8_8(-1.5),       Q_8_8(-3.75)},
@@ -669,6 +670,11 @@ static void CB2_EggHatch(void)
             sEggHatchData->state++;
         break;
     case 8:
+        if (GetCurrentNicknameMode() == OPTIONS_NICKNAME_MODE_NEVER)
+            {
+                sEggHatchData->state = 11; // Direkt zum Fadeout
+            }
+        else
         // Ready the nickname prompt
         GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyId], gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_NicknameHatchPrompt);

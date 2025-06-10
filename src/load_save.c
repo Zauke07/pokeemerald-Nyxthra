@@ -19,6 +19,12 @@
 #include "event_data.h"
 #include "constants/event_objects.h"
 
+/*
+#include "rogue_controller.h"
+#include "rogue_save.h"
+#include "rogue.h"
+*/
+
 static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
 
 #define SAVEBLOCK_MOVE_RANGE    128

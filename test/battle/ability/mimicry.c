@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-static const u16 terrainData[][2] =
+static const u16 terrainData[][GENDER_COUNT] =
 {
     { MOVE_ELECTRIC_TERRAIN, TYPE_ELECTRIC, },
     { MOVE_PSYCHIC_TERRAIN,  TYPE_PSYCHIC, },

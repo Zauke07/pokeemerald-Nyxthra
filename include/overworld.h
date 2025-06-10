@@ -181,4 +181,10 @@ enum ItemObtainFlags
 };
 bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId);
 
+bool8 IsPlayerStyleMale(u8 style);
+u8 GetPlayerGenderFromStyle(void);
+void SetObjectEventGraphicsId(struct ObjectEvent *objEvent, u16 graphicsId);
+void SyncPlayerGenderToStyle(void);
+void Debug_UpdatePlayerNameWithStyleInfo(void);
+
 #endif // GUARD_OVERWORLD_H

@@ -156,7 +156,7 @@ static const u16 sFeebasData[][3] =
     {NUM_SPECIES}
 };
 
-static const u16 sLandmarkData[][2] =
+static const u16 sLandmarkData[][GENDER_COUNT] =
 {
     {MAPSEC_SKY_PILLAR,       FLAG_LANDMARK_SKY_PILLAR},
     {MAPSEC_SEAFLOOR_CAVERN,  FLAG_LANDMARK_SEAFLOOR_CAVERN},

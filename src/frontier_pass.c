@@ -188,7 +188,7 @@ static const u32 sCardBall_Filled_Tilemap[]      = INCBIN_U32("graphics/frontier
 static const u32 sBattleRecord_Tilemap[]         = INCBIN_U32("graphics/frontier_pass/record_frame.bin.lz");
 static const u32 sMapAndCard_Zooming_Tilemap[]   = INCBIN_U32("graphics/frontier_pass/small_map_and_card_affine.bin.lz");
 
-static const s16 sBgAffineCoords[][2] =
+static const s16 sBgAffineCoords[][GENDER_COUNT] =
 {
     [CURSOR_AREA_MAP - 1]  = {216,  32},
     [CURSOR_AREA_CARD - 1] = {216, 128}

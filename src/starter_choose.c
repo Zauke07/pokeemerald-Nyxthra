@@ -24,6 +24,20 @@
 #include "constants/songs.h"
 #include "constants/rgb.h"
 
+
+#include "script.h"
+#include "constants/vars.h"
+#include "list_menu.h"
+#include "constants/script_menu.h"
+#include "script_menu.h"
+#include "field_screen_effect.h"
+#include "overworld.h"
+#include "field_weather.h"
+
+extern u8 Route101_EventScript_BirchsBag[];
+extern const u8 Route101_EventScript_ShowRegionMenuOnly[];
+extern u8 Route101_EventScript_ReturnToPreStarterState[];
+
 #define STARTER_MON_COUNT   3
 
 // Position of the sprite of the selected starter Pokémon
@@ -32,10 +46,19 @@
 
 #define TAG_POKEBALL_SELECT 0x1000
 #define TAG_STARTER_CIRCLE  0x1001
+//#define VAR_STARTER_REGION 0x8004
+
+#define MAX_VISIBLE_STARTER_REGIONS 6
+
+static u8 sStarterRegionWindowId;
+static u8 sStarterRegionListTaskId;
+static void Task_StarterRegionMenu(u8 taskId);
+
 
 static void CB2_StarterChoose(void);
 static void ClearStarterLabel(void);
 static void Task_StarterChoose(u8 taskId);
+//static void Task_ReturnToFieldWithScript(u8 taskId);
 static void Task_HandleStarterChooseInput(u8 taskId);
 static void Task_WaitForStarterSprite(u8 taskId);
 static void Task_AskConfirmStarter(u8 taskId);
@@ -59,6 +82,8 @@ const u32 gBirchGrassTilemap[] = INCBIN_U32("graphics/starter_choose/birch_grass
 const u32 gBirchBagGrass_Gfx[] = INCBIN_U32("graphics/starter_choose/tiles.4bpp.lz");
 const u32 gPokeballSelection_Gfx[] = INCBIN_U32("graphics/starter_choose/pokeball_selection.4bpp.lz");
 static const u32 sStarterCircle_Gfx[] = INCBIN_U32("graphics/starter_choose/starter_circle.4bpp.lz");
+
+EWRAM_DATA static u16 sStarterMon[STARTER_MON_COUNT] = {0};
 
 static const struct WindowTemplate sWindowTemplates[] =
 {
@@ -110,12 +135,71 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
-static const u16 sStarterMon[STARTER_MON_COUNT] =
+/*
+static u16 sStarterMon[STARTER_MON_COUNT] = 
 {
     SPECIES_TREECKO,
     SPECIES_TORCHIC,
     SPECIES_MUDKIP,
 };
+*/
+
+void SetStarterMonListFromRegion(u8 region)
+{
+    switch (region)
+    {
+    case STARTER_REGION_KANTO:
+        sStarterMon[0] = SPECIES_BULBASAUR;
+        sStarterMon[1] = SPECIES_CHARMANDER;
+        sStarterMon[2] = SPECIES_SQUIRTLE;
+        break;
+    case STARTER_REGION_JOHTO:
+        sStarterMon[0] = SPECIES_CHIKORITA;
+        sStarterMon[1] = SPECIES_CYNDAQUIL;
+        sStarterMon[2] = SPECIES_TOTODILE;
+        break;
+    case STARTER_REGION_HOENN:
+        sStarterMon[0] = SPECIES_TREECKO;
+        sStarterMon[1] = SPECIES_TORCHIC;
+        sStarterMon[2] = SPECIES_MUDKIP;
+        break;
+    case STARTER_REGION_SINNOH:
+        sStarterMon[0] = SPECIES_TURTWIG;
+        sStarterMon[1] = SPECIES_CHIMCHAR;
+        sStarterMon[2] = SPECIES_PIPLUP;
+        break;
+    case STARTER_REGION_UNOVA:
+        sStarterMon[0] = SPECIES_SNIVY;
+        sStarterMon[1] = SPECIES_TEPIG;
+        sStarterMon[2] = SPECIES_OSHAWOTT;
+        break;
+    case STARTER_REGION_KALOS:
+        sStarterMon[0] = SPECIES_CHESPIN;
+        sStarterMon[1] = SPECIES_FENNEKIN;
+        sStarterMon[2] = SPECIES_FROAKIE;
+        break;
+    case STARTER_REGION_ALOLA:
+        sStarterMon[0] = SPECIES_ROWLET;
+        sStarterMon[1] = SPECIES_LITTEN;
+        sStarterMon[2] = SPECIES_POPPLIO;
+        break;
+    case STARTER_REGION_GALAR:
+        sStarterMon[0] = SPECIES_GROOKEY;
+        sStarterMon[1] = SPECIES_SCORBUNNY;
+        sStarterMon[2] = SPECIES_SOBBLE;
+        break;
+    case STARTER_REGION_PALDEA:
+        sStarterMon[0] = SPECIES_SPRIGATITO;
+        sStarterMon[1] = SPECIES_FUECOCO;
+        sStarterMon[2] = SPECIES_QUAXLY;
+        break;
+    default:
+        sStarterMon[0] = SPECIES_TREECKO;
+        sStarterMon[1] = SPECIES_TORCHIC;
+        sStarterMon[2] = SPECIES_MUDKIP;
+        break;
+    }
+}
 
 static const struct BgTemplate sBgTemplates[3] =
 {
@@ -201,7 +285,7 @@ static const struct OamData sOam_StarterCircle =
     .affineParam = 0,
 };
 
-static const u8 sCursorCoords[][2] =
+static const u8 sCursorCoords[][GENDER_COUNT] =
 {
     {60, 32},
     {120, 56},
@@ -373,6 +457,7 @@ static void VblankCB_StarterChoose(void)
 
 void CB2_ChooseStarter(void)
 {
+    SetStarterMonListFromRegion(VarGet(VAR_STARTER_REGION));
     u8 taskId;
     u8 spriteId;
 
@@ -481,6 +566,39 @@ static void Task_StarterChoose(u8 taskId)
     gTasks[taskId].func = Task_HandleStarterChooseInput;
 }
 
+/*
+static void Task_ReturnToFieldWithScript(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        ScriptContext_Stop();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        DestroyTask(taskId);
+    }
+}
+
+static void Task_ReturnToBirchsBagScript(u8 taskId)
+{
+    ScriptContext_Init();
+    ScriptContext_SetupScript(Route101_EventScript_BirchsBag);
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void Task_ReturnToRegionMenuOnlyScript(u8 taskId)
+{
+    ScriptContext_Init();
+    ScriptContext_SetupScript(Route101_EventScript_ShowRegionMenuOnly);
+    SetMainCallback2(CB2_ReturnToField);
+}
+
+static void Task_ReturnToPreStarterPosition(u8 taskId)
+{
+    ScriptContext_Init();
+    ScriptContext_SetupScript(Route101_EventScript_ReturnToPreStarterState);
+    SetMainCallback2(CB2_ReturnToField);
+}
+*/
+
 static void Task_HandleStarterChooseInput(u8 taskId)
 {
     u8 selection = gTasks[taskId].tStarterSelection;
@@ -513,6 +631,13 @@ static void Task_HandleStarterChooseInput(u8 taskId)
         gTasks[taskId].tStarterSelection++;
         gTasks[taskId].func = Task_MoveStarterChooseCursor;
     }
+//    else if (JOY_NEW(B_BUTTON))
+//    {
+//        PlaySE(SE_SELECT);
+//        ResetAllPicSprites();
+//        FadeScreen(FADE_TO_BLACK, 0);
+//        CreateTask(Task_ReturnToPreStarterPosition, 0);
+//    }
 }
 
 static void Task_WaitForStarterSprite(u8 taskId)
@@ -527,7 +652,7 @@ static void Task_WaitForStarterSprite(u8 taskId)
 
 static void Task_AskConfirmStarter(u8 taskId)
 {
-    PlayCry_Normal(GetStarterPokemon(gTasks[taskId].tStarterSelection), 0);
+    PlayCryInternal(GetStarterPokemon(gTasks[taskId].tStarterSelection), 0, 120, 1, CRY_MODE_NORMAL);
     FillWindowPixelBuffer(0, PIXEL_FILL(1));
     AddTextPrinterParameterized(0, FONT_NORMAL, gText_ConfirmStarterChoice, 0, 1, 0, NULL);
     ScheduleBgCopyTilemapToVram(0);
@@ -665,3 +790,135 @@ static void SpriteCB_StarterPokemon(struct Sprite *sprite)
     if (sprite->y < STARTER_PKMN_POS_Y)
         sprite->y += 2;
 }
+
+static const struct ListMenuItem sStarterRegionListItems[] =
+{
+    {gText_Kanto,  0},
+    {gText_Johto,  1},
+    {gText_Hoenn,  2},
+    {gText_Sinnoh, 3},
+    {gText_Unova,  4},
+    {gText_Kalos,  5},
+    {gText_Alola,  6},
+    {gText_Galar,  7},
+    {gText_Paldea, 8},
+};
+
+void CreateStarterRegionMenu(void)
+{
+    struct WindowTemplate windowTemplate =
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 2,
+        .width = 12,
+        .height = 14, // 6 Einträge * 2 Zeilen + 2 Rahmen
+        .paletteNum = STD_WINDOW_PALETTE_NUM,
+        .baseBlock = STD_WINDOW_BASE_TILE_NUM,
+    };
+
+
+
+    struct ListMenuTemplate listTemplate =
+    {
+        .items = sStarterRegionListItems,
+        .totalItems = ARRAY_COUNT(sStarterRegionListItems),
+        .maxShowed = MAX_VISIBLE_STARTER_REGIONS,
+        .windowId = 0, // wird gleich ersetzt
+        .header_X = 0,
+        .item_X = 8,
+        .cursor_X = 0,
+        .fontId = FONT_NORMAL,
+        .lettersSpacing = 1,
+        .itemVerticalPadding = 1,
+        .fillValue = 1,
+        .cursorPal = 1,
+        .cursorShadowPal = 2,
+        .moveCursorFunc = NULL,
+        .itemPrintFunc = NULL,
+        .cursorKind = 1,
+    };
+
+    // Fenster erzeugen
+    sStarterRegionWindowId = AddWindow(&windowTemplate);
+    listTemplate.windowId = sStarterRegionWindowId;
+
+    SetStandardWindowBorderStyle(sStarterRegionWindowId, TRUE);
+    FillWindowPixelBuffer(sStarterRegionWindowId, PIXEL_FILL(1)); // << wichtig!
+    PutWindowTilemap(sStarterRegionWindowId);
+    CopyWindowToVram(sStarterRegionWindowId, COPYWIN_FULL);
+
+    // Textbox unten
+    LoadMessageBoxAndFrameGfx(0, TRUE);
+    DrawDialogueFrame(0, TRUE);
+    AddTextPrinterParameterized(0, FONT_NORMAL, gText_WhichStarterRegion, 0, 1, 0, NULL);
+
+    sStarterRegionListTaskId = ListMenuInit(&listTemplate, 0, 0);
+    CreateTask(Task_StarterRegionMenu, 0);
+}
+
+static void Task_StarterRegionMenu(u8 taskId)
+{
+    s32 input = ListMenu_ProcessInput(sStarterRegionListTaskId);
+
+    if (input >= 0)
+    {
+        PlaySE(SE_SELECT);
+        VarSet(VAR_RESULT, input);
+    }
+    else
+    {
+        return; // B drücken = kein Abbruch erlaubt
+    }
+
+    DestroyListMenuTask(sStarterRegionListTaskId, NULL, NULL);
+    ClearStdWindowAndFrameToTransparent(sStarterRegionWindowId, TRUE);
+    ClearWindowTilemap(sStarterRegionWindowId);
+    RemoveWindow(sStarterRegionWindowId);
+    ClearDialogWindowAndFrameToTransparent(0, TRUE);
+    ScriptContext_Enable();
+    DestroyTask(taskId);
+}
+
+bool8 ShowStarterRegionMenu(struct ScriptContext *ctx)
+{
+    ScriptContext_Stop();
+    CreateStarterRegionMenu();
+    return TRUE;
+}
+
+//test
+
+const u8 *const sStarterRegionChoices[] =
+{
+    gText_Kanto,
+    gText_Johto,
+    gText_Hoenn,
+    gText_Sinnoh,
+    gText_Unova,
+    gText_Kalos,
+    gText_Alola,
+    gText_Galar,
+    gText_Paldea,
+};
+
+bool8 ShowStarterRegionMulti(struct ScriptContext *ctx)
+{
+    LoadMessageBoxAndFrameGfx(0, TRUE);
+    DrawDialogueFrame(0, TRUE);
+    AddTextPrinterParameterized(0, FONT_NORMAL, gText_WhichStarterRegion, 0, 1, 0, NULL);
+
+    ScriptContext_Stop();
+    ScriptMenu_MultichoiceDynamic(
+        0, 0,
+        ARRAY_COUNT(sStarterRegionListItems),
+        (struct ListMenuItem *)sStarterRegionListItems,
+        TRUE, // B darf nicht abbrechen
+        6,    // maxBeforeScroll
+        0,    // initialRow
+        0     // callbackSet
+    );
+    return TRUE;
+}
+
+

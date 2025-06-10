@@ -99,7 +99,8 @@
     "LittlerootTown_BrendansHouse_2F",
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
-    "LittlerootTown_ProfessorBirchsLab"
+    "LittlerootTown_ProfessorBirchsLab",
+    "Testlabor"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -319,7 +320,8 @@
     "Route117_PokemonDayCare"
   ],
   "gMapGroup_IndoorRoute121": [
-    "Route121_SafariZoneEntrance"
+    "Route121_SafariZoneEntrance",
+    "TestSurf"
   ],
   "gMapGroup_Dungeons": [
     "MeteorFalls_1F_1R",
@@ -583,7 +585,8 @@
     "NavelRock_Down10",
     "NavelRock_Down11",
     "NavelRock_Bottom",
-    "TrainerHill_Elevator"
+    "TrainerHill_Elevator",
+    "TestHhle"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

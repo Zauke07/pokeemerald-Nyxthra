@@ -26,6 +26,8 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
+#include "strings.h"
+#include "field_message_box.h"
 
 #define PALTAG_UNUSED_MUGSHOT 0x100A
 
@@ -287,12 +289,18 @@ static bool8 MugshotTrainerPic_SlideSlow(struct Sprite *);
 static bool8 MugshotTrainerPic_SlidePartner(struct Sprite *);
 static bool8 MugshotTrainerPic_SlideOffscreen(struct Sprite *);
 
+void Task_ChatGPT(u8 taskId);
+bool8 ChatGPT_Init(struct Task *);
+bool8 ChatGPT_SetGfx(struct Task *);
+void Task_LogoBattleTransition(u8 taskId);
+void Task_LogoBattleTransition_Wait(u8 taskId);
+
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
 static u8 sTestingTransitionState;
 static struct RectangularSpiralLine sRectangularSpiralLines[4];
 
-EWRAM_DATA static struct TransitionData *sTransitionData = NULL;
+EWRAM_DATA struct TransitionData *sTransitionData = NULL;
 
 static const u32 sBigPokeball_Tileset[] = INCBIN_U32("graphics/battle_transitions/big_pokeball.4bpp");
 static const u32 sPokeballTrail_Tileset[] = INCBIN_U32("graphics/battle_transitions/pokeball_trail.4bpp");
@@ -301,9 +309,9 @@ static const u32 sEliteFour_Tileset[] = INCBIN_U32("graphics/battle_transitions/
 static const u8 sUnusedBrendan_Gfx[] = INCBIN_U8("graphics/battle_transitions/unused_brendan.4bpp");
 static const u8 sUnusedLass_Gfx[] = INCBIN_U8("graphics/battle_transitions/unused_lass.4bpp");
 static const u32 sShrinkingBoxTileset[] = INCBIN_U32("graphics/battle_transitions/shrinking_box.4bpp");
-static const u16 sEvilTeam_Palette[] = INCBIN_U16("graphics/battle_transitions/evil_team.gbapal");
-static const u32 sTeamAqua_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_aqua.4bpp.lz");
-static const u32 sTeamAqua_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_aqua.bin.lz");
+const u16 sEvilTeam_Palette[] = INCBIN_U16("graphics/battle_transitions/evil_team.gbapal");
+const u32 sTeamAqua_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_aqua.4bpp.lz");
+const u32 sTeamAqua_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_aqua.bin.lz");
 static const u32 sTeamMagma_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_magma.4bpp.lz");
 static const u32 sTeamMagma_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_magma.bin.lz");
 static const u32 sRegis_Tileset[] = INCBIN_U32("graphics/battle_transitions/regis.4bpp");
@@ -334,6 +342,9 @@ static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCBIN_U32("graphics/battl
 static const u32 sFrontierSquares_Shrink1_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_3.4bpp.lz");
 static const u32 sFrontierSquares_Shrink2_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_4.4bpp.lz");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
+const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.lz");
+const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.lz");
+const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -384,6 +395,71 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
 };
+
+void DoLogoBattleTransition(u8 taskId, const u32 *tiles, const u32 *tilemap, const u16 *palette)
+{
+    u8 newTaskId = CreateTask(Task_LogoBattleTransition, 0);
+    struct Task *task = &gTasks[newTaskId];
+
+    task->data[0] = (u32)tiles >> 16;
+    task->data[1] = (u32)tiles & 0xFFFF;
+    task->data[2] = (u32)tilemap >> 16;
+    task->data[3] = (u32)tilemap & 0xFFFF;
+    task->data[4] = (u32)palette >> 16;
+    task->data[5] = (u32)palette & 0xFFFF;
+    task->data[6] = TASK_NONE;
+}
+
+// Task: zeigt das Logo an und startet danach die normale Transition
+void Task_LogoBattleTransition(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    const u32 *tiles = (const u32 *)((task->data[0] << 16) | task->data[1]);
+    const u32 *tilemap = (const u32 *)((task->data[2] << 16) | task->data[3]);
+    const u16 *palette = (const u16 *)((task->data[4] << 16) | task->data[5]);
+
+    // Bildschirm vorbereiten
+    ResetPaletteFade();
+    ResetSpriteData();
+    FreeAllSpritePalettes();
+    ClearVramOamPlttRegisters();
+
+    SetVBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_BG0_ON);
+    SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(31) | BGCNT_TXT256x256);
+
+    // Grafik und Map laden
+    LZ77UnCompVram(tiles, (void *)BG_CHAR_ADDR(0));
+    LZ77UnCompVram(tilemap, (void *)BG_SCREEN_ADDR(31));
+    LoadPalette(palette, 0, 0x20);
+
+    // Kurze Verzögerung für Logo-Effekt
+    task->func = Task_LogoBattleTransition_Wait;
+    task->data[7] = 0;
+}
+
+void ClearVramOamPlttRegisters(void)
+{
+    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
+    DmaFill16(3, 0, (void *)OAM, OAM_SIZE);
+    DmaFill16(3, 0, (void *)PLTT, PLTT_SIZE);
+}
+
+void Task_LogoBattleTransition_Wait(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    task->data[7]++;
+
+    // Warte z. B. ~60 Frames (~1 Sekunde)
+    if (task->data[7] > 60)
+    {
+        u8 nextTask = task->data[6]; // Ursprünglicher Transition-Task
+        DestroyTask(taskId);
+        if (nextTask != TASK_NONE)
+        gTasks[nextTask].func(nextTask);
+    }
+}
 
 static const TransitionStateFunc sTaskHandlers[] =
 {
@@ -1728,6 +1804,49 @@ static void VBlankCB_CircularMask(void)
     DmaSet(0, gScanlineEffectRegBuffers[1], &REG_WIN0H, B_TRANS_DMA_FLAGS);
 }
 
+const TransitionStateFunc sChatGPT_Funcs[] =
+{
+    ChatGPT_Init,
+    ChatGPT_SetGfx,
+    PatternWeave_Blend1,
+    PatternWeave_Blend2,
+    PatternWeave_FinishAppear,
+    FramesCountdown,
+    PatternWeave_CircularMask
+};
+
+void Task_ChatGPT(u8 taskId)
+{
+    while (sChatGPT_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+bool8 ChatGPT_Init(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    task->tEndDelay = 60;
+    InitPatternWeaveTransition(task);
+    GetBg0TilesDst(&tilemap, &tileset);
+    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
+    LZ77UnCompVram(sChatGPT_Tileset, tileset);
+    LoadPalette(sChatGPT_Palette, BG_PLTT_ID(15), sizeof(sChatGPT_Palette));
+
+    task->tState++;
+    return FALSE;
+}
+
+bool8 ChatGPT_SetGfx(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+    LZ77UnCompVram(sChatGPT_Tilemap, tilemap);
+    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+
+    task->tState++;
+    return FALSE;
+}
+
 #undef tAmplitude
 #undef tSinIndex
 #undef tBlendTarget1
@@ -2589,49 +2708,20 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-    {
-        task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
-                                                    gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,
-                                                    gTrainerSprites[trainerBPicId].mugshotCoords.y + 42,
-                                                    0, NULL);
-        opponentSpriteB = &gSprites[task->tOpponentSpriteBId];
-        opponentSpriteB->callback = SpriteCB_MugshotTrainerPicPartner;
-        opponentSpriteB->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
-        opponentSpriteB->oam.matrixNum = AllocOamMatrix();
-        opponentSpriteB->oam.shape = SPRITE_SHAPE(64x32);
-        opponentSpriteB->oam.size = SPRITE_SIZE(64x32);
-        CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
-        opponentBRotationScales = gTrainerSprites[trainerBPicId].mugshotRotation;
-        SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
-    }
-
-    task->tOpponentSpriteAId = CreateTrainerSprite(trainerAPicId,
-                                                  gTrainerSprites[trainerAPicId].mugshotCoords.x - 32,
-                                                  gTrainerSprites[trainerAPicId].mugshotCoords.y + 42,
-                                                  0, NULL);
-
+    task->tOpponentSpriteId = CreateTrainerSprite(
+        trainerPicId,
+        gTrainerSprites[trainerPicId].mugshotCoords.x - 32,
+        gTrainerSprites[trainerPicId].mugshotCoords.y + 42,
+        0, NULL);
     gReservedSpritePaletteCount = 12;
-    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) 
-    {
-        task->tPartnerSpriteId = CreateTrainerSprite(partnerPicId, 
-                                                DISPLAY_WIDTH + 240, 
-                                                106, 
-                                                0, NULL);
-        partnerSprite = &gSprites[task->tPartnerSpriteId];
-        partnerSprite->callback = SpriteCB_MugshotTrainerPicPartner;
-        partnerSprite->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
-        partnerSprite->oam.matrixNum = AllocOamMatrix();
-        partnerSprite->oam.shape = SPRITE_SHAPE(64x32);
-        partnerSprite->oam.size = SPRITE_SIZE(64x32);
-        CalcCenterToCornerVec(partnerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
-        SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -512, 512, 0);
-    }
 
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender), 
-                                                DISPLAY_WIDTH + 32, 
-                                                106, 
-                                                0, NULL); 
+    // ⬇️ Verwende getClass = TRUE, um den FacilityClass-PicIndex zu bekommen
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    task->tPlayerSpriteId = CreateTrainerSprite(
+        PlayerStyleToFrontTrainerPicId(style, TRUE),
+        DISPLAY_WIDTH + 32,
+        106,
+        0, NULL);
 
     opponentSpriteA = &gSprites[task->tOpponentSpriteAId];
     playerSprite = &gSprites[task->tPlayerSpriteId];
@@ -2654,9 +2744,9 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     CalcCenterToCornerVec(opponentSpriteA, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
     CalcCenterToCornerVec(playerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
 
-    opponentARotationScales = gTrainerSprites[trainerAPicId].mugshotRotation;
+    opponentRotationScales = gTrainerSprites[trainerPicId].mugshotRotation;
 
-    SetOamMatrixRotationScaling(opponentSpriteA->oam.matrixNum, opponentARotationScales, opponentARotationScales, 0);
+    SetOamMatrixRotationScaling(opponentSprite->oam.matrixNum, opponentRotationScales, opponentRotationScales, 0);
     SetOamMatrixRotationScaling(playerSprite->oam.matrixNum, -512, 512, 0);
 }
 

@@ -50,7 +50,7 @@ TEST("Script_HasNoEffect variables")
         random 2;
         checkmoney 5000;
         getpokenewsactive POKENEWS_LILYCOVE;
-        checkplayergender;
+        isstylemale;
         checkcoins VAR_RESULT;
         checkmodernfatefulencounter 0;
         end;

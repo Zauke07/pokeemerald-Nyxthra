@@ -46,7 +46,7 @@
 #include "menu.h"
 #include "pokemon_summary_screen.h"
 #include "type_icons.h"
-#include "pokedex.h"
+#include "battle_main.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -1900,12 +1900,21 @@ u32 LinkPlayerGetTrainerPicId(u32 multiplayerId)
     u8 gender = gLinkPlayers[multiplayerId].gender;
     u8 version = gLinkPlayers[multiplayerId].version & 0xFF;
 
-    if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
-        trainerPicId = gender + TRAINER_BACK_PIC_RED;
-    else if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
-        trainerPicId = gender + TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN;
+    if (multiplayerId != GetMultiplayerId())
+    {
+        // Für andere Link-Spieler: wie bisher anhand gender + Version
+        if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
+            trainerPicId = gender + TRAINER_BACK_PIC_RED;
+        else if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
+            trainerPicId = gender + TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN;
+        else
+            trainerPicId = gender + TRAINER_BACK_PIC_BRENDAN;
+    }
     else
-        trainerPicId = gender + TRAINER_BACK_PIC_BRENDAN;
+    {
+        // Für dich selbst (lokaler Spieler): Style basiert
+        trainerPicId = GetPlayerBackSpriteId();
+    }
 
     return trainerPicId;
 }
@@ -2330,7 +2339,8 @@ static void PlayerHandleOneReturnValue_Duplicate(u32 battler)
 
 static void PlayerHandleIntroTrainerBallThrow(u32 battler)
 {
-    const u16 *trainerPal = gTrainerBacksprites[gSaveBlock2Ptr->playerGender].palette.data;
+    u32 backSpriteId = GetPlayerBackSpriteId();
+    const u32 *trainerPal = gTrainerBacksprites[backSpriteId].palette.data;
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
 }
 

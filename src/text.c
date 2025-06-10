@@ -276,7 +276,7 @@ static const struct FontInfo sFontInfos[] =
     },
 };
 
-static const u8 sMenuCursorDimensions[][2] =
+static const u8 sMenuCursorDimensions[][GENDER_COUNT] =
 {
     [FONT_SMALL]          = { 8,  12 },
     [FONT_NORMAL]         = { 8,  15 },

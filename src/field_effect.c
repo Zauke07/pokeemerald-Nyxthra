@@ -40,6 +40,8 @@
 #include "constants/songs.h"
 #include "constants/map_types.h"
 
+#include "mgba.h"
+
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
@@ -906,18 +908,21 @@ u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buf
     struct SpriteTemplate spriteTemplate;
     bool32 alloced = FALSE;
 
-    // Allocate memory for buffer
+    // Speicher allokieren, falls keiner übergeben wurde
     if (buffer == NULL)
     {
         buffer = Alloc(TRAINER_PIC_SIZE);
         alloced = TRUE;
     }
 
-    LoadSpritePalette(&gTrainerSprites[trainerSpriteID].palette);
+    // Palette und Grafik laden
+    LoadCompressedSpritePaletteOverrideBuffer(&gTrainerSprites[trainerSpriteID].palette, buffer);
     LoadCompressedSpriteSheetOverrideBuffer(&gTrainerSprites[trainerSpriteID].frontPic, buffer);
+
     if (alloced)
         Free(buffer);
 
+    // SpriteTemplate vorbereiten
     spriteTemplate.tileTag = gTrainerSprites[trainerSpriteID].frontPic.tag;
     spriteTemplate.paletteTag = gTrainerSprites[trainerSpriteID].palette.tag;
     spriteTemplate.oam = &sOam_64x64;
@@ -925,6 +930,8 @@ u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buf
     spriteTemplate.images = NULL;
     spriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
     spriteTemplate.callback = SpriteCallbackDummy;
+
+    // Sprite erstellen und ID zurückgeben
     return CreateSprite(&spriteTemplate, x, y, subpriority);
 }
 
@@ -3353,7 +3360,7 @@ u8 FldEff_NPCFlyOut(void)
     u8 spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
     struct Sprite *sprite = &gSprites[spriteId];
 
-    sprite->oam.paletteNum = LoadPlayerObjectEventPalette(gSaveBlock2Ptr->playerGender);
+    sprite->oam.paletteNum = LoadPlayerObjectEventPaletteByStyle(gSaveBlock2Ptr->playerStyles[0]);
     sprite->oam.priority = 1;
     sprite->callback = SpriteCB_NPCFlyOut;
     sprite->data[1] = gFieldEffectArguments[0];
@@ -3536,7 +3543,7 @@ static u8 CreateFlyBirdSprite(void)
     struct Sprite *sprite;
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0xff, 0xb4, 0x1);
     sprite = &gSprites[spriteId];
-    sprite->oam.paletteNum = LoadPlayerObjectEventPalette(gSaveBlock2Ptr->playerGender);
+    sprite->oam.paletteNum = LoadPlayerObjectEventPaletteByStyle(gSaveBlock2Ptr->playerStyles[0]);
     sprite->oam.priority = 1;
     sprite->callback = SpriteCB_FlyBirdLeaveBall;
     return spriteId;

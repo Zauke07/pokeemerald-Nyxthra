@@ -1,6 +1,8 @@
 #include "global.h"
 #include "gba/m4a_internal.h"
 #include "global.h"
+#include "m4a.h"
+#include "option_menu.h"
 
 extern const u8 gCgb3Vol[];
 

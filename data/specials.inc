@@ -563,3 +563,14 @@ gSpecials::
 	def_special UseBlankMessageToCancelPokemonPic
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special ShowFieldMessageVarObjGfxId0AndStyle
+	def_special GetRivalStyleGraphicsIdAndSetVar
+	def_special SpawnRivalObjectEventFromStyle
+	def_special BufferIntToStringVar1
+	def_special BufferIntToStringVar2
+	def_special ShowTestPasswordMenu
+	def_special ShowStarterRegionMenu
+	def_special ShowStarterRegionMulti
+
+
+

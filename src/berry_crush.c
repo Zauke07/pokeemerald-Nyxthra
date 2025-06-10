@@ -650,14 +650,14 @@ static const struct BerryCrushPlayerCoords sPlayerCoords[MAX_RFU_PLAYERS] =
 };
 
 
-static const s8 sImpactCoords[][2] =
+static const s8 sImpactCoords[][GENDER_COUNT] =
 {
     { 0, 0},
     {-1, 0},
     { 1, 1},
 };
 
-static const s8 sSparkleCoords[][2] =
+static const s8 sSparkleCoords[][GENDER_COUNT] =
 {
     {  0,   0},
     {-16,  -4},

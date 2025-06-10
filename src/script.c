@@ -9,6 +9,20 @@
 #include "constants/flags.h"
 #include "constants/map_scripts.h"
 #include "field_message_box.h"
+#include "overworld.h"
+#include "fieldmap.h"
+#include "field_player_avatar.h"
+#include "constants/event_object_movement.h"
+#include "event_object_movement.h"
+#include "strings.h"
+#include "battle_transition.h"
+#include "palette.h"
+#include "task.h"
+#include "main.h"
+#include "constants/field_weather.h"
+#include "field_weather.h"
+#include "password_input.h"
+
 
 #define RAM_SCRIPT_MAGIC 51
 
@@ -30,6 +44,7 @@ static u8 sGlobalScriptContextStatus;
 static struct ScriptContext sGlobalScriptContext;
 static struct ScriptContext sImmediateScriptContext;
 static bool8 sLockFieldControls;
+static void Task_ShowChatGPTLogoFromScript(u8 taskId);
 EWRAM_DATA u8 gMsgIsSignPost = FALSE;
 EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 
@@ -637,3 +652,144 @@ void Script_RequestWriteVar_Internal(u32 varId)
         return;
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 }
+
+bool8 ScrCmd_IsStyleMale(struct ScriptContext *ctx)
+{
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    gSpecialVar_Result = IsPlayerStyleMale(style);
+    return FALSE;
+}
+
+bool8 isstylemale(u8 style)
+{
+    return IsPlayerStyleMale(style);
+}
+
+
+bool8 ScrCmd_hideobject(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    HideObjectEventByLocalId(localId);
+    return FALSE;
+}
+
+bool8 ScrCmd_showobject(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    ShowObjectEventByLocalId(localId);
+    return FALSE;
+}
+
+bool8 ScrCmd_setobjectgfxid(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    u16 gfxId = ScriptReadHalfword(ctx);
+    SetObjectEventGraphicsIdByLocalId(localId, gfxId);
+    return FALSE;
+}
+
+bool8 ScriptCmd_SpawnRivalForStyle(struct ScriptContext *ctx)
+{
+    u8 style = VarGet(VAR_0x8004);
+    s16 x = VarGet(VAR_0x8005);
+    s16 y = VarGet(VAR_0x8006);
+    u8 localId = VarGet(VAR_0x8007); // neuer Parameter für localId
+
+    SpawnRivalObjectEventForStyle(style, localId, x, y, DIR_SOUTH);
+    return FALSE;
+}
+
+bool8 ScrCmd_SpawnRivalObjectEventFromStyle(struct ScriptContext *ctx)
+{
+    u8 style    = gSaveBlock2Ptr->playerStyles[0];
+    u16 gfxId   = GetRivalGraphicsIdByPlayerStyle(style, PLAYER_AVATAR_STATE_NORMAL);
+    VarSet(VAR_OBJ_GFX_ID_0, gfxId);
+
+    u8 localId = VarGet(VAR_0x8004);
+
+    // Template aus Map holen …
+    const struct ObjectEventTemplate *tmpl = GetObjectEventTemplateByLocalIdAndMap(
+        localId,
+        gSaveBlock1Ptr->location.mapNum,
+        gSaveBlock1Ptr->location.mapGroup
+    );
+
+    // Position, Richtung, Bewegung direkt aus dem Objekt übernehmen
+    SpawnSpecialObjectEventParameterized(
+        gfxId,
+        tmpl->movementType,
+        localId,
+        tmpl->x + 7,  // 7 ist Offset zur Bildschirmkoordinate
+        tmpl->y + 7,
+        tmpl->elevation
+    );
+
+    return FALSE;
+}
+
+bool8 SpawnRivalObjectEventFromStyle(void)
+{
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    u16 graphicsId;
+    u8 localId = VarGet(VAR_0x8004); // z. B. LOCALID_RIVAL
+    u8 x = VarGet(VAR_0x8005);
+    u8 y = VarGet(VAR_0x8006);
+
+    switch (style)
+    {
+        case STYLE_BRENDAN:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+            break;
+        case STYLE_MAY:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+            break;
+        case STYLE_RED:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_LEAF;
+            break;
+        case STYLE_LEAF:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_RED;
+            break;
+        default:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+            break;
+    }
+
+    SpawnSpecialObjectEventParameterized(graphicsId, MOVEMENT_TYPE_FACE_DOWN, localId, x, y, 0);
+    return TRUE;
+}
+
+bool8 ScrCmd_TestShowChatGPTLogo(struct ScriptContext *ctx)
+{
+    FadeScreen(FADE_TO_BLACK, 0);
+    CreateTask(Task_ShowChatGPTLogoFromScript, 0);
+    ScriptContext_Stop();
+    return TRUE;
+}
+
+#define tTimer data[0]
+
+void Task_ShowChatGPTLogoFromScript(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        // Sichtbare Nachricht vor dem Logo anzeigen
+        ShowFieldMessage((const u8 *)"Lade Logo...");
+
+        // Logo-Übergang starten (ersetze ggf. durch sChatGPT_* sobald fertig)
+        DoLogoBattleTransition(taskId, sTeamAqua_Tileset, sTeamAqua_Tilemap, sEvilTeam_Palette);
+
+        // Task nicht sofort zerstören - Übergang läuft
+        gTasks[taskId].func = NULL;
+    }
+}
+
+bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx)
+{
+    s16 x, y;
+    PlayerGetDestCoords(&x, &y);
+
+    VarSet(ScriptReadHalfword(ctx), x);
+    VarSet(ScriptReadHalfword(ctx), y);
+    return FALSE;
+}
+

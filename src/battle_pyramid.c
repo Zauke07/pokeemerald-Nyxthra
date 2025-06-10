@@ -243,7 +243,7 @@ static const struct PyramidFloorTemplate sPyramidFloorTemplates[] =
     }
 };
 
-static const u8 sPyramidFloorTemplateOptions[][2] =
+static const u8 sPyramidFloorTemplateOptions[][GENDER_COUNT] =
 {
     // Floor 0
     {40,  0},
@@ -341,7 +341,7 @@ static const u16 sPickupItemsLvlOpen[TOTAL_PYRAMID_ROUNDS][PICKUP_ITEMS_PER_ROUN
     {ITEM_HYPER_POTION, ITEM_X_DEFENSE, ITEM_LUM_BERRY, ITEM_ETHER, ITEM_LEPPA_BERRY, ITEM_REVIVE, ITEM_QUICK_CLAW, ITEM_KINGS_ROCK, ITEM_FULL_RESTORE, ITEM_MAX_ELIXIR},
 };
 
-static const u8 sPickupItemSlots[][2] =
+static const u8 sPickupItemSlots[][GENDER_COUNT] =
 {
     // Floor 0
     { 31, 0},

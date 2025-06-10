@@ -8,6 +8,8 @@
 #define OVERWORLD_RECV_QUEUE_MAX 3
 #define BLOCK_BUFFER_SIZE 0x100
 
+#define LINK_PLAYER_STYLE neverRead
+
 #define LINK_SLAVE 0
 #define LINK_MASTER 8
 

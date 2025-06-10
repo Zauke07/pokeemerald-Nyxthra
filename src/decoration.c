@@ -254,7 +254,7 @@ static const u8 *const sSecretBasePCMenuItemDescriptions[] =
     gText_GoBackPrevMenu
 };
 
-static const TaskFunc sSecretBasePC_SelectedDecorationActions[][2] =
+static const TaskFunc sSecretBasePC_SelectedDecorationActions[][GENDER_COUNT] =
 {
    { DecorationItemsMenuAction_AttemptPlace, DecorationItemsMenuAction_Cancel },
    { DecorationItemsMenuAction_AttemptToss,  DecorationItemsMenuAction_Cancel },

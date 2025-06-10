@@ -15,7 +15,7 @@
 
 EWRAM_DATA static bool8 sIsRegisteelPuzzle = 0;
 
-static const u8 sRegicePathCoords[][2] =
+static const u8 sRegicePathCoords[][GENDER_COUNT] =
 {
     {4,  21},
     {5,  21},

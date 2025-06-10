@@ -13,7 +13,7 @@ Route104_EventScript_StartSailToDewford::
 	end
 
 Route104_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
 	end
@@ -85,9 +85,27 @@ Route104_EventScript_PlayBrendanMusic::
 	return
 
 Route104_EventScript_RivalEncounter::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route104_EventScript_MayEncounter
-	goto_if_eq VAR_RESULT, FEMALE, Route104_EventScript_BrendanEncounter
+    getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route104_EventScript_MayEncounter
+	goto_if_eq VAR_RESULT, STYLE_MAY, Route104_EventScript_BrendanEncounter
+	goto_if_eq VAR_RESULT, STYLE_RED, Route104_EventScript_MayEncounter
+	goto_if_eq VAR_RESULT, STYLE_LEAF, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ETHAN, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_LYRA, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_LUCAS, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_DAWN, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_HILBERT, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_HILDA, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_NATE, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ROSA, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_CALEM, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_SERENA, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ELIO, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_SELENE, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_VICTOR, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_GLORIA, Route104_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route104_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_JULIANA, Route104_EventScript_BrendanEncounter
 	end
 
 Route104_EventScript_MayEncounter::
@@ -1078,19 +1096,20 @@ Route104_Text_TrainerTipsDoubleBattles:
 	.string "Watch how POKéMON are lined up.$"
 
 Route104_Text_MayWeShouldRegister:
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
-	.string "DEVON upgraded your POKéNAV with\n"
-	.string "the MATCH CALL system, huh?\p"
-	.string "We should register each other so we\n"
-	.string "can get in contact anytime.$"
+	.string "{RIVAL}: Oh, hi, {PLAYER}{KUN}!\p"
+	.string "DEVON hat deinen POKéNAV mit einem\n"
+	.string "TRAINER/RUF-System ausgestattet?\p"
+	.string "Wir sollten uns gegenseitig eintragen,\n"
+	.string "dann können wir jederzeit miteinander\l"
+	.string "reden.$"
 
 Route104_Text_RegisteredMay:
-	.string "{PLAYER} registered MAY\n"
-	.string "in the POKéNAV.$"
+	.string "{PLAYER} trägt {RIVAL} in das POKéNAV-\n"
+	.string "Verzeichnis ein.$"
 
 Route104_Text_MayHowsYourPokedex:
-	.string "MAY: Oh, by the way, {PLAYER}{KUN},\n"
-	.string "how's your POKéDEX coming along?$"
+	.string "{RIVAL}: Und, {PLAYER}{KUN}?\n"
+	.string "Wie geht es mit deinem POKéDEX voran?$"
 
 Route104_Text_MayMinesDecentLetsBattle:
 	.string "Mine's looking pretty decent.\n"
@@ -1098,45 +1117,50 @@ Route104_Text_MayMinesDecentLetsBattle:
 	.string "How about a little battle?$"
 
 Route104_Text_MayHaventRaisedPokemon:
-	.string "MAY: Oh, what's the matter?\p"
-	.string "Haven't you caught or raised your\n"
-	.string "POKéMON very much?\p"
-	.string "That's not very good for a TRAINER!$"
+	.string "{RIVAL}: Oh, was ist das?\p"
+	.string "Du hast dich aber nicht um deine\n"
+	.string "POKéMON gekümmert? Und auch\l"
+	.string "nicht viele gefangen?\p"
+	.string "Als Trainer machst du wirklich keinen\n"
+	.string "guten Eindruck!$"
 
 Route104_Text_MayLetsBattle:
-	.string "MAY: So, what do you think?\n"
-	.string "How about a little battle here?$"
+	.string "{RIVAL}: Was hältst du von einem Kampf?$"
 
 Route104_Text_MayIntro:
-	.string "MAY: You just became a TRAINER,\n"
-	.string "{PLAYER}{KUN}. I'm not going to lose!$"
+	.string "{RIVAL}: Du bist gerade erst TRAINER\n"
+	.string "geworden, {PLAYER}{KUN}. Ich werde nicht\l"
+	.string "verlieren.$"
 
 Route104_Text_MayDefeat:
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
 Route104_Text_MayPostBattle:
-	.string "MAY: I can tell you've gotten pretty\n"
-	.string "good with the way you handle POKéMON.\p"
-	.string "But instead of only making them\n"
-	.string "battle, you should be like MR. BRINEY.\p"
-	.string "It's important to become friends with\n"
-	.string "POKéMON, too.$"
+	.string "{RIVAL}: Du bist wirklich sehr gut im\n"
+	.string "Umgang mit POKéMON.\p"
+	.string "Aber anstatt sie nur kämpfen zu lassen,\n"
+	.string "solltest du dir ein Beispiel an MR. BRACK\l"
+	.string "nehmen.\p"
+	.string "Es ist wichtig, dass man sich mit den\n"
+	.string "POKéMON anfreundet.$"
 
 Route104_Text_BrendanWeShouldRegister:
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
-	.string "Cool, you had DEVON install the MATCH\n"
-	.string "CALL system on your POKéNAV!\p"
-	.string "Let's register each other in our\n"
-	.string "POKéNAVS so we can keep in touch.$"
+	.string "{RIVAL}: Hey, {PLAYER}!\p"
+	.string "Cool! DEVON hat deinen POKéNAV mit\n"
+	.string "einem TRAINER/RUF-System\l"
+	.string "ausgestattet?\p"
+	.string "Wir sollten uns gegenseitig eintragen,\n"
+	.string "dann können wir jederzeit miteinander\l"
+	.string "reden.$"
 
 Route104_Text_RegisteredBrendan:
 	.string "{PLAYER} registered BRENDAN\n"
 	.string "in the POKéNAV.$"
 
 Route104_Text_BrendanHowsYourPokedex:
-	.string "BRENDAN: {PLAYER}, how's your POKéDEX?\n"
-	.string "Have you filled in any pages yet?$"
+	.string "{RIVAL}: {PLAYER}, wie sieht es mit\n"
+	.string "deinem POKéDEX aus?$"
 
 Route104_Text_BrendanDoingGreatLetsBattle:
 	.string "Me, I'm doing great!\p"
@@ -1144,25 +1168,45 @@ Route104_Text_BrendanDoingGreatLetsBattle:
 	.string "a battle?$"
 
 Route104_Text_BrendanNoConfidence:
-	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+	.string "{RIVAL}: Oh, hast du ein Problem? Nicht\n"
+	.string "genügend Selbstbewusstsein und\l"
+	.string "Vertrauen in deine POKéMON, was?$"
 
 Route104_Text_BrendanLetsBattle:
-	.string "BRENDAN: What's up?\n"
-	.string "Want to have a battle with me?$"
+	.string "{RIVAL}: Wie geht’s? Lust auf einen Kampf?$"
 
 Route104_Text_BrendanIntro:
-	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "{RIVAL}: Ich weiß, du bist gerade erst ein\n"
+	.string "TRAINER geworden, aber ich werde mich\l"
+	.string "nicht zurückhalten.$"
 
 Route104_Text_BrendanDefeat:
 	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
 Route104_Text_BrendanPostBattle:
-	.string "BRENDAN: You've gotten pretty decent\n"
-	.string "at handling POKéMON.\p"
-	.string "But, you know, you shouldn't just be\n"
-	.string "making POKéMON battle.\p"
-	.string "Like MR. BRINEY, it's important to\n"
-	.string "become friends with your POKéMON.$"
+	.string "{RIVAL}: Du bist sehr gut im Umgang mit\n"
+	.string "POKéMON geworden.\p"
+	.string "Aber du solltest deine POKéMON nicht\n"
+	.string "nur kämpfen lassen.\p"
+	.string "Mach es wie MR. BRACK. Es ist wichtig,\n"
+	.string "dass man sich mit ihnen anfreundet.$"
+
+Route104_EventScript_Kanimani::
+    msgbox Route104_Text_Kanimani, MSGBOX_NPC
+    end
+
+Route104_Text_Kanimani:
+    .string "Hey {PLAYER}, ich bin ein\n"
+	.string "Bote von diesem Rom Entwickler.\l"
+	.string "Sein name ist Zauke07!\p"
+	.string "Immer wenn du mich am ende einer\n"
+	.string "Route Siehst, sprich mich an, denn\l"
+	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 2 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+

@@ -254,7 +254,7 @@ static const struct SpriteTemplate sSpriteTemplate_AM =
     .callback = SpriteCB_AMIndicator
 };
 
-static const s8 sClockHandCoords[][2] =
+static const s8 sClockHandCoords[][GENDER_COUNT] =
 {
     { 0x00, -0x18},
     { 0x01, -0x19},

@@ -716,18 +716,18 @@
 	.ifgt \playMusicB; .set trainerBattle_flags, trainerbattle_flags | (1 << 3); .endif
 	.ifgt \type; .set trainerbattle_flags, trainerbattle_flags | (\type << 4); .endif
 	.byte trainerbattle_flags
-	.byte \localIdA             @ objEventLocalIdA
-	.2byte \trainer_a           @ opponentA
-	.4byte \intro_text_a        @ introTextA
-	.4byte \lose_text_a         @ defeatTextA
-	.4byte \event_script_a      @ retAddrA
-	.byte  \localIdB            @ objEventLocalIdB
-	.2byte \trainer_b           @ opponentB
-	.4byte \intro_text_b        @ introTextB
-	.4byte \lose_text_b         @ defeatTextB
-	.4byte \event_script_b      @ retAddrB
-	.4byte \victory_text        @ victoryText
-	.4byte \cannot_battle       @ cannotBattle
+	.byte \localIdA			 @ objEventLocalIdA
+	.2byte \trainer_a		   @ opponentA
+	.4byte \intro_text_a		@ introTextA
+	.4byte \lose_text_a		 @ defeatTextA
+	.4byte \event_script_a	  @ retAddrA
+	.byte  \localIdB			@ objEventLocalIdB
+	.2byte \trainer_b		   @ opponentB
+	.4byte \intro_text_b		@ introTextB
+	.4byte \lose_text_b		 @ defeatTextB
+	.4byte \event_script_b	  @ retAddrB
+	.4byte \victory_text		@ victoryText
+	.4byte \cannot_battle	   @ cannotBattle
 	.endm
 
 	NO_MUSIC = FALSE
@@ -743,6 +743,28 @@
 	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endif
 	.endm
+
+	@ Custom battle transitions
+	.equ B_TRANSITION_CHATGPT, 16
+
+	@ Starts a single trainer battle with a custom battle transition (e.g. ChatGPT logo)
+	.macro trainerbattle_battle_transition trainer:req, transition:req, lose_text:req
+	.byte SCR_OP_TRAINERBATTLE
+	.byte 0xE0  @ TRAINER_BATTLE_SINGLE_CUSTOM_TRANSITION (14 << 4)
+	.byte OBJ_ID_NONE
+	.2byte \trainer
+	.4byte NULL
+	.4byte \lose_text
+	.4byte NULL
+	.byte OBJ_ID_NONE
+	.2byte TRAINER_NONE
+	.4byte NULL
+	.4byte NULL
+	.4byte NULL
+	.4byte NULL
+	.2byte \transition
+	.endm
+
 
 	@ Starts a double trainer battle. Takes a trainer, intro text, loss text, text for when you have too few pokemon
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
@@ -1136,7 +1158,7 @@
 	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
 	@ If given anything else it will output it directly.
 	@ Note: Because the STR_VAR_# arguments given to this macro are not part of a processed string they are not
-	@       replaced with their charmap values, they are just passed as the literal characters "STR_VAR_#".
+	@	   replaced with their charmap values, they are just passed as the literal characters "STR_VAR_#".
 	.macro stringvar id:req
 	.if \id == STR_VAR_1
 		.byte 0
@@ -1394,10 +1416,25 @@
 	.2byte \heallocation
 	.endm
 
-	@ Checks the player's gender. Stores the result (MALE (0) or FEMALE (1)) in VAR_RESULT.
-	.macro checkplayergender
-	.byte SCR_OP_CHECKPLAYERGENDER
+	@ Checks if the player style is male. Uses VAR_RESULT (from getplayerstyle) and stores 1 = true, 0 = false in VAR_RESULT.
+	.macro isstylemale
+	.byte SCR_OP_ISSTYLEMALE
 	.endm
+
+
+	@ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
+	@ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
+	.macro checkplayerstyle
+	.byte SCR_OP_CHECKPLAYERSTYLE
+	.endm
+
+
+	@ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
+	@ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
+	.macro getplayerstyle
+	.byte SCR_OP_GETPLAYERSTYLE
+	.endm
+
 
 	@ Plays the cry of the given species. Mode is any CRY_MODE_* constant.
 	@ You can use waitmoncry to block script execution until the cry finishes.
@@ -2500,7 +2537,7 @@
 	callnative Script_SetDifficulty, requests_effects=1
 	.byte \difficulty
 	.endm
-
+	
 	.macro forcesave
 	callnative Script_ForceSaveGame
 	waitstate
@@ -2567,75 +2604,54 @@
 	cant_see_if 5
 	.endm
 
-@ Follower NPCs
-
-	@ Sets an NPC up to follow the player.
-	@ Follower flags are defined in include/constants/follower_npc.h
-	@ If you want to specify a battle partner without specifying a custom script, you can set the script parameter to 0.
-	.macro setfollowernpc localId:req, flags:req, script=0, battlePartner=0
-	.if FNPC_ENABLE_NPC_FOLLOWERS
-		checkfollowernpc
-		compare VAR_RESULT, FALSE
-		goto_if_ne 1f
-		hidefollower
-		waitmovement OBJ_EVENT_ID_FOLLOWER
-		callnative ScriptSetFollowerNPC
-		.if \script == 0
-			.set setScript, FALSE
-		.else
-			.set setScript, TRUE
-		.endif
-		.byte \localId
-		.2byte \flags
-		.byte setScript
-		.2byte \battlePartner
-		.4byte \script
-		updatefollowingmon
-        1:
-	.else
-		.error "setfollowernpc unavailable with FNPC_ENABLE_NPC_FOLLOWERS defined as FALSE"
-	.endif
+	.macro hideobject obj
+	.byte SCR_OP_HIDEOBJECT
+	.byte \obj
 	.endm
 
-	@ Remove the follower NPC (assumes there will only ever be one).
-	.macro destroyfollowernpc
-	.if FNPC_ENABLE_NPC_FOLLOWERS
-		callnative ScriptDestroyFollowerNPC
-	.else
-		.error "destroyfollowernpc unavailable with FNPC_ENABLE_NPC_FOLLOWERS defined as FALSE"
-	.endif
+	.macro showobject obj
+	.byte SCR_OP_SHOWOBJECT
+	.byte \obj
 	.endm
 
-	@ Makes the player and follower NPC face one another.
-	.macro facefollowernpc
-	callnative ScriptFaceFollowerNPC
+	.macro setobjectgfxid localId, gfxId
+	.byte SCR_OP_SETOBJECTGFXID
+	.byte \localId
+	.hword \gfxId
 	.endm
 
-	@ Makes the follower NPC walk into the player and get hidden.
-	@ Optionally, you can set the walk speed for the movement:
-	@ 0 = Slow
-	@ 1 = Normal (default)
-	@ 2 = Fast
-	@ 3 = Faster
-	.macro hidefollowernpc speed=1
-	callnative ScriptHideNPCFollower
-	.byte \speed
-	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
-	callnative HideNPCFollower
+	.macro spawnrival_style
+	.byte SCR_OP_SPAWN_RIVAL_OBJECT_FROM_STYLE
 	.endm
 
-	@ Checks if you have a follower NPC. Returns the result to VAR_RESULT.
-	.macro checkfollowernpc
-	callnative ScriptCheckFollowerNPC
+	.macro bufferintvar1 var
+	.byte SCR_OP_BUFFER_INT_TO_VAR1
+	.hword \var
 	.endm
 
-	@ Updates Pokemon follower.
-	.macro updatefollowingmon
-	callnative ScriptUpdateFollowingMon
+	.macro bufferintvar2 var
+	.byte SCR_OP_BUFFER_INT_TO_VAR2
+	.hword \var
 	.endm
 
-	@ Changes the battle partner of the existing follower NPC.
-	.macro changefollowerbattler battlePartner:req
-	callnative ScriptChangeFollowerNPCBattlePartner
-	.2byte \battlePartner
+	.macro showchatgptlogo
+	.byte SCR_OP_TEST_SHOW_CHATGPT_LOGO
+	.endm
+
+	.macro getplayerpos x, y
+	.byte SCR_OP_GET_PLAYER_POS
+	.hword \x
+	.hword \y
+	.endm
+
+	.macro playmusictest1
+	.byte SCR_OP_PLAY_MUSIC_TEST_1
+	.endm
+
+	.macro playmusictest2
+	.byte SCR_OP_PLAY_MUSIC_TEST_2
+	.endm
+
+	.macro playmusictest3
+	.byte SCR_OP_PLAY_MUSIC_TEST_3
 	.endm

@@ -23,6 +23,9 @@
 #include "pokedex.h"
 #include "event_data.h"
 #include "random.h"
+#include "overworld.h"
+
+//#include "rogue_timeofday.h"
 
 #define COLOR_DARK_GREEN RGB(7, 11, 6)
 #define COLOR_LIGHT_GREEN RGB(13, 20, 12)
@@ -189,7 +192,7 @@ static const struct WindowTemplate sWindowTemplates[] =
     },
     DUMMY_WIN_TEMPLATE,
 };
-static const u8 sMonSpritePos[][2] =
+static const u8 sMonSpritePos[][GENDER_COUNT] =
 {
     {104, 36},
     {120, 36},
@@ -1199,7 +1202,7 @@ static bool8 LoadBikeScene(u8 scene, u8 taskId)
         gMain.state++;
         break;
     case 2:
-        if (gSaveBlock2Ptr->playerGender == MALE)
+        if (IsPlayerStyleMale(gSaveBlock2Ptr->playerStyles[0]))
         {
             LoadCompressedSpriteSheet(gSpriteSheet_CreditsBrendan);
             LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalMay);

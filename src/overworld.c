@@ -77,8 +77,84 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/event_objects.h"
+#include "constants/field_effects.h"
+#include "gba/isagbprint.h"
+#include "constants/trainer_types.h"
+#include "strings.h"
+#include "debug.h"
+#include "field_effect_helpers.h"
+
+extern void (*const sPlayerAvatarTransitionFuncs[])(struct ObjectEvent *);
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
+
+struct RogueLocalData
+{
+    bool8 runningToggleActive : 1;
+    bool8 hasBattleInputStarted : 1;
+};
+
+EWRAM_DATA struct RogueLocalData gRogueLocal = {};
+
+u16 GetRivalGraphicsId(u16 rivalId, u8 action)
+{
+    switch (rivalId)
+    {
+        // Rivalen mit eigenen Walking- & Riding-Sprites (Gen 1-9 Hauptcharaktere)
+        case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+        case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
+        case OBJ_EVENT_GFX_RIVAL_RED:
+        case OBJ_EVENT_GFX_RIVAL_LEAF:
+        //        case OBJ_EVENT_GFX_RIVAL_ETHAN:
+        //        case OBJ_EVENT_GFX_RIVAL_LYRA:
+        //        case OBJ_EVENT_GFX_RIVAL_LUCAS:
+        //        case OBJ_EVENT_GFX_RIVAL_DAWN:
+        //        case OBJ_EVENT_GFX_RIVAL_HILBERT:
+        //        case OBJ_EVENT_GFX_RIVAL_HILDA:
+        //        case OBJ_EVENT_GFX_RIVAL_NATE:
+        //        case OBJ_EVENT_GFX_RIVAL_ROSA:
+        //        case OBJ_EVENT_GFX_RIVAL_CALEM:
+        //        case OBJ_EVENT_GFX_RIVAL_SERENA:
+        //        case OBJ_EVENT_GFX_RIVAL_ELIO:
+        //        case OBJ_EVENT_GFX_RIVAL_SELENE:
+        //        case OBJ_EVENT_GFX_RIVAL_VICTOR:
+        //        case OBJ_EVENT_GFX_RIVAL_GLORIA:
+        //        case OBJ_EVENT_GFX_RIVAL_FLORIAN:
+        //        case OBJ_EVENT_GFX_RIVAL_JULIANA:
+            if (action == PLAYER_AVATAR_STATE_NORMAL)
+                return rivalId;
+            else
+                return (rivalId % 2 == 0) ? OBJ_EVENT_GFX_RIVAL_RED : OBJ_EVENT_GFX_RIVAL_LEAF;
+
+        // Rivalen mit NUR einer Lauf-Animation (Nutzen für ALLES außer Walking Red/Leaf)
+        case OBJ_EVENT_GFX_RIVAL_BARRY:
+        case OBJ_EVENT_GFX_RIVAL_HOP:
+        case OBJ_EVENT_GFX_RIVAL_HAU:
+        case OBJ_EVENT_GFX_RIVAL_NEMONA:
+        case OBJ_EVENT_GFX_RIVAL_GLADION:
+        case OBJ_EVENT_GFX_RIVAL_HUGH:
+        case OBJ_EVENT_GFX_RIVAL_BIANCA:
+        case OBJ_EVENT_GFX_RIVAL_CHEREN:
+        case OBJ_EVENT_GFX_RIVAL_MARNIE:
+        case OBJ_EVENT_GFX_RIVAL_PENNY:
+        case OBJ_EVENT_GFX_RIVAL_SILVER:
+        case OBJ_EVENT_GFX_RIVAL_ARVEN:
+        case OBJ_EVENT_GFX_RIVAL_BEDE:
+        case OBJ_EVENT_GFX_RIVAL_KLARA:
+        case OBJ_EVENT_GFX_RIVAL_SHAUNA:
+        case OBJ_EVENT_GFX_RIVAL_TIERNO:
+        case OBJ_EVENT_GFX_RIVAL_TREVOR:
+            if (action == PLAYER_AVATAR_STATE_NORMAL)
+                return rivalId;
+            else
+                return (rivalId % 2 == 0) ? OBJ_EVENT_GFX_RIVAL_RED : OBJ_EVENT_GFX_RIVAL_LEAF;
+
+        // ✅ Fallback für unbekannte Rivalen
+        default:
+            return OBJ_EVENT_GFX_RIVAL_RED;
+    }
+}
 
 struct CableClubPlayer
 {
@@ -183,6 +259,11 @@ static void TransitionMapMusic(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *, u16, u8);
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *, u8, u16, u8);
 static u16 GetCenterScreenMetatileBehavior(void);
+
+//void Overworld_CleanUpFromActiveMenu(void);
+void HideObjectEventByLocalId(u8 localId);
+void ShowObjectEventByLocalId(u8 localId);
+
 
 static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
@@ -334,6 +415,80 @@ static const struct ScanlineEffectParams sFlashEffectParams =
 static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
 static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
 static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
+
+/*
+void DebugIntToString(u8 *dest, s32 value, u8 digits)
+{
+    u8 i;
+    u32 place = 1;
+
+    for (i = 1; i < digits; i++)
+        place *= 10;
+
+    for (i = 0; i < digits; i++)
+    {
+        *dest++ = CHAR_0 + (value / place) % 10;
+        place /= 10;
+    }
+
+    *dest = EOS;
+}
+*/
+
+bool8 IsPlayerStyleMale(u8 style)
+{
+    switch (style)
+    {
+    case STYLE_BRENDAN:
+    case STYLE_RED:
+        return TRUE;
+    case STYLE_MAY:
+    case STYLE_LEAF:
+        return FALSE;
+    default:
+        return TRUE; // Fallback: männlich
+    }
+}
+
+u8 GetPlayerGenderFromStyle(void)
+{
+    switch (gSaveBlock2Ptr->playerStyles[0])
+    {
+    case STYLE_BRENDAN:
+    case STYLE_RED:
+        return MALE;
+
+    case STYLE_MAY:
+    case STYLE_LEAF:
+        return FEMALE;
+
+    default:
+        return MALE; // fallback für zukünftige Styles
+    }
+}
+
+void SyncPlayerGenderToStyle(void)
+{
+    if (gSaveBlock2Ptr != NULL)
+        gSaveBlock2Ptr->playerGender = IsPlayerStyleMale(gSaveBlock2Ptr->playerStyles[0]) ? MALE : FEMALE;
+}
+/*
+void Debug_UpdatePlayerNameWithStyleInfo(void)
+{
+    u8 style = gPlayerAvatar.style;
+    u8 flags = gPlayerAvatar.flags;
+
+    // Aktuelle Grafik-ID
+    u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(style, flags);
+
+    // Setze ersten 5 Zeichen des Spielernamens als Debug-Info
+    gSaveBlock2Ptr->playerName[0] = style + '0';          // Style-Zahl
+    gSaveBlock2Ptr->playerName[1] = '-';
+    gSaveBlock2Ptr->playerName[2] = (gfxId / 10) + '0';   // Zehnerstelle von gfxId
+    gSaveBlock2Ptr->playerName[3] = (gfxId % 10) + '0';   // Einerstelle von gfxId
+    gSaveBlock2Ptr->playerName[4] = EOS;
+}
+*/
 
 static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
 {
@@ -972,6 +1127,8 @@ void StoreInitialPlayerAvatarState(void)
         sInitialPlayerAvatarState.transitionFlags = PLAYER_AVATAR_FLAG_UNDERWATER;
     else
         sInitialPlayerAvatarState.transitionFlags = PLAYER_AVATAR_FLAG_ON_FOOT;
+
+//    sLastKnownAvatarFlags = gPlayerAvatar.flags; // <== NEU
 }
 
 static struct InitialPlayerAvatarState *GetInitialPlayerAvatarState(void)
@@ -990,8 +1147,8 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *pla
 {
     if (mapType != MAP_TYPE_INDOOR && FlagGet(FLAG_SYS_CRUISE_MODE))
         return PLAYER_AVATAR_FLAG_ON_FOOT;
-    else if (mapType == MAP_TYPE_UNDERWATER)
-        return PLAYER_AVATAR_FLAG_UNDERWATER;
+    //else if (mapType == MAP_TYPE_UNDERWATER)
+    //    return PLAYER_AVATAR_FLAG_UNDERWATER;
     else if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == TRUE)
         return PLAYER_AVATAR_FLAG_SURFING;
     else if (Overworld_IsBikingAllowed() != TRUE)
@@ -1525,6 +1682,7 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
     FieldClearPlayerInput(&inputStruct);
     FieldGetPlayerInput(&inputStruct, newKeys, heldKeys);
     CancelSignPostMessageBox(&inputStruct);
+
     if (!ArePlayerFieldControlsLocked())
     {
         if (ProcessPlayerFieldInput(&inputStruct) == 1)
@@ -1534,6 +1692,16 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
         }
         else
         {
+            // Autolauf: B gedrückt = Toggle
+            if (!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
+                                      | PLAYER_AVATAR_FLAG_ACRO_BIKE
+                                      | PLAYER_AVATAR_FLAG_SURFING)) &&
+                gSaveBlock2Ptr->optionsAutoRunToggle &&
+                (newKeys & B_BUTTON))
+            {
+                gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
+            }
+
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }
@@ -1895,6 +2063,52 @@ static void CB2_ReturnToFieldLocal(void)
     {
         SetFieldVBlankCallback();
         SetMainCallback2(CB2_Overworld);
+
+        // Stil vom Save übernehmen
+        gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
+        u8 style = gPlayerAvatar.style;
+        u8 objectEventId = gPlayerAvatar.objectEventId;
+        struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
+        struct Sprite *sprite = &gSprites[objEvent->spriteId];
+
+        // Zustand setzen: Surfen oder zu Fuß
+        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+        {
+            gPlayerAvatar.flags &= ~(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE | PLAYER_AVATAR_FLAG_ON_FOOT);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING;
+        }
+        else
+        {
+            gPlayerAvatar.flags &= ~(PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE);
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
+        }
+
+        // Sprite setzen
+        u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(style, gPlayerAvatar.flags);
+        ObjectEventSetGraphicsId(objEvent, gfxId);
+
+        // Spritezustand zurücksetzen
+        sprite->subspriteTableNum = 0;
+        sprite->y2 = 0;
+        sprite->animNum = 0;
+        sprite->animCmdIndex = 0;
+
+        // Surf-Blob ggf. neu erzeugen
+        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+        {
+            gFieldEffectArguments[0] = objEvent->currentCoords.x;
+            gFieldEffectArguments[1] = objEvent->currentCoords.y;
+            gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
+
+            u8 blobSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
+            objEvent->fieldEffectSpriteId = blobSpriteId;
+            SetSurfBlob_BobState(blobSpriteId, BOB_PLAYER_AND_MON);
+        }
+
+        // Transition-Funktion aufrufen
+        u8 state = GetPlayerStateByGraphicsId(gfxId);
+        if (state < PLAYER_AVATAR_STATE_COUNT)
+            sPlayerAvatarTransitionFuncs[state](objEvent);
     }
 }
 
@@ -1919,6 +2133,11 @@ void CB2_ReturnToFieldFromMultiplayer(void)
     ScriptContext_Init();
     UnlockPlayerFieldControls();
     CB2_ReturnToField();
+}
+
+void SetObjectEventGraphicsId(struct ObjectEvent *objEvent, u16 graphicsId)
+{
+    objEvent->graphicsId = graphicsId;
 }
 
 void CB2_ReturnToFieldWithOpenMenu(void)
@@ -2422,6 +2641,7 @@ static void InitObjectEventsLocal(void)
 {
     u16 x, y;
     struct InitialPlayerAvatarState *player;
+    SyncPlayerGenderToStyle();
 
     gTotalCameraPixelOffsetX = 0;
     gTotalCameraPixelOffsetY = 0;
@@ -3454,6 +3674,9 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         case VERSION_EMERALD:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
             break;
+        default:
+            objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+            break;
         }
 
         sprite = &gSprites[objEvent->spriteId];
@@ -3692,6 +3915,28 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
 void ScriptHideItemDescription(struct ScriptContext *ctx)
 {
 }
+
+
+void HideObjectEventByLocalId(u8 localId)
+{
+    u8 eventId = GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    if (eventId < OBJECT_EVENTS_COUNT)
+        gObjectEvents[eventId].active = FALSE;
+}
+
+void ShowObjectEventByLocalId(u8 localId)
+{
+    u8 eventId = GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    if (eventId < OBJECT_EVENTS_COUNT)
+        gObjectEvents[eventId].active = TRUE;
+}
+
+void Overworld_CleanUpFromActiveMenu(void)
+{
+    gFieldCallback = NULL;
+}
+
+
 #endif // OW_SHOW_ITEM_DESCRIPTIONS
 
 

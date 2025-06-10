@@ -208,6 +208,24 @@ static const struct MenuAction MultichoiceList_Mechadoll5_Q3[] =
     {COMPOUND_STRING("8")},
 };
 
+// static const struct MenuAction MultichoiceList_StyleChoice[] =
+// {
+//     {gText_BirchStyleA},
+//     {gText_BirchStyleB},
+//     {gText_BirchStyleC},
+//     {gText_BirchStyleD},
+// };
+
+// static const struct MenuAction MultichoiceList_Style2Choice[] =
+// {
+//     {gText_BirchStyleA},
+//     {gText_BirchStyleB},
+//     {gText_BirchStyleC},
+//     {gText_BirchStyleD},
+//     {gText_BirchStyleE},
+//     {gText_BirchStyleF},
+// };
+
 static const struct MenuAction MultichoiceList_VendingMachine[] =
 {
     {COMPOUND_STRING("FRESH WATER{CLEAR_TO 0x48}¥200")},
@@ -722,8 +740,8 @@ static const struct MenuAction MultichoiceList_GoOnRetire[] =
 
 static const struct MenuAction MultichoiceList_TVLati[] =
 {
-    {COMPOUND_STRING("RED")},
-    {COMPOUND_STRING("BLUE")},
+    {COMPOUND_STRING("Rot")},
+    {COMPOUND_STRING("BLau")},
 };
 
 static const struct MenuAction MultichoiceList_BattleTowerFeelings[] =
@@ -776,6 +794,19 @@ static const struct MenuAction MultichoiceList_BerryPlot[] =
     {COMPOUND_STRING("FERTILIZE")},
     {COMPOUND_STRING("PLANT BERRY")},
     {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_Regionality[] =
+{
+    {gText_Kanto},
+    {gText_Johto},
+    {gText_Hoenn},
+    {gText_Sinnoh},
+    {gText_Unova},
+    {gText_Kalos},
+    {gText_Alola},
+    {gText_Galar},
+    {gText_Paldea},
 };
 
 static const struct MenuAction MultichoiceList_Exit[] =
@@ -906,6 +937,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
+    [MULTI_STARTER_REGIONALITY]        = MULTICHOICE(MultichoiceList_Regionality),
 };
 
 const u8 *const gStdStrings[] =

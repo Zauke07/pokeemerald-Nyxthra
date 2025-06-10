@@ -12,10 +12,6 @@ struct RematchTrainer
     u16 mapNum;
 };
 
-/*
-the layout of the first byte can be confusing here
-isDoubleBattle is the least lsb. msb is in the mode.
-*/
 typedef union PACKED TrainerBattleParameter
 {
     struct PACKED _TrainerBattleParameter
@@ -38,7 +34,13 @@ typedef union PACKED TrainerBattleParameter
         u8 *victoryText;
         u8 *cannotBattleText;
     } params;
-    u8 data[sizeof(struct _TrainerBattleParameter)];
+
+    // +2 für z. B. eine .2byte-Transition-ID
+    u8 data[sizeof(struct _TrainerBattleParameter) + 2];
+
+    // Optionaler Zeiger auf Zusatzdaten - NICHT notwendig, aber hilfreich bei Bedarf
+    // Kann auch weggelassen werden, wenn nicht aktiv genutzt
+    // const void *extra; ← kannst du rauslassen, wenn du ihn nicht brauchst
 } TrainerBattleParameter;
 
 
@@ -109,5 +111,8 @@ void BattleSetup_StartTrainerBattle_Debug(void);
 s32 TrainerIdToRematchTableId(const struct RematchTrainer *table, u16 trainerId);
 s32 FirstBattleTrainerIdToRematchTableId(const struct RematchTrainer *table, u16 trainerId);
 u16 GetRematchTrainerIdFromTable(const struct RematchTrainer *table, u16 firstBattleTrainerId);
+
+extern u16 gTrainerBattleOpponent_A;
+extern u16 gTrainerBattleTransition;
 
 #endif // GUARD_BATTLE_SETUP_H

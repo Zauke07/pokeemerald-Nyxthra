@@ -338,7 +338,7 @@ static const u8 sTradeMonBoxCoords[PARTY_SIZE * 2][2] = {
         {23, 13},
 };
 
-static const u8 sUnusedCoords[][2] =
+static const u8 sUnusedCoords[][GENDER_COUNT] =
 {
     { 0, 14},
     {15, 29},
@@ -1166,7 +1166,7 @@ static const s8 sTradeBallVerticalVelocityTable[] =
      0,  0,  0,  1,  0,  1,  1,  2,  3
 };
 
-static const u8 sWirelessSignalAnimParams[][2] =
+static const u8 sWirelessSignalAnimParams[][GENDER_COUNT] =
 {
     { 0,  1},
     { 1,  1},

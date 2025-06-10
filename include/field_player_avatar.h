@@ -34,7 +34,7 @@ u8 CheckForObjectEventCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, u
 u8 PlayerGetElevation(void);
 void SetPlayerAvatarTransitionFlags(u16 transitionFlags);
 void CancelPlayerForcedMovement(void);
-void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender);
+void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 playerStyle);
 void PlayerFreeze(void);
 void StopPlayerAvatar(void);
 void SetSpinStartFacingDir(u8 direction);
@@ -72,5 +72,14 @@ u8 GetLeftSideStairsDirection(u8 direction);
 void UpdateSpinData(void);
 void ResetSpinTimer(void);
 bool32 CanTriggerSpinEvolution();
+
+u8 GetPlayerStateByGraphicsId(u16 gfxId);
+u16 GetPlayerGraphicsIdByState(u8 state);
+u16 GetPlayerAvatarGraphicsIdByStyleAndState(u8 style, u8 flags);
+u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 style);
+u16 GetPlayerAvatarGraphicsIdByStateIdAndStyle(u8 state, u8 style);
+//extern u8 sLastKnownAvatarFlags;
+u8 SpawnRivalObjectEventForStyle(u8 style, u8 localId, s16 x, s16 y, u8 direction);
+bool8 GetPlayerSpritingState(u16 heldKeys);
 
 #endif // GUARD_FIELD_PLAYER_AVATAR_H

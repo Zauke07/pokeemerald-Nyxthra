@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
+#include "constants/regions.h"
+
 #define VARS_START 0x4000
 
 // temporary vars
@@ -273,8 +275,11 @@
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+#define VAR_PLAYER_STYLE                                 0x4100
+#define VAR_Password_TestLabor                           0x4101
+#define VAR_STARTER_REGION                               0x4102
 
-#define VARS_END                                         0x40FF
+#define VARS_END                                         0x4103
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000

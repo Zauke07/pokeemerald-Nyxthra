@@ -70,6 +70,18 @@
 #include "rtc.h"
 #include "fake_rtc.h"
 #include "save.h"
+#include "field_player_avatar.h"
+
+#include "text_window.h"
+#include "window.h"
+#include "text.h"
+#include "gpu_regs.h"
+
+/*
+#include "rogue_controller.h"
+#include "rogue.h"
+#include "rogue_save.h"
+*/
 
 // *******************************
 enum DebugMenu
@@ -2159,7 +2171,18 @@ void CheckPokemonStorageSize(struct ScriptContext *ctx)
     ConvertIntToDecimalStringN(gStringVar3, maxPkmnStorageSize - currPkmnStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
 
-static void DebugAction_ROMInfo_CheckSaveBlock(u8 taskId)
+/*
+void CheckRogueSaveSize(struct ScriptContext *ctx)
+{
+    u32 currStorageSize = sizeof(struct RogueSaveBlock);
+    u32 maxStorageSize = SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1) - sizeof(struct __UseablePokemonStorage);
+    ConvertIntToDecimalStringN(gStringVar1, currStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar2, maxStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar3, maxStorageSize - currStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
+}
+*/
+
+static void DebugAction_Util_CheckSaveBlock(u8 taskId)
 {
     Debug_DestroyMenu_Full_Script(taskId, Debug_CheckSaveBlock);
 }
@@ -2336,10 +2359,10 @@ static void DebugAction_Player_Name(u8 taskId)
 
 static void DebugAction_Player_Gender(u8 taskId)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        gSaveBlock2Ptr->playerGender = FEMALE;
-    else
-        gSaveBlock2Ptr->playerGender = MALE;
+    gSaveBlock2Ptr->playerStyles[0]++;
+    if (gSaveBlock2Ptr->playerStyles[0] >= PLAYER_STYLE_COUNT)
+        gSaveBlock2Ptr->playerStyles[0] = 0;
+
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();
 }

@@ -501,6 +501,11 @@ bool32 IsVirtualObjectAnimating(u8 virtualObjId);
 u8 GetObjectEventIdByLocalId(u8 localId);
 bool32 IsFollowerVisible(void);
 
+u8 LoadPlayerObjectEventPaletteByStyle(u8 style);
+const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
+u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state);
+
+
 // run slow
 u8 GetPlayerRunSlowMovementAction(u32);
 //sideways stairs

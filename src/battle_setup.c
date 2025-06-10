@@ -90,9 +90,12 @@ EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
 
+u16 gTrainerBattleOpponent_A;
+u16 gTrainerBattleTransition;
+
 // The first transition is used if the enemy Pokémon are lower level than our Pokémon.
 // Otherwise, the second transition is used.
-static const u8 sBattleTransitionTable_Wild[][2] =
+static const u8 sBattleTransitionTable_Wild[][GENDER_COUNT] =
 {
     [TRANSITION_TYPE_NORMAL] = {B_TRANSITION_SLICE,          B_TRANSITION_WHITE_BARS_FADE},
     [TRANSITION_TYPE_CAVE]   = {B_TRANSITION_CLOCKWISE_WIPE, B_TRANSITION_GRID_SQUARES},
@@ -100,7 +103,7 @@ static const u8 sBattleTransitionTable_Wild[][2] =
     [TRANSITION_TYPE_WATER]  = {B_TRANSITION_WAVE,           B_TRANSITION_RIPPLE},
 };
 
-static const u8 sBattleTransitionTable_Trainer[][2] =
+static const u8 sBattleTransitionTable_Trainer[][GENDER_COUNT] =
 {
     [TRANSITION_TYPE_NORMAL] = {B_TRANSITION_POKEBALLS_TRAIL, B_TRANSITION_ANGLED_WIPES},
     [TRANSITION_TYPE_CAVE]   = {B_TRANSITION_SHUFFLE,         B_TRANSITION_BIG_POKEBALL},
@@ -779,23 +782,39 @@ u8 GetTrainerBattleTransition(void)
     u8 playerLevel;
     u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     u32 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+    u8 transitionToReturn; // Temporäre Variable
 
     if (DoesTrainerHaveMugshot(trainerId))
-        return B_TRANSITION_MUGSHOT;
+    {
+        transitionToReturn = B_TRANSITION_MUGSHOT;
+        return transitionToReturn;
+    }
 
     if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
-        return B_TRANSITION_MAGMA;
+    {
+        transitionToReturn = B_TRANSITION_MAGMA;
+        return transitionToReturn;
+    }
 
     if (trainerClass == TRAINER_CLASS_TEAM_AQUA
         || trainerClass == TRAINER_CLASS_AQUA_LEADER
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
-        return B_TRANSITION_AQUA;
-
-    switch (GetTrainerBattleType(trainerId))
     {
-    case TRAINER_BATTLE_TYPE_SINGLES:
+        transitionToReturn = B_TRANSITION_AQUA;
+        return transitionToReturn;
+    }
+
+    if (trainerClass == TRAINER_CLASS_CHATGPT)
+    {
+        transitionToReturn = B_TRANSITION_CHATGPT;
+        return transitionToReturn;
+    }
+
+    if (IsTrainerDoubleBattle(trainerId))
+        minPartyCount = 2; // Doppelkämpfe haben immer mindestens 2 Pokémon.
+    else
         minPartyCount = 1;
         break;
     case TRAINER_BATTLE_TYPE_DOUBLES:
@@ -808,9 +827,10 @@ u8 GetTrainerBattleTransition(void)
     playerLevel = GetSumOfPlayerPartyLevel(minPartyCount);
 
     if (enemyLevel < playerLevel)
-        return sBattleTransitionTable_Trainer[transitionType][0];
+        transitionToReturn = sBattleTransitionTable_Trainer[transitionType][0];
     else
-        return sBattleTransitionTable_Trainer[transitionType][1];
+        transitionToReturn = sBattleTransitionTable_Trainer[transitionType][1];
+    return transitionToReturn;
 }
 
 #define RANDOM_TRANSITION(table) (table[Random() % ARRAY_COUNT(table)])
@@ -962,8 +982,20 @@ static void InitTrainerBattleVariables(void)
 void TrainerBattleLoadArgs(const u8 *data)
 {
     InitTrainerBattleVariables();
-    memcpy(gTrainerBattleParameter.data, data, sizeof(TrainerBattleParameter));
-    sTrainerBattleEndScript = (u8*)data + sizeof(TrainerBattleParameter);
+
+    // Ganze Datenstruktur inkl. möglichem Anhang (z. B. für Transition-ID) kopieren
+    memcpy(gTrainerBattleParameter.data, data, sizeof(gTrainerBattleParameter.data));
+
+    // Prüfen, ob der Modus eine zusätzliche Transition-ID enthält
+    if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_SINGLE_CUSTOM_TRANSITION)
+    {
+        // Zugriff auf den Speicher direkt nach dem Parameter-Struct
+        const u8 *extra = &gTrainerBattleParameter.data[sizeof(gTrainerBattleParameter.params)];
+        gTrainerBattleTransition = *(const u16 *)extra;
+    }
+
+    // Rücksprung-Adresse nach dem Kampf (für .retAddrA)
+    sTrainerBattleEndScript = (u8 *)(data + sizeof(gTrainerBattleParameter.params));
 }
 
 void TrainerBattleLoadArgsTrainerA(const u8 *data)
@@ -1026,68 +1058,76 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
     switch (TRAINER_BATTLE_PARAM.mode)
     {
-    case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
-        return EventScript_DoNoIntroTrainerBattle;
-    case TRAINER_BATTLE_DOUBLE:
-        SetMapVarsToTrainerA();
-        return EventScript_TryDoDoubleTrainerBattle;
-    case TRAINER_BATTLE_CONTINUE_SCRIPT:
-        if (gApproachingTrainerId == 0)
-        {
+        case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
+            return EventScript_DoNoIntroTrainerBattle;
+
+        case TRAINER_BATTLE_DOUBLE:
             SetMapVarsToTrainerA();
-        }
-        return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC:
-        SetMapVarsToTrainerA();
-        return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:
-    case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC:
-        SetMapVarsToTrainerA();
-        return EventScript_TryDoDoubleTrainerBattle;
+            return EventScript_TryDoDoubleTrainerBattle;
+
+        case TRAINER_BATTLE_CONTINUE_SCRIPT:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC:
+            SetMapVarsToTrainerA();
+            return EventScript_TryDoNormalTrainerBattle;
+
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE:
+        case TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC:
+            SetMapVarsToTrainerA();
+            return EventScript_TryDoDoubleTrainerBattle;
+
 #if FREE_MATCH_CALL == FALSE
-    case TRAINER_BATTLE_REMATCH_DOUBLE:
-        SetMapVarsToTrainerA();
-        TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
-        return EventScript_TryDoDoubleRematchBattle;
-    case TRAINER_BATTLE_REMATCH:
-        SetMapVarsToTrainerA();
-        TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
-        return EventScript_TryDoRematchBattle;
-#endif //FREE_MATCH_CALL
-    case TRAINER_BATTLE_PYRAMID:
-        if (gApproachingTrainerId == 0)
-        {
+        case TRAINER_BATTLE_REMATCH_DOUBLE:
             SetMapVarsToTrainerA();
-            TRAINER_BATTLE_PARAM.opponentA = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
-        }
-        else
-        {
-            TRAINER_BATTLE_PARAM.opponentB = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
-        }
-        return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE:
-        return sTrainerBattleEndScript;
-    case TRAINER_BATTLE_HILL:
-        if (gApproachingTrainerId == 0)
-        {
+            TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+            return EventScript_TryDoDoubleRematchBattle;
+
+        case TRAINER_BATTLE_REMATCH:
             SetMapVarsToTrainerA();
-            TRAINER_BATTLE_PARAM.opponentA = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
-        }
-        else
-        {
-            TRAINER_BATTLE_PARAM.opponentB = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
-        }
-        return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
-        gNoOfApproachingTrainers = 2; // set TWO_OPPONENTS gBattleTypeFlags
-        gApproachingTrainerId = 1; // prevent trainer approach
-        return EventScript_DoNoIntroTrainerBattle;
-    default:
-        if (gApproachingTrainerId == 0)
-        {
-            SetMapVarsToTrainerA();
-        }
-        return EventScript_TryDoNormalTrainerBattle;
+            TRAINER_BATTLE_PARAM.opponentA = GetRematchTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+            return EventScript_TryDoRematchBattle;
+#endif
+
+        case TRAINER_BATTLE_PYRAMID:
+            if (gApproachingTrainerId == 0)
+            {
+                SetMapVarsToTrainerA();
+                TRAINER_BATTLE_PARAM.opponentA = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
+            }
+            else
+            {
+                TRAINER_BATTLE_PARAM.opponentB = LocalIdToPyramidTrainerId(gSpecialVar_LastTalked);
+            }
+            return EventScript_TryDoNormalTrainerBattle;
+
+        case TRAINER_BATTLE_SET_TRAINERS_FOR_MULTI_BATTLE:
+            return sTrainerBattleEndScript;
+
+        case TRAINER_BATTLE_HILL:
+            if (gApproachingTrainerId == 0)
+            {
+                SetMapVarsToTrainerA();
+                TRAINER_BATTLE_PARAM.opponentA = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
+            }
+            else
+            {
+                TRAINER_BATTLE_PARAM.opponentB = LocalIdToHillTrainerId(gSpecialVar_LastTalked);
+            }
+            return EventScript_TryDoNormalTrainerBattle;
+
+        case TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO:
+            gNoOfApproachingTrainers = 2;
+            gApproachingTrainerId = 1;
+            return EventScript_DoNoIntroTrainerBattle;
+
+        case TRAINER_BATTLE_SINGLE_CUSTOM_TRANSITION:
+            gTrainerBattleOpponent_A = TRAINER_BATTLE_PARAM.opponentA;
+            gTrainerBattleTransition = *(u16 *)(&gTrainerBattleParameter.data[sizeof(gTrainerBattleParameter.params)]);
+            return EventScript_TryDoNormalTrainerBattle;
+
+        default:
+            if (gApproachingTrainerId == 0)
+                SetMapVarsToTrainerA();
+            return EventScript_TryDoNormalTrainerBattle;
     }
 }
 
@@ -1470,6 +1510,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_RICH:
             music = MUS_ENCOUNTER_RICH;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_CHATGPT:
+            music = MUS_HG_VS_CHAMPION;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;

@@ -182,7 +182,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_SETFIELDEFFECTARGUMENT        ScrCmd_setfieldeffectargument,      requests_effects=1  @ 0x9d
 	script_cmd_table_entry SCR_OP_WAITFIELDEFFECT               ScrCmd_waitfieldeffect,             requests_effects=1  @ 0x9e
 	script_cmd_table_entry SCR_OP_SETRESPAWN                    ScrCmd_setrespawn,                  requests_effects=1  @ 0x9f
-	script_cmd_table_entry SCR_OP_CHECKPLAYERGENDER             ScrCmd_checkplayergender,           requests_effects=1  @ 0xa0
+	script_cmd_table_entry SCR_OP_CHECKPLAYERSTYLE              ScrCmd_checkplayerstyle,            requests_effects=1  @ 0xa0
 	script_cmd_table_entry SCR_OP_PLAYMONCRY                    ScrCmd_playmoncry,                  requests_effects=1  @ 0xa1
 	script_cmd_table_entry SCR_OP_SETMETATILE                   ScrCmd_setmetatile,                 requests_effects=1  @ 0xa2
 	script_cmd_table_entry SCR_OP_RESETWEATHER                  ScrCmd_resetweather,                requests_effects=1  @ 0xa3
@@ -251,6 +251,27 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_BUFFERITEMNAMEPLURAL          ScrCmd_bufferitemnameplural,        requests_effects=1  @ 0xe2
 	script_cmd_table_entry SCR_OP_DYNMULTICHOICE                ScrCmd_dynmultichoice,              requests_effects=1  @ 0xe3
 	script_cmd_table_entry SCR_OP_DYNMULTIPUSH                  ScrCmd_dynmultipush,                requests_effects=1  @ 0xe4
+	script_cmd_table_entry SCR_OP_ISSTYLEMALE                   ScrCmd_IsStyleMale,                 requests_effects=1  @ 0xe5
+	script_cmd_table_entry SCR_OP_HIDEOBJECT                    ScrCmd_hideobject,                  requests_effects=1  @ 0xe6
+	script_cmd_table_entry SCR_OP_SHOWOBJECT                    ScrCmd_showobject,                  requests_effects=1  @ 0xe7
+	script_cmd_table_entry SCR_OP_SETOBJECTGFXID                ScrCmd_setobjectgfxid,              requests_effects=1  @ 0xe8
+	script_cmd_table_entry SCR_OP_SPAWN_RIVAL_OBJECT_FROM_STYLE ScrCmd_SpawnRivalObjectEventFromStyle, requests_effects=1  @ 0xe9
+	script_cmd_table_entry SCR_OP_GETPLAYERSTYLE                ScrCmd_GetPlayerStyle,              requests_effects=1 @ 0xea
+	script_cmd_table_entry SCR_OP_BUFFER_INT_TO_VAR1            ScrCmd_BufferIntToVar1,             requests_effects=1 @ 0xeb
+	script_cmd_table_entry SCR_OP_BUFFER_INT_TO_VAR2            ScrCmd_BufferIntToVar2,             requests_effects=1 @ 0xec
+	script_cmd_table_entry SCR_OP_TEST_SHOW_CHATGPT_LOGO        ScrCmd_TestShowChatGPTLogo,         requests_effects=1 @ 0xed
+	script_cmd_table_entry SCR_OP_GET_PLAYER_POS                ScrCmd_getplayerpos,                requests_effects=0 @ 0xee
+	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_1             ScrCmd_playmusictest1,              requests_effects=1 @ 0xef
+	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_2             ScrCmd_playmusictest2,              requests_effects=1 @ 0xf0
+	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_3             ScrCmd_playmusictest3,              requests_effects=1 @ 0xf1
+
+
+
+
+
+
+
+
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

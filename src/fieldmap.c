@@ -17,6 +17,7 @@
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
 #include "wild_encounter.h"
+#include "save.h"
 
 struct ConnectionFlags
 {
@@ -948,4 +949,23 @@ void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
         LoadPrimaryTilesetPalette(mapLayout);
         LoadSecondaryTilesetPalette(mapLayout, FALSE);
     }
+}
+
+void SetObjectEventGraphicsIdByLocalId(u8 localId, u16 graphicsId)
+{
+    u8 i;
+    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        struct ObjectEventTemplate *template = &gSaveBlock1Ptr->objectEventTemplates[i];
+        if (template->localId == localId)
+        {
+            template->graphicsId = graphicsId;
+            break;
+        }
+    }
+}
+
+u8 GetCurrentMapNum(void)
+{
+    return gSaveBlock1Ptr->location.mapNum;
 }

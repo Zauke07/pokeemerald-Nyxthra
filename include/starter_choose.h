@@ -9,5 +9,8 @@ extern const u32 gPokeballSelection_Gfx[];
 
 u16 GetStarterPokemon(u16 chosenStarterId);
 void CB2_ChooseStarter(void);
+void CreateStarterRegionMenu(void);
+extern const u8 *const sStarterRegionChoices[];
+
 
 #endif // GUARD_STARTER_CHOOSE_H

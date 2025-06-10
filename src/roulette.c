@@ -4666,7 +4666,7 @@ static void SpriteCB_Taillow_PickUpBall(struct Sprite *sprite)
 static void SpriteCB_Taillow_FlyIn(struct Sprite *sprite)
 {
     s8 xMoveOffsets[2] = {-1, 1};
-    s8 yMoveOffsets[][2] = {
+    s8 yMoveOffsets[][GENDER_COUNT] = {
         {2, 0},
         {2, 0},
         {2, -1},

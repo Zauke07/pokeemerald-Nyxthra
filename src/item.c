@@ -94,18 +94,69 @@ const u8 sText_s[] =_("s");
 u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
     if (quantity == 1)
+        return StringCopy(dst, ItemId_GetName(itemId));
+
+    switch (itemId)
     {
-        return StringCopy(dst, GetItemName(itemId));
+    case ITEM_POKE_BALL:
+        return StringCopy(dst, gText_Pokebaelle);
+    case ITEM_GREAT_BALL:
+        return StringCopy(dst, gText_Superbaelle);
+    case ITEM_ULTRA_BALL:
+        return StringCopy(dst, gText_Hyperbaelle);
+    case ITEM_MASTER_BALL:
+        return StringCopy(dst, gText_Masterbaelle);
+    case ITEM_SAFARI_BALL:
+        return StringCopy(dst, gText_Safaribaelle);
+    case ITEM_NET_BALL:
+        return StringCopy(dst, gText_Netzbaelle);
+    case ITEM_DIVE_BALL:
+        return StringCopy(dst, gText_Tauchbaelle);
+    case ITEM_NEST_BALL:
+        return StringCopy(dst, gText_Nestbaelle);
+    case ITEM_REPEAT_BALL:
+        return StringCopy(dst, gText_Wiederbaelle);
+    case ITEM_TIMER_BALL:
+        return StringCopy(dst, gText_Timerbaelle);
+    case ITEM_LUXURY_BALL:
+        return StringCopy(dst, gText_Luxusbaelle);
+    case ITEM_PREMIER_BALL:
+        return StringCopy(dst, gText_Premierbaelle);
+    case ITEM_HEAL_BALL:
+        return StringCopy(dst, gText_Heilbaelle);
+    case ITEM_QUICK_BALL:
+        return StringCopy(dst, gText_Schnellbaelle);
+    case ITEM_DUSK_BALL:
+        return StringCopy(dst, gText_Dunkelbaelle);
+    case ITEM_CHERISH_BALL:
+        return StringCopy(dst, gText_Jubelbaelle);
+    case ITEM_FAST_BALL:
+        return StringCopy(dst, gText_Flinkbaelle);
+    case ITEM_LEVEL_BALL:
+        return StringCopy(dst, gText_Levelbaelle);
+    case ITEM_LURE_BALL:
+        return StringCopy(dst, gText_Lockbaelle);
+    case ITEM_HEAVY_BALL:
+        return StringCopy(dst, gText_Schwerbaelle);
+    case ITEM_LOVE_BALL:
+        return StringCopy(dst, gText_Liebesbaelle);
+    case ITEM_FRIEND_BALL:
+        return StringCopy(dst, gText_Freundesbaelle);
+    case ITEM_MOON_BALL:
+        return StringCopy(dst, gText_Mondbaelle);
+    case ITEM_SPORT_BALL:
+        return StringCopy(dst, gText_Sportbaelle);
+    case ITEM_DREAM_BALL:
+        return StringCopy(dst, gText_Traumbaelle);
+    default:
+        break;
     }
-    else if (DoesItemHavePluralName(itemId))
-    {
-        return StringCopy(dst, GetItemPluralName(itemId));
-    }
-    else
-    {
-        u8 *end = StringCopy(dst, GetItemName(itemId));
-        return StringCopy(end, sText_s);
-    }
+
+    if (DoesItemHavePluralName(itemId))
+        return StringCopy(dst, ItemId_GetPluralName(itemId));
+
+    u8 *end = StringCopy(dst, ItemId_GetName(itemId));
+    return StringCopy(end, sText_s);
 }
 
 bool8 IsBagPocketNonEmpty(u8 pocket)

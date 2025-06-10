@@ -15,14 +15,29 @@
 #include "window.h"
 #include "gba/m4a_internal.h"
 #include "constants/rgb.h"
+#include "battle.h"
+#include "event_data.h"
+#include "random.h"
+#include "constants/songs.h"
+#include "constants/battle_string_ids.h"
 
-#define tMenuSelection data[0]
-#define tTextSpeed data[1]
-#define tBattleSceneOff data[2]
-#define tBattleStyle data[3]
-#define tSound data[4]
-#define tButtonMode data[5]
-#define tWindowFrameType data[6]
+#define QUICK_JUMP_AMOUNT 4
+
+struct RogueLocalData
+{
+    bool8 runningToggleActive : 1;
+    bool8 hasBattleInputStarted : 1;
+};
+
+extern struct RogueLocalData gRogueLocal;
+
+// Task data
+enum
+{
+    TD_MENUSELECTION,
+    TD_SUBMENU,
+    TD_PREVIOUS_MENUSELECTION,
+};
 
 enum
 {
@@ -666,3 +681,287 @@ static void DrawBgWindowFrames(void)
 
     CopyBgTilemapBufferToVram(1);
 }
+
+
+//Erweiterung für die optionen aus Rogue-Projekt
+
+bool8 Rogue_CanRenameMon(struct Pokemon* mon)
+{
+    u32 customMonId;
+    u32 otId = GetMonData(mon, MON_DATA_OT_ID);
+    
+    if(!IsOtherTrainer(otId, NULL))
+        return TRUE;
+
+    customMonId = RogueGift_GetCustomMonId(mon);
+
+    if(customMonId)
+        return RogueGift_CanRenameCustomMon(customMonId);
+
+    return FALSE;
+}
+
+bool8 RogueGift_CanRenameCustomMon(u32 id)
+{
+    (void)id;
+    return FALSE; // Custom Pokémon können bei dir nie umbenannt werden
+}
+
+bool8 Rogue_UseKeyBattleAnims(void)
+{
+    return FALSE;
+}
+
+u16 GetCurrentNicknameMode(void)
+{
+    return gSaveBlock2Ptr->optionsNicknameMode;
+}
+
+
+
+extern void Rogue_SetDefaultOptions(void);
+
+bool8 InBattleChoosingMoves();
+bool8 InBattleRunningActions();
+
+static u8 GetBattleSceneOption() 
+{
+    if(Rogue_UseKeyBattleAnims())
+        return gSaveBlock2Ptr->optionsBossBattleScene;
+    else if((gBattleTypeFlags & BATTLE_TYPE_TRAINER) != 0)
+        return gSaveBlock2Ptr->optionsTrainerBattleScene;
+    else
+        return gSaveBlock2Ptr->optionsWildBattleScene;
+}
+
+u8 Rogue_GetBattleSpeedScale(bool8 forHealthbar)
+{
+    u8 battleSceneOption = GetBattleSceneOption();
+
+    // Hold L to slow down
+    if(JOY_HELD(L_BUTTON))
+        return 1;
+
+    // We want to speed up all anims until input selection starts
+    if(InBattleChoosingMoves())
+        gRogueLocal.hasBattleInputStarted = TRUE;
+
+    if(gRogueLocal.hasBattleInputStarted)
+    {
+        // Always run at 1x speed here
+        if(InBattleChoosingMoves())
+            return 1;
+
+        // When battle anims are turned off, it's a bit too hard to read text, so force running at normal speed
+        if(!forHealthbar && battleSceneOption == OPTIONS_BATTLE_SCENE_DISABLED && InBattleRunningActions())
+            return 1;
+    }
+
+    // We don't need to speed up health bar anymore as that passively happens now
+    switch (battleSceneOption)
+    {
+    case OPTIONS_BATTLE_SCENE_1X:
+        return forHealthbar ? 1 : 1;
+
+    case OPTIONS_BATTLE_SCENE_2X:
+        return forHealthbar ? 1 : 2;
+
+    case OPTIONS_BATTLE_SCENE_3X:
+        return forHealthbar ? 1 : 3;
+
+    case OPTIONS_BATTLE_SCENE_4X:
+        return forHealthbar ? 1 : 4;
+
+    // Print text at a readable speed still
+    case OPTIONS_BATTLE_SCENE_DISABLED:
+        if(gRogueLocal.hasBattleInputStarted)
+            return forHealthbar ? 10 : 1;
+        else
+            return 4;
+    }
+
+    return 1;
+}
+
+bool8 Rogue_IsRunningToggledOn()
+{
+    return gRogueLocal.runningToggleActive;
+}
+
+bool8 Rogue_ShouldSkipAssignNickname(struct Pokemon* mon)
+{
+    u32 customMonId;
+
+    // Never give snagged mons nicknames
+    if(FlagGet(FLAG_ROGUE_IN_SNAG_BATTLE))
+        return TRUE;
+
+    // Don't give exotic mons nicknames
+    customMonId = RogueGift_GetCustomMonId(mon);
+
+    if(customMonId)
+    {
+        if(!RogueGift_CanRenameCustomMon(customMonId))
+            return TRUE;
+    }
+
+    switch (GetCurrentNicknameMode())
+    {
+    case OPTIONS_NICKNAME_MODE_NEVER:
+    case OPTIONS_NICKNAME_RANDOM: // <-- Random ebenfalls hier einfach überspringen
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+
+bool8 Rogue_ShouldSkipAssignNicknameYesNoMessage(struct Pokemon* mon)
+{
+    switch (GetCurrentNicknameMode())
+    {
+    case OPTIONS_NICKNAME_MODE_ASK:
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+bool8 Rogue_ShouldForceNicknameScreen()
+{
+    switch (GetCurrentNicknameMode())
+    {
+    case OPTIONS_NICKNAME_MODE_ALWAYS:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
+{
+    if(inputActive)
+    {
+        if(!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE | PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER | PLAYER_AVATAR_FLAG_CONTROLLABLE)))
+        {
+            // Update running toggle
+            if(gSaveBlock2Ptr->optionsAutoRunToggle && (newKeys & B_BUTTON) != 0)
+            {
+                gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
+            }
+        }
+    }
+}
+
+u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType)
+{
+    // 10 is eqv of 100%
+    u8 audioLevel = 10;
+
+    switch (soundType)
+    {
+        case ROGUE_SOUND_TYPE_CRY:
+        return volume; // 🔧 Cry soll die Lautstärke direkt übernehmen, ohne Modifikation    
+    
+    default:
+        if(mplayInfo == &gMPlayInfo_BGM)
+        {
+            // Fanfares are exempt
+            if(
+                mplayInfo->songHeader == gSongTable[MUS_LEVEL_UP].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_ITEM].header ||
+                mplayInfo->songHeader == gSongTable[MUS_EVOLVED].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_TMHM].header ||
+                mplayInfo->songHeader == gSongTable[MUS_HEAL].header ||
+                mplayInfo->songHeader == gSongTable[MUS_DP_HEAL].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_BADGE].header ||
+                mplayInfo->songHeader == gSongTable[MUS_MOVE_DELETED].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_BERRY].header ||
+                mplayInfo->songHeader == gSongTable[MUS_AWAKEN_LEGEND].header ||
+                mplayInfo->songHeader == gSongTable[MUS_SLOTS_JACKPOT].header ||
+                mplayInfo->songHeader == gSongTable[MUS_SLOTS_WIN].header ||
+                mplayInfo->songHeader == gSongTable[MUS_TOO_BAD].header ||
+                mplayInfo->songHeader == gSongTable[MUS_RG_POKE_FLUTE].header ||
+                mplayInfo->songHeader == gSongTable[MUS_RG_OBTAIN_KEY_ITEM].header ||
+                mplayInfo->songHeader == gSongTable[MUS_RG_DEX_RATING].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_B_POINTS].header ||
+                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_SYMBOL].header ||
+                mplayInfo->songHeader == gSongTable[MUS_REGISTER_MATCH_CALL].header ||
+                mplayInfo->songHeader == gSongTable[MUS_HG_LEVEL_UP].header ||
+                mplayInfo->songHeader == gSongTable[MUS_HG_EVOLVED].header ||
+                mplayInfo->songHeader == gSongTable[MUS_DP_LEVEL_UP].header ||
+                mplayInfo->songHeader == gSongTable[MUS_DP_EVOLVED].header
+            )
+            {
+                // do nothing
+            }
+            else
+            {
+                audioLevel = gSaveBlock2Ptr->optionsSoundChannelBGM;
+            }
+        }
+        else 
+        {
+            if(
+                mplayInfo->songHeader == gSongTable[SE_SELECT].header ||
+                mplayInfo->songHeader == gSongTable[SE_DEX_SCROLL].header ||
+                mplayInfo->songHeader == gSongTable[SE_PIN].header ||
+                mplayInfo->songHeader == gSongTable[SE_WIN_OPEN].header ||
+                mplayInfo->songHeader == gSongTable[SE_BALL].header
+            )
+            {
+                // UI sound effects
+                audioLevel = gSaveBlock2Ptr->optionsSoundChannelSE;
+            }
+            else if(gMain.inBattle)
+            {
+                // Assume all sounds are battle effects
+                audioLevel = gSaveBlock2Ptr->optionsSoundChannelBattleSE;
+            }
+        }
+        break;
+    }
+
+    if(audioLevel != 10)
+    {
+        return (volume * audioLevel) / 10;
+    }
+
+    return volume;
+}
+
+/*
+bool8 RogueToD_ApplyTimeVisuals()
+{
+    if(gMapHeader.mapLayoutId == LAYOUT_ROGUE_ADVENTURE_PATHS)
+    {
+        // Time of day is bad for visibility on adventure paths screen so just disable it
+        return FALSE;
+    }
+
+    return gSaveBlock2Ptr->timeOfDayVisuals && gMapHeader.mapType != MAP_TYPE_INDOOR && !sTimeOfDay.timeVisualsTempDisabled;
+}
+*/
+
+bool8 Rogue_GetBattleAnimsEnabled(void)
+{
+    return GetBattleSceneOption() != OPTIONS_BATTLE_SCENE_DISABLED;
+}
+
+u32 RogueGift_GetCustomMonId(struct Pokemon* mon)
+{
+    return RogueGift_GetCustomMonIdBySpecies(GetMonData(mon, MON_DATA_SPECIES), GetMonData(mon, MON_DATA_OT_ID));
+}
+
+u32 RogueGift_GetCustomBoxMonId(struct BoxPokemon* mon)
+{
+    return RogueGift_GetCustomMonIdBySpecies(GetBoxMonData(mon, MON_DATA_SPECIES), GetBoxMonData(mon, MON_DATA_OT_ID));
+}
+
+u32 RogueGift_GetCustomMonIdBySpecies(u16 species, u32 otId)
+{
+    (void)species;
+    (void)otId;
+    return 0; // Immer NONE, weil du keine Custom Pokémon hast
+}
+

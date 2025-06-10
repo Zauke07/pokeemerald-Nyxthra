@@ -134,4 +134,7 @@ extern const u8 gStatusConditionString_LoveJpn[8];
 
 extern const u8 *const gStatusConditionStringsTable[7][2];
 
+u16 GetPlayerBackSpriteId(void);
+
+
 #endif // GUARD_BATTLE_MAIN_H

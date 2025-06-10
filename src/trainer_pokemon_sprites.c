@@ -8,8 +8,11 @@
 #include "data.h"
 #include "pokemon.h"
 #include "constants/trainers.h"
+#include "main_menu.h"
 
 #define PICS_COUNT 8
+
+#define TRAINER_PIC_STYLE_INVALID 0xFFFF
 
 // Needs to be large enough to store either a decompressed Pokémon pic or trainer pic
 #define PIC_SPRITE_SIZE max(MON_PIC_SIZE, TRAINER_PIC_SIZE)
@@ -346,14 +349,28 @@ u16 CreateTrainerCardTrainerPicSprite(u16 species, bool8 isFrontPic, u16 destX, 
     return CreateTrainerCardSprite(species, FALSE, 0, isFrontPic, destX, destY, paletteSlot, windowId, TRUE);
 }
 
-u16 PlayerGenderToFrontTrainerPicId_Debug(u8 gender, bool8 getClass)
+static const u16 sPlayerStyleToTrainerPicId[] = {
+    [STYLE_BRENDAN] = TRAINER_PIC_BRENDAN,
+    [STYLE_MAY]     = TRAINER_PIC_MAY,
+    [STYLE_RED]     = TRAINER_PIC_RED,
+    [STYLE_LEAF]    = TRAINER_PIC_LEAF,
+    // weitere Styles hier ergänzen...
+};
+
+u16 PlayerStyleToFrontTrainerPicId(u8 style, bool8 getClass)
 {
-    if (getClass == TRUE)
+    switch (style)
     {
-        if (gender != MALE)
-            return gFacilityClassToPicIndex[FACILITY_CLASS_MAY];
-        else
-            return gFacilityClassToPicIndex[FACILITY_CLASS_BRENDAN];
+    case STYLE_BRENDAN:
+        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_BRENDAN;
+    case STYLE_MAY:
+        return getClass ? FACILITY_CLASS_MAY : TRAINER_PIC_MAY;
+    case STYLE_RED:
+        return getClass ? FACILITY_CLASS_RED : TRAINER_PIC_RED;
+    case STYLE_LEAF:
+        return getClass ? FACILITY_CLASS_LEAF : TRAINER_PIC_LEAF;
+    // weitere Styles später hier ergänzen
+    default:
+        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_BRENDAN;
     }
-    return gender;
 }

@@ -20,6 +20,8 @@
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
 #include "config/save.h"
+#include "constants/event_objects.h"
+#include "constants/trainers.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -136,7 +138,16 @@
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
 
-// NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
+extern bool8 IsFemaleStyle(u8 style);
+extern u16 GetPlayerOverworldSpriteId(u8 style);
+extern u16 PlayerStyleToFrontTrainerPicId(u8 style, bool8 getClass);
+extern u16 GetTrainerPicFromStyle(u8 style);
+extern u16 GetPlayerGraphicsId(u8 playerStyle);
+
+
+#define PLAYER_STYLE gSaveBlock2Ptr->playerStyles
+
+#ifndef NDEBUG
 static inline void CycleCountStart()
 {
     REG_TM2CNT_H = 0;
@@ -571,7 +582,17 @@ struct SaveBlock2
     /*0x11*/ u8 playTimeSeconds;
     /*0x12*/ u8 playTimeVBlanks;
     /*0x13*/ u8 optionsButtonMode;  // OPTIONS_BUTTON_MODE_[NORMAL/LR/L_EQUALS_A]
-    /*0x14*/ u16 optionsTextSpeed:3; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST]
+    /*0x14*/ u16 optionsTextSpeed:2; // OPTIONS_TEXT_SPEED_[SLOW/MID/FAST]
+             u32 optionsSoundChannelBGM:4;
+             u32 optionsSoundChannelSE:4;
+             u32 optionsSoundChannelBattleSE:4;
+             u32 optionsNicknameMode:3; // //OPTIONS_NICKNAME_MODE_[ASK/ALWAYS/NEVER/RANDOM]
+             u32 optionsWildBattleScene:3; // OPTIONS_BATTLE_SCENE_[...]
+             u32 optionsTrainerBattleScene:3; // OPTIONS_BATTLE_SCENE_[...]
+             u32 optionsBossBattleScene:3; // OPTIONS_BATTLE_SCENE_[...]
+             // ...
+             u32 optionsLowHealthBeep:2; // OPTIONS_HEALTH_BEEP_[...]
+             u32 optionsAutoRunToggle:1; // whether running is trigger by a B toggle or a hold
              u16 optionsWindowFrameType:5; // Specifies one of the 20 decorative borders for text boxes
              u16 optionsSound:1; // OPTIONS_SOUND_[MONO/STEREO]
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]

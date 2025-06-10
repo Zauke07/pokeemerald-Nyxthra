@@ -130,7 +130,7 @@ static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/pokenav/regi
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
 
-static const u16 sRegionMap_SpecialPlaceLocations[][2] =
+static const u16 sRegionMap_SpecialPlaceLocations[][GENDER_COUNT] =
 {
     {MAPSEC_UNDERWATER_105,             MAPSEC_ROUTE_105},
     {MAPSEC_UNDERWATER_124,             MAPSEC_ROUTE_124},
@@ -421,7 +421,7 @@ static const struct SpritePalette sFlyTargetIconsSpritePalette =
     .tag = TAG_FLY_ICON
 };
 
-static const u16 sRedOutlineFlyDestinations[][2] =
+static const u16 sRedOutlineFlyDestinations[][GENDER_COUNT] =
 {
     {
         FLAG_LANDMARK_BATTLE_FRONTIER,
@@ -2020,19 +2020,49 @@ u32 FilterFlyDestination(struct RegionMap* regionMap)
 {
     switch (regionMap->mapSecId)
     {
-    case MAPSEC_SOUTHERN_ISLAND:
-        return HEAL_LOCATION_SOUTHERN_ISLAND_EXTERIOR;
-    case MAPSEC_BATTLE_FRONTIER:
-        return HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST;
-    case MAPSEC_LITTLEROOT_TOWN:
-        return (gSaveBlock2Ptr->playerGender == MALE ? HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE : HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE);
-    case MAPSEC_EVER_GRANDE_CITY:
-        return (FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) && regionMap->posWithinMapSec == 0 ? HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE : HEAL_LOCATION_EVER_GRANDE_CITY);
-    default:
-        if (sMapHealLocations[regionMap->mapSecId][2] != HEAL_LOCATION_NONE)
-            return sMapHealLocations[regionMap->mapSecId][2];
-        else
-            return WARP_ID_NONE;
+        case MAPSEC_SOUTHERN_ISLAND:
+            return HEAL_LOCATION_SOUTHERN_ISLAND_EXTERIOR;
+        case MAPSEC_BATTLE_FRONTIER:
+            return HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST;
+        case MAPSEC_LITTLEROOT_TOWN:
+            switch (gSaveBlock2Ptr->playerStyles[0])
+            {
+                case STYLE_BRENDAN:
+                case STYLE_RED:
+                //                case STYLE_ETHAN:
+                //                case STYLE_LUCAS:
+                //                case STYLE_HILBERT:
+                //                case STYLE_NATE:
+                //                case STYLE_CALEM:
+                //                case STYLE_ELIO:
+                //                case STYLE_VICTOR:
+                //                case STYLE_FLORIAN:
+                    return HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE;
+
+                case STYLE_MAY:
+                case STYLE_LEAF:
+                //                case STYLE_LYRA:
+                //                case STYLE_DAWN:
+                //                case STYLE_HILDA:
+                //                case STYLE_ROSA:
+                //                case STYLE_SERENA:
+                //                case STYLE_SELENE:
+                //                case STYLE_GLORIA:
+                //                case STYLE_JULIANA:
+                    return HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE;
+
+                default:
+                    return HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE; // Fallback
+            }
+        case MAPSEC_EVER_GRANDE_CITY:
+            return (FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) && regionMap->posWithinMapSec == 0 
+                    ? HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE 
+                    : HEAL_LOCATION_EVER_GRANDE_CITY);
+        default:
+            if (sMapHealLocations[regionMap->mapSecId][2] != HEAL_LOCATION_NONE)
+                return sMapHealLocations[regionMap->mapSecId][2];
+            else
+                return WARP_ID_NONE;
     }
 }
 

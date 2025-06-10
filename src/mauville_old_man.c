@@ -317,7 +317,7 @@ void GenerateGiddyLine(void)
 static void InitGiddyTaleList(void)
 {
     struct MauvilleManGiddy *giddy = &gSaveBlock1Ptr->oldMan.giddy;
-    u16 wordGroupsAndCount[][2] = {
+    u16 wordGroupsAndCount[][GENDER_COUNT] = {
         {EC_GROUP_POKEMON,   0},
         {EC_GROUP_LIFESTYLE, 0},
         {EC_GROUP_HOBBIES,   0},

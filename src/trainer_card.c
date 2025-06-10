@@ -32,6 +32,7 @@
 #include "constants/rgb.h"
 #include "constants/trainers.h"
 #include "constants/union_room.h"
+#include "main_menu.h"
 
 enum {
     WIN_MSG,
@@ -1881,22 +1882,21 @@ static u8 VersionToCardType(u8 version)
 
 static void CreateTrainerCardTrainerPic(void)
 {
+    u8 style = sData->trainerCard.style;
+    u8 picIndex = FacilityClassToPicIndex(PlayerStyleToFacilityClass(style));
+    u8 xOffset = sTrainerPicOffset[sData->isHoenn][IsPlayerStyleMale(style)][0];
+    u8 yOffset = sTrainerPicOffset[sData->isHoenn][IsPlayerStyleMale(style)][1];
+
     if (InUnionRoom() == TRUE && gReceivedRemoteLinkPlayers == 1)
     {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sData->trainerCard.unionRoomClass),
-                    TRUE,
-                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
-                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],
-                    8,
-                    WIN_TRAINER_PIC);
+        // Union Room: dort wird unionRoomClass verwendet
+        picIndex = FacilityClassToPicIndex(sData->trainerCard.unionRoomClass);
     }
-    else
-    {
-        CreateTrainerCardTrainerPicSprite(FacilityClassToPicIndex(sTrainerPicFacilityClass[sData->cardType][sData->trainerCard.gender]),
-                    TRUE,
-                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][0],
-                    sTrainerPicOffset[sData->isHoenn][sData->trainerCard.gender][1],
-                    8,
-                    WIN_TRAINER_PIC);
-    }
+
+    CreateTrainerCardTrainerPicSprite(picIndex,
+                                      TRUE,
+                                      xOffset,
+                                      yOffset,
+                                      8,
+                                      WIN_TRAINER_PIC);
 }

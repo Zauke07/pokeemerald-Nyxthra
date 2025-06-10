@@ -50,9 +50,16 @@ const u16 gBadgeFlags[NUM_BADGES] =
 
 void InitEventData(void)
 {
+    // Starter-Region retten
+    u16 starterRegion = gSaveBlock1Ptr->vars[VAR_STARTER_REGION - VARS_START];
+
+    // Reset aller normalen Event-Daten
     memset(gSaveBlock1Ptr->flags, 0, sizeof(gSaveBlock1Ptr->flags));
     memset(gSaveBlock1Ptr->vars, 0, sizeof(gSaveBlock1Ptr->vars));
     memset(sSpecialFlags, 0, sizeof(sSpecialFlags));
+
+    // Starter-Region zurücksetzen
+    gSaveBlock1Ptr->vars[VAR_STARTER_REGION - VARS_START] = starterRegion;
 }
 
 void ClearTempFieldEventData(void)

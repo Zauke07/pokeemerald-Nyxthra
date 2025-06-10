@@ -133,6 +133,100 @@
 #define FEMALE 1
 #define GENDER_COUNT 2
 
+// später nach und nach folgende hinzufügen nach #define STYLE_LEAF:
+// #define STYLE_ETHAN         4
+// #define STYLE_LYRA          5
+// #define STYLE_LUCAS         6
+// #define STYLE_DAWN          7
+// #define STYLE_HILBERT       8
+// #define STYLE_HILDA         9
+// #define STYLE_NATE         10
+// #define STYLE_ROSA         11
+// #define STYLE_CALEM       12
+// #define STYLE_SERENA       13
+// #define STYLE_ELIO         14
+// #define STYLE_SELENE       15
+// #define STYLE_VICTOR       16
+// #define STYLE_GLORIA       17
+// #define STYLE_FLORIAN      18
+// #define STYLE_JULIANA      19
+
+#define STYLE_BRENDAN       0
+#define STYLE_MAY           1
+#define STYLE_RED           2
+#define STYLE_LEAF          3
+#define PLAYER_STYLE_COUNT 4
+#define NUM_PLAYER_CHARACTERS PLAYER_STYLE_COUNT
+#define NUM_PLAYER_STYLES PLAYER_STYLE_COUNT
+
+
+
+// später nach und nach folgende hinzufügen nach PLAYER_OUTFIT_MAY: 
+    // PLAYER_OUTFIT_ETHAN,
+    // PLAYER_OUTFIT_LYRA,
+    // PLAYER_OUTFIT_LUCAS,
+    // PLAYER_OUTFIT_DAWN,
+    // PLAYER_OUTFIT_HILBERT,
+    // PLAYER_OUTFIT_HILDA,
+    // PLAYER_OUTFIT_NATE,
+    // PLAYER_OUTFIT_ROSA,
+    // PLAYER_OUTFIT_CALEM,
+    // PLAYER_OUTFIT_SERENA,
+    // PLAYER_OUTFIT_ELIO,
+    // PLAYER_OUTFIT_SELENE,
+    // PLAYER_OUTFIT_VICTOR,
+    // PLAYER_OUTFIT_GLORIA,
+    // PLAYER_OUTFIT_FLORIAN,
+    // PLAYER_OUTFIT_JULIANA,
+
+enum 
+{
+    PLAYER_OUTFIT_BRENDAN,
+    PLAYER_OUTFIT_MAY,
+    PLAYER_OUTFIT_RED,
+    PLAYER_OUTFIT_LEAF,
+    PLAYER_OUTFIT_ROCKET_GRUNT_F,
+    PLAYER_OUTFIT_ROCKET_GRUNT_M,
+    PLAYER_OUTFIT_ROCKET_ADMIN_F, // placeholders
+    PLAYER_OUTFIT_ROCKET_ADMIN_M, // placeholders
+    PLAYER_OUTFIT_AQUA_GRUNT_F,
+    PLAYER_OUTFIT_AQUA_GRUNT_M,
+    PLAYER_OUTFIT_MAGMA_GRUNT_F,
+    PLAYER_OUTFIT_MAGMA_GRUNT_M,
+    PLAYER_OUTFIT_GALACTIC_GRUNT_F,
+    PLAYER_OUTFIT_GALACTIC_GRUNT_M,
+    PLAYER_OUTFIT_PLASMA_ADMIN_F, // placeholders
+    PLAYER_OUTFIT_PLASMA_ADMIN_M, // placeholders
+    PLAYER_OUTFIT_NEO_PLASMA_ADMIN_F, // placeholders
+    PLAYER_OUTFIT_NEO_PLASMA_ADMIN_M, // placeholders
+    PLAYER_OUTFIT_FLARE_ADMIN_F, // placeholders
+    PLAYER_OUTFIT_FLARE_ADMIN_M, // placeholders
+
+
+    // Secret unlocks
+    PLAYER_OUTFIT_POKABBIE,
+    PLAYER_OUTFIT_KATE,
+    PLAYER_OUTFIT_ERMA,
+    PLAYER_OUTFIT_RAVEN,
+    PLAYER_OUTFIT_TAILS,
+
+    // Community secret unlocks
+    PLAYER_OUTFIT_ZEFA,
+    PLAYER_OUTFIT_LIGHTNINGSTRIKE7,
+    PLAYER_OUTFIT_NACHOLORD,
+
+    PLAYER_OUTFIT_LATERMANNER,
+    PLAYER_OUTFIT_DOLPHIN,
+
+    PLAYER_OUTFIT_COUNT,
+};
+
+enum 
+{
+    OUTFIT_UNLOCK_TYPE_PLACEHOLDER,
+    OUTFIT_UNLOCK_TYPE_EASTER_EGG,
+};
+
 #define NUM_BARD_SONG_WORDS    6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4

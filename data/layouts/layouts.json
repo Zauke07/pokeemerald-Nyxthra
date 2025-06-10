@@ -4410,6 +4410,96 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROSALHOEHLE",
+      "name": "Rosalhoehle_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rosalhoehle/border.bin",
+      "blockdata_filepath": "data/layouts/Rosalhoehle/map.bin"
+    },
+    {
+      "id": "LAYOUT_SECRET_PETALBURG_WOODS",
+      "name": "SecretPetalburgWoods_Layout",
+      "width": 10,
+      "height": 36,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SecretPetalburgWoods/border.bin",
+      "blockdata_filepath": "data/layouts/SecretPetalburgWoods/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPEICHERORT",
+      "name": "Speicherort_Layout",
+      "width": 9,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/Speicherort/border.bin",
+      "blockdata_filepath": "data/layouts/Speicherort/map.bin"
+    },
+    {
+      "id": "LAYOUT_BABY_BOOT_CAMP",
+      "name": "BabyBootCamp_Layout",
+      "width": 11,
+      "height": 10,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BabyBootCamp/border.bin",
+      "blockdata_filepath": "data/layouts/BabyBootCamp/map.bin"
+    },
+    {
+      "id": "LAYOUT_BABY_BOOT_CAMP_TESTS",
+      "name": "BabyBootCamp_Tests_Layout",
+      "width": 70,
+      "height": 70,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/BabyBootCamp_Tests/border.bin",
+      "blockdata_filepath": "data/layouts/BabyBootCamp_Tests/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_WALD",
+      "name": "TestWald_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/TestWald/border.bin",
+      "blockdata_filepath": "data/layouts/TestWald/map.bin"
+    },
+    {
+      "id": "LAYOUT_TESTLABOR",
+      "name": "Testlabor_Layout",
+      "width": 35,
+      "height": 25,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BrendansMaysHouse",
+      "border_filepath": "data/layouts/Testlabor/border.bin",
+      "blockdata_filepath": "data/layouts/Testlabor/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_HHLE",
+      "name": "TestHhle_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/TestHhle/border.bin",
+      "blockdata_filepath": "data/layouts/TestHhle/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_SURF",
+      "name": "TestSurf_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/TestSurf/border.bin",
+      "blockdata_filepath": "data/layouts/TestSurf/map.bin"
     }
   ]
 }

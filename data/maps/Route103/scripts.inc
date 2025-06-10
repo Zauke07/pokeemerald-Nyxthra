@@ -4,7 +4,6 @@ Route103_MapScripts::
 	.byte 0
 
 Route103_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
 	call ProfBirch_EventScript_UpdateLocation
 	end
 
@@ -19,10 +18,80 @@ Route103_EventScript_OpenAlteringCave::
 
 Route103_EventScript_Rival::
 	lockall
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route103_EventScript_RivalMay
-	goto_if_eq VAR_RESULT, FEMALE, Route103_EventScript_RivalBrendan
+	setvar VAR_0x8004, LOCALID_RIVAL
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	goto Route103_EventScript_ShowRivalMessage
+
+
+Route103_EventScript_ShowRivalMessage::
+	getplayerstyle
+	copyvar VAR_TEMP_0, VAR_RESULT
+	copyvar VAR_TEMP_1, VAR_STARTER_REGION
+
+	compare VAR_TEMP_0, STYLE_BRENDAN
+	goto_if_eq Route103_EventScript_Rival_MAY
+	compare VAR_TEMP_0, STYLE_MAY
+	goto_if_eq Route103_EventScript_Rival_BRENDAN
+	compare VAR_TEMP_0, STYLE_RED
+	goto_if_eq Route103_EventScript_Rival_LEAF
+	compare VAR_TEMP_0, STYLE_LEAF
+	goto_if_eq Route103_EventScript_Rival_RED
 	end
+
+Route103_EventScript_Rival_BRENDAN::
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalBrendan
+	end
+
+Route103_EventScript_Rival_MAY::
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalMay
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalMay
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalMay
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalMay
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalMay
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalMay
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalMay
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalMay
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalMay
+	end
+
+Route103_EventScript_Rival_RED::
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalRed
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalRed
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalRed
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalRed
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalRed
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalRed
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalRed
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalRed
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalRed
+	end
+
+Route103_EventScript_Rival_LEAF::
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalLeaf
+	end
+
+
 
 Route103_EventScript_RivalMay::
 	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
@@ -35,57 +104,618 @@ Route103_EventScript_RivalMay::
 	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartMayBattleTreecko
-	case 1, Route103_EventScript_StartMayBattleTorchic
-	case 2, Route103_EventScript_StartMayBattleMudkip
-	end
+	waitbuttonpress
+	closemessage
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartMay_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartMay_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartMay_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartMay_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartMay_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartMay_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartMay_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartMay_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartMay_Paldea
+
 
 Route103_EventScript_RivalBrendan::
 	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
 	closemessage
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartBrendanBattleTreecko
-	case 1, Route103_EventScript_StartBrendanBattleTorchic
-	case 2, Route103_EventScript_StartBrendanBattleMudkip
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartBrendan_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartBrendan_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartBrendan_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartBrendan_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartBrendan_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartBrendan_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartBrendan_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartBrendan_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartBrendan_Paldea
 	end
 
-Route103_EventScript_StartMayBattleTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
+Route103_EventScript_RivalRed::
+	msgbox Route103_Text_RedRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_RedLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartRed_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartRed_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartRed_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartRed_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartRed_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartRed_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartRed_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartRed_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartRed_Paldea
+
+
+Route103_EventScript_RivalLeaf::
+	msgbox Route103_Text_LeafRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_LeafLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartLeaf_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartLeaf_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartLeaf_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartLeaf_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartLeaf_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartLeaf_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartLeaf_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartLeaf_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartLeaf_Paldea
+
+Route103_EventScript_StartRedBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_BULBASAUR, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+Route103_EventScript_StartRedBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CHARMANDER, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+Route103_EventScript_StartRedBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SQUIRTLE, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartLeafBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_BULBASAUR, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+Route103_EventScript_StartLeafBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CHARMANDER, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+Route103_EventScript_StartLeafBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SQUIRTLE, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartMayBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_BULBASAUR, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+Route103_EventScript_StartMayBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CHARMANDER, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+Route103_EventScript_StartMayBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SQUIRTLE, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
-Route103_EventScript_StartMayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
+Route103_EventScript_StartBrendanBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_BULBASAUR, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+Route103_EventScript_StartBrendanBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CHARMANDER, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+Route103_EventScript_StartBrendanBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SQUIRTLE, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartRedBattleTREECKO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_TREECKO, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_TORCHIC, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_MUDKIP, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartLeafBattleTREECKO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_TREECKO, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_TORCHIC, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_MUDKIP, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartBrendanBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CHIKORITA, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CYNDAQUIL, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TOTODILE, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TURTWIG, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CHIMCHAR, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_PIPLUP, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleSNIVY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SNIVY, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleTEPIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TEPIG, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_OSHAWOTT, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CHESPIN, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_FENNEKIN, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_FROAKIE, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleROWLET::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_ROWLET, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleLITTEN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_LITTEN, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_POPPLIO, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_GROOKEY, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SCORBUNNY, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SOBBLE, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SPRIGATITO, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_FUECOCO, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartBrendanBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_QUAXLY, Route103_Text_BrendanDefeated
+	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartMayBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CHIKORITA, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
-Route103_EventScript_StartMayBattleMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
+Route103_EventScript_StartMayBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CYNDAQUIL, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 
-Route103_EventScript_StartBrendanBattleTreecko::
+Route103_EventScript_StartMayBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TOTODILE, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TURTWIG, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CHIMCHAR, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_PIPLUP, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleSNIVY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SNIVY, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleTEPIG::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TEPIG, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_OSHAWOTT, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CHESPIN, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_FENNEKIN, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_FROAKIE, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleROWLET::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_ROWLET, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleLITTEN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_LITTEN, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_POPPLIO, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_GROOKEY, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SCORBUNNY, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SOBBLE, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SPRIGATITO, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_FUECOCO, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_QUAXLY, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartRedBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CHIKORITA, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CYNDAQUIL, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_TOTODILE, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_TURTWIG, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CHIMCHAR, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_PIPLUP, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleSNIVY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SNIVY, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleTEPIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_TEPIG, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_OSHAWOTT, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CHESPIN, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_FENNEKIN, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_FROAKIE, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleROWLET::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_ROWLET, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleLITTEN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_LITTEN, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_POPPLIO, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_GROOKEY, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SCORBUNNY, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SOBBLE, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SPRIGATITO, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_FUECOCO, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartRedBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_103_QUAXLY, Route103_Text_RedDefeated
+	goto Route103_EventScript_AfterRedBattle
+	end
+
+Route103_EventScript_StartLeafBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CHIKORITA, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CYNDAQUIL, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_TOTODILE, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_TURTWIG, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CHIMCHAR, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_PIPLUP, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleSNIVY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SNIVY, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleTEPIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_TEPIG, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_OSHAWOTT, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CHESPIN, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_FENNEKIN, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_FROAKIE, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleROWLET::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_ROWLET, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleLITTEN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_LITTEN, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_POPPLIO, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_GROOKEY, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SCORBUNNY, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SOBBLE, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SPRIGATITO, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_FUECOCO, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartLeafBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_QUAXLY, Route103_Text_LeafDefeated
+	goto Route103_EventScript_AfterLeafBattle
+	end
+
+Route103_EventScript_StartBrendanBattleTREECKO::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TREECKO, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
-Route103_EventScript_StartBrendanBattleTorchic::
+Route103_EventScript_StartBrendanBattleTORCHIC::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_TORCHIC, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
 	end
 
-Route103_EventScript_StartBrendanBattleMudkip::
+Route103_EventScript_StartBrendanBattleMUDKIP::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_MUDKIP, Route103_Text_BrendanDefeated
 	goto Route103_EventScript_AfterBrendanBattle
+	end
+
+Route103_EventScript_StartMayBattleTREECKO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TREECKO, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
+	end
+
+Route103_EventScript_StartMayBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_MUDKIP, Route103_Text_MayDefeated
+	goto Route103_EventScript_AfterMayBattle
 	end
 
 Route103_EventScript_AfterMayBattle::
@@ -95,6 +725,16 @@ Route103_EventScript_AfterMayBattle::
 
 Route103_EventScript_AfterBrendanBattle::
 	msgbox Route103_Text_BrendanTimeToHeadBack, MSGBOX_DEFAULT
+	goto Route103_EventScript_RivalExit
+	end
+
+Route103_EventScript_AfterRedBattle::
+	msgbox Route103_Text_RedTimeToHeadBack, MSGBOX_DEFAULT
+	goto Route103_EventScript_RivalExit
+	end
+
+Route103_EventScript_AfterLeafBattle::
+	msgbox Route103_Text_LeafTimeToHeadBack, MSGBOX_DEFAULT
 	goto Route103_EventScript_RivalExit
 	end
 
@@ -286,9 +926,263 @@ Route103_EventScript_Isabelle::
 	msgbox Route103_Text_IsabellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route103_EventScript_StartBrendan_Kanto::
+    switch VAR_STARTER_MON
+    case 0, Route103_EventScript_StartBrendanBattleCHARMANDER
+    case 1, Route103_EventScript_StartBrendanBattleSQUIRTLE
+    case 2, Route103_EventScript_StartBrendanBattleBULBASAUR
+    end
+
+Route103_EventScript_StartBrendan_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleCHIKORITA
+	case 1, Route103_EventScript_StartBrendanBattleCYNDAQUIL
+	case 2, Route103_EventScript_StartBrendanBattleTOTODILE
+	end
+
+Route103_EventScript_StartBrendan_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleTREECKO
+	case 1, Route103_EventScript_StartBrendanBattleTORCHIC
+	case 2, Route103_EventScript_StartBrendanBattleMUDKIP
+	end
+
+Route103_EventScript_StartBrendan_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleTURTWIG
+	case 1, Route103_EventScript_StartBrendanBattleCHIMCHAR
+	case 2, Route103_EventScript_StartBrendanBattlePIPLUP
+	end
+
+Route103_EventScript_StartBrendan_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleSNIVY
+	case 1, Route103_EventScript_StartBrendanBattleTEPIG
+	case 2, Route103_EventScript_StartBrendanBattleOSHAWOTT
+	end
+
+Route103_EventScript_StartBrendan_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleCHESPIN
+	case 1, Route103_EventScript_StartBrendanBattleFENNEKIN
+	case 2, Route103_EventScript_StartBrendanBattleFROAKIE
+	end
+
+Route103_EventScript_StartBrendan_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleROWLET
+	case 1, Route103_EventScript_StartBrendanBattleLITTEN
+	case 2, Route103_EventScript_StartBrendanBattlePOPPLIO
+	end
+
+Route103_EventScript_StartBrendan_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleGROOKEY
+	case 1, Route103_EventScript_StartBrendanBattleSCORBUNNY
+	case 2, Route103_EventScript_StartBrendanBattleSOBBLE
+	end
+
+Route103_EventScript_StartBrendan_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleSPRIGATITO
+	case 1, Route103_EventScript_StartBrendanBattleFUECOCO
+	case 2, Route103_EventScript_StartBrendanBattleQUAXLY
+	end
+
+@ --- Analog für May ---
+
+Route103_EventScript_StartMay_Kanto::
+    switch VAR_STARTER_MON
+    case 0, Route103_EventScript_StartMayBattleBULBASAUR
+    case 1, Route103_EventScript_StartMayBattleCHARMANDER
+    case 2, Route103_EventScript_StartMayBattleSQUIRTLE
+    end
+
+Route103_EventScript_StartMay_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleCHIKORITA
+	case 1, Route103_EventScript_StartMayBattleCYNDAQUIL
+	case 2, Route103_EventScript_StartMayBattleTOTODILE
+	end
+
+Route103_EventScript_StartMay_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleTREECKO
+	case 1, Route103_EventScript_StartMayBattleTORCHIC
+	case 2, Route103_EventScript_StartMayBattleMUDKIP
+	end
+
+Route103_EventScript_StartMay_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleTURTWIG
+	case 1, Route103_EventScript_StartMayBattleCHIMCHAR
+	case 2, Route103_EventScript_StartMayBattlePIPLUP
+	end
+
+Route103_EventScript_StartMay_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleSNIVY
+	case 1, Route103_EventScript_StartMayBattleTEPIG
+	case 2, Route103_EventScript_StartMayBattleOSHAWOTT
+	end
+
+Route103_EventScript_StartMay_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleCHESPIN
+	case 1, Route103_EventScript_StartMayBattleFENNEKIN
+	case 2, Route103_EventScript_StartMayBattleFROAKIE
+	end
+
+Route103_EventScript_StartMay_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleROWLET
+	case 1, Route103_EventScript_StartMayBattleLITTEN
+	case 2, Route103_EventScript_StartMayBattlePOPPLIO
+	end
+
+Route103_EventScript_StartMay_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleGROOKEY
+	case 1, Route103_EventScript_StartMayBattleSCORBUNNY
+	case 2, Route103_EventScript_StartMayBattleSOBBLE
+	end
+
+Route103_EventScript_StartMay_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleSPRIGATITO
+	case 1, Route103_EventScript_StartMayBattleFUECOCO
+	case 2, Route103_EventScript_StartMayBattleQUAXLY
+	end
+
+Route103_EventScript_StartRed_Kanto::
+    switch VAR_STARTER_MON
+    case 0, Route103_EventScript_StartRedBattleCHARMANDER
+    case 1, Route103_EventScript_StartRedBattleSQUIRTLE
+    case 2, Route103_EventScript_StartRedBattleBULBASAUR
+    end
+
+Route103_EventScript_StartRed_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleCHIKORITA
+	case 1, Route103_EventScript_StartRedBattleCYNDAQUIL
+	case 2, Route103_EventScript_StartRedBattleTOTODILE
+	end
+
+Route103_EventScript_StartRed_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleTREECKO
+	case 1, Route103_EventScript_StartRedBattleTORCHIC
+	case 2, Route103_EventScript_StartRedBattleMUDKIP
+	end
+
+Route103_EventScript_StartRed_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleTURTWIG
+	case 1, Route103_EventScript_StartRedBattleCHIMCHAR
+	case 2, Route103_EventScript_StartRedBattlePIPLUP
+	end
+
+Route103_EventScript_StartRed_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleSNIVY
+	case 1, Route103_EventScript_StartRedBattleTEPIG
+	case 2, Route103_EventScript_StartRedBattleOSHAWOTT
+	end
+
+Route103_EventScript_StartRed_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleCHESPIN
+	case 1, Route103_EventScript_StartRedBattleFENNEKIN
+	case 2, Route103_EventScript_StartRedBattleFROAKIE
+	end
+
+Route103_EventScript_StartRed_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleROWLET
+	case 1, Route103_EventScript_StartRedBattleLITTEN
+	case 2, Route103_EventScript_StartRedBattlePOPPLIO
+	end
+
+Route103_EventScript_StartRed_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleGROOKEY
+	case 1, Route103_EventScript_StartRedBattleSCORBUNNY
+	case 2, Route103_EventScript_StartRedBattleSOBBLE
+	end
+
+Route103_EventScript_StartRed_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleSPRIGATITO
+	case 1, Route103_EventScript_StartRedBattleFUECOCO
+	case 2, Route103_EventScript_StartRedBattleQUAXLY
+	end
+
+Route103_EventScript_StartLeaf_Kanto::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleSQUIRTLE
+	case 1, Route103_EventScript_StartLeafBattleBULBASAUR
+	case 2, Route103_EventScript_StartLeafBattleCHARMANDER
+	end
+
+Route103_EventScript_StartLeaf_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleCHIKORITA
+	case 1, Route103_EventScript_StartLeafBattleCYNDAQUIL
+	case 2, Route103_EventScript_StartLeafBattleTOTODILE
+	end
+
+Route103_EventScript_StartLeaf_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleTREECKO
+	case 1, Route103_EventScript_StartLeafBattleTORCHIC
+	case 2, Route103_EventScript_StartLeafBattleMUDKIP
+	end
+
+Route103_EventScript_StartLeaf_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleTURTWIG
+	case 1, Route103_EventScript_StartLeafBattleCHIMCHAR
+	case 2, Route103_EventScript_StartLeafBattlePIPLUP
+	end
+
+Route103_EventScript_StartLeaf_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleSNIVY
+	case 1, Route103_EventScript_StartLeafBattleTEPIG
+	case 2, Route103_EventScript_StartLeafBattleOSHAWOTT
+	end
+
+Route103_EventScript_StartLeaf_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleCHESPIN
+	case 1, Route103_EventScript_StartLeafBattleFENNEKIN
+	case 2, Route103_EventScript_StartLeafBattleFROAKIE
+	end
+
+Route103_EventScript_StartLeaf_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleROWLET
+	case 1, Route103_EventScript_StartLeafBattleLITTEN
+	case 2, Route103_EventScript_StartLeafBattlePOPPLIO
+	end
+
+Route103_EventScript_StartLeaf_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleGROOKEY
+	case 1, Route103_EventScript_StartLeafBattleSCORBUNNY
+	case 2, Route103_EventScript_StartLeafBattleSOBBLE
+	end
+
+Route103_EventScript_StartLeaf_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartLeafBattleSPRIGATITO
+	case 1, Route103_EventScript_StartLeafBattleFUECOCO
+	case 2, Route103_EventScript_StartLeafBattleQUAXLY
+	end
+
 Route103_Text_MayRoute103Pokemon:
-	.string "MAY: Let's see… The POKéMON found\n"
-	.string "on ROUTE 103 include…$"
+	.string "{RIVAL}: Mal seh'n... Das POKéMON von\n"
+	.string "ROUTE 103 besitzt...$"
 
 Route103_Text_MayLetsBattle:
 	.string "Oh, hi, {PLAYER}{KUN}!\p"
@@ -304,18 +1198,18 @@ Route103_Text_MayDefeated:
 	.string "{PLAYER}{KUN}, you're pretty good!$"
 
 Route103_Text_MayTimeToHeadBack:
-	.string "MAY: I think I know why my dad has\n"
-	.string "an eye out for you now.\p"
-	.string "I mean, you just got that POKéMON,\n"
-	.string "but it already likes you.\p"
-	.string "You might be able to befriend any\n"
-	.string "kind of POKéMON easily.\p"
-	.string "Well, it's time to head back to\n"
-	.string "the LAB.$"
+	.string "{RIVAL}: Ich glaube, ich weiß jetzt, warum\n"
+	.string "mein Vater dich ausgesucht hat.\p"
+	.string "Ich meine, du hast dein POKéMON erst\n"
+	.string "sehr kurze Zeit und es mag dich bereits.\p"
+	.string "Du wirst es einfach haben, dich mit\n"
+	.string "jeder Art von POKéMON anzufreunden.\p"
+	.string "Nun wird es aber Zeit, zurück ins LABOR\n"
+	.string "zu gehen!$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on ROUTE 103…$"
+	.string "{RIVAL}: So... Dieses und dieses lebt an\n"
+	.string "der ROUTE 103...$"
 
 Route103_Text_BrendanLetsBattle:
 	.string "Hey, it's {PLAYER}!\p"
@@ -329,14 +1223,14 @@ Route103_Text_BrendanDefeated:
 	.string "Huh, {PLAYER}, you're not too shabby.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: I think I get it.\n"
-	.string "I think I know why my dad has his eye\l"
-	.string "out for you now.\p"
-	.string "Look, your POKéMON already likes you,\n"
-	.string "even though you just got it.\p"
-	.string "{PLAYER}, I get the feeling that you\n"
-	.string "could befriend any POKéMON with ease.\p"
-	.string "We should head back to the LAB.$"
+	.string "{RIVAL}: Ich denke, ich habe es kapiert.\n"
+	.string "Ich weiß jetzt, warum mein Vater dich\l"
+	.string "ausgesucht hat.\p"
+	.string "Du hast dein POKéMON noch nicht lange,\n"
+	.string "und doch mag es dich schon.\p"
+	.string "{PLAYER}, ich glaube, du kannst mit jedem\n"
+	.string "POKéMON Freundschaft schließen.\p"
+	.string "Wir sollten nun zurück zum LABOR gehen.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
 	.string "My POKéMON is staggeringly tired…\n"
@@ -349,5 +1243,85 @@ Route103_Text_ShortcutToOldale:
 
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
-	.string "{DOWN_ARROW} OLDALE TOWN$"
+	.string "{DOWN_ARROW} ROSALTSTADT$"
+
+Route103_EventScript_Bisasam::
+	msgbox Route103_Text_Bisasam, MSGBOX_NPC
+	end
+
+Route103_Text_RedRoute103Pokemon:
+	.string "Hm... Ich schätze, auf ROUTE 103\n"
+	.string "gibt es einige starke Pokémon.$"
+
+Route103_Text_RedLetsBattle:
+	.string "Oh, {PLAYER}. Du hast ein Pokémon?\p"
+	.string "Dann wollen wir sehen, wie stark du bist.\p"
+	.string "Ich zeig dir, wie man richtig kämpft.$"
+
+Route103_Text_RedDefeated:
+	.string "Nicht schlecht... Du bist stärker\n"
+	.string "als gedacht.$"
+
+Route103_Text_RedTimeToHeadBack:
+	.string "Ich verstehe, warum man dich\n"
+	.string "ausgewählt hat. Gute Arbeit.\p"
+	.string "Zurück ins Labor, los geht’s.$"
+
+Route103_Text_LeafRoute103Pokemon:
+	.string "Also diese Pokémon hier sehen echt\n"
+	.string "interessant aus...$"
+
+Route103_Text_LeafLetsBattle:
+	.string "Oh, hi {PLAYER}!\p"
+	.string "Du hast auch ein Pokémon bekommen?\p"
+	.string "Na dann - auf in den ersten Kampf!\p"
+	.string "Ich hoffe, du bist bereit!$"
+
+Route103_Text_LeafDefeated:
+	.string "Wow! Das war knapp - Respekt!$"
+
+Route103_Text_LeafTimeToHeadBack:
+	.string "Du scheinst dich gut mit deinem\n"
+	.string "Pokémon zu verstehen.\p"
+	.string "Ich denke, du wirst weit kommen!\p"
+	.string "Zurück zum Labor!$"
+
+Route103_Text_Bisasam:
+	.string "Hey {PLAYER}, ich bin ein\n"
+	.string "Bote von diesem Rom Entwickler.\l"
+	.string "Sein name ist Zauke07!\p"
+	.string "Immer wenn du mich am ende einer\n"
+	.string "Route Siehst, sprich mich an, denn\l"
+	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 1 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+
+Route103_Text_DebugStarterRegion:
+	.string "Region = {STR_VAR_1}$"
+
+Route103_Text_DebugStarterVarResult:
+	.string "Starter = {STR_VAR_1}$"
+
+Route103_Text_Debug_ShowRivalMessage:
+	.string "DEBUG: RivalMessage-Script gestartet$"
+
+Text_Debug_StyleResult:
+	.string "DEBUG: VAR_TEMP_0 = {STR_VAR_1}$"
+
+Text_Debug_StarterRegion:
+	.string "DEBUG: StarterRegion = {STR_VAR_2}$"
+
+Text_Debug_StyleStarterVars:
+	.string "DEBUG: Style = {STR_VAR_1}, Region = {STR_VAR_2}$"
+
+Route103_Text_Debug_UnknownStyle:
+	.string "DEBUG: Style nicht erkannt$"
+
+Route103_Text_Debug:
+	.string "DEBUG: EventScript_Rival wurde gestartet$"
+
 

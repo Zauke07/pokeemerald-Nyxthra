@@ -7,7 +7,7 @@
 
 u32 GetCurrentLevelCap(void)
 {
-    static const u32 sLevelCapFlagMap[][2] =
+    static const u32 sLevelCapFlagMap[][GENDER_COUNT] =
     {
         {FLAG_BADGE01_GET, 15},
         {FLAG_BADGE02_GET, 19},
@@ -84,7 +84,8 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 
 u32 GetCurrentEVCap(void)
 {
-    static const u16 sEvCapFlagMap[][2] = {
+
+    static const u16 sEvCapFlagMap[][GENDER_COUNT] = {
         // Define EV caps for each milestone
         {FLAG_BADGE01_GET, MAX_TOTAL_EVS *  1 / 17},
         {FLAG_BADGE02_GET, MAX_TOTAL_EVS *  3 / 17},

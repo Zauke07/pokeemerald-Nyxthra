@@ -723,7 +723,7 @@ static void (*const sBattleTowerFuncs[])(void) =
     [BATTLE_TOWER_FUNC_SET_INTERVIEW_DATA]  = SetTowerInterviewData,
 };
 
-static const u32 sWinStreakFlags[][2] =
+static const u32 sWinStreakFlags[][GENDER_COUNT] =
 {
     {STREAK_TOWER_SINGLES_50,     STREAK_TOWER_SINGLES_OPEN},
     {STREAK_TOWER_DOUBLES_50,     STREAK_TOWER_DOUBLES_OPEN},
@@ -731,7 +731,7 @@ static const u32 sWinStreakFlags[][2] =
     {STREAK_TOWER_LINK_MULTIS_50, STREAK_TOWER_LINK_MULTIS_OPEN},
 };
 
-static const u32 sWinStreakMasks[][2] =
+static const u32 sWinStreakMasks[][GENDER_COUNT] =
 {
     {~(STREAK_TOWER_SINGLES_50),     ~(STREAK_TOWER_SINGLES_OPEN)},
     {~(STREAK_TOWER_DOUBLES_50),     ~(STREAK_TOWER_DOUBLES_OPEN)},
@@ -756,7 +756,7 @@ static const u8 sBattleTowerPartySizes2[] =
 
 // Trainer ID ranges for possible frontier trainers to encounter on particular challenges
 // Trainers are scaled by difficulty, so higher trainer IDs have better teams
-static const u16 sFrontierTrainerIdRanges[][2] =
+static const u16 sFrontierTrainerIdRanges[][GENDER_COUNT] =
 {
     {FRONTIER_TRAINER_BRADY,   FRONTIER_TRAINER_JILL},   //   0 -  99
     {FRONTIER_TRAINER_TREVIN,  FRONTIER_TRAINER_CHLOE},  //  80 - 119
@@ -768,7 +768,7 @@ static const u16 sFrontierTrainerIdRanges[][2] =
     {FRONTIER_TRAINER_JAXON,   FRONTIER_TRAINER_GRETEL}, // 200 - 299
 };
 
-static const u16 sFrontierTrainerIdRangesHard[][2] =
+static const u16 sFrontierTrainerIdRangesHard[][GENDER_COUNT] =
 {
     {FRONTIER_TRAINER_ERIK,    FRONTIER_TRAINER_CHLOE},  // 100 - 119
     {FRONTIER_TRAINER_NORTON,  FRONTIER_TRAINER_SOFIA},  // 120 - 139

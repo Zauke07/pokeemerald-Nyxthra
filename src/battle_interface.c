@@ -2606,7 +2606,7 @@ static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
 /*Add pixels by X*/                                \
 + ((((x) - ((x / 8) * 8)) / 2)))
 
-static const u16 sOverwrittenPixelsTable[][2] =
+static const u16 sOverwrittenPixelsTable[][GENDER_COUNT] =
 {
     {PIXEL_COORDS_TO_OFFSET(0, 0), 5},
     {PIXEL_COORDS_TO_OFFSET(0, 1), 5},

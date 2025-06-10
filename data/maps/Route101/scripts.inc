@@ -218,32 +218,7 @@ Route101_EventScript_RouteSign::
 Route101_EventScript_BirchsBag::
 	lock
 	faceplayer
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_RESCUED_BIRCH
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_ROUTE101_ZIGZAGOON
-	setobjectxy LOCALID_PLAYER, 6, 13
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	special ChooseStarter
-	waitstate
-	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
-	waitmovement 0
-	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
-	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
-	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
-	waitstate
-	release
-	end
+	goto Route101_EventScript_ChooseStarterRegion
 
 Route101_EventScript_HideMayInBedroom::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
@@ -295,5 +270,121 @@ Route101_Text_WildPokemonInTallGrass:
 
 Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "{UP_ARROW} ROSALTSTADT$"
+
+Route101_EventScript_Glumanda::
+	msgbox Route101_Text_Glumanda, MSGBOX_NPC
+	end
+
+Route101_Text_Glumanda:
+	.string "Hey {PLAYER}, ich bin ein\n"
+	.string "Bote von diesem Rom Entwickler.\l"
+	.string "Sein name ist Zauke07!\p"
+	.string "Immer wenn du mich am ende einer\n"
+	.string "Route Siehst, sprich mich an, denn\l"
+	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 1 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+
+Route101_EventScript_ChooseStarterRegion::
+    msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT
+    closemessage
+    special ShowStarterRegionMulti
+    waitstate
+    switch VAR_RESULT
+    case 0, SetStarterRegion_Kanto
+    case 1, SetStarterRegion_Johto
+    case 2, SetStarterRegion_Hoenn
+    case 3, SetStarterRegion_Sinnoh
+    case 4, SetStarterRegion_Unova
+    case 5, SetStarterRegion_Kalos
+    case 6, SetStarterRegion_Alola
+    case 7, SetStarterRegion_Galar
+    case 8, SetStarterRegion_Paldea
+    end
+
+SetStarterRegion_Kanto::
+    setvar VAR_STARTER_REGION, STARTER_REGION_KANTO
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Johto::
+    setvar VAR_STARTER_REGION, STARTER_REGION_JOHTO
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Hoenn::
+    setvar VAR_STARTER_REGION, STARTER_REGION_HOENN
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Sinnoh::
+    setvar VAR_STARTER_REGION, STARTER_REGION_SINNOH
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Unova::
+    setvar VAR_STARTER_REGION, STARTER_REGION_UNOVA
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Kalos::
+    setvar VAR_STARTER_REGION, STARTER_REGION_KALOS
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Alola::
+    setvar VAR_STARTER_REGION, STARTER_REGION_ALOLA
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Galar::
+    setvar VAR_STARTER_REGION, STARTER_REGION_GALAR
+    goto Route101_EventScript_BirchsBag_Continued
+
+SetStarterRegion_Paldea::
+    setvar VAR_STARTER_REGION, STARTER_REGION_PALDEA
+    goto Route101_EventScript_BirchsBag_Continued
+
+Route101_EventScript_BirchsBag_Continued::
+    fadescreen FADE_TO_BLACK
+    removeobject LOCALID_ZIGZAGOON
+    setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
+    setflag FLAG_RESCUED_BIRCH
+    special ChooseStarter
+    waitstate
+    applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
+    waitmovement 0
+    msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
+    special HealPlayerParty
+    setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+    clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+    setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+    setvar VAR_BIRCH_LAB_STATE, 2
+    setvar VAR_ROUTE101_STATE, 3
+    clearflag FLAG_HIDE_MAP_NAME_POPUP
+    getplayerstyle
+    call_if_eq VAR_RESULT, STYLE_BRENDAN, Route101_EventScript_HideMayInBedroom
+    call_if_eq VAR_RESULT, STYLE_MAY, Route101_EventScript_HideBrendanInBedroom
+    call_if_eq VAR_RESULT, STYLE_RED, Route101_EventScript_HideMayInBedroom
+    call_if_eq VAR_RESULT, STYLE_LEAF, Route101_EventScript_HideBrendanInBedroom
+    warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+    waitstate
+    release
+    end
+
+Route101_Text_WhichStarterRegion:
+    .string "Wähle die Region des Starters:\n"
+    .string "{COLOR RED}Kanto{COLOR WHITE}, {COLOR GREEN}Johto{COLOR WHITE}, {COLOR BLUE}Hoenn{COLOR WHITE}, {COLOR LIGHT_BLUE}Sinnoh{COLOR WHITE},\l"
+    .string "{COLOR LIGHT_RED}Einall{COLOR WHITE}, {COLOR LIGHT_GREEN}Kalos{COLOR WHITE}, {COLOR DYNAMIC_COLOR4}Alola{COLOR WHITE}, {COLOR DYNAMIC_COLOR5}Galar{COLOR WHITE},\p"
+    .string "{COLOR DYNAMIC_COLOR6}Paldea{COLOR WHITE}.$"
+
+Route101_Text_DebugKantoReached:
+    .string "Kanto-Auswahl erkannt.$"
+
+Route101_Text_DebugCompareKanto:
+    .string "Vergleich mit 0 erreicht.$"
+
+Route101_Text_DebugStarterRegion:
+    .string "Starter-Region = {STR_VAR_1}$"
+
+Route101_Text_DebugStarterVarResult:
+    .string "Starterwahl = {STR_VAR_1}$"
 

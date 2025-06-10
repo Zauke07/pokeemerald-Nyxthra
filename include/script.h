@@ -61,6 +61,22 @@ const u8 *GetRamScript(u8 objectId, const u8 *script);
 bool32 ValidateSavedRamScript(void);
 u8 *GetSavedRamScriptIfValid(void);
 void InitRamScript_NoObjectEvent(u8 *script, u16 scriptSize);
+bool8 ScrCmd_IsStyleMale(struct ScriptContext *ctx);
+bool8 ScrCmd_hideobject(struct ScriptContext *ctx);
+bool8 ScrCmd_showobject(struct ScriptContext *ctx);
+bool8 ScrCmd_setobjectgfxid(struct ScriptContext *ctx);
+bool8 ScriptCmd_SpawnRivalForStyle(struct ScriptContext *ctx);
+bool8 ScrCmd_SpawnRivalObjectEventFromStyle(struct ScriptContext *ctx);
+bool8 SpawnRivalObjectEventFromStyle(void);
+bool8 ScrCmd_BufferIntToVar1(struct ScriptContext *ctx);
+bool8 ScrCmd_BufferIntToVar2(struct ScriptContext *ctx);
+bool8 ScrCmd_TestShowChatGPTLogo(struct ScriptContext *ctx);
+bool8 ShowStarterRegionMenu(struct ScriptContext *ctx);
+bool8 ShowStarterRegionMulti(struct ScriptContext *ctx);
+bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx);
+//TestLabor
+//bool8 ScrCmd_playmusictest(struct ScriptContext *ctx);
+
 
 // srccmd.h
 void SetMovingNpcId(u16 npcId);

@@ -14,7 +14,7 @@ Route119_EventScript_TryRemoveKecleon::
 	return
 
 Route119_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
@@ -38,93 +38,95 @@ Route119_EventScript_RivalTrigger2::
 
 Route119_EventScript_RivalEncounter::
 	lockall
-	addobject LOCALID_ROUTE119_RIVAL_ON_BIKE
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route119_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, Route119_EventScript_PlayBrendanMusic
+	addobject LOCALID_RIVAL_ON_BIKE
+	call Common_EventScript_SetupRivalMusic
 	delay 65
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
 	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_RivalEnter2
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 30
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
 	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
-	removeobject LOCALID_ROUTE119_RIVAL_ON_BIKE
-	addobject LOCALID_ROUTE119_RIVAL
+	removeobject LOCALID_RIVAL_ON_BIKE
+	addobject LOCALID_RIVAL
 	delay 30
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route119_EventScript_BattleMay
-	goto_if_eq VAR_RESULT, FEMALE, Route119_EventScript_BattleBrendan
+	getplayerstyle
+	copyvar VAR_TEMP_2, VAR_RESULT
+	switch VAR_TEMP_2
+	case STYLE_BRENDAN, Route119_EventScript_StartBattle_May
+	case STYLE_MAY, Route119_EventScript_StartBattle_Brendan
+	case STYLE_RED, Route119_EventScript_StartBattle_Leaf
+	case STYLE_LEAF, Route119_EventScript_StartBattle_Red
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_LYRA, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_DAWN, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_HILDA, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_NATE, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_ROSA, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_CALEM, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_SERENA, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_ELIO, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_SELENE, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, Route119_EventScript_BattleBrendan
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, Route119_EventScript_BattleMay
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, Route119_EventScript_BattleBrendan
 	releaseall
 	end
 
-Route119_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route119_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
-
-Route119_EventScript_BattleMay::
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleMayTreecko
-	case 1, Route119_EventScript_BattleMayTorchic
-	case 2, Route119_EventScript_BattleMayMudkip
+Route119_EventScript_StartBattle_Brendan::
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route119_EventScript_StartBrendan_Kanto
+	case STARTER_REGION_JOHTO, Route119_EventScript_StartBrendan_Johto
+	case STARTER_REGION_HOENN, Route119_EventScript_StartBrendan_Hoenn
+	case STARTER_REGION_SINNOH, Route119_EventScript_StartBrendan_Sinnoh
+	case STARTER_REGION_UNOVA, Route119_EventScript_StartBrendan_Unova
+	case STARTER_REGION_KALOS, Route119_EventScript_StartBrendan_Kalos
+	case STARTER_REGION_ALOLA, Route119_EventScript_StartBrendan_Alola
+	case STARTER_REGION_GALAR, Route119_EventScript_StartBrendan_Galar
+	case STARTER_REGION_PALDEA, Route119_EventScript_StartBrendan_Paldea
 	end
 
-Route119_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
+Route119_EventScript_StartBattle_May::
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route119_EventScript_StartMay_Kanto
+	case STARTER_REGION_JOHTO, Route119_EventScript_StartMay_Johto
+	case STARTER_REGION_HOENN, Route119_EventScript_StartMay_Hoenn
+	case STARTER_REGION_SINNOH, Route119_EventScript_StartMay_Sinnoh
+	case STARTER_REGION_UNOVA, Route119_EventScript_StartMay_Unova
+	case STARTER_REGION_KALOS, Route119_EventScript_StartMay_Kalos
+	case STARTER_REGION_ALOLA, Route119_EventScript_StartMay_Alola
+	case STARTER_REGION_GALAR, Route119_EventScript_StartMay_Galar
+	case STARTER_REGION_PALDEA, Route119_EventScript_StartMay_Paldea
 	end
 
-Route119_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
+Route119_EventScript_StartBattle_Red::
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route119_EventScript_StartRed_Kanto
+	case STARTER_REGION_JOHTO, Route119_EventScript_StartRed_Johto
+	case STARTER_REGION_HOENN, Route119_EventScript_StartRed_Hoenn
+	case STARTER_REGION_SINNOH, Route119_EventScript_StartRed_Sinnoh
+	case STARTER_REGION_UNOVA, Route119_EventScript_StartRed_Unova
+	case STARTER_REGION_KALOS, Route119_EventScript_StartRed_Kalos
+	case STARTER_REGION_ALOLA, Route119_EventScript_StartRed_Alola
+	case STARTER_REGION_GALAR, Route119_EventScript_StartRed_Galar
+	case STARTER_REGION_PALDEA, Route119_EventScript_StartRed_Paldea
 	end
 
-Route119_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
-	end
-
-Route119_EventScript_DefeatedMay::
-	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
-	end
-
-Route119_EventScript_BattleBrendan::
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, Route119_EventScript_BattleBrendanTreecko
-	case 1, Route119_EventScript_BattleBrendanTorchic
-	case 2, Route119_EventScript_BattleBrendanMudkip
-	end
-
-Route119_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
-	end
-
-Route119_EventScript_DefeatedBrendan::
-	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
-	call Route119_EventScript_GiveFlyHM
-	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
-	goto Route119_EventScript_RivalExitScottArrive
+Route119_EventScript_StartBattle_Leaf::
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route119_EventScript_StartLeaf_Kanto
+	case STARTER_REGION_JOHTO, Route119_EventScript_StartLeaf_Johto
+	case STARTER_REGION_HOENN, Route119_EventScript_StartLeaf_Hoenn
+	case STARTER_REGION_SINNOH, Route119_EventScript_StartLeaf_Sinnoh
+	case STARTER_REGION_UNOVA, Route119_EventScript_StartLeaf_Unova
+	case STARTER_REGION_KALOS, Route119_EventScript_StartLeaf_Kalos
+	case STARTER_REGION_ALOLA, Route119_EventScript_StartLeaf_Alola
+	case STARTER_REGION_GALAR, Route119_EventScript_StartLeaf_Galar
+	case STARTER_REGION_PALDEA, Route119_EventScript_StartLeaf_Paldea
 	end
 
 Route119_EventScript_GiveFlyHM::
@@ -601,10 +603,828 @@ Route119_Text_WeatherInstitute:
 	.string "WEATHER INSTITUTE$"
 
 Route119_Text_TrainerTipsDecoration:
-	.string "TRAINER TIPS\p"
-	.string "Up to sixteen decorations and\n"
-	.string "furniture items can be placed in\l"
-	.string "a SECRET BASE.\p"
-	.string "Pick your favorite items and create\n"
-	.string "your very own SECRET BASE exactly the\l"
-	.string "way you want.$"
+	.string "TIPPS für TRAINER\p"
+	.string "In der GEHEIMBASIS können bis zu 16\n"
+	.string "Dekorationen und Möbel untergebracht\l"
+	.string "werden.\p"
+	.string "Nimm deine Lieblingsitems und richte dir\n"
+	.string "deine GEHEIMBASIS ganz nach deinem\l"
+	.string "Geschmack ein.$"
+
+Route119_EventScript_Froxy::
+	msgbox Route119_Text_Froxy, MSGBOX_NPC
+	end
+
+Route119_Text_Froxy:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 6 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+
+Route119_EventScript_StartBrendan_Kanto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleBULBASAUR
+	case 1, Route119_EventScript_StartBrendanBattleCHARMANDER
+	case 2, Route119_EventScript_StartBrendanBattleSQUIRTLE
+	end
+
+Route119_EventScript_StartBrendanBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_BULBASAUR, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_CHARMANDER, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_SQUIRTLE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleCHIKORITA
+	case 1, Route119_EventScript_StartBrendanBattleCYNDAQUIL
+	case 2, Route119_EventScript_StartBrendanBattleTOTODILE
+	end
+
+Route119_EventScript_StartBrendanBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_CHIKORITA, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_CYNDAQUIL, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TOTODILE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleTREECKO
+	case 1, Route119_EventScript_StartBrendanBattleTORCHIC
+	case 2, Route119_EventScript_StartBrendanBattleMUDKIP
+	end
+
+Route119_EventScript_StartBrendanBattleTREECKO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleTURTWIG
+	case 1, Route119_EventScript_StartBrendanBattleCHIMCHAR
+	case 2, Route119_EventScript_StartBrendanBattlePIPLUP
+	end
+
+Route119_EventScript_StartBrendanBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TURTWIG, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_CHIMCHAR, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_PIPLUP, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleSNIVY
+	case 1, Route119_EventScript_StartBrendanBattleTEPIG
+	case 2, Route119_EventScript_StartBrendanBattleOSHAWOTT
+	end
+
+Route119_EventScript_StartBrendanBattleSNIVY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_SNIVY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleTEPIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TEPIG, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_OSHAWOTT, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleCHESPIN
+	case 1, Route119_EventScript_StartBrendanBattleFENNEKIN
+	case 2, Route119_EventScript_StartBrendanBattleFROAKIE
+	end
+
+Route119_EventScript_StartBrendanBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_CHESPIN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_FENNEKIN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_FROAKIE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleROWLET
+	case 1, Route119_EventScript_StartBrendanBattleLITTEN
+	case 2, Route119_EventScript_StartBrendanBattlePOPPLIO
+	end
+
+Route119_EventScript_StartBrendanBattleROWLET::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_ROWLET, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleLITTEN::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_LITTEN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_POPPLIO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleGROOKEY
+	case 1, Route119_EventScript_StartBrendanBattleSCORBUNNY
+	case 2, Route119_EventScript_StartBrendanBattleSOBBLE
+	end
+
+Route119_EventScript_StartBrendanBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_GROOKEY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_SCORBUNNY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_SOBBLE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendan_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartBrendanBattleSPRIGATITO
+	case 1, Route119_EventScript_StartBrendanBattleFUECOCO
+	case 2, Route119_EventScript_StartBrendanBattleQUAXLY
+	end
+
+Route119_EventScript_StartBrendanBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_SPRIGATITO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_FUECOCO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartBrendanBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_QUAXLY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartMay_Kanto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleBULBASAUR
+	case 1, Route119_EventScript_StartMayBattleCHARMANDER
+	case 2, Route119_EventScript_StartMayBattleSQUIRTLE
+	end
+
+Route119_EventScript_StartMayBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_BULBASAUR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_CHARMANDER, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_SQUIRTLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleCHIKORITA
+	case 1, Route119_EventScript_StartMayBattleCYNDAQUIL
+	case 2, Route119_EventScript_StartMayBattleTOTODILE
+	end
+
+Route119_EventScript_StartMayBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_CHIKORITA, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_CYNDAQUIL, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TOTODILE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleTREECKO
+	case 1, Route119_EventScript_StartMayBattleTORCHIC
+	case 2, Route119_EventScript_StartMayBattleMUDKIP
+	end
+
+Route119_EventScript_StartMayBattleTREECKO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleTURTWIG
+	case 1, Route119_EventScript_StartMayBattleCHIMCHAR
+	case 2, Route119_EventScript_StartMayBattlePIPLUP
+	end
+
+Route119_EventScript_StartMayBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TURTWIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_CHIMCHAR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_PIPLUP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleSNIVY
+	case 1, Route119_EventScript_StartMayBattleTEPIG
+	case 2, Route119_EventScript_StartMayBattleOSHAWOTT
+	end
+
+Route119_EventScript_StartMayBattleSNIVY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_SNIVY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleTEPIG::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TEPIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_OSHAWOTT, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleCHESPIN
+	case 1, Route119_EventScript_StartMayBattleFENNEKIN
+	case 2, Route119_EventScript_StartMayBattleFROAKIE
+	end
+
+Route119_EventScript_StartMayBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_CHESPIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_FENNEKIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_FROAKIE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleROWLET
+	case 1, Route119_EventScript_StartMayBattleLITTEN
+	case 2, Route119_EventScript_StartMayBattlePOPPLIO
+	end
+
+Route119_EventScript_StartMayBattleROWLET::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_ROWLET, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleLITTEN::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_LITTEN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_POPPLIO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleGROOKEY
+	case 1, Route119_EventScript_StartMayBattleSCORBUNNY
+	case 2, Route119_EventScript_StartMayBattleSOBBLE
+	end
+
+Route119_EventScript_StartMayBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_GROOKEY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_SCORBUNNY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_SOBBLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMay_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartMayBattleSPRIGATITO
+	case 1, Route119_EventScript_StartMayBattleFUECOCO
+	case 2, Route119_EventScript_StartMayBattleQUAXLY
+	end
+
+Route119_EventScript_StartMayBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_SPRIGATITO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_FUECOCO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartMayBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_QUAXLY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartRed_Kanto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleBULBASAUR
+	case 1, Route119_EventScript_StartRedBattleCHARMANDER
+	case 2, Route119_EventScript_StartRedBattleSQUIRTLE
+	end
+
+Route119_EventScript_StartRedBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_BULBASAUR, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_CHARMANDER, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_SQUIRTLE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleCHIKORITA
+	case 1, Route119_EventScript_StartRedBattleCYNDAQUIL
+	case 2, Route119_EventScript_StartRedBattleTOTODILE
+	end
+
+Route119_EventScript_StartRedBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_CHIKORITA, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_CYNDAQUIL, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_TOTODILE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleTREECKO
+	case 1, Route119_EventScript_StartRedBattleTORCHIC
+	case 2, Route119_EventScript_StartRedBattleMUDKIP
+	end
+
+Route119_EventScript_StartRedBattleTREECKO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleTURTWIG
+	case 1, Route119_EventScript_StartRedBattleCHIMCHAR
+	case 2, Route119_EventScript_StartRedBattlePIPLUP
+	end
+
+Route119_EventScript_StartRedBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_TURTWIG, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_CHIMCHAR, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_PIPLUP, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleSNIVY
+	case 1, Route119_EventScript_StartRedBattleTEPIG
+	case 2, Route119_EventScript_StartRedBattleOSHAWOTT
+	end
+
+Route119_EventScript_StartRedBattleSNIVY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_SNIVY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleTEPIG::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_TEPIG, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_OSHAWOTT, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleCHESPIN
+	case 1, Route119_EventScript_StartRedBattleFENNEKIN
+	case 2, Route119_EventScript_StartRedBattleFROAKIE
+	end
+
+Route119_EventScript_StartRedBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_CHESPIN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_FENNEKIN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_FROAKIE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleROWLET
+	case 1, Route119_EventScript_StartRedBattleLITTEN
+	case 2, Route119_EventScript_StartRedBattlePOPPLIO
+	end
+
+Route119_EventScript_StartRedBattleROWLET::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_ROWLET, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleLITTEN::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_LITTEN, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_POPPLIO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleGROOKEY
+	case 1, Route119_EventScript_StartRedBattleSCORBUNNY
+	case 2, Route119_EventScript_StartRedBattleSOBBLE
+	end
+
+Route119_EventScript_StartRedBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_GROOKEY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_SCORBUNNY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_SOBBLE, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRed_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartRedBattleSPRIGATITO
+	case 1, Route119_EventScript_StartRedBattleFUECOCO
+	case 2, Route119_EventScript_StartRedBattleQUAXLY
+	end
+
+Route119_EventScript_StartRedBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_SPRIGATITO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_FUECOCO, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartRedBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_RED_ROUTE_119_QUAXLY, Route119_Text_BrendanDefeat
+	goto Route119_EventScript_DefeatedBrendan
+	end
+
+Route119_EventScript_StartLeaf_Kanto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleBULBASAUR
+	case 1, Route119_EventScript_StartLeafBattleCHARMANDER
+	case 2, Route119_EventScript_StartLeafBattleSQUIRTLE
+	end
+
+Route119_EventScript_StartLeafBattleBULBASAUR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_BULBASAUR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleCHARMANDER::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_CHARMANDER, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleSQUIRTLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_SQUIRTLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+Route119_EventScript_StartLeaf_Johto::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleCHIKORITA
+	case 1, Route119_EventScript_StartLeafBattleCYNDAQUIL
+	case 2, Route119_EventScript_StartLeafBattleTOTODILE
+	end
+
+Route119_EventScript_StartLeafBattleCHIKORITA::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_CHIKORITA, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleCYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_CYNDAQUIL, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleTOTODILE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_TOTODILE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleTREECKO
+	case 1, Route119_EventScript_StartLeafBattleTORCHIC
+	case 2, Route119_EventScript_StartLeafBattleMUDKIP
+	end
+
+Route119_EventScript_StartLeafBattleTREECKO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_TREECKO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleTORCHIC::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleMUDKIP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleTURTWIG
+	case 1, Route119_EventScript_StartLeafBattleCHIMCHAR
+	case 2, Route119_EventScript_StartLeafBattlePIPLUP
+	end
+
+Route119_EventScript_StartLeafBattleTURTWIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_TURTWIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleCHIMCHAR::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_CHIMCHAR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattlePIPLUP::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_PIPLUP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Unova::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleSNIVY
+	case 1, Route119_EventScript_StartLeafBattleTEPIG
+	case 2, Route119_EventScript_StartLeafBattleOSHAWOTT
+	end
+
+Route119_EventScript_StartLeafBattleSNIVY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_SNIVY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleTEPIG::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_TEPIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleOSHAWOTT::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_OSHAWOTT, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Kalos::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleCHESPIN
+	case 1, Route119_EventScript_StartLeafBattleFENNEKIN
+	case 2, Route119_EventScript_StartLeafBattleFROAKIE
+	end
+
+Route119_EventScript_StartLeafBattleCHESPIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_CHESPIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleFENNEKIN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_FENNEKIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleFROAKIE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_FROAKIE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Alola::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleROWLET
+	case 1, Route119_EventScript_StartLeafBattleLITTEN
+	case 2, Route119_EventScript_StartLeafBattlePOPPLIO
+	end
+
+Route119_EventScript_StartLeafBattleROWLET::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_ROWLET, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleLITTEN::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_LITTEN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattlePOPPLIO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_POPPLIO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Galar::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleGROOKEY
+	case 1, Route119_EventScript_StartLeafBattleSCORBUNNY
+	case 2, Route119_EventScript_StartLeafBattleSOBBLE
+	end
+
+Route119_EventScript_StartLeafBattleGROOKEY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_GROOKEY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleSCORBUNNY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_SCORBUNNY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleSOBBLE::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_SOBBLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeaf_Paldea::
+	switch VAR_STARTER_MON
+	case 0, Route119_EventScript_StartLeafBattleSPRIGATITO
+	case 1, Route119_EventScript_StartLeafBattleFUECOCO
+	case 2, Route119_EventScript_StartLeafBattleQUAXLY
+	end
+
+Route119_EventScript_StartLeafBattleSPRIGATITO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_SPRIGATITO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleFUECOCO::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_FUECOCO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_StartLeafBattleQUAXLY::
+	trainerbattle_no_intro TRAINER_LEAF_ROUTE_119_QUAXLY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
+	end
+
+Route119_EventScript_DefeatedBrendan:
+	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
+	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
+	call Route119_EventScript_GiveFlyHM
+	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
+	end
+
+Route119_EventScript_DefeatedMay:
+	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
+	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
+	call Route119_EventScript_GiveFlyHM
+	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
+	end
+

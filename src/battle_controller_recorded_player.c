@@ -342,7 +342,7 @@ static void RecordedPlayerHandleDrawTrainerPic(u32 battler)
     }
     else
     {
-        trainerPicId = gLinkPlayers[0].gender;
+        trainerPicId = GetPlayerBackSpriteId();
     }
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
@@ -475,7 +475,7 @@ static void RecordedPlayerHandleIntroTrainerBallThrow(u32 battler)
     const u16 *trainerPal;
 
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
-        trainerPicId = gLinkPlayers[GetBattlerMultiplayerId(battler)].gender + TRAINER_BACK_PIC_BRENDAN;
+        trainerPicId = GetPlayerBackSpriteId();
     else
         trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
 

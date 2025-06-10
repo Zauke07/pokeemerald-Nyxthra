@@ -685,7 +685,7 @@ static const u8 sSpecialDrawOdds[NUM_SLOT_MACHINE_IDS][MAX_BET];
 static const u8 sBiasSymbols[];
 static const u16 sBiasesSpecial[3];
 static const u16 sBiasesRegular[5];
-static const s16 sDigitalDisplay_SpriteCoords[][2];
+static const s16 sDigitalDisplay_SpriteCoords[][GENDER_COUNT];
 static const SpriteCallback sDigitalDisplay_SpriteCallbacks[];
 static const struct SpriteTemplate *const sSpriteTemplates_DigitalDisplay[NUM_DIG_DISPLAY_SPRITES];
 static const struct SubspriteTable *const sSubspriteTables_DigitalDisplay[NUM_DIG_DISPLAY_SPRITES];
@@ -696,7 +696,7 @@ static const struct SpriteTemplate sSpriteTemplate_ReelTimeExplosion;
 static const struct SpriteTemplate sSpriteTemplate_ReelTimePikachuAura;
 static const u16 sReelTimeExplodeProbability[];
 static const u16 *const sPokeballShiningPalTable[];
-static const u16 sReelTimeSpeed_Probabilities[][2];
+static const u16 sReelTimeSpeed_Probabilities[][GENDER_COUNT];
 static const u16 sQuarterSpeed_ProbabilityBoost[];
 static const u16 sSlotMatchFlags[];
 static const u16 sSlotPayouts[];
@@ -935,7 +935,7 @@ static void (*const sPikaPowerBoltTasks[])(struct Task *task) =
     PikaPowerBolt_ClearAll,
 };
 
-static const u16 sPikaPowerTileTable[][2] =
+static const u16 sPikaPowerTileTable[][GENDER_COUNT] =
 {
     {0x9e, 0x6e},
     {0x9f, 0x6f},
@@ -5443,7 +5443,7 @@ static const u16 sReelTimeExplodeProbability[] = {
 
 // Column 0: Probability of half-speed
 // Column 1: Base probability of quarter-speed
-static const u16 sReelTimeSpeed_Probabilities[][2] = {
+static const u16 sReelTimeSpeed_Probabilities[][GENDER_COUNT] = {
     {10,  5},
     {10, 10},
     {10, 15},
@@ -5509,7 +5509,7 @@ static const u16 sSlotPayouts[] = {
     [MATCH_BLUE_7]        = 300
 };
 
-static const s16 sDigitalDisplay_SpriteCoords[][2] = {
+static const s16 sDigitalDisplay_SpriteCoords[][GENDER_COUNT] = {
     [DIG_DISPINFO_INSERT] = { 208, 56},
     [DIG_DISPINFO_STOP_S] = { 184,  0},
     [DIG_DISPINFO_STOP_T] = { 200,  8},

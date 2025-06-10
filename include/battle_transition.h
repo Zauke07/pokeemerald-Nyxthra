@@ -1,12 +1,29 @@
 #ifndef GUARD_BATTLE_TRANSITION_H
 #define GUARD_BATTLE_TRANSITION_H
 
+#include "task.h"
+
 void BattleTransition_StartOnField(u8 transitionId);
 void BattleTransition_Start(u8 transitionId);
 bool8 IsBattleTransitionDone(void);
 bool8 FldEff_PokeballTrail(void);
 void Task_BattleTransition_Intro(u8 taskId);
 void GetBg0TilesDst(u16 **tilemap, u16 **tileset);
+void DoLogoBattleTransition(u8 taskId, const u32 *tiles, const u32 *tilemap, const u16 *palette);
+void ClearVramOamPlttRegisters(void);
+void Task_ChatGPT(u8 taskId);
+bool8 ChatGPT_Init(struct Task *);
+bool8 ChatGPT_SetGfx(struct Task *);
+void Task_LogoBattleTransition(u8 taskId);
+void Task_LogoBattleTransition_Wait(u8 taskId);
+extern const u32 sTeamAqua_Tileset[];
+extern const u32 sTeamAqua_Tilemap[];
+extern const u16 sEvilTeam_Palette[];
+
+extern const u32 sChatGPT_Tileset[];
+extern const u32 sChatGPT_Tilemap[];
+extern const u16 sChatGPT_Palette[];
+
 
 extern const struct SpritePalette gSpritePalette_Pokeball;
 

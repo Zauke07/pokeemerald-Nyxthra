@@ -63,13 +63,13 @@ static const u16 sBattlePalaceLatePrizes[] =
     ITEM_CHOICE_BAND
 };
 
-static const u32 sWinStreakFlags[][2] =
+static const u32 sWinStreakFlags[][GENDER_COUNT] =
 {
     {STREAK_PALACE_SINGLES_50, STREAK_PALACE_SINGLES_OPEN},
     {STREAK_PALACE_DOUBLES_50, STREAK_PALACE_DOUBLES_OPEN},
 };
 
-static const u32 sWinStreakMasks[][2] =
+static const u32 sWinStreakMasks[][GENDER_COUNT] =
 {
     {~(STREAK_PALACE_SINGLES_50), ~(STREAK_PALACE_SINGLES_OPEN)},
     {~(STREAK_PALACE_DOUBLES_50), ~(STREAK_PALACE_DOUBLES_OPEN)},

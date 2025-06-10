@@ -2678,13 +2678,28 @@ bool8 ScrCmd_setrespawn(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
+/*
+bool8 ScrCmd_checkplayerstyles(struct ScriptContext *ctx)
 {
-    Script_RequestEffects(SCREFF_V1);
-
-    gSpecialVar_Result = gSaveBlock2Ptr->playerGender;
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0];  // Nutzt den ersten gespeicherten Stil
     return FALSE;
 }
+*/
+
+bool8 ScrCmd_GetPlayerStyle(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0];  // Nutzt den ersten gespeicherten Stil
+    return FALSE;
+}
+
+
+bool8 ScrCmd_checkplayerstyle(struct ScriptContext *ctx)
+{
+    u8 expectedStyle = ScriptReadByte(ctx); // Liest das Style-Argument aus dem Skript
+    gSpecialVar_Result = (gSaveBlock2Ptr->playerStyles[0] == expectedStyle);
+    return FALSE;
+}
+
 
 bool8 ScrCmd_playmoncry(struct ScriptContext *ctx)
 {
@@ -3244,3 +3259,19 @@ void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
     if (ctx->breakOnTrainerBattle && sScriptConditionTable[condition][ctx->comparisonResult] == 1)
         StopScript(ctx);
 }
+
+bool8 ScrCmd_BufferIntToVar1(struct ScriptContext *ctx)
+{
+    u16 var = VarGet(ScriptReadHalfword(ctx)); // lies übergebenen Parameter
+    ConvertIntToDecimalStringN(gStringVar1, var, STR_CONV_MODE_LEFT_ALIGN, 3);
+    return FALSE;
+}
+
+
+bool8 ScrCmd_BufferIntToVar2(struct ScriptContext *ctx)
+{
+    u16 value = VarGet(VAR_RESULT);
+    ConvertIntToDecimalStringN(gStringVar2, value, STR_CONV_MODE_LEFT_ALIGN, 3);
+    return FALSE;
+}
+

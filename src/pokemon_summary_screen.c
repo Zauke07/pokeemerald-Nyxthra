@@ -164,6 +164,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u8 sanity; // 0x35
         u8 OTName[17]; // 0x36
         u32 OTID; // 0x48
+        u8 OTStyle;  // 0x49 (Neu hinzugefügt - Speichert den Spielerstil)
         u8 teraType;
         u8 mintNature;
     } summary;

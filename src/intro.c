@@ -256,7 +256,7 @@ static const struct SpriteTemplate sSpriteTemplate_Sparkle =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Sparkle,
 };
-static const u8 sSparkleCoords[][2] =
+static const u8 sSparkleCoords[][GENDER_COUNT] =
 {
     {124, 40},
     {102, 30},
@@ -834,7 +834,7 @@ static const s16 sGameFreakLetterData[NUM_GF_LETTERS][2] =
     {GAMEFREAK_A,  56},
     {GAMEFREAK_K,  72},
 };
-static const s16 sPresentsLetterData[][2] =
+static const s16 sPresentsLetterData[][GENDER_COUNT] =
 {
     // Letter,   x offset
     {PRESENTS_P, -28},

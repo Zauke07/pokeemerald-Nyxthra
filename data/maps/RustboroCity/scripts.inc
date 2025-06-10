@@ -5,7 +5,7 @@ RustboroCity_MapScripts::
 
 RustboroCity_OnTransition:
 	setflag FLAG_VISITED_RUSTBORO_CITY
-	call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
@@ -820,10 +820,28 @@ RustboroCity_EventScript_RivalTrigger7::
 	goto RustboroCity_EventScript_RivalEncounter
 
 RustboroCity_EventScript_RivalEncounter::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, RustboroCity_EventScript_MayEncounter
-	goto_if_eq VAR_RESULT, FEMALE, RustboroCity_EventScript_BrendanEncounter
-	end
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_MAY, RustboroCity_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_RED, RustboroCity_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_LEAF, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ETHAN, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_LYRA, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_LUCAS, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_DAWN, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_HILBERT, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_HILDA, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_NATE, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ROSA, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_CALEM, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_SERENA, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_ELIO, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_SELENE, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_VICTOR, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_GLORIA, RustboroCity_EventScript_MayEncounter
+    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, RustboroCity_EventScript_BrendanEncounter
+    @goto_if_eq VAR_RESULT, STYLE_JULIANA, RustboroCity_EventScript_MayEncounter
+    return
 
 RustboroCity_EventScript_MayEncounter::
 	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
@@ -1128,97 +1146,97 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Please come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV!\p"
-	.string "Let's register each other so we can\n"
-	.string "contact one another anytime!\p"
-	.string "… … … … … …$"
+    .string "{RIVAL}: Oh, hallo, {PLAYER}{KUN}!\p"
+    .string "Du hast eine MATCH CALL-Funktion auf\n"
+    .string "deinem POKéNAV!\p"
+    .string "Lass uns gegenseitig registrieren, damit wir\n"
+    .string "uns jederzeit kontaktieren können!\p"
+    .string "… … … … … …$"
 
 RustboroCity_Text_RegisteredMay:
-	.string "Registered MAY\n"
-	.string "in the POKéNAV.$"
+    .string "{RIVAL} wurde im POKéNAV registriert.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle:
-	.string "MAY: Oh, by the way, I passed\n"
-	.string "MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I guess he's on his way home to his\n"
-	.string "cottage by the sea.\p"
-	.string "How's your POKéDEX coming along,\n"
-	.string "{PLAYER}{KUN}? Mine's looking pretty decent!\p"
-	.string "So…\n"
-	.string "How about a little battle?$"
+    .string "{RIVAL}: Übrigens, ich habe MR. Brack\n"
+    .string "im WALD VON WURZELHEIM getroffen.\p"
+    .string "Ich glaube, er war auf dem Weg nach Hause\n"
+    .string "in seine Hütte am Meer.\p"
+    .string "Wie läuft es mit deinem POKéDEX,\n"
+    .string "{PLAYER}{KUN}? Meiner sieht ziemlich gut aus!\p"
+    .string "Also…\n"
+    .string "Wie wäre es mit einem kleinen Kampf?$"
 
 RustboroCity_Text_MayOhHaventRaisedPokemonEnough:
-	.string "MAY: Oh, what's the matter?\p"
-	.string "Haven't you caught or raised your\n"
-	.string "POKéMON very much?\p"
-	.string "That's not very good for a TRAINER!$"
+    .string "{RIVAL}: Oh, was ist los?\p"
+    .string "Hast du nicht viele POKéMON gefangen oder\n"
+    .string "aufgezogen?\p"
+    .string "Das ist nicht sehr gut für einen TRAINER!$"
 
 RustboroCity_Text_MayWantToBattle:
-	.string "MAY: So, what do you think?\n"
-	.string "How about a little battle here?$"
+    .string "{RIVAL}: Also, was denkst du?\n"
+    .string "Wie wäre es mit einem kleinen Kampf hier?$"
 
 RustboroCity_Text_MayImNotGoingToLose:
-	.string "MAY: You just became a TRAINER,\n"
-	.string "{PLAYER}{KUN}. I'm not going to lose!$"
+    .string "{RIVAL}: Du bist gerade ein TRAINER geworden,\n"
+    .string "{PLAYER}{KUN}. Ich werde nicht verlieren!$"
 
 RustboroCity_Text_MayDefeat:
 	.string "Yikes!\n"
 	.string "You're better than I expected!$"
 
 RustboroCity_Text_MayMrBrineyHint:
-	.string "MAY: Oh, by the way, MR. BRINEY, who\n"
-	.string "I just passed…\p"
-	.string "{PLAYER}{KUN}, you just moved here so you\n"
-	.string "might not know this, but MR. BRINEY\l"
-	.string "was once a revered seafarer.$"
+    .string "{RIVAL}: Übrigens, MR. Brack, den ich gerade\n"
+    .string "getroffen habe…\p"
+    .string "{PLAYER}{KUN}, du bist gerade hierher\n"
+    .string "gezogen, also weißt du das vielleicht nicht,\l"
+    .string "aber MR. Brack war einmal ein angesehener\n"
+    .string "Seefahrer.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV! Cool!\p"
-	.string "Let's register each other so we can\n"
-	.string "get in touch anytime!\p"
-	.string "… … … … … …$"
+    .string "{RIVAL}: Oh, hey, {PLAYER}!\p"
+    .string "Du hast eine MATCH CALL-Funktion auf\n"
+    .string "deinem POKéNAV! Cool!\p"
+    .string "Lass uns gegenseitig registrieren, damit wir\n"
+    .string "uns jederzeit erreichen können!\p"
+    .string "… … … … … …$"
 
 RustboroCity_Text_RegisteredBrendan:
-	.string "Registered BRENDAN\n"
-	.string "in the POKéNAV.$"
+    .string "{RIVAL} wurde im POKéNAV registriert.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
-	.string "BRENDAN: By the way, {PLAYER}, I walked\n"
-	.string "by MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I bet he was on his way home to his\n"
-	.string "cottage by the sea.\p"
-	.string "{PLAYER}, how's your POKéDEX?\n"
-	.string "Have you filled in any pages yet?\p"
-	.string "Mine rules.\p"
-	.string "Want to have a battle to test how\n"
-	.string "far you've progressed?$"
+    .string "{RIVAL}: Übrigens, {PLAYER}, ich bin an\n"
+    .string "MR. Brack im WALD VON WURZELHEIM vorbeigegangen.\p"
+    .string "Ich wette, er war auf dem Weg nach Hause\n"
+    .string "in seine Hütte am Meer.\p"
+    .string "{PLAYER}, wie läuft es mit deinem POKéDEX?\n"
+    .string "Hast du schon einige Seiten ausgefüllt?\p"
+    .string "Meiner ist fantastisch.\p"
+    .string "Hast du Lust auf einen Kampf, um zu sehen,\n"
+    .string "wie weit du gekommen bist?$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon:
-	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+    .string "{RIVAL}: Was ist los? Hast du\n"
+    .string "kein Vertrauen in deine POKéMON?$"
 
 RustboroCity_Text_BrendanWantToBattle:
-	.string "BRENDAN: What's up?\n"
-	.string "Want to have a battle with me?$"
+    .string "{RIVAL}: Was geht ab?\n"
+    .string "Willst du hier mit mir kämpfen?$"
 
 RustboroCity_Text_BrendanIWontGoEasy:
-	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+    .string "{RIVAL}: Ich weiß, du bist gerade\n"
+    .string "ein TRAINER geworden, aber ich werde\l"
+    .string "es dir nicht leicht machen!$"
 
 RustboroCity_Text_BrendanDefeat:
 	.string "Hmm…\n"
 	.string "You're pretty good.$"
 
 RustboroCity_Text_BrendanMrBrineyHint:
-	.string "BRENDAN: By the way, you know\n"
-	.string "MR. BRINEY? The guy I just passed?\p"
-	.string "I bet you didn't know this, since you\n"
-	.string "just moved here, {PLAYER}, but\l"
-	.string "MR. BRINEY was once a great sailor.$"
+    .string "{RIVAL}: Übrigens, kennst du MR. Brack?\n"
+    .string "Den Typen, den ich gerade gesehen habe?\p"
+    .string "Ich wette, du wusstest das nicht, da du\n"
+    .string "gerade hierher gezogen bist, {PLAYER}, aber\l"
+    .string "MR. Brack war einmal ein großartiger Seemann.$"
 
 RustboroCity_Text_TunnelNearingCompletion:
 	.string "“Timesaving tunnel nearing\n"

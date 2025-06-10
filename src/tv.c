@@ -246,7 +246,7 @@ static const u16 sSilverSymbolFlags[NUM_FRONTIER_FACILITIES] = {
     [FRONTIER_FACILITY_PYRAMID] = FLAG_SYS_PYRAMID_SILVER
 };
 
-static const u16 sNumberOneVarsAndThresholds[][2] = {
+static const u16 sNumberOneVarsAndThresholds[][GENDER_COUNT] = {
     {VAR_DAILY_SLOTS, 100},
     {VAR_DAILY_ROULETTE,  50},
     {VAR_DAILY_WILDS, 100},
@@ -3335,13 +3335,24 @@ u8 CheckForPlayersHouseNews(void)
     // Check if not in player's house (dependent on gender)
     if (gSaveBlock2Ptr->playerGender == MALE)
     {
-        if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
-            return PLAYERS_HOUSE_TV_NONE;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F))
-            return PLAYERS_HOUSE_TV_NONE;
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        //        case STYLE_ETHAN:
+        //        case STYLE_LUCAS:
+        //        case STYLE_HILBERT:
+        //        case STYLE_NATE:
+        //        case STYLE_CALEM:
+        //        case STYLE_ELIO:
+        //        case STYLE_VICTOR:
+        //        case STYLE_FLORIAN:
+            if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
+                return PLAYERS_HOUSE_TV_NONE;
+            break;
+
+        default: // Alle weiblichen Charaktere
+            if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
+                return PLAYERS_HOUSE_TV_NONE;
+            break;
     }
 
     if (FlagGet(FLAG_SYS_TV_LATIAS_LATIOS) == TRUE)
@@ -3360,19 +3371,30 @@ void GetMomOrDadStringForTVMessage(void)
     {
         if (gSaveBlock2Ptr->playerGender == MALE)
         {
-            if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
-            {
-                StringCopy(gStringVar1, gText_Mom);
-                VarSet(VAR_TEMP_3, 1);
-            }
-        }
-        else
-        {
-            if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F))
-            {
-                StringCopy(gStringVar1, gText_Mom);
-                VarSet(VAR_TEMP_3, 1);
-            }
+            case STYLE_BRENDAN:
+            case STYLE_RED:
+            //            case STYLE_ETHAN:
+            //            case STYLE_LUCAS:
+            //            case STYLE_HILBERT:
+            //            case STYLE_NATE:
+            //            case STYLE_CALEM:
+            //            case STYLE_ELIO:
+            //            case STYLE_VICTOR:
+            //            case STYLE_FLORIAN:
+                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
+                {
+                    StringCopy(gStringVar1, gText_Mom);
+                    VarSet(VAR_TEMP_3, 1);
+                }
+                break;
+
+            default: // Alle weiblichen Charaktere
+                if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_1F))
+                {
+                    StringCopy(gStringVar1, gText_Mom);
+                    VarSet(VAR_TEMP_3, 1);
+                }
+                break;
         }
     }
     if (VarGet(VAR_TEMP_3) == 1)

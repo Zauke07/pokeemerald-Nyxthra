@@ -376,7 +376,7 @@ const struct SpriteTemplate gEruptionLaunchRockSpriteTemplate =
     .callback = AnimEruptionLaunchRock,
 };
 
-static const s16 sEruptionLaunchRockSpeeds[][2] =
+static const s16 sEruptionLaunchRockSpeeds[][GENDER_COUNT] =
 {
     {-2, -5},
     {-1, -1},

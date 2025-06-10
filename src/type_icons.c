@@ -35,7 +35,7 @@ static s32 GetTypeIconHideMovement(bool32, u32);
 static s32 GetTypeIconSlideMovement(bool32, u32, s32);
 static s32 GetTypeIconBounceMovement(s32, u32);
 
-const struct Coords16 sTypeIconPositions[][2] =
+const struct Coords16 sTypeIconPositions[][GENDER_COUNT] =
 {
     [B_POSITION_PLAYER_LEFT] =
     {

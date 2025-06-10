@@ -182,7 +182,7 @@ static u16 GetObjectEventFlagIdByObjectEventId(u8);
 static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
-const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup);
+static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -505,6 +505,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
     {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
+    {gObjectEventPal_TruckF,                OBJ_EVENT_PAL_TAG_TRUCK_F},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
     {gObjectEventPal_May,                   OBJ_EVENT_PAL_TAG_MAY},
@@ -518,13 +519,179 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_GroudonReflection,     OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION},
     {gObjectEventPal_SubmarineShadow,       OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW},
     {gObjectEventPal_Poochyena,             OBJ_EVENT_PAL_TAG_POOCHYENA},
+    {gObjectEventPal_Player,                OBJ_EVENT_PAL_TAG_PLAYER_LEAF},
+    {gObjectEventPal_PlayerReflection,      OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION},
     {gObjectEventPal_RedLeaf,               OBJ_EVENT_PAL_TAG_RED_LEAF},
+    {gObjectEventPal_Player,                OBJ_EVENT_PAL_TAG_PLAYER_RED},
+    {gObjectEventPal_PlayerReflection,      OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
     {gObjectEventPal_Deoxys,                OBJ_EVENT_PAL_TAG_DEOXYS},
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},
     {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
+    {gObjectEventPal_PlayerRedLeafBase,     OBJ_EVENT_PAL_TAG_RIVAL_RED},
+    {gObjectEventPal_Kanto_NPC_Blue,        OBJ_EVENT_PAL_TAG_KANTO_NPC_BLUE},
+    {gObjectEventPal_Kanto_NPC_Green,       OBJ_EVENT_PAL_TAG_KANTO_NPC_GREEN},
+    {gObjectEventPal_Kanto_NPC_Pink,        OBJ_EVENT_PAL_TAG_KANTO_NPC_PINK},
+    {gObjectEventPal_Kanto_NPC_White,       OBJ_EVENT_PAL_TAG_KANTO_NPC_WHITE},
+    {gObjectEventPal_Johto_NPC_Bugsy,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_BUGSY},
+    {gObjectEventPal_Johto_NPC_Chuck,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_CHUCK},
+    {gObjectEventPal_Johto_NPC_Clair,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_CLAIR},
+    {gObjectEventPal_Johto_NPC_Falkner,     OBJ_EVENT_PAL_TAG_JOHTO_NPC_FALKNER},
+    {gObjectEventPal_Johto_NPC_Jasmine,     OBJ_EVENT_PAL_TAG_JOHTO_NPC_JASMINE},
+    {gObjectEventPal_Johto_NPC_Karen,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_KAREN},
+    {gObjectEventPal_Johto_NPC_Morty,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_MORTY},
+    {gObjectEventPal_Johto_NPC_Pryce,       OBJ_EVENT_PAL_TAG_JOHTO_NPC_PRYCE},
+    {gObjectEventPal_Johto_NPC_Whitney,     OBJ_EVENT_PAL_TAG_JOHTO_NPC_WHITNEY},
+    {gObjectEventPal_Johto_NPC_Will,        OBJ_EVENT_PAL_TAG_JOHTO_NPC_WILL},
+    {gObjectEventPal_Johto_NPC_Red,         OBJ_EVENT_PAL_TAG_JOHTO_NPC_RED},
+    
+    {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
+    {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
+    {gObjectEventPal_Sinnoh_Byron, OBJ_EVENT_PAL_TAG_SINNOH_BYRON},
+    {gObjectEventPal_Sinnoh_Crasher_Wake, OBJ_EVENT_PAL_TAG_SINNOH_CRASHER_WAKE},
+    {gObjectEventPal_Sinnoh_Cynthia, OBJ_EVENT_PAL_TAG_SINNOH_CYNTHIA},
+    {gObjectEventPal_Sinnoh_Fantina, OBJ_EVENT_PAL_TAG_SINNOH_FANTINA},
+    {gObjectEventPal_Sinnoh_Flint, OBJ_EVENT_PAL_TAG_SINNOH_FLINT},
+    {gObjectEventPal_Sinnoh_Gardenia, OBJ_EVENT_PAL_TAG_SINNOH_GARDENIA},
+    {gObjectEventPal_Sinnoh_Lucian, OBJ_EVENT_PAL_TAG_SINNOH_LUCIAN},
+    {gObjectEventPal_Sinnoh_Roark, OBJ_EVENT_PAL_TAG_SINNOH_ROARK},
+    {gObjectEventPal_Sinnoh_Volkner, OBJ_EVENT_PAL_TAG_SINNOH_VOLKNER},
+    {gObjectEventPal_Sinnoh_Candice, OBJ_EVENT_PAL_TAG_SINNOH_CANDICE},
+    {gObjectEventPal_Sinnoh_Maylene, OBJ_EVENT_PAL_TAG_SINNOH_MAYLENE},
+
+    {gObjectEventPal_Unova_Alder, OBJ_EVENT_PAL_TAG_UNOVA_ALDER},
+    {gObjectEventPal_Unova_Brycen, OBJ_EVENT_PAL_TAG_UNOVA_BRYCEN},
+    {gObjectEventPal_Unova_Caitlin, OBJ_EVENT_PAL_TAG_UNOVA_CAITLIN},
+    {gObjectEventPal_Unova_Clay, OBJ_EVENT_PAL_TAG_UNOVA_CLAY},
+    {gObjectEventPal_Unova_Drayden, OBJ_EVENT_PAL_TAG_UNOVA_DRAYDEN},
+    {gObjectEventPal_Unova_Elesa, OBJ_EVENT_PAL_TAG_UNOVA_ELESA},
+    {gObjectEventPal_Unova_Grimsly, OBJ_EVENT_PAL_TAG_UNOVA_GRIMSLY},
+    {gObjectEventPal_Unova_Iris, OBJ_EVENT_PAL_TAG_UNOVA_IRIS},
+    {gObjectEventPal_Unova_Lenora, OBJ_EVENT_PAL_TAG_UNOVA_LENORA},
+    {gObjectEventPal_Unova_Marlon, OBJ_EVENT_PAL_TAG_UNOVA_MARLON},
+    {gObjectEventPal_Unova_Marshal, OBJ_EVENT_PAL_TAG_UNOVA_MARSHAL},
+    {gObjectEventPal_Unova_Chili, OBJ_EVENT_PAL_TAG_UNOVA_CHILI},
+    {gObjectEventPal_Unova_Cilan, OBJ_EVENT_PAL_TAG_UNOVA_CILAN},
+    {gObjectEventPal_Unova_Cress, OBJ_EVENT_PAL_TAG_UNOVA_CRESS},
+    {gObjectEventPal_Unova_Shauntal, OBJ_EVENT_PAL_TAG_UNOVA_SHAUNTAL},
+    {gObjectEventPal_Unova_Skyla, OBJ_EVENT_PAL_TAG_UNOVA_SKYLA},
+    {gObjectEventPal_Unova_Burgh, OBJ_EVENT_PAL_TAG_UNOVA_BURGH},
+    {gObjectEventPal_Unova_Roxie, OBJ_EVENT_PAL_TAG_UNOVA_ROXIE},
+
+    {gObjectEventPal_Kalos_Clement, OBJ_EVENT_PAL_TAG_KALOS_CLEMENT},
+    {gObjectEventPal_Kalos_Diantha, OBJ_EVENT_PAL_TAG_KALOS_DIANTHA},
+    {gObjectEventPal_Kalos_Drasna, OBJ_EVENT_PAL_TAG_KALOS_DRASNA},
+    {gObjectEventPal_Kalos_Grant, OBJ_EVENT_PAL_TAG_KALOS_GRANT},
+    {gObjectEventPal_Kalos_Korrina, OBJ_EVENT_PAL_TAG_KALOS_KORRINA},
+    {gObjectEventPal_Kalos_Malva, OBJ_EVENT_PAL_TAG_KALOS_MALVA},
+    {gObjectEventPal_Kalos_Olympia, OBJ_EVENT_PAL_TAG_KALOS_OLYMPIA},
+    {gObjectEventPal_Kalos_Ramos, OBJ_EVENT_PAL_TAG_KALOS_RAMOS},
+    {gObjectEventPal_Kalos_Siebold, OBJ_EVENT_PAL_TAG_KALOS_SIEBOLD},
+    {gObjectEventPal_Kalos_Valerie, OBJ_EVENT_PAL_TAG_KALOS_VALERIE},
+    {gObjectEventPal_Kalos_Viola, OBJ_EVENT_PAL_TAG_KALOS_VIOLA},
+    {gObjectEventPal_Kalos_Wikstrom, OBJ_EVENT_PAL_TAG_KALOS_WIKSTROM},
+    {gObjectEventPal_Kalos_Wulfric, OBJ_EVENT_PAL_TAG_KALOS_WULFRIC},
+
+    {gObjectEventPal_Alola_Acerola, OBJ_EVENT_PAL_TAG_ALOLA_ACEROLA},
+    {gObjectEventPal_Alola_Hala, OBJ_EVENT_PAL_TAG_ALOLA_HALA},
+    {gObjectEventPal_Alola_Hapu, OBJ_EVENT_PAL_TAG_ALOLA_HAPU},
+    {gObjectEventPal_Alola_Ilima, OBJ_EVENT_PAL_TAG_ALOLA_ILIMA},
+    {gObjectEventPal_Alola_Kahili, OBJ_EVENT_PAL_TAG_ALOLA_KAHILI},
+    {gObjectEventPal_Alola_Kiawe, OBJ_EVENT_PAL_TAG_ALOLA_KIAWE},
+    {gObjectEventPal_Alola_Kukui, OBJ_EVENT_PAL_TAG_ALOLA_KUKUI},
+    {gObjectEventPal_Alola_Lana, OBJ_EVENT_PAL_TAG_ALOLA_LANA},
+    {gObjectEventPal_Alola_Mallow, OBJ_EVENT_PAL_TAG_ALOLA_MALLOW},
+    {gObjectEventPal_Alola_Mina, OBJ_EVENT_PAL_TAG_ALOLA_MINA},
+    {gObjectEventPal_Alola_Molayne, OBJ_EVENT_PAL_TAG_ALOLA_MOLAYNE},
+    {gObjectEventPal_Alola_Nanu, OBJ_EVENT_PAL_TAG_ALOLA_NANU},
+    {gObjectEventPal_Alola_Olivia, OBJ_EVENT_PAL_TAG_ALOLA_OLIVIA},
+    {gObjectEventPal_Alola_Sophocles, OBJ_EVENT_PAL_TAG_ALOLA_SOPHOCLES},
+
+    {gObjectEventPal_Galar_Allister, OBJ_EVENT_PAL_TAG_GALAR_ALLISTER},
+    {gObjectEventPal_Galar_Bea, OBJ_EVENT_PAL_TAG_GALAR_BEA},
+    {gObjectEventPal_Galar_Gordie, OBJ_EVENT_PAL_TAG_GALAR_GORDIE},
+    {gObjectEventPal_Galar_Kabu, OBJ_EVENT_PAL_TAG_GALAR_KABU},
+    {gObjectEventPal_Galar_Leon, OBJ_EVENT_PAL_TAG_GALAR_LEON},
+    {gObjectEventPal_Galar_Melony, OBJ_EVENT_PAL_TAG_GALAR_MELONY},
+    {gObjectEventPal_Galar_Milo, OBJ_EVENT_PAL_TAG_GALAR_MILO},
+    {gObjectEventPal_Galar_Nessa, OBJ_EVENT_PAL_TAG_GALAR_NESSA},
+    {gObjectEventPal_Galar_Opal, OBJ_EVENT_PAL_TAG_GALAR_OPAL},
+    {gObjectEventPal_Galar_Piers, OBJ_EVENT_PAL_TAG_GALAR_PIERS},
+    {gObjectEventPal_Galar_Raihan, OBJ_EVENT_PAL_TAG_GALAR_RAIHAN},
+    
+    {gObjectEventPal_Paldea_Brassius, OBJ_EVENT_PAL_TAG_PALDEA_BRASSIUS},
+    {gObjectEventPal_Paldea_Grusha, OBJ_EVENT_PAL_TAG_PALDEA_GRUSHA},
+    {gObjectEventPal_Paldea_Iono, OBJ_EVENT_PAL_TAG_PALDEA_IONO},
+    {gObjectEventPal_Paldea_Katy, OBJ_EVENT_PAL_TAG_PALDEA_KATY},
+    {gObjectEventPal_Paldea_Kofu, OBJ_EVENT_PAL_TAG_PALDEA_KOFU},
+    {gObjectEventPal_Paldea_Larry, OBJ_EVENT_PAL_TAG_PALDEA_LARRY},
+    {gObjectEventPal_Paldea_Ryme, OBJ_EVENT_PAL_TAG_PALDEA_RYME},
+    {gObjectEventPal_Paldea_Geeta, OBJ_EVENT_PAL_TAG_PALDEA_GEETA},
+    {gObjectEventPal_Paldea_Hassel, OBJ_EVENT_PAL_TAG_PALDEA_HASSEL},
+    {gObjectEventPal_Paldea_Poppy, OBJ_EVENT_PAL_TAG_PALDEA_POPPY},
+    {gObjectEventPal_Paldea_Rika, OBJ_EVENT_PAL_TAG_PALDEA_RIKA},
+    {gObjectEventPal_Paldea_Tulip, OBJ_EVENT_PAL_TAG_PALDEA_TULIP},
+
+    {gObjectEventPal_Rival_Avery, OBJ_EVENT_PAL_TAG_RIVAL_AVERY},
+    {gObjectEventPal_Rival_Barry, OBJ_EVENT_PAL_TAG_RIVAL_BARRY},
+    {gObjectEventPal_Rival_Bede, OBJ_EVENT_PAL_TAG_RIVAL_BEDE},
+    {gObjectEventPal_Rival_Bianca, OBJ_EVENT_PAL_TAG_RIVAL_BIANCA},
+    {gObjectEventPal_Rival_Cheren, OBJ_EVENT_PAL_TAG_RIVAL_CHEREN},
+    {gObjectEventPal_Rival_Gladion, OBJ_EVENT_PAL_TAG_RIVAL_GLADION},
+    {gObjectEventPal_Rival_Hau, OBJ_EVENT_PAL_TAG_RIVAL_HAU},
+    {gObjectEventPal_Rival_Hop, OBJ_EVENT_PAL_TAG_RIVAL_HOP},
+    {gObjectEventPal_Rival_Hugh, OBJ_EVENT_PAL_TAG_RIVAL_HUGH},
+    {gObjectEventPal_Rival_Klara, OBJ_EVENT_PAL_TAG_RIVAL_KLARA},
+    {gObjectEventPal_Rival_Marnie, OBJ_EVENT_PAL_TAG_RIVAL_MARNIE},
+    {gObjectEventPal_Rival_N, OBJ_EVENT_PAL_TAG_RIVAL_N},
+    {gObjectEventPal_Rival_Shauna, OBJ_EVENT_PAL_TAG_RIVAL_SHAUNA},
+    {gObjectEventPal_Rival_Silver, OBJ_EVENT_PAL_TAG_RIVAL_SILVER},
+    {gObjectEventPal_Rival_Tierno, OBJ_EVENT_PAL_TAG_RIVAL_TIERNO},
+    {gObjectEventPal_Rival_Trevor, OBJ_EVENT_PAL_TAG_RIVAL_TREVOR},
+    {gObjectEventPal_Rival_Nemona, OBJ_EVENT_PAL_TAG_RIVAL_NEMONA},
+    {gObjectEventPal_Rival_Penny, OBJ_EVENT_PAL_TAG_RIVAL_PENNY},
+    {gObjectEventPal_Rival_Arven, OBJ_EVENT_PAL_TAG_RIVAL_ARVEN},
+
+    {gObjectEventPal_Glitch_NPC_Kate,       OBJ_EVENT_PAL_TAG_GLITCH_NPC_KATE},
+    {gObjectEventPal_Glitch_NPC_Erma,       OBJ_EVENT_PAL_TAG_GLITCH_NPC_ERMA},
+    {gObjectEventPal_PlayerLightningStrike7Base, OBJ_EVENT_PAL_TAG_GLITCH_NPC_LS7},
+    {gObjectEventPal_PlayerNacholordBase,       OBJ_EVENT_PAL_TAG_GLITCH_NPC_NACHO},
+    //{gObjectEventPal_Glitch_NPC_Raven,      OBJ_EVENT_PAL_TAG_GLITCH_NPC_RAVEN},
+    {gObjectEventPal_PlayerPlaceholder,     OBJ_EVENT_PAL_TAG_PLAYER},
+
+    {gObjectEventPal_PlayerRedLeafBase,     OBJ_EVENT_PAL_TAG_RIVAL_RED},
+    {gObjectEventPal_PlayerEthanBase,       OBJ_EVENT_PAL_TAG_RIVAL_ETHAN},
+    {gObjectEventPal_PlayerLyraBase,        OBJ_EVENT_PAL_TAG_RIVAL_LYRA},
+    {gObjectEventPal_PlayerBrendanBase,     OBJ_EVENT_PAL_TAG_RIVAL_BRENDAN},
+    {gObjectEventPal_PlayerMayBase,         OBJ_EVENT_PAL_TAG_RIVAL_MAY},
+    {gObjectEventPal_PlayerLucasBase,       OBJ_EVENT_PAL_TAG_RIVAL_LUCAS},
+    {gObjectEventPal_PlayerDawnBase,        OBJ_EVENT_PAL_TAG_RIVAL_DAWN},
+    {gObjectEventPal_PlayerHilbertBase,     OBJ_EVENT_PAL_TAG_RIVAL_HILBERT},
+    {gObjectEventPal_PlayerHildaBase,       OBJ_EVENT_PAL_TAG_RIVAL_HILDA},
+    {gObjectEventPal_PlayerNateBase,        OBJ_EVENT_PAL_TAG_RIVAL_NATE},
+    {gObjectEventPal_PlayerRosaBase,        OBJ_EVENT_PAL_TAG_RIVAL_ROSA},
+    {gObjectEventPal_PlayerCalemBase,       OBJ_EVENT_PAL_TAG_RIVAL_CALEM},
+    {gObjectEventPal_PlayerSerenaBase,      OBJ_EVENT_PAL_TAG_RIVAL_SERENA},
+    {gObjectEventPal_PlayerElioBase,        OBJ_EVENT_PAL_TAG_RIVAL_ELIO},
+    {gObjectEventPal_PlayerSeleneBase,      OBJ_EVENT_PAL_TAG_RIVAL_SELENE},
+    {gObjectEventPal_PlayerVictorBase,      OBJ_EVENT_PAL_TAG_RIVAL_VICTOR},
+    {gObjectEventPal_PlayerGloriaBase,      OBJ_EVENT_PAL_TAG_RIVAL_GLORIA},
+    {gObjectEventPal_PlayerFlorianBase,     OBJ_EVENT_PAL_TAG_RIVAL_FLORIAN},
+    {gObjectEventPal_PlayerJulianaBase,     OBJ_EVENT_PAL_TAG_RIVAL_JULIANA},
+
+    {gObjectEventPal_Team_Flare_Lysander, OBJ_EVENT_PAL_TAG_TEAM_FLARE_LYSANDER},
+    {gObjectEventPal_Team_Galactic_Cyrus, OBJ_EVENT_PAL_TAG_TEAM_GALACTIC_CYRUS},
+    {gObjectEventPal_Team_Neo_Plasma_Colress, OBJ_EVENT_PAL_TAG_TEAM_NEO_PLASMA_COLRESS},
+    {gObjectEventPal_Team_Plasma_Ghetsis, OBJ_EVENT_PAL_TAG_TEAM_PLASMA_GHETSIS},
+    {gObjectEventPal_Team_Rocket_Archer, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_ARCHER},
+    {gObjectEventPal_Team_Rocket_Ariana, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_ARIANA},
+    {gObjectEventPal_Team_Rocket_Petrel, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PETREL},
+    {gObjectEventPal_Team_Rocket_Proton, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PROTON},
+
+    {gObjectEventPal_Misc_Peonia,           OBJ_EVENT_PAL_TAG_MISC_PEONIA},
+    {gObjectEventPal_RouteExt,              OBJ_EVENT_PAL_TAG_ROUTE_EXT},
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
     {gObjectEventPal_UltraBall,             OBJ_EVENT_PAL_TAG_BALL_ULTRA},
@@ -570,6 +737,20 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 #endif
 };
 
+static const u16 sPlayerReflectionPaletteTags[] = {
+    OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION,
+};
+
+static const u16 sUnusedPlayerReflectionPaletteTags[] = {
+    OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION,
+    OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION,
+};
+
 static const u16 sReflectionPaletteTags_Brendan[] = {
     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION,
@@ -594,6 +775,8 @@ static const u16 sReflectionPaletteTags_PlayerUnderwater[] = {
 static const struct PairedPalettes sPlayerReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,           sReflectionPaletteTags_Brendan},
     {OBJ_EVENT_PAL_TAG_MAY,               sReflectionPaletteTags_May},
+    {OBJ_EVENT_PAL_TAG_PLAYER_RED,        sPlayerReflectionPaletteTags},
+    {OBJ_EVENT_PAL_TAG_PLAYER_LEAF,       sPlayerReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER, sReflectionPaletteTags_PlayerUnderwater},
     {OBJ_EVENT_PAL_TAG_NONE,              NULL},
 };
@@ -610,6 +793,13 @@ static const u16 sReflectionPaletteTags_Truck[] = {
     OBJ_EVENT_PAL_TAG_TRUCK,
     OBJ_EVENT_PAL_TAG_TRUCK,
     OBJ_EVENT_PAL_TAG_TRUCK,
+};
+
+static const u16 sReflectionPaletteTags_TruckF[] = {
+    OBJ_EVENT_PAL_TAG_TRUCK_F,
+    OBJ_EVENT_PAL_TAG_TRUCK_F,
+    OBJ_EVENT_PAL_TAG_TRUCK_F,
+    OBJ_EVENT_PAL_TAG_TRUCK_F,
 };
 
 static const u16 sReflectionPaletteTags_VigorothMover[] = {
@@ -680,6 +870,7 @@ static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
     {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
+    {OBJ_EVENT_PAL_TAG_TRUCK_F,          sReflectionPaletteTags_TruckF},
     {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
     {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
     {OBJ_EVENT_PAL_TAG_CABLE_CAR,        sReflectionPaletteTags_CableCar},
@@ -689,6 +880,8 @@ static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_NPC_3,            sReflectionPaletteTags_Npc3},
     {OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW, sReflectionPaletteTags_SubmarineShadow},
     {OBJ_EVENT_PAL_TAG_RED_LEAF,         sReflectionPaletteTags_RedLeaf},
+    {OBJ_EVENT_PAL_TAG_PLAYER_RED,       sPlayerReflectionPaletteTags},
+    {OBJ_EVENT_PAL_TAG_PLAYER_LEAF,      sPlayerReflectionPaletteTags},
     {OBJ_EVENT_PAL_TAG_NONE,             NULL},
 };
 
@@ -2915,7 +3108,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 {
     gPlayerAvatar.objectEventId = objectEventId;
     gPlayerAvatar.spriteId = spriteId;
-    gPlayerAvatar.gender = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
+    gPlayerAvatar.style = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_CONTROLLABLE);
 }
 
@@ -3180,6 +3373,35 @@ u8 LoadPlayerObjectEventPalette(u8 gender)
             paletteTag = OBJ_EVENT_PAL_TAG_MAY;
             break;
     }
+    return LoadObjectEventPalette(paletteTag);
+}
+
+u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
+{
+    u16 paletteTag;
+
+    switch (style)
+    {
+    case STYLE_BRENDAN:
+        paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN;
+        break;
+    case STYLE_MAY:
+        paletteTag = OBJ_EVENT_PAL_TAG_MAY;
+        break;
+    case STYLE_RED:
+    case STYLE_LEAF:
+        paletteTag = OBJ_EVENT_PAL_TAG_RED_LEAF; // Du hast ja einen gemeinsamen Tag für Red & Leaf
+        break;
+
+    // Später z. B.
+    // case STYLE_ETHAN: paletteTag = OBJ_EVENT_PAL_TAG_ETHAN; break;
+    // case STYLE_LYRA:  paletteTag = OBJ_EVENT_PAL_TAG_LYRA;  break;
+
+    default:
+        paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN; // Fallback
+        break;
+    }
+
     return LoadObjectEventPalette(paletteTag);
 }
 
@@ -11419,6 +11641,33 @@ static u16 GetUnownSpecies(struct Pokemon *mon)
     if (form == 0)
         return SPECIES_UNOWN;
     return SPECIES_UNOWN_B + form - 1;
+}
+
+u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
+{
+    u16 rivalId;
+
+    switch (style)
+    {
+    case STYLE_BRENDAN:
+        rivalId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+        break;
+    case STYLE_MAY:
+        rivalId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+        break;
+    case STYLE_RED:
+        rivalId = OBJ_EVENT_GFX_RIVAL_LEAF;
+        break;
+    case STYLE_LEAF:
+        rivalId = OBJ_EVENT_GFX_RIVAL_RED;
+        break;
+    default:
+        rivalId = OBJ_EVENT_GFX_RIVAL_RED;
+        break;
+    }
+
+    // action: PLAYER_AVATAR_STATE_NORMAL oder PLAYER_AVATAR_STATE_RUNNING
+    return GetRivalGraphicsId(rivalId, state);
 }
 
 static void InitMovementSurfStill(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction, u8 speed)

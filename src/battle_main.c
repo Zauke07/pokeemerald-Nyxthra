@@ -76,6 +76,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "cable_club.h"
+#include "overworld.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -414,7 +415,7 @@ const u8 gStatusConditionString_IceJpn[] = _("こおり$$$$");
 const u8 gStatusConditionString_ConfusionJpn[] = _("こんらん$$$");
 const u8 gStatusConditionString_LoveJpn[] = _("メロメロ$$$");
 
-const u8 *const gStatusConditionStringsTable[][2] =
+const u8 *const gStatusConditionStringsTable[][GENDER_COUNT] =
 {
     {gStatusConditionString_PoisonJpn, gText_Poison},
     {gStatusConditionString_SleepJpn, gText_Sleep},
@@ -3075,7 +3076,11 @@ static void BattleStartClearSetData(void)
     gBattleStruct->safariEscapeFactor = 3;
     gBattleStruct->wildVictorySong = 0;
     gBattleStruct->moneyMultiplier = 1;
-
+    if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
+    {
+        if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) && gSaveBlock2Ptr->optionsBattleSceneOff == TRUE)
+            gHitMarker |= HITMARKER_NO_ANIMATIONS;
+    }
     gBattleStruct->givenExpMons = 0;
     gBattleStruct->palaceFlags = 0;
 
@@ -6099,24 +6104,30 @@ static s32 Factorial(s32 n)
     return f;
 }
 
-bool32 CanPlayerForfeitNormalTrainerBattle(void)
+u16 GetPlayerBackSpriteId(void)
 {
-    if (!B_RUN_TRAINER_BATTLE)
-        return FALSE;
-
-    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-        return FALSE;
-
-    if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_INVALID)
-        return FALSE;
-
-    return (gBattleTypeFlags & BATTLE_TYPE_TRAINER);
+    switch (gSaveBlock2Ptr->playerStyles[0])
+    {
+    case STYLE_BRENDAN:
+        return TRAINER_BACK_PIC_BRENDAN;
+    case STYLE_MAY:
+        return TRAINER_BACK_PIC_MAY;
+    case STYLE_RED:
+        return TRAINER_BACK_PIC_RED;
+    case STYLE_LEAF:
+        return TRAINER_BACK_PIC_LEAF;
+    // Erweiterbar für weitere Styles...
+    default:
+        return TRAINER_BACK_PIC_BRENDAN;
+    }
 }
 
-bool32 DidPlayerForfeitNormalTrainerBattle(void)
+bool8 InBattleChoosingMoves()
 {
-    if (!CanPlayerForfeitNormalTrainerBattle())
-        return FALSE;
+    return gBattleMainFunc == HandleTurnActionSelectionState;
+}
 
-    return (gBattleOutcome == B_OUTCOME_FORFEITED);
+bool8 InBattleRunningActions()
+{
+    return gBattleMainFunc == RunTurnActionsFunctions;
 }

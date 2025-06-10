@@ -73,6 +73,13 @@
 #include "battle_util.h"
 #include "naming_screen.h"
 
+/*
+#include "rogue_player_customisation_ui.h"
+#include "rogue_settings.h"
+#include "rogue_controller.h"
+#include "rogue_voltorbflip.h"
+*/
+
 #define TAG_ITEM_ICON 5500
 
 #define GFXTAG_MULTICHOICE_SCROLL_ARROWS 2000
@@ -150,14 +157,14 @@ static void BufferFanClubTrainerName_(struct LinkBattleRecords *, u8, u8);
 static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer);
 #endif //FREE_LINK_BATTLE_RECORDS
 
-static const u8 sText_BigGuy[] = _("Big guy");
-static const u8 sText_BigGirl[] = _("Big girl");
-static const u8 sText_Son[] = _("son");
-static const u8 sText_Daughter[] = _("daughter");
-static const u8 sText_99TimesPlus[] = _("99 times +");
-static const u8 sText_1MinutePlus[] = _("1 minute +");
-static const u8 sText_SpaceSeconds[] = _(" seconds");
-static const u8 sText_SpaceTimes[] = _(" time(s)");
+static const u8 sText_BigGuy[] = _("Großer Kerl");
+static const u8 sText_BigGirl[] = _("Großes Mädchen");
+static const u8 sText_Son[] = _("Sohn");
+static const u8 sText_Daughter[] = _("Tochter");
+static const u8 sText_99TimesPlus[] = _("99 Mal +");
+static const u8 sText_1MinutePlus[] = _("1 Minute +");
+static const u8 sText_SpaceSeconds[] = _(" Sekunden");
+static const u8 sText_SpaceTimes[] = _(" Mal");
 
 void Special_ShowDiploma(void)
 {
@@ -524,7 +531,7 @@ void SpawnLinkPartnerObjectEvent(void)
         MOVEMENT_TYPE_FACE_DOWN,
         MOVEMENT_TYPE_FACE_RIGHT
     };
-    s8 coordOffsets[][2] = {
+    s8 coordOffsets[][GENDER_COUNT] = {
         { 0,  1},
         { 1,  0},
         { 0, -1},
@@ -4360,4 +4367,62 @@ void GetCodeFeedback(void)
         gSpecialVar_Result = 1;
     else
         gSpecialVar_Result = 0;
+}
+
+bool8 ShowFieldMessageVarObjGfxId0AndStyle(void)
+{
+    u16 gfxId = VarGet(VAR_OBJ_GFX_ID_0);
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    u16 result = VarGet(VAR_RESULT);
+
+    ConvertIntToDecimalStringN(gStringVar1, gfxId, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, style, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar3, result, STR_CONV_MODE_LEFT_ALIGN, 2);
+
+    StringExpandPlaceholders(gStringVar4, gText_ObjGfxIdAndStyle); // ✅ Richtig: Ergebnis in gStringVar4
+    ShowFieldMessage(gStringVar4);                                 // ✅ Auch hier gStringVar4 verwenden
+
+    return FALSE;
+}
+
+
+void GetRivalStyleGraphicsIdAndSetVar(void)
+{
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    u16 gfxId;
+
+    switch (style)
+    {
+        case STYLE_BRENDAN:
+            gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+            break;
+        case STYLE_MAY:
+            gfxId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
+            break;
+        case STYLE_RED:
+            gfxId = OBJ_EVENT_GFX_RIVAL_RED;
+            break;
+        case STYLE_LEAF:
+            gfxId = OBJ_EVENT_GFX_RIVAL_LEAF;
+            break;
+        default:
+            gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+            break;
+    }
+
+    VarSet(VAR_OBJ_GFX_ID_0, gfxId - OBJ_EVENT_GFX_VAR_0);
+}
+
+bool8 BufferIntToStringVar1(void)
+{
+    u16 value = VarGet(VAR_RESULT);
+    ConvertIntToDecimalStringN(gStringVar1, value, STR_CONV_MODE_LEFT_ALIGN, 3);
+    return FALSE;
+}
+
+bool8 BufferIntToStringVar2(void)
+{
+    u16 value = VarGet(VAR_RESULT);
+    ConvertIntToDecimalStringN(gStringVar2, value, STR_CONV_MODE_LEFT_ALIGN, 3);
+    return FALSE;
 }
