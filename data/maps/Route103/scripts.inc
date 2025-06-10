@@ -1185,17 +1185,17 @@ Route103_Text_MayRoute103Pokemon:
 	.string "ROUTE 103 besitzt...$"
 
 Route103_Text_MayLetsBattle:
-	.string "Oh, hi, {PLAYER}{KUN}!\p"
-	.string "…Oh, I see, my dad gave you\n"
-	.string "a POKéMON as a gift.\p"
-	.string "Since we're here, let's have a quick\n"
-	.string "battle!\p"
-	.string "I'll give you a taste of what being\n"
-	.string "a TRAINER is like.$"
+	.string "Oh, hi {PLAYER}{KUN}!\p"
+	.string "...Oh... Ich seh' schon. Mein Vater hat dir\n"
+	.string "ein POKéMON geschenkt.\p"
+	.string "Wenn wir schon mal hier sind, lass uns\n"
+	.string "doch kämpfen!\p"
+	.string "Ich gebe dir einen Vorgeschmack auf\n"
+	.string "das Leben als TRAINER.$"
 
 Route103_Text_MayDefeated:
-	.string "Wow! That's great!\n"
-	.string "{PLAYER}{KUN}, you're pretty good!$"
+	.string "Wow! Das war spitze!\n"
+	.string "{PLAYER}{KUN}, du bist ein Naturtalent!$"
 
 Route103_Text_MayTimeToHeadBack:
 	.string "{RIVAL}: Ich glaube, ich weiß jetzt, warum\n"
@@ -1212,15 +1212,16 @@ Route103_Text_BrendanRoute103Pokemon:
 	.string "der ROUTE 103...$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
-	.string "Since we're here, how about a little\n"
-	.string "battle?\p"
-	.string "I'll teach you what being a TRAINER's\n"
-	.string "about!$"
+	.string "Hey, da ist ja {PLAYER}!\p"
+	.string "...Oh ja. Mein Vater hat dir ein POKéMON\n"
+	.string "geschenkt, nicht wahr?\p"
+	.string "Wenn wir schon mal hier sind, lass uns\n"
+	.string "doch einen kleinen Kampf austragen.\p"
+	.string "Ich bringe dir bei, was ein TRAINER\n"
+	.string "wissen muss.$"
 
 Route103_Text_BrendanDefeated:
-	.string "Huh, {PLAYER}, you're not too shabby.$"
+	.string "Hey, {PLAYER}, das war gar nicht so übel.$"
 
 Route103_Text_BrendanTimeToHeadBack:
 	.string "{RIVAL}: Ich denke, ich habe es kapiert.\n"
@@ -1233,13 +1234,14 @@ Route103_Text_BrendanTimeToHeadBack:
 	.string "Wir sollten nun zurück zum LABOR gehen.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "My POKéMON is staggeringly tired…\n"
-	.string "I should have brought a POTION…$"
+	.string "Mein POKéMON ist unglaublich müde...\n"
+	.string "Ich hätte einen TRANK mitnehmen sollen.$"
 
 Route103_Text_ShortcutToOldale:
-	.string "If you cross the sea from here,\n"
-	.string "it'll be a shortcut to OLDALE TOWN.\p"
-	.string "Fufufu, that's useful, isn't it?$"
+	.string "Wenn du von hier das Meer überquerst,\n"
+	.string "nimmst du eine Abkürzung nach\l"
+	.string "ROSALTSTADT.\p"
+	.string "Hahaha, ist das kein praktischer Tipp?$"
 
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"

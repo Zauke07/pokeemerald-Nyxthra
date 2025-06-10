@@ -1,3 +1,9 @@
+.set LOCALID_TWIN, 1
+.set LOCALID_MOM, 4
+.set LOCALID_RIVAL, 7
+.set LOCALID_BIRCH, 8
+.set LOCALID_BRANDON, 12
+
 LittlerootTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LittlerootTown_OnFrame
@@ -20,7 +26,7 @@ LittlerootTown_MapScripts::
 	@ 7: Told to go meet rival
 
 	@ State descriptions for VAR_LITTLEROOT_HOUSES_STATE_MAY
-	@                    and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
+	@					and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
 	@ 1: On Truck (and is corresponding gender)
 	@ 2: Met Rival's Mom (and is corresponding gender)
 	@ 3: Entered Hall of Fame
@@ -36,7 +42,6 @@ LittlerootTown_MapScripts::
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	call Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
 	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
 	call_if_eq VAR_LITTLEROOT_TOWN_STATE, 3, LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos
@@ -46,7 +51,16 @@ LittlerootTown_OnTransition:
 	call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_HideMapNamePopup
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
+	call_if_set FLAG_UNLOCKED_TESTLABOR_NPC, EventScript_Testlabor_SetGuardPos
 	end
+
+EventScript_Testlabor_SetGuardPos::
+	checkflag FLAG_UNLOCKED_TESTLABOR_NPC
+	call_if FALSE, EventScript_Testlabor_SetGuard_DefaultPos
+
+EventScript_Testlabor_SetGuard_DefaultPos::
+	setobjectxyperm LOCALID_BRANDON, 25, 8
+	return
 
 LittlerootTown_EventScript_LeftLabAfterDexUpgrade::
 	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3
@@ -87,10 +101,28 @@ LittlerootTown_EventScript_SetTwinGuardingRoutePos::
 
 LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
-	setobjectmovementtype LOCALID_LITTLEROOT_MOM, MOVEMENT_TYPE_FACE_DOWN
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_DOWN
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
@@ -102,10 +134,33 @@ LittlerootTown_EventScript_SetMomInFrontOfDoorFemale::
 	return
 
 LittlerootTown_OnFrame:
+@	map_script_1 LittlerootTown_EventScript_ApplyTruckGraphics
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, LittlerootTown_EventScript_StepOffTruckMale
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_StepOffTruckFemale
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_BeginDexUpgradeScene
+@	call_if_set FLAG_UNLOCKED_TESTLABOR_NPC, EventScript_FixTestlaborGuardPosition
 	.2byte 0
+
+@EventScript_FixTestlaborGuardPosition::
+@	setobjectxyperm LOCALID_BRANDON, 26, 8
+@	end
+
+@LittlerootTown_EventScript_ApplyTruckGraphics::
+@	checkplayerstyle
+@	compare VAR_RESULT, STYLE_BRENDAN
+@	goto_if_eq .show_blue
+@	compare VAR_RESULT, STYLE_RED
+@	goto_if_eq .show_blue
+
+@	@ Leaf oder May → roter Truck
+@	hideobject 5	@ blauer Truck ausblenden
+@	showobject 6	@ roten Truck anzeigen
+@	end
+
+@.show_blue:
+@	hideobject 6	@ roter Truck ausblenden
+@	showobject 5	@ blauen Truck anzeigen
+@	end
 
 LittlerootTown_EventScript_StepOffTruckMale::
 	lockall
@@ -224,10 +279,11 @@ LittlerootTown_OnWarp:
 	.2byte 0
 
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade::
-	addobject LOCALID_LITTLEROOT_BIRCH
-	addobject LOCALID_LITTLEROOT_RIVAL
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale
+	addobject LOCALID_BIRCH
+	addobject LOCALID_RIVAL
+	getplayerstyle
+	isstylemale
+	goto_if_eq VAR_RESULT, 1, LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale
 	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale
 	end
 
@@ -243,10 +299,6 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 
 LittlerootTown_EventScript_FatMan::
 	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
-	end
-
-LittlerootTown_EventScript_Boy::
-	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Twin::
@@ -397,9 +449,10 @@ LittlerootTown_EventScript_BirchsLabSign::
 
 LittlerootTown_EventScript_BrendansHouseSign::
 	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_PlayersHouseSignMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_BirchsHouseSignFemale
+	getplayerstyle
+	isstylemale
+	call_if_eq VAR_RESULT, 1, LittlerootTown_EventScript_PlayersHouseSignMale
+	call_if_eq VAR_RESULT, 0, LittlerootTown_EventScript_BirchsHouseSignFemale
 	releaseall
 	end
 
@@ -413,7 +466,8 @@ LittlerootTown_EventScript_BirchsHouseSignFemale::
 
 LittlerootTown_EventScript_MaysHouseSign::
 	lockall
-	checkplayergender
+	getplayerstyle
+	isstylemale
 	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_BirchsHouseSignMale
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_PlayersHouseSignFemale
 	releaseall
@@ -466,21 +520,93 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger5::
 	end
 
 LittlerootTown_EventScript_GiveRunningShoesTrigger::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomNoticePlayerMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_MomNoticePlayerFemale
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomNoticePlayerMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomNoticePlayerFemale
+
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+
 	msgbox LittlerootTown_Text_WaitPlayer, MSGBOX_DEFAULT
 	closemessage
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomApproachPlayerMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomApproachPlayerMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomApproachPlayerFemale
 	call LittlerootTown_EventScript_GiveRunningShoes
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_MomReturnHomeMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomReturnHomeFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomReturnHomeMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomReturnHomeFemale
+
 	goto LittlerootTown_EventScript_SetReceivedRunningShoes
 	end
 
@@ -868,10 +994,29 @@ LittlerootTown_Movement_MomExitThroughDoor:
 
 LittlerootTown_EventScript_Mom::
 	lock
+	getplayerstyle
 	faceplayer
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	@call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	@call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+
 	call LittlerootTown_EventScript_GiveRunningShoes
 	applymovement LOCALID_LITTLEROOT_MOM, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
@@ -903,6 +1048,18 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	closemessage
 	delay 30
 	return
+
+LittlerootTown_EventScript_Boy::
+	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	end
+
+LittlerootTown_Text_BirchSpendsDaysInLab:
+	.string "PROF. BIRK verbringt seine Tage in\n"
+	.string "seinem LABOR, dann rennt er plötzlich\l"
+	.string "nach draußen in die Wildnis, um zu\l"
+	.string "forschen…\p"
+	.string "Wann ist PROF. BIRK eigentlich mal\n"
+	.string "zu Hause?$"
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "MOM: {PLAYER}, we're here, honey!\p"
@@ -957,13 +1114,6 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "and POKéMON.\p"
 	.string "The power of science is staggering!$"
 
-LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "When does PROF. BIRCH spend time\n"
-	.string "at home?$"
-
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
 	.string "If you go outside and go in the grass,\n"
@@ -1004,13 +1154,114 @@ LittlerootTown_Text_ProfBirchsHouse:
 	.string "PROF. BIRCH'S HOUSE$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
-	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"
-	.string "That was good work out there!\p"
-	.string "I knew there was something special\n"
-	.string "about you when I first saw you,\l"
-	.string "but I never expected this.\p"
-	.string "Oh, yes. Do you still have the POKéDEX\n"
-	.string "I gave you?\p"
-	.string "I have something to show you.\n"
-	.string "Let's go to my LAB.$"
+	.string "PROF. BIRK: Na, {PLAYER}{KUN}!\n"
+	.string "Das war wirklich gute Arbeit!\p"
+	.string "Ich wusste vom ersten Augenblick an,\n"
+	.string "dass du etwas Besonderes bist. Aber\l"
+	.string "das hätte selbst ich nicht erwartet.\p"
+	.string "Ach ja. Du hast doch noch den\n"
+	.string "POKéDEX, den ich dir gegeben habe?\p"
+	.string "Ich will dir etwas zeigen.\n"
+	.string "Lass uns in mein LABOR gehen.$"
+
+
+LittlerootTown_EventScript_RotNochKeinChamp::
+	msgbox LittlerootTown_Text_RotNochKeinChamp, MSGBOX_NPC
+	end
+
+LittlerootTown_Text_RotNochKeinChamp:
+	.string "Hallo {PLAYER}!\p"
+	.string "Leider wird das Haus noch\n"
+	.string "Renoviert.\p"
+	.string "Bitte komm doch Später wieder,\n"
+	.string "wenn du Champ geworden bist!$"
+
+LittlerootTown_EventScript_Azurill::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_AZURILL, CRY_MODE_NORMAL
+	msgbox LittlerootTown_Text_Azurill, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+LittlerootTown_Text_Azurill:
+	.string "Azurrill..$"
+
+LittlerootTown_EventScript_Azumarill::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_AZUMARILL, CRY_MODE_NORMAL
+	msgbox LittlerootTown_Text_Azumarill, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+LittlerootTown_Text_Azumarill:
+	.string "Azumarill..$"
+
+LittlerootTown_EventScript_Champhaus::
+	msgbox LittlerootTown_Text_Champhaus, MSGBOX_SIGN
+	end
+
+LittlerootTown_Text_Champhaus:
+	.string "Haus der Champion's!$"
+
+LittlerootTown_EventScript_Testlabor::
+	msgbox LittlerootTown_Text_Testlabor, MSGBOX_SIGN
+	end
+
+LittlerootTown_Text_Testlabor:
+	.string "Testlabor für Scripts!$"
+
+EventScript_TestlaborGuard::
+	lockall
+	faceplayer
+	checkflag FLAG_UNLOCKED_TESTLABOR_NPC
+	goto_if TRUE, EventScript_TestlaborGuard_AlreadyUnlocked
+
+	msgbox TestlaborGuard_AskPassword, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	special ShowTestPasswordMenu
+	waitstate
+	compare VAR_RESULT, 1337 @ ← dein echtes Passwort hier!
+	goto_if_eq EventScript_TestlaborGuard_Correct
+
+	msgbox TestlaborGuard_WrongPassword, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_TestlaborGuard_Correct::
+	msgbox TestlaborGuard_CorrectPassword, MSGBOX_DEFAULT
+	applymovement LOCALID_BRANDON, Movement_TestlaborGuard_StepAside
+	waitmovement 0
+	setflag FLAG_UNLOCKED_TESTLABOR_NPC
+	releaseall
+	end
+
+EventScript_TestlaborGuard_AlreadyUnlocked::
+	msgbox TestlaborGuard_WelcomeBack, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Movement_TestlaborGuard_StepAside:
+	walk_in_place_right
+	walk_right
+	walk_in_place_down
+	step_end
+
+TestlaborGuard_AskPassword:
+	.string "Zutritt nur für Entwickler!\nBitte nenne das Passwort:$"
+
+TestlaborGuard_CorrectPassword:
+	.string "Zugang bestätigt.\nTritt ein.$"
+
+TestlaborGuard_WrongPassword:
+	.string "Falsches Passwort.\nZutritt verweigert.$"
+
+TestlaborGuard_WelcomeBack:
+	.string "Du bist berechtigt.\nGeh ruhig rein.$"
 
