@@ -1,0 +1,6 @@
+#ifndef GUARD_SHOW_TEST_PASSWORD_MENU_H
+#define GUARD_SHOW_TEST_PASSWORD_MENU_H
+
+bool8 ShowTestPasswordMenu(void);
+
+#endif // GUARD_SHOW_TEST_PASSWORD_MENU_H
