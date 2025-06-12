@@ -49,3 +49,5 @@ __pycache__
 tools/Pokabbie/
 tools/Pokabbie/
 tools/poryscript~master/
+common_syms/load_save_*.txt
+stash_backup.patch
