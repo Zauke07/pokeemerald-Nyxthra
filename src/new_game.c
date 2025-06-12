@@ -55,6 +55,8 @@
 #include "rogue_controller.h"
 */
 
+#include "rogue_controller.h"
+
 extern const u8 EventScript_ResetAllMapFlags[];
 
 static void ClearFrontierRecord(void);
@@ -106,11 +108,22 @@ static void InitPlayerTrainerId(void)
 // L=A isnt set here for some reason.
 static void SetDefaultOptions(void)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
-    gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
-    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
-    gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
+    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
+    gSaveBlock2Ptr->optionsWindowFrameType = 3;
+    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
+    gSaveBlock2Ptr->optionsPopupSoundOff = FALSE;
+    gSaveBlock2Ptr->optionsSoundChannelBGM = 10;
+    gSaveBlock2Ptr->optionsSoundChannelSE = 10;
+    gSaveBlock2Ptr->optionsSoundChannelBattleSE = 10;
+    gSaveBlock2Ptr->optionsWildBattleScene = OPTIONS_BATTLE_SCENE_2X;
+    gSaveBlock2Ptr->optionsTrainerBattleScene = OPTIONS_BATTLE_SCENE_1X;
+    gSaveBlock2Ptr->optionsBossBattleScene = OPTIONS_BATTLE_SCENE_1X;
+    gSaveBlock2Ptr->optionsAutoRunToggle = FALSE;
+    gSaveBlock2Ptr->optionsNicknameMode = OPTIONS_NICKNAME_MODE_NEVER;
+    gSaveBlock2Ptr->optionsLowHealthBeep = OPTIONS_HEALTH_BEEP_3_BEEPS;
+    gSaveBlock2Ptr->timeOfDayVisuals = TRUE;
+    gSaveBlock2Ptr->seasonVisuals = TRUE;
+    gSaveBlock2Ptr->weatherVisuals = TRUE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     VarSet(VAR_Password_TestLabor, 1337);  // Passwort-Nummer, z. B. 1337 für "openai"
     Rogue_SetDefaultOptions();

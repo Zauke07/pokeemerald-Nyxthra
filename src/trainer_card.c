@@ -181,7 +181,7 @@ static const u16 sHoennTrainerCardGold_Pal[]     = INCBIN_U16("graphics/trainer_
 static const u16 sKantoTrainerCardGold_Pal[]     = INCBIN_U16("graphics/trainer_card/frlg/gold.gbapal");
 static const u16 sHoennTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg.gbapal");
 static const u16 sKantoTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/female_bg.gbapal");
-static const u16 sHoennTrainerCardBadges_Pal[]   = INCBIN_U16("graphics/trainer_card/badges.gbapal");
+static const u16 sHoennTrainerCardBadges_Pal[]   = INCBIN_U16("graphics/trainer_card/palletes/badges.gbapal");
 static const u16 sKantoTrainerCardBadges_Pal[]   = INCBIN_U16("graphics/trainer_card/frlg/badges.gbapal");
 static const u16 sTrainerCardStar_Pal[]          = INCBIN_U16("graphics/trainer_card/star.gbapal");
 static const u16 sTrainerCardSticker1_Pal[]      = INCBIN_U16("graphics/trainer_card/frlg/stickers1.gbapal");
@@ -698,7 +698,7 @@ static void SetPlayerCardData(struct TrainerCard *trainerCard, u8 cardType)
     u32 playTime;
     u8 i;
 
-    trainerCard->gender = gSaveBlock2Ptr->playerGender;
+    trainerCard->style = gSaveBlock2Ptr->playerStyles[0]; // Änderung: `playerGender` → `playerStyle`
     trainerCard->playTimeHours = gSaveBlock2Ptr->playTimeHours;
     trainerCard->playTimeMinutes = gSaveBlock2Ptr->playTimeMinutes;
 

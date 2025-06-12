@@ -323,7 +323,7 @@ RivalsHouse_2F_EventScript_RivalFemale::
 	releaseall
 	end
 
-RivalsHouse_2F_EventScript_Brendan::
+RivalsHouse_2F_EventScript_RivalMale::
 	msgbox RivalsHouse_2F_Text_BrendanGettingReady, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -356,12 +356,12 @@ RivalsHouse_2F_EventScript_RivalPostLilycove::
 	releaseall
 	end
 
-RivalsHouse_2F_EventScript_MayPostLilycove::
+RivalsHouse_2F_EventScript_RivalFemalePostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_MayWhereShouldIGoNext
 	msgbox RivalsHouse_2F_Text_MayJustCheckingMyPokedex, MSGBOX_DEFAULT
 	return
 
-RivalsHouse_2F_EventScript_BrendanPostLilycove::
+RivalsHouse_2F_EventScript_RivalMalePostLilycove::
 	goto_if_set FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE, RivalsHouse_2F_EventScript_BrendanWhereShouldIGoNext
 	msgbox RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex, MSGBOX_DEFAULT
 	return

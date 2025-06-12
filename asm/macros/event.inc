@@ -1421,20 +1421,19 @@
 	.byte SCR_OP_ISSTYLEMALE
 	.endm
 
+    @ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
+    @ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
+    .macro checkplayerstyle
+    .byte SCR_OP_COPYVAR
+    .short VAR_RESULT, VAR_PLAYER_STYLE
+    .endm
 
-	@ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
-	@ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
-	.macro checkplayerstyle
-	.byte SCR_OP_CHECKPLAYERSTYLE
-	.endm
-
-
-	@ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
-	@ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
-	.macro getplayerstyle
-	.byte SCR_OP_GETPLAYERSTYLE
-	.endm
-
+    @ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
+    @ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
+    .macro getplayerstyle
+    .byte SCR_OP_COPYVAR
+    .short VAR_RESULT, VAR_PLAYER_STYLE
+    .endm
 
 	@ Plays the cry of the given species. Mode is any CRY_MODE_* constant.
 	@ You can use waitmoncry to block script execution until the cry finishes.

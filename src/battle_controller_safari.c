@@ -243,7 +243,7 @@ static void SafariBufferExecCompleted(u32 battler)
 
 static void SafariHandleDrawTrainerPic(u32 battler)
 {
-    u32 trainerPicId = gSaveBlock2Ptr->playerGender + TRAINER_BACK_PIC_BRENDAN;
+    u32 trainerPicId = gSaveBlock2Ptr->playerStyles[0];
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, FALSE,
                                        80, 80 + 4 * (8 - gTrainerBacksprites[trainerPicId].coordinates.size),
@@ -295,6 +295,7 @@ static void SafariHandleChooseAction(u32 battler)
 
     ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
     BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo2);
+    BreakStringAutomatic(gDisplayedStringBattle, WindowWidthPx(B_WIN_ACTION_PROMPT), 2, FONT_NORMAL);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
 }
 

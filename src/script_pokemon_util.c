@@ -426,9 +426,9 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, u
     if (targetSpecies != SPECIES_NONE)
         SetMonData(&mon, MON_DATA_SPECIES, &targetSpecies);
 
-    // assign OT name and gender
+    // assign OT name and player style
     SetMonData(&mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
-    SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
+    SetMonData(&mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerStyles[0]); // Statt `playerGender` jetzt `playerStyle`
 
     if (slot < PARTY_SIZE)
     {

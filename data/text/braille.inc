@@ -121,4 +121,3 @@ BabyBootCamp_Braille_SecretMessage:
     .braille "DIES IST EINE\n"
     .braille "GEHEIME\n"
     .braille "BOTSCHAFT.$"
-

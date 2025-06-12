@@ -47,11 +47,11 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfx::
     @goto_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
-BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxMale::
+BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxBrendan::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-	return
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
 
-BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxFemale::
+BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxMay::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
 

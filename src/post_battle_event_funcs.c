@@ -61,6 +61,12 @@ int GameClear(void)
     //    case STYLE_GLORIA:
     //    case STYLE_JULIANA:
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
+        break;
+
+    default:
+        SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F); // Fallback
+        break;
+}
 
     ribbonGet = FALSE;
 

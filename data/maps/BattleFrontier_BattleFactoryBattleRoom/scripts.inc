@@ -37,7 +37,7 @@ BattleFrontier_BattleFactoryBattleRoom_OnTransition:
 	goto_if_ne VAR_RESULT, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj
 	end
 
-BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj::
+BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj:
 	call BattleFrontier_EventScript_SetBrainObjectGfx
 	setobjectxyperm LOCALID_FACTORY_BATTLE_OPPONENT, 7, 9
 	end
@@ -46,7 +46,7 @@ BattleFrontier_BattleFactoryBattleRoom_OnWarp:
 	map_script_2 VAR_TEMP_1, 0, BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects
 	.2byte 0
 
-BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects::
+BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects:
 	setvar VAR_TEMP_1, 1
 	hideobjectat LOCALID_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM
 	goto_if_ne VAR_TEMP_F, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleFactoryBattleRoom_EventScript_EndHideObjects
@@ -54,11 +54,11 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects::
 BattleFrontier_BattleFactoryBattleRoom_EventScript_EndHideObjects::
 	end
 
-BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxMale::
+BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxBrendan:
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
-BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxFemale::
+BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxMay:
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return
 

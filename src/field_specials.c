@@ -179,6 +179,20 @@ void Special_ViewWallClock(void)
     LockPlayerFieldControls();
 }
 
+// void Special_ViewPlayerCustomisationMenu(void)
+// {
+//     gMain.savedCallback = CB2_ReturnToFieldContinueScript;
+//     SetMainCallback2(CB2_InitPlayerCustomisationMenu);
+//     LockPlayerFieldControls();
+// }
+
+// void Special_ViewVoltorbFlip(void)
+// {
+//     gMain.savedCallback = CB2_ReturnToField;
+//     SetMainCallback2(CB2_ShowVoltorbFlip);
+//     LockPlayerFieldControls();
+// }
+
 void ResetCyclingRoadChallengeData(void)
 {
     gBikeCyclingChallenge = FALSE;
@@ -933,18 +947,18 @@ u8 GetPlayerTrainerIdOnesDigit(void)
 
 void GetPlayerBigGuyGirlString(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        StringCopy(gStringVar1, sText_BigGuy);
-    else
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
         StringCopy(gStringVar1, sText_BigGirl);
+    else
+        StringCopy(gStringVar1, sText_BigGuy);
 }
 
 void GetRivalSonDaughterString(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        StringCopy(gStringVar1, sText_Daughter);
-    else
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
         StringCopy(gStringVar1, sText_Son);
+    else
+        StringCopy(gStringVar1, sText_Daughter);
 }
 
 u8 GetBattleOutcome(void)

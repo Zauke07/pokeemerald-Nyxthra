@@ -582,6 +582,16 @@
 #define TRAINER_CLASS_PYRAMID_KING   0x40
 #define TRAINER_CLASS_RS_PROTAG      0x41
 #define TRAINER_CLASS_COUNT          0x42
+#define TRAINER_CLASS_DEVELOPER             0x43
+#define TRAINER_CLASS_DEVELOPER_CHAMPION    0x44
+#define TRAINER_CLASS_COMMUNITY_MOD         0x45
+#define TRAINER_CLASS_TEAM_ROCKET           0x46
+#define TRAINER_CLASS_TEAM_ROCKET_LEADER    0x47
+#define TRAINER_CLASS_BIKER                 0x48
+#define TRAINER_CLASS_TEAM_GALACTIC         0x49
+#define TRAINER_CLASS_TEAM_GALACTIC_LEADER  0x4A
+#define TRAINER_CLASS_AI_MASTER             0x4B
+#define TRAINER_CLASS_CHATGPT               0x4C
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

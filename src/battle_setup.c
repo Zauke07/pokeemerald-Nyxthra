@@ -504,6 +504,7 @@ void BattleSetup_StartLegendaryBattle(void)
         break;
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
+    case SPECIES_CELEBI:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
         break;
     case SPECIES_MEW:
@@ -812,6 +813,9 @@ u8 GetTrainerBattleTransition(void)
         return transitionToReturn;
     }
 
+    if (trainerClass == TRAINER_CLASS_CHATGPT)
+        return B_TRANSITION_CHATGPT;
+
     if (IsTrainerDoubleBattle(trainerId))
         minPartyCount = 2; // Doppelkämpfe haben immer mindestens 2 Pokémon.
     else
@@ -832,6 +836,7 @@ u8 GetTrainerBattleTransition(void)
         transitionToReturn = sBattleTransitionTable_Trainer[transitionType][1];
     return transitionToReturn;
 }
+
 
 #define RANDOM_TRANSITION(table) (table[Random() % ARRAY_COUNT(table)])
 u8 GetSpecialBattleTransition(s32 id)

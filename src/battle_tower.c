@@ -2127,7 +2127,8 @@ static void SaveBattleTowerRecord(void)
     ClearBattleTowerRecord(playerRecord);
     lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    if (gSaveBlock2Ptr->playerGender != MALE)
+
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])) // Neue Funktion für Style-Check
     {
         class = gTowerFemaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
                                        gSaveBlock2Ptr->playerTrainerId[1] +
@@ -2797,23 +2798,26 @@ static void AwardBattleTowerRibbons(void)
     }
 }
 
-// This is a leftover debugging function that is used to populate the E-Reader
-// trainer with the player's current data.
+// Diese Funktion ist ein Debug-Überbleibsel für E-Reader-Daten
 static void UNUSED FillEReaderTrainerWithPlayerData(void)
 {
 #if FREE_BATTLE_TOWER_E_READER == FALSE
     struct BattleTowerEReaderTrainer *ereaderTrainer = &gSaveBlock2Ptr->frontier.ereaderTrainer;
     s32 i, j;
 
-    if (gSaveBlock2Ptr->playerGender != MALE)
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])) // Neue Funktion für Style-Check
     {
-        ereaderTrainer->facilityClass = gTowerFemaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] + gSaveBlock2Ptr->playerTrainerId[1]
-                                                        + gSaveBlock2Ptr->playerTrainerId[2] + gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerFemaleFacilityClasses)];
+        ereaderTrainer->facilityClass = gTowerFemaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
+                                                        gSaveBlock2Ptr->playerTrainerId[1] +
+                                                        gSaveBlock2Ptr->playerTrainerId[2] +
+                                                        gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerFemaleFacilityClasses)];
     }
     else
     {
-        ereaderTrainer->facilityClass = gTowerMaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] + gSaveBlock2Ptr->playerTrainerId[1]
-                                                        + gSaveBlock2Ptr->playerTrainerId[2] + gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerMaleFacilityClasses)];
+        ereaderTrainer->facilityClass = gTowerMaleFacilityClasses[(gSaveBlock2Ptr->playerTrainerId[0] +
+                                                        gSaveBlock2Ptr->playerTrainerId[1] +
+                                                        gSaveBlock2Ptr->playerTrainerId[2] +
+                                                        gSaveBlock2Ptr->playerTrainerId[3]) % ARRAY_COUNT(gTowerMaleFacilityClasses)];
     }
 
     CopyTrainerId(ereaderTrainer->trainerId, gSaveBlock2Ptr->playerTrainerId);
@@ -2834,7 +2838,7 @@ static void UNUSED FillEReaderTrainerWithPlayerData(void)
         ConvertPokemonToBattleTowerPokemon(&gPlayerParty[i], &ereaderTrainer->party[i]);
 
     SetEReaderTrainerChecksum(ereaderTrainer);
-#endif //FREE_BATTLE_TOWER_E_READER
+#endif // FREE_BATTLE_TOWER_E_READER
 }
 
 u8 GetEreaderTrainerFrontSpriteId(void)

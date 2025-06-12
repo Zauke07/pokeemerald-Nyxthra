@@ -2,6 +2,7 @@
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
+#include "constants/rogue.h"
 #include "constants/apprentice.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
@@ -20,6 +21,7 @@
 #include "constants/contest.h"
 #include "constants/daycare.h"
 #include "constants/decorations.h"
+#include "constants/difficulty.h"
 #include "constants/difficulty.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
@@ -92,6 +94,7 @@ gSpecialVars::
 	.4byte gSpecialVar_MonBoxId
 	.4byte gSpecialVar_MonBoxPos
 	.4byte gSpecialVar_Unused_0x8014
+	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 
 	.include "data/specials.inc"
@@ -1159,6 +1162,15 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+    .include "data/maps/Rosalhoehle/scripts.inc"
+	.include "data/maps/SecretPetalburgWoods/scripts.inc"
+	.include "data/maps/Speicherort/scripts.inc"
+	.include "data/maps/BabyBootCamp/scripts.inc"
+
+	.include "data/maps/BabyBootCamp_Tests/scripts.inc"
+
+	.include "data/maps/TestWald/scripts.inc"
 	.include "data/scripts/dexnav.inc"
 
 	.include "data/maps/Testlabor/scripts.inc"

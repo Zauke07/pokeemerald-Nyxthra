@@ -47,9 +47,8 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalNoticePlayer
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExitHerbShop
 	delay 20
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LavaridgeTown_EventScript_PlayMayMusic
-	call_if_eq VAR_RESULT, FEMALE, LavaridgeTown_EventScript_PlayBrendanMusic
+    lockall
+    call Common_EventScript_SetupRivalMusic
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer1
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer2
 	
@@ -105,14 +104,6 @@ LavaridgeTown_EventScript_RivalExit::
 	fadedefaultbgm
 	releaseall
 	end
-
-LavaridgeTown_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-LavaridgeTown_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	return
 
 LavaridgeTown_EventScript_RivalNoticePlayer::
 	applymovement LOCALID_LAVARIDGE_RIVAL, Common_Movement_WalkInPlaceFasterUp

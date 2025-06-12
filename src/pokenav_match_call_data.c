@@ -83,7 +83,8 @@ struct MatchCallBirch {
 
 struct MatchCallRival {
     u8 type;
-    u8 playerGender;
+    u8 playerGender; // Alt
+    u8 playerStyle;  // Neu: Charakterstil des Rivalen
     u16 flag;
     const u8 *desc;
     const u8 *name;
@@ -784,7 +785,7 @@ static bool32 MatchCall_GetEnabled_Wally(match_call_t matchCall)
 
 static bool32 MatchCall_GetEnabled_Rival(match_call_t matchCall)
 {
-    if (matchCall.rival->playerGender != gSaveBlock2Ptr->playerGender)
+    if (matchCall.rival->playerStyle != gSaveBlock2Ptr->playerStyles[0])
         return FALSE;
     if (matchCall.rival->flag == 0xFFFF)
         return TRUE;

@@ -173,6 +173,8 @@ bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 bool16 SetTimeOfDay(u16 hours);
 
+u16 GetRivalGraphicsId(u16 rivalId, u8 action);
+
 // Item Description Headers
 enum ItemObtainFlags
 {

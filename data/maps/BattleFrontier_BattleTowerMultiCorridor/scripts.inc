@@ -43,7 +43,7 @@ BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxBrendan::
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_BRENDAN_NORMAL
 	return
 
-BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxFemale::
+BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxMay::
 	setvar VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_MAY_NORMAL
 	return
 

@@ -38,13 +38,12 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfx::
     @call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
-@ The opponent's gfx are set to the players by default
-BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxMale::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxBrendan::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
-BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFemale::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxMay::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return

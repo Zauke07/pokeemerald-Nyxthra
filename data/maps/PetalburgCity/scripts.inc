@@ -718,11 +718,14 @@ PetalburgCity_EventScript_ChatGPT_Battle::
     lockall
     playbgm MUS_HG_VS_CHAMPION, FALSE
     msgbox PetalburgCity_Text_ChatGPT_BattleStart, MSGBOX_DEFAULT
-    trainerbattle_single TRAINER_CHATGPT, PetalburgCity_Text_ChatGPT_Intro, PetalburgCity_Text_ChatGPT_Defeated, PetalburgCity_EventScript_ChatGPT_AfterBattle
+    trainerbattle_no_intro TRAINER_CHATGPT, PetalburgCity_Text_ChatGPT_Defeated
+    setflag FLAG_DEFEATED_CHATGPT
+    goto PetalburgCity_EventScript_ChatGPT_AfterBattle
     end
 
+
 PetalburgCity_EventScript_ChatGPT_AfterBattle::
-    msgbox PetalburgCity_Text_ChatGPT_Won, MSGBOX_DEFAULT
+    msgbox PetalburgCity_Text_ChatGPT_Lost, MSGBOX_DEFAULT
     releaseall
     end
 

@@ -30,7 +30,7 @@
 #include "data/bard_music/events.h"
 #include "data/bard_music/trendysaying.h"
 
-static const struct BardSoundTemplate (*const sBardSoundTemplatesTable[EC_NUM_GROUPS])[MAX_BARD_SOUNDS_PER_WORD] = {
+static const struct BardSoundTemplate (*sBardSoundTemplatesTable[EC_NUM_GROUPS])[6] = {
     [EC_GROUP_POKEMON]          = NULL, // Handled by sBardSoundTemplates_Pokemon
     [EC_GROUP_TRAINER]          = sBardSoundTemplates_Trainer,
     [EC_GROUP_STATUS]           = sBardSoundTemplates_Status,

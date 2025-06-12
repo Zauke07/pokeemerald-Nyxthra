@@ -110,6 +110,7 @@ static void PlayerAvatarTransition_MachBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_AcroBike(struct ObjectEvent *);
 static void PlayerAvatarTransition_Surfing(struct ObjectEvent *);
 static void PlayerAvatarTransition_Underwater(struct ObjectEvent *);
+static void PlayerAvatarTransition_Riding(struct ObjectEvent *);
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *);
 
 static bool8 PlayerAnimIsMultiFrameStationary(void);
@@ -297,6 +298,9 @@ void (*const sPlayerAvatarTransitionFuncs[])(struct ObjectEvent *) =
     [PLAYER_AVATAR_STATE_FIELD_MOVE] = PlayerAvatarTransition_ReturnToField,
     [PLAYER_AVATAR_STATE_FISHING]    = PlayerAvatarTransition_Dummy,
     [PLAYER_AVATAR_STATE_WATERING]   = PlayerAvatarTransition_Dummy,
+
+    //[PLAYER_AVATAR_STATE_RIDE_SITTING] = PlayerAvatarTransition_Dummy,
+    [PLAYER_AVATAR_STATE_RIDE_GRABBING] = PlayerAvatarTransition_Riding,
 };
 
 static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
@@ -1134,6 +1138,14 @@ static void PlayerAvatarTransition_Underwater(struct ObjectEvent *objEvent)
     objEvent->fieldEffectSpriteId = StartUnderwaterSurfBlobBobbing(objEvent->spriteId);
 }
 
+static void PlayerAvatarTransition_Riding(struct ObjectEvent *objEvent)
+{
+    ObjectEventSetGraphicsId(objEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_RIDE_GRABBING));
+    ObjectEventTurn(objEvent, objEvent->movementDirection);
+    SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_RIDING);
+    //objEvent->fieldEffectSpriteId = StartUnderwaterSurfBlobBobbing(objEvent->spriteId);
+}
+
 static void PlayerAvatarTransition_ReturnToField(struct ObjectEvent *objEvent)
 {
     gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_CONTROLLABLE;
@@ -1555,12 +1567,14 @@ u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetFRLGAvatarGraphicsIdByGender(u8 gender)
 {
-    return sFRLGAvatarGfxIds[gender];
+    // todo - rehookup, if needed
+    return OBJ_EVENT_GFX_PLAYER_NORMAL;
 }
 
 u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 {
-    return sRSAvatarGfxIds[gender];
+    // todo - rehookup, if needed
+    return OBJ_EVENT_GFX_PLAYER_NORMAL;
 }
 
 u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
@@ -1568,10 +1582,11 @@ u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
     return GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, state);
 }
 
-u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
+u8 unref_GetRivalAvatarGenderByGraphicsId(u16 gfxId)
 {
     switch (gfxId)
     {
+    // Weibliche Rivalen
     case OBJ_EVENT_GFX_MAY_NORMAL:
     case OBJ_EVENT_GFX_MAY_MACH_BIKE:
     case OBJ_EVENT_GFX_MAY_ACRO_BIKE:
@@ -1588,6 +1603,7 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_GLORIA:
     case OBJ_EVENT_GFX_JULIANA:
         return FEMALE;
+
     default:
         return MALE;
     }
@@ -1880,7 +1896,7 @@ void SetPlayerAvatarExtraStateTransition(u16 graphicsId, u8 transitionFlag)
     DoPlayerAvatarTransition();
 }
 
-void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
+void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 playerStyle)
 {
     struct ObjectEventTemplate playerObjEventTemplate;
     u8 objectEventId;

@@ -133,6 +133,11 @@
 #define FEMALE 1
 #define GENDER_COUNT 2
 
+#define STYLE_BRENDAN       0
+#define STYLE_MAY           1
+#define STYLE_RED           2
+#define STYLE_LEAF          3
+#define PLAYER_STYLE_COUNT 4
 // später nach und nach folgende hinzufügen nach #define STYLE_LEAF:
 // #define STYLE_ETHAN         4
 // #define STYLE_LYRA          5
@@ -150,12 +155,6 @@
 // #define STYLE_GLORIA       17
 // #define STYLE_FLORIAN      18
 // #define STYLE_JULIANA      19
-
-#define STYLE_BRENDAN       0
-#define STYLE_MAY           1
-#define STYLE_RED           2
-#define STYLE_LEAF          3
-#define PLAYER_STYLE_COUNT 4
 #define NUM_PLAYER_CHARACTERS PLAYER_STYLE_COUNT
 #define NUM_PLAYER_STYLES PLAYER_STYLE_COUNT
 
@@ -230,6 +229,7 @@ enum
 #define NUM_BARD_SONG_WORDS    6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4
+#define NUM_PLAYER_AVATAR_STATES 4 // 4 verschiedene Zustände: Normal, Fahrrad, Surfen, Feldbewegung
 #define GIDDY_MAX_TALES       10
 #define GIDDY_MAX_QUESTIONS    8
 
@@ -246,6 +246,24 @@ enum
 
 #define OPTIONS_BATTLE_STYLE_SHIFT 0
 #define OPTIONS_BATTLE_STYLE_SET 1
+
+#define OPTIONS_BATTLE_SCENE_1X         0
+#define OPTIONS_BATTLE_SCENE_2X         1
+#define OPTIONS_BATTLE_SCENE_3X         2
+#define OPTIONS_BATTLE_SCENE_4X         3
+#define OPTIONS_BATTLE_SCENE_DISABLED   4
+#define OPTIONS_BATTLE_SCENE_COUNT      5
+
+#define OPTIONS_HEALTH_BEEP_OFF        0
+#define OPTIONS_HEALTH_BEEP_3_BEEPS    1
+#define OPTIONS_HEALTH_BEEP_LOOPING    2
+#define OPTIONS_HEALTH_BEEP_COUNT      3
+
+#define OPTIONS_NICKNAME_MODE_ASK           0
+#define OPTIONS_NICKNAME_MODE_ALWAYS        1
+#define OPTIONS_NICKNAME_MODE_NEVER         2
+#define OPTIONS_NICKNAME_RANDOM             3
+#define OPTIONS_NICKNAME_COUNT              4
 
 #define DIR_NONE        0
 #define DIR_SOUTH       1

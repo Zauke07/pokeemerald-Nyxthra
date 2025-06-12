@@ -602,12 +602,12 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
+    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Prüfen, ob es sich um den PC im Schlafzimmer handelt
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
-        else
+        if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
             ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
+        else
+            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
     }
     else
     {

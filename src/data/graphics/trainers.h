@@ -789,7 +789,7 @@ const u32 gTrainerPalette_GalacticCyrus[] = INCBIN_U32("graphics/trainers/front_
 
 const struct TrainerSprite gTrainerSprites[] =
 {
-    TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
+TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker),
     TRAINER_SPRITE(TRAINER_PIC_AQUA_GRUNT_M, gTrainerFrontPic_AquaGruntM, gTrainerPalette_AquaGruntM),
     TRAINER_SPRITE(TRAINER_PIC_POKEMON_BREEDER_F, gTrainerFrontPic_PokemonBreederF, gTrainerPalette_PokemonBreederF),
     TRAINER_SPRITE(TRAINER_PIC_COOLTRAINER_M, gTrainerFrontPic_CoolTrainerM, gTrainerPalette_CoolTrainerM),

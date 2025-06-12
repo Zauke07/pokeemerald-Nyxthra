@@ -1867,7 +1867,7 @@ void TryPutTrendWatcherOnAir(const u16 *words)
         show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
         show->trendWatcher.kind = TVSHOW_TREND_WATCHER;
         show->trendWatcher.active = FALSE; // NOTE: Show is not active until passed via Record Mix.
-        show->trendWatcher.gender = gSaveBlock2Ptr->playerGender;
+        show->trendWatcher.style = gSaveBlock2Ptr->playerStyles[0]; // Änderung: `playerGender` → `playerStyle`
         show->trendWatcher.words[0] = words[0];
         show->trendWatcher.words[1] = words[1];
         StringCopy(show->trendWatcher.playerName, gSaveBlock2Ptr->playerName);
@@ -3332,8 +3332,8 @@ u8 CheckForPlayersHouseNews(void)
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
         return PLAYERS_HOUSE_TV_NONE;
 
-    // Check if not in player's house (dependent on gender)
-    if (gSaveBlock2Ptr->playerGender == MALE)
+    // Check ob in richtiger Spieler-Wohnung basierend auf Style
+    switch (gSaveBlock2Ptr->playerStyles[0])
     {
         case STYLE_BRENDAN:
         case STYLE_RED:
@@ -3369,7 +3369,7 @@ void GetMomOrDadStringForTVMessage(void)
     // If the player is checking the TV in their house it will only refer to their Mom.
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
+        switch (gSaveBlock2Ptr->playerStyles[0])
         {
             case STYLE_BRENDAN:
             case STYLE_RED:
@@ -3397,6 +3397,7 @@ void GetMomOrDadStringForTVMessage(void)
                 break;
         }
     }
+    
     if (VarGet(VAR_TEMP_3) == 1)
     {
         StringCopy(gStringVar1, gText_Mom);
@@ -3407,7 +3408,7 @@ void GetMomOrDadStringForTVMessage(void)
     }
     else if (VarGet(VAR_TEMP_3) > 2)
     {
-        // Should only happen if VAR_TEMP_3 is already in use by something else.
+        // Falls VAR_TEMP_3 durch etwas anderes genutzt wurde, wird zufällig zwischen Mom/Dad gewechselt
         if (VarGet(VAR_TEMP_3) % 2 == 0)
             StringCopy(gStringVar1, gText_Mom);
         else
@@ -3415,9 +3416,7 @@ void GetMomOrDadStringForTVMessage(void)
     }
     else
     {
-        // Randomly choose whether to refer to Mom or Dad.
-        // NOTE: Because of this, any map that has a TV in it shouldn't rely on VAR_TEMP_3.
-        //       If its value is 0, checking the TV will set it to 1 or 2.
+        // Zufällige Auswahl zwischen Mom oder Dad.
         if (Random() % 2 != 0)
         {
             StringCopy(gStringVar1, gText_Mom);

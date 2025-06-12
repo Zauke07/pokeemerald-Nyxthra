@@ -598,9 +598,16 @@ struct SaveBlock2
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
+             u32 optionsPopupSoundOff:1;
+             u32 timeOfDayVisuals:1;
+             u32 seasonVisuals:1;
+             u32 weatherVisuals:1;
+             u32 settingsReserved:25; // unused/reserved bits
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;
+             s8 playerStyles[8];
+             u32 playerOutfitUnlockFlags;
     /*0x90*/ u8 filler_90[0x8];
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
@@ -650,7 +657,7 @@ struct SecretBase
     /*0x1AAD*/ u8 unused;
     /*0x1AAE*/ u8 decorations[DECOR_MAX_SECRET_BASE];
     /*0x1ABE*/ u8 decorationPositions[DECOR_MAX_SECRET_BASE];
-    /*0x1ACE*/ //u8 padding[2];
+    /*0x1ACE*/ u8 playerStyle; // 🔥 NEU: Speichert den Charakterstil des Geheimbasenbesitzers
     /*0x1AD0*/ struct SecretBaseParty party;
 };
 

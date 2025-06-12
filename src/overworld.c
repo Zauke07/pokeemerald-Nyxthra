@@ -2648,7 +2648,7 @@ static void InitObjectEventsLocal(void)
     ResetObjectEvents();
     GetCameraFocusCoords(&x, &y);
     player = GetInitialPlayerAvatarState();
-    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerGender);
+    InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerStyles[0]);
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);

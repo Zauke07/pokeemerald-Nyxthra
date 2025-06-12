@@ -71,17 +71,8 @@ Route104_EventScript_RivalTrigger::
 
 @ Unused, shares script with Rustboro encounter instead
 Route104_EventScript_PlayRivalMusic::
-	checkplayergender
-	goto_if_eq VAR_RESULT, MALE, Route104_EventScript_PlayMayMusic
-	goto_if_eq VAR_RESULT, FEMALE, Route104_EventScript_PlayBrendanMusic
-	return
-
-Route104_EventScript_PlayMayMusic::
-	playbgm MUS_ENCOUNTER_MAY, TRUE
-	return
-
-Route104_EventScript_PlayBrendanMusic::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+    lockall
+    call Common_EventScript_SetupRivalMusic
 	return
 
 Route104_EventScript_RivalEncounter::

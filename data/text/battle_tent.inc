@@ -1,7 +1,7 @@
 FallarborTown_BattleTentLobby_Text_WelcomeToBattleTent:
 	.string "I welcome you to the BATTLE TENT\n"
 	.string "FALLARBOR SITE!\p"
-	.string "I am your guide to the Set KO Tourney!$"
+	.string "Ich bin dein Guide für das Setz-KO-Turnier!$"
 
 FallarborTown_BattleTentLobby_Text_TakeChallenge:
 	.string "Now, do you wish to take the challenge\n"
@@ -52,7 +52,7 @@ FallarborTown_BattleTentLobby_Text_NotEnoughValidMonsLv50:
 	.string "required for entry.\p"
 	.string "They also must not hold the same\n"
 	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "EGGS{STR_VAR_1}ineligible.\p"
 	.string "When you have made your preparations,\n"
 	.string "please do return.$"
 
@@ -64,7 +64,7 @@ FallarborTown_BattleTentLobby_Text_NotEnoughValidMonsLvOpen:
 	.string "different kinds of POKéMON.\p"
 	.string "They also must not hold the same\n"
 	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "EGGS{STR_VAR_1}ineligible.\p"
 	.string "When you have made your preparations,\n"
 	.string "please do return.$"
 
@@ -94,7 +94,7 @@ FallarborTown_BattleTentLobby_Text_PresentYouWithPrize:
 	.string "we present you with this prize.$"
 
 FallarborTown_BattleTentLobby_Text_ReceivedPrize:
-	.string "{PLAYER} received the prize\n"
+	.string "{PLAYER}received the prize\n"
 	.string "{STR_VAR_1}.$"
 
 FallarborTown_BattleTentLobby_Text_BagFullReturnForPrize:
@@ -165,7 +165,7 @@ VerdanturfTown_BattleTentLobby_Text_NotEnoughValidMonsLv50:
 	.string "different kinds of POKéMON.\p"
 	.string "They also must not be holding\n"
 	.string "the same kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "EGGS{STR_VAR_1}ineligible.\p"
 	.string "Come back when you have made\n"
 	.string "your preparations.$"
 
@@ -177,7 +177,7 @@ VerdanturfTown_BattleTentLobby_Text_NotEnoughValidMonsLvOpen:
 	.string "different kinds of POKéMON.\p"
 	.string "They also must not be holding\n"
 	.string "the same kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "EGGS{STR_VAR_1}ineligible.\p"
 	.string "Come back when you have made\n"
 	.string "your preparations.$"
 
@@ -307,7 +307,7 @@ SlateportCity_BattleTentLobby_Text_ReturnPersonalMons:
 
 @ Unused
 SlateportCity_BattleTentLobby_Text_ReceivedPrize:
-	.string "{PLAYER} received the prize\n"
+	.string "{PLAYER}received the prize\n"
 	.string "{STR_VAR_1}.$"
 
 @ Unused

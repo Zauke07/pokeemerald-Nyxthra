@@ -371,6 +371,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_MUGSHOT] = Task_Mugshot,
     [B_TRANSITION_AQUA] = Task_Aqua,
     [B_TRANSITION_MAGMA] = Task_Magma,
+    [B_TRANSITION_CHATGPT] = Task_ChatGPT,
     [B_TRANSITION_REGICE] = Task_Regice,
     [B_TRANSITION_REGISTEEL] = Task_Registeel,
     [B_TRANSITION_REGIROCK] = Task_Regirock,
@@ -2405,7 +2406,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
         mugshotColor = MUGSHOT_COLOR_PURPLE;
 
     LoadPalette(sOpponentMugshotsPals[mugshotColor], 0xF0, 0x20);
-    LoadPalette(sPlayerMugshotsPals[gSaveBlock2Ptr->playerGender], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
+    LoadPalette(sPlayerMugshotsPals[IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])], BG_PLTT_ID(15) + 10, PLTT_SIZEOF(6));
 
     for (i = 0; i < 20; i++)
     {

@@ -1464,15 +1464,24 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
         sRegionMap->playerIconSprite = NULL;
         return;
     }
-    if (gSaveBlock2Ptr->playerGender == FEMALE)
+
+    // Nur Brendan & May unterstützen
+    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])) 
     {
         sheet.data = sRegionMapPlayerIcon_MayGfx;
         palette.data = sRegionMapPlayerIcon_MayPal;
+    } 
+    else 
+    {
+        sheet.data = sRegionMapPlayerIcon_BrendanGfx;
+        palette.data = sRegionMapPlayerIcon_BrendanPal;
     }
+
     LoadSpriteSheet(&sheet);
     LoadSpritePalette(&palette);
     spriteId = CreateSprite(&template, 0, 0, 1);
     sRegionMap->playerIconSprite = &gSprites[spriteId];
+
     if (!sRegionMap->zoomed)
     {
         sRegionMap->playerIconSprite->x = sRegionMap->playerIconSpritePosX * 8 + 4;

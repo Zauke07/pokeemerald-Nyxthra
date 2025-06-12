@@ -36,12 +36,12 @@ FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
     @goto_if_eq VAR_RESULT, STYLE_JULIANA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
-FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale::
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxBrendan::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
 	return
 
-FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale::
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMay::
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	return

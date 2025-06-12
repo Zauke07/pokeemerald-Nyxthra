@@ -1,30 +1,30 @@
 @ Only contains the text for the Mauville Man named Giddy. The rest is in scripts/mauville_man.inc
 GiddyText_SoPretty::
-	.string " so pretty!$"
+	.string "so pretty!$"
 
 GiddyText_SoDarling::
-	.string " so darling!$"
+	.string "so darling!$"
 
 GiddyText_SoRelaxed::
-	.string " so relaxed!$"
+	.string "so relaxed!$"
 
 GiddyText_SoSunny::
-	.string " so sunny!$"
+	.string "so sunny!$"
 
 GiddyText_SoDesirable::
-	.string " so desirable!$"
+	.string "so desirable!$"
 
 GiddyText_SoExciting::
-	.string " so exciting!$"
+	.string "so exciting!$"
 
 GiddyText_SoAmusing::
-	.string " so amusing!$"
+	.string "so amusing!$"
 
 GiddyText_SoMagical::
-	.string " so magical!$"
+	.string "so magical!$"
 
 GiddyText_Is::
-	.string " is$"
+	.string "is$"
 
 GiddyText_DontYouAgree::
 	.string "\n"

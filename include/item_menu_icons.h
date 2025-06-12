@@ -1,6 +1,27 @@
 #ifndef GUARD_ITEM_MENU_ICONS_H
 #define GUARD_ITEM_MENU_ICONS_H
 
+enum
+{
+    BAG_GFX_VARIANT_BRENDAN,
+    BAG_GFX_VARIANT_MAY,
+    BAG_GFX_VARIANT_RED,
+    BAG_GFX_VARIANT_LEAF,
+    BAG_GFX_VARIANT_BRENDAN_SILVER,
+    BAG_GFX_VARIANT_MAY_SILVER,
+    BAG_GFX_VARIANT_BRENDAN_BLACK,
+    BAG_GFX_VARIANT_MAY_BLACK,
+    BAG_GFX_VARIANT_RED_SILVER,
+    BAG_GFX_VARIANT_LEAF_SILVER,
+    BAG_GFX_VARIANT_RED_BLACK,
+    BAG_GFX_VARIANT_LEAF_BLACK,
+    BAG_GFX_VARIANT_RED_PINK,
+    BAG_GFX_VARIANT_LEAF_PINK,
+
+    BAG_GFX_VARIANT_COUNT,
+};
+
+
 extern const struct CompressedSpriteSheet gBagMaleSpriteSheet;
 extern const struct CompressedSpriteSheet gBagFemaleSpriteSheet;
 extern const struct SpritePalette gBagPaletteTable;

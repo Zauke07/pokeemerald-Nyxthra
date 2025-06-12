@@ -41,6 +41,18 @@ LittlerootTown_MapScripts::
 
 
 LittlerootTown_OnTransition:
+    setflag FLAG_VISITED_LITTLEROOT_TOWN
+    call Common_EventScript_SetupRivalGfxId
+    call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
+    call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
+    call_if_eq VAR_LITTLEROOT_TOWN_STATE, 3, LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos
+    call_if_eq VAR_LITTLEROOT_HOUSES_STATE_MAY, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
+    call_if_eq VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
+    call_if_eq VAR_OLDALE_RIVAL_STATE, 1, LittlerootTown_EventScript_MoveRivalFromOldale
+    call_if_eq VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_EventScript_SetRivalLeftForRoute103
+    call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_EventScript_HideMapNamePopup
+    call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
+    end
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
 	call_if_unset FLAG_RESCUED_BIRCH, LittlerootTown_EventScript_SetTwinPos
@@ -53,6 +65,14 @@ LittlerootTown_OnTransition:
 	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_EventScript_LeftLabAfterDexUpgrade
 	call_if_set FLAG_UNLOCKED_TESTLABOR_NPC, EventScript_Testlabor_SetGuardPos
 	end
+
+EventScript_Testlabor_SetGuardPos::
+	checkflag FLAG_UNLOCKED_TESTLABOR_NPC
+	call_if FALSE, EventScript_Testlabor_SetGuard_DefaultPos
+
+EventScript_Testlabor_SetGuard_DefaultPos::
+	setobjectxyperm LOCALID_BRANDON, 25, 8
+	return
 
 EventScript_Testlabor_SetGuardPos::
 	checkflag FLAG_UNLOCKED_TESTLABOR_NPC
@@ -1072,8 +1092,19 @@ LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "wunderbar leben, meinst du nicht?\p"
 	.string "Und… du bekommst dein eigenes\n"
 	.string "Zimmer, {PLAYER}! Lass uns hineingehen!$"
+	.string "Mom: {PLAYER}, wir sind da, Schatz!\p"
+	.string "Die Fahrt im Umzugswagen zwischen all\n"
+	.string "unseren Sachen war bestimmt ermüdend.\p"
+	.string "Nun, wir sind in WURZELHEIM.\p"
+	.string "Wie gefällt es dir?\n"
+	.string "Dies ist unser neues Zuhause!\p"
+	.string "Ist das idyllisch! Man kann hier sicher\n"
+	.string "wunderbar leben, meinst du nicht?\p"
+	.string "Und… du bekommst dein eigenes\n"
+	.string "Zimmer, {PLAYER}! Lass uns hineingehen!$"
 
 LittlerootTown_Text_WaitPlayer:
+	.string "Mom: Warte, {PLAYER}!$"
 	.string "Mom: Warte, {PLAYER}!$"
 
 LittlerootTown_Text_WearTheseRunningShoes:
@@ -1088,11 +1119,30 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	.string "sind diese TURBOTRETER wie geschaffen.\p"
 	.string "Sie werden deinen Schritt\n"
 	.string "beschleunigen!$"
+	.string "Mom: {PLAYER}! Hast du dich schon\n"
+	.string "PROF. BIRK vorgestellt?\p"
+	.string "Oh! Was für ein hübsches POKéMON! Du\n"
+	.string "hast es von PROF. BIRK erhalten? Toll!\p"
+	.string "Du bist das Kind deines Vaters! Wunder-\n"
+	.string "bar. Du siehst gut aus mit deinem\l"
+	.string "POKéMON!\p"
+	.string "Hier, Liebling! Für eine Abenteuerreise\n"
+	.string "sind diese TURBOTRETER wie geschaffen.\p"
+	.string "Sie werden deinen Schritt\n"
+	.string "beschleunigen!$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
 	.string "{PLAYER} zieht die TURBOTRETER an.$"
+	.string "{PLAYER} zieht die TURBOTRETER an.$"
 
 LittlerootTown_Text_ExplainRunningShoes:
+	.string "Mom: {PLAYER}, für diese Schuhe gibt\n"
+	.string "es eine Bedienungsanleitung.\p"
+	.string "“Halte den B-Knopf gedrückt,\n"
+	.string "wenn du diese TURBOTRETER anhast,\l"
+	.string "um zu rennen!\p"
+	.string "Schlüpf in diese TURBOTRETER und\n"
+	.string "erobere die Welt da draußen!”$"
 	.string "Mom: {PLAYER}, für diese Schuhe gibt\n"
 	.string "es eine Bedienungsanleitung.\p"
 	.string "“Halte den B-Knopf gedrückt,\n"
@@ -1111,6 +1161,13 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "Sollte etwas passieren, komm wieder\l"
 	.string "nach Hause.\p"
 	.string "Lauf, schnapp’ sie dir alle, Schatz!$"
+	.string "Sich vorzustellen, dass du nun dein\n"
+	.string "eigenes POKéMON besitzt…\l"
+	.string "Dein Vater wird überglücklich sein.\p"
+	.string "… Aber sei bitte vorsichtig.\n"
+	.string "Sollte etwas passieren, komm wieder\l"
+	.string "nach Hause.\p"
+	.string "Lauf, schnapp’ sie dir alle, Schatz!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Wenn du einen PC benutzt, kannst du\n"
@@ -1122,8 +1179,13 @@ LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Äh… Ähm… Hihi…\p"
 	.string "Wenn du durch das hohe Gras läufst,\n"
 	.string "wirst du wilde POKéMON entdecken.$"
+	.string "Äh… Ähm… Hihi…\p"
+	.string "Wenn du durch das hohe Gras läufst,\n"
+	.string "wirst du wilde POKéMON entdecken.$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
+	.string "Das ist gefährlich, wenn du kein eigenes\n"
+	.string "POKéMON dabeihast.$"
 	.string "Das ist gefährlich, wenn du kein eigenes\n"
 	.string "POKéMON dabeihast.$"
 
@@ -1136,26 +1198,43 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "POKéMON…\p"
 	.string "Kannst du nicht für mich nachschauen,\n"
 	.string "was da los ist?$"
+	.string "Äh… Hallo!\p"
+	.string "Da ist ein fürchterliches POKéMON!\n"
+	.string "Ich kann seinen Ruf hören!\p"
+	.string "Ich würde mir ja gerne mal ansehen,\n"
+	.string "was da los ist, aber ich habe kein\l"
+	.string "POKéMON…\p"
+	.string "Kannst du nicht für mich nachschauen,\n"
+	.string "was da los ist?$"
 
 LittlerootTown_Text_YouSavedBirch:
+	.string "Du hast PROF. BIRK gerettet!\n"
+	.string "Ich bin total froh!$"
 	.string "Du hast PROF. BIRK gerettet!\n"
 	.string "Ich bin total froh!$"
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
 	.string "Gehst du POKéMON fangen?\n"
 	.string "Viel Glück!$"
+	.string "Gehst du POKéMON fangen?\n"
+	.string "Viel Glück!$"
 
 LittlerootTown_Text_TownSign:
+	.string "WURZELHEIM\n"
+	.string "“Ein Ort, wie es ihn nur einmal gibt.”$"
 	.string "WURZELHEIM\n"
 	.string "“Ein Ort, wie es ihn nur einmal gibt.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
 	.string "PROF. BIRKS POKéMON-LABOR$"
+	.string "PROF. BIRKS POKéMON-LABOR$"
 
 LittlerootTown_Text_PlayersHouse:
 	.string "HAUS von {PLAYER}$"
+	.string "HAUS von {PLAYER}$"
 
 LittlerootTown_Text_ProfBirchsHouse:
+	.string "PROF. BIRKS HAUS$"
 	.string "PROF. BIRKS HAUS$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:

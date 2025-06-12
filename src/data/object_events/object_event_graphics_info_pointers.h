@@ -2,6 +2,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNorm
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanMachBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_QuintyPlump;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NinjaBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Twin;
@@ -91,6 +92,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayMachBike
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MaySurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Truck;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TruckF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VigorothCarryingBox;
@@ -830,8 +832,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_UNION_ROOM_NURSE] =         &gObjectEventGraphicsInfo_UnionRoomAttendant,
     [OBJ_EVENT_GFX_SUDOWOODO] =                &gObjectEventGraphicsInfo_Sudowoodo,
     [OBJ_EVENT_GFX_MEW] =                      &gObjectEventGraphicsInfo_Mew,
-    [OBJ_EVENT_GFX_RED] =                      &gObjectEventGraphicsInfo_Red,
-    [OBJ_EVENT_GFX_LEAF] =                     &gObjectEventGraphicsInfo_Leaf,
     [OBJ_EVENT_GFX_DEOXYS] =                   &gObjectEventGraphicsInfo_Deoxys,
     [OBJ_EVENT_GFX_DEOXYS_TRIANGLE] =          &gObjectEventGraphicsInfo_BirthIslandStone,
     [OBJ_EVENT_GFX_BRANDON] =                  &gObjectEventGraphicsInfo_Brandon,
