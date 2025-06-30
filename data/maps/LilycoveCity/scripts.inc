@@ -234,22 +234,22 @@ LilycoveCity_EventScript_Rival::
 	call_if_eq VAR_RESULT, STYLE_MAY, LilycoveCity_EventScript_Brendan
 	call_if_eq VAR_RESULT, STYLE_RED, LilycoveCity_EventScript_May
 	call_if_eq VAR_RESULT, STYLE_LEAF, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_ETHAN, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_LYRA, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_LUCAS, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_DAWN, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_HILBERT, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_EventScript_Brendan
-    @call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_EventScript_May
-    @call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_ETHAN, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_LYRA, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_LUCAS, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_DAWN, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_HILBERT, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_EventScript_Brendan
+@     call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_EventScript_May
+@     call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_EventScript_Brendan
+    call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_EventScript_May
+    call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_EventScript_Brendan
 	end
 
 LilycoveCity_EventScript_May::

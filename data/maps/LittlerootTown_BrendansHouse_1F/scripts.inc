@@ -33,18 +33,18 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual:
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor:
-	setobjectxyperm LOCALID_MOM, 9, 8
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 9, 8
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs:
-	setobjectxyperm LOCALID_MOM, 8, 4
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 8, 4
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV:
-	setobjectxyperm LOCALID_MOM, 4, 5
-	setobjectmovementtype LOCALID_MOM, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 4, 5
+	setobjectmovementtype LOCALID_PLAYERS_HOUSE_1F_MOM, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_1F_OnFrame:
@@ -153,19 +153,19 @@ RivalTrigger_End2:
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	lockall
-	setvar VAR_0x8004, LOCALID_RIVAL
+	setvar VAR_0x8004, LOCALID_BRENDANSHOUSE_1F_RIVAL
 	spawnrival_style
 	goto LittlerootTown_BrendansHouse_1F_ContinueMeetRival
 
 LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
 	playse SE_EXIT
 	delay 10
-	addobject LOCALID_RIVALS_HOUSE_1F_RIVAL
+	addobject LOCALID_BRENDANSHOUSE_1F_RIVAL
 	delay 30
 	playse SE_PIN
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, Common_Movement_ExclamationMark
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, Common_Movement_Delay48
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, Common_Movement_Delay48
 	waitmovement 0
 	call LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan
 	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
@@ -182,7 +182,7 @@ LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
     setflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
 
 	playse SE_EXIT
-	removeobject LOCALID_RIVALS_HOUSE_1F_RIVAL
+	removeobject LOCALID_BRENDANSHOUSE_1F_RIVAL
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
@@ -201,17 +201,17 @@ LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan::
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer0::
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer0
 	waitmovement 0
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer1::
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer1
 	waitmovement 0
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2::
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2
 	waitmovement 0
 	return
 
@@ -243,19 +243,19 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanApproachPlayer2:
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs0::
 	applymovement LOCALID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit0
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs0
 	waitmovement 0
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1::
 	applymovement LOCALID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit1
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs1
 	waitmovement 0
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2::
 	applymovement LOCALID_PLAYER, LittlerootTown_BrendansHouse_1F_Movement_PlayerWatchBrendanExit2
-	applymovement LOCALID_RIVALS_HOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2
+	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2
 	waitmovement 0
 	return
 

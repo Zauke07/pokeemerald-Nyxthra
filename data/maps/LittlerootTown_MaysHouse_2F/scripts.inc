@@ -14,8 +14,8 @@ LittlerootTown_MaysHouse_2F_OnTransition:
 LittlerootTown_MaysHouse_2F_EventScript_SetRivalPos::
 	checkflag FLAG_FIX_RIVAL_DOOR_RAN_MAY
 	goto_if_eq VAR_RESULT, TRUE, LittlerootTown_MaysHouse_2F_EventScript_Ret
-	setobjectxyperm LOCALID_RIVAL, 8, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 8, 2
+	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
     setflag FLAG_FIX_RIVAL_DOOR_RAN_MAY
 	return
 
@@ -23,22 +23,22 @@ LittlerootTown_MaysHouse_2F_EventScript_Ret::
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_SetFixedRivalPos::
-	setobjectxyperm LOCALID_RIVAL, 9, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 9, 2
+	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay::
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay
 	return
 
 LittlerootTown_MaysHouse_2F_EventScript_SetReadyToMeetMay::
@@ -53,14 +53,14 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_MAY, SecretBase_EventScript_InitDecorations
 	goto_if_eq VAR_RESULT, STYLE_LEAF, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_LYRA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
@@ -71,18 +71,18 @@ LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_MeetMay:
-    setvar VAR_0x8004, LOCALID_RIVAL
+    setvar VAR_0x8004, LOCALID_RIVALS_HOUSE_2F_RIVAL
     spawnrival_style
     delay 10
 
-    applymovement LOCALID_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayEnters
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_MaysHouse_2F_Movement_MayEnters
     waitmovement 0
 
     playse SE_PIN
-    applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
     waitmovement 0
 
-    applymovement LOCALID_RIVAL, Common_Movement_Delay48
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_Delay48
     waitmovement 0
     delay 10
 
@@ -298,24 +298,24 @@ RivalsHouse_2F_EventScript_Rival::
 	goto_if_set FLAG_MET_RIVAL_LILYCOVE, RivalsHouse_2F_EventScript_RivalPostLilycove
 	goto_if_eq VAR_RESULT, STYLE_MAY, RivalsHouse_2F_EventScript_RivalFemale
 	goto_if_eq VAR_RESULT, STYLE_LEAF, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemale
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemale
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemale
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemale
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, RivalsHouse_2F_EventScript_RivalMale
 	goto_if_eq VAR_RESULT, STYLE_RED, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMale
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMale
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMale
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMale
 	end
 
 RivalsHouse_2F_EventScript_RivalFemale::
@@ -334,24 +334,24 @@ RivalsHouse_2F_EventScript_RivalPostLilycove::
 	waitmovement 0
 	call_if_eq VAR_RESULT, STYLE_MAY, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
 	call_if_eq VAR_RESULT, STYLE_LEAF, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_LYRA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_DAWN, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_HILDA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+@	call_if_eq VAR_RESULT, STYLE_ROSA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_SERENA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_SELENE, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_GLORIA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_JULIANA, RivalsHouse_2F_EventScript_RivalFemalePostLilycove
 	call_if_eq VAR_RESULT, STYLE_BRENDAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
 	call_if_eq VAR_RESULT, STYLE_RED, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMalePostLilycove
-	@call_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_ETHAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_LUCAS, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_HILBERT, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+@	call_if_eq VAR_RESULT, STYLE_NATE, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_CALEM, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_ELIO, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_VICTOR, RivalsHouse_2F_EventScript_RivalMalePostLilycove
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, RivalsHouse_2F_EventScript_RivalMalePostLilycove
 	setflag FLAG_MET_RIVAL_IN_HOUSE_AFTER_LILYCOVE
 	releaseall
 	end
@@ -379,25 +379,25 @@ LittlerootTown_MaysHouse_2F_EventScript_PC::
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_2F_EventScript_CheckPlayersPC
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
 	goto LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC::

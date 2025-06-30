@@ -346,12 +346,12 @@ SetStarterRegion_Paldea::
 
 Route101_EventScript_BirchsBag_Continued::
     fadescreen FADE_TO_BLACK
-    removeobject LOCALID_ZIGZAGOON
+    removeobject LOCALID_ROUTE101_ZIGZAGOON
     setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
     setflag FLAG_RESCUED_BIRCH
     special ChooseStarter
     waitstate
-    applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
+    applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
     waitmovement 0
     msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
     special HealPlayerParty

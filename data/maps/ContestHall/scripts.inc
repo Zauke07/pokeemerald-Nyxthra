@@ -440,22 +440,22 @@ LilycoveCity_ContestLobby_EventScript_SetPlayerGfx::
 	call_if_eq VAR_RESULT, STYLE_MAY, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxMay
 	call_if_eq VAR_RESULT, STYLE_RED, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRed
 	call_if_eq VAR_RESULT, STYLE_LEAF, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLeaf
-    @call_if_eq VAR_RESULT, STYLE_ETHAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxEthan
-    @call_if_eq VAR_RESULT, STYLE_LYRA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLyra
-    @call_if_eq VAR_RESULT, STYLE_LUCAS, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLucas
-    @call_if_eq VAR_RESULT, STYLE_DAWN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxDawn
-    @call_if_eq VAR_RESULT, STYLE_HILBERT, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilbert
-    @call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilda
-    @call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxNate
-    @call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRosa
-    @call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem
-    @call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena
-    @call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio
-    @call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene
-    @call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor
-    @call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria
-    @call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian
-    @call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana
+    call_if_eq VAR_RESULT, STYLE_ETHAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxEthan
+    call_if_eq VAR_RESULT, STYLE_LYRA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLyra
+    call_if_eq VAR_RESULT, STYLE_LUCAS, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLucas
+    call_if_eq VAR_RESULT, STYLE_DAWN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxDawn
+    call_if_eq VAR_RESULT, STYLE_HILBERT, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilbert
+    call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilda
+@     call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxNate
+@     call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRosa
+    call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem
+    call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena
+    call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio
+    call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene
+    call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor
+    call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria
+    call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian
+    call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetPlayerGfxBrendan::
@@ -474,66 +474,66 @@ LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLeaf::
     setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LEAF
     return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxEthan::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ETHAN
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxEthan::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ETHAN
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLyra::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LYRA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLyra::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LYRA
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLucas::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LUCAS
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxLucas::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LUCAS
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxDawn::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxDawn::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilbert::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILBERT
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilbert::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILBERT
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilda::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILDA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilda::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILDA
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxNate::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_NATE
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxNate::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_NATE
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRosa::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ROSA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRosa::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ROSA
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_CALEM
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_CALEM
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_SERENA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_SERENA
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ELIO
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ELIO
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_SELENE
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_SELENE
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_VICTOR
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_VICTOR
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_GLORIA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_GLORIA
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_FLORIAN
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_FLORIAN
+    return
 
-@LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana::
-@	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_JULIANA
-@	return
+LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_JULIANA
+    return

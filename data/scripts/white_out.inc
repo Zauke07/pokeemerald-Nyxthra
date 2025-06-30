@@ -24,7 +24,7 @@ EventScript_AfterWhiteOutHealMsg::
 EventScript_AfterWhiteOutMomHeal::
 	lockall
 	textcolor NPC_TEXT_COLOR_FEMALE
-	applymovement LOCALID_MOM, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox Text_HadQuiteAnExperienceTakeRest
 	call EventScript_OutOfCenterPartyHeal

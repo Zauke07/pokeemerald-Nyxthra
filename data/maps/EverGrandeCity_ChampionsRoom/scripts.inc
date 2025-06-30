@@ -54,51 +54,51 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	playse SE_DOOR
 	lockall
     call Common_EventScript_SetupRivalMusic
-	addobject LOCALID_RIVAL
+	addobject LOCALID_CHAMPIONS_ROOM_RIVAL
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
 	goto_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
 	goto_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
 	goto_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+@     goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
 	end
     getplayerstyle
 	call_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
 	call_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
 	call_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
 	call_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    @call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    @call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+@     call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+@     call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+    call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+    call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_MayAdvice::
@@ -159,22 +159,22 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	call_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
 	call_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
 	call_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    @call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    @call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+@     call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+@     call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+    call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+    call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
 	closemessage
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit

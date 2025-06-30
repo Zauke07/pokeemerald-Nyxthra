@@ -46,24 +46,24 @@ EverGrandeCity_HallOfFame_EventScript_EnterHallOfFame::
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
 	goto_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_HallOfFame_EventScript_GameClearMale
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+@     goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_HallOfFame_EventScript_GameClearMale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_HallOfFame_EventScript_GameClearMale
     goto_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
     goto_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_HallOfFame_EventScript_GameClearFemale
 	end
 
 EverGrandeCity_HallOfFame_EventScript_GameClearMale::

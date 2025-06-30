@@ -81,22 +81,22 @@ Route104_EventScript_RivalEncounter::
 	goto_if_eq VAR_RESULT, STYLE_MAY, Route104_EventScript_BrendanEncounter
 	goto_if_eq VAR_RESULT, STYLE_RED, Route104_EventScript_MayEncounter
 	goto_if_eq VAR_RESULT, STYLE_LEAF, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_NATE, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, Route104_EventScript_BrendanEncounter
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route104_EventScript_MayEncounter
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_LYRA, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_DAWN, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_HILDA, Route104_EventScript_BrendanEncounter
+@     goto_if_eq VAR_RESULT, STYLE_NATE, Route104_EventScript_MayEncounter
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_CALEM, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_SERENA, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_ELIO, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_SELENE, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route104_EventScript_BrendanEncounter
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route104_EventScript_MayEncounter
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route104_EventScript_BrendanEncounter
 	end
 
 Route104_EventScript_MayEncounter::

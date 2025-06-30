@@ -69,7 +69,7 @@ PlayersHouse_2F_EventScript_WallClock::
     return
 
 PlayersHouse_2F_EventScript_MomComesUpstairsMale::
-    setvar VAR_0x8008, LOCALID_MOM_2F
+    setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
     addobject VAR_0x8008
     applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersMale
     waitmovement 0
@@ -85,7 +85,7 @@ PlayersHouse_2F_EventScript_MomComesUpstairsMale::
     return
 
 PlayersHouse_2F_EventScript_MomComesUpstairsFemale::
-    setvar VAR_0x8008, LOCALID_MOM_2F
+    setvar VAR_0x8008, LOCALID_PLAYERS_HOUSE_2F_MOM
     addobject VAR_0x8008
     applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersFemale
     waitmovement 0
@@ -426,22 +426,22 @@ PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV::
     goto_if_eq VAR_RESULT, STYLE_MAY, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
     goto_if_eq VAR_RESULT, STYLE_RED, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
     goto_if_eq VAR_RESULT, STYLE_LEAF, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_NATE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+@     goto_if_eq VAR_RESULT, STYLE_NATE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
     call PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale  @ Default to male if no match
     call_if_eq VAR_0x8008, MALE, PlayersHouse_1F_EventScript_PlayerEnterRoomMale
     call_if_eq VAR_0x8008, FEMALE, PlayersHouse_1F_EventScript_PlayerEnterRoomFemale

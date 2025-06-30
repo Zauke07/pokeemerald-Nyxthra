@@ -20,22 +20,22 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfx::
 	call_if_eq VAR_RESULT, STYLE_MAY, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxMay
 	call_if_eq VAR_RESULT, STYLE_RED, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRed
 	call_if_eq VAR_RESULT, STYLE_LEAF, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLeaf
-    @call_if_eq VAR_RESULT, STYLE_ETHAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxEthan
-    @call_if_eq VAR_RESULT, STYLE_LYRA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLyra
-    @call_if_eq VAR_RESULT, STYLE_LUCAS, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLucas
-    @call_if_eq VAR_RESULT, STYLE_DAWN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxDawn
-    @call_if_eq VAR_RESULT, STYLE_HILBERT, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilbert
-    @call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilda
-    @call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxNate
-    @call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRosa
-    @call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem
-    @call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena
-    @call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio
-    @call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene
-    @call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor
-    @call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria
-    @call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian
-    @call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana
+    call_if_eq VAR_RESULT, STYLE_ETHAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxEthan
+    call_if_eq VAR_RESULT, STYLE_LYRA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLyra
+    call_if_eq VAR_RESULT, STYLE_LUCAS, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLucas
+    call_if_eq VAR_RESULT, STYLE_DAWN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxDawn
+    call_if_eq VAR_RESULT, STYLE_HILBERT, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilbert
+    call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilda
+@     call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxNate
+@     call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRosa
+    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem
+    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena
+    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio
+    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene
+    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor
+    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria
+    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian
+    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxBrendan::
@@ -58,82 +58,82 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLeaf::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LEAF
     return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxEthan::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxEthan::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ETHAN
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ETHAN
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLyra::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLyra::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LYRA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LYRA
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLucas::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxLucas::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LUCAS
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LUCAS
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxDawn::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxDawn::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_DAWN
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilbert::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilbert::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILBERT
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILBERT
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilda::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilda::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILDA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILDA
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxNate::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxNate::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_NATE
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_NATE
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRosa::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRosa::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ROSA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ROSA
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_CALEM
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_CALEM
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SERENA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SERENA
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ELIO
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ELIO
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SELENE
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SELENE
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_VICTOR
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_VICTOR
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_GLORIA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_GLORIA
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_FLORIAN
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_FLORIAN
 @	return
 
-@BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana::
+BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_JULIANA
 @	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_JULIANA
 @	return

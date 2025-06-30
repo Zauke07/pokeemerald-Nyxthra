@@ -216,9 +216,9 @@ OldaleTown_EventScript_NotBlockingPath::
 
 OldaleTown_EventScript_Rival::
 	lockall
-	setvar VAR_0x8004, LOCALID_RIVAL
+	setvar VAR_0x8004, LOCALID_OLDALE_RIVAL
 	spawnrival_style
-	applymovement LOCALID_RIVAL, Common_Movement_FacePlayer
+	applymovement LOCALID_OLDALE_RIVAL, Common_Movement_FacePlayer
 	waitmovement 0
 	setvar VAR_0x8009, 0
 	goto OldaleTown_EventScript_ShowRivalMessage
@@ -260,22 +260,22 @@ OldaleTown_EventScript_ShowRivalMessage::
 	goto_if_eq VAR_RESULT, STYLE_MAY, OldaleTown_EventScript_ShowBrendanMessage
 	goto_if_eq VAR_RESULT, STYLE_RED, OldaleTown_EventScript_ShowMayMessage
 	goto_if_eq VAR_RESULT, STYLE_LEAF, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_LYRA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_DAWN, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_HILDA, OldaleTown_EventScript_ShowBrendanMessage
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
 	end
 
 OldaleTown_EventScript_ShowMayMessage::

@@ -18,22 +18,22 @@ FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
 	goto_if_eq VAR_RESULT, STYLE_MAY, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMay
 	goto_if_eq VAR_RESULT, STYLE_RED, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRed
 	goto_if_eq VAR_RESULT, STYLE_LEAF, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLeaf
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxEthan
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLyra
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLucas
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxDawn
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilbert
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilda
-    @goto_if_eq VAR_RESULT, STYLE_NATE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxNate
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRosa
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxEthan
+    goto_if_eq VAR_RESULT, STYLE_LYRA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLyra
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLucas
+    goto_if_eq VAR_RESULT, STYLE_DAWN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxDawn
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilbert
+    goto_if_eq VAR_RESULT, STYLE_HILDA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilda
+@     goto_if_eq VAR_RESULT, STYLE_NATE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxNate
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRosa
+    goto_if_eq VAR_RESULT, STYLE_CALEM, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem
+    goto_if_eq VAR_RESULT, STYLE_SERENA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena
+    goto_if_eq VAR_RESULT, STYLE_ELIO, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio
+    goto_if_eq VAR_RESULT, STYLE_SELENE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
 FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxBrendan::
@@ -56,85 +56,85 @@ FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLeaf::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LEAF
     return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxEthan::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ETHAN
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ETHAN
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxEthan::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ETHAN
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ETHAN
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLyra::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LYRA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LYRA
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLyra::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LYRA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LYRA
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLucas::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LUCAS
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LUCAS
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxLucas::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LUCAS
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_LUCAS
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxDawn::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_DAWN
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxDawn::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_DAWN
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_DAWN
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilbert::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILBERT
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILBERT
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilbert::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILBERT
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILBERT
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilda::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILDA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILDA
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilda::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILDA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_HILDA
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxNate::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_NATE
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_NATE
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxNate::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_NATE
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_NATE
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRosa::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ROSA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ROSA
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRosa::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ROSA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ROSA
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_CALEM
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_CALEM
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_CALEM
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_CALEM
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SERENA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SERENA
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SERENA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SERENA
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ELIO
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ELIO
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_ELIO
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_ELIO
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SELENE
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SELENE
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_SELENE
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_SELENE
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_VICTOR
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_VICTOR
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_VICTOR
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_VICTOR
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_GLORIA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_GLORIA
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_GLORIA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_GLORIA
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_FLORIAN
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_FLORIAN
-@	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_FLORIAN
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_FLORIAN
+    return
 
-@FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_JULIANA
-@	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_JULIANA
-	return
+FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana::
+    setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_JULIANA
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_JULIANA
+    return
 
 FallarborTown_BattleTentBattleRoom_OnFrame:
 	map_script_2 VAR_TEMP_0, 0, FallarborTown_BattleTentBattleRoom_EventScript_EnterRoom

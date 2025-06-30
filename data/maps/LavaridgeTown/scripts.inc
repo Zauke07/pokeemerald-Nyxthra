@@ -56,22 +56,22 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	goto_if_eq VAR_RESULT, STYLE_MAY, LavaridgeTown_EventScript_BrendanGiveGoGoggles
 	goto_if_eq VAR_RESULT, STYLE_RED, LavaridgeTown_EventScript_MayGiveGoGoggles
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_NATE, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, LavaridgeTown_EventScript_MayGiveGoGoggles
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_LYRA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_DAWN, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_HILDA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@     goto_if_eq VAR_RESULT, STYLE_NATE, LavaridgeTown_EventScript_MayGiveGoGoggles
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_CALEM, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_SERENA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_ELIO, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_SELENE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
 	end
 
 LavaridgeTown_EventScript_MayGiveGoGoggles::

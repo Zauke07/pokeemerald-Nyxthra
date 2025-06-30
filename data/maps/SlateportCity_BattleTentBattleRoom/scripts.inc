@@ -19,22 +19,22 @@ SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_MAY, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
     goto_if_eq VAR_RESULT, STYLE_RED, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
     goto_if_eq VAR_RESULT, STYLE_LEAF, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_NATE, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_LYRA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_DAWN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_HILDA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+@     goto_if_eq VAR_RESULT, STYLE_NATE, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_CALEM, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_SERENA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_ELIO, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_SELENE, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
     return
 
 SlateportCity_BattleTentBattleRoom_EventScript_SetPlayerGfxMale::

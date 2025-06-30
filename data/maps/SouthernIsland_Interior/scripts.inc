@@ -35,22 +35,22 @@ SouthernIsland_Interior_EventScript_SetUpPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_MAY, SouthernIsland_Interior_EventScript_SetMayGfx
     goto_if_eq VAR_RESULT, STYLE_RED, SouthernIsland_Interior_EventScript_SetBrendanGfx
     goto_if_eq VAR_RESULT, STYLE_LEAF, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_ETHAN, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_LYRA, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_LUCAS, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_DAWN, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_HILBERT, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_HILDA, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_NATE, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_ROSA, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_CALEM, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_SERENA, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_ELIO, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_SELENE, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_VICTOR, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_GLORIA, SouthernIsland_Interior_EventScript_SetMayGfx
-    @goto_if_eq VAR_RESULT, STYLE_FLORIAN, SouthernIsland_Interior_EventScript_SetBrendanGfx
-    @goto_if_eq VAR_RESULT, STYLE_JULIANA, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_LYRA, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_DAWN, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_HILDA, SouthernIsland_Interior_EventScript_SetMayGfx
+@     goto_if_eq VAR_RESULT, STYLE_NATE, SouthernIsland_Interior_EventScript_SetBrendanGfx
+@     goto_if_eq VAR_RESULT, STYLE_ROSA, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_CALEM, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_SERENA, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_ELIO, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_SELENE, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_VICTOR, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_GLORIA, SouthernIsland_Interior_EventScript_SetMayGfx
+    goto_if_eq VAR_RESULT, STYLE_FLORIAN, SouthernIsland_Interior_EventScript_SetBrendanGfx
+    goto_if_eq VAR_RESULT, STYLE_JULIANA, SouthernIsland_Interior_EventScript_SetMayGfx
     return
 
 SouthernIsland_Interior_EventScript_SetBrendanGfx::

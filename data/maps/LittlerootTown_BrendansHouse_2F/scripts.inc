@@ -14,8 +14,8 @@ LittlerootTown_BrendansHouse_2F_OnTransition:
 LittlerootTown_BrendansHouse_2F_EventScript_SetRivalPos:
 	checkflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
 	goto_if_eq VAR_RESULT, TRUE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	setobjectxyperm LOCALID_RIVAL, 0, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
+	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
     setflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
 	return
 
@@ -30,28 +30,28 @@ LittlerootTown_BrendansHouse_2F_EventScript_TryUpdateBrendanPos::
 	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 
 	@ Die Bedingung mit dem Pokedex-Upgrade bleibt unverändert
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_Ret
 
-	setobjectxyperm LOCALID_RIVAL, 0, 2
-	setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
+	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_Ret::
@@ -63,22 +63,22 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan::
 	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan::
@@ -95,22 +95,22 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckInitDecor::
 	goto_if_eq VAR_RESULT, STYLE_MAY, SecretBase_EventScript_InitDecorations
 	goto_if_eq VAR_RESULT, STYLE_RED, SecretBase_EventScript_InitDecorations
 	goto_if_eq VAR_RESULT, STYLE_LEAF, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_NATE, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, SecretBase_EventScript_InitDecorations
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_LYRA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, SecretBase_EventScript_InitDecorations
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_CALEM, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_ELIO, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
@@ -122,14 +122,14 @@ LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan:
     lockall
-    setvar VAR_0x8004, LOCALID_RIVAL
+    setvar VAR_0x8004, LOCALID_RIVALS_HOUSE_2F_RIVAL
     spawnrival_style
     delay 10
-    addobject LOCALID_RIVAL
-    setobjectxyperm LOCALID_RIVAL, 0, 2
-    setobjectmovementtype LOCALID_RIVAL, MOVEMENT_TYPE_FACE_UP
+    addobject LOCALID_RIVALS_HOUSE_2F_RIVAL
+    setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
+    setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
 
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanEnters
     waitmovement 0
 
     playse SE_EXIT
@@ -137,9 +137,9 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan:
     call LittlerootTown_BrendansHouse_2F_EventScript_PlayerFaceBrendan
     delay 30
     playse SE_PIN
-    applymovement LOCALID_RIVAL, Common_Movement_ExclamationMark
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_ExclamationMark
     waitmovement 0
-    applymovement LOCALID_RIVAL, Common_Movement_Delay48
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, Common_Movement_Delay48
     waitmovement 0
     call_if_eq VAR_0x8008, DIR_NORTH, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth
     call_if_eq VAR_0x8008, DIR_SOUTH, LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth
@@ -153,7 +153,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan:
     savebgm MUS_DUMMY
     fadedefaultbgm
     releaseall
-    removeobject LOCALID_RIVAL
+    removeobject LOCALID_RIVALS_HOUSE_2F_RIVAL
     end
 
 LittlerootTown_BrendansHouse_2F_EventScript_PlayerFaceBrendan::
@@ -162,49 +162,49 @@ LittlerootTown_BrendansHouse_2F_EventScript_PlayerFaceBrendan::
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanNorth::
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerNorth
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerNorth
     waitmovement 0
     applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
     waitmovement 0
     msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
     closemessage
     applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanNorth
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCNorth
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCNorth
     waitmovement 0
     return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanSouth::
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerSouth
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerSouth
     waitmovement 0
     applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
     waitmovement 0
     msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
     closemessage
     applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanSouth
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCSouth
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCSouth
     waitmovement 0
     return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanWest::
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerWest
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerWest
     waitmovement 0
     applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
     waitmovement 0
     msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
     closemessage
     applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_BrendansHouse_2F_Movement_PlayerWatchBrendanWest
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCWest
     waitmovement 0
     return
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendanEast::
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerEast
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanApproachPlayerEast
     waitmovement 0
     applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
     waitmovement 0
     msgbox RivalsHouse_2F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
     closemessage
-    applymovement LOCALID_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCEast
+    applymovement LOCALID_RIVALS_HOUSE_2F_RIVAL, LittlerootTown_BrendansHouse_2F_Movement_BrendanWalkToPCEast
     waitmovement 0
     return
 
@@ -321,26 +321,26 @@ LittlerootTown_BrendansHouse_2F_EventScript_PC::
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
-	@goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC
 
 	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
 	goto LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
-	@goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_CheckRivalsPC
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_CheckPlayersPC::
