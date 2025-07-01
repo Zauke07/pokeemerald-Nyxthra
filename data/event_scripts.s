@@ -2,7 +2,6 @@
 #include "config/battle.h"
 #include "config/item.h"
 #include "constants/global.h"
-#include "constants/rogue.h"
 #include "constants/apprentice.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
@@ -1175,6 +1174,4 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/Testlabor/scripts.inc"
 
-	.include "data/maps/TestHhle/scripts.inc"
-
-	.include "data/maps/TestSurf/scripts.inc"
+	.include "data/maps/Rival_Test/scripts.inc"
