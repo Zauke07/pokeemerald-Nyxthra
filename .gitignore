@@ -51,3 +51,7 @@ tools/Pokabbie/
 tools/poryscript~master/
 common_syms/load_save_*.txt
 stash_backup.patch
+headers.txt
+preprocessed.c
+out.c
+porymap.json
