@@ -27,6 +27,7 @@
 #include "link_rfu.h"
 #include "constants/rgb.h"
 #include "constants/trade.h"
+#include "menu_helpers.h"
 
 // Window IDs for the link error screens
 enum {

@@ -2968,5 +2968,33 @@ extern const u8 gText_Mondbaelle[];
 extern const u8 gText_Sportbaelle[];
 extern const u8 gText_Traumbaelle[];
 
+// NEW
+extern const u8 gText_ExpandedPlaceholder_Ash[];
+extern const u8 gText_ExpandedPlaceholder_Wes[];
+extern const u8 gText_TrainerName_Brendan[];
+extern const u8 gText_TrainerName_May[];
+extern const u8 gText_TrainerName_Red[];
+extern const u8 gText_TrainerName_Leaf[];
+extern const u8 gText_TrainerName_Ethan[];
+extern const u8 gText_TrainerName_Lyra[];
+extern const u8 gText_TrainerName_Lucas[];
+extern const u8 gText_TrainerName_Dawn[];
+extern const u8 gText_TrainerName_Hilbert[];
+extern const u8 gText_TrainerName_Hilda[];
+extern const u8 gText_TrainerName_Nate[];
+extern const u8 gText_TrainerName_Rosa[];
+extern const u8 gText_TrainerName_Calem[];
+extern const u8 gText_TrainerName_Serena[];
+extern const u8 gText_TrainerName_Elio[];
+extern const u8 gText_TrainerName_Selene[];
+extern const u8 gText_TrainerName_Victor[];
+extern const u8 gText_TrainerName_Gloria[];
+extern const u8 gText_TrainerName_Florian[];
+extern const u8 gText_TrainerName_Juliana[];
+extern const u8 gText_TrainerName_Wes[];
+extern const u8 gText_TrainerName_Ash[];
+extern const u8 gText_QuestionMark[];
+
+
 
 #endif // GUARD_STRINGS_H

@@ -161,14 +161,28 @@ extern const struct SpriteFrameImage gTrainerBackPicTable_Brendan[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_May[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Red[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Leaf[];
-// extern const struct SpriteFrameImage gTrainerBackPicTable_Ethan[];
-// extern const struct SpriteFrameImage gTrainerBackPicTable_Lyra[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Ethan[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Lyra[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_RubySapphireBrendan[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_RubySapphireMay[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Wally[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Steven[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Lucas[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Dawn[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Hilbert[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Hilda[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Nate[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Rosa[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Calem[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Serena[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Elio[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Selene[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Gloria[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Victor[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Juliana[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Florian[];
+//extern const struct SpriteFrameImage gTrainerBackPicTable_Wes[];
+//extern const struct SpriteFrameImage gTrainerBackPicTable_Ash[];
 
 //extern const struct SpriteFrameImage gTrainerBackPicTable_CommunityZefa[];
 //extern const struct SpriteFrameImage gTrainerBackPicTable_CommunityNacholord[];
@@ -314,6 +328,14 @@ static inline const u64 GetTrainerAIFlagsFromId(u16 trainerId)
     enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
 
     return gTrainers[difficulty][sanitizedTrainerId].aiFlags;
+}
+
+static inline bool32 IsTrainerDoubleBattle(u16 trainerId)
+{
+    u32 sanitizedTrainerId = SanitizeTrainerId(trainerId);
+    enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
+
+    return gTrainers[difficulty][sanitizedTrainerId].battleType == TRAINER_BATTLE_TYPE_DOUBLES;
 }
 
 #endif // GUARD_DATA_H

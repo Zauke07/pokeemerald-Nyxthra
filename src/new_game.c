@@ -48,14 +48,14 @@
 #include "constants/items.h"
 #include "difficulty.h"
 #include "constants/battle.h"
+#include "follower_npc.h"
 
-#include "mgba.h"
+//#include "mgba.h"
 
 /*
 #include "rogue_controller.h"
 */
 
-#include "rogue_controller.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 

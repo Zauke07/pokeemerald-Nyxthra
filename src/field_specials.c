@@ -72,6 +72,7 @@
 #include "palette.h"
 #include "battle_util.h"
 #include "naming_screen.h"
+#include "menu_helpers.h"
 
 /*
 #include "rogue_player_customisation_ui.h"
@@ -4418,6 +4419,48 @@ void GetRivalStyleGraphicsIdAndSetVar(void)
             break;
         case STYLE_LEAF:
             gfxId = OBJ_EVENT_GFX_RIVAL_LEAF;
+            break;
+        case STYLE_LUCAS:
+            gfxId = OBJ_EVENT_GFX_RIVAL_LUCAS;
+            break;
+        case STYLE_DAWN:
+            gfxId = OBJ_EVENT_GFX_RIVAL_DAWN;
+            break;
+        case STYLE_ETHAN:
+            gfxId = OBJ_EVENT_GFX_RIVAL_ETHAN;
+            break;
+        case STYLE_LYRA:
+            gfxId = OBJ_EVENT_GFX_RIVAL_LYRA;
+            break;
+        case STYLE_HILBERT:
+            gfxId = OBJ_EVENT_GFX_RIVAL_HILBERT;
+            break;
+        case STYLE_HILDA:
+            gfxId = OBJ_EVENT_GFX_RIVAL_HILDA;
+            break;
+        case STYLE_CALEM:
+            gfxId = OBJ_EVENT_GFX_RIVAL_CALEM;
+            break;
+        case STYLE_SERENA:
+            gfxId = OBJ_EVENT_GFX_RIVAL_SERENA;
+            break;
+        case STYLE_ELIO:
+            gfxId = OBJ_EVENT_GFX_RIVAL_ELIO;
+            break;
+        case STYLE_SELENE:
+            gfxId = OBJ_EVENT_GFX_RIVAL_SELENE;
+            break;
+        case STYLE_VICTOR:
+            gfxId = OBJ_EVENT_GFX_RIVAL_VICTOR;
+            break;
+        case STYLE_GLORIA:
+            gfxId = OBJ_EVENT_GFX_RIVAL_GLORIA;
+            break;
+        case STYLE_FLORIAN:
+            gfxId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
+            break;
+        case STYLE_JULIANA:
+            gfxId = OBJ_EVENT_GFX_RIVAL_JULIANA;
             break;
         default:
             gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;

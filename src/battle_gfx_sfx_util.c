@@ -1070,24 +1070,6 @@ void ClearBehindSubstituteBit(u8 battler)
     gBattleSpritesDataPtr->battlerData[battler].behindSubstitute = 0;
 }
 
-#define tDelayTimer data[0]
-
-static void Task_StopLowHpSongAfterLoops(u8 taskId)
-{
-    if(gMain.nativeSpeedUpActive)
-        return;
-
-    if(gTasks[taskId].tDelayTimer >= 95)
-    {
-        m4aSongNumStop(SE_LOW_HEALTH);
-        DestroyTask(taskId);
-    }
-    else
-    {
-        gTasks[taskId].tDelayTimer++;
-    }
-}
-
 void HandleLowHpMusicChange(struct Pokemon *mon, u8 battler)
 {
     u16 hp = GetMonData(mon, MON_DATA_HP);
@@ -1095,64 +1077,16 @@ void HandleLowHpMusicChange(struct Pokemon *mon, u8 battler)
 
     if (GetHPBarLevel(hp, maxHP) == HP_BAR_RED)
     {
-        if (!gBattleSpritesDataPtr->battlerData[battler].lowHpSongHeard)
+        if (!gBattleSpritesDataPtr->battlerData[battler].lowHpSong)
         {
-            if (!gBattleSpritesDataPtr->battlerData[battler].lowHpSong)
-            {
-
-                if (!gBattleSpritesDataPtr->battlerData[BATTLE_PARTNER(battler)].lowHpSong)
-                {
-                    // Stop health beeping after a few beeps
-                    if(gSaveBlock2Ptr->optionsLowHealthBeep == OPTIONS_HEALTH_BEEP_3_BEEPS)
-                    {
-                        u8 taskId = FindTaskIdByFunc(Task_StopLowHpSongAfterLoops);
-                        if(taskId != TASK_NONE)
-                        {
-                            // Reset music
-                            gTasks[taskId].tDelayTimer = 0;
-                            m4aSongNumStop(SE_LOW_HEALTH);
-                        }
-                        else
-                        {
-                            CreateTask(Task_StopLowHpSongAfterLoops, 10);
-                        }
-
-                        PlaySE(SE_LOW_HEALTH);
-                    }
-                    else if(gSaveBlock2Ptr->optionsLowHealthBeep == OPTIONS_HEALTH_BEEP_OFF)
-                    {
-                        // do nothing
-                    }
-                    else // OPTIONS_HEALTH_BEEP_LOOPING
-                    {
-                        // Default loop forever
-                        PlaySE(SE_LOW_HEALTH);
-                    }
-                }
-                gBattleSpritesDataPtr->battlerData[battler].lowHpSong = 1;
-            }
-            gBattleSpritesDataPtr->battlerData[battler].lowHpSongHeard = 1;
+            if (!gBattleSpritesDataPtr->battlerData[BATTLE_PARTNER(battler)].lowHpSong)
+                PlaySE(SE_LOW_HEALTH);
+            gBattleSpritesDataPtr->battlerData[battler].lowHpSong = 1;
         }
-        // RogueNote: Old approach to stop health
-        //else
-        //{
-        //    if (!IsDoubleBattle())
-        //    {
-        //        m4aSongNumStop(SE_LOW_HEALTH);
-        //        return;
-        //    }
-        //    if (IsDoubleBattle() && !gBattleSpritesDataPtr->battlerData[battlerId ^ BIT_FLANK].lowHpSong)
-        //    {
-        //        m4aSongNumStop(SE_LOW_HEALTH);
-        //        return;
-        //    }
-        //}
     }
     else
     {
         gBattleSpritesDataPtr->battlerData[battler].lowHpSong = 0;
-        gBattleSpritesDataPtr->battlerData[battler].lowHpSongHeard = 0;
-
         if (!IsDoubleBattle())
         {
             m4aSongNumStop(SE_LOW_HEALTH);
@@ -1165,8 +1099,6 @@ void HandleLowHpMusicChange(struct Pokemon *mon, u8 battler)
         }
     }
 }
-
-#undef tDelayTimer
 
 void BattleStopLowHpSound(void)
 {

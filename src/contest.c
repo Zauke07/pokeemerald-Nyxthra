@@ -42,6 +42,7 @@
 #include "constants/moves.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "player_pc.h"
 
 // This file's functions.
 static void LoadContestPalettes(void);

@@ -6,6 +6,7 @@
 #include "random.h"
 #include "text.h"
 #include "event_data.h"
+#include "menu_helpers.h"
 
 enum {
     WIRELESS_STATUS_ANIM_3_BARS,

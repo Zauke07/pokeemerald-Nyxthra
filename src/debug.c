@@ -77,15 +77,14 @@
 #include "text.h"
 #include "gpu_regs.h"
 
+extern bool8 IsPlayerStyleMale(u8 style);
+
+
 /*
 #include "rogue_controller.h"
 #include "rogue.h"
 #include "rogue_save.h"
 */
-
-#include "rogue_controller.h"
-#include "rogue.h"
-#include "rogue_save.h"
 
 // *******************************
 enum DebugMenu
@@ -518,6 +517,9 @@ static void DebugAction_Player_Id(u8 taskId);
 static void DebugAction_ROMInfo_CheckSaveBlock(u8 taskId);
 static void DebugAction_ROMInfo_CheckROMSpace(u8 taskId);
 static void DebugAction_ROMInfo_ExpansionVersion(u8 taskId);
+
+static void DebugTask_HandleStyleSelection(u8 taskId);
+static const struct ListMenuItem sDebugMenu_Items_Styles[];
 
 extern const u8 Debug_FlagsNotSetOverworldConfigMessage[];
 extern const u8 Debug_FlagsNotSetBattleConfigMessage[];
@@ -2184,9 +2186,14 @@ void CheckRogueSaveSize(struct ScriptContext *ctx)
     ConvertIntToDecimalStringN(gStringVar2, maxStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
     ConvertIntToDecimalStringN(gStringVar3, maxStorageSize - currStorageSize, STR_CONV_MODE_LEFT_ALIGN, 6);
 }
-*/
 
 static void DebugAction_Util_CheckSaveBlock(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_CheckSaveBlock);
+}
+*/
+
+static void DebugAction_ROMInfo_CheckSaveBlock(u8 taskId)
 {
     Debug_DestroyMenu_Full_Script(taskId, Debug_CheckSaveBlock);
 }
@@ -2361,14 +2368,101 @@ static void DebugAction_Player_Name(u8 taskId)
     DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerStyles[0], 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
+// ================================================
+// Debug: Spieler-Stil direkt auswählen per Menü
+// ================================================
+
+static const struct ListMenuItem sDebugMenu_Items_Styles[] =
+{
+    {gText_TrainerName_Brendan, STYLE_BRENDAN},
+    {gText_TrainerName_May, STYLE_MAY},
+    {gText_TrainerName_Red, STYLE_RED},
+    {gText_TrainerName_Leaf, STYLE_LEAF},
+    {gText_TrainerName_Ethan, STYLE_ETHAN},
+    {gText_TrainerName_Lyra, STYLE_LYRA},
+    {gText_TrainerName_Lucas, STYLE_LUCAS},
+    {gText_TrainerName_Dawn, STYLE_DAWN},
+    {gText_TrainerName_Hilbert, STYLE_HILBERT},
+    {gText_TrainerName_Hilda, STYLE_HILDA},
+    {gText_TrainerName_Nate, STYLE_NATE},
+    {gText_TrainerName_Rosa, STYLE_ROSA},
+    {gText_TrainerName_Calem, STYLE_CALEM},
+    {gText_TrainerName_Serena, STYLE_SERENA},
+    {gText_TrainerName_Elio, STYLE_ELIO},
+    {gText_TrainerName_Selene, STYLE_SELENE},
+    {gText_TrainerName_Victor, STYLE_VICTOR},
+    {gText_TrainerName_Gloria, STYLE_GLORIA},
+    {gText_TrainerName_Florian, STYLE_FLORIAN},
+    {gText_TrainerName_Juliana, STYLE_JULIANA},
+//    {gText_TrainerName_Wes, STYLE_WES},
+//    {gText_TrainerName_Ash, STYLE_ASH},
+};
+
+#define DEBUG_STYLE_COUNT (ARRAY_COUNT(sDebugMenu_Items_Styles))
+
+static const struct WindowTemplate sDebugMenuWindowTemplate_StyleSelect =
+{
+    .bg = 0,
+    .tilemapLeft = 2,
+    .tilemapTop = 2,
+    .width = 26,
+    .height = 18,
+    .paletteNum = 15,
+    .baseBlock = 1,
+};
+
+static const struct ListMenuTemplate sDebugMenu_StyleSelectTemplate = {
+    .items = sDebugMenu_Items_Styles,
+    .totalItems = DEBUG_STYLE_COUNT,
+    .windowId = 0, // wird überschrieben
+    .maxShowed = 10,
+    .moveCursorFunc = NULL,
+    .item_X = 8,
+    .cursor_X = 0,
+    .upText_Y = 1,
+    .cursorPal = 2,
+    .header_X = 0,
+};
+
+static void DebugTask_HandleStyleSelection(u8 taskId)
+{
+    s32 input = ListMenu_ProcessInput(sDebugMenuListData->listId);
+
+    if (input == LIST_CANCEL)
+    {
+        PlaySE(SE_BOO);
+        Debug_DestroyMenu_Full(taskId);
+        ScriptContext_Enable();
+        return;
+    }
+
+    if (input >= 0)
+    {
+        PlaySE(SE_SELECT);
+        gSaveBlock2Ptr->playerStyles[0] = sDebugMenu_Items_Styles[input].id;
+        gSaveBlock2Ptr->playerGender = IsPlayerStyleMale(gSaveBlock2Ptr->playerStyles[0]) ? MALE : FEMALE;
+
+        Debug_DestroyMenu_Full(taskId);
+        ScriptContext_Enable();
+    }
+}
+
 static void DebugAction_Player_Gender(u8 taskId)
 {
-    gSaveBlock2Ptr->playerStyles[0]++;
-    if (gSaveBlock2Ptr->playerStyles[0] >= PLAYER_STYLE_COUNT)
-        gSaveBlock2Ptr->playerStyles[0] = 0;
+    HideMapNamePopUpWindow();
+    LoadMessageBoxAndBorderGfx();
 
-    Debug_DestroyMenu_Full(taskId);
-    ScriptContext_Enable();
+    u8 windowId = AddWindow(&sDebugMenuWindowTemplate_StyleSelect);
+    DrawStdWindowFrame(windowId, FALSE);
+    PutWindowTilemap(windowId);
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+
+    // → Lokale Kopie erstellen
+    struct ListMenuTemplate menuTemplate = sDebugMenu_StyleSelectTemplate;
+    menuTemplate.windowId = windowId;
+
+    sDebugMenuListData->listId = ListMenuInit(&menuTemplate, 0, 0);
+    CreateTask(DebugTask_HandleStyleSelection, 0);
 }
 
 static void DebugAction_Player_Id(u8 taskId)

@@ -106,22 +106,24 @@ u16 GetRivalGraphicsId(u16 rivalId, u8 action)
         case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
         case OBJ_EVENT_GFX_RIVAL_RED:
         case OBJ_EVENT_GFX_RIVAL_LEAF:
-        //        case OBJ_EVENT_GFX_RIVAL_ETHAN:
-        //        case OBJ_EVENT_GFX_RIVAL_LYRA:
-        //        case OBJ_EVENT_GFX_RIVAL_LUCAS:
-        //        case OBJ_EVENT_GFX_RIVAL_DAWN:
-        //        case OBJ_EVENT_GFX_RIVAL_HILBERT:
-        //        case OBJ_EVENT_GFX_RIVAL_HILDA:
-        //        case OBJ_EVENT_GFX_RIVAL_NATE:
-        //        case OBJ_EVENT_GFX_RIVAL_ROSA:
-        //        case OBJ_EVENT_GFX_RIVAL_CALEM:
-        //        case OBJ_EVENT_GFX_RIVAL_SERENA:
-        //        case OBJ_EVENT_GFX_RIVAL_ELIO:
-        //        case OBJ_EVENT_GFX_RIVAL_SELENE:
-        //        case OBJ_EVENT_GFX_RIVAL_VICTOR:
-        //        case OBJ_EVENT_GFX_RIVAL_GLORIA:
-        //        case OBJ_EVENT_GFX_RIVAL_FLORIAN:
-        //        case OBJ_EVENT_GFX_RIVAL_JULIANA:
+        case OBJ_EVENT_GFX_RIVAL_ETHAN:
+        case OBJ_EVENT_GFX_RIVAL_LYRA:
+        case OBJ_EVENT_GFX_RIVAL_LUCAS:
+        case OBJ_EVENT_GFX_RIVAL_DAWN:
+        case OBJ_EVENT_GFX_RIVAL_HILBERT:
+        case OBJ_EVENT_GFX_RIVAL_HILDA:
+        case OBJ_EVENT_GFX_RIVAL_NATE:
+        case OBJ_EVENT_GFX_RIVAL_ROSA:
+        case OBJ_EVENT_GFX_RIVAL_CALEM:
+        case OBJ_EVENT_GFX_RIVAL_SERENA:
+        case OBJ_EVENT_GFX_RIVAL_ELIO:
+        case OBJ_EVENT_GFX_RIVAL_SELENE:
+        case OBJ_EVENT_GFX_RIVAL_VICTOR:
+        case OBJ_EVENT_GFX_RIVAL_GLORIA:
+        case OBJ_EVENT_GFX_RIVAL_FLORIAN:
+        case OBJ_EVENT_GFX_RIVAL_JULIANA:
+        case OBJ_EVENT_GFX_RIVAL_ASH:
+        case OBJ_EVENT_GFX_RIVAL_WES:
             if (action == PLAYER_AVATAR_STATE_NORMAL)
                 return rivalId;
             else
@@ -199,7 +201,7 @@ static bool32 ReturnToFieldLocal(u8 *);
 static bool32 ReturnToFieldLink(u8 *);
 static void InitObjectEventsLink(void);
 static void InitObjectEventsLocal(void);
-static void InitOverworldGraphicsRegisters(void);
+//void InitOverworldGraphicsRegisters(void);
 static u8 GetSpriteForLinkedPlayer(u8);
 static u16 KeyInterCB_SendNothing(u32);
 static void ResetMirageTowerAndSaveBlockPtrs(void);
@@ -441,9 +443,27 @@ bool8 IsPlayerStyleMale(u8 style)
     {
     case STYLE_BRENDAN:
     case STYLE_RED:
+    case STYLE_ETHAN:
+    case STYLE_LUCAS:
+    case STYLE_HILBERT:
+    case STYLE_NATE:
+    case STYLE_CALEM:
+    case STYLE_ELIO:
+    case STYLE_VICTOR:
+    case STYLE_FLORIAN:
+//    case STYLE_ASH:
+//    case STYLE_WES:
         return TRUE;
     case STYLE_MAY:
     case STYLE_LEAF:
+    case STYLE_LYRA:
+    case STYLE_DAWN:
+    case STYLE_HILDA:
+    case STYLE_ROSA:
+    case STYLE_SERENA:
+    case STYLE_SELENE:
+    case STYLE_GLORIA:
+    case STYLE_JULIANA:
         return FALSE;
     default:
         return TRUE; // Fallback: männlich
@@ -456,10 +476,28 @@ u8 GetPlayerGenderFromStyle(void)
     {
     case STYLE_BRENDAN:
     case STYLE_RED:
+    case STYLE_ETHAN:
+    case STYLE_LUCAS:
+    case STYLE_HILBERT:
+    case STYLE_NATE:
+    case STYLE_CALEM:
+    case STYLE_ELIO:
+    case STYLE_VICTOR:
+    case STYLE_FLORIAN:
+//    case STYLE_ASH:
+//    case STYLE_WES:
         return MALE;
 
     case STYLE_MAY:
     case STYLE_LEAF:
+    case STYLE_LYRA:
+    case STYLE_DAWN:
+    case STYLE_HILDA:
+    case STYLE_ROSA:
+    case STYLE_SERENA:
+    case STYLE_SELENE:
+    case STYLE_GLORIA:
+    case STYLE_JULIANA:
         return FEMALE;
 
     default:
@@ -2573,7 +2611,7 @@ static void InitViewGraphics(void)
     InitMapView();
 }
 
-static void InitOverworldGraphicsRegisters(void)
+void InitOverworldGraphicsRegisters(void)
 {
     ClearScheduledBgCopiesToVram();
     ResetTempTileDataBuffers();

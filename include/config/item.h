@@ -2,49 +2,49 @@
 #define GUARD_CONFIG_ITEM_H
 
 // Item config
-#define I_SHINY_CHARM_ADDITIONAL_ROLLS  2           // Amount of additional shiny rolls if the player has the Shiny Charm. Set it to 0 to disable Shiny Charm's effects.
-#define I_KEY_FOSSILS                   GEN_LATEST  // In Gen4+, all Gen 3 fossils became regular items.
-#define I_KEY_ESCAPE_ROPE               GEN_LATEST  // In Gen8, Escape Rope became a Key Item. Keep in mind, this will make it free to buy in marts.
-#define I_HEALTH_RECOVERY               GEN_LATEST  // In Gen7+, certain healing items recover a different amount of HP than they used to.
-#define I_SITRUS_BERRY_HEAL             GEN_LATEST  // In Gen4+, Sitrus Berry was changed from healing 30 HP to healing 25% of Max HP.
-#define I_VITAMIN_EV_CAP                GEN_LATEST  // In Gen8+, the Vitamins no longer have a cap of 100 EV per stat.
-#define I_BERRY_EV_JUMP                 GEN_LATEST  // In Gen4 only, EV-lowering Berries lower a stat's EV to 100 if it is above 100.
-#define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // In Gen9+, the Griseous Orb no longer changes Giratina's form when held.
-#define I_GEM_BOOST_POWER               GEN_LATEST  // In Gen6+, the Gem boost power was reduced from 50% to 30%.
-#define I_USE_EVO_HELD_ITEMS_FROM_BAG   FALSE       // If TRUE, items such as Razor Claw or Electirizer will be usable from the bag to evolve a Pokémon just like in LA.
-#define I_TYPE_BOOST_POWER              GEN_LATEST  // In Gen4+, all regular type boosting held items had their power increased from 10% to 20%. eg. Charcoal
-#define I_SELL_VALUE_FRACTION           GEN_LATEST  // In Gen9+, items sell for 1/4 of their value instead of 1/2.
-#define I_PRICE                         GEN_LATEST  // Some items have varied in value across generations.
-#define I_BERRY_PRICE                   GEN_7       // Since Berries have become unplantable (Gen8+), their price has gone up.
-#define I_POWER_ITEM_BOOST              GEN_LATEST  // In Gen7+, Power Items grant 8 EVs instead of 4 EVs.
-#define I_PREMIER_BALL_BONUS            GEN_LATEST  // In LGPE onwards (Gen8+ here), you are given a Premier Ball for every 10 Poké Balls of any type and in the same purchase. Previously, it only applied to regular Poké Balls and only 1 could be obtained per purchase.
-#define I_ROTOM_CATALOG_THUNDER_SHOCK   GEN_LATEST  // In Gen9+, reverting Rotom to its base form will teach it Thunder Shock even if it knows another move.
-#define I_REPEL_INCLUDE_FAINTED         GEN_LATEST  // In Gen1 and Gen6+, Repels always use the level of the first member of the party to check which wild Pokémon to prevent encounters with, even if that member is fainted. In Gen2-5, it only uses the level of the first non-fainted Pokémon.
+#define I_SHINY_CHARM_ADDITIONAL_ROLLS  2           // Anzahl zusätzlicher Shiny-Würfe, wenn der Spieler den Shiny-Charm besitzt. Auf 0 setzen, um die Wirkung des Shiny-Charm zu deaktivieren.
+#define I_KEY_FOSSILS                   GEN_LATEST  // Ab Gen4+ wurden alle Gen3-Fossilien zu normalen Items.
+#define I_KEY_ESCAPE_ROPE               GEN_LATEST  // Ab Gen8 ist das Fluchtseil ein Schlüssel-Item. Beachte: Es ist dann kostenlos in Shops erhältlich.
+#define I_HEALTH_RECOVERY               GEN_LATEST  // Ab Gen7+ stellen bestimmte Heilitems eine andere Menge an KP wieder her als zuvor.
+#define I_SITRUS_BERRY_HEAL             GEN_LATEST  // Ab Gen4+ heilt die Sitrusbeere 25% der maximalen KP statt 30 KP.
+#define I_VITAMIN_EV_CAP                GEN_LATEST  // Ab Gen8+ haben Vitamine kein EV-Limit von 100 pro Wert mehr.
+#define I_BERRY_EV_JUMP                 GEN_LATEST  // Nur in Gen4: EV-senkende Beeren setzen den EV-Wert auf 100, falls er darüber liegt.
+#define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // Ab Gen9+ ändert die Griseous-Orb Giratinas Form nicht mehr, wenn sie getragen wird.
+#define I_GEM_BOOST_POWER               GEN_LATEST  // Ab Gen6+ wurde der Kraftschub von Juwelen von 50% auf 30% reduziert.
+#define I_USE_EVO_HELD_ITEMS_FROM_BAG   FALSE       // Wenn TRUE, können Entwicklungsitems wie Rasierklaue oder Stromisierer direkt aus der Tasche zum Entwickeln verwendet werden (wie in LA).
+#define I_TYPE_BOOST_POWER              GEN_LATEST  // Ab Gen4+ wurde die Kraft aller normalen Typ-Verstärker-Items von 10% auf 20% erhöht (z.B. Holzkohle).
+#define I_SELL_VALUE_FRACTION           GEN_LATEST  // Ab Gen9+ verkaufen sich Items nur noch für 1/4 ihres Wertes statt für die Hälfte.
+#define I_PRICE                         GEN_LATEST  // Einige Items haben ihren Wert über die Generationen hinweg verändert.
+#define I_BERRY_PRICE                   GEN_7       // Da Beeren ab Gen8+ nicht mehr gepflanzt werden können, ist ihr Preis gestiegen.
+#define I_POWER_ITEM_BOOST              GEN_LATEST  // Ab Gen7+ geben Kraftitems 8 EVs statt 4 EVs.
+#define I_PREMIER_BALL_BONUS            GEN_LATEST  // Ab LGPE (Gen8+) erhält man für je 10 beliebige Pokébälle in einem Kauf einen Premierball. Früher galt das nur für normale Pokébälle und nur 1 pro Kauf.
+#define I_ROTOM_CATALOG_THUNDER_SHOCK   GEN_LATEST  // Ab Gen9+ lernt Rotom beim Zurücksetzen in die Basisform Donnerschock, auch wenn es schon 4 Attacken hat.
+#define I_REPEL_INCLUDE_FAINTED         GEN_LATEST  // In Gen1 und Gen6+ wird für Schutz-Items immer das Level des ersten Teammitglieds verwendet, auch wenn es besiegt ist. In Gen2-5 zählt nur das erste nicht besiegte Pokémon.
 
 // TM config
-#define I_REUSABLE_TMS          FALSE       // In Gen5-8, TMs are reusable. Setting this to TRUE will make all vanilla TMs reusable, though they can also be cherry-picked by setting their importance to 1.
+#define I_REUSABLE_TMS          FALSE       // In Gen5-8 sind TMs wiederverwendbar. TRUE macht alle Standard-TMs wiederverwendbar, kann aber auch einzeln über die Wichtigkeit gesteuert werden.
 
 // Exp. Share config
-// To use this feature, replace the 0 with the flag ID you're assigning it to.
-// Eg: Replace with FLAG_UNUSED_0x264 so you can use that flag to toggle the feature.
-#define I_EXP_SHARE_FLAG        0           // If this flag is set, every Pokémon in the party will gain experience, regardless if they participated in the battle or not.
-#define I_EXP_SHARE_ITEM        GEN_5       // In Gen6+, the Exp. Share was changed from a held item to a Key item that toggles the effect described above.
+// Um dieses Feature zu nutzen, ersetze die 0 durch die Flag-ID, die du zuweist.
+// Beispiel: Ersetze durch FLAG_UNUSED_0x264, um diese Flag zum Umschalten zu verwenden.
+#define I_EXP_SHARE_FLAG        FLAG_UNUSED_0x04F           // Wenn diese Flag gesetzt ist, erhalten alle Pokémon im Team Erfahrung, unabhängig davon, ob sie am Kampf teilgenommen haben.
+#define I_EXP_SHARE_ITEM        GEN_5                       // Ab Gen6+ wurde der EP-Teiler von einem gehaltenen Item zu einem Schlüssel-Item, das den oben beschriebenen Effekt aktiviert.
 
 // Repel/Lure config
-// These two settings are both independent and complementary.
-#define VAR_LAST_REPEL_LURE_USED    0       // If this var has been assigned, last Repel/Lure used will be saved and the player will get prompted with the vanilla repel YES/NO option, unless I_REPEL_LURE_MENU is set to TRUE.
-#define I_REPEL_LURE_MENU           TRUE    // If TRUE, the player is able to choose which Repel/Lure to use once the previous one runs out. Cursor position is saved by VAR_LAST_REPEL_LURE_USED if not 0.
+// Diese beiden Einstellungen sind unabhängig und ergänzen sich.
+#define VAR_LAST_REPEL_LURE_USED    0       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
+#define I_REPEL_LURE_MENU           TRUE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
 
 // Vs. Seeker
-#define I_VS_SEEKER_CHARGING        0     // If this flag is assigned, the Vs Seeker functionality will be enabled. When the player has the Vs. Seeker, Match Call rematch functions will stop working.
+#define I_VS_SEEKER_CHARGING        0     // Wenn diese Flag gesetzt ist, wird die Vs. Seeker-Funktion aktiviert. Mit Vs. Seeker funktionieren Match Call-Rematches nicht mehr.
 
 // Fishing
-#define I_FISHING_BITE_ODDS        GEN_LATEST // In Gen 1 and Gen 2, the Old Rod has a 100% chance for a bite, Good Rod has a 66% chance for a bite, and Super Rod has a 50% chance for a bite. In Gen 3, all rods have a base 50% chance for a bite. In Gen 4 onwards, the Old Rod has a base 25% chance for a bite, Good Rod has a 50% chance for a bite, and Super Rod has a 75% chance for a bite.
-#define I_FISHING_MINIGAME         GEN_3      // Each generation uses a variation of reeling in Pokémon once they have been hooked. NOTE: Only the Gen 1/2 and Gen 3 minigames are implemented right now!
-#define I_FISHING_ENVIRONMENT      GEN_LATEST // In Gen 3, the battle environment when fighting a hooked Pokémon is based on the tile the player is standing on. In Gen 4 onwards, the environment is based on tile that is being fished in, resulting in it usually being a water environment.
-#define I_FISHING_STICKY_BOOST     GEN_LATEST // In Gen 3, a Pokemon with Suction Cups or Sticky Hold in the first slot of the party causes the chance for a bite to increase by about 35%. In Gen 4 onwards, it doubles the base bite chance.
-#define I_FISHING_FOLLOWER_BOOST   FALSE      // In HGSS, fishing bite odds are increased depending on the friendship of the current following Pokémon.
-#define I_FISHING_CHAIN            FALSE      // Introduced in XY, hooking the same Pokémon repeatedly will increase the odds of that mon being shiny. NOTE: This implementation is an approximation of the actual feature, as XY have not been throughoutly documented or datamined.
-#define I_FISHING_PROXIMITY        FALSE      // Introduced in XY, fishing away from other people in enclosed areas will increase the chances of a Pokémon being hooked. NOTE: This implementation is an approximation of the actual feature, as XY have not been throughoutly documented or datamined.
+#define I_FISHING_BITE_ODDS        GEN_LATEST // In Gen1/2: Angelrute 100%, Superangel 50%, Profiangel 66%. In Gen3: alle Ruten 50%. Ab Gen4: Angelrute 25%, Profiangel 50%, Superangel 75%.
+#define I_FISHING_MINIGAME         GEN_3      // Jede Generation hat eine eigene Angel-Minispiel-Variante. Hinweis: Nur Gen1/2 und Gen3 sind bisher implementiert!
+#define I_FISHING_ENVIRONMENT      GEN_LATEST // In Gen3 bestimmt das Feld, auf dem der Spieler steht, die Kampf-Umgebung beim Angeln. Ab Gen4 zählt das Angel-Feld, meist Wasser.
+#define I_FISHING_STICKY_BOOST     GEN_LATEST // In Gen3 erhöht ein Pokémon mit Saugnapf/Klebekörper an erster Stelle die Bisschance um ca. 35%. Ab Gen4 verdoppelt es die Grundchance.
+#define I_FISHING_FOLLOWER_BOOST   FALSE      // In HGSS steigt die Bisschance beim Angeln je nach Freundschaft des folgenden Pokémon.
+#define I_FISHING_CHAIN            FALSE      // In XY erhöht das wiederholte Angeln desselben Pokémon die Shiny-Chance. Hinweis: Diese Implementierung ist nur eine Annäherung, da XY nicht vollständig dokumentiert sind.
+#define I_FISHING_PROXIMITY        FALSE      // In XY steigt die Bisschance, wenn man abseits von anderen Personen in geschlossenen Bereichen angelt. Hinweis: Diese Implementierung ist nur eine Annäherung, da XY nicht vollständig dokumentiert sind.
 
 #endif // GUARD_CONFIG_ITEM_H

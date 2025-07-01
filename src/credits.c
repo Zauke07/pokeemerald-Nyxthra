@@ -27,8 +27,6 @@
 
 //#include "rogue_timeofday.h"
 
-#include "rogue_timeofday.h"
-
 #define COLOR_DARK_GREEN RGB(7, 11, 6)
 #define COLOR_LIGHT_GREEN RGB(13, 20, 12)
 

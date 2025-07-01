@@ -28,6 +28,7 @@
 #include "constants/rgb.h"
 #include "strings.h"
 #include "field_message_box.h"
+#include "menu_helpers.h"
 
 #define PALTAG_UNUSED_MUGSHOT 0x100A
 
@@ -2709,20 +2710,50 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     s16 opponentBRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
-    task->tOpponentSpriteId = CreateTrainerSprite(
-        trainerPicId,
-        gTrainerSprites[trainerPicId].mugshotCoords.x - 32,
-        gTrainerSprites[trainerPicId].mugshotCoords.y + 42,
-        0, NULL);
-    gReservedSpritePaletteCount = 12;
+    if (TRAINER_BATTLE_PARAM.opponentB != TRAINER_NONE && gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    {
+        task->tOpponentSpriteBId = CreateTrainerSprite(trainerBPicId,
+                                                    gTrainerSprites[trainerBPicId].mugshotCoords.x - 240,
+                                                    gTrainerSprites[trainerBPicId].mugshotCoords.y + 42,
+                                                    0, NULL);
+        opponentSpriteB = &gSprites[task->tOpponentSpriteBId];
+        opponentSpriteB->callback = SpriteCB_MugshotTrainerPicPartner;
+        opponentSpriteB->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
+        opponentSpriteB->oam.matrixNum = AllocOamMatrix();
+        opponentSpriteB->oam.shape = SPRITE_SHAPE(64x32);
+        opponentSpriteB->oam.size = SPRITE_SIZE(64x32);
+        CalcCenterToCornerVec(opponentSpriteB, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+        opponentBRotationScales = gTrainerSprites[trainerBPicId].mugshotRotation;
+        SetOamMatrixRotationScaling(opponentSpriteB->oam.matrixNum, opponentBRotationScales, opponentBRotationScales, 0);
+    }
 
-    // ⬇️ Verwende getClass = TRUE, um den FacilityClass-PicIndex zu bekommen
+    task->tOpponentSpriteAId = CreateTrainerSprite(trainerAPicId,
+                                                  gTrainerSprites[trainerAPicId].mugshotCoords.x - 32,
+                                                  gTrainerSprites[trainerAPicId].mugshotCoords.y + 42,
+                                                  0, NULL);
+
+    gReservedSpritePaletteCount = 12;
+    if (gPartnerTrainerId != TRAINER_PARTNER(PARTNER_NONE) && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) 
+    {
+        task->tPartnerSpriteId = CreateTrainerSprite(partnerPicId, 
+                                                DISPLAY_WIDTH + 240, 
+                                                106, 
+                                                0, NULL);
+        partnerSprite = &gSprites[task->tPartnerSpriteId];
+        partnerSprite->callback = SpriteCB_MugshotTrainerPicPartner;
+        partnerSprite->oam.affineMode = ST_OAM_AFFINE_DOUBLE;
+        partnerSprite->oam.matrixNum = AllocOamMatrix();
+        partnerSprite->oam.shape = SPRITE_SHAPE(64x32);
+        partnerSprite->oam.size = SPRITE_SIZE(64x32);
+        CalcCenterToCornerVec(partnerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
+        SetOamMatrixRotationScaling(partnerSprite->oam.matrixNum, -512, 512, 0);
+    }
+
     u8 style = gSaveBlock2Ptr->playerStyles[0];
-    task->tPlayerSpriteId = CreateTrainerSprite(
-        PlayerStyleToFrontTrainerPicId(style, TRUE),
-        DISPLAY_WIDTH + 32,
-        106,
-        0, NULL);
+    task->tPlayerSpriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(style, TRUE),
+                                            DISPLAY_WIDTH + 32,
+                                            106,
+                                            0, NULL);
 
     opponentSpriteA = &gSprites[task->tOpponentSpriteAId];
     playerSprite = &gSprites[task->tPlayerSpriteId];
@@ -2745,9 +2776,9 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     CalcCenterToCornerVec(opponentSpriteA, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
     CalcCenterToCornerVec(playerSprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
 
-    opponentRotationScales = gTrainerSprites[trainerPicId].mugshotRotation;
+    opponentARotationScales = gTrainerSprites[trainerAPicId].mugshotRotation;
 
-    SetOamMatrixRotationScaling(opponentSprite->oam.matrixNum, opponentRotationScales, opponentRotationScales, 0);
+    SetOamMatrixRotationScaling(opponentSpriteA->oam.matrixNum, opponentARotationScales, opponentARotationScales, 0);
     SetOamMatrixRotationScaling(playerSprite->oam.matrixNum, -512, 512, 0);
 }
 

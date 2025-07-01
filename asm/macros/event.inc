@@ -2655,6 +2655,10 @@
 	.byte SCR_OP_PLAY_MUSIC_TEST_3
 	.endm
 
+	.macro bufferstylenamevar1
+	.byte SCR_OP_BUFFER_STYLE_NAME_VAR1
+	.endm
+
 @ Follower NPCs
 
 	@ Sets an NPC up to follow the player.

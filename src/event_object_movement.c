@@ -182,7 +182,7 @@ static u16 GetObjectEventFlagIdByObjectEventId(u8);
 static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
-static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
+const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -524,6 +524,24 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RedLeaf,               OBJ_EVENT_PAL_TAG_RED_LEAF},
     {gObjectEventPal_Player,                OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflection,      OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
+
+    // Add player palette tags for all other player characters except Brendan, May, Red, and Leaf
+    {gObjectEventPal_PlayerEthan,           OBJ_EVENT_PAL_TAG_PLAYER_ETHAN},
+    {gObjectEventPal_PlayerLyra,            OBJ_EVENT_PAL_TAG_PLAYER_LYRA},
+    {gObjectEventPal_PlayerLucas,           OBJ_EVENT_PAL_TAG_PLAYER_LUCAS},
+    {gObjectEventPal_PlayerDawn,            OBJ_EVENT_PAL_TAG_PLAYER_DAWN},
+    {gObjectEventPal_PlayerHilbert,         OBJ_EVENT_PAL_TAG_PLAYER_HILBERT},
+    {gObjectEventPal_PlayerHilda,           OBJ_EVENT_PAL_TAG_PLAYER_HILDA},
+    {gObjectEventPal_PlayerNate,            OBJ_EVENT_PAL_TAG_PLAYER_NATE},
+    {gObjectEventPal_PlayerRosa,            OBJ_EVENT_PAL_TAG_PLAYER_ROSA},
+    {gObjectEventPal_PlayerCalem,           OBJ_EVENT_PAL_TAG_PLAYER_CALEM},
+    {gObjectEventPal_PlayerSerena,          OBJ_EVENT_PAL_TAG_PLAYER_SERENA},
+    {gObjectEventPal_PlayerElio,            OBJ_EVENT_PAL_TAG_PLAYER_ELIO},
+    {gObjectEventPal_PlayerSelene,          OBJ_EVENT_PAL_TAG_PLAYER_SELENE},
+    {gObjectEventPal_PlayerVictor,          OBJ_EVENT_PAL_TAG_PLAYER_VICTOR},
+    {gObjectEventPal_PlayerGloria,          OBJ_EVENT_PAL_TAG_PLAYER_GLORIA},
+    {gObjectEventPal_PlayerFlorian,         OBJ_EVENT_PAL_TAG_PLAYER_FLORIAN},
+    {gObjectEventPal_PlayerJuliana,         OBJ_EVENT_PAL_TAG_PLAYER_JULIANA},
     {gObjectEventPal_Deoxys,                OBJ_EVENT_PAL_TAG_DEOXYS},
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},
     {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
@@ -546,6 +564,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Johto_NPC_Whitney,     OBJ_EVENT_PAL_TAG_JOHTO_NPC_WHITNEY},
     {gObjectEventPal_Johto_NPC_Will,        OBJ_EVENT_PAL_TAG_JOHTO_NPC_WILL},
     {gObjectEventPal_Johto_NPC_Red,         OBJ_EVENT_PAL_TAG_JOHTO_NPC_RED},
+    {gObjectEventPal_Wes,                   OBJ_EVENT_PAL_TAG_PLAYER_WES},
+    {gObjectEventPal_Ash,                   OBJ_EVENT_PAL_TAG_PLAYER_ASH},
+//    {gObjectEventPal_WesReflection,         OBJ_EVENT_PAL_TAG_PLAYER_WES_REFLECTION},
+//    {gObjectEventPal_AshReflection,         OBJ_EVENT_PAL_TAG_PLAYER_ASH_REFLECTION},
     
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
@@ -662,24 +684,26 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_PlayerPlaceholder,     OBJ_EVENT_PAL_TAG_PLAYER},
 
     {gObjectEventPal_PlayerRedLeafBase,     OBJ_EVENT_PAL_TAG_RIVAL_RED},
-    {gObjectEventPal_PlayerEthanBase,       OBJ_EVENT_PAL_TAG_RIVAL_ETHAN},
-    {gObjectEventPal_PlayerLyraBase,        OBJ_EVENT_PAL_TAG_RIVAL_LYRA},
+    {gObjectEventPal_Rival_Ethan,       OBJ_EVENT_PAL_TAG_RIVAL_ETHAN},
+    {gObjectEventPal_Rival_Lyra,        OBJ_EVENT_PAL_TAG_RIVAL_LYRA},
     {gObjectEventPal_PlayerBrendanBase,     OBJ_EVENT_PAL_TAG_RIVAL_BRENDAN},
     {gObjectEventPal_PlayerMayBase,         OBJ_EVENT_PAL_TAG_RIVAL_MAY},
-    {gObjectEventPal_PlayerLucasBase,       OBJ_EVENT_PAL_TAG_RIVAL_LUCAS},
-    {gObjectEventPal_PlayerDawnBase,        OBJ_EVENT_PAL_TAG_RIVAL_DAWN},
-    {gObjectEventPal_PlayerHilbertBase,     OBJ_EVENT_PAL_TAG_RIVAL_HILBERT},
-    {gObjectEventPal_PlayerHildaBase,       OBJ_EVENT_PAL_TAG_RIVAL_HILDA},
-    {gObjectEventPal_PlayerNateBase,        OBJ_EVENT_PAL_TAG_RIVAL_NATE},
-    {gObjectEventPal_PlayerRosaBase,        OBJ_EVENT_PAL_TAG_RIVAL_ROSA},
-    {gObjectEventPal_PlayerCalemBase,       OBJ_EVENT_PAL_TAG_RIVAL_CALEM},
-    {gObjectEventPal_PlayerSerenaBase,      OBJ_EVENT_PAL_TAG_RIVAL_SERENA},
-    {gObjectEventPal_PlayerElioBase,        OBJ_EVENT_PAL_TAG_RIVAL_ELIO},
-    {gObjectEventPal_PlayerSeleneBase,      OBJ_EVENT_PAL_TAG_RIVAL_SELENE},
-    {gObjectEventPal_PlayerVictorBase,      OBJ_EVENT_PAL_TAG_RIVAL_VICTOR},
-    {gObjectEventPal_PlayerGloriaBase,      OBJ_EVENT_PAL_TAG_RIVAL_GLORIA},
-    {gObjectEventPal_PlayerFlorianBase,     OBJ_EVENT_PAL_TAG_RIVAL_FLORIAN},
-    {gObjectEventPal_PlayerJulianaBase,     OBJ_EVENT_PAL_TAG_RIVAL_JULIANA},
+    {gObjectEventPal_Rival_Lucas,       OBJ_EVENT_PAL_TAG_RIVAL_LUCAS},
+    {gObjectEventPal_Rival_Dawn,        OBJ_EVENT_PAL_TAG_RIVAL_DAWN},
+    {gObjectEventPal_Rival_Hilbert,     OBJ_EVENT_PAL_TAG_RIVAL_HILBERT},
+    {gObjectEventPal_Rival_Hilda,       OBJ_EVENT_PAL_TAG_RIVAL_HILDA},
+    {gObjectEventPal_Rival_Nate,        OBJ_EVENT_PAL_TAG_RIVAL_NATE},
+    {gObjectEventPal_Rival_Rosa,        OBJ_EVENT_PAL_TAG_RIVAL_ROSA},
+    {gObjectEventPal_Rival_Calem,       OBJ_EVENT_PAL_TAG_RIVAL_CALEM},
+    {gObjectEventPal_Rival_Serena,      OBJ_EVENT_PAL_TAG_RIVAL_SERENA},
+    {gObjectEventPal_Rival_Elio,        OBJ_EVENT_PAL_TAG_RIVAL_ELIO},
+    {gObjectEventPal_Rival_Selene,      OBJ_EVENT_PAL_TAG_RIVAL_SELENE},
+    {gObjectEventPal_Rival_Victor,      OBJ_EVENT_PAL_TAG_RIVAL_VICTOR},
+    {gObjectEventPal_Rival_Gloria,      OBJ_EVENT_PAL_TAG_RIVAL_GLORIA},
+    {gObjectEventPal_Rival_Florian,     OBJ_EVENT_PAL_TAG_RIVAL_FLORIAN},
+    {gObjectEventPal_Rival_Juliana,     OBJ_EVENT_PAL_TAG_RIVAL_JULIANA},
+    {gObjectEventPal_Rival_Ash,         OBJ_EVENT_PAL_TAG_RIVAL_ASH},
+    {gObjectEventPal_Rival_Wes,         OBJ_EVENT_PAL_TAG_RIVAL_WES},
 
     {gObjectEventPal_Team_Flare_Lysander, OBJ_EVENT_PAL_TAG_TEAM_FLARE_LYSANDER},
     {gObjectEventPal_Team_Galactic_Cyrus, OBJ_EVENT_PAL_TAG_TEAM_GALACTIC_CYRUS},
@@ -2405,8 +2429,8 @@ void UpdateFollowingPokemon(void)
     // 2. Map is indoors and gfx is larger than 32x32
     // 3. flag is set
     // 4. a follower NPC is present
-    if (OW_POKEMON_OBJECT_EVENTS == FALSE
-     || OW_FOLLOWERS_ENABLED == FALSE
+    if (OW_POKEMON_OBJECT_EVENTS == TRUE
+     || OW_FOLLOWERS_ENABLED == TRUE
      || FlagGet(B_FLAG_FOLLOWERS_DISABLED)
      || !GetFollowerInfo(&species, &shiny, &female)
      || SpeciesToGraphicsInfo(species, shiny, female) == NULL
@@ -3392,11 +3416,60 @@ u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
     case STYLE_LEAF:
         paletteTag = OBJ_EVENT_PAL_TAG_RED_LEAF; // Du hast ja einen gemeinsamen Tag für Red & Leaf
         break;
-
-    // Später z. B.
-    // case STYLE_ETHAN: paletteTag = OBJ_EVENT_PAL_TAG_ETHAN; break;
-    // case STYLE_LYRA:  paletteTag = OBJ_EVENT_PAL_TAG_LYRA;  break;
-
+    case STYLE_ETHAN:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_ETHAN;
+        break;
+    case STYLE_LYRA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_LYRA;
+        break;
+    case STYLE_LUCAS:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_LUCAS;
+        break;
+    case STYLE_DAWN:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_DAWN;
+        break;
+    case STYLE_HILBERT:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_HILBERT;
+        break;
+    case STYLE_HILDA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_HILDA;
+        break;
+    case STYLE_NATE:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_NATE;
+        break;
+    case STYLE_ROSA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_ROSA;
+        break;
+    case STYLE_CALEM:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_CALEM;
+        break;
+    case STYLE_SERENA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_SERENA;
+        break;
+    case STYLE_ELIO:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_ELIO;
+        break;
+    case STYLE_SELENE:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_SELENE;
+        break;
+    case STYLE_VICTOR:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_VICTOR;
+        break;
+    case STYLE_GLORIA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_GLORIA;
+        break;
+    case STYLE_FLORIAN:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_FLORIAN;
+        break;
+    case STYLE_JULIANA:
+        paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_JULIANA;
+        break;
+    // case STYLE_ASH:
+    //     paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_ASH;
+    //     break;
+    // case STYLE_WES:
+    //     paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_WES;
+    //     break;
     default:
         paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN; // Fallback
         break;
@@ -11660,6 +11733,42 @@ u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
         break;
     case STYLE_LEAF:
         rivalId = OBJ_EVENT_GFX_RIVAL_RED;
+        break;
+    case STYLE_LUCAS:
+        rivalId = OBJ_EVENT_GFX_RIVAL_DAWN;
+        break;
+    case STYLE_DAWN:
+        rivalId = OBJ_EVENT_GFX_RIVAL_LUCAS;
+        break;
+    case STYLE_ETHAN:
+        rivalId = OBJ_EVENT_GFX_RIVAL_LYRA;
+        break;
+    case STYLE_LYRA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_ETHAN;
+        break;
+    case STYLE_HILBERT:
+        rivalId = OBJ_EVENT_GFX_RIVAL_HILDA;
+        break;
+    case STYLE_HILDA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_HILBERT;
+        break;
+    case STYLE_CALEM:
+        rivalId = OBJ_EVENT_GFX_RIVAL_SERENA;
+        break;
+    case STYLE_SERENA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_CALEM;
+        break;
+    case STYLE_ELIO:
+        rivalId = OBJ_EVENT_GFX_RIVAL_SELENE;
+        break;
+    case STYLE_SELENE:
+        rivalId = OBJ_EVENT_GFX_RIVAL_ELIO;
+        break;
+    case STYLE_FLORIAN:
+        rivalId = OBJ_EVENT_GFX_RIVAL_JULIANA;
+        break;
+    case STYLE_JULIANA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
         break;
     default:
         rivalId = OBJ_EVENT_GFX_RIVAL_RED;

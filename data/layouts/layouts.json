@@ -4475,31 +4475,21 @@
       "id": "LAYOUT_TESTLABOR",
       "name": "Testlabor_Layout",
       "width": 35,
-      "height": 25,
+      "height": 35,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/Testlabor/border.bin",
       "blockdata_filepath": "data/layouts/Testlabor/map.bin"
     },
     {
-      "id": "LAYOUT_TEST_HHLE",
-      "name": "TestHhle_Layout",
-      "width": 15,
-      "height": 15,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_MeteorFalls",
-      "border_filepath": "data/layouts/TestHhle/border.bin",
-      "blockdata_filepath": "data/layouts/TestHhle/map.bin"
-    },
-    {
-      "id": "LAYOUT_TEST_SURF",
-      "name": "TestSurf_Layout",
-      "width": 15,
-      "height": 15,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Mossdeep",
-      "border_filepath": "data/layouts/TestSurf/border.bin",
-      "blockdata_filepath": "data/layouts/TestSurf/map.bin"
+      "id": "LAYOUT_RIVAL_TEST",
+      "name": "Rival_Test_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGym",
+      "border_filepath": "data/layouts/Rival_Test/border.bin",
+      "blockdata_filepath": "data/layouts/Rival_Test/map.bin"
     }
   ]
 }

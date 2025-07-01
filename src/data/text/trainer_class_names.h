@@ -75,4 +75,6 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_TEAM_GALACTIC_LEADER] = _("GALACTIC"),
     [TRAINER_CLASS_BIKER] = _("BIKER"),
     [TRAINER_CLASS_CHATGPT] = ("AI Master"),
+//    [TRAINER_CLASS_ASH] = _("Ash"),
+//    [TRAINER_CLASS_WES] = _("Wes"),
 };

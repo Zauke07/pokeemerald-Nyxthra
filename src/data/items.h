@@ -10518,12 +10518,13 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Erhöht die Verteidigung\n"
             "von Eis-Pokémon ({PKMN})\n"
-            "für 5 Runden."
+            "für 5 Runden."),
         #else
         .description = COMPOUND_STRING(
             "Hagelsturm schadet\n"
             "allen POKéMON außer\n"
             "denen des Typs EIS."),
+        #endif
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

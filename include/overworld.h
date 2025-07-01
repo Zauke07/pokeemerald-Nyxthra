@@ -188,5 +188,7 @@ u8 GetPlayerGenderFromStyle(void);
 void SetObjectEventGraphicsId(struct ObjectEvent *objEvent, u16 graphicsId);
 void SyncPlayerGenderToStyle(void);
 void Debug_UpdatePlayerNameWithStyleInfo(void);
+u16 GetPlayerGraphicsId(u8 playerStyle);
+void InitOverworldGraphicsRegisters(void);
 
 #endif // GUARD_OVERWORLD_H

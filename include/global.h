@@ -147,7 +147,7 @@ extern u16 GetPlayerGraphicsId(u8 playerStyle);
 
 #define PLAYER_STYLE gSaveBlock2Ptr->playerStyles
 
-#ifndef NDEBUG
+// NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
 static inline void CycleCountStart()
 {
     REG_TM2CNT_H = 0;
@@ -598,11 +598,10 @@ struct SaveBlock2
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
-             u32 optionsPopupSoundOff:1;
-             u32 timeOfDayVisuals:1;
-             u32 seasonVisuals:1;
-             u32 weatherVisuals:1;
-             u32 settingsReserved:25; // unused/reserved bits
+             u8 optionsPopupSoundOff;
+             u8 timeOfDayVisuals;
+             u8 seasonVisuals;
+             u8 weatherVisuals;
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;

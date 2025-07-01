@@ -40,7 +40,7 @@
 #include "constants/songs.h"
 #include "constants/map_types.h"
 
-#include "mgba.h"
+//#include "mgba.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
 
@@ -920,7 +920,7 @@ u8 CreateTrainerSprite(u8 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buf
     }
 
     // Palette und Grafik laden
-    LoadCompressedSpritePaletteOverrideBuffer(&gTrainerSprites[trainerSpriteID].palette, buffer);
+    LoadSpritePalette(&gTrainerSprites[trainerSpriteID].palette);
     LoadCompressedSpriteSheetOverrideBuffer(&gTrainerSprites[trainerSpriteID].frontPic, buffer);
 
     if (alloced)
@@ -945,7 +945,7 @@ u8 UpdateTrainerSprite(u8 spriteID, u16 trainerSpriteID, s16 x, s16 y, u8 subpri
     u8 spriteId;
     bool32 alloced = FALSE;
 
-    LoadCompressedSpritePaletteOverrideBuffer(&gTrainerSprites[trainerSpriteID].palette, buffer);
+    LoadSpritePalette(&gTrainerSprites[trainerSpriteID].palette);
     LoadCompressedSpriteSheetOverrideBuffer(&gTrainerSprites[trainerSpriteID].frontPic, buffer);
     if (alloced)
         Free(buffer);

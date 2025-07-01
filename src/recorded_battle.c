@@ -27,7 +27,7 @@ struct PlayerInfo
     u8 name[PLAYER_NAME_LENGTH + 1];
     u8 gender;        // Wieder hinzufügen für Kompatibilität
     u8 trainerStyle;  // Beibehaltung für Charakterauswahl
-    u16 battlerId;
+    u16 battler;
     u16 language;
 };
 
@@ -147,7 +147,7 @@ void RecordedBattle_SetTrainerInfo(void)
                               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
 
         sPlayers[0].trainerStyle = gSaveBlock2Ptr->playerStyles[0];
-        sPlayers[0].battlerId = 0;
+        sPlayers[0].battler = 0;
         sPlayers[0].language = gGameLanguage;
 
         for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++)

@@ -1415,27 +1415,29 @@ static void ShowSaveInfoWindow(void)
     {
         case STYLE_BRENDAN:
         case STYLE_RED:
-        //        case STYLE_ETHAN:
-        //        case STYLE_LUCAS:
-        //        case STYLE_HILBERT:
-        //        case STYLE_NATE:
-        //        case STYLE_CALEM:
-        //        case STYLE_ELIO:
-        //        case STYLE_VICTOR:
-        //        case STYLE_FLORIAN:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+        case STYLE_NATE:
+        case STYLE_CALEM:
+        case STYLE_ELIO:
+        case STYLE_VICTOR:
+        case STYLE_FLORIAN:
+//        case STYLE_ASH:
+//        case STYLE_WES:
             color = TEXT_COLOR_BLUE;  // Blautöne für männliche Charaktere
             break;
 
         case STYLE_MAY:
         case STYLE_LEAF:
-        //        case STYLE_LYRA:
-        //        case STYLE_DAWN:
-        //        case STYLE_HILDA:
-        //        case STYLE_ROSA:
-        //        case STYLE_SERENA:
-        //        case STYLE_SELENE:
-        //        case STYLE_GLORIA:
-        //        case STYLE_JULIANA:
+        case STYLE_LYRA:
+        case STYLE_DAWN:
+        case STYLE_HILDA:
+        case STYLE_ROSA:
+        case STYLE_SERENA:
+        case STYLE_SELENE:
+        case STYLE_GLORIA:
+        case STYLE_JULIANA:
             color = TEXT_COLOR_RED;  // Rottöne für weibliche Charaktere
             break;
 

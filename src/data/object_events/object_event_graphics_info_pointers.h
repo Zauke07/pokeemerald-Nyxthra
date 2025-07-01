@@ -249,6 +249,14 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 
+// NEW
+/*
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes;
+*/
+
 //Pokeemerald-Rogue
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Biker;
@@ -917,7 +925,13 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_JULIANA] =                  &gObjectEventGraphicsInfo_Juliana,
     [OBJ_EVENT_GFX_JULIANA_RIDING] =           &gObjectEventGraphicsInfo_JulianaRiding,
 
-
+    //  NEW
+/*
+    [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
+    [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
+    [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
+    [OBJ_EVENT_GFX_RIVAL_ASH] =               &gObjectEventGraphicsInfo_Rival_Ash,
+*/
     [OBJ_EVENT_GFX_BUG_CATCHER_RIDING] =       &gObjectEventGraphicsInfo_BugCatcherRiding,
 
     [OBJ_EVENT_GFX_KANTO_AGATHA] =             &gObjectEventGraphicsInfo_Kanto_Agatha,

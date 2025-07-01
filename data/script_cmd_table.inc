@@ -264,6 +264,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_1             ScrCmd_playmusictest1,              requests_effects=1 @ 0xef
 	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_2             ScrCmd_playmusictest2,              requests_effects=1 @ 0xf0
 	script_cmd_table_entry SCR_OP_PLAY_MUSIC_TEST_3             ScrCmd_playmusictest3,              requests_effects=1 @ 0xf1
+	script_cmd_table_entry SCR_OP_BUFFER_STYLE_NAME_VAR1        ScrCmd_BufferStyleNameToStringVar1  requests_effects=1 @ 0xf2
 
 
 

@@ -15,6 +15,8 @@ u32 LoadCompressedSpriteSheetByTemplate(const struct SpriteTemplate *template, s
 u32 LoadCompressedSpriteSheetOverrideBuffer(const struct CompressedSpriteSheet *src, void *buffer);
 bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src);
 
+//void LoadSpritePaletteOverrideBuffer(const struct SpritePalette *src, void *buffer);
+
 void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer);
 
 void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality);

@@ -21,5 +21,4 @@ void CB2_PlayerPCExitBagMenu(void);
 void Mailbox_ReturnToMailListAfterDeposit(void);
 void NewGameInitPCItems(void);
 
-
 #endif //GUARD_PLAYER_PC_H

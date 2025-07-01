@@ -783,58 +783,37 @@ u8 GetTrainerBattleTransition(void)
     u8 playerLevel;
     u32 trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     u32 trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-    u8 transitionToReturn; // Temporäre Variable
 
     if (DoesTrainerHaveMugshot(trainerId))
-    {
-        transitionToReturn = B_TRANSITION_MUGSHOT;
-        return transitionToReturn;
-    }
+        return B_TRANSITION_MUGSHOT;
 
     if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
-    {
-        transitionToReturn = B_TRANSITION_MAGMA;
-        return transitionToReturn;
-    }
+        return B_TRANSITION_MAGMA;
 
     if (trainerClass == TRAINER_CLASS_TEAM_AQUA
         || trainerClass == TRAINER_CLASS_AQUA_LEADER
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
-    {
-        transitionToReturn = B_TRANSITION_AQUA;
-        return transitionToReturn;
-    }
-
-    if (trainerClass == TRAINER_CLASS_CHATGPT)
-    {
-        transitionToReturn = B_TRANSITION_CHATGPT;
-        return transitionToReturn;
-    }
+        return B_TRANSITION_AQUA;
 
     if (trainerClass == TRAINER_CLASS_CHATGPT)
         return B_TRANSITION_CHATGPT;
 
+    // Hier ersetzt du den switch durch deinen neuen Style-basierten Check
     if (IsTrainerDoubleBattle(trainerId))
-        minPartyCount = 2; // Doppelkämpfe haben immer mindestens 2 Pokémon.
+        minPartyCount = 2;
     else
         minPartyCount = 1;
-        break;
-    case TRAINER_BATTLE_TYPE_DOUBLES:
-        minPartyCount = 2; // double battles always at least have 2 Pokémon.
-        break;
-    }
 
     transitionType = GetBattleTransitionTypeByMap();
     enemyLevel = GetSumOfEnemyPartyLevel(trainerId, minPartyCount);
     playerLevel = GetSumOfPlayerPartyLevel(minPartyCount);
 
     if (enemyLevel < playerLevel)
-        transitionToReturn = sBattleTransitionTable_Trainer[transitionType][0];
+        return sBattleTransitionTable_Trainer[transitionType][0];
     else
-        transitionToReturn = sBattleTransitionTable_Trainer[transitionType][1];
-    return transitionToReturn;
+        return sBattleTransitionTable_Trainer[transitionType][1];
 }
 
 

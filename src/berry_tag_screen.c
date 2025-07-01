@@ -29,6 +29,7 @@
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "menu_helpers.h"
 
 // There are 4 windows used in berry tag screen.
 enum

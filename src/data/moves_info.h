@@ -2673,12 +2673,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Teleport"),
         #if B_TELEPORT_BEHAVIOUR >= GEN_8
         .description = COMPOUND_STRING(
-            "Switches the user out last.\n"
-            "Flees when used by wild {PKMN}.")
+            "Wechselt den Anwender zuletzt aus.\n"
+            "Flieht, wenn von wildem {PKMN} genutzt.")
         #else
         .description = COMPOUND_STRING(
             "Psycho-Angriff, um sofort\n"
             "aus einem Kampf zu fliehen."),
+        #endif
         .effect = EFFECT_TELEPORT,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -19442,10 +19443,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BITTER_MALICE] =
     {
-        .name = COMPOUND_STRING("Bitter Malice"),
+        .name = COMPOUND_STRING("Grollgeist"),
         .description = COMPOUND_STRING(
-            "A spine-chilling resentment.\n"
-            "Lowers the foe's Attack."),
+            "Ein eisiger Grollgeist.\n"
+            "Senkt den Angriff des Gegners."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 75 : 60,
         .type = TYPE_GHOST,
@@ -19464,7 +19465,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_SHELTER] =
     {
         .name = COMPOUND_STRING("Refugium"),
-        .descriptBenutzerMPOUND_STRING(
+        .description = COMPOUND_STRING(
             "Der Benutzer verVert.  deutlichut und\n"
             "erhöht so seine Vert.  deutlich."),
         .effect = EFFECT_DEFENSE_UP_2,
@@ -19483,7 +19484,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TRIPLE_ARROWS] =
     {
-        .name = COMPOUND_STRING("Triple Arrows"),
+        .name = COMPOUND_STRING("Dreifachpfeil"),
         .description = COMPOUND_STRING(
             "Hohe kritische Trefferquote. Kann die\n"
             "Vert. verringern oder zurückschrecken."),
@@ -19509,7 +19510,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_INFERNAL_PARADE] =
     {
-        .name = COMPOUND_STRING("Infernal Parade"),
+        .name = COMPOUND_STRING("Höllenparade"),
         .description = COMPOUND_STRING(
             "Verletzt einen Gegner stärker, wenn er an\n"
             "einer Krankheit leidet. Kann eine Verbrenn."),
@@ -19531,7 +19532,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CEASELESS_EDGE] =
     {
-        .name = COMPOUND_STRING("Ceaseless Edge"),
+        .name = COMPOUND_STRING("Unaufhörliche Klinge"),
         .description = COMPOUND_STRING(
             "Hohe kritische Trefferquote. Setzt\n"
             "Splitter, die dem Gegner Schaden zufügen."),
@@ -19553,9 +19554,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
     [MOVE_BLEAKWIND_STORM] =
-    {Bleakwind Storm
-        .name = COMPOUND_STRING("Bleakwind Storm"),
-        .descriptige = COMPOUND_STRING(
+    {
+        .name = COMPOUND_STRING("Frostwindsturm"),
+        .description = COMPOUND_STRING(
             "Schläge mInit.utalen, kalteverringernn"
             "Kann die Init. des Gegners verringern."),
         .effect = EFFECT_HIT,
@@ -19577,7 +19578,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_WILDBOLT_STORM] =
     {
-        .name = COMPOUND_STRING("Wildbolt Storm"),
+        .name = COMPOUND_STRING("Sturmschlag"),
         .description = COMPOUND_STRING(
             "Schläge mit einem brutalen Sturm.\n"
             "Kann Lähmungen hervorrufen."),
@@ -19599,9 +19600,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
     [MOVE_SANDSEAR_STORM] =
-    {Sandsear Storm
-        .name = COMPOUND_STRING("Sandsear Storm"),
-        .descriptige = COMPOUND_STRING(
+    {
+        .name = COMPOUND_STRING("Sandbrandsturm"),
+        .description = COMPOUND_STRING(
             "Schläge mit brutal heißem Sand.\n"
             "Kann Verbrennungen verursachen."),
         .effect = EFFECT_HIT,
@@ -19622,9 +19623,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
     [MOVE_LUNAR_BLESSING] =
-    {Lunar Blessing
-        .name = COMPOUND_STRING("Lunar Blessing"),
-        .descriptBenutzerMPOUND_STRING(
+    {
+        .name = COMPOUND_STRING("Mondsegen"),
+        .description = COMPOUND_STRING(
             "Der Benutzer heilt sich selbst\n"
             "und seinen Verbündeten."),
         .effect = EFFECT_JUNGLE_HEALING,
@@ -19643,9 +19644,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
     [MOVE_TAKE_HEART] =
-    {Mutschub
+    {
         .name = COMPOUND_STRING("Mutschub"),
-        .descriptBenutzerMPOUND_STRING(
+        .description = COMPOUND_STRING(
             "Der Benutzer hebt seine Stimmung, um\n"
             "sich selbst zu heilen und zu stärken."),
         .effect = EFFECT_TAKE_HEART,
@@ -19660,13 +19661,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
         .battleAnimScript = gBattleAnimMove_TakeHeart,
+    },
 
     [MOVE_TERA_BLAST] =
     {
         .name = COMPOUND_STRING("Tera-Ausbruch"),
         .description = COMPOUND_STRING(
-            "If the user's Terastallized,\n"
-            "it hits with its Tera type."),
+            "Wenn der Anwender terakristallisiert ist,\n"
+            "trifft es mit seinem Tera-Typ."),
         .effect = EFFECT_TERA_BLAST,
         .power = 80,
         .type = TYPE_NORMAL,
@@ -19728,7 +19730,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LAST_RESPECTS] =
     {
-        .name = COMPOUND_STRING("Last Respects"),
+        .name = COMPOUND_STRING("Letzte Ehre"),
         .description = COMPOUND_STRING(
             "Dieser Zug verursacht für jeden\n"
             "besiegten Verbündeten mehr Schaden."),
@@ -19769,8 +19771,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Auftischen"),
         .description = COMPOUND_STRING(
-            "Boosts a user's stats\n"
-            "depending on Tatsugiri."),
+            "Erhöht die Werte des Benutzers\n"
+            "je nach Form von Nigiragi."),
         .effect = EFFECT_ORDER_UP,
         .power = 80,
         .type = TYPE_DRAGON,
@@ -19811,10 +19813,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SPICY_EXTRACT] =
     {
-        .name = COMPOUND_STRING("Spicy Extract"),
+        .name = COMPOUND_STRING("Würzextrakt"),
         .description = COMPOUND_STRING(
-            "Sharply ups target's Attack,\n"
-            "harshly lowers its Defense."),
+            "Erhöht stark den Angr. des Ziels,\n"
+            "senkt jedoch stark dessen Vert."),
         .effect = EFFECT_SPICY_EXTRACT,
         .power = 0,
         .type = TYPE_GRASS,
@@ -19853,7 +19855,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_POPULATION_BOMB] =
     {
-        .name = COMPOUND_STRING("Population Bomb"),
+        .name = COMPOUND_STRING("Massenattacke"),
         .description = COMPOUND_STRING(
             "Die Gefährten des Benutzers schlagen\n"
             "ein bis zehn Mal hintereinander zu."),
@@ -20246,15 +20248,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CHILLY_RECEPTION] =
     {
-        .name = COMPOUND_STRING("Chilly Reception"),
+        .name = COMPOUND_STRING("Kühler Empfang"),
         #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         .description = COMPOUND_STRING(
-            "Bad joke summons hailstorm.\n"
-            "The user also switches out."),
+            "Ein schlechter Witz ruft einen Hagelsturm hervor.\n"
+            "Der Benutzer wird ebenfalls ausgewechselt."),
         #else
         .description = COMPOUND_STRING(
             "Schlechter Witz löst Schneesturm aus.\n"
             "Der Benutzer schaltet ebenfalls ab."),
+        #endif
         .effect = EFFECT_CHILLY_RECEPTION,
         .power = 0,
         .type = TYPE_ICE,
@@ -21157,6 +21160,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,    //determined from move type
         .battleAnimScript = gBattleAnimMove_BreakneckBlitz,
     },
+
     [MOVE_ALL_OUT_PUMMELING] =
     {
         .name = COMPOUND_STRING("Fulminanter Faustschlag"),
@@ -21173,6 +21177,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_AllOutPummeling,
     },
+
     [MOVE_SUPERSONIC_SKYSTRIKE] =
     {
         .name = COMPOUND_STRING("Schallende Himmelsattacke"),
@@ -21189,6 +21194,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_SupersonicSkystrike,
     },
+
     [MOVE_ACID_DOWNPOUR] =
     {
         .name = COMPOUND_STRING("Säureregen"),
@@ -21205,6 +21211,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_AcidDownpour,
     },
+
     [MOVE_TECTONIC_RAGE] =
     {
         .name = COMPOUND_STRING("Tektonischer Zorn"),
@@ -21222,6 +21229,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
         .battleAnimScript = gBattleAnimMove_TectonicRage,
     },
+
     [MOVE_CONTINENTAL_CRUSH] =
     {
         .name = COMPOUND_STRING("Kontinentalquetscher"),
@@ -21238,6 +21246,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_ContinentalCrush,
     },
+
     [MOVE_SAVAGE_SPIN_OUT] =
     {
         .name = COMPOUND_STRING("Wilder Fadenschlag"),
@@ -21254,6 +21263,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_SavageSpinOut,
     },
+
     [MOVE_NEVER_ENDING_NIGHTMARE] =
     {
         .name = COMPOUND_STRING("Unendlicher Alptraum"),
@@ -21270,6 +21280,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_NeverEndingNightmare,
     },
+
     [MOVE_CORKSCREW_CRASH] =
     {
         .name = COMPOUND_STRING("Korkenzieher-Crash"),
@@ -21286,6 +21297,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_CorkscrewCrash,
     },
+
     [MOVE_INFERNO_OVERDRIVE] =
     {
         .name = COMPOUND_STRING("Inferno-Overdrive"),
@@ -21302,6 +21314,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_InfernoOverdrive,
     },
+
     [MOVE_HYDRO_VORTEX] =
     {
         .name = COMPOUND_STRING("Hydro-Vortex"),
@@ -21318,6 +21331,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_HydroVortex,
     },
+
     [MOVE_BLOOM_DOOM] =
     {
         .name = COMPOUND_STRING("Blüten-GAU"),
@@ -21334,6 +21348,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_BloomDoom,
     },
+
     [MOVE_GIGAVOLT_HAVOC] =
     {
         .name = COMPOUND_STRING("Gigavolt-Funkensalve"),
@@ -21350,6 +21365,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GigavoltHavoc,
     },
+
     [MOVE_SHATTERED_PSYCHE] =
     {
         .name = COMPOUND_STRING("Psychoschmetterer"),
@@ -21366,6 +21382,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_ShatteredPsyche,
     },
+
     [MOVE_SUBZERO_SLAMMER] =
     {
         .name = COMPOUND_STRING("Subzero-Schmetterer"),
@@ -21382,6 +21399,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_SubzeroSlammer,
     },
+
     [MOVE_DEVASTATING_DRAKE] =
     {
         .name = COMPOUND_STRING("Verheerender Draco"),
@@ -21398,6 +21416,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_DevastatingDrake,
     },
+
     [MOVE_BLACK_HOLE_ECLIPSE] =
     {
         .name = COMPOUND_STRING("Schwarzes Loch Eclipse"),
@@ -21414,6 +21433,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_BlackHoleEclipse,
     },
+
     [MOVE_TWINKLE_TACKLE] =
     {
         .name = COMPOUND_STRING("Funkel-Tackle"),
@@ -21430,6 +21450,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_TwinkleTackle,
     },
+
     [MOVE_CATASTROPIKA] =
     {
         .name = COMPOUND_STRING("Katastropika"),
@@ -21446,6 +21467,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_Catastropika,
     },
+
     [MOVE_10000000_VOLT_THUNDERBOLT] =
     {
         .name = COMPOUND_STRING("10.000.000 Volt Donnerblitz"),
@@ -21463,6 +21485,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .battleAnimScript = gBattleAnimMove_10000000VoltThunderbolt,
     },
+
     [MOVE_STOKED_SPARKSURFER] =
     {
         .name = COMPOUND_STRING("Funkensurfer-Fieber"),
@@ -21483,6 +21506,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
         .battleAnimScript = gBattleAnimMove_StokedSparksurfer,
     },
+
     [MOVE_EXTREME_EVOBOOST] =
     {
         .name = COMPOUND_STRING("Extreme Evoboost"),
@@ -21499,6 +21523,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .battleAnimScript = gBattleAnimMove_ExtremeEvoboost,
     },
+
     [MOVE_PULVERIZING_PANCAKE] =
     {
         .name = COMPOUND_STRING("Wuchtige Pfannkuchenwelle"),
@@ -21515,6 +21540,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_PulverizingPancake,
     },
+
     [MOVE_GENESIS_SUPERNOVA] =
     {
         .name = COMPOUND_STRING("Genesis Supernova"),
@@ -21532,6 +21558,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .argument = { .moveProperty = ARG_SET_PSYCHIC_TERRAIN }, // Set Psychic Terrain. If there's a different field terrain active, overwrite it.
         .battleAnimScript = gBattleAnimMove_GenesisSupernova,
     },
+
     [MOVE_SINISTER_ARROW_RAID] =
     {
         .name = COMPOUND_STRING("Unheilspfeilregen"),
@@ -21548,6 +21575,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_SinisterArrowRaid,
     },
+
     [MOVE_MALICIOUS_MOONSAULT] =
     {
         .name = COMPOUND_STRING("Finsterer Mondault"),
@@ -21564,6 +21592,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_MaliciousMoonsault,
     },
+
     [MOVE_OCEANIC_OPERETTA] =
     {
         .name = COMPOUND_STRING("Ozeanische Operette"),
@@ -21580,6 +21609,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .battleAnimScript = gBattleAnimMove_OceanicOperetta,
     },
+
     [MOVE_SPLINTERED_STORMSHARDS] =
     {
         .name = COMPOUND_STRING("Splittersturm"),
@@ -21597,6 +21627,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .argument = { .moveProperty = ARG_TRY_REMOVE_TERRAIN_HIT },  // Remove the active field terrain if there is one.
         .battleAnimScript = gBattleAnimMove_SplinteredStormshards,
     },
+
     [MOVE_LETS_SNUGGLE_FOREVER] =
     {
         .name = COMPOUND_STRING("Kuschelattacke für immer"),
@@ -21613,6 +21644,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_LetsSnuggleForever,
     },
+
     [MOVE_CLANGOROUS_SOULBLAZE] =
     {
         .name = COMPOUND_STRING("Donnernde Seelenklinge"),
@@ -21636,6 +21668,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
         .battleAnimScript = gBattleAnimMove_ClangorousSoulblaze,
     },
+
     [MOVE_GUARDIAN_OF_ALOLA] =
     {
         .name = COMPOUND_STRING("Schutzpatron von Alola"),
@@ -21652,6 +21685,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .battleAnimScript = gBattleAnimMove_GuardianOfAlola,
     },
+
     [MOVE_SEARING_SUNRAZE_SMASH] =
     {
         .name = COMPOUND_STRING("Glühende Sonnenwalze"),
@@ -21669,6 +21703,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresTargetAbility = TRUE,
         .battleAnimScript = gBattleAnimMove_SearingSunrazeSmash,
     },
+
     [MOVE_MENACING_MOONRAZE_MAELSTROM] =
     {
         .name = COMPOUND_STRING("Bedrohlicher Mondscheiben-Strudel"),
@@ -21686,6 +21721,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresTargetAbility = TRUE,
         .battleAnimScript = gBattleAnimMove_MenacingMoonrazeMaelstrom,
     },
+
     [MOVE_LIGHT_THAT_BURNS_THE_SKY] =
     {
         .name = COMPOUND_STRING("Licht, das den Himmel verbrennt"),
@@ -21703,6 +21739,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresTargetAbility = TRUE,
         .battleAnimScript = gBattleAnimMove_LightThatBurnsTheSky,
     },
+
     [MOVE_SOUL_STEALING_7_STAR_STRIKE] =
     {
         .name = COMPOUND_STRING("Seelenraubender 7-Sterne-Angriff"),
@@ -21719,6 +21756,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_SoulStealing7StarStrike,
     },
+
+    [MOVE_G_MAX_WILDFIRE] =
+    {
+        .name = COMPOUND_STRING("Giga-Dyna-Flammenmeer"),
+        .description = COMPOUND_STRING(
+            "Giga-Dyna-Glurak-Attacke.\n"
+            "Fügt 4 Runden lang Schaden zu."),    //ANIM TODO
         .effect = EFFECT_MAX_MOVE,
         .power = 10,
         .type = TYPE_FIRE,

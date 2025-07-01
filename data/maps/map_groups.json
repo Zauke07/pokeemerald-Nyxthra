@@ -95,7 +95,8 @@
     "Underwater_Route105",
     "Underwater_Route125",
     "SecretPetalburgWoods",
-    "BabyBootCamp"
+    "BabyBootCamp",
+    "Rival_Test"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -325,8 +326,7 @@
     "Route117_PokemonDayCare"
   ],
   "gMapGroup_IndoorRoute121": [
-    "Route121_SafariZoneEntrance",
-    "TestSurf"
+    "Route121_SafariZoneEntrance"
   ],
   "gMapGroup_Dungeons": [
     "MeteorFalls_1F_1R",
@@ -590,8 +590,7 @@
     "NavelRock_Down10",
     "NavelRock_Down11",
     "NavelRock_Bottom",
-    "TrainerHill_Elevator",
-    "TestHhle"
+    "TrainerHill_Elevator"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

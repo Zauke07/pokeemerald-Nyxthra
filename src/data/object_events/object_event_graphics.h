@@ -400,12 +400,56 @@ const u16 gObjectEventPaletteLight2[] = INCBIN_U16("graphics/object_events/palet
 const u16 gObjectEventPal_Substitute[] = INCBIN_U16("graphics/object_events/pics/pokemon_old/substitute.gbapal");
 
 const u16 gObjectEventPaletteEmotes[] = INCBIN_U16("graphics/misc/emotes.gbapal");
+const u16 gObjectEventPaletteNeonLight[] = INCBIN_U16("graphics/object_events/palettes/neon_light.gbapal");
 
 const u32 gObjectEventPic_RedNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/red/walking.4bpp", "graphics/object_events/pics/people/red/running.4bpp");
 const u32 gObjectEventPic_LeafNormalRunning[] = INCBIN_U32("graphics/object_events/pics/people/leaf.4bpp", "graphics/object_events/pics/people/leaf/running.4bpp");
 
-//Firered
+// Firered
 const u16 gObjectEventPic_SnorlaxOld[] = INCBIN_U16("graphics/object_events/pics/pokemon/snorlax.4bpp");
+
+// NEW
+const u16 gObjectEventPal_Wes[] = INCBIN_U16("graphics/object_events/palettes/wes.gbapal");
+const u32 gObjectEventPic_Wes[] = INCBIN_U32("graphics/object_events/pics/people/wes/walking.4bpp");
+const u32 gObjectEventPic_Ash[] = INCBIN_U32("graphics/object_events/pics/people/ash/walking.4bpp");
+const u16 gObjectEventPal_Ash[] = INCBIN_U16("graphics/object_events/palettes/ash.gbapal");
+const u32 gObjectEventPic_AzurillOW[] = INCBIN_U32("graphics/object_events/pics/pokemon_ow/azurill.4bpp");
+const u16 gObjectEventPal_PlayerEthan[] = INCBIN_U16("graphics/object_events/palettes/ethan.gbapal");
+const u16 gObjectEventPal_PlayerLyra[] = INCBIN_U16("graphics/object_events/palettes/lyra.gbapal");
+const u16 gObjectEventPal_PlayerLucas[] = INCBIN_U16("graphics/object_events/palettes/lucas.gbapal");
+const u16 gObjectEventPal_PlayerDawn[] = INCBIN_U16("graphics/object_events/palettes/dawn.gbapal");
+const u16 gObjectEventPal_PlayerHilbert[] = INCBIN_U16("graphics/object_events/palettes/hilbert.gbapal");
+const u16 gObjectEventPal_PlayerHilda[] = INCBIN_U16("graphics/object_events/palettes/hilda.gbapal");
+const u16 gObjectEventPal_PlayerNate[] = INCBIN_U16("graphics/object_events/palettes/nate.gbapal");
+const u16 gObjectEventPal_PlayerRosa[] = INCBIN_U16("graphics/object_events/palettes/rosa.gbapal");
+const u16 gObjectEventPal_PlayerCalem[] = INCBIN_U16("graphics/object_events/palettes/calem.gbapal");
+const u16 gObjectEventPal_PlayerSerena[] = INCBIN_U16("graphics/object_events/palettes/serena.gbapal");
+const u16 gObjectEventPal_PlayerElio[] = INCBIN_U16("graphics/object_events/palettes/elio.gbapal");
+const u16 gObjectEventPal_PlayerSelene[] = INCBIN_U16("graphics/object_events/palettes/selene.gbapal");
+const u16 gObjectEventPal_PlayerVictor[] = INCBIN_U16("graphics/object_events/palettes/victor.gbapal");
+const u16 gObjectEventPal_PlayerGloria[] = INCBIN_U16("graphics/object_events/palettes/gloria.gbapal");
+const u16 gObjectEventPal_PlayerFlorian[] = INCBIN_U16("graphics/object_events/palettes/florian.gbapal");
+const u16 gObjectEventPal_PlayerJuliana[] = INCBIN_U16("graphics/object_events/palettes/juliana.gbapal");
+const u16 gObjectEventPal_Rival_Ethan[] = INCBIN_U16("graphics/object_events/palettes/ethan.gbapal");
+const u16 gObjectEventPal_Rival_Lyra[] = INCBIN_U16("graphics/object_events/palettes/lyra.gbapal");
+const u16 gObjectEventPal_Rival_Lucas[] = INCBIN_U16("graphics/object_events/palettes/lucas.gbapal");
+const u16 gObjectEventPal_Rival_Dawn[] = INCBIN_U16("graphics/object_events/palettes/dawn.gbapal");
+const u16 gObjectEventPal_Rival_Hilbert[] = INCBIN_U16("graphics/object_events/palettes/hilbert.gbapal");
+const u16 gObjectEventPal_Rival_Hilda[] = INCBIN_U16("graphics/object_events/palettes/hilda.gbapal");
+const u16 gObjectEventPal_Rival_Nate[] = INCBIN_U16("graphics/object_events/palettes/nate.gbapal");
+const u16 gObjectEventPal_Rival_Rosa[] = INCBIN_U16("graphics/object_events/palettes/rosa.gbapal");
+const u16 gObjectEventPal_Rival_Calem[] = INCBIN_U16("graphics/object_events/palettes/calem.gbapal");
+const u16 gObjectEventPal_Rival_Serena[] = INCBIN_U16("graphics/object_events/palettes/serena.gbapal");
+const u16 gObjectEventPal_Rival_Elio[] = INCBIN_U16("graphics/object_events/palettes/elio.gbapal");
+const u16 gObjectEventPal_Rival_Selene[] = INCBIN_U16("graphics/object_events/palettes/selene.gbapal");
+const u16 gObjectEventPal_Rival_Victor[] = INCBIN_U16("graphics/object_events/palettes/victor.gbapal");
+const u16 gObjectEventPal_Rival_Gloria[] = INCBIN_U16("graphics/object_events/palettes/gloria.gbapal");
+const u16 gObjectEventPal_Rival_Florian[] = INCBIN_U16("graphics/object_events/palettes/florian.gbapal");
+const u16 gObjectEventPal_Rival_Juliana[] = INCBIN_U16("graphics/object_events/palettes/juliana.gbapal");
+const u16 gObjectEventPal_Rival_Ash[] = INCBIN_U16("graphics/object_events/palettes/ash.gbapal");
+const u16 gObjectEventPal_Rival_Wes[] = INCBIN_U16("graphics/object_events/palettes/wes.gbapal");
+
+
 
 
 // pokeemerald-Rogue
@@ -425,7 +469,7 @@ const u32 gObjectEventPic_RedFieldMove[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_RedFishing[] = INCBIN_U32("graphics/object_events/pics/people/red/fishing.4bpp");
 const u32 gObjectEventPic_RedRiding[] = INCBIN_U32("graphics/object_events/pics/people/red/riding.4bpp");
 const u32 gObjectEventPic_RedUnderwater[] = INCBIN_U32("graphics/object_events/pics/people/red/underwater.4bpp");
-const u16 gObjectEventPic_LeafNormalTest[] = INCBIN_U16("graphics/object_events/pics/people/leaf_normal.4bpp");
+//const u16 gObjectEventPic_LeafNormalTest[] = INCBIN_U16("graphics/object_events/pics/people/leaf_normal.4bpp");
 const u32 gObjectEventPic_LeafNormal[] = INCBIN_U32("graphics/object_events/pics/people/leaf/walking.4bpp");
 const u32 gObjectEventPic_LeafRunning[] = INCBIN_U32("graphics/object_events/pics/people/leaf/running.4bpp");
 const u32 gObjectEventPic_LeafMachBike[] = INCBIN_U32("graphics/object_events/pics/people/leaf/mach_bike.4bpp");

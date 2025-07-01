@@ -493,38 +493,38 @@ static const u8 *ExpandPlaceholder_RivalName(void)
             return gText_ExpandedPlaceholder_Leaf;
         case PLAYER_OUTFIT_LEAF:
             return gText_ExpandedPlaceholder_Red;
-        //        case PLAYER_OUTFIT_ETHAN:
-        //            return gText_ExpandedPlaceholder_Lyra;
-        //        case PLAYER_OUTFIT_LYRA:
-        //            return gText_ExpandedPlaceholder_Ethan;
-        //        case PLAYER_OUTFIT_LUCAS:
-        //            return gText_ExpandedPlaceholder_Dawn;
-        //        case PLAYER_OUTFIT_DAWN:
-        //            return gText_ExpandedPlaceholder_Lucas;
-        //        case PLAYER_OUTFIT_HILBERT:
-        //            return gText_ExpandedPlaceholder_Hilda;
-        //        case PLAYER_OUTFIT_HILDA:
-        //            return gText_ExpandedPlaceholder_Hilbert;
-        //        case PLAYER_OUTFIT_NATE:
-        //            return gText_ExpandedPlaceholder_Rosa;
-        //        case PLAYER_OUTFIT_ROSA:
-        //            return gText_ExpandedPlaceholder_Nate;
-        //        case PLAYER_OUTFIT_CALEM:
-        //            return gText_ExpandedPlaceholder_Serena;
-        //        case PLAYER_OUTFIT_SERENA:
-        //            return gText_ExpandedPlaceholder_Calem;
-        //        case PLAYER_OUTFIT_ELIO:
-        //            return gText_ExpandedPlaceholder_Selene;
-        //        case PLAYER_OUTFIT_SELENE:
-        //            return gText_ExpandedPlaceholder_Elio;
-        //        case PLAYER_OUTFIT_VICTOR:
-        //            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
-        //        case PLAYER_OUTFIT_GLORIA:
-        //            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
-        //        case PLAYER_OUTFIT_FLORIAN:
-        //            return gText_ExpandedPlaceholder_Juliana;
-        //        case PLAYER_OUTFIT_JULIANA:
-        //            return gText_ExpandedPlaceholder_Florian;
+        case PLAYER_OUTFIT_ETHAN:
+            return gText_ExpandedPlaceholder_Lyra;
+        case PLAYER_OUTFIT_LYRA:
+            return gText_ExpandedPlaceholder_Ethan;
+        case PLAYER_OUTFIT_LUCAS:
+            return gText_ExpandedPlaceholder_Dawn;
+        case PLAYER_OUTFIT_DAWN:
+            return gText_ExpandedPlaceholder_Lucas;
+        case PLAYER_OUTFIT_HILBERT:
+            return gText_ExpandedPlaceholder_Hilda;
+        case PLAYER_OUTFIT_HILDA:
+            return gText_ExpandedPlaceholder_Hilbert;
+        case PLAYER_OUTFIT_NATE:
+            return gText_ExpandedPlaceholder_Rosa;
+        case PLAYER_OUTFIT_ROSA:
+            return gText_ExpandedPlaceholder_Nate;
+        case PLAYER_OUTFIT_CALEM:
+            return gText_ExpandedPlaceholder_Serena;
+        case PLAYER_OUTFIT_SERENA:
+            return gText_ExpandedPlaceholder_Calem;
+        case PLAYER_OUTFIT_ELIO:
+            return gText_ExpandedPlaceholder_Selene;
+        case PLAYER_OUTFIT_SELENE:
+            return gText_ExpandedPlaceholder_Elio;
+        case PLAYER_OUTFIT_VICTOR:
+            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+        case PLAYER_OUTFIT_GLORIA:
+            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+        case PLAYER_OUTFIT_FLORIAN:
+            return gText_ExpandedPlaceholder_Juliana;
+        case PLAYER_OUTFIT_JULIANA:
+            return gText_ExpandedPlaceholder_Florian;
         default:
             return gText_ExpandedPlaceholder_Rival; // Fallback für unbestimmte Rivalen
     }

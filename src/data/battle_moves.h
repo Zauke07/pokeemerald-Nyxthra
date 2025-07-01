@@ -14724,6 +14724,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,    //determined from move type
         .zMoveEffect = 0,
     },
+
     [MOVE_ALL_OUT_PUMMELING] =
     {
         .effect = EFFECT_HIT,
@@ -14737,6 +14738,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SUPERSONIC_SKYSTRIKE] =
     {
         .effect = EFFECT_HIT,
@@ -14750,6 +14752,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_ACID_DOWNPOUR] =
     {
         .effect = EFFECT_HIT,
@@ -14763,6 +14766,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_TECTONIC_RAGE] =
     {
         .effect = EFFECT_HIT,
@@ -14777,6 +14781,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = 0,
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
     },
+
     [MOVE_CONTINENTAL_CRUSH] =
     {
         .effect = EFFECT_HIT,
@@ -14790,6 +14795,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SAVAGE_SPIN_OUT] =
     {
         .effect = EFFECT_HIT,
@@ -14803,6 +14809,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_NEVER_ENDING_NIGHTMARE] =
     {
         .effect = EFFECT_HIT,
@@ -14816,6 +14823,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_CORKSCREW_CRASH] =
     {
         .effect = EFFECT_HIT,
@@ -14829,6 +14837,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_INFERNO_OVERDRIVE] =
     {
         .effect = EFFECT_HIT,
@@ -14842,6 +14851,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_HYDRO_VORTEX] =
     {
         .effect = EFFECT_HIT,
@@ -14855,6 +14865,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_BLOOM_DOOM] =
     {
         .effect = EFFECT_HIT,
@@ -14868,6 +14879,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_GIGAVOLT_HAVOC] =
     {
         .effect = EFFECT_HIT,
@@ -14881,6 +14893,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SHATTERED_PSYCHE] =
     {
         .effect = EFFECT_HIT,
@@ -14894,6 +14907,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SUBZERO_SLAMMER] =
     {
         .effect = EFFECT_HIT,
@@ -14907,6 +14921,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_DEVASTATING_DRAKE] =
     {
         .effect = EFFECT_HIT,
@@ -14920,6 +14935,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_BLACK_HOLE_ECLIPSE] =
     {
         .effect = EFFECT_HIT,
@@ -14933,6 +14949,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_TWINKLE_TACKLE] =
     {
         .effect = EFFECT_HIT,
@@ -14946,6 +14963,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_CATASTROPIKA] =
     {
         .effect = EFFECT_HIT,
@@ -14959,6 +14977,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_10000000_VOLT_THUNDERBOLT] =
     {
         .effect = EFFECT_HIT,
@@ -14973,6 +14992,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = 0,
         .highCritRatio = TRUE,
     },
+
     [MOVE_STOKED_SPARKSURFER] =
     {
         .effect = EFFECT_PARALYZE_HIT,
@@ -14986,6 +15006,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_EXTREME_EVOBOOST] =
     {
         .effect = EFFECT_EXTREME_EVOBOOST,
@@ -14999,6 +15020,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_STATUS,
         .zMoveEffect = 0,
     },
+
     [MOVE_PULVERIZING_PANCAKE] =
     {
         .effect = EFFECT_HIT,
@@ -15012,6 +15034,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_GENESIS_SUPERNOVA] =
     {
         .effect = EFFECT_HIT_SET_REMOVE_TERRAIN,
@@ -15026,6 +15049,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .argument = ARG_SET_PSYCHIC_TERRAIN, // Set Psychic Terrain. If there's a different field terrain active, overwrite it.
         .zMoveEffect = 0,
     },
+
     [MOVE_SINISTER_ARROW_RAID] =
     {
         .effect = EFFECT_HIT,
@@ -15039,6 +15063,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_MALICIOUS_MOONSAULT] =
     {
         .effect = EFFECT_HIT,
@@ -15052,6 +15077,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_OCEANIC_OPERETTA] =
     {
         .effect = EFFECT_HIT,
@@ -15065,6 +15091,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SPLINTERED_STORMSHARDS] =
     {
         .effect = EFFECT_HIT_SET_REMOVE_TERRAIN,
@@ -15079,6 +15106,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .argument = ARG_TRY_REMOVE_TERRAIN_HIT,  // Remove the active field terrain if there is one.
         .zMoveEffect = 0,
     },
+
     [MOVE_LETS_SNUGGLE_FOREVER] =
     {
         .effect = EFFECT_HIT,
@@ -15107,6 +15135,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .soundMove = TRUE,
         .ignoresSubstitute = B_UPDATED_MOVE_FLAGS >= GEN_6,
     },
+
     [MOVE_GUARDIAN_OF_ALOLA] =
     {
         .effect = EFFECT_SUPER_FANG,
@@ -15120,6 +15149,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SEARING_SUNRAZE_SMASH] =
     {
         .effect = EFFECT_HIT,
@@ -15133,6 +15163,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_MENACING_MOONRAZE_MAELSTROM] =
     {
         .effect = EFFECT_HIT,
@@ -15146,6 +15177,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_LIGHT_THAT_BURNS_THE_SKY] =
     {
         .effect = EFFECT_HIT,
@@ -15159,6 +15191,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = 0,
     },
+
     [MOVE_SOUL_STEALING_7_STAR_STRIKE] =
     {
         .effect = EFFECT_HIT,

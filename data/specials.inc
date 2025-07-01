@@ -571,6 +571,9 @@ gSpecials::
 	def_special ShowTestPasswordMenu
 	def_special ShowStarterRegionMenu
 	def_special ShowStarterRegionMulti
+    def_special WarpToTestlaborAfterStyleSelect
+    def_special StartTestlaborStyleSelection
+    def_special StartCharacterStyleSelection
 
 
 

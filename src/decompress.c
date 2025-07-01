@@ -310,3 +310,14 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     Free(buffer);
     return FALSE;
 }
+/*
+void LoadSpritePaletteOverrideBuffer(const struct SpritePalette *src, void *buffer)
+{
+    struct SpritePalette dest;
+
+    LZ77UnCompWram(src->data, buffer);
+    dest.data = buffer;
+    dest.tag = src->tag;
+    LoadSpritePalette(&dest);
+}
+*/

@@ -44,14 +44,6 @@ enum
     TD_PREVIOUS_MENUSELECTION,
 };
 
-// Task data
-enum
-{
-    TD_MENUSELECTION,
-    TD_SUBMENU,
-    TD_PREVIOUS_MENUSELECTION,
-};
-
 // Menu items
 enum
 {

@@ -33,9 +33,8 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "option_menu.h"
 
-#include "rogue_controller.h"
-#include "rogue_player_customisation.h"
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -200,8 +199,8 @@ u16 GetPlayerAvatarGraphicsIdByStateIdAndStyle(u8 stateId, u8 style)
         {OBJ_EVENT_GFX_DAWN, OBJ_EVENT_GFX_DAWN_RIDING, OBJ_EVENT_GFX_DAWN_SURFING, OBJ_EVENT_GFX_DAWN_FIELD_MOVE},
         {OBJ_EVENT_GFX_HILBERT, OBJ_EVENT_GFX_HILBERT_RIDING, OBJ_EVENT_GFX_HILBERT_SURFING, OBJ_EVENT_GFX_HILBERT_FIELD_MOVE},
         {OBJ_EVENT_GFX_HILDA, OBJ_EVENT_GFX_HILDA_RIDING, OBJ_EVENT_GFX_HILDA_SURFING, OBJ_EVENT_GFX_HILDA_FIELD_MOVE},
-        {OBJ_EVENT_GFX_NATE},
-        {OBJ_EVENT_GFX_ROSA},
+        {OBJ_EVENT_GFX_NATE, OBJ_EVENT_GFX_NATE_RIDING, OBJ_EVENT_GFX_NATE_SURFING, OBJ_EVENT_GFX_NATE_FIELD_MOVE},
+        {OBJ_EVENT_GFX_ROSA, OBJ_EVENT_GFX_ROSA_RIDING, OBJ_EVENT_GFX_ROSA_SURFING, OBJ_EVENT_GFX_ROSA_FIELD_MOVE},
         {OBJ_EVENT_GFX_CALEM, OBJ_EVENT_GFX_CALEM_RIDING, OBJ_EVENT_GFX_CALEM_SURFING, OBJ_EVENT_GFX_CALEM_FIELD_MOVE},
         {OBJ_EVENT_GFX_SERENA, OBJ_EVENT_GFX_SERENA_RIDING, OBJ_EVENT_GFX_SERENA_SURFING, OBJ_EVENT_GFX_SERENA_FIELD_MOVE},
         {OBJ_EVENT_GFX_ELIO, OBJ_EVENT_GFX_ELIO_RIDING, OBJ_EVENT_GFX_ELIO_SURFING, OBJ_EVENT_GFX_ELIO_FIELD_MOVE},
@@ -1526,7 +1525,7 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
     return sRivalAvatarGfxIds[state][gender];
 }
 
-static u16 GetPlayerGraphicsIdByState(u8 state)
+u16 GetPlayerGraphicsIdByState(u8 state)
 {
     switch (state)
     {
@@ -1544,7 +1543,7 @@ static u16 GetPlayerGraphicsIdByState(u8 state)
     return OBJ_EVENT_GFX_PLAYER_NORMAL;
 }
 
-static u8 GetPlayerStateByGraphicsId(u16 gfxId)
+u8 GetPlayerStateByGraphicsId(u16 gfxId)
 {
     switch (gfxId)
     {
@@ -1883,6 +1882,168 @@ u16 GetPlayerAvatarGraphicsIdByStyleAndState(u8 style, u8 flags)
             return OBJ_EVENT_GFX_LEAF_UNDERWATER;
         return OBJ_EVENT_GFX_LEAF;
 
+    case STYLE_ETHAN:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_ETHAN_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_ETHAN_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_ETHAN;
+
+    case STYLE_LYRA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_LYRA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_LYRA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_LYRA;
+
+    case STYLE_LUCAS:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_LUCAS_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_LUCAS_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_LUCAS;
+
+    case STYLE_DAWN:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_DAWN_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_DAWN_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_DAWN;
+
+    case STYLE_HILBERT:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_HILBERT_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_HILBERT_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_HILBERT;
+
+    case STYLE_HILDA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_HILDA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_HILDA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_HILDA;
+
+    case STYLE_NATE:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_NATE_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_NATE_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_NATE;
+
+    case STYLE_ROSA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_ROSA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_ROSA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_ROSA;
+
+    case STYLE_CALEM:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_CALEM_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_CALEM_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_CALEM;
+
+    case STYLE_SERENA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_SERENA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_SERENA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_SERENA;
+
+    case STYLE_ELIO:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_ELIO_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_ELIO_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_ELIO;
+
+    case STYLE_SELENE:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_SELENE_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_SELENE_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_SELENE;
+
+    case STYLE_VICTOR:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_VICTOR_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_VICTOR_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_VICTOR;
+
+    case STYLE_GLORIA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_GLORIA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_GLORIA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_GLORIA;
+
+    case STYLE_FLORIAN:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_FLORIAN_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_FLORIAN_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+        return OBJ_EVENT_GFX_FLORIAN;
+
+    case STYLE_JULIANA:
+        if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+            return OBJ_EVENT_GFX_JULIANA_MACH_BIKE;
+        if (flags & PLAYER_AVATAR_FLAG_SURFING)
+            return OBJ_EVENT_GFX_JULIANA_SURFING;
+        if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            return OBJ_EVENT_GFX_MAY_UNDERWATER;
+        return OBJ_EVENT_GFX_JULIANA;
+
+    // case STYLE_ASH:
+    //     if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+    //         return OBJ_EVENT_GFX_BRENDAN_MACH_BIKE;
+    //     if (flags & PLAYER_AVATAR_FLAG_SURFING)
+    //         return OBJ_EVENT_GFX_BRENDAN_SURFING;
+    //     if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+    //         return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+    //     return OBJ_EVENT_GFX_ASH;
+
+    // case STYLE_WES:
+    //     if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+    //         return OBJ_EVENT_GFX_BRENDAN_MACH_BIKE;
+    //     if (flags & PLAYER_AVATAR_FLAG_SURFING)
+    //         return OBJ_EVENT_GFX_BRENDAN_SURFING;
+    //     if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+    //         return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
+    //     return OBJ_EVENT_GFX_WES;
+
     default:
         return OBJ_EVENT_GFX_BRENDAN_NORMAL;
     }
@@ -1901,10 +2062,10 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 playerStyle)
     struct ObjectEventTemplate playerObjEventTemplate;
     u8 objectEventId;
     struct ObjectEvent *objectEvent;
-    u16 initialGfxId;
+    //u16 initialGfxId; -- alte Variable, vielleicht wird sie noch gebraucht
 
     // Setze vorläufigen Grafik-Sprite
-    initialGfxId = GetPlayerAvatarGraphicsIdByStyleAndState(playerStyle, PLAYER_AVATAR_FLAG_ON_FOOT);
+    //initialGfxId = GetPlayerAvatarGraphicsIdByStyleAndState(playerStyle, PLAYER_AVATAR_FLAG_ON_FOOT);
 
     playerObjEventTemplate.localId = OBJ_EVENT_ID_PLAYER;
     playerObjEventTemplate.graphicsId = GetPlayerAvatarGraphicsIdByStateIdAndStyle(PLAYER_AVATAR_STATE_NORMAL, playerStyle);
@@ -3058,27 +3219,84 @@ u8 SpawnRivalObjectEventForStyle(u8 style, u8 localId, s16 x, s16 y, u8 directio
     u16 graphicsId;
     u8 movementType;
 
+    // Setze graphicsId immer auf den Rivalen des gewählten Styles
     switch (style)
     {
     case STYLE_BRENDAN:
         graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
         break;
-    case STYLE_RED:
-        graphicsId = OBJ_EVENT_GFX_RIVAL_LEAF;
-        break;
     case STYLE_MAY:
         graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
+        break;
+    case STYLE_RED:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_LEAF;
         break;
     case STYLE_LEAF:
         graphicsId = OBJ_EVENT_GFX_RIVAL_RED;
         break;
+    case STYLE_ETHAN:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_LYRA;
+        break;
+    case STYLE_LYRA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_ETHAN;
+        break;
+    case STYLE_LUCAS:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_DAWN;
+        break;
+    case STYLE_DAWN:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_LUCAS;
+        break;
+    case STYLE_HILBERT:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_HILDA;
+        break;
+    case STYLE_HILDA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
+        break;
+    case STYLE_NATE:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
+        break;
+    case STYLE_ROSA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_NATE;
+        break;
+    case STYLE_CALEM:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_SERENA;
+        break;
+    case STYLE_SERENA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_CALEM;
+        break;
+    case STYLE_ELIO:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_SELENE;
+        break;
+    case STYLE_SELENE:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_ELIO;
+        break;
+    case STYLE_VICTOR:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_GLORIA;
+        break;
+    case STYLE_GLORIA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_VICTOR;
+        break;
+    case STYLE_FLORIAN:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_JULIANA;
+        break;
+    case STYLE_JULIANA:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
+        break;
+/*
+    case STYLE_ASH:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_WES;
+        break;
+    case STYLE_WES:
+        graphicsId = OBJ_EVENT_GFX_RIVAL_ASH;
+        break;
+*/
     default:
         graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
         break;
     }
 
     movementType = MOVEMENT_TYPE_FACE_DOWN;
-    return SpawnSpecialObjectEventParameterized(graphicsId, movementType, localId, x, y, 0);
+    return SpawnSpecialObjectEventParameterized(graphicsId, movementType, localId, x, y, direction);
 }
 
 /*

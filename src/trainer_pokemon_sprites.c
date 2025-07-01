@@ -354,6 +354,22 @@ static const u16 sPlayerStyleToTrainerPicId[] = {
     [STYLE_MAY]     = TRAINER_PIC_MAY,
     [STYLE_RED]     = TRAINER_PIC_RED,
     [STYLE_LEAF]    = TRAINER_PIC_LEAF,
+    [STYLE_LUCAS]   = TRAINER_PIC_LUCAS,
+    [STYLE_DAWN]    = TRAINER_PIC_DAWN,
+    [STYLE_HILBERT] = TRAINER_PIC_HILBERT,
+    [STYLE_HILDA]   = TRAINER_PIC_HILDA,
+    [STYLE_NATE]    = TRAINER_PIC_NATE,
+    [STYLE_ROSA]    = TRAINER_PIC_ROSA,
+    [STYLE_CALEM]   = TRAINER_PIC_CALEM,
+    [STYLE_SERENA]  = TRAINER_PIC_SERENA,
+    [STYLE_ELIO]    = TRAINER_PIC_ELIO,
+    [STYLE_SELENE]  = TRAINER_PIC_SELENE,
+    [STYLE_VICTOR]   = TRAINER_PIC_VICTOR,
+    [STYLE_GLORIA]  = TRAINER_PIC_GLORIA,
+    [STYLE_FLORIAN] = TRAINER_PIC_FLORIAN,
+    [STYLE_JULIANA] = TRAINER_PIC_JULIANA,
+//    [STYLE_WES]     = TRAINER_PIC_WES,
+//    [STYLE_ASH]     = TRAINER_PIC_ASH,
     // weitere Styles hier ergänzen...
 };
 
@@ -369,6 +385,40 @@ u16 PlayerStyleToFrontTrainerPicId(u8 style, bool8 getClass)
         return getClass ? FACILITY_CLASS_RED : TRAINER_PIC_RED;
     case STYLE_LEAF:
         return getClass ? FACILITY_CLASS_LEAF : TRAINER_PIC_LEAF;
+    case STYLE_LUCAS:
+        return getClass ? FACILITY_CLASS_LUCAS : TRAINER_PIC_LUCAS;
+    case STYLE_DAWN:
+        return getClass ? FACILITY_CLASS_DAWN : TRAINER_PIC_DAWN;
+    case STYLE_HILBERT:
+        return getClass ? FACILITY_CLASS_HILBERT : TRAINER_PIC_HILBERT;
+    case STYLE_HILDA:
+        return getClass ? FACILITY_CLASS_HILDA : TRAINER_PIC_HILDA;
+    case STYLE_NATE:
+        return getClass ? FACILITY_CLASS_NATE : TRAINER_PIC_NATE;
+    case STYLE_ROSA:
+        return getClass ? FACILITY_CLASS_ROSA : TRAINER_PIC_ROSA;
+    case STYLE_CALEM:
+        return getClass ? FACILITY_CLASS_CALEM : TRAINER_PIC_CALEM;
+    case STYLE_SERENA:
+        return getClass ? FACILITY_CLASS_SERENA : TRAINER_PIC_SERENA;
+    case STYLE_ELIO:
+        return getClass ? FACILITY_CLASS_ELIO : TRAINER_PIC_ELIO;
+    case STYLE_SELENE:
+        return getClass ? FACILITY_CLASS_SELENE : TRAINER_PIC_SELENE;
+    case STYLE_VICTOR:
+        return getClass ? FACILITY_CLASS_VICTOR : TRAINER_PIC_VICTOR;
+    case STYLE_GLORIA:
+        return getClass ? FACILITY_CLASS_GLORIA : TRAINER_PIC_GLORIA;
+    case STYLE_FLORIAN:
+        return getClass ? FACILITY_CLASS_FLORIAN : TRAINER_PIC_FLORIAN;
+    case STYLE_JULIANA:
+        return getClass ? FACILITY_CLASS_JULIANA : TRAINER_PIC_JULIANA;
+/*
+    case STYLE_WES:
+        return getClass ? FACILITY_CLASS_WES : TRAINER_PIC_WES;
+    case STYLE_ASH:
+        return getClass ? FACILITY_CLASS_ASH : TRAINER_PIC_ASH;
+*/
     // weitere Styles später hier ergänzen
     default:
         return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_BRENDAN;

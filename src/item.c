@@ -94,7 +94,7 @@ const u8 sText_s[] =_("s");
 u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
     if (quantity == 1)
-        return StringCopy(dst, ItemId_GetName(itemId));
+        return StringCopy(dst, GetItemName(itemId));
 
     switch (itemId)
     {
@@ -153,9 +153,9 @@ u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
     }
 
     if (DoesItemHavePluralName(itemId))
-        return StringCopy(dst, ItemId_GetPluralName(itemId));
+        return StringCopy(dst, GetItemPluralName(itemId));
 
-    u8 *end = StringCopy(dst, ItemId_GetName(itemId));
+    u8 *end = StringCopy(dst, GetItemName(itemId));
     return StringCopy(end, sText_s);
 }
 

@@ -2,7 +2,7 @@
 #define GUARD_SPRITE_H
 
 #define OAM_MATRIX_COUNT 32
-#define MAX_SPRITES 128
+#define MAX_SPRITES 64
 #define SPRITE_NONE 0xFF
 #define TAG_NONE 0xFFFF
 
@@ -50,9 +50,6 @@ struct AnimFrameCmd
     u32 duration:6;
     u32 hFlip:1;
     u32 vFlip:1;
-    u32 enableOffset:1;
-    u32 xOffset:3;
-    u32 yOffset:3;
 };
 
 struct AnimLoopCmd

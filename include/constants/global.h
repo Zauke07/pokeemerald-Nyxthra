@@ -137,46 +137,26 @@
 #define STYLE_MAY           1
 #define STYLE_RED           2
 #define STYLE_LEAF          3
-#define PLAYER_STYLE_COUNT 4
-// später nach und nach folgende hinzufügen nach #define STYLE_LEAF:
-// #define STYLE_ETHAN         4
-// #define STYLE_LYRA          5
-// #define STYLE_LUCAS         6
-// #define STYLE_DAWN          7
-// #define STYLE_HILBERT       8
-// #define STYLE_HILDA         9
-// #define STYLE_NATE         10
-// #define STYLE_ROSA         11
-// #define STYLE_CALEM       12
-// #define STYLE_SERENA       13
-// #define STYLE_ELIO         14
-// #define STYLE_SELENE       15
-// #define STYLE_VICTOR       16
-// #define STYLE_GLORIA       17
-// #define STYLE_FLORIAN      18
-// #define STYLE_JULIANA      19
+#define STYLE_ETHAN         4
+#define STYLE_LYRA          5
+#define STYLE_LUCAS         6
+#define STYLE_DAWN          7
+#define STYLE_HILBERT       8
+#define STYLE_HILDA         9
+#define STYLE_NATE         10
+#define STYLE_ROSA         11
+#define STYLE_CALEM        12
+#define STYLE_SERENA       13
+#define STYLE_ELIO         14
+#define STYLE_SELENE       15
+#define STYLE_VICTOR       16
+#define STYLE_GLORIA       17
+#define STYLE_FLORIAN      18
+#define STYLE_JULIANA      19
+#define PLAYER_STYLE_COUNT 20
 #define NUM_PLAYER_CHARACTERS PLAYER_STYLE_COUNT
 #define NUM_PLAYER_STYLES PLAYER_STYLE_COUNT
 
-
-
-// später nach und nach folgende hinzufügen nach PLAYER_OUTFIT_MAY: 
-    // PLAYER_OUTFIT_ETHAN,
-    // PLAYER_OUTFIT_LYRA,
-    // PLAYER_OUTFIT_LUCAS,
-    // PLAYER_OUTFIT_DAWN,
-    // PLAYER_OUTFIT_HILBERT,
-    // PLAYER_OUTFIT_HILDA,
-    // PLAYER_OUTFIT_NATE,
-    // PLAYER_OUTFIT_ROSA,
-    // PLAYER_OUTFIT_CALEM,
-    // PLAYER_OUTFIT_SERENA,
-    // PLAYER_OUTFIT_ELIO,
-    // PLAYER_OUTFIT_SELENE,
-    // PLAYER_OUTFIT_VICTOR,
-    // PLAYER_OUTFIT_GLORIA,
-    // PLAYER_OUTFIT_FLORIAN,
-    // PLAYER_OUTFIT_JULIANA,
 
 enum 
 {
@@ -184,6 +164,22 @@ enum
     PLAYER_OUTFIT_MAY,
     PLAYER_OUTFIT_RED,
     PLAYER_OUTFIT_LEAF,
+    PLAYER_OUTFIT_ETHAN,
+    PLAYER_OUTFIT_LYRA,
+    PLAYER_OUTFIT_LUCAS,
+    PLAYER_OUTFIT_DAWN,
+    PLAYER_OUTFIT_HILBERT,
+    PLAYER_OUTFIT_HILDA,
+    PLAYER_OUTFIT_NATE,
+    PLAYER_OUTFIT_ROSA,
+    PLAYER_OUTFIT_CALEM,
+    PLAYER_OUTFIT_SERENA,
+    PLAYER_OUTFIT_ELIO,
+    PLAYER_OUTFIT_SELENE,
+    PLAYER_OUTFIT_VICTOR,
+    PLAYER_OUTFIT_GLORIA,
+    PLAYER_OUTFIT_FLORIAN,
+    PLAYER_OUTFIT_JULIANA,
     PLAYER_OUTFIT_ROCKET_GRUNT_F,
     PLAYER_OUTFIT_ROCKET_GRUNT_M,
     PLAYER_OUTFIT_ROCKET_ADMIN_F, // placeholders

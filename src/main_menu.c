@@ -40,9 +40,12 @@
 #include "mystery_gift_menu.h"
 #include "field_player_avatar.h"
 #include "event_object_movement.h"
+#include "menu_helpers.h"
+#include "constants/maps.h"
 
 
-#include "mgba.h"
+
+//#include "mgba.h"
 
 /*
 #include "rogue.h"
@@ -178,6 +181,11 @@
 
 #define OPTION_MENU_FLAG (1 << 15)
 
+#define STYLE_MENU_WINDOW_ID 1
+#define STYLE_MENU_WIDTH 18
+#define STYLE_MENU_HEIGHT 8     // 6 Einträge + Rahmen oben/unten
+#define STYLE_MENU_MAX_SHOWN 6
+
 // Static type declarations
 
 // Static RAM declarations
@@ -186,6 +194,9 @@ static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
 
 static u8 sBirchSpeechMainTaskId;
+
+//static u8 sStyleMenuWindowId;
+static u8 sStyleMenuTaskId;
 
 // Static ROM declarations
 
@@ -204,8 +215,6 @@ static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
-static void FreeTrainerSprites(u8);
-static void CreateTrainerSprites(u8, bool8);
 void AddBirchSpeechObjects(u8);
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
@@ -233,7 +242,7 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8);
 static void NewGameBirchSpeech_ShowGenderMenu(void);
 //static void NewGameBirchSpeech_ShowStyle3Menu(void);
 //static void NewGameBirchSpeech_ShowStyle4Menu(void);
-static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void);
+//static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void);
 static void NewGameBirchSpeech_ClearGenderWindow(u8, u8);
 void Task_NewGameBirchSpeech_WhatsYourName(u8);
 //static void Task_NewGameBirchSpeech_ConfirmAvatarStyle(u8 taskId);
@@ -419,22 +428,24 @@ static const u16 sPlayerStyleToFacilityClass[] =
     [STYLE_MAY]      = FACILITY_CLASS_MAY,
     [STYLE_RED]      = FACILITY_CLASS_RED,
     [STYLE_LEAF]     = FACILITY_CLASS_LEAF,
-    //[STYLE_ETHAN]    = FACILITY_CLASS_ETHAN,
-    //[STYLE_LYRA]     = FACILITY_CLASS_LYRA,
-    //[STYLE_LUCAS]    = FACILITY_CLASS_LUCAS,
-    //[STYLE_DAWN]     = FACILITY_CLASS_DAWN,
-    //[STYLE_HILBERT]  = FACILITY_CLASS_HILBERT,
-    //[STYLE_HILDA]    = FACILITY_CLASS_HILDA,
-    //[STYLE_NATE]     = FACILITY_CLASS_NATE,
-    //[STYLE_ROSA]     = FACILITY_CLASS_ROSA,
-    //[STYLE_CALEM]    = FACILITY_CLASS_CALEM,
-    //[STYLE_SERENA]   = FACILITY_CLASS_SERENA,
-    //[STYLE_ELIO]     = FACILITY_CLASS_ELIO,
-    //[STYLE_SELENE]   = FACILITY_CLASS_SELENE,
-    //[STYLE_VICTOR]   = FACILITY_CLASS_VICTOR,
-    //[STYLE_GLORIA]   = FACILITY_CLASS_GLORIA,
-    //[STYLE_FLORIAN]  = FACILITY_CLASS_FLORIAN,
-    //[STYLE_JULIANA]  = FACILITY_CLASS_JULIANA,
+    [STYLE_ETHAN]    = FACILITY_CLASS_ETHAN,
+    [STYLE_LYRA]     = FACILITY_CLASS_LYRA,
+    [STYLE_LUCAS]    = FACILITY_CLASS_LUCAS,
+    [STYLE_DAWN]     = FACILITY_CLASS_DAWN,
+    [STYLE_HILBERT]  = FACILITY_CLASS_HILBERT,
+    [STYLE_HILDA]    = FACILITY_CLASS_HILDA,
+    [STYLE_NATE]     = FACILITY_CLASS_NATE,
+    [STYLE_ROSA]     = FACILITY_CLASS_ROSA,
+    [STYLE_CALEM]    = FACILITY_CLASS_CALEM,
+    [STYLE_SERENA]   = FACILITY_CLASS_SERENA,
+    [STYLE_ELIO]     = FACILITY_CLASS_ELIO,
+    [STYLE_SELENE]   = FACILITY_CLASS_SELENE,
+    [STYLE_VICTOR]   = FACILITY_CLASS_VICTOR,
+    [STYLE_GLORIA]   = FACILITY_CLASS_GLORIA,
+    [STYLE_FLORIAN]  = FACILITY_CLASS_FLORIAN,
+    [STYLE_JULIANA]  = FACILITY_CLASS_JULIANA,
+//    [STYLE_ASH]      = FACILITY_CLASS_ASH,
+//    [STYLE_WES]      = FACILITY_CLASS_WES,
 };
 
 u16 PlayerStyleToFacilityClass(u8 style)
@@ -461,7 +472,7 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
         .tilemapLeft = 3,
         .tilemapTop = 1,
         .width = 8,
-        .height = 8,
+        .height = 12,
         .paletteNum = 15,
         .baseBlock = 0x6D
     },
@@ -484,7 +495,7 @@ static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR
 static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_Version[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
 
-static const struct BgTemplate sMainMenuBgTemplates[] = {
+const struct BgTemplate sMainMenuBgTemplates[] = {
     {
         .bg = 0,
         .charBaseIndex = 2,
@@ -505,7 +516,7 @@ static const struct BgTemplate sMainMenuBgTemplates[] = {
     }
 };
 
-static const struct BgTemplate sBirchBgTemplate = {
+const struct BgTemplate sBirchBgTemplate = {
     .bg = 0,
     .charBaseIndex = 3,
     .mapBaseIndex = 30,
@@ -527,27 +538,29 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
     sSpriteAffineAnim_PlayerShrink
 };
 
-static const struct MenuAction sMenuActions_Gender[] = {
-    {COMPOUND_STRING("Hans"), {NULL}},
-    {COMPOUND_STRING("Brigitte"), {NULL}},
-    {COMPOUND_STRING("Red"), {NULL}},
-    {COMPOUND_STRING("Leaf"), {NULL}},
-    //{COMPOUND_STRING("Ethan"), {NULL}},
-    //{COMPOUND_STRING("Lyra"), {NULL}},
-    //{COMPOUND_STRING("Lukas"), {NULL}},
-    //{COMPOUND_STRING("Lucia"), {NULL}},
-    //{COMPOUND_STRING("Warren"), {NULL}},
-    //{COMPOUND_STRING("Lotta"), {NULL}},
-    //{COMPOUND_STRING("Nate"), {NULL}},
-    //{COMPOUND_STRING("Rosy"), {NULL}},
-    //{COMPOUND_STRING("Kalem"), {NULL}},
-    //{COMPOUND_STRING("Serena"), {NULL}},
-    //{COMPOUND_STRING("Elio"), {NULL}},
-    //{COMPOUND_STRING("Selene"), {NULL}},
-    //{COMPOUND_STRING("Victor"), {NULL}},
-    //{COMPOUND_STRING("Gloria"), {NULL}},
-    //{COMPOUND_STRING("Florian"), {NULL}},
-    //{COMPOUND_STRING("Juliana"), {NULL}},
+const struct ListMenuItem sBirchStyleList[] = {
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Hans"), STYLE_BRENDAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Brigitte"), STYLE_MAY},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Red"), STYLE_RED},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Leaf"), STYLE_LEAF},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Ethan"), STYLE_ETHAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lyra"), STYLE_LYRA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Lukas"), STYLE_LUCAS},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lucia"), STYLE_DAWN},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Warren"), STYLE_HILBERT},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lotta"), STYLE_HILDA},
+    {COMPOUND_STRING("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Nate"), STYLE_NATE},
+    {COMPOUND_STRING("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}Rosy"), STYLE_ROSA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Kalem"), STYLE_CALEM},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Serena"), STYLE_SERENA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Elio"), STYLE_ELIO},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Selene"), STYLE_SELENE},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Victor"), STYLE_VICTOR},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Gloria"), STYLE_GLORIA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Florian"), STYLE_FLORIAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Juliana"), STYLE_JULIANA},
+//  {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Ash"), STYLE_ASH},
+//  {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Wes"), STYLE_WES},
 };
 
 
@@ -567,7 +580,7 @@ static const struct MenuAction sMenuActions_Gender[] = {
 //     {COMPOUND_STRING("F"), {NULL}},
 // };
 
-static const u8 *const sMalePresetNames[] = {
+const u8 *const sMalePresetNames[] = {
     COMPOUND_STRING("Zauke07"),
     COMPOUND_STRING("MILTON"),
     COMPOUND_STRING("TOM"),
@@ -590,7 +603,7 @@ static const u8 *const sMalePresetNames[] = {
     COMPOUND_STRING("QUINCY")
 };
 
-static const u8 *const sFemalePresetNames[] = {
+const u8 *const sFemalePresetNames[] = {
     COMPOUND_STRING("Zauke07"),
     COMPOUND_STRING("TIARA"),
     COMPOUND_STRING("BELLA"),
@@ -613,11 +626,32 @@ static const u8 *const sFemalePresetNames[] = {
     COMPOUND_STRING("HALIE")
 };
 
+const struct ListMenuTemplate sBirchStyleListTemplate = {
+    .items = sBirchStyleList,
+    .totalItems = ARRAY_COUNT(sBirchStyleList),
+    .maxShowed = 6,
+    .windowId = STYLE_MENU_WINDOW_ID,
+    .header_X = 0,
+    .item_X = 8,
+    .cursor_X = 0,
+    .fontId = FONT_NORMAL,
+    .lettersSpacing = 1,
+    .itemVerticalPadding = 0,
+    .fillValue = 1,
+    .cursorPal = 1,
+    .cursorShadowPal = 2,
+    .moveCursorFunc = NULL,
+    .itemPrintFunc = NULL,
+    .cursorKind = CURSOR_BLACK_ARROW,
+};
+
+/*
 void DebugMenuCharacterCount(void) {
     if (mgba_open()) {
         mgba_printf(MGBA_LOG_DEBUG, "Charakteranzahl: %d", ARRAY_COUNT(sMenuActions_Gender));
     }
 }
+*/
 
 // The number of male vs. female names is assumed to be the same.
 // If they aren't, the smaller of the two sizes will be used and any extra names will be ignored.
@@ -1426,6 +1460,22 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tMaySpriteId       data[11]
 #define tRedSpriteId       data[12]
 #define tLeafSpriteId      data[13]
+#define tEthanSpriteId data[14]
+#define tLyraSpriteId data[15]
+#define tLucasSpriteId data[16]
+#define tDawnSpriteId data[17]
+#define tHilbertSpriteId data[18]
+#define tHildaSpriteId data[19]
+#define tNateSpriteId data[20]
+#define tRosaSpriteId data[21]
+#define tCalemSpriteId data[22]
+#define tSerenaSpriteId data[23]
+#define tElioSpriteId data[24]
+#define tSeleneSpriteId data[25]
+#define tVictorSpriteId data[26]
+#define tGloriaSpriteId data[27]
+#define tFlorianSpriteId data[28]
+#define tJulianaSpriteId data[29]
 #define tStyleSelectId     data[30]
 
 
@@ -1474,6 +1524,54 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
         break;
     case STYLE_LEAF:
         gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLeafSpriteId;
+        break;
+    case STYLE_ETHAN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tEthanSpriteId;
+        break;
+    case STYLE_LYRA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLyraSpriteId;
+        break;
+    case STYLE_LUCAS:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLucasSpriteId;
+        break;
+    case STYLE_DAWN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tDawnSpriteId;
+        break;
+    case STYLE_HILBERT:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHilbertSpriteId;
+        break;
+    case STYLE_HILDA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHildaSpriteId;
+        break;
+    case STYLE_NATE:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tNateSpriteId;
+        break;
+    case STYLE_ROSA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tRosaSpriteId;
+        break;
+    case STYLE_CALEM:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tCalemSpriteId;
+        break;
+    case STYLE_SERENA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tSerenaSpriteId;
+        break;
+    case STYLE_ELIO:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tElioSpriteId;
+        break;
+    case STYLE_SELENE:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tSeleneSpriteId;
+        break;
+    case STYLE_VICTOR:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tVictorSpriteId;
+        break;
+    case STYLE_GLORIA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tGloriaSpriteId;
+        break;
+    case STYLE_FLORIAN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tFlorianSpriteId;
+        break;
+    case STYLE_JULIANA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tJulianaSpriteId;
         break;
     default:
         gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tBrendanSpriteId;
@@ -1694,9 +1792,25 @@ static void Task_NewGameBirchSpeech_BoyOrGirl(u8 taskId)
     gSprites[gTasks[taskId].tMaySpriteId].invisible     = (gTasks[taskId].tStyleSelectId != STYLE_MAY);
     gSprites[gTasks[taskId].tRedSpriteId].invisible     = (gTasks[taskId].tStyleSelectId != STYLE_RED);
     gSprites[gTasks[taskId].tLeafSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_LEAF);
+    gSprites[gTasks[taskId].tEthanSpriteId].invisible   = (gTasks[taskId].tStyleSelectId != STYLE_ETHAN);
+    gSprites[gTasks[taskId].tLyraSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_LYRA);
+    gSprites[gTasks[taskId].tLucasSpriteId].invisible   = (gTasks[taskId].tStyleSelectId != STYLE_LUCAS);
+    gSprites[gTasks[taskId].tDawnSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_DAWN);
+    gSprites[gTasks[taskId].tHilbertSpriteId].invisible = (gTasks[taskId].tStyleSelectId != STYLE_HILBERT);
+    gSprites[gTasks[taskId].tHildaSpriteId].invisible   = (gTasks[taskId].tStyleSelectId != STYLE_HILDA);
+    gSprites[gTasks[taskId].tNateSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_NATE);
+    gSprites[gTasks[taskId].tRosaSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_ROSA);
+    gSprites[gTasks[taskId].tCalemSpriteId].invisible   = (gTasks[taskId].tStyleSelectId != STYLE_CALEM);
+    gSprites[gTasks[taskId].tSerenaSpriteId].invisible  = (gTasks[taskId].tStyleSelectId != STYLE_SERENA);
+    gSprites[gTasks[taskId].tElioSpriteId].invisible    = (gTasks[taskId].tStyleSelectId != STYLE_ELIO);
+    gSprites[gTasks[taskId].tSeleneSpriteId].invisible  = (gTasks[taskId].tStyleSelectId != STYLE_SELENE);
+    gSprites[gTasks[taskId].tVictorSpriteId].invisible  = (gTasks[taskId].tStyleSelectId != STYLE_VICTOR);
+    gSprites[gTasks[taskId].tGloriaSpriteId].invisible  = (gTasks[taskId].tStyleSelectId != STYLE_GLORIA);
+    gSprites[gTasks[taskId].tFlorianSpriteId].invisible = (gTasks[taskId].tStyleSelectId != STYLE_FLORIAN);
+    gSprites[gTasks[taskId].tJulianaSpriteId].invisible = (gTasks[taskId].tStyleSelectId != STYLE_JULIANA);
 }
 
-#define NUM_STYLE_CHOICES 4
+#define NUM_STYLE_CHOICES ARRAY_COUNT(sBirchStyleList)
 #define STYLE_SELECT_CURSOR_Y 84
 #define STYLE_SELECT_SPACING 72
 #define STYLE_SELECT_START_X 16
@@ -1756,38 +1870,43 @@ static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8 taskId)
 
 static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 {
-    int input = NewGameBirchSpeech_ProcessGenderMenuInput();
+    s32 input = ListMenu_ProcessInput(sStyleMenuTaskId);
 
-    if (input == MENU_B_PRESSED)
+    if (input == LIST_CANCEL)
     {
         PlaySE(SE_BOO);
         return;
     }
 
-    if (input != MENU_NOTHING_CHOSEN)
+    if (input >= 0)
     {
         PlaySE(SE_SELECT);
-        gSaveBlock2Ptr->playerStyles[0] = input;
-        NewGameBirchSpeech_ClearGenderWindow(1, 1);
-        gSprites[gTasks[taskId].tPlayerSpriteId].invisible = TRUE;
+        u8 selectedStyle = sBirchStyleList[input].id;
+        gTasks[taskId].tStyleSelectId = selectedStyle;
+        gSaveBlock2Ptr->playerStyles[0] = selectedStyle;
+        gSaveBlock2Ptr->playerGender = IsPlayerStyleMale(selectedStyle) ? MALE : FEMALE;
 
+        ClearWindowTilemap(STYLE_MENU_WINDOW_ID);
+        RemoveWindow(STYLE_MENU_WINDOW_ID);
+        DestroyTask(sStyleMenuTaskId);
+
+        gSprites[gTasks[taskId].tPlayerSpriteId].invisible = TRUE;
         gTasks[taskId].tTimer = 0;
         gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
         return;
     }
 
-    // Wenn sich die Auswahl im Menü geändert hat → Sprite sliden
-    u8 newCursor = Menu_GetCursorPos();
-    if (newCursor != gTasks[taskId].tStyleSelectId)
+    // Hier ersetzt:
+    u16 scrollOffset, selectedRow;
+    ListMenuGetScrollAndRow(sStyleMenuTaskId, &scrollOffset, &selectedRow);
+    u8 newCursor = selectedRow;
+
+    if (sBirchStyleList[newCursor].id != gTasks[taskId].tStyleSelectId)
     {
-        gTasks[taskId].tStyleSelectId = newCursor;
+        gTasks[taskId].tStyleSelectId = sBirchStyleList[newCursor].id;
         gSprites[gTasks[taskId].tPlayerSpriteId].oam.objMode = ST_OAM_OBJ_BLEND;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 0);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SlideOutOldGenderSprite;
-    }
-    else
-    {
-        gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
     }
 }
 
@@ -1801,11 +1920,6 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
     }
     else
     {
-        // We could do a pallet reload
-        //ResetSpriteData();
-        //FreeAllSpritePalettes();
-        //ResetAllPicSprites();
-
         FreeTrainerSprites(taskId);
         CreateTrainerSprites(taskId, TRUE);
 
@@ -1814,21 +1928,27 @@ static void Task_NewGameBirchSpeech_SlideOutOldGenderSprite(u8 taskId)
         u8 style = gTasks[taskId].tStyleSelectId;
         switch (style)
         {
-        case STYLE_BRENDAN:
-            spriteId = gTasks[taskId].tBrendanSpriteId;
-            break;
-        case STYLE_MAY:
-            spriteId = gTasks[taskId].tMaySpriteId;
-            break;
-        case STYLE_RED:
-            spriteId = gTasks[taskId].tRedSpriteId;
-            break;
-        case STYLE_LEAF:
-            spriteId = gTasks[taskId].tLeafSpriteId;
-            break;
-        default:
-            spriteId = gTasks[taskId].tBrendanSpriteId;
-            break;
+        case STYLE_BRENDAN:  spriteId = gTasks[taskId].tBrendanSpriteId; break;
+        case STYLE_MAY:      spriteId = gTasks[taskId].tMaySpriteId; break;
+        case STYLE_RED:      spriteId = gTasks[taskId].tRedSpriteId; break;
+        case STYLE_LEAF:     spriteId = gTasks[taskId].tLeafSpriteId; break;
+        case STYLE_ETHAN:    spriteId = gTasks[taskId].tEthanSpriteId; break;
+        case STYLE_LYRA:     spriteId = gTasks[taskId].tLyraSpriteId; break;
+        case STYLE_LUCAS:    spriteId = gTasks[taskId].tLucasSpriteId; break;
+        case STYLE_DAWN:     spriteId = gTasks[taskId].tDawnSpriteId; break;
+        case STYLE_HILBERT:  spriteId = gTasks[taskId].tHilbertSpriteId; break;
+        case STYLE_HILDA:    spriteId = gTasks[taskId].tHildaSpriteId; break;
+        case STYLE_NATE:     spriteId = gTasks[taskId].tNateSpriteId; break;
+        case STYLE_ROSA:     spriteId = gTasks[taskId].tRosaSpriteId; break;
+        case STYLE_CALEM:    spriteId = gTasks[taskId].tCalemSpriteId; break;
+        case STYLE_SERENA:   spriteId = gTasks[taskId].tSerenaSpriteId; break;
+        case STYLE_ELIO:     spriteId = gTasks[taskId].tElioSpriteId; break;
+        case STYLE_SELENE:   spriteId = gTasks[taskId].tSeleneSpriteId; break;
+        case STYLE_VICTOR:   spriteId = gTasks[taskId].tVictorSpriteId; break;
+        case STYLE_GLORIA:   spriteId = gTasks[taskId].tGloriaSpriteId; break;
+        case STYLE_FLORIAN:  spriteId = gTasks[taskId].tFlorianSpriteId; break;
+        case STYLE_JULIANA:  spriteId = gTasks[taskId].tJulianaSpriteId; break;
+        default:             spriteId = gTasks[taskId].tBrendanSpriteId; break;
         }
 
         gSprites[spriteId].x = DISPLAY_WIDTH;
@@ -1858,8 +1978,6 @@ static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8 taskId)
         if (gTasks[taskId].tIsDoneFadingSprites)
         {
             gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-
-            // ❗ Statt BoyOrGirl den Auswahl-Task erneut setzen
             gTasks[taskId].func = Task_NewGameBirchSpeech_ChooseGender;
         }
     }
@@ -1882,8 +2000,6 @@ static void Task_NewGameBirchSpeech_SlideInNewGenderSprite(u8 taskId)
 
 void Task_NewGameBirchSpeech_WhatsYourName(u8 taskId)
 {
-    mgba_open();
-    mgba_printf(MGBA_LOG_DEBUG, "Wechsel zur Namenseingabe. Gewählter Charakter: %d", gSaveBlock2Ptr->playerStyles[0]);
     NewGameBirchSpeech_ClearWindow(0);
     StringExpandPlaceholders(gStringVar4, gText_Birch_WhatsYourName);
     AddTextPrinterForMessage(TRUE);
@@ -1981,6 +2097,22 @@ static void Task_NewGameBirchSpeech_ReshowBirchLotad(u8 taskId)
         gSprites[gTasks[taskId].tMaySpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tRedSpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tLeafSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tEthanSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tLyraSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tLucasSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tDawnSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tHilbertSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tHildaSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tNateSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tRosaSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tCalemSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tSerenaSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tElioSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tSeleneSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tVictorSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tGloriaSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tFlorianSpriteId].invisible = TRUE;
+        gSprites[gTasks[taskId].tJulianaSpriteId].invisible = TRUE;
         spriteId = gTasks[taskId].tBirchSpriteId;
         gSprites[spriteId].x = 136;
         gSprites[spriteId].y = 60;
@@ -2043,6 +2175,54 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
             break;
         case STYLE_LEAF:
             spriteId = gTasks[taskId].tLeafSpriteId;
+            break;
+        case STYLE_ETHAN:
+            spriteId = gTasks[taskId].tEthanSpriteId;
+            break;
+        case STYLE_LYRA:
+            spriteId = gTasks[taskId].tLyraSpriteId;
+            break;
+        case STYLE_LUCAS:
+            spriteId = gTasks[taskId].tLucasSpriteId;
+            break;
+        case STYLE_DAWN:
+            spriteId = gTasks[taskId].tDawnSpriteId;
+            break;
+        case STYLE_HILBERT:
+            spriteId = gTasks[taskId].tHilbertSpriteId;
+            break;
+        case STYLE_HILDA:
+            spriteId = gTasks[taskId].tHildaSpriteId;
+            break;
+        case STYLE_NATE:
+            spriteId = gTasks[taskId].tNateSpriteId;
+            break;
+        case STYLE_ROSA:
+            spriteId = gTasks[taskId].tRosaSpriteId;
+            break;
+        case STYLE_CALEM:
+            spriteId = gTasks[taskId].tCalemSpriteId;
+            break;
+        case STYLE_SERENA:
+            spriteId = gTasks[taskId].tSerenaSpriteId;
+            break;
+        case STYLE_ELIO:
+            spriteId = gTasks[taskId].tElioSpriteId;
+            break;
+        case STYLE_SELENE:
+            spriteId = gTasks[taskId].tSeleneSpriteId;
+            break;
+        case STYLE_VICTOR:
+            spriteId = gTasks[taskId].tVictorSpriteId;
+            break;
+        case STYLE_GLORIA:
+            spriteId = gTasks[taskId].tGloriaSpriteId;
+            break;
+        case STYLE_FLORIAN:
+            spriteId = gTasks[taskId].tFlorianSpriteId;
+            break;
+        case STYLE_JULIANA:
+            spriteId = gTasks[taskId].tJulianaSpriteId;
             break;
         default:
             spriteId = gTasks[taskId].tBrendanSpriteId;
@@ -2184,6 +2364,57 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
         case STYLE_LEAF:
             spriteId = gTasks[taskId].tLeafSpriteId;
             break;
+        case STYLE_ETHAN:
+            spriteId = gTasks[taskId].tEthanSpriteId;
+            break;
+        case STYLE_LYRA:
+            spriteId = gTasks[taskId].tLyraSpriteId;
+            break;
+        case STYLE_LUCAS:
+            spriteId = gTasks[taskId].tLucasSpriteId;
+            break;
+        case STYLE_DAWN:
+            spriteId = gTasks[taskId].tDawnSpriteId;
+            break;
+        case STYLE_HILBERT:
+            spriteId = gTasks[taskId].tHilbertSpriteId;
+            break;
+        case STYLE_HILDA:
+            spriteId = gTasks[taskId].tHildaSpriteId;
+            break;
+        case STYLE_NATE:
+            spriteId = gTasks[taskId].tNateSpriteId;
+            break;
+        case STYLE_ROSA:
+            spriteId = gTasks[taskId].tRosaSpriteId;
+            break;
+        case STYLE_CALEM:
+            spriteId = gTasks[taskId].tCalemSpriteId;
+            break;
+        case STYLE_SERENA:
+            spriteId = gTasks[taskId].tSerenaSpriteId;
+            break;
+        case STYLE_ELIO:
+            spriteId = gTasks[taskId].tElioSpriteId;
+            break;
+        case STYLE_SELENE:
+            spriteId = gTasks[taskId].tSeleneSpriteId;
+            break;
+        case STYLE_VICTOR:
+            spriteId = gTasks[taskId].tVictorSpriteId;
+            break;
+        case STYLE_GLORIA:
+            spriteId = gTasks[taskId].tGloriaSpriteId;
+            break;
+        case STYLE_FLORIAN:
+            spriteId = gTasks[taskId].tFlorianSpriteId;
+            break;
+        case STYLE_JULIANA:
+            spriteId = gTasks[taskId].tJulianaSpriteId;
+            break;
+        default:
+            spriteId = gTasks[taskId].tBrendanSpriteId;
+            break;
         }
 
         gSprites[spriteId].x = 120;
@@ -2216,6 +2447,54 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
         break;
     case STYLE_LEAF:
         spriteId = gTasks[taskId].tLeafSpriteId;
+        break;
+    case STYLE_ETHAN:
+        spriteId = gTasks[taskId].tEthanSpriteId;
+        break;
+    case STYLE_LYRA:
+        spriteId = gTasks[taskId].tLyraSpriteId;
+        break;
+    case STYLE_LUCAS:
+        spriteId = gTasks[taskId].tLucasSpriteId;
+        break;
+    case STYLE_DAWN:
+        spriteId = gTasks[taskId].tDawnSpriteId;
+        break;
+    case STYLE_HILBERT:
+        spriteId = gTasks[taskId].tHilbertSpriteId;
+        break;
+    case STYLE_HILDA:
+        spriteId = gTasks[taskId].tHildaSpriteId;
+        break;
+    case STYLE_NATE:
+        spriteId = gTasks[taskId].tNateSpriteId;
+        break;
+    case STYLE_ROSA:
+        spriteId = gTasks[taskId].tRosaSpriteId;
+        break;
+    case STYLE_CALEM:
+        spriteId = gTasks[taskId].tCalemSpriteId;
+        break;
+    case STYLE_SERENA:
+        spriteId = gTasks[taskId].tSerenaSpriteId;
+        break;
+    case STYLE_ELIO:
+        spriteId = gTasks[taskId].tElioSpriteId;
+        break;
+    case STYLE_SELENE:
+        spriteId = gTasks[taskId].tSeleneSpriteId;
+        break;
+    case STYLE_VICTOR:
+        spriteId = gTasks[taskId].tVictorSpriteId;
+        break;
+    case STYLE_GLORIA:
+        spriteId = gTasks[taskId].tGloriaSpriteId;
+        break;
+    case STYLE_FLORIAN:
+        spriteId = gTasks[taskId].tFlorianSpriteId;
+        break;
+    case STYLE_JULIANA:
+        spriteId = gTasks[taskId].tJulianaSpriteId;
         break;
     default:
         spriteId = gTasks[taskId].tBrendanSpriteId;
@@ -2267,7 +2546,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
 
 static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 {
-    return CreateMonPicSprite_Affine(SPECIES_LOTAD, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    return CreateMonPicSprite_Affine(SPECIES_KORAIDON, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
 void AddBirchSpeechObjects(u8 taskId)
@@ -2278,30 +2557,24 @@ void AddBirchSpeechObjects(u8 taskId)
     u8 maySpriteId;
     u8 redSpriteId;
     u8 leafSpriteId;
-
-    // IDs der 20 spielbaren Charaktere definieren
-    const u8 playerClasses[20] = {
-        FACILITY_CLASS_BRENDAN,      // Hans
-        FACILITY_CLASS_MAY,          // Brigitte
-        FACILITY_CLASS_RED,          // Red
-        FACILITY_CLASS_LEAF,         // Leaf
-        FACILITY_CLASS_ETHAN,        // Ethan
-        FACILITY_CLASS_LYRA,         // Lyra
-        FACILITY_CLASS_LUCAS,        // Lukas
-        FACILITY_CLASS_DAWN,         // Lucia
-        FACILITY_CLASS_HILBERT,      // Warren
-        FACILITY_CLASS_HILDA,        // Lotta
-        FACILITY_CLASS_NATE,         // Nate
-        FACILITY_CLASS_ROSA,         // Rosy
-        FACILITY_CLASS_CALEM,        // Kalem
-        FACILITY_CLASS_SERENA,       // Serena
-        FACILITY_CLASS_ELIO,         // Elio
-        FACILITY_CLASS_SELENE,       // Selene
-        FACILITY_CLASS_VICTOR,       // Victor
-        FACILITY_CLASS_GLORIA,       // Gloria
-        FACILITY_CLASS_FLORIAN,      // Florian
-        FACILITY_CLASS_JULIANA       // Juliana
-    };
+    u8 ethanSpriteId;
+    u8 lyraSpriteId;
+    u8 lucasSpriteId;
+    u8 dawnSpriteId;
+    u8 hilbertSpriteId;
+    u8 hildaSpriteId;
+    u8 nateSpriteId;
+    u8 rosaSpriteId;
+    u8 calemSpriteId;
+    u8 serenaSpriteId;
+    u8 elioSpriteId;
+    u8 seleneSpriteId;
+    u8 victorSpriteId;
+    u8 gloriaSpriteId;
+    u8 florianSpriteId;
+    u8 julianaSpriteId;
+//    u8 wesSpriteId;
+//    u8 ashSpriteId;
 
     // Prof. Birk hinzufügen
     birchSpriteId = AddNewGameBirchObject(0x88, 0x3C, 1);
@@ -2317,40 +2590,172 @@ void AddBirchSpeechObjects(u8 taskId)
     gSprites[lotadSpriteId].invisible = TRUE;
     gTasks[taskId].tLotadSpriteId = lotadSpriteId;
 
+    // Brendan
     brendanSpriteId = CreateTrainerSprite(TRAINER_PIC_BRENDAN, 120, 60, 0, NULL);
     gSprites[brendanSpriteId].callback = SpriteCB_Null;
     gSprites[brendanSpriteId].oam.priority = 0;
     gSprites[brendanSpriteId].invisible = TRUE;
     gTasks[taskId].tBrendanSpriteId = brendanSpriteId;
 
+    // May
     maySpriteId = CreateTrainerSprite(TRAINER_PIC_MAY, 120, 60, 0, NULL);
     gSprites[maySpriteId].callback = SpriteCB_Null;
     gSprites[maySpriteId].oam.priority = 0;
     gSprites[maySpriteId].invisible = TRUE;
     gTasks[taskId].tMaySpriteId = maySpriteId;
 
+    // Red
     redSpriteId = CreateTrainerSprite(TRAINER_PIC_RED, 120, 60, 0, NULL);
     gSprites[redSpriteId].callback = SpriteCB_Null;
     gSprites[redSpriteId].oam.priority = 0;
     gSprites[redSpriteId].invisible = TRUE;
     gTasks[taskId].tRedSpriteId = redSpriteId;
 
+    // Leaf
     leafSpriteId = CreateTrainerSprite(TRAINER_PIC_LEAF, 120, 60, 0, NULL);
     gSprites[leafSpriteId].callback = SpriteCB_Null;
     gSprites[leafSpriteId].oam.priority = 0;
     gSprites[leafSpriteId].invisible = TRUE;
     gTasks[taskId].tLeafSpriteId = leafSpriteId;
+
+    // Ethan
+    ethanSpriteId = CreateTrainerSprite(TRAINER_PIC_ETHAN, 120, 60, 0, NULL);
+    gSprites[ethanSpriteId].callback = SpriteCB_Null;
+    gSprites[ethanSpriteId].oam.priority = 0;
+    gSprites[ethanSpriteId].invisible = TRUE;
+    gTasks[taskId].tEthanSpriteId = ethanSpriteId;
+
+    // Lyra
+    lyraSpriteId = CreateTrainerSprite(TRAINER_PIC_LYRA, 120, 60, 0, NULL);
+    gSprites[lyraSpriteId].callback = SpriteCB_Null;
+    gSprites[lyraSpriteId].oam.priority = 0;
+    gSprites[lyraSpriteId].invisible = TRUE;
+    gTasks[taskId].tLyraSpriteId = lyraSpriteId;
+
+    // Lucas
+    lucasSpriteId = CreateTrainerSprite(TRAINER_PIC_LUCAS, 120, 60, 0, NULL);
+    gSprites[lucasSpriteId].callback = SpriteCB_Null;
+    gSprites[lucasSpriteId].oam.priority = 0;
+    gSprites[lucasSpriteId].invisible = TRUE;
+    gTasks[taskId].tLucasSpriteId = lucasSpriteId;
+
+    // Dawn
+    dawnSpriteId = CreateTrainerSprite(TRAINER_PIC_DAWN, 120, 60, 0, NULL);
+    gSprites[dawnSpriteId].callback = SpriteCB_Null;
+    gSprites[dawnSpriteId].oam.priority = 0;
+    gSprites[dawnSpriteId].invisible = TRUE;
+    gTasks[taskId].tDawnSpriteId = dawnSpriteId;
+
+    // Hilbert
+    hilbertSpriteId = CreateTrainerSprite(TRAINER_PIC_HILBERT, 120, 60, 0, NULL);
+    gSprites[hilbertSpriteId].callback = SpriteCB_Null;
+    gSprites[hilbertSpriteId].oam.priority = 0;
+    gSprites[hilbertSpriteId].invisible = TRUE;
+    gTasks[taskId].tHilbertSpriteId = hilbertSpriteId;
+
+    // Hilda
+    hildaSpriteId = CreateTrainerSprite(TRAINER_PIC_HILDA, 120, 60, 0, NULL);
+    gSprites[hildaSpriteId].callback = SpriteCB_Null;
+    gSprites[hildaSpriteId].oam.priority = 0;
+    gSprites[hildaSpriteId].invisible = TRUE;
+    gTasks[taskId].tHildaSpriteId = hildaSpriteId;
+
+    // Nate
+    nateSpriteId = CreateTrainerSprite(TRAINER_PIC_NATE, 120, 60, 0, NULL);
+    gSprites[nateSpriteId].callback = SpriteCB_Null;
+    gSprites[nateSpriteId].oam.priority = 0;
+    gSprites[nateSpriteId].invisible = TRUE;
+    gTasks[taskId].tNateSpriteId = nateSpriteId;
+
+    // Rosa
+    rosaSpriteId = CreateTrainerSprite(TRAINER_PIC_ROSA, 120, 60, 0, NULL);
+    gSprites[rosaSpriteId].callback = SpriteCB_Null;
+    gSprites[rosaSpriteId].oam.priority = 0;
+    gSprites[rosaSpriteId].invisible = TRUE;
+    gTasks[taskId].tRosaSpriteId = rosaSpriteId;
+
+    // Calem
+    calemSpriteId = CreateTrainerSprite(TRAINER_PIC_CALEM, 120, 60, 0, NULL);
+    gSprites[calemSpriteId].callback = SpriteCB_Null;
+    gSprites[calemSpriteId].oam.priority = 0;
+    gSprites[calemSpriteId].invisible = TRUE;
+    gTasks[taskId].tCalemSpriteId = calemSpriteId;
+
+    // Serena
+    serenaSpriteId = CreateTrainerSprite(TRAINER_PIC_SERENA, 120, 60, 0, NULL);
+    gSprites[serenaSpriteId].callback = SpriteCB_Null;
+    gSprites[serenaSpriteId].oam.priority = 0;
+    gSprites[serenaSpriteId].invisible = TRUE;
+    gTasks[taskId].tSerenaSpriteId = serenaSpriteId;
+
+    // Elio
+    elioSpriteId = CreateTrainerSprite(TRAINER_PIC_ELIO, 120, 60, 0, NULL);
+    gSprites[elioSpriteId].callback = SpriteCB_Null;
+    gSprites[elioSpriteId].oam.priority = 0;
+    gSprites[elioSpriteId].invisible = TRUE;
+    gTasks[taskId].tElioSpriteId = elioSpriteId;
+
+    // Selene
+    seleneSpriteId = CreateTrainerSprite(TRAINER_PIC_SELENE, 120, 60, 0, NULL);
+    gSprites[seleneSpriteId].callback = SpriteCB_Null;
+    gSprites[seleneSpriteId].oam.priority = 0;
+    gSprites[seleneSpriteId].invisible = TRUE;
+    gTasks[taskId].tSeleneSpriteId = seleneSpriteId;
+
+    // Victor
+    victorSpriteId = CreateTrainerSprite(TRAINER_PIC_VICTOR, 120, 60, 0, NULL);
+    gSprites[victorSpriteId].callback = SpriteCB_Null;
+    gSprites[victorSpriteId].oam.priority = 0;
+    gSprites[victorSpriteId].invisible = TRUE;
+    gTasks[taskId].tVictorSpriteId = victorSpriteId;
+
+    // Gloria
+    gloriaSpriteId = CreateTrainerSprite(TRAINER_PIC_GLORIA, 120, 60, 0, NULL);
+    gSprites[gloriaSpriteId].callback = SpriteCB_Null;
+    gSprites[gloriaSpriteId].oam.priority = 0;
+    gSprites[gloriaSpriteId].invisible = TRUE;
+    gTasks[taskId].tGloriaSpriteId = gloriaSpriteId;
+
+    // Florian
+    florianSpriteId = CreateTrainerSprite(TRAINER_PIC_FLORIAN, 120, 60, 0, NULL);
+    gSprites[florianSpriteId].callback = SpriteCB_Null;
+    gSprites[florianSpriteId].oam.priority = 0;
+    gSprites[florianSpriteId].invisible = TRUE;
+    gTasks[taskId].tFlorianSpriteId = florianSpriteId;
+
+    // Juliana
+    julianaSpriteId = CreateTrainerSprite(TRAINER_PIC_JULIANA, 120, 60, 0, NULL);
+    gSprites[julianaSpriteId].callback = SpriteCB_Null;
+    gSprites[julianaSpriteId].oam.priority = 0;
+    gSprites[julianaSpriteId].invisible = TRUE;
+    gTasks[taskId].tJulianaSpriteId = julianaSpriteId;
 }
 
-static void FreeTrainerSprites(u8 taskId)
+void FreeTrainerSprites(u8 taskId)
 {
     FreeAndDestroyTrainerPicSprite(gTasks[taskId].tBrendanSpriteId);
     FreeAndDestroyTrainerPicSprite(gTasks[taskId].tMaySpriteId);
     FreeAndDestroyTrainerPicSprite(gTasks[taskId].tRedSpriteId);
     FreeAndDestroyTrainerPicSprite(gTasks[taskId].tLeafSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tEthanSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tLyraSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tLucasSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tDawnSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tHilbertSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tHildaSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tNateSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tRosaSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tCalemSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tSerenaSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tElioSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tSeleneSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tVictorSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tGloriaSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tFlorianSpriteId);
+    FreeAndDestroyTrainerPicSprite(gTasks[taskId].tJulianaSpriteId);
 }
 
-static void CreateTrainerSprites(u8 taskId, bool8 alreadyExist)
+void CreateTrainerSprites(u8 taskId, bool8 alreadyExist)
 {
     u8 spriteId;
 
@@ -2382,9 +2787,123 @@ static void CreateTrainerSprites(u8 taskId, bool8 alreadyExist)
     gSprites[spriteId].invisible = (STYLE_LEAF != gTasks[taskId].tStyleSelectId);
     gTasks[taskId].tLeafSpriteId = spriteId;
 
+    // Ethan
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_ETHAN, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_ETHAN != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tEthanSpriteId = spriteId;
+
+    // Lyra
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_LYRA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_LYRA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tLyraSpriteId = spriteId;
+
+    // Lucas
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_LUCAS, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_LUCAS != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tLucasSpriteId = spriteId;
+
+    // Dawn
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_DAWN, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_DAWN != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tDawnSpriteId = spriteId;
+
+    // Hilbert
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_HILBERT, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_HILBERT != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tHilbertSpriteId = spriteId;
+
+    // Hilda
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_HILDA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_HILDA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tHildaSpriteId = spriteId;
+
+    // Nate
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_NATE, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_NATE != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tNateSpriteId = spriteId;
+
+    // Rosa
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_ROSA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_ROSA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tRosaSpriteId = spriteId;
+
+    // Calem
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_CALEM, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_CALEM != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tCalemSpriteId = spriteId;
+
+    // Serena
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_SERENA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_SERENA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tSerenaSpriteId = spriteId;
+
+    // Elio
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_ELIO, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_ELIO != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tElioSpriteId = spriteId;
+
+    // Selene
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_SELENE, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_SELENE != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tSeleneSpriteId = spriteId;
+
+    // Victor
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_VICTOR, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_VICTOR != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tVictorSpriteId = spriteId;
+
+    // Gloria
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_GLORIA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_GLORIA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tGloriaSpriteId = spriteId;
+
+    // Florian
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_FLORIAN, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_FLORIAN != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tFlorianSpriteId = spriteId;
+
+    // Juliana
+    spriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(STYLE_JULIANA, FALSE), 120, 60, 0, NULL);
+    gSprites[spriteId].callback = SpriteCB_Null;
+    gSprites[spriteId].oam.priority = 0;
+    gSprites[spriteId].invisible = (STYLE_JULIANA != gTasks[taskId].tStyleSelectId);
+    gTasks[taskId].tJulianaSpriteId = spriteId;
     // Aktuell sichtbaren Sprite speichern
     switch (gTasks[taskId].tStyleSelectId)
     {
+    case STYLE_BRENDAN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tBrendanSpriteId;
+        break;
     case STYLE_MAY:
         gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tMaySpriteId;
         break;
@@ -2394,11 +2913,85 @@ static void CreateTrainerSprites(u8 taskId, bool8 alreadyExist)
     case STYLE_LEAF:
         gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLeafSpriteId;
         break;
+    case STYLE_ETHAN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tEthanSpriteId;
+        break;
+    case STYLE_LYRA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLyraSpriteId;
+        break;
+    case STYLE_LUCAS:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tLucasSpriteId;
+        break;
+    case STYLE_DAWN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tDawnSpriteId;
+        break;
+    case STYLE_HILBERT:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHilbertSpriteId;
+        break;
+    case STYLE_HILDA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tHildaSpriteId;
+        break;
+    case STYLE_NATE:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tNateSpriteId;
+        break;
+    case STYLE_ROSA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tRosaSpriteId;
+        break;
+    case STYLE_CALEM:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tCalemSpriteId;
+        break;
+    case STYLE_SERENA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tSerenaSpriteId;
+        break;
+    case STYLE_ELIO:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tElioSpriteId;
+        break;
+    case STYLE_SELENE:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tSeleneSpriteId;
+        break;
+    case STYLE_VICTOR:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tVictorSpriteId;
+        break;
+    case STYLE_GLORIA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tGloriaSpriteId;
+        break;
+    case STYLE_FLORIAN:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tFlorianSpriteId;
+        break;
+    case STYLE_JULIANA:
+        gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tJulianaSpriteId;
+        break;
     default:
         gTasks[taskId].tPlayerSpriteId = gTasks[taskId].tBrendanSpriteId;
         break;
     }
 }
+
+#undef tPlayerSpriteId
+#undef tBG1HOFS
+#undef tBirchSpriteId
+#undef tLotadSpriteId
+#undef tBrendanSpriteId
+#undef tMaySpriteId
+#undef tRedSpriteId
+#undef tLeafSpriteId
+#undef tEthanSpriteId
+#undef tLyraSpriteId
+#undef tLucasSpriteId
+#undef tDawnSpriteId
+#undef tHilbertSpriteId
+#undef tHildaSpriteId
+#undef tNateSpriteId
+#undef tRosaSpriteId
+#undef tCalemSpriteId
+#undef tSerenaSpriteId
+#undef tElioSpriteId
+#undef tSeleneSpriteId
+#undef tVictorSpriteId
+#undef tGloriaSpriteId
+#undef tFlorianSpriteId
+#undef tJulianaSpriteId
+#undef tStyleSelectId
 
 #define tMainTask data[0]
 #define tAlphaCoeff1 data[1]
@@ -2574,13 +3167,15 @@ static void NewGameBirchSpeech_StartFadePlatformOut(u8 taskId, u8 delay)
 
 static void NewGameBirchSpeech_ShowGenderMenu(void)
 {
-    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[1], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Gender), sMenuActions_Gender);
-    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Gender), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, COPYWIN_FULL);
+    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[STYLE_MENU_WINDOW_ID], 0xF3);
+    FillWindowPixelBuffer(STYLE_MENU_WINDOW_ID, PIXEL_FILL(1));
+    PutWindowTilemap(STYLE_MENU_WINDOW_ID);
+    CopyWindowToVram(STYLE_MENU_WINDOW_ID, COPYWIN_FULL);
+
+    sStyleMenuTaskId = ListMenuInit((struct ListMenuTemplate *)&sBirchStyleListTemplate, 0, 0);
 }
+
+
 
 //static void NewGameBirchSpeech_ShowStyle3Menu(void)
 //{
@@ -2602,10 +3197,12 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
 //     CopyWindowToVram(1, COPYWIN_FULL);
 // }
 
+/*
 static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void)
 {
     return Menu_ProcessInputNoWrap();
 }
+*/
 
 void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
 {
@@ -2809,36 +3406,5 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
     }
 }
 
-#undef tPlayerSpriteId
-#undef tBG1HOFS
-#undef tIsDoneFadingSprites
-#undef tBirchSpriteId
-#undef tLotadSpriteId
-#undef tBrendanSpriteId
-#undef tMaySpriteId
-#undef tRedSpriteId
-#undef tLeafSpriteId
-//#undef tPlayerGender
-//#undef tBrendanSpriteId
-//#undef tMaySpriteId
-//#undef tRedSpriteId
-//#undef tLeafSpriteId
-// #undef tEthanSpriteId
-// #undef tLyraSpriteId
-// #undef tLucasSpriteId
-// #undef tDawnSpriteId
-// #undef tHilbertSpriteId
-// #undef tHildaSpriteId
-// #undef tNateSpriteId
-// #undef tRosaSpriteId
-// #undef tCalemSpriteId
-// #undef tSerenaSpriteId
-// #undef tElioSpriteId
-// #undef tSeleneSpriteId
-// #undef tVictorSpriteId
-// #undef tGloriaSpriteId
-// #undef tFlorianSpriteId
-// #undef tJulianaSpriteId
-#undef tStyleSelectId
 
 #undef tTimer

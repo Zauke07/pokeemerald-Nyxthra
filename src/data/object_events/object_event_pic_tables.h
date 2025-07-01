@@ -4880,3 +4880,24 @@ static const struct SpriteFrameImage sPicTable_OldMan2[] = {
     overworld_frame(gObjectEventPic_OldMan2, 2, 4, 8),
 };
 
+/*
+static const struct SpriteFrameImage sPicTable_Wes[] = {
+    overworld_ascending_frames(gObjectEventPic_Wes, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_AshTrainer[] = {
+    overworld_ascending_frames(gObjectEventPic_Ash, 2, 4),
+};
+*/
+
+static const struct SpriteFrameImage sPicTable_AzurillOW[] = {
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 0),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 1),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 2),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 0),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 0),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 1),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 1),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 2),
+    overworld_frame(gObjectEventPic_AzurillOW, 2, 2, 2),
+};

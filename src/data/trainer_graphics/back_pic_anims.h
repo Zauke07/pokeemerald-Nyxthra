@@ -1,3 +1,4 @@
+#if 0
 static const union AnimCmd sAnimCmd_Brendan_1[] =
 {
     ANIMCMD_FRAME(0, 24),
@@ -135,14 +136,27 @@ const union AnimCmd *const *const gTrainerBackAnimsPtrTable[] =
     [TRAINER_BACK_PIC_MAY] = sBackAnims_May,
     [TRAINER_BACK_PIC_RED] = sBackAnims_Red,
     [TRAINER_BACK_PIC_LEAF] = sBackAnims_Leaf,
-    //[TRAINER_BACK_PIC_ETHAN] = sBackAnims_Ethan,
-    //[TRAINER_BACK_PIC_LYRA] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_ETHAN] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_LYRA] = sBackAnims_Lyra,
     [TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN] = sBackAnims_RubySapphireBrendan,
     [TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY] = sBackAnims_RubySapphireMay,
     [TRAINER_BACK_PIC_WALLY] = sBackAnims_Wally,
     [TRAINER_BACK_PIC_STEVEN] = sBackAnims_Steven,
-    //[TRAINER_BACK_PIC_LUCAS] = sBackAnims_Ethan,
-    //[TRAINER_BACK_PIC_DAWN] = sBackAnims_Lyra,
-    //[TRAINER_BACK_PIC_COMMUNITY_ZEFA] = sBackAnims_Brendan,
-    //[TRAINER_BACK_PIC_COMMUNITY_NACHOLORD] = sBackAnims_Brendan,
+    [TRAINER_BACK_PIC_LUCAS] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_DAWN] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_HILBERT] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_HILDA] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_NATE] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_ROSA] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_CALem] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_SERENA] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_ELIO] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_SELENE] = sBackAnims_Lyra,
+    [TRAINER_BACK_PIC_VICTOR] = sBackAnims_Red,
+    [TRAINER_BACK_PIC_GLORIA] = sBackAnims_Leaf,
+    [TRAINER_BACK_PIC_FLORIAN] = sBackAnims_Ethan,
+    [TRAINER_BACK_PIC_JULIANA] = sBackAnims_Lyra,
+//    [TRAINER_BACK_PIC_WES] = sBackAnims_Ethan,
+//    [TRAINER_BACK_PIC_ASH] = sBackAnims_Ethan,
 };
+#endif

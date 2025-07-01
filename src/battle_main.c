@@ -76,7 +76,6 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "cable_club.h"
-#include "overworld.h"
 
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
@@ -371,6 +370,10 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_PIKE_QUEEN] = { _("Pike Queen") },
     [TRAINER_CLASS_PYRAMID_KING] = { _("Pyramid King") },
     [TRAINER_CLASS_RS_PROTAG] = { _("{PKMN} Trainer") },
+    [TRAINER_CLASS_AI_MASTER] = { _("AI Master"), 20, BALL_MASTER },
+    [TRAINER_CLASS_CHATGPT] = { _("ChatGPT"), 20, BALL_MASTER },
+//    [TRAINER_CLASS_ASH] = { _("{PKMN} trainer"), 15 },
+//    [TRAINER_CLASS_WES] = { _("{PKMN} trainer"), 15 },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =
@@ -415,7 +418,7 @@ const u8 gStatusConditionString_IceJpn[] = _("こおり$$$$");
 const u8 gStatusConditionString_ConfusionJpn[] = _("こんらん$$$");
 const u8 gStatusConditionString_LoveJpn[] = _("メロメロ$$$");
 
-const u8 *const gStatusConditionStringsTable[][GENDER_COUNT] =
+const u8 *const gStatusConditionStringsTable[][2] =
 {
     {gStatusConditionString_PoisonJpn, gText_Poison},
     {gStatusConditionString_SleepJpn, gText_Sleep},
@@ -434,10 +437,6 @@ void CB2_InitBattle(void)
     AllocateBattleSpritesData();
     AllocateMonSpritesGfx();
     RecordedBattle_ClearFrontierPassFlag();
-
-#if T_SHOULD_RUN_MOVE_ANIM
-    gLoadFail = FALSE;
-#endif // T_SHOULD_RUN_MOVE_ANIM
 
 #if T_SHOULD_RUN_MOVE_ANIM
     gLoadFail = FALSE;
@@ -3076,11 +3075,7 @@ static void BattleStartClearSetData(void)
     gBattleStruct->safariEscapeFactor = 3;
     gBattleStruct->wildVictorySong = 0;
     gBattleStruct->moneyMultiplier = 1;
-    if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
-    {
-        if (!(gBattleTypeFlags & BATTLE_TYPE_LINK) && gSaveBlock2Ptr->optionsBattleSceneOff == TRUE)
-            gHitMarker |= HITMARKER_NO_ANIMATIONS;
-    }
+
     gBattleStruct->givenExpMons = 0;
     gBattleStruct->palaceFlags = 0;
 
@@ -3112,7 +3107,7 @@ static void BattleStartClearSetData(void)
     gSelectedMonPartyId = PARTY_SIZE; // Revival Blessing
     gCategoryIconSpriteId = 0xFF;
 
-    if(IsSleepClauseEnabled())
+    if (IsSleepClauseEnabled())
     {
         // If monCausingSleepClause[side] equals PARTY_SIZE, Sleep Clause is not active for the given side.
         gBattleStruct->monCausingSleepClause[B_SIDE_PLAYER] = PARTY_SIZE;
@@ -4704,6 +4699,10 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, enum ItemHoldEffect h
 {
     u32 speed = gBattleMons[battler].speed;
 
+    // stat stages
+    speed *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][0];
+    speed /= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][1];
+
     // weather abilities
     if (HasWeatherEffect())
     {
@@ -4730,10 +4729,6 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, enum ItemHoldEffect h
         speed = (GetHighestStatId(battler) == STAT_SPEED) ? (speed * 150) / 100 : speed;
     else if (ability == ABILITY_UNBURDEN && gDisableStructs[battler].unburdenActive)
         speed *= 2;
-
-    // stat stages
-    speed *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][0];
-    speed /= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][1];
 
     // player's badge boost
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_FRONTIER))
@@ -4916,8 +4911,8 @@ s32 GetWhichBattlerFasterOrTies(u32 battler1, u32 battler2, bool32 ignoreChosenM
 }
 
 // 24 == MAX_BATTLERS_COUNT!.
-// These are the possible orders if all the battlers speed tie. An order
-// is chosen at the start of the turn.
+// These are the possible orders if all the battlers speed tie.
+// An order is chosen at the start of the turn.
 static const u8 sBattlerOrders[24][4] =
 {
     { 0, 1, 2, 3 },
@@ -6003,7 +5998,9 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
     {
         return TYPE_WATER;
     }
-    else if (moveEffect == EFFECT_AURA_WHEEL && species == SPECIES_MORPEKO_HANGRY)
+    else if (moveEffect == EFFECT_AURA_WHEEL
+          && species == SPECIES_MORPEKO_HANGRY
+          && ability != ABILITY_NORMALIZE)
     {
         return TYPE_DARK;
     }
@@ -6017,7 +6014,9 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum MonState
             gBattleStruct->ateBoost[battler] = TRUE;
         return ateType;
     }
-    else if (moveType != TYPE_NORMAL
+    else if (moveEffect != EFFECT_CHANGE_TYPE_ON_ITEM
+          && moveEffect != EFFECT_TERRAIN_PULSE
+          && moveEffect != EFFECT_NATURAL_GIFT
           && moveEffect != EFFECT_HIDDEN_POWER
           && moveEffect != EFFECT_WEATHER_BALL
           && ability == ABILITY_NORMALIZE
@@ -6104,9 +6103,33 @@ static s32 Factorial(s32 n)
     return f;
 }
 
+bool32 CanPlayerForfeitNormalTrainerBattle(void)
+{
+    if (!B_RUN_TRAINER_BATTLE)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        return FALSE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_INVALID)
+        return FALSE;
+
+    return (gBattleTypeFlags & BATTLE_TYPE_TRAINER);
+}
+
+bool32 DidPlayerForfeitNormalTrainerBattle(void)
+{
+    if (!CanPlayerForfeitNormalTrainerBattle())
+        return FALSE;
+
+    return (gBattleOutcome == B_OUTCOME_FORFEITED);
+}
+
 u16 GetPlayerBackSpriteId(void)
 {
-    switch (gSaveBlock2Ptr->playerStyles[0])
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+
+    switch (style)
     {
     case STYLE_BRENDAN:
         return TRAINER_BACK_PIC_BRENDAN;
@@ -6116,7 +6139,42 @@ u16 GetPlayerBackSpriteId(void)
         return TRAINER_BACK_PIC_RED;
     case STYLE_LEAF:
         return TRAINER_BACK_PIC_LEAF;
-    // Erweiterbar für weitere Styles...
+    case STYLE_ETHAN:
+        return TRAINER_BACK_PIC_ETHAN;
+    case STYLE_LYRA:
+        return TRAINER_BACK_PIC_LYRA;
+    case STYLE_LUCAS:
+        return TRAINER_BACK_PIC_LUCAS;
+    case STYLE_DAWN:
+        return TRAINER_BACK_PIC_DAWN;
+    case STYLE_HILBERT:
+        return TRAINER_BACK_PIC_HILBERT;
+    case STYLE_HILDA:
+        return TRAINER_BACK_PIC_HILDA;
+    case STYLE_NATE:
+        return TRAINER_BACK_PIC_NATE;
+    case STYLE_ROSA:
+        return TRAINER_BACK_PIC_ROSA;
+    case STYLE_CALEM:
+        return TRAINER_BACK_PIC_CALEM;
+    case STYLE_SERENA:
+        return TRAINER_BACK_PIC_SERENA;
+    case STYLE_ELIO:
+        return TRAINER_BACK_PIC_ELIO;
+    case STYLE_SELENE:
+        return TRAINER_BACK_PIC_SELENE;
+    case STYLE_VICTOR:
+        return TRAINER_BACK_PIC_VICTOR;
+    case STYLE_GLORIA:
+        return TRAINER_BACK_PIC_GLORIA;
+    case STYLE_FLORIAN:
+        return TRAINER_BACK_PIC_FLORIAN;
+    case STYLE_JULIANA:
+        return TRAINER_BACK_PIC_JULIANA;
+    // case STYLE_WES:
+    //     return TRAINER_BACK_PIC_WES;
+    // case STYLE_ASH:
+    //     return TRAINER_BACK_PIC_ASH;
     default:
         return TRAINER_BACK_PIC_BRENDAN;
     }

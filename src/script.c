@@ -749,6 +749,55 @@ bool8 SpawnRivalObjectEventFromStyle(void)
         case STYLE_LEAF:
             graphicsId = OBJ_EVENT_GFX_RIVAL_RED;
             break;
+        case STYLE_LUCAS:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_DAWN;
+            break;
+        case STYLE_DAWN:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_LUCAS;
+            break;
+        case STYLE_ETHAN:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_LYRA;
+            break;
+        case STYLE_LYRA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_ETHAN;
+            break;
+        case STYLE_HILBERT:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_HILDA;
+            break;
+        case STYLE_HILDA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
+            break;
+        case STYLE_NATE:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
+            break;
+        case STYLE_ROSA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_NATE;
+            break;
+        case STYLE_CALEM:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_SERENA;
+            break;
+        case STYLE_SERENA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_CALEM;
+            break;
+        case STYLE_ELIO:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_SELENE;
+            break;
+        case STYLE_SELENE:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_ELIO;
+            break;
+        case STYLE_VICTOR:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_GLORIA;
+            break;
+        case STYLE_GLORIA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_VICTOR;
+            break;
+
+        case STYLE_FLORIAN:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_JULIANA;
+            break;
+        case STYLE_JULIANA:
+            graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
+            break;
         default:
             graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
             break;
