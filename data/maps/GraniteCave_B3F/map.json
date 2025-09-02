@@ -1,0 +1,99 @@
+{
+  "id": "MAP_GRANITE_CAVE_B3F",
+  "name": "GraniteCave_B3F",
+  "layout": "LAYOUT_GRANITE_CAVE_B3F",
+  "music": "MUS_HG_B_CASTLE",
+  "region_map_section": "MAPSEC_GRANITE_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_ENTEI",
+      "graphics_id": "OBJ_EVENT_GFX_ENTEI",
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ENCOUNTERED_ENTEI"
+    },
+    {
+      "local_id": "LOCALID_SUICUNE",
+      "graphics_id": "OBJ_EVENT_GFX_SUICUNE",
+      "x": 11,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ENCOUNTERED_SUICUNE"
+    },
+    {
+      "local_id": "LOCALID_RAIKOU",
+      "graphics_id": "OBJ_EVENT_GFX_RAIKOU",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_ENCOUNTERED_RAIKOU"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_GRANITE_CAVE_B2F",
+      "dest_warp_id": "5"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GraniteCave_B3F_Trigger_Entei"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GraniteCave_B3F_Trigger_Raikou"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "GraniteCave_B3F_Trigger_Suicune"
+    }
+  ],
+  "bg_events": []
+}

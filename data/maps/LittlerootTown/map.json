@@ -5,7 +5,7 @@
   "music": "MUS_LITTLEROOT",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
+  "weather": "WEATHER_RAIN",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -142,19 +142,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-      "x": 20,
-      "y": 20,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 3,
-      "movement_range_y": 3,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LittlerootTown_EventScript_Azurill",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
       "x": 7,
       "y": 20,
@@ -210,6 +197,13 @@
       "elevation": 0,
       "dest_map": "MAP_TESTLABOR",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 22,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_DEWFORD_TOWN",
+      "dest_warp_id": "5"
     }
   ],
   "coord_events": [
