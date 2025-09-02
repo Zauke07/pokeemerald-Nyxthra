@@ -62,11 +62,11 @@ static const struct MenuAction MultichoiceList_Bike[] =
 
 static const struct MenuAction MultichoiceList_StatusInfo[] =
 {
-    {COMPOUND_STRING("PSN")},
+    {COMPOUND_STRING("GIF")},
     {COMPOUND_STRING("PAR")},
-    {COMPOUND_STRING("SLP")},
-    {COMPOUND_STRING("BRN")},
-    {COMPOUND_STRING("FRZ")},
+    {COMPOUND_STRING("SLF")},
+    {COMPOUND_STRING("BRT")},
+    {COMPOUND_STRING("GEF")},
     {gText_Exit},
 };
 
@@ -809,6 +809,13 @@ static const struct MenuAction MultichoiceList_Regionality[] =
     {gText_Paldea},
 };
 
+static const struct MenuAction MultichoiceList_JokeNpc1[] =
+{
+    {COMPOUND_STRING("Erzähl mir einen Witz!")},
+    {COMPOUND_STRING("Noch einen!")},
+    {COMPOUND_STRING("Mach mich fertig.")},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -938,6 +945,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_STARTER_REGIONALITY]        = MULTICHOICE(MultichoiceList_Regionality),
+    [MULTI_JOKE_NPC]                   = MULTICHOICE(MultichoiceList_JokeNpc1),
+
 };
 
 const u8 *const gStdStrings[] =
