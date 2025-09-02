@@ -31,14 +31,14 @@ LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
 	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
 @ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
 @ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
-	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
@@ -49,10 +49,26 @@ LittlerootTown_MaysHouse_1F_OnTransition:
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV
-	@special ShowFieldMessageVarObjGfxId0AndStyle
-	@waitbuttonpress
-	@closemessage
+	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_1F_EventScript_SetReadyToMeetMay
 	end
+
+LittlerootTown_MaysHouse_1F_EventScript_SetReadyToMeetMay::
+    getplayerstyle
+    goto_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_MaysHouse_1F_EventScript_Ready
+    goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_MaysHouse_1F_EventScript_Ready
+    goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_MaysHouse_1F_EventScript_Ready
+    goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_MaysHouse_1F_EventScript_Ready
+    goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_MaysHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_MaysHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_MaysHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_MaysHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_MaysHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_MaysHouse_1F_EventScript_Ready
+    return
+
+LittlerootTown_MaysHouse_1F_EventScript_Ready::
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
+	return
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
 	setobjectxyperm LOCALID_PLAYERS_HOUSE_1F_MOM, 2, 4
@@ -110,11 +126,15 @@ LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport::
 
 LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	lockall
-	getplayerstyle
-	compare VAR_RESULT, STYLE_MAY
-	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
-	compare VAR_RESULT, STYLE_LEAF
-	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
+@	getplayerstyle
+@	compare VAR_RESULT, STYLE_MAY
+@	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_LEAF
+@	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_LYRA
+@	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_HILDA
+@	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor
 	playse SE_PIN
 	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -130,7 +150,7 @@ LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
 	releaseall
 	end
 
-LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor:
+@LittlerootTown_MaysHouse_1F_EventScript_SkipNeighbor:
 	releaseall
 	end
 
@@ -187,34 +207,22 @@ LittlerootTown_MaysHouse_1F_EventScript_GoSeeRoom::
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival0::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End3
-    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End3
-    lockall
-    setvar VAR_0x8008, 0
-    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-RivalTrigger_End3:
-    end
+	lockall
+	setvar VAR_0x8008, 0
+	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival1::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End4
-    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End4
-    lockall
-    setvar VAR_0x8008, 1
-    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-RivalTrigger_End4:
-    end
+	lockall
+	setvar VAR_0x8008, 1
+	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival2::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_MAY, RivalTrigger_End5
-    goto_if_eq VAR_RESULT, STYLE_LEAF, RivalTrigger_End5
-    lockall
-    setvar VAR_0x8008, 2
-    goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
-RivalTrigger_End5:
-    end
+	lockall
+	setvar VAR_0x8008, 2
+	goto LittlerootTown_MaysHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	lockall
@@ -243,8 +251,8 @@ LittlerootTown_MaysHouse_1F_ContinueMeetRival::
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs2
 
-    @ HIER NEU:
-    setflag FLAG_FIX_RIVAL_DOOR_RAN_MAY
+	@ HIER NEU:
+	setflag FLAG_FIX_RIVAL_DOOR_RAN_MAY
 
 	playse SE_EXIT
 	removeobject LOCALID_MAYSHOUSE_1F_RIVAL
@@ -379,96 +387,78 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2:
 	step_end
 
 RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
-	.string "Oh, hallo. Wer bist du?\p"
-	.string "... ... ... ... ... ... ... ... ...\n"
-	.string "... ... ... ... ... ... ... ... ...\p"
-	.string "Oh, du bist {PLAYER}{KUN}, unser neuer\n"
-	.string "Nachbar! Hallo!\p"
-	.string "Wir haben ein Kind in deinem Alter.\p"
-	.string "Mein/e {STR_VAR_1} freut sich schon\n"
-	.string "darauf, mit dir Freundschaft zu\l"
-	.string "schließen.\p"
-	.string "Lauf doch mal die Treppe hoch...$"
+	.string "Oh hey… Wer bist du denn?\p"
+	.string "... ... ... ...\n"
+	.string "... ... ... ...\p"
+	.string "Ach du bist {PLAYER}{KUN}, das neue\n"
+	.string "Kind aus der Bude nebenan.\p"
+	.string "Wir haben auch so'n halbwüchsiges\n"
+	.string "Exemplar da oben hocken.\p"
+	.string "Geh ruhig hoch, vielleicht labert es dich\n"
+	.string "nicht direkt schief an.$"
 
 RivalsHouse_1F_Text_LikeChildLikeFather:
-	.string "Wie der Vater, so das Kind.\p"
-	.string "Mein Mann ist genauso verrückt nach\n"
-	.string "POKéMON wie unser Kind.\p"
-	.string "Wenn er nicht in seinem LABOR ist, ist er \n"
-	.string "wahrscheinlich irgendwo im Gras unterwegs.$"
+	.string "Wie der Vater, so das Kind.\n"
+	.string "Beide nur Pokémon im Hirn.\p"
+	.string "Wenn er nicht im Labor vergammelt,\n"
+	.string "kriecht er durch's Gebüsch wie'n Irrer.$"
 
 RivalsHouse_1F_Text_TooBusyToNoticeVisit:
-	.string "Oh, {RIVAL}!\p"
-	.string "Ich vermute, unser Kind ist viel zu sehr\n"
-	.string "mit POKéMON beschäftigt und merkt gar\p"
-	.string "nicht, dass du zu Besuch hier bist,\n"
+	.string "Ach, {RIVAL}?\p"
+	.string "{RIVAL} hockt bestimmt schon wieder\n"
+	.string "vorm Bildschirm oder rennt\l"
+	.string "Pokémon hinterher.\p"
+	.string "Hat eh nicht gemerkt, dass du da bist,\n"
 	.string "{PLAYER}{KUN}.$"
 
+
 RivalsHouse_1F_Text_WentOutToRoute103:
-	.string "Oh, {RIVAL} ist vor kurzem zur\n"
-	.string "ROUTE 103 aufgebrochen.\p"
-	.string "Wie der Vater, so das Kind.\n"
-	.string "{RIVAL} hält es keine fünf\l"
-	.string "Minuten im Haus aus.$"
+	.string "{RIVAL} ist abgehauen Richtung Route 103.\p"
+	.string "Typisch - keine fünf Minuten Ruhe\n"
+	.string "im Haus. Muss wohl wieder Gras lecken.$"
 
 RivalsHouse_1F_Text_ShouldGoHomeEverySoOften:
-	.string "Ich glaube, es ist wunderbar für Leute,\n"
-	.string "mit ihren POKéMON zu reisen.\p"
-	.string "Aber du solltest öfter nach Hause\n"
-	.string "gehen und deiner Mutter zeigen, dass es\l"
-	.string "dir gut geht.\p"
-	.string "Sie lässt es sich nicht anmerken, aber\n"
-	.string "sie macht sich bestimmt Sorgen!$"
+	.string "Klar, Reisen mit Pokémon ist geil.\p"
+	.string "Aber denk mal dran, deiner Mutter\n"
+	.string "ab und zu ein Lebenszeichen zu schicken.\p"
+	.string "Die tut cool, aber innerlich dreht sie\n"
+	.string "komplett durch, wenn du dich nicht meldest.$"
 
 RivalsHouse_1F_Text_MayWhoAreYou:
-	.string "Was?\n"
-	.string "Wer… Wer bist du denn?\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "Ach, du bist {PLAYER}{KUN}!\n"
-	.string "Du bist heute hierher gezogen.\p"
-	.string "Ähm… Ich bin {RIVAL}.\n"
-	.string "Schön, dich kennen zu lernen.\p"
-	.string "Ich… Ich habe diesen Traum…\n"
-	.string "Mit POKéMON in der ganzen Welt\l"
-	.string "Freundschaft zu schließen.\p"
-	.string "Ich… Ich habe schon von dir gehört.\n"
-	.string "Mein Vater, PROF. BIRK, hat mir von\l"
-	.string "dir erzählt.\p"
-	.string "Ich habe gehofft, dass du nett bist,\n"
-	.string "{PLAYER}{KUN}, und wir Freunde werden.\p"
-	.string "Ist das nicht albern? Ich… Ich habe\n"
-	.string "dich doch gerade erst kennen gelernt.\p"
-	.string "Hihihihi…\p"
-	.string "Oh, nein! Das habe ich ja total\n"
-	.string "vergessen!\p"
-	.string "Ich sollte Vati doch helfen, ein paar\n"
-	.string "wilde POKéMON zu fangen!\p"
-	.string "{PLAYER}{KUN}, wir treffen uns später!$"
+	.string "Was zum... Wer bist du?\p"
+	.string "... ... ...\n"
+	.string "... ... ...\p"
+	.string "Ach, du bist {PLAYER}{KUN}.\n"
+	.string "Das neue Gesicht von nebenan, oder?\p"
+	.string "Ich bin {RIVAL}.\n"
+	.string "Cool, dich mal in echt zu sehen.\p"
+	.string "Ich will mit Pokémon durch die Welt reisen,\n"
+	.string "Leute treffen, Zeug erleben…\p"
+	.string "Mein Dad labert ständig von dir.\n"
+	.string "Bin gespannt, ob du was taugst.\p"
+	.string "Schon weird, dass ich dich direkt\n"
+	.string "sympathisch finde - obwohl ich dich\l"
+	.string "grad erst gesehen hab.\p"
+	.string "Naja. Hihi.\p"
+	.string "Oh damn, ich sollt meinem Dad helfen!\n"
+	.string "Wilde Pokémon fangen und so.\p"
+	.string "Bis Später, {PLAYER}{KUN}, wir sehen uns.$"
 
 RivalsHouse_1F_Text_BrendanWhoAreYou:
-	.string "Hey!\n"
-	.string "Du…\p"
-	.string "Wer bist du denn?\p"
-	.string "Ach ja, du bist {PLAYER}, richtig?\n"
-	.string "Du bist nebenan eingezogen, stimmt’s?\p"
-	.string "Ich wusste nicht, dass du ein Mädchen\n"
-	.string "bist.\p"
-	.string "Vater, PROF. BIRK, hat mir erzählt, dass\n"
-	.string "nebenan das Kind eines ARENALEITERs\p"
-	.string "einzieht und irgendwie habe ich\n"
-	.string "gedacht, du seiest ein Junge.\p"
-	.string "Ich heiße übrigens {RIVAL}.\n"
-	.string "Also: Hallo, Nachbarin!\p"
-	.string "Was? {PLAYER}, du hast kein einziges\n"
-	.string "POKéMON?\p"
-	.string "Soll ich eines für dich fangen?\p"
-	.string "Ach, Mist, das habe ich ganz vergessen…\p"
-	.string "Ich muss meinem Vater helfen, einige\n"
-	.string "wilde POKéMON zu fangen.\p"
-	.string "Ein anderes Mal, okay?$"
+	.string "Ey! Was willst du?\p"
+	.string "…Ach, du bist das neue Nachbarskind?\n"
+	.string "Dachte, das wär’n Typ.\p"
+	.string "Mein Vater hat was von ’nem Arena-Kind\n"
+	.string "erzählt - aber kein Wort von 'nem Girl.\p"
+	.string "Ich bin {RIVAL}.\n"
+	.string "Jo, hi Nachbarin oder was auch immer.\p"
+	.string "Du hast kein Pokémon?\n"
+	.string "Soll ich dir eins klauen? Spaß… vielleicht.\p"
+	.string "Oh verdammt - ich sollte ja helfen.\n"
+	.string "Wilde Pokémon fangen und so.\p"
+	.string "Bis später - oder auch nicht.$"
 
 RivalsHouse_1F_Text_DoYouHavePokemon:
 	.string "Hey, Nachbar!\p"
 	.string "Hast du schon ein\n"
-	.string "eigenes POKéMON?$"
+	.string "eigenes Pokémon?$"

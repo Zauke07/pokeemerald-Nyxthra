@@ -19,779 +19,783 @@ Route103_EventScript_OpenAlteringCave::
 Route103_EventScript_Rival::
 	lockall
 	setvar VAR_0x8004, LOCALID_ROUTE103_RIVAL
-	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-	waitmovement 0
+	spawnrival_style
 	goto Route103_EventScript_ShowRivalMessage
 
 
 Route103_EventScript_ShowRivalMessage::
-    getplayerstyle
-    copyvar VAR_TEMP_0, VAR_RESULT
-    copyvar VAR_TEMP_1, VAR_STARTER_REGION
+	getplayerstyle
+	copyvar VAR_TEMP_0, VAR_RESULT
+	copyvar VAR_TEMP_1, VAR_STARTER_REGION
 
-    compare VAR_TEMP_0, STYLE_BRENDAN
-    goto_if_eq Route103_EventScript_Rival_MAY
-    compare VAR_TEMP_0, STYLE_MAY
-    goto_if_eq Route103_EventScript_Rival_BRENDAN
-    compare VAR_TEMP_0, STYLE_RED
-    goto_if_eq Route103_EventScript_Rival_LEAF
-    compare VAR_TEMP_0, STYLE_LEAF
-    goto_if_eq Route103_EventScript_Rival_RED
-    compare VAR_TEMP_0, STYLE_ETHAN
-    goto_if_eq Route103_EventScript_Rival_LYRA
-    compare VAR_TEMP_0, STYLE_LYRA
-    goto_if_eq Route103_EventScript_Rival_ETHAN
-    compare VAR_TEMP_0, STYLE_LUCAS
-    goto_if_eq Route103_EventScript_Rival_DAWN
-    compare VAR_TEMP_0, STYLE_DAWN
-    goto_if_eq Route103_EventScript_Rival_LUCAS
-    compare VAR_TEMP_0, STYLE_HILBERT
-    goto_if_eq Route103_EventScript_Rival_HILDA
-    compare VAR_TEMP_0, STYLE_HILDA
-    goto_if_eq Route103_EventScript_Rival_HILBERT
-    compare VAR_TEMP_0, STYLE_NATE
-    goto_if_eq Route103_EventScript_Rival_ROSA
-    compare VAR_TEMP_0, STYLE_ROSA
-    goto_if_eq Route103_EventScript_Rival_NATE
-    compare VAR_TEMP_0, STYLE_CALEM
-    goto_if_eq Route103_EventScript_Rival_SERENA
-    compare VAR_TEMP_0, STYLE_SERENA
-    goto_if_eq Route103_EventScript_Rival_CALEM
-    compare VAR_TEMP_0, STYLE_ELIO
-    goto_if_eq Route103_EventScript_Rival_SELENE
-    compare VAR_TEMP_0, STYLE_SELENE
-    goto_if_eq Route103_EventScript_Rival_ELIO
-    compare VAR_TEMP_0, STYLE_VICTOR
-    goto_if_eq Route103_EventScript_Rival_GLORIA
-    compare VAR_TEMP_0, STYLE_GLORIA
-    goto_if_eq Route103_EventScript_Rival_VICTOR
-    compare VAR_TEMP_0, STYLE_FLORIAN
-    goto_if_eq Route103_EventScript_Rival_JULIANA
-    compare VAR_TEMP_0, STYLE_JULIANA
-    goto_if_eq Route103_EventScript_Rival_FLORIAN
-    end
+	compare VAR_TEMP_0, STYLE_BRENDAN
+	goto_if_eq Route103_EventScript_Rival_MAY
+	compare VAR_TEMP_0, STYLE_MAY
+	goto_if_eq Route103_EventScript_Rival_BRENDAN
+	compare VAR_TEMP_0, STYLE_RED
+	goto_if_eq Route103_EventScript_Rival_LEAF
+	compare VAR_TEMP_0, STYLE_LEAF
+	goto_if_eq Route103_EventScript_Rival_RED
+	compare VAR_TEMP_0, STYLE_ETHAN
+	goto_if_eq Route103_EventScript_Rival_LYRA
+	compare VAR_TEMP_0, STYLE_LYRA
+	goto_if_eq Route103_EventScript_Rival_ETHAN
+	compare VAR_TEMP_0, STYLE_LUCAS
+	goto_if_eq Route103_EventScript_Rival_DAWN
+	compare VAR_TEMP_0, STYLE_DAWN
+	goto_if_eq Route103_EventScript_Rival_LUCAS
+	compare VAR_TEMP_0, STYLE_HILBERT
+	goto_if_eq Route103_EventScript_Rival_HILDA
+	compare VAR_TEMP_0, STYLE_HILDA
+	goto_if_eq Route103_EventScript_Rival_HILBERT
+	@compare VAR_TEMP_0, STYLE_NATE
+	@goto_if_eq Route103_EventScript_Rival_ROSA
+	@compare VAR_TEMP_0, STYLE_ROSA
+	@goto_if_eq Route103_EventScript_Rival_NATE
+	@compare VAR_TEMP_0, STYLE_CALEM
+	@goto_if_eq Route103_EventScript_Rival_SERENA
+	@compare VAR_TEMP_0, STYLE_SERENA
+	@goto_if_eq Route103_EventScript_Rival_CALEM
+	@compare VAR_TEMP_0, STYLE_ELIO
+	@goto_if_eq Route103_EventScript_Rival_SELENE
+	@compare VAR_TEMP_0, STYLE_SELENE
+	@goto_if_eq Route103_EventScript_Rival_ELIO
+	@compare VAR_TEMP_0, STYLE_VICTOR
+	@goto_if_eq Route103_EventScript_Rival_GLORIA
+	@compare VAR_TEMP_0, STYLE_GLORIA
+	@goto_if_eq Route103_EventScript_Rival_VICTOR
+	@compare VAR_TEMP_0, STYLE_FLORIAN
+	@goto_if_eq Route103_EventScript_Rival_JULIANA
+	@compare VAR_TEMP_0, STYLE_JULIANA
+	@goto_if_eq Route103_EventScript_Rival_FLORIAN
+	bufferintvar1 VAR_TEMP_1
+	bufferintvar2 VAR_STARTER_MON
+	msgbox Text_Debug_StarterRegion, MSGBOX_DEFAULT
+	waitmessage
+	end
 
 Route103_EventScript_Rival_BRENDAN::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalBrendan
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalBrendan
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalBrendan
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalBrendan
+	end
 
 Route103_EventScript_Rival_MAY::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalMay
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalMay
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalMay
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalMay
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalMay
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalMay
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalMay
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalMay
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalMay
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalMay
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalMay
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalMay
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalMay
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalMay
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalMay
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalMay
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalMay
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalMay
+	end
 
 Route103_EventScript_Rival_RED::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalRed
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalRed
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalRed
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalRed
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalRed
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalRed
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalRed
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalRed
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalRed
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalRed
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalRed
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalRed
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalRed
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalRed
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalRed
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalRed
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalRed
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalRed
+	end
 
 Route103_EventScript_Rival_LEAF::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalLeaf
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalLeaf
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalLeaf
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalLeaf
+	end
 
 Route103_EventScript_Rival_ETHAN::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalEthan
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalEthan
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalEthan
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalEthan
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalEthan
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalEthan
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalEthan
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalEthan
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalEthan
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalEthan
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalEthan
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalEthan
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalEthan
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalEthan
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalEthan
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalEthan
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalEthan
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalEthan
+	end
 
 Route103_EventScript_Rival_LYRA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalLyra
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalLyra
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalLyra
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalLyra
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalLyra
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalLyra
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalLyra
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalLyra
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalLyra
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalLyra
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalLyra
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalLyra
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalLyra
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalLyra
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalLyra
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalLyra
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalLyra
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalLyra
+	end
 
 Route103_EventScript_Rival_LUCAS::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalLucas
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalLucas
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalLucas
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalLucas
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalLucas
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalLucas
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalLucas
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalLucas
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalLucas
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalLucas
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalLucas
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalLucas
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalLucas
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalLucas
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalLucas
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalLucas
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalLucas
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalLucas
+	end
 
 Route103_EventScript_Rival_DAWN::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalDawn
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalDawn
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalDawn
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalDawn
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalDawn
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalDawn
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalDawn
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalDawn
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalDawn
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalDawn
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalDawn
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalDawn
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalDawn
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalDawn
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalDawn
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalDawn
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalDawn
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalDawn
+	end
 
 Route103_EventScript_Rival_HILBERT::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalHilbert
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalHilbert
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalHilbert
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalHilbert
+	end
 
 Route103_EventScript_Rival_HILDA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalHilda
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalHilda
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalHilda
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalHilda
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalHilda
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalHilda
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalHilda
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalHilda
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalHilda
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalHilda
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalHilda
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalHilda
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalHilda
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalHilda
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalHilda
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalHilda
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalHilda
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalHilda
+	end
 
 Route103_EventScript_Rival_NATE::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalNate
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalNate
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalNate
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalNate
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalNate
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalNate
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalNate
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalNate
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalNate
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalNate
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalNate
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalNate
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalNate
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalNate
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalNate
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalNate
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalNate
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalNate
+	end
 
 Route103_EventScript_Rival_ROSA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalRosa
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalRosa
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalRosa
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalRosa
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalRosa
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalRosa
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalRosa
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalRosa
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalRosa
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalRosa
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalRosa
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalRosa
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalRosa
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalRosa
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalRosa
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalRosa
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalRosa
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalRosa
+	end
 
 Route103_EventScript_Rival_CALEM::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalCalem
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalCalem
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalCalem
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalCalem
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalCalem
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalCalem
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalCalem
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalCalem
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalCalem
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalCalem
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalCalem
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalCalem
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalCalem
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalCalem
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalCalem
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalCalem
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalCalem
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalCalem
+	end
 
 Route103_EventScript_Rival_SERENA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalSerena
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalSerena
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalSerena
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalSerena
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalSerena
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalSerena
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalSerena
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalSerena
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalSerena
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalSerena
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalSerena
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalSerena
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalSerena
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalSerena
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalSerena
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalSerena
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalSerena
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalSerena
+	end
 
 Route103_EventScript_Rival_ELIO::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalElio
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalElio
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalElio
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalElio
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalElio
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalElio
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalElio
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalElio
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalElio
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalElio
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalElio
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalElio
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalElio
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalElio
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalElio
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalElio
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalElio
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalElio
+	end
 
 Route103_EventScript_Rival_SELENE::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalSelene
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalSelene
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalSelene
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalSelene
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalSelene
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalSelene
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalSelene
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalSelene
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalSelene
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalSelene
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalSelene
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalSelene
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalSelene
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalSelene
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalSelene
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalSelene
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalSelene
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalSelene
+	end
 
 Route103_EventScript_Rival_VICTOR::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalVictor
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalVictor
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalVictor
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalVictor
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalVictor
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalVictor
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalVictor
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalVictor
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalVictor
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalVictor
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalVictor
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalVictor
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalVictor
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalVictor
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalVictor
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalVictor
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalVictor
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalVictor
+	end
 
 Route103_EventScript_Rival_GLORIA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalGloria
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalGloria
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalGloria
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalGloria
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalGloria
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalGloria
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalGloria
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalGloria
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalGloria
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalGloria
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalGloria
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalGloria
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalGloria
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalGloria
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalGloria
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalGloria
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalGloria
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalGloria
+	end
 
 Route103_EventScript_Rival_FLORIAN::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalFlorian
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalFlorian
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalFlorian
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalFlorian
+	end
 
 Route103_EventScript_Rival_JULIANA::
-    switch VAR_TEMP_1
-    case STARTER_REGION_KANTO, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_JOHTO, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_HOENN, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_SINNOH, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_UNOVA, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_KALOS, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_ALOLA, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_GALAR, Route103_EventScript_RivalJuliana
-    case STARTER_REGION_PALDEA, Route103_EventScript_RivalJuliana
-    end
+	switch VAR_TEMP_1
+	case STARTER_REGION_KANTO, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_JOHTO, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_HOENN, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_SINNOH, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_UNOVA, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_KALOS, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_ALOLA, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_GALAR, Route103_EventScript_RivalJuliana
+	case STARTER_REGION_PALDEA, Route103_EventScript_RivalJuliana
+	end
 
 Route103_EventScript_RivalMay::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    waitbuttonpress
-    closemessage
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartMay_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartMay_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartMay_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartMay_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartMay_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartMay_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartMay_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartMay_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartMay_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	waitbuttonpress
+	closemessage
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartMay_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartMay_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartMay_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartMay_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartMay_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartMay_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartMay_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartMay_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartMay_Paldea
+	end
 
 Route103_EventScript_RivalBrendan::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartBrendan_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartBrendan_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartBrendan_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartBrendan_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartBrendan_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartBrendan_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartBrendan_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartBrendan_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartBrendan_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartBrendan_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartBrendan_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartBrendan_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartBrendan_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartBrendan_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartBrendan_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartBrendan_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartBrendan_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartBrendan_Paldea
+	end
 
 Route103_EventScript_RivalRed::
-    msgbox Route103_Text_RedRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_RedLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartRed_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartRed_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartRed_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartRed_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartRed_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartRed_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartRed_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartRed_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartRed_Paldea
-    end
+	msgbox Route103_Text_RedRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_RedLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartRed_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartRed_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartRed_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartRed_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartRed_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartRed_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartRed_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartRed_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartRed_Paldea
+	end
 
 Route103_EventScript_RivalLeaf::
-    msgbox Route103_Text_LeafRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_LeafLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartLeaf_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartLeaf_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartLeaf_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartLeaf_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartLeaf_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartLeaf_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartLeaf_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartLeaf_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartLeaf_Paldea
-    end
+	msgbox Route103_Text_LeafRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_LeafLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartLeaf_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartLeaf_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartLeaf_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartLeaf_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartLeaf_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartLeaf_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartLeaf_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartLeaf_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartLeaf_Paldea
+	end
 
 Route103_EventScript_RivalEthan::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartEthan_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartEthan_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartEthan_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartEthan_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartEthan_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartEthan_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartEthan_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartEthan_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartEthan_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartEthan_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartEthan_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartEthan_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartEthan_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartEthan_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartEthan_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartEthan_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartEthan_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartEthan_Paldea
+	end
 
 Route103_EventScript_RivalLyra::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartLyra_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartLyra_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartLyra_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartLyra_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartLyra_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartLyra_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartLyra_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartLyra_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartLyra_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartLyra_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartLyra_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartLyra_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartLyra_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartLyra_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartLyra_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartLyra_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartLyra_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartLyra_Paldea
+	end
 
 Route103_EventScript_RivalLucas::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartLucas_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartLucas_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartLucas_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartLucas_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartLucas_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartLucas_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartLucas_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartLucas_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartLucas_Paldea
-    end
+	msgbox Route103_Text_LucasRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_LucasLetsBattle, MSGBOX_DEFAULT
+
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartLucas_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartLucas_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartLucas_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartLucas_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartLucas_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartLucas_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartLucas_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartLucas_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartLucas_Paldea
+	end
 
 Route103_EventScript_RivalDawn::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartDawn_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartDawn_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartDawn_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartDawn_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartDawn_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartDawn_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartDawn_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartDawn_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartDawn_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartDawn_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartDawn_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartDawn_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartDawn_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartDawn_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartDawn_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartDawn_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartDawn_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartDawn_Paldea
+	end
 
 Route103_EventScript_RivalHilbert::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartHilbert_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartHilbert_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartHilbert_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartHilbert_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartHilbert_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartHilbert_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartHilbert_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartHilbert_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartHilbert_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartHilbert_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartHilbert_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartHilbert_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartHilbert_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartHilbert_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartHilbert_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartHilbert_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartHilbert_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartHilbert_Paldea
+	end
 
 Route103_EventScript_RivalHilda::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartHilda_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartHilda_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartHilda_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartHilda_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartHilda_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartHilda_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartHilda_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartHilda_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartHilda_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartHilda_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartHilda_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartHilda_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartHilda_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartHilda_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartHilda_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartHilda_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartHilda_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartHilda_Paldea
+	end
 
 Route103_EventScript_RivalNate::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartNate_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartNate_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartNate_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartNate_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartNate_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartNate_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartNate_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartNate_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartNate_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartNate_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartNate_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartNate_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartNate_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartNate_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartNate_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartNate_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartNate_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartNate_Paldea
+	end
 
 Route103_EventScript_RivalRosa::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartRosa_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartRosa_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartRosa_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartRosa_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartRosa_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartRosa_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartRosa_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartRosa_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartRosa_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartRosa_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartRosa_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartRosa_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartRosa_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartRosa_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartRosa_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartRosa_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartRosa_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartRosa_Paldea
+	end
 
 Route103_EventScript_RivalCalem::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartCalem_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartCalem_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartCalem_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartCalem_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartCalem_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartCalem_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartCalem_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartCalem_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartCalem_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartCalem_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartCalem_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartCalem_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartCalem_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartCalem_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartCalem_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartCalem_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartCalem_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartCalem_Paldea
+	end
 
 Route103_EventScript_RivalSerena::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartSerena_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartSerena_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartSerena_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartSerena_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartSerena_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartSerena_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartSerena_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartSerena_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartSerena_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartSerena_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartSerena_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartSerena_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartSerena_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartSerena_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartSerena_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartSerena_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartSerena_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartSerena_Paldea
+	end
 
 Route103_EventScript_RivalElio::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartElio_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartElio_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartElio_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartElio_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartElio_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartElio_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartElio_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartElio_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartElio_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartElio_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartElio_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartElio_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartElio_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartElio_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartElio_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartElio_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartElio_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartElio_Paldea
+	end
 
 Route103_EventScript_RivalSelene::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartSelene_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartSelene_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartSelene_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartSelene_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartSelene_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartSelene_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartSelene_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartSelene_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartSelene_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartSelene_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartSelene_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartSelene_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartSelene_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartSelene_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartSelene_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartSelene_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartSelene_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartSelene_Paldea
+	end
 
 Route103_EventScript_RivalVictor::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartVictor_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartVictor_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartVictor_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartVictor_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartVictor_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartVictor_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartVictor_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartVictor_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartVictor_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartVictor_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartVictor_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartVictor_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartVictor_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartVictor_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartVictor_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartVictor_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartVictor_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartVictor_Paldea
+	end
 
 Route103_EventScript_RivalGloria::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartGloria_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartGloria_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartGloria_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartGloria_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartGloria_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartGloria_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartGloria_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartGloria_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartGloria_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartGloria_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartGloria_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartGloria_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartGloria_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartGloria_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartGloria_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartGloria_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartGloria_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartGloria_Paldea
+	end
 
 Route103_EventScript_RivalFlorian::
-    msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartFlorian_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartFlorian_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartFlorian_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartFlorian_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartFlorian_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartFlorian_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartFlorian_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartFlorian_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartFlorian_Paldea
-    end
+	msgbox Route103_Text_BrendanRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartFlorian_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartFlorian_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartFlorian_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartFlorian_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartFlorian_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartFlorian_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartFlorian_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartFlorian_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartFlorian_Paldea
+	end
 
 Route103_EventScript_RivalJuliana::
-    msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
-    closemessage
-    playbgm MUS_ENCOUNTER_MAY, TRUE
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
-    waitmovement 0
-    applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
-    waitmovement 0
-    msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
-    switch VAR_STARTER_REGION
-    case STARTER_REGION_KANTO, Route103_EventScript_StartJuliana_Kanto
-    case STARTER_REGION_JOHTO, Route103_EventScript_StartJuliana_Johto
-    case STARTER_REGION_HOENN, Route103_EventScript_StartJuliana_Hoenn
-    case STARTER_REGION_SINNOH, Route103_EventScript_StartJuliana_Sinnoh
-    case STARTER_REGION_UNOVA, Route103_EventScript_StartJuliana_Unova
-    case STARTER_REGION_KALOS, Route103_EventScript_StartJuliana_Kalos
-    case STARTER_REGION_ALOLA, Route103_EventScript_StartJuliana_Alola
-    case STARTER_REGION_GALAR, Route103_EventScript_StartJuliana_Galar
-    case STARTER_REGION_PALDEA, Route103_EventScript_StartJuliana_Paldea
-    end
+	msgbox Route103_Text_MayRoute103Pokemon, MSGBOX_DEFAULT
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_ROUTE103_RIVAL, Common_Movement_Delay48
+	waitmovement 0
+	msgbox Route103_Text_MayLetsBattle, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case STARTER_REGION_KANTO, Route103_EventScript_StartJuliana_Kanto
+	case STARTER_REGION_JOHTO, Route103_EventScript_StartJuliana_Johto
+	case STARTER_REGION_HOENN, Route103_EventScript_StartJuliana_Hoenn
+	case STARTER_REGION_SINNOH, Route103_EventScript_StartJuliana_Sinnoh
+	case STARTER_REGION_UNOVA, Route103_EventScript_StartJuliana_Unova
+	case STARTER_REGION_KALOS, Route103_EventScript_StartJuliana_Kalos
+	case STARTER_REGION_ALOLA, Route103_EventScript_StartJuliana_Alola
+	case STARTER_REGION_GALAR, Route103_EventScript_StartJuliana_Galar
+	case STARTER_REGION_PALDEA, Route103_EventScript_StartJuliana_Paldea
+	end
 
 Route103_EventScript_StartRedBattleBULBASAUR::
 	trainerbattle_no_intro TRAINER_RED_ROUTE_103_BULBASAUR, Route103_Text_RedDefeated
@@ -801,6 +805,7 @@ Route103_EventScript_StartRedBattleCHARMANDER::
 	trainerbattle_no_intro TRAINER_RED_ROUTE_103_CHARMANDER, Route103_Text_RedDefeated
 	goto Route103_EventScript_AfterRedBattle
 	end
+
 Route103_EventScript_StartRedBattleSQUIRTLE::
 	trainerbattle_no_intro TRAINER_RED_ROUTE_103_SQUIRTLE, Route103_Text_RedDefeated
 	goto Route103_EventScript_AfterRedBattle
@@ -810,10 +815,12 @@ Route103_EventScript_StartLeafBattleBULBASAUR::
 	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_BULBASAUR, Route103_Text_LeafDefeated
 	goto Route103_EventScript_AfterLeafBattle
 	end
+
 Route103_EventScript_StartLeafBattleCHARMANDER::
 	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_CHARMANDER, Route103_Text_LeafDefeated
 	goto Route103_EventScript_AfterLeafBattle
 	end
+
 Route103_EventScript_StartLeafBattleSQUIRTLE::
 	trainerbattle_no_intro TRAINER_LEAF_ROUTE_103_SQUIRTLE, Route103_Text_LeafDefeated
 	goto Route103_EventScript_AfterLeafBattle
@@ -823,10 +830,12 @@ Route103_EventScript_StartMayBattleBULBASAUR::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_BULBASAUR, Route103_Text_MayDefeat
 	goto Route103_EventScript_AfterMayBattle
 	end
+
 Route103_EventScript_StartMayBattleCHARMANDER::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_CHARMANDER, Route103_Text_MayDefeat
 	goto Route103_EventScript_AfterMayBattle
 	end
+
 Route103_EventScript_StartMayBattleSQUIRTLE::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_SQUIRTLE, Route103_Text_MayDefeat
 	goto Route103_EventScript_AfterMayBattle
@@ -836,10 +845,12 @@ Route103_EventScript_StartBrendanBattleBULBASAUR::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_BULBASAUR, Route103_Text_BrendanDefeat
 	goto Route103_EventScript_AfterBrendanBattle
 	end
+
 Route103_EventScript_StartBrendanBattleCHARMANDER::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_CHARMANDER, Route103_Text_BrendanDefeat
 	goto Route103_EventScript_AfterBrendanBattle
 	end
+
 Route103_EventScript_StartBrendanBattleSQUIRTLE::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_103_SQUIRTLE, Route103_Text_BrendanDefeat
 	goto Route103_EventScript_AfterBrendanBattle
@@ -1345,6 +1356,11 @@ Route103_EventScript_AfterLeafBattle::
 	goto Route103_EventScript_RivalExit
 	end
 
+Route103_EventScript_AfterLucasBattle::
+	msgbox Route103_Text_LucasTimeToHeadBack, MSGBOX_DEFAULT
+	goto Route103_EventScript_RivalExit
+	end
+
 Route103_EventScript_RivalExit::
 	closemessage
 	switch VAR_FACING
@@ -1534,11 +1550,11 @@ Route103_EventScript_Isabelle::
 	end
 
 Route103_EventScript_StartBrendan_Kanto::
-    switch VAR_STARTER_MON
-    case 0, Route103_EventScript_StartBrendanBattleCHARMANDER
-    case 1, Route103_EventScript_StartBrendanBattleSQUIRTLE
-    case 2, Route103_EventScript_StartBrendanBattleBULBASAUR
-    end
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartBrendanBattleBULBASAUR
+	case 1, Route103_EventScript_StartBrendanBattleCHARMANDER
+	case 2, Route103_EventScript_StartBrendanBattleSQUIRTLE
+	end
 
 Route103_EventScript_StartBrendan_Johto::
 	switch VAR_STARTER_MON
@@ -1599,11 +1615,11 @@ Route103_EventScript_StartBrendan_Paldea::
 @ --- Analog für May ---
 
 Route103_EventScript_StartMay_Kanto::
-    switch VAR_STARTER_MON
-    case 0, Route103_EventScript_StartMayBattleBULBASAUR
-    case 1, Route103_EventScript_StartMayBattleCHARMANDER
-    case 2, Route103_EventScript_StartMayBattleSQUIRTLE
-    end
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartMayBattleBULBASAUR
+	case 1, Route103_EventScript_StartMayBattleCHARMANDER
+	case 2, Route103_EventScript_StartMayBattleSQUIRTLE
+	end
 
 Route103_EventScript_StartMay_Johto::
 	switch VAR_STARTER_MON
@@ -1662,11 +1678,11 @@ Route103_EventScript_StartMay_Paldea::
 	end
 
 Route103_EventScript_StartRed_Kanto::
-    switch VAR_STARTER_MON
-    case 0, Route103_EventScript_StartRedBattleCHARMANDER
-    case 1, Route103_EventScript_StartRedBattleSQUIRTLE
-    case 2, Route103_EventScript_StartRedBattleBULBASAUR
-    end
+	switch VAR_STARTER_MON
+	case 0, Route103_EventScript_StartRedBattleBULBASAUR
+	case 1, Route103_EventScript_StartRedBattleCHARMANDER
+	case 2, Route103_EventScript_StartRedBattleSQUIRTLE
+	end
 
 Route103_EventScript_StartRed_Johto::
 	switch VAR_STARTER_MON
@@ -1726,9 +1742,9 @@ Route103_EventScript_StartRed_Paldea::
 
 Route103_EventScript_StartLeaf_Kanto::
 	switch VAR_STARTER_MON
-	case 0, Route103_EventScript_StartLeafBattleSQUIRTLE
-	case 1, Route103_EventScript_StartLeafBattleBULBASAUR
-	case 2, Route103_EventScript_StartLeafBattleCHARMANDER
+	case 0, Route103_EventScript_StartLeafBattleBULBASAUR
+	case 1, Route103_EventScript_StartLeafBattleCHARMANDER
+	case 2, Route103_EventScript_StartLeafBattleSQUIRTLE
 	end
 
 Route103_EventScript_StartLeaf_Johto::
@@ -2191,18 +2207,18 @@ Route103_EventScript_StartLucas_Kanto::
 	end
 
 Route103_EventScript_StartLucasBattleBULBASAUR::
-	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_BULBASAUR, Route103_Text_BrendanDefeat
-	goto Route103_EventScript_AfterBrendanBattle
+	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_BULBASAUR, Route103_Text_LucasDefeated
+	goto Route103_EventScript_AfterLucasBattle
 	end
 
 Route103_EventScript_StartLucasBattleCHARMANDER::
-	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_CHARMANDER, Route103_Text_BrendanDefeat
-	goto Route103_EventScript_AfterBrendanBattle
+	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_CHARMANDER, Route103_Text_LucasDefeated
+	goto Route103_EventScript_AfterLucasBattle
 	end
 
 Route103_EventScript_StartLucasBattleSQUIRTLE::
-	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_SQUIRTLE, Route103_Text_BrendanDefeat
-	goto Route103_EventScript_AfterBrendanBattle
+	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_103_SQUIRTLE, Route103_Text_LucasDefeated
+	goto Route103_EventScript_AfterLucasBattle
 	end
 
 Route103_EventScript_StartLucas_Johto::
@@ -4956,67 +4972,122 @@ Route103_EventScript_StartJulianaBattleQUAXLY::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "{RIVAL}: Mal seh'n... Das POKéMON von\n"
-	.string "ROUTE 103 besitzt...$"
+	.string "{RIVAL}: Hm… Ich glaube, auf ROUTE 103\n"
+	.string "gibt’s ein paar wilde Brocken.$"
 
 Route103_Text_MayLetsBattle:
-	.string "Oh, hi {PLAYER}{KUN}!\p"
-	.string "...Oh... Ich seh' schon. Mein Vater hat dir\n"
-	.string "ein POKéMON geschenkt.\p"
-	.string "Wenn wir schon mal hier sind, lass uns\n"
-	.string "doch kämpfen!\p"
-	.string "Ich gebe dir einen Vorgeschmack auf\n"
-	.string "das Leben als TRAINER.$"
+	.string "Ey, {PLAYER}{KUN}!\p"
+	.string "…Ah, ich seh schon. Mein Dad hat dir\n"
+	.string "also auch eins geschenkt, hm?\p"
+	.string "Na dann - lass mal sehen, wie du dich\n"
+	.string "im echten Kampf schlägst!\p"
+	.string "Wird Zeit, dass du das Trainerleben\n"
+	.string "am eigenen Leib erfährst!$"
 
 Route103_Text_MayDefeat:
-	.string "Wow! Das war spitze!\n"
-	.string "{PLAYER}{KUN}, du bist ein Naturtalent!$"
+	.string "Alter! Gar nicht mal schlecht!\n"
+	.string "Du hast Talent, sag ich dir!$"
 
 Route103_Text_MayTimeToHeadBack:
-	.string "{RIVAL}: Ich glaube, ich weiß jetzt, warum\n"
-	.string "mein Vater dich ausgesucht hat.\p"
-	.string "Ich meine, du hast dein POKéMON erst\n"
-	.string "sehr kurze Zeit und es mag dich bereits.\p"
-	.string "Du wirst es einfach haben, dich mit\n"
-	.string "jeder Art von POKéMON anzufreunden.\p"
-	.string "Nun wird es aber Zeit, zurück ins LABOR\n"
-	.string "zu gehen!$"
+	.string "{RIVAL}: Okay, Respekt…\n"
+	.string "Jetzt check ich, warum mein Vater dich\l"
+	.string "wollte.\p"
+	.string "Dein Pokémon hängt jetzt schon an dir,\n"
+	.string "obwohl ihr euch kaum kennt.\p"
+	.string "Du hast das Zeug, richtig\n"
+	.string "durchzustarten.\p"
+	.string "Komm, zurück zum LABOR!$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "{RIVAL}: So... Dieses und dieses lebt an\n"
-	.string "der ROUTE 103...$"
+	.string "{RIVAL}: Sieht aus, als gäbe es hier auf\n"
+	.string "ROUTE 103 ein paar seltene Pokémon.$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Hey, da ist ja {PLAYER}!\p"
-	.string "...Oh ja. Mein Vater hat dir ein POKéMON\n"
-	.string "geschenkt, nicht wahr?\p"
-	.string "Wenn wir schon mal hier sind, lass uns\n"
-	.string "doch einen kleinen Kampf austragen.\p"
-	.string "Ich bringe dir bei, was ein TRAINER\n"
-	.string "wissen muss.$"
+	.string "Yo {PLAYER}!\p"
+	.string "…Ah, dir wurde auch eins geschenkt?\n"
+	.string "Dann lass uns gleich mal die Kräfte messen!\p"
+	.string "Ich zeig dir, wie man als Trainer denkt\n"
+	.string "und kämpft. Bereit? Los geht’s!$"
 
 Route103_Text_BrendanDefeat:
-	.string "Hey, {PLAYER}, das war gar nicht so übel.$"
+	.string "Nicht schlecht, {PLAYER}!\n"
+	.string "Du hast ganz schön Biss.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "{RIVAL}: Ich denke, ich habe es kapiert.\n"
-	.string "Ich weiß jetzt, warum mein Vater dich\l"
-	.string "ausgesucht hat.\p"
-	.string "Du hast dein POKéMON noch nicht lange,\n"
-	.string "und doch mag es dich schon.\p"
-	.string "{PLAYER}, ich glaube, du kannst mit jedem\n"
-	.string "POKéMON Freundschaft schließen.\p"
-	.string "Wir sollten nun zurück zum LABOR gehen.$"
+	.string "{RIVAL}: Jetzt versteh ich meinen Vater.\n"
+	.string "Du hast den Draht zu Pokémon.\p"
+	.string "Selbst mit wenig Erfahrung wirkt dein Team\n"
+	.string "so, als wär’s schon ewig bei dir.\p"
+	.string "Ab zurück zum LABOR - das wird spannend.$"
+
+Route103_Text_RedRoute103Pokemon:
+	.string "{RIVAL}: Hm… Auf ROUTE 103 treiben sich\n"
+	.string "einige echt zähe Pokémon rum.$"
+
+Route103_Text_RedLetsBattle:
+	.string "Du hast also ein Pokémon, {PLAYER}…?\p"
+	.string "Dann beweis, dass du damit umgehen kannst.\p"
+	.string "Keine Ausreden. Kein Zurück.\n"
+	.string "Nur Kampf.$"
+
+Route103_Text_RedDefeated:
+	.string "Du bist stärker als erwartet…\n"
+	.string "Ich unterschätze dich nicht nochmal.$"
+
+Route103_Text_RedTimeToHeadBack:
+	.string "Okay. Du hast’s drauf.\n"
+	.string "Kein Wunder, dass du auserwählt wurdest.\p"
+	.string "Zurück zum LABOR.\n"
+	.string "Das war erst der Anfang.$"
+
+Route103_Text_LeafRoute103Pokemon:
+	.string "{RIVAL}: Oha… Die Pokémon hier sehen\n"
+	.string "echt ungewöhnlich aus…$"
+
+Route103_Text_LeafLetsBattle:
+	.string "Hey {PLAYER}!\p"
+	.string "Na, auch ein Geschenk bekommen?\p"
+	.string "Lass uns das gleich klären - eins gegen eins!\p"
+	.string "Hoffentlich kannst du einstecken!$"
+
+Route103_Text_LeafDefeated:
+	.string "Woah! Gar nicht mal übel.\n"
+	.string "Ich seh Potenzial!$"
+
+Route103_Text_LeafTimeToHeadBack:
+	.string "Du verstehst dein Team, das sieht man.\p"
+	.string "Vielleicht gehörst du zu denen,\n"
+	.string "die echt was reißen.$\p"
+	.string "Auf ins LABOR - das Abenteuer ruft!$"
+
+Route103_Text_LucasRoute103Pokemon:
+	.string "{RIVAL}: Hm… Manche sagen, auf dieser Route\n"
+	.string "gibt’s Pokémon mit seltsamer Aura…$"
+
+Route103_Text_LucasLetsBattle:
+	.string "Du hast also ein Pokémon bekommen?\p"
+	.string "Ich bin gespannt, was du drauf hast.\p"
+	.string "Das hier wird kein Spielplatzkampf!$"
+
+Route103_Text_LucasDefeated:
+	.string "Du bist vorbereitet…\n"
+	.string "Vielleicht sogar besser als ich.$"
+
+Route103_Text_LucasTimeToHeadBack:
+	.string "Das reicht erstmal.\n"
+	.string "Zurück zum LABOR.\n"
+	.string "Ich glaub, du bist jemand, den man\n"
+	.string "im Auge behalten sollte.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
-	.string "Mein POKéMON ist unglaublich müde...\n"
-	.string "Ich hätte einen TRANK mitnehmen sollen.$"
+	.string "Mein Pokémon ist total platt…\n"
+	.string "Hätte ich mal nen TRANK eingepackt.$"
 
 Route103_Text_ShortcutToOldale:
-	.string "Wenn du von hier das Meer überquerst,\n"
-	.string "nimmst du eine Abkürzung nach\l"
-	.string "ROSALTSTADT.\p"
-	.string "Hahaha, ist das kein praktischer Tipp?$"
+	.string "Wenn du das Wasser hier überquerst,\n"
+	.string "kommst du viel schneller nach\n"
+	.string "ROSALTSTADT zurück.\p"
+	.string "Aber hey - nass wirst du trotzdem.$"
 
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
@@ -5026,50 +5097,13 @@ Route103_EventScript_Bisasam::
 	msgbox Route103_Text_Bisasam, MSGBOX_NPC
 	end
 
-Route103_Text_RedRoute103Pokemon:
-	.string "Hm... Ich schätze, auf ROUTE 103\n"
-	.string "gibt es einige starke Pokémon.$"
-
-Route103_Text_RedLetsBattle:
-	.string "Oh, {PLAYER}. Du hast ein Pokémon?\p"
-	.string "Dann wollen wir sehen, wie stark du bist.\p"
-	.string "Ich zeig dir, wie man richtig kämpft.$"
-
-Route103_Text_RedDefeated:
-	.string "Nicht schlecht... Du bist stärker\n"
-	.string "als gedacht.$"
-
-Route103_Text_RedTimeToHeadBack:
-	.string "Ich verstehe, warum man dich\n"
-	.string "ausgewählt hat. Gute Arbeit.\p"
-	.string "Zurück ins Labor, los geht’s.$"
-
-Route103_Text_LeafRoute103Pokemon:
-	.string "Also diese Pokémon hier sehen echt\n"
-	.string "interessant aus...$"
-
-Route103_Text_LeafLetsBattle:
-	.string "Oh, hi {PLAYER}!\p"
-	.string "Du hast auch ein Pokémon bekommen?\p"
-	.string "Na dann - auf in den ersten Kampf!\p"
-	.string "Ich hoffe, du bist bereit!$"
-
-Route103_Text_LeafDefeated:
-	.string "Wow! Das war knapp - Respekt!$"
-
-Route103_Text_LeafTimeToHeadBack:
-	.string "Du scheinst dich gut mit deinem\n"
-	.string "Pokémon zu verstehen.\p"
-	.string "Ich denke, du wirst weit kommen!\p"
-	.string "Zurück zum Labor!$"
-
 Route103_Text_Bisasam:
 	.string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 1 Generation mit\l"
@@ -5089,7 +5123,7 @@ Route103_Text_Debug_ShowRivalMessage:
 Text_Debug_StyleResult:
 	.string "DEBUG: VAR_TEMP_0 = {STR_VAR_1}$"
 
-Text_Debug_StarterRegion:
+Text_Debug_StarterRegionold:
 	.string "DEBUG: StarterRegion = {STR_VAR_2}$"
 
 Text_Debug_StyleStarterVars:
@@ -5101,4 +5135,5 @@ Route103_Text_Debug_UnknownStyle:
 Route103_Text_Debug:
 	.string "DEBUG: EventScript_Rival wurde gestartet$"
 
-
+Text_Debug_StarterRegion:
+	.string "DEBUG: Region = {STR_VAR_1}, Starter = {STR_VAR_2}$"

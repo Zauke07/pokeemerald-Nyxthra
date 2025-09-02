@@ -10,10 +10,29 @@ LittlerootTown_BrendansHouse_1F_OnLoad:
 	end
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
-    call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
-    call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
-    call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
-    end
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
+	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_1F_EventScript_SetReadyToMeetBrendan
+	end
+
+LittlerootTown_BrendansHouse_1F_EventScript_SetReadyToMeetBrendan::
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	return
+
+LittlerootTown_BrendansHouse_1F_EventScript_Ready::
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 2
+	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes:
 	setmetatile 5, 4, METATILE_BrendansMaysHouse_MovingBox_Open, TRUE
@@ -26,6 +45,12 @@ LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual:
 	goto_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
 	goto_if_eq VAR_RESULT, STYLE_RED, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual:
@@ -87,6 +112,15 @@ LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport::
 
 LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor::
 	lockall
+@	getplayerstyle
+@	compare VAR_RESULT, STYLE_BRENDAN
+@	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_RED
+@	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_ETHAN
+@	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_SkipNeighbor
+@	compare VAR_RESULT, STYLE_HILBERT
+@	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_SkipNeighbor
 	playse SE_PIN
 	applymovement LOCALID_RIVALS_HOUSE_1F_MOM, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -99,7 +133,10 @@ LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor::
 	msgbox RivalsHouse_1F_Text_OhYoureTheNewNeighbor, MSGBOX_DEFAULT
 	setflag FLAG_MET_RIVAL_MOM
 	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 2
-    setvar VAR_LITTLEROOT_RIVAL_STATE, 2
+	releaseall
+	end
+
+@LittlerootTown_BrendansHouse_1F_EventScript_SkipNeighbor:
 	releaseall
 	end
 
@@ -122,39 +159,27 @@ LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom::
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival0::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_BRENDAN, RivalTrigger_End0
-    goto_if_eq VAR_RESULT, STYLE_RED, RivalTrigger_End0
-    lockall
-    setvar VAR_0x8008, 0
-    goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-RivalTrigger_End0:
-    end
+	lockall
+	setvar VAR_0x8008, 0
+	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival1::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_BRENDAN, RivalTrigger_End1
-    goto_if_eq VAR_RESULT, STYLE_RED, RivalTrigger_End1
-    lockall
-    setvar VAR_0x8008, 1
-    goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-RivalTrigger_End1:
-    end
+	lockall
+	setvar VAR_0x8008, 1
+	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival2::
-    getplayerstyle
-    goto_if_eq VAR_RESULT, STYLE_BRENDAN, RivalTrigger_End2
-    goto_if_eq VAR_RESULT, STYLE_RED, RivalTrigger_End2
-    lockall
-    setvar VAR_0x8008, 2
-    goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
-RivalTrigger_End2:
-    end
+	lockall
+	setvar VAR_0x8008, 2
+	goto LittlerootTown_BrendansHouse_1F_EventScript_MeetRival
+	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	lockall
 	setvar VAR_0x8004, LOCALID_BRENDANSHOUSE_1F_RIVAL
-	spawnrival_style
+	getplayerstyle
 	goto LittlerootTown_BrendansHouse_1F_ContinueMeetRival
 
 LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
@@ -178,8 +203,8 @@ LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
 	call_if_eq VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs2
 
-    @ HIER NEU:
-    setflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
+	@ HIER NEU:
+	setflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
 
 	playse SE_EXIT
 	removeobject LOCALID_BRENDANSHOUSE_1F_RIVAL
@@ -187,13 +212,13 @@ LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	delay 30
-    setvar VAR_LITTLEROOT_RIVAL_STATE, 3
-    setvar VAR_LITTLEROOT_TOWN_STATE, 1
-    setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
-    savebgm MUS_DUMMY
-    fadedefaultbgm
-    releaseall
-    end
+	setvar VAR_LITTLEROOT_RIVAL_STATE, 3
+	setvar VAR_LITTLEROOT_TOWN_STATE, 1
+	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_PlayerFaceBrendan::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
@@ -309,82 +334,81 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	step_end
 
 PlayersHouse_1F_Text_IsntItNiceInHere:
-	.string "MOM: Siehst du, {PLAYER}?\n"
-	.string "Ist es hier drinnen nicht auch schön?$"
+	.string "MOM: Naja, immerhin kein Schimmel an der\n"
+	.string "Wand.\p"
+    .string "Willkommen in deinem neuen Loch, {PLAYER}.$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "Die POKéMON machen die ganze Arbeit\n"
-	.string "des Einziehens und Aufräumens.\l"
-	.string "Das ist so praktisch!\p"
+	.string "Die Pokémon haben geschuftet, ich\n"
+    .string "hab’s gefilmt.\p"
+	.string "Wird bei Insta gut laufen.\p"
 	.string "{PLAYER}, dein Zimmer ist oben.\n"
-	.string "Geh und sieh es dir an, Schatz!\p"
-	.string "DAD hat dir eine neue Uhr gekauft.\p"
-	.string "Vergiss nicht, sie zu stellen!$"
+	.string "Ich hab sogar deine Uhr aufgehängt.\p"
+	.string "Stell sie aber selbst ein.\n"
+    .string "ich bin doch nicht dein Butler.$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
-	.string "MOM: Nun, {PLAYER}?\p"
-	.string "Bist du nicht neugierig, dein\n"
-	.string "neues Zimmer zu sehen?$"
+	.string "MOM: Echt jetzt, {PLAYER}?\p"
+	.string "Nicht mal neugierig auf dein neues Reich?\n"
+	.string "Oben - wenn du’s findest.$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
 	.string "MOM: {PLAYER}.\p"
-	.string "Stell bitte die Uhr in deinem Zimmer ein.$"
+	.string "Stell deine scheiß Uhr in deinem Zimmer!$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
-	.string "MOM: Oh! {PLAYER}, {PLAYER}!\n"
-	.string "Schnell! Komm schnell!$"
+	.string "MOM: {PLAYER}! Schneller als dein\n"
+    .string "letztes Date!\p"
+	.string "Du verpasst was!$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn:
-	.string "MOM: Schau mal, das ist Blütenburg Arena!\n"
-	.string "Ich glaube, DAD ist im Fernsehen!$"
+	.string "MOM: Da! Das ist Blütenburgs Arena!\n"
+	.string "Vielleicht siehst du ja deinen alten mal.$"
 
 PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "MOM: Oh... Es ist vorbei.\p"
-	.string "Ich glaube, DAD war dabei, wir haben\n"
-	.string "ihn verpasst. Schade.$"
+	.string "MOM: Na toll… Zu langsam wie immer.\p"
+	.string "DAD war grad im TV und du warst nicht da.\n"
+	.string "Schon fast wie früher.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "Ach ja.\n"
-	.string "Einer von Dad's Freunden lebt hier.\p"
-	.string "PROF. BIRK ist sein Name.\p"
-	.string "Er lebt gleich nebenan, daher solltest\n"
-	.string "du hinübergehen und dich vorstellen.$"
+	.string "MOM: Nebenan wohnt dieser irre Professor.\n"
+	.string "Geh hin und sag hallo. Oder tu so.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
-	.string "MOM: Siehst du, Schatz!$"
+	.string "MOM: So, ich chill jetzt.\p"
+	.string "Mach was du willst.$"
 
 PlayersHouse_1F_Text_DidYouMeetProfBirch:
-	.string "MOM: Hast du dich bei PROF. BIRK\n"
-	.string "vorgestellt?$"
+	.string "MOM: Warst du schon beim bekloppten Prof?\n"
+	.string "Oder hast du dich wieder verlaufen?$"
 
 PlayersHouse_1F_Text_YouShouldRestABit:
-	.string "MOM: Wie geht es dir, {PLAYER}?\n"
-	.string "Du siehst ein wenig müde aus.\p"
-	.string "Ich denke, du solltest dich etwas\n"
-	.string "ausruhen.$"
+	.string "MOM: Du siehst aus wie durchgekaut.\p"
+	.string "Leg dich kurz hin oder trink\l"
+    .string "wenigstens Wasser.$"
 
 PlayersHouse_1F_Text_TakeCareHoney:
-	.string "MOM: Pass auf dich auf, Schatz!$"
+	.string "MOM: Pass auf dich auf.\n"
+    .string "Und bring nix mit Flöhen.$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
-	.string "MOM: Oh? Hat DAD dir den Orden gegeben?\p"
-	.string "Dann ist hier etwas von deiner MOM!$"
+	.string "MOM: Whoa, DAD hat dir echt 'nen Orden gegeben?\p"
+	.string "Hier, nimm das. Hab’s beim Flohmarkt geklaut.$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
-	.string "Streng dich nicht zu sehr an, Schatz.\n"
-	.string "Du kannst jederzeit nach Hause kommen.\p"
-	.string "Pass auf dich auf, Schatz!$"
+	.string "Mach dich nicht kaputt da draußen.\n"
+	.string "Aber wenn doch, ruf halt an.\p"
+	.string "Oder nicht. Deine Entscheidung.$"
 
 PlayersHouse_1F_Text_IsThatAPokenav:
-	.string "MOM: Was ist das, Schatz? Ein POKéNAV?\n"
-	.string "Jemand aus DEVON hat es dir gegeben?\p"
-	.string "Nun, Schatz, wie wäre es mit einer\n"
-	.string "Registrierung deiner Mutter?\p"
-	.string "... ... ...$"
+	.string "MOM: Ist das dieses fancy Ding?\n"
+	.string "Hat dir jemand aus DEVON geschenkt?\p"
+	.string "Na komm, speicher wenigstens meine Nummer,\n"
+	.string "falls du mal Geld brauchst.$"
 
 PlayersHouse_1F_Text_RegisteredMom:
-	.string "Registriert MOM\n"
-	.string "in den POKéNAV.$"
+	.string "MOM wurde in den Pokénav eingespeichert.\n"
+	.string "jetzt bist du offiziell verloren.$"
 
 PlayersHouse_1F_Text_Vigoroth1:
 	.string "Fugiiiiih!$"
@@ -397,10 +421,9 @@ PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "Bericht von vor der Blütenburg Arena.$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
-	.string "Da läuft gerade ein Film.\p"
-	.string "Zwei Männer tanzen auf riesengroßen\n"
-	.string "Klaviertasten.\p"
-	.string "Aber es wird Zeit aufzubrechen!$"
+	.string "Da läuft gerade Prosieben.\p"
+	.string "Krass wiederholung von Circus HalliGalli!\p"
+	.string "Aber egal, muss los!$"
 
 PlayersHouse_1F_Text_RunningShoesManual:
 	.string "Das ist die Gebrauchsanweisung für die\n"
@@ -410,35 +433,25 @@ PlayersHouse_1F_Text_RunningShoesManual:
 	.string "hast.“$"
 
 PlayersHouse_1F_Text_TicketFromBrineyCameForYou:
-	.string "DAD: Hm?\p"
-	.string "Hey, hier ist {PLAYER}!\p"
-	.string "Es ist schon eine Weile her, dass ich\n"
-	.string "dich gesehen habe,\n"
-	.string "aber du siehst irgendwie...stärker aus.\p"
-	.string "Das ist der Eindruck, den ich habe.\n"
-	.string "Aber dein alter Herr hat noch nicht aufgegeben!\p"
-	.string "Oh, ja, ich habe etwas für dich.\n"
-	.string "Das kam für dich von jemandem namens\l"
-	.string "MR. BRINEY.$"
+	.string "DAD: Hm? Da ist ja mein Kind.\p"
+	.string "Schon groß geworden, oder hab ich Alzheimer?\p"
+	.string "Hier - irgendso'n alter Typ hat dir\n"
+    .string "das zugeschickt.$"
 
 PlayersHouse_1F_Text_PortsInSlateportLilycove:
-	.string "DAD: Hm, ein TICKET für eine Fähre?\p"
-	.string "Ich weiß, dass es in GRAPHITPORT CITY\n"
-	.string "und SEEGRASULB CITY Anlegestellen für\l"
-	.string "Fähren gibt.$"
+	.string "DAD: Ticket für 'ne Fähre?\p"
+	.string "Versuch’s in GRAPHITPORT oder SEEGRASULB.\n"
+	.string "Wenn du's findest, bist du gut.$"
 
 PlayersHouse_1F_Text_BetterGetBackToGym:
-	.string "Ich gehe besser zurück zur Blütenburg Arena.\p"
-	.string "MOM, danke, dass du auf das Haus\n"
-	.string "aufpasst, während ich weg bin.$"
+	.string "Ich bin dann wieder in der Arena.\p"
+	.string "MOM passt auf die Bude auf. Hoffentlich.$"
 
 PlayersHouse_1F_Text_DadShouldStayLonger:
-	.string "MOM: Dein DAD...\p"
-	.string "Er kommt zum ersten Mal seit einer halben\n"
-	.string "ewigkeit, aber alles worüber er spricht\n"
-	.string "ist POKéMON.\p"
-	.string "Er sollte sich entspannen und ein bisschen\n"
-	.string "länger bleiben.$"
+	.string "MOM: DAD war kurz da - hat kaum Hallo gesagt.\p"
+	.string "Redet nur über Pokémon. Will kein Sex.\n"
+    .string "Typisch.$"
+
 
 PlayersHouse_1F_Text_IsThatABreakingStory:
 	.string "MOM: Ist das eine Eilmeldung?$"
@@ -447,17 +460,16 @@ PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 	.string "Hier sind die Sondernachrichten.\p"
 	.string "Wir haben die Meldung erhalten, dass in\n"
 	.string "der HOENN-Region ein GRSSSS…\l"
-	.string "farbiges POKéMON gesichtet wurde.\p"
-	.string "Die Identität des POKéMON konnte\n"
+	.string "farbiges Pokémon gesichtet wurde.\p"
+	.string "Die Identität des Pokémon konnte\n"
 	.string "bisher nicht festgestellt werden.\p"
 	.string "Und damit schalten wir wieder um in\n"
 	.string "unser laufendes Programm.$"
 
 PlayersHouse_1F_Text_WhatColorDidTheySay:
-	.string "MOM: {PLAYER}, hast du das gesehen?\p"
-	.string "Welche Farbe hat der Ansager gesagt?\n"
-	.string "welche Farbe hatte das POKéMON?$"
+	.string "MOM: Hast du’s gesehen, {PLAYER}?\p"
+	.string "Welche Farbe hatte das Pokémon?$"
 
 PlayersHouse_1F_Text_StillUnknownPokemon:
 	.string "MOM: Na, das ist doch was!"
-	.string "Es gibt noch unbekannte POKéMON.$"
+	.string "Es gibt noch unbekannte Pokémon.$"
