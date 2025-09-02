@@ -283,182 +283,162 @@ DewfordTown_Gym_EventScript_GymStatue::
 	end
 
 DewfordTown_Gym_Text_GymGuideAdvice:
-	.string "Na, wie sieht es aus, auf dem Weg zum\n"
-	.string "CHAMP, {PLAYER}?\p"
+	.string "Na, auf dem Weg zum CHAMP, {PLAYER}?\p"
 	.string "FAUSTAUHAVENs ARENALEITER KAMILLO\n"
-	.string "besitzt KAMPF-Pokémon.\p"
-	.string "Wenn du dort NORMAL-Pokémon antreten\n"
-	.string "lässt, sind Probleme vorprogrammiert!\p"
-	.string "KAMPF-Pokémon schlagen die NORMALEN\n"
-	.string "Pokémon einfach nieder. Pass gut auf!\p"
-	.string "Und das Schlimme ist: Die ARENA ist\n"
-	.string "dunkel wie die Tiefsee!\p"
-	.string "Aber mit jedem TRAINER, den du auf dem\n"
-	.string "Weg zum ARENALEITER besiegst, wird sie\l"
-	.string "heller!\p"
-	.string "Also, dann leg mal los!$"
+	.string "setzt auf KAMPF-Pokémon.\p"
+	.string "Wenn du NORMAL-Typen mitbringst,\n"
+	.string "wirst du es schwer haben!\p"
+	.string "KAMPF schlägt NORMAL - einfache Regel.\p"
+	.string "Und als wäre das nicht genug: Die ARENA\n"
+	.string "ist stockdunkel wie eine Höhle!\p"
+	.string "Doch je mehr TRAINER du besiegst,\n"
+	.string "desto heller wird es.\p"
+	.string "Lass dich nicht einschüchtern - zeig,\n"
+	.string "was du drauf hast!$"
 
 DewfordTown_Gym_Text_GymGuidePostVictory:
-	.string "Huuh!\n"
-	.string "Das ist mir hier aber schon zu hell!\p"
-	.string "Deine Zukunft wird strahlend hell sein!$"
+	.string "Uff… Jetzt ist es mir fast zu hell!\p"
+	.string "Aber deine Zukunft wird heller strahlen\n"
+	.string "als jede Lampe hier! Glückwunsch!$"
 
 DewfordTown_Gym_Text_TakaoIntro:
-	.string "Die Macht bestimmt alles!\n"
-	.string "Komm schon!$"
+	.string "Nur rohe Kraft zählt!\n"
+	.string "Los, zeig mir, was du hast!$"
 
 DewfordTown_Gym_Text_TakaoDefeat:
-	.string "Nicht genug Macht…$"
+	.string "Nicht… genug… Power…$"
 
 DewfordTown_Gym_Text_TakaoPostBattle:
-	.string "Gegen dein Talent ist meine Macht\n"
-	.string "machtlos. Deine Technik ist super!$"
+	.string "Gegen dein Talent war meine rohe Kraft\n"
+	.string "nutzlos. Deine Technik beeindruckt mich!$"
 
 DewfordTown_Gym_Text_JocelynIntro:
-	.string "Man muss doch KAMILLO nicht mit so\n"
-	.string "etwas Nichtigem belästigen!\p"
-	.string "Ich mache dich fertig!$"
+	.string "Du willst KAMILLO sehen?\n"
+	.string "Da musst du erstmal an mir vorbei!$"
 
 DewfordTown_Gym_Text_JocelynDefeat:
-	.string "Aber… Wie…?\n"
-	.string "Wie konnte ich nur so schnell verlieren?$"
+	.string "Was?! So schnell… verloren…?$"
 
 DewfordTown_Gym_Text_JocelynPostBattle:
-	.string "Ich werde diese Niederlage nicht ab-\n"
-	.string "haken. Sie wird mich beim Training\l"
-	.string "motivieren!\p"
-	.string "Eines Tages werde ich auch ein\n"
-	.string "ARENALEITER sein!\p"
-	.string "Nein! Ich werde der CHAMP der\n"
-	.string "Pokémon LIGA!$"
+	.string "Ich nehme diese Niederlage als Ansporn.\p"
+	.string "Eines Tages werde ich selbst eine\n"
+	.string "ARENALEITERIN… oder CHAMP!$"
 
 DewfordTown_Gym_Text_LauraIntro:
-	.string "Du forderst mich heraus? Dann wundere\n"
-	.string "dich nicht, wenn du weinst wie ein Baby!$"
+	.string "Du forderst MICH heraus?!\n"
+	.string "Gleich fließen Tränen - deine\l"
+    .string "wohlgemerkt!$"
 
 DewfordTown_Gym_Text_LauraDefeat:
-	.string "Waaaaahaaaaaa!\n"
-	.string "Schluchz! Schnief! Ich habe verloooren!$"
+	.string "Waaah!\n"
+	.string "Ich… Ich hab verloren!$"
 
 DewfordTown_Gym_Text_LauraPostBattle:
-	.string "Ich kämpfe im Dunkeln, das macht mich\n"
-	.string "mutiger und trainiert mein Herz.\p"
-	.string "Weil es hier so dunkel ist, habe ich noch\n"
-	.string "nie das Gesicht von KAMILLO gesehen.$"
+	.string "Die Dunkelheit hier härtet mich ab.\p"
+	.string "Aber… Ich habe KAMILLOs Gesicht\n"
+	.string "noch nie gesehen. Schon seltsam…$"
 
 DewfordTown_Gym_Text_LilithIntro:
-	.string "Huhuhu…\n"
-	.string "Was stolperst du im Dunklen herum?$"
+	.string "Huhuhu… Wer tappt da im Dunkeln?\n"
+	.string "Willst du verloren gehen?$"
 
 DewfordTown_Gym_Text_LilithDefeat:
-	.string "Ach, du… Ich habe kein\n"
-	.string "Interesse, dich kennen zu lernen.$"
+	.string "Tch… Kein Interesse mehr an dir.$"
 
 DewfordTown_Gym_Text_LilithPostBattle:
-	.string "Du verdienst eine Niederlage, damit du\n"
-	.string "wieder von vorne anfangen musst.$"
+	.string "Manchmal ist eine Niederlage nötig,\n"
+	.string "um neu durchzustarten.$"
 
 DewfordTown_Gym_Text_BrendenIntro:
-	.string "Ich zeige dir, wie viel Köpfchen ein\n"
-	.string "Seemann hat!$"
+	.string "Ich bin ein Seemann mit Verstand!\n"
+	.string "Ich zeig dir, was Köpfchen bringt!$"
 
 DewfordTown_Gym_Text_BrendenDefeat:
-	.string "Wie konnte das nur passieren? Es ist\n"
-	.string "nicht meine Art, einfach zu verlieren.$"
+	.string "Das… war nicht der Plan.\n"
+	.string "Ich verliere sonst nie!$"
 
 DewfordTown_Gym_Text_BrendenPostBattle:
-	.string "Ahoi! Du bist es wert, unserem\n"
-	.string "ARENALEITER vorgestellt zu werden.$"
+	.string "Du hast das Zeug, dem ARENALEITER\n"
+	.string "die Stirn zu bieten. Geh weiter.$"
 
 DewfordTown_Gym_Text_CristianIntro:
-	.string "Wenn du hier vorbei willst, musst du\n"
-	.string "erst an mir vorbei!$"
+	.string "Willst du weiter?\n"
+	.string "Dann musst du erst an mir vorbei!$"
 
 DewfordTown_Gym_Text_CristianDefeat:
-	.string "Grrrr!\n"
-	.string "Ich wurde einfach überwältigt!$"
+	.string "Grrr…\n"
+	.string "Du warst einfach stärker.$"
 
 DewfordTown_Gym_Text_CristianPostBattle:
-	.string "Du hast gewonnen!\n"
-	.string "Hol dir den ORDEN!$"
+	.string "Geh schon! Du verdienst den ORDEN.$"
 
 DewfordTown_Gym_Text_BrawlyIntro:
-	.string "Ich bin KAMILLO!\n"
-	.string "Der ARENALEITER von FAUSTAUHAVEN!\p"
-	.string "Ich habe die wilden Strudel dieser\n"
-	.string "Gegend gemeistert und bin in dieser\l"
-	.string "pechschwarzen Höhle stark geworden.\p"
-	.string "Du willst mich wirklich herausfordern?\n"
-	.string "Dann zeig mir, woraus du gemacht bist!$"
+	.string "Ich bin KAMILLO -\n"
+	.string "der Wellenbrecher von FAUSTAUHAVEN!\p"
+	.string "Ich hab in dieser finsteren Höhle meine\n"
+	.string "Stärke geschärft - wie ein Fels in\l"
+    .string "der Brandung.\p"
+	.string "Willst du gegen mich antreten?\n"
+	.string "Dann zeig, aus welchem Holz du\l"
+    .string "geschnitzt bist!$"
 
 DewfordTown_Gym_Text_BrawlyDefeat:
-	.string "Huihuihui! Du hast eine größere Welle\n"
-	.string "produziert, als ich dir zugetraut hätte.\p"
-	.string "Du hast mich absaufen lassen!\p"
-	.string "Okay, du hast mich erwischt!\n"
-	.string "Nimm den ORDEN dieser ARENA!$"
+	.string "Whoa!\n"
+	.string "Du bist echt 'ne Welle über mir gerollt!\p"
+	.string "Okay, ich erkenne deine Stärke an.\n"
+	.string "Hier, nimm den ORDEN dieser ARENA!$"
 
 DewfordTown_Gym_Text_ReceivedKnuckleBadge:
 	.string "{PLAYER} erhält den KNÖCHELORDEN von\n"
 	.string "KAMILLO.$"
 
 DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
-	.string "Dank des KNÖCHELORDENs werden dir alle\n"
-	.string "Pokémon bis Level 30 gehorchen, auch\l"
-	.string "die, die du durch Tausch erhalten hast.\p"
-	.string "Und du kannst die VM BLITZ auch\n"
-	.string "außerhalb eines Kampfes anwenden.\p"
-	.string "Und wenn du magst, kannst du auch diese\n"
-	.string "TECHNISCHE MASCHINE anwenden.$"
+	.string "Mit dem KNÖCHELORDEN gehorchen dir\n"
+	.string "Pokémon bis Level 30 - auch getauschte.\p"
+	.string "Außerdem kannst du nun BLITZ außerhalb\n"
+	.string "von Kämpfen einsetzen.\p"
+	.string "Und hier - eine TECHNISCHE MASCHINE\n"
+	.string "für dich!$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
 	.string "Die TM08 enthält PROTZER.\p"
-	.string "Diese Attacke hebt den Status des\n"
-	.string "ANGRIFFs und der VERTEIDIGUNG.\p"
-	.string "… … … … … …$"
+	.string "Erhöht ANGRIFF und VERTEIDIGUNG -\n"
+	.string "ideal, um im Kampf standhaft zu bleiben.$"
 
 DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "ARENALEITER KAMILLO wurde\n"
-	.string "im POKéNAV eingetragen.$"
+	.string "im PokéNav eingetragen.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
-	.string "Ich sehe in dir ein Talent, das eines\n"
-	.string "Tages zu einer riesigen Welle wird und\l"
-	.string "einen Sturm des Erstaunens bei anderen\l"
-	.string "TRAINERn entfachen wird!$"
+	.string "Du wirst mal wie eine große Welle\n"
+	.string "sein - mitreißend, beeindruckend,\n"
+	.string "unausweichlich für jeden TRAINER.$"
 
 DewfordTown_Gym_Text_GymStatue:
 	.string "Pokémon ARENA von FAUSTAUHAVEN$"
 
 DewfordTown_Gym_Text_GymStatueCertified:
 	.string "Pokémon ARENA von FAUSTAUHAVEN\p"
-	.string "KAMILLOS ANERKANNTE TRAINER:\n"
+	.string "ANERKANNTE TRAINER:\n"
 	.string "{PLAYER}$"
 
 DewfordTown_Gym_Text_BrawlyPreRematch:
-	.string "KAMILLO: Eine Welle kann sich zurück-\n"
-	.string "ziehen, wird aber immer wieder an\l"
-	.string "Land zurückkommen.\p"
-	.string "Ein riesiges Talent wie du…\n"
-	.string "Ich wusste, du würdest wiederkommen.\p"
-	.string "Zeig mir, wie gut du geworden bist.$"
+	.string "KAMILLO: Eine Welle ebbt ab… doch sie\n"
+	.string "kehrt zurück - stärker als je zuvor.\p"
+	.string "Ich wusste, du kommst wieder.\n"
+	.string "Zeig, wie weit du gekommen bist!$"
 
 DewfordTown_Gym_Text_BrawlyRematchDefeat:
-	.string "Und wieder wurde ich fortgespült.$"
+	.string "Schon wieder mitgerissen…\n"
+	.string "Du bist wie ein Sturm.$"
 
 DewfordTown_Gym_Text_BrawlyPostRematch:
-	.string "KAMILLO: Kämpfe sind wild und tief wie\n"
-	.string "die See. Du siehst kein Land.\l"
-	.string "Wie das Meer um HOENN.$"
+	.string "KAMILLO: Kämpfe sind wie das Meer -\n"
+	.string "tief, wild und endlos.\p"
+	.string "Du meisterst sie mit Stil.$"
 
 DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
-	.string "KAMILLO: Eine Welle kann sich zurück-\n"
-	.string "ziehen, wird aber immer wieder an\l"
-	.string "Land zurückkommen.\p"
-	.string "Ein riesiges Talent wie du…\n"
-	.string "Ich wusste, du würdest wiederkommen.\p"
-	.string "Oh, du hast ja nur ein Pokémon, das\n"
-	.string "kämpfen kann.\p"
-	.string "Tut mir Leid, aber ich trete nur gegen\n"
-	.string "dich an, wenn du mindestens zwei\l"
-	.string "Pokémon hast.$"
+	.string "KAMILLO: Die Welle ist zurück - aber…\n"
+	.string "Du hast nur ein kampfbereites Pokémon.\p"
+	.string "Komm wieder, wenn du zwei oder mehr\n"
+	.string "einsatzbereit hast!$"

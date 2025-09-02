@@ -27,32 +27,31 @@ DewfordTown_House2_EventScript_Boy::
 	end
 
 DewfordTown_House2_Text_WantYouToHaveSilkScarf:
-	.string "Wirf dein Auge mal hierauf!\p"
-	.string "Das ist ein SEIDENSCHAL. Das ist\n"
-	.string "der letzte Schrei in der Mode. Yeah!\p"
-	.string "Oh, deine Augen blitzen.\n"
-	.string "Du magst meinen Stil, nicht wahr?\p"
-	.string "Hihi, du machst mir eine Freude!\n"
-	.string "Hier, das möchte ich dir schenken!$"
+	.string "Sieh dir das mal an!\p"
+	.string "Ein SEIDENSCHAL - voll im Trend!\n"
+	.string "Stylisch UND nützlich, yeah!\p"
+	.string "Dein Blick sagt alles…\n"
+	.string "Du hast Geschmack, das gefällt mir!\p"
+	.string "Komm, den schenke ich dir!$"
 
 DewfordTown_House2_Text_NoRoom:
-	.string "Och, du hast ja gar keinen Platz mehr.\p"
-	.string "Nun, hör gut zu… Diesen SCHAL musst\n"
-	.string "du einfach haben! Ich würde alle meine\l"
-	.string "Items verkaufen, um ihn zu bekommen!$"
+	.string "Oh nein, dein BEUTEL ist voll!\p"
+	.string "Dieser SCHAL ist ein echtes Must-have!\n"
+	.string "Ich würde alles verkaufen, nur um ihn\l"
+	.string "zu behalten - aber du sollst ihn haben!$"
 
 DewfordTown_House2_Text_ExplainSilkScarf:
-	.string "Dieser SEIDENSCHAL steigert die Stärke\n"
-	.string "der NORMALen Attacken.\p"
-	.string "Dieser wunderbare SCHAL passt einfach\n"
-	.string "zu fast allen Pokémon!$"
+	.string "Der SEIDENSCHAL boostet normale\n"
+	.string "Attacken - richtig stark!\p"
+	.string "Und das Beste: Er steht fast jedem\n"
+	.string "Pokémon ausgezeichnet!$"
 
 DewfordTown_House2_Text_BrawlySoCool:
-	.string "Wow, du hast die beschwerliche Reise\n"
-	.string "über das Meer auf dich genommen, um\l"
-	.string "nach FAUSTAUHAVEN zu gelangen?\p"
-	.string "Bist du hier, weil du von KAMILLO\n"
-	.string "gehört hast?\p"
-	.string "Er ist sooo cool…\n"
-	.string "Er ist ein Idol für jeden!$"
+	.string "Wow, du bist wirklich über das Meer\n"
+	.string "gereist, um hierherzukommen?\p"
+	.string "Weil du von KAMILLO gehört hast,\n"
+	.string "stimmt’s?\p"
+	.string "Er ist soooo cool…\n"
+	.string "Ein echtes Idol!$"
+
 

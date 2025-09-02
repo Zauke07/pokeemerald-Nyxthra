@@ -10,6 +10,7 @@ DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
+	goto_if_set FLAG_ALPHA_PHASE_1_DONE, DewfordTown_EventScript_AlphaEndsHere
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage
 	multichoicedefault 21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE
@@ -18,6 +19,15 @@ DewfordTown_EventScript_Briney::
 	case 1, DewfordTown_EventScript_ChooseSlateport
 	case 2, DewfordTown_EventScript_CancelSailSelect
 	case MULTI_B_PRESSED, DewfordTown_EventScript_CancelSailSelect
+	end
+
+DewfordTown_EventScript_AlphaEndsHere::
+	msgbox DewfordTown_Text_BrineyBoatBroken, MSGBOX_DEFAULT
+	closemessage
+	msgbox DewfordTown_Text_PlayerAlphaOver, MSGBOX_DEFAULT
+	waitmessage
+	call GraniteCave_B2F_EventScript_OpenSecretExit
+    closemessage
 	end
 
 DewfordTown_EventScript_ChoosePetalburg::
@@ -628,178 +638,133 @@ DewfordTown_EventScript_PhraseNotTrendyEnough::
 	end
 
 DewfordTown_Text_TinyIslandCommunity:
-	.string "FAUSTAUHAVEN ist eine kleine\n"
-	.string "Inselgemeinschaft. Wenn hier etwas in\l"
-	.string "Mode kommt, will jeder es haben.$"
+	.string "FAUSTAUHAVEN ist 'ne winzige Insel…\n"
+	.string "Aber wehe, was hier im Trend ist - das\l"
+	.string "müssen dann alle sofort haben!$"
 
 DewfordTown_Text_TownSign:
 	.string "FAUSTAUHAVEN\n"
-	.string "“Eine kleine Insel im blauen Meer.”$"
+	.string "“Ein kleines Nest mitten im Meer.”$"
 
 DewfordTown_Text_GymSign:
-	.string "Pokémon ARENA von FAUSTAUHAVEN\n"
+	.string "Pokémon-ARENA FAUSTAUHAVEN\n"
 	.string "LEITER: KAMILLO\l"
-	.string "“Eine große Welle des Kampfes!”$"
+	.string "“Eine Welle voller Power!”$"
 
 DewfordTown_Text_HallSign:
 	.string "FAUSTAUHAVEN HALLE\n"
-	.string "“Die Informationsbörse für jedermann!”$"
+	.string "“Alle Trends an einem Ort!”$"
 
 Route104_Text_LandedInDewfordDeliverLetter:
-	.string "MR. BRACK: Ahoi! Wir haben in\n"
-	.string "FAUSTAUHAVEN Anker geworfen.\p"
-	.string "Ich vermute, du wirst diesen BRIEF\n"
-	.string "jetzt diesem… TROY bringen!?!$"
+	.string "MR. BRACK: Ahoi! Landgang in\n"
+	.string "FAUSTAUHAVEN abgeschlossen!\p"
+	.string "Zeit, dem guten TROY seinen BRIEF zu\n"
+	.string "bringen, oder?$"
 
 DewfordTown_Text_SetSailBackToPetalburg:
-	.string "MR. BRACK: Hast du den BRIEF\n"
-	.string "überbracht?\p"
-	.string "Oder meinst du, wir müssen zurück\n"
-	.string "nach BLÜTENBURG CITY segeln?$"
+	.string "MR. BRACK: Den BRIEF abgegeben?\p"
+	.string "Oder zurück nach BLÜTENBURG?$"
 
 DewfordTown_Text_PetalburgWereSettingSail2:
-	.string "MR. BRACK: BLÜTENBURG CITY…\n"
-	.string "In Ordnung.\p"
-	.string "Anker gelichtet!\n"
-	.string "PECKO, mein Schatz, wir setzen Segel!$"
-
-DewfordTown_Text_GoDeliverIllBeWaiting:
-	.string "MR. BRACK: Dann bring den BRIEF zu\n"
-	.string "seinem Empfänger. Ich warte hier.$"
-
-DewfordTown_Text_BrineyLandedInDewford:
-	.string "MR. BRACK: Ahoi! Wir haben in\n"
-	.string "FAUSTAUHAVEN Anker geworfen!\p"
-	.string "Komm, wenn wir wieder Segel\n"
-	.string "setzen sollen.$"
-
-DewfordTown_Text_WhereAreWeBound:
-	.string "MR. BRACK: Ahoi! Für dich fahre ich\n"
-	.string "jederzeit wieder raus!\p"
-	.string "Nun, wo soll es hingehen?$"
+	.string "MR. BRACK: BLÜTENBURG CITY - ok!\p"
+	.string "Anker lichten!\n"
+	.string "PECKO, mein Schatz - Segel setzen!$"
 
 DewfordTown_Text_PetalburgWereSettingSail:
-	.string "MR. BRACK: BLÜTENBURG CITY soll es\n"
-	.string "sein?\p"
-	.string "Anker gelichtet!\n"
-	.string "PECKO, mein Schatz, wir setzen Segel!$"
+	.string "MR. BRACK: BLÜTENBURG CITY - klaro!\p"
+	.string "Anker lichten!\n"
+	.string "PECKO, mein Schatz - Segel setzen!$"
 
 DewfordTown_Text_SlateportWereSettingSail:
-	.string "MR. BRACK: GRAPHITPORT CITY soll\n"
-	.string "es sein?\p"
-	.string "Anker gelichtet!\n"
-	.string "PECKO, mein Schatz, wir setzen Segel!$"
+	.string "MR. BRACK: GRAPHITPORT CITY also?\p"
+	.string "Anker lichten!\n"
+	.string "PECKO, Segel setzen!$"
+
+DewfordTown_Text_GoDeliverIllBeWaiting:
+	.string "MR. BRACK: Bring TROY den BRIEF.\n"
+	.string "Ich bleib hier solange gechillt.$"
+
+DewfordTown_Text_BrineyLandedInDewford:
+	.string "MR. BRACK: Ahoi! Willkommen in\n"
+	.string "FAUSTAUHAVEN!\p"
+	.string "Sag Bescheid, wenn du wieder aufs\n"
+	.string "Wasser willst.$"
+
+DewfordTown_Text_WhereAreWeBound:
+	.string "MR. BRACK: Sag an - wohin soll's gehen?\p"
+	.string "Ich fahr dich überall hin!$"
 
 DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
-	.string "MR. BRACK: Sag mir einfach Bescheid,\n"
-	.string "wenn wir wieder Segel setzen sollen.$"
+	.string "MR. BRACK: Rühr dich einfach,\n"
+	.string "wenn wir lossegeln sollen.$"
 
 DewfordTown_Text_GettingItchToFish:
-	.string "Dies ist ein berühmter Angelplatz.\n"
-	.string "Hast du Lust zu angeln?$"
+	.string "Hier ist DER Spot zum Angeln!\n"
+	.string "Willst du mal dein Glück probieren?$"
 
 DewfordTown_Text_GiveYouOneOfMyRods:
-	.string "Ich habe dir genau zugehört und mir\n"
-	.string "gefällt, was du gesagt hast!\p"
-	.string "Ich werde dir eine meiner ANGELn\n"
-	.string "geben.$"
+	.string "Ich spür, du hast Anglergeist!\p"
+	.string "Hier - nimm eine meiner ANGELn!$"
 
 DewfordTown_Text_ThrowInFishingAdvice:
-	.string "Und, als kleine Zugabe, gebe ich dir noch\n"
-	.string "einige Tipps zum Angeln!\p"
-	.string "Schau dir zuerst das Wasser an und dann\n"
-	.string "benutze deine ANGEL.\p"
-	.string "Konzentriere dich… Wenn etwas anbeißt,\n"
-	.string "hol die ANGEL ein.\p"
-	.string "Manchmal kannst du mit einem Mal etwas\n"
-	.string "Großes fangen, manchmal musst du\l"
-	.string "immer wieder kurz die ANGEL anheben,\l"
-	.string "um etwas an Land zu ziehen.$"
+DewfordTown_Text_FishingAdvice:
+	.string "Und jetzt noch ein paar Tipps vom Profi:\p"
+	.string "Sieh dir das Wasser an, dann benutze\n"
+	.string "die ANGEL.\p"
+	.string "Wenn etwas anbeißt - bleib ruhig,\n"
+	.string "dann hol sie ein.\p"
+	.string "Manchmal klappt’s direkt, manchmal\n"
+	.string "brauchst du Geduld. Bleib dran!$"
 
 DewfordTown_Text_ThatsTooBadThen:
-	.string "Oh, wirklich?\n"
-	.string "Das ist aber schade.$"
+	.string "Oh… kein Bock?\n"
+	.string "Naja, dann halt später vielleicht.$"
 
 DewfordTown_Text_HowsYourFishing:
 	.string "Yeah!\n"
-	.string "Wie steht’s mit deinen Angelkünsten?$"
+	.string "Wie läuft’s mit der ANGEL?$"
 
 DewfordTown_Text_GreatHaulInSomeBigOnes:
-	.string "Also, wenn das stimmt… Das wäre\n"
-	.string "großartig! Petri heil!$"
-
-DewfordTown_Text_FishingAdvice:
-	.string "Hey, lass den Kopf nicht hängen! Ich\n"
-	.string "gebe dir einige Tipps zum Angeln!\p"
-	.string "Schau dir zuerst das Wasser an\n"
-	.string "und dann benutze deine ANGEL.\p"
-	.string "Konzentriere dich… Wenn etwas\n"
-	.string "anbeißt, hol die ANGEL ein.\p"
-	.string "Manchmal kannst du mit einem Mal etwas\n"
-	.string "Großes fangen, manchmal musst du\l"
-	.string "immer wieder kurz die ANGEL anheben,\l"
-	.string "um etwas an Land zu ziehen.$"
+	.string "Echt jetzt?\n"
+	.string "Nice, Petri heil!$"
 
 DewfordTown_Text_XIsTheBiggestHappeningThingRight:
-	.string "Ich mag, was hip, aufregend und modern\n"
-	.string "ist. So etwas probiere ich immer aus.\p"
-	.string "Hast du schon einmal was von\n"
-	.string "“{STR_VAR_1}” gehört?\p"
-	.string "Wusste ich es doch!\n"
-	.string "Natürlich hast du schon davon gehört!\p"
-	.string "Oh, meine Güte,\n"
-	.string "“{STR_VAR_1}”…\l"
-	.string "Das ist das Coolste überhaupt!\p"
-	.string "Wo immer du auch herkommst,\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "ist das Aufregendste überhaupt!$"
+	.string "Ich bin total im Trend-Game!\p"
+	.string "Kennst du “{STR_VAR_1}” schon?\p"
+	.string "Natürlich kennst du’s!\n"
+	.string "Das ist aktuell DAS Ding!\p"
+	.string "Egal wo du herkommst -\n"
+	.string "“{STR_VAR_1}” ist einfach Kult.$"
 
 DewfordTown_Text_TellMeWhatsNewAndIn:
-	.string "Wie bitte?\n"
-	.string "Es ist nicht hip und aufregend?\p"
-	.string "Nun, hey, dann verrate mir aber, was\n"
-	.string "wirklich cool und “in” ist?$"
+	.string "Wie jetzt?! “{STR_VAR_1}” ist durch?\p"
+	.string "Dann erzähl mal, was jetzt Hype ist!$"
 
 DewfordTown_Text_OfCourseIKnowAboutThat:
-	.string "Was?\n"
-	.string "“{STR_VAR_2}”?\p"
-	.string "… …\p"
-	.string "… Hm… Äh… Yeah! Das stimmt!\n"
-	.string "Yeah, ich wusste das! Schon lange!\p"
-	.string "Natürlich weiß ich das!\n"
-	.string "“{STR_VAR_2}”, richtig?\p"
-	.string "Yeah, das ist es, das ist es!\n"
-	.string "Ist “{STR_VAR_2}”\l"
-	.string "nicht das Coolste?\p"
-	.string "Das ist die hippeste Sache überhaupt.\n"
-	.string "Und du dachtest, ich wüsste das nicht?\p"
-	.string "“{STR_VAR_1}”…\n"
-	.string "Das ist doch schon uralt und unmodern.\p"
-	.string "“{STR_VAR_2}” ist das,\n"
-	.string "was vital und zeitgemäß ist!$"
+	.string "“{STR_VAR_2}”? … Äh… klar!\p"
+	.string "Ich bin sowas von im Bild!\n"
+	.string "“{STR_VAR_2}” ist total angesagt!\p"
+	.string "“{STR_VAR_1}” war gestern -\n"
+	.string "heute ist “{STR_VAR_2}” angesagt!$"
 
 DewfordTown_Text_XHuhIThinkYIsCool:
-	.string "Hmm…\n"
-	.string "“{STR_VAR_2}”, oder?\p"
-	.string "Aber ich persönlich finde,\n"
-	.string "“{STR_VAR_1}”\l"
-	.string "ist das Coolste überhaupt!$"
+	.string "“{STR_VAR_2}” ist nice, aber ich bleib bei\n"
+	.string "“{STR_VAR_1}”. Das ist mein Ding.$"
 
 DewfordTown_Text_HearOfAnyTrendsComeShareWithMe:
-	.string "Wenn du irgendetwas über neue, auf-\n"
-	.string "regende Sachen hörst, erzähl mir davon!$"
+	.string "Wenn du coole Trends hörst -\n"
+	.string "sag mir sofort Bescheid!$"
 
 DewfordTown_Text_YeahDefinitionOfInRightNow:
-	.string "Yeah, absolut richtig!\p"
-	.string "“{STR_VAR_1}” ist die\n"
-	.string "Definition von “in”.$"
+	.string "Ganz genau!\n"
+	.string "“{STR_VAR_1}” ist voll im Trend!$"
 
 DewfordTown_EventScript_Hydropi::
-    msgbox DewfordTown_Text_Hydropi, MSGBOX_NPC
-    end
+	msgbox DewfordTown_Text_Hydropi, MSGBOX_NPC
+	end
 
 DewfordTown_Text_Hydropi:
-    .string "Hey {PLAYER}!\p"
+	.string "Hey {PLAYER}!\p"
 	.string "Wie gehts, wie stehts?\n"
 	.string "Tipp:\p"
 	.string "In dieser Stadt versteckt sich ein\n"
@@ -807,3 +772,34 @@ DewfordTown_Text_Hydropi:
 	.string "einer Spawnrate von 30%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+DewfordTown_Text_BrineyBoatBroken:
+	.string "MR. BRACK: Oh weh!\n"
+	.string "Der Motor meines Bootes ist hinüber…\p"
+	.string "Tut mir leid, {PLAYER}, wir kommen\n"
+	.string "hier erstmal nicht weg.$"
+
+DewfordTown_Text_PlayerAlphaOver:
+	.string "{PLAYER}: Hm...\p"
+	.string "Ich glaube, das war's mit dieser Alpha.\n"
+	.string "Ich habe alles erledigt, was möglich war.\p"
+	.string "Jetzt heißt es warten, bis die nächste\n"
+	.string "Version verfügbar ist.\p"
+	.string "Ich könnte die Höhle nochmal\n"
+	.string "erkundigen, ob ich etwas übersehen\l"
+	.string "habe, oder ob ich von dort aus wieder\n"
+	.string "zurück nach Metarost City komme.$"
+
+TestTrainerScript::
+    trainerbattle_single TRAINER_LAURA, TestIntro, TestDefeat
+    msgbox TestAfter, MSGBOX_DEFAULT
+    end
+
+TestIntro::
+    .string "Test Intro.$"
+
+TestDefeat::
+    .string "Test Defeat.$"
+
+TestAfter::
+    .string "Nach dem Kampf.$"
