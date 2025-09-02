@@ -199,6 +199,7 @@ u16 GetPlayerAvatarGraphicsIdByStateIdAndStyle(u8 stateId, u8 style)
         {OBJ_EVENT_GFX_DAWN, OBJ_EVENT_GFX_DAWN_RIDING, OBJ_EVENT_GFX_DAWN_SURFING, OBJ_EVENT_GFX_DAWN_FIELD_MOVE},
         {OBJ_EVENT_GFX_HILBERT, OBJ_EVENT_GFX_HILBERT_RIDING, OBJ_EVENT_GFX_HILBERT_SURFING, OBJ_EVENT_GFX_HILBERT_FIELD_MOVE},
         {OBJ_EVENT_GFX_HILDA, OBJ_EVENT_GFX_HILDA_RIDING, OBJ_EVENT_GFX_HILDA_SURFING, OBJ_EVENT_GFX_HILDA_FIELD_MOVE},
+        /*
         {OBJ_EVENT_GFX_NATE, OBJ_EVENT_GFX_NATE_RIDING, OBJ_EVENT_GFX_NATE_SURFING, OBJ_EVENT_GFX_NATE_FIELD_MOVE},
         {OBJ_EVENT_GFX_ROSA, OBJ_EVENT_GFX_ROSA_RIDING, OBJ_EVENT_GFX_ROSA_SURFING, OBJ_EVENT_GFX_ROSA_FIELD_MOVE},
         {OBJ_EVENT_GFX_CALEM, OBJ_EVENT_GFX_CALEM_RIDING, OBJ_EVENT_GFX_CALEM_SURFING, OBJ_EVENT_GFX_CALEM_FIELD_MOVE},
@@ -209,6 +210,7 @@ u16 GetPlayerAvatarGraphicsIdByStateIdAndStyle(u8 stateId, u8 style)
         {OBJ_EVENT_GFX_GLORIA, OBJ_EVENT_GFX_GLORIA_RIDING, OBJ_EVENT_GFX_GLORIA_SURFING, OBJ_EVENT_GFX_GLORIA_FIELD_MOVE},
         {OBJ_EVENT_GFX_FLORIAN, OBJ_EVENT_GFX_FLORIAN_RIDING, OBJ_EVENT_GFX_FLORIAN_SURFING, OBJ_EVENT_GFX_FLORIAN_FIELD_MOVE},
         {OBJ_EVENT_GFX_JULIANA, OBJ_EVENT_GFX_JULIANA_RIDING, OBJ_EVENT_GFX_JULIANA_SURFING, OBJ_EVENT_GFX_JULIANA_FIELD_MOVE}
+        */
     };
 
     if (style >= NUM_PLAYER_CHARACTERS || stateId >= NUM_PLAYER_AVATAR_STATES)
@@ -863,7 +865,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
     }
 
-    ResetSpinTimer(); // Everything below will move the player a space, reset the timer.
+    ResetSpinTimer();
     gPlayerAvatar.creeping = FALSE;
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
@@ -880,8 +882,9 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
+    // HIER WURDE DIE LOGIK GEÄNDERT: GetPlayerSpritingState wird jetzt verwendet.
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && GetPlayerSpritingState(heldKeys)
+      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerRunSlow(direction);
@@ -1641,6 +1644,7 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_DAWN_FIELD_MOVE:
     case OBJ_EVENT_GFX_DAWN_FISHING:
     case OBJ_EVENT_GFX_DAWN_RIDING:
+    case OBJ_EVENT_GFX_DAWN_WATERING:
     case OBJ_EVENT_GFX_HILDA:
     case OBJ_EVENT_GFX_HILDA_MACH_BIKE:
     case OBJ_EVENT_GFX_HILDA_ACRO_BIKE:
@@ -1648,6 +1652,8 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_HILDA_FIELD_MOVE:
     case OBJ_EVENT_GFX_HILDA_FISHING:
     case OBJ_EVENT_GFX_HILDA_RIDING:
+    case OBJ_EVENT_GFX_HILDA_WATERING:
+    /*
     case OBJ_EVENT_GFX_SERENA:
     case OBJ_EVENT_GFX_SERENA_MACH_BIKE:
     case OBJ_EVENT_GFX_SERENA_ACRO_BIKE:
@@ -1676,6 +1682,7 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_JULIANA_FIELD_MOVE:
     case OBJ_EVENT_GFX_JULIANA_FISHING:
     case OBJ_EVENT_GFX_JULIANA_RIDING:
+    */
         return FEMALE;
 
     // Männliche Charaktere
@@ -1707,6 +1714,7 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_LUCAS_FIELD_MOVE:
     case OBJ_EVENT_GFX_LUCAS_FISHING:
     case OBJ_EVENT_GFX_LUCAS_RIDING:
+    case OBJ_EVENT_GFX_LUCAS_WATERING:
     case OBJ_EVENT_GFX_HILBERT:
     case OBJ_EVENT_GFX_HILBERT_MACH_BIKE:
     case OBJ_EVENT_GFX_HILBERT_ACRO_BIKE:
@@ -1714,6 +1722,8 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_HILBERT_FIELD_MOVE:
     case OBJ_EVENT_GFX_HILBERT_FISHING:
     case OBJ_EVENT_GFX_HILBERT_RIDING:
+    case OBJ_EVENT_GFX_HILBERT_WATERING:
+    /*
     case OBJ_EVENT_GFX_CALEM:
     case OBJ_EVENT_GFX_CALEM_MACH_BIKE:
     case OBJ_EVENT_GFX_CALEM_ACRO_BIKE:
@@ -1742,6 +1752,7 @@ u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
     case OBJ_EVENT_GFX_FLORIAN_FIELD_MOVE:
     case OBJ_EVENT_GFX_FLORIAN_FISHING:
     case OBJ_EVENT_GFX_FLORIAN_RIDING:
+    */
         return MALE;
 
     default:
@@ -1917,7 +1928,6 @@ u16 GetPlayerAvatarGraphicsIdByStyleAndState(u8 style, u8 flags)
         if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
             return OBJ_EVENT_GFX_MAY_UNDERWATER;
         return OBJ_EVENT_GFX_DAWN;
-
     case STYLE_HILBERT:
         if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
             return OBJ_EVENT_GFX_HILBERT_MACH_BIKE;
@@ -1935,7 +1945,7 @@ u16 GetPlayerAvatarGraphicsIdByStyleAndState(u8 style, u8 flags)
         if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
             return OBJ_EVENT_GFX_MAY_UNDERWATER;
         return OBJ_EVENT_GFX_HILDA;
-
+        /*
     case STYLE_NATE:
         if (flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
             return OBJ_EVENT_GFX_NATE_MACH_BIKE;
@@ -2043,7 +2053,7 @@ u16 GetPlayerAvatarGraphicsIdByStyleAndState(u8 style, u8 flags)
     //     if (flags & PLAYER_AVATAR_FLAG_UNDERWATER)
     //         return OBJ_EVENT_GFX_BRENDAN_UNDERWATER;
     //     return OBJ_EVENT_GFX_WES;
-
+        */
     default:
         return OBJ_EVENT_GFX_BRENDAN_NORMAL;
     }
@@ -3252,6 +3262,7 @@ u8 SpawnRivalObjectEventForStyle(u8 style, u8 localId, s16 x, s16 y, u8 directio
     case STYLE_HILDA:
         graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
         break;
+        /*
     case STYLE_NATE:
         graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
         break;
@@ -3282,14 +3293,13 @@ u8 SpawnRivalObjectEventForStyle(u8 style, u8 localId, s16 x, s16 y, u8 directio
     case STYLE_JULIANA:
         graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
         break;
-/*
     case STYLE_ASH:
         graphicsId = OBJ_EVENT_GFX_RIVAL_WES;
         break;
     case STYLE_WES:
         graphicsId = OBJ_EVENT_GFX_RIVAL_ASH;
         break;
-*/
+        */
     default:
         graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
         break;

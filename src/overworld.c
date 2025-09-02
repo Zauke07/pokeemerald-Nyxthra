@@ -83,7 +83,6 @@
 #include "constants/trainer_types.h"
 #include "strings.h"
 #include "debug.h"
-#include "field_effect_helpers.h"
 
 extern void (*const sPlayerAvatarTransitionFuncs[])(struct ObjectEvent *);
 
@@ -96,6 +95,47 @@ struct RogueLocalData
 };
 
 EWRAM_DATA struct RogueLocalData gRogueLocal = {};
+
+/*
+static void DebugPrintPlayerFlags(u8 flags)
+{
+    // String-Buffer für Debug
+    u8 buffer[32];
+    // Schreibe die Flags als Zahl in buffer
+    ConvertIntToDecimalStringN(buffer, flags, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ShowFieldMessage(buffer);
+}
+
+static void ResetPlayerMovementState(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    objEvent->heldMovementActive = FALSE;
+    objEvent->movementType = MOVEMENT_TYPE_PLAYER;
+    objEvent->inanimate = FALSE;
+
+    // Fallback, falls SetObjectSubpriorityByZCoord nicht existiert
+    sprite->subpriority = objEvent->previousElevation * 2 + 1;
+
+    sprite->callback = SpriteCallbackDummy;
+    sprite->animPaused = FALSE;
+    StartSpriteAnim(sprite, 0); // Richtung nach unten
+}
+
+
+static void TryFadeOutOldPlayerSpriteAndFixMovement(void)
+{
+    u8 objectEventId = gPlayerAvatar.objectEventId;
+    struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
+    struct Sprite *sprite = &gSprites[objEvent->spriteId];
+
+    objEvent->movementType = MOVEMENT_TYPE_PLAYER;
+    objEvent->heldMovementActive = FALSE;
+    objEvent->facingDirectionLocked = FALSE;
+
+    sprite->animNum = 0;
+    sprite->animCmdIndex = 0;
+    sprite->y2 = 0;
+}
+*/
 
 u16 GetRivalGraphicsId(u16 rivalId, u8 action)
 {
@@ -446,6 +486,7 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_ETHAN:
     case STYLE_LUCAS:
     case STYLE_HILBERT:
+/*
     case STYLE_NATE:
     case STYLE_CALEM:
     case STYLE_ELIO:
@@ -453,17 +494,20 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_FLORIAN:
 //    case STYLE_ASH:
 //    case STYLE_WES:
+*/
         return TRUE;
     case STYLE_MAY:
     case STYLE_LEAF:
     case STYLE_LYRA:
     case STYLE_DAWN:
     case STYLE_HILDA:
+/*
     case STYLE_ROSA:
     case STYLE_SERENA:
     case STYLE_SELENE:
     case STYLE_GLORIA:
     case STYLE_JULIANA:
+*/
         return FALSE;
     default:
         return TRUE; // Fallback: männlich
@@ -479,13 +523,15 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_ETHAN:
     case STYLE_LUCAS:
     case STYLE_HILBERT:
+        /*
     case STYLE_NATE:
     case STYLE_CALEM:
     case STYLE_ELIO:
     case STYLE_VICTOR:
     case STYLE_FLORIAN:
-//    case STYLE_ASH:
-//    case STYLE_WES:
+     // case STYLE_ASH:
+     // case STYLE_WES:
+        */
         return MALE;
 
     case STYLE_MAY:
@@ -493,11 +539,13 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_LYRA:
     case STYLE_DAWN:
     case STYLE_HILDA:
+        /*
     case STYLE_ROSA:
     case STYLE_SERENA:
     case STYLE_SELENE:
     case STYLE_GLORIA:
     case STYLE_JULIANA:
+        */
         return FEMALE;
 
     default:
@@ -2097,56 +2145,95 @@ void CB2_ReturnToField(void)
 
 static void CB2_ReturnToFieldLocal(void)
 {
+    // Die grundlegenden Rückkehr-Operationen sollten zuerst ausgeführt werden.
+    // ReturnToFieldLocal kümmert sich um die Initialisierung der Overworld.
     if (ReturnToFieldLocal(&gMain.state))
     {
-        SetFieldVBlankCallback();
-        SetMainCallback2(CB2_Overworld);
+        // Diese Zeilen müssen VOR den Sprite-Anpassungen stehen,
+        // da sie den Haupt-Callback ändern und den Bildschirm vorbereiten.
+        // TryFadeOutOldPlayerSpriteAndFixMovement(); // Bleibt auskommentiert, wie von dir bestätigt
+        SetFieldVBlankCallback();                  // Setzt den VBlank-Callback für das Feld
+        SetMainCallback2(CB2_Overworld);           // Setzt den Haupt-Callback auf die Overworld
 
-        // Stil vom Save übernehmen
-        gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
-        u8 style = gPlayerAvatar.style;
+        // Objekt & Sprite referenzieren
         u8 objectEventId = gPlayerAvatar.objectEventId;
-        struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
-        struct Sprite *sprite = &gSprites[objEvent->spriteId];
-
-        // Zustand setzen: Surfen oder zu Fuß
-        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+        // WICHTIGE PRÜFUNG: Sicherstellen, dass objectEventId gültig ist
+        if (objectEventId < OBJECT_EVENTS_COUNT)
         {
-            gPlayerAvatar.flags &= ~(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE | PLAYER_AVATAR_FLAG_ON_FOOT);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING;
+            struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
+            struct Sprite *sprite = &gSprites[objEvent->spriteId];
+
+            // Bewegung fixen
+            objEvent->heldMovementActive = FALSE;
+            objEvent->heldMovementFinished = TRUE;
+            objEvent->movementActionId = 0;
+            objEvent->movementType = MOVEMENT_TYPE_PLAYER;
+            objEvent->facingDirectionLocked = FALSE;
+            objEvent->triggerGroundEffectsOnMove = TRUE;
+            objEvent->triggerGroundEffectsOnStop = TRUE;
+
+            // Sprite fixen (bereits vorhanden)
+            sprite->animNum = 0;
+            sprite->animCmdIndex = 0;
+            sprite->y2 = 0;
+
+            // Flags setzen (z.B. Surfing) basierend auf der aktuellen Position
+            u8 behavior = MapGridGetMetatileBehaviorAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
+            if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))
+            {
+                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING; // Setzt die Surf-Flagge
+            }
+            else
+            {
+                // WICHTIG: Löscht die Surf-Flagge, wenn nicht im Wasser!
+                gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
+                // Wenn nicht gesurft wird, den Surf-Blob beenden
+                if (objEvent->fieldEffectSpriteId != SPRITE_NONE && objEvent->fieldEffectSpriteId < MAX_SPRITES)
+                {
+                    FieldEffectStop(&gSprites[objEvent->fieldEffectSpriteId], FLDEFF_SURF_BLOB);
+                    objEvent->fieldEffectSpriteId = SPRITE_NONE;
+                }
+            }
+
+            // Surf-Blob Logik: Nur ausführen, wenn auch wirklich gesurft wird
+            if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+            {
+                // Sicherstellen, dass der Blob neu gestartet oder aktualisiert wird, falls bereits vorhanden
+                if (objEvent->fieldEffectSpriteId == SPRITE_NONE)
+                {
+                    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+                    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+                    gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
+
+                    u8 blobSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
+                    objEvent->fieldEffectSpriteId = blobSpriteId;
+                    SetSurfBlob_BobState(blobSpriteId, BOB_PLAYER_AND_MON);
+                }
+            }
+
+            // Sicherstellen, dass Style korrekt ist (Hilbert bleibt Hilbert)
+            gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
+
+            // Grafik des Spielers setzen (jetzt, wo Stil und Flags korrekt sind)
+            u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, gPlayerAvatar.flags);
+            ObjectEventSetGraphicsId(objEvent, gfxId); // Objekt-Grafik aktualisieren
+
+            // HINWEIS: Die Zeile objEvent->facingDirection = GetPlayerFacingDirection();
+            // wurde entfernt, da GetPlayerFacingDirection() nur den aktuellen Wert zurückgibt.
+            // Wir gehen davon aus, dass objEvent->facingDirection zu diesem Zeitpunkt
+            // den korrekten Roh-Richtungswert (0-3) enthält.
+
+            // Zusätzliche Animationen-Resets für den Sprite-Zustand (von ChatGPTs Vorschlag)
+            sprite->animDelayCounter = 0;
+            sprite->animPaused = FALSE;
+
+            // Animation zurücksetzen: Jetzt wird der korrekte Animations-Index
+            // aus der Roh-Blickrichtung ermittelt und an StartSpriteAnim übergeben.
+            StartSpriteAnim(sprite, GetFaceDirectionAnimNum(objEvent->facingDirection));
+
+            // Debug-Ausgabe (immer noch auskommentiert)
+            // ...
         }
-        else
-        {
-            gPlayerAvatar.flags &= ~(PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE);
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
-        }
-
-        // Sprite setzen
-        u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(style, gPlayerAvatar.flags);
-        ObjectEventSetGraphicsId(objEvent, gfxId);
-
-        // Spritezustand zurücksetzen
-        sprite->subspriteTableNum = 0;
-        sprite->y2 = 0;
-        sprite->animNum = 0;
-        sprite->animCmdIndex = 0;
-
-        // Surf-Blob ggf. neu erzeugen
-        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
-        {
-            gFieldEffectArguments[0] = objEvent->currentCoords.x;
-            gFieldEffectArguments[1] = objEvent->currentCoords.y;
-            gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
-
-            u8 blobSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
-            objEvent->fieldEffectSpriteId = blobSpriteId;
-            SetSurfBlob_BobState(blobSpriteId, BOB_PLAYER_AND_MON);
-        }
-
-        // Transition-Funktion aufrufen
-        u8 state = GetPlayerStateByGraphicsId(gfxId);
-        if (state < PLAYER_AVATAR_STATE_COUNT)
-            sPlayerAvatarTransitionFuncs[state](objEvent);
     }
 }
 
@@ -2479,7 +2566,26 @@ static bool32 ReturnToFieldLocal(u8 *state)
         ResetMirageTowerAndSaveBlockPtrs();
         ResetScreenForMapLoad();
         ResumeMap(FALSE);
-        InitObjectEventsReturnToField();
+
+        // *** WICHTIGE ÄNDERUNG HIER ***
+        // Setze Style und Flags VOR dem Aufruf von InitObjectEventsReturnToField().
+        // Nur so kann InitObjectEventsReturnToField den korrekten Start-Sprite laden.
+        gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
+        gPlayerAvatar.flags = PLAYER_AVATAR_FLAG_ON_FOOT;
+        // Die Zuweisung zu gPlayerAvatar.playerDirection = gSaveBlock1Ptr->playerDir;
+        // wurde entfernt, da diese Felder nicht existieren.
+        // Die Initialisierung der Richtung sollte durch InitObjectEventsReturnToField()
+        // und die Nachjustierung in CB2_ReturnToFieldLocal erfolgen.
+
+        // Prüfe hier auch den MetatileBehavior der Startposition, um die Surf-Flag
+        // für die INITIALE Ladung des Spielers korrekt zu setzen.
+        u8 behavior = MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))
+            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING; // Setzt die Surf-Flagge
+
+        InitObjectEventsReturnToField(); // Dieser Aufruf verwendet jetzt die VORHER gesetzten gPlayerAvatar.style und flags
+
+        // Folge-Pokémon und Kamera
         if (gFieldCallback == FieldCallback_UseFly)
             RemoveFollowingPokemon();
         else
@@ -2487,16 +2593,19 @@ static bool32 ReturnToFieldLocal(u8 *state)
         SetCameraToTrackPlayer();
         (*state)++;
         break;
+
     case 1:
         InitViewGraphics();
         TryLoadTrainerHillEReaderPalette();
         FollowerNPC_BindToSurfBlobOnReloadScreen();
         (*state)++;
         break;
+
     case 2:
         if (RunFieldCallback())
             (*state)++;
         break;
+
     case 3:
         return TRUE;
     }
@@ -3945,16 +4054,6 @@ static void DestroyItemIconSprite(void)
     }
 }
 
-#else
-void ScriptShowItemDescription(struct ScriptContext *ctx)
-{
-    (void) ScriptReadByte(ctx);
-}
-void ScriptHideItemDescription(struct ScriptContext *ctx)
-{
-}
-
-
 void HideObjectEventByLocalId(u8 localId)
 {
     u8 eventId = GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
@@ -3972,6 +4071,15 @@ void ShowObjectEventByLocalId(u8 localId)
 void Overworld_CleanUpFromActiveMenu(void)
 {
     gFieldCallback = NULL;
+}
+
+#else
+void ScriptShowItemDescription(struct ScriptContext *ctx)
+{
+    (void) ScriptReadByte(ctx);
+}
+void ScriptHideItemDescription(struct ScriptContext *ctx)
+{
 }
 
 
