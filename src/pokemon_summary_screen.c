@@ -3900,12 +3900,13 @@ static void PrintExpPointsNextLevel(void)
     x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 42) + 2;
     PrintTextOnWindow(windowId, gStringVar1, x, 1, 0, 0);
 
-    if (sum->level < MAX_LEVEL)
+    // Überprüfung für Level über dem Maximum der Erfahrungstabelle
+    if (sum->level < MAX_LEVEL && sum->level < ARRAY_COUNT(gExperienceTables[0]) - 1)
         expToNextLevel = gExperienceTables[gSpeciesInfo[sum->species].growthRate][sum->level + 1] - sum->exp;
     else
         expToNextLevel = 0;
 
-    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 6);
+    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 7);
     x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 42) + 2;
     PrintTextOnWindow(windowId, gStringVar1, x, 17, 0, 0);
 }
