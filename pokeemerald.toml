@@ -3239,7 +3239,7 @@ DefaultHash = '''E74F20C6'''
    '''LoopWingFlapSE''',
    '''DestroyMewEmergingGrassSprite''',
    '''ShowBerryCrushRankings''',
-   '''TryBufferWaldaPhrase''',
+   '''TryBufferTwixPhrase''',
    '''DoWaldaNamingScreen''',
    '''TryGetWallpaperWithWaldaPhrase''',
    '''PlayerNotAtTrainerHillEntrance''',

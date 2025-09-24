@@ -75,17 +75,17 @@ u32 CountAllStorageMons(void);
 bool32 AnyStorageMonWithMove(u16 move);
 
 void ResetWaldaWallpaper(void);
-void SetWaldaWallpaperLockedOrUnlocked(bool32 unlocked);
+void SetTwixWallpaperLockedOrUnlocked(bool32 unlocked);
 bool32 IsWaldaWallpaperUnlocked(void);
 u32 GetWaldaWallpaperPatternId(void);
-void SetWaldaWallpaperPatternId(u8 id);
+void SetTwixWallpaperPatternId(u8 id);
 u32 GetWaldaWallpaperIconId(void);
-void SetWaldaWallpaperIconId(u8 id);
+void SetTwixWallpaperIconId(u8 id);
 u16 *GetWaldaWallpaperColorsPtr(void);
-void SetWaldaWallpaperColors(u16 color1, u16 color2);
-u8 *GetWaldaPhrasePtr(void);
-void SetWaldaPhrase(const u8 *src);
-bool32 IsWaldaPhraseEmpty(void);
+void SetTwixWallpaperColors(u16 color1, u16 color2);
+u8 *GetTwixPhrasePtr(void);
+void SetTwixPhrase(const u8 *src);
+bool32 IsTwixPhraseEmpty(void);
 
 void EnterPokeStorage(u8 boxOption);
 u32 CountPartyNonEggMons(void);

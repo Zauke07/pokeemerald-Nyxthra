@@ -105,5 +105,7 @@ void MoveDeleterForgetMove(void);
 void BufferMoveDeleterNicknameAndMove(void);
 void GetNumMovesSelectedMonHas(void);
 void MoveDeleterChooseMoveToForget(void);
+bool8 ShowFieldMessageFollowerDebug(void);
+bool8 BufferFollowerNicknameToVar1(void);
 
 #endif // GUARD_PARTY_MENU_H

@@ -3,8 +3,8 @@
 
 #define WALDA_PHRASE_LENGTH 15
 
-u16 TryBufferWaldaPhrase(void);
-void DoWaldaNamingScreen(void);
-u16 TryGetWallpaperWithWaldaPhrase(void);
+u16 TryBufferTwixPhrase(void);
+void DoTwixNamingScreen(void);
+u16 TryGetWallpaperWithTwixPhrase(void);
 
 #endif // GUARD_WALDA_PHRASE_H

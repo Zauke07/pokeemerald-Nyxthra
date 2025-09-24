@@ -445,6 +445,8 @@ extern const u16 gItemIconPalette_RevivalHerb[];
 extern const u32 gItemIcon_Antidote[];
 extern const u16 gItemIconPalette_Antidote[];
 extern const u32 gItemIcon_StatusHeal[];
+extern const u32 gItemIcon_iphone_wecker[];
+extern const u16 gItemIconPalette_iphone_wecker[];
 extern const u16 gItemIconPalette_ParalyzeHeal[];
 extern const u16 gItemIconPalette_BurnHeal[];
 extern const u16 gItemIconPalette_IceHeal[];
@@ -5731,6 +5733,7 @@ extern const u8 gTrainerBackPic_May[];
 extern const u8 gTrainerBackPic_Red[];
 extern const u8 gTrainerBackPic_Leaf[];
 extern const u8 gTrainerBackPic_Ethan[];
+extern const u32 gTrainerBackPic_Ethan2[];
 extern const u8 gTrainerBackPic_Lyra[];
 extern const u8 gTrainerBackPic_Lucas[];
 extern const u8 gTrainerBackPic_Dawn[];
@@ -5738,10 +5741,10 @@ extern const u8 gTrainerBackPic_Dawn[];
 //extern const u8 gTrainerBackPic_Hilda[];
 //extern const u8 gTrainerBackPic_Nate[];
 //extern const u8 gTrainerBackPic_Rosa[];
-extern const u8 gTrainerBackPic_Calem[];
-extern const u8 gTrainerBackPic_Serena[];
+//extern const u8 gTrainerBackPic_Calem[];
+//extern const u8 gTrainerBackPic_Serena[];
 //extern const u8 gTrainerBackPic_Elio[];
-extern const u8 gTrainerBackPic_Selene[];
+//extern const u8 gTrainerBackPic_Selene[];
 //extern const u8 gTrainerBackPic_Victor[];
 //extern const u8 gTrainerBackPic_Gloria[];
 //extern const u8 gTrainerBackPic_Florian[];
@@ -5752,6 +5755,15 @@ extern const u8 gTrainerBackPic_Wally[];
 extern const u8 gTrainerBackPic_Steven[];
 
 //NEW
+extern const u16 gObjectEventPal_RocketM_F[];
+extern const u32 gTrainerFrontPic_Nurse[];
+extern const u32 gTrainerFrontPic_Rocky[];
+extern const u32 gTrainerFrontPic_BackpackerF[];
+extern const u32 gTrainerFrontPic_BackpackerM[];
+
+
+
+
 /*
 extern const u8 gTrainerBackPic_Wes[];
 extern const u8 gTrainerBackPic_Ash[];

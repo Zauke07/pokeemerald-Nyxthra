@@ -5,9 +5,13 @@
 #include "siirtc.h"
 #include "config/overworld.h"
 #include "constants/rtc.h"
+#include "script.h"
 
 extern struct Time gLocalTime;
 extern const s32 sNumDaysInMonths[MONTH_COUNT];
+
+void RtcGetTime(struct Time *time);
+void FormatCurrentTimeAndDaytime(void);
 
 void RtcDisableInterrupts(void);
 void RtcRestoreInterrupts(void);
@@ -45,5 +49,7 @@ u8 GetDay(void);
 enum Weekday GetDayOfWeek(void);
 enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay);
 enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay);
+bool8 ScrCmd_FormatCurrentTimeAndDaytime(struct ScriptContext *ctx);
+void FormatCurrentTimeAndDaytime(void);
 
 #endif // GUARD_RTC_UTIL_H

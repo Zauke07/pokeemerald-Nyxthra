@@ -74,6 +74,7 @@ bool8 ScrCmd_TestShowChatGPTLogo(struct ScriptContext *ctx);
 bool8 ShowStarterRegionMenu(struct ScriptContext *ctx);
 bool8 ShowStarterRegionMulti(struct ScriptContext *ctx);
 bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx);
+bool8 ScrCmd_BufferFollowerNicknameToVar1(struct ScriptContext *ctx);
 
 //TestLabor
 //bool8 ScrCmd_playmusictest(struct ScriptContext *ctx);
@@ -82,6 +83,8 @@ bool8 WarpToTestlaborAfterStyleSelect(struct ScriptContext *ctx);
 bool8 StartTestlaborStyleSelection(struct ScriptContext *ctx);
 bool8 StartCharacterStyleSelection(struct ScriptContext *ctx);
 bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx);
+bool8 ScrCmd_CheckPlayerPCStyle_MaysHouse(struct ScriptContext *ctx);
+bool8 ScrCmd_CheckPlayerPCStyle_BrendansHouse(struct ScriptContext *ctx);
 
 
 
