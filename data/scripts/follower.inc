@@ -1,19 +1,19 @@
 gText_FollowerLovesYou::
-	.string "{STR_VAR_1} is regarding you with\nadoration!$"
+	.string "{STR_VAR_1} betrachtet dich voller\nBewunderung!$"
 
 gText_FollowerLostInThought::
-	.string "{STR_VAR_1} seems lost in thought.$"
+	.string "{STR_VAR_1} scheint in Gedanken versunken.$"
 
 gText_FollowerDefault::
-	.string "ERROR 404: Script not found.$"
+	.string "ERROR 404: Skript nicht gefunden.$"
 
 gText_WantsToFly::
-	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
+	.string "{STR_VAR_1} blickt unruhig zum\nHimmel.\pMöchtest du Fligen einsetzen?$"
 
 EventScript_Follower::
 	lock
 	bufferlivemonnickname 0
-	playfirstmoncry
+	playfollowercry
 	getfolloweraction
 EventScript_FollowerEnd::
 	waitfieldeffect FLDEFF_EMOTE
@@ -32,6 +32,7 @@ EventScript_FollowerGeneric:: @ similar to Std_MsgboxDefault
 	faceplayer
 EventScript_FollowerGenericSkipFace:
 	waitfieldeffect FLDEFF_EMOTE
+	BufferFollowerNicknameToVar1
 	message 0x0
 	waitmessage
 	waitbuttonpress

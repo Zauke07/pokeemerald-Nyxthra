@@ -33,7 +33,7 @@ static u8 sMyStaticVariable = 0;
 Macros and constants should use `CAPS_WITH_UNDERSCORES`.
 
 ```c
-#define MAX_LEVEL 100
+#define MAX_LEVEL 200
 
 enum
 {

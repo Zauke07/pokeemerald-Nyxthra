@@ -526,9 +526,9 @@ gSpecials::
 	def_special LoopWingFlapSE
 	def_special DestroyMewEmergingGrassSprite
 	def_special ShowBerryCrushRankings
-	def_special TryBufferWaldaPhrase
-	def_special DoWaldaNamingScreen
-	def_special TryGetWallpaperWithWaldaPhrase
+	def_special TryBufferTwixPhrase
+	def_special DoTwixNamingScreen
+	def_special TryGetWallpaperWithTwixPhrase
 	def_special PlayerNotAtTrainerHillEntrance
 	def_special GetBattlePyramidHint
 	def_special LoadLinkContestPlayerPalettes
@@ -574,6 +574,18 @@ gSpecials::
     def_special WarpToTestlaborAfterStyleSelect
     def_special StartTestlaborStyleSelection
     def_special StartCharacterStyleSelection
+    def_special ShowFieldMessageStarterDebug
+    def_special GetJokeOffset0
+    def_special GetJokeOffset1
+    def_special GetJokeOffset2
+    def_special CheckChikoritaCharmanderSquirtle
+    def_special ShowFieldMessageFollowerDebug
+    def_special BufferClockToStrVars123
+    def_special ShowFieldExpLevelDebug
+    def_special ShowFieldCmdGetExpDebug
+    def_special BufferDebugExpLevelVars
+
+
 
 
 
