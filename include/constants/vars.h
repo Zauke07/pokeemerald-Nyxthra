@@ -267,8 +267,8 @@
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
+#define VAR_GYM_TRAINERS_DEFEATED                        0x40F8 
+#define VAR_GYM_TRAINERS_PREV                            0x40F9 
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
@@ -278,8 +278,10 @@
 #define VAR_PLAYER_STYLE                                 0x4100
 #define VAR_Password_TestLabor                           0x4101
 #define VAR_STARTER_REGION                               0x4102
+#define VAR_ROCKET_STATE                                 0x4103 /// Team Rocket progress: 0 = not encountered, 1 = encountered, 2 = revealed
+#define VAR_JOKE_NPC_INDEX                               0x4104
 
-#define VARS_END                                         0x4103
+#define VARS_END                                         0x4106
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)
 
 #define SPECIAL_VARS_START            0x8000

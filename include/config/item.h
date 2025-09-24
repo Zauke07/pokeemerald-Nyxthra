@@ -11,7 +11,7 @@
 #define I_BERRY_EV_JUMP                 GEN_LATEST  // Nur in Gen4: EV-senkende Beeren setzen den EV-Wert auf 100, falls er darüber liegt.
 #define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // Ab Gen9+ ändert die Griseous-Orb Giratinas Form nicht mehr, wenn sie getragen wird.
 #define I_GEM_BOOST_POWER               GEN_LATEST  // Ab Gen6+ wurde der Kraftschub von Juwelen von 50% auf 30% reduziert.
-#define I_USE_EVO_HELD_ITEMS_FROM_BAG   FALSE       // Wenn TRUE, können Entwicklungsitems wie Rasierklaue oder Stromisierer direkt aus der Tasche zum Entwickeln verwendet werden (wie in LA).
+#define I_USE_EVO_HELD_ITEMS_FROM_BAG   TRUE       // Wenn TRUE, können Entwicklungsitems wie Rasierklaue oder Stromisierer direkt aus der Tasche zum Entwickeln verwendet werden (wie in LA).
 #define I_TYPE_BOOST_POWER              GEN_LATEST  // Ab Gen4+ wurde die Kraft aller normalen Typ-Verstärker-Items von 10% auf 20% erhöht (z.B. Holzkohle).
 #define I_SELL_VALUE_FRACTION           GEN_LATEST  // Ab Gen9+ verkaufen sich Items nur noch für 1/4 ihres Wertes statt für die Hälfte.
 #define I_PRICE                         GEN_LATEST  // Einige Items haben ihren Wert über die Generationen hinweg verändert.
@@ -28,12 +28,12 @@
 // Um dieses Feature zu nutzen, ersetze die 0 durch die Flag-ID, die du zuweist.
 // Beispiel: Ersetze durch FLAG_UNUSED_0x264, um diese Flag zum Umschalten zu verwenden.
 #define I_EXP_SHARE_FLAG        FLAG_UNUSED_0x04F           // Wenn diese Flag gesetzt ist, erhalten alle Pokémon im Team Erfahrung, unabhängig davon, ob sie am Kampf teilgenommen haben.
-#define I_EXP_SHARE_ITEM        GEN_5                       // Ab Gen6+ wurde der EP-Teiler von einem gehaltenen Item zu einem Schlüssel-Item, das den oben beschriebenen Effekt aktiviert.
+#define I_EXP_SHARE_ITEM        GEN_6                       // Ab Gen6+ wurde der EP-Teiler von einem gehaltenen Item zu einem Schlüssel-Item, das den oben beschriebenen Effekt aktiviert.
 
 // Repel/Lure config
 // Diese beiden Einstellungen sind unabhängig und ergänzen sich.
-#define VAR_LAST_REPEL_LURE_USED    0       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
-#define I_REPEL_LURE_MENU           TRUE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
+#define VAR_LAST_REPEL_LURE_USED    FLAG_UNUSED_0x265       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
+#define I_REPEL_LURE_MENU           FALSE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
 
 // Vs. Seeker
 #define I_VS_SEEKER_CHARGING        0     // Wenn diese Flag gesetzt ist, wird die Vs. Seeker-Funktion aktiviert. Mit Vs. Seeker funktionieren Match Call-Rematches nicht mehr.

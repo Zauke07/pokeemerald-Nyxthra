@@ -68,18 +68,26 @@
     #define NIGHT_HOUR_BEGIN   18
     #define NIGHT_HOUR_END     6
 #elif OW_TIMES_OF_DAY >= GEN_8
-    #define MORNING_HOUR_BEGIN 6
-    #define MORNING_HOUR_END   10
+    #define MORNING_HOUR_BEGIN 5
+    #define MORNING_HOUR_END   12
 
-    #define DAY_HOUR_BEGIN     10
-    #define DAY_HOUR_END       19
+    #define DAY_HOUR_BEGIN     12
+    #define DAY_HOUR_END       18
 
-    #define EVENING_HOUR_BEGIN 19
-    #define EVENING_HOUR_END   20
+    #define EVENING_HOUR_BEGIN 18
+    #define EVENING_HOUR_END   22
 
-    #define NIGHT_HOUR_BEGIN   20
-    #define NIGHT_HOUR_END     6
+    #define NIGHT_HOUR_BEGIN   22
+    #define NIGHT_HOUR_END     5
 #endif
+
+enum TimePeriod
+{
+    TIME_PERIOD_MORNING,
+    TIME_PERIOD_DAY,
+    TIME_PERIOD_EVENING,
+    TIME_PERIOD_NIGHT
+};
 
 // TIMES_OF_DAY_COUNT must be last
 enum TimeOfDay

@@ -687,11 +687,24 @@
 #define OBJ_EVENT_GFX_ASH                       665
 #define OBJ_EVENT_GFX_WES                       666
 #define OBJ_EVENT_GFX_RIVAL_WES                 667
+#define OBJ_EVENT_GFX_ENTEI                     668
+#define OBJ_EVENT_GFX_RAIKOU                    669
+#define OBJ_EVENT_GFX_SUICUNE                   670
+#define OBJ_EVENT_GFX_HILBERT_WATERING          671
+#define OBJ_EVENT_GFX_HILDA_WATERING            672
+#define OBJ_EVENT_GFX_DAWN_WATERING             673
+#define OBJ_EVENT_GFX_LUCAS_WATERING            674
+#define OBJ_EVENT_GFX_ZAPDOS_OLD                675
+#define OBJ_EVENT_GFX_MOLTRES_OLD               676
+#define OBJ_EVENT_GFX_ARTICUNO_OLD              677
+#define OBJ_EVENT_GFX_NURSE_JOY                 678
+#define OBJ_EVENT_GFX_ROCKY                     679
+#define OBJ_EVENT_GFX_LANDORUS                  680
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                       668
+#define NUM_OBJ_EVENT_GFX                       681
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -1025,6 +1038,18 @@
 #define OBJ_EVENT_PAL_TAG_PLAYER_JULIANA_REFLECTION 0x1252
 #define OBJ_EVENT_PAL_TAG_RIVAL_ASH              0x1253
 #define OBJ_EVENT_PAL_TAG_RIVAL_WES              0x1254
+#define OBJ_EVENT_PAL_TAG_TEAM_ROCKET_M_F        0x1255
+#define OBJ_EVENT_PAL_TAG_FOLLOW_MON_0            0x1256
+#define OBJ_EVENT_PAL_TAG_TEAM_FLARE_GUNT       0x1257
+#define OBJ_EVENT_PAL_TAG_ENTEI                   0x1258
+#define OBJ_EVENT_PAL_TAG_RAIKOU                  0x1259
+#define OBJ_EVENT_PAL_TAG_SUICUNE                 0x125A
+#define OBJ_EVENT_PAL_TAG_ARTICUNO                0x125B
+#define OBJ_EVENT_PAL_TAG_MOLTRES                 0x125C
+#define OBJ_EVENT_PAL_TAG_ZAPDOS                  0x125D
+#define OBJ_EVENT_PAL_TAG_Nurse_OW                0x125E
+#define OBJ_EVENT_PAL_TAG_Rocky                   0x125F
+#define OBJ_EVENT_PAL_TAG_LANDORUS                0x1260
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

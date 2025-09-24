@@ -16,7 +16,7 @@
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // Nie Beschreibungen anzeigen
 #define OW_ITEM_DESCRIPTIONS_FIRST_TIME 1   // Nur beim ersten Mal anzeigen (** SAVE-BREAKING - siehe struct SaveBlock3 **)
 #define OW_ITEM_DESCRIPTIONS_ALWAYS     2   // Immer Beschreibung anzeigen
-#define OW_SHOW_ITEM_DESCRIPTIONS       OW_ITEM_DESCRIPTIONS_OFF    // Wenn aktiviert, werden Item-Beschreibungen/Bilder beim Finden von Items angezeigt.
+#define OW_SHOW_ITEM_DESCRIPTIONS       OW_ITEM_DESCRIPTIONS_FIRST_TIME    // Wenn aktiviert, werden Item-Beschreibungen/Bilder beim Finden von Items angezeigt.
 
 // Diese Generation-Defines unterscheiden nur bei Beeren und OW_PC_MOVE_ORDER
 #define GEN_6_XY GEN_6
@@ -81,7 +81,7 @@
 
 // Zeit
 #define OW_TIMES_OF_DAY                 GEN_LATEST   // Verschiedene Generationen wechseln zu unterschiedlichen Zeiten die Tageszeit.
-#define OW_USE_FAKE_RTC                 FALSE        // Wenn TRUE, vergeht eine Sekunde im Spiel nur alle 60 Frames.
+#define OW_USE_FAKE_RTC                 TRUE        // Wenn TRUE, vergeht eine Sekunde im Spiel nur alle 60 Frames.
 #define OW_ALTERED_TIME_RATIO           GEN_LATEST   // In GEN_8_PLA vergeht im Spiel 1 Minute pro RTC-Sekunde. In GEN_9 sind es 20 Sekunden. TIME_DEBUG ist 1:1.
 #define OW_TIME_OF_DAY_ENCOUNTERS       FALSE        // Wenn TRUE, können verschiedene Begegnungstabellen je nach Tageszeit definiert werden.
 #define OW_TIME_OF_DAY_DISABLE_FALLBACK FALSE        // Wenn TRUE, gibt es keine Begegnungen, wenn die Tabelle für eine Tageszeit leer ist, statt auf die Standardtabelle zurückzufallen.
@@ -93,15 +93,15 @@
 #define OW_ENABLE_DNS                   TRUE    // Wenn TRUE, wird die Overworld je nach Tageszeit eingefärbt.
 
 // Schatten für Object Events
-#define OW_OBJECT_VANILLA_SHADOWS      FALSE    // In Vanilla werden Schatten nur beim Springen angezeigt.
+#define OW_OBJECT_VANILLA_SHADOWS      TRUE    // In Vanilla werden Schatten nur beim Springen angezeigt.
 
 // Overworld-Flags
 // Um die folgenden Features in Skripten zu nutzen, ersetze die 0 durch die gewünschte Flag-ID.
 // Beispiel: Ersetze durch FLAG_UNUSED_0x264, um das Feature per Flag zu steuern.
-#define OW_FLAG_PAUSE_TIME          0  // Wenn gesetzt und OW_USE_FAKE_RTC aktiviert ist, bleibt die Zeit im Spiel stehen.
-#define OW_FLAG_NO_ENCOUNTER        0  // Wenn gesetzt, gibt es keine wilden Begegnungen.
-#define OW_FLAG_NO_TRAINER_SEE      0  // Wenn gesetzt, kämpfen Trainer nur nach Ansprache, nicht beim Sehen.
-#define OW_FLAG_NO_COLLISION        0  // Wenn gesetzt, kann der Spieler über Kollisionstiles laufen. Hauptsächlich für Debugging.
+#define OW_FLAG_PAUSE_TIME          FLAG_UNUSED_0x264  // Wenn gesetzt und OW_USE_FAKE_RTC aktiviert ist, bleibt die Zeit im Spiel stehen.
+#define OW_FLAG_NO_ENCOUNTER        FLAG_UNUSED_0x266  // Wenn gesetzt, gibt es keine wilden Begegnungen.
+#define OW_FLAG_NO_TRAINER_SEE      FLAG_UNUSED_0x267  // Wenn gesetzt, kämpfen Trainer nur nach Ansprache, nicht beim Sehen.
+#define OW_FLAG_NO_COLLISION        FLAG_UNUSED_0x268  // Wenn gesetzt, kann der Spieler über Kollisionstiles laufen. Hauptsächlich für Debugging.
 #define OW_FLAG_POKE_RIDER          0  // Wenn gesetzt, kann man per Pokenav oder Town Map mit 'R' fliegen.
 
 // Battle-Pyramide
@@ -121,8 +121,8 @@
 
 // Konfiguration
 #define OW_POPUP_BW_COLOR          OW_POPUP_BW_COLOR_BLACK  // B2W2 nutzen unterschiedliche Farben für Map-Popups.
-#define OW_POPUP_BW_TIME_MODE      OW_POPUP_BW_TIME_24_HR    // Bestimmt, welche Zeit angezeigt wird.
-#define OW_POPUP_BW_ALPHA_BLEND    FALSE                    // Aktiviert Transparenz für Popups. Kann zu Grafikfehlern mit Day-Night-System führen.
+#define OW_POPUP_BW_TIME_MODE      OW_POPUP_BW_TIME_24_HR   // Bestimmt, welche Zeit angezeigt wird.
+#define OW_POPUP_BW_ALPHA_BLEND    TRUE                    // Aktiviert Transparenz für Popups. Kann zu Grafikfehlern mit Day-Night-System führen.
 
 // Pokémon Center
 #define OW_IGNORE_EGGS_ON_HEAL           GEN_LATEST         // In Gen4+ heilt die Schwester im Center keine Eier mehr.

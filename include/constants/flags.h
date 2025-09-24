@@ -510,13 +510,13 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_DEFEATED_ZAPDOS                  0x1DA
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
+#define FLAG_DEFEATED_LANDORUS                0x1DE
 #define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
 #define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
 #define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
@@ -657,12 +657,14 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 #define FLAG_HIDDEN_ITEM_PETALBURG_CITY_OLD_SEA_MAP          (FLAG_HIDDEN_ITEMS_START + 0x70)
 #define FLAG_HIDDEN_ITEM_Route_119_BIG_NUGGET                (FLAG_HIDDEN_ITEMS_START + 0x71)
+#define FLAG_HIDDEN_ITEM_ROUTE_109_POKE_FLUTE                (FLAG_HIDDEN_ITEMS_START + 0x72)
+#define FLAG_HIDDEN_ITEM_ROUTE_111_1_BIG_NUGGET              (FLAG_HIDDEN_ITEMS_START + 0x73)
 
-#define FLAG_UNUSED_0x264  0x264 // Unused Flag
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
-#define FLAG_UNUSED_0x266  0x266 // Unused Flag
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
-#define FLAG_UNUSED_0x268  0x268 // Unused Flag
+#define FLAG_UNUSED_0x264  0x264 // Zeit bleibt im pausen menü stehen
+#define FLAG_UNUSED_0x265  0x265 // Schutz-/Lockmittel frage
+#define FLAG_UNUSED_0x266  0x266 // keine wilden pkmn
+#define FLAG_UNUSED_0x267  0x267 // trainer kämpfen nur nach ansprache
+#define FLAG_UNUSED_0x268  0x268 // über Kollisionstiles laufen NUR FÜR DEBUGGING
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
@@ -1224,11 +1226,11 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
+#define FLAG_ITEM_GRANITE_CAVE_B4F2_FULL_RESTORE                    0x493 // Rocket höhle am ende
+#define FLAG_HIDE_NEW_MAUVILLE_ZAPDOS                               0x494 // Zapdos 
+#define FLAG_HIDE_ROUTE_111_01_SUPERBALL                             0x495 // new route 111.1
+#define FLAG_HIDE_ROUTE_111_01_EVERSTONE                             0x496 // new route 111.1
+#define FLAG_HIDE_ROUTE_111_02_LANDORUS                              0x497 // new route 111.2
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
@@ -1366,7 +1368,7 @@
 #define FLAG_BADGE06_GET                             (SYSTEM_FLAGS + 0xC)
 #define FLAG_BADGE07_GET                             (SYSTEM_FLAGS + 0xD)
 #define FLAG_BADGE08_GET                             (SYSTEM_FLAGS + 0xE)
-#define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
+#define NUM_BADGES                                   (1 + FLAG_BADGE16_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
@@ -1389,13 +1391,13 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_UNUSED_0x881                           (SYSTEM_FLAGS + 0x21) // Unused Flag
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
-#define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
-#define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
-#define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
-#define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
-#define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
+#define FLAG_BADGE09_GET                            (SYSTEM_FLAGS + 0x21) // Nutzt FLAG_UNUSED_0x881
+#define FLAG_BADGE10_GET                            (SYSTEM_FLAGS + 0x22) // Nutzt FLAG_UNUSED_0x882
+#define FLAG_BADGE11_GET                            (SYSTEM_FLAGS + 0x23) // Nutzt FLAG_UNUSED_0x883
+#define FLAG_BADGE12_GET                            (SYSTEM_FLAGS + 0x24) // Nutzt FLAG_UNUSED_0x884
+#define FLAG_BADGE13_GET                            (SYSTEM_FLAGS + 0x25) // Nutzt FLAG_UNUSED_0x885
+#define FLAG_BADGE14_GET                            (SYSTEM_FLAGS + 0x26) // Nutzt FLAG_UNUSED_0x886
+#define FLAG_BADGE15_GET                            (SYSTEM_FLAGS + 0x27) // Nutzt FLAG_UNUSED_0x887
 
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
@@ -1404,7 +1406,7 @@
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
-#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
+#define FLAG_BADGE16_GET                            (SYSTEM_FLAGS + 0x83) // Nutzt FLAG_UNUSED_0x88E
 #define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
@@ -1733,6 +1735,18 @@
 #define FLAG_GOT_POKE_FLUTE                  0x9B3
 #define FLAG_FORCE_SHINY_WILD_BATTLE         0x9B4
 #define FLAG_SPECIAL_BATTLE_MUSIC            0x9B5
+
+#define FLAG_ALPHA_PHASE_1_DONE              0x9B6
+#define FLAG_ENCOUNTERED_ENTEI               0x9B7
+#define FLAG_ENCOUNTERED_RAIKOU              0x9B8
+#define FLAG_ENCOUNTERED_SUICUNE             0x9B9
+#define FLAG_HOUND_EVENT_ACTIVE              0x9BA
+#define FLAG_HIDE_GRANITECAVE_B2F_NPC        0x9BB
+#define FLAG_TRIGGER_GRANITECAVE_B4F_INTRO   0x9BC
+#define FLAG_FOLLOWER_ACTIVE                 0x9BD
+#define FLAG_HOUND_TRIGGER_BLOCKED_SHOWN     0x9BE
+#define FLAG_HOUND_EVENT_FINISHED            0x9BF
+#define FLAG_BRINEY_BOAT_REPAIRED_MSG        0x9C0
 
 #define DAILY_FLAGS_END                             (FLAG_UNUSED_0x95F + (7 - FLAG_UNUSED_0x95F % 8))
 #define NUM_DAILY_FLAGS                             (DAILY_FLAGS_END - DAILY_FLAGS_START + 1)

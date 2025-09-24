@@ -309,10 +309,14 @@
 #define TRAINER_PIC_GALACTIC_GRUNT_M      (TRAINER_PIC_BIKER + 1)
 #define TRAINER_PIC_GALACTIC_GRUNT_F      (TRAINER_PIC_BIKER + 2)
 #define TRAINER_PIC_GALACTIC_CYRUS        (TRAINER_PIC_BIKER + 3)
+#define TRAINER_PIC_ROCKY                 (TRAINER_PIC_BIKER + 4)
+#define TRAINER_PIC_BACKPACKER_F          (TRAINER_PIC_BIKER + 5)
+#define TRAINER_PIC_BACKPACKER_M          (TRAINER_PIC_BIKER + 6)
+#define TRAINER_PIC_NURSE                 (TRAINER_PIC_BIKER + 7)
 
 // Special cases
-#define TRAINER_PIC_PLAYER_AVATAR           (TRAINER_PIC_GALACTIC_CYRUS + 1)
-#define TRAINER_PIC_PLAYER_OPPOSITE_AVATAR  (TRAINER_PIC_GALACTIC_CYRUS + 2)
+#define TRAINER_PIC_PLAYER_AVATAR           (TRAINER_PIC_NURSE + 1)
+#define TRAINER_PIC_PLAYER_OPPOSITE_AVATAR  (TRAINER_PIC_NURSE + 2)
 
 #define TRAINER_PIC_COUNT                   (TRAINER_PIC_PLAYER_OPPOSITE_AVATAR + 1)
 
@@ -323,26 +327,28 @@
 #define TRAINER_BACK_PIC_LEAF                   3
 #define TRAINER_BACK_PIC_ETHAN                  4
 #define TRAINER_BACK_PIC_LYRA                   5
-#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  6
-#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      7
-#define TRAINER_BACK_PIC_WALLY                  8
-#define TRAINER_BACK_PIC_STEVEN                 9
-#define TRAINER_BACK_PIC_LUCAS                  10
-#define TRAINER_BACK_PIC_DAWN                   11
-#define TRAINER_BACK_PIC_HILBERT                12
-#define TRAINER_BACK_PIC_HILDA                  13
-#define TRAINER_BACK_PIC_NATE                   14
-#define TRAINER_BACK_PIC_ROSA                   15
-#define TRAINER_BACK_PIC_CALEM                  16
-#define TRAINER_BACK_PIC_SERENA                 17
-#define TRAINER_BACK_PIC_ELIO                   18
-#define TRAINER_BACK_PIC_SELENE                 19
-#define TRAINER_BACK_PIC_VICTOR                 20
-#define TRAINER_BACK_PIC_GLORIA                 21
-#define TRAINER_BACK_PIC_FLORIAN                22
-#define TRAINER_BACK_PIC_JULIANA                23
+#define TRAINER_BACK_PIC_LUCAS                  6
+#define TRAINER_BACK_PIC_DAWN                   7
+#define TRAINER_BACK_PIC_HILBERT                8
+#define TRAINER_BACK_PIC_HILDA                  9
+/*
+#define TRAINER_BACK_PIC_NATE                   10
+#define TRAINER_BACK_PIC_ROSA                   11
+#define TRAINER_BACK_PIC_CALEM                  12
+#define TRAINER_BACK_PIC_SERENA                 13
+#define TRAINER_BACK_PIC_ELIO                   14
+#define TRAINER_BACK_PIC_SELENE                 15
+#define TRAINER_BACK_PIC_VICTOR                 16
+#define TRAINER_BACK_PIC_GLORIA                 17
+#define TRAINER_BACK_PIC_FLORIAN                18
+#define TRAINER_BACK_PIC_JULIANA                19
+*/
+#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  10
+#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      11
+#define TRAINER_BACK_PIC_WALLY                  12
+#define TRAINER_BACK_PIC_STEVEN                 13
 
-#define TRAINER_BACK_PIC_PLAYER                 0xFF
+#define TRAINER_BACK_PIC_COUNT                  14
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -443,8 +449,14 @@
 #define FACILITY_CLASS_FLORIAN               0x60
 #define FACILITY_CLASS_JULIANA               0x61
 #define FACILITY_CLASS_CHATGPT               0x62
+#define FACILITY_CLASS_ROCKET_GRUNT_M        0x63
+#define FACILITY_CLASS_ROCKET_GRUNT_F        0x64
+#define FACILITY_CLASS_BACKPACKER_F          0x65
+#define FACILITY_CLASS_BACKPACKER_M          0x66
+#define FACILITY_CLASS_NURSE                 0x67
+#define FACILITY_CLASS_OFFICER               0x68
 
-#define FACILITY_CLASSES_COUNT               0x63
+#define FACILITY_CLASSES_COUNT               0x69
 
 #define RS_FACILITY_CLASS_AQUA_LEADER_ARCHIE    0x0
 #define RS_FACILITY_CLASS_AQUA_GRUNT_M          0x1
@@ -602,7 +614,12 @@
 #define TRAINER_CLASS_TEAM_GALACTIC_LEADER  0x49
 #define TRAINER_CLASS_AI_MASTER             0x4A
 #define TRAINER_CLASS_CHATGPT               0x4B
-#define TRAINER_CLASS_COUNT                 0x4C
+#define TRAINER_CLASS_BACKPACKER_F          0x4C
+#define TRAINER_CLASS_BACKPACKER_M          0x4D
+#define TRAINER_CLASS_OFFICER               0x4E
+#define TRAINER_CLASS_NURSE                 0x4F
+
+#define TRAINER_CLASS_COUNT                 0x50
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
@@ -621,6 +638,7 @@
 #define TRAINER_ENCOUNTER_MUSIC_MUS_HG_VS_CHAMPION 14
 #define TRAINER_ENCOUNTER_MUSIC_CHATGPT    15 // ChatGPT encounter class
 #define TRAINER_ENCOUNTER_MUSIC_MUS_HG_VS_ROCKET 16
+#define TRAINER_ENCOUNTER_MUSIC_ROCKET      17
 
 #define F_TRAINER_FEMALE (1 << 7)
 
