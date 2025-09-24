@@ -191,6 +191,18 @@ static const u16 sTrainerCardSticker4_Pal[]      = INCBIN_U16("graphics/trainer_
 static const u32 sHoennTrainerCardBadges_Gfx[]   = INCBIN_U32("graphics/trainer_card/badges.4bpp.lz");
 static const u32 sKantoTrainerCardBadges_Gfx[]   = INCBIN_U32("graphics/trainer_card/frlg/badges.4bpp.lz");
 
+static const u32 sHoennBadgesRow1_Gfx[] = INCBIN_U32("graphics/trainer_card/badges_row1.4bpp.lz");
+static const u32 sHoennBadgesRow2_Gfx[] = INCBIN_U32("graphics/trainer_card/badges_row2.4bpp.lz");
+static const u16 sHoennBadgesRow1_Pal[] = INCBIN_U16("graphics/trainer_card/palletes/badges_row1.gbapal");
+static const u16 sHoennBadgesRow2_Pal[] = INCBIN_U16("graphics/trainer_card/palletes/badges_row2.gbapal");
+
+// FRLG
+static const u32 sKantoBadgesRow1_Gfx[] = INCBIN_U32("graphics/trainer_card/frlg/badges_row1.4bpp.lz");
+static const u32 sKantoBadgesRow2_Gfx[] = INCBIN_U32("graphics/trainer_card/frlg/badges_row2.4bpp.lz");
+static const u16 sKantoBadgesRow1_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/badges_row1.gbapal");
+static const u16 sKantoBadgesRow2_Pal[] = INCBIN_U16("graphics/trainer_card/frlg/badges_row2.gbapal");
+
+
 static const struct BgTemplate sTrainerCardBgTemplates[4] =
 {
     {
@@ -563,10 +575,16 @@ static bool8 LoadCardGfx(void)
         }
         break;
     case 3:
-        if (sData->cardType != CARD_TYPE_FRLG)
-            LZ77UnCompWram(sHoennTrainerCardBadges_Gfx, sData->badgeTiles);
+        if (sData->cardType != CARD_TYPE_FRLG) 
+        {
+        LZ77UnCompWram(sHoennBadgesRow1_Gfx, sData->badgeTiles + 0x80 * 0);
+        LZ77UnCompWram(sHoennBadgesRow2_Gfx, sData->badgeTiles + 0x80 * 8);
+        } 
         else
-            LZ77UnCompWram(sKantoTrainerCardBadges_Gfx, sData->badgeTiles);
+        {
+        LZ77UnCompWram(sKantoBadgesRow1_Gfx, sData->badgeTiles + 0x80 * 0);
+        LZ77UnCompWram(sKantoBadgesRow2_Gfx, sData->badgeTiles + 0x80 * 8);
+        }
         break;
     case 4:
         if (sData->cardType != CARD_TYPE_FRLG)
@@ -762,16 +780,17 @@ static void TrainerCard_GenerateCardForPlayer(struct TrainerCard *trainerCard)
 {
     memset(trainerCard, 0, sizeof(struct TrainerCard));
     trainerCard->version = GAME_VERSION;
+
+    // Setze alle allgemeinen Daten (auch style)
     SetPlayerCardData(trainerCard, CARD_TYPE_EMERALD);
+
     trainerCard->hasAllFrontierSymbols = HasAllFrontierSymbols();
     trainerCard->frontierBP = gSaveBlock2Ptr->frontier.cardBattlePoints;
     if (trainerCard->hasAllFrontierSymbols)
         trainerCard->stars++;
 
-    if (trainerCard->gender == FEMALE)
-        trainerCard->unionRoomClass = gUnionRoomFacilityClasses[(trainerCard->trainerId % NUM_UNION_ROOM_CLASSES) + NUM_UNION_ROOM_CLASSES];
-    else
-        trainerCard->unionRoomClass = gUnionRoomFacilityClasses[trainerCard->trainerId % NUM_UNION_ROOM_CLASSES];
+    // Ersetze unionRoomClass durch die Facility Class passend zum Style
+    trainerCard->unionRoomClass = PlayerStyleToFacilityClass(trainerCard->style);
 }
 
 void TrainerCard_GenerateCardForLinkPlayer(struct TrainerCard *trainerCard)
@@ -1430,21 +1449,19 @@ static u8 SetCardBgsAndPals(void)
         LoadBgTiles(0, sData->cardTiles, 0x1800, 0);
         break;
     case 2:
-        if (sData->cardType != CARD_TYPE_FRLG)
+        if (sData->cardType != CARD_TYPE_FRLG) 
         {
             LoadPalette(sHoennTrainerCardPals[sData->trainerCard.stars], BG_PLTT_ID(0), 3 * PLTT_SIZE_4BPP);
-            LoadPalette(sHoennTrainerCardBadges_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
-            if (sData->trainerCard.gender != MALE)
-                LoadPalette(sHoennTrainerCardFemaleBg_Pal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+            LoadPalette(sHoennBadgesRow1_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
+            LoadPalette(sHoennBadgesRow2_Pal, BG_PLTT_ID(4), PLTT_SIZE_4BPP);
         }
         else
         {
             LoadPalette(sKantoTrainerCardPals[sData->trainerCard.stars], BG_PLTT_ID(0), 3 * PLTT_SIZE_4BPP);
-            LoadPalette(sKantoTrainerCardBadges_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
-            if (sData->trainerCard.gender != MALE)
-                LoadPalette(sKantoTrainerCardFemaleBg_Pal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+            LoadPalette(sKantoBadgesRow1_Pal, BG_PLTT_ID(3), PLTT_SIZE_4BPP);
+            LoadPalette(sKantoBadgesRow2_Pal, BG_PLTT_ID(4), PLTT_SIZE_4BPP);
         }
-        LoadPalette(sTrainerCardStar_Pal, BG_PLTT_ID(4), PLTT_SIZE_4BPP);
+        LoadPalette(sTrainerCardStar_Pal, BG_PLTT_ID(5), PLTT_SIZE_4BPP);
         break;
     case 3:
         SetBgTilemapBuffer(0, sData->cardTilemapBuffer);
@@ -1499,25 +1516,35 @@ static void DrawCardFrontOrBack(u16 *ptr)
 
 static void DrawStarsAndBadgesOnCard(void)
 {
-    static const u8 yOffsets[] = {7, 7};
-
     s16 i, x;
-    u16 tileNum = 192;
-    u8 palNum = 3;
+    u16 t, base;
+    u8  row, col, y, pal;
+    const u16 base1 = 192;       // Tiles der oberen Reihe (0..31)
+    const u16 base2 = 192 + 32;  // Tiles der unteren Reihe (32..63)
+    const u8  pal1  = 3;         // Palette obere Reihe
+    const u8  pal2  = 4;         // Palette untere Reihe
 
-    FillBgTilemapBufferRect(3, 143, 15, yOffsets[sData->isHoenn], sData->trainerCard.stars, 1, 4);
+    FillBgTilemapBufferRect(3, 143, 15, 7, sData->trainerCard.stars, 1, 4);
+
     if (!sData->isLink)
     {
-        x = 4;
-        for (i = 0; i < NUM_BADGES; i++, tileNum += 2, x += 3)
+        for (i = 0; i < NUM_BADGES; i++)
         {
-            if (sData->badgeCount[i])
-            {
-                FillBgTilemapBufferRect(3, tileNum, x, 15, 1, 1, palNum);
-                FillBgTilemapBufferRect(3, tileNum + 1, x + 1, 15, 1, 1, palNum);
-                FillBgTilemapBufferRect(3, tileNum + 16, x, 16, 1, 1, palNum);
-                FillBgTilemapBufferRect(3, tileNum + 17, x + 1, 16, 1, 1, palNum);
-            }
+            if (!sData->badgeCount[i])
+                continue;
+
+            row  = (u8)(i >> 3);    // 0 = oben, 1 = unten
+            col  = (u8)(i & 7);
+            base = row ? base2 : base1;
+            pal  = row ? pal2  : pal1;
+            y    = row ? 17    : 15;
+            x    = (s16)(4 + col * 3);
+            t    = (u16)(base + col * 2);
+
+            FillBgTilemapBufferRect(3, t     , x    , y    , 1, 1, pal);
+            FillBgTilemapBufferRect(3, (u16)(t + 1) , x + 1, y    , 1, 1, pal);
+            FillBgTilemapBufferRect(3, (u16)(t + 16), x    , y + 1, 1, 1, pal);
+            FillBgTilemapBufferRect(3, (u16)(t + 17), x + 1, y + 1, 1, 1, pal);
         }
     }
     CopyBgTilemapBufferToVram(3);

@@ -1524,10 +1524,10 @@ static void Task_MusicChoiceMenu(u8 taskId)
     }
     else
     {
-        return; // Kein vollständiger Input – warte
+        return; // Kein vollständiger Input - warte
     }
 
-    // Menü immer schließen – egal ob Auswahl oder Abbruch
+    // Menü immer schließen - egal ob Auswahl oder Abbruch
     DestroyListMenuTask(sMusicListTaskId, NULL, NULL);
     ClearStdWindowAndFrameToTransparent(sMusicWindowId, TRUE);
     ClearWindowTilemap(sMusicWindowId);

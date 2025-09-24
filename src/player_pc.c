@@ -30,6 +30,7 @@
 #include "window.h"
 #include "menu_specialized.h"
 #include "trainer_pokemon_sprites.h"
+#include "event_data.h"
 
 // Top level PC menu options
 enum {
@@ -96,12 +97,14 @@ u16 GetPlayerOverworldSpriteId(u8 style)
         OBJ_EVENT_GFX_ETHAN, OBJ_EVENT_GFX_LYRA,
         OBJ_EVENT_GFX_LUCAS, OBJ_EVENT_GFX_DAWN,
         OBJ_EVENT_GFX_HILBERT, OBJ_EVENT_GFX_HILDA,
+/*
         OBJ_EVENT_GFX_NATE, OBJ_EVENT_GFX_ROSA,
         OBJ_EVENT_GFX_CALEM, OBJ_EVENT_GFX_SERENA,
         OBJ_EVENT_GFX_ELIO, OBJ_EVENT_GFX_SELENE,
         OBJ_EVENT_GFX_VICTOR, OBJ_EVENT_GFX_GLORIA,
         OBJ_EVENT_GFX_FLORIAN, OBJ_EVENT_GFX_JULIANA,
 //        OBJ_EVENT_GFX_WES, OBJ_EVENT_GFX_ASH
+*/
     };
     
     if (style >= NUM_PLAYER_CHARACTERS)
@@ -124,6 +127,7 @@ u16 GetTrainerPicFromStyle(u8 style)
         case STYLE_DAWN:      return TRAINER_BACK_PIC_DAWN;
         case STYLE_HILBERT:   return TRAINER_BACK_PIC_HILBERT;
         case STYLE_HILDA:     return TRAINER_BACK_PIC_HILDA;
+ /*
         case STYLE_NATE:      return TRAINER_BACK_PIC_NATE;
         case STYLE_ROSA:      return TRAINER_BACK_PIC_ROSA;
         case STYLE_CALEM:     return TRAINER_BACK_PIC_CALEM;
@@ -136,6 +140,7 @@ u16 GetTrainerPicFromStyle(u8 style)
         case STYLE_JULIANA:   return TRAINER_BACK_PIC_JULIANA;
         // case STYLE_WES:       return TRAINER_BACK_PIC_WES;
         // case STYLE_ASH:       return TRAINER_BACK_PIC_ASH;
+ */
         default:              return TRAINER_BACK_PIC_BRENDAN; // Fallback
     }
 }
@@ -169,6 +174,7 @@ u16 GetPlayerGraphicsId(u8 playerStyle)
             return OBJ_EVENT_GFX_HILBERT;
         case STYLE_HILDA:
             return OBJ_EVENT_GFX_HILDA;
+ /*
         case STYLE_NATE:
             return OBJ_EVENT_GFX_NATE;
         case STYLE_ROSA:
@@ -189,12 +195,12 @@ u16 GetPlayerGraphicsId(u8 playerStyle)
             return OBJ_EVENT_GFX_FLORIAN;
         case STYLE_JULIANA:
             return OBJ_EVENT_GFX_JULIANA;
-/*
+
         case STYLE_WES:
             return OBJ_EVENT_GFX_WES;
         case STYLE_ASH:
             return OBJ_EVENT_GFX_RIVAL_ASH;
-*/
+ */
         default:
             return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL; // Fallback auf Brendan
     }
@@ -614,18 +620,68 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Prüfen, ob es sich um den PC im Schlafzimmer handelt
+    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS)
     {
-        if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
-            ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
-        else
+        u8 style = gSaveBlock2Ptr->playerStyles[0];
+
+        // Alle männlichen Charaktere → Brendans Haus
+        if (style == STYLE_BRENDAN
+         || style == STYLE_RED
+         || style == STYLE_ETHAN
+         || style == STYLE_LUCAS
+         || style == STYLE_HILBERT)
+        {
             ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
+        }
+        else // Alle weiblichen Styles → Mays Haus
+        {
+            ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
+        }
     }
     else
     {
         ScriptContext_Enable();
     }
+
     DestroyTask(taskId);
+}
+
+bool8 ScrCmd_CheckPlayerPCStyle_MaysHouse(struct ScriptContext *ctx)
+{
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    switch (style)
+    {
+        case STYLE_MAY:
+        case STYLE_LEAF:
+        case STYLE_LYRA:
+        case STYLE_DAWN:
+        case STYLE_HILDA:
+            VarSet(VAR_RESULT, TRUE);  // Spieler wohnt hier (Mays House)
+            break;
+        default:
+            VarSet(VAR_RESULT, FALSE); // Rival wohnt hier
+            break;
+    }
+    return FALSE;
+}
+
+bool8 ScrCmd_CheckPlayerPCStyle_BrendansHouse(struct ScriptContext *ctx)
+{
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+    switch (style)
+    {
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+            VarSet(VAR_RESULT, TRUE);  // Spieler wohnt hier (Brendans House)
+            break;
+        default:
+            VarSet(VAR_RESULT, FALSE); // Rival wohnt hier
+            break;
+    }
+    return FALSE;
 }
 
 static void InitItemStorageMenu(u8 taskId, u8 var)

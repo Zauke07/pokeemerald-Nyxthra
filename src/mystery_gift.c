@@ -13,11 +13,11 @@
 
 static EWRAM_DATA bool32 sStatsEnabled = FALSE;
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void ClearSavedWonderNewsMetadata(void);
 #endif //FREE_MYSTERY_GIFT
 static void ClearSavedWonderNews(void);
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void ClearSavedWonderCard(void);
 static bool32 ValidateWonderNews(const struct WonderNews *);
 static bool32 ValidateWonderCard(const struct WonderCard *);
@@ -30,7 +30,7 @@ static void IncrementCardStatForNewTrainer(u32, u32, u32 *, int);
 
 void ClearMysteryGift(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     CpuFill32(0, &gSaveBlock1Ptr->mysteryGift, sizeof(gSaveBlock1Ptr->mysteryGift));
     ClearSavedWonderNewsMetadata(); // Clear is redundant, WonderNews_Reset would be sufficient
 #endif //FREE_MYSTERY_GIFT
@@ -39,7 +39,7 @@ void ClearMysteryGift(void)
 
 struct WonderNews *GetSavedWonderNews(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     return &gSaveBlock1Ptr->mysteryGift.news;
 #else
     return NULL;
@@ -48,7 +48,7 @@ struct WonderNews *GetSavedWonderNews(void)
 
 struct WonderCard *GetSavedWonderCard(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     return &gSaveBlock1Ptr->mysteryGift.card;
 #else
     return NULL;
@@ -57,7 +57,7 @@ struct WonderCard *GetSavedWonderCard(void)
 
 struct WonderCardMetadata *GetSavedWonderCardMetadata(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     return &gSaveBlock1Ptr->mysteryGift.cardMetadata;
 #else
     return NULL;
@@ -66,7 +66,7 @@ struct WonderCardMetadata *GetSavedWonderCardMetadata(void)
 
 struct WonderNewsMetadata *GetSavedWonderNewsMetadata(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     return &gSaveBlock1Ptr->mysteryGift.newsMetadata;
 #else
     return NULL;
@@ -75,7 +75,7 @@ struct WonderNewsMetadata *GetSavedWonderNewsMetadata(void)
 
 u16 *GetQuestionnaireWordsPtr(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     return gSaveBlock1Ptr->mysteryGift.questionnaireWords;
 #else
     return NULL;
@@ -90,7 +90,7 @@ void ClearSavedWonderNewsAndRelated(void)
 
 bool32 SaveWonderNews(const struct WonderNews *news)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (!ValidateWonderNews(news))
         return FALSE;
 
@@ -105,7 +105,7 @@ bool32 SaveWonderNews(const struct WonderNews *news)
 
 bool32 ValidateSavedWonderNews(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (CALC_CRC(gSaveBlock1Ptr->mysteryGift.news) != gSaveBlock1Ptr->mysteryGift.newsCrc)
         return FALSE;
     if (!ValidateWonderNews(&gSaveBlock1Ptr->mysteryGift.news))
@@ -117,7 +117,7 @@ bool32 ValidateSavedWonderNews(void)
 #endif //FREE_MYSTERY_GIFT
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static bool32 ValidateWonderNews(const struct WonderNews *news)
 {
     if (news->id == 0)
@@ -129,7 +129,7 @@ static bool32 ValidateWonderNews(const struct WonderNews *news)
 
 bool32 IsSendingSavedWonderNewsAllowed(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     const struct WonderNews *news = &gSaveBlock1Ptr->mysteryGift.news;
     if (news->sendType == SEND_TYPE_DISALLOWED)
         return FALSE;
@@ -142,13 +142,13 @@ bool32 IsSendingSavedWonderNewsAllowed(void)
 
 static void ClearSavedWonderNews(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     CpuFill32(0, GetSavedWonderNews(), sizeof(gSaveBlock1Ptr->mysteryGift.news));
     gSaveBlock1Ptr->mysteryGift.newsCrc = 0;
 #endif //FREE_MYSTERY_GIFT
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void ClearSavedWonderNewsMetadata(void)
 {
     CpuFill32(0, GetSavedWonderNewsMetadata(), sizeof(gSaveBlock1Ptr->mysteryGift.newsMetadata));
@@ -158,7 +158,7 @@ static void ClearSavedWonderNewsMetadata(void)
 
 bool32 IsWonderNewsSameAsSaved(const u8 *news)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     const u8 *savedNews = (const u8 *)&gSaveBlock1Ptr->mysteryGift.news;
     u32 i;
     if (!ValidateSavedWonderNews())
@@ -178,7 +178,7 @@ bool32 IsWonderNewsSameAsSaved(const u8 *news)
 
 void ClearSavedWonderCardAndRelated(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     ClearSavedWonderCard();
     ClearSavedWonderCardMetadata();
     ClearSavedTrainerIds();
@@ -193,7 +193,7 @@ void ClearSavedWonderCardAndRelated(void)
 
 bool32 SaveWonderCard(const struct WonderCard *card)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     struct WonderCardMetadata *metadata;
     if (!ValidateWonderCard(card))
         return FALSE;
@@ -211,7 +211,7 @@ bool32 SaveWonderCard(const struct WonderCard *card)
 
 bool32 ValidateSavedWonderCard(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (gSaveBlock1Ptr->mysteryGift.cardCrc != CALC_CRC(gSaveBlock1Ptr->mysteryGift.card))
         return FALSE;
     if (!ValidateWonderCard(&gSaveBlock1Ptr->mysteryGift.card))
@@ -225,7 +225,7 @@ bool32 ValidateSavedWonderCard(void)
 #endif //FREE_MYSTERY_GIFT
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static bool32 ValidateWonderCard(const struct WonderCard *card)
 {
     if (card->flagId == 0)
@@ -247,7 +247,7 @@ static bool32 ValidateWonderCard(const struct WonderCard *card)
 
 bool32 IsSendingSavedWonderCardAllowed(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     const struct WonderCard *card = &gSaveBlock1Ptr->mysteryGift.card;
     if (card->sendType == SEND_TYPE_DISALLOWED)
         return FALSE;
@@ -258,7 +258,7 @@ bool32 IsSendingSavedWonderCardAllowed(void)
 #endif //FREE_MYSTERY_GIFT
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void ClearSavedWonderCard(void)
 {
     CpuFill32(0, &gSaveBlock1Ptr->mysteryGift.card, sizeof(gSaveBlock1Ptr->mysteryGift.card));
@@ -274,7 +274,7 @@ static void ClearSavedWonderCardMetadata(void)
 
 u16 GetWonderCardFlagID(void)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (ValidateSavedWonderCard())
         return gSaveBlock1Ptr->mysteryGift.card.flagId;
 #endif //FREE_MYSTERY_GIFT
@@ -360,7 +360,7 @@ static bool32 IsStampInMetadata(const struct WonderCardMetadata *metadata, const
     return FALSE;
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static bool32 ValidateStamp(const u16 *stamp)
 {
     if (stamp[STAMP_ID] == 0)
@@ -388,7 +388,7 @@ static int GetNumStampsInSavedCard(void)
 
 bool32 MysteryGift_TrySaveStamp(const u16 *stamp)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     struct WonderCard *card = &gSaveBlock1Ptr->mysteryGift.card;
     int maxStamps = card->maxStamps;
     int i;
@@ -419,7 +419,7 @@ bool32 MysteryGift_TrySaveStamp(const u16 *stamp)
 
 void MysteryGift_LoadLinkGameData(struct MysteryGiftLinkGameData *data, bool32 isWonderNews)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     int i;
     CpuFill32(0, data, sizeof(*data));
     data->validationVar = GAME_DATA_VALID_VAR;
@@ -559,7 +559,7 @@ u16 MysteryGift_GetCardStatFromLinkData(const struct MysteryGiftLinkGameData *da
     }
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void IncrementCardStat(u32 statType)
 {
     struct WonderCard *card = &gSaveBlock1Ptr->mysteryGift.card;
@@ -596,7 +596,7 @@ static void IncrementCardStat(u32 statType)
 
 u16 MysteryGift_GetCardStat(u32 stat)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     switch (stat)
     {
     case CARD_STAT_BATTLES_WON:
@@ -664,7 +664,7 @@ bool32 MysteryGift_TryEnableStatsByFlagId(u16 flagId)
     if (!ValidateSavedWonderCard())
         return FALSE;
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (gSaveBlock1Ptr->mysteryGift.card.flagId != flagId)
         return FALSE;
 #endif //FREE_MYSTERY_GIFT
@@ -675,7 +675,7 @@ bool32 MysteryGift_TryEnableStatsByFlagId(u16 flagId)
 
 void MysteryGift_TryIncrementStat(u32 stat, u32 trainerId)
 {
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
     if (sStatsEnabled)
     {
         switch (stat)
@@ -706,7 +706,7 @@ void MysteryGift_TryIncrementStat(u32 stat, u32 trainerId)
 #endif //FREE_MYSTERY_GIFT
 }
 
-#if FREE_MYSTERY_GIFT == FALSE
+#if FREE_MYSTERY_GIFT == TRUE
 static void ClearSavedTrainerIds(void)
 {
     CpuFill32(0, gSaveBlock1Ptr->mysteryGift.trainerIds, sizeof(gSaveBlock1Ptr->mysteryGift.trainerIds));

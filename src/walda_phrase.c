@@ -12,20 +12,20 @@
 
 extern const u8 gText_Peekaboo[];
 
-static void CB2_HandleGivenWaldaPhrase(void);
-static u32 GetWaldaPhraseInputCase(u8 *);
+static void CB2_HandleGivenTwixPhrase(void);
+static u32 GetTwixPhraseInputCase(u8 *);
 static bool32 TryCalculateWallpaper(u16 *, u16 *, u8 *, u8 *, u16, u8 *);
 static void SetWallpaperDataFromLetter(u8 *, u8 *, u32, u32, u32);
 static u32 GetWallpaperDataBits(u8 *, u32, u32);
 static void RotateWallpaperDataLeft(u8 *, s32, s32);
 static void MaskWallpaperData(u8 *, u32, u8);
 
-// There are 32 (2^5) unique letters allowed in a successful phrase for Walda.
+// There are 32 (2^5) unique letters allowed in a successful phrase for Twix.
 #define BITS_PER_LETTER 5
 
-// The letters allowed in a successful phrase for Walda
+// The letters allowed in a successful phrase for Twix
 // All vowels are excluded, as well as X/x, Y/y, l, r, t, v, w, and z.
-static const u8 sWaldaLettersTable[1 << BITS_PER_LETTER] =
+static const u8 sTwixLettersTable[1 << BITS_PER_LETTER] =
 {
     CHAR_B, CHAR_C, CHAR_D, CHAR_F, CHAR_G, CHAR_H, CHAR_J, CHAR_K, CHAR_L, CHAR_M, CHAR_N, CHAR_P, CHAR_Q, CHAR_R, CHAR_S, CHAR_T, CHAR_V, CHAR_W, CHAR_Z,
     CHAR_b, CHAR_c, CHAR_d, CHAR_f, CHAR_g, CHAR_h, CHAR_j, CHAR_k,         CHAR_m, CHAR_n, CHAR_p, CHAR_q,         CHAR_s
@@ -38,76 +38,76 @@ enum
     PHRASE_EMPTY
 };
 
-u16 TryBufferWaldaPhrase(void)
+u16 TryBufferTwixPhrase(void)
 {
-    if (IsWaldaPhraseEmpty())
+    if (IsTwixPhraseEmpty())
         return FALSE;
 
-    StringCopy(gStringVar1, GetWaldaPhrasePtr());
+    StringCopy(gStringVar1, GetTwixPhrasePtr());
     return TRUE;
 }
 
-void DoWaldaNamingScreen(void)
+void DoTwixNamingScreen(void)
 {
-    StringCopy(gStringVar2, GetWaldaPhrasePtr());
-    DoNamingScreen(NAMING_SCREEN_WALDA, gStringVar2, 0, 0, 0, CB2_HandleGivenWaldaPhrase);
+    StringCopy(gStringVar2, GetTwixPhrasePtr());
+    DoNamingScreen(NAMING_SCREEN_WALDA, gStringVar2, 0, 0, 0, CB2_HandleGivenTwixPhrase);
 }
 
-static void CB2_HandleGivenWaldaPhrase(void)
+static void CB2_HandleGivenTwixPhrase(void)
 {
-    gSpecialVar_0x8004 = GetWaldaPhraseInputCase(gStringVar2);
+    gSpecialVar_0x8004 = GetTwixPhraseInputCase(gStringVar2);
 
     switch (gSpecialVar_0x8004)
     {
     case PHRASE_EMPTY:
         // If saved phrase is also empty, set default phrase
         // Otherwise keep saved phrase
-        if (IsWaldaPhraseEmpty())
-            SetWaldaPhrase(gText_Peekaboo);
+        if (IsTwixPhraseEmpty())
+            SetTwixPhrase(gText_Peekaboo);
         else
             gSpecialVar_0x8004 = PHRASE_NO_CHANGE;
         break;
     case PHRASE_CHANGED:
-        SetWaldaPhrase(gStringVar2);
+        SetTwixPhrase(gStringVar2);
         break;
     case PHRASE_NO_CHANGE:
         break;
     }
 
-    StringCopy(gStringVar1, GetWaldaPhrasePtr());
+    StringCopy(gStringVar1, GetTwixPhrasePtr());
     gFieldCallback = FieldCB_ContinueScriptHandleMusic;
     SetMainCallback2(CB2_ReturnToField);
 }
 
-static u32 GetWaldaPhraseInputCase(u8 *inputPtr)
+static u32 GetTwixPhraseInputCase(u8 *inputPtr)
 {
     // No input given
     if (inputPtr[0] == EOS)
         return PHRASE_EMPTY;
 
     // Input given is the same as saved phrase
-    if (StringCompare(inputPtr, GetWaldaPhrasePtr()) == 0)
+    if (StringCompare(inputPtr, GetTwixPhrasePtr()) == 0)
         return PHRASE_NO_CHANGE;
 
     // Input is new phrase
     return PHRASE_CHANGED;
 }
 
-u16 TryGetWallpaperWithWaldaPhrase(void)
+u16 TryGetWallpaperWithTwixPhrase(void)
 {
     u16 backgroundClr, foregroundClr;
     u8 patternId, iconId;
     u16 trainerId = GetTrainerId(gSaveBlock2Ptr->playerTrainerId);
-    gSpecialVar_Result = TryCalculateWallpaper(&backgroundClr, &foregroundClr, &iconId, &patternId, trainerId, GetWaldaPhrasePtr());
+    gSpecialVar_Result = TryCalculateWallpaper(&backgroundClr, &foregroundClr, &iconId, &patternId, trainerId, GetTwixPhrasePtr());
 
     if (gSpecialVar_Result)
     {
-        SetWaldaWallpaperPatternId(patternId);
-        SetWaldaWallpaperIconId(iconId);
-        SetWaldaWallpaperColors(backgroundClr, foregroundClr);
+        SetTwixWallpaperPatternId(patternId);
+        SetTwixWallpaperIconId(iconId);
+        SetTwixWallpaperColors(backgroundClr, foregroundClr);
     }
 
-    SetWaldaWallpaperLockedOrUnlocked(gSpecialVar_Result);
+    SetTwixWallpaperLockedOrUnlocked(gSpecialVar_Result);
     return (bool8)gSpecialVar_Result;
 }
 
@@ -115,18 +115,18 @@ static u8 GetLetterTableId(u8 letter)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(sWaldaLettersTable); i++)
+    for (i = 0; i < ARRAY_COUNT(sTwixLettersTable); i++)
     {
-        if (sWaldaLettersTable[i] == letter)
+        if (sTwixLettersTable[i] == letter)
             return i;
     }
 
-    return ARRAY_COUNT(sWaldaLettersTable);
+    return ARRAY_COUNT(sTwixLettersTable);
 }
 
 // Attempts to generate a wallpaper based on the given trainer id and phrase.
 // Returns TRUE if successful and sets the wallpaper results to the given pointers.
-// Returns FALSE if no wallpaper was generated (Walda "didn't like" the phrase).
+// Returns FALSE if no wallpaper was generated (Twix "didn't like" the phrase).
 // A 9-byte array is used to calculate the wallpaper's data.
 // The elements of this array are defined below.
 #define BG_COLOR_LO  data[0]
@@ -151,11 +151,11 @@ static bool32 TryCalculateWallpaper(u16 *backgroundClr, u16 *foregroundClr, u8 *
     if (StringLength(phrase) != WALDA_PHRASE_LENGTH)
         return FALSE;
 
-    // Reject any phrase that uses characters not in sWaldaLettersTable
+    // Reject any phrase that uses characters not in sTwixLettersTable
     for (i = 0; i < WALDA_PHRASE_LENGTH; i++)
     {
         charsByTableId[i] = GetLetterTableId(phrase[i]);
-        if (charsByTableId[i] == ARRAY_COUNT(sWaldaLettersTable))
+        if (charsByTableId[i] == ARRAY_COUNT(sTwixLettersTable))
             return FALSE;
     }
 

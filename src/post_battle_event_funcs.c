@@ -42,11 +42,13 @@ int GameClear(void)
     case STYLE_ETHAN:
     case STYLE_LUCAS:
     case STYLE_HILBERT:
+ /*
     case STYLE_NATE:
     case STYLE_CALEM:
     case STYLE_ELIO:
     case STYLE_VICTOR:
     case STYLE_FLORIAN:
+ */
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
         break;
 
@@ -55,11 +57,13 @@ int GameClear(void)
     case STYLE_LYRA:
     case STYLE_DAWN:
     case STYLE_HILDA:
+ /*
     case STYLE_ROSA:
     case STYLE_SERENA:
     case STYLE_SELENE:
     case STYLE_GLORIA:
     case STYLE_JULIANA:
+ */
         SetContinueGameWarpToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
         break;
 

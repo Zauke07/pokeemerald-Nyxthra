@@ -117,16 +117,32 @@ static void CB_FadeInFlyMap(void);
 static void CB_HandleFlyMapInput(void);
 static void CB_ExitFlyMap(void);
 
-static const u16 sRegionMapCursorPal[] = INCBIN_U16("graphics/pokenav/region_map/cursor.gbapal");
-static const u32 sRegionMapCursorSmallGfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/cursor_small.4bpp.lz");
-static const u32 sRegionMapCursorLargeGfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/cursor_large.4bpp.lz");
-static const u16 sRegionMapBg_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map.gbapal");
-static const u32 sRegionMapBg_GfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/map.8bpp.lz");
-static const u32 sRegionMapBg_TilemapLZ[] = INCBIN_U32("graphics/pokenav/region_map/map.bin.lz");
+static const u16 sRegionMapCursorPal[]             = INCBIN_U16("graphics/pokenav/region_map/cursor.gbapal");
+static const u32 sRegionMapCursorSmallGfxLZ[]      = INCBIN_U32("graphics/pokenav/region_map/cursor_small.4bpp.lz");
+static const u32 sRegionMapCursorLargeGfxLZ[]      = INCBIN_U32("graphics/pokenav/region_map/cursor_large.4bpp.lz");
+static const u16 sRegionMapBg_Pal[]                = INCBIN_U16("graphics/pokenav/region_map/map.gbapal");
+static const u32 sRegionMapBg_GfxLZ[]              = INCBIN_U32("graphics/pokenav/region_map/map.8bpp.lz");
+static const u32 sRegionMapBg_TilemapLZ[]          = INCBIN_U32("graphics/pokenav/region_map/map.bin.lz");
 static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCBIN_U16("graphics/pokenav/region_map/brendan_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCBIN_U8("graphics/pokenav/region_map/brendan_icon.4bpp");
-static const u16 sRegionMapPlayerIcon_MayPal[] = INCBIN_U16("graphics/pokenav/region_map/may_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/pokenav/region_map/may_icon.4bpp");
+static const u8 sRegionMapPlayerIcon_BrendanGfx[]  = INCBIN_U8("graphics/pokenav/region_map/brendan_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_MayPal[]     = INCBIN_U16("graphics/pokenav/region_map/may_icon.gbapal");
+static const u8 sRegionMapPlayerIcon_MayGfx[]      = INCBIN_U8("graphics/pokenav/region_map/may_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_EthanPal[]   = INCBIN_U16("graphics/pokenav/region_map/ethan_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_EthanGfx[]   = INCBIN_U8("graphics/pokenav/region_map/ethan_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_LyraPal[]    = INCBIN_U16("graphics/pokenav/region_map/lyra_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_LyraGfx[]    = INCBIN_U8("graphics/pokenav/region_map/lyra_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_RedPal[]     = INCBIN_U16("graphics/pokenav/region_map/red_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_RedGfx[]     = INCBIN_U8("graphics/pokenav/region_map/red_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_LeafPal[]    = INCBIN_U16("graphics/pokenav/region_map/leaf_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_LeafGfx[]    = INCBIN_U8("graphics/pokenav/region_map/leaf_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_DawnPal[]    = INCBIN_U16("graphics/pokenav/region_map/dawn_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_DawnGfx[]    = INCBIN_U8("graphics/pokenav/region_map/dawn_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_LucasPal[]   = INCBIN_U16("graphics/pokenav/region_map/lucas_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_LucasGfx[]   = INCBIN_U8("graphics/pokenav/region_map/lucas_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_HilbertPal[] = INCBIN_U16("graphics/pokenav/region_map/hilbert_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_HilbertGfx[] = INCBIN_U8("graphics/pokenav/region_map/hilbert_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_HildaPal[]   = INCBIN_U16("graphics/pokenav/region_map/hilda_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_HildaGfx[]   = INCBIN_U8("graphics/pokenav/region_map/hilda_icon.4bpp");
 
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
@@ -1466,17 +1482,55 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
         return;
     }
 
-    // Nur Brendan & May unterstützen
-    if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0])) 
-    {
-        sheet.data = sRegionMapPlayerIcon_MayGfx;
-        palette.data = sRegionMapPlayerIcon_MayPal;
-    } 
-    else 
-    {
-        sheet.data = sRegionMapPlayerIcon_BrendanGfx;
-        palette.data = sRegionMapPlayerIcon_BrendanPal;
-    }
+    u8 style = gSaveBlock2Ptr->playerStyles[0];
+
+        switch (style)
+        {
+        case STYLE_ETHAN:
+            sheet.data   = sRegionMapPlayerIcon_EthanGfx;
+            palette.data = sRegionMapPlayerIcon_EthanPal;
+            break;
+        case STYLE_LYRA:
+            sheet.data   = sRegionMapPlayerIcon_LyraGfx;
+            palette.data = sRegionMapPlayerIcon_LyraPal;
+            break;
+        case STYLE_RED:
+            sheet.data   = sRegionMapPlayerIcon_RedGfx;
+            palette.data = sRegionMapPlayerIcon_RedPal;
+            break;
+        case STYLE_LEAF:
+            sheet.data   = sRegionMapPlayerIcon_LeafGfx;
+            palette.data = sRegionMapPlayerIcon_LeafPal;
+            break;
+        case STYLE_DAWN:
+            sheet.data   = sRegionMapPlayerIcon_DawnGfx;
+            palette.data = sRegionMapPlayerIcon_DawnPal;
+            break;
+        case STYLE_LUCAS:
+            sheet.data   = sRegionMapPlayerIcon_LucasGfx;
+            palette.data = sRegionMapPlayerIcon_LucasPal;
+            break;
+        case STYLE_HILBERT:
+            sheet.data   = sRegionMapPlayerIcon_HilbertGfx;
+            palette.data = sRegionMapPlayerIcon_HilbertPal;
+            break;
+        case STYLE_HILDA:
+            sheet.data   = sRegionMapPlayerIcon_HildaGfx;
+            palette.data = sRegionMapPlayerIcon_HildaPal;
+            break;
+        default:
+            if (IsFemaleStyle(style))
+            {
+                sheet.data = sRegionMapPlayerIcon_MayGfx;
+                palette.data = sRegionMapPlayerIcon_MayPal;
+            }
+            else
+            {
+                sheet.data = sRegionMapPlayerIcon_BrendanGfx;
+                palette.data = sRegionMapPlayerIcon_BrendanPal;
+            }
+            break;
+        }
 
     LoadSpriteSheet(&sheet);
     LoadSpritePalette(&palette);
@@ -2042,11 +2096,13 @@ u32 FilterFlyDestination(struct RegionMap* regionMap)
                 case STYLE_ETHAN:
                 case STYLE_LUCAS:
                 case STYLE_HILBERT:
+ /*
                 case STYLE_NATE:
                 case STYLE_CALEM:
                 case STYLE_ELIO:
                 case STYLE_VICTOR:
                 case STYLE_FLORIAN:
+ */
                     return HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE;
 
                 case STYLE_MAY:
@@ -2054,11 +2110,13 @@ u32 FilterFlyDestination(struct RegionMap* regionMap)
                 case STYLE_LYRA:
                 case STYLE_DAWN:
                 case STYLE_HILDA:
+ /*
                 case STYLE_ROSA:
                 case STYLE_SERENA:
                 case STYLE_SELENE:
                 case STYLE_GLORIA:
                 case STYLE_JULIANA:
+ */
                     return HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE;
 
                 default:

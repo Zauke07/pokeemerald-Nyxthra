@@ -38,6 +38,24 @@ const s32 sNumDaysInMonths[MONTH_COUNT] =
     [MONTH_DEC - 1] = 31,
 };
 
+void RtcGetTime(struct Time *time)
+{
+    struct SiiRtcInfo rtc;
+    if (SiiRtcGetTime(&rtc))
+    {
+        time->hours = rtc.hour;
+        time->minutes = rtc.minute;
+        time->seconds = rtc.second;
+    }
+    else
+    {
+        // Im Fehlerfall z. B. auf 12:00:00 setzen
+        time->hours = 12;
+        time->minutes = 0;
+        time->seconds = 0;
+    }
+}
+
 void RtcDisableInterrupts(void)
 {
     sSavedIme = REG_IME;
@@ -463,4 +481,32 @@ enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay)
 enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay)
 {
     return timeOfDay == TIME_MORNING ? TIME_NIGHT : timeOfDay - 1;
+}
+
+void FormatCurrentTimeAndDaytime(void)
+{
+    u8 hour, minute;
+    const u8 *daytime;
+
+    RtcGetTime(&gLocalTime);
+    hour = gLocalTime.hours;
+    minute = gLocalTime.minutes;
+
+    // Uhrzeit in gStringVar1 z. B. „08:05“
+    ConvertIntToDecimalStringN(gStringVar1, hour, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar1, gText_Colon);
+    ConvertIntToDecimalStringN(gStringVar3, minute, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringAppend(gStringVar1, gStringVar3);
+
+    // Tageszeit in gStringVar2
+    if (hour < 6)
+        daytime = gText_Night2;
+    else if (hour < 11)
+        daytime = gText_Morning2;
+    else if (hour < 18)
+        daytime = gText_Daytime2;
+    else
+        daytime = gText_Evening2;
+
+    StringCopy(gStringVar2, daytime);
 }

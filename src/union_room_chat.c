@@ -913,7 +913,7 @@ void EnterUnionRoomChat(void)
 
 static void InitUnionRoomChat(struct UnionRoomChat *chat)
 {
-#if FREE_UNION_ROOM_CHAT == FALSE
+#if FREE_UNION_ROOM_CHAT == TRUE
     int i;
 #endif //FREE_UNION_ROOM_CHAT
 
@@ -931,7 +931,7 @@ static void InitUnionRoomChat(struct UnionRoomChat *chat)
     chat->exitType = CHAT_EXIT_NONE;
     chat->changedRegisteredTexts = FALSE;
     PrepareSendBuffer_Null(chat->sendMessageBuffer);
-#if FREE_UNION_ROOM_CHAT == FALSE
+#if FREE_UNION_ROOM_CHAT == TRUE
     for (i = 0; i < UNION_ROOM_KB_ROW_COUNT; i++)
         StringCopy(chat->registeredTexts[i], gSaveBlock1Ptr->registeredTexts[i]);
 #endif //FREE_UNION_ROOM_CHAT
@@ -1768,7 +1768,7 @@ static void ResetMessageEntryBuffer(void)
 
 static void SaveRegisteredTexts(void)
 {
-#if FREE_UNION_ROOM_CHAT == FALSE
+#if FREE_UNION_ROOM_CHAT == TRUE
     int i;
     for (i = 0; i < UNION_ROOM_KB_ROW_COUNT; i++)
         StringCopy(gSaveBlock1Ptr->registeredTexts[i], sChat->registeredTexts[i]);
@@ -2016,7 +2016,7 @@ static u8 *GetChatHostName(void)
 
 void InitUnionRoomChatRegisteredTexts(void)
 {
-#if FREE_UNION_ROOM_CHAT == FALSE
+#if FREE_UNION_ROOM_CHAT == TRUE
     StringCopy(gSaveBlock1Ptr->registeredTexts[0], gText_Hello);
     StringCopy(gSaveBlock1Ptr->registeredTexts[1], gText_Pokemon2);
     StringCopy(gSaveBlock1Ptr->registeredTexts[2], gText_Trade);

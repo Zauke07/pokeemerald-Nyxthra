@@ -40,6 +40,8 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "event_data.h"
+#include "text.h"
 
 #define TAG_SCROLL_ARROW   2100
 #define TAG_ITEM_ICON_BASE 9110 // immune to time blending
@@ -156,6 +158,8 @@ static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
+
+void GetJokeText(u8 jokeChoice);
 
 static const struct YesNoFuncTable sShopPurchaseYesNoFuncs =
 {
@@ -1316,3 +1320,69 @@ void CreateDecorationShop2Menu(const u16 *itemsForSale)
     SetShopItemsForSale(itemsForSale);
     SetShopMenuCallback(ScriptContext_Enable);
 }
+
+#define NUM_JOKES_PER_NPC 3
+#define TOTAL_JOKES 42
+
+extern const u8 *const gJokeNpc_Text_Jokes[];
+
+void GetJokeOffset0(void) { GetJokeText(0); }
+void GetJokeOffset1(void) { GetJokeText(1); }
+void GetJokeOffset2(void) { GetJokeText(2); }
+
+void GetJokeText(u8 jokeChoice)
+{
+    u16 npcIndex = VarGet(VAR_JOKE_NPC_INDEX); // z. B. 0 für Rosaltstadt, 1 für Blütenburg usw.
+    u16 jokeId = npcIndex * NUM_JOKES_PER_NPC + jokeChoice;
+
+    if (jokeId >= TOTAL_JOKES)
+        jokeId = 0;
+
+    StringCopy(gStringVar1, gJokeNpc_Text_Jokes[jokeId]);
+}
+
+const u8 *const gJokeNpc_Text_Jokes[] =
+{
+    gJokeNpc_Text_Joke1,
+    gJokeNpc_Text_Joke2,
+    gJokeNpc_Text_Joke3,
+    gJokeNpc_Text_Joke4,
+    gJokeNpc_Text_Joke5,
+    gJokeNpc_Text_Joke6,
+    gJokeNpc_Text_Joke7,
+    gJokeNpc_Text_Joke8,
+    gJokeNpc_Text_Joke9,
+    gJokeNpc_Text_Joke10,
+    gJokeNpc_Text_Joke11,
+    gJokeNpc_Text_Joke12,
+    gJokeNpc_Text_Joke13,
+    gJokeNpc_Text_Joke14,
+    gJokeNpc_Text_Joke15,
+    gJokeNpc_Text_Joke16,
+    gJokeNpc_Text_Joke17,
+    gJokeNpc_Text_Joke18,
+    gJokeNpc_Text_Joke19,
+    gJokeNpc_Text_Joke20,
+    gJokeNpc_Text_Joke21,
+    gJokeNpc_Text_Joke22,
+    gJokeNpc_Text_Joke23,
+    gJokeNpc_Text_Joke24,
+    gJokeNpc_Text_Joke25,
+    gJokeNpc_Text_Joke26,
+    gJokeNpc_Text_Joke27,
+    gJokeNpc_Text_Joke28,
+    gJokeNpc_Text_Joke29,
+    gJokeNpc_Text_Joke30,
+    gJokeNpc_Text_Joke31,
+    gJokeNpc_Text_Joke32,
+    gJokeNpc_Text_Joke33,
+    gJokeNpc_Text_Joke34,
+    gJokeNpc_Text_Joke35,
+    gJokeNpc_Text_Joke36,
+    gJokeNpc_Text_Joke37,
+    gJokeNpc_Text_Joke38,
+    gJokeNpc_Text_Joke39,
+    gJokeNpc_Text_Joke40,
+    gJokeNpc_Text_Joke41,
+    gJokeNpc_Text_Joke42,
+};

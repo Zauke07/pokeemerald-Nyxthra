@@ -500,6 +500,9 @@ const u8 gText_BoostPp[] = _("AP welcher Attacke heben?");
 const u8 gText_DoWhatWithItem[] = _("Was willst du mit dem Item?");
 const u8 gText_NoPokemonForBattle[] =  _("Kein Pokémon kampfbereit!");
 const u8 gText_ChoosePokemon2[] = _("Wähle ein Pokémon.");
+const u8 gText_ChooseFollower[] = _("{PKMN} als Begleiter wählen?");
+const u8 gText_ReplaceFollower[] = _("{PKMN} als Begleiter ersetzen?");
+const u8 gText_RemoveFollower[] = _("{PKMN} nicht mehr folgen lassen?");
 const u8 gText_NotEnoughHp[] = _("Nicht genug KP…");
 const u8 gText_PokemonAreNeeded[] = _("Du brauchst {STR_VAR_1} Pokémon");
 const u8 gText_PokemonCantBeSame[] = _("Nicht dieselben Pokémon!");
@@ -508,7 +511,7 @@ const u8 gText_CurrentIsTooFast[] = _("Die Strömung ist zu stark!");
 const u8 gText_DoWhatWithMail[] = _("Was tun mit dem Brief?");
 const u8 gText_ChoosePokemonCancel[] = _("Wähle PKMN oder Zurück.");
 const u8 gText_ChoosePokemonConfirm[] = _("Wähle PKMN oder Bestätigen.");
-const u8 gText_SendWhichMonToPC[] = _("Welches PKMN soll an den PC gesendet werden?");
+const u8 gText_SendWhichMonToPC[] = _("Welches PKMN an PC senden?");
 const u8 gText_EnjoyCycling[] = _("Lass uns Radfahren!");
 const u8 gText_InUseAlready_PM[] = _("Das ist bereits aktiv.");
 const u8 gText_AlreadyHoldingOne[] = _("{STR_VAR_1} hält bereits\nein {STR_VAR_2}.");
@@ -1123,8 +1126,21 @@ const u8 gText_Questionnaire[] = _("Fragebogen");
 const u8 gText_YouCannotQuitHere[] = _("Du kannst hier nicht aufhören.");
 const u8 gText_SectionMustBeCompleted[] = _("Dieser abschnitt muss abgeschlossen werden.");
 const u8 gText_F700sQuiz[] = _("{DYNAMIC 0}s quiz");
-const u8 gText_PlayerScurriedToCenter[] = _("{PLAYER} eilte zu einem Pokémon-CENTER,\num die erschöpften und ohnmächtigen\nPokémon vor weiterem Schaden zu schützen…\p");
-const u8 gText_PlayerScurriedBackHome[] = _("{PLAYER} eilte nach Hause zurück, um\ndie erschöpften und ohnmächtigen Pokémon\nvor weiterem Schaden zu schützen…\p");
+
+const u8 gText_PlayerScurriedToCenter[] = _(
+    "{PLAYER}, das war erbärmlich.\n"
+    "Deine Pokémon leiden nur,\n"
+    "weil du ein miserabler Trainer bist.\n"
+    "Zieh ab ins Pokémon-CENTER!\p"
+);
+
+const u8 gText_PlayerScurriedBackHome[] = _(
+    "{PLAYER}, das war erbärmlich.\n"
+    "Deine Pokémon leiden nur,\n"
+    "weil du ein miserabler Trainer bist.\n"
+    "Schleich dich nach Hause und schäm dich!\p"
+);
+
 const u8 gText_Lady[] = _("Lady");
 const u8 gText_AfterYouHaveReadTheQuiz[] = _("Nachdem du das quiz gelesen hast");
 const u8 gText_QuestionPressTheAButton[] = _("frage, drücke die A-taste.");
@@ -1299,7 +1315,7 @@ const u8 gText_UnkHeightMetric[] = _("???.? m");
 const u8 gText_XsYAnd[] = _("{STR_VAR_1}'s {STR_VAR_2} und\n");
 const u8 gText_XsYWereSwapped[] = _("Die {STR_VAR_2} von {STR_VAR_1} wurden getauscht!{PAUSE_UNTIL_PRESS}");
 const u8 gText_PlayerRegroupCenter[] = _("{PLAYER} eilte zu einem Pokémon-CENTER,\num sich neu zu gruppieren und seine Kampfstrategie zu überdenken…\p");
-const u8 gText_PlayerRegroupHome[] = _("{PLAYER} eilte nach Hause zurück,\num sich bei Mummy auszuheulen wie gemein die Trainer und Pokémon sind…\p");
+const u8 gText_PlayerRegroupHome[] = _("{PLAYER} eilte nach Hause zurück, um sich bei Mummy\nauszuheulen wie gemein die Trainer und \lPokémon sind…\p");
 const u8 gText_MatchCallSteven_Strategy[] = _("Angreife die Schwachstellen!");
 const u8 gText_MatchCallSteven_Pokemon[] = _("Ultimative Stahl-Pokémon.");
 const u8 gText_MatchCallSteven_Intro1_BeforeMeteorFallsBattle[] = _("Ich würde sogar Wasserfälle erklimmen");
@@ -1524,9 +1540,9 @@ const u8 gText_TextLowHealthLooping[] = _("{SHADOW LIGHT_GREEN}Looping");
 const u8 gText_TimeOfDayVisible[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}Sichtbar");
 const u8 gText_TimeOfDayHidden[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}Versteckt");
 const u8 gText_GameVersionPrefix[] = _("Pokémon");
-const u8 gText_GameVersion[] = _("Smaragd Ultra");
+const u8 gText_GameVersion[] = _("NYXTHRA");
 const u8 gText_GameVersionSpacer[] = _(" - ");
-const u8 gText_GameVersionSuffix[] = _("v2.0"); // Hier kannst du später die Version aktualisieren
+const u8 gText_GameVersionSuffix[] = _("v1.0.3 Alpha"); // Hier kannst du später die Version aktualisieren
 const u8 gText_TextSpeed[] = _("Text Tempo");
 const u8 gText_BattleScene[] = _("Animation");
 const u8 gText_BattleStyle[] = _("Kampfstil");
@@ -2136,6 +2152,10 @@ const u8 gText_TransitionAqua[] = _("Transition: Aqua");
 const u8 gText_TransitionChatGPTRequested[] = _("Transition: ChatGPT requested");
 const u8 gText_TransitionStandardTrainer[] = _("Transition: Standard Trainer");
 const u8 gText_BattleTransitionStartOnField[] = _("BattleTransition_StartOnField called");
+const u8 gText_StyleAndStarterRegion[] = _("DEBUG: Style = {STR_VAR_1}, Region = {STR_VAR_2}$");
+const u8 gText_FollowerDebugInfo[] = _("Follower: Slot={STR_VAR_1}, Species={STR_VAR_2}$");
+const u8 gText_DebugExpLevel[] = _("DEBUG: Level={STR_VAR_1}, EXP={STR_VAR_2}$");
+const u8 gText_DebugCmdGetExp[] = _("DBG: Mon={STR_VAR_1}, Lvl={STR_VAR_2}, \nEXP={STR_VAR_3}$");
 
 //Musik Testbabor
 const u8 gText_PlayMusicChoice[] = _("Wähle ein Musikstück:");
@@ -2579,3 +2599,60 @@ const u8 gText_Freundesbaelle[] = _("Freundesbälle");
 const u8 gText_Mondbaelle[]     = _("Mondbälle");
 const u8 gText_Sportbaelle[]    = _("Sportbälle");
 const u8 gText_Traumbaelle[]    = _("Traumbälle");
+
+
+// Joke's
+
+const u8 gJokeNpc_Text_Greeting[] = _("Hey du! Ich bin der WITZ-MEISTER.\pDrei Pointen, eine Entscheidung!\nWelche willst du hören?");
+
+const u8 gJokeNpc_Text_Joke1[] = _("Warum ging SCHLUCKWEG ins Kloster?\nEs wollte seine Laster ablegen.");
+const u8 gJokeNpc_Text_Joke2[] = _("Was sagt ein GLUMANDA nach dem Essen?\n“Jetzt bin ich wirklich abgebrannt.”");
+const u8 gJokeNpc_Text_Joke3[] = _("Wie nennt man ein PIEPI mit Sprachfehler?\nPiep-piep Hurensohn.");
+const u8 gJokeNpc_Text_Joke4[] = _("Warum gibt’s keine SCHLURP-Wettessen mehr?\nWeil es den Tisch mitgegessen hat.");
+const u8 gJokeNpc_Text_Joke5[] = _("Ein BLUZUK geht zur Therapie...\nund fragt sich, ob es endlich klar sieht.");
+const u8 gJokeNpc_Text_Joke6[] = _("Was ist schlimmer als ein RATIKAL im Keller?\nEin RATTIKAL mit Steuerbescheid.");
+const u8 gJokeNpc_Text_Joke7[] = _("Wie nennt man ein POKÉMON, das keine\nAttacken mehr kennt?\pEin Praktikant.");
+const u8 gJokeNpc_Text_Joke8[] = _("Was sagt PROF. EICH zu seiner Frau\nim Bett? “Du kannst jetzt nur\pnoch ZERSCHNEIDER einsetzen.”");
+const u8 gJokeNpc_Text_Joke9[] = _("Ein KAPILZ geht ins Fitnessstudio.\nNach einem Satz sagt es: 'Ich spore!'");
+const u8 gJokeNpc_Text_Joke10[] = _("Warum kann PORYGON nicht ins Kino?\nEs hat kein echtes Leben.");
+const u8 gJokeNpc_Text_Joke11[] = _("Warum spielt PANTIMIMI nie Verstecken?\nWeil es sich ständig selbst verrät.");
+const u8 gJokeNpc_Text_Joke12[] = _("Was macht ein MAGNETILO in der Disco?\nEs zieht alle Blicke auf sich.");
+const u8 gJokeNpc_Text_Joke13[] = _("Warum meckert SAFCON im Unterricht?\nEs findet den Stoff zu hart.");
+const u8 gJokeNpc_Text_Joke14[] = _("Was ist das Lieblingsessen von RATTIKAL?\nFast Food.");
+const u8 gJokeNpc_Text_Joke15[] = _("Warum wollte ein TRAUNMAGIL ein Date?\nEs steht auf Geisterbeziehungen.");
+const u8 gJokeNpc_Text_Joke16[] = _("Wie nennt man ein nervöses GOLBAT?\nEin Zitterflatter.");
+const u8 gJokeNpc_Text_Joke17[] = _("Was sagt EINALLER wenn es sich vorstellt?\nIch bin ganz Region.");
+const u8 gJokeNpc_Text_Joke18[] = _("Warum kam KLEFKI nicht zur Party?\nEs war abgeschlossen.");
+const u8 gJokeNpc_Text_Joke19[] = _("Was macht ein HYDRO-PUMPENDRAGONIR bei Stress?\nDampf ablassen.");
+const u8 gJokeNpc_Text_Joke20[] = _("Warum darf VOLTOBAL kein Konzert geben?\nExplosive Stimmung.");
+const u8 gJokeNpc_Text_Joke21[] = _("Was ist ein ZUBAT in einer Höhle?\nEin nerviger Hurensohn!");
+const u8 gJokeNpc_Text_Joke22[] = _("Warum benutzt GARDEVOIR nie Tinder?\nEs hat genug psychische Probleme.");
+const u8 gJokeNpc_Text_Joke23[] = _("Wie nennt man ein dummes CHELAST?\nLangsam mit Grünstreifen.");
+const u8 gJokeNpc_Text_Joke24[] = _("Warum geht BISAFLOR nicht ins Fitnessstudio?\nWeil sein Rückenblatt schon genug wiegt.");
+const u8 gJokeNpc_Text_Joke25[] = _("Was macht ein SHEDINJA im Bewerbungsgespräch?\n...Nichts. Es ist nur die Hülle.");
+const u8 gJokeNpc_Text_Joke26[] = _("Warum bestellt LAGGRON keinen Kaffee?\nWeil’s schon genug wachgerüttelt wurde.");
+const u8 gJokeNpc_Text_Joke27[] = _("Was macht ein FIERO mit einem IQ-Test?\nDenkt, es sei eine Kampfansage.");
+const u8 gJokeNpc_Text_Joke28[] = _("Warum spielt RELAXO kein Schlagzeug?\nWeil es den Takt verschläft.");
+const u8 gJokeNpc_Text_Joke29[] = _("Was sagt ein SCHLURP beim Bewerbungsgespräch?\nIch bin vielseitig einsetzbar.");
+const u8 gJokeNpc_Text_Joke30[] = _("Warum war ein PORYGON2 beim Arzt?\nSoftware-Update fehlgeschlagen.");
+const u8 gJokeNpc_Text_Joke31[] = _("Warum fährt REGIELEKI nie Bahn?\nEs ist zu geladen.");
+const u8 gJokeNpc_Text_Joke32[] = _("Wie nennt man ein MIMIGMA ohne Maske?\nKarriere als Horrorfilm-Star.");
+const u8 gJokeNpc_Text_Joke33[] = _("Warum wurde SNIEBEL vom Konzert geworfen?\nEs hat wieder gekrallt.");
+const u8 gJokeNpc_Text_Joke34[] = _("Was macht ein FUKANO beim Bellen?\nArbeitet am Feuerton.");
+const u8 gJokeNpc_Text_Joke35[] = _("Warum trägt TENTACRUEL keinen BH?\nBei so vielen Armen lohnt’s nicht.");
+const u8 gJokeNpc_Text_Joke36[] = _("Wie nennt man ein IKSBAT mit Jetlag?\nZiemlich durch die Höhle.");
+const u8 gJokeNpc_Text_Joke37[] = _("Was sagt ein GARADOS beim Friseur?\nMach’s wie meinen Charakter: wild.");
+const u8 gJokeNpc_Text_Joke38[] = _("Warum geht RATTIKAL nicht zum Zahnarzt?\nEs hat Angst vorm Nagerbohrer.");
+const u8 gJokeNpc_Text_Joke39[] = _("Wie nennt man ein MAIKELO bei Nacht?\nEin unnötiger Jumpscare.");
+const u8 gJokeNpc_Text_Joke40[] = _("Was macht ein KLEPTIFUX auf dem Flohmarkt?\nEr verkauft deine Sachen.");
+const u8 gJokeNpc_Text_Joke41[] = _("Warum meidet PANTIMOS Sozialkontakte?\nWeil es immer gemimt wird.");
+const u8 gJokeNpc_Text_Joke42[] = _("Was ist schlimmer als ein ZOBIRIS?\nZwei ZOBIRIS mit Comedy-Ambitionen.");
+
+const u8 gText_Morning2[] = _("Morgens");
+const u8 gText_Daytime2[] = _("Tagsüber");
+const u8 gText_Evening2[] = _("Abends");
+const u8 gText_Night2[] = _("Nachts");
+
+const u8 gText_ClockFormat[] = _("{STR_VAR_1}{STR_VAR_2} Uhr ({STR_VAR_3})");
+const u8 gText_Colon[] = _(":");
+const u8 gText_ClockTimeFormat[] = _("{STR_VAR_1} Uhr ({STR_VAR_2})");

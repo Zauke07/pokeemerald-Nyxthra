@@ -120,7 +120,7 @@ const struct FollowerMsgInfo gFollowerSadMessages[] = {
 };
 
 // Unconditional upset messages
-static const u8 sUpsetMsg00[] = _("{STR_VAR_1} scheint irgendwie unglücklich zu sein…");
+static const u8 sUpsetMsg00[] = _("{STR_VAR_1} scheint irgendwie unglücklich\nzu sein…");
 static const u8 sUpsetMsg01[] = _("{STR_VAR_1} macht ein unglückliches\nGesicht.");
 static const u8 sUpsetMsg02[] = _("…Dein POKéMON scheint ein wenig\nkalt zu sein.");
 // Conditional messages, index 3
@@ -135,8 +135,8 @@ const struct FollowerMsgInfo gFollowerUpsetMessages[] = {
 // Unconditional angry messages
 static const u8 sAngryMsg00[] = _("{STR_VAR_1} hat ein Brüllen ausgestoßen!");
 static const u8 sAngryMsg01[] = _("{STR_VAR_1} macht ein Gesicht, als ob\nes wütend wäre!");
-static const u8 sAngryMsg02[] = _("{STR_VAR_1} scheint aus irgendeinem Grund wütend zu sein.");
-static const u8 sAngryMsg03[] = _("Dein POKéMON drehte sich um und zeigte ein trotziges Gesicht.");
+static const u8 sAngryMsg02[] = _("{STR_VAR_1} scheint aus irgendeinem Grund\nwütend zu sein.");
+static const u8 sAngryMsg03[] = _("Dein POKéMON drehte sich um und zeigte\nein trotziges Gesicht.");
 static const u8 sAngryMsg04[] = _("{STR_VAR_1} hat geschrien.");
 
 const struct FollowerMsgInfo gFollowerAngryMessages[] = {

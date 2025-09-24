@@ -22,6 +22,8 @@
 #include "constants/field_weather.h"
 #include "field_weather.h"
 #include "password_input.h"
+#include "constants/map_groups.h"
+#include "rtc.h"
 
 
 #define RAM_SCRIPT_MAGIC 51
@@ -701,25 +703,23 @@ bool8 ScriptCmd_SpawnRivalForStyle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_SpawnRivalObjectEventFromStyle(struct ScriptContext *ctx)
 {
-    u8 style    = gSaveBlock2Ptr->playerStyles[0];
-    u16 gfxId   = GetRivalGraphicsIdByPlayerStyle(style, PLAYER_AVATAR_STATE_NORMAL);
+    u8 style  = gSaveBlock2Ptr->playerStyles[0];
+    u16 gfxId = GetRivalGraphicsIdByPlayerStyle(style, PLAYER_AVATAR_STATE_NORMAL);
     VarSet(VAR_OBJ_GFX_ID_0, gfxId);
 
     u8 localId = VarGet(VAR_0x8004);
 
-    // Template aus Map holen …
     const struct ObjectEventTemplate *tmpl = GetObjectEventTemplateByLocalIdAndMap(
         localId,
         gSaveBlock1Ptr->location.mapNum,
         gSaveBlock1Ptr->location.mapGroup
     );
 
-    // Position, Richtung, Bewegung direkt aus dem Objekt übernehmen
     SpawnSpecialObjectEventParameterized(
         gfxId,
         tmpl->movementType,
         localId,
-        tmpl->x + 7,  // 7 ist Offset zur Bildschirmkoordinate
+        tmpl->x + 7,
         tmpl->y + 7,
         tmpl->elevation
     );
@@ -767,6 +767,7 @@ bool8 SpawnRivalObjectEventFromStyle(void)
         case STYLE_HILDA:
             graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
             break;
+         /*
         case STYLE_NATE:
             graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
             break;
@@ -791,13 +792,13 @@ bool8 SpawnRivalObjectEventFromStyle(void)
         case STYLE_GLORIA:
             graphicsId = OBJ_EVENT_GFX_RIVAL_VICTOR;
             break;
-
         case STYLE_FLORIAN:
             graphicsId = OBJ_EVENT_GFX_RIVAL_JULIANA;
             break;
         case STYLE_JULIANA:
             graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
             break;
+         */
         default:
             graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
             break;
@@ -842,3 +843,8 @@ bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_FormatCurrentTimeAndDaytime(struct ScriptContext *ctx)
+{
+    FormatCurrentTimeAndDaytime(); // Funktion unten
+    return FALSE;
+}

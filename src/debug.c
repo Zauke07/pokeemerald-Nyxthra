@@ -2384,6 +2384,7 @@ static const struct ListMenuItem sDebugMenu_Items_Styles[] =
     {gText_TrainerName_Dawn, STYLE_DAWN},
     {gText_TrainerName_Hilbert, STYLE_HILBERT},
     {gText_TrainerName_Hilda, STYLE_HILDA},
+/*
     {gText_TrainerName_Nate, STYLE_NATE},
     {gText_TrainerName_Rosa, STYLE_ROSA},
     {gText_TrainerName_Calem, STYLE_CALEM},
@@ -2396,6 +2397,7 @@ static const struct ListMenuItem sDebugMenu_Items_Styles[] =
     {gText_TrainerName_Juliana, STYLE_JULIANA},
 //    {gText_TrainerName_Wes, STYLE_WES},
 //    {gText_TrainerName_Ash, STYLE_ASH},
+*/
 };
 
 #define DEBUG_STYLE_COUNT (ARRAY_COUNT(sDebugMenu_Items_Styles))

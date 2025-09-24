@@ -76,6 +76,10 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "event_scripts.h"
+#include "menu_helpers.h"
+#include "field_message_box.h"
+#include "field_effect_helpers.h"
 
 enum {
     MENU_SUMMARY,
@@ -106,6 +110,7 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_SET_FOLLOWER,
     MENU_FIELD_MOVES
 };
 
@@ -127,6 +132,7 @@ enum {
     ACTIONS_TAKEITEM_TOSS,
     ACTIONS_ROTOM_CATALOG,
     ACTIONS_ZYGARDE_CUBE,
+    ACTIONS_SET_FOLLOWER,
 };
 
 // In CursorCb_FieldMove, field moves <= FIELD_MOVE_WATERFALL are assumed to line up with the badge flags.
@@ -522,6 +528,11 @@ void TryItemHoldFormChange(struct Pokemon *mon, s8 slotId);
 static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
 static void Task_HideFollowerNPCForTeleport(u8);
+static void CursorCb_SetFollower(u8 taskId);
+static void Task_HandleFollowerYesNoInput(u8 taskId);
+//void SetFollowerPartyId(u8 partyId);
+static void Task_ClosePartyMenu(u8 taskId);
+//static u8 sFollowerYesNoWindowId;
 
 // static const data
 #include "data/party_menu.h"
@@ -573,6 +584,79 @@ static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCurs
         gTextFlags.autoScroll = 0;
         CalculatePlayerPartyCount();
         SetMainCallback2(CB2_InitPartyMenu);
+    }
+}
+/*
+static void Task_ChooseFollowerYesNo(u8 taskId)
+{
+    DisplayPartyMenuMessage(gText_ChooseFollower, TRUE); // zeigt z. B. „{PKMN} als Begleiter wählen?“
+    CreateYesNoMenu(&sPartyMenuYesNoWindowTemplate, 1, 0, 13);
+    gTasks[taskId].func = Task_HandleFollowerYesNoInput;
+}
+*/
+
+void SetActivePartyMonAsFollower(u8 slot)
+{
+    sCurrentFollowerSlotId = slot;
+    FlagSet(FLAG_FOLLOWER_ACTIVE);
+    //ShowFieldMessageFollowerDebug(); // ← direkt aufrufen
+    UpdateFollowingPokemon();
+}
+
+void ClearFollowerSlot(void)
+{
+    FlagClear(FLAG_FOLLOWER_ACTIVE);
+    sCurrentFollowerSlotId = PARTY_SIZE; // = 6 → immer out of bounds, aber keine 255
+}
+
+u8 GetFollowerMonIndex(void)
+{
+    return sCurrentFollowerSlotId;
+}
+
+static void Task_HandleFollowerYesNoInput(u8 taskId)
+{
+    u8 selected = gPartyMenu.slotId;
+    u8 currentFollower = GetFollowerMonIndex();
+
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0: // JA gedrückt
+        PlaySE(SE_SELECT);
+
+        if (FlagGet(FLAG_FOLLOWER_ACTIVE))
+        {
+            if (selected == currentFollower)
+            {
+                // Gleicher Begleiter → entfernen
+                ClearFollowerSlot();
+                //ShowFieldMessage(COMPOUND_STRING("Begleiter entfernt."));
+            }
+            else
+            {
+                // Neuer Begleiter → ersetzen
+                SetActivePartyMonAsFollower(selected);
+                //ShowFieldMessageFollowerDebug();
+            }
+        }
+        else
+        {
+            // Noch kein Begleiter → setzen
+            SetActivePartyMonAsFollower(selected);
+            //ShowFieldMessageFollowerDebug();
+        }
+
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gFieldCallback = FieldCB_DefaultWarpExit;
+        gTasks[taskId].func = Task_ClosePartyMenuAndSetCB2;
+        break;
+
+    case 1: // NEIN gedrückt
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_ClosePartyMenuAndSetCB2;
+        break;
     }
 }
 
@@ -2882,15 +2966,26 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         }
     }
 
+    // ✅ "Als Begleiter festlegen" nur anzeigen im echten Overworld-Menü (nicht im Kampf, Tausch etc.)
+    if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
+     && GetMonData(&mons[slotId], MON_DATA_IS_EGG) == FALSE)
+    {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SET_FOLLOWER);
+    }
+
+    // Item-Aktionen (nicht im Battle Pike)
     if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
+
         if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
         else
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
     }
+
+    // Immer abbrechen-Option
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 
@@ -8027,3 +8122,84 @@ void CursorCb_MoveItem(u8 taskId)
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }
 }
+
+static void CursorCb_SetFollower(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+
+    if (FlagGet(FLAG_FOLLOWER_ACTIVE) && gPartyMenu.slotId == GetFollowerMonIndex())
+    {
+        // Pokémon ist bereits Begleiter → entfernbare Anfrage
+        DisplayPartyMenuStdMessage(PARTY_MSG_REMOVE_FOLLOWER);
+        gTasks[taskId].data[0] = 1;
+    }
+    else if (FlagGet(FLAG_FOLLOWER_ACTIVE))
+    {
+        // Anderes Pokémon ist Begleiter → ersetzen?
+        DisplayPartyMenuStdMessage(PARTY_MSG_REPLACE_FOLLOWER);
+        gTasks[taskId].data[0] = 2;
+    }
+    else
+    {
+        // Kein aktiver Begleiter
+        DisplayPartyMenuStdMessage(PARTY_MSG_CHOOSE_FOLLOWER);
+        gTasks[taskId].data[0] = 0;
+    }
+    PartyMenuDisplayYesNoMenu();
+    gTasks[taskId].func = Task_HandleFollowerYesNoInput;
+}
+
+void ShowFollowerInfoDebug(void)
+{
+    u32 species;
+    bool32 shiny, female;
+    u8 buffer[40];
+
+    if (!GetFollowerInfo(&species, &shiny, &female))
+    {
+        ShowFieldMessage(COMPOUND_STRING("Kein Begleiter ausgewählt."));
+        return;
+    }
+
+    StringCopy(buffer, COMPOUND_STRING("Begleiter: "));
+    ConvertIntToDecimalStringN(buffer + StringLength(buffer), species, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(buffer, shiny ? COMPOUND_STRING(" Shiny") : COMPOUND_STRING(""));
+    StringAppend(buffer, female ? COMPOUND_STRING(" ♀") : COMPOUND_STRING(" ♂"));
+    ShowFieldMessage(buffer);
+}
+/*
+void SetFollowerPartyId(u8 partyId)
+{
+    gSaveBlock1Ptr->followerSelectedMonId = partyId;
+}
+*/
+
+bool8 ShowFieldMessageFollowerDebug(void)
+{
+    if (!FlagGet(FLAG_FOLLOWER_ACTIVE) || sCurrentFollowerSlotId >= PARTY_SIZE)
+    {
+        StringCopy(gStringVar4, COMPOUND_STRING("Follower inaktiv."));
+        ShowFieldMessage(gStringVar4);
+        return FALSE;
+    }
+
+    ConvertIntToDecimalStringN(gStringVar1, sCurrentFollowerSlotId, STR_CONV_MODE_LEFT_ALIGN, 2);
+
+    u32 species = GetMonData(&gPlayerParty[sCurrentFollowerSlotId], MON_DATA_SPECIES);
+    ConvertIntToDecimalStringN(gStringVar2, species, STR_CONV_MODE_LEFT_ALIGN, 3);
+
+    StringExpandPlaceholders(gStringVar4, gText_FollowerDebugInfo);
+    ShowFieldMessage(gStringVar4);
+    return FALSE;
+}
+
+
+bool8 BufferFollowerNicknameToVar1(void)
+{
+    if (!FlagGet(FLAG_FOLLOWER_ACTIVE) || sCurrentFollowerSlotId >= PARTY_SIZE)
+        return FALSE;
+
+    GetMonNickname(&gPlayerParty[sCurrentFollowerSlotId], gStringVar1);
+    return FALSE;
+}
+

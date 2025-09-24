@@ -2285,8 +2285,17 @@ void PlayerHandleExpUpdate(u32 battler)
 {
     u8 monId = gBattleResources->bufferA[battler][1];
     s32 taskId, expPointsToGive;
+    u8 currentLevel = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
+    u32 currentExp = GetMonData(&gPlayerParty[monId], MON_DATA_EXP);
+/*
+    // Debug-Variablen füllen
+    ConvertIntToDecimalStringN(gStringVar1, currentLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, currentExp, STR_CONV_MODE_LEFT_ALIGN, 7);
 
-    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
+    // Debug-Nachricht anzeigen
+    ShowFieldExpLevelDebug(); // Diese Funktion musst du wie vorher definiert haben
+*/
+    if (currentLevel >= MAX_LEVEL)
     {
         PlayerBufferExecCompleted(battler);
     }
@@ -2294,6 +2303,11 @@ void PlayerHandleExpUpdate(u32 battler)
     {
         LoadBattleBarGfx(1);
         expPointsToGive = T1_READ_32(&gBattleResources->bufferA[battler][2]);
+/*
+        // Debugausgabe für zu vergebende Exp
+        ConvertIntToDecimalStringN(gStringVar1, expPointsToGive, STR_CONV_MODE_LEFT_ALIGN, 7);
+        ShowFieldMessage(gStringVar4); // Oder eine ähnliche Debug-Message-Funktion
+*/
         taskId = CreateTask(Task_GiveExpToMon, 10);
         gTasks[taskId].tExpTask_monId = monId;
         gTasks[taskId].tExpTask_gainedExp_1 = expPointsToGive;

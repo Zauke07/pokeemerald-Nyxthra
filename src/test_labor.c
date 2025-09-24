@@ -26,6 +26,11 @@
 #include "constants/flags.h"
 #include "main_menu.h"
 
+#include "rtc.h"
+#include "test_labor.h"
+#include "text.h"
+#include "field_message_box.h"
+
 
 
 static void CB2_TestlabSpeech_Init(void);
@@ -61,19 +66,7 @@ static u8 sStyleMenuTaskId;
 #define tLyraSpriteId data[15]
 #define tLucasSpriteId data[16]
 #define tDawnSpriteId data[17]
-#define tHilbertSpriteId data[18]
-#define tHildaSpriteId data[19]
-#define tNateSpriteId data[20]
-#define tRosaSpriteId data[21]
-#define tCalemSpriteId data[22]
-#define tSerenaSpriteId data[23]
-#define tElioSpriteId data[24]
-#define tSeleneSpriteId data[25]
-#define tVictorSpriteId data[26]
-#define tGloriaSpriteId data[27]
-#define tFlorianSpriteId data[28]
-#define tJulianaSpriteId data[29]
-#define tStyleSelectId     data[30]
+#define tStyleSelectId     data[18]
 
 
 bool8 WarpToTestlaborAfterStyleSelect(struct ScriptContext *ctx)
@@ -194,18 +187,6 @@ bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx)
     case STYLE_LYRA:     StringCopy(gStringVar1, gText_TrainerName_Lyra); break;
     case STYLE_LUCAS:    StringCopy(gStringVar1, gText_TrainerName_Lucas); break;
     case STYLE_DAWN:     StringCopy(gStringVar1, gText_TrainerName_Dawn); break;
-    case STYLE_HILBERT:  StringCopy(gStringVar1, gText_TrainerName_Hilbert); break;
-    case STYLE_HILDA:    StringCopy(gStringVar1, gText_TrainerName_Hilda); break;
-    case STYLE_NATE:     StringCopy(gStringVar1, gText_TrainerName_Nate); break;
-    case STYLE_ROSA:     StringCopy(gStringVar1, gText_TrainerName_Rosa); break;
-    case STYLE_CALEM:    StringCopy(gStringVar1, gText_TrainerName_Calem); break;
-    case STYLE_SERENA:   StringCopy(gStringVar1, gText_TrainerName_Serena); break;
-    case STYLE_ELIO:     StringCopy(gStringVar1, gText_TrainerName_Elio); break;
-    case STYLE_SELENE:   StringCopy(gStringVar1, gText_TrainerName_Selene); break;
-    case STYLE_VICTOR:   StringCopy(gStringVar1, gText_TrainerName_Victor); break;
-    case STYLE_GLORIA:   StringCopy(gStringVar1, gText_TrainerName_Gloria); break;
-    case STYLE_FLORIAN:  StringCopy(gStringVar1, gText_TrainerName_Florian); break;
-    case STYLE_JULIANA:  StringCopy(gStringVar1, gText_TrainerName_Juliana); break;
     default:             StringCopy(gStringVar1, gText_QuestionMark); break;
     }
 
@@ -225,17 +206,69 @@ bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx)
 #undef tLyraSpriteId
 #undef tLucasSpriteId
 #undef tDawnSpriteId
-#undef tHilbertSpriteId
-#undef tHildaSpriteId
-#undef tNateSpriteId
-#undef tRosaSpriteId
-#undef tCalemSpriteId
-#undef tSerenaSpriteId
-#undef tElioSpriteId
-#undef tSeleneSpriteId
-#undef tVictorSpriteId
-#undef tGloriaSpriteId
-#undef tFlorianSpriteId
-#undef tJulianaSpriteId
 #undef tStyleSelectId
+
+static const u8 sMorning[] = _("morgens");
+static const u8 sDay[]     = _("tagsüber");
+static const u8 sEvening[] = _("abends");
+static const u8 sNight[]   = _("nachts");
+
+// Füllt STR_VAR_1 = HH, STR_VAR_2 = MM, STR_VAR_3 = Tageszeit (DE)
+void BufferClockToStrVars123(void)
+{
+    RtcCalcLocalTime(); // aktualisiert gLocalTime
+
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours,   STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+
+    // Nimm, wenn vorhanden, deine interne Tageszeit-Funktion:
+    #ifdef GUARD_TIMEOFDAY_H
+    switch (GetTimeOfDay())
+    {
+        case TIME_MORNING: StringCopy(gStringVar3, sMorning); break;
+        case TIME_DAY:     StringCopy(gStringVar3, sDay);     break;
+        case TIME_EVENING: StringCopy(gStringVar3, sEvening); break;
+        case TIME_NIGHT:   StringCopy(gStringVar3, sNight);   break;
+        default:           StringCopy(gStringVar3, sDay);     break;
+    }
+    #else
+    // Fallback nach Stunden
+    if      (gLocalTime.hours < 6)  StringCopy(gStringVar3, sNight);
+    else if (gLocalTime.hours < 12) StringCopy(gStringVar3, sMorning);
+    else if (gLocalTime.hours < 18) StringCopy(gStringVar3, sDay);
+    else if (gLocalTime.hours < 22) StringCopy(gStringVar3, sEvening);
+    else                            StringCopy(gStringVar3, sNight);
+    #endif
+}
+
+static const u8 gText_NpcDebugLevelExp[] = _("Level: {STR_VAR_1}\nEXP: {STR_VAR_2}\nMappedLvl: {STR_VAR_3}$");
+
+void BufferNpcExpLevelDebug(struct Pokemon *mon)
+{
+    u8 actualLevel = GetMonData(mon, MON_DATA_LEVEL, NULL);
+    u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
+    u8 mappedLevel = GetLevelFromMonExp(mon);
+
+    ConvertIntToDecimalStringN(gStringVar1, actualLevel, STR_CONV_MODE_LEADING_ZEROS, 3);
+    ConvertIntToDecimalStringN(gStringVar2, exp, STR_CONV_MODE_LEADING_ZEROS, 7);
+    ConvertIntToDecimalStringN(gStringVar3, mappedLevel, STR_CONV_MODE_LEADING_ZEROS, 3);
+}
+
+bool8 ShowNpcExpLevelDebugMessage(void)
+{
+    StringExpandPlaceholders(gStringVar4, gText_NpcDebugLevelExp);
+    ShowFieldMessage(gStringVar4);
+    return FALSE;
+}
+
+void BufferDebugExpLevelVars(struct Pokemon *mon)
+{
+    u8 actualLevel = GetMonData(mon, MON_DATA_LEVEL, NULL);
+    u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
+    u8 mappedLevel = GetLevelFromMonExp(mon);
+
+    ConvertIntToDecimalStringN(gStringVar1, actualLevel, STR_CONV_MODE_LEADING_ZEROS, 3);
+    ConvertIntToDecimalStringN(gStringVar2, exp, STR_CONV_MODE_LEADING_ZEROS, 7);
+    ConvertIntToDecimalStringN(gStringVar3, mappedLevel, STR_CONV_MODE_LEADING_ZEROS, 3);
+}
 

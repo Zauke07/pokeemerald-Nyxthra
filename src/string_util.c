@@ -477,13 +477,13 @@ static const u8 *ExpandPlaceholder_KunChan(void)
         case STYLE_ETHAN:
         case STYLE_LUCAS:
         case STYLE_HILBERT:
+        /*
         case STYLE_NATE:
         case STYLE_CALEM:
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
-//        case STYLE_ASH:
-//        case STYLE_WES:
+        */
             return gText_ExpandedPlaceholder_Kun; // "Brendan-kun", "Red-kun", etc.
 
         case STYLE_MAY:
@@ -491,11 +491,13 @@ static const u8 *ExpandPlaceholder_KunChan(void)
         case STYLE_LYRA:
         case STYLE_DAWN:
         case STYLE_HILDA:
+        /*
         case STYLE_ROSA:
         case STYLE_SERENA:
         case STYLE_SELENE:
         case STYLE_GLORIA:
         case STYLE_JULIANA:
+        */
             return gText_ExpandedPlaceholder_Chan; // "May-chan", "Leaf-chan", etc.
 
         default:
@@ -527,10 +529,11 @@ static const u8 *ExpandPlaceholder_RivalName(void)
             return gText_ExpandedPlaceholder_Hilda;
         case PLAYER_OUTFIT_HILDA:
             return gText_ExpandedPlaceholder_Hilbert;
-//        case PLAYER_OUTFIT_NATE:
-//            return gText_ExpandedPlaceholder_Rosa;
-//        case PLAYER_OUTFIT_ROSA:
-//            return gText_ExpandedPlaceholder_Nate;
+        /*
+        case PLAYER_OUTFIT_NATE:
+            return gText_ExpandedPlaceholder_Rosa;
+        case PLAYER_OUTFIT_ROSA:
+            return gText_ExpandedPlaceholder_Nate;
         case PLAYER_OUTFIT_CALEM:
             return gText_ExpandedPlaceholder_Serena;
         case PLAYER_OUTFIT_SERENA:
@@ -547,12 +550,11 @@ static const u8 *ExpandPlaceholder_RivalName(void)
             return gText_ExpandedPlaceholder_Juliana;
         case PLAYER_OUTFIT_JULIANA:
             return gText_ExpandedPlaceholder_Florian;
-/*
         case PLAYER_OUTFIT_WES:
             return gText_ExpandedPlaceholder_Ash;
         case PLAYER_OUTFIT_ASH:
             return gText_ExpandedPlaceholder_Wes;
-*/
+        */
         default:
             return gText_ExpandedPlaceholder_Rival; // Fallback für unbestimmte Rivalen
     }

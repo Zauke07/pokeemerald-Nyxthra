@@ -57,6 +57,10 @@
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "field_message_box.h"
+#include "constants/party_menu.h"
+
+EWRAM_DATA u8 sCurrentFollowerSlotId;
 
 #define SPECIAL_LOCALIDS_START (min(LOCALID_CAMERA, \
                                 min(LOCALID_PLAYER, \
@@ -568,7 +572,16 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Ash,                   OBJ_EVENT_PAL_TAG_PLAYER_ASH},
 //    {gObjectEventPal_WesReflection,         OBJ_EVENT_PAL_TAG_PLAYER_WES_REFLECTION},
 //    {gObjectEventPal_AshReflection,         OBJ_EVENT_PAL_TAG_PLAYER_ASH_REFLECTION},
-    
+    {gObjectEventPal_EnteiOld,                OBJ_EVENT_PAL_TAG_ENTEI},
+    {gObjectEventPal_RaikouOld,               OBJ_EVENT_PAL_TAG_RAIKOU},
+    {gObjectEventPal_SuicuneOld,              OBJ_EVENT_PAL_TAG_SUICUNE},
+    {gObjectEventPal_ZapdosOld,               OBJ_EVENT_PAL_TAG_ZAPDOS},
+    {gObjectEventPal_MoltresOld,              OBJ_EVENT_PAL_TAG_MOLTRES},
+    {gObjectEventPal_ArticunoOld,             OBJ_EVENT_PAL_TAG_ARTICUNO},
+    {gObjectEventPal_Nurse_OW,                OBJ_EVENT_PAL_TAG_Nurse_OW},
+    {gObjectEventPal_Rocky,                   OBJ_EVENT_PAL_TAG_Rocky},
+    {gObjectEventPal_LandorusOld,            OBJ_EVENT_PAL_TAG_LANDORUS},
+
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
     {gObjectEventPal_Sinnoh_Byron, OBJ_EVENT_PAL_TAG_SINNOH_BYRON},
@@ -713,6 +726,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Team_Rocket_Ariana, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_ARIANA},
     {gObjectEventPal_Team_Rocket_Petrel, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PETREL},
     {gObjectEventPal_Team_Rocket_Proton, OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PROTON},
+    {gObjectEventPal_RocketM_F,                OBJ_EVENT_PAL_TAG_TEAM_ROCKET_M_F},
+    {gObjectEventPal_Team_Flare_Gunt,         OBJ_EVENT_PAL_TAG_TEAM_FLARE_GUNT},
 
     {gObjectEventPal_Misc_Peonia,           OBJ_EVENT_PAL_TAG_MISC_PEONIA},
     {gObjectEventPal_RouteExt,              OBJ_EVENT_PAL_TAG_ROUTE_EXT},
@@ -2421,23 +2436,30 @@ void UpdateFollowingPokemon(void)
 {
     struct ObjectEvent *objEvent = GetFollowerObject();
     struct Sprite *sprite;
+    struct Pokemon *mon;
     u32 species;
     bool32 shiny;
     bool32 female;
-    // Don't spawn follower if:
-    // 1. GetFollowerInfo returns FALSE
-    // 2. Map is indoors and gfx is larger than 32x32
-    // 3. flag is set
-    // 4. a follower NPC is present
-    if (OW_POKEMON_OBJECT_EVENTS == TRUE
-     || OW_FOLLOWERS_ENABLED == TRUE
-     || FlagGet(B_FLAG_FOLLOWERS_DISABLED)
-     || !GetFollowerInfo(&species, &shiny, &female)
-     || SpeciesToGraphicsInfo(species, shiny, female) == NULL
-     || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, shiny, female)->oam->size > ST_OAM_SIZE_2)
-     || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
-     || PlayerHasFollowerNPC()
-     )
+
+    if (!FlagGet(FLAG_FOLLOWER_ACTIVE) || sCurrentFollowerSlotId >= PARTY_SIZE)
+    {
+        RemoveFollowingPokemon();
+        return;
+    }
+
+    mon = &gPlayerParty[sCurrentFollowerSlotId];
+    species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+
+    if (species == SPECIES_NONE || species >= NUM_SPECIES)
+    {
+        RemoveFollowingPokemon();
+        return;
+    }
+
+    shiny = IsMonShiny(mon);
+    female = (GetMonData(mon, MON_DATA_OT_GENDER) == MON_FEMALE);
+
+    if (FALSE)
     {
         RemoveFollowingPokemon();
         return;
@@ -2445,46 +2467,48 @@ void UpdateFollowingPokemon(void)
 
     if (objEvent == NULL)
     {
-        // Spawn follower
         u32 objId = gPlayerAvatar.objectEventId;
-        struct ObjectEventTemplate template =
-        {
+        struct ObjectEventTemplate template = {
             .localId = OBJ_EVENT_ID_FOLLOWER,
             .graphicsId = GetGraphicsIdForMon(species, shiny, female),
             .flagId = 0,
             .x = gSaveBlock1Ptr->pos.x,
             .y = gSaveBlock1Ptr->pos.y,
-            // If player active, copy player elevation
             .elevation = gObjectEvents[objId].active ? gObjectEvents[objId].currentElevation : 3,
             .movementType = MOVEMENT_TYPE_FOLLOW_PLAYER,
-            // store form info in template
-            //.trainerRange_berryTreeId = (form & 0x1F) | (shiny << 5),   // ???? what?
         };
-        if ((objId = SpawnSpecialObjectEvent(&template)) >= OBJECT_EVENTS_COUNT)
+
+        objId = SpawnSpecialObjectEvent(&template);
+        if (objId >= OBJECT_EVENTS_COUNT)
             return;
+
         objEvent = &gObjectEvents[objId];
         objEvent->invisible = TRUE;
     }
+
     sprite = &gSprites[objEvent->spriteId];
-    // Follower appearance changed; move to player and set invisible
-    if (species != OW_SPECIES(objEvent) || shiny != OW_SHINY(objEvent) || female != OW_FEMALE(objEvent))
+
+    if (species != OW_SPECIES(objEvent)
+     || shiny != OW_SHINY(objEvent)
+     || female != OW_FEMALE(objEvent))
     {
         MoveObjectEventToMapCoords(objEvent,
                                    gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x,
                                    gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y);
         FollowerSetGraphics(objEvent, species, shiny, female);
-        objEvent->invisible = TRUE;
     }
-    sprite->data[6] = 0; // set animation data
+
+    objEvent->invisible = FALSE;
+    sprite->invisible = FALSE;
+    sprite->data[6] = 0;
 }
 
 // Remove follower object. Idempotent.
 void RemoveFollowingPokemon(void)
 {
     struct ObjectEvent *objectEvent = GetFollowerObject();
-    if (objectEvent == NULL)
-        return;
-    RemoveObjectEvent(objectEvent);
+    if (objectEvent != NULL)
+        RemoveObjectEvent(objectEvent);
 }
 
 // Determine whether follower *should* be visible
@@ -2904,7 +2928,7 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType)
     case LIGHT_TYPE_BALL:
         sprite->centerToCornerVecX = -(32 >> 1);
         sprite->centerToCornerVecY = -(32 >> 1);
-        sprite->oam.priority = 1;
+        sprite->oam.priority = 2;
         sprite->oam.objMode = ST_OAM_OBJ_BLEND;
         sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
         sprite->x += 8;
@@ -3434,6 +3458,7 @@ u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
     case STYLE_HILDA:
         paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_HILDA;
         break;
+        /*
     case STYLE_NATE:
         paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_NATE;
         break;
@@ -3470,6 +3495,7 @@ u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
     // case STYLE_WES:
     //     paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_WES;
     //     break;
+        */
     default:
         paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN; // Fallback
         break;
@@ -11752,6 +11778,7 @@ u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
     case STYLE_HILDA:
         rivalId = OBJ_EVENT_GFX_RIVAL_HILBERT;
         break;
+        /*
     case STYLE_CALEM:
         rivalId = OBJ_EVENT_GFX_RIVAL_SERENA;
         break;
@@ -11770,6 +11797,7 @@ u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
     case STYLE_JULIANA:
         rivalId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
         break;
+        */
     default:
         rivalId = OBJ_EVENT_GFX_RIVAL_RED;
         break;

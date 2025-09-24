@@ -1336,7 +1336,7 @@ void PutFanClubSpecialOnTheAir(void)
     StringCopy(show->fanClubSpecial.idolName, name);
     StorePlayerIdInNormalShow(show);
     show->fanClubSpecial.language = gGameLanguage;
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     if (show->fanClubSpecial.language == LANGUAGE_JAPANESE || gSaveBlock1Ptr->linkBattleRecords.languages[0] == LANGUAGE_JAPANESE)
         show->fanClubSpecial.idolNameLanguage = LANGUAGE_JAPANESE;
     else
@@ -2319,7 +2319,7 @@ bool8 ShouldHideFanClubInterviewer(void)
     if (gSpecialVar_Result == TRUE)
         return TRUE;
 
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     if (gSaveBlock1Ptr->linkBattleRecords.entries[0].name[0] == EOS)
         return TRUE;
 #endif //FREE_LINK_BATTLE_RECORDS
@@ -3340,11 +3340,13 @@ u8 CheckForPlayersHouseNews(void)
         case STYLE_ETHAN:
         case STYLE_LUCAS:
         case STYLE_HILBERT:
+            /*
         case STYLE_NATE:
         case STYLE_CALEM:
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
+            */
             if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
                 return PLAYERS_HOUSE_TV_NONE;
             break;
@@ -3376,11 +3378,13 @@ void GetMomOrDadStringForTVMessage(void)
             case STYLE_ETHAN:
             case STYLE_LUCAS:
             case STYLE_HILBERT:
+                /*
             case STYLE_NATE:
             case STYLE_CALEM:
             case STYLE_ELIO:
             case STYLE_VICTOR:
             case STYLE_FLORIAN:
+                */
                 if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
                 {
                     StringCopy(gStringVar1, gText_Mom);

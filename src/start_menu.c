@@ -49,6 +49,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "rtc.h"
 
 /*
 #include "constants/rogue.h"
@@ -332,6 +333,145 @@ static void BuildStartMenuActions(void)
     }
 }
 
+// Position/Größe – oben links
+#define CLOCK_WINDOW_X      0
+#define CLOCK_WINDOW_Y      0
+#define CLOCK_WINDOW_WIDTH  14 // <-- ERHÖHE AUF EINE AUSREICHENDE BREITE (z.B. 15 Kacheln = 120 Pixel)
+#define CLOCK_WINDOW_HEIGHT 2  // <-- REDUZIERE AUF 2 FÜR EINE EINZELNE ZEILE (+ Rand)
+#define CLOCK_REFRESH_DELAY 60   // 1 Sekunde @ 60 FPS
+
+static EWRAM_DATA u8 sClockWindowId = 0;
+
+static const struct WindowTemplate sWindowTemplate_Clock = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 14,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 0x8
+};
+
+// Tageszeit-Text (DE)
+static const u8 *GetGermanDaytimeText(void)
+{
+    switch (GetTimeOfDay())
+    {
+    case TIME_MORNING: return gText_Morning2;
+    case TIME_DAY:     return gText_Daytime2;
+    case TIME_EVENING: return gText_Evening2;
+    case TIME_NIGHT:   return gText_Night2;
+    default:           return gText_Daytime2;
+    }
+}
+
+// "HH:MM Uhr (Tageszeit)" -> gStringVar4
+static void FormatCurrentTimeGerman(void)
+{
+    RtcCalcLocalTime();
+
+    const u8 *daytime = GetGermanDaytimeText();
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours,   STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopy(gStringVar3, daytime);
+
+    // WICHTIG: gText_ClockFormat muss den Doppelpunkt entfernen!
+    // z.B. const u8 gText_ClockFormat[] = _("{STR_VAR_1}{STR_VAR_2} Uhr ({STR_VAR_3})");
+    StringExpandPlaceholders(gStringVar4, gText_ClockFormat);
+}
+
+// ==== NEU: Farben & Blink-Flag für den Doppelpunkt ====
+static const u8 sClockTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sClockColonColors[2][3] = {
+    {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY}, // Index 0: Sichtbar
+    {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_TRANSPARENT, TEXT_COLOR_TRANSPARENT}, // Index 1: Unsichtbar
+};
+static EWRAM_DATA bool8 sClockColonInvisible = FALSE; // toggelt im Task
+
+static void Task_UpdateClockWindow(u8 taskId)
+{
+    // Aktualisiert die Uhrzeit jede CLOCK_REFRESH_DELAY Frames (z.B. 60 Frames = 1 Sekunde)
+    if (++gTasks[taskId].data[0] >= CLOCK_REFRESH_DELAY)
+    {
+        gTasks[taskId].data[0] = 0; // Zähler zurücksetzen
+
+        RtcCalcLocalTime(); // Zeit aktualisieren
+        sClockColonInvisible ^= 1; // Blink-Flag umschalten (0 -> 1 oder 1 -> 0)
+
+        FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1)); // Fensterpuffer leeren
+
+        // 1. Stunden zeichnen
+        u16 x = 0;
+        ConvertIntToDecimalStringN(gStringVar4, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
+        x += GetStringWidth(FONT_NORMAL, gStringVar4, 0);
+
+        // 2. Den Doppelpunkt zeichnen (mit blinkender Farbe)
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[sClockColonInvisible], TEXT_SKIP_DRAW, gText_Colon2);
+        x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
+
+        // 3. Den Rest des Strings zeichnen (Minuten + Text)
+        // Platzhalter für den Rest vorbereiten
+        ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+        StringCopy(gStringVar2, GetGermanDaytimeText());
+        // gStringVar3 wird hier mit den restlichen Textbausteinen gefüllt
+        StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
+
+        // Den Rest des Strings ab der berechneten Position zeichnen
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
+
+        CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
+    }
+}
+
+// Ersetze deine vorhandene ShowClockWindow Funktion
+void ShowClockWindow(void)
+{
+    // Fenster zur Anzeige der Uhrzeit hinzufügen
+    sClockWindowId = AddWindow(&sWindowTemplate_Clock);
+    PutWindowTilemap(sClockWindowId);
+    DrawStdWindowFrame(sClockWindowId, FALSE);
+
+    RtcCalcLocalTime();
+    sClockColonInvisible = FALSE; // Startzustand: ":" sichtbar
+
+    FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1));
+
+    // Initialen Text und den sichtbaren Doppelpunkt zeichnen
+    u16 x = 0;
+    ConvertIntToDecimalStringN(gStringVar4, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
+    x += GetStringWidth(FONT_NORMAL, gStringVar4, 0);
+
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[0], TEXT_SKIP_DRAW, gText_Colon2);
+    x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
+
+    // Den restlichen String vorbereiten
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    StringCopy(gStringVar2, GetGermanDaytimeText());
+    StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
+    
+    // Restlichen String an der richtigen Position zeichnen
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
+
+    CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
+    ScheduleBgCopyTilemapToVram(0);
+
+    CreateTask(Task_UpdateClockWindow, 0);
+}
+
+void HideClockWindow(void)
+{
+    // Task zum Aktualisieren der Uhrzeit zerstören
+    u8 taskId = FindTaskIdByFunc(Task_UpdateClockWindow);
+    if (taskId != 0xFF)
+        DestroyTask(taskId);
+
+    ClearStdWindowAndFrameToTransparent(sClockWindowId, FALSE);
+    CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
+    RemoveWindow(sClockWindowId);
+}
+
 static void AddStartMenuAction(u8 action)
 {
     AppendToList(sCurrentStartMenuActions, &sNumStartMenuActions, action);
@@ -539,6 +679,7 @@ static bool32 InitStartMenuStep(void)
             ShowSafariBallsWindow();
         if (InBattlePyramid())
             ShowPyramidFloorWindow();
+        ShowClockWindow(); // NEU
         sInitStartMenuData[0]++;
         break;
     case 4:
@@ -1418,13 +1559,15 @@ static void ShowSaveInfoWindow(void)
         case STYLE_ETHAN:
         case STYLE_LUCAS:
         case STYLE_HILBERT:
+        /*
         case STYLE_NATE:
         case STYLE_CALEM:
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
-//        case STYLE_ASH:
-//        case STYLE_WES:
+        //case STYLE_ASH:
+        //case STYLE_WES:
+        */
             color = TEXT_COLOR_BLUE;  // Blautöne für männliche Charaktere
             break;
 
@@ -1433,11 +1576,13 @@ static void ShowSaveInfoWindow(void)
         case STYLE_LYRA:
         case STYLE_DAWN:
         case STYLE_HILDA:
+        /*
         case STYLE_ROSA:
         case STYLE_SERENA:
         case STYLE_SELENE:
         case STYLE_GLORIA:
         case STYLE_JULIANA:
+        */
             color = TEXT_COLOR_RED;  // Rottöne für weibliche Charaktere
             break;
 
@@ -1460,7 +1605,7 @@ static void ShowSaveInfoWindow(void)
 
     // Print badge count
     yOffset += 16;
-    AddTextPrinterParameterized(sSaveInfoWindowId, FONT_NORMAL, gText_SavingBadges, 0, yOffset, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(sSaveInfoWindowId, FONT_NORMAL, gText_SavingBadges, 1, yOffset, TEXT_SKIP_DRAW, NULL);
     BufferSaveMenuText(SAVE_MENU_BADGES, gStringVar4, color);
     xOffset = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar4, 0x70);
     AddTextPrinterParameterized(sSaveInfoWindowId, FONT_NORMAL, gStringVar4, xOffset, yOffset, TEXT_SKIP_DRAW, NULL);
@@ -1522,6 +1667,7 @@ static void HideStartMenuWindow(void)
 void HideStartMenu(void)
 {
     PlaySE(SE_SELECT);
+    HideClockWindow(); // NEU
     HideStartMenuWindow();
 }
 

@@ -152,7 +152,7 @@ static void Task_CloseBattlePikeCurtain(u8);
 static u8 DidPlayerGetFirstFans(void);
 static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *, u8, u8);
 #else
 static void BufferFanClubTrainerName_(u8 whichLinkTrainer, u8 whichNPCTrainer);
@@ -4167,14 +4167,14 @@ void BufferFanClubTrainerName(void)
     case FANCLUB_MEMBER8:
         break;
     }
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     BufferFanClubTrainerName_(&gSaveBlock1Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
 #else
     BufferFanClubTrainerName_(whichLinkTrainer, whichNPCTrainer);
 #endif //FREE_LINK_BATTLE_RECORDS
 }
 
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 whichLinkTrainer, u8 whichNPCTrainer)
 {
     struct LinkBattleRecord *record = &linkRecords->entries[whichLinkTrainer];
@@ -4438,6 +4438,7 @@ void GetRivalStyleGraphicsIdAndSetVar(void)
         case STYLE_HILDA:
             gfxId = OBJ_EVENT_GFX_RIVAL_HILDA;
             break;
+        /*
         case STYLE_CALEM:
             gfxId = OBJ_EVENT_GFX_RIVAL_CALEM;
             break;
@@ -4462,6 +4463,7 @@ void GetRivalStyleGraphicsIdAndSetVar(void)
         case STYLE_JULIANA:
             gfxId = OBJ_EVENT_GFX_RIVAL_JULIANA;
             break;
+        */
         default:
             gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
             break;
@@ -4481,5 +4483,27 @@ bool8 BufferIntToStringVar2(void)
 {
     u16 value = VarGet(VAR_RESULT);
     ConvertIntToDecimalStringN(gStringVar2, value, STR_CONV_MODE_LEFT_ALIGN, 3);
+    return FALSE;
+}
+
+bool8 ShowFieldMessageStarterDebug(void)
+{
+    // z. B.: STR_VAR_1 = Style, STR_VAR_2 = Starter-Region
+    StringExpandPlaceholders(gStringVar4, gText_StyleAndStarterRegion);
+    ShowFieldMessage(gStringVar4);
+    return FALSE;
+}
+
+bool8 ShowFieldExpLevelDebug(void)
+{
+    StringExpandPlaceholders(gStringVar4, gText_DebugExpLevel);
+    ShowFieldMessage(gStringVar4);
+    return FALSE;
+}
+
+bool8 ShowFieldCmdGetExpDebug(void)
+{
+    StringExpandPlaceholders(gStringVar4, gText_DebugCmdGetExp);
+    ShowFieldMessage(gStringVar4);
     return FALSE;
 }

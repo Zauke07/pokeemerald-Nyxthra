@@ -59,6 +59,7 @@
 #include "malloc.h"
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
+#include "field_effect_helpers.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -2719,6 +2720,17 @@ void PlayFirstMonCry(struct ScriptContext *ctx)
     PlayCry_Script(GetMonData(GetFirstLiveMon(), MON_DATA_SPECIES), CRY_MODE_NORMAL);
 }
 
+void PlayFollowerCry(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (FlagGet(FLAG_FOLLOWER_ACTIVE) && sCurrentFollowerSlotId < PARTY_SIZE)
+    {
+        u16 species = GetMonData(&gPlayerParty[sCurrentFollowerSlotId], MON_DATA_SPECIES);
+        PlayCry_Script(species, CRY_MODE_NORMAL);
+    }
+}
+
 bool8 ScrCmd_waitmoncry(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -3275,3 +3287,8 @@ bool8 ScrCmd_BufferIntToVar2(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_BufferFollowerNicknameToVar1(struct ScriptContext *ctx)
+{
+    BufferFollowerNicknameToVar1();
+    return FALSE;
+}

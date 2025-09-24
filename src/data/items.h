@@ -998,8 +998,8 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_Awakening,
         .flingPower = 30,
-        .iconPic = gItemIcon_StatusHeal,
-        .iconPalette = gItemIconPalette_Awakening,
+        .iconPic = gItemIcon_iphone_wecker,
+        .iconPalette = gItemIconPalette_iphone_wecker,
     },
 
     [ITEM_FULL_HEAL] =

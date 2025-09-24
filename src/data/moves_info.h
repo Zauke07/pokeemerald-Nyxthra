@@ -94,8 +94,8 @@ static const u8 sFalseSwipeDescription[] = _(
     "mindestens 1 HP zurücklässt.");
 
 static const u8 sDrainingKissDescription[] = _(
-    "Ein Angriff, der mehr als die Hälfte des\n"
-    "verursachten Schadens absorbiert.");
+    "Absorbiert mehr als die Hälfte\n"
+    "des verursachten Schadens.");
 
 static const u8 sCloseCombatDescription[] = _(
     "Ein starker Angriff, der jedoch\n"

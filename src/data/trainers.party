@@ -1169,11 +1169,11 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Azurill
+Shellos West
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Marill
+Shellos East
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -4789,7 +4789,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 
 === TRAINER_ROXANNE_1 ===
-Name: ROXANNE
+Name: Felizia
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -4823,7 +4823,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Rock Tomb
 
 === TRAINER_BRAWLY_1 ===
-Name: BRAWLY
+Name: Kamillo
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
@@ -6215,7 +6215,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Fletchinder
+Fletchling
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -9459,47 +9459,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Altaria
+Altaria @Life Orb
 Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
+- Dragon Claw
+- Aerial Ace
+- Earthquake
 
-Delcatty
+Aromatisse @Leftovers
 Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 45
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Wish
+- Protect
 - Calm Mind
+
+Roserade @Focus Sash
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sludge Bomb
+- Giga Drain
+- Sleep Powder
+- Leaf Storm
+
+Togekiss @Choice Specs
+Level: 41
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Flamethrower
+- Aura Sphere
+
+Blastoise @Blastoisinite
+Level: 46
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Aura Sphere
+- Ice Beam
+- Rapid Spin
+
+Gardevoir @Gardevoirite
+Level: 45
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
-- Future Sight
+- Moonblast
+- Calm Mind
+- Shadow Ball
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
 Name: Hans
@@ -11503,7 +11511,7 @@ Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_1 ===
-Name: LUCAS
+Name: Lukas
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -11571,7 +11579,7 @@ Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_2 ===
-Name: LUCAS
+Name: Lukas
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -11855,7 +11863,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Frillish
 Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -12039,11 +12047,23 @@ Pic: Wally
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
+
+Squirtle
+Level: 15
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Water Gun
+- Withdraw
+- Tackle
+- Bubble
 
 Ralts
 Level: 16
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Confusion
+- Hypnosis
+- Teleport
+- Double Team
 
 === TRAINER_WALLY_VR_2 ===
 Name: WALLY
@@ -12053,47 +12073,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Altaria
+Altaria @Life Orb
 Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
+- Dragon Claw
+- Aerial Ace
+- Roost
 
-Delcatty
+Aromatisse @Leftovers
 Level: 46
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 48
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Wish
+- Protect
 - Calm Mind
+
+Roserade @Focus Sash
+Level: 47
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sludge Bomb
+- Giga Drain
+- Sleep Powder
+- Leaf Storm
+
+Togekiss @Choice Specs
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Flamethrower
+- Aura Sphere
+
+Blastoise @Blastoisinite
+Level: 49
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Aura Sphere
+- Ice Beam
+- Rapid Spin
+
+Gardevoir @Gardevoirite
+Level: 48
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
-- Future Sight
+- Moonblast
+- Calm Mind
+- Shadow Ball
 
 === TRAINER_WALLY_VR_3 ===
 Name: WALLY
@@ -12103,47 +12131,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Altaria
+Altaria @Life Orb
 Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
+- Dragon Claw
+- Aerial Ace
+- Earthquake
 
-Delcatty
+Aromatisse @Leftovers
 Level: 49
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 47
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 51
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Wish
+- Protect
 - Calm Mind
+
+Roserade @Focus Sash
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sludge Bomb
+- Giga Drain
+- Sleep Powder
+- Dazzling Gleam
+
+Togekiss @Choice Specs
+Level: 47
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Flamethrower
+- Aura Sphere
+
+Blastoise @Blastoisinite
+Level: 52
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Aura Sphere
+- Ice Beam
+- Rapid Spin
+
+Gardevoir @Gardevoirite
+Level: 51
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
-- Future Sight
+- Moonblast
+- Calm Mind
+- Shadow Ball
 
 === TRAINER_WALLY_VR_4 ===
 Name: WALLY
@@ -12153,47 +12189,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Altaria
+Altaria @Life Orb
 Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
+- Dragon Claw
+- Aerial Ace
+- Earthquake
 
-Delcatty
+Aromatisse @Leftovers
 Level: 52
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 50
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 54
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Wish
+- Protect
 - Calm Mind
+
+Roserade @Focus Sash
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sludge Bomb
+- Giga Drain
+- Sleep Powder
+- Dazzling Gleam
+
+Togekiss @Choice Specs
+Level: 50
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Flamethrower
+- Aura Sphere
+
+Blastoise @Blastoisinite
+Level: 55
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Aura Sphere
+- Ice Beam
+- Rapid Spin
+
+Gardevoir @Gardevoirite
+Level: 54
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
-- Future Sight
+- Moonblast
+- Calm Mind
+- Shadow Ball
 
 === TRAINER_WALLY_VR_5 ===
 Name: WALLY
@@ -12203,47 +12247,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Altaria
+Altaria @Life Orb
 Level: 56
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Aerial Ace
-- Safeguard
-- Dragon Breath
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Dragon Dance
+- Dragon Claw
+- Aerial Ace
+- Earthquake
 
-Delcatty
+Aromatisse @Leftovers
 Level: 55
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Sing
-- Assist
-- Charm
-- Feint Attack
-
-Roselia
-Level: 56
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Magical Leaf
-- Leech Seed
-- Giga Drain
-- Toxic
-
-Magneton
-Level: 53
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Supersonic
-- Thunderbolt
-- Tri Attack
-- Screech
-
-Gardevoir
-Level: 57
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Double Team
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Moonblast
+- Wish
+- Protect
 - Calm Mind
+
+Roserade @Focus Sash
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sludge Bomb
+- Giga Drain
+- Sleep Powder
+- Dazzling Gleam
+
+Togekiss @Choice Specs
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Air Slash
+- Dazzling Gleam
+- Flamethrower
+- Aura Sphere
+
+Blastoise @Blastoisinite
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Aura Sphere
+- Ice Beam
+- Rapid Spin
+
+Gardevoir @Gardevoirite
+Level: 57
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Psychic
-- Future Sight
+- Moonblast
+- Calm Mind
+- Shadow Ball
 
 === TRAINER_BRENDAN_LILYCOVE_MUDKIP ===
 Name: Hans
@@ -12989,7 +13041,7 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Marill
+Buizel
 Level: 13
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -13002,11 +13054,11 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Tentacool
+Corsola
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Tentacool
+Chewtle
 Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -14154,7 +14206,7 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_ROXANNE_2 ===
-Name: ROXANNE
+Name: Felizia
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -14196,7 +14248,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
 
 === TRAINER_ROXANNE_3 ===
-Name: ROXANNE
+Name: Felizia
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -14246,7 +14298,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
 
 === TRAINER_ROXANNE_4 ===
-Name: ROXANNE
+Name: Felizia
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -14296,7 +14348,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
 
 === TRAINER_ROXANNE_5 ===
-Name: ROXANNE
+Name: Felizia
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -14354,7 +14406,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Rock Slide
 
 === TRAINER_BRAWLY_2 ===
-Name: BRAWLY
+Name: Kamillo
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
@@ -14396,7 +14448,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
 
 === TRAINER_BRAWLY_3 ===
-Name: BRAWLY
+Name: Kamillo
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
@@ -14438,7 +14490,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
 
 === TRAINER_BRAWLY_4 ===
-Name: BRAWLY
+Name: Kamillo
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
@@ -14488,7 +14540,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
 
 === TRAINER_BRAWLY_5 ===
-Name: BRAWLY
+Name: Kamillo
 Class: Leader
 Pic: Leader Brawly
 Gender: Male
@@ -17396,7 +17448,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Totodile
+Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -17409,7 +17461,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Totodile
+Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -20178,7 +20230,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-TOTODILE  
+Chikorita
 Level: 5  
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -20191,7 +20243,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-TOTODILE  
+Chikorita
 Level: 5  
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -20288,7 +20340,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-TOTODILE
+Chikorita
 Level: 5
 
 === TRAINER_LEAF_ROUTE_103_TOTODILE ===
@@ -20300,7 +20352,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-TOTODILE
+Chikorita
 Level: 5
 
 === TRAINER_RED_ROUTE_110_TOTODILE ===
@@ -22478,7 +22530,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_103_BULBASAUR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -22491,7 +22543,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_CHARMANDER ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -22504,7 +22556,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_SQUIRTLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -22517,7 +22569,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_BULBASAUR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -22530,7 +22582,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_CHARMANDER ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -22543,7 +22595,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_SQUIRTLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -22634,7 +22686,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_BULBASAUR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -22647,7 +22699,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_CHARMANDER ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -22660,7 +22712,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_SQUIRTLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -22673,7 +22725,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_BULBASAUR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -22686,7 +22738,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_CHARMANDER ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -22699,7 +22751,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_SQUIRTLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23102,7 +23154,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_CHIKORITA ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23115,7 +23167,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_CYNDAQUIL ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23128,7 +23180,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_TOTODILE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23141,7 +23193,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_CHIKORITA ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23154,7 +23206,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_CYNDAQUIL ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23167,7 +23219,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_TOTODILE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23258,7 +23310,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_CHIKORITA ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23271,7 +23323,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_CYNDAQUIL ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23284,7 +23336,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_TOTODILE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23297,7 +23349,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_CHIKORITA ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23310,7 +23362,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_CYNDAQUIL ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23323,7 +23375,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_TOTODILE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23726,7 +23778,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_TREECKO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23739,7 +23791,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_TORCHIC ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23752,7 +23804,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_MUDKIP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -23765,7 +23817,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_TREECKO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23778,7 +23830,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_TORCHIC ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23791,7 +23843,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_MUDKIP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -23882,7 +23934,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_TREECKO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23895,7 +23947,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_TORCHIC ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23908,7 +23960,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_MUDKIP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -23921,7 +23973,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_TREECKO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23934,7 +23986,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_TORCHIC ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -23947,7 +23999,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_MUDKIP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -24350,7 +24402,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_TURTWIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -24363,7 +24415,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_CHIMCHAR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -24376,7 +24428,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_PIPLUP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -24389,7 +24441,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_TURTWIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -24402,7 +24454,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_CHIMCHAR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -24415,7 +24467,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_PIPLUP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -24506,7 +24558,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_TURTWIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -24519,7 +24571,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_CHIMCHAR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -24532,7 +24584,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_PIPLUP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -24545,7 +24597,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_TURTWIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -24558,7 +24610,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_CHIMCHAR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -24571,7 +24623,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_PIPLUP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -24974,7 +25026,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_SNIVY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -24987,7 +25039,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_TEPIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -25000,7 +25052,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_OSHAWOTT ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -25013,7 +25065,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_SNIVY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25026,7 +25078,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_TEPIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25039,7 +25091,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_OSHAWOTT ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25130,7 +25182,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_SNIVY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25143,7 +25195,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_TEPIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25156,7 +25208,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_OSHAWOTT ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25169,7 +25221,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_SNIVY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -25182,7 +25234,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_TEPIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -25195,7 +25247,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_OSHAWOTT ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -25598,7 +25650,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_CHESPIN===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -25611,7 +25663,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_FENNEKIN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -25624,7 +25676,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_FROAKIE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -25637,7 +25689,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_CHESPIN===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25650,7 +25702,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_FENNEKIN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25663,7 +25715,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_FROAKIE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -25754,7 +25806,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_CHESPIN===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25767,7 +25819,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_FENNEKIN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25780,7 +25832,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_FROAKIE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -25793,7 +25845,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_CHESPIN===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -25806,7 +25858,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_FENNEKIN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -25819,7 +25871,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_FROAKIE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -26222,7 +26274,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_ROWLET ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26235,7 +26287,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_LITTEN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26248,7 +26300,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_POPPLIO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26261,7 +26313,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_ROWLET ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -26274,7 +26326,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_LITTEN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -26287,7 +26339,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_POPPLIO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -26378,7 +26430,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_ROWLET ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -26391,7 +26443,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_LITTEN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -26404,7 +26456,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_POPPLIO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -26417,7 +26469,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_ROWLET ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -26430,7 +26482,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_LITTEN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -26443,7 +26495,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_POPPLIO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -26846,7 +26898,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_GROOKEY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26859,7 +26911,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_SCORBUNNY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26872,7 +26924,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_SOBBLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -26885,7 +26937,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_GROOKEY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -26898,7 +26950,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_SCORBUNNY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -26911,7 +26963,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_SOBBLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -27002,7 +27054,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_GROOKEY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27015,7 +27067,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_SCORBUNNY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27028,7 +27080,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_SOBBLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27041,7 +27093,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_GROOKEY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -27054,7 +27106,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_SCORBUNNY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -27067,7 +27119,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_SOBBLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -27470,7 +27522,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_SPRIGATITO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -27483,7 +27535,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_FUECOCO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -27496,7 +27548,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_103_QUAXLY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -27509,7 +27561,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_SPRIGATITO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -27522,7 +27574,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_FUECOCO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -27535,7 +27587,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAWN_ROUTE_103_QUAXLY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -27626,7 +27678,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_SPRIGATITO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27639,7 +27691,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_FUECOCO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27652,7 +27704,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILBERT_ROUTE_103_QUAXLY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -27665,7 +27717,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_SPRIGATITO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -27678,7 +27730,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_FUECOCO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -27691,7 +27743,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HILDA_ROUTE_103_QUAXLY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -28094,7 +28146,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LUCAS_ROUTE_110_BULBASAUR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -28115,7 +28167,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_CHARMANDER ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -28136,7 +28188,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_SQUIRTLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -28157,7 +28209,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_BULBASAUR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -28178,7 +28230,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_CHARMANDER ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -28199,7 +28251,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_SQUIRTLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -28346,7 +28398,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_BULBASAUR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -28367,7 +28419,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_CHARMANDER ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -28388,7 +28440,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_SQUIRTLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -28409,7 +28461,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_BULBASAUR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -28430,7 +28482,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_CHARMANDER ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -28451,7 +28503,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_SQUIRTLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -29102,7 +29154,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_CHIKORITA ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -29123,7 +29175,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_CYNDAQUIL ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -29144,7 +29196,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_TOTODILE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -29165,7 +29217,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_CHIKORITA ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -29186,7 +29238,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_CYNDAQUIL ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -29207,7 +29259,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_TOTODILE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -29354,7 +29406,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_CHIKORITA ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -29375,7 +29427,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_CYNDAQUIL ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -29396,7 +29448,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_TOTODILE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -29417,7 +29469,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_CHIKORITA ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -29438,7 +29490,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_CYNDAQUIL ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -29459,7 +29511,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_TOTODILE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -30110,7 +30162,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_TREECKO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -30131,7 +30183,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_TORCHIC ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -30152,7 +30204,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_MUDKIP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -30173,7 +30225,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_TREECKO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -30194,7 +30246,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_TORCHIC ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -30215,7 +30267,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_MUDKIP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -30362,7 +30414,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_TREECKO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -30383,7 +30435,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_TORCHIC ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -30404,7 +30456,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_MUDKIP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -30425,7 +30477,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_TREECKO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -30446,7 +30498,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_TORCHIC ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -30467,7 +30519,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_MUDKIP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -31118,7 +31170,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_TURTWIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -31139,7 +31191,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_CHIMCHAR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -31160,7 +31212,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_PIPLUP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -31181,7 +31233,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_TURTWIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -31202,7 +31254,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_CHIMCHAR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -31223,7 +31275,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_PIPLUP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -31370,7 +31422,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_TURTWIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -31391,7 +31443,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_CHIMCHAR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -31412,7 +31464,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_PIPLUP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -31433,7 +31485,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_TURTWIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -31454,7 +31506,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_CHIMCHAR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -31475,7 +31527,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_PIPLUP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -32126,7 +32178,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_SNIVY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -32147,7 +32199,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_TEPIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -32168,7 +32220,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_OSHAWOTT ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -32189,7 +32241,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_SNIVY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -32210,7 +32262,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_TEPIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -32231,7 +32283,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_OSHAWOTT ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -32378,7 +32430,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_SNIVY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -32399,7 +32451,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_TEPIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -32420,7 +32472,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_OSHAWOTT ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -32441,7 +32493,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_SNIVY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -32462,7 +32514,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_TEPIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -32483,7 +32535,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_OSHAWOTT ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -33134,7 +33186,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_CHESPIN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -33155,7 +33207,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_FENNEKIN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -33176,7 +33228,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_FROAKIE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -33197,7 +33249,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_CHESPIN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -33218,7 +33270,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_FENNEKIN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -33239,7 +33291,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_FROAKIE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -33386,7 +33438,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_CHESPIN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -33407,7 +33459,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_FENNEKIN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -33428,7 +33480,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_FROAKIE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -33449,7 +33501,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_CHESPIN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -33470,7 +33522,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_FENNEKIN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -33491,7 +33543,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_FROAKIE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -34142,7 +34194,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_ROWLET ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -34163,7 +34215,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_LITTEN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -34184,7 +34236,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_POPPLIO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -34205,7 +34257,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_ROWLET ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -34226,7 +34278,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_LITTEN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -34247,7 +34299,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_POPPLIO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -34394,7 +34446,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_ROWLET ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -34415,7 +34467,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_LITTEN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -34436,7 +34488,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_POPPLIO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -34457,7 +34509,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_ROWLET ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -34478,7 +34530,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_LITTEN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -34499,7 +34551,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_POPPLIO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -35150,7 +35202,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_GROOKEY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -35171,7 +35223,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_SCORBUNNY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -35192,7 +35244,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_SOBBLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -35213,7 +35265,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_GROOKEY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -35234,7 +35286,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_SCORBUNNY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -35255,7 +35307,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_SOBBLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -35402,7 +35454,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_GROOKEY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -35423,7 +35475,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_SCORBUNNY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -35444,7 +35496,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_SOBBLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -35465,7 +35517,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_GROOKEY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -35486,7 +35538,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_SCORBUNNY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -35507,7 +35559,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_SOBBLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -36158,7 +36210,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_SPRIGATITO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -36179,7 +36231,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_FUECOCO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -36200,7 +36252,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_110_QUAXLY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -36221,7 +36273,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_SPRIGATITO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -36242,7 +36294,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_FUECOCO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -36263,7 +36315,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DAWN_ROUTE_110_QUAXLY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -36410,7 +36462,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_SPRIGATITO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -36431,7 +36483,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_FUECOCO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -36452,7 +36504,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILBERT_ROUTE_110_QUAXLY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -36473,7 +36525,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_SPRIGATITO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -36494,7 +36546,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_FUECOCO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -36515,7 +36567,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_HILDA_ROUTE_110_QUAXLY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -37166,7 +37218,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LUCAS_ROUTE_119_BULBASAUR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -37187,7 +37239,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_CHARMANDER ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -37208,7 +37260,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_SQUIRTLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -37229,7 +37281,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_BULBASAUR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -37250,7 +37302,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_CHARMANDER ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -37271,7 +37323,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_SQUIRTLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -37418,7 +37470,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_BULBASAUR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -37439,7 +37491,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_CHARMANDER ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -37460,7 +37512,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_SQUIRTLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -37481,7 +37533,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_BULBASAUR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -37502,7 +37554,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_CHARMANDER ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -37523,7 +37575,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_SQUIRTLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -38174,7 +38226,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_CHIKORITA ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -38195,7 +38247,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_CYNDAQUIL ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -38216,7 +38268,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_TOTODILE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -38237,7 +38289,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_CHIKORITA ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -38258,7 +38310,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_CYNDAQUIL ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -38279,7 +38331,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_TOTODILE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -38426,7 +38478,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_CHIKORITA ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -38447,7 +38499,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_CYNDAQUIL ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -38468,7 +38520,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_TOTODILE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -38489,7 +38541,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_CHIKORITA ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -38510,7 +38562,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_CYNDAQUIL ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -38531,7 +38583,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_TOTODILE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -39182,7 +39234,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_TREECKO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -39203,7 +39255,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_TORCHIC ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -39224,7 +39276,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_MUDKIP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -39245,7 +39297,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_TREECKO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -39266,7 +39318,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_TORCHIC ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -39287,7 +39339,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_MUDKIP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -39434,7 +39486,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_MUDKIP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -39455,7 +39507,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_TREECKO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -39476,7 +39528,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_TORCHIC ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -39497,7 +39549,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_MUDKIP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -39518,7 +39570,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_TREECKO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -39539,7 +39591,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_TORCHIC ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -40190,7 +40242,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_TURTWIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -40211,7 +40263,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_CHIMCHAR ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -40232,7 +40284,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_PIPLUP ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -40253,7 +40305,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_TURTWIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -40274,7 +40326,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_CHIMCHAR ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -40295,7 +40347,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_PIPLUP ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -40442,7 +40494,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_TURTWIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -40463,7 +40515,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_CHIMCHAR ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -40484,7 +40536,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_PIPLUP ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -40505,7 +40557,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_TURTWIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -40526,7 +40578,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_CHIMCHAR ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -40547,7 +40599,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_PIPLUP ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -41198,7 +41250,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_SNIVY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -41219,7 +41271,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_TEPIG ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -41240,7 +41292,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_OSHAWOTT ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -41261,7 +41313,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_SNIVY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -41282,7 +41334,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_TEPIG ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -41303,7 +41355,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_OSHAWOTT ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -41450,7 +41502,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_SNIVY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -41471,7 +41523,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_TEPIG ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -41492,7 +41544,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_OSHAWOTT ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -41513,7 +41565,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_SNIVY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -41534,7 +41586,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_TEPIG ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -41555,7 +41607,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_OSHAWOTT ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -42206,7 +42258,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_CHESPIN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -42227,7 +42279,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_FENNEKIN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -42248,7 +42300,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_FROAKIE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -42269,7 +42321,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_CHESPIN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -42290,7 +42342,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_FENNEKIN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -42311,7 +42363,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_FROAKIE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -42458,7 +42510,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_CHESPIN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -42479,7 +42531,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_FENNEKIN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -42500,7 +42552,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_FROAKIE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -42521,7 +42573,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_CHESPIN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -42542,7 +42594,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_FENNEKIN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -42563,7 +42615,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_FROAKIE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -43214,7 +43266,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_ROWLET ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -43235,7 +43287,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_LITTEN ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -43256,7 +43308,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_POPPLIO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -43277,7 +43329,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_ROWLET ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -43298,7 +43350,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_LITTEN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -43319,7 +43371,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_POPPLIO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -43466,7 +43518,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_ROWLET ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -43487,7 +43539,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_LITTEN ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -43508,7 +43560,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_POPPLIO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -43529,7 +43581,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_ROWLET ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -43550,7 +43602,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_LITTEN ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -43571,7 +43623,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_POPPLIO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -44222,7 +44274,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_GROOKEY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -44243,7 +44295,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_SCORBUNNY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -44264,7 +44316,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_SOBBLE ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -44285,7 +44337,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_GROOKEY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -44306,7 +44358,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_SCORBUNNY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -44327,7 +44379,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_SOBBLE ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -44474,7 +44526,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_GROOKEY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -44495,7 +44547,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_SCORBUNNY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -44516,7 +44568,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_SOBBLE ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -44537,7 +44589,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_GROOKEY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -44558,7 +44610,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_SCORBUNNY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -44579,7 +44631,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_SOBBLE ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -45230,7 +45282,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_SPRIGATITO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -45251,7 +45303,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_FUECOCO ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -45272,7 +45324,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_LUCAS_ROUTE_119_QUAXLY ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -45293,7 +45345,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_SPRIGATITO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -45314,7 +45366,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_FUECOCO ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -45335,7 +45387,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_DAWN_ROUTE_119_QUAXLY ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -45482,7 +45534,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_SPRIGATITO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -45503,7 +45555,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_FUECOCO ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -45524,7 +45576,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILBERT_ROUTE_119_QUAXLY ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -45545,7 +45597,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_SPRIGATITO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -45566,7 +45618,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_FUECOCO ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -45587,7 +45639,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_HILDA_ROUTE_119_QUAXLY ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -46290,7 +46342,7 @@ Level: 1
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_TEST_LUCAS ===
-Name: Lucas
+Name: Lukas
 Class: Rival
 Pic: Lucas
 Gender: Male
@@ -46303,7 +46355,7 @@ Level: 1
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_TEST_DAWN ===
-Name: Dawn
+Name: Lucia
 Class: Rival
 Pic: Dawn
 Gender: Female
@@ -46316,7 +46368,7 @@ Level: 1
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_TEST_HILBERT ===
-Name: Hilbert
+Name: Warren
 Class: Rival
 Pic: Hilbert
 Gender: Male
@@ -46329,7 +46381,7 @@ Level: 1
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RIVAL_TEST_HILDA ===
-Name: Hilda
+Name: Lotta
 Class: Rival
 Pic: Hilda
 Gender: Female
@@ -46496,3 +46548,4892 @@ AI: Basic Trainer
 Cyndaquil
 Level: 1
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BRENDAN_DEBUG ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Wurmple
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_MAY_DEBUG ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wurmple
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_RED_DEBUG ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Wurmple
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_LEAF_DEBUG ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wurmple
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_BULBASAUR ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_CHARMANDER ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_SQUIRTLE ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Caterpie
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_BULBASAUR ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Nidoran F
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_CHARMANDER ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Nidoran M
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_SQUIRTLE ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Jigglypuff
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_BULBASAUR ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spearow
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_CHARMANDER ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Ekans
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_SQUIRTLE ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Sandshrew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_BULBASAUR ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Clefairy
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_CHARMANDER ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Meowth
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_SQUIRTLE ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Oddish
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_BULBASAUR ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_CHARMANDER ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nidoran M
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_SQUIRTLE ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_BULBASAUR ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_CHARMANDER ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran F
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_SQUIRTLE ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_BULBASAUR ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_CHARMANDER ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nidoran M
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_SQUIRTLE ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_BULBASAUR ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_CHARMANDER ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran F
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_SQUIRTLE ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_BULBASAUR ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_CHARMANDER ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nidoran M
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_SQUIRTLE ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_BULBASAUR ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pidgey
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Charmander
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_CHARMANDER ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran F
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Squirtle
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_SQUIRTLE ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Rattata
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Bulbasaur
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_CHIKORITA ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_CYNDAQUIL ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Mareep
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_TOTODILE ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_CHIKORITA ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_CYNDAQUIL ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Mareep
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_TOTODILE ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_CHIKORITA ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_CYNDAQUIL ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Mareep
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_TOTODILE ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_CHIKORITA ===
+Name: Blatt
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_CYNDAQUIL ===
+Name: Blatt
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Mareep
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_TOTODILE ===
+Name: Blatt
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_CHIKORITA ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_CYNDAQUIL ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_TOTODILE ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_CHIKORITA ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_CYNDAQUIL ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_TOTODILE ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_CHIKORITA ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_CYNDAQUIL ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_TOTODILE ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_CHIKORITA ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_CYNDAQUIL ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_TOTODILE ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_CHIKORITA ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_CYNDAQUIL ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_TOTODILE ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_CHIKORITA ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Hoothoot
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Cyndaquil
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_CYNDAQUIL ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Spinarak
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Totodile
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_TOTODILE ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Sentret
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chikorita
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_TREECKO ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_TORCHIC ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_MUDKIP ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_TREECKO ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_TORCHIC ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_MUDKIP ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_TREECKO ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_TORCHIC ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_MUDKIP ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_TREECKO ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_TORCHIC ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_MUDKIP ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_TREECKO ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_TORCHIC ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_MUDKIP ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_TREECKO ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_TORCHIC ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_MUDKIP ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_TREECKO ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_TORCHIC ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_MUDKIP ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_TREECKO ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Lotad
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Torchic
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_TORCHIC ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Slugma
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Mudkip
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_MUDKIP ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Wingull
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Treecko
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_TURTWIG ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_CHIMCHAR ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_PIPLUP ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_TURTWIG ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_CHIMCHAR ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_PIPLUP ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_TURTWIG ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_CHIMCHAR ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_PIPLUP ===
+Name: Rot
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_TURTWIG ===
+Name: Grün
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_CHIMCHAR ===
+Name: Grün
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_PIPLUP ===
+Name: Grün
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_TURTWIG ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_CHIMCHAR ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_PIPLUP ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_TURTWIG ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_CHIMCHAR ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_PIPLUP ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_TURTWIG ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_CHIMCHAR ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_PIPLUP ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_TURTWIG ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_CHIMCHAR ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_PIPLUP ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_TURTWIG ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_CHIMCHAR ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_PIPLUP ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_TURTWIG ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Shinx
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chimchar
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_CHIMCHAR ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Budew
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Piplup
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_PIPLUP ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Starly
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Turtwig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_SNIVY ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_TEPIG ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_OSHAWOTT ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_SNIVY ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_TEPIG ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_OSHAWOTT ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_SNIVY ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_TEPIG ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_OSHAWOTT ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_SNIVY ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_TEPIG ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_OSHAWOTT ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_SNIVY ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_TEPIG ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_OSHAWOTT ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_SNIVY ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_TEPIG ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_OSHAWOTT ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_SNIVY ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_TEPIG ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_OSHAWOTT ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_SNIVY ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_TEPIG ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_OSHAWOTT ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_SNIVY ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_TEPIG ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_OSHAWOTT ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_SNIVY ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Patrat
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Tepig
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_TEPIG ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Purrloin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Oshawott
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_OSHAWOTT ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Pidove
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Snivy
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_CHESPIN ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_FENNEKIN ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_FROAKIE ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_CHESPIN ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_FENNEKIN ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_FROAKIE ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_CHESPIN ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_FENNEKIN ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_FROAKIE ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_CHESPIN ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_FENNEKIN ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_FROAKIE ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_CHESPIN ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_FENNEKIN ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_FROAKIE ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_CHESPIN ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_FENNEKIN ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_FROAKIE ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_CHESPIN ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_FENNEKIN ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_FROAKIE ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_CHESPIN ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_FENNEKIN ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_FROAKIE ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_CHESPIN ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_FENNEKIN ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_FROAKIE ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_CHESPIN ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fennekin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_FENNEKIN ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Scatterbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Froakie
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_FROAKIE ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Litleo
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Chespin
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_ROWLET ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_LITTEN ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_POPPLIO ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_ROWLET ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_LITTEN ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_POPPLIO ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_ROWLET ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_LITTEN ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_POPPLIO ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_ROWLET ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_LITTEN ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_POPPLIO ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_ROWLET ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_LITTEN ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_POPPLIO ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_ROWLET ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_LITTEN ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_POPPLIO ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_ROWLET ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_LITTEN ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_POPPLIO ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_ROWLET ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_LITTEN ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_POPPLIO ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_ROWLET ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_LITTEN ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_POPPLIO ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_ROWLET ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move / Try To Faint / Force Setup First Turn
+
+Pikipek
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Litten
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_LITTEN ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Yungoos
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Popplio
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_POPPLIO ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Grubbin
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Rowlet
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_GROOKEY ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_SCORBUNNY ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_SOBBLE ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_MAY_RUSTBORO_GROOKEY ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_SCORBUNNY ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_SOBBLE ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_RED_RUSTBORO_GROOKEY ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_SCORBUNNY ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_SOBBLE ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LEAF_RUSTBORO_GROOKEY ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_SCORBUNNY ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_SOBBLE ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_ETHAN_RUSTBORO_GROOKEY ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_SCORBUNNY ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_SOBBLE ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LYRA_RUSTBORO_GROOKEY ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_SCORBUNNY ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_SOBBLE ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LUCAS_RUSTBORO_GROOKEY ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_SCORBUNNY ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_SOBBLE ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_DAWN_RUSTBORO_GROOKEY ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_SCORBUNNY ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_SOBBLE ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_HILBERT_RUSTBORO_GROOKEY ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_SCORBUNNY ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_SOBBLE ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_HILDA_RUSTBORO_GROOKEY ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Rookidee
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Scorbunny
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_SCORBUNNY ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Nickit
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sobble
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_SOBBLE ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Blipbug
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Grookey
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_SPRIGATITO ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_FUECOCO ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_BRENDAN_RUSTBORO_QUAXLY ===
+Name: Hans
+Class: Rival
+Pic: Brendan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_MAY_RUSTBORO_SPRIGATITO ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_FUECOCO ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_MAY_RUSTBORO_QUAXLY ===
+Name: Brigitte
+Class: Rival
+Pic: May
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_RED_RUSTBORO_SPRIGATITO ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_FUECOCO ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_RED_RUSTBORO_QUAXLY ===
+Name: Red
+Class: Rival
+Pic: Red
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LEAF_RUSTBORO_SPRIGATITO ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_FUECOCO ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LEAF_RUSTBORO_QUAXLY ===
+Name: Leaf
+Class: Rival
+Pic: Leaf
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_ETHAN_RUSTBORO_SPRIGATITO ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_FUECOCO ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ETHAN_RUSTBORO_QUAXLY ===
+Name: Ethan
+Class: Rival
+Pic: Ethan
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LYRA_RUSTBORO_SPRIGATITO ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_FUECOCO ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LYRA_RUSTBORO_QUAXLY ===
+Name: Lyra
+Class: Rival
+Pic: Lyra
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_LUCAS_RUSTBORO_SPRIGATITO ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_FUECOCO ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_LUCAS_RUSTBORO_QUAXLY ===
+Name: Lukas
+Class: Rival
+Pic: Lucas
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_DAWN_RUSTBORO_SPRIGATITO ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_FUECOCO ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_DAWN_RUSTBORO_QUAXLY ===
+Name: Lucia
+Class: Rival
+Pic: Dawn
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_HILBERT_RUSTBORO_SPRIGATITO ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_FUECOCO ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILBERT_RUSTBORO_QUAXLY ===
+Name: Warren
+Class: Rival
+Pic: Hilbert
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+
+=== TRAINER_HILDA_RUSTBORO_SPRIGATITO ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Lechonk
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Fuecoco
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_FUECOCO ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Fletchling
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Quaxly
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_HILDA_RUSTBORO_QUAXLY ===
+Name: Lotta
+Class: Rival
+Pic: Hilda
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Tandemaus
+Level: 13
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+
+Sprigatito
+Level: 15
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+=== TRAINER_ROCKET_M_1 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt M
+Gender: Male
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Murkrow
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Houndour
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ROCKET_F_1 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt F
+Gender: Female
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Glameow
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ROCKET_F_2 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt F
+Gender: Female
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Inkay
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Pancham
+Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ROCKET_M_2 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt M
+Gender: Male
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Salandit
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ROCKET_M_3 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt M
+Gender: Male
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Poochyena
+Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Cacnea
+Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_ROCKET_F_3 ===
+Name: ROCKET
+Class: Team Rocket
+Pic: Rocket Grunt F
+Gender: Female
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move
+
+Scraggy
+Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_OFFICER_ROCKY ===
+Name: Rocky
+Class: Officer
+Pic: Rocky
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Manectric
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunderbolt
+- Quick Attack
+- Bite
+- Roar
+
+Boltund
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Spark
+- Crunch
+- Play Rough
+- Howl
+
+=== TRAINER_NURSE_JOY ===
+Name: Joy
+Class: Nurse
+Pic: Nurse
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Chansey
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Soft-Boiled
+- Sing
+- Egg Bomb
+- Minimize
+
+Audino
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Disarming Voice
+- Heal Pulse
+- Double-Edge
+- Wish
+
+=== TRAINER_CAMPER_SVEN ===
+Name: Sven
+Class: Camper
+Pic: Camper
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Sandslash
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dig
+- Crush Claw
+- Sand Attack
+- Slash
+
+Baltoy
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Psybeam
+- Rock Tomb
+- Rapid Spin
+- Ancient Power
+
+Cacnea
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Needle Arm
+- Leech Seed
+- Faint Attack
+- Growth
+
+=== TRAINER_PICNICKER_LARA ===
+Name: Lara
+Class: Picnicker
+Pic: Picnicker
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Gogoat
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Horn Leech
+- Bulldoze
+- Seed Bomb
+- Leech Seed
+
+Heliolisk
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunderbolt
+- Parabolic Charge
+- Surf
+- Quick Attack
+
+Pawmo
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Spark
+- Quick Attack
+- Low Kick
+- Bite
+
+=== TRAINER_RUIN_MANIAC_CARLA ===
+Name: Carla
+Class: Backpacker F
+Pic: Backpacker F
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Check Bad Move
+
+Trapinch
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dig
+- Crunch
+- Rock Slide
+- Sand Attack
+
+Anorith
+Level: 31
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Ancient Power
+- Metal Claw
+- Water Gun
+- Protect
+
+=== TRAINER_HIKER_BJOERN ===
+Name: Jake
+Class: Backpacker M
+Pic: Backpacker M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move
+
+Graveler
+Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rock Blast
+- Self-Destruct
+- Bulldoze
+- Smack Down
+
+Nosepass
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunder Wave
+- Rock Slide
+- Power Gem
+- Sandstorm
+
+Boldore
+Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rock Blast
+- Stealth Rock
+- Iron Defense
+- Rock Slide
+
+=== TRAINER_HIKER_TEST2 ===
+Name: Dirk
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Check Bad Move
+
+Kyogre Primal
+Level: 101
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Groudon Primal
+Level: 200
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Rayquaza Mega
+Level: 118
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Deoxys
+Level: 150
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Arceus
+Level: 120
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Charizard Gmax
+Level: 200
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_BACKPACKER_M_TEST ===
+Name: Tester
+Class: Backpacker M
+Pic: Backpacker M
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Check Bad Move
+
+Kyogre Primal
+Level: 101
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Groudon Primal
+Level: 200
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Rayquaza Mega
+Level: 118
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Deoxys
+Level: 150
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Arceus
+Level: 120
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Charizard Gmax
+Level: 200
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
