@@ -110,8 +110,8 @@ static const u8 sText_PkmnGoodComeBack[] = _("Gute Arbeit, {B_BUFF1}! Komm zurü
 static const u8 sText_Trainer1WithdrewPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} zieht {B_BUFF1} zurück!");
 static const u8 sText_LinkTrainer1WithdrewPkmn[] = _("{B_LINK_OPPONENT1_NAME} zieht {B_BUFF1} zurück!");
 static const u8 sText_LinkTrainer2WithdrewPkmn[] = _("{B_LINK_SCR_TRAINER_NAME} zieht {B_BUFF1} zurück!");
-static const u8 sText_WildPkmnPrefix[] = _(" (Wild)");
-static const u8 sText_FoePkmnPrefix[] = _(" (Gegner)");
+static const u8 sText_WildPkmnPrefix[] = _("(Wild)");
+static const u8 sText_FoePkmnPrefix[] = _("(Gegner)");
 static const u8 sText_WildPkmnPrefixLower[] = _("das wilde ");
 static const u8 sText_FoePkmnPrefixLower[] = _("das gegnerische ");
 static const u8 sText_EmptyString8[] = _("");
@@ -421,7 +421,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_NOPPLEFT]                             = COMPOUND_STRING("Es gibt keine AP mehr für diesen Zug!\p"), //nicht in Gen 5+
     [STRINGID_BUTNOPPLEFT]                          = COMPOUND_STRING("Aber es gab keine AP mehr für den Zug!"),
     [STRINGID_PLAYERUSEDITEM]                       = COMPOUND_STRING("{PLAYER} setzt {B_LAST_ITEM} ein!"),
-    [STRINGID_WALLYUSEDITEM]                        = COMPOUND_STRING("WALLY setit {B_LAST_ITEM} ein!"), //nicht dekapitalisieren, bis es überall ist
+    [STRINGID_WALLYUSEDITEM]                        = COMPOUND_STRING("WALLY setzt {B_LAST_ITEM} ein!"), //nicht dekapitalisieren, bis es überall ist
     [STRINGID_TRAINERBLOCKEDBALL]                   = COMPOUND_STRING("Der Trainer hat deinen Pokéball abgewehrt!"),
     [STRINGID_DONTBEATHIEF]                         = COMPOUND_STRING("Sei kein Dieb!"),
     [STRINGID_ITDODGEDBALL]                         = COMPOUND_STRING("Es hat deinem geworfenen Pokéball ausgewichen! Dieses Pokémon kann nicht gefangen werden!"),
@@ -437,7 +437,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNDATAADDEDTODEX]                   = COMPOUND_STRING("{B_DEF_NAME}'s Daten wurden dem Pokédex hinzugefügt!\p"),
     [STRINGID_ITISRAINING]                          = COMPOUND_STRING("Es regnet!"),
     [STRINGID_SANDSTORMISRAGING]                    = COMPOUND_STRING("Der Sandsturm tobt!"),
-    [STRINGID_CANTESCAPE2]                          = COMPOUND_STRING("Du konntest nicht entkommen!\p"),
+    [STRINGID_CANTESCAPE2]                          = COMPOUND_STRING("Du kannst nicht entkommen!\p"),
     [STRINGID_PKMNIGNORESASLEEP]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} ignorierte Befehle und schlief weiter!"),
     [STRINGID_PKMNIGNOREDORDERS]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} ignorierte Befehle!"),
     [STRINGID_PKMNBEGANTONAP]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} begann zu dösen!"),
@@ -777,7 +777,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_HEATUPBEAK]                           = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} begann, seinen Schnabel zu erhitzen!"),
     [STRINGID_COURTCHANGE]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} tauschte die Kampfeffekte, die jede Seite des Feldes betreffen!"),
     [STRINGID_PLAYERLOSTTOENEMYTRAINER]             = COMPOUND_STRING("Du hast keine Pokémon mehr, die kämpfen können!\pDu hast gegen {B_TRAINER1_NAME_WITH_CLASS} verloren!{PAUSE_UNTIL_PRESS}"),
-    [STRINGID_PLAYERPAIDPRIZEMONEY]                 = COMPOUND_STRING("Du gabst ¥{B_BUFF1} an den Gewinner…\pDu warst überwältigt von deiner Niederlage!{PAUSE_UNTIL_PRESS}"),
+    [STRINGID_PLAYERPAIDPRIZEMONEY]                 = COMPOUND_STRING("Du gibst ¥{B_BUFF1} an den Gewinner…\pDu bist überwältigt von deiner Niederlage!{PAUSE_UNTIL_PRESS}"),
     [STRINGID_ZPOWERSURROUNDS]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} umgab sich mit seiner Z-Kraft!"),
     [STRINGID_ZMOVEUNLEASHED]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} entfesselt seinen vollen Z-Move!"),
     [STRINGID_ZMOVERESETSSTATS]                     = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} stellte seine gesenkten Werte mit seiner Z-Kraft wieder her!"),
@@ -892,7 +892,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SUPEREFFECTIVETWOFOES]                = COMPOUND_STRING("It's super effective on {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}!"),
     [STRINGID_NOTVERYEFFECTIVETWOFOES]              = COMPOUND_STRING("It's not very effective on {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}!"),
     [STRINGID_ITDOESNTAFFECTTWOFOES]                = COMPOUND_STRING("It doesn't affect {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}…"),
-    [STRINGID_SENDCAUGHTMONPARTYORBOX]              = COMPOUND_STRING("Add {B_DEF_NAME} to your party?"),
+    [STRINGID_SENDCAUGHTMONPARTYORBOX]              = COMPOUND_STRING("Willst du {B_DEF_NAME} in \ndeine Party aufnehmen?"),
     [STRINGID_PKMNSENTTOPCAFTERCATCH]               = gText_PkmnSentToPCAfterCatch,
     [STRINGID_PKMNDYNAMAXED]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} grew huge into its Dynamax form!"),
     [STRINGID_PKMNGIGANTAMAXED]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} grew huge into its Gigantamax form!"),
@@ -2412,34 +2412,62 @@ static void GetBattlerNick(u32 battler, u8 *dst)
 }
 
 #define HANDLE_NICKNAME_STRING_CASE(battler)                            \
-    if (!IsOnPlayerSide(battler))                       \
+{                                                                       \
+    /* Erst den Nicknamen holen und schreiben */                        \
+    GetMonData(                                                         \
+        IsOnPlayerSide(battler)                                         \
+            ? &gPlayerParty[gBattlerPartyIndexes[battler]]              \
+            : &gEnemyParty[gBattlerPartyIndexes[battler]],              \
+        MON_DATA_NICKNAME, text);                                       \
+    StringGet_Nickname(text);                                           \
+    toCpy = text;                                                       \
+    while (*toCpy != EOS)                                               \
     {                                                                   \
+        dst[dstID++] = *toCpy++;                                        \
+    }                                                                   \
+    /* Danach ggf. (Wild) oder (Gegner) anhängen */                     \
+    if (!IsOnPlayerSide(battler))                                       \
+    {                                                                   \
+        dst[dstID++] = CHAR_SPACE; /* Leerzeichen vor Klammer */        \
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)                     \
             toCpy = sText_FoePkmnPrefix;                                \
         else                                                            \
             toCpy = sText_WildPkmnPrefix;                               \
         while (*toCpy != EOS)                                           \
         {                                                               \
-            dst[dstID] = *toCpy;                                        \
-            dstID++;                                                    \
-            toCpy++;                                                    \
+            dst[dstID++] = *toCpy++;                                    \
         }                                                               \
-    }
+    }                                                                   \
+}
 
 #define HANDLE_NICKNAME_STRING_LOWERCASE(battler)                       \
-    if (!IsOnPlayerSide(battler))                       \
+{                                                                       \
+    /* Erst den Nicknamen holen und schreiben */                        \
+    GetMonData(                                                         \
+        IsOnPlayerSide(battler)                                         \
+            ? &gPlayerParty[gBattlerPartyIndexes[battler]]              \
+            : &gEnemyParty[gBattlerPartyIndexes[battler]],              \
+        MON_DATA_NICKNAME, text);                                       \
+    StringGet_Nickname(text);                                           \
+    toCpy = text;                                                       \
+    while (*toCpy != EOS)                                               \
     {                                                                   \
+        dst[dstID++] = *toCpy++;                                        \
+    }                                                                   \
+    /* Danach ggf. (wild) oder (gegner) anhängen (klein) */             \
+    if (!IsOnPlayerSide(battler))                                       \
+    {                                                                   \
+        dst[dstID++] = CHAR_SPACE; /* Leerzeichen vor Klammer */        \
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)                     \
             toCpy = sText_FoePkmnPrefixLower;                           \
         else                                                            \
             toCpy = sText_WildPkmnPrefixLower;                          \
         while (*toCpy != EOS)                                           \
         {                                                               \
-            dst[dstID] = *toCpy;                                        \
-            dstID++;                                                    \
-            toCpy++;                                                    \
+            dst[dstID++] = *toCpy++;                                    \
         }                                                               \
-    }
+    }                                                                   \
+}
 
 static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text, u8 multiplayerId, u8 battler)
 {
