@@ -120,6 +120,7 @@ enum {
     MON_DATA_TERA_TYPE,
     MON_DATA_EVOLUTION_TRACKER,
     MON_DATA_OT_STYLE,
+    MON_DATA_SPECIES2,
 };
 
 struct PokemonSubstruct0
@@ -128,7 +129,7 @@ struct PokemonSubstruct0
     u16 teraType:5; // 30 types.
     u16 heldItem:10; // 1023 items.
     u16 unused_02:6;
-    u32 experience:21;
+    u32 experience;
     u32 nickname11:8; // 11th character of nickname.
     u32 unused_04:3;
     u8 ppBonuses;
@@ -180,7 +181,7 @@ struct PokemonSubstruct3
 {
     u8 pokerus;
     u8 metLocation;
-    u16 metLevel:7;
+    u16 metLevel:8;
     u16 metGame:4;
     u16 dynamaxLevel:4;
     u16 otGender:1;
