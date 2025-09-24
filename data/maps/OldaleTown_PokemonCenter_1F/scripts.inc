@@ -38,25 +38,24 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "Der PC dort in der Ecke ist für alle\n"
-	.string "POKéMON-TRAINER.\p"
-	.string "Das heißt, dass auch du ihn benutzen\n"
-	.string "darfst.$"
+	.string "Der PC in der Ecke ist für POKéMON-\n"
+	.string "TRAINER gedacht.\p"
+	.string "Man sagt, manche Trainer finden darin\n"
+	.string "mehr als nur Boxen…$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "POKéMON-CENTER sind eine großartige\n"
-	.string "Einrichtung!\p"
-	.string "Du kannst ihren Service sooft du willst\n"
-	.string "in Anspruch nehmen - kostenlos! Daher\l"
-	.string "kannst du unbeschwert umherreisen.$"
+	.string "POKéMON-CENTER sind wahre Wunderwerke!\p"
+	.string "Kostenlos heilen, speichern, durchatmen…\n"
+	.string "Du wirst sie auf deiner Reise brauchen.$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "Der POKéMON DRAHTLOSKLUB im zweiten\n"
-	.string "Stock wurde erst kürzlich eröffnet.\p"
-	.string "Und sie sind immer noch nicht ganz\n"
-	.string "fertig mit dem Einrichten.$"
+	.string "Der DRAHTLOSKLUB im zweiten Stock\n"
+	.string "ist noch nicht ganz fertig…\p"
+	.string "Sie sagen, das neue System könnte sogar\n"
+	.string "seltene Formen sichtbar machen.$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "Der POKéMON DRAHTLOSKLUB im zweiten\n"
-	.string "Stock wurde erst kürzlich eröffnet.\p"
-	.string "Ich habe schon POKéMON getauscht!$"
+	.string "Ich habe im DRAHTLOSKLUB schon ein\n"
+	.string "POKéMON getauscht!\p"
+	.string "Es hieß, manche Formen zeigen sich\n"
+	.string "nur nach einem Tausch.$"

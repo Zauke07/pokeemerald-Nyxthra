@@ -11,9 +11,12 @@ RustboroCity_Flat2_3F_EventScript_Woman::
 
 RustboroCity_Flat2_3F_Text_PresidentCollectsRareStones:
 	.string "Der PRÄSIDENT von DEVON sammelt\n"
-	.string "leidenschaftlich gerne seltene Steine.$"
+	.string "leidenschaftlich seltene Steine.\p"
+	.string "Sein Büro sieht aus wie ein halbes\n"
+    .string "Museum!$"
 
 RustboroCity_Flat2_3F_Text_PresidentsSonAlsoCollectsRareStones:
-	.string "Ich glaube, der Sohn des PRÄSIDENTEN\n"
-	.string "sammelt auch seltene Steine.$"
+	.string "Der Sohn des PRÄSIDENTEN ist wohl\n"
+	.string "ähnlich. Auch er sammelt seltene Steine.\p"
+	.string "Scheint in der Familie zu liegen, was?$"
 

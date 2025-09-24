@@ -1138,384 +1138,301 @@ PetalburgCity_Gym_EventScript_GymStatue::
 	end
 
 PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
-	.string "VATER: Hm?\p"
+	.string "Dad: Hm?\p"
 	.string "Na, wenn das nicht {PLAYER} ist!\n"
-	.string "Dann habt ihr also den Umzug beendet?\p"
-	.string "Ich bin überrascht, dass du ganz\n"
-	.string "alleine hierher gefunden hast.\p"
-	.string "Oh, so ist das.\n"
-	.string "Du bist in POKéMON-Begleitung.\p"
-	.string "Ich glaube, du wirst einmal in meine\n"
-	.string "Fußstapfen als TRAINER treten,\l"
-	.string "{PLAYER}.\p"
-	.string "Das sind großartige Aussichten!\n"
-	.string "Ich kann es kaum erwarten!$"
+	.string "Ihr habt also den Umzug gepackt?\p"
+	.string "Krass, dass du ganz alleine hergefunden\n"
+	.string "hast.\p"
+	.string "Ah, verstehe.\n"
+	.string "Du bist sogar mit Pokémon unterwegs.\p"
+	.string "Ich hab das Gefühl, du trittst echt mal\n"
+	.string "in meine Fußstapfen, {PLAYER}.\p"
+	.string "Das gefällt mir. Ich freu mich drauf.$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
-	.string "Äh… Ich… Ich hätte so gerne ein\n"
-	.string "POKéMON. Bitte…$"
+	.string "Ähm… Ich… Ich hätte so gerne\n"
+	.string "ein Pokémon. Bitte…$"
 
 PetalburgCity_Gym_Text_DadOhYoureWallyRight:
-	.string "VATER: Wie? Du… Ach… Gut.\n"
-	.string "Du bist HEIKO, nicht wahr?$"
+	.string "Dad: Hm? Du… Ach ja, stimmt.\n"
+	.string "Du bist Heiko, oder?$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
-	.string "HEIKO: Ich werde meine Verwandten\n"
-	.string "in WIESENFLUR besuchen.\p"
-	.string "Ich glaube, ich werde mich da doch\n"
-	.string "einsam fühlen, daher würde ich gerne ein\l"
-	.string "POKéMON mitnehmen.\p"
-	.string "Aber ich habe noch nie eines gefangen.\n"
-	.string "Ich weiß nicht, wie das geht…$"
+	.string "Heiko: Ich fahr bald zu meinen Verwandten\n"
+	.string "nach Wiesenflur.\p"
+	.string "Ich glaub, ich werd mich dort bisschen\n"
+	.string "allein fühlen, also…\p"
+	.string "Ich hätte gerne ein Pokémon bei mir.\n"
+	.string "Aber ich hab noch nie eins gefangen...$"
 
 PetalburgCity_Gym_Text_DadHmISee:
-	.string "VATER: Oh, ich verstehe…$"
+	.string "Dad: Hm, ich verstehe...$"
 
 PetalburgCity_Gym_Text_DadPlayerGoWithWally:
-	.string "VATER: {PLAYER}, hast du das gehört?\p"
-	.string "Hilf doch bitte HEIKO dabei,\n"
-	.string "ein POKéMON zu fangen.$"
+	.string "Dad: {PLAYER}, hast du das mitbekommen?\p"
+	.string "Hilf Heiko bitte beim Fangen\n"
+	.string "seines ersten Pokémon.$"
 
 PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
-	.string "HEIKO, hier, ich leihe dir mein\n"
-	.string "POKéMON.\p"
-	.string "HEIKO hat ein ZIGZACHS erhalten.$"
+	.string "Heiko, hier. Ich leih dir mal\n"
+	.string "eins meiner Pokémon.\p"
+	.string "Heiko bekommt ein Zigzachs.$"
 
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
-	.string "HEIKO: Oh, wow!!!\n"
-	.string "Ein POKéMON!\p"
-	.string "VATER: Hm. Ich gebe dir auch diesen\n"
-	.string "POKéBALL. Dann leg los!\p"
-	.string "HEIKO erhält einen POKéBALL!$"
-
-PetalburgCity_Gym_Text_WallyOhWowThankYou:
-	.string "HEIKO: Oh, wow!!!\n"
-	.string "Danke schön!$"
+	.string "Heiko: Oh wow!!!\n"
+	.string "Ein Pokémon!\p"
+	.string "Dad: Hier, ich geb dir auch einen\n"
+	.string "Pokéball. Viel Erfolg!\p"
+	.string "Heiko erhält einen Pokéball!$"
 
 PetalburgCity_Gym_Text_WouldYouReallyComeWithMe:
-	.string "{PLAYER}… Kommst du wirklich mit mir???$"
+	.string "{PLAYER}… Kommst du echt mit mir???$"
+
+PetalburgCity_Gym_Text_WallyOhWowThankYou:
+	.string "Heiko: Oh wow!!!\n"
+	.string "Danke dir!$"
 
 PetalburgCity_Gym_Text_DadSoDidItWorkOut:
-	.string "VATER: Und? Hat es geklappt?$"
+	.string "Dad: Na? Hat's geklappt?$"
 
 PetalburgCity_Gym_Text_WallyThankYouBye:
-	.string "HEIKO: Danke. Ja, wunderbar.\n"
-	.string "Hier haben Sie Ihr POKéMON zurück.\p"
-	.string "Danke, {PLAYER}, dass du mit mir\n"
-	.string "gegangen bist.\p"
-	.string "Euch beiden habe ich es zu verdanken,\n"
-	.string "dass ich mein erstes POKéMON fangen\l"
-	.string "konnte.\p"
-	.string "Ich verspreche, ich werde mich gut\n"
-	.string "darum kümmern!\p"
-	.string "Oh! Meine Mama wartet sicher schon auf\n"
-	.string "mich! Ich muss nach Hause!\p"
+	.string "Heiko: Danke! Es war mega.\n"
+	.string "Hier ist dein Pokémon zurück.\p"
+	.string "Und danke, {PLAYER}, fürs Mitkommen!\p"
+	.string "Nur dank euch konnte ich mein\n"
+	.string "erstes Pokémon fangen.\p"
+	.string "Ich verspreche, ich kümmere mich gut\n"
+	.string "darum!\p"
+	.string "Oh! Meine Mom wartet bestimmt schon!\n"
+	.string "Ich muss los!\p"
 	.string "Bis bald, {PLAYER}!$"
 
 PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "VATER: Nun…\p"
-	.string "{PLAYER}, wenn du ein guter TRAINER\n"
-	.string "werden willst - hier ist mein Rat.\p"
-	.string "Gehe nach METAROST CITY, gleich hinter\n"
-	.string "diesem Ort.\p"
-	.string "Dort solltest du die ARENALEITERIN\n"
+	.string "Dad: Also...\p"
+	.string "{PLAYER}, wenn du ein richtig guter\n"
+	.string "Trainer werden willst, hör zu:\p"
+	.string "Geh nach Metarost City, gleich hinter\n"
+	.string "der Route hier.\p"
+	.string "Dort solltest du die Arenaleiterin\n"
 	.string "FELIZIA herausfordern.\p"
-	.string "Suche danach die anderen POKéMON\n"
-	.string "ARENen auf und besiege die LEITER.\p"
-	.string "Sammle die ORDEN der verschiedenen\n"
-	.string "ARENen, verstehst du?\p"
-	.string "Ich bin natürlich auch ein ARENALEITER.\n"
-	.string "Auch wir werden eines Tages\l"
-	.string "gegeneinander antreten.\p"
-	.string "Aber erst, wenn du stärker geworden\n"
-	.string "bist, {PLAYER}.$"
+	.string "Dann besiegst du noch weitere Arenen -\n"
+	.string "und sammelst dir die Orden.$"
 
 PetalburgCity_Gym_Text_NormanGoToRustboro:
-	.string "VATER: Hm? Wolltest du nicht zur\n"
-	.string "POKéMON ARENA in METAROST CITY?\p"
-	.string "Für mich ist es keine Herausforderung,\n"
-	.string "gegen einen Grünschnabel anzutreten.\p"
-	.string "{PLAYER}, ich möchte, dass du mich he-\n"
-	.string "rausforderst, sobald du stärker bist.\p"
-	.string "Ich werde gegen dich kämpfen, {PLAYER},\n"
-	.string "sobald du vier ORDEN erhalten hast, ja?$"
+	.string "Dad: Hm? Wolltest du nicht zur Arena\n"
+	.string "in Metarost City?\p"
+	.string "Ich kämpfe nicht gegen Frischlinge,\n"
+	.string "auch wenn du mein Kind bist… glaube ich.\p"
+	.string "Komm zurück, wenn du mindestens\n"
+	.string "vier Orden hast, {PLAYER}.$"
 
 PetalburgCity_Gym_Text_NormanGoToDewford:
-	.string "VATER: Oh, ich sehe schon… Du hast die\n"
-	.string "ARENALEITERIN in METAROST CITY\l"
-	.string "besiegt.\p"
-	.string "Aber es gibt weitere TRAINER, die\n"
-	.string "stärker sind als du, {PLAYER}.\p"
-	.string "Wenn du das Meer überquerst, kommst du\n"
-	.string "nach FAUSTAUHAVEN. Dort triffst du auf\l"
-	.string "den ARENALEITER KAMILLO.\p"
-	.string "Du solltest ihn wirklich herausfordern…$"
+	.string "Dad: Ah, du hast Felizia in Metarost\n"
+	.string "besiegt? Stark.\p"
+	.string "Aber da draußen warten noch\n"
+	.string "viel stärkere Trainer, {PLAYER}.\p"
+	.string "Geh nach Faustauhaven - da ist Kamillo.\n"
+	.string "Der wird dich fordern.$"
 
 PetalburgCity_Gym_Text_YouHaveGottenStronger:
-	.string "VATER: Hm… {PLAYER}, du bist stärker\n"
+	.string "Dad: Hm… {PLAYER}, du bist echt stärker\n"
 	.string "geworden.\p"
-	.string "Das sehe ich an der Anzahl der ORDEN,\n"
-	.string "die du dir verdient hast.$"
+	.string "Man sieht's an deinen Orden.$"
 
 PetalburgCity_Gym_Text_NormanIntro:
-	.string "VATER: Hm…\n"
-	.string "Du besitzt vier ORDEN.\p"
-	.string "Fein. Wie versprochen werden wir nun\n"
-	.string "einen POKéMON-Kampf ausfechten.\p"
+	.string "Dad: Hm...\n"
+	.string "Du hast also vier Orden.\p"
+	.string "Wie versprochen gibt’s jetzt den Kampf.\p"
 	.string "{PLAYER}…\p"
-	.string "Ich bin so glücklich, dass mein eigenes\n"
-	.string "Kind stark genug ist, gegen\l"
-	.string "mich zu kämpfen!\p"
+	.string "Ich bin stolz, dass mein eigenes Kind\n"
+	.string "stark genug ist, um mich herauszufordern.\p"
 	.string "Aber: Kampf ist Kampf!\p"
-	.string "Ich werde als ARENALEITER alles tun, um\n"
-	.string "diesen Kampf zu gewinnen!\p"
-	.string "{PLAYER}, du solltest ebenfalls dein\n"
-	.string "Bestes geben!$"
+	.string "Ich kämpfe als Arenaleiter - und gebe\n"
+	.string "alles.\p"
+	.string "Also los, {PLAYER}. Zeig, was du kannst!$"
 
 PetalburgCity_Gym_Text_NormanDefeat:
-	.string "…\p"
-	.string "Ich… Ich kann es nicht…\p"
-	.string "Ich kann es nicht glauben, {PLAYER}…\p"
-	.string "Ich habe gegen {PLAYER} verloren?\p"
-	.string "Nun, Regeln sind Regeln!\n"
-	.string "Hier, das ist für dich.$"
+	.string "...\p"
+	.string "Ich… Ich fass es nicht...\p"
+	.string "Ich hab wirklich gegen dich verloren…\p"
+	.string "Regeln sind Regeln.\n"
+	.string "Hier ist dein Orden.$"
 
 PetalburgCity_Gym_Text_ReceivedBalanceBadge:
-	.string "{PLAYER} hat den BALANCEORDEN vom\n"
-	.string "VATER erhalten!$"
+	.string "{PLAYER} bekommt den Balanceorden\n"
+	.string "von Dad!$"
 
 PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
-	.string "VATER: Mit diesem ORDEN erhöht sich die\n"
-	.string "VERTEIDIGUNG all deiner POKéMON.\p"
-	.string "POKéMON, die die VM SURFER erlernt\n"
-	.string "haben, können diese auch zum Reisen\l"
-	.string "über das Wasser einsetzen.\p"
-	.string "{PLAYER}, das ist mein Geschenk für\n"
-	.string "dich. Ich bin sicher, du wirst es gut\l"
-	.string "nutzen.$"
+	.string "Dad: Mit diesem Orden steigt die\n"
+	.string "Verteidigung deiner Pokémon.\p"
+	.string "Und Pokémon mit der VM Surfer können\n"
+	.string "jetzt übers Wasser gleiten.\p"
+	.string "Und hier - das ist mein Geschenk für dich.\n"
+	.string "Mach was draus, {PLAYER}.$"
 
 PetalburgCity_Gym_Text_ExplainFacade:
-	.string "VATER: TM42 enthält FASSADE.\p"
-	.string "Sie verdoppelt die Stärke der Attacken,\n"
-	.string "wenn das POKéMON vergiftet,\l"
-	.string "paralysiert oder verbrannt wurde.\p"
-	.string "So kann eine vermeintlich aussichts-\n"
-	.string "lose Situation vielleicht gerettet\l"
-	.string "werden.$"
+	.string "Dad: TM42 enthält Fassade.\p"
+	.string "Die Attacke wird doppelt so stark,\n"
+	.string "wenn das Pokémon z. B. vergiftet,\l"
+	.string "verbrannt oder paralysiert ist.\p"
+	.string "Aus einem Nachteil kann man so\n"
+	.string "einen Vorteil machen.$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
-	.string "VATER: Als ARENALEITER kann ich gar\n"
-	.string "nicht sagen, wie bestürzt ich bin…\p"
-	.string "Als Vater macht es mich einerseits sehr\n"
-	.string "stolz, andererseits aber auch traurig…$"
+	.string "Dad: Als Arenaleiter bin ich... enttäuscht.\p"
+	.string "Aber als Vater bin ich stolz - und\n"
+	.string "ein bisschen traurig. Komisches Gefühl.$"
 
 PetalburgCity_Gym_Text_PleaseComeWithMe:
 	.string "Ah, da bist du ja, {PLAYER}{KUN}!\p"
-	.string "Komm doch bitte mal mit.\n"
-	.string "Ich habe hier etwas für dich.$"
+	.string "Komm bitte kurz mit - ich hab\n"
+	.string "etwas für dich.$"
 
 PetalburgCity_Gym_Text_LetMeBorrowPlayer:
-	.string "NORMAN, du hast doch nichts dagegen?\p"
-	.string "Ich entführe dir {PLAYER}{KUN} mal eben für\n"
-	.string "ein paar Minuten.$"
+	.string "Norman, du hast doch nix dagegen?\p"
+	.string "Ich entführ {PLAYER}{KUN} mal kurz\n"
+	.string "für ein paar Minuten.$"
 
 PetalburgCity_Gym_Text_DadGoingToKeepTraining:
-	.string "VATER: {PLAYER}, du solltest deine\n"
-	.string "Mutter öfter mal besuchen.\p"
-	.string "Ich bleibe hier und werde mein Training\n"
-	.string "verdoppeln.\p"
-	.string "Als TRAINER lässt es mir keine Ruhe. Ich\n"
-	.string "möchte irgendwann gegen dich gewinnen.$"
+	.string "Dad: {PLAYER}, besuch deine Mom mal öfter.\p"
+	.string "Ich bleib hier und trainier doppelt so hart.\p"
+	.string "Ich will irgendwann Revanche - du bist\n"
+	.string "jetzt mein Ziel als Trainer.$"
 
 PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:
-	.string "VATER: {PLAYER}! Wie geht es dir?\p"
-	.string "Die Welt der POKéMON ist vielfältig.\p"
-	.string "Ich bin überzeugt, dass selbst das \n"
-	.string "härteste Training dieser Vielfalt nicht\l"
-	.string "gerecht wird.$"
+	.string "Dad: {PLAYER}! Na, wie läuft’s?\p"
+	.string "Die Welt der Pokémon ist riesig...\p"
+	.string "Egal wie hart man trainiert -\n"
+	.string "man kommt nie ganz an alles ran.$"
 
 PetalburgCity_Gym_Text_GymGuideAdvice:
-	.string "Na, wie sieht es aus, auf dem Weg zum\n"
-	.string "CHAMP, {PLAYER}?\p"
-	.string "Die Türen dieser ARENA öffnen sich,\n"
-	.string "wenn du die einzelnen TRAINER besiegst.\p"
-	.string "Huups! Die Türen in diesem Raum sind ja\n"
-	.string "schon offen, greif mich bitte nicht an!\p"
-	.string "Die TRAINER der ARENA von BLÜTENBURG\n"
-	.string "CITY setzen die verschiedensten\l"
-	.string "Items ein.\p"
-	.string "Die Tür auf der linken Seite führt in\n"
-	.string "den INITIATIVE-RAUM.\p"
-	.string "Die Tür auf der rechten Seite führt in\n"
-	.string "den RAUM der GENAUIGKEIT.\p"
-	.string "Die Türen sind beschriftet, lies genau\n"
-	.string "und triff eine überlegte Wahl.\p"
-	.string "Hast du dich für eine Tür entschieden…\n"
-	.string "Nun, ähm, genug der Worte!$"
+	.string "Na, {PLAYER}, bereit für den CHAMP-Weg?\p"
+	.string "Die Türen in dieser Arena öffnen sich,\n"
+	.string "wenn du alle Trainer im Raum besiegst.\p"
+	.string "Oh! Diese hier ist schon offen - bitte\n"
+	.string "nicht angreifen, ich arbeite nur hier!\p"
+	.string "Die Trainer in dieser Arena setzen\n"
+	.string "verschiedene Items ein.\p"
+	.string "Links geht’s in den INITIATIVE-Raum,\n"
+	.string "rechts in den GENAUIGKEIT-Raum.\p"
+	.string "Alle Türen sind beschriftet - überleg\n"
+	.string "gut, bevor du eine öffnest.\p"
+	.string "Na dann... Viel Glück!$"
 
 PetalburgCity_Gym_Text_GymGuidePostVictory:
-	.string "{PLAYER}! Hui! Du hast sogar deinen\n"
-	.string "eigenen Vater besiegt!\p"
-	.string "Wie… Unglaublich!\n"
-	.string "Die Ereignisse überschlagen sich!$"
+	.string "{PLAYER}! Du hast sogar deinen eigenen\n"
+	.string "Dad besiegt!\p"
+	.string "Unfassbar! Was für ein Comeback!$"
 
 PetalburgCity_Gym_Text_RandallIntro:
-	.string "Die Fähigkeit, dem Gegner mit einer\n"
-	.string "Attacke zuvorzukommen…\p"
-	.string "Das alleine gibt einem doch schon einen\n"
-	.string "enormen Vorteil, meinst du nicht auch?$"
+	.string "Wer schneller angreift, gewinnt oft den\n"
+	.string "Kampf. Findest du nicht auch?$"
 
 PetalburgCity_Gym_Text_RandallDefeat:
-	.string "Das war ein unglaublicher Kampf!$"
+	.string "Krasser Kampf!$"
 
 PetalburgCity_Gym_Text_RandallPostBattle:
-	.string "Geh weiter in den nächsten Raum, wo\n"
-	.string "eine neue Herausforderung wartet.\p"
-	.string "Auf der linken Seite befindet sich der\n"
-	.string "RAUM der VERWIRRUNG.\p"
-	.string "Auf der rechten Seite findest du den\n"
-	.string "RAUM der VERTEIDIGUNG.$"
+	.string "Weiter geht’s: Links ist der VERWIRRUNG-Raum,\n"
+	.string "rechts der VERTEIDIGUNG-Raum.$"
 
 PetalburgCity_Gym_Text_RandallPostBadge:
-	.string "Ob du siegst oder verlierst… Du darfst\n"
-	.string "dein Training und das deiner POKéMON\l"
-	.string "auf keinen Fall vernachlässigen.\p"
-	.string "Das macht für mich einen wahren\n"
-	.string "ARENALEITER aus.$"
+	.string "Egal ob Sieg oder Niederlage -\n"
+	.string "Training ist das Wichtigste.$"
 
 PetalburgCity_Gym_Text_ParkerIntro:
-	.string "Dies ist der RAUM der VERWIRRUNG.\p"
-	.string "Zeig mir, wie stark das Band zwischen\n"
-	.string "dir und deinen POKéMON ist.$"
+	.string "Dies ist der VERWIRRUNG-Raum.\p"
+	.string "Zeig mir, wie gut du dein Team kennst.$"
 
 PetalburgCity_Gym_Text_ParkerDefeat:
-	.string "Ich konnte dein Team nicht genug\n"
-	.string "verwirren… Euer Band ist stark.$"
+	.string "Unser Band war nicht stark genug...$"
 
 PetalburgCity_Gym_Text_ParkerPostBattle:
-	.string "Der nächste Raum ist der RAUM der\n"
-	.string "STÄRKE. Kommst du gegen pure\l"
-	.string "Gewalt an?$"
+	.string "Der nächste Raum ist STÄRKE.\n"
+	.string "Mal sehen, wie du mit roher Power klarkommst.$"
 
 PetalburgCity_Gym_Text_ParkerPostBadge:
-	.string "Nachdem du unseren ARENALEITER be-\n"
-	.string "siegt hast, wurde unser Training härter.$"
+	.string "Seit du Dad besiegt hast, ist das Training\n"
+	.string "in der Arena viel härter geworden.$"
 
 PetalburgCity_Gym_Text_GeorgeIntro:
-	.string "Immer, wenn du den Sieg in greifbarer\n"
-	.string "Nähe siehst, füllt dein Gegner KP auf…\p"
-	.string "Kannst du dir vorstellen, wie man sich in\n"
-	.string "so einer Situation fühlt?\p"
-	.string "Ich werde dir so eine Situation\n"
-	.string "demonstrieren!$"
+	.string "Kurz vorm Sieg - zack, Gegner heilt sich.\p"
+	.string "Kennst du das Gefühl? Ich zeig's dir.$"
 
 PetalburgCity_Gym_Text_GeorgeDefeat:
-	.string "Ich konnte nicht genügend KP\n"
-	.string "auffüllen… Welch eine ANGRIFFskraft…$"
+	.string "Nicht mal Heilen hat gereicht…$"
 
 PetalburgCity_Gym_Text_GeorgePostBattle:
-	.string "Ich hatte vom Kind unseres ARENA-\n"
-	.string "LEITERs nichts anderes erwartet!\p"
-	.string "Nein! Die Fähigkeiten eines TRAINERs\n"
-	.string "entwickeln sich mit dem Training.\p"
-	.string "Ich habe mich offensichtlich nicht\n"
-	.string "genug angestrengt.\p"
-	.string "Geh! Der nächste Raum ist der K.O.-\n"
-	.string "TREFFER-RAUM.$"
+	.string "Ich hab gehört, du bist Dads Kind…\p"
+	.string "Dann wundert mich dein Können nicht.\p"
+	.string "Nächster Raum: K.O.-TREFFER-RAUM!$"
 
 PetalburgCity_Gym_Text_GeorgePostBadge:
-	.string "Ich werde auch weiterhin in den ARENen\n"
-	.string "trainieren. Und ARENALEITER werden!$"
+	.string "Ich werd selbst Arenaleiter!\n"
+	.string "Irgendwann.$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
-	.string "Ich werde es dir nicht leicht machen,\n"
-	.string "nur weil du das Kind unseres LEITERs\l"
-	.string "bist.\p"
-	.string "Ich werde dir beibringen, was es für ein\n"
-	.string "POKéMON bedeutet, einen Volltreffer\l"
-	.string "zu erhalten.$"
+	.string "Nur weil du Dads Kind bist,\n"
+	.string "kriegst du keine Sonderbehandlung.\p"
+	.string "Ich zeig dir, wie sich ein Volltreffer\n"
+	.string "anfühlt!$"
 
 PetalburgCity_Gym_Text_BerkeDefeat:
-	.string "Deine Stärke…\n"
-	.string "Du kämpfst großartig!$"
+	.string "Stark! Respekt.$"
 
 PetalburgCity_Gym_Text_BerkePostBattle:
-	.string "Dein Vater ist stark. Als TRAINER\n"
-	.string "erweise ich ihm den größten Respekt.\p"
-	.string "Und ich sehe, dass die gleiche Stärke\n"
-	.string "auch in dir ruht.\p"
-	.string "Ich fühle, dass du dich nun einem\n"
-	.string "Kampf mit deinem Vater stellen kannst.$"
+	.string "Dein Dad ist 'n Monster.\n"
+	.string "Und du? Ebenfalls gefährlich.$"
 
 PetalburgCity_Gym_Text_BerkePostBadge:
-	.string "Seit dein Vater der LEITER der ARENA\n"
-	.string "von BLÜTENBURG CITY ist, sind die\l"
-	.string "TRAINER dort viel stärker geworden.$"
+	.string "Seit Dad hier Leiter ist, ist das Niveau\n"
+	.string "deutlich gestiegen.$"
 
 PetalburgCity_Gym_Text_MaryIntro:
-	.string "Kicher…\n"
-	.string "Dies ist der RAUM der GENAUIGKEIT.\p"
-	.string "Es ist schon ziemlich fies, wenn jede\n"
-	.string "Attacke ein Treffer ist.$"
+	.string "Kicher… GENAUIGKEIT ist mies fies.\p"
+	.string "Wenn jeder Angriff trifft… Heftig, oder?$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "Du bist ein bisschen stärker als ich…$"
+	.string "Du bist... etwas besser als ich.$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
-	.string "Es warten noch weitaus stärkere\n"
-	.string "TRAINER auf dich.\p"
-	.string "Der linke ist der RAUM der VERTEIDIGUNG\n"
-	.string "und der rechte der RAUM der ERHOLUNG.\p"
-	.string "Die ATTACKEN deiner POKéMON werden\n"
-	.string "in beiden Räumen auf die Probe gestellt.$"
+	.string "Links ist der VERTEIDIGUNG-Raum,\n"
+	.string "rechts ERHOLUNG.\n"
+	.string "Beide werden deine Moves testen.$"
 
 PetalburgCity_Gym_Text_MaryPostBadge:
-	.string "Weißt du, wonach wir als TRAINER\n"
-	.string "streben?\p"
-	.string "Wir streben danach, die Seelenfreunde\n"
-	.string "unserer POKéMON zu werden.$"
+	.string "Wir streben danach, eins zu werden -\n"
+	.string "mit unseren Pokémon.$"
 
 PetalburgCity_Gym_Text_AlexiaIntro:
-	.string "Je stärker die VERTEIDIGUNG ist, desto\n"
-	.string "rücksichtsloser kann ich angreifen.$"
+	.string "Mit guter Verteidigung greif ich noch\n"
+	.string "härter an. Bereit?$"
 
 PetalburgCity_Gym_Text_AlexiaDefeat:
-	.string "Unsere Verteidigung reichte nicht aus…$"
+	.string "Verteidigung war nicht genug…$"
 
 PetalburgCity_Gym_Text_AlexiaPostBattle:
-	.string "Ich denke, du hast mir eine wertvolle\n"
-	.string "Lektion erteilt.\p"
-	.string "Nun, geh weiter. Die linke Tür führt in\n"
-	.string "den RAUM der STÄRKE.\p"
-	.string "Die rechte Tür öffnet den\n"
-	.string "K.O.-TREFFER-RAUM.\p"
-	.string "In beiden warten äußerst talentierte\n"
-	.string "TRAINER.$"
+	.string "Danke, du hast mir was gezeigt.\p"
+	.string "Links: STÄRKE - Rechts: K.O.-Treffer.\p"
+	.string "Beide Räume sind kein Zuckerschlecken.$"
 
 PetalburgCity_Gym_Text_AlexiaPostBadge:
-	.string "Hallo! Hast du mal SURFER ausprobiert?$"
+	.string "Hast du Surfer schon ausprobiert?$"
 
 PetalburgCity_Gym_Text_JodyIntro:
-	.string "Unser ARENALEITER hat uns angewiesen,\n"
-	.string "alles zu geben und dich zu besiegen.\p"
-	.string "Auch wenn du das Kind des LEITERs bist!$"
+	.string "Dad meinte: Gib alles gegen {PLAYER}!\p"
+	.string "Ist mir egal, ob du sein Kind bist!$"
 
 PetalburgCity_Gym_Text_JodyDefeat:
-	.string "Aber… Das war wohl nichts!$"
+	.string "Oof. Das war nix.$"
 
 PetalburgCity_Gym_Text_JodyPostBattle:
-	.string "Wie du deine POKéMON einsetzt…\n"
-	.string "Du bist wie dein Vater.\p"
-	.string "Geh weiter! Der ARENALEITER, dein\n"
-	.string "Vater, erwartet dich bereits!$"
+	.string "Dein Kampfstil... Erinnert an Dad.\p"
+	.string "Er wartet schon auf dich.$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
-	.string "Sicher, es ist immer von Vorteil, die\n"
-	.string "POKéMON stärker werden zu lassen.\p"
-	.string "Aber was macht einen Gewinner aus?\p"
-	.string "Nun, das sind die Gefühle, die ein\n"
-	.string "TRAINER seinen POKéMON entgegen-\l"
-	.string "bringt.$"
+	.string "Stärke ist gut - aber ohne Vertrauen\n"
+	.string "zwischen dir und deinem Team\n"
+	.string "bist du kein Sieger.$"
 
 PetalburgCity_Gym_Text_DoorAppearsLocked:
 	.string "Die Tür ist noch verschlossen…$"
@@ -1575,39 +1492,44 @@ PetalburgCity_Gym_Text_GymStatueCertified:
 	.string "{PLAYER}$"
 
 PetalburgCity_Gym_Text_NormanPreRematch:
-	.string "VATER: {PLAYER}…\n"
-	.string "Ich wusste, du würdest kommen.\p"
-	.string "Niemals würde ich eine Herausforderung\n"
-	.string "von dir ablehnen!\p"
-	.string "Du verstehst, was ich meine?\p"
-	.string "In einer ARENA ist es ohne Bedeutung,\n"
-	.string "dass du mein Kind bist.\p"
-	.string "Im Gegenteil, da wir Vater und Kind sind,\n"
-	.string "müssen wir beide unser Bestes geben.\l"
-	.string "Meinst du nicht auch, {PLAYER}?$"
+	.string "Dad: {PLAYER}…\n"
+	.string "Ich wusste, dass du wiederkommst.\p"
+	.string "Ich würde niemals eine Herausforderung\n"
+	.string "von dir ablehnen.\p"
+	.string "Weißt du, was ich meine?\p"
+	.string "In der Arena zählt nicht, dass du\n"
+	.string "mein Kind bist.\p"
+	.string "Im Gegenteil - gerade deshalb müssen\n"
+	.string "wir beide alles geben.\n"
+	.string "Oder, {PLAYER}?$"
 
 PetalburgCity_Gym_Text_NormanRematchDefeat:
-	.string "Äh… Haha…\n"
-	.string "Du bist ein harter Brocken…$"
+	.string "Äh… Haha...\n"
+	.string "Du bist wirklich ein harter Brocken.$"
 
 PetalburgCity_Gym_Text_NormanPostRematch:
-	.string "VATER: {PLAYER}…\n"
-	.string "Was ist dein Traum?\p"
-	.string "Mein Traum…\n"
+	.string "Dad: {PLAYER}…\n"
+	.string "Was ist eigentlich dein Traum?\p"
+	.string "{PLAYER}: Mein Traum…?\n"
 	.string "Hahaha…\l"
-	.string "Er wurde bereits Wirklichkeit.$"
+	.string "Ich glaub, der ist längst wahr geworden.\p"
+    .string "Spaß, natürlich der Stärkste werden!\p"
+    .string "Dad: Hm, das ist ein guter Traum.\p"
+    .string "Ich bin stolz auf dich, {PLAYER}.\n"
+    .string "Du bist ein toller Trainer geworden.\l"
+    .string "Ich bin mir sicher, dass du es schaffst!$"
 
 PetalburgCity_Gym_Text_NormanRematchNeedTwoMons:
-	.string "VATER: {PLAYER}…\n"
-	.string "Ich wusste, du würdest kommen.\p"
-	.string "Niemals würde ich eine Herausforderung\n"
-	.string "von dir ablehnen!\p"
-	.string "Du verstehst, was ich meine?\p"
-	.string "In einer ARENA ist es ohne Bedeutung,\n"
-	.string "dass du mein Kind bist.\p"
-	.string "Hm? Warte mal, {PLAYER}.\p"
-	.string "Du hast nur ein POKéMON, das kämpfen\n"
-	.string "kann?\p"
-	.string "Tut mir Leid, aber du brauchst\n"
-	.string "mindestens zwei POKéMON.$"
+	.string "Dad: {PLAYER}…\n"
+	.string "Ich wusste, dass du wiederkommst.\p"
+	.string "Ich würde niemals eine Herausforderung\n"
+	.string "von dir ablehnen.\p"
+	.string "Weißt du, was ich meine?\p"
+	.string "In der Arena zählt nicht, dass du\n"
+	.string "mein Kind bist.\p"
+	.string "Hm? Moment mal, {PLAYER}…\p"
+	.string "Du hast nur ein einziges Pokémon,\n"
+	.string "das kämpfen kann?\p"
+	.string "Tut mir leid, aber du brauchst mindestens\n"
+	.string "zwei Pokémon für diesen Kampf.$"
 

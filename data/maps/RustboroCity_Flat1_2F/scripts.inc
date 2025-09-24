@@ -1,30 +1,30 @@
 RustboroCity_Flat1_2F_MapScripts::
 	.byte 0
 
-RustboroCity_Flat1_2F_EventScript_WaldasDad::
+RustboroCity_Flat1_2F_EventScript_TwixsDad::
 	lock
 	faceplayer
-	specialvar VAR_RESULT, TryBufferWaldaPhrase
-	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_WaldasDadFirstPhrase
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_WaldasDadNewPhrase
+	specialvar VAR_RESULT, TryBufferTwixPhrase
+	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_TwixsDadFirstPhrase
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_TwixsDadNewPhrase
 
 RustboroCity_Flat1_2F_EventScript_GivePhrase::
-	special DoWaldaNamingScreen
+	special DoTwixNamingScreen
 	waitstate
 	goto_if_eq VAR_0x8004, 1, RustboroCity_Flat1_2F_EventScript_CancelGivePhrase
 	goto_if_eq VAR_0x8004, 2, RustboroCity_Flat1_2F_EventScript_CancelGiveFirstPhrase
-	specialvar VAR_RESULT, TryGetWallpaperWithWaldaPhrase
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_WaldaLikesPhrase
-	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_WaldaDoesntLikePhrase
+	specialvar VAR_RESULT, TryGetWallpaperWithTwixPhrase
+	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_TwixLikesPhrase
+	goto_if_eq VAR_RESULT, FALSE, RustboroCity_Flat1_2F_EventScript_TwixDoesntLikePhrase
 	end
 
-RustboroCity_Flat1_2F_EventScript_WaldasDadFirstPhrase::
+RustboroCity_Flat1_2F_EventScript_TwixsDadFirstPhrase::
 	msgbox RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RustboroCity_Flat1_2F_EventScript_DeclineGivePhrase
 	msgbox RustboroCity_Flat1_2F_Text_WonderfulLetsHearSuggestion, MSGBOX_DEFAULT
 	goto RustboroCity_Flat1_2F_EventScript_GivePhrase
 
-RustboroCity_Flat1_2F_EventScript_WaldasDadNewPhrase::
+RustboroCity_Flat1_2F_EventScript_TwixsDadNewPhrase::
 	msgbox RustboroCity_Flat1_2F_Text_BeenSayingXDoYouKnowBetterPhrase, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RustboroCity_Flat1_2F_EventScript_DeclineGivePhrase
 	msgbox RustboroCity_Flat1_2F_Text_WonderfulLetsHearSuggestion, MSGBOX_DEFAULT
@@ -42,33 +42,33 @@ RustboroCity_Flat1_2F_EventScript_CancelGivePhrase::
 
 RustboroCity_Flat1_2F_EventScript_CancelGiveFirstPhrase::
 	msgbox RustboroCity_Flat1_2F_Text_ThinkOfMyOwnPhrase, MSGBOX_DEFAULT
-	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
+	call RustboroCity_Flat1_2F_EventScript_TwixsDadFaceTwix
 	msgbox RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll2, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_Flat1_2F_EventScript_WaldaLikesPhrase::
+RustboroCity_Flat1_2F_EventScript_TwixLikesPhrase::
 	msgbox RustboroCity_Flat1_2F_Text_LetsGiveItATry2, MSGBOX_DEFAULT
-	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
+	call RustboroCity_Flat1_2F_EventScript_TwixsDadFaceTwix
 	msgbox RustboroCity_Flat1_2F_Text_OhShesLaughing, MSGBOX_DEFAULT
-	applymovement LOCALID_WALDAS_DAD, Common_Movement_FacePlayer
+	applymovement LOCALID_TWIX_DAD, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_Flat1_2F_EventScript_WaldaDoesntLikePhrase::
+RustboroCity_Flat1_2F_EventScript_TwixDoesntLikePhrase::
 	msgbox RustboroCity_Flat1_2F_Text_LetsGiveItATry, MSGBOX_DEFAULT
-	call RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda
+	call RustboroCity_Flat1_2F_EventScript_TwixsDadFaceTwix
 	msgbox RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll, MSGBOX_DEFAULT
 	release
 	end
 
-RustboroCity_Flat1_2F_EventScript_WaldasDadFaceWalda::
-	turnobject LOCALID_WALDAS_DAD, DIR_EAST
+RustboroCity_Flat1_2F_EventScript_TwixsDadFaceTwix::
+	turnobject LOCALID_TWIX_DAD, DIR_EAST
 	return
 
-RustboroCity_Flat1_2F_EventScript_WaldasMom::
+RustboroCity_Flat1_2F_EventScript_TwixsMom::
 	msgbox RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard, MSGBOX_NPC
 	end
 
@@ -77,99 +77,113 @@ RustboroCity_Flat1_2F_EventScript_PokeDoll::
 	end
 
 RustboroCity_Flat1_2F_Text_ComingUpWithMealsIsHard:
-	.string "Oh, jeden Tag wird es schwerer...\p"
-	.string "Was so schwer ist?\n"
-	.string "Das fragst du noch?\p"
-	.string "Herauszufinden, was ich jeden Tag\n"
-	.string "kochen soll, natürlich!\p"
-	.string "Es ist nicht einfach, jeden Tag eine\n"
-	.string "Mahlzeit auf den Tisch zu bringen.$"
+	.string "Du willst wissen, was wirklich schwer ist?\p"
+	.string "Nein, nicht die Liga. Nicht TEAM ROCKET.\n"
+	.string "Das tägliche KOCHEN.\p"
+	.string "Was soll ich denn heute wieder machen?\n"
+	.string "PokéNudeln? Glumanda-Gratin?\l"
+	.string "Glibunkelgulasch?\p"
+	.string "Sag du's mir. Ich bin kurz davor,\n"
+	.string "einfach Chips mit TM-Geschmack\l"
+	.string "zu servieren.$"
 
 RustboroCity_Flat1_2F_Text_HelloDoYouKnowFunnyPhrase:
-	.string "Oh, hallo!\n"
-	.string "Willkommen im Haushalt der PEPPER.\p"
-	.string "Ich habe eine Frage an dich.\n"
-	.string "Hast du jemals auf ein Baby aufgepasst?\p"
-	.string "Siehst du, ich bin ein neuer Vater, also ist es\n"
-	.string "für mich ganz neu, ein Kind großzuziehen.\p"
-	.string "Und ich habe ein Problem. Meine Tochter WALDA\n"
-	.string "lacht nicht genug.\p"
-	.string "Ich denke, sie würde für mich lachen, wenn ich\n"
-	.string "ihr etwas Lustiges erzähle.\p"
-	.string "Kennst du ein lustiges Wort oder eine\n"
-	.string "Redewendung, die du mir sagen könntest?$"
+	.string "Willkommen im Pepper-Haushalt!\n"
+	.string "Hier leben Schlafmangel und Babywindeln.\p"
+	.string "Ich bin frischgebackener Vater…\n"
+	.string "Und ja, ich bin VÖLLIG überfordert.\p"
+	.string "Meine Tochter Twix? Lacht nie.\n"
+	.string "So ernst wie ein Onix im Stau.\p"
+	.string "Vielleicht kennst du ja einen Spruch,\n"
+	.string "der ihr ein Lächeln entlockt?$"
 
 RustboroCity_Flat1_2F_Text_BeenSayingXDoYouKnowBetterPhrase:
-	.string "Ich habe in letzter Zeit “{STR_VAR_1}” gesagt,\n"
-	.string "um sie zu amüsieren.\p"
-	.string "Kennst du ein besseres Wort oder eine bessere\n"
-	.string "Redewendung, die funktionieren könnte?$"
+	.string "Ich hab in letzter Zeit immer\n"
+	.string "“{STR_VAR_1}” gesagt, aber\l"
+	.string "Twix schaut nur wie\n"
+	.string "Rocko bei Sonnenlicht.\p"
+	.string "Kennst du was Besseres? Was mit Wumms?$"
 
 RustboroCity_Flat1_2F_Text_WonderfulLetsHearSuggestion:
-	.string "Oh, das ist wunderbar.\n"
-	.string "Also, lass es uns hören, deine Vorschläge.$"
+	.string "Oh, das klingt super!\n"
+	.string "Lass hören, was du auf Lager hast.$"
 
 RustboroCity_Flat1_2F_Text_OhIsThatRight:
-	.string "Oh, ist das so?\p"
-	.string "Nun, wenn du einen guten Vorschlag hast,\n"
-	.string "bin ich ganz Ohr.$"
+	.string "Oh? Wirklich?\p"
+	.string "Na gut - wenn du was Geniales hast,\n"
+	.string "bin ich ganz Ohr (und leicht verzweifelt).$"
 
 RustboroCity_Flat1_2F_Text_LetsGiveItATry2:
-	.string "Ah, verstehe.\n"
-	.string "Nun, lass es uns versuchen, sollen wir?$"
+	.string "Okay, dann probieren wir deinen Spruch.\p"
+	.string "Er kann ja kaum schlechter sein\n"
+	.string "als meiner.$"
 
 RustboroCity_Flat1_2F_Text_OhShesLaughing:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}.\p"
-	.string "Oh, ja! Sie lacht!\n"
-	.string "Oh, ich bin genauso begeistert wie sie!$"
+	.string "{STR_VAR_1}?!\p"
+	.string "Haha! Oh wow - sie lacht!\n"
+	.string "Sie kann nicht mehr aufhören!\p"
+	.string "Ich... ich auch nicht... danke!$"
 
 RustboroCity_Flat1_2F_Text_LetsGiveItATry:
-	.string "Ah, verstehe.\n"
-	.string "Nun, lass es uns versuchen, sollen wir?$"
+	.string "Alles klar.\n"
+	.string "Dann mal los. Twix, hör gut zu...$"
 
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}.\p"
-	.string "Hmmm… Sie lächelt überhaupt nicht.\n"
-	.string "Vielleicht ist WALDA ein sehr ernstes Kind…$"
+	.string "{STR_VAR_1}...\p"
+	.string "Nichts.\n"
+	.string "Kein Zucken, kein Blinzeln.\p"
+	.string "Ich glaube, Twix ist auf innerem\l"
+	.string "Zen-Urlaub.$"
 
 RustboroCity_Flat1_2F_Text_ThinkOfMyOwnPhrase:
-	.string "Oh, also kennst du keine guten Worte.\n"
-	.string "Dann sollte ich wohl selbst nachdenken.\p"
-	.string "Hmm…\n"
-	.string "Wie wäre es mit “{STR_VAR_1}”?\l"
-	.string "Lass uns sehen, ob das funktioniert.$"
+	.string "Also hast du keinen?\n"
+	.string "Dann denke ich halt selbst nach.\p"
+	.string "Wie wär's mit “Karpador-Karate”?\l"
+	.string "......\n"
+	.string "Ja, okay. Vergessen wir das.$"
 
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll2:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}.\p"
-	.string "Hmmm… Sie lächelt überhaupt nicht.\n"
-	.string "Vielleicht ist WALDA ein sehr ernstes Kind…$"
+	.string "{STR_VAR_1}...\p"
+	.string "Nope. Keine Reaktion.\n"
+	.string "Vielleicht ist Twix einfach ein kleiner Boss.$"
 
 RustboroCity_Flat1_2F_Text_OhYouDontKnowAny:
-	.string "Oh, also kennst du keine guten Worte.\n"
-	.string "Ich denke, ich werde versuchen, sie mit\n"
-	.string "dem Spruch zu amüsieren, den ich vorher\n"
-	.string "verwendet habe.\p"
-	.string "Übrigens, wenn du einen guten Vorschlag hast,\n"
-	.string "zöger nicht, ihn mir mitzuteilen, okay?$"
+	.string "Also hast du keinen?\n"
+	.string "Dann muss ich eben weiterraten…\p"
+	.string "Wenn dir doch mal was einfällt,\n"
+	.string "komm einfach wieder vorbei, okay?$"
 
 RustboroCity_Flat1_2F_Text_ThankYouIllGiveYouWallpaper:
-	.string "Danke!\p"
-	.string "Dank dir hat meine liebste WALDA für mich\n"
-	.string "gelacht!\p"
-	.string "Eigentlich sehe ich vielleicht nicht besonders\n"
-	.string "aus, aber ich bin einer der Top-Forscher von\n"
-	.string "DEVON CORPORATION.\p"
-	.string "Also, wie wäre es, wenn ich dir etwas im\n"
-	.string "Gegenzug gebe?\p"
-	.string "Ich weiß, ich werde einige neue Tapetenmuster\n"
-	.string "für die BOXEN im PC-POKéMON-Aufbewahrungssystem\n"
-	.string "hinzufügen.\p"
-	.string "Im Tapetenmuster-Menü wähle “FREUNDE.”\p"
-	.string "Dann hast du Zugriff auf die neuen\n"
-	.string "Tapetenmuster.$"
+	.string "Du hast’s geschafft!\n"
+	.string "Twix hat gelacht - ein echtes Lachen!\p"
+	.string "Ich… ich glaub, ich wein gleich.\n"
+	.string "Du bist mein Held!\p"
+	.string "Wusstest du, dass ich bei DEVON arbeite?\n"
+	.string "Ich bin der Typ für Tapeten. Kein Witz.\p"
+	.string "Ich hab dir neue Box-Designs\n"
+	.string "freigeschaltet: Wähl “FREUNDE” im\l"
+	.string "PC-Menü.\p"
+	.string "Und denk dran: Humor rettet Leben -\n"
+	.string "oder zumindest Väter mit Schlafmangel.$"
 
 RustboroCity_Flat1_2F_Text_ItsAPokemonPlushDoll:
-	.string "Es ist eine POKéMON-Stoffpuppe!$"
+	.string "Das ist eine POKéMON-Stoffpuppe!\n"
+	.string "Und ja, sie wurde schon vollgesabbert.$"
+
+RustboroCity_Flat1_2F_EventScript_QuestBoard::
+	msgbox RustboroCity_Flat1_2F_Text_QuestBoard, MSGBOX_SIGN
+	end
+
+RustboroCity_Flat1_2F_Text_QuestBoard:
+	.string "Auf dem Brett steht ein Hinweis:\p"
+	.string "Du kannst ein eigenes Geheimwort\n"
+	.string "für das Kind generieren,\l"
+	.string "damit es wieder lacht.\p"
+	.string "Google dazu einfach:\n"
+	.string "“Pokémon Emerald geheimwort\l"
+	.string "-generator”\p"
+    .string "und öffne den ersten Link.$"
+

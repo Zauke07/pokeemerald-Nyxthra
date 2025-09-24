@@ -64,22 +64,26 @@ RustboroCity_Mart_EventScript_BugCatcher::
 	msgbox RustboroCity_Mart_Text_GettingEscapeRopeJustInCase, MSGBOX_NPC
 	end
 
+RustboroCity_Mart_EventScript_JokeNpc::
+    setvar VAR_JOKE_NPC_INDEX, 2
+    call JokeNpc_EventScript_Main
+    end
+
 RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
-	.string "Ich habe einige PARA-HEILER und\n"
-	.string "etwas GEGENGIFT gekauft.\p"
-	.string "Nur für den Fall, dass mir ein\n"
-	.string "KNILZ im BLÜTENBURGWALD\l"
-	.string "über den Weg läuft.$"
+	.string "Ich wollte nur einen PARA-HEILER,\n"
+	.string "aber dann hab ich Booster gesehen...\p"
+	.string "Jetzt bin ich 20.000¥ ärmer\n"
+	.string "und hab nur 3 Bisasam-Sticker.$"
 
 RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead:
-	.string "Mein POKéMON hat sich entwickelt.\n"
-	.string "Es hat jetzt sehr viele KP.\p"
-	.string "Ich sollte nun einige SUPERTRÄNKE\n"
-	.string "anstelle der normalen TRÄNKE kaufen.$"
+	.string "Kennst du den?\n"
+	.string "Was sagt ein PIEPI im Supermarkt?\p"
+	.string "“Pii, wo ist die Milchstraße?“\p"
+	.string "…Ich lach jedes Mal wieder.$"
 
 RustboroCity_Mart_Text_GettingEscapeRopeJustInCase:
-	.string "Ich habe ein FLUCHTSEIL besorgt, falls\n"
-	.string "ich mich mal in einer Höhle verlaufe.\p"
-	.string "Damit kann ich zurück zum Eingang der\n"
-	.string "Höhle gelangen.$"
+	.string "Neulich an der Kasse:\n"
+	.string "Blondine: Hier steht: “Hier öffnen…”\p"
+	.string "…und reißt die Supertrank-Packung auf.\n"
+	.string "Jetzt darf sie hier nicht mehr einkaufen.$"
 

@@ -52,17 +52,27 @@ OldaleTown_Mart_EventScript_Boy::
 	msgbox OldaleTown_Mart_Text_RestoreHPWithPotion, MSGBOX_NPC
 	end
 
+OldaleTown_Mart_EventScript_Joke::
+    setvar VAR_JOKE_NPC_INDEX, 0
+    call JokeNpc_EventScript_Main
+    end
+
+
 OldaleTown_Mart_Text_PokeBallsAreSoldOut:
-	.string "Der Verkäufer sagt, es sei alles\n"
-	.string "ausverkauft. Jetzt stehe ich ohne\l"
-	.string "POKéBÄLLE da.$"
+	.string "Toll… Alles ausverkauft.\n"
+	.string "Wie soll ich denn so das Mysterium\l"
+	.string "dort in der Höhle erforschen?$"
+
 
 OldaleTown_Mart_Text_ImGoingToBuyPokeBalls:
-	.string "Ich will mir viele POKéBÄLLe kaufen und\n"
-	.string "damit genauso viele POKéMON fangen!$"
+	.string "Ich kaufe mir gleich einen ganzen Stapel\n"
+	.string "POKéBÄLLE…\p"
+	.string "Man weiß nie, was einem im hohen Gras\n"
+	.string "oder dunklen Höhlen begegnet.$"
+
 
 OldaleTown_Mart_Text_RestoreHPWithPotion:
-	.string "Wird ein POKéMON verletzt und verliert\n"
-	.string "alle KP, so ist es kampfunfähig.\p"
-	.string "Um das zu vermeiden, solltest du die KP\n"
-	.string "bei Bedarf mit einem TRANK auffüllen.$"
+	.string "Wenn dein POKéMON alle KP verliert,\n"
+	.string "wird es kampfunfähig.\p"
+	.string "Ein TRANK kann entscheidend sein -\n"
+	.string "gerade wenn du dich ins Ungewisse wagst.$"

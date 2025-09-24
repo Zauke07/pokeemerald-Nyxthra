@@ -79,71 +79,61 @@ RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay::
 	end
 
 RustboroCity_DevonCorp_1F_Text_WelcomeToDevonCorp:
-	.string "Hallo und Willkommen in der\n"
-	.string "DEVON CORPORATION.\p"
-	.string "Wir sind die stolzen Entwickler von\n"
-	.string "Medizin und Items, die das Leben\l"
-	.string "bereichern.$"
+	.string "Willkommen bei DEVON CORPORATION!\n"
+	.string "Die Firma für alles, was das\l"
+	.string "Leben besser macht.\p"
+    .string "Medizin, Items, Technik - wir ent-\n"
+	.string "wickeln, was dein Abenteuer beflügelt.$"
 
 RustboroCity_DevonCorp_1F_Text_StaffGotRobbed:
-	.string "Einem Mitglied unseres Forschungsteams\n"
-	.string "ist blöderweise ein wichtiges Paket\l"
-	.string "gestohlen worden.$"
+	.string "Puh... Eines unserer Forscherteams wurde\n"
+	.string "tatsächlich beklaut.\p"
+    .string "Voll peinlich, ehrlich gesagt.$"
 
 RustboroCity_DevonCorp_1F_Text_ThoseShoesAreOurProduct:
-	.string "Hey, diese TURBOTRETER!\n"
-	.string "Die haben wir auch entwickelt!\p"
-	.string "Ich freue mich immer, wenn ich jemanden\n"
-	.string "treffe, der eines unserer Produkte\l"
-	.string "benutzt.$"
+	.string "Whoa, du hast die TURBOTRETER an?!\n"
+	.string "Die stammen aus unserem Labor!\p"
+	.string "Es ist immer cool zu sehen, wenn\n"
+	.string "unsere Erfindungen im Einsatz sind.$"
 
 RustboroCity_DevonCorp_1F_Text_RobberWasntVeryBright:
-	.string "Das gestohlene Paket...\p"
-	.string "Nun, es ist natürlich sehr wichtig, aber\n"
-	.string "mit dem Inhalt kann niemand etwas\l"
-	.string "anfangen.\p"
-	.string "Meiner Einschätzung nach ist der Dieb\n"
-	.string "wirklich nicht sehr schlau gewesen...$"
+	.string "Das geklaute Paket?\p"
+	.string "Klar, das war wichtig - aber damit anfangen\n"
+	.string "kann der Dieb nix ohne die Anleitung.\p"
+	.string "Ehrlich gesagt... der war nicht gerade\n"
+	.string "die hellste Kerze auf der Torte.$"
 
 RustboroCity_DevonCorp_1F_Text_SoundsLikeStolenGoodsRecovered:
-	.string "Klingt, als hätten wir die gestohlenen\n"
-	.string "DEVON-WAREN zurückerhalten.$"
+	.string "Na das klingt doch gut!\n"
+	.string "Unsere DEVON-WAREN sind wieder zurück.$"
 
 RustboroCity_DevonCorp_1F_Text_OnlyAuthorizedPeopleEnter:
-	.string "Tut mir Leid, aber nur autorisierte\n"
-	.string "Personen haben hier Zutritt.$"
+	.string "Sorry, hier ist Schluss.\n"
+	.string "Zutritt nur mit DEVON-Ausweis.$"
 
 RustboroCity_DevonCorp_1F_Text_HowCouldWeGetRobbed:
-	.string "Das ist mehr als blöd.\n"
-	.string "Wie konnten wir nur ausgeraubt werden?$"
+	.string "Echt jetzt… Wie konnte das passieren?\n"
+	.string "Wir bauen Hightech, aber werden beklaut.$"
 
 RustboroCity_DevonCorp_1F_Text_YoureAlwaysWelcomeHere:
-	.string "Hi, du da!\n"
-	.string "Du bist hier jederzeit willkommen!$"
+	.string "Hey, schön dich wiederzusehen!\n"
+	.string "Komm jederzeit vorbei!$"
 
 RustboroCity_DevonCorp_1F_Text_RocksMetalDisplay:
-	.string "Proben von Steinen und Metall sind\n"
-	.string "in der Glasvitrine ausgestellt.\p"
-	.string "Es gibt eine Tafel mit einigen\n"
-	.string "Schriftzeichen darauf…\p"
-	.string "“Die DEVON CORPORATION begann als\n"
-	.string "Hersteller von Steinen aus Steinbrüchen.\p"
-	.string "“Das Unternehmen stellte auch Eisen aus\n"
-	.string "Feilspänen im Sand her.\p"
-	.string "“Von diesem bescheidenen Beginn als\n"
-	.string "Hersteller von Rohstoffen hat sich DEVON\l"
-	.string "entwickelt.\p"
-	.string "“DEVON ist heute ein Hersteller einer\n"
-	.string "breiten Palette von Industrieprodukten.”$"
+	.string "In der Vitrine funkeln alte Gesteins- und\n"
+	.string "Metallproben. Eine Tafel erklärt alles…\p"
+	.string "“DEVON startete klein - mit Steinen aus\n"
+	.string "Steinbrüchen und Metall aus\l"
+    .string "Sandfeilspänen.\p"
+	.string "“Heute liefern wir alles: von Hightech-Zeug\n"
+	.string "bis zu coolen Tools für Trainer.$"
 
 RustboroCity_DevonCorp_1F_Text_ProductDisplay:
-	.string "Prototypen und Testprodukte füllen\n"
-	.string "die Glasvitrine.\p"
-	.string "Es gibt eine Tafel mit einer Beschreibung darauf…\p"
-	.string "“Zusätzlich zu Industrieprodukten vertreibt\n"
-	.string "DEVON jetzt auch Kleinigkeiten und\l"
-	.string "Pharmazeutika für ein besseres Leben.\p"
-	.string "“In letzter Zeit hat DEVON begonnen, Werkzeuge\n"
-	.string "für POKéMON-TRAINER zu vermarkten,\l"
-	.string "darunter POKéBÄLLE und POKéNAV-Systeme.”$"
+	.string "Die Glasvitrine ist voll mit Geräten,\n"
+	.string "die nach Zukunft aussehen.\p"
+	.string "Eine Infotafel erklärt:\p"
+	.string "“Neben Industrieprodukten stellt DEVON\n"
+	.string "jetzt auch Trainer-Gadgets her.\p"
+	.string "“Zum Beispiel POKéBÄLLE und POKéNAVs -\n"
+	.string "alles, was dein Abenteuer braucht.”$"
 

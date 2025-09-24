@@ -411,7 +411,7 @@ DewfordTown_Gym_Text_RegisteredBrawly:
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
 	.string "Du wirst mal wie eine große Welle\n"
-	.string "sein - mitreißend, beeindruckend,\n"
+	.string "sein - mitreißend, beeindruckend,\l"
 	.string "unausweichlich für jeden TRAINER.$"
 
 DewfordTown_Gym_Text_GymStatue:

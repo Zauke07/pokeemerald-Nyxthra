@@ -53,43 +53,41 @@ PetalburgCity_PokemonCenter_1F_EventScript_SayMudkipType::
 	return
 
 PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
-	.string "Computerbasiertes POKéMON-Lagerungs-\n"
-	.string "System…\p"
-	.string "Wer auch immer dies entwickelt hat,\n"
-	.string "muss ein wahrer Zauberer sein!$"
+	.string "Pokémon-Lagerung per PC…\n"
+	.string "Irgendwer hat das mal programmiert.\p"
+	.string "Der Typ muss ein Hexer sein.\n"
+	.string "Oder einfach komplett arbeitslos.$"
 
 PetalburgCity_PokemonCenter_1F_Text_OranBerryRegainedHP:
-	.string "Als mein POKéMON eine SINELBEERE\n"
-	.string "aß, wurden seine KP aufgefüllt!$"
+	.string "Mein Pokémon hat 'ne Sinelbeere gefressen -\n"
+	.string "zack, HP voll. Einfach magisch.\l"
+	.string "Ich hab dann auch eine gegessen.\n"
+	.string "War... enttäuschend.$"
 
 PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
-	.string "Es gibt viele Typen von POKéMON.\p"
-	.string "Jeder Typ hat seine Stärken und\n"
-	.string "Schwächen gegenüber anderen Typen.\p"
-	.string "Je nach Typ des POKéMON kann der\n"
-	.string "Kampf leicht oder schwer sein.$"
+	.string "Es gibt so viele Pokémon-Typen, ey...\p"
+	.string "Feuer, Wasser, Psycho, Drache,\n"
+	.string "Feenstaub, Matsch, irgendwas.\p"
+	.string "Ich google die Schwächen eh jedes Mal.\n"
+	.string "Merkt sich doch kein Mensch.$"
+
 
 PetalburgCity_PokemonCenter_1F_Text_TreeckoIsGrassType:
-	.string "Dein GECKARBOR ist beispielsweise ein\n"
-	.string "PFLANZEN-Typ.\p"
-	.string "Es ist stark gegenüber dem WASSER-\n"
-	.string "und BODEN-Typ.\p"
-	.string "Aber es ist schwach gegenüber den\n"
-	.string "FEUER-POKéMON.$"
+	.string "Dein Geckarbor ist vom Typ Pflanze.\p"
+	.string "Stark gegen Wasser und Boden -\n"
+	.string "außer du vergisst, es zu trainieren.\p"
+	.string "Aber gegen Feuer? Tja… RIP.$"
 
 PetalburgCity_PokemonCenter_1F_Text_TorchicIsFireType:
-	.string "Dein FLEMMLI ist beispielsweise ein\n"
-	.string "FEUER-Typ.\p"
-	.string "Es ist stark gegenüber dem PFLANZEN-\n"
-	.string "und KÄFER-Typ.\p"
-	.string "Aber es ist schwach gegenüber den\n"
-	.string "WASSER-POKéMON.$"
+	.string "Flemmli = Feuer-Typ.\p"
+	.string "Heiß. Effektiv gegen Pflanzen und Käfer.\p"
+	.string "Aber wehe, es sieht Wasser -\n"
+	.string "dann geht’s baden. Im wahrsten Sinne.$"
 
 PetalburgCity_PokemonCenter_1F_Text_MudkipIsWaterType:
-	.string "Dein HYDROPI ist beispielsweise ein\n"
-	.string "WASSER-Typ.\p"
-	.string "Es ist stark gegenüber dem FEUER-Typ.\p"
-	.string "Aber es ist schwach gegenüber den\n"
-	.string "PFLANZEN- und ELEKTRO-POKéMON.$"
+	.string "Hydropi ist ein Wasser-Typ.\p"
+	.string "Gut gegen Feuer, schlecht gegen Strom.\n"
+	.string "Also bloß kein Blitzableiter spielen.$"
+
 
 

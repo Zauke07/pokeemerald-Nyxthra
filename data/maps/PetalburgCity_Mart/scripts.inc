@@ -62,19 +62,31 @@ PetalburgCity_Mart_EventScript_Man::
 	msgbox PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou, MSGBOX_NPC
 	end
 
+PetalburgCity_Mart_EventScript_JokeNpc::
+    setvar VAR_JOKE_NPC_INDEX, 1
+    call JokeNpc_EventScript_Main
+    end
+
+
 PetalburgCity_Mart_Text_WeakWillGrowStronger:
-	.string "Auch wenn ein POKéMON jetzt noch\n"
-	.string "schwach ist - es wird ständig stärker.\p"
-	.string "Das Schlüsselwort heißt Liebe!\n"
-	.string "Liebe für deine POKéMON!$"
+	.string "Jedes Pokémon wird mal stärker...\n"
+	.string "Wenn du's nicht vorher aus Versehen\l"
+	.string "tauschst, vergisst oder abspeicherst.\p"
+	.string "Ich sag nur: “Level 5 mit Liebe”...\n"
+	.string "Aber wenn’s schwach bleibt, ist halt Müll.$"
 
 PetalburgCity_Mart_Text_RepelIsUseful:
-	.string "Setzt du SCHUTZ ein?\n"
-	.string "Das hält POKéMON fern und ist sehr\l"
-	.string "nützlich, wenn du es eilig hast.$"
+	.string "Schutz? Klar benutz ich den.\n"
+	.string "Wie soll ich sonst den ganzen Zickzacks\l"
+	.string "aus dem Weg gehen?!\p"
+	.string "Aber gestern... wurde mein Schutz\n"
+	.string "geklaut. Von so nem Typ in Schwarz.\p"
+	.string "Der hat einfach gelacht und war weg.\n"
+	.string "Ich sag nur: komische Zeiten.$"
 
 PetalburgCity_Mart_Text_TakeSomeAntidotesWithYou:
-	.string "Hast du etwas GEGENGIFT dabei?\p"
-	.string "Ein vergiftetes POKéMON verliert\n"
-	.string "ständig KP, bis es kampfunfähig wird.\l"
-	.string "Halte deshalb stets GEGENGIFT bereit!$"
+	.string "Ich nehm immer Gegengift mit.\n"
+	.string "Weil ich weiß: Das Leben vergiftet dich.\p"
+	.string "Oder dein Pikachu. Kommt drauf an.\n"
+	.string "Beides tut weh, Bro.$"
+

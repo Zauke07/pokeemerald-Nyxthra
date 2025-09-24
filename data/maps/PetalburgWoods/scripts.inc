@@ -91,12 +91,10 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	giveitem ITEM_GREAT_BALL
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
-	end
 
 PetalburgWoods_EventScript_BagFull::
 	msgbox PetalburgWoods_Text_YoureLoadedWithItems, MSGBOX_DEFAULT
 	goto PetalburgWoods_EventScript_DevonResearcherFinish
-	end
 
 PetalburgWoods_EventScript_DevonResearcherFinish::
 	msgbox PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro, MSGBOX_DEFAULT
@@ -316,180 +314,164 @@ PetalburgWoods_EventScript_JamesRematch::
 	end
 
 PetalburgWoods_Text_NotAOneToBeFound:
-	.string "Hmmm…\n"
-	.string "Kein Einziges zu finden.$"
+	.string "Hmm…\n"
+	.string "Nicht ein einziges Knilz weit und breit.$"
 
 PetalburgWoods_Text_HaveYouSeenShroomish:
-	.string "Hallo, du hast nicht zufällig einige\n"
-	.string "POKéMON namens KNILZ hier\p"
-	.string "gesehen? Ich liebe diese POKéMON.$"
+	.string "Hey… hast du hier irgendwo\n"
+	.string "KNILZ gesehen? Ich LIEBE Knilz!\p"
+	.string "Ich würd sogar mein Team dafür\l"
+	.string "rausschmeißen.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
-	.string "Ich wollte dich eigentlich aus dem\n"
-	.string "Hinterhalt angreifen, aber du trödelst\l"
-	.string "wohl auf ewig im BLÜTENBURGWALD\l"
-	.string "herum, oder?\p"
-	.string "Das Warten machte mich ganz krank.\n"
-	.string "Also, hier bin ich.$"
+	.string "Ich wollte dich eigentlich überfallen…\n"
+	.string "Aber du bummelst hier ewig rum.\p"
+	.string "Hab schon fast Moos angesetzt.\n"
+	.string "Na los - Kampfzeit!$"
 
 PetalburgWoods_Text_HandOverThosePapers:
-	.string "He, du! FORSCHER von DEVON!\p"
-	.string "Gib sofort die Papiere her!$"
+	.string "He, du da! Du bist doch von DEVON, oder?!\p"
+	.string "Rück die Unterlagen raus. Sofort!$"
 
 PetalburgWoods_Text_YouHaveToHelpMe:
-	.string "Attackeee!\p"
-	.string "Du bist ein POKéMON-TRAINER, oder?\n"
-	.string "Du musst mir bitte helfen!$"
+	.string "Aaaaaah!\p"
+	.string "Du bist doch Trainer, oder?!\n"
+	.string "Hilf mir, bevor er mich wegbeißt!$"
 
 PetalburgWoods_Text_NoOneCrossesTeamAqua:
-	.string "Huch. Was machst du da eigentlich???\n"
-	.string "Was?!? Du schützt ihn???\p"
-	.string "Niemand, der sich TEAM AQUA in den Weg\n"
-	.string "stellt, kann auf Gnade hoffen. Niemand!\p"
-	.string "Los, kämpfe gegen mich!$"
+	.string "Was soll das?!\n"
+	.string "Du stellst dich zwischen mich und\l"
+	.string "mein Ziel?\p"
+	.string "Niemand legt sich mit TEAM AQUA an\n"
+	.string "und kommt ungeschoren davon!\p"
+	.string "Na warte!$"
 
 PetalburgWoods_Text_YoureKiddingMe:
-	.string "Du hast mich geleimt! Du bist stark!$"
+	.string "Was zum…?!\n"
+	.string "Du bist echt stark! Das war fies!$"
 
 PetalburgWoods_Text_YouveGotSomeNerve:
-	.string "Grrr… Du hast vielleicht Nerven, dich\n"
-	.string "mit TEAM AQUA anzulegen!\l"
-	.string "Los, kämpfen wir noch einmal!\p"
-	.string "Hm, das würde ich jetzt zu gerne sagen,\n"
-	.string "aber ich habe keine POKéMON mehr…\p"
-	.string "Außerdem sind wir, TEAM AQUA, auf dem\n"
-	.string "Weg nach METAROST CITY.\p"
-	.string "Für heute lasse ich dich gehen.$"
+	.string "Tch! Ganz schön frech, dich gegen\n"
+	.string "TEAM AQUA zu stellen!\p"
+	.string "Ich würde ja gern noch mal kämpfen,\n"
+	.string "aber mir sind die Pokémon ausgegangen…\p"
+	.string "Wir haben in METAROST noch was zu tun.\n"
+	.string "Du hast Glück gehabt - diesmal.$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
-	.string "Huuuh…\n"
-	.string "Das war aber mehr als knapp!\p"
-	.string "Dank dir konnte er mir diese\n"
-	.string "wichtigen Papiere nicht rauben.\p"
-	.string "Ich weiß! Ich gebe dir diesen\n"
-	.string "SUPERBALL als Dankeschön!$"
+	.string "Puh… Das war mehr als knapp!\p"
+	.string "Danke dir, sonst wär ich jetzt\l"
+	.string "papierlos.\p"
+	.string "Hier - nimm diesen SUPERBALL\n"
+	.string "als kleines Dankeschön!$"
 
 PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
-	.string "Hat dieser Schuft von TEAM AQUA nicht\n"
-	.string "gesagt, dass sie irgendetwas in\l"
-	.string "METAROST CITY erledigen wollen?$"
+	.string "Der Typ von TEAM AQUA meinte doch,\n"
+	.string "sie haben noch was in METAROST vor.$"
 
 PetalburgWoods_Text_ICantBeWastingTime:
-	.string "Oh oh! Das ist ein Notfall!\n"
-	.string "Ich darf keine Zeit verlieren!$"
+	.string "Oh Mist, keine Zeit!\n"
+	.string "Kaffepause gestrichen, das ist\l"
+	.string "ein Notfall.\p"
 
 PetalburgWoods_Text_YoureLoadedWithItems:
-	.string "Du bist mit Items überfrachtet.\n"
-	.string "Ich kann dir den SUPERBALL nicht geben.$"
+	.string "Dein Beutel platzt gleich! Ich kann\n"
+	.string "dir den SUPERBALL nicht geben.$"
 
 PetalburgWoods_Text_GoBugPokemonTeam:
-	.string "Ich habe eine Menge POKéMON gefangen!\p"
-	.string "Los, los, los!\n"
-	.string "Mein KÄFER-POKéMON-Team!$"
+	.string "Ich hab mir voll viele Pokémon gefangen!\p"
+	.string "Jetzt: Käfer-Power! GO, mein Team!$"
 
 PetalburgWoods_Text_ICouldntWin:
-	.string "Ich habe all diese POKéMON, aber ich\n"
-	.string "konnte doch nicht gewinnen…$"
+	.string "So viele Käfer… und trotzdem verloren.\n"
+	.string "Das war nicht der Plan.$"
 
 PetalburgWoods_Text_ImOutOfPokeBalls:
-	.string "Ich habe eine Menge POKéMON gefangen.\n"
-	.string "Nun habe ich keine POKéBÄLLe mehr.$"
+	.string "Ich hab so viel gefangen, jetzt hab\n"
+	.string "ich keine Bälle mehr übrig. Hmpf.$"
 
 PetalburgWoods_Text_InstantlyPopularWithBugPokemon:
-	.string "Wenn du ein KÄFER-POKéMON mit zur\n"
-	.string "Schule bringst, bist du sofort beliebt.$"
+	.string "Bring ein Käfer-Pokémon mit zur Schule,\n"
+	.string "und du bist sofort der King.$"
 
 PetalburgWoods_Text_CantBePopularIfILose:
-	.string "Wenn ich verliere, kann ich nicht\n"
-	.string "beliebt werden.$"
+	.string "Wenn ich verliere…\n"
+	.string "Bin ich dann uncool?$"
 
 PetalburgWoods_Text_PeopleRespectYou:
-	.string "Hast du ein großes KÄFER-POKéMON,\n"
-	.string "werden die Leute dich respektieren.$"
+	.string "Große Käfer-Pokémon = Respekt.\n"
+	.string "So läuft das hier.$"
 
 PetalburgWoods_Text_IWantRematch1:
-	.string "Ich möchte wieder kämpfen, wenn meine\n"
-	.string "KÄFER-POKéMON stärker geworden sind.\p"
-	.string "Ich trage dich in meinen POKéNAV ein.$"
+	.string "Wenn meine Käfer stärker werden,\n"
+	.string "will ich Revanche!\p"
+	.string "Ich speicher dich im PokéNav.$"
 
 PetalburgWoods_Text_IWantRematch2:
-	.string "Ich möchte wieder kämpfen, wenn meine\n"
-	.string "KÄFER-POKéMON stärker geworden sind.\p"
-	.string "Ich trage dich in meinen POKéNAV ein.$"
+	.string "Wenn meine Käfer stärker werden,\n"
+	.string "will ich Revanche!\p"
+	.string "Ich speicher dich im PokéNav.$"
 
 PetalburgWoods_Text_MyPokemonHaveGrown:
-	.string "Meine KÄFER-POKéMON sind gewachsen.\n"
-	.string "Ich werde wieder beliebt sein.$"
+	.string "Meine Käfer sind gewachsen.\n"
+	.string "Jetzt darf ich wieder mitreden.$"
 
 PetalburgWoods_Text_CantBePopularIfLose:
-	.string "Ich werde nie beliebt, wenn ich\n"
-	.string "immer verliere.$"
+	.string "Niemand mag Verlierer.\n"
+	.string "Und ich verliere dauernd…$"
 
 PetalburgWoods_Text_IveBeenTrainingHard:
-	.string "Du wirst beliebt, wenn du starke\n"
-	.string "POKéMON besitzt, oder?\l"
-	.string "Daher trainiere ich bis zum Umfallen.$"
+	.string "Starke Pokémon = Beliebtheit.\n"
+	.string "Also trainier ich bis zur Ohnmacht.$"
 
 PetalburgWoods_Text_StayOutOfTallGrass:
-	.string "Hey, du!\n"
-	.string "Geht es deinen POKéMON gut?\p"
-	.string "Wenn deine POKéMON schwach sind und\n"
-	.string "du Kämpfe vermeiden willst, solltest du\l"
-	.string "dich von hohem Gras fernhalten.$"
+	.string "Hey du!\n"
+	.string "Sind deine Pokémon fit?\p"
+	.string "Wenn nicht, bleib aus dem hohen Gras,\n"
+	.string "sonst gibts Stress mit wilden Monstern.$"
 
 PetalburgWoods_Text_HiddenItemsExplanation:
-	.string "Manchmal liegen auf dem Boden Dinge,\n"
-	.string "die einem auf Anhieb gar nicht\l"
-	.string "auffallen.\p"
-	.string "Daher schaue ich mich bei jedem Schritt\n"
-	.string "sorgfältig um.$"
+	.string "Manchmal liegen Items am Boden,\n"
+	.string "ohne dass man sie sieht.\p"
+	.string "Ich taste hier jeden Schritt ab,\n"
+	.string "wie ein Psychopath auf Schatzsuche.$"
 
 PetalburgWoods_Text_TryUsingThisItem:
-	.string "Oh, hübsch! Das ist der ORDEN\n"
-	.string "der ARENA in METAROST CITY!\p"
-	.string "Du siehst wie ein TRAINER aus. Dann\n"
-	.string "musst du dieses Item ausprobieren.$"
+	.string "Oh nice - der Orden aus METAROST!\p"
+	.string "Dann probier doch dieses Item aus -\n"
+	.string "ist ganz nützlich, glaub mir.$"
 
 PetalburgWoods_Text_MiracleSeedExplanation:
 	.string "Das ist WUNDERSAAT.\n"
-	.string "Wenn ein POKéMON sie trägt, werden\l"
-	.string "die PFLANZEN-Attacken stärker.\p"
-	.string "Neben der WUNDERSAAT gibt es bestimmt\n"
-	.string "noch andere nützliche Items, die von\l"
-	.string "POKéMON getragen werden können.$"
+	.string "Damit macht dein Pflanzen-Pokémon\n"
+	.string "richtig Alarm!\p"
+	.string "Es gibt viele Items, die Pokémon\n"
+	.string "tragen können. Versuch mal was aus!$"
 
 PetalburgWoods_Text_TrainerTipsExperience:
 	.string "TIPPS für TRAINER\p"
-	.string "Jedes POKéMON, das am Kampf teilnimmt,\n"
-	.string "erhält ERFAHRUNGSPUNKTE, auch wenn es\l"
-	.string "nur ganz kurz dabei ist.\p"
-	.string "Setze eines deiner schwachen POKéMON\n"
-	.string "daher an die Spitze der Liste.\p"
-	.string "Sobald der Kampf beginnt, wechselst du\n"
-	.string "es aus. Es wird E-Punkte bekommen und\l"
-	.string "bleibt trotzdem immer unbeschadet.$"
+	.string "Jedes Pokémon im Kampf bekommt\n"
+	.string "EP - auch wenn es nur kurz dabei war.\p"
+	.string "Setz ein schwaches Pokémon an die Spitze,\n"
+	.string "wechsel es sofort aus - easy EP.$"
 
 PetalburgWoods_Text_TrainerTipsPP:
 	.string "TIPPS für TRAINER\p"
-	.string "Neben den Kraftpunkten (KP) besitzt\n"
-	.string "ein POKéMON auch Angriffspunkte (AP),\l"
-	.string "die für die Attacken im Kampf gebraucht\l"
-	.string "werden.\p"
-	.string "Wenn ein POKéMON keine AP mehr besitzt,\n"
-	.string "muss es in ein POKéMON-CENTER gebracht\l"
-	.string "werden.$"
+	.string "Attacken verbrauchen AP - wenn die weg\n"
+	.string "sind, ist’s Zeit fürs Pokémon-CENTER.\p"
+	.string "Vergiss das nie. Ohne AP keine Action!$"
 
 PetalburgWoods_EventScript_Endivie::
-    msgbox PetalburgWoods_Text_Endivie, MSGBOX_NPC
-    end
+	msgbox PetalburgWoods_Text_Endivie, MSGBOX_NPC
+	end
 
 PetalburgWoods_Text_Endivie:
-    .string "Hey {PLAYER}, ich bin ein\n"
+	.string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 2 Generation mit\l"

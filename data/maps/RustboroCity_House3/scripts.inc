@@ -21,18 +21,16 @@ RustboroCity_House3_EventScript_Pekachu::
 	end
 
 RustboroCity_House3_Text_IGivePerfectlySuitedNicknames:
-	.string "Meinen eigenen POKéMON habe ich\n"
-	.string "perfekt passende Kosenamen gegeben!\p"
-	.string "Das ist mein Ausdruck von... äh...\n"
-	.string "Originalität. Genau! Originalität!$"
+	.string "Ich finde, ein KOSENAME sollte perfekt\n"
+	.string "zum POKéMON passen!\p"
+	.string "Das ist meine Art, meine Kreativität\n"
+	.string "auszudrücken. Oder so ähnlich.$"
 
 RustboroCity_House3_Text_NamingPikachuPekachu:
-	.string "Aber ein PIKACHU einfach Hurensohn zu\n"
-	.string "nennen? Das haut einen nicht gerade\l"
-	.string "vom Hocker.\p"
-	.string "Ich glaube ja auch, man sollte einen\n"
-	.string "leicht verständlichen Kosenamen wählen,\l"
-	.string "aber irgendwie...$"
+	.string "Aber ein PIKACHU einfach “Hurensohn”\n"
+	.string "zu nennen…? Hm.\p"
+	.string "Ich mein, jeder merkt sich den Namen,\n"
+	.string "aber stilvoll ist das nicht gerade…$"
 
 RustboroCity_House3_Text_Pekachu:
 	.string "Hurensohn: Peka!$"

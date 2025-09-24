@@ -171,7 +171,25 @@ RustboroCity_DevonCorp_3F_EventScript_GiveExpShare::
 	end
 
 RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterFavor::
+	goto_if_eq VAR_ROCKET_STATE, 2, RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterRocketReveal
+	goto_if_eq VAR_ROCKET_STATE, 1, RustboroCity_DevonCorp_3F_EventScript_MrStoneMentionsRocket
 	msgbox RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+RustboroCity_DevonCorp_3F_EventScript_MrStoneMentionsRocket::
+	msgbox RustboroCity_DevonCorp_3F_Text_TrummMentionsRocket, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	release
+	end
+
+RustboroCity_DevonCorp_3F_EventScript_MrStoneAfterRocketReveal::
+	msgbox RustboroCity_DevonCorp_3F_Text_TrummAfterRocketReveal, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -196,118 +214,128 @@ RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay::
 	end
 
 RustboroCity_DevonCorp_3F_Text_MrStoneIHaveFavor:
-	.string "Ich bin MR. TRUMM, der PRÄSIDENT der\n"
-	.string "DEVON CORPORATION.\p"
-	.string "Ich muss etwas mit dir besprechen!\p"
-	.string "Du hast unseren Mitarbeitern nicht\n"
-	.string "nur einmal, sondern zweimal aus\l"
-	.string "der Klemme geholfen!\p"
-	.string "Du bist so außergewöhnlich, dass ich\n"
-	.string "dich gerne um einen Gefallen\l"
-	.string "bitten möchte.\p"
-	.string "Ich weiß, dass du ein Paket zur WERFT in\n"
-	.string "GRAPHITPORT CITY bringen willst.\p"
-	.string "Könntest du auf dem Weg nicht\n"
-	.string "auch in FAUSTAUHAVEN Halt machen?\p"
-	.string "Und TROY in FAUSTAUHAVEN einen BRIEF\n"
-	.string "von mir überbringen?$"
+	.string "Ich bin MR. TRUMM - CEO, Visionär,\n"
+	.string "Patriarch der DEVON CORPORATION.\p"
+	.string "Wir müssen reden.\n"
+	.string "Wichtig. Weltrettung vielleicht.\p"
+	.string "Du hast unseren Angestellten gleich\n"
+	.string "zweimal aus der Patsche geholfen -\l"
+	.string "und das ohne Bonuszahlung!\p"
+	.string "Deshalb: Ich hab da ein Jobangebot für\n"
+	.string "dich. Nein - eine Mission!\p"
+	.string "Du willst ja sowieso zur WERFT nach\n"
+	.string "GRAPHITPORT CITY, korrekt?\p"
+	.string "Mach doch 'nen Zwischenstopp in\n"
+	.string "FAUSTAUHAVEN und übergib TROY diesen\l"
+	.string "handgeschriebenen, offiziellen BRIEF.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
-	.string "MR. TRUMM: Nun, du sollst wissen, dass\n"
-	.string "ich ein einflussreicher PRÄSIDENT bin.\p"
-	.string "Und daher würde ich dich nie um einen\n"
-	.string "Gefallen bitten, ohne eine\l"
-	.string "Gegenleistung zu erbringen!\p"
-	.string "Deshalb möchte ich dir dies hier geben.$"
+	.string "MR. TRUMM: Ich bin reich, mächtig und\n"
+	.string "unglaublich großzügig.\p"
+	.string "Natürlich bekommst du auch was für\n"
+	.string "deinen Dienst am Fortschritt.\p"
+	.string "Hier, fang - bevor meine Assistentin\n"
+	.string "merkt, dass ich Dinge verschenke.$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} erhält den POKéNAV.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
 	.string "MR. TRUMM: Dieses Gerät...\p"
-	.string "Es ist ein POKéMON NAVIGATOR - oder\n"
-	.string "kurz ein POKéNAV.\p"
-	.string "Ein unentbehrliches Hilfsmittel für\n"
-	.string "jeden TRAINER auf Abenteuerreise.\p"
-	.string "Er enthält die Karte von HOENN.\p"
-	.string "So kannst du ganz leicht herausfinden,\n"
-	.string "wo die Orte FAUSTAUHAVEN und\l"
-	.string "GRAPHITPORT CITY liegen.$"
-	.string "Übrigens habe ich gehört, dass finstere\n"
-	.string "Verbrecher -- MAGMA und AQUA, glaube ich --\l"
-	.string "überall Ärger gemacht haben.\p"
-	.string "ch denke, es wäre am besten, wenn du dich\n"
-	.string "ausruhst, bevor du weitergehst.$"
+	.string "Es ist ein POKéMON NAVIGATOR - oder kurz:\n"
+	.string "POKéNAV. Entwickelt hier bei DEVON.\p"
+	.string "Ich denke, du wirst ihn brauchen.\n"
+	.string "Die Dinge draußen sind... unruhig.\p"
+	.string "Nicht nur MAGMA oder AQUA treiben sich\n"
+	.string "herum. Es gibt... andere Gruppen.\p"
+	.string "Namenlose, oder solche, die man besser\n"
+	.string "nicht laut ausspricht.\p"
+	.string "Du wirst verstehen, was ich meine,\n"
+	.string "wenn du weiter reist.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare:
-	.string "MR. TRUMM: Nun, dann, {PLAYER}{KUN},\n"
-	.string "gehe mit Vorsicht und Sorgfalt!$"
+	.string "MR. TRUMM: Geh mit Bedacht, {PLAYER}{KUN}.\n"
+	.string "Und versau mein Firmenimage nicht!$"
 
 RustboroCity_DevonCorp_3F_Text_CountingOnYou:
-	.string "MR. TRUMM: Ich verlasse mich auf dich!$"
+	.string "MR. TRUMM: Ich zähle auf dich.\n"
+	.string "Oder wie wir hier sagen:\l"
+	.string "Du wurdest gerade outsourced.$"
 
 RustboroCity_DevonCorp_3F_Text_ThankYouForDeliveringLetter:
-	.string "MR. TRUMM: Du hast meinen BRIEF\n"
-	.string "überbracht? Herzlichen Dank!\p"
-	.string "Dies ist ein Dankeschön von mir.\n"
-	.string "Es wird dir als TRAINER sicher helfen.$"
+	.string "MR. TRUMM: Der BRIEF kam an?\n"
+	.string "Du bist echt der Amazon Prime unter den\l"
+	.string "TRAINERN.\p"
+	.string "Hier, ein kleines Dankeschön von mir.$"
 
 RustboroCity_DevonCorp_3F_Text_ExplainExpShare:
-	.string "MR. TRUMM: Trägt ein POKéMON den EP-\n"
-	.string "TEILER, so erhält es in jedem Kampf\l"
-	.string "Erfahrungspunkte.\p"
-	.string "Auch wenn es gar nicht am Kampf\n"
-	.string "teilnimmt.\p"
-	.string "Ich würde sagen, der EP-TEILER ist sehr\n"
-	.string "nützlich, um schwache POKéMON aufzu-\l"
-	.string "ziehen.$"
+	.string "MR. TRUMM: Das hier ist der EP-TEILER.\n"
+	.string "Ein Gamechanger.\p"
+	.string "Damit kann dein faules POKéMON XP farmen,\n"
+	.string "ohne einen Finger zu krümmen.\p"
+	.string "Wie Homeoffice, aber für Monster.$"
 
 RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
-	.string "MR. TRUMM: Schon in meiner Jugend habe\n"
-	.string "ich mich voll auf die Arbeit\l"
-	.string "konzentriert.\p"
-	.string "Deshalb weiß ich auch nicht unbedingt,\n"
-	.string "was gerade im Trend liegt.\p"
-	.string "Wollen alle jungen Leute TRAINER in der\n"
-	.string "POKéMON LIGA werden?$"
+	.string "MR. TRUMM: Ich hab früher nur gearbeitet.\n"
+	.string "Keine Ahnung von TikTok oder Trends.\p"
+	.string "Alle Kids wollen wohl Liga-Champ werden?\n"
+	.string "Oder Influencer. Weiß man ja nicht.$"
 
 RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere:
-	.string "Dies ist die zweite Etage der DEVON\n"
-	.string "CORPORATION.\p"
-	.string "Hier befindet sich das BÜRO des\n"
-	.string "PRÄSIDENTEN.\p"
-	.string "Nun ja, ich kann dir gar nicht sagen, wie\n"
-	.string "dankbar ich dir für deine Taten bin.\p"
-	.string "Ähm... Äh, das Paket, das du uns\n"
-	.string "zurückgebracht hast...\p"
-	.string "Darf ich dich bitten, es zur WERFT\n"
-	.string "in GRAPHITPORT CITY zu bringen?\p"
-	.string "Es wäre fürchterlich, wenn es den\n"
-	.string "Dieben erneut in die Hände fallen würde.\p"
-	.string "Äh... Hehehe, also, äh, kann ich auch\n"
-	.string "dieses Mal wieder mit dir rechnen?\p"
-	.string "Ach, da fällt mir ein... Würdest du mich\n"
-	.string "einen Moment entschuldigen?$"
+	.string "Das hier ist der heilige Boden: Etage 2\n"
+	.string "- das Büro des großen MR. TRUMM.\p"
+	.string "Er will dir persönlich danken, also...\n"
+	.string "Zeig Respekt. Oder tu zumindest so.\p"
+	.string "Ach ja, das Paket, das du uns\n"
+	.string "zurückgebracht hast - kannst du\l"
+	.string "das bitte nach GRAPHITPORT CITY bringen?\p"
+	.string "Falls es nochmal geklaut wird, war alles\n"
+	.string "umsonst. Und das geht gar nicht!\p"
+	.string "Äh… Moment bitte, ich leite dich weiter.$"
 
 RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe:
-	.string "Unser PRÄSIDENT würde gerne kurz mit\n"
-	.string "dir sprechen.\p"
-	.string "Komm bitte mit mir.$"
+	.string "Unser PRÄSIDENT erwartet dich.\n"
+	.string "Zieh dir was Ordentliches an. Nur Spaß.\p"
+	.string "Komm mit.$"
 
 RustboroCity_DevonCorp_3F_Text_PleaseGoAhead:
-	.string "Bitte, hier entlang.$"
+	.string "Bitte, geh voran.\n"
+	.string "Er steht drauf, wenn Leute\n"
+    .string "ehrfürchtig wirken.$"
 
 RustboroCity_DevonCorp_3F_Text_VisitCaptSternShipyard:
-	.string "Wenn du die WERFT in GRAPHITPORT CITY\n"
-	.string "besuchst, solltest du mit KAPT. BRIGG\l"
-	.string "sprechen.$"
+	.string "Wenn du in GRAPHITPORT CITY bist,\n"
+	.string "such KAPT. BRIGG in der WERFT.\p"
+	.string "Großer Typ. Riecht nach Motoröl und Ehre.$"
 
 RustboroCity_DevonCorp_3F_Text_RepeatAndTimerHugelyPopular:
-	.string "DEVONS neue Produkte, der WIEDERBALL\n"
-	.string "und der TIMERBALL, sind mittlerweile\l"
-	.string "sehr populär unter den TRAINERN.$"
+	.string "WIEDERBALL und TIMERBALL - unsere\n"
+	.string "neusten Hits.\p"
+	.string "Beliebt bei TRAINERN, Sammlern und\n"
+	.string "Leuten, die zu oft verlieren.$"
 
 RustboroCity_DevonCorp_3F_Text_RareRocksDisplay:
-	.string "Eine Kollektion seltener Steine und\n"
-	.string "Mineralien - gesammelt vom PRÄSIDENTEN.$"
+	.string "Vitrine mit seltenen Steinen und\n"
+	.string "Mineralien.\p"
+	.string "Privatsammlung von MR. TRUMM.\n"
+	.string "(Er redet auch mit ihnen.)$"
+
+RustboroCity_DevonCorp_3F_Text_TrummMentionsRocket:
+	.string "In FAUSTAUHAVEN… Hast du dort etwas\n"
+	.string "gesehen? Schwarze Uniformen vielleicht?\p"
+	.string "Ich dachte, sie wären verschwunden. Aber\n"
+	.string "manche Schatten kehren immer zurück.\p"
+	.string "Wenn du mehr erfährst, komm zurück.\n"
+	.string "Und sei vorsichtig - Team ROCKET\l"
+	.string "spielt nach eigenen Regeln.$"
+
+RustboroCity_DevonCorp_3F_Text_TrummAfterRocketReveal:
+	.string "MR. TRUMM: Also stimmt es… Team ROCKET\n"
+	.string "ist wieder aktiv.\p"
+	.string "Ich hätte es wissen müssen - die Angriffe\n"
+	.string "auf unsere Transportschiffe…\p"
+	.string "Wenn du gegen sie kämpfen willst, brauchst\n"
+	.string "du mehr als Mut. Du brauchst Wissen.\p"
+	.string "Und du wirst es nicht von mir bekommen…\n"
+	.string "noch nicht.$"
 

@@ -10,12 +10,15 @@ OldaleTown_House2_EventScript_Man::
 	end
 
 OldaleTown_House2_Text_PokemonLevelUp:
-	.string "Während eines Kampfes können POKéMON\n"
-	.string "manchmal einen Level dazugewinnen und\l"
-	.string "stärker werden.$"
+	.string "POKéMON wachsen durch Kämpfe.\n"
+	.string "Manche verändern sich sogar komplett!\p"
+	.string "Einige Forscher glauben, es gäbe noch\n"
+	.string "weit seltenere Formen als Entwicklungen…$"
 
 OldaleTown_House2_Text_YoullGoFurtherWithStrongPokemon:
-	.string "Sobald deine Team-POKéMON stärker\n"
-	.string "geworden sind, kannst du auch andere\l"
-	.string "Orte bereisen.$"
+	.string "Wenn dein Team stark genug ist,\n"
+	.string "öffnen sich neue Wege.\p"
+	.string "Sogar abgelegene Orte wie die neue\n"
+	.string "Höhle nördlich von hier auf Route 103…$"
+
 
