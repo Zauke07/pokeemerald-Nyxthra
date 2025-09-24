@@ -10,7 +10,14 @@ DewfordTown_EventScript_Briney::
 	lock
 	faceplayer
 	goto_if_unset FLAG_DELIVERED_STEVEN_LETTER, DewfordTown_EventScript_ReturnToPetalburgPrompt
-	goto_if_set FLAG_ALPHA_PHASE_1_DONE, DewfordTown_EventScript_AlphaEndsHere
+	goto_if_set FLAG_BRINEY_BOAT_REPAIRED_MSG, DewfordTown_EventScript_Briney_OpenMenu
+	msgbox DewfordTown_Text_BrineyBoatRepaired, MSGBOX_DEFAULT
+	setflag FLAG_BRINEY_BOAT_REPAIRED_MSG
+	closemessage
+	goto DewfordTown_EventScript_Briney_OpenMenu
+	end
+
+DewfordTown_EventScript_Briney_OpenMenu::
 	message DewfordTown_Text_WhereAreWeBound
 	waitmessage
 	multichoicedefault 21, 6, MULTI_BRINEY_ON_DEWFORD, 2, FALSE
@@ -692,7 +699,7 @@ DewfordTown_Text_BrineyLandedInDewford:
 
 DewfordTown_Text_WhereAreWeBound:
 	.string "MR. BRACK: Sag an - wohin soll's gehen?\p"
-	.string "Ich fahr dich überall hin!$"
+	.string "Ich fahre dich überall hin!$"
 
 DewfordTown_Text_JustTellMeWhenYouNeedToSetSail:
 	.string "MR. BRACK: Rühr dich einfach,\n"
@@ -780,7 +787,7 @@ DewfordTown_Text_BrineyBoatBroken:
 	.string "hier erstmal nicht weg.$"
 
 DewfordTown_Text_PlayerAlphaOver:
-	.string "{PLAYER}: Hm...\p"
+	.string "{COLOR RED} {PLAYER}: Hm...\p"
 	.string "Ich glaube, das war's mit dieser Alpha.\n"
 	.string "Ich habe alles erledigt, was möglich war.\p"
 	.string "Jetzt heißt es warten, bis die nächste\n"
@@ -788,18 +795,9 @@ DewfordTown_Text_PlayerAlphaOver:
 	.string "Ich könnte die Höhle nochmal\n"
 	.string "erkundigen, ob ich etwas übersehen\l"
 	.string "habe, oder ob ich von dort aus wieder\n"
-	.string "zurück nach Metarost City komme.$"
+	.string "zurück nach Metarost City komme.{COLOR WHITE}$"
 
-TestTrainerScript::
-    trainerbattle_single TRAINER_LAURA, TestIntro, TestDefeat
-    msgbox TestAfter, MSGBOX_DEFAULT
-    end
-
-TestIntro::
-    .string "Test Intro.$"
-
-TestDefeat::
-    .string "Test Defeat.$"
-
-TestAfter::
-    .string "Nach dem Kampf.$"
+DewfordTown_Text_BrineyBoatRepaired:
+	.string "MR. BRACK: Aye! Der Motor läuft wieder.\n"
+	.string "Wir können jederzeit auslaufen!\p"
+	.string "Wohin soll's gehen?$"

@@ -96,7 +96,9 @@
     "Underwater_Route125",
     "SecretPetalburgWoods",
     "BabyBootCamp",
-    "Rival_Test"
+    "Rival_Test",
+    "Route111_01",
+    "Route111_02"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -308,7 +310,8 @@
   "gMapGroup_IndoorRoute111": [
     "Route111_WinstrateFamilysHouse",
     "Route111_OldLadysRestStop",
-    "Speicherort"
+    "Speicherort",
+    "Baustelle"
   ],
   "gMapGroup_IndoorRoute112": [
     "Route112_CableCarStation",
@@ -436,7 +439,10 @@
     "TerraCave_Entrance",
     "TerraCave_End",
     "AlteringCave",
-    "MeteorFalls_StevensCave"
+    "MeteorFalls_StevensCave",
+    "GraniteCave_B3F",
+    "GraniteCave_B4F",
+    "GraniteCave_B4F_2"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",
@@ -594,7 +600,8 @@
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",
-    "Route104_PrototypePrettyPetalFlowerShop"
+    "Route104_PrototypePrettyPetalFlowerShop",
+    "Route104_Prototype_2"
   ],
   "gMapGroup_IndoorRoute109": [
     "Route109_SeashoreHouse"

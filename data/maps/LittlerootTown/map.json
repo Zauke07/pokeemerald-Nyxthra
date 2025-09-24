@@ -197,13 +197,6 @@
       "elevation": 0,
       "dest_map": "MAP_TESTLABOR",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 22,
-      "y": 22,
-      "elevation": 0,
-      "dest_map": "MAP_DEWFORD_TOWN",
-      "dest_warp_id": "5"
     }
   ],
   "coord_events": [

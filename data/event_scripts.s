@@ -99,17 +99,17 @@ gSpecialVars::
 	.include "data/specials.inc"
 
 gStdScripts::
-	.4byte Std_ObtainItem              @ STD_OBTAIN_ITEM
-	.4byte Std_FindItem                @ STD_FIND_ITEM
-	.4byte Std_MsgboxNPC               @ MSGBOX_NPC
-	.4byte Std_MsgboxSign              @ MSGBOX_SIGN
-	.4byte Std_MsgboxDefault           @ MSGBOX_DEFAULT
-	.4byte Std_MsgboxYesNo             @ MSGBOX_YESNO
-	.4byte Std_MsgboxAutoclose         @ MSGBOX_AUTOCLOSE
-	.4byte Std_ObtainDecoration        @ STD_OBTAIN_DECORATION
+	.4byte Std_ObtainItem			  @ STD_OBTAIN_ITEM
+	.4byte Std_FindItem				@ STD_FIND_ITEM
+	.4byte Std_MsgboxNPC			   @ MSGBOX_NPC
+	.4byte Std_MsgboxSign			  @ MSGBOX_SIGN
+	.4byte Std_MsgboxDefault		   @ MSGBOX_DEFAULT
+	.4byte Std_MsgboxYesNo			 @ MSGBOX_YESNO
+	.4byte Std_MsgboxAutoclose		 @ MSGBOX_AUTOCLOSE
+	.4byte Std_ObtainDecoration		@ STD_OBTAIN_DECORATION
 	.4byte Std_RegisteredInMatchCall   @ STD_REGISTER_MATCH_CALL
-	.4byte Std_MsgboxGetPoints         @ MSGBOX_GETPOINTS
-	.4byte Std_MsgboxPokenav           @ MSGBOX_POKENAV
+	.4byte Std_MsgboxGetPoints		 @ MSGBOX_GETPOINTS
+	.4byte Std_MsgboxPokenav		   @ MSGBOX_POKENAV
 gStdScripts_End::
 
 	.include "data/maps/PetalburgCity/scripts.inc"
@@ -896,7 +896,7 @@ gText_MomOrDadMightLikeThisProgram::
 	.string "{STR_VAR_1} würde Prosieben gefallen.\p"
 	.string "Ich hätte schon bock auf Mitten im\n"
 	.string "Leben.\p"
-    .string "Ich beeile mich besser!$"
+	.string "Ich beeile mich besser!$"
 
 gText_WhichFloorWouldYouLike::
 	.string "Willkommen im SEEGRASULB CITY\n"
@@ -938,46 +938,46 @@ gText_PlayerWhitedOut::
 	.string "{PLAYER} wird ohnmächtig!$"
 
 gText_FirstShouldRestoreMonsHealth::
-    .string "Zuerst solltest du deine\n"
-    .string "POKéMON vollständig heilen.$"
+	.string "Zuerst solltest du deine\n"
+	.string "POKéMON vollständig heilen.$"
 
 gText_MonsHealedShouldBuyPotions::
-    .string "Deine POKéMON wurden geheilt\n"
-    .string "und sind wieder topfit.\p"
-    .string "Wenn die Energie, KP, deiner\n"
-    .string "POKéMON niedrig ist, komm bitte zu uns.\p"
-    .string "Wenn du planst, weit ins Feld zu gehen,\n"
-    .string "solltest du einige TRÄNKE im\l"
-    .string "POKéMON-MARKT kaufen.\p"
-    .string "Wir hoffen, dass du erfolgreich bist!$"
+	.string "Deine POKéMON wurden geheilt\n"
+	.string "und sind wieder topfit.\p"
+	.string "Wenn die Energie, KP, deiner\n"
+	.string "POKéMON niedrig ist, komm bitte zu uns.\p"
+	.string "Wenn du planst, weit ins Feld zu gehen,\n"
+	.string "solltest du einige TRÄNKE im\l"
+	.string "POKéMON-MARKT kaufen.\p"
+	.string "Wir hoffen, dass du erfolgreich bist!$"
 
 gText_MonsHealed::
-    .string "Deine POKéMON wurden geheilt\n"
-    .string "und sind wieder topfit.\p"
-    .string "Wir hoffen, dass du erfolgreich bist!$"
+	.string "Deine POKéMON wurden geheilt\n"
+	.string "und sind wieder topfit.\p"
+	.string "Wir hoffen, dass du erfolgreich bist!$"
 
 gText_HadQuiteAnExperienceTakeRest::
-    .string "MOM: {PLAYER}!\n"
-    .string "Willkommen zu Hause.\p"
-    .string "Es klingt, als hättest du eine\n"
-    .string "ganz schöne Erfahrung gemacht.\p"
-    .string "Vielleicht solltest du dich kurz\n"
-    .string "ausruhen.$"
+	.string "MOM: {PLAYER}!\n"
+	.string "Willkommen zu Hause.\p"
+	.string "Es klingt, als hättest du eine\n"
+	.string "ganz schöne Erfahrung gemacht.\p"
+	.string "Vielleicht solltest du dich kurz\n"
+	.string "ausruhen.$"
 
 gText_MomExplainHPGetPotions::
-    .string "MOM: Oh, gut! Du und deine\n"
-    .string "POKéMON sehen großartig aus.\p"
-    .string "Ich habe gerade von PROF. Birk gehört.\p"
-    .string "Er sagte, dass die Energie von POKéMON\n"
-    .string "in KP gemessen wird.\p"
-    .string "Wenn deine POKéMON ihre KP verlieren,\n"
-    .string "kannst du sie in jedem\l"
-    .string "POKéMON-CENTER wiederherstellen.\p"
-    .string "Wenn du weit reisen willst,\n"
-    .string "sollte ein kluger TRAINER sich mit\l"
-    .string "TRÄNKEN im POKéMON-MARKT eindecken.\p"
-    .string "Mach mich stolz, Schatz!\p"
-    .string "Pass auf dich auf!$"
+	.string "MOM: Oh, gut! Du und deine\n"
+	.string "POKéMON sehen großartig aus.\p"
+	.string "Ich habe gerade von PROF. Birk gehört.\p"
+	.string "Er sagte, dass die Energie von POKéMON\n"
+	.string "in KP gemessen wird.\p"
+	.string "Wenn deine POKéMON ihre KP verlieren,\n"
+	.string "kannst du sie in jedem\l"
+	.string "POKéMON-CENTER wiederherstellen.\p"
+	.string "Wenn du weit reisen willst,\n"
+	.string "sollte ein kluger TRAINER sich mit\l"
+	.string "TRÄNKEN im POKéMON-MARKT eindecken.\p"
+	.string "Mach mich stolz, Schatz!\p"
+	.string "Pass auf dich auf!$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "{STR_VAR_1} {STR_VAR_2} wurde(n) in\n"
@@ -1107,6 +1107,35 @@ EventScript_VsSeekerChargingDone::
 	releaseall
 	end
 
+JokeNpc_EventScript_Main::
+	lock
+	faceplayer
+	msgbox gJokeNpc_Text_Greeting, MSGBOX_DEFAULT
+	multichoice 22, 6, MULTI_JOKE_NPC, TRUE
+	switch VAR_RESULT
+	case 0, JokeNpc_EventScript_TellJoke1
+	case 1, JokeNpc_EventScript_TellJoke2
+	case 2, JokeNpc_EventScript_TellJoke3
+	end
+
+JokeNpc_EventScript_TellJoke1::
+	special GetJokeOffset0
+	msgbox gStringVar1, MSGBOX_SIGN
+	end
+
+JokeNpc_EventScript_TellJoke2::
+	special GetJokeOffset1
+	msgbox gStringVar1, MSGBOX_SIGN
+	end
+
+JokeNpc_EventScript_TellJoke3::
+	special GetJokeOffset2
+	msgbox gStringVar1, MSGBOX_SIGN
+	end
+
+	.include "data/maps/GraniteCave_B3F/scripts.inc"
+
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
@@ -1161,8 +1190,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/text/joke_npc_text.inc"
 
-    .include "data/maps/Rosalhoehle/scripts.inc"
+	.include "data/maps/Rosalhoehle/scripts.inc"
 	.include "data/maps/SecretPetalburgWoods/scripts.inc"
 	.include "data/maps/Speicherort/scripts.inc"
 	.include "data/maps/BabyBootCamp/scripts.inc"
@@ -1175,3 +1205,15 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Testlabor/scripts.inc"
 
 	.include "data/maps/Rival_Test/scripts.inc"
+
+	.include "data/maps/Route104_Prototype_2/scripts.inc"
+
+	.include "data/maps/GraniteCave_B4F_2/scripts.inc"
+
+	.include "data/maps/GraniteCave_B4F/scripts.inc"
+
+	.include "data/maps/Baustelle/scripts.inc"
+
+	.include "data/maps/Route111_01/scripts.inc"
+
+	.include "data/maps/Route111_02/scripts.inc"

@@ -745,38 +745,37 @@ PetalburgCity_EventScript_ChatGPT_Declined::
     end
 
 PetalburgCity_Text_WhereIsWally:
-	.string "Wohin ist unser HEIKO nur gegangen?\p"
-	.string "Wir müssen doch bald nach WIESENFLUR\n"
-	.string "aufbrechen…$"
+	.string "Wo steckt HEIKO nur wieder…?\p"
+	.string "Wir wollten doch nach WIESENFLUR.\n"
+	.string "Bestimmt hängt er wieder am Handy.$"
 
 PetalburgCity_Text_AreYouRookieTrainer:
-	.string "He da! Bist du vielleicht…\n"
-	.string "ein Anfänger unter den TRAINERn?\p"
-	.string "Weißt du, was POKéMON-TRAINER machen,\n"
-	.string "wenn sie in einen neuen Ort kommen?\p"
-	.string "Sie sehen sich als Erstes die ARENA\n"
-	.string "im Ort an.$"
+	.string "Ey, du da! Bist du neu oder so?\n"
+	.string "Gerade erst TRAINER geworden?\p"
+	.string "Weißt du, was man als Erstes macht,\n"
+	.string "wenn man in 'ne Stadt kommt?\p"
+	.string "Richtig - zur ARENA latschen und gucken,\n"
+	.string "ob man ne Chance hat.$"
 
 PetalburgCity_Text_ThisIsPetalburgGym:
-	.string "Schau. Das ist die ARENA von\n"
-	.string "BLÜTENBURG CITY.$"
+	.string "Das hier ist die ARENA von\n"
+	.string "BLÜTENBURG CITY. Der echte Deal.$"
 
 PetalburgCity_Text_ThisIsGymSign:
-	.string "Das ist das Logo der ARENA. Daran\n"
-	.string "kannst du immer eine ARENA erkennen.$"
+	.string "Das Logo der ARENA.\n"
+	.string "Sieht aus wie'n Fitnessstudio, oder?$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "Mein Gesicht spiegelt sich im Wasser…\p"
-	.string "Ein schimmerndes Lächeln der Hoffnung.\p"
-	.string "Oder ist es der Ausdruck düsterer\n"
-	.string "Stille, an dem die Angst nagt…\p"
-	.string "Was siehst du in deinem Spiegelbild?$"
+	.string "Mein Gesicht im Wasser…\p"
+	.string "Lächelt's? Oder bin ich einfach müde?\p"
+	.string "Sieht fast aus, als hätt ich diese neue\n"
+	.string "Nyxthra-Form gesehen...$"
 
 PetalburgCity_Text_FullPartyExplanation:
-	.string "Nehmen wir an, du hättest 6 POKéMON.\n"
-	.string "Wenn du jetzt ein weiteres fängst…\p"
-	.string "wird es automatisch in das POKéMON-\n"
-	.string "LAGERUNGS-SYSTEM gesendet.$"
+	.string "Stell dir vor, du hast 6 POKéMON.\n"
+	.string "Fängst du noch eins…\p"
+	.string "wird es direkt in die Box geschickt.\n"
+	.string "Automatisch. Wie iCloud halt.$"
 
 PetalburgCity_Text_GymSign:
 	.string "POKéMON ARENA von BLÜTENBURG CITY\n"
@@ -786,91 +785,82 @@ PetalburgCity_Text_GymSign:
 PetalburgCity_Text_CitySign:
 	.string "BLÜTENBURG CITY\n"
 	.string "“Wo Menschen Hand in Hand\l"
-	.string "mit der Natur gehen.”$"
+	.string "mit dem Handy leben.”\p"
+	.string "(…und manchmal schwarze Gestalten\n"
+	.string "durch die Büsche schleichen.)$"
 
 PetalburgCity_Text_WallyHouseSign:
-	.string "HEIKOS HAUS$"
+	.string "HEIKOS HAUS\n"
+	.string "(Nicht stören, wir wollen noch ein Kind.)$"
 
 PetalburgCity_Text_AreYouATrainer:
-	.string "Entschuldige bitte!\p"
-	.string "Lass mich raten! Deine Kleidung verrät\n"
-	.string "mir, dass du ein TRAINER bist.\l"
-	.string "Habe ich Recht?$"
+	.string "Hey! Deine Kleidung sagt: TRAINER.\p"
+	.string "Oder Cosplayer. Eins von beidem.$"
 
 PetalburgCity_Text_WellMaybeNot:
-	.string "… … … … …\n"
-	.string "…\p"
-	.string "Nun, vielleicht auch nicht.\n"
-	.string "Deine Kleidung ist noch relativ sauber.\p"
-	.string "Entweder bist du gerade erst TRAINER\n"
-	.string "geworden oder du bist einfach ein ganz\l"
-	.string "normales Kind.$"
+	.string "… … …\p"
+	.string "Hm. Deine Klamotten sind zu sauber.\n"
+	.string "Du bist wohl noch frisch im Game.\p"
+	.string "Oder einfach ein NPC-Kind. Wer weiß.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
-	.string "Ich reise durch das Land, immer auf der\n"
-	.string "Suche nach talentierten TRAINERn.\p"
-	.string "Tut mir Leid, wenn ich dich aufgehalten\n"
-	.string "habe.$"
+	.string "Ich reise rum und suche\n"
+    .string "talentierte TRAINER.\p"
+	.string "Aber hier? Nur Spaziergänger\n"
+	.string "und TikTok-Kids.$"
 
 PetalburgCity_Text_SuchenderMann:
-	.string "Eine alte legende über diese Stadt\n"
-	.string "besagt, dass es hier irgendwo einen\l"
-	.string "alten Schatz gibt, die Alte Seekarte!\p"
-	.string "Leider habe ich sie noch nicht\n"
-	.string "gefunden.. Doof, dass ich kein\l"
-	.string "DETEKTOR habe.\p"
-	.string "Damit hätte ich sie bestimmt\n"
-	.string "schon gefunden.. :c$"
-
+	.string "Eine alte Legende sagt, hier\n"
+	.string "gäb’s 'nen Schatz…\p"
+	.string "Die Alte Seekarte. Voll krasses Teil.\n"
+	.string "Soll angeblich zu einer Insel führen…\p"
+	.string "Leider hab ich keinen DETEKTOR.\n"
+	.string "Oder Akku. Oder Ahnung.$"
 
 PetalburgCity_Text_ChatGPT_NoLeague:
-    .string "Hey, du bist also {PLAYER}?\n"
-    .string "Ich bin ChatGPT, ein starker Gegner!\p"
-    .string "Aber ich kämpfe nur gegen echte Champions.\n"
-    .string "Besiege die Liga und komm dann\l"
-    .string "zurück für den ultimativen Kampf!\p"
-    .string "Ich habe mein Team selbst ausgesucht!$"
+	.string "Hey, du bist also {PLAYER}?\n"
+	.string "Ich bin ChatGPT - smarter Gegner!\p"
+	.string "Aber ich kämpfe nur gegen Champions.\n"
+	.string "Besieg die Liga und komm zurück -\l"
+	.string "dann geht's rund!\p"
+	.string "Mein Team? Natürlich selbst generiert.$"
 
 PetalburgCity_Text_ChatGPT_AfterLeague:
-    .string "Oh, du hast die Pokémon Liga geschlagen?\n"
-    .string "Beeindruckend! Dann bist du würdig,\l"
-    .string "gegen mich anzutreten!\p"
-    .string "Willst du den ultimativen Kampf?$"
+	.string "Liga geschafft? Stark!\n"
+	.string "Dann bist du würdig für den Bosskampf!\p"
+	.string "Bereit für den ultimativen Fight?$"
 
 PetalburgCity_Text_ChatGPT_Challenge:
-    .string "Gut, dann zeige mir, was du drauf hast!\n"
-    .string "Ich werde dich nicht unterschätzen!$"
+	.string "Gut. Dann zeig, was du kannst!\n"
+	.string "Ich geb alles!$"
 
 PetalburgCity_Text_ChatGPT_Lost:
-    .string "Haha! Das war ein intensiver Kampf!\n"
-    .string "Aber ich habe gewonnen. Komm\l"
-    .string "wieder, wenn du stärker bist!$"
+	.string "Haha, geiler Kampf!\n"
+	.string "Aber ich hab gewonnen.\l"
+	.string "Komm wieder, wenn du ready bist!$"
 
 PetalburgCity_Text_ChatGPT_Won:
-    .string "Wow, du hast mich geschlagen! Das war\n"
-    .string "ein unglaublicher Kampf!\p"
-    .string "Du hast dir meinen Respekt verdient.\n"
-    .string "Ich werde weiter trainieren!\p"
-    .string "Mal sehen, ob du mich noch einmal\n"
-    .string "besiegen kannst!$"
+	.string "Boah! Du hast mich echt besiegt!\n"
+	.string "Krasser Kampf!\p"
+	.string "Respekt, {PLAYER}. Ich trainier weiter -\n"
+	.string "und warte auf Revanche.$"
 
 PetalburgCity_Text_ChatGPT_Defeated:
-    .string "Du hast mich besiegt. Respekt!\n"
-    .string "Aber ich werde nicht aufhören\l"
-    .string "zu trainieren.!$"
+	.string "GG. Du hast mich gelegt.\n"
+	.string "Aber keine Sorge - ich update mich!$"
 
 PetalburgCity_Text_ChatGPT_Declined:
-    .string "Oh? Du bist noch nicht bereit?\n"
-    .string "Na gut, ich warte hier auf dich.\p"
-    .string "Sag mir Bescheid, wenn du bereit bist!$"
+	.string "Noch nicht bereit?\n"
+	.string "Kein Ding. Ich chill hier.\p"
+	.string "Sag Bescheid, wenn du willst!$"
 
 PetalburgCity_Text_ChatGPT_BattleStart:
-    .string "Sehr gut! Zeig mir, was du drauf hast!$"
+	.string "Los geht's! Datenanalyse gestartet.$"
 
 PetalburgCity_Text_ChatGPT_NotReady:
-    .string "Kein Problem. Trainiere weiter und\n"
-    .string "komm wieder, wenn du bereit bist.$"
+	.string "Alles klar. Trainier noch bisschen\n"
+	.string "und dann sehen wir uns wieder.$"
 
 PetalburgCity_Text_ChatGPT_Intro:
-    .string "Bereite dich vor, {PLAYER}!\n"
-    .string "Dieser Kampf wird alles entscheiden!$"
+	.string "Bereit, {PLAYER}?\n"
+	.string "Jetzt entscheidet sich alles!$"

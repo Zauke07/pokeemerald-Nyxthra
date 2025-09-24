@@ -26,14 +26,14 @@ VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_HILDA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
 @     goto_if_eq VAR_RESULT, STYLE_NATE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
 @     goto_if_eq VAR_RESULT, STYLE_ROSA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_CALEM, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_SERENA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_ELIO, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_SELENE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_CALEM, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_SERENA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_ELIO, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_SELENE, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_VICTOR, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_GLORIA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_JULIANA, VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFemale
     return
 
 VerdanturfTown_BattleTentBattleRoom_EventScript_SetPlayerGfxMale::

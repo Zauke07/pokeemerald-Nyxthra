@@ -192,6 +192,10 @@ Route101_Movement_BirchFaceZigzagoon:
 	walk_in_place_fast_right
 	step_end
 
+Route101_Movement_PlayerFaceLeft:
+	face_left
+	step_end
+
 Route101_Movement_Unused1:
 	walk_up
 	walk_up
@@ -233,57 +237,56 @@ Route101_Movement_BirchApproachPlayer:
 	step_end
 
 Route101_Text_HelpMe:
-	.string "HI... HIIIILFE!!!$"
+	.string "Ey... AAAAAHHHHH!!!\n"
+	.string "Was zur Hölle!?$"
 
 Route101_Text_PleaseHelp:
-	.string "HILFE!!! Du dort drüben!\n"
-	.string "Bitte! HILFE!!!\p"
-	.string "In meinem BEUTEL...\n"
-	.string "Da findest du einen POKéBALL!$"
+	.string "YO! DU DA!\n"
+	.string "HILF MIR, ICH WERD GEFRESSEN!!!\p"
+	.string "Im Beutel da…\n"
+	.string "Da is’n BALL, nimm den! MACH SCHNELL!$"
 
 Route101_Text_DontLeaveMe:
-	.string "Wo-Wo wi-willst du hin?\n"
-	.string "Lass mich nicht im Stich!!!$"
+	.string "W-Wo willst du hin!?\n"
+	.string "Lass mich hier nicht sterben, du Psycho!!!$"
 
 Route101_Text_YouSavedMe:
-	.string "PROF. BIRK: Puuuh...\p"
-	.string "Ich habe im hohen Gras POKéMON\n"
-	.string "studiert, als ich angesprungen wurde.\p"
-	.string "Du hast mich gerettet.\n"
-	.string "Vielen, vielen Dank!\p"
-	.string "Oh?\p"
-	.string "Hi, du bist doch {PLAYER}{KUN}!\p"
-	.string "Aber dies ist nicht der Ort für ein\n"
-	.string "Schwätzchen, komm doch mit \l"
-	.string "in mein POKéMON-LABOR, okay?$"
+	.string "PROF. BIRK: Alter... ich… lebe noch…\p"
+	.string "Ich wollte bloß ein Pokémon beobachten,\n"
+	.string "und plötzlich krieg ich ein Bodycheck!\p"
+	.string "Danke, echt. Sonst wär ich jetzt\l"
+	.string "Pokéfutter.\p"
+	.string "Moment mal...\n"
+	.string "Bist du {PLAYER}{KUN}, der Neue?\p"
+	.string "Hier draußen ist's bisschen lost,\n"
+	.string "lass uns lieber in mein Labor gehen.$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
-	.string "Sind deine POKéMON müde, bring sie in\n"
-	.string "ein POKéMON-CENTER.\p"
-	.string "In ROSALTSTADT, gleich hier um die\n"
-	.string "Ecke, gibt es ein POKéMON-CENTER.$"
+	.string "Dein Team ist durch?\n"
+	.string " Dann ab zum CENTER.\p"
+	.string "In Rosaltstadt - einfach um die Ecke.\n"
+	.string "Sag einfach, du kennst mich.$"
 
 Route101_Text_WildPokemonInTallGrass:
-	.string "Wilde POKéMON springen dich in hohem\n"
-	.string "Gras gerne an.\p"
-	.string "Wenn du POKéMON fangen willst, musst\n"
-	.string "du ins hohe Gras gehen und sie suchen.$"
+	.string "Im hohen Gras? Digga, da lauert alles.\p"
+	.string "Wenn du Bock auf Fangen hast,\n"
+	.string "geh rein - aber schrei nicht nach Mama.$"
 
 Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
-	.string "{UP_ARROW} ROSALTSTADT$"
+	.string "{UP_ARROW} ROSALTSTADT (da gibt's WLAN)$"
 
 Route101_EventScript_Glumanda::
-    msgbox Route101_Text_Glumanda, MSGBOX_NPC
-    end
+	msgbox Route101_Text_Glumanda, MSGBOX_NPC
+	end
 
 Route101_Text_Glumanda:
-    .string "Hey {PLAYER}, ich bin ein\n"
+	.string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 1 Generation mit\l"
@@ -292,100 +295,103 @@ Route101_Text_Glumanda:
 	.string "herausfinden :D !$"
 
 Route101_EventScript_ChooseStarterRegion::
-    msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT
-    closemessage
-    special ShowStarterRegionMulti
-    waitstate
-    switch VAR_RESULT
-    case 0, SetStarterRegion_Kanto
-    case 1, SetStarterRegion_Johto
-    case 2, SetStarterRegion_Hoenn
-    case 3, SetStarterRegion_Sinnoh
-    case 4, SetStarterRegion_Unova
-    case 5, SetStarterRegion_Kalos
-    case 6, SetStarterRegion_Alola
-    case 7, SetStarterRegion_Galar
-    case 8, SetStarterRegion_Paldea
-    end
+	msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT
+	closemessage
+	special ShowStarterRegionMulti
+	waitstate
+	switch VAR_RESULT
+	case 0, SetStarterRegion_Kanto
+	case 1, SetStarterRegion_Johto
+	case 2, SetStarterRegion_Hoenn
+	case 3, SetStarterRegion_Sinnoh
+	case 4, SetStarterRegion_Unova
+	case 5, SetStarterRegion_Kalos
+	case 6, SetStarterRegion_Alola
+	case 7, SetStarterRegion_Galar
+	case 8, SetStarterRegion_Paldea
+	end
 
 SetStarterRegion_Kanto::
-    setvar VAR_STARTER_REGION, STARTER_REGION_KANTO
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_KANTO
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Johto::
-    setvar VAR_STARTER_REGION, STARTER_REGION_JOHTO
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_JOHTO
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Hoenn::
-    setvar VAR_STARTER_REGION, STARTER_REGION_HOENN
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_HOENN
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Sinnoh::
-    setvar VAR_STARTER_REGION, STARTER_REGION_SINNOH
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_SINNOH
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Unova::
-    setvar VAR_STARTER_REGION, STARTER_REGION_UNOVA
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_UNOVA
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Kalos::
-    setvar VAR_STARTER_REGION, STARTER_REGION_KALOS
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_KALOS
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Alola::
-    setvar VAR_STARTER_REGION, STARTER_REGION_ALOLA
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_ALOLA
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Galar::
-    setvar VAR_STARTER_REGION, STARTER_REGION_GALAR
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_GALAR
+	goto Route101_EventScript_BirchsBag_Continued
 
 SetStarterRegion_Paldea::
-    setvar VAR_STARTER_REGION, STARTER_REGION_PALDEA
-    goto Route101_EventScript_BirchsBag_Continued
+	setvar VAR_STARTER_REGION, STARTER_REGION_PALDEA
+	goto Route101_EventScript_BirchsBag_Continued
 
 Route101_EventScript_BirchsBag_Continued::
-    fadescreen FADE_TO_BLACK
-    removeobject LOCALID_ROUTE101_ZIGZAGOON
-    setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
-    setflag FLAG_RESCUED_BIRCH
-    special ChooseStarter
-    waitstate
-    applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
-    waitmovement 0
-    msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-    special HealPlayerParty
-    setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-    clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-    setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-    setvar VAR_BIRCH_LAB_STATE, 2
-    setvar VAR_ROUTE101_STATE, 3
-    clearflag FLAG_HIDE_MAP_NAME_POPUP
-    getplayerstyle
-    call_if_eq VAR_RESULT, STYLE_BRENDAN, Route101_EventScript_HideMayInBedroom
-    call_if_eq VAR_RESULT, STYLE_MAY, Route101_EventScript_HideBrendanInBedroom
-    call_if_eq VAR_RESULT, STYLE_RED, Route101_EventScript_HideMayInBedroom
-    call_if_eq VAR_RESULT, STYLE_LEAF, Route101_EventScript_HideBrendanInBedroom
-    warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
-    waitstate
-    release
-    end
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_ROUTE101_ZIGZAGOON
+	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PlayerFaceLeft
+	waitmovement 0
+	setflag FLAG_RESCUED_BIRCH
+	special ChooseStarter
+	waitstate
+	setflag FLAG_SYS_POKEMON_GET
+	applymovement LOCALID_ROUTE101_BIRCH, Route101_Movement_BirchApproachPlayer
+	waitmovement 0
+	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
+	special HealPlayerParty
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+	setvar VAR_BIRCH_LAB_STATE, 2
+	setvar VAR_ROUTE101_STATE, 3
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	getplayerstyle
+	call_if_eq VAR_RESULT, STYLE_BRENDAN, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_MAY, Route101_EventScript_HideBrendanInBedroom
+	call_if_eq VAR_RESULT, STYLE_RED, Route101_EventScript_HideMayInBedroom
+	call_if_eq VAR_RESULT, STYLE_LEAF, Route101_EventScript_HideBrendanInBedroom
+	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
+	waitstate
+	release
+	end
 
 Route101_Text_WhichStarterRegion:
-    .string "Wähle die Region des Starters:\n"
-    .string "{COLOR RED}Kanto{COLOR WHITE}, {COLOR GREEN}Johto{COLOR WHITE}, {COLOR BLUE}Hoenn{COLOR WHITE}, {COLOR LIGHT_BLUE}Sinnoh{COLOR WHITE},\l"
-    .string "{COLOR LIGHT_RED}Einall{COLOR WHITE}, {COLOR LIGHT_GREEN}Kalos{COLOR WHITE}, {COLOR DYNAMIC_COLOR4}Alola{COLOR WHITE}, {COLOR DYNAMIC_COLOR5}Galar{COLOR WHITE},\p"
-    .string "{COLOR DYNAMIC_COLOR6}Paldea{COLOR WHITE}.$"
+	.string "Wähle die Region des Starters:\n"
+	.string "{COLOR RED}Kanto{COLOR WHITE}, {COLOR GREEN}Johto{COLOR WHITE}, {COLOR BLUE}Hoenn{COLOR WHITE}, {COLOR LIGHT_BLUE}Sinnoh{COLOR WHITE},\l"
+	.string "{COLOR LIGHT_RED}Einall{COLOR WHITE}, {COLOR LIGHT_GREEN}Kalos{COLOR WHITE}, {COLOR DYNAMIC_COLOR4}Alola{COLOR WHITE}, {COLOR DYNAMIC_COLOR5}Galar{COLOR WHITE},\p"
+	.string "{COLOR DYNAMIC_COLOR6}Paldea{COLOR WHITE}.$"
 
 Route101_Text_DebugKantoReached:
-    .string "Kanto-Auswahl erkannt.$"
+	.string "Kanto-Auswahl erkannt.$"
 
 Route101_Text_DebugCompareKanto:
-    .string "Vergleich mit 0 erreicht.$"
+	.string "Vergleich mit 0 erreicht.$"
 
 Route101_Text_DebugStarterRegion:
-    .string "Starter-Region = {STR_VAR_1}$"
+	.string "Starter-Region = {STR_VAR_1}$"
 
 Route101_Text_DebugStarterVarResult:
-    .string "Starterwahl = {STR_VAR_1}$"
+	.string "Starterwahl = {STR_VAR_1}$"
 

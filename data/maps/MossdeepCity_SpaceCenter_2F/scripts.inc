@@ -336,14 +336,14 @@ MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall::
     call_if_eq VAR_RESULT, STYLE_HILDA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
 @     call_if_eq VAR_RESULT, STYLE_NATE, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
 @     call_if_eq VAR_RESULT, STYLE_ROSA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_CALEM, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_SERENA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_ELIO, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_SELENE, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_VICTOR, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_GLORIA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
-    call_if_eq VAR_RESULT, STYLE_JULIANA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_CALEM, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_SERENA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_ELIO, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_SELENE, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_VICTOR, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_GLORIA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_FLORIAN, MossdeepCity_SpaceCenter_2F_EventScript_MayRayquazaCall
+@    call_if_eq VAR_RESULT, STYLE_JULIANA, MossdeepCity_SpaceCenter_2F_EventScript_BrendanRayquazaCall
 	closemessage
 	clearflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
 	releaseall

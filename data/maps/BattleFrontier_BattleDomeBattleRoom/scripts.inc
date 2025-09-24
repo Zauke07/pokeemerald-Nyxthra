@@ -37,14 +37,14 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxHilda
 @     goto_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxNate
 @     goto_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxRosa
-    goto_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxCalem
-    goto_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxSerena
-    goto_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxElio
-    goto_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxSelene
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxVictor
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxGloria
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxFlorian
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxJuliana
+@    goto_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxCalem
+@    goto_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxSerena
+@    goto_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxElio
+@    goto_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxSelene
+@    goto_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxVictor
+@    goto_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxGloria
+@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxFlorian
+@    goto_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxBrendan::
@@ -80,12 +80,12 @@ BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxDawn::
 @	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxHilbert::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILBERT
-@	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILBERT
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxHilda::
-@	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILDA
-@	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
+	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_HILDA
+	goto BattleFrontier_BattleDomeBattleRoom_EventScript_End
 
 BattleFrontier_BattleDomeBattleRoom_EventScript_SetPlayerGfxNate::
 @	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_NATE

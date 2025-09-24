@@ -392,14 +392,14 @@ Route110_EventScript_RivalScene::
     goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_EventScript_StartBattle_Hilda
 @     goto_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_StartBattle_Nate
 @     goto_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_StartBattle_Rosa
-    goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Calem
-    goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Serena
-    goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Elio
-    goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Selene
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Victor
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Gloria
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Florian
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Juliana
+@    goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Calem
+@    goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Serena
+@    goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Elio
+@    goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Selene
+@    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Victor
+@    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Gloria
+@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Florian
+@    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Juliana
     end
 
 Route110_EventScript_GiveItemfinder::
@@ -4946,10 +4946,10 @@ Route110_EventScript_SnorlaxDontUse::
 
 Route110_EventScript_SnorlaxNoFlute::
     msgbox Route110_Text_SnorlaxSleeping, MSGBOX_DEFAULT
-    message Route110_Text_SnorlaxSearchBag
+    msgbox Route110_Text_SnorlaxSearchBag, MSGBOX_DEFAULT
     waitmessage
     delay 20
-    message Route110_Text_SnorlaxNoFluteFound
+    msgbox Route110_Text_SnorlaxNoFluteFound, MSGBOX_DEFAULT
     waitmessage
     releaseall
     end
@@ -5484,13 +5484,15 @@ Route110_Text_SnorlaxSleeping::
 
 Route110_Text_SnorlaxSearchBag::
     .string "{COLOR RED}{PLAYER}: Durchsucht den Beutel…\n"
-    .string "…\n"
-    .string "…\n"
+    .string "…\l"
+    .string "…\p"
     .string "…{COLOR WHITE}$"
 
 Route110_Text_SnorlaxNoFluteFound::
     .string "{COLOR RED}{PLAYER}: Fuck!\n"
-    .string "Ich hab noch keine Pokéflöte…{COLOR WHITE}$"
+    .string "Ich hab noch keine Pokéflöte…\p"
+    .string "Vielleicht sollte ich den Strand\n"
+    .string "absuchen…{COLOR WHITE}$"
 
 Route110_Text_UseFlute::
     .string "Willst du die Pokéflöte benutzen?$"
@@ -5504,5 +5506,5 @@ Route110_Text_SnorlaxWokeUp::
 
 Route110_Text_SnorlaxLeft::
     .string "{COLOR BLUE}Relaxo{COLOR WHITE} beruhigte sich…\n"
-    .string "und verschwand in den Büschen.$"
+    .string "und verschwand in den Bäumen.$"
 

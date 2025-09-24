@@ -154,20 +154,6 @@
       "elevation": 0,
       "dest_map": "MAP_DEWFORD_TOWN_HOUSE2",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 2,
-      "y": 16,
-      "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_TOWN",
-      "dest_warp_id": "4"
-    },
-    {
-      "x": 9,
-      "y": 3,
-      "elevation": 0,
-      "dest_map": "MAP_MAUVILLE_CITY",
-      "dest_warp_id": "7"
     }
   ],
   "coord_events": [],

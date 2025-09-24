@@ -414,6 +414,14 @@
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3"
+    },
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_POKE_FLUTE",
+      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_POKE_FLUTE"
     }
   ]
 }

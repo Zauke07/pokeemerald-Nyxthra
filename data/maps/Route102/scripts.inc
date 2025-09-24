@@ -75,37 +75,43 @@ Route102_EventScript_Allen::
 
 Route102_Text_WatchMeCatchPokemon:
 	.string "HEIKO: {PLAYER}...\n"
-	.string "POKéMON verstecken sich in hohem Gras\l"
-	.string "wie diesem hier, oder?\p"
-	.string "Bitte bleib hier und schau, ob ich sie\n"
-	.string "auch richtig fange.\p"
+	.string "Pokémon verstecken sich oft im hohen\l"
+	.string "Gras, so wie hier, oder?\p"
+	.string "Bleib kurz stehen und schau zu, ob ich\n"
+	.string "das richtig hinkriege, ja?\p"
 	.string "...Whoa!$"
 
 Route102_Text_WallyIDidIt:
-	.string "HEIKO: Ich habe es geschafft... Es\n"
-	.string "gehört mir... Mein POKéMON!!!$"
+	.string "HEIKO: Ich hab’s wirklich geschafft...\n"
+	.string "Es hat geklappt! Mein erstes Pokémon!$"
 
 Route102_Text_LetsGoBack:
-	.string "{PLAYER}, danke schön!\n"
-	.string "Lass uns zurück zur ARENA gehen!$"
+	.string "{PLAYER}, danke dir echt!\n"
+	.string "Lass uns zurück zur ARENA gehen.$"
 
 Route102_Text_ImNotVeryTall:
-	.string "Ich... bin nicht groß, ich versinke im\n"
-	.string "hohen Gras.\p"
-	.string "Das Gras erreicht meine Nase und...\n"
-	.string "Hahahaha...\p"
-	.string "Haaatschiiii!$"
+	.string "Was glotzt du so?! Ja, ich bin klein.\p"
+	.string "Aber ich trete dir trotzdem in die Eier,\n"
+	.string "du kleiner Hurensohn-Trainer!\p"
+	.string "Und wehe, du lachst... Ich schwör,\n"
+	.string "ich hol meine Brüder. Du Opfer.$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
-	.string "Ich werde jede Menge POKéMON fangen!$"
+	.string "Ich will voll viele Pokémon fangen!\p"
+	.string "Aber hey... Manche sagen, irgendwo\n"
+	.string "laufen Leute rum, die Pokémon klauen...\n"
+	.string "Glaubst du das?$"
 
 Route102_Text_RouteSignOldale:
 	.string "ROUTE 102\n"
-	.string "{RIGHT_ARROW} ROSALTSTADT$"
+	.string "{RIGHT_ARROW} ROSALTSTADT\n"
+	.string "(“Die Höhle flüstert” - sagt man dort.)$"
 
 Route102_Text_RouteSignPetalburg:
 	.string "ROUTE 102\n"
-	.string "{LEFT_ARROW} BLÜTENBURG CITY$"
+	.string "{LEFT_ARROW} BLÜTENBURG CITY\n"
+	.string "(Bleib wachsam - mysteriöse Gestalten\n"
+	.string "wurden in der Nähe gesehen.)$"
 
 Route102_EventScript_Shiggy::
     msgbox Route102_Text_Shiggy, MSGBOX_NPC
@@ -114,10 +120,10 @@ Route102_EventScript_Shiggy::
 Route102_Text_Shiggy:
     .string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 1 Generation mit\l"

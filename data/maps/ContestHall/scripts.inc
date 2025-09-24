@@ -448,14 +448,14 @@ LilycoveCity_ContestLobby_EventScript_SetPlayerGfx::
     call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxHilda
 @     call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxNate
 @     call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxRosa
-    call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem
-    call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena
-    call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio
-    call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene
-    call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor
-    call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian
-    call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana
+@    call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxCalem
+@    call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSerena
+@    call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxElio
+@    call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxSelene
+@    call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxVictor
+@    call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxGloria
+@    call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxFlorian
+@    call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_ContestLobby_EventScript_SetPlayerGfxJuliana
 	return
 
 LilycoveCity_ContestLobby_EventScript_SetPlayerGfxBrendan::

@@ -29,14 +29,14 @@ BattleFrontier_BattleTowerMultiCorridor_EventScript_SetObjGfx::
     call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxHilda
 @     call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxNate
 @     call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxRosa
-    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxCalem
-    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxSerena
-    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxElio
-    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxSelene
-    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxVictor
-    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxGloria
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxFlorian
-    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxJuliana
+@    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxCalem
+@    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxSerena
+@    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxElio
+@    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxSelene
+@    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxVictor
+@    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxGloria
+@    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxFlorian
+@    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxJuliana
 	return
 
 BattleFrontier_BattleTowerMultiCorridor_EventScript_SetPlayerGfxBrendan::

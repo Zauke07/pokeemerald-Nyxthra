@@ -2,7 +2,7 @@
 
 # 2 "data/maps/SafariZone_South/scripts.pory"
 .set LOCALID_ATTENDANT, 1
-# 3 "data/maps/SafariZone_South/scripts.pory"
+# 3 "data/maps/SafariZone_South/"
 
 # 4 "data/maps/SafariZone_South/scripts.pory"
 SafariZone_South_MapScripts::

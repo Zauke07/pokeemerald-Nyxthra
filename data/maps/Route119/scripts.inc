@@ -62,18 +62,18 @@ Route119_EventScript_RivalEncounter::
 	case STYLE_LYRA, Route119_EventScript_StartBattle_Lyra
 	case STYLE_LUCAS, Route119_EventScript_StartBattle_Lucas
 	case STYLE_DAWN, Route119_EventScript_StartBattle_Dawn
-	case STYLE_HILBERT, Route119_EventScript_StartBattle_Hilbert
-	case STYLE_HILDA, Route119_EventScript_StartBattle_Hilda
-	case STYLE_NATE, Route119_EventScript_StartBattle_Nate
-	case STYLE_ROSA, Route119_EventScript_StartBattle_Rosa
-	case STYLE_CALEM, Route119_EventScript_StartBattle_Calem
-	case STYLE_SERENA, Route119_EventScript_StartBattle_Serena
-	case STYLE_ELIO, Route119_EventScript_StartBattle_Elio
-	case STYLE_SELENE, Route119_EventScript_StartBattle_Selene
-	case STYLE_VICTOR, Route119_EventScript_StartBattle_Victor
-	case STYLE_GLORIA, Route119_EventScript_StartBattle_Gloria
-	case STYLE_FLORIAN, Route119_EventScript_StartBattle_Florian
-	case STYLE_JULIANA, Route119_EventScript_StartBattle_Juliana
+    case STYLE_HILBERT, Route119_EventScript_StartBattle_Hilbert
+    case STYLE_HILDA, Route119_EventScript_StartBattle_Hilda
+    @case STYLE_NATE, Route119_EventScript_StartBattle_Nate
+    @case STYLE_ROSA, Route119_EventScript_StartBattle_Rosa
+    @case STYLE_CALEM, Route119_EventScript_StartBattle_Calem
+    @case STYLE_SERENA, Route119_EventScript_StartBattle_Serena
+    @case STYLE_ELIO, Route119_EventScript_StartBattle_Elio
+    @case STYLE_SELENE, Route119_EventScript_StartBattle_Selene
+    @case STYLE_VICTOR, Route119_EventScript_StartBattle_Victor
+    @case STYLE_GLORIA, Route119_EventScript_StartBattle_Gloria
+    @case STYLE_FLORIAN, Route119_EventScript_StartBattle_Florian
+    @case STYLE_JULIANA, Route119_EventScript_StartBattle_Juliana
 	releaseall
 	end
 

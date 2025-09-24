@@ -24,14 +24,14 @@ BattleFrontier_BattleFactoryBattleRoom_OnTransition:
     call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxHilda
 @     call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxNate
 @     call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxRosa
-    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxCalem
-    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxSerena
-    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxElio
-    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxSelene
-    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxVictor
-    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxGloria
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxFlorian
-    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxJuliana
+@    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxCalem
+@    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxSerena
+@    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxElio
+@    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxSelene
+@    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxVictor
+@    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxGloria
+@    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxFlorian
+@    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetPlayerGfxJuliana
 	frontier_getbrainstatus
 	copyvar VAR_TEMP_F, VAR_RESULT
 	goto_if_ne VAR_RESULT, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj

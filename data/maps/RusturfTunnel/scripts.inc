@@ -419,117 +419,101 @@ RusturfTunnel_EventScript_Mike::
 	end
 
 RusturfTunnel_Text_ComeAndGetSome:
-	.string "Was? Du willst gegen uns antreten?\n"
-	.string "Na, dann hol dir eine Tracht Prügel.$"
+	.string "Was glotzt du so? Willst was kassieren?\n"
+	.string "Na los, hol dir 'ne saftige Klatsche!$"
 
 RusturfTunnel_Text_Peeko:
-	.string "PECKO: Pii pihyoh!$"
+	.string "PECKO: Pii pii, digga!$"
 
 RusturfTunnel_Text_GruntIntro:
-	.string "Grrr, man sollte sie alle kielholen.\p"
-	.string "Das als Geisel genommene POKéMON hat\n"
-	.string "sich als völlig wertlos erwiesen!\p"
-	.string "Und dafür habe ich nun einen Flucht-\n"
-	.string "weg in diesem Tunnel nach Nirgendwo\l"
-	.string "gegraben!\p"
-	.string "Hey! Du!\n"
-	.string "Forderst du mich etwa heraus?$"
+	.string "Ugh… Ich hätte lieber bei Burger King\n"
+	.string "angefangen.\p"
+	.string "Dieses Geisel-Pokémon ist komplett lost!\n"
+	.string "Nicht mal zum Einschüchtern\n"
+    .string "zu gebrauchen!\p"
+	.string "Ich hab mir für diesen Crap nen Tunnel\n"
+	.string "nach Mordor gegraben…\p"
+	.string "Und jetzt kommst DU auch noch?$"
 
 RusturfTunnel_Text_GruntDefeat:
-	.string "Aargh! Und so läuft eine vielver-\n"
-	.string "sprechende kriminelle Karriere in eine\l"
-	.string "Sackgasse!$"
+	.string "NEEEIN! Mein Ganoven-Lebenslauf ist\n"
+	.string "im Arsch! Ich hatte so große Pläne…$"
 
 RusturfTunnel_Text_GruntTakePackage:
-	.string "Das ist einfach nicht fair…\p"
-	.string "Der BOSS hat doch gesagt, der Job sei\n"
-	.string "ein wahres Kinderspiel.\p"
-	.string "Alles, was ich zu tun hatte, war, ein\n"
-	.string "Paket von DEVON zu stehlen.\p"
-	.string "Tse! Wenn du es so dringend wieder-\n"
-	.string "haben willst, dann nimm es halt!$"
+	.string "Ey das ist rigged…\p"
+	.string "Der Boss meinte, easy Job, no stress.\p"
+	.string "Ich klau das Paket und hau ab. Fertig.\p"
+	.string "Aber jetzt? Nimm dein Dreckspaket!\n"
+	.string "Ich hab keinen Bock mehr.$"
 
 RusturfTunnel_Text_PeekoGladToSeeYouSafe:
-	.string "PECKO! Bin ich froh, dass du unversehrt\n"
-	.string "wieder bei mir bist.$"
+	.string "PEEKO! Mein Baby! Du lebst!$"
 
 RusturfTunnel_Text_ThankYouLetsGoHomePeeko:
-	.string "PECKO verdankt dir ihr Leben!\p"
-	.string "Man nennt mich MR. BRACK.\n"
+	.string "Ich schulde dir mein Leben, Junge!\p"
+	.string "Ich bin MR. BRACK. Oder auch Käpt’n B.\n"
 	.string "Und du bist…\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "Ah, du bist also {PLAYER}{KUN}!\n"
-	.string "Ich danke dir von ganzem Herzen!\p"
-	.string "Wenn du irgendein Problem hast, zögere\n"
-	.string "nicht, mich um Hilfe zu bitten!\p"
-	.string "Ich wohne in dem kleinen Haus am Meer\n"
-	.string "in der Nähe des BLÜTENBURGWALDs.\p"
-	.string "Komm, PECKO, wir sollten uns auf den\n"
-	.string "Heimweg machen.\p"
-	.string "PECKO: Pihyoh!$"
+	.string "… … …\n"
+	.string "… … … … … …\p"
+	.string "Ah, {PLAYER}{KUN}, der Retter mit Stil!\p"
+	.string "Wenn du mal Hilfe brauchst - sag Bescheid.\n"
+	.string "Ich wohn am Meer, chilliges Plätzchen!\p"
+	.string "Los PECKO, ab nach Hause!\p"
+	.string "PECKO: Pihyooooooo!$"
 
 RusturfTunnel_Text_WhyCantTheyKeepDigging:
 	.string "… …\p"
-	.string "Warum graben sie nicht weiter?\n"
-	.string "Ist das Gestein zu hart?\p"
-	.string "Meine Geliebte wartet in WIESENFLUR\n"
-	.string "auf mich, gleich hinter diesen\l"
-	.string "Felsen…\p"
-	.string "Wenn METAROST CITY und WIESENFLUR\n"
-	.string "durch diesen Tunnel verbunden wären,\l"
-	.string "könnte ich sie jeden Tag besuchen!\p"
-	.string "Aber so…\n"
-	.string "Was soll ich nur machen?$"
+	.string "Warum graben die nicht weiter?\n"
+	.string "Was ist das Problem? Zu faul?\p"
+	.string "Meine Queen wartet in WIESENFLUR…\n"
+	.string "Hinter diesem hässlichen Felsen.\p"
+	.string "Wäre der Tunnel fertig, wär ich täglich\n"
+	.string "drüben. Stattdessen steh ich hier rum.$"
 
 RusturfTunnel_Text_ToGetToVerdanturf:
-	.string "Um von METAROST CITY nach WIESENFLUR\n"
-	.string "zu gelangen, muss man nach FAUSTAU-\l"
-	.string "HAVEN und dann über GRAPHITPORT CITY\l"
-	.string "und MALVENFROH CITY reisen…$"
+	.string "Wenn du von METAROST nach WIESENFLUR\n"
+	.string "willst, viel Spaß: erst FAUSTAU, dann\n"
+	.string "GRAPHITPORT, MALVENFROH…\n"
+	.string "ein kompletter Roadtrip.$"
 
 RusturfTunnel_Text_YouShatteredBoulderTakeHM:
-	.string "Wow! Du hast den Felsen, der den Weg\n"
-	.string "blockierte, einfach zertrümmert.\p"
-	.string "Darüber bin ich überglücklich und daher\n"
-	.string "möchte ich dir diese VM geben.$"
+	.string "Heilige Scheiße, du hast den Brocken\n"
+	.string "zerlegt?!\p"
+	.string "Ich bin baff. Hier, nimm die VM.\n"
+	.string "Verdient ist verdient!$"
 
 RusturfTunnel_Text_ExplainStrength:
-	.string "Diese VM enthält STÄRKE.\p"
-	.string "Wenn ein kräftiges POKéMON diese VM\n"
-	.string "lernt, ist es in der Lage, sogar die\l"
-	.string "schwersten Felsen zu bewegen.$"
+	.string "Das hier ist STÄRKE.\p"
+	.string "Bring’s nem Pokémon mit Muckis bei,\n"
+	.string "dann kann’s tonnenschwere Steine\n"
+	.string "durch die Gegend werfen.$"
 
 RusturfTunnel_Text_WandaReunion:
 	.string "HEIKE!\n"
-	.string "Nun kann ich dich jederzeit besuchen!\p"
-	.string "HEIKE: Das ist… wunderbar.\p"
-	.string "Bitte, ruh dich ein bisschen in meinem\n"
-	.string "Haus aus.$"
+	.string "Endlich wieder vereint, Baby!\p"
+	.string "HEIKE: Ich… Ich kann’s kaum glauben…\p"
+	.string "Lass uns nach Hause gehen und Vögeln!$"
 
 RusturfTunnel_Text_BoyfriendOnOtherSideOfRock:
-	.string "Auf der anderen Seite dieses Felsens\n"
-	.string "wartet mein Freund.\p"
-	.string "Er… Er gräbt den Tunnel nicht nur, um\n"
-	.string "mich zu sehen.\p"
-	.string "Er reißt sich die Hände auf zum Wohle\n"
-	.string "aller.$"
+	.string "Mein Boyfriend ist direkt dahinter…\n"
+	.string "Er… Er macht das für alle, nicht nur für mich.\p"
+	.string "Er schuftet sich die Finger blutig,\n"
+	.string "und ich steh hier. Legendär.$"
 
 RusturfTunnel_Text_MikeIntro:
-	.string "Wie nennt man einen ungestümen Mann\n"
-	.string "hoch im Gebirge? Einen Bergfreund.\p"
-	.string "So, warum nennt man dann nicht auch ein\n"
-	.string "POKéMON in den Bergen ein Berg-\l"
-	.string "POKéMON?$"
+	.string "Was ist ein wilder Typ auf nem Berg?\n"
+	.string "Ein Bergfreund. Hahaha.\p"
+	.string "Und ein Pokémon am Berg? Ein Berg-Mon!\n"
+	.string "…Ich hör schon auf.$"
 
 RusturfTunnel_Text_MikeDefeat:
-	.string "Meine POKéMON…\n"
-	.string "Haben alle Energie verloren…$"
+	.string "Meine Pokémon…\n"
+	.string "Sie sind leer wie mein Kühlschrank.$"
 
 RusturfTunnel_Text_MikePostBattle:
-	.string "Sie haben das Projekt hier einge-\n"
-	.string "stellt, um die POKéMON zu schützen,\l"
-	.string "nicht wahr? Eine rührende Story.$"
+	.string "Das Projekt wurde eingestellt, um die\n"
+	.string "Pokémon zu schützen? Ehrenmove.\n"
+	.string "Ich nehm alles zurück.$"
 
 RusturfTunnel_EventScript_Feueriegel::
     msgbox RusturfTunnel_Text_Feueriegel, MSGBOX_NPC
@@ -538,10 +522,10 @@ RusturfTunnel_EventScript_Feueriegel::
 RusturfTunnel_Text_Feueriegel:
     .string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 2 Generation mit\l"

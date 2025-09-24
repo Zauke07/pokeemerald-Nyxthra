@@ -1845,7 +1845,7 @@
       "id": "LAYOUT_NEW_MAUVILLE_INSIDE",
       "name": "NewMauville_Inside_Layout",
       "width": 41,
-      "height": 41,
+      "height": 55,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_BikeShop",
       "border_filepath": "data/layouts/NewMauville_Inside/border.bin",
@@ -4490,6 +4490,76 @@
       "secondary_tileset": "gTileset_MossdeepGym",
       "border_filepath": "data/layouts/Rival_Test/border.bin",
       "blockdata_filepath": "data/layouts/Rival_Test/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_B3F",
+      "name": "GraniteCave_B3F_Layout",
+      "width": 15,
+      "height": 15,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GraniteCave_B3F/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_B3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE104_PROTOTYPE_2",
+      "name": "Route104_Prototype_2_Layout",
+      "width": 1,
+      "height": 1,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Route104_Prototype_2/border.bin",
+      "blockdata_filepath": "data/layouts/Route104_Prototype_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_B4F_2",
+      "name": "GraniteCave_B4F_2_Layout",
+      "width": 20,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GraniteCave_B4F_2/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_B4F_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_GRANITE_CAVE_B4F",
+      "name": "GraniteCave_B4F_Layout",
+      "width": 20,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GraniteCave_B4F/border.bin",
+      "blockdata_filepath": "data/layouts/GraniteCave_B4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_BAUSTELLE",
+      "name": "Baustelle_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Baustelle/border.bin",
+      "blockdata_filepath": "data/layouts/Baustelle/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE111_01",
+      "name": "Route111_01_Layout",
+      "width": 40,
+      "height": 53,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Route111_01/border.bin",
+      "blockdata_filepath": "data/layouts/Route111_01/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE111_02",
+      "name": "Route111_02_Layout",
+      "width": 59,
+      "height": 53,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/Route111_02/border.bin",
+      "blockdata_filepath": "data/layouts/Route111_02/map.bin"
     }
   ]
 }

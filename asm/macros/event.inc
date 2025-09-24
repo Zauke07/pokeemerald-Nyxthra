@@ -736,11 +736,11 @@
 	@ When used with an event script, you can also pass in an optional flag to disable music
 	.macro trainerbattle_single trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_SINGLE, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
+	trainerbattle TRAINER_BATTLE_SINGLE, LOCALID_NONE, \trainer, \intro_text, \lose_text, NULL, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, LOCALID_NONE, \trainer, \intro_text, \lose_text, \event_script, LOCALID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endif
 	.endm
 
@@ -1430,10 +1430,9 @@
 
     @ Speichert den aktuell gewählten Charakterstil in VAR_RESULT.
     @ Beispiel: Wenn der Spieler Red gewählt hat, wird VAR_RESULT = STYLE_RED sein.
-    .macro getplayerstyle
-    .byte SCR_OP_COPYVAR
-    .short VAR_RESULT, VAR_PLAYER_STYLE
-    .endm
+	.macro getplayerstyle
+	.byte SCR_OP_GETPLAYERSTYLE
+	.endm
 
 	@ Plays the cry of the given species. Mode is any CRY_MODE_* constant.
 	@ You can use waitmoncry to block script execution until the cry finishes.
@@ -2316,6 +2315,10 @@
 	callnative PlayFirstMonCry, requests_effects=1
 	.endm
 
+	.macro playfollowercry
+	callnative PlayFollowerCry, requests_effects=1
+	.endm
+
 	@ Buffers the nickname of the first alive party member.
 	.macro bufferlivemonnickname out:req
 	callnative BufferFirstLiveMonNickname, requests_effects=1
@@ -2658,6 +2661,23 @@
 	.macro bufferstylenamevar1
 	.byte SCR_OP_BUFFER_STYLE_NAME_VAR1
 	.endm
+
+	.macro checkpcstyle_may
+	.byte SCR_OP_checkpcstyle_may
+	.endm
+
+	.macro checkpcstyle_brendan
+	.byte SCR_OP_checkpcstyle_brendan
+	.endm
+
+	.macro BufferFollowerNicknameToVar1
+	.byte SCR_OP_BUFFER_FOLLOWER_NICKNAME_TO_VAR1
+	.endm
+
+	.macro formatcurrenttime
+	.byte SCR_OP_FORMAT_CURRENT_TIME
+	.endm
+
 
 @ Follower NPCs
 

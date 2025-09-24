@@ -1397,6 +1397,6 @@ SlateportCity_Text_Polizei:
 	.string "Hey du da!\p"
 	.string "Aktuell treibt sich hier ein Händler\n"
 	.string "rum der Illegale sachen Verkauft!\p"
-	.string "Wenn dir jemand was komisches Verkaufen\l"
+	.string "Wenn dir jemand was komisches Verkaufen\n"
 	.string "will, sag mir bitte sofort Bescheid!\p"
 	.string "Pass auf dich auf kleine/r!$"

@@ -349,99 +349,84 @@ Route116_EventScript_Johnson::
 	end
 
 Route116_Text_ScoundrelMadeOffWithPeeko:
-	.string "Oooh, was mache ich nur?!?\p"
-	.string "PECKO und ich waren auf einem Spazier-\n"
-	.string "gang und da kam so ein Schlägertyp…\p"
-	.string "Der Schurke hat mir meinen Liebling\n"
-	.string "PECKO geklaut!\p"
-	.string "Ooooooooooooaaaargh! PECKO!$"
+	.string "Oooh, was mach ich bloß?!?\p"
+	.string "PECKO und ich waren nur gemütlich\n"
+	.string "unterwegs, und plötzlich tauchte so'n\n"
+	.string "Zwielichtiger Typ auf!\p"
+	.string "Der hat mir einfach PECKO geklaut!\p"
+	.string "Oooooaaah! PECKO!!$"
 
 Route116_Text_WantToDigTunnel:
-	.string "Nnn… Brüll!\p"
-	.string "Ich will diesen vermaledeiten Tunnel\n"
-	.string "graben!$"
+	.string "Raaaah!\p"
+	.string "Ich will diesen verdammten Tunnel\n"
+	.string "graben! Ohne Pause!$"
 
 Route116_Text_DiggingTunnelWhenGoonOrderedMeOut:
-	.string "Nnn… Brüll!\n"
-	.string "Was ist hier los?\p"
-	.string "Ich war dabei, einen Tunnel ohne Werk-\n"
-	.string "zeug zu graben, als so ein Idiot mich\l"
-	.string "verjagt hat!\p"
-	.string "Dieser Tunnel ist voller POKéMON, die\n"
-	.string "sensibel auf Lärm reagieren. Sie können\l"
-	.string "einen Aufruhr veranstalten.\p"
-	.string "Daher arbeiten wir ohne schwere\n"
-	.string "Maschinen an dem Tunnel…\p"
-	.string "Ich befürchte, dieser Idiot wird\n"
-	.string "irgendetwas Dummes tun und die\l"
-	.string "POKéMON in Aufruhr versetzen.$"
+	.string "Ugh… Ich grab hier schön brav vor\n"
+	.string "mich hin, komplett ohne Maschinen…\p"
+	.string "Und dann kommt so ein Trottel und\n"
+	.string "meint, ich soll verschwinden!\p"
+	.string "Der Tunnel ist voll mit sensiblen\n"
+	.string "POKéMON - Lärm ist hier tabu!\p"
+	.string "Wir arbeiten nur mit Muskelkraft…\p"
+	.string "Aber wenn der Typ da drinnen\n"
+	.string "Blödsinn macht, gibt's nen Aufstand!$"
 
 Route116_Text_GoonHightailedItOutOfTunnel:
-	.string "Nnn… Brüll!\p"
-	.string "Dieser dämliche Idiot ist aus dem Tun-\n"
-	.string "nel abgehauen. Ich kann weitergraben!$"
+	.string "RAAAH!\p"
+	.string "Dieser Depp ist endlich weg!\n"
+	.string "Jetzt kann ich wieder buddeln!$"
 
 Route116_Text_ThankYouTokenOfAppreciation:
-	.string "Oh! Du bist das!\p"
-	.string "Du hast mir nicht nur im BLÜTEN-\n"
-	.string "BURGWALD geholfen, sondern auch\l"
-	.string "mein gestohlenes Paket zurückgeholt\l"
-	.string "und nach GRAPHITPORT CITY gebracht!\p"
-	.string "KAPT. BRIGG hat uns über die Ankunft\n"
-	.string "des Paketes unterrichtet!\p"
-	.string "Vielen, vielen Dank!\p"
-	.string "Wäre ich ein Meer, würde ich\n"
-	.string "dich in Dankbarkeit baden und als\l"
-	.string "Held auf meinen Wellen tragen!\p"
-	.string "Ich habe für dich, den wunderbarsten\n"
-	.string "TRAINER, gute Nachrichten!\p"
-	.string "Unsere Firma hat vor kurzem eine\n"
-	.string "neue Art von POKéBALL entwickelt…\p"
-	.string "Als Zeichen meiner Dankbarkeit\n"
-	.string "schenke ich ihn dem wunderbarsten\l"
-	.string "TRAINER!$"
+	.string "Hey, du schon wieder!\p"
+	.string "Du hast mir in dem Wald geholfen, und\n"
+	.string "jetzt auch noch das Paket gerettet?\p"
+	.string "KAPT. BRIGG hat uns schon Bescheid\n"
+	.string "gesagt - Respekt!\p"
+	.string "Wenn ich ein Meer wär, würd ich dich\n"
+	.string "mit Dank überfluten.\p"
+	.string "Und weil du so ehrenhaft bist:\n"
+	.string "Wir haben 'nen neuen BALL entwickelt…\p"
+	.string "Und du kriegst den allerersten!$"
 
 Route116_Text_NewBallAvailableAtMart:
-	.string "Unser neuer POKéBALL wird im PKMN-\n"
-	.string "MARKT in METAROST CITY erhältlich sein.\p"
-	.string "Bitte, probiere ihn aus!\n"
-	.string "Vielen Dank und Lebewohl.$"
+	.string "Unser neuer POKéBALL ist jetzt im\n"
+	.string "PKMN-Markt in METAROST CITY erhältlich.\p"
+	.string "Gönn dir mal einen - du hast's verdient!\n"
+	.string "Mach’s gut und bleib cool!$"
 
 Route116_Text_BagIsJamPacked:
-	.string "Dein BEUTEL ist brechend voll.\n"
-	.string "Ich kann dir diesen WIEDERBALL nicht\l"
-	.string "geben.$"
+	.string "Oha… Dein BEUTEL ist komplett voll.\n"
+	.string "Da passt nicht mal ein WIEDERBALL rein.$"
 
 Route116_Text_TokenOfAppreciation:
-	.string "Als Zeichen unseres Dankes für die\n"
-	.string "Überbringung unseres Paketes, habe ich\l"
-	.string "eine neue Art von POKéBALL für dich.\l"
-	.string "Für unseren wunderbarsten TRAINER!$"
+	.string "Als Dank für deinen Einsatz bekommst\n"
+	.string "du diesen neuen POKéBALL - frisch aus\l"
+	.string "unserer DEVON-Forschung!\p"
+	.string "Exklusiv für den besten TRAINER!$"
 
 Route116_Text_CanYouHelpMeFindGlasses:
-	.string "Ich habe meine Brille fallen lassen…\n"
-	.string "Kannst du mir helfen, sie zu finden?$"
+	.string "Mist… Meine Brille ist mir runter-\n"
+	.string "gefallen…\p"
+	.string "Kannst du bitte helfen, sie zu finden?$"
 
 Route116_Text_MayISeeThoseGlasses:
-	.string "Deine Brille…\n"
-	.string "Darf ich sie mal kurz ausprobieren?$"
+	.string "Warte mal…\n"
+	.string "Darf ich die mal kurz anschauen?$"
 
 Route116_Text_NotWhatImLookingForMaybeTheyArentHere:
 	.string "Hmm…\n"
-	.string "Das ist ein SCHATTENGLAS.\l"
-	.string "Das habe ich nicht gesucht…\p"
-	.string "Vielleicht ist meine Brille gar nicht\n"
-	.string "hier zu finden…$"
+	.string "Das ist ein SCHATTENGLAS, aber nicht\n"
+	.string "meine Brille…\p"
+	.string "Vielleicht liegt sie gar nicht hier.$"
 
 Route116_Text_CantFindGlassesNotHere:
-	.string "Hmm…\n"
-	.string "Ich kann meine Brille nirgends finden…\l"
-	.string "Vielleicht liegt sie gar nicht hier…$"
+	.string "Ich find sie einfach nicht…\n"
+	.string "Wahrscheinlich ist sie woanders.$"
 
 Route116_Text_NotWhatImLookingFor:
-	.string "Hmm…\n"
-	.string "Das ist ein SCHATTENGLAS.\l"
-	.string "Das habe ich nicht gesucht…$"
+	.string "Nö…\n"
+	.string "SCHATTENGLAS, aber nicht meins.$"
 
 Route116_Text_RouteSignRustboro:
 	.string "ROUTE 116\n"
@@ -449,29 +434,24 @@ Route116_Text_RouteSignRustboro:
 
 Route116_Text_RusturfTunnelSign:
 	.string "METAFLURTUNNEL\n"
-	.string "“Verbindet METAROST CITY und\p"
-	.string "WIESENFLUR.\n"
-	.string "Das Tunnelprojekt wurde abgebrochen.”$"
+	.string "“Verbindet METAROST CITY mit WIESENFLUR.\p"
+	.string "Das Projekt wurde allerdings eingestellt.”$"
 
 Route116_Text_TunnelersRestHouse:
-	.string "BERGRASTHAUS$"
+	.string "TUNNEL-ARBEITER-RASTHAUS$"
 
 Route116_Text_TrainerTipsBToStopEvolution:
-	.string "TIPPS für TRAINER\p"
-	.string "Wenn du die Entwicklung eines POKéMON\n"
-	.string "stoppen willst, musst du den B-Knopf\l"
-	.string "drücken, während es sich entwickeln\l"
-	.string "will.\p"
-	.string "Das POKéMON entwickelt sich dann nicht.\n"
-	.string "Das nennt man Entwicklungsstopp.$"
+	.string "TRAINER-TIPP:\p"
+	.string "Wenn du nicht willst, dass sich ein\n"
+	.string "POKéMON entwickelt, drück einfach\n"
+	.string "den B-Knopf während der Entwicklung!\p"
+	.string "So bleibt es, wie es ist.$"
 
 Route116_Text_TrainerTipsBagHasPockets:
-	.string "TIPPS für TRAINER\p"
-	.string "Dein BEUTEL hat mehrere TASCHEn.\p"
-	.string "Items werden automatisch in die dafür\n"
-	.string "vorgesehene TASCHE gelegt.\p"
-	.string "Kein TRAINER kann auf einen eigenen\n"
-	.string "BEUTEL verzichten.$"
+	.string "TRAINER-TIPP:\p"
+	.string "Dein BEUTEL hat verschiedene Taschen.\n"
+	.string "Items werden direkt einsortiert.\p"
+	.string "Ordnung muss sein - selbst bei TRAINERN!$"
 
 Route116_EventScript_Geckabor::
     msgbox Route116_Text_Geckabor, MSGBOX_NPC
@@ -480,10 +460,10 @@ Route116_EventScript_Geckabor::
 Route116_Text_Geckabor:
 	.string "Hey {PLAYER}, ich bin ein\n"
 	.string "Bote von diesem Rom Entwickler.\l"
-	.string "Sein name ist Zauke07!\p"
-	.string "Immer wenn du mich am ende einer\n"
-	.string "Route Siehst, sprich mich an, denn\l"
-	.string "ich habe einen Heißen Tipp für dich!\p"
+	.string "Sein Name ist Zauke07!\p"
+	.string "Immer wenn du mich am Ende einer\n"
+	.string "Route siehst, sprich mich an, denn\l"
+	.string "ich habe einen heißen Tipp für dich!\p"
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
 	.string "Starter aus der 3 Generation mit\l"

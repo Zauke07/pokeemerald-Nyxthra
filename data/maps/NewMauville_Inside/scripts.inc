@@ -22,6 +22,7 @@ NewMauville_Inside_OnTransition:
 	call_if_unset FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb1
 	call_if_unset FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb2
 	call_if_unset FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE, NewMauville_Inside_EventScript_ShowVoltorb3
+	call_if_unset FLAG_DEFEATED_ZAPDOS, NewMauville_Inside_EventScript_ShowZapdos
 	end
 
 NewMauville_Inside_EventScript_ShowVoltorb1::
@@ -34,6 +35,10 @@ NewMauville_Inside_EventScript_ShowVoltorb2::
 
 NewMauville_Inside_EventScript_ShowVoltorb3::
 	clearflag FLAG_HIDE_NEW_MAUVILLE_VOLTORB_3
+	return
+
+NewMauville_Inside_EventScript_ShowZapdos::
+	clearflag FLAG_HIDE_NEW_MAUVILLE_ZAPDOS
 	return
 
 NewMauville_Inside_OnLoad:
@@ -246,18 +251,47 @@ NewMauville_Inside_EventScript_DefeatedVoltorb3::
 	end
 
 NewMauville_Inside_Text_GeneratorRadiatingHeat:
-	.string "The generator is radiating heat that\n"
-	.string "can be felt even at a distance.\p"
-	.string "It looks like it should be turned off\n"
-	.string "as soon as possible.$"
+	.string "Der Generator strahlt Hitze aus, die\n"
+	.string "sogar aus der Entfernung spürbar ist.\p"
+	.string "Es sieht so aus, als sollte er so schnell\n"
+	.string "wie möglich ausgeschaltet werden.$"
 
 NewMauville_Inside_Text_GeneratorQuietedDown:
-	.string "The generator quieted down.$"
+	.string "Der Generator ist leiser geworden.$"
 
 NewMauville_Inside_Text_SteppedOnSwitchGeneratorStopped:
-	.string "{PLAYER} stepped on the switch.\p"
-	.string "Click…\p"
+	.string "{PLAYER} hat auf den Schalter getreten.\p"
+	.string "Klick…\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
-	.string "The generator appears to have\n"
-	.string "stopped…$"
+	.string "Der Generator scheint angehalten zu sein…$"
+
+NewMauville_Inside_EventScript_Zapdos::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	seteventmon SPECIES_ZAPDOS, 30
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, NewMauville_Inside_EventScript_DefeatedZapdos
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NewMauville_Inside_EventScript_RanFromZapdos
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NewMauville_Inside_EventScript_RanFromZapdos
+	setflag FLAG_DEFEATED_ZAPDOS
+	release
+	end
+
+NewMauville_Inside_EventScript_DefeatedZapdos::
+	setflag FLAG_DEFEATED_ZAPDOS
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+NewMauville_Inside_EventScript_RanFromZapdos::
+	setvar VAR_0x8004, SPECIES_ZAPDOS
+	goto Common_EventScript_LegendaryFlewAway
+	end

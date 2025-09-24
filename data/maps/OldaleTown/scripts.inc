@@ -268,14 +268,14 @@ OldaleTown_EventScript_ShowRivalMessage::
 	goto_if_eq VAR_RESULT, STYLE_HILDA, OldaleTown_EventScript_ShowBrendanMessage
 @ 	goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
 @ 	goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
-	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
-	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
-	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
-	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
-	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
 	end
 
 OldaleTown_EventScript_ShowMayMessage::
@@ -359,62 +359,71 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	step_end
 
 OldaleTown_Text_SavingMyProgress:
-	.string "Diese komische Höhle dort ist\n"
-	.string "neu. Aber es hört sich so an,\p"
-	.string "als würden dort Bauarbeiten\n"
-	.string "stattfinden.$"
+	.string "Diese Höhle dort am Rand der Stadt…\n"
+	.string "die war früher nicht da.\p"
+	.string "Manche sagen, sie sei über Nacht\n"
+	.string "aufgetaucht. Einfach so.\p"
+	.string "Ein paar Einheimische behaupten, nachts\n"
+	.string "seltsame Geräusche daraus gehört\l"
+    .string "zu haben.\p"
+	.string "Ich würde da nicht reingehen…\n"
+	.string "Jedenfalls nicht allein.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
-	.string "Hi!\n"
-	.string "Ich arbeite in einem PKMN-SUPERMARKT.\p"
-	.string "Kommst du bitte einmal mit mir?$"
+	.string "Hey, du bist neu hier, oder?\n"
+	.string "Ich arbeite im Pokémon-SUPERMARKT.\p"
+	.string "Komm kurz mit - dauert nicht lang.$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "Dies ist ein PKMN-SUPERMARKT.\n"
-	.string "Er ist an dem blauen Dach erkennbar.\p"
-	.string "Wir verkaufen eine Menge nützlicher\n"
-	.string "Dinge, wie POKéBÄLLE, mit denen man\l"
-	.string "POKéMON fängt.\p"
-	.string "Hier, dies ist ein Item, quasi als Werbe-\n"
-	.string "geschenk für dich.$"
+	.string "Hier ist der PKMN-SUPERMARKT -\n"
+	.string "erkennbar am blauen Dach.\p"
+	.string "Wir verkaufen nützliche Items -\n"
+	.string "wie POKéBÄLLE zum Fangen von Pokémon.\p"
+	.string "Hier, nimm das. Eine kleine\n"
+	.string "Aufmerksamkeit für neue Trainer.$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "Ein TRANK kann zu jeder Zeit eingesetzt\n"
-	.string "werden, daher ist er in manchen\l"
-	.string "Situationen wertvoller als ein POKéMON-\l"
-	.string "CENTER.$"
+	.string "Ein TRANK heilt dein Pokémon unterwegs -\n"
+	.string "ganz ohne CENTER.\p"
+	.string "Manchmal macht genau das den Unter-\n"
+	.string "schied zwischen Sieg und Niederlage.$"
 
 OldaleTown_Text_WaitDontComeInHere:
-	.string "Aaaah! Warte!\n"
-	.string "Bitte nicht dort entlang laufen!\p"
-	.string "Ich habe dort die Fußspuren eines\n"
-	.string "seltenen POKéMON gesehen!\p"
-	.string "Warte bis ich fertig bin, sie\n"
-	.string "abzuzeichnen, okay?$"
+	.string "Warte! Geh da nicht hin!\n"
+	.string "Du könntest wichtige Spuren zerstören!\p"
+	.string "Ich habe hier Fußabdrücke entdeckt…\n"
+	.string "aber sie stammen von keinem bekannten\l"
+    .string "Pokémon.\p"
+	.string "Die Form ist… seltsam. Irgendwie\n"
+    .string "fremdartig.\p"
+	.string "Ich muss sie genau dokumentieren.\n"
+	.string "Bitte warte noch etwas!$"
 
 OldaleTown_Text_DiscoveredFootprints:
-	.string "Ich habe dort die Fußspuren eines\n"
-	.string "seltenen POKéMON gesehen!\p"
-	.string "Warte, bis ich fertig bin, sie\n"
-	.string "abzuzeichnen, okay?$"
+	.string "Ich habe sie abgezeichnet…\n"
+	.string "Und sie ähneln wirklich nichts Bekanntem.\p"
+	.string "Es sieht aus, als wäre hier ein Wesen\n"
+	.string "unterwegs gewesen, das sich tarnen kann…\p"
+	.string "Aber das ergibt keinen Sinn.\n"
+	.string "Oder etwa doch?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
-	.string "Ich habe die Fußspuren eines seltenen\n"
-	.string "POKéMON abgezeichnet.\p"
-	.string "Aber hinterher habe ich festgestellt,\n"
-	.string "dass es meine eigenen Spuren waren...$"
+	.string "Ich hab die Fußspuren endlich skizziert…\n"
+	.string "Aber sie geben mir Rätsel auf.\p"
+	.string "Zuerst dachte ich, sie wären von einem\n"
+	.string "seltenen Pokémon.\p"
+	.string "Aber jetzt bin ich mir nicht mehr sicher.\n"
+	.string "Vielleicht waren es… gar keine Spuren.$"
 
 OldaleTown_Text_MayLetsGoBack:
 	.string "{RIVAL}: {PLAYER}{KUN}!\n"
-	.string "Hier entlang!\l"
-	.string "Lass uns nach Hause gehen!$"
+	.string "Komm schon! Lass uns zurück ins LABOR!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "{RIVAL}: Ich gehe nun in das LABOR\n"
-	.string "meines Vaters.\l"
-	.string "{PLAYER}, du solltest auch zurücklaufen.$"
+	.string "{RIVAL}: Ich geh schon mal vor ins LABOR\n"
+	.string "von meinem Dad. Komm ruhig nach.$"
 
 OldaleTown_Text_TownSign:
 	.string "ROSALTSTADT\n"
-	.string "“Wo Dinge selten ihren Anfang nehmen.”$"
+	.string "“Die Höhle flüstert - hörst du es auch?”$"
 

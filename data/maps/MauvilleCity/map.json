@@ -257,13 +257,6 @@
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_HOUSE2",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 14,
-      "y": 4,
-      "elevation": 0,
-      "dest_map": "MAP_DEWFORD_TOWN",
-      "dest_warp_id": "6"
     }
   ],
   "coord_events": [],

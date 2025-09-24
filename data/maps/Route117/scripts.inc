@@ -216,7 +216,7 @@ Route117_EventScript_Aisha::
 	end
 
 Route117_Text_DayCarePokemonHadNewMove:
-	.string "Ich habe mein POKéMON in der PENSION\n"
+	.string "Ich habe mein Pokémon in der PENSION\n"
 	.string "abgegeben.\p"
 	.string "Als ich es wieder abholte, kannte es\n"
 	.string "eine Attacke, die ich ihm nicht beige-\l"
@@ -239,5 +239,18 @@ Route117_Text_RouteSignMauville:
 	.string "{RIGHT_ARROW} MALVENFROH CITY$"
 
 Route117_Text_DayCareSign:
-	.string "POKéMON DAY CARE\n"
-	.string "“Let us raise your POKéMON.”$"
+	.string "Pokémon Pension\n"
+	.string "“Lass uns deine Pokémon aufziehen.”$"
+
+Route117_EventScript_Chelast::
+	msgbox Route117_Text_Chelast, MSGBOX_NPC
+	end
+
+Route117_Text_Chelast:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 4 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"
+

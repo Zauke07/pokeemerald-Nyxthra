@@ -28,14 +28,14 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfx::
     call_if_eq VAR_RESULT, STYLE_HILDA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxHilda
 @     call_if_eq VAR_RESULT, STYLE_NATE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxNate
 @     call_if_eq VAR_RESULT, STYLE_ROSA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxRosa
-    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem
-    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena
-    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio
-    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene
-    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor
-    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian
-    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana
+@    call_if_eq VAR_RESULT, STYLE_CALEM, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxCalem
+@    call_if_eq VAR_RESULT, STYLE_SERENA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSerena
+@    call_if_eq VAR_RESULT, STYLE_ELIO, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxElio
+@    call_if_eq VAR_RESULT, STYLE_SELENE, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxSelene
+@    call_if_eq VAR_RESULT, STYLE_VICTOR, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxVictor
+@    call_if_eq VAR_RESULT, STYLE_GLORIA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxGloria
+@    call_if_eq VAR_RESULT, STYLE_FLORIAN, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxFlorian
+@    call_if_eq VAR_RESULT, STYLE_JULIANA, BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
 BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfxBrendan::

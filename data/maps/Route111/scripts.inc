@@ -60,14 +60,14 @@ Route111_EventScript_SetFallingPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_HILDA, Route111_EventScript_SetFallingPlayerGfxFemale
 @     goto_if_eq VAR_RESULT, STYLE_NATE, Route111_EventScript_SetFallingPlayerGfxMale
 @     goto_if_eq VAR_RESULT, STYLE_ROSA, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_CALEM, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_SERENA, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_ELIO, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_SELENE, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route111_EventScript_SetFallingPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_CALEM, Route111_EventScript_SetFallingPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_SERENA, Route111_EventScript_SetFallingPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_ELIO, Route111_EventScript_SetFallingPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_SELENE, Route111_EventScript_SetFallingPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route111_EventScript_SetFallingPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route111_EventScript_SetFallingPlayerGfxFemale
+@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route111_EventScript_SetFallingPlayerGfxMale
+@    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route111_EventScript_SetFallingPlayerGfxFemale
 	return
 
 Route111_EventScript_SetFallingPlayerGfxMale::

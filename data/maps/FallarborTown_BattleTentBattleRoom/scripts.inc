@@ -26,14 +26,14 @@ FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfx::
     goto_if_eq VAR_RESULT, STYLE_HILDA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxHilda
 @     goto_if_eq VAR_RESULT, STYLE_NATE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxNate
 @     goto_if_eq VAR_RESULT, STYLE_ROSA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxRosa
-    goto_if_eq VAR_RESULT, STYLE_CALEM, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem
-    goto_if_eq VAR_RESULT, STYLE_SERENA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena
-    goto_if_eq VAR_RESULT, STYLE_ELIO, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio
-    goto_if_eq VAR_RESULT, STYLE_SELENE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana
+@    goto_if_eq VAR_RESULT, STYLE_CALEM, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxCalem
+@    goto_if_eq VAR_RESULT, STYLE_SERENA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSerena
+@    goto_if_eq VAR_RESULT, STYLE_ELIO, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxElio
+@    goto_if_eq VAR_RESULT, STYLE_SELENE, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxSelene
+@    goto_if_eq VAR_RESULT, STYLE_VICTOR, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxVictor
+@    goto_if_eq VAR_RESULT, STYLE_GLORIA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxGloria
+@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxFlorian
+@    goto_if_eq VAR_RESULT, STYLE_JULIANA, FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxJuliana
 	return
 
 FallarborTown_BattleTentBattleRoom_EventScript_SetPlayerGfxBrendan::

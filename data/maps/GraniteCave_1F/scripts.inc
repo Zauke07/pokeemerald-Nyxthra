@@ -18,22 +18,21 @@ GraniteCave_1F_EventScript_ReceivedFlash::
 	end
 
 GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
-	.string "Hey, du!\n"
-	.string "Hier ist es schrecklich dunkel.\l"
-	.string "Eine Erforschung wird damit schwierig.\p"
-	.string "Der Typ, der vorher schon mal hier war…\n"
-	.string "TROY heißt er, glaube ich…\p"
-	.string "Der weiß, wie man BLITZ einsetzt, daher\n"
-	.string "wird es ihm wohl gut gehen, aber…\p"
-	.string "Das Motto unter uns WANDERERn heißt:\n"
-	.string "Jedem aus der Klemme helfen.\p"
-	.string "Deshalb bekommst du dies von mir.$"
+	.string "He, warte kurz!\n"
+	.string "Dort vorne wird's richtig finster.\l"
+	.string "Ohne Licht sieht man kein Stück.\p"
+	.string "So ein anderer Typ war vorhin hier...\n"
+	.string "TROY hieß der wohl. Der kennt sich aus.\p"
+	.string "Der kann BLITZ einsetzen - kein Problem\n"
+	.string "für ihn also.\p"
+	.string "Aber hey, wir WANDERER halten zusammen!\n"
+	.string "Also nimm das hier, könnte helfen.$"
 
 GraniteCave_1F_Text_ExplainFlash:
-	.string "Bringe einem Pokémon die VM BLITZ\n"
-	.string "bei und setze sie ein.\p"
-	.string "Damit wird selbst die dunkelste Höhle\n"
-	.string "von Licht erfüllt.\p"
-	.string "Aber um das zu können, brauchst du den\n"
-	.string "ORDEN der ARENA von FAUSTAUHAVEN.$"
+	.string "Bring einem deiner Pokémon die VM BLITZ\n"
+	.string "bei und setz sie hier ein.\p"
+	.string "Dann wird’s deutlich heller - wie'n\n"
+	.string "Scheinwerfer in der Nacht.\p"
+	.string "Aber Vorsicht: Du brauchst den ORDEN\n"
+	.string "von FAUSTAUHAVEN, sonst klappt’s nicht.$"
 
