@@ -48,6 +48,8 @@
 #include "type_icons.h"
 #include "battle_main.h"
 #include "pokedex.h"
+#include "field_specials.h"
+#include "field_message_box.h"
 
 static void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
@@ -1493,7 +1495,17 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
     u32 expToNextLvl;
 
     exp -= currLvlExp;
-    expToNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - currLvlExp;
+    
+    // Sicherheitsprüfung für Level über Maximum
+    if (level >= MAX_LEVEL)
+    {
+        expToNextLvl = 0;
+    }
+    else
+    {
+        expToNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - currLvlExp;
+    }
+    
     SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], expToNextLvl, exp, -gainedExp);
     TestRunner_Battle_RecordExp(battler, exp, -gainedExp);
     PlaySE(SE_EXP);
@@ -1528,7 +1540,15 @@ static void Task_GiveExpWithExpBar(u8 taskId)
             species = GetMonData(mon, MON_DATA_SPECIES);
             oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP);
             expOnNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1];
-
+            // Füge diese Sicherheitsprüfung hinzu:
+            if (level >= MAX_LEVEL)
+            {
+                expOnNextLvl = currExp + gainedExp; // Verhindert Level-Up über Maximum
+            }
+            else
+            {
+                expOnNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1];
+            }
             expAfterGain = currExp + gainedExp;
             if (expAfterGain >= expOnNextLvl)
             {
@@ -1920,16 +1940,32 @@ u32 LinkPlayerGetTrainerPicId(u32 multiplayerId)
     return trainerPicId;
 }
 
+u8 GetTrainerBackPicIdByStyle(u8 style)
+{
+    switch (style)
+    {
+    case STYLE_BRENDAN: return TRAINER_BACK_PIC_BRENDAN;
+    case STYLE_MAY:     return TRAINER_BACK_PIC_MAY;
+    case STYLE_RED:     return TRAINER_BACK_PIC_RED;
+    case STYLE_LEAF:    return TRAINER_BACK_PIC_LEAF;
+    case STYLE_ETHAN:   return TRAINER_BACK_PIC_ETHAN;
+    case STYLE_LYRA:    return TRAINER_BACK_PIC_LYRA;
+    case STYLE_LUCAS:   return TRAINER_BACK_PIC_LUCAS;
+    case STYLE_DAWN:    return TRAINER_BACK_PIC_DAWN;
+    case STYLE_HILBERT: return TRAINER_BACK_PIC_HILBERT;
+    case STYLE_HILDA:   return TRAINER_BACK_PIC_HILDA;
+    // ggf. weitere Styles
+    default:            return TRAINER_BACK_PIC_BRENDAN;
+    }
+}
+
+
 static u32 PlayerGetTrainerBackPicId(void)
 {
-    u32 trainerPicId;
-
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
-        trainerPicId = LinkPlayerGetTrainerPicId(GetMultiplayerId());
+        return LinkPlayerGetTrainerPicId(GetMultiplayerId());
     else
-        trainerPicId = gSaveBlock2Ptr->playerStyles[0]; // Nutzt den gewählten Charakterstil direkt
-
-    return trainerPicId;
+        return GetTrainerBackPicIdByStyle(gSaveBlock2Ptr->playerStyles[0]);
 }
 
 // In emerald it's possible to have a tag battle in the battle frontier facilities with AI

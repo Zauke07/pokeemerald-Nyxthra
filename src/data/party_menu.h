@@ -662,6 +662,9 @@ static const u8 *const sActionStringTable[] =
     [PARTY_MSG_NO_POKEMON]             = COMPOUND_STRING("Du hast kein POKéMON."),
     [PARTY_MSG_CHOOSE_MON_FOR_BOX]     = gText_SendWhichMonToPC,
     [PARTY_MSG_MOVE_ITEM_WHERE]        = gText_MoveItemWhere,
+    [PARTY_MSG_CHOOSE_FOLLOWER]        = gText_ChooseFollower,
+    [PARTY_MSG_REPLACE_FOLLOWER]      = gText_ReplaceFollower,
+    [PARTY_MSG_REMOVE_FOLLOWER]       = gText_RemoveFollower,
 };
 
 static const u8 *const sDescriptionStringTable[] =
@@ -725,12 +728,13 @@ struct
     [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Rasenmäher"),          CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Form wechseln"),       CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Fähigkeit ändern"),    CursorCb_ChangeAbility},
+    [MENU_SET_FOLLOWER]    = {COMPOUND_STRING("Begleiter"),           CursorCb_SetFollower},
 };
 
-static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SummarySwitchCancel[] = {MENU_SUMMARY, MENU_SWITCH, MENU_SET_FOLLOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_ShiftSummaryCancel[] = {MENU_SHIFT, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_SendOutSummaryCancel[] = {MENU_SEND_OUT, MENU_SUMMARY, MENU_CANCEL1};
-static const u8 sPartyMenuAction_SummaryCancel[] = {MENU_SUMMARY, MENU_CANCEL1};
+static const u8 sPartyMenuAction_SummaryCancel[] = {MENU_SUMMARY, MENU_SET_FOLLOWER, MENU_CANCEL1};
 static const u8 sPartyMenuAction_EnterSummaryCancel[] = {MENU_ENTER, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_NoEntrySummaryCancel[] = {MENU_NO_ENTRY, MENU_SUMMARY, MENU_CANCEL1};
 static const u8 sPartyMenuAction_StoreSummaryCancel[] = {MENU_STORE, MENU_SUMMARY, MENU_CANCEL1};

@@ -374,6 +374,11 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_CHATGPT] = { _("ChatGPT"), 20, BALL_MASTER },
 //    [TRAINER_CLASS_ASH] = { _("{PKMN} trainer"), 15 },
 //    [TRAINER_CLASS_WES] = { _("{PKMN} trainer"), 15 },
+    [TRAINER_CLASS_TEAM_ROCKET] = { _("Team Rocket") },
+    [TRAINER_CLASS_BACKPACKER_F] = { _("Rucksackturi") },
+    [TRAINER_CLASS_BACKPACKER_M] = { _("Rucksackturi") },
+    [TRAINER_CLASS_NURSE] = { _("Krankenschw."), 10 },
+    [TRAINER_CLASS_OFFICER] = { _("Officer"), 10 },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =
@@ -5398,6 +5403,7 @@ static void HandleEndTurn_BattleWon(void)
         case TRAINER_CLASS_AQUA_LEADER:
         case TRAINER_CLASS_MAGMA_ADMIN:
         case TRAINER_CLASS_MAGMA_LEADER:
+        case TRAINER_CLASS_TEAM_ROCKET:
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
         case TRAINER_CLASS_LEADER:
@@ -6151,6 +6157,7 @@ u16 GetPlayerBackSpriteId(void)
         return TRAINER_BACK_PIC_HILBERT;
     case STYLE_HILDA:
         return TRAINER_BACK_PIC_HILDA;
+     /*
     case STYLE_NATE:
         return TRAINER_BACK_PIC_NATE;
     case STYLE_ROSA:
@@ -6175,6 +6182,7 @@ u16 GetPlayerBackSpriteId(void)
     //     return TRAINER_BACK_PIC_WES;
     // case STYLE_ASH:
     //     return TRAINER_BACK_PIC_ASH;
+        */
     default:
         return TRAINER_BACK_PIC_BRENDAN;
     }

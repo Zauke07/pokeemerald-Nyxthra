@@ -7581,8 +7581,10 @@ u8 GetAttackerObedienceForAction()
         return OBEYS;
     if (B_OBEDIENCE_MECHANICS < GEN_8 && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
         return OBEYS;
-    if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
-        return OBEYS;
+    
+    // =========================================================================
+    // Start of the modified obedience level block
+    // =========================================================================
 
     obedienceLevel = 10;
 
@@ -7600,6 +7602,28 @@ u8 GetAttackerObedienceForAction()
         obedienceLevel = 70;
     if (FlagGet(FLAG_BADGE07_GET)) // Mind Badge
         obedienceLevel = 80;
+    if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge
+        obedienceLevel = 100;
+    if (FlagGet(FLAG_BADGE09_GET)) // Custom Badge 9
+        obedienceLevel = 110;
+    if (FlagGet(FLAG_BADGE10_GET)) // Custom Badge 10
+        obedienceLevel = 120;
+    if (FlagGet(FLAG_BADGE11_GET)) // Custom Badge 11
+        obedienceLevel = 130;
+    if (FlagGet(FLAG_BADGE12_GET)) // Custom Badge 12
+        obedienceLevel = 140;
+    if (FlagGet(FLAG_BADGE13_GET)) // Custom Badge 13
+        obedienceLevel = 150;
+    if (FlagGet(FLAG_BADGE14_GET)) // Custom Badge 14
+        obedienceLevel = 160;
+    if (FlagGet(FLAG_BADGE15_GET)) // Custom Badge 15
+        obedienceLevel = 180;
+    if (FlagGet(FLAG_BADGE16_GET)) // Custom Badge 16
+        obedienceLevel = 200;
+
+    // =========================================================================
+    // End of the modified obedience level block
+    // =========================================================================
 
     if (B_OBEDIENCE_MECHANICS >= GEN_8
      && !IsOtherTrainer(gBattleMons[gBattlerAttacker].otId, gBattleMons[gBattlerAttacker].otName))
@@ -7615,7 +7639,7 @@ u8 GetAttackerObedienceForAction()
     if (calc < obedienceLevel)
         return OBEYS;
 
-    //  Clear the Z-Move flags if the battler is disobedient as to not waste the Z-Move
+    // Clear the Z-Move flags if the battler is disobedient as to not waste the Z-Move
     if (GetActiveGimmick(gBattlerAttacker) == GIMMICK_Z_MOVE)
     {
         gBattleStruct->gimmick.activated[gBattlerAttacker][GIMMICK_Z_MOVE] = FALSE;

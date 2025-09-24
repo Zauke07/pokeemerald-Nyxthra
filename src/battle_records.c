@@ -88,7 +88,7 @@ static const u8 sText_DashesNoPlayer[] = _("-------");
 static const u8 sText_DashesNoScore[] = _("----");
 
 // code
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
 static void ClearLinkBattleRecord(struct LinkBattleRecord *record)
 {
     CpuFill16(0, record, sizeof(struct LinkBattleRecord));
@@ -224,12 +224,12 @@ static void UpdateLinkBattleRecords(struct LinkBattleRecords *records, const u8 
 
 void ClearPlayerLinkBattleRecords(void)
 {
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     ClearLinkBattleRecords(gSaveBlock1Ptr->linkBattleRecords.entries);
 #endif //FREE_LINK_BATTLE_RECORDS
 }
 
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
 static void IncTrainerCardWins(s32 battler)
 {
     u16 *wins = &gTrainerCards[battler].linkBattleWins;
@@ -264,7 +264,7 @@ static void UpdateTrainerCardWinsLosses(s32 battler)
 
 void UpdatePlayerLinkBattleRecords(s32 battler)
 {
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     if (InUnionRoom() != TRUE)
     {
         UpdateTrainerCardWinsLosses(battler);
@@ -278,7 +278,7 @@ void UpdatePlayerLinkBattleRecords(s32 battler)
 #endif //FREE_LINK_BATTLE_RECORDS
 }
 
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
 static void PrintLinkBattleWinsLossesDraws(struct LinkBattleRecord *records)
 {
     s32 x;
@@ -324,7 +324,7 @@ static void PrintLinkBattleRecord(struct LinkBattleRecord *record, u8 y, s32 lan
 
 void ShowLinkBattleRecords(void)
 {
-#if FREE_LINK_BATTLE_RECORDS == FALSE
+#if FREE_LINK_BATTLE_RECORDS == TRUE
     s32 x, i;
 
     gRecordsWindowId = AddWindow(&sLinkBattleRecordsWindow);

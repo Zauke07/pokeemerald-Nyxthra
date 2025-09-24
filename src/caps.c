@@ -9,19 +9,26 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][GENDER_COUNT] =
     {
-        {FLAG_BADGE01_GET, 15},
-        {FLAG_BADGE02_GET, 19},
-        {FLAG_BADGE03_GET, 24},
-        {FLAG_BADGE04_GET, 29},
-        {FLAG_BADGE05_GET, 31},
-        {FLAG_BADGE06_GET, 33},
-        {FLAG_BADGE07_GET, 42},
-        {FLAG_BADGE08_GET, 46},
-        {FLAG_IS_CHAMPION, 58},
+        {FLAG_BADGE01_GET, 20},
+        {FLAG_BADGE02_GET, 30},
+        {FLAG_BADGE03_GET, 40},
+        {FLAG_BADGE04_GET, 50},
+        {FLAG_BADGE05_GET, 60},
+        {FLAG_BADGE06_GET, 70},
+        {FLAG_BADGE07_GET, 80},
+        {FLAG_BADGE08_GET, 100},
+        {FLAG_BADGE09_GET, 110},
+        {FLAG_BADGE10_GET, 120},
+        {FLAG_BADGE11_GET, 130},
+        {FLAG_BADGE12_GET, 140},
+        {FLAG_BADGE13_GET, 150},
+        {FLAG_BADGE14_GET, 160},
+        {FLAG_BADGE15_GET, 180},
+        {FLAG_BADGE16_GET, 200},
     };
-
+    
     u32 i;
-
+    
     if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST)
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
@@ -34,7 +41,7 @@ u32 GetCurrentLevelCap(void)
     {
         return VarGet(B_LEVEL_CAP_VARIABLE);
     }
-
+    
     return MAX_LEVEL;
 }
 
@@ -85,17 +92,25 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 u32 GetCurrentEVCap(void)
 {
 
-    static const u16 sEvCapFlagMap[][GENDER_COUNT] = {
+    static const u16 sEvCapFlagMap[][GENDER_COUNT] =
+    {
         // Define EV caps for each milestone
-        {FLAG_BADGE01_GET, MAX_TOTAL_EVS *  1 / 17},
-        {FLAG_BADGE02_GET, MAX_TOTAL_EVS *  3 / 17},
-        {FLAG_BADGE03_GET, MAX_TOTAL_EVS *  5 / 17},
-        {FLAG_BADGE04_GET, MAX_TOTAL_EVS *  7 / 17},
-        {FLAG_BADGE05_GET, MAX_TOTAL_EVS *  9 / 17},
-        {FLAG_BADGE06_GET, MAX_TOTAL_EVS * 11 / 17},
-        {FLAG_BADGE07_GET, MAX_TOTAL_EVS * 13 / 17},
-        {FLAG_BADGE08_GET, MAX_TOTAL_EVS * 15 / 17},
-        {FLAG_IS_CHAMPION, MAX_TOTAL_EVS},
+        {FLAG_BADGE01_GET, MAX_TOTAL_EVS * 1 / 17},
+        {FLAG_BADGE02_GET, MAX_TOTAL_EVS * 2 / 17},
+        {FLAG_BADGE03_GET, MAX_TOTAL_EVS * 3 / 17},
+        {FLAG_BADGE04_GET, MAX_TOTAL_EVS * 4 / 17},
+        {FLAG_BADGE05_GET, MAX_TOTAL_EVS * 5 / 17},
+        {FLAG_BADGE06_GET, MAX_TOTAL_EVS * 6 / 17},
+        {FLAG_BADGE07_GET, MAX_TOTAL_EVS * 7 / 17},
+        {FLAG_BADGE08_GET, MAX_TOTAL_EVS * 8 / 17},
+        {FLAG_BADGE09_GET, MAX_TOTAL_EVS * 9 / 17},
+        {FLAG_BADGE10_GET, MAX_TOTAL_EVS * 10 / 17},
+        {FLAG_BADGE11_GET, MAX_TOTAL_EVS * 11 / 17},
+        {FLAG_BADGE12_GET, MAX_TOTAL_EVS * 12 / 17},
+        {FLAG_BADGE13_GET, MAX_TOTAL_EVS * 13 / 17},
+        {FLAG_BADGE14_GET, MAX_TOTAL_EVS * 14 / 17},
+        {FLAG_BADGE15_GET, MAX_TOTAL_EVS * 15 / 17},
+        {FLAG_BADGE16_GET, MAX_TOTAL_EVS * 16 / 17},
     };
 
     if (B_EV_CAP_TYPE == EV_CAP_FLAG_LIST)

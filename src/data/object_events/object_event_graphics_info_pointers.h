@@ -255,7 +255,26 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaWatering;
 */
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnWatering;
+
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse_ow;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rocky;
 
 //Pokeemerald-Rogue
 
@@ -586,7 +605,18 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaFRidin
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GalacticFNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GalacticFRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DolphinNormal;
-
+/*
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Entei;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Raikou;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Suicune;
+*/
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EnteiOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RaikouOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SuicuneOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ZapdosOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MoltresOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ArticunoOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LandorusOW;
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -926,12 +956,30 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_JULIANA_RIDING] =           &gObjectEventGraphicsInfo_JulianaRiding,
 
     //  NEW
+    [OBJ_EVENT_GFX_NURSE_JOY] =                    &gObjectEventGraphicsInfo_Nurse_ow,
+    [OBJ_EVENT_GFX_ROCKY] =                        &gObjectEventGraphicsInfo_Rocky,
 /*
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
     [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
     [OBJ_EVENT_GFX_RIVAL_ASH] =               &gObjectEventGraphicsInfo_Rival_Ash,
+
+    [OBJ_EVENT_GFX_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_HilbertFieldMove,
+    [OBJ_EVENT_GFX_HILDA_FIELD_MOVE]   = &gObjectEventGraphicsInfo_HildaFieldMove,
+    [OBJ_EVENT_GFX_HILBERT_WATERING]   = &gObjectEventGraphicsInfo_HilbertWatering,
+    [OBJ_EVENT_GFX_HILDA_WATERING]     = &gObjectEventGraphicsInfo_HildaWatering,
 */
+    [OBJ_EVENT_GFX_LUCAS_SURFING]      = &gObjectEventGraphicsInfo_LucasSurfing,
+    [OBJ_EVENT_GFX_DAWN_SURFING]       = &gObjectEventGraphicsInfo_DawnSurfing,
+    [OBJ_EVENT_GFX_LUCAS_MACH_BIKE]    = &gObjectEventGraphicsInfo_LucasMachBike,
+    [OBJ_EVENT_GFX_DAWN_MACH_BIKE]     = &gObjectEventGraphicsInfo_DawnMachBike,
+    [OBJ_EVENT_GFX_LUCAS_FISHING]      = &gObjectEventGraphicsInfo_LucasFishing,
+    [OBJ_EVENT_GFX_DAWN_FISHING]       = &gObjectEventGraphicsInfo_DawnFishing,
+    [OBJ_EVENT_GFX_LUCAS_RIDING]      = &gObjectEventGraphicsInfo_LucasRiding,
+    [OBJ_EVENT_GFX_DAWN_RIDING]       = &gObjectEventGraphicsInfo_DawnRiding,
+    [OBJ_EVENT_GFX_LUCAS_WATERING]  = &gObjectEventGraphicsInfo_LucasWatering,
+    [OBJ_EVENT_GFX_DAWN_WATERING]   = &gObjectEventGraphicsInfo_DawnWatering,
+
     [OBJ_EVENT_GFX_BUG_CATCHER_RIDING] =       &gObjectEventGraphicsInfo_BugCatcherRiding,
 
     [OBJ_EVENT_GFX_KANTO_AGATHA] =             &gObjectEventGraphicsInfo_Kanto_Agatha,
@@ -1190,6 +1238,13 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DOLPHIN] =                   &gObjectEventGraphicsInfo_DolphinNormal,
     [OBJ_EVENT_GFX_SNORLAX] =                   &gObjectEventGraphicsInfo_Snorlax,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
+    [OBJ_EVENT_GFX_ENTEI] =                     &gObjectEventGraphicsInfo_EnteiOW,
+    [OBJ_EVENT_GFX_SUICUNE] =                   &gObjectEventGraphicsInfo_SuicuneOW,
+    [OBJ_EVENT_GFX_RAIKOU] =                    &gObjectEventGraphicsInfo_RaikouOW,
+    [OBJ_EVENT_GFX_ZAPDOS_OLD] =                &gObjectEventGraphicsInfo_ZapdosOW,
+    [OBJ_EVENT_GFX_MOLTRES_OLD] =               &gObjectEventGraphicsInfo_MoltresOW,
+    [OBJ_EVENT_GFX_ARTICUNO_OLD] =              &gObjectEventGraphicsInfo_ArticunoOW,
+    [OBJ_EVENT_GFX_LANDORUS] =                  &gObjectEventGraphicsInfo_LandorusOW,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

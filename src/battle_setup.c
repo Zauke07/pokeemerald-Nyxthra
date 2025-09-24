@@ -505,10 +505,22 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
     case SPECIES_CELEBI:
+    case SPECIES_MOLTRES:
+    case SPECIES_MOLTRES_GALAR:
+    case SPECIES_ZAPDOS:
+    case SPECIES_ZAPDOS_GALAR:
+    case SPECIES_ARTICUNO:
+    case SPECIES_ARTICUNO_GALAR:
+    case SPECIES_ENTEI:
+    case SPECIES_RAIKOU:
+    case SPECIES_SUICUNE:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
         break;
     case SPECIES_MEW:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
+        break;
+    case SPECIES_LANDORUS:
+        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_C_VS_LEGEND_BEAST);
         break;
     }
 
@@ -1497,6 +1509,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_CHATGPT:
             music = MUS_HG_VS_CHAMPION;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_ROCKET:
+            music = MUS_RG_ENCOUNTER_ROCKET;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;
