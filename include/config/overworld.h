@@ -7,10 +7,11 @@
 
 // Weitere Einstellungen
 #define OW_POISON_DAMAGE                GEN_LATEST // In Gen4 können Pokémon durch Gift im Overworld nicht mehr ohnmächtig werden. In Gen5+ nehmen sie gar keinen Schaden mehr.
-#define OW_DOUBLE_APPROACH_WITH_ONE_MON TRUE      // Wenn aktiviert, können dich zwei Trainer gleichzeitig sehen, auch wenn du nur ein kampffähiges Pokémon hast.
-#define OW_HIDE_REPEAT_MAP_POPUP        TRUE      // Wenn aktiviert, erscheinen Karten-Popups nicht, wenn man eine Karte mit derselben Map Section Id wie zuvor betritt.
-#define OW_FRLG_WHITEOUT                TRUE      // Wenn aktiviert, wird nach einem Whiteout eine zusätzliche Nachricht und ein Event-Skript mit Heil-NPC angezeigt.
-#define OW_DEFOG_FIELD_MOVE             TRUE      // Wenn aktiviert, kann Entnebel als Feldattacke wie in DPPt verwendet werden.
+#define OW_DOUBLE_APPROACH_WITH_ONE_MON TRUE       // Wenn aktiviert, können dich zwei Trainer gleichzeitig sehen, auch wenn du nur ein kampffähiges Pokémon hast.
+#define OW_HIDE_REPEAT_MAP_POPUP        TRUE       // Wenn aktiviert, erscheinen Karten-Popups nicht, wenn man eine Karte mit derselben Map Section Id wie zuvor betritt.
+#define OW_WHITEOUT_CUTSCENE            GEN_LATEST // In Gen4+ zeigt das Whiteout eine zusätzliche Nachricht und eine Cutscene mit einem heilenden NPC nach dem Whiteout-Event. (Obwohl diese Änderung auch in FRLG vorhanden war, führt die Einstellung auf GEN_3 der Einfachheit halber zum RSE-Verhalten.)
+#define OW_DEFOG_FIELD_MOVE             TRUE       // Wenn aktiviert, kann Entnebel als Feldattacke wie in DPPt verwendet werden.
+#define OW_ROCK_CLIMB_FIELD_MOVE        TRUE      // Wenn aktiviert, kann Kletterer als Feldattacke wie in DPPt verwendet werden.
 
 // Item-Beschreibungsbox
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // Nie Beschreibungen anzeigen

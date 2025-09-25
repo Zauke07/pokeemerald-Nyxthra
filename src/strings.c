@@ -40,9 +40,9 @@ const u8 gText_ExpandedPlaceholder_Wes[] = _("Wes");
 const u8 gText_ExpandedPlaceholder_Ash[] = _("Ash");
 const u8 gText_ExpandedPlaceholder_Hop[] = _("Hop");
 const u8 gText_ExpandedPlaceholder_Rival[] = _("Rivale");
-const u8 gText_EggNickname[] = _("Ei");
-const u8 gText_Pokemon[] = _("Pokémon");
-const u8 gText_ProfBirchMatchCallName[] = _("PROF. BIRK");
+const u8 gText_EggNickname[POKEMON_NAME_LENGTH + 1] = _("Ei");
+const u8 gText_Pokemon[POKEMON_NAME_LENGTH + 1] = _("Pokémon");
+const u8 gText_ProfBirchMatchCallName[] = _("Prof. Birk");
 const u8 gText_MainMenuNewGame[] = _("Neues Spiel");
 const u8 gText_MainMenuContinue[] = _("Weiter");
 const u8 gText_MainMenuOption[] = _("Optionen");
@@ -341,11 +341,11 @@ const u8 gText_KeyItemsPocket[] = _("Basis-Items");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    [ITEMS_POCKET] = gText_ItemsPocket,
-    [BALLS_POCKET] = gText_PokeBallsPocket,
-    [TMHM_POCKET]  = gText_TMHMPocket,
-    [BERRIES_POCKET] = gText_BerriesPocket,
-    [KEYITEMS_POCKET] = gText_KeyItemsPocket
+    [POCKET_ITEMS] =        COMPOUND_STRING("Items"),
+    [POCKET_POKE_BALLS] =   COMPOUND_STRING("Pokébälle"),
+    [POCKET_TM_HM]  =       COMPOUND_STRING("TMs & VMs"),
+    [POCKET_BERRIES] =      COMPOUND_STRING("Beeren"),
+    [POCKET_KEY_ITEMS] =    COMPOUND_STRING("Basis-Items")
 };
 
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
