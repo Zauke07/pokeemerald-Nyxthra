@@ -1132,7 +1132,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     SetBoxMonData(boxMon, MON_DATA_MET_GAME, &gGameVersion);
     value = ITEM_POKE_BALL;
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &value);
-    SetBoxMonData(boxMon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
+    //SetBoxMonData(boxMon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
 
     u32 teraType = (boxMon->personality & 0x1) == 0 ? GetSpeciesType(species, 0) : GetSpeciesType(species, 1);
     SetBoxMonData(boxMon, MON_DATA_TERA_TYPE, &teraType);
@@ -3268,7 +3268,7 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
     s32 i;
 
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
-    SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
+    //SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
     SetMonData(mon, MON_DATA_OT_ID, gSaveBlock2Ptr->playerTrainerId);
 
     for (i = 0; i < PARTY_SIZE; i++)

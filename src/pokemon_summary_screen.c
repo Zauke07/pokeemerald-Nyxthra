@@ -2500,7 +2500,7 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     SetMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
-    SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
+    //SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;

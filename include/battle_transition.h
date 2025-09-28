@@ -16,9 +16,6 @@ bool8 ChatGPT_Init(struct Task *);
 bool8 ChatGPT_SetGfx(struct Task *);
 void Task_LogoBattleTransition(u8 taskId);
 void Task_LogoBattleTransition_Wait(u8 taskId);
-extern const u32 sTeamAqua_Tileset[];
-extern const u32 sTeamAqua_Tilemap[];
-extern const u16 sEvilTeam_Palette[];
 
 extern const u32 sChatGPT_Tileset[];
 extern const u32 sChatGPT_Tilemap[];

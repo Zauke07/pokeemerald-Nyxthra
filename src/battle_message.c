@@ -195,6 +195,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PLAYERWHITEOUT2_TRAINER]              = COMPOUND_STRING("Du hast ¥{B_BUFF1} an den Gewinner gegeben…"),
     [STRINGID_PLAYERWHITEOUT3]                      = COMPOUND_STRING("Du warst von deiner Niederlage überwältigt!"),
     [STRINGID_PREVENTSESCAPE]                       = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} verhindert die Flucht mit {B_SCR_ABILITY}!\p"),
+    [STRINGID_PREVENTSESCAPE]                       = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} verhindert die Flucht mit {B_SCR_ABILITY}!\p"),
     [STRINGID_HITXTIMES]                            = COMPOUND_STRING("Das Pokémon wurde {B_BUFF1} Mal getroffen!"), //SV has dynamic plural here
     [STRINGID_PKMNFELLASLEEP]                       = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} ist eingeschlafen!"),
     [STRINGID_PKMNMADESLEEP]                        = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_BUFF1} ließ {B_EFF_NAME_WITH_PREFIX2} einschlafen!"), //not in gen 5+, ability popup
