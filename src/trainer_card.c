@@ -577,11 +577,15 @@ static bool8 LoadCardGfx(void)
         break;
     case 3:
         if (sData->cardType != CARD_TYPE_FRLG)
+        {
             DecompressDataWithHeaderWram(sHoennBadgesRow1_Gfx, sData->badgeTiles);
             DecompressDataWithHeaderWram(sHoennBadgesRow2_Gfx, sData->badgeTiles);
+        }
         else
+        {
             DecompressDataWithHeaderWram(sKantoBadgesRow1_Gfx, sData->badgeTiles);
             DecompressDataWithHeaderWram(sKantoBadgesRow2_Gfx, sData->badgeTiles);
+        }
         break;
     case 4:
         if (sData->cardType != CARD_TYPE_FRLG)

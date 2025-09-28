@@ -3857,6 +3857,7 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
     }
 }
 
+#if OW_SHOW_ITEM_DESCRIPTIONS != OW_ITEM_DESCRIPTIONS_OFF
 // ----------------
 // Item Header Descriptions
 // Item Description Header
@@ -4061,6 +4062,24 @@ static void DestroyItemIconSprite(void)
     }
 }
 
+#endif // OW_SHOW_ITEM_DESCRIPTIONS
+
+
+// returns old sHoursOverride
+u16 SetTimeOfDay(u16 hours)
+{
+    u16 oldHours = sHoursOverride;
+    sHoursOverride = hours;
+    gTimeUpdateCounter = 0;
+    return oldHours;
+}
+
+bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
+{
+    SetTimeOfDay(ScriptReadByte(ctx));
+    return FALSE;
+}
+
 void HideObjectEventByLocalId(u8 localId)
 {
     u8 eventId = GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
@@ -4078,32 +4097,4 @@ void ShowObjectEventByLocalId(u8 localId)
 void Overworld_CleanUpFromActiveMenu(void)
 {
     gFieldCallback = NULL;
-}
-
-#else
-void ScriptShowItemDescription(struct ScriptContext *ctx)
-{
-    (void) ScriptReadByte(ctx);
-}
-void ScriptHideItemDescription(struct ScriptContext *ctx)
-{
-}
-
-
-#endif // OW_SHOW_ITEM_DESCRIPTIONS
-
-
-// returns old sHoursOverride
-u16 SetTimeOfDay(u16 hours)
-{
-    u16 oldHours = sHoursOverride;
-    sHoursOverride = hours;
-    gTimeUpdateCounter = 0;
-    return oldHours;
-}
-
-bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
-{
-    SetTimeOfDay(ScriptReadByte(ctx));
-    return FALSE;
 }

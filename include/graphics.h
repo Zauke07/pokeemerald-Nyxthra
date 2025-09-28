@@ -5882,7 +5882,6 @@ extern const u16 gBagKantoBlackPalette[];
 extern const u16 gBagKantoPinkPalette[];
 extern const u16 gBagHoennSilverPalette[];
 extern const u16 gBagHoennBlackPalette[];
-extern const u8 gIntro3Bg_Pal[0x200];
 extern const u8 gNamingScreenRWindow_Gfx[];
 extern const u8 gNamingScreenPageButton_Gfx[];
 extern const u8 gNamingScreenROptions_Gfx[];

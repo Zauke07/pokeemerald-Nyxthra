@@ -4752,6 +4752,7 @@ static void Cmd_getexp(void)
             u8 monId = *expMonId;
             u8 level = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
             u32 exp = GetMonData(&gPlayerParty[monId], MON_DATA_EXP);
+            (void)exp;
 /*
             // DEBUG: Debug-String vorbereiten und ausgeben
             ConvertIntToDecimalStringN(gStringVar1, monId, STR_CONV_MODE_LEFT_ALIGN, 3);

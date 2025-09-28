@@ -944,6 +944,7 @@ void HandleAction_ActionFinished(void)
     }
 }
 
+/*
 static const u8 sHoldEffectToType[][GENDER_COUNT] =
 {
     {HOLD_EFFECT_BUG_POWER, TYPE_BUG},
@@ -965,7 +966,7 @@ static const u8 sHoldEffectToType[][GENDER_COUNT] =
     {HOLD_EFFECT_NORMAL_POWER, TYPE_NORMAL},
     {HOLD_EFFECT_FAIRY_POWER, TYPE_FAIRY},
 };
-
+*/
 // code
 
 ARM_FUNC NOINLINE static uq4_12_t PercentToUQ4_12(u32 percent)

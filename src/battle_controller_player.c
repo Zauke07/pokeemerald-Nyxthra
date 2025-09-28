@@ -2201,6 +2201,7 @@ void PlayerHandleExpUpdate(u32 battler)
     s32 taskId, expPointsToGive;
     u8 currentLevel = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
     u32 currentExp = GetMonData(&gPlayerParty[monId], MON_DATA_EXP);
+    (void)currentExp;
 /*
     // Debug-Variablen füllen
     ConvertIntToDecimalStringN(gStringVar1, currentLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
