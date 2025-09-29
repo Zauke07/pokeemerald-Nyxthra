@@ -21,6 +21,10 @@ extern const u32 sChatGPT_Tileset[];
 extern const u32 sChatGPT_Tilemap[];
 extern const u16 sChatGPT_Palette[];
 
+extern const u32 sTeamAqua_Tileset[];
+extern const u32 sTeamAqua_Tilemap[];
+extern const u16 sEvilTeam_Palette[];
+
 
 extern const struct SpritePalette gSpritePalette_Pokeball;
 

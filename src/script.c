@@ -46,7 +46,7 @@ static u8 sGlobalScriptContextStatus;
 static struct ScriptContext sGlobalScriptContext;
 static struct ScriptContext sImmediateScriptContext;
 static bool8 sLockFieldControls;
-//static void Task_ShowChatGPTLogoFromScript(u8 taskId);
+static void Task_ShowChatGPTLogoFromScript(u8 taskId);
 EWRAM_DATA u8 gMsgIsSignPost = FALSE;
 EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 
@@ -810,7 +810,6 @@ bool8 SpawnRivalObjectEventFromStyle(void)
 
 #define tTimer data[0]
 
-/*
 void Task_ShowChatGPTLogoFromScript(u8 taskId)
 {
     if (!gPaletteFade.active)
@@ -833,7 +832,6 @@ bool8 ScrCmd_TestShowChatGPTLogo(struct ScriptContext *ctx)
     ScriptContext_Stop();
     return TRUE;
 }
-*/
 
 bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx)
 {
