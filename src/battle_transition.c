@@ -1833,7 +1833,7 @@ bool8 ChatGPT_Init(struct Task *task)
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    LZ77UnCompVram(sChatGPT_Tileset, tileset);
+    DecompressDataWithHeaderVram(sChatGPT_Tileset, tileset);
     LoadPalette(sChatGPT_Palette, BG_PLTT_ID(15), sizeof(sChatGPT_Palette));
 
     task->tState++;
@@ -1845,7 +1845,7 @@ bool8 ChatGPT_SetGfx(struct Task *task)
     u16 *tilemap, *tileset;
 
     GetBg0TilesDst(&tilemap, &tileset);
-    LZ77UnCompVram(sChatGPT_Tilemap, tilemap);
+    DecompressDataWithHeaderVram(sChatGPT_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;
