@@ -343,8 +343,8 @@ static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCBIN_U32("graphics/battl
 static const u32 sFrontierSquares_Shrink1_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_3.4bpp.smol");
 static const u32 sFrontierSquares_Shrink2_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_4.4bpp.smol");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
-const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.lz");
-const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.lz");
+const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.smol");
+const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.smolTM");
 const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.gbapal");
 
 // All battle transitions use the same intro
