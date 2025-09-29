@@ -343,8 +343,8 @@ static const u32 sFrontierSquares_EmptyBg_Tileset[] = INCBIN_U32("graphics/battl
 static const u32 sFrontierSquares_Shrink1_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_3.4bpp.smol");
 static const u32 sFrontierSquares_Shrink2_Tileset[] = INCBIN_U32("graphics/battle_transitions/frontier_square_4.4bpp.smol");
 static const u32 sFrontierSquares_Tilemap[] = INCBIN_U32("graphics/battle_transitions/frontier_squares.bin");
-const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.lz");
-const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.lz");
+const u32 sChatGPT_Tileset[] = INCBIN_U32("graphics/battle_transitions/chatgpt.4bpp.smol");
+const u32 sChatGPT_Tilemap[] = INCBIN_U32("graphics/battle_transitions/chatgpt.bin.smolTM");
 const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.gbapal");
 
 // All battle transitions use the same intro
@@ -1833,7 +1833,7 @@ bool8 ChatGPT_Init(struct Task *task)
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    LZ77UnCompVram(sChatGPT_Tileset, tileset);
+    DecompressDataWithHeaderVram(sChatGPT_Tileset, tileset);
     LoadPalette(sChatGPT_Palette, BG_PLTT_ID(15), sizeof(sChatGPT_Palette));
 
     task->tState++;
@@ -1845,7 +1845,7 @@ bool8 ChatGPT_SetGfx(struct Task *task)
     u16 *tilemap, *tileset;
 
     GetBg0TilesDst(&tilemap, &tileset);
-    LZ77UnCompVram(sChatGPT_Tilemap, tilemap);
+    DecompressDataWithHeaderVram(sChatGPT_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;

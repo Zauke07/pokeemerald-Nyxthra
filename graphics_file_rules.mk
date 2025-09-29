@@ -384,6 +384,9 @@ $(MASKSGFXDIR)/unused_level_up.4bpp: %.4bpp: %.png
 $(BATTRANSGFXDIR)/vs_frame.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 16 -Wnum_tiles
 
+$(BATTRANSGFXDIR)/chatgpt.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -num_tiles 96 -Wnum_tiles
+
 graphics/party_menu/bg.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 62 -Wnum_tiles
 
