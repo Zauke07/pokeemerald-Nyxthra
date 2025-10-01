@@ -745,7 +745,7 @@
 	.endm
 
 	@ Custom battle transitions
-	.equ B_TRANSITION_CHATGPT, 16
+	.equ B_TRANSITION_CHATGPT, 15
 
 	@ Starts a single trainer battle with a custom battle transition (e.g. ChatGPT logo)
 	.macro trainerbattle_battle_transition trainer:req, transition:req, lose_text:req

@@ -431,9 +431,9 @@ void Task_LogoBattleTransition(u8 taskId)
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_BG0_ON);
     SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(31) | BGCNT_TXT256x256);
 
-    // Grafik und Map laden
-    LZ77UnCompVram(tiles, (void *)BG_CHAR_ADDR(0));
-    LZ77UnCompVram(tilemap, (void *)BG_SCREEN_ADDR(31));
+    // Grafik und Map laden (unterstützt Smol- und LZ77-Daten)
+    DecompressDataWithHeaderVram(tiles, (void *)BG_CHAR_ADDR(0));
+    DecompressDataWithHeaderVram(tilemap, (void *)BG_SCREEN_ADDR(31));
     LoadPalette(palette, 0, 0x20);
 
     // Kurze Verzögerung für Logo-Effekt
@@ -461,6 +461,52 @@ void Task_LogoBattleTransition_Wait(u8 taskId)
         if (nextTask != TASK_NONE)
         gTasks[nextTask].func(nextTask);
     }
+}
+
+static bool32 TryDecompressChatGPTData(const u32 *src, void *dest, bool32 expectTilemap)
+{
+    union CompressionHeader header;
+
+    CpuCopy32(src, &header, sizeof(header));
+
+    switch (header.smol.mode)
+    {
+    case MODE_LZ77:
+        if (!IsLZ77Data(src, expectTilemap ? sizeof(u16) : TILE_SIZE_4BPP, MAX_DECOMPRESSION_BUFFER_SIZE))
+            return FALSE;
+        break;
+    case BASE_ONLY:
+    case ENCODE_SYMS:
+    case ENCODE_DELTA_SYMS:
+    case ENCODE_LO:
+    case ENCODE_BOTH:
+    case ENCODE_BOTH_DELTA_SYMS:
+        if (expectTilemap || header.smol.imageSize == 0)
+            return FALSE;
+        break;
+    case IS_TILEMAP:
+        if (!expectTilemap || header.smolTilemap.tilemapSize == 0
+            || header.smolTilemap.tilemapSize > BG_SCREEN_SIZE * 2)
+            return FALSE;
+        break;
+    default:
+        return FALSE;
+    }
+
+    DecompressDataWithHeaderVram(src, dest);
+    return TRUE;
+}
+
+static void LoadChatGPTTileset(u16 *dest)
+{
+    if (!TryDecompressChatGPTData(sChatGPT_Tileset, dest, FALSE))
+        CpuCopy16(sChatGPT_Tileset, dest, sizeof(sChatGPT_Tileset));
+}
+
+static void LoadChatGPTTilemap(u16 *dest)
+{
+    if (!TryDecompressChatGPTData(sChatGPT_Tilemap, dest, TRUE))
+        CpuCopy16(sChatGPT_Tilemap, dest, sizeof(sChatGPT_Tilemap));
 }
 
 static const TransitionStateFunc sTaskHandlers[] =
@@ -1833,7 +1879,7 @@ bool8 ChatGPT_Init(struct Task *task)
     InitPatternWeaveTransition(task);
     GetBg0TilesDst(&tilemap, &tileset);
     CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    LZ77UnCompVram(sChatGPT_Tileset, tileset);
+    LoadChatGPTTileset(tileset);
     LoadPalette(sChatGPT_Palette, BG_PLTT_ID(15), sizeof(sChatGPT_Palette));
 
     task->tState++;
@@ -1845,7 +1891,7 @@ bool8 ChatGPT_SetGfx(struct Task *task)
     u16 *tilemap, *tileset;
 
     GetBg0TilesDst(&tilemap, &tileset);
-    LZ77UnCompVram(sChatGPT_Tilemap, tilemap);
+    LoadChatGPTTileset(tileset);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;

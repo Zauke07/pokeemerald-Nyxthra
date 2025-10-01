@@ -817,8 +817,8 @@ void Task_ShowChatGPTLogoFromScript(u8 taskId)
         // Sichtbare Nachricht vor dem Logo anzeigen
         ShowFieldMessage((const u8 *)"Lade Logo...");
 
-        // Logo-Übergang starten (ersetze ggf. durch sChatGPT_* sobald fertig)
-        DoLogoBattleTransition(taskId, sTeamAqua_Tileset, sTeamAqua_Tilemap, sEvilTeam_Palette);
+        // Logo-Übergang starten
+        DoLogoBattleTransition(taskId, sChatGPT_Tileset, sChatGPT_Tilemap, sChatGPT_Palette);
 
         // Task nicht sofort zerstören - Übergang läuft
         gTasks[taskId].func = NULL;

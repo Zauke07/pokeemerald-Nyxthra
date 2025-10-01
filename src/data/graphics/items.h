@@ -136,7 +136,7 @@ const u16 gItemIconPalette_Antidote[] = INCBIN_U16("graphics/items/icon_palettes
 const u32 gItemIcon_StatusHeal[] = INCBIN_U32("graphics/items/icons/status_heal.4bpp.smol");
 const u16 gItemIconPalette_ParalyzeHeal[] = INCBIN_U16("graphics/items/icon_palettes/paralyze_heal.gbapal");
 
-const u32 gItemIcon_iphone_wecker[] = INCBIN_U32("graphics/items/icons/iphone_wecker.4bpp.lz");
+const u32 gItemIcon_iphone_wecker[] = INCBIN_U32("graphics/items/icons/iphone_wecker.4bpp.smol");
 const u16 gItemIconPalette_iphone_wecker[] = INCBIN_U16("graphics/items/icon_palettes/iphone_wecker.gbapal");
 
 const u16 gItemIconPalette_BurnHeal[] = INCBIN_U16("graphics/items/icon_palettes/burn_heal.gbapal");
