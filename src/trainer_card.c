@@ -84,7 +84,7 @@ struct TrainerCardData
     u16 frontTilemap[600];
     u16 backTilemap[600];
     u16 bgTilemap[600];
-    u8 badgeTiles[0x80 * NUM_BADGES];
+    u8 badgeTiles[0x80 * NUM_BADGES * 2];
     u8 stickerTiles[0x200];
     u8 cardTiles[0x2300];
     u16 cardTilemapBuffer[0x1000];
@@ -579,12 +579,12 @@ static bool8 LoadCardGfx(void)
         if (sData->cardType != CARD_TYPE_FRLG)
         {
             DecompressDataWithHeaderWram(sHoennBadgesRow1_Gfx, sData->badgeTiles);
-            DecompressDataWithHeaderWram(sHoennBadgesRow2_Gfx, sData->badgeTiles);
+            DecompressDataWithHeaderWram(sHoennBadgesRow2_Gfx, &sData->badgeTiles[0x80 * 8]); // Offset für 2. Reihe!
         }
         else
         {
             DecompressDataWithHeaderWram(sKantoBadgesRow1_Gfx, sData->badgeTiles);
-            DecompressDataWithHeaderWram(sKantoBadgesRow2_Gfx, sData->badgeTiles);
+            DecompressDataWithHeaderWram(sKantoBadgesRow2_Gfx, &sData->badgeTiles[0x80 * 8]); // Offset für 2. Reihe!
         }
         break;
     case 4:
@@ -1444,7 +1444,7 @@ static u8 SetCardBgsAndPals(void)
     switch (sData->bgPalLoadState)
     {
     case 0:
-        LoadBgTiles(3, sData->badgeTiles, ARRAY_COUNT(sData->badgeTiles), 0);
+        LoadBgTiles(3, sData->badgeTiles, 0x80 * NUM_BADGES * 2, 0);
         break;
     case 1:
         LoadBgTiles(0, sData->cardTiles, 0x1800, 0);
@@ -1518,13 +1518,9 @@ static void DrawCardFrontOrBack(u16 *ptr)
 static void DrawStarsAndBadgesOnCard(void)
 {
     s16 i, x;
-    u16 t, base;
-    u8  row, col, y, pal;
-    const u16 base1 = 192;       // Tiles der oberen Reihe (0..31)
-    const u16 base2 = 192 + 32;  // Tiles der unteren Reihe (32..63)
-    const u8  pal1  = 3;         // Palette obere Reihe
-    const u8  pal2  = 4;         // Palette untere Reihe
-
+    u16 t;
+    u8 row, col, y, pal;
+    // Sterne zeichnen
     FillBgTilemapBufferRect(3, 143, 15, 7, sData->trainerCard.stars, 1, 4);
 
     if (!sData->isLink)
@@ -1534,18 +1530,29 @@ static void DrawStarsAndBadgesOnCard(void)
             if (!sData->badgeCount[i])
                 continue;
 
-            row  = (u8)(i >> 3);    // 0 = oben, 1 = unten
-            col  = (u8)(i & 7);
-            base = row ? base2 : base1;
-            pal  = row ? pal2  : pal1;
-            y    = row ? 17    : 15;
-            x    = (s16)(4 + col * 3);
-            t    = (u16)(base + col * 2);
+            // NEUE BERECHNUNG für 16 Badges:
+            row = (u8)(i / 8);          // 0 = Badges 0-7, 1 = Badges 8-15
+            col = (u8)(i % 8);          // Position innerhalb der Reihe (0-7)
+            
+            if (row == 0) {
+                // Erste Reihe (Badges 0-7)
+                pal = 3;                // pal1
+                y = 15;
+                x = (s16)(4 + col * 3);
+                t = (u16)(192 + col * 2); // Tiles 192-206 für erste Reihe
+            } else {
+                // Zweite Reihe (Badges 8-15)
+                pal = 4;                // pal2
+                y = 17;                 // Eine Reihe tiefer
+                x = (s16)(4 + col * 3);
+                t = (u16)(256 + col * 2); // Tiles 256-270 für zweite Reihe
+            }
 
-            FillBgTilemapBufferRect(3, t     , x    , y    , 1, 1, pal);
-            FillBgTilemapBufferRect(3, (u16)(t + 1) , x + 1, y    , 1, 1, pal);
-            FillBgTilemapBufferRect(3, (u16)(t + 16), x    , y + 1, 1, 1, pal);
-            FillBgTilemapBufferRect(3, (u16)(t + 17), x + 1, y + 1, 1, 1, pal);
+            // Badge zeichnen (2x2 Tiles)
+            FillBgTilemapBufferRect(3, t,          x,     y,     1, 1, pal);
+            FillBgTilemapBufferRect(3, t + 1,      x + 1, y,     1, 1, pal);
+            FillBgTilemapBufferRect(3, t + 16,     x,     y + 1, 1, 1, pal);
+            FillBgTilemapBufferRect(3, t + 17,     x + 1, y + 1, 1, 1, pal);
         }
     }
     CopyBgTilemapBufferToVram(3);

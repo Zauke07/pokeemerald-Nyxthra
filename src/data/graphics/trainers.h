@@ -1478,11 +1478,11 @@ const struct TrainerBacksprite gTrainerBacksprites[] =
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_WALLY, 4, gTrainerBackPic_Wally, gTrainerPalette_Wally, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_STEVEN, 4, gTrainerBackPic_Steven, gTrainerPalette_Steven, sBackAnims_Hoenn),
     // Am Ende der bestehenden Liste ergänzen:
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_ETHAN,  5, gTrainerBackPic_Ethan,  gTrainerPalette_Ethan,  sBackAnims_Hoenn),
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LYRA,   5, gTrainerBackPic_Lyra,   gTrainerPalette_Lyra,   sBackAnims_Hoenn),
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LUCAS,  5, gTrainerBackPic_Lucas,  gTrainerPalette_Lucas,  sBackAnims_Hoenn),
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_DAWN,   5, gTrainerBackPic_Dawn,   gTrainerPalette_Dawn,   sBackAnims_Hoenn),
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILBERT,4, gTrainerBackPic_Hilbert,gTrainerPalette_Hilbert,sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_ETHAN,  5, gTrainerBackPic_Ethan,  gTrainerPalette_EthanBack,  sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LYRA,   5, gTrainerBackPic_Lyra,   gTrainerPalette_LyraBack,   sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LUCAS,  5, gTrainerBackPic_Lucas,  gTrainerPalette_LucasBack,  sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_DAWN,   5, gTrainerBackPic_Dawn,   gTrainerPalette_DawnBack,   sBackAnims_Kanto),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILBERT,4, gTrainerBackPic_Hilbert,gTrainerPalette_HilbertBack,sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILDA, 4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
 };
 

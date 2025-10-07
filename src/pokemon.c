@@ -1122,8 +1122,10 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     SetBoxMonData(boxMon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetBoxMonData(boxMon, MON_DATA_SPECIES, &species);
     {
-    u8 lvl = level > MAX_LEVEL ? MAX_LEVEL : level;
-    SetBoxMonData(boxMon, MON_DATA_EXP, &gExperienceTables[gSpeciesInfo[species].growthRate][lvl]);
+        u32 targetExp;
+        u8 lvl = level > MAX_LEVEL ? MAX_LEVEL : level;
+        targetExp = gExperienceTables[gSpeciesInfo[species].growthRate][lvl];
+        SetBoxMonData(boxMon, MON_DATA_EXP, &targetExp);
     }
     SetBoxMonData(boxMon, MON_DATA_FRIENDSHIP, &gSpeciesInfo[species].friendship);
     value = GetCurrentRegionMapSectionId();
@@ -1791,20 +1793,15 @@ u8 GetLevelFromMonExp(struct Pokemon *mon)
     u32 exp = GetMonData(mon, MON_DATA_EXP, NULL);
     s32 level = 1;
 
+    // KORREKTE Schleife mit Bounds-Check
     while (level < MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
         level++;
 
-    if (level > MAX_LEVEL)
-        level = MAX_LEVEL;
+    // Bei MAX_LEVEL: Extra-Prüfung
+    if (level == MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
+        return MAX_LEVEL;
 
-    // Debug-Ausgabe vorbereiten und anzeigen
-    #if DEBUG_EXP_LEVEL
-        ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3);
-        ConvertIntToDecimalStringN(gStringVar2, exp, STR_CONV_MODE_LEFT_ALIGN, 7);
-        ShowFieldExpLevelDebug();
-    #endif
-
-    return (u8)level;
+    return level - 1;
 }
 
 u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
@@ -1813,13 +1810,13 @@ u8 GetLevelFromBoxMonExp(struct BoxPokemon *boxMon)
     u32 exp = GetBoxMonData(boxMon, MON_DATA_EXP, NULL);
     s32 level = 1;
 
-    while (level < MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
+    while (level <= MAX_LEVEL && gExperienceTables[gSpeciesInfo[species].growthRate][level] <= exp)
         level++;
 
     if (level > MAX_LEVEL)
         level = MAX_LEVEL;
 
-    return (u8)level;
+    return level - 1;
 }
 
 u16 GiveMoveToMon(struct Pokemon *mon, u16 move)
@@ -5575,14 +5572,22 @@ void PartySpreadPokerus(struct Pokemon *party)
 bool8 TryIncrementMonLevel(struct Pokemon *mon)
 {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    u8 nextLevel = GetMonData(mon, MON_DATA_LEVEL, 0) + 1;
+    u8 currentLevel = GetMonData(mon, MON_DATA_LEVEL, 0);
+    u8 nextLevel = currentLevel + 1;
     u32 expPoints = GetMonData(mon, MON_DATA_EXP, 0);
+    // Direkte Level-Prüfung ZUERST
+    if (nextLevel > MAX_LEVEL || nextLevel > GetCurrentLevelCap())
+    {
+        return FALSE;
+    }
+    // Verhindert EXP-Overflow bei MAX_LEVEL
     if (expPoints > gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL])
     {
         expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
         SetMonData(mon, MON_DATA_EXP, &expPoints);
     }
-    if (nextLevel > GetCurrentLevelCap() || expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
+    // Jetzt sicher: nextLevel ist <= MAX_LEVEL
+    if (expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
     {
         return FALSE;
     }

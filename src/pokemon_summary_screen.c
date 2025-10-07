@@ -667,9 +667,9 @@ static const struct WindowTemplate sPageSkillsTemplate[] =
     },
     [PSS_DATA_WINDOW_EXP] = {
         .bg = 0,
-        .tilemapLeft = 24,
+        .tilemapLeft = 22,     // War 24 - nach links verschoben
         .tilemapTop = 14,
-        .width = 6,
+        .width = 8,            // War 6 - breiter gemacht
         .height = 4,
         .paletteNum = 6,
         .baseBlock = 561,
@@ -2500,7 +2500,6 @@ static void SwapMonMoves(struct Pokemon *mon, u8 moveIndex1, u8 moveIndex2)
     SetMonData(mon, MON_DATA_PP1 + moveIndex1, &move2pp);
     SetMonData(mon, MON_DATA_PP1 + moveIndex2, &move1pp);
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
-    //SetMonData(mon, MON_DATA_OT_STYLE, &gSaveBlock2Ptr->playerStyles[0]);
 
     summary->moves[moveIndex1] = move2;
     summary->moves[moveIndex2] = move1;
@@ -3896,18 +3895,17 @@ static void PrintExpPointsNextLevel(void)
     int x;
     u32 expToNextLevel;
 
-    ConvertIntToDecimalStringN(gStringVar1, sum->exp, STR_CONV_MODE_RIGHT_ALIGN, 7);
-    x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 42) + 2;
+    ConvertIntToDecimalStringN(gStringVar1, sum->exp, STR_CONV_MODE_RIGHT_ALIGN, 8);
+    x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 48) + 2; // 48 statt 42
     PrintTextOnWindow(windowId, gStringVar1, x, 1, 0, 0);
 
-    // Überprüfung für Level über dem Maximum der Erfahrungstabelle
-    if (sum->level < MAX_LEVEL && sum->level < ARRAY_COUNT(gExperienceTables[0]) - 1)
+    if (sum->level < MAX_LEVEL)
         expToNextLevel = gExperienceTables[gSpeciesInfo[sum->species].growthRate][sum->level + 1] - sum->exp;
     else
         expToNextLevel = 0;
 
-    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 7);
-    x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 42) + 2;
+    ConvertIntToDecimalStringN(gStringVar1, expToNextLevel, STR_CONV_MODE_RIGHT_ALIGN, 6);
+    x = GetStringRightAlignXOffset(FONT_NORMAL, gStringVar1, 48) + 2; // 48 statt 42
     PrintTextOnWindow(windowId, gStringVar1, x, 17, 0, 0);
 }
 

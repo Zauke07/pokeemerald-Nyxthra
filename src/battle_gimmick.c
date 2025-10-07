@@ -360,9 +360,11 @@ void UpdateIndicatorLevelData(u32 healthboxId, u32 level)
 {
     s32 xDelta = 0;
 
-    if (level >= 100)
+    if (level >= 200)        // Level 200
+        xDelta -= 8;
+    else if (level >= 100)   // Level 100-199
         xDelta -= 4;
-    else if (level < 10)
+    else if (level < 10)     // Level 1-9
         xDelta += 5;
 
     gSprites[GetIndicatorSpriteId(healthboxId)].tLevelXDelta = xDelta;

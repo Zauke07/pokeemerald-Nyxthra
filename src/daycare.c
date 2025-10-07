@@ -338,9 +338,8 @@ static void ApplyDaycareExperience(struct Pokemon *mon)
 
 static u32 GetExpAtLevelCap(struct Pokemon *mon)
 {
-    // This has been modified to always return the experience for level 200,
-    // effectively raising the level cap for the daycare.
-    return gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].growthRate][200];
+    // Verwendet das globale MAX_LEVEL (jetzt 200) für die Daycare
+    return gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].growthRate][MAX_LEVEL];
 }
 
 static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
@@ -362,7 +361,8 @@ static u16 TakeSelectedPokemonFromDaycare(struct DaycareMon *daycareMon)
         species = newSpecies;
     }
 
-    // This section has been modified to allow experience to be added regardless of level.
+    // Experience wird immer hinzugefügt, unabhängig vom aktuellen Level
+    // Die Level-Begrenzung erfolgt durch GetCurrentLevelCap() in anderen Funktionen
     experience = GetMonData(&pokemon, MON_DATA_EXP) + daycareMon->steps;
     SetMonData(&pokemon, MON_DATA_EXP, &experience);
     ApplyDaycareExperience(&pokemon);

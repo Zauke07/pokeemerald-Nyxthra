@@ -1440,10 +1440,13 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
 
     exp -= currLvlExp;
     
-    // Sicherheitsprüfung für Level über Maximum
+    // KORREKTE Sicherheitsprüfung für Level über Maximum
     if (level >= MAX_LEVEL)
     {
-        expToNextLvl = 0;
+        // Bei MAX_LEVEL: Keine EXP-Leiste anzeigen, direkt beenden
+        gBattlerControllerFuncs[battler] = Controller_WaitForString;
+        DestroyTask(taskId);
+        return;
     }
     else
     {
@@ -1483,11 +1486,16 @@ static void Task_GiveExpWithExpBar(u8 taskId)
             currExp = GetMonData(mon, MON_DATA_EXP);
             species = GetMonData(mon, MON_DATA_SPECIES);
             oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP);
-            expOnNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1];
-            // Füge diese Sicherheitsprüfung hinzu:
+            
+            // KORREKTE Sicherheitsprüfung für Level über Maximum
             if (level >= MAX_LEVEL)
             {
-                expOnNextLvl = currExp + gainedExp; // Verhindert Level-Up über Maximum
+                // Bei MAX_LEVEL: Keine weitere Level-Ups möglich
+                currExp += gainedExp;
+                SetMonData(mon, MON_DATA_EXP, &currExp);
+                gBattlerControllerFuncs[battler] = Controller_WaitForString;
+                DestroyTask(taskId);
+                return;
             }
             else
             {

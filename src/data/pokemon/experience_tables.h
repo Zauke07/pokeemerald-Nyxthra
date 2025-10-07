@@ -1,35 +1,47 @@
 #define SQUARE(n) ((n) * (n))
 #define CUBE(n) ((n) * (n) * (n))
 
-// Originale Formeln bis Level 100. Ab Level 101 wird eine skalierte Formel verwendet.
+// Verwende Bruchrechnung statt Dezimalzahlen
+#define K_FACTOR_NUM 6  // Zähler: 1.2 = 6/5 (schwerer ab Level 100)
+#define K_FACTOR_DEN 5  // Nenner
+
+// EXP-Werte für Level 100 (Referenzpunkte)
+#define EXP_SLOW_100 1250000U           // (5 * 100³) / 4
+#define EXP_FAST_100 800000U            // (4 * 100³) / 5
+#define EXP_MEDIUM_FAST_100 1000000U    // 100³
+#define EXP_MEDIUM_SLOW_100 1059860U 
+
+// Sichere Formeln ohne Overflow
 #define EXP_SLOW(n) \
-    ((n) <= 100 ? ((5 * CUBE(n)) / 4) : \
-                  (1250000 + (37500 * ((n) - 100) + 625 * SQUARE((n) - 100))))
+    ((n) <= 100 ? ((5U * CUBE(n)) / 4U) : \
+    (EXP_SLOW_100 + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) * 5U / (4U * K_FACTOR_DEN))))
 
 #define EXP_FAST(n) \
-    ((n) <= 100 ? ((4 * CUBE(n)) / 5) : \
-                  (800000 + (24000 * ((n) - 100) + 400 * SQUARE((n) - 100))))
+    ((n) <= 100 ? ((4U * CUBE(n)) / 5U) : \
+    (EXP_FAST_100 + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) * 4U / (5U * K_FACTOR_DEN))))
 
 #define EXP_MEDIUM_FAST(n) \
-    ((n) <= 100 ? CUBE(n) : \
-                  (1000000 + (30000 * ((n) - 100) + 500 * SQUARE((n) - 100))))
+    ((n) <= 100 ? (CUBE(n)) : \
+    (EXP_MEDIUM_FAST_100 + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) / K_FACTOR_DEN)))
 
 #define EXP_MEDIUM_SLOW(n) \
-    ((n) <= 100 ? ((6 * CUBE(n)) / 5 - (15 * SQUARE(n)) + (100 * (n)) - 140) : \
-                  (1059860 + (32000 * ((n) - 100) + 530 * SQUARE((n) - 100))))
+    ((n) <= 100 ? ((6U * CUBE(n)) / 5U - (15U * SQUARE(n)) + (100U * (n)) - 140U) : \
+    (EXP_MEDIUM_SLOW_100 + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) * 6U / (5U * K_FACTOR_DEN))))
 
 #define EXP_ERRATIC(n) \
-    ((n) <= 50 ? ((100 - (n)) * CUBE(n) / 50) : \
-    (n) <= 68 ? ((150 - (n)) * CUBE(n) / 100) : \
-    (n) <= 98 ? (((1911 - 10 * (n))/3) * CUBE(n) / 500) : \
-    (n) <= 100 ? ((160 - (n)) * CUBE(n) / 100) : \
-                 (1600000 + (38400 * ((n) - 100) + 640 * SQUARE((n) - 100))))
+    ((n) <= 100 ? \
+        ((n) <= 50 ? ((100U - (n)) * CUBE(n) / 50U) : \
+        (n) <= 68 ? ((150U - (n)) * CUBE(n) / 100U) : \
+        (n) <= 98 ? (((1911U - 10U * (n))/3U) * CUBE(n) / 500U) : \
+                    ((160U - (n)) * CUBE(n) / 100U)) : \
+    (540000U + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) * 60U / (100U * K_FACTOR_DEN))))
 
 #define EXP_FLUCTUATING(n) \
-    ((n) <= 15 ? (((n) + 1)/3 + 24) * CUBE(n) / 50 : \
-    (n) <= 36 ? ((n) + 14) * CUBE(n) / 50 : \
-    (n) <= 100 ? (((n)/2) + 32) * CUBE(n) / 50 : \
-                 (1640000 + (49200 * ((n) - 100) + 820 * SQUARE((n) - 100))))
+    ((n) <= 100 ? \
+        ((n) <= 15 ? (((n) + 1U)/3U + 24U) * CUBE(n) / 50U : \
+        (n) <= 36 ? ((n) + 14U) * CUBE(n) / 50U : \
+                    (((n)/2U) + 32U) * CUBE(n) / 50U) : \
+    (1640000U + (u32)((u64)K_FACTOR_NUM * (CUBE(n) - CUBE(100)) * 82U / (50U * K_FACTOR_DEN))))
 
 const u32 gExperienceTables[][MAX_LEVEL + 1] =
 {
