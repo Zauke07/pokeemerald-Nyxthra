@@ -1596,3 +1596,26 @@ static u8 ModifyBreedingScoreForOvalCharm(u8 score)
 
     return score;
 }
+
+void GetDaycareMonSpecies(void)
+{
+    u8 slot = gSpecialVar_0x8004; // 0 oder 1
+    struct DayCare *daycare = &gSaveBlock1Ptr->daycare;
+    
+    if (slot >= DAYCARE_MON_COUNT)
+    {
+        gSpecialVar_Result = SPECIES_NONE;
+        return;
+    }
+    
+    // Prüfe ob Pokemon in diesem Slot existiert
+    if (GetBoxMonData(&daycare->mons[slot].mon, MON_DATA_SPECIES) == SPECIES_NONE)
+    {
+        gSpecialVar_Result = SPECIES_NONE;
+        return;
+    }
+    
+    // Gib Species zurück
+    gSpecialVar_Result = GetBoxMonData(&daycare->mons[slot].mon, MON_DATA_SPECIES);
+}
+

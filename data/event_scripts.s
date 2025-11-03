@@ -1218,3 +1218,9 @@ JokeNpc_EventScript_TellJoke3::
 	.include "data/maps/Route111_01/scripts.inc"
 
 	.include "data/maps/Route111_02/scripts.inc"
+
+	.include "data/maps/MeteorFalls/scripts.inc"
+
+	.include "data/maps/PansionRoute117/scripts.inc"
+
+	.include "data/maps/PansionLabor/scripts.inc"
