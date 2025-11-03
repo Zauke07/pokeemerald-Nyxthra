@@ -78,12 +78,14 @@ static const u8 sText_PlayerBattledToDrawVsTwo[] = _("Du hast unentschieden gege
 static const u8 sText_WildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} ist geflohen!"); //not in gen 5+, replaced with match was forfeited text
 static const u8 sText_TwoWildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} und {B_LINK_OPPONENT2_NAME} sind geflohen!"); //not in gen 5+, replaced with match was forfeited text
 static const u8 sText_PlayerDefeatedLinkTrainerTrainer1[] = _("Du hast {B_TRAINER1_NAME_WITH_CLASS} besiegt!\p");
-static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} erschien!\p");
+static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} erscheint!\p");
 static const u8 sText_WildPkmnAppeared[] = _("Ein Wildes {B_OPPONENT_MON1_NAME} taucht auf!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("Das Legendäre {B_OPPONENT_MON1_NAME} taucht auf!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("Ein Wildes {B_OPPONENT_MON1_NAME} taucht auf!\p{PAUSE 127}");
-static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! Ein wildes {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} erschienen!\p");
-static const u8 sText_Trainer1WantsToBattle[] = _("Eine Herausvorderung von\n {B_TRAINER1_NAME_WITH_CLASS}!\p");
+static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! Ein wildes {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} erscheinen!\p");
+static const u8 sText_WildShinyPkmnAppeared[] = _("Ein Wildes{B_OPPONENT_MON1_SHINY} {B_OPPONENT_MON1_NAME} taucht auf!\p");
+static const u8 sText_TwoWildShinyPkmnAppeared[] = _("Ein Wildes{B_OPPONENT_MON1_SHINY} {B_OPPONENT_MON1_NAME} und ein Wildes{B_OPPONENT_MON2_SHINY} {B_OPPONENT_MON2_NAME}\ntauchen auf!\p");
+static const u8 sText_Trainer1WantsToBattle[] = _("Eine Herausvorderung von\n{B_TRAINER1_NAME_WITH_CLASS}!\p");
 static const u8 sText_LinkTrainerWantsToBattle[] = _("Du wirst von {B_LINK_OPPONENT1_NAME} herausgefordert!");
 static const u8 sText_TwoLinkTrainersWantToBattle[] = _("Du wirst von {B_LINK_OPPONENT1_NAME} und {B_LINK_OPPONENT2_NAME} herausgefordert!");
 static const u8 sText_Trainer1SentOutPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_OPPONENT_MON1_NAME} in den Kampf!");
@@ -2139,11 +2141,24 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
             if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
                 stringPtr = sText_LegendaryPkmnAppeared;
             else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
-                stringPtr = sText_TwoWildPkmnAppeared;
+            {
+                // ✅ Prüfe ob EINES der beiden Pokemon Shiny ist
+                bool8 mon1Shiny = GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)), MON_DATA_IS_SHINY);
+                bool8 mon2Shiny = GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)), MON_DATA_IS_SHINY);
+                
+                if (mon1Shiny || mon2Shiny)
+                    stringPtr = sText_TwoWildShinyPkmnAppeared;
+                else
+                    stringPtr = sText_TwoWildPkmnAppeared;
+            }
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
                 stringPtr = sText_WildPkmnAppearedPause;
             else
-                stringPtr = sText_WildPkmnAppeared;
+            {
+                // ✅ Prüfe ob das einzelne Wild-Pokemon Shiny ist
+                bool8 monShiny = GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)), MON_DATA_IS_SHINY);
+                stringPtr = monShiny ? sText_WildShinyPkmnAppeared : sText_WildPkmnAppeared;
+            }
         }
         break;
     case STRINGID_INTROSENDOUT: // poke first send-out
@@ -2711,6 +2726,18 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
             case B_TXT_OPPONENT_MON1_NAME: // first enemy poke name
                 GetBattlerNick(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), text);
                 toCpy = text;
+                break;
+            case B_TXT_OPPONENT_MON1_SHINY: // Shiny indicator for first enemy poke
+                if (GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)), MON_DATA_IS_SHINY))
+                    toCpy = COMPOUND_STRING("Shiny ");
+                else
+                    toCpy = COMPOUND_STRING("");
+                break;
+            case B_TXT_OPPONENT_MON2_SHINY: // Shiny indicator for second enemy poke
+                if (GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)), MON_DATA_IS_SHINY))
+                    toCpy = COMPOUND_STRING("Shiny ");
+                else
+                    toCpy = COMPOUND_STRING("");
                 break;
             case B_TXT_PLAYER_MON2_NAME: // second player poke name
                 GetBattlerNick(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), text);

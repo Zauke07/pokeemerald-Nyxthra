@@ -769,8 +769,27 @@ u8 GetWildBattleTransition(void)
     u8 transitionType = GetBattleTransitionTypeByMap();
     u8 enemyLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
     u8 playerLevel = GetSumOfPlayerPartyLevel(1);
+    bool8 isShiny = GetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY);
 
-    if (enemyLevel < playerLevel)
+    // Debug: Force Shiny transition für Test
+    //isShiny = TRUE;  // ← Uncomment zum Testen!
+
+    // 🌟 NEUE LOGIK: Wenn FLAG_SHINY_MODE_ON gesetzt ist, mache Pokemon Shiny!
+    if (FlagGet(FLAG_SHINY_MODE_ON))
+    {
+        bool8 shinyTrue = TRUE;
+        SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shinyTrue);
+        isShiny = TRUE;
+    }
+
+    if (isShiny)  // ✨ Shiny hat Priorität!
+    {
+        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+            return B_TRANSITION_BLUR;
+        else
+            return B_TRANSITION_SHINY_ENCOUNTER;
+    }
+    else if (enemyLevel < playerLevel)
     {
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             return B_TRANSITION_BLUR;
@@ -807,6 +826,11 @@ u8 GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_AQUA_LEADER
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
+
+    if (trainerClass == TRAINER_CLASS_TEAM_GALACTIC)
+        //|| trainerClass == TRAINER_CLASS_GALACTIC_LEADER
+        //|| trainerClass == TRAINER_CLASS_GALACTIC_ADMIN)
+        return B_TRANSITION_GALACTIC;
 
     if (trainerClass == TRAINER_CLASS_CHATGPT)
         return B_TRANSITION_CHATGPT;
@@ -1511,6 +1535,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_ROCKET:
             music = MUS_RG_ENCOUNTER_ROCKET;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_GALACTIC:
+            music = MUS_DP_ENCOUNTER_GALACTIC;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;
