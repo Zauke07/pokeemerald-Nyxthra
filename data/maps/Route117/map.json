@@ -22,6 +22,11 @@
       "map": "MAP_MAUVILLE_CITY",
       "offset": 0,
       "direction": "right"
+    },
+    {
+      "map": "MAP_PANSION_ROUTE117",
+      "offset": 38,
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -62,8 +67,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route117_EventScript_DaycareMan",
-      "flag": "0"
+      "script": "Route117_EventScript_DaycareManNormal",
+      "flag": "FLAG_HIDE_ROUTE117_DAYCARE_MAN"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
@@ -88,7 +93,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "Route117_EventScript_Kecleon",
       "flag": "0"
     },
     {
@@ -101,7 +106,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "Route117_EventScript_Azumarill",
       "flag": "0"
     },
     {
@@ -114,7 +119,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "Route117_EventScript_Pikachu",
       "flag": "0"
     },
     {
@@ -348,7 +353,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "VAR_TEMP_0",
-      "script": "NULL",
+      "script": "Route117_EventScript_DaycareMon1",
       "flag": "FLAG_TEMP_1"
     },
     {
@@ -361,7 +366,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "VAR_TEMP_1",
-      "script": "NULL",
+      "script": "Route117_EventScript_DaycareMon2",
       "flag": "FLAG_TEMP_2"
     },
     {
@@ -376,6 +381,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route117_EventScript_Chelast",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_EVIL_NPC",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_2",
+      "x": 47,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route117_EventScript_EvilNPC",
+      "flag": "FLAG_HIDE_ROUTE117_EVIL_NPC"
     }
   ],
   "warp_events": [

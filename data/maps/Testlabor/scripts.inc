@@ -611,3 +611,89 @@ Testlabor_Eventscript_DebugShowExpLevelNpc::
 
 Testlabor_Text_DebugExpLevel::
 	.string "Level: {STR_VAR_1}, EXP: {STR_VAR_2}, MappedLvl: {STR_VAR_3}$"
+
+Testlabor_EventScript_GalacticTest::
+	trainerbattle_single TRAINER_GALACTIC_GRUNT_F_TEST, Testlabor_Text_GalacticIntro, Testlabor_Text_GalacticOutro
+	msgbox Testlabor_Text_GalacticPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+@ ========== TEXTE ==========
+
+Testlabor_Text_GalacticIntro:
+	.string "Galactic Transition Test.$"
+
+Testlabor_Text_GalacticOutro:
+	.string "Test.$"
+
+Testlabor_Text_GalacticPostBattle:
+	.string "Fertig.$"
+
+Testlabor_EventScript_ChatgptTest::
+	trainerbattle_single TRAINER_CHATGPT_TEST, Testlabor_Text_ChatgptIntro, Testlabor_Text_ChatgptOutro
+	msgbox Testlabor_Text_ChatgptPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+@ ========== TEXTE ==========
+
+Testlabor_Text_ChatgptIntro:
+	.string "ChatGPT Transition Test.$"
+
+Testlabor_Text_ChatgptOutro:
+	.string "Test.$"
+
+Testlabor_Text_ChatgptPostBattle:
+	.string "Fertig.$"
+
+Testlabor_EventScript_ShinyToggleNPC::
+	lock
+	faceplayer
+	goto_if_set FLAG_SHINY_MODE_ON, Testlabor_EventScript_ShinyToggleNPC_AlreadyOn
+	msgbox Testlabor_Text_ShinyToggleNPC_Intro, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Testlabor_EventScript_ShinyToggleNPC_TurnOn
+	msgbox Testlabor_Text_ShinyToggleNPC_No
+	release
+	end
+
+Testlabor_EventScript_ShinyToggleNPC_AlreadyOn::
+	msgbox Testlabor_Text_ShinyToggleNPC_AlreadyOn, MSGBOX_YESNO
+	
+	compare VAR_RESULT, YES
+	goto_if_eq Testlabor_EventScript_ShinyToggleNPC_TurnOff
+	
+	release
+	end
+
+Testlabor_EventScript_ShinyToggleNPC_TurnOn::
+	setflag FLAG_SHINY_MODE_ON
+	msgbox Testlabor_Text_ShinyToggleNPC_Yes
+	release
+	end
+
+Testlabor_EventScript_ShinyToggleNPC_TurnOff::
+	clearflag FLAG_SHINY_MODE_ON
+	msgbox Testlabor_Text_ShinyToggleNPC_No
+	release
+	end
+
+Testlabor_Text_ShinyToggleNPC_Intro:
+	.string "Hallo! Ich bin der Shiny-Forscher!\n"
+	.string "Möchtest du dass alle wilden Pokémon\l"
+	.string "Shiny sind zum Testen?$"
+
+Testlabor_Text_ShinyToggleNPC_Yes:
+	.string "Super! Von jetzt an sind alle\n"
+	.string "wilden Pokémon Shiny!$"
+
+Testlabor_Text_ShinyToggleNPC_No:
+	.string "Okay! Shiny-Mode ist AUS.\n"
+	.string "Normale Pokémon sind zurück!$"
+
+Testlabor_Text_ShinyToggleNPC_AlreadyOn:
+	.string "Der Shiny-Mode ist schon AN!\n"
+	.string "Möchtest du ihn ausschalten?$"
+
+Testlabor_Text_ShinyToggleNPC_AlreadyOff:
+	.string "Der Shiny-Mode ist schon AUS!\n"
+	.string "Möchtest du ihn einschalten?$"
+

@@ -44,10 +44,89 @@ Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
 	return
 
 Route117_EventScript_TryMoveDayCareMan::
+	@ Quest noch nicht abgeschlossen
+	goto_if_unset FLAG_DAYCARE_RESCUE_QUEST_COMPLETED, Route117_EventScript_RescueQuestActive
+	@ Quest abgeschlossen - normales Verhalten
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan
 	setobjectxyperm LOCALID_DAYCARE_MAN, 47, 6
 Route117_EventScript_StopMoveDayCareMan::
 	return
+
+Route117_EventScript_RescueQuestActive::
+	@ Wenn Ei bereit ist, verstecke den bösen NPC (er ist dann im Labor)
+	goto_if_set FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_HideEvilNPC
+	@ Sonst: Verstecke Old Man, zeige bösen NPC
+	setflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
+	clearflag FLAG_HIDE_ROUTE117_EVIL_NPC
+	return
+
+Route117_EventScript_HideEvilNPC::
+	@ Böser NPC ist jetzt im Labor
+	setflag FLAG_HIDE_ROUTE117_EVIL_NPC
+	setflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
+	return
+
+@ Böser NPC Script (auf Route 117)
+Route117_EventScript_EvilNPC::
+	lock
+	faceplayer
+	@ Vor dem Ei - normales Verhalten wie Old Man
+	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_EvilNPCNormalDialogue
+	@ Wenn Ei bereit ist, soll Spieler ins Labor gehen
+	msgbox Route117_Text_EvilNPCEggReady, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_EvilNPCNormalDialogue::
+	special GetDaycareMonNicknames
+	specialvar VAR_RESULT, GetDaycareState
+	goto_if_eq VAR_RESULT, DAYCARE_ONE_MON, Route117_EventScript_EvilNPCCheckOnOneMon
+	goto_if_eq VAR_RESULT, DAYCARE_TWO_MONS, Route117_EventScript_EvilNPCCheckOnTwoMons
+	msgbox Route117_Text_EvilNPCSeeWife, MSGBOX_DEFAULT
+	release
+	end
+
+Route117_EventScript_EvilNPCCheckOnOneMon::
+	special GetDaycareMonNicknames
+	msgbox Route117_Text_YourMonIsDoingFine, MSGBOX_DEFAULT
+	setvar VAR_0x8004, 0
+	call Route117_EventScript_CheckMonReceivedMail
+	release
+	end
+
+Route117_EventScript_EvilNPCCheckOnTwoMons::
+	special GetDaycareMonNicknames
+	msgbox Route117_Text_YourMonsAreDoingFine, MSGBOX_DEFAULT
+	special SetDaycareCompatibilityString
+	special ShowFieldMessageStringVar4
+	waitmessage
+	waitbuttonpress
+	setvar VAR_0x8004, 0
+	call Route117_EventScript_CheckMonReceivedMail
+	setvar VAR_0x8004, 1
+	call Route117_EventScript_CheckMonReceivedMail
+	release
+	end
+
+@ NEUE TEXTE für bösen NPC
+
+Route117_Text_EvilNPCSeeWife:
+	.string "Wenn du möchtest, dass ich mich um ein\n"
+	.string "Pokémon kümmere, sprich mit meiner\l"
+	.string "Frau drinnen.$"
+
+Route117_Text_EvilNPCEggReady:
+	.string "Hm… wo ist das EI geblieben?\p"
+	.string "Ich glaube… äh… ich muss mal kurz\n"
+	.string "nachschauen…$"
+
+Route117_EventScript_Isaac::
+	trainerbattle_single TRAINER_ISAAC_1, Route117_Text_IsaacIntro, Route117_Text_IsaacDefeat, Route117_EventScript_RegisterIsaac
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route117_EventScript_RematchIsaac
+	msgbox Route117_Text_IsaacPostBattle, MSGBOX_DEFAULT
+	release
+	end
 
 Route117_EventScript_Woman::
 	msgbox Route117_Text_ArentTheseFlowersPretty, MSGBOX_NPC
@@ -71,14 +150,6 @@ Route117_EventScript_RouteSignMauville::
 
 Route117_EventScript_DayCareSign::
 	msgbox Route117_Text_DayCareSign, MSGBOX_SIGN
-	end
-
-Route117_EventScript_Isaac::
-	trainerbattle_single TRAINER_ISAAC_1, Route117_Text_IsaacIntro, Route117_Text_IsaacDefeat, Route117_EventScript_RegisterIsaac
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route117_EventScript_RematchIsaac
-	msgbox Route117_Text_IsaacPostBattle, MSGBOX_DEFAULT
-	release
 	end
 
 Route117_EventScript_RegisterIsaac::
@@ -253,4 +324,47 @@ Route117_Text_Chelast:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+@ ========== POKEMON IM GARTEN ==========
+
+Route117_EventScript_Kecleon::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
+	msgbox Route117_Text_Kecleon, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+Route117_EventScript_Azumarill::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_AZUMARILL, CRY_MODE_NORMAL
+	msgbox Route117_Text_Azumarill, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+Route117_EventScript_Pikachu::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
+	msgbox Route117_Text_Pikachu, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+@ ========== TEXTE PKMN ==========
+
+Route117_Text_Kecleon:
+	.string "Kecleon: Kecleeeon!$"
+
+Route117_Text_Azumarill:
+	.string "Azumarill: Azuuu!$"
+
+Route117_Text_Pikachu:
+	.string "Pikachu: Pika Pika!$"
 

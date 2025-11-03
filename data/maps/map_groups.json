@@ -98,7 +98,8 @@
     "BabyBootCamp",
     "Rival_Test",
     "Route111_01",
-    "Route111_02"
+    "Route111_02",
+    "PansionRoute117"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -326,7 +327,8 @@
     "Route116_TunnelersRestHouse"
   ],
   "gMapGroup_IndoorRoute117": [
-    "Route117_PokemonDayCare"
+    "Route117_PokemonDayCare",
+    "PansionLabor"
   ],
   "gMapGroup_IndoorRoute121": [
     "Route121_SafariZoneEntrance"
@@ -442,7 +444,8 @@
     "MeteorFalls_StevensCave",
     "GraniteCave_B3F",
     "GraniteCave_B4F",
-    "GraniteCave_B4F_2"
+    "GraniteCave_B4F_2",
+    "MeteorFalls"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",
