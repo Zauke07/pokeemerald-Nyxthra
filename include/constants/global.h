@@ -111,7 +111,7 @@
 // string lengths
 #define ITEM_NAME_LENGTH 20
 #define ITEM_NAME_PLURAL_LENGTH ITEM_NAME_LENGTH + 2 // 2 is used for the instance where a word's suffix becomes y->ies
-#define POKEMON_NAME_LENGTH 12
+#define POKEMON_NAME_LENGTH 13
 #define VANILLA_POKEMON_NAME_LENGTH 10
 #define POKEMON_NAME_BUFFER_SIZE max(20, POKEMON_NAME_LENGTH + 1) // Frequently used buffer size. Larger than necessary
 #define PLAYER_NAME_LENGTH 7
@@ -200,7 +200,6 @@ enum
 #define NUM_BARD_SONG_WORDS    6
 #define NUM_STORYTELLER_TALES  4
 #define NUM_TRADER_ITEMS       4
-#define NUM_PLAYER_AVATAR_STATES 4 // 4 verschiedene Zustände: Normal, Fahrrad, Surfen, Feldbewegung
 #define GIDDY_MAX_TALES       10
 #define GIDDY_MAX_QUESTIONS    8
 
