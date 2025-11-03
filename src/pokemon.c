@@ -5873,6 +5873,8 @@ u16 GetBattleBGM(void)
             return MUS_VS_FRONTIER_BRAIN;
         case TRAINER_CLASS_CHATGPT:
             return MUS_VS_CHAMPION;
+        case TRAINER_CLASS_TEAM_GALACTIC:
+            return MUS_DP_VS_GALACTIC;
         default:
             return MUS_VS_TRAINER;
         }

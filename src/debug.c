@@ -75,6 +75,7 @@
 #include "rtc.h"
 #include "fake_rtc.h"
 #include "save.h"
+#include "field_player_avatar.h"
 
 enum FollowerNPCCreateDebugMenu
 {
@@ -336,7 +337,8 @@ static void DebugAction_BerryFunctions_Pests(u8 taskId);
 static void DebugAction_BerryFunctions_Weeds(u8 taskId);
 
 static void DebugAction_Player_Name(u8 taskId);
-static void DebugAction_Player_Gender(u8 taskId);
+//static void DebugAction_Player_Gender(u8 taskId);
+static void DebugAction_Player_SetStyle(u8 taskId);
 static void DebugAction_Player_Id(u8 taskId);
 
 extern const u8 Debug_FlagsNotSetOverworldConfigMessage[];
@@ -596,10 +598,25 @@ static const struct DebugMenuOption sDebugMenu_Actions_Give[] =
     { NULL }
 };
 
+static const struct DebugMenuOption sDebugMenu_Actions_Player_SelectStyle[] =
+{
+    [STYLE_BRENDAN] = { COMPOUND_STRING("Brendan"), DebugAction_Player_SetStyle },
+    [STYLE_MAY]     = { COMPOUND_STRING("May"),     DebugAction_Player_SetStyle },
+    [STYLE_RED]     = { COMPOUND_STRING("Red"),     DebugAction_Player_SetStyle },
+    [STYLE_LEAF]    = { COMPOUND_STRING("Leaf"),    DebugAction_Player_SetStyle },
+    [STYLE_ETHAN]   = { COMPOUND_STRING("Ethan"),   DebugAction_Player_SetStyle },
+    [STYLE_LYRA]    = { COMPOUND_STRING("Lyra"),    DebugAction_Player_SetStyle },
+    [STYLE_LUCAS]   = { COMPOUND_STRING("Lucas"),   DebugAction_Player_SetStyle },
+    [STYLE_DAWN]    = { COMPOUND_STRING("Dawn"),    DebugAction_Player_SetStyle },
+    [STYLE_HILBERT] = { COMPOUND_STRING("Hilbert"), DebugAction_Player_SetStyle },
+    [STYLE_HILDA]   = { COMPOUND_STRING("Hilda"),   DebugAction_Player_SetStyle },
+    { NULL }
+};
+
 static const struct DebugMenuOption sDebugMenu_Actions_Player[] =
 {
     { COMPOUND_STRING("Player name"),    DebugAction_Player_Name },
-    { COMPOUND_STRING("Toggle gender"),  DebugAction_Player_Gender },
+    { COMPOUND_STRING("Select Style…"),  DebugAction_OpenSubMenu, sDebugMenu_Actions_Player_SelectStyle }, // ← GEÄNDERT!
     { COMPOUND_STRING("New Trainer ID"), DebugAction_Player_Id },
     { NULL }
 };
@@ -1519,12 +1536,35 @@ static void DebugAction_Player_Name(u8 taskId)
     DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
+/*
 static void DebugAction_Player_Gender(u8 taskId)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        gSaveBlock2Ptr->playerGender = FEMALE;
-    else
-        gSaveBlock2Ptr->playerGender = MALE;
+    gSaveBlock2Ptr->playerStyles[0]++;
+    if (gSaveBlock2Ptr->playerStyles[0] >= NUM_PLAYER_STYLES)
+        gSaveBlock2Ptr->playerStyles[0] = 0;
+    Debug_DestroyMenu_Full(taskId);
+    ScriptContext_Enable();
+}
+*/
+
+static void DebugAction_Player_SetStyle(u8 taskId)
+{
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].tMenuTaskId);
+    
+    // Setze den Style basierend auf der Auswahl
+    gSaveBlock2Ptr->playerStyles[0] = input;
+    
+    // Aktualisiere den Sprite sofort
+    u8 objectEventId = gPlayerAvatar.objectEventId;
+    if (objectEventId < OBJECT_EVENTS_COUNT)
+    {
+        struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
+        u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndFlags(gSaveBlock2Ptr->playerStyles[0], gPlayerAvatar.flags);
+        ObjectEventSetGraphicsId(objEvent, gfxId);
+        ObjectEventTurn(objEvent, objEvent->movementDirection);
+    }
+    
+    PlaySE(SE_SELECT);
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();
 }

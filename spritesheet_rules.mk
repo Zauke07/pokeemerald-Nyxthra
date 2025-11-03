@@ -6128,3 +6128,6 @@ $(OBJEVENTGFXDIR)/people/ash/walking.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/people/wes/walking.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/james_rocket.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4

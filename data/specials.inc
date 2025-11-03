@@ -572,19 +572,20 @@ gSpecials::
 	def_special ShowTestPasswordMenu
 	def_special ShowStarterRegionMenu
 	def_special ShowStarterRegionMulti
-    def_special WarpToTestlaborAfterStyleSelect
-    def_special StartTestlaborStyleSelection
-    def_special StartCharacterStyleSelection
-    def_special ShowFieldMessageStarterDebug
-    def_special GetJokeOffset0
-    def_special GetJokeOffset1
-    def_special GetJokeOffset2
-    def_special CheckChikoritaCharmanderSquirtle
-    def_special ShowFieldMessageFollowerDebug
-    def_special BufferClockToStrVars123
-    def_special ShowFieldExpLevelDebug
-    def_special ShowFieldCmdGetExpDebug
-    def_special BufferDebugExpLevelVars
+	def_special WarpToTestlaborAfterStyleSelect
+	def_special StartTestlaborStyleSelection
+	def_special StartCharacterStyleSelection
+	def_special ShowFieldMessageStarterDebug
+	def_special GetJokeOffset0
+	def_special GetJokeOffset1
+	def_special GetJokeOffset2
+	def_special CheckChikoritaCharmanderSquirtle
+	def_special ShowFieldMessageFollowerDebug
+	def_special BufferClockToStrVars123
+	def_special ShowFieldExpLevelDebug
+	def_special ShowFieldCmdGetExpDebug
+	def_special BufferDebugExpLevelVars
+	def_special GetDaycareMonSpecies
 
 
 
