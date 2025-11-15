@@ -275,6 +275,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnWaterin
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse_ow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rocky;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_James_Rocket;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rogue_Egg;
 
 //Pokeemerald-Rogue
 
@@ -958,6 +960,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     //  NEW
     [OBJ_EVENT_GFX_NURSE_JOY] =                    &gObjectEventGraphicsInfo_Nurse_ow,
     [OBJ_EVENT_GFX_ROCKY] =                        &gObjectEventGraphicsInfo_Rocky,
+    [OBJ_EVENT_GFX_JAMES_ROCKET] =                 &gObjectEventGraphicsInfo_James_Rocket,
+    [OBJ_EVENT_GFX_ROGUE_EGG] =                    &gObjectEventGraphicsInfo_Rogue_Egg,
 /*
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,

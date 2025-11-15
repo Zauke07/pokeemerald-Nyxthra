@@ -2,14 +2,14 @@
 #define GUARD_CONFIG_SUMMARY_SCREEN_H
 
 // Settings
-#define P_SUMMARY_SCREEN_MOVE_RELEARNER  TRUE   // If TRUE, shows an option for Pokémon to relearn moves on the summary screen moves page.
-#define P_SUMMARY_SCREEN_NATURE_COLORS  TRUE    // If TRUE, nature-based stat boosts and reductions will be red and blue in the summary screen.
-#define P_SUMMARY_MOVE_RELEARNER_FULL_PP TRUE   // If TRUE, the move relearner in the summary screen restores relearned moves' PP to full.
-#define P_SUMMARY_SCREEN_RENAME          TRUE   // If TRUE, an option to change Pokémon nicknames replaces the cancel prompt on the summary screen info page.
-#define P_SUMMARY_SCREEN_IV_EV_INFO      FALSE  // If TRUE, will allow player to cycle through the Stats, IVs, and EVs in the summary screen skills page.
-#define P_SUMMARY_SCREEN_IV_EV_BOX_ONLY  FALSE  // If TRUE, will allow player to cycle through the Stats, IVs, and EVs in the summary screen skills page, but only in the PC storage box.
-#define P_SUMMARY_SCREEN_IV_EV_TILESET   FALSE  // If TRUE, loads an alternate tileset to allow changing the "STATS" label in the summary screen skills page. Note: if it's still loading the alternate tileset after changing this and recompiling, you may need a `make clean` before compilation.
-#define P_SUMMARY_SCREEN_IV_EV_VALUES    FALSE  // If TRUE, will show the actual IV value instead of the letter grade.
+#define P_SUMMARY_SCREEN_MOVE_RELEARNER  TRUE   // Wenn TRUE, zeigt eine Option für Pokémon an, Attacken im Zusammenfassungsbildschirm auf der Attacken-Seite wieder zu erlernen.
+#define P_SUMMARY_SCREEN_NATURE_COLORS  TRUE    // Wenn TRUE, werden naturbasierte Statuswert-Erhöhungen und -Verringerungen rot und blau im Zusammenfassungsbildschirm angezeigt.
+#define P_SUMMARY_MOVE_RELEARNER_FULL_PP TRUE   // Wenn TRUE, stellt der Attacken-Wiedererlerner im Zusammenfassungsbildschirm die AP wiedererlerter Attacken vollständig wieder her.
+#define P_SUMMARY_SCREEN_RENAME          TRUE   // Wenn TRUE, ersetzt eine Option zum Ändern von Pokémon-Spitznamen die Abbrechen-Eingabeaufforderung auf der Info-Seite des Zusammenfassungsbildschirms.
+#define P_SUMMARY_SCREEN_IV_EV_INFO      FALSE  // Wenn TRUE, ermöglicht es dem Spieler, zwischen Status, DVs und FPs auf der Fähigkeiten-Seite des Zusammenfassungsbildschirms zu wechseln.
+#define P_SUMMARY_SCREEN_IV_EV_BOX_ONLY  FALSE  // Wenn TRUE, ermöglicht es dem Spieler, zwischen Status, DVs und FPs auf der Fähigkeiten-Seite des Zusammenfassungsbildschirms zu wechseln, aber nur in der PC-Lagerbox.
+#define P_SUMMARY_SCREEN_IV_EV_TILESET   FALSE  // Wenn TRUE, lädt ein alternatives Tileset, um das Ändern des "STATS"-Labels auf der Fähigkeiten-Seite des Zusammenfassungsbildschirms zu ermöglichen. Hinweis: Falls es nach dem Ändern und Neukompilieren immer noch das alternative Tileset lädt, benötigen Sie möglicherweise ein `make clean` vor der Kompilierung.
+#define P_SUMMARY_SCREEN_IV_EV_VALUES    FALSE  // Wenn TRUE, wird der tatsächliche DV-Wert anstelle der Buchstabennote angezeigt.
 /* 
 LETTER GRADE GUIDE:
 
@@ -22,10 +22,10 @@ LETTER GRADE GUIDE:
 
 Info taken from https://bulbapedia.bulbagarden.net/wiki/Stats_judge.
 */
-#define P_SUMMARY_SCREEN_IV_ONLY         FALSE  // If TRUE, will only show IV info in the summary screen.
-#define P_SUMMARY_SCREEN_EV_ONLY         FALSE  // If TRUE, will only show EV info in the summary screen.
+#define P_SUMMARY_SCREEN_IV_ONLY         FALSE  // Wenn TRUE, wird nur DV-Info im Zusammenfassungsbildschirm angezeigt.
+#define P_SUMMARY_SCREEN_EV_ONLY         FALSE  // Wenn TRUE, wird nur FP-Info im Zusammenfassungsbildschirm angezeigt.
 
 // Flags
-#define P_FLAG_SUMMARY_SCREEN_IV_EV_INFO 0      // If this flag is set, will allow player to cycle through the Stats, IVs, and EVs in the summary screen skills page. Note: if P_SUMMARY_SCREEN_IV_EV_INFO is TRUE, this flag does nothing.
+#define P_FLAG_SUMMARY_SCREEN_IV_EV_INFO 0      // Wenn dieses Flag gesetzt ist, ermöglicht es dem Spieler, zwischen Status, DVs und FPs auf der Fähigkeiten-Seite des Zusammenfassungsbildschirms zu wechseln. Hinweis: Falls P_SUMMARY_SCREEN_IV_EV_INFO TRUE ist, bewirkt dieses Flag nichts.
 
 #endif // GUARD_CONFIG_SUMMARY_SCREEN_H

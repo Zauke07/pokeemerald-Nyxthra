@@ -84,7 +84,7 @@ struct TrainerCardData
     u16 frontTilemap[600];
     u16 backTilemap[600];
     u16 bgTilemap[600];
-    u8 badgeTiles[0x80 * NUM_BADGES * 2];
+    u8 badgeTiles[0x80 * NUM_BADGES];
     u8 stickerTiles[0x200];
     u8 cardTiles[0x2300];
     u16 cardTilemapBuffer[0x1000];
@@ -1444,7 +1444,7 @@ static u8 SetCardBgsAndPals(void)
     switch (sData->bgPalLoadState)
     {
     case 0:
-        LoadBgTiles(3, sData->badgeTiles, 0x80 * NUM_BADGES * 2, 0);
+        LoadBgTiles(3, sData->badgeTiles, 0x80 * NUM_BADGES, 0);
         break;
     case 1:
         LoadBgTiles(0, sData->cardTiles, 0x1800, 0);
@@ -1517,42 +1517,60 @@ static void DrawCardFrontOrBack(u16 *ptr)
 
 static void DrawStarsAndBadgesOnCard(void)
 {
-    s16 i, x;
-    u16 t;
-    u8 row, col, y, pal;
-    // Sterne zeichnen
-    FillBgTilemapBufferRect(3, 143, 15, 7, sData->trainerCard.stars, 1, 4);
+    static const u8 yOffsets[] = {7, 7};
 
+    s16 i;
+    u16 tileNum = 192;
+    u8 palNum; // Wird jetzt dynamisch gesetzt
+    u8 currentTileY; // Dynamische Y-Koordinate
+    
+    // Unveränderter Code zum Zeichnen der Sterne
+    FillBgTilemapBufferRect(3, 143, 15, yOffsets[sData->isHoenn], sData->trainerCard.stars, 1, 4);
+    
     if (!sData->isLink)
     {
-        for (i = 0; i < NUM_BADGES; i++)
-        {
-            if (!sData->badgeCount[i])
-                continue;
+        // Wir verwenden die Original-Start-X-Koordinate außerhalb der Schleife
+        u8 x = 4;
 
-            // NEUE BERECHNUNG für 16 Badges:
-            row = (u8)(i / 8);          // 0 = Badges 0-7, 1 = Badges 8-15
-            col = (u8)(i % 8);          // Position innerhalb der Reihe (0-7)
+        for (i = 0; i < NUM_BADGES; i++, tileNum += 2)
+        {
+            u8 tileX;
             
-            if (row == 0) {
-                // Erste Reihe (Badges 0-7)
-                pal = 3;                // pal1
-                y = 15;
-                x = (s16)(4 + col * 3);
-                t = (u16)(192 + col * 2); // Tiles 192-206 für erste Reihe
-            } else {
-                // Zweite Reihe (Badges 8-15)
-                pal = 4;                // pal2
-                y = 17;                 // Eine Reihe tiefer
-                x = (s16)(4 + col * 3);
-                t = (u16)(256 + col * 2); // Tiles 256-270 für zweite Reihe
+            if (i < 8) // Badges 1 bis 8 (Erste Reihe)
+            {
+                // X-Koordinate: Original-Logik
+                tileX = x + (i * 3);
+                // Y-Koordinate: Original-Logik
+                currentTileY = 15;
+                // Palette: Original
+                palNum = 3; 
+            }
+            else // Badges 9 bis 16 (Zweite Reihe)
+            {
+                // X-Koordinate: 4 + (Badge-Index 0-7) * 3 Tiles.
+                // Wir nehmen den Badge-Index 0-7: i - 8
+                tileX = x + ((i - 8) * 3);
+                // Y-Koordinate: 3 Tiles tiefer als die Originalzeile 15
+                currentTileY = 18; // 15 + 3 Tiles Abstand
+                // Palette: Neu geladene Palette für Reihe 2
+                palNum = 4;
             }
 
-            // Badge zeichnen (2x2 Tiles)
-            FillBgTilemapBufferRect(3, t,          x,     y,     1, 1, pal);
-            FillBgTilemapBufferRect(3, t + 1,      x + 1, y,     1, 1, pal);
-            FillBgTilemapBufferRect(3, t + 16,     x,     y + 1, 1, 1, pal);
-            FillBgTilemapBufferRect(3, t + 17,     x + 1, y + 1, 1, 1, pal);
+            if (sData->badgeCount[i]) 
+            {
+                // Oben Links (Zeile currentTileY)
+                FillBgTilemapBufferRect(3, tileNum, tileX, currentTileY, 1, 1, palNum);
+                // Oben Rechts (Zeile currentTileY)
+                FillBgTilemapBufferRect(3, tileNum + 1, tileX + 1, currentTileY, 1, 1, palNum);
+                
+                // Unten Links (Zeile currentTileY + 1)
+                FillBgTilemapBufferRect(3, tileNum + 16, tileX, currentTileY + 1, 1, 1, palNum);
+                // Unten Rechts (Zeile currentTileY + 1)
+                FillBgTilemapBufferRect(3, tileNum + 17, tileX + 1, currentTileY + 1, 1, 1, palNum);
+            }
+            
+            // Wichtig: x += 3 MUSS außerhalb der Schleifenlogik für i=0 bis i=7 bleiben, 
+            // da es nur für die alte Schleifenstruktur gedacht war. Wir berechnen x direkt als tileX.
         }
     }
     CopyBgTilemapBufferToVram(3);

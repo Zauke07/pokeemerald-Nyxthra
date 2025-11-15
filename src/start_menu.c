@@ -365,20 +365,23 @@ static const u8 *GetGermanDaytimeText(void)
     }
 }
 
+/*
 // "HH:MM Uhr (Tageszeit)" -> gStringVar4
 static void FormatCurrentTimeGerman(void)
 {
-    RtcCalcLocalTime();
-
+    struct SiiRtcInfo rtc;
+    RtcGetRawInfo(&rtc);  // ← Hole echte Hardware-Zeit
+    
     const u8 *daytime = GetGermanDaytimeText();
-    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours,   STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    
+    // ✅ Verwende rtc.hour und rtc.minute statt gLocalTime
+    ConvertIntToDecimalStringN(gStringVar1, rtc.hour,   STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(gStringVar2, rtc.minute, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringCopy(gStringVar3, daytime);
 
-    // WICHTIG: gText_ClockFormat muss den Doppelpunkt entfernen!
-    // z.B. const u8 gText_ClockFormat[] = _("{STR_VAR_1}{STR_VAR_2} Uhr ({STR_VAR_3})");
     StringExpandPlaceholders(gStringVar4, gText_ClockFormat);
 }
+*/
 
 // ==== NEU: Farben & Blink-Flag für den Doppelpunkt ====
 static const u8 sClockTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_LIGHT_GRAY};
@@ -390,54 +393,66 @@ static EWRAM_DATA bool8 sClockColonInvisible = FALSE; // toggelt im Task
 
 static void Task_UpdateClockWindow(u8 taskId)
 {
-    // Aktualisiert die Uhrzeit jede CLOCK_REFRESH_DELAY Frames (z.B. 60 Frames = 1 Sekunde)
     if (++gTasks[taskId].data[0] >= CLOCK_REFRESH_DELAY)
     {
-        gTasks[taskId].data[0] = 0; // Zähler zurücksetzen
+        gTasks[taskId].data[0] = 0;
 
-        RtcCalcLocalTime(); // Zeit aktualisieren
-        sClockColonInvisible ^= 1; // Blink-Flag umschalten (0 -> 1 oder 1 -> 0)
+        // ✅ VERWENDE GAME-ENGINE-ZEIT STATT RTC:
+        RtcCalcLocalTime();
+        u8 hour = gLocalTime.hours;
+        u8 minute = gLocalTime.minutes;
+        
+        sClockColonInvisible ^= 1;
+        FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1));
 
-        FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1)); // Fensterpuffer leeren
-
-        // 1. Stunden zeichnen
         u16 x = 0;
-        ConvertIntToDecimalStringN(gStringVar4, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+        ConvertIntToDecimalStringN(gStringVar4, hour, STR_CONV_MODE_LEADING_ZEROS, 2);
         AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
         x += GetStringWidth(FONT_NORMAL, gStringVar4, 0);
 
-        // 2. Den Doppelpunkt zeichnen (mit blinkender Farbe)
         AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[sClockColonInvisible], TEXT_SKIP_DRAW, gText_Colon2);
         x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
 
-        // 3. Den Rest des Strings zeichnen (Minuten + Text)
-        // Platzhalter für den Rest vorbereiten
-        ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+        ConvertIntToDecimalStringN(gStringVar1, minute, STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopy(gStringVar2, GetGermanDaytimeText());
-        // gStringVar3 wird hier mit den restlichen Textbausteinen gefüllt
         StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
-
-        // Den Rest des Strings ab der berechneten Position zeichnen
+        
         AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
 
         CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
     }
 }
 
+/*
+static void InitializeRTC(void)
+{
+    if (!RtcCheckInfo())
+    {
+        // RTC ist nicht initialisiert - setze auf Standard-Zeit
+        struct Time currentTime;
+        currentTime.hours = 12;    // 12:00 Uhr als Standard
+        currentTime.minutes = 0;
+        currentTime.seconds = 0;
+        
+        // Setze RTC-Zeit
+        RtcSetTime(&currentTime);
+    }
+}
+*/
+
 // Ersetze deine vorhandene ShowClockWindow Funktion
 void ShowClockWindow(void)
 {
-    // Fenster zur Anzeige der Uhrzeit hinzufügen
     sClockWindowId = AddWindow(&sWindowTemplate_Clock);
     PutWindowTilemap(sClockWindowId);
     DrawStdWindowFrame(sClockWindowId, FALSE);
 
+    // ✅ VERWENDE GAME-ENGINE-ZEIT:
     RtcCalcLocalTime();
-    sClockColonInvisible = FALSE; // Startzustand: ":" sichtbar
-
+    
+    sClockColonInvisible = FALSE;
     FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1));
 
-    // Initialen Text und den sichtbaren Doppelpunkt zeichnen
     u16 x = 0;
     ConvertIntToDecimalStringN(gStringVar4, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
     AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
@@ -446,12 +461,10 @@ void ShowClockWindow(void)
     AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[0], TEXT_SKIP_DRAW, gText_Colon2);
     x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
 
-    // Den restlichen String vorbereiten
     ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringCopy(gStringVar2, GetGermanDaytimeText());
     StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
     
-    // Restlichen String an der richtigen Position zeichnen
     AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
 
     CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
@@ -938,6 +951,7 @@ static bool8 StartMenuExitCallback(void)
 static bool8 StartMenuDebugCallback(void)
 {
     RemoveExtraStartMenuWindows();
+    HideClockWindow();
     HideStartMenuDebug(); // Hide start menu without enabling movement
 
     if (DEBUG_OVERWORLD_MENU)

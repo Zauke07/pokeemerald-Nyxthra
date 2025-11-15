@@ -137403,3 +137403,150 @@ F_TRAINER_FEMALE |
             },
         },
     },
+#line 51440
+    [DIFFICULTY_NORMAL][TRAINER_JAMES_TEAM_ROCKET] =
+    {
+#line 51441
+        .trainerName = _("James"),
+#line 51442
+        .trainerClass = TRAINER_CLASS_TEAM_ROCKET,
+#line 51443
+        .trainerPic = TRAINER_PIC_JAMES_ROCKET,
+        .encounterMusic_gender =
+#line 51445
+            TRAINER_ENCOUNTER_MUSIC_ROCKET,
+#line 51446
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 51447
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT,
+#line 0
+        .trainerBackPic = TRAINER_PIC_JAMES_ROCKET,
+        .partySize = 3,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 51449
+            .species = SPECIES_KOFFING,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 51451
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 51450
+            .lvl = 26,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 51452
+                MOVE_POISON_GAS,
+                MOVE_TACKLE,
+                MOVE_SLUDGE,
+                MOVE_SMOKESCREEN,
+            },
+            },
+            {
+#line 51457
+            .species = SPECIES_VICTREEBEL,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 51459
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 51458
+            .lvl = 27,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 51460
+                MOVE_VINE_WHIP,
+                MOVE_ACID,
+                MOVE_RAZOR_LEAF,
+                MOVE_SLEEP_POWDER,
+            },
+            },
+            {
+#line 51465
+            .species = SPECIES_CARNIVINE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 51467
+            .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
+#line 51466
+            .lvl = 25,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 51468
+                MOVE_BITE,
+                MOVE_VINE_WHIP,
+                MOVE_SWEET_SCENT,
+                MOVE_GROWTH,
+            },
+            },
+        },
+    },
+#line 51473
+    [DIFFICULTY_NORMAL][TRAINER_GALACTIC_GRUNT_F_TEST] =
+    {
+#line 51474
+        .trainerName = _("Rüpel"),
+#line 51475
+        .trainerClass = TRAINER_CLASS_TEAM_GALACTIC,
+#line 51476
+        .trainerPic = TRAINER_PIC_GALACTIC_GRUNT_F,
+        .encounterMusic_gender =
+#line 51477
+F_TRAINER_FEMALE | 
+#line 51478
+            TRAINER_ENCOUNTER_MUSIC_GALACTIC,
+#line 51479
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 51480
+        .aiFlags = AI_FLAG_BASIC_TRAINER,
+#line 0
+        .trainerBackPic = TRAINER_PIC_GALACTIC_GRUNT_F,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 51482
+            .species = SPECIES_CATERPIE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 51484
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 51483
+            .lvl = 1,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },
+#line 51486
+    [DIFFICULTY_NORMAL][TRAINER_CHATGPT_TEST] =
+    {
+#line 51487
+        .trainerName = _("ChatGPT"),
+#line 51488
+        .trainerClass = TRAINER_CLASS_CHATGPT,
+#line 51489
+        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .encounterMusic_gender =
+#line 51491
+            TRAINER_ENCOUNTER_MUSIC_CHATGPT,
+#line 51492
+        .battleType = TRAINER_BATTLE_TYPE_SINGLES,
+#line 51493
+        .aiFlags = AI_FLAG_BASIC_TRAINER,
+#line 0
+        .trainerBackPic = TRAINER_PIC_GENTLEMAN,
+        .partySize = 1,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 51495
+            .species = SPECIES_CATERPIE,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 51497
+            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+#line 51496
+            .lvl = 1,
+            .nature = NATURE_HARDY,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            },
+        },
+    },

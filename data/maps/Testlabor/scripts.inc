@@ -697,3 +697,9 @@ Testlabor_Text_ShinyToggleNPC_AlreadyOff:
 	.string "Der Shiny-Mode ist schon AUS!\n"
 	.string "Möchtest du ihn einschalten?$"
 
+Testlabor_EventScript_Route104_MiaBattle::
+	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	special GetPlayerBigGuyGirlString
+	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
+	release
+	end

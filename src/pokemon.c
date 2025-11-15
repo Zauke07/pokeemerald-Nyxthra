@@ -66,6 +66,7 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
+#include "constants/battle.h"
 
 #define DEBUG_EXP_LEVEL 0
 
@@ -5881,6 +5882,17 @@ u16 GetBattleBGM(void)
     }
     else
     {
+        if (gBattleTypeFlags & BATTLE_TYPE_WILD || 
+            (gBattleTypeFlags == 0 && GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL) != SPECIES_NONE))
+        {
+            if (IsMonShiny(&gEnemyParty[0]) || 
+                (WILD_DOUBLE_BATTLE && IsMonShiny(&gEnemyParty[1])))
+            {
+                m4aMPlayAllStop();
+                return MUS_DP_VS_WILD;
+            }
+        }
+
         return MUS_VS_WILD;
     }
 }

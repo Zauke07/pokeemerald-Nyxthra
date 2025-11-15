@@ -157,7 +157,8 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u16 spdef; // 0x2A
         u16 speed; // 0x2C
         u16 item; // 0x2E
-        u16 friendship; // 0x30
+        u16 friendship : 8; // 0x30
+        u16 affection : 8; // 0x30
         u8 OTGender; // 0x32
         u8 nature; // 0x33
         u8 ppBonuses; // 0x34
@@ -276,7 +277,8 @@ static void PrintEggMemo(void);
 static void Task_PrintSkillsPage(u8);
 static void PrintHeldItemName(void);
 static void PrintSkillsPageText(void);
-static void PrintRibbonCount(void);
+// static void PrintRibbonCount(void);
+static void PrintFriendship(void);
 static void BufferLeftColumnStats(void);
 static void PrintLeftColumnStats(void);
 static void BufferRightColumnStats(void);
@@ -3125,12 +3127,16 @@ static void PrintNotEggInfo(void)
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
     u16 dexNum = SpeciesToPokedexNum(summary->species);
 
+    // Textfarbe für Nickname: 1 = weiß, 7 = gold (entspr. Dex-Nummer)
+    u8 nameColorId = IsMonShiny(mon) ? 7 : 1;
+
     if (dexNum != 0xFFFF)
     {
         u8 digitCount = (NATIONAL_DEX_COUNT > 999 && IsNationalPokedexEnabled()) ? 4 : 3;
         StringCopy(gStringVar1, &gText_NumberClear01[0]);
         ConvertIntToDecimalStringN(gStringVar2, dexNum, STR_CONV_MODE_LEADING_ZEROS, digitCount);
         StringAppend(gStringVar1, gStringVar2);
+
         if (!IsMonShiny(mon))
         {
             PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER, gStringVar1, 0, 1, 0, 1);
@@ -3138,6 +3144,7 @@ static void PrintNotEggInfo(void)
         }
         else
         {
+            // Dex-Nummer in gold
             PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER, gStringVar1, 0, 1, 0, 7);
             SetMonPicBackgroundPalette(TRUE);
         }
@@ -3146,21 +3153,47 @@ static void PrintNotEggInfo(void)
     else
     {
         ClearWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER);
-        if (!IsMonShiny(mon))
-            SetMonPicBackgroundPalette(FALSE);
-        else
-            SetMonPicBackgroundPalette(TRUE);
+        SetMonPicBackgroundPalette(IsMonShiny(mon));
     }
+
+    // Level
     StringCopy(gStringVar1, gText_LevelSymbol);
     ConvertIntToDecimalStringN(gStringVar2, summary->level, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gStringVar1, gStringVar2);
     PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gStringVar1, 24, 17, 0, 1);
+
+    // === Palettenzuordnung für den Nickname korrigieren, OHNE andere Fenster zu beeinflussen ===
+    {
+        u8 palDex     = (u8)GetWindowAttribute(PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER, WINDOW_PALETTE_NUM);
+        u8 palDefault = (u8)GetWindowAttribute(PSS_LABEL_WINDOW_PORTRAIT_SPECIES,    WINDOW_PALETTE_NUM);
+        // Wenn shiny: Nickname-Fenster benutzt denselben Palettenindex wie die goldene Dex-Nummer.
+        // Wenn nicht shiny: zurück auf die Standard-Palette (wie Species-Fenster).
+        SetWindowAttribute(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, WINDOW_PALETTE_NUM,
+                           IsMonShiny(mon) ? palDex : palDefault);
+        // Tilemap neu setzen, damit der Palettenindex in die Map-Tiles geschrieben wird.
+        PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME);
+    }
+
+    // Nickname
     GetMonNickname(mon, gStringVar1);
-    PrintTextOnWindowToFitPx(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME, gStringVar1, 0, 1, 0, 1, WindowWidthPx(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME) - 9);
+    PrintTextOnWindowToFitPx(
+        PSS_LABEL_WINDOW_PORTRAIT_NICKNAME,
+        gStringVar1,
+        0, 1, 0,
+        nameColorId,
+        WindowWidthPx(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME) - 9
+    );
+
+    // Species / Gender
     PrintTextOnWindow(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, gText_Slash, 0, 1, 0, 1);
-    PrintTextOnWindowToFitPx(PSS_LABEL_WINDOW_PORTRAIT_SPECIES, GetSpeciesName(summary->species2), 6, 1, 0, 1, WindowWidthPx(PSS_LABEL_WINDOW_PORTRAIT_SPECIES) - 9);
+    PrintTextOnWindowToFitPx(
+        PSS_LABEL_WINDOW_PORTRAIT_SPECIES,
+        GetSpeciesName(summary->species2),
+        6, 1, 0, 1,
+        WindowWidthPx(PSS_LABEL_WINDOW_PORTRAIT_SPECIES) - 9
+    );
     PrintGenderSymbol(mon, summary->species2);
-    PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_NICKNAME);
+
     PutWindowTilemap(PSS_LABEL_WINDOW_PORTRAIT_SPECIES);
 }
 
@@ -3670,7 +3703,8 @@ static void PrintEggMemo(void)
 static void PrintSkillsPageText(void)
 {
     PrintHeldItemName();
-    PrintRibbonCount();
+    // PrintRibbonCount();
+    PrintFriendship();
     if(ShouldShowIvEvPrompt())
         ShowUtilityPrompt(SUMMARY_SKILLS_MODE_STATS);
     BufferLeftColumnStats();
@@ -3690,7 +3724,8 @@ static void Task_PrintSkillsPage(u8 taskId)
         PrintHeldItemName();
         break;
     case 2:
-        PrintRibbonCount();
+        // PrintRibbonCount();
+        PrintFriendship();
         break;
     case 3:
         ChangeStatLabel(SUMMARY_SKILLS_MODE_STATS);
@@ -3744,6 +3779,7 @@ static void PrintHeldItemName(void)
     PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);
 }
 
+/*
 static void PrintRibbonCount(void)
 {
     const u8 *text;
@@ -3761,6 +3797,33 @@ static void PrintRibbonCount(void)
     }
 
     x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 6;
+    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 0);
+}
+*/
+
+static void PrintFriendship(void)
+{
+    const u8 bgColour[] = _("{COLOR BLUE}{SHADOW DARK_GRAY}");
+    const u8 starIcon[] = _("{STAR_ICON}");
+    u8 *text;
+    int x;
+    u16 i;
+
+    text = StringCopy(gStringVar1, bgColour);
+
+    if(sMonSummaryScreen->summary.affection == 0)
+    {
+        text = StringAppend(gStringVar1, gText_Dash);
+    }
+    else
+    {
+        for(i = 0; i < sMonSummaryScreen->summary.affection; ++i)
+            text = StringAppend(text, starIcon);
+    }
+
+    text = gStringVar1;
+
+    x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 4;
     PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 0);
 }
 

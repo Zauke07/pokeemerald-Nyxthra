@@ -1642,6 +1642,14 @@
       "y": 3,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_PANSION_ROUTE117",
+      "name": "Pansion Labor",
+      "x": 7,
+      "y": 5,
+      "width": 1,
+      "height": 1
     }
   ]
 }

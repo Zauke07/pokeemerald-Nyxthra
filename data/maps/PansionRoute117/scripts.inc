@@ -30,4 +30,4 @@ PansionRoute117_EventScript_Kirlia::
 
 PansionRoute117_Text_Kirlia:
 	.string "KIRLIA dreht sich anmutig!\p"
-	.string "Kiirr~$"
+	.string "Kiirr…$"

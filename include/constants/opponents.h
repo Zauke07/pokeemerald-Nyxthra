@@ -3144,9 +3144,12 @@
 #define TRAINER_HIKER_BJOERN                   2762
 #define TRAINER_HIKER_TEST2                    2763
 #define TRAINER_BACKPACKER_M_TEST              2764
+#define TRAINER_JAMES_TEAM_ROCKET              2765
+#define TRAINER_GALACTIC_GRUNT_F_TEST          2766
+#define TRAINER_CHATGPT_TEST                   2767
 
-#define TRAINERS_COUNT                         2765
-#define MAX_TRAINERS_COUNT                     2766
+#define TRAINERS_COUNT                         2768
+#define MAX_TRAINERS_COUNT                     2769
 
 #define TRAINER_PARTNER(partner)   (MAX_TRAINERS_COUNT + partner)
 

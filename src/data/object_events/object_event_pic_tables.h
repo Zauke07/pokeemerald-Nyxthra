@@ -3676,30 +3676,41 @@ static const struct SpriteFrameImage sPicTable_FlagAdventure[] = {
 static const struct SpriteFrameImage sPicTable_DecorBed[] = {
     obj_frame_tiles(gObjectEventPic_DecorBed),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorDrawers[] = {
     obj_frame_tiles(gObjectEventPic_DecorDrawers),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorRotomFan[] = {
     obj_frame_tiles(gObjectEventPic_DecorRotomFan),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorRotomFrost[] = {
     obj_frame_tiles(gObjectEventPic_DecorRotomFrost),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorRotomHeat[] = {
     obj_frame_tiles(gObjectEventPic_DecorRotomHeat),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorRotomMow[] = {
     obj_frame_tiles(gObjectEventPic_DecorRotomMow),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorRotomWash[] = {
     obj_frame_tiles(gObjectEventPic_DecorRotomWash),
 };
+
 static const struct SpriteFrameImage sPicTable_DecorWardrobe[] = {
     obj_frame_tiles(gObjectEventPic_DecorWardrobe),
 };
 
 static const struct SpriteFrameImage sPicTable_DecorCauldren[] = {
     obj_frame_tiles(gObjectEventPic_DecorCauldren),
+};
+
+static const struct SpriteFrameImage sPicTable_Rogue_Egg[] = {
+    obj_frame_tiles(gObjectEventPic_Rogue_Egg),
 };
 
 static const struct SpriteFrameImage sPicTable_Route_Bug[] = {
@@ -4351,6 +4362,7 @@ static const struct SpriteFrameImage sPicTable_RocketFRiding[] = {
     overworld_frame(gObjectEventPic_RocketFRiding, 2, 4, 2),
     overworld_frame(gObjectEventPic_RocketFRiding, 2, 4, 2),
 };
+
 static const struct SpriteFrameImage sPicTable_RocketM[] = {
     overworld_frame(gObjectEventPic_RocketM, 2, 4, 0),
     overworld_frame(gObjectEventPic_RocketM, 2, 4, 1),
@@ -4362,6 +4374,19 @@ static const struct SpriteFrameImage sPicTable_RocketM[] = {
     overworld_frame(gObjectEventPic_RocketM, 2, 4, 7),
     overworld_frame(gObjectEventPic_RocketM, 2, 4, 8),
 };
+
+static const struct SpriteFrameImage sPicTable_James_Rocket[] = {
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 0),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 1),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 2),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 3),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 4),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 5),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 6),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 7),
+    overworld_frame(gObjectEventPic_James_Rocket, 2, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_RocketMRiding[] = {
     overworld_frame(gObjectEventPic_RocketMRiding, 2, 4, 0),
     overworld_frame(gObjectEventPic_RocketMRiding, 2, 4, 1),

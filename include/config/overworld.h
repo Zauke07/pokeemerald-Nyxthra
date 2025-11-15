@@ -82,8 +82,8 @@
 
 // Zeit
 #define OW_TIMES_OF_DAY                 GEN_LATEST   // Verschiedene Generationen wechseln zu unterschiedlichen Zeiten die Tageszeit.
-#define OW_USE_FAKE_RTC                 TRUE        // Wenn TRUE, vergeht eine Sekunde im Spiel nur alle 60 Frames.
-#define OW_ALTERED_TIME_RATIO           GEN_LATEST   // In GEN_8_PLA vergeht im Spiel 1 Minute pro RTC-Sekunde. In GEN_9 sind es 20 Sekunden. TIME_DEBUG ist 1:1.
+#define OW_USE_FAKE_RTC                 FALSE        // Wenn TRUE, vergeht eine Sekunde im Spiel nur alle 60 Frames.
+#define OW_ALTERED_TIME_RATIO           TIME_DEBUG   // In GEN_8_PLA vergeht im Spiel 1 Minute pro RTC-Sekunde. In GEN_9 sind es 20 Sekunden. TIME_DEBUG ist 1:1.
 #define OW_TIME_OF_DAY_ENCOUNTERS       FALSE        // Wenn TRUE, können verschiedene Begegnungstabellen je nach Tageszeit definiert werden.
 #define OW_TIME_OF_DAY_DISABLE_FALLBACK FALSE        // Wenn TRUE, gibt es keine Begegnungen, wenn die Tabelle für eine Tageszeit leer ist, statt auf die Standardtabelle zurückzufallen.
 #define OW_TIME_OF_DAY_FALLBACK         TIME_MORNING // Tageszeit, auf die Begegnungstabellen zurückfallen.
@@ -99,7 +99,7 @@
 // Overworld-Flags
 // Um die folgenden Features in Skripten zu nutzen, ersetze die 0 durch die gewünschte Flag-ID.
 // Beispiel: Ersetze durch FLAG_UNUSED_0x264, um das Feature per Flag zu steuern.
-#define OW_FLAG_PAUSE_TIME          FLAG_UNUSED_0x264  // Wenn gesetzt und OW_USE_FAKE_RTC aktiviert ist, bleibt die Zeit im Spiel stehen.
+#define OW_FLAG_PAUSE_TIME          0  // Wenn gesetzt und OW_USE_FAKE_RTC aktiviert ist, bleibt die Zeit im Spiel stehen.
 #define OW_FLAG_NO_ENCOUNTER        FLAG_UNUSED_0x266  // Wenn gesetzt, gibt es keine wilden Begegnungen.
 #define OW_FLAG_NO_TRAINER_SEE      FLAG_UNUSED_0x267  // Wenn gesetzt, kämpfen Trainer nur nach Ansprache, nicht beim Sehen.
 #define OW_FLAG_NO_COLLISION        FLAG_UNUSED_0x268  // Wenn gesetzt, kann der Spieler über Kollisionstiles laufen. Hauptsächlich für Debugging.

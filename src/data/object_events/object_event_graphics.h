@@ -476,6 +476,10 @@ const u16 gObjectEventPal_Rival_Ash[] = INCBIN_U16("graphics/object_events/palet
 const u16 gObjectEventPal_Rival_Wes[] = INCBIN_U16("graphics/object_events/palettes/wes.gbapal");
 const u16 gObjectEventPal_RocketM_F[] = INCBIN_U16("graphics/object_events/palettes/rocket_m_f.gbapal");
 const u16 gObjectEventPal_Team_Flare_Gunt[] = INCBIN_U16("graphics/object_events/palettes/flare_gunt.gbapal");
+const u32 gObjectEventPic_James_Rocket[] = INCBIN_U32("graphics/object_events/pics/people/james_rocket.4bpp");
+const u16 gObjectEventPal_James_Rocket[] = INCBIN_U16("graphics/object_events/palettes/james_rocket.gbapal");
+const u32 gObjectEventPic_Rogue_Egg[] = INCBIN_U32("graphics/object_events/pics/misc/rogue_egg.4bpp");
+const u16 gObjectEventPal_Rogue_Egg[] = INCBIN_U16("graphics/object_events/palettes/rogue_egg.gbapal");
 
 // NPC
 const u16 gObjectEventPal_Nurse_OW[] = INCBIN_U16("graphics/object_events/palettes/nurse_joy_OW.gbapal");

@@ -1,28 +1,28 @@
 #ifndef GUARD_CONFIG_DEXNAV_H
 #define GUARD_CONFIG_DEXNAV_H
 
-#define DEXNAV_ENABLED                FALSE  // Whether or not DexNav is enabled. If TRUE, flags/vars below must all be non-zero
-#define USE_DEXNAV_SEARCH_LEVELS      FALSE  /* WARNING: POSSIBLY EXCEEDS SAVEBLOCK SPACE! REQUIRES 1 BYTE PER SPECIES */
+#define DEXNAV_ENABLED                FALSE  // Ob DexNav aktiviert ist oder nicht. Falls TRUE, müssen alle Flags/Vars unten ungleich null sein
+#define USE_DEXNAV_SEARCH_LEVELS      FALSE  /* WARNUNG: ÜBERSCHREITET MÖGLICHERWEISE SAVEBLOCK-SPEICHERPLATZ! BENÖTIGT 1 BYTE PRO SPEZIES */
 
-// Flag/var defines
-#define DN_FLAG_SEARCHING             0 // Searching for mon
-#define DN_FLAG_DEXNAV_GET            0 // DexNav shows in start menu
-#define DN_FLAG_DETECTOR_MODE         0 // Allow player to find hidden mons
-#define DN_VAR_SPECIES                0 // Registered DexNav species
-#define DN_VAR_STEP_COUNTER           0 // Steps for finding hidden pokemon
+// Flag/Var-Definitionen
+#define DN_FLAG_SEARCHING             0 // Suche nach Mon
+#define DN_FLAG_DEXNAV_GET            0 // DexNav wird im Startmenü angezeigt
+#define DN_FLAG_DETECTOR_MODE         0 // Erlaubt dem Spieler versteckte Mons zu finden
+#define DN_VAR_SPECIES                0 // Registrierte DexNav-Spezies
+#define DN_VAR_STEP_COUNTER           0 // Schritte zum Finden versteckter Pokemon
 
-// Search parameters
-#define DEXNAV_TIMEOUT                  15  // 15 seconds is the time out. Max of 1092 seconds allowed
-#define SNEAKING_PROXIMITY              4   // Tile amount
+// Suchparameter
+#define DEXNAV_TIMEOUT                  15  // 15 Sekunden ist das Timeout. Maximum von 1092 Sekunden erlaubt
+#define SNEAKING_PROXIMITY              4   // Anzahl Felder
 #define CREEPING_PROXIMITY              2
 #define MAX_PROXIMITY                   20
 
-#define DEXNAV_CHAIN_MAX                100 // maximum chain value
+#define DEXNAV_CHAIN_MAX                100 // maximaler Kettenwert
 
-// hidden pokemon options - an approximation of values due to lack of available data
-#define HIDDEN_MON_STEP_COUNT       100  // Look for hidden pokemon every x steps
-#define HIDDEN_MON_SEARCH_RATE      25   // x% chance of finding hidden pokemon every x steps
-#define HIDDEN_MON_PROBABILTY       15   // x% chance of finding hidden mon compared to regular encounter data
+// Versteckte Pokemon-Optionen - eine Annäherung der Werte aufgrund mangelnder verfügbarer Daten
+#define HIDDEN_MON_STEP_COUNT       100  // Suche alle x Schritte nach versteckten Pokemon
+#define HIDDEN_MON_SEARCH_RATE      25   // x% Chance versteckte Pokemon alle x Schritte zu finden
+#define HIDDEN_MON_PROBABILTY       15   // x% Chance versteckte Mon zu finden verglichen mit regulären Begegnungsdaten
 
 //// SEARCH PROBABILITIES
 // See https://bulbapedia.bulbagarden.net/wiki/DexNav#Benefits

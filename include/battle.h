@@ -623,6 +623,7 @@ struct BattleStruct
     u8 givenExpMons; // Bits for enemy party's pokemon that gave exp to player's party.
     u8 expSentInMons; // As bits for player party mons - not including exp share mons.
     u8 wildVictorySong;
+    u8 isShinyWildBattle;
     u8 dynamicMoveType;
     u8 wrappedBy[MAX_BATTLERS_COUNT];
     u8 battlerPreventingSwitchout;
@@ -965,6 +966,7 @@ struct BattleHealthboxInfo
     u8 healthboxSlideInStarted:1;
     u8 healthboxBounceSpriteId;
     u8 battlerBounceSpriteId;
+    u8 statusSpriteId;          // <-- Diese Zeile hier hinzufügen
     u8 animationState;
     u8 partyStatusDelayTimer;
     u8 matrixNum;

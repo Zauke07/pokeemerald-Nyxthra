@@ -5768,6 +5768,7 @@ extern const u32 gTrainerFrontPic_Nurse[];
 extern const u32 gTrainerFrontPic_Rocky[];
 extern const u32 gTrainerFrontPic_BackpackerF[];
 extern const u32 gTrainerFrontPic_BackpackerM[];
+extern const u32 gTrainerFrontPic_James_Rocket[];
 
 
 

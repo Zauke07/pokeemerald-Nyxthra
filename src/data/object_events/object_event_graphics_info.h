@@ -7656,6 +7656,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorBed = {
     .images = sPicTable_DecorBed,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorDrawers = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
@@ -7674,6 +7675,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorDrawers = {
     .images = sPicTable_DecorDrawers,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomFan = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -7692,6 +7694,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomFan = {
     .images = sPicTable_DecorRotomFan,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomFrost = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -7710,6 +7713,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomFrost = 
     .images = sPicTable_DecorRotomFrost,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomHeat  = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -7728,6 +7732,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomHeat  = 
     .images = sPicTable_DecorRotomHeat,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomMow = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -7746,6 +7751,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorRotomMow = {
     .images = sPicTable_DecorRotomMow,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RotomWash = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -7764,6 +7770,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RotomWash = {
     .images = sPicTable_DecorRotomWash,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorWardrobe = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
@@ -7782,6 +7789,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorWardrobe = {
     .images = sPicTable_DecorWardrobe,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DecorCauldren = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -10817,6 +10825,46 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketM = {
     .images = sPicTable_RocketM,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_James_Rocket = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_JAMES_ROCKET,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
+    .size = 512,
+    .width = 16,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_16x32,
+    .subspriteTables = sOamTables_16x32,
+    .anims = sAnimTable_BrendanMayNormal,
+    .images = sPicTable_James_Rocket,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rogue_Egg = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_ROGUE_EGG,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 16,
+    .height = 16,
+    .paletteSlot = PALSLOT_NPC_3,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_16x16,
+    .subspriteTables = sOamTables_16x16,
+    .anims = sAnimTable_Inanimate,
+    .images = sPicTable_Rogue_Egg,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+
 /*
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Raikou = {
     .tileTag = TAG_NONE,

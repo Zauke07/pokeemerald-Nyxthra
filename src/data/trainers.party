@@ -51437,3 +51437,62 @@ Charizard Gmax
 Level: 200
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_JAMES_TEAM_ROCKET ===
+Name: James
+Class: Team Rocket
+Pic: James Rocket
+Gender: Male
+Music: Rocket
+Double Battle: No
+AI: Check Bad Move / Try To Faint
+
+Koffing
+Level: 26
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Poison Gas
+- Tackle
+- Sludge
+- Smokescreen
+
+Victreebel
+Level: 27
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Vine Whip
+- Acid
+- Razor Leaf
+- Sleep Powder
+
+Carnivine
+Level: 25
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Bite
+- Vine Whip
+- Sweet Scent
+- Growth
+
+=== TRAINER_GALACTIC_GRUNT_F_TEST ===
+Name: Rüpel
+Class: Team Galactic
+Pic: Galactic Grunt F
+Gender: Female
+Music: Galactic
+Double Battle: No
+AI: Basic Trainer
+
+Caterpie
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_CHATGPT_TEST ===
+Name: ChatGPT
+Class: ChatGPT
+Pic: Gentleman
+Gender: Male
+Music: ChatGPT
+Double Battle: No
+AI: Basic Trainer
+
+Caterpie
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+

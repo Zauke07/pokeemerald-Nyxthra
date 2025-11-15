@@ -2145,19 +2145,12 @@ void CB2_ReturnToField(void)
 
 static void CB2_ReturnToFieldLocal(void)
 {
-    // Die grundlegenden Rückkehr-Operationen sollten zuerst ausgeführt werden.
-    // ReturnToFieldLocal kümmert sich um die Initialisierung der Overworld.
     if (ReturnToFieldLocal(&gMain.state))
     {
-        // Diese Zeilen müssen VOR den Sprite-Anpassungen stehen,
-        // da sie den Haupt-Callback ändern und den Bildschirm vorbereiten.
-        // TryFadeOutOldPlayerSpriteAndFixMovement(); // Bleibt auskommentiert, wie von dir bestätigt
-        SetFieldVBlankCallback();                  // Setzt den VBlank-Callback für das Feld
-        SetMainCallback2(CB2_Overworld);           // Setzt den Haupt-Callback auf die Overworld
+        SetFieldVBlankCallback();
+        SetMainCallback2(CB2_Overworld);
 
-        // Objekt & Sprite referenzieren
         u8 objectEventId = gPlayerAvatar.objectEventId;
-        // WICHTIGE PRÜFUNG: Sicherstellen, dass objectEventId gültig ist
         if (objectEventId < OBJECT_EVENTS_COUNT)
         {
             struct ObjectEvent *objEvent = &gObjectEvents[objectEventId];
@@ -2172,67 +2165,39 @@ static void CB2_ReturnToFieldLocal(void)
             objEvent->triggerGroundEffectsOnMove = TRUE;
             objEvent->triggerGroundEffectsOnStop = TRUE;
 
-            // Sprite fixen (bereits vorhanden)
             sprite->animNum = 0;
             sprite->animCmdIndex = 0;
             sprite->y2 = 0;
 
-            // Flags setzen (z.B. Surfing) basierend auf der aktuellen Position
             u8 behavior = MapGridGetMetatileBehaviorAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
             if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))
-            {
-                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING; // Setzt die Surf-Flagge
-            }
+                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING;
             else
-            {
-                // WICHTIG: Löscht die Surf-Flagge, wenn nicht im Wasser!
                 gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
-                // Wenn nicht gesurft wird, den Surf-Blob beenden
-                if (objEvent->fieldEffectSpriteId != SPRITE_NONE && objEvent->fieldEffectSpriteId < MAX_SPRITES)
-                {
-                    FieldEffectStop(&gSprites[objEvent->fieldEffectSpriteId], FLDEFF_SURF_BLOB);
-                    objEvent->fieldEffectSpriteId = SPRITE_NONE;
-                }
-            }
 
-            // Surf-Blob Logik: Nur ausführen, wenn auch wirklich gesurft wird
-            if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
-            {
-                // Sicherstellen, dass der Blob neu gestartet oder aktualisiert wird, falls bereits vorhanden
-                if (objEvent->fieldEffectSpriteId == SPRITE_NONE)
-                {
-                    gFieldEffectArguments[0] = objEvent->currentCoords.x;
-                    gFieldEffectArguments[1] = objEvent->currentCoords.y;
-                    gFieldEffectArguments[2] = gPlayerAvatar.objectEventId;
-
-                    u8 blobSpriteId = FieldEffectStart(FLDEFF_SURF_BLOB);
-                    objEvent->fieldEffectSpriteId = blobSpriteId;
-                    SetSurfBlob_BobState(blobSpriteId, BOB_PLAYER_AND_MON);
-                }
-            }
-
-            // Sicherstellen, dass Style korrekt ist (Hilbert bleibt Hilbert)
             gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
 
-            // Grafik des Spielers setzen (jetzt, wo Stil und Flags korrekt sind)
-            u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, gPlayerAvatar.flags);
-            ObjectEventSetGraphicsId(objEvent, gfxId); // Objekt-Grafik aktualisieren
+            // ✅ WICHTIG: avatarState statt state!
+            u8 avatarState = PLAYER_AVATAR_STATE_NORMAL;
+            if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
+                avatarState = PLAYER_AVATAR_STATE_MACH_BIKE;
+            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ACRO_BIKE)
+                avatarState = PLAYER_AVATAR_STATE_ACRO_BIKE;
+            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+                avatarState = PLAYER_AVATAR_STATE_SURFING;
+            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+                avatarState = PLAYER_AVATAR_STATE_UNDERWATER;
 
-            // HINWEIS: Die Zeile objEvent->facingDirection = GetPlayerFacingDirection();
-            // wurde entfernt, da GetPlayerFacingDirection() nur den aktuellen Wert zurückgibt.
-            // Wir gehen davon aus, dass objEvent->facingDirection zu diesem Zeitpunkt
-            // den korrekten Roh-Richtungswert (0-3) enthält.
+            u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, avatarState);
+            ObjectEventSetGraphicsId(objEvent, gfxId);
+            
+            // ✅ SICHTBARKEIT!
+            objEvent->invisible = FALSE;
 
-            // Zusätzliche Animationen-Resets für den Sprite-Zustand (von ChatGPTs Vorschlag)
             sprite->animDelayCounter = 0;
             sprite->animPaused = FALSE;
 
-            // Animation zurücksetzen: Jetzt wird der korrekte Animations-Index
-            // aus der Roh-Blickrichtung ermittelt und an StartSpriteAnim übergeben.
             StartSpriteAnim(sprite, GetFaceDirectionAnimNum(objEvent->facingDirection));
-
-            // Debug-Ausgabe (immer noch auskommentiert)
-            // ...
         }
     }
 }

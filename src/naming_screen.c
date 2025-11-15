@@ -1395,8 +1395,10 @@ static void NamingScreen_CreatePlayerIcon(void)
     u16 gfxId;
     u8 spriteId;
 
-    // ✔️ Korrekte Funktion verwenden, um den Sprite basierend auf dem Style (nicht Gender) zu holen
-    gfxId = GetPlayerAvatarGraphicsIdByStateIdAndStyle(PLAYER_AVATAR_STATE_NORMAL, sNamingScreen->monSpecies);
+    // ✅ Hole den aktuellen Player Style aus SaveBlock2
+    u8 playerStyle = gSaveBlock2Ptr->playerStyles[0];
+    
+    gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(playerStyle, PLAYER_AVATAR_STATE_NORMAL);
 
     spriteId = CreateObjectGraphicsSprite(gfxId, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;

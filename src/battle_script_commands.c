@@ -4646,7 +4646,17 @@ static void Cmd_getexp(void)
                     && !gBattleStruct->wildVictorySong)
                 {
                     BattleStopLowHpSound();
+
+                if (IsMonShiny(&gEnemyParty[0]) || 
+                    (WILD_DOUBLE_BATTLE && IsMonShiny(&gEnemyParty[1])))
+                {
+                    PlayBGM(MUS_DP_VICTORY_WILD);
+                }
+                else 
+                {
                     PlayBGM(MUS_VICTORY_WILD);
+                }
+
                     gBattleStruct->wildVictorySong++;
                 }
 
@@ -4753,13 +4763,6 @@ static void Cmd_getexp(void)
             u8 level = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
             u32 exp = GetMonData(&gPlayerParty[monId], MON_DATA_EXP);
             (void)exp;
-/*
-            // DEBUG: Debug-String vorbereiten und ausgeben
-            ConvertIntToDecimalStringN(gStringVar1, monId, STR_CONV_MODE_LEFT_ALIGN, 3);
-            ConvertIntToDecimalStringN(gStringVar2, level, STR_CONV_MODE_LEFT_ALIGN, 3);
-            ConvertIntToDecimalStringN(gStringVar3, exp, STR_CONV_MODE_LEFT_ALIGN, 7);
-            ShowFieldCmdGetExpDebug();
-*/
             u32 expBattler = gBattleStruct->expGetterBattlerId;
             if (gBattleResources->bufferB[expBattler][0] == CONTROLLER_TWORETURNVALUES && gBattleResources->bufferB[expBattler][1] == RET_VALUE_LEVELED_UP)
             {

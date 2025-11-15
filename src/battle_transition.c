@@ -301,8 +301,7 @@ static bool8 Galactic_SetGfx(struct Task *);
 
 static void Task_ShinyEncounter(u8 taskId);
 static bool8 ShinyEncounter_Init(struct Task *task);
-static bool8 ShinyEncounter_Flash(struct Task *task);
-static bool8 ShinyEncounter_End(struct Task *task);
+static bool8 ShinyEncounter_SetGfx(struct Task *task);
 
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
@@ -357,6 +356,9 @@ const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.g
 const u32 sTeamGalactic_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_galactic.4bpp.smol");
 const u32 sTeamGalactic_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_galactic.bin.smolTM");
 const u16 sTeamGalactic_Palette[] = INCBIN_U16("graphics/battle_transitions/team_galactic.gbapal");
+const u32 sShinyEncounter_Tileset[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.4bpp.smol");
+const u32 sShinyEncounter_Tilemap[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.bin.smolTM");
+const u16 sShinyEncounter_Palette[] = INCBIN_U16("graphics/battle_transitions/shiny_encounter.gbapal");
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -1952,6 +1954,55 @@ static bool8 Galactic_SetGfx(struct Task *task)
 
     task->tState++;
     return FALSE;
+}
+
+//------------------------------
+// B_TRANSITION_SHINY_ENCOUNTER
+//------------------------------
+
+static const TransitionStateFunc sShinyEncounter_Funcs[] =
+{
+    ShinyEncounter_Init,
+    ShinyEncounter_SetGfx,
+    PatternWeave_Blend1,       // ← Zurück zum ursprünglichen Effekt
+    PatternWeave_Blend2,       // ← Shimmer-Blend-Effekt
+    PatternWeave_FinishAppear, // ← Smooth finish
+    FramesCountdown,           // ← Wartezeit
+    PatternWeave_CircularMask  // ← Kreisförmige Maske zum Ende
+};
+
+static bool8 ShinyEncounter_Init(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    //PlayNewMapMusic(MUS_DP_VS_WILD);
+
+    task->tEndDelay = 60;
+    InitPatternWeaveTransition(task);
+    GetBg0TilesDst(&tilemap, &tileset);
+    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
+    DecompressDataWithHeaderVram(sShinyEncounter_Tileset, tileset);
+    LoadPalette(sShinyEncounter_Palette, BG_PLTT_ID(15), sizeof(sShinyEncounter_Palette));
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 ShinyEncounter_SetGfx(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+    DecompressDataWithHeaderVram(sShinyEncounter_Tilemap, tilemap);
+    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+
+    task->tState++;
+    return FALSE;
+}
+
+static void Task_ShinyEncounter(u8 taskId)
+{
+    while (sShinyEncounter_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
 
 #undef tAmplitude
@@ -5063,54 +5114,5 @@ static bool8 FrontierSquaresScroll_End(struct Task *task)
 #undef tScrollUpdateFlag
 #undef tSquareNum
 
-//------------------------------
-// B_TRANSITION_SHINY_ENCOUNTER
-//------------------------------
 
-#define tTimer data[0]
-
-static bool8 (*const sShinyEncounter_Funcs[])(struct Task *task) = {
-    ShinyEncounter_Init,
-    ShinyEncounter_Flash,
-    ShinyEncounter_End,
-};
-
-static void Task_ShinyEncounter(u8 taskId)
-{
-    struct Task *task = &gTasks[taskId];
-    
-    // NUR EINE Funktion pro Frame aufrufen!
-    if (!sShinyEncounter_Funcs[task->tState](task))
-        return;  // Wenn FALSE → nächster Frame warten
-    
-    // Wenn TRUE → nächsten State laden
-    task->tState++;
-}
-
-static bool8 ShinyEncounter_Init(struct Task *task)
-{
-    InitTransitionData();
-    BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, RGB_BLACK);
-    task->tTimer = 0;
-    return TRUE;  // ← Wichtig! TRUE = zum nächsten State
-}
-
-static bool8 ShinyEncounter_Flash(struct Task *task)
-{
-    // Warte 60 Frames
-    if (++task->tTimer >= 60)
-    {
-        return TRUE;  // ← TRUE = zum nächsten State
-    }
-    return FALSE;  // ← FALSE = im selben State bleiben
-}
-
-static bool8 ShinyEncounter_End(struct Task *task)
-{
-    FadeScreenBlack();
-    DestroyTask(FindTaskIdByFunc(Task_ShinyEncounter));
-    return FALSE;
-}
-
-#undef tTimer
 

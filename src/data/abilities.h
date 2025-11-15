@@ -149,7 +149,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SHIELD_DUST] =
     {
         .name = _("Puderabwehr"),
-        .description = COMPOUND_STRING("Blockiert Zusatzeffekte von Attacken."),
+        .description = COMPOUND_STRING("Blockt Zusatzeff. von Att."),
         .aiRating = 5,
         .breakable = TRUE,
     },
