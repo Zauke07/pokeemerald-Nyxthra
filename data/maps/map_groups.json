@@ -34,7 +34,8 @@
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124",
-    "gMapGroup_BabyBootCamp_Tests"
+    "gMapGroup_BabyBootCamp_Tests",
+    "gMapGroup_Indoor_Route113Secret"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -99,7 +100,8 @@
     "Rival_Test",
     "Route111_01",
     "Route111_02",
-    "PansionRoute117"
+    "PansionRoute117",
+    "Route113Secret"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",
@@ -641,5 +643,9 @@
   "gMapGroup_BabyBootCamp_Tests": [
     "BabyBootCamp_Tests",
     "TestWald"
+  ],
+  "gMapGroup_Indoor_Route113Secret": [
+    "MysteryhoeleL",
+    "MysteryHoeleL_F1"
   ]
 }

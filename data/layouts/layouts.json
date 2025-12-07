@@ -292,6 +292,16 @@
       "blockdata_filepath": "data/layouts/Route113/map.bin"
     },
     {
+      "id": "LAYOUT_ROUTE113_SECRET",
+      "name": "Route113_Secret_Layout",
+      "width": 30,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/Route113_Secret/border.bin",
+      "blockdata_filepath": "data/layouts/Route113_Secret/map.bin"
+    },
+    {
       "id": "LAYOUT_ROUTE114",
       "name": "Route114_Layout",
       "width": 40,
@@ -4590,6 +4600,26 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/PansionLabor/border.bin",
       "blockdata_filepath": "data/layouts/PansionLabor/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYSTERYHOELE_L",
+      "name": "MysteryhoeleL_Layout",
+      "width": 30,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MysteryhoeleL/border.bin",
+      "blockdata_filepath": "data/layouts/MysteryhoeleL/map.bin"
+    },
+    {
+      "id": "LAYOUT_MYSTERY_HOELE_L_F1",
+      "name": "MysteryHoeleL_F1_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/MysteryHoeleL_F1/border.bin",
+      "blockdata_filepath": "data/layouts/MysteryHoeleL_F1/map.bin"
     }
   ]
 }
