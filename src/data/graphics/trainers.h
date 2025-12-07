@@ -308,9 +308,9 @@ const u16 gTrainerPalette_James_Rocket[] = INCBIN_U16("graphics/trainers/palette
 //const u8 gTrainerBackPic_Wes[] = INCBIN_U8("graphics/trainers/back_pics/wes.4bpp");
 //const u16 gTrainerPalette_Wes[] = INCBIN_U16("graphics/trainers/palettes/wes.gbapal");
 //const u32 gTrainerFrontPic_Wes[] = INCBIN_U32("graphics/trainers/front_pics/wes.4bpp.smol");
-//const u16 gTrainerPalette_Ash[] = INCBIN_U16("graphics/trainers/palettes/ash.gbapal");
+const u16 gTrainerPalette_Ash[] = INCBIN_U16("graphics/trainers/palettes/ash.gbapal");
 //const u8 gTrainerBackPic_Ash[] = INCBIN_U8("graphics/trainers/back_pics/ash.4bpp");
-//const u32 gTrainerFrontPic_Ash[] = INCBIN_U32("graphics/trainers/front_pics/ash.4bpp.smol");
+const u32 gTrainerFrontPic_Ash[] = INCBIN_U32("graphics/trainers/front_pics/ash.4bpp.smol");
 
 
 
@@ -942,7 +942,7 @@ TRAINER_SPRITE(TRAINER_PIC_HIKER, gTrainerFrontPic_Hiker, gTrainerPalette_Hiker)
     TRAINER_SPRITE(TRAINER_PIC_FLORIAN, gTrainerFrontPic_Florian, gTrainerPalette_Florian),
     TRAINER_SPRITE(TRAINER_PIC_JULIANA, gTrainerFrontPic_Juliana, gTrainerPalette_Juliana),
 //    TRAINER_SPRITE(TRAINER_PIC_WES, gTrainerFrontPic_Wes, gTrainerPalette_Wes),
-//    TRAINER_SPRITE(TRAINER_PIC_ASH, gTrainerFrontPic_Ash, gTrainerPalette_Ash),
+    TRAINER_SPRITE(TRAINER_PIC_ASH, gTrainerFrontPic_Ash, gTrainerPalette_Ash),
     TRAINER_SPRITE(TRAINER_PIC_NURSE, gTrainerFrontPic_Nurse, gTrainerPalette_Nurse),
     TRAINER_SPRITE(TRAINER_PIC_ROCKY, gTrainerFrontPic_Rocky, gTrainerPalette_Rocky),
     TRAINER_SPRITE(TRAINER_PIC_BACKPACKER_F, gTrainerFrontPic_BackpackerF, gTrainerPalette_BackpackerF),
