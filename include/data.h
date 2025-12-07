@@ -185,7 +185,7 @@ extern const struct SpriteFrameImage gTrainerBackPicTable_Victor[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Juliana[];
 extern const struct SpriteFrameImage gTrainerBackPicTable_Florian[];
 //extern const struct SpriteFrameImage gTrainerBackPicTable_Wes[];
-//extern const struct SpriteFrameImage gTrainerBackPicTable_Ash[];
+extern const struct SpriteFrameImage gTrainerBackPicTable_Ash[];
 
 //extern const struct SpriteFrameImage gTrainerBackPicTable_CommunityZefa[];
 //extern const struct SpriteFrameImage gTrainerBackPicTable_CommunityNacholord[];

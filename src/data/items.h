@@ -9468,8 +9468,8 @@ const struct Item gItemsInfo[] =
 
     [ITEM_SAFETY_GOGGLES] =
     {
-        .name = ITEM_NAME("Safety Goggles"),
-        .pluralName = ITEM_PLURAL_NAME("Safety Goggles"),
+        .name = ITEM_NAME("Schutzbrille"),
+        .pluralName = ITEM_PLURAL_NAME("Schutzbrillen"),
         .price = (I_PRICE >= GEN_9) ? 20000 : ((I_PRICE >= GEN_7) ? 4000 : 1000),
         .holdEffect = HOLD_EFFECT_SAFETY_GOGGLES,
         .description = COMPOUND_STRING(

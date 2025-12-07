@@ -1,0 +1,35 @@
+{
+  "id": "MAP_ROUTE113SECRET",
+  "name": "Route113Secret",
+  "layout": "LAYOUT_ROUTE113_SECRET",
+  "music": "MUS_DP_OLD_CHATEAU",
+  "region_map_section": "MAPSEC_ROUTE_113_SECRET",
+  "requires_flash": false,
+  "weather": "WEATHER_VOLCANIC_ASH",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 15,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE113",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 6,
+      "y": 73,
+      "elevation": 0,
+      "dest_map": "MAP_MYSTERYHOELE_L",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

@@ -1,0 +1,53 @@
+{
+  "id": "MAP_MYSTERY_HOELE_L_F1",
+  "name": "MysteryHoeleL_F1",
+  "layout": "LAYOUT_MYSTERY_HOELE_L_F1",
+  "music": "MUS_DP_OLD_CHATEAU",
+  "region_map_section": "MAPSEC_ROUTE_113_SECRET_MYSTERY_F1",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "local_id": "LOCALID_MYSTERY_HOELE_LAVADOS",
+      "graphics_id": "OBJ_EVENT_GFX_MOLTRES_OLD",
+      "x": 10,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_LAVADOS"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 10,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_MYSTERYHOELE_L",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "MysteryHoeleL_F1_EventScript_Lavados"
+    }
+  ],
+  "bg_events": []
+}

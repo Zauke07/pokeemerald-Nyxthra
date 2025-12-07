@@ -4440,7 +4440,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azurill = {
     .oam = &gObjectEventBaseOam_16x16,
     .subspriteTables = sOamTables_16x16,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_AzurillOW,
+    .images = sPicTable_AzurillOld,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -10766,7 +10766,8 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes = {
     .anims = sAnimTable_Standard,
     .images = sPicTable_Wes,
     .affineAnims = gDummySpriteAffineAnimTable,
-}; 
+};
+*/
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash = {
     .tileTag = TAG_NONE,
@@ -10786,7 +10787,6 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash = {
     .images = sPicTable_AshTrainer,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
-*/
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketF = {
     .tileTag = TAG_NONE,
@@ -11313,7 +11313,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MoltresOW = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Moltres,
     .images = sPicTable_MoltresOld,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -11355,3 +11355,63 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LandorusOW = {
     .images = sPicTable_LandorusOld,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanSurfing = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_ETHAN,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_PLAYER,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Surfing,
+    .images = sPicTable_EthanSurfing,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanFieldMove = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_PLAYER,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_EthanFieldMove,
+    .images = sPicTable_EthanFieldMove,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+/*
+// Freeze
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AzurillOW = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_AZURILL_OW,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_AzurillOW,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+*/

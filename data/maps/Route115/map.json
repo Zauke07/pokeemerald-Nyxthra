@@ -379,13 +379,6 @@
       "elevation": 0,
       "dest_map": "MAP_BABY_BOOT_CAMP",
       "dest_warp_id": "0"
-    },
-    {
-      "x": 29,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F",
-      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

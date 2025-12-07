@@ -252,7 +252,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 // NEW
 /*
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes;
 
@@ -277,6 +276,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse_ow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rocky;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_James_Rocket;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rogue_Egg;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
 
 //Pokeemerald-Rogue
 
@@ -619,6 +619,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ZapdosOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MoltresOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ArticunoOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LandorusOW;
+// extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AzurillOW; // Freeze
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -965,7 +966,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 /*
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
-    [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
     [OBJ_EVENT_GFX_RIVAL_ASH] =               &gObjectEventGraphicsInfo_Rival_Ash,
 
     [OBJ_EVENT_GFX_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_HilbertFieldMove,
@@ -1249,6 +1249,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MOLTRES_OLD] =               &gObjectEventGraphicsInfo_MoltresOW,
     [OBJ_EVENT_GFX_ARTICUNO_OLD] =              &gObjectEventGraphicsInfo_ArticunoOW,
     [OBJ_EVENT_GFX_LANDORUS] =                  &gObjectEventGraphicsInfo_LandorusOW,
+//    [OBJ_EVENT_GFX_AZURILL_OW] =                &gObjectEventGraphicsInfo_AzurillOW, // Freeze
+    [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

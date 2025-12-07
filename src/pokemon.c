@@ -5876,6 +5876,8 @@ u16 GetBattleBGM(void)
             return MUS_VS_CHAMPION;
         case TRAINER_CLASS_TEAM_GALACTIC:
             return MUS_DP_VS_GALACTIC;
+        case TRAINER_CLASS_ASH:
+            return MUS_DP_VS_CHAMPION;
         default:
             return MUS_VS_TRAINER;
         }

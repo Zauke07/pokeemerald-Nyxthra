@@ -378,7 +378,7 @@ const u32 gObjectEventPic_DeoxysOld[] = INCBIN_U32("graphics/object_events/pics/
 const u32 gObjectEventPic_MewOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/mew.4bpp");
 const u32 gObjectEventPic_DusclopsOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/dusclops.4bpp");
 const u32 gObjectEventPic_KirliaOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/kirlia.4bpp");
-const u32 gObjectEventPic_AzurillOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/azurill.4bpp");
+const u32 gObjectEventPic_AzurillOld[] = INCBIN_U32("graphics/object_events/pics/pokemon/azurill.4bpp");
 const u32 gObjectEventPic_KecleonOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/kecleon.4bpp");
 const u32 gObjectEventPic_WingullOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/wingull.4bpp");
 const u32 gObjectEventPic_AzumarillOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/azumarill.4bpp");
@@ -484,8 +484,6 @@ const u16 gObjectEventPal_Rogue_Egg[] = INCBIN_U16("graphics/object_events/palet
 // NPC
 const u16 gObjectEventPal_Nurse_OW[] = INCBIN_U16("graphics/object_events/palettes/nurse_joy_OW.gbapal");
 const u16 gObjectEventPal_Rocky[] = INCBIN_U16("graphics/object_events/palettes/rocky.gbapal");
-
-
 
 
 
@@ -636,6 +634,11 @@ const u32 gObjectEventPic_NacholordRiding[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_LaterMannerNormal[] = INCBIN_U32("graphics/object_events/pics/people/latermanner/walking.4bpp");
 const u32 gObjectEventPic_LaterMannerRiding[] = INCBIN_U32("graphics/object_events/pics/people/latermanner/riding.4bpp");
 const u32 gObjectEventPic_DolphinNormal[] = INCBIN_U32("graphics/object_events/pics/people/dolphin/walking.4bpp");
+const u16 gObjectEventPal_EthanFieldMove[] = INCBIN_U16("graphics/object_events/palettes/ethan_field_move.gbapal");
+const u16 gObjectEventPal_AzurillOW[] = INCBIN_U16("graphics/object_events/palettes/azurill_old_ow.gbapal");
+
+
+
 // Kanto reused palettes
 const u16 gObjectEventPal_Kanto_NPC_Blue[] = INCBIN_U16("graphics/object_events/palettes/kanto/npc_blue.gbapal");
 const u16 gObjectEventPal_Kanto_NPC_Green[] = INCBIN_U16("graphics/object_events/palettes/kanto/npc_green.gbapal");

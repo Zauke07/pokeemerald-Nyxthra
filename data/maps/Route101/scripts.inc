@@ -263,7 +263,7 @@ Route101_Text_YouSavedMe:
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "Dein Team ist durch?\n"
-	.string " Dann ab zum CENTER.\p"
+	.string "Dann ab zum CENTER.\p"
 	.string "In Rosaltstadt - einfach um die Ecke.\n"
 	.string "Sag einfach, du kennst mich.$"
 

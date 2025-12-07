@@ -702,6 +702,7 @@
 #define OBJ_EVENT_GFX_LANDORUS                  680
 #define OBJ_EVENT_GFX_JAMES_ROCKET              681
 #define OBJ_EVENT_GFX_ROGUE_EGG                 682
+// #define OBJ_EVENT_GFX_AZURILL_OW                683 Freeze 
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
@@ -1057,6 +1058,8 @@
 #define OBJ_EVENT_PAL_TAG_LANDORUS                0x1260
 #define OBJ_EVENT_PAL_TAG_JAMES_ROCKET            0x1261
 #define OBJ_EVENT_PAL_TAG_ROGUE_EGG               0x1262
+#define OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE        0x1263
+#define OBJ_EVENT_PAL_TAG_AZURILL_OW              0x1264
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

@@ -8555,7 +8555,7 @@
               },
               {
                 "min_level": 1,
-                "max_level": 5,
+                "max_level": 1,
                 "species": "SPECIES_MUDKIP"
               },
               {
@@ -11553,6 +11553,75 @@
                 "min_level": 23,
                 "max_level": 23,
                 "species": "SPECIES_LARVITAR"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_MYSTERYHOELE_L",
+          "base_label": "gMysteryhoeleL",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 22,
+                "max_level": 23,
+                "species": "SPECIES_HOUNDOUR"
+              },
+              {
+                "min_level": 21,
+                "max_level": 23,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 21,
+                "max_level": 23,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 21,
+                "max_level": 21,
+                "species": "SPECIES_LITLEO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 22,
+                "species": "SPECIES_PANSEAR"
+              },
+              {
+                "min_level": 18,
+                "max_level": 24,
+                "species": "SPECIES_DARUMAKA"
+              },
+              {
+                "min_level": 18,
+                "max_level": 23,
+                "species": "SPECIES_GROWLITHE_HISUI"
+              },
+              {
+                "min_level": 19,
+                "max_level": 25,
+                "species": "SPECIES_CARKOL"
+              },
+              {
+                "min_level": 19,
+                "max_level": 27,
+                "species": "SPECIES_SALANDIT"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_FLETCHINDER"
+              },
+              {
+                "min_level": 26,
+                "max_level": 30,
+                "species": "SPECIES_SIZZLIPEDE"
+              },
+              {
+                "min_level": 1,
+                "max_level": 1,
+                "species": "SPECIES_FUECOCO"
               }
             ]
           }

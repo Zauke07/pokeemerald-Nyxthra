@@ -1,0 +1,49 @@
+{
+  "id": "MAP_MYSTERYHOELE_L",
+  "name": "MysteryhoeleL",
+  "layout": "LAYOUT_MYSTERYHOELE_L",
+  "music": "MUS_DP_OLD_CHATEAU",
+  "region_map_section": "MAPSEC_ROUTE_113_SECRET_MYSTERY",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GLORIA",
+      "x": 2,
+      "y": 71,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MysteryhoeleL_EventScript_Krokel",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 14,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_MYSTERY_HOELE_L_F1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 14,
+      "y": 78,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE113SECRET",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

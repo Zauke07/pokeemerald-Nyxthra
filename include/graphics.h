@@ -5769,7 +5769,7 @@ extern const u32 gTrainerFrontPic_Rocky[];
 extern const u32 gTrainerFrontPic_BackpackerF[];
 extern const u32 gTrainerFrontPic_BackpackerM[];
 extern const u32 gTrainerFrontPic_James_Rocket[];
-
+extern const u32 gTrainerFrontPic_Ash[];
 
 
 
@@ -5777,7 +5777,6 @@ extern const u32 gTrainerFrontPic_James_Rocket[];
 extern const u8 gTrainerBackPic_Wes[];
 extern const u8 gTrainerBackPic_Ash[];
 extern const u32 gTrainerFrontPic_Wes[];
-extern const u32 gTrainerFrontPic_Ash[];
 */
 // NEW End
 

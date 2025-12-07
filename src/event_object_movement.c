@@ -579,7 +579,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_ArticunoOld,             OBJ_EVENT_PAL_TAG_ARTICUNO},
     {gObjectEventPal_Nurse_OW,                OBJ_EVENT_PAL_TAG_Nurse_OW},
     {gObjectEventPal_Rocky,                   OBJ_EVENT_PAL_TAG_Rocky},
-    {gObjectEventPal_LandorusOld,            OBJ_EVENT_PAL_TAG_LANDORUS},
+    {gObjectEventPal_LandorusOld,             OBJ_EVENT_PAL_TAG_LANDORUS},
+    {gObjectEventPal_EthanFieldMove,          OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE},
+//    {gObjectEventPal_AzurillOW,               OBJ_EVENT_PAL_TAG_AZURILL_OW}, // Freeze 
 
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},

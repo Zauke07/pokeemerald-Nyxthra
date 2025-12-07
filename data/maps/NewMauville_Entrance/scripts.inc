@@ -53,6 +53,6 @@ NewMauville_Entrance_Text_UseBasementKey:
     .string "Den KELLERSCHLÜSSEL benutzen?$"
 
 NewMauville_Entrance_Text_UsedBasementKey:
-    .string "{PLAYER} benutzte den KELLERSCHLÜSSEL.\p"
-    .string "Die Tür öffnete sich!$"
+    .string "{PLAYER} benutzt den KELLERSCHLÜSSEL.\p"
+    .string "Die Tür öffnet sich!$"
 
