@@ -73,6 +73,8 @@ static EWRAM_DATA bool8 sScheduledBgCopiesToVram[4] = {FALSE};
 static EWRAM_DATA u16 sTempTileDataBufferIdx = 0;
 static EWRAM_DATA void *sTempTileDataBuffer[0x20] = {NULL};
 
+extern const u16 gBadgeFlags[NUM_BADGES];
+
 const u16 gStandardMenuPalette[] = INCBIN_U16("graphics/interface/std_menu.gbapal");
 
 static const u8 sTextSpeedFrameDelays[] =
@@ -2223,9 +2225,6 @@ void BlitMenuInfoIcon(u8 windowId, u8 iconId, u16 x, u16 y)
 
 void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
 {
-    s32 curFlag;
-    s32 flagCount;
-    u8 *endOfString;
     u8 *string = dest;
 
     *(string++) = EXT_CTRL_CODE_BEGIN;
@@ -2237,33 +2236,64 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
 
     switch (textId)
     {
-        case SAVE_MENU_NAME:
-            StringCopy(string, gSaveBlock2Ptr->playerName);
-            break;
-        case SAVE_MENU_CAUGHT:
-            if (IsNationalPokedexEnabled())
-                string = ConvertIntToDecimalStringN(string, GetNationalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 4);
-            else
-                string = ConvertIntToDecimalStringN(string, GetHoennPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 3);
-            *string = EOS;
-            break;
-        case SAVE_MENU_PLAY_TIME:
-            string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
-            *(string++) = CHAR_COLON;
-            ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-            break;
-        case SAVE_MENU_LOCATION:
-            GetMapNameGeneric(string, gMapHeader.regionMapSectionId);
-            break;
-        case SAVE_MENU_BADGES:
-            for (curFlag = FLAG_BADGE01_GET, flagCount = 0, endOfString = string + 1; curFlag < FLAG_BADGE01_GET + NUM_BADGES; curFlag++)
-            {
-                if (FlagGet(curFlag))
-                    flagCount++;
-            }
-            *string = flagCount + CHAR_0;
-            *endOfString = EOS;
-            break;
+    case SAVE_MENU_NAME:
+        StringCopy(string, gSaveBlock2Ptr->playerName);
+        break;
+
+    case SAVE_MENU_CAUGHT:
+        if (IsNationalPokedexEnabled())
+            string = ConvertIntToDecimalStringN(
+                         string,
+                         GetNationalPokedexCount(FLAG_GET_CAUGHT),
+                         STR_CONV_MODE_LEFT_ALIGN,
+                         4);
+        else
+            string = ConvertIntToDecimalStringN(
+                         string,
+                         GetHoennPokedexCount(FLAG_GET_CAUGHT),
+                         STR_CONV_MODE_LEFT_ALIGN,
+                         3);
+        *string = EOS;
+        break;
+
+    case SAVE_MENU_PLAY_TIME:
+        string = ConvertIntToDecimalStringN(
+                     string,
+                     gSaveBlock2Ptr->playTimeHours,
+                     STR_CONV_MODE_LEFT_ALIGN,
+                     3);
+        *(string++) = CHAR_COLON;
+        string = ConvertIntToDecimalStringN(
+                     string,
+                     gSaveBlock2Ptr->playTimeMinutes,
+                     STR_CONV_MODE_LEADING_ZEROS,
+                     2);
+        *string = EOS;
+        break;
+
+    case SAVE_MENU_LOCATION:
+        GetMapNameGeneric(string, gMapHeader.regionMapSectionId);
+        break;
+
+    case SAVE_MENU_BADGES:
+    {
+        u8 i;
+        u8 badgeCount = 0;
+
+        for (i = 0; i < NUM_BADGES; i++)
+        {
+            if (FlagGet(gBadgeFlags[i]))
+                badgeCount++;
+        }
+
+        string = ConvertIntToDecimalStringN(
+                    string,
+                    badgeCount,
+                    STR_CONV_MODE_LEFT_ALIGN,
+                    2);
+        *string = EOS;
+        break;
+    }
     }
 }
 

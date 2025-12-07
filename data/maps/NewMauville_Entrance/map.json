@@ -41,5 +41,14 @@
       "script": "NewMauville_Entrance_EventScript_Door"
     }
   ],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "item": "ITEM_BASEMENT_KEY",
+      "flag": "FLAG_HIDDEN_ITEM_BASEMENT_KEY"
+    }
+  ]
 }

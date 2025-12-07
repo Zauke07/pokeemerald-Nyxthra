@@ -1549,6 +1549,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
 
 static void ShowSaveInfoWindow(void)
 {
+    HideClockWindow();
     struct WindowTemplate saveInfoWindow = sSaveInfoWindowTemplate;
     u8 playerStyle; // Richtig benannte Variable
     u8 color;

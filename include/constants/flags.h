@@ -4,10 +4,10 @@
 #include "constants/opponents.h"
 #include "constants/rematches.h"
 
-// Temporary Flags
-// These temporary flags are are cleared every time a map is loaded. They are used
-// for things like shortening an NPCs introduction text if the player already spoke
-// to them once.
+// Temporäre Flags
+// Diese temporären Flags werden jedes Mal gelöscht, wenn eine Karte geladen wird. Sie werden
+// für Dinge wie das Verkürzen des Einführungstexts eines NPCs verwendet, wenn der Spieler
+// bereits einmal mit ihnen gesprochen hat.
 #define TEMP_FLAGS_START 0x0
 #define FLAG_TEMP_1      (TEMP_FLAGS_START + 0x1)
 #define FLAG_TEMP_2      (TEMP_FLAGS_START + 0x2)
@@ -55,12 +55,12 @@
 #define FLAG_PLAYER_IN_GARDEN                  0x29 // Spieler ist im Garten
 #define FLAG_DAYCARE_MAN_FIRST_EXIT_DONE       0x2A // Alter Mann hat ersten Ausgang erledigt
 #define FLAG_SHINY_MODE_ON                      0x2B // Shiny-Mode ist AN
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_HIDDEN_ITEM_BASEMENT_KEY    0x2C // Versteckter Gegenstand KELLERSCHLÜSSEL
+#define FLAG_CAUGHT_LAVADOS      0x2D // Lavados wurde gefangen
+#define FLAG_DEFEATED_LAVADOS    0x2E // Lavados wurde besiegt
+#define FLAG_HIDE_LAVADOS        0x2F // Lavados verstecken
+#define FLAG_DAILY_FOUGHT_ASH    0x30 // Täglicher Kampf gegen Ash durchgeführt
+#define FLAG_DEFEATED_ASH_ONCE    0x31 // Ash wurde mindestens einmal besiegt
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
@@ -1368,7 +1368,7 @@
 #define FLAG_BADGE06_GET                             (SYSTEM_FLAGS + 0xC)
 #define FLAG_BADGE07_GET                             (SYSTEM_FLAGS + 0xD)
 #define FLAG_BADGE08_GET                             (SYSTEM_FLAGS + 0xE)
-#define NUM_BADGES                                   (1 + FLAG_BADGE16_GET - FLAG_BADGE01_GET)
+#define NUM_BADGES                                   16
 
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)

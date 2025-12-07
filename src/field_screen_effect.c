@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-void FieldHandleDebugInput(void);
+//void FieldHandleDebugInput(void);
 
 static void Task_ExitNonAnimDoor(u8);
 static void Task_ExitNonDoor(u8);
