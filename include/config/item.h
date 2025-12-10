@@ -27,24 +27,26 @@
 // Exp. Share config
 // Um dieses Feature zu nutzen, ersetze die 0 durch die Flag-ID, die du zuweist.
 // Beispiel: Ersetze durch FLAG_UNUSED_0x264, um diese Flag zum Umschalten zu verwenden.
-#define I_EXP_SHARE_FLAG        FLAG_UNUSED_0x04F           // Wenn diese Flag gesetzt ist, erhalten alle Pokémon im Team Erfahrung, unabhängig davon, ob sie am Kampf teilgenommen haben.
+#define I_EXP_SHARE_FLAG        FLAG_EXP_SHARE           // Wenn diese Flag gesetzt ist, erhalten alle Pokémon im Team Erfahrung, unabhängig davon, ob sie am Kampf teilgenommen haben.
 #define I_EXP_SHARE_ITEM        GEN_6                       // Ab Gen6+ wurde der EP-Teiler von einem gehaltenen Item zu einem Schlüssel-Item, das den oben beschriebenen Effekt aktiviert.
 
 // Repel/Lure config
 // Diese beiden Einstellungen sind unabhängig und ergänzen sich.
-#define VAR_LAST_REPEL_LURE_USED    FLAG_UNUSED_0x265       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
+#define VAR_LAST_REPEL_LURE_USED    FLAG_REPEL_LURE_MENU       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
 #define I_REPEL_LURE_MENU           FALSE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
 
 // Vs. Seeker
-#define I_VS_SEEKER_CHARGING        0     // Wenn diese Flag gesetzt ist, wird die Vs. Seeker-Funktion aktiviert. Mit Vs. Seeker funktionieren Match Call-Rematches nicht mehr.
+#define I_VS_SEEKER_CHARGING        0     // Falls diese Flag zugewiesen wird, wird die Vs. Seeker Funktionalität aktiviert. Wenn der Spieler den Vs. Seeker hat, funktionieren die Kampfanruf-Rückkampf-Funktionen nicht mehr. Dokumentation für den Vs. Seeker findet sich in docs/tutorials/vs_seeker.md.
 
-// Fishing
-#define I_FISHING_BITE_ODDS        GEN_LATEST // In Gen1/2: Angelrute 100%, Superangel 50%, Profiangel 66%. In Gen3: alle Ruten 50%. Ab Gen4: Angelrute 25%, Profiangel 50%, Superangel 75%.
-#define I_FISHING_MINIGAME         GEN_3      // Jede Generation hat eine eigene Angel-Minispiel-Variante. Hinweis: Nur Gen1/2 und Gen3 sind bisher implementiert!
-#define I_FISHING_ENVIRONMENT      GEN_LATEST // In Gen3 bestimmt das Feld, auf dem der Spieler steht, die Kampf-Umgebung beim Angeln. Ab Gen4 zählt das Angel-Feld, meist Wasser.
-#define I_FISHING_STICKY_BOOST     GEN_LATEST // In Gen3 erhöht ein Pokémon mit Saugnapf/Klebekörper an erster Stelle die Bisschance um ca. 35%. Ab Gen4 verdoppelt es die Grundchance.
-#define I_FISHING_FOLLOWER_BOOST   FALSE      // In HGSS steigt die Bisschance beim Angeln je nach Freundschaft des folgenden Pokémon.
-#define I_FISHING_CHAIN            FALSE      // In XY erhöht das wiederholte Angeln desselben Pokémon die Shiny-Chance. Hinweis: Diese Implementierung ist nur eine Annäherung, da XY nicht vollständig dokumentiert sind.
-#define I_FISHING_PROXIMITY        FALSE      // In XY steigt die Bisschance, wenn man abseits von anderen Personen in geschlossenen Bereichen angelt. Hinweis: Diese Implementierung ist nur eine Annäherung, da XY nicht vollständig dokumentiert sind.
+// ORAS Detektor
+#define I_ORAS_DOWSING_FLAG         FLAG_ORAS_DOWSING  // Ersetze 0 durch eine unbenutzte Flag, um den Detektor-Mechanismus aus ORAS zu aktivieren.
+#define I_ORAS_DOWSING_SOUNDS       TRUE        // Wenn TRUE, gibt der Detektor Geräusche basierend auf der Entfernung zum versteckten Item ab.
+#define I_ORAS_DOWSING_COLOR_PAL    15          // Die Farbe innerhalb der Palette, die sich basierend auf der Nähe zum Item ändert.
+// Farbwerte für die ORAS Detektor-Entfernungen/Animationen
+#define I_ORAS_DOWSING_COLOR_NONE   RGB_GRAY
+#define I_ORAS_DOWSING_COLOR_SLOW   RGB2GBA(56, 120, 255)
+#define I_ORAS_DOWSING_COLOR_NORMAL RGB2GBA(24, 216, 24)
+#define I_ORAS_DOWSING_COLOR_FAST   RGB2GBA(255, 255, 40)
+#define I_ORAS_DOWSING_COLOR_FASTER RGB_RED
 
 #endif // GUARD_CONFIG_ITEM_H

@@ -1,4 +1,4 @@
-const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
+const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 {
     [ABILITY_NONE] =
     {
@@ -1251,6 +1251,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Blütenhülle"),
         .description = COMPOUND_STRING("Schützt Pflanzen-Teamwerte."),
         .aiRating = 0,
+        .breakable = TRUE,
     },
 
     [ABILITY_CHEEK_POUCH] =
@@ -1286,6 +1287,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Kugelsicher"),
         .description = COMPOUND_STRING("Schützt vor Ball/Bomben."),
+        .breakable = TRUE,
         .aiRating = 7,
     },
 
@@ -1413,6 +1415,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Auraschleier"),
         .description = COMPOUND_STRING("Schwächt Unlicht/Feen-Att."),
         .aiRating = 3,
+        .breakable = TRUE,
     },
 
     [ABILITY_PRIMORDIAL_SEA] =
@@ -1495,6 +1498,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Blubb-Blubb"),
         .description = COMPOUND_STRING("0,5x Feuerschaden, 2x Wasser, kein Brand."),
         .aiRating = 8,
+        .breakable = TRUE,
     },
 
     [ABILITY_STEELWORKER] =

@@ -89,7 +89,7 @@ enum TimePeriod
     TIME_PERIOD_NIGHT
 };
 
-// TIMES_OF_DAY_COUNT must be last
+// TIMES_OF_DAY_COUNT must be last or things will break
 enum TimeOfDay
 {
     TIME_MORNING,
@@ -98,6 +98,10 @@ enum TimeOfDay
     TIME_NIGHT,
     TIMES_OF_DAY_COUNT,
 };
+
+// for incrementing/decrementing
+#define TIME_FIRST 0
+#define TIME_LAST (TIMES_OF_DAY_COUNT - 1)
 
 #define TIME_OF_DAY_DEFAULT    0
 

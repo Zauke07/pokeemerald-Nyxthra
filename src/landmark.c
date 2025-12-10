@@ -10,95 +10,54 @@ struct Landmark
 
 struct LandmarkList
 {
-    u8 mapSection;
+    mapsec_u8_t mapSection;
     u8 id;
     const struct Landmark *const *landmarks;
 };
 
-static const u8 LandmarkName_FlowerShop[] = _("Blumenladen");
-static const u8 LandmarkName_PetalburgWoods[] = _("Blütenburgwald");
-static const u8 LandmarkName_MrBrineysCottage[] = _("Mr. Brack's Hütte");
-static const u8 LandmarkName_AbandonedShip[] = _("Verlassenes Schiff");
-static const u8 LandmarkName_SeashoreHouse[] = _("Strandhaus");
-static const u8 LandmarkName_SlateportBeach[] = _("Graphitport Strand");
-static const u8 LandmarkName_CyclingRoad[] = _("Radweg");
-static const u8 LandmarkName_NewMauville[] = _("Neu Malvenfroh");
-static const u8 LandmarkName_TrickHouse[] = _("Knobelhaus");
-static const u8 LandmarkName_OldLadysRestShop[] = _("Raststätte der alten Dame");
-static const u8 LandmarkName_Desert[] = _("Wüste");
-static const u8 LandmarkName_WinstrateFamily[] = _("Die Familie Siegprunk");
-static const u8 LandmarkName_CableCar[] = _("Seilbahn");
-static const u8 LandmarkName_GlassWorkshop[] = _("Glaswerkstatt");
-static const u8 LandmarkName_WeatherInstitute[] = _("Wetterinstitut");
-static const u8 LandmarkName_MeteorFalls[] = _("Meteorfälle");
-static const u8 LandmarkName_TunnelersRestHouse[] = _("Raststätte des Tunnelgräbers");
-static const u8 LandmarkName_RusturfTunnel[] = _("Metaflurtunnel");
-static const u8 LandmarkName_PokemonDayCare[] = _("Pokémon-Pension");
-static const u8 LandmarkName_SafariZoneEntrance[] = _("Eingang zur Safari-Zone");
-static const u8 LandmarkName_MtPyre[] = _("Pyroberg");
-static const u8 LandmarkName_ShoalCave[] = _("Brandungshöhle");
-static const u8 LandmarkName_SeafloorCavern[] = _("Tiefseehöhle");
-static const u8 LandmarkName_GraniteCave[] = _("Granithöhle");
-static const u8 LandmarkName_OceanCurrent[] = _("Meeresströmung");
-static const u8 LandmarkName_LanettesHouse[] = _("Lanettes Haus");
-static const u8 LandmarkName_FieryPath[] = _("Feuriger Pfad");
-static const u8 LandmarkName_JaggedPass[] = _("Schrofepass");
-static const u8 LandmarkName_SkyPillar[] = _("Himmelturm");
-static const u8 LandmarkName_BerryMastersHouse[] = _("Beerenmeister's Haus");
-static const u8 LandmarkName_IslandCave[] = _("Inselhöhle");
-static const u8 LandmarkName_DesertRuins[] = _("Wüstenruinen");
-static const u8 LandmarkName_ScorchedSlab[] = _("Versengte Höhle");
-static const u8 LandmarkName_AncientTomb[] = _("Uraltes Grab");
-static const u8 LandmarkName_SealedChamber[] = _("Versiegelte Kammer");
-static const u8 LandmarkName_FossilManiacsHouse[] = _("Haus des Fossilienfreaks");
-static const u8 LandmarkName_HuntersHouse[] = _("Haus des Jägers");
-static const u8 LandmarkName_MagmaHideout[] = _("Magma-Versteck");
-static const u8 LandmarkName_MirageTower[] = _("Wundturm");
-static const u8 LandmarkName_AlteringCave[] = _("Wandelhöhle");
-static const u8 LandmarkName_DesertUnderpass[] = _("Wüstenpassage");
-static const u8 LandmarkName_TrainerHill[] = _("Trainerhügel");
+static const u8 LandmarkName_MagmaHideout[] = _("Magma-Versteck"); //Unused
 
-static const struct Landmark Landmark_FlowerShop = {LandmarkName_FlowerShop, FLAG_LANDMARK_FLOWER_SHOP};
-static const struct Landmark Landmark_PetalburgWoods = {LandmarkName_PetalburgWoods, -1};
-static const struct Landmark Landmark_MrBrineysCottage = {LandmarkName_MrBrineysCottage, FLAG_LANDMARK_MR_BRINEY_HOUSE};
-static const struct Landmark Landmark_AbandonedShip = {LandmarkName_AbandonedShip, FLAG_LANDMARK_ABANDONED_SHIP};
-static const struct Landmark Landmark_SeashoreHouse = {LandmarkName_SeashoreHouse, FLAG_LANDMARK_SEASHORE_HOUSE};
-static const struct Landmark Landmark_SlateportBeach = {LandmarkName_SlateportBeach, -1};
-static const struct Landmark Landmark_CyclingRoad = {LandmarkName_CyclingRoad, -1};
-static const struct Landmark Landmark_NewMauville = {LandmarkName_NewMauville, FLAG_LANDMARK_NEW_MAUVILLE};
-static const struct Landmark Landmark_TrickHouse = {LandmarkName_TrickHouse, FLAG_LANDMARK_TRICK_HOUSE};
-static const struct Landmark Landmark_OldLadysRestShop = {LandmarkName_OldLadysRestShop, FLAG_LANDMARK_OLD_LADY_REST_SHOP};
-static const struct Landmark Landmark_Desert = {LandmarkName_Desert, -1};
-static const struct Landmark Landmark_WinstrateFamily = {LandmarkName_WinstrateFamily, FLAG_LANDMARK_WINSTRATE_FAMILY};
-static const struct Landmark Landmark_CableCar = {LandmarkName_CableCar, -1};
-static const struct Landmark Landmark_GlassWorkshop = {LandmarkName_GlassWorkshop, FLAG_LANDMARK_GLASS_WORKSHOP};
-static const struct Landmark Landmark_WeatherInstitute = {LandmarkName_WeatherInstitute, -1};
-static const struct Landmark Landmark_MeteorFalls = {LandmarkName_MeteorFalls, -1};
-static const struct Landmark Landmark_TunnelersRestHouse = {LandmarkName_TunnelersRestHouse, FLAG_LANDMARK_TUNNELERS_REST_HOUSE};
-static const struct Landmark Landmark_RusturfTunnel = {LandmarkName_RusturfTunnel, -1};
-static const struct Landmark Landmark_PokemonDayCare = {LandmarkName_PokemonDayCare, FLAG_LANDMARK_POKEMON_DAYCARE};
-static const struct Landmark Landmark_SafariZoneEntrance = {LandmarkName_SafariZoneEntrance, -1};
-static const struct Landmark Landmark_MtPyre = {LandmarkName_MtPyre, -1};
-static const struct Landmark Landmark_ShoalCave = {LandmarkName_ShoalCave, -1};
-static const struct Landmark Landmark_SeafloorCavern = {LandmarkName_SeafloorCavern, FLAG_LANDMARK_SEAFLOOR_CAVERN};
-static const struct Landmark Landmark_GraniteCave = {LandmarkName_GraniteCave, -1};
-static const struct Landmark Landmark_OceanCurrent = {LandmarkName_OceanCurrent, -1};
-static const struct Landmark Landmark_LanettesHouse = {LandmarkName_LanettesHouse, FLAG_LANDMARK_LANETTES_HOUSE};
-static const struct Landmark Landmark_FieryPath = {LandmarkName_FieryPath, FLAG_LANDMARK_FIERY_PATH};
-static const struct Landmark Landmark_JaggedPass = {LandmarkName_JaggedPass, -1};
-static const struct Landmark Landmark_BerryMastersHouse = {LandmarkName_BerryMastersHouse, FLAG_LANDMARK_BERRY_MASTERS_HOUSE};
-static const struct Landmark Landmark_IslandCave = {LandmarkName_IslandCave, FLAG_LANDMARK_ISLAND_CAVE};
-static const struct Landmark Landmark_DesertRuins = {LandmarkName_DesertRuins, FLAG_LANDMARK_DESERT_RUINS};
-static const struct Landmark Landmark_ScorchedSlab = {LandmarkName_ScorchedSlab, FLAG_LANDMARK_SCORCHED_SLAB};
-static const struct Landmark Landmark_AncientTomb = {LandmarkName_AncientTomb, FLAG_LANDMARK_ANCIENT_TOMB};
-static const struct Landmark Landmark_SealedChamber = {LandmarkName_SealedChamber, FLAG_LANDMARK_SEALED_CHAMBER};
-static const struct Landmark Landmark_FossilManiacsHouse = {LandmarkName_FossilManiacsHouse, FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE};
-static const struct Landmark Landmark_HuntersHouse = {LandmarkName_HuntersHouse, FLAG_LANDMARK_HUNTERS_HOUSE};
-static const struct Landmark Landmark_SkyPillar = {LandmarkName_SkyPillar, FLAG_LANDMARK_SKY_PILLAR};
-static const struct Landmark Landmark_MirageTower = {LandmarkName_MirageTower, FLAG_LANDMARK_MIRAGE_TOWER};
-static const struct Landmark Landmark_AlteringCave = {LandmarkName_AlteringCave, FLAG_LANDMARK_ALTERING_CAVE};
-static const struct Landmark Landmark_DesertUnderpass = {LandmarkName_DesertUnderpass, FLAG_LANDMARK_DESERT_UNDERPASS};
-static const struct Landmark Landmark_TrainerHill = {LandmarkName_TrainerHill, FLAG_LANDMARK_TRAINER_HILL};
+static const struct Landmark Landmark_FlowerShop = {COMPOUND_STRING("Blumenladen"), FLAG_LANDMARK_FLOWER_SHOP};
+static const struct Landmark Landmark_PetalburgWoods = {COMPOUND_STRING("Blütenburgwald"), -1};
+static const struct Landmark Landmark_MrBrineysCottage = {COMPOUND_STRING("Mr. Brack's Hütte"), FLAG_LANDMARK_MR_BRINEY_HOUSE};
+static const struct Landmark Landmark_AbandonedShip = {COMPOUND_STRING("Verlassenes Schiff"), FLAG_LANDMARK_ABANDONED_SHIP};
+static const struct Landmark Landmark_SeashoreHouse = {COMPOUND_STRING("Strandhaus"), FLAG_LANDMARK_SEASHORE_HOUSE};
+static const struct Landmark Landmark_SlateportBeach = {COMPOUND_STRING("Graphitport Strand"), -1};
+static const struct Landmark Landmark_CyclingRoad = {COMPOUND_STRING("Radweg"), -1};
+static const struct Landmark Landmark_NewMauville = {COMPOUND_STRING("Neu Malvenfroh"), FLAG_LANDMARK_NEW_MAUVILLE};
+static const struct Landmark Landmark_TrickHouse = {COMPOUND_STRING("Knobelhaus"), FLAG_LANDMARK_TRICK_HOUSE};
+static const struct Landmark Landmark_OldLadysRestShop = {COMPOUND_STRING("Raststätte der alten Dame"), FLAG_LANDMARK_OLD_LADY_REST_SHOP};
+static const struct Landmark Landmark_Desert = {COMPOUND_STRING("Wüste"), -1};
+static const struct Landmark Landmark_WinstrateFamily = {COMPOUND_STRING("Die Familie Siegprunk"), FLAG_LANDMARK_WINSTRATE_FAMILY};
+static const struct Landmark Landmark_CableCar = {COMPOUND_STRING("Seilbahn"), -1};
+static const struct Landmark Landmark_GlassWorkshop = {COMPOUND_STRING("Glaswerkstatt"), FLAG_LANDMARK_GLASS_WORKSHOP};
+static const struct Landmark Landmark_WeatherInstitute = {COMPOUND_STRING("Wetterinstitut"), -1};
+static const struct Landmark Landmark_MeteorFalls = {COMPOUND_STRING("Meteorfälle"), -1};
+static const struct Landmark Landmark_TunnelersRestHouse = {COMPOUND_STRING("Raststätte des Tunnelgräbers"), FLAG_LANDMARK_TUNNELERS_REST_HOUSE};
+static const struct Landmark Landmark_RusturfTunnel = {COMPOUND_STRING("Metaflurtunnel"), -1};
+static const struct Landmark Landmark_PokemonDayCare = {COMPOUND_STRING("Pokémon-Pension"), FLAG_LANDMARK_POKEMON_DAYCARE};
+static const struct Landmark Landmark_SafariZoneEntrance = {COMPOUND_STRING("Eingang zur Safari-Zone"), -1};
+static const struct Landmark Landmark_MtPyre = {COMPOUND_STRING("Pyroberg"), -1};
+static const struct Landmark Landmark_ShoalCave = {COMPOUND_STRING("Brandungshöhle"), -1};
+static const struct Landmark Landmark_SeafloorCavern = {COMPOUND_STRING("Tiefseehöhle"), FLAG_LANDMARK_SEAFLOOR_CAVERN};
+static const struct Landmark Landmark_GraniteCave = {COMPOUND_STRING("Granithöhle"), -1};
+static const struct Landmark Landmark_OceanCurrent = {COMPOUND_STRING("Meeresströmung"), -1};
+static const struct Landmark Landmark_LanettesHouse = {COMPOUND_STRING("Lanettes Haus"), FLAG_LANDMARK_LANETTES_HOUSE};
+static const struct Landmark Landmark_FieryPath = {COMPOUND_STRING("Feuriger Pfad"), FLAG_LANDMARK_FIERY_PATH};
+static const struct Landmark Landmark_JaggedPass = {COMPOUND_STRING("Schrofepass"), -1};
+static const struct Landmark Landmark_BerryMastersHouse = {COMPOUND_STRING("Beerenmeister's Haus"), FLAG_LANDMARK_BERRY_MASTERS_HOUSE};
+static const struct Landmark Landmark_IslandCave = {COMPOUND_STRING("Inselhöhle"), FLAG_LANDMARK_ISLAND_CAVE};
+static const struct Landmark Landmark_DesertRuins = {COMPOUND_STRING("Wüstenruinen"), FLAG_LANDMARK_DESERT_RUINS};
+static const struct Landmark Landmark_ScorchedSlab = {COMPOUND_STRING("Versengte Höhle"), FLAG_LANDMARK_SCORCHED_SLAB};
+static const struct Landmark Landmark_AncientTomb = {COMPOUND_STRING("Uraltes Grab"), FLAG_LANDMARK_ANCIENT_TOMB};
+static const struct Landmark Landmark_SealedChamber = {COMPOUND_STRING("Versiegelte Kammer"), FLAG_LANDMARK_SEALED_CHAMBER};
+static const struct Landmark Landmark_FossilManiacsHouse = {COMPOUND_STRING("Haus des Fossilienfreaks"), FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE};
+static const struct Landmark Landmark_HuntersHouse = {COMPOUND_STRING("Haus des Jägers"), FLAG_LANDMARK_HUNTERS_HOUSE};
+static const struct Landmark Landmark_SkyPillar = {COMPOUND_STRING("Himmelturm"), FLAG_LANDMARK_SKY_PILLAR};
+static const struct Landmark Landmark_MirageTower = {COMPOUND_STRING("Wundturm"), FLAG_LANDMARK_MIRAGE_TOWER};
+static const struct Landmark Landmark_AlteringCave = {COMPOUND_STRING("Wandelhöhle"), FLAG_LANDMARK_ALTERING_CAVE};
+static const struct Landmark Landmark_DesertUnderpass = {COMPOUND_STRING("Wüstenpassage"), FLAG_LANDMARK_DESERT_UNDERPASS};
+static const struct Landmark Landmark_TrainerHill = {COMPOUND_STRING("Trainerhügel"), FLAG_LANDMARK_TRAINER_HILL};
 
 static const struct Landmark *const Landmarks_Route103_2[]  =
 {
@@ -392,9 +351,9 @@ static const struct LandmarkList sLandmarkLists[] =
     {MAPSEC_NONE, 0, NULL},
 };
 
-static const struct Landmark *const *GetLandmarks(u8 mapSection, u8 id);
+static const struct Landmark *const *GetLandmarks(mapsec_u8_t mapSection, u8 id);
 
-const u8 *GetLandmarkName(u8 mapSection, u8 id, u8 count)
+const u8 *GetLandmarkName(mapsec_u8_t mapSection, u8 id, u8 count)
 {
     const struct Landmark *const *landmarks = GetLandmarks(mapSection, id);
 
@@ -421,7 +380,7 @@ const u8 *GetLandmarkName(u8 mapSection, u8 id, u8 count)
     return (*landmarks)->name;
 }
 
-static const struct Landmark *const *GetLandmarks(u8 mapSection, u8 id)
+static const struct Landmark *const *GetLandmarks(mapsec_u8_t mapSection, u8 id)
 {
     u16 i = 0;
 

@@ -3,13 +3,13 @@
 
 ASSUMPTIONS
 {
-    ASSUME(gItems[ITEM_WHITE_HERB].holdEffect == HOLD_EFFECT_RESTORE_STATS);
+    ASSUME(gItemsInfo[ITEM_WHITE_HERB].holdEffect == HOLD_EFFECT_WHITE_HERB);
 }
 
 SINGLE_BATTLE_TEST("White Herb restores stats when they're lowered")
 {
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_LEER].effect == EFFECT_DEFENSE_DOWN);
+        ASSUME(GetMoveEffect(MOVE_LEER) == EFFECT_DEFENSE_DOWN);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_WHITE_HERB); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("White Herb restores stats when they're lowered")
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet's White Herb restored its status!");
+        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet's White Herb restored its status!");
+        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -58,9 +58,9 @@ DOUBLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
 
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("Foe Wobbuffet's White Herb restored its status!");
+        MESSAGE("The opposing Wobbuffet returned its stats to normal using its White Herb!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentRight);
-        MESSAGE("Foe Wynaut's White Herb restored its status!");
+        MESSAGE("The opposing Wynaut returned its stats to normal using its White Herb!");
     } THEN {
         EXPECT(opponentLeft->item == ITEM_NONE);
         EXPECT(opponentLeft->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
@@ -71,7 +71,6 @@ DOUBLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
 
 SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimidate while switching in")
 {
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_WHITE_HERB); }
         OPPONENT(SPECIES_WOBBUFFET);
@@ -82,11 +81,11 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet's White Herb restored its status!");
+        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CLOSE_COMBAT, player);
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet's White Herb restored its status!");
+            MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
         }
     } THEN {
         EXPECT(player->item == ITEM_NONE);
@@ -95,18 +94,16 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Attack was lowered by Intimi
     }
 }
 
-
 SINGLE_BATTLE_TEST("White Herb restores stats after all hits of a multi hit move happened")
 {
     u16 species;
-    u16 ability;
+    enum Ability ability;
 
-    PARAMETRIZE { species = SPECIES_SLIGGOO_HISUIAN; ability = ABILITY_GOOEY; }
-    PARAMETRIZE { species = SPECIES_DUGTRIO_ALOLAN; ability = ABILITY_TANGLING_HAIR; }
+    PARAMETRIZE { species = SPECIES_SLIGGOO_HISUI; ability = ABILITY_GOOEY; }
+    PARAMETRIZE { species = SPECIES_DUGTRIO_ALOLA; ability = ABILITY_TANGLING_HAIR; }
 
-    KNOWN_FAILING;
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_DUAL_WINGBEAT].strikeCount == 2);
+        ASSUME(GetMoveStrikeCount(MOVE_DUAL_WINGBEAT) == 2);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_WHITE_HERB); }
         OPPONENT(species) { Ability(ability); }
     } WHEN {
@@ -114,12 +111,13 @@ SINGLE_BATTLE_TEST("White Herb restores stats after all hits of a multi hit move
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DUAL_WINGBEAT, player);
         ABILITY_POPUP(opponent, ability);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         MESSAGE("Wobbuffet's Speed fell!");
         ABILITY_POPUP(opponent, ability);
-        MESSAGE("Wobbuffet's Speed fell!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        MESSAGE("Wobbuffet's Speed fell!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet's White Herb restored its status!");
+        MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
     } THEN {
         EXPECT(player->item == ITEM_NONE);
         EXPECT(player->statStages[STAT_SPEED] = DEFAULT_STAT_STAGE);
@@ -133,27 +131,27 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if it is knocked off o
     PARAMETRIZE { move = MOVE_THIEF; }
     PARAMETRIZE { move = MOVE_KNOCK_OFF; }
 
-    KNOWN_FAILING; // Knock off fails, Thief is fine
     GIVEN {
-        ASSUME(gBattleMoves[MOVE_THIEF].effect == EFFECT_THIEF);
-        ASSUME(gBattleMoves[MOVE_KNOCK_OFF].effect == EFFECT_KNOCK_OFF);
+        ASSUME(GetMoveEffect(MOVE_KNOCK_OFF) == EFFECT_KNOCK_OFF);
+        ASSUME(GetMoveEffect(MOVE_THIEF) == EFFECT_STEAL_ITEM);
         PLAYER(SPECIES_SLUGMA) {  Ability(ABILITY_WEAK_ARMOR); Item(ITEM_WHITE_HERB); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, opponent);
-        if (move == MOVE_THIEF)
-            MESSAGE("Foe Wobbuffet stole Slugma's White Herb!");
-        else
-            MESSAGE("Foe Wobbuffet knocked off Slugma's White Herb!");
         ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
         MESSAGE("Slugma's Weak Armor lowered its Defense!");
-        MESSAGE("Slugma's Weak Armor raised its Speed!");
+        MESSAGE("Slugma's Weak Armor sharply raised its Speed!");
+        if (move == MOVE_KNOCK_OFF) {
+            MESSAGE("The opposing Wobbuffet knocked off Slugma's White Herb!");
+        } else if (move == MOVE_THIEF) {
+            MESSAGE("The opposing Wobbuffet stole Slugma's White Herb!");
+        }
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet's White Herb restored its status!");
+            MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
         }
     } THEN {
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE - 1);
@@ -163,22 +161,22 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if it is knocked off o
 
 SINGLE_BATTLE_TEST("White Herb wont have time to activate if Magician steals it")
 {
-    KNOWN_FAILING; // White Herb is activated
     GIVEN {
         PLAYER(SPECIES_SLUGMA) {  Ability(ABILITY_WEAK_ARMOR); Item(ITEM_WHITE_HERB); }
         OPPONENT(SPECIES_FENNEKIN) { Ability(ABILITY_MAGICIAN); }
     } WHEN {
-        TURN { MOVE(opponent, MOVE_TACKLE); }
+        TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        MESSAGE("Slugma's Weak Armor lowered its Defense!");
+        MESSAGE("Slugma's Weak Armor sharply raised its Speed!");
         ABILITY_POPUP(opponent, ABILITY_MAGICIAN);
-        ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Slugma's Weak Armor lowered its Defense!");
-        MESSAGE("Slugma's Weak Armor raised its Speed!");
+        MESSAGE("The opposing Fennekin stole Slugma's White Herb!");
         NONE_OF {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet's White Herb restored its status!");
+            MESSAGE("Wobbuffet returned its stats to normal using its White Herb!");
         }
     } THEN {
         EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE - 1);
@@ -186,41 +184,14 @@ SINGLE_BATTLE_TEST("White Herb wont have time to activate if Magician steals it"
     }
 }
 
-SINGLE_BATTLE_TEST("White Herb wont have time to activate if Pickpocket steals it")
-{
-    KNOWN_FAILING; // White Herb is activated
-    GIVEN {
-        ASSUME(gBattleMoves[MOVE_LEAF_STORM].effect == EFFECT_OVERHEAT);
-        PLAYER(SPECIES_SLUGMA) {  Ability(ABILITY_WEAK_ARMOR); Item(ITEM_WHITE_HERB); }
-        OPPONENT(SPECIES_SNEASEL) { Ability(ABILITY_PICKPOCKET); }
-    } WHEN {
-        TURN { MOVE(player, MOVE_LEAF_STORM); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_LEAF_STORM, player);
-        ABILITY_POPUP(player, ABILITY_PICKPOCKET);
-        ABILITY_POPUP(player, ABILITY_WEAK_ARMOR);
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        MESSAGE("Slugma's Weak Armor lowered its Defense!");
-        MESSAGE("Slugma's Weak Armor raised its Speed!");
-        NONE_OF {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-            MESSAGE("Wobbuffet's White Herb restored its status!");
-        }
-    } THEN {
-        EXPECT(player->statStages[STAT_DEF] = DEFAULT_STAT_STAGE - 1);
-        EXPECT(player->statStages[STAT_SPEED] = DEFAULT_STAT_STAGE + 1);
-    }
-}
-
-SINGLE_BATTLE_TEST("White Herb restores stats after Defiant or Competitive were triggered")
+SINGLE_BATTLE_TEST("White Herb has correct interactions with Intimidate triggered Defiant and Competitive")
 {
     u16 species;
-    u16 ability;
+    enum Ability ability;
 
     PARAMETRIZE { species = SPECIES_IGGLYBUFF; ability = ABILITY_COMPETITIVE; }
     PARAMETRIZE { species = SPECIES_MANKEY; ability = ABILITY_DEFIANT; }
 
-    KNOWN_FAILING;
     GIVEN {
         PLAYER(species) { Ability(ability); Item(ITEM_WHITE_HERB); }
         OPPONENT(SPECIES_ARBOK) { Ability(ABILITY_INTIMIDATE); }
@@ -230,16 +201,36 @@ SINGLE_BATTLE_TEST("White Herb restores stats after Defiant or Competitive were 
         ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
         ABILITY_POPUP(player, ability);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet's White Herb restored its status!");
+        // Defiant activates first, so White Herb doesn't have a chance to trigger.
+        if (ability == ABILITY_COMPETITIVE) {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
+            MESSAGE("Igglybuff returned its stats to normal using its White Herb!");
+        }
     } THEN {
-        EXPECT(player->item == ITEM_NONE);
-        if (species == SPECIES_IGGLYBUFF)
-        {
+        if (ability == ABILITY_COMPETITIVE) {
+            EXPECT(player->item == ITEM_NONE);
             EXPECT(player->statStages[STAT_ATK] = DEFAULT_STAT_STAGE);
             EXPECT(player->statStages[STAT_SPATK] = DEFAULT_STAT_STAGE + 2);
+        } else {
+            EXPECT(player->statStages[STAT_ATK] = DEFAULT_STAT_STAGE + 1);
         }
-        else
-            EXPECT(player->statStages[STAT_ATK] = DEFAULT_STAT_STAGE + 3);
+    }
+}
+
+DOUBLE_BATTLE_TEST("White Herb is correctly displayed")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WYNAUT) { Item(ITEM_WHITE_HERB); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(playerRight, MOVE_SUPERPOWER, target: opponentRight); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerRight);
+        MESSAGE("Wynaut returned its stats to normal using its White Herb!");
+    } THEN {
+        EXPECT(playerLeft->item == ITEM_NONE);
+        EXPECT(playerLeft->statStages[STAT_DEF] = DEFAULT_STAT_STAGE);
     }
 }

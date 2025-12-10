@@ -269,17 +269,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_checkpcstyle_brendan          ScrCmd_CheckPlayerPCStyle_BrendansHouse, requests_effects=1 @ 0xf4
 	script_cmd_table_entry SCR_OP_BUFFER_FOLLOWER_NICKNAME_TO_VAR1 ScrCmd_BufferFollowerNicknameToVar1, requests_effects=1 @ 0xf5
 	script_cmd_table_entry SCR_OP_FORMAT_CURRENT_TIME           ScrCmd_FormatCurrentTimeAndDaytime, requests_effects=1 @ 0xf6
-
-
-
-
-
-
-
-
-
-
-
+	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xf7
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

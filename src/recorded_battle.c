@@ -50,7 +50,7 @@ EWRAM_DATA static u8 sFrontierPassFlag = 0;
 EWRAM_DATA static u8 sBattleScene = 0;
 EWRAM_DATA static u8 sTextSpeed = 0;
 EWRAM_DATA static u32 sBattleFlags = 0;
-EWRAM_DATA static u64 sAI_Scripts = 0;
+EWRAM_DATA static u64 sAI_Scripts[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA static struct Pokemon sSavedPlayerParty[PARTY_SIZE] = {0};
 EWRAM_DATA static struct Pokemon sSavedOpponentParty[PARTY_SIZE] = {0};
 EWRAM_DATA static u16 sPlayerMonMoves[MAX_BATTLERS_COUNT / 2][MAX_MON_MOVES] = {0};
@@ -81,12 +81,13 @@ void RecordedBattle_Init(u8 mode)
     sBattlerPrevRecordSizes = 0;
     sBattlerSavedRecordSizes = 0;
 
-    if (mode == B_RECORD_MODE_RECORDING)
-    {
-        for (j = 0; j < BATTLER_RECORD_SIZE; j++)
-            sBattleRecords[j] = 0xFF;
-        sBattleFlags = gBattleTypeFlags;
-        sAI_Scripts = gAiThinkingStruct->aiFlags[B_POSITION_OPPONENT_LEFT];
+        if (mode == B_RECORD_MODE_RECORDING)
+        {
+            for (j = 0; j < BATTLER_RECORD_SIZE; j++)
+                sBattleRecords[i][j] = 0xFF;
+            sBattleFlags = gBattleTypeFlags;
+            sAI_Scripts[i] = gAiThinkingStruct->aiFlags[i];
+        }
     }
 }
 
@@ -307,6 +308,7 @@ bool32 MoveRecordedBattleToSaveData(void)
         battleSave->playersLanguage[i] = sPlayers[i].language;
         battleSave->playersBattlers[i] = sPlayers[i].battler;
         battleSave->playersTrainerId[i] = sPlayers[i].trainerId;
+        battleSave->AI_scripts[i] = sAI_Scripts[i];
     }
 
     battleSave->rngSeed = gRecordedBattleRngSeed;
@@ -350,7 +352,6 @@ bool32 MoveRecordedBattleToSaveData(void)
     battleSave->frontierBrainSymbol = sFrontierBrainSymbol;
     battleSave->battleScene = gSaveBlock2Ptr->optionsBattleSceneOff;
     battleSave->textSpeed = gSaveBlock2Ptr->optionsTextSpeed;
-    battleSave->AI_scripts = sAI_Scripts;
 
     if (TRAINER_BATTLE_PARAM.opponentA >= TRAINER_RECORD_MIXING_FRIEND && TRAINER_BATTLE_PARAM.opponentA < TRAINER_RECORD_MIXING_APPRENTICE)
     {
@@ -514,6 +515,7 @@ void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
         gLinkPlayers[i].language = src->playersLanguage[i];
         gLinkPlayers[i].id = src->playersBattlers[i];
         gLinkPlayers[i].trainerId = src->playersTrainerId[i];
+        sAI_Scripts[i] = src->AI_scripts[i];
 
         if (var)
             ConvertInternationalString(gLinkPlayers[i].name, gLinkPlayers[i].language);
@@ -530,7 +532,6 @@ void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
     sFrontierBrainSymbol = src->frontierBrainSymbol;
     sBattleScene = src->battleScene;
     sTextSpeed = src->textSpeed;
-    sAI_Scripts = src->AI_scripts;
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++)
         sRecordMixFriendName[i] = src->recordMixFriendName[i];
@@ -769,16 +770,16 @@ void RecordedBattle_CheckMovesetChanges(u8 mode)
 
                         SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonusSet);
                     }
-                    gChosenMoveByBattler[battler] = gBattleMons[battler].moves[gBattleStruct->chosenMovePositions[battler]];
+                    gChosenMoveByBattler[battler] = GetChosenMoveFromPosition(battler);
                 }
             }
         }
     }
 }
 
-u64 GetAiScriptsInRecordedBattle(void)
+u64 GetAiScriptsInRecordedBattle(u32 battler)
 {
-    return sAI_Scripts;
+    return sAI_Scripts[battler];
 }
 
 // Used to determine when the player is allowed to press B to end a recorded battle's playback

@@ -633,6 +633,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ApricornTree;
 
 //Firered
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Snorlax;
@@ -1242,6 +1243,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DOLPHIN] =                   &gObjectEventGraphicsInfo_DolphinNormal,
     [OBJ_EVENT_GFX_SNORLAX] =                   &gObjectEventGraphicsInfo_Snorlax,
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
+    [OBJ_EVENT_GFX_APRICORN_TREE] =            &gObjectEventGraphicsInfo_ApricornTree,
     [OBJ_EVENT_GFX_ENTEI] =                     &gObjectEventGraphicsInfo_EnteiOW,
     [OBJ_EVENT_GFX_SUICUNE] =                   &gObjectEventGraphicsInfo_SuicuneOW,
     [OBJ_EVENT_GFX_RAIKOU] =                    &gObjectEventGraphicsInfo_RaikouOW,

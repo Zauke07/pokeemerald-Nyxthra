@@ -89,8 +89,8 @@
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+#define FLAG_ORAS_DOWSING    0x4E // ORAS Dowsing Machine aktivieren
+#define FLAG_EXP_SHARE       0x4F // EXP share flag
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -661,7 +661,7 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_111_1_BIG_NUGGET              (FLAG_HIDDEN_ITEMS_START + 0x73)
 
 #define FLAG_UNUSED_0x264  0x264 // Zeit bleibt im pausen menü stehen
-#define FLAG_UNUSED_0x265  0x265 // Schutz-/Lockmittel frage
+#define FLAG_REPEL_LURE_MENU  0x265 // Schutz-/Lockmittel frage
 #define FLAG_UNUSED_0x266  0x266 // keine wilden pkmn
 #define FLAG_UNUSED_0x267  0x267 // trainer kämpfen nur nach ansprache
 #define FLAG_UNUSED_0x268  0x268 // über Kollisionstiles laufen NUR FÜR DEBUGGING
