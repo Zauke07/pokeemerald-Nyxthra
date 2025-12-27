@@ -32,7 +32,7 @@
 
 // Repel/Lure config
 // Diese beiden Einstellungen sind unabhängig und ergänzen sich.
-#define VAR_LAST_REPEL_LURE_USED    FLAG_REPEL_LURE_MENU       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
+#define VAR_LAST_REPEL_LURE_USED    VAR_REPEL_LURE_MENU       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
 #define I_REPEL_LURE_MENU           FALSE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
 
 // Vs. Seeker

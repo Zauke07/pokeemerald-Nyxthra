@@ -133,4 +133,7 @@
 // Beerenschleuder
 #define BERRY_BLENDER_THROW_ALL_BERRIES_AT_ONCE TRUE        // Alle Beeren werden gleichzeitig in die Schleuder geworfen. Beschleunigt die Animation.
 
+// Trainer-Rematches
+#define OW_REMATCH_BADGE_COUNT      5 // Anzahl der benötigten Orden, bevor Match Call oder VS Seeker Rematches ermöglichen
+
 #endif // GUARD_CONFIG_OVERWORLD_H

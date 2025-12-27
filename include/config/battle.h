@@ -130,6 +130,7 @@
 #define B_ENCORE_TARGET             GEN_LATEST // In Gen5+ können wiederholte Moves ein Ziel wählen.
 #define B_TIME_OF_DAY_HEALING_MOVES GEN_LATEST // In Gen2 heilen Morgengrauen, Mondschein, Synthese je nach Tageszeit doppelt; ändert auch Heilmenge. Abend beeinflusst Mondschein. Bei OW_TIMES_OF_DAY=Gen3 ist Morgengrauen tagsüber geboostet.
 #define B_DREAM_EATER_LIQUID_OOZE   GEN_LATEST // In Gen5+ wird Traumfresser von Kloakensoße beeinflusst.
+#define B_DREAM_EATER_SUBSTITUTE    GEN_LATEST // In Gen5+ kann Traumfresser einen Delegator treffen und davon "dreinieren".
 
 // Fähigkeits-Einstellungen
 #define B_GALE_WINGS                GEN_LATEST // In Gen7+ nur bei vollen KP aktiv.
@@ -161,6 +162,7 @@
 #define B_BATTLE_BOND               GEN_LATEST // In Gen9+ erhöht Band des Kampfes Atk/SpA/Init um je 1 Stufe, einmal pro Kampf.
 #define B_ATE_MULTIPLIER            GEN_LATEST // In Gen7+ multiplizieren die -wandler-Fähigkeiten 1.2x, sonst 1.3x, außer Variabilität ohne Multiplikator.
 #define B_DEFIANT_STICKY_WEB        GEN_LATEST // In Gen9+ triggert Siegeswille durch Klebenetz unabhängig vom Urheber. In Gen8 nicht, wenn nach Court Change auf eigene Seite gewechselt.
+#define B_POWDER_OVERCOAT           GEN_LATEST // In Gen6+ blockt Wetterfest Puder- und Sporen-Moves.
 
 // Item-Einstellungen
 #define B_HP_BERRIES                GEN_LATEST // In Gen4+ triggern KP-Beeren sofort bei 50% KP. In Gen3 erst am Rundenende.
@@ -225,6 +227,14 @@
 
 #define B_VAR_DIFFICULTY            0     // Wenn nicht 0, steuert diese Var, welche Trainer-Schwierigkeit geladen wird. Per Script_SetDifficulty NACH NewGameInitData setzen.
 
+// Taschen-Einstellungen
+#define NO_BAG_RESTRICTION       0    // Keine Taschenbeschränkung
+#define NO_BAG_AGAINST_TRAINER   1    // Keine Tasche gegen Trainer
+#define NO_BAG_IN_BATTLE         2    // Keine Tasche im Kampf
+
+#define B_VAR_NO_BAG_USE         0     // Wenn 1, ist die Fähigkeit, die Tasche im Kampf zu verwenden, in Trainerkämpfen deaktiviert. Wenn 2, ist sie auch in Wildkämpfen deaktiviert.
+
+
 // Himmelskämpfe
 #define B_FLAG_SKY_BATTLE                 0     // Wenn gesetzt, kann der Spieler in geskriptete Himmelskämpfe gehen.
 #define B_VAR_SKY_BATTLE                  0     // Wenn gesetzt, merkt sich das Spiel die Positionen der im Himmelskampf eingesetzten Pokémon.
@@ -285,6 +295,7 @@
 #define B_CATCHING_CHARM_BOOST          20         // %-Bonus auf Krit-Fang mit Fang-Amulett.
 #define B_CRITICAL_CAPTURE              TRUE       // Aktiviert Kritische Fangchance.
 #define B_CRITICAL_CAPTURE_LOCAL_DEX    TRUE       // FALSE: Krit-Fang basierend auf Nationaldex (per aktivierten Generationen geschätzt).
+#define B_CRITICAL_CAPTURE_IF_OWNED     GEN_LATEST // In Gen9+ erscheint ein Fang als kritisch, wenn das Pokémon bereits einen Pokédex-Eintrag hat (bereits gefangen wurde).
 
 #define B_LAST_USED_BALL            TRUE       // TRUE: „Zuletzt benutzter Ball“ aus Gen7.
 #define B_LAST_USED_BALL_BUTTON     R_BUTTON   // Taste/Kombination zum Werfen des letzten Balls.
@@ -306,6 +317,7 @@
 #define B_TOXIC_REVERSAL                GEN_LATEST // In Gen5+ wird Toxin am Kampfende zu normaler Vergiftung.
 #define B_TRY_CATCH_TRAINER_BALL        GEN_LATEST // In Gen4+ verbraucht der Versuch, ein Trainer-Mon zu fangen, keinen Ball.
 #define B_SLEEP_CLAUSE                  FALSE      // Aktiviert Schlafklausel immer und überall, überschreibt B_FLAG_SLEEP_CLAUSE. Nutze Flag für Modularität.
+#define B_PARTNER_MONS_MARKED_SEEN      TRUE      // TRUE: Partner-Pokémon im Doppelkampf werden als GESEHEN im Pokédex markiert, falls noch nicht begegnet.
 
 #define NUM_BEEPS_GEN_LATEST            4                    // Läuft 4 Schleifen
 #define NUM_BEEPS_GEN_3                 -1                   // Läuft unendlich
@@ -351,7 +363,7 @@
 #define B_ENEMY_MON_SHADOW_STYLE        GEN_LATEST // In Gen4+ haben gegnerische Pokémon einen Schatten unter sich.
 
 // Battle-UI-Einstellungen
-#define B_MOVE_REARRANGEMENT_IN_BATTLE  GEN_LATEST  // In Gen4+ können Moves im Kampf nicht umsortiert werden.
+#define B_MOVE_REARRANGEMENT_IN_BATTLE  GEN_3  // In Gen4+ können Moves im Kampf nicht umsortiert werden.
 
 #define B_POOL_SETTING_CONSISTENT_RNG       FALSE    // TRUE: Derselbe Trainer erzeugt auf demselben Save immer denselben Pool.
 #define B_POOL_SETTING_USE_FIXED_SEED       FALSE    // TRUE: Nutzt den festen Seed in B_POOL_SETTING_FIXED_SEED.
@@ -360,5 +372,7 @@
 #define B_POOL_RULE_EXCLUDE_FORMS           FALSE    // Schließt verschiedene Formen bei Species Clause aus.
 #define B_POOL_RULE_ITEM_CLAUSE             FALSE    // Jedes Item nur einmal.
 #define B_POOL_RULES_USE_ITEM_EXCLUSIONS    FALSE    // Items aus poolItemClauseExclusions ausschließen.
+#define B_POOL_RULE_MEGA_STONE_CLAUSE       FALSE    // Nur ein Mon mit Mega-Stein auswählen
+#define B_POOL_RULE_Z_CRYSTAL_CLAUSE        FALSE    // Nur ein Mon mit Z-Kristall auswählen
 
 #endif // GUARD_CONFIG_BATTLE_H

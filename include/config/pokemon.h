@@ -55,12 +55,12 @@
 #define P_EV_CAP GEN_LATEST               // Seit Gen. 6 beträgt die maximale Anzahl an EVs pro Statuswert 252 statt 255.
 #define P_SHOW_TERA_TYPE GEN_8            // Seit Gen. 9 wird der Tera-Typ auf dem Berichtsbildschirm angezeigt.
 #define P_TM_LITERACY GEN_LATEST          // Seit Gen. 6 können Pokémon, die TM-Analphabeten sind, TMs erlernen, die Attacken lehren, welche in ihren Level-Up-Lernsets enthalten sind.
-#define P_CAN_FORGET_HIDDEN_MOVE FALSE    // Wenn WAHR, können Pokémon jede Attacke vergessen, auch wenn es eine Versteckte Attacke (VM) ist.
+#define P_CAN_FORGET_HIDDEN_MOVE TRUE    // Wenn WAHR, können Pokémon jede Attacke vergessen, auch wenn es eine Versteckte Attacke (VM) ist.
 #define P_ASK_MOVE_CONFIRMATION FALSE     // Wenn FALSCH, fragt das Spiel den Spieler nicht nach Bestätigung, wenn er sich entscheidet, eine Attacke nicht zu erlernen.
 #define P_EGG_CYCLE_LENGTH GEN_LATEST     // Seit Gen. 8 benötigen Ei-Zyklen nur noch halb so viele Schritte wie zuvor. Frühere Generationen hatten unterschiedliche Schrittzahlen um 255.
 #define P_ONLY_OBTAINABLE_SHINIES FALSE   // Wenn WAHR, werden Pokémon, die in der Kampfpyramide oder bei deaktiviertem Fang angetroffen werden, nicht Shiny sein.
 #define P_NO_SHINIES_WITHOUT_POKEBALLS FALSE // Wenn WAHR, werden Pokémon, die angetroffen werden, wenn der Spieler keine Pokébälle mehr hat, nicht Shiny sein.
-#define P_SHOW_DYNAMIC_TYPES FALSE        // Wenn WAHR, werden alle Attacken mit dynamischen Typenänderungen in Kampf-/Berichtsbildschirmen als ihr aktueller Typ angezeigt, anstatt nur ausgewählte wie in Vanilla.
+#define P_SHOW_DYNAMIC_TYPES TRUE        // Wenn WAHR, werden alle Attacken mit dynamischen Typenänderungen in Kampf-/Berichtsbildschirmen als ihr aktueller Typ angezeigt, anstatt nur ausgewählte wie in Vanilla.
 
 // Schalter für Lernset-Helfer
 #define P_LEARNSET_HELPER_TEACHABLE TRUE  // Wenn WAHR, wird teachable_learnsets.h von tools/learnset_helpers/make_teachables.py anhand der enthaltenen JSON-Dateien und basierend auf verfügbaren TMs und Tutoren befüllt.
