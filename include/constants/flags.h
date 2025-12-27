@@ -61,7 +61,7 @@
 #define FLAG_HIDE_LAVADOS        0x2F // Lavados verstecken
 #define FLAG_DAILY_FOUGHT_ASH    0x30 // Täglicher Kampf gegen Ash durchgeführt
 #define FLAG_DEFEATED_ASH_ONCE    0x31 // Ash wurde mindestens einmal besiegt
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_CYCLING_ROAD_PASSED_FOR_ACRO    0x32 // Fahrradstraße für Akrobatik passiert
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
