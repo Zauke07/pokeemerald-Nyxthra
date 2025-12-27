@@ -455,7 +455,7 @@ struct BattleFrontier
     /*0x64C*/ struct EmeraldBattleTowerRecord towerPlayer;
     /*0x738*/ struct EmeraldBattleTowerRecord towerRecords[BATTLE_TOWER_RECORD_COUNT]; // From record mixing.
     /*0xBEB*/ struct BattleTowerInterview towerInterview;
-#if FREE_BATTLE_TOWER_E_READER == FALSE
+#if FREE_BATTLE_TOWER_E_READER == TRUE
     /*0xBEC*/ struct BattleTowerEReaderTrainer ereaderTrainer;  //188 bytes
 #endif //FREE_BATTLE_TOWER_E_READER
     /*0xCA8*/ u8 challengeStatus;
