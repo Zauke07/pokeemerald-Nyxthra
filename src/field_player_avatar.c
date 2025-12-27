@@ -2617,6 +2617,7 @@ static void Task_WaitStopSurfing(u8 taskId)
     }
 }
 
+/*
 #define tStep              data[0]
 #define tFrameCounter      data[1]
 #define tNumDots           data[2]
@@ -3254,6 +3255,7 @@ static void AlignFishingAnimationFrames(void)
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
         SetSurfBlob_PlayerOffset(gObjectEvents[gPlayerAvatar.objectEventId].fieldEffectSpriteId, TRUE, playerSprite->y2);
 }
+*/
 
 void SetSpinStartFacingDir(u8 direction)
 {

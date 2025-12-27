@@ -1783,8 +1783,10 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
         {
             // Autolauf: B gedrückt = Toggle
             if (!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
-                                      | PLAYER_AVATAR_FLAG_ACRO_BIKE
-                                      | PLAYER_AVATAR_FLAG_SURFING)) &&
+                                    | PLAYER_AVATAR_FLAG_ACRO_BIKE
+                                    | PLAYER_AVATAR_FLAG_SURFING
+                                    | PLAYER_AVATAR_FLAG_UNDERWATER)) &&
+                (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_CONTROLLABLE) &&
                 gSaveBlock2Ptr->optionsAutoRunToggle &&
                 (newKeys & B_BUTTON))
             {

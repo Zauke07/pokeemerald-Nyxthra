@@ -135,6 +135,7 @@ static void Empty_DrawChoices(u8 menuOffset, u8 selection);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 
+/*
 static const u8 gText_Option[]             = _("OPTION");
 static const u8 gText_TextSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}SLOW");
 static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}MID");
@@ -150,6 +151,7 @@ static const u8 gText_FrameTypeNumber[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}NORMAL");
 static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
 static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
+*/
 
 //static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text.gbapal");
 static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text2.gbapal"); // <- inserts extra greens
@@ -1516,6 +1518,7 @@ bool8 Rogue_ShouldForceNicknameScreen()
     return FALSE;
 }
 
+/*
 void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
 {
     if(inputActive)
@@ -1530,6 +1533,7 @@ void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
         }
     }
 }
+*/
 
 u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType)
 {

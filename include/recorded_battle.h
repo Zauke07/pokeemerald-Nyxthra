@@ -34,7 +34,7 @@ struct RecordedBattleSave
     u16 easyChatSpeech[EASY_CHAT_BATTLE_WORDS_COUNT];
     u8 recordMixFriendLanguage;
     u8 apprenticeLanguage;
-    u8 battleRecord[BATTLER_RECORD_SIZE];
+    u8 battleRecord[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE];
     u32 checksum;
 };
 

@@ -85,6 +85,137 @@ static const u32 sStarterCircle_Gfx[] = INCBIN_U32("graphics/starter_choose/star
 
 EWRAM_DATA static u16 sStarterMon[STARTER_MON_COUNT] = {0};
 
+static void DrawRegionHeader(u8 region);
+static void ClearRegionHeader(void);
+
+static u8 sRegionHeaderWindowId;   // kein = WINDOW_NONE
+static u8 sCurrentRegionIndex;     // kein = 0
+
+
+#define REGION_HEADER_WIN_WIDTH  12
+#define REGION_HEADER_WIN_HEIGHT 2
+
+static const u8 sText_Region_Kanto[]  = _("{COLOR RED}Kanto{COLOR WHITE}");
+static const u8 sText_Region_Johto[]  = _("{COLOR GREEN}Johto{COLOR WHITE}");
+static const u8 sText_Region_Hoenn[]  = _("{COLOR BLUE}Hoenn{COLOR WHITE}");
+static const u8 sText_Region_Sinnoh[] = _("{COLOR LIGHT_BLUE}Sinnoh{COLOR WHITE}");
+static const u8 sText_Region_Unova[]  = _("{COLOR LIGHT_RED}Einall{COLOR WHITE}");
+static const u8 sText_Region_Kalos[]  = _("{COLOR LIGHT_GREEN}Kalos{COLOR WHITE}");
+static const u8 sText_Region_Alola[]  = _("{COLOR DYNAMIC_COLOR4}Alola{COLOR WHITE}");
+static const u8 sText_Region_Galar[]  = _("{COLOR DYNAMIC_COLOR5}Galar{COLOR WHITE}");
+static const u8 sText_Region_Paldea[] = _("{COLOR DYNAMIC_COLOR6}Paldea{COLOR WHITE}");
+static const u8 sText_L[] = _("{L_BUTTON}");
+static const u8 sText_R[] = _("{R_BUTTON}");
+
+static const u8 sStarterRegionIds[STARTER_REGIONS_COUNT] =
+{
+    REGION_KANTO,
+    REGION_JOHTO,
+    REGION_HOENN,
+    REGION_SINNOH,
+    REGION_UNOVA,
+    REGION_KALOS,
+    REGION_ALOLA,
+    REGION_GALAR,
+    REGION_PALDEA,
+};
+
+static const u8 *const sRegionHeaderNames[STARTER_REGIONS_COUNT] =
+{
+    sText_Region_Kanto,
+    sText_Region_Johto,
+    sText_Region_Hoenn,
+    sText_Region_Sinnoh,
+    sText_Region_Unova,
+    sText_Region_Kalos,
+    sText_Region_Alola,
+    sText_Region_Galar,
+    sText_Region_Paldea,
+};
+
+// WindowTemplate für den Header
+static const struct WindowTemplate sWindowTemplate_RegionHeader =
+{
+    .bg = 0,
+    .tilemapLeft = (30 - REGION_HEADER_WIN_WIDTH) / 2,
+    .tilemapTop = 1,
+    .width = REGION_HEADER_WIN_WIDTH,
+    .height = REGION_HEADER_WIN_HEIGHT,
+    .paletteNum = 14,
+    .baseBlock = 0x0300,
+};
+
+static const struct ListMenuItem sStarterRegionListItems[] =
+{
+    {gText_Kanto,  0},
+    {gText_Johto,  1},
+    {gText_Hoenn,  2},
+    {gText_Sinnoh, 3},
+    {gText_Unova,  4},
+    {gText_Kalos,  5},
+    {gText_Alola,  6},
+    {gText_Galar,  7},
+    {gText_Paldea, 8},
+};
+
+static void ClearRegionHeader(void)
+{
+    if (sRegionHeaderWindowId != WINDOW_NONE)
+    {
+        ClearStdWindowAndFrameToTransparent(sRegionHeaderWindowId, TRUE);
+        
+        RemoveWindow(sRegionHeaderWindowId);
+        sRegionHeaderWindowId = WINDOW_NONE;
+
+        ScheduleBgCopyTilemapToVram(0);
+    }
+}
+
+static void DrawRegionHeader(u8 region)
+{
+    if (region >= STARTER_REGIONS_COUNT)
+        region = 0;
+
+    if (sRegionHeaderWindowId == WINDOW_NONE)
+        sRegionHeaderWindowId = AddWindow(&sWindowTemplate_RegionHeader);
+
+    // Innen leeren
+    FillWindowPixelBuffer(sRegionHeaderWindowId, PIXEL_FILL(1));
+
+    // IDENTISCHER Rahmen wie unten (nutzt LoadUserWindowBorderGfx(0, 0x2A8, BG_PLTT_ID(13)) aus CB2_ChooseStarter)
+    DrawStdFrameWithCustomTileAndPalette(sRegionHeaderWindowId, FALSE, 0x2A8, 0xD);
+
+    // Buttons links/rechts (mit echter Breitenberechnung, damit R nicht abgeschnitten wird)
+    {
+        s32 winPx = sWindowTemplate_RegionHeader.width * 8;
+        s32 wL = GetStringWidth(FONT_NORMAL, sText_L, 0);
+        s32 wR = GetStringWidth(FONT_NORMAL, sText_R, 0);
+
+        AddTextPrinterParameterized(sRegionHeaderWindowId, FONT_NORMAL, sText_L, 2, 2, 0, NULL);
+        AddTextPrinterParameterized(sRegionHeaderWindowId, FONT_NORMAL, sText_R, winPx - wR - 2, 2, 0, NULL);
+
+        // Regionsname zentriert zwischen L/R
+        {
+            const u8 *name = sRegionHeaderNames[region];
+            s32 nameW = GetStringWidth(FONT_NORMAL, name, 0);
+
+            s32 leftPad = 2 + wL + 4;
+            s32 rightPad = 2 + wR + 4;
+            s32 available = winPx - leftPad - rightPad;
+
+            s32 x = leftPad + (available - nameW) / 2;
+            if (x < leftPad)
+                x = leftPad;
+
+            AddTextPrinterParameterized(sRegionHeaderWindowId, FONT_NORMAL, name, x, 2, 0, NULL);
+        }
+    }
+
+    PutWindowTilemap(sRegionHeaderWindowId);
+    CopyWindowToVram(sRegionHeaderWindowId, COPYWIN_FULL);
+    ScheduleBgCopyTilemapToVram(0);
+}
+
 static const struct WindowTemplate sWindowTemplates[] =
 {
     {
@@ -450,6 +581,9 @@ static void VblankCB_StarterChoose(void)
 #define tStarterSelection   data[0]
 #define tPkmnSpriteId       data[1]
 #define tCircleSpriteId     data[2]
+#define tRegion             data[3]
+#define tLRDelay            data[4]
+
 
 // Data for sSpriteTemplate_Pokeball
 #define sTaskId data[0]
@@ -457,7 +591,9 @@ static void VblankCB_StarterChoose(void)
 
 void CB2_ChooseStarter(void)
 {
-    SetStarterMonListFromRegion(VarGet(VAR_STARTER_REGION));
+    sRegionHeaderWindowId = WINDOW_NONE;
+    sCurrentRegionIndex = 0;
+    SetStarterMonListFromRegion(sStarterRegionIds[sCurrentRegionIndex]);
     u8 taskId;
     u8 spriteId;
 
@@ -524,7 +660,10 @@ void CB2_ChooseStarter(void)
     ShowBg(2);
     ShowBg(3);
 
+    DrawRegionHeader(sCurrentRegionIndex);
+
     taskId = CreateTask(Task_StarterChoose, 0);
+    gTasks[taskId].tLRDelay = 0;
     gTasks[taskId].tStarterSelection = 1;
 
     // Create hand sprite
@@ -599,21 +738,64 @@ static void Task_ReturnToPreStarterPosition(u8 taskId)
 }
 */
 
+static void UpdateStarterRegion(u8 taskId)
+{
+    SetStarterMonListFromRegion(sStarterRegionIds[sCurrentRegionIndex]);
+
+    ClearStarterLabel();
+    CreateStarterPokemonLabel(gTasks[taskId].tStarterSelection);
+
+    DrawRegionHeader(sCurrentRegionIndex);
+}
+
 static void Task_HandleStarterChooseInput(u8 taskId)
 {
+    if (gTasks[taskId].tLRDelay > 0)
+        gTasks[taskId].tLRDelay--;
+
     u8 selection = gTasks[taskId].tStarterSelection;
 
-    if (JOY_NEW(A_BUTTON))
+    // --- NEU: L und R Tasten Logik ---
+    if (JOY_NEW(L_BUTTON) && gTasks[taskId].tLRDelay == 0)
+    {
+        gTasks[taskId].tLRDelay = 60; // ~1 Sekunde
+        PlaySE(SE_SELECT);
+
+        if (sCurrentRegionIndex == 0)
+            sCurrentRegionIndex = STARTER_REGIONS_COUNT - 1;
+        else
+            sCurrentRegionIndex--;
+
+        UpdateStarterRegion(taskId);
+    }
+    else if (JOY_NEW(R_BUTTON) && gTasks[taskId].tLRDelay == 0)
+    {
+        gTasks[taskId].tLRDelay = 60;
+        PlaySE(SE_SELECT);
+
+        sCurrentRegionIndex++;
+        if (sCurrentRegionIndex >= STARTER_REGIONS_COUNT)
+            sCurrentRegionIndex = 0;
+
+        UpdateStarterRegion(taskId);
+    }
+    // ---------------------------------
+
+    else if (JOY_NEW(A_BUTTON))
     {
         u8 spriteId;
 
         ClearStarterLabel();
 
-        // Create white circle background
+        // WICHTIG: Jetzt speichern wir die Region in der Variable für das Spiel
+        // Damit weiß das Spiel später, aus welcher Region der Starter kam
+        VarSet(VAR_STARTER_REGION, sStarterRegionIds[sCurrentRegionIndex]);
+        DrawRegionHeader(sCurrentRegionIndex);
+
         spriteId = CreateSprite(&sSpriteTemplate_StarterCircle, sPokeballCoords[selection][0], sPokeballCoords[selection][1], 1);
         gTasks[taskId].tCircleSpriteId = spriteId;
 
-        // Create Pokémon sprite
+        // Hier holen wir uns das Pokémon aus der AKTUELLEN Liste (die wir mit L/R geändert haben)
         spriteId = CreatePokemonFrontSprite(GetStarterPokemon(gTasks[taskId].tStarterSelection), sPokeballCoords[selection][0], sPokeballCoords[selection][1]);
         gSprites[spriteId].affineAnims = &sAffineAnims_StarterPokemon;
         gSprites[spriteId].callback = SpriteCB_StarterPokemon;
@@ -631,13 +813,6 @@ static void Task_HandleStarterChooseInput(u8 taskId)
         gTasks[taskId].tStarterSelection++;
         gTasks[taskId].func = Task_MoveStarterChooseCursor;
     }
-//    else if (JOY_NEW(B_BUTTON))
-//    {
-//        PlaySE(SE_SELECT);
-//        ResetAllPicSprites();
-//        FadeScreen(FADE_TO_BLACK, 0);
-//        CreateTask(Task_ReturnToPreStarterPosition, 0);
-//    }
 }
 
 static void Task_WaitForStarterSprite(u8 taskId)
@@ -657,6 +832,7 @@ static void Task_AskConfirmStarter(u8 taskId)
     AddTextPrinterParameterized(0, FONT_NORMAL, gText_ConfirmStarterChoice, 0, 1, 0, NULL);
     ScheduleBgCopyTilemapToVram(0);
     CreateYesNoMenu(&sWindowTemplate_ConfirmStarter, 0x2A8, 0xD, 0);
+    DrawRegionHeader(sCurrentRegionIndex);
     gTasks[taskId].func = Task_HandleConfirmStarterInput;
 }
 
@@ -670,6 +846,8 @@ static void Task_HandleConfirmStarterInput(u8 taskId)
         // Return the starter choice and exit.
         gSpecialVar_Result = gTasks[taskId].tStarterSelection;
         ResetAllPicSprites();
+        ClearRegionHeader();
+        FreeAllWindowBuffers();
         SetMainCallback2(gMain.savedCallback);
         break;
     case 1:  // NO
@@ -791,19 +969,6 @@ static void SpriteCB_StarterPokemon(struct Sprite *sprite)
         sprite->y += 2;
 }
 
-static const struct ListMenuItem sStarterRegionListItems[] =
-{
-    {gText_Kanto,  0},
-    {gText_Johto,  1},
-    {gText_Hoenn,  2},
-    {gText_Sinnoh, 3},
-    {gText_Unova,  4},
-    {gText_Kalos,  5},
-    {gText_Alola,  6},
-    {gText_Galar,  7},
-    {gText_Paldea, 8},
-};
-
 void CreateStarterRegionMenu(void)
 {
     struct WindowTemplate windowTemplate =
@@ -865,19 +1030,26 @@ static void Task_StarterRegionMenu(u8 taskId)
     {
         PlaySE(SE_SELECT);
         VarSet(VAR_RESULT, input);
+
+        // Optional: wenn du parallel direkt die Region-Var halten willst
+        VarSet(VAR_STARTER_REGION, input);
+
+        DestroyListMenuTask(sStarterRegionListTaskId, NULL, NULL);
+        ClearStdWindowAndFrameToTransparent(sStarterRegionWindowId, TRUE);
+        ClearWindowTilemap(sStarterRegionWindowId);
+        RemoveWindow(sStarterRegionWindowId);
+        ClearDialogWindowAndFrameToTransparent(0, TRUE);
+
+        // WICHTIG: Script wieder freigeben, sonst “Freeze”
+        ScriptContext_Enable();
+
+        DestroyTask(taskId);
     }
     else
     {
-        return; // B drücken = kein Abbruch erlaubt
+        // B drücken = kein Abbruch erlaubt
+        return;
     }
-
-    DestroyListMenuTask(sStarterRegionListTaskId, NULL, NULL);
-    ClearStdWindowAndFrameToTransparent(sStarterRegionWindowId, TRUE);
-    ClearWindowTilemap(sStarterRegionWindowId);
-    RemoveWindow(sStarterRegionWindowId);
-    ClearDialogWindowAndFrameToTransparent(0, TRUE);
-    ScriptContext_Enable();
-    DestroyTask(taskId);
 }
 
 bool8 ShowStarterRegionMenu(struct ScriptContext *ctx)

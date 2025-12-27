@@ -21,11 +21,57 @@
 #include "constants/trainers.h"
 #include "constants/rgb.h"
 
+#define DISABLE_RECORDED_BATTLE 1
+
+#if DISABLE_RECORDED_BATTLE
+
+// Diese 3 sind in recorded_battle.h als extern deklariert -> müssen existieren
+EWRAM_DATA rng_value_t gRecordedBattleRngSeed = RNG_VALUE_EMPTY;
+EWRAM_DATA rng_value_t gBattlePalaceMoveSelectionRngValue = RNG_VALUE_EMPTY;
+EWRAM_DATA u8 gRecordedBattleMultiplayerId = 0;
+
+// Stubs: Build ok, Feature tot, keine großen Arrays, kein Save-Sektor Zugriff
+void RecordedBattle_Init(u8 mode) { (void)mode; }
+void RecordedBattle_SetTrainerInfo(void) {}
+void RecordedBattle_SetBattlerAction(u8 battler, u8 action) { (void)battler; (void)action; }
+void RecordedBattle_ClearBattlerAction(u8 battler, u8 bytesToClear) { (void)battler; (void)bytesToClear; }
+u8 RecordedBattle_GetBattlerAction(u32 actionType, u8 battler) { (void)actionType; (void)battler; return 0xFF; }
+u8 RecordedBattle_BufferNewBattlerData(u8 *dst) { (void)dst; return 0; }
+void RecordedBattle_RecordAllBattlerData(u8 *src) { (void)src; }
+bool32 CanCopyRecordedBattleSaveData(void) { return FALSE; }
+bool32 MoveRecordedBattleToSaveData(void) { return FALSE; }
+void SetPartiesFromRecordedSave(struct RecordedBattleSave *src) { (void)src; }
+void SetVariablesForRecordedBattle(struct RecordedBattleSave *src) { (void)src; }
+void PlayRecordedBattle(void (*CB2_After)(void)) { (void)CB2_After; }
+u8 GetRecordedBattleFrontierFacility(void) { return 0; }
+u8 GetRecordedBattleFronterBrainSymbol(void) { return 0; }
+void RecordedBattle_SaveParties(void) {}
+u8 GetBattlerLinkPlayerGender(u32 battler) { (void)battler; return 0; }
+void RecordedBattle_ClearFrontierPassFlag(void) {}
+void RecordedBattle_SetFrontierPassFlagFromHword(u16 flags) { (void)flags; }
+u8 RecordedBattle_GetFrontierPassFlag(void) { return 0; }
+u8 GetBattleSceneInRecordedBattle(void) { return 0; }
+u8 GetTextSpeedInRecordedBattle(void) { return 0; }
+void RecordedBattle_CopyBattlerMoves(u32 battler) { (void)battler; }
+void RecordedBattle_CheckMovesetChanges(u8 mode) { (void)mode; }
+u64 GetAiScriptsInRecordedBattle(u32 battler) { (void)battler; return 0; }
+void RecordedBattle_SetPlaybackFinished(void) {}
+bool8 RecordedBattle_CanStopPlayback(void) { return FALSE; }
+void GetRecordedBattleRecordMixFriendName(u8 *dst) { if (dst) dst[0] = EOS; }
+u8 GetRecordedBattleRecordMixFriendClass(void) { return 0; }
+u8 GetRecordedBattleApprenticeId(void) { return 0; }
+u8 GetRecordedBattleRecordMixFriendLanguage(void) { return 0; }
+u8 GetRecordedBattleApprenticeLanguage(void) { return 0; }
+void RecordedBattle_SaveBattleOutcome(void) {}
+u16 *GetRecordedBattleEasyChatSpeech(void) { return NULL; }
+
+#else
+
 struct PlayerInfo
 {
     u32 trainerId;
     u8 name[PLAYER_NAME_LENGTH + 1];
-    u8 gender;        // Wieder hinzufügen für Kompatibilität
+    u8 gender;
     u8 trainerStyle;  // Beibehaltung für Charakterauswahl
     u16 battler;
     u16 language;
@@ -36,10 +82,10 @@ STATIC_ASSERT(sizeof(struct RecordedBattleSave) <= SECTOR_COUNTER_OFFSET, Record
 
 EWRAM_DATA rng_value_t gRecordedBattleRngSeed = RNG_VALUE_EMPTY;
 EWRAM_DATA rng_value_t gBattlePalaceMoveSelectionRngValue = RNG_VALUE_EMPTY;
-EWRAM_DATA static u8 sBattleRecords[BATTLER_RECORD_SIZE] = {0};
-EWRAM_DATA static u16 sBattlerRecordSizes = {0};
-EWRAM_DATA static u16 sBattlerPrevRecordSizes = {0};
-EWRAM_DATA static u16 sBattlerSavedRecordSizes = {0};
+EWRAM_DATA static u8 sBattleRecords[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE] = {0};
+EWRAM_DATA static u16 sBattlerRecordSizes[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA static u16 sBattlerPrevRecordSizes[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA static u16 sBattlerSavedRecordSizes[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA static u8 sRecordMode = 0;
 EWRAM_DATA static u8 sLvlMode = 0;
 EWRAM_DATA static u8 sFrontierFacility = 0;
@@ -72,14 +118,16 @@ static void CB2_RecordedBattle(void);
 
 void RecordedBattle_Init(u8 mode)
 {
-    s32 j;
+    s32 i, j;
 
     sRecordMode = mode;
     sIsPlaybackFinished = FALSE;
 
-    sBattlerRecordSizes = 0;
-    sBattlerPrevRecordSizes = 0;
-    sBattlerSavedRecordSizes = 0;
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
+        sBattlerRecordSizes[i] = 0;
+        sBattlerPrevRecordSizes[i] = 0;
+        sBattlerSavedRecordSizes[i] = 0;
 
         if (mode == B_RECORD_MODE_RECORDING)
         {
@@ -155,8 +203,8 @@ void RecordedBattle_SetTrainerInfo(void)
 
 void RecordedBattle_SetBattlerAction(u8 battler, u8 action)
 {
-    if (sBattlerRecordSizes < BATTLER_RECORD_SIZE && sRecordMode != B_RECORD_MODE_PLAYBACK)
-        sBattleRecords[sBattlerRecordSizes++] = action;
+    if (sBattlerRecordSizes[battler] < BATTLER_RECORD_SIZE && sRecordMode != B_RECORD_MODE_PLAYBACK)
+        sBattleRecords[battler][sBattlerRecordSizes[battler]++] = action;
 }
 
 void RecordedBattle_ClearBattlerAction(u8 battler, u8 bytesToClear)
@@ -165,9 +213,9 @@ void RecordedBattle_ClearBattlerAction(u8 battler, u8 bytesToClear)
 
     for (i = 0; i < bytesToClear; i++)
     {
-        sBattlerRecordSizes--;
-        sBattleRecords[sBattlerRecordSizes] = 0xFF;
-        if (sBattlerRecordSizes == 0)
+        sBattlerRecordSizes[battler]--;
+        sBattleRecords[battler][sBattlerRecordSizes[battler]] = 0xFF;
+        if (sBattlerRecordSizes[battler] == 0)
             break;
     }
 }
@@ -175,10 +223,10 @@ void RecordedBattle_ClearBattlerAction(u8 battler, u8 bytesToClear)
 u8 RecordedBattle_GetBattlerAction(u32 actionType, u8 battler)
 {
     if (gTestRunnerEnabled)
-        TestRunner_Battle_CheckBattleRecordActionType(battler, sBattlerRecordSizes, actionType);
+        TestRunner_Battle_CheckBattleRecordActionType(battler, sBattlerRecordSizes[battler], actionType);
 
     // Trying to read past array or invalid action byte, battle is over.
-    if (sBattlerRecordSizes >= BATTLER_RECORD_SIZE || sBattleRecords[sBattlerRecordSizes] == 0xFF)
+    if (sBattlerRecordSizes[battler] >= BATTLER_RECORD_SIZE || sBattleRecords[battler][sBattlerRecordSizes[battler]] == 0xFF)
     {
         gSpecialVar_Result = gBattleOutcome = B_OUTCOME_PLAYER_TELEPORTED; // hah
         ResetPaletteFadeControl();
@@ -188,7 +236,7 @@ u8 RecordedBattle_GetBattlerAction(u32 actionType, u8 battler)
     }
     else
     {
-        return sBattleRecords[sBattlerRecordSizes++];
+        return sBattleRecords[battler][sBattlerRecordSizes[battler]++];
     }
 }
 
@@ -199,18 +247,21 @@ static u8 UNUSED GetRecordedBattleMode(void)
 
 u8 RecordedBattle_BufferNewBattlerData(u8 *dst)
 {
-    u8 j;
+    u8 i, j;
     u8 idx = 0;
 
-    if (sBattlerRecordSizes != sBattlerPrevRecordSizes)
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
-        dst[idx++] = 0;
-        dst[idx++] = sBattlerRecordSizes - sBattlerPrevRecordSizes;
+        if (sBattlerRecordSizes[i] != sBattlerPrevRecordSizes[i])
+        {
+            dst[idx++] = i;
+            dst[idx++] = sBattlerRecordSizes[i] - sBattlerPrevRecordSizes[i];
 
-        for (j = 0; j < sBattlerRecordSizes - sBattlerPrevRecordSizes; j++)
-            dst[idx++] = sBattleRecords[sBattlerPrevRecordSizes + j];
+            for (j = 0; j < sBattlerRecordSizes[i] - sBattlerPrevRecordSizes[i]; j++)
+                dst[idx++] = sBattleRecords[i][sBattlerPrevRecordSizes[i] + j];
 
-        sBattlerPrevRecordSizes = sBattlerRecordSizes;
+            sBattlerPrevRecordSizes[i] = sBattlerRecordSizes[i];
+        }
     }
 
     return idx;
@@ -239,7 +290,7 @@ void RecordedBattle_RecordAllBattlerData(u8 *src)
             u8 numActions = GetNextRecordedDataByte(src, &idx, &size);
 
             for (i = 0; i < numActions; i++)
-                sBattleRecords[sBattlerSavedRecordSizes++] = GetNextRecordedDataByte(src, &idx, &size);
+                sBattleRecords[battler][sBattlerSavedRecordSizes[battler]++] = GetNextRecordedDataByte(src, &idx, &size);
         }
     }
 }
@@ -317,6 +368,9 @@ bool32 MoveRecordedBattleToSaveData(void)
     {
         battleSave->battleFlags = (sBattleFlags & ~(BATTLE_TYPE_LINK | BATTLE_TYPE_LINK_IN_BATTLE)) | BATTLE_TYPE_RECORDED_LINK;
 
+        // BATTLE_TYPE_RECORDED_IS_MASTER set indicates battle will play
+        // out from player's perspective (i.e. player with back to camera)
+        // Otherwise player will appear on "opponent" side
         if (sBattleFlags & BATTLE_TYPE_IS_MASTER)
         {
             battleSave->battleFlags |= BATTLE_TYPE_RECORDED_IS_MASTER;
@@ -419,8 +473,9 @@ bool32 MoveRecordedBattleToSaveData(void)
         battleSave->apprenticeLanguage = gSaveBlock2Ptr->apprentices[gPartnerTrainerId - TRAINER_RECORD_MIXING_APPRENTICE].language;
     }
 
-    for (j = 0; j < BATTLER_RECORD_SIZE; j++)
-        battleSave->battleRecord[j] = sBattleRecords[j];
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (j = 0; j < BATTLER_RECORD_SIZE; j++)
+            battleSave->battleRecord[i][j] = sBattleRecords[i][j];
 
     while (1)
     {
@@ -541,13 +596,14 @@ void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
     sRecordMixFriendLanguage = src->recordMixFriendLanguage;
     sApprenticeLanguage = src->apprenticeLanguage;
 
-    for (j = 0; j < EASY_CHAT_BATTLE_WORDS_COUNT; j++)
-        sEasyChatSpeech[j] = src->easyChatSpeech[j];
+    for (i = 0; i < EASY_CHAT_BATTLE_WORDS_COUNT; i++)
+        sEasyChatSpeech[i] = src->easyChatSpeech[i];
 
     gSaveBlock2Ptr->frontier.lvlMode = src->lvlMode;
 
-    for (j = 0; j < BATTLER_RECORD_SIZE; j++)
-        sBattleRecords[j] = src->battleRecord[j];
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (j = 0; j < BATTLER_RECORD_SIZE; j++)
+            sBattleRecords[i][j] = src->battleRecord[i][j];
 }
 
 void PlayRecordedBattle(void (*CB2_After)(void))
@@ -711,7 +767,7 @@ void RecordedBattle_CheckMovesetChanges(u8 mode)
             }
             else // B_RECORD_MODE_PLAYBACK
             {
-                if (sBattleRecords[sBattlerRecordSizes] == ACTION_MOVE_CHANGE)
+                if (sBattleRecords[battler][sBattlerRecordSizes[battler]] == ACTION_MOVE_CHANGE)
                 {
                     u8 ppBonuses[MAX_MON_MOVES];
                     u8 moveSlots[MAX_MON_MOVES];
@@ -832,3 +888,6 @@ u16 *GetRecordedBattleEasyChatSpeech(void)
 {
     return sEasyChatSpeech;
 }
+
+#endif // DISABLE_RECORDED_BATTLE
+

@@ -10,7 +10,7 @@ void CB2_InitOptionMenu(void);
 bool8 Rogue_GetBattleAnimsEnabled(void);
 //bool8 RogueToD_ApplyTimeVisuals();
 u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType);
-void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive);
+//void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive);
 bool8 Rogue_ShouldForceNicknameScreen();
 bool8 Rogue_ShouldSkipAssignNickname(struct Pokemon* mon);
 bool8 Rogue_ShouldSkipAssignNicknameYesNoMessage();

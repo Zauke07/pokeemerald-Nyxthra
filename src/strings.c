@@ -1957,8 +1957,14 @@ const u8 gText_PlantBerry[] = _("Beere pflanzen");
 const u8 gText_AM[] = _("Vorm.");
 const u8 gText_PM[] = _("Nachm.");
 const u8 gText_Relearn[] = _("{START_BUTTON} Neu Lernen"); // zukünftige Notiz: dies nicht dekapitalisieren, da es die Zusammenfassungsbildschirm-Hintergrundgrafiken nachahmt, die nicht dekapitalisiert werden
-const u8 gText_Rename[] = _("Umbenen.");
+const u8 gText_Relearn_LevelUp[] = _("{START_BUTTON} LEVEL-Attacken");
+const u8 gText_Relearn_Egg[] = _("{START_BUTTON} Ei-Attacken");
+const u8 gText_Relearn_TM[] = _("{START_BUTTON} TM-Attacken");
+const u8 gText_Relearn_Tutor[] = _("{START_BUTTON} Tutor-Attacken");
+const u8 gText_Rename[] = _("Umbenenn.");
 const u8 gText_CannotSendMonToBoxHM[] = _("Dieses Pokémon kann nicht in die Box\ngelegt werden, da es eine VM-Attacke kennt.{PAUSE_UNTIL_PRESS}");
+const u8 gText_CannotSendMonToBoxActive[] = _("Ein aktives Kampf-Pokémon kann nicht\nin die Box gelegt werden.{PAUSE_UNTIL_PRESS}");
+const u8 gText_CannotSendMonToBoxPartner[] = _("Ein Pokémon, das dir nicht gehört,\nkann nicht in die Box gelegt werden.{PAUSE_UNTIL_PRESS}");
 
 // Rogue_strings.h
 const u8 gText_32Spaces[] = _("                                ");
