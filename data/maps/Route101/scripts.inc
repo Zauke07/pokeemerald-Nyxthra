@@ -222,7 +222,7 @@ Route101_EventScript_RouteSign::
 Route101_EventScript_BirchsBag::
 	lock
 	faceplayer
-	goto Route101_EventScript_ChooseStarterRegion
+	goto Route101_EventScript_BirchsBag_Continued
 
 Route101_EventScript_HideMayInBedroom::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
@@ -294,58 +294,58 @@ Route101_Text_Glumanda:
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
 
-Route101_EventScript_ChooseStarterRegion::
-	msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT
-	closemessage
-	special ShowStarterRegionMulti
-	waitstate
-	switch VAR_RESULT
-	case 0, SetStarterRegion_Kanto
-	case 1, SetStarterRegion_Johto
-	case 2, SetStarterRegion_Hoenn
-	case 3, SetStarterRegion_Sinnoh
-	case 4, SetStarterRegion_Unova
-	case 5, SetStarterRegion_Kalos
-	case 6, SetStarterRegion_Alola
-	case 7, SetStarterRegion_Galar
-	case 8, SetStarterRegion_Paldea
-	end
+@ Route101_EventScript_ChooseStarterRegion::
+@ 	msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT
+@ 	closemessage
+@ 	special ShowStarterRegionMulti
+@ 	waitstate
+@ 	switch VAR_RESULT
+@ 	case 0, SetStarterRegion_Kanto
+@ 	case 1, SetStarterRegion_Johto
+@ 	case 2, SetStarterRegion_Hoenn
+@ 	case 3, SetStarterRegion_Sinnoh
+@ 	case 4, SetStarterRegion_Unova
+@ 	case 5, SetStarterRegion_Kalos
+@ 	case 6, SetStarterRegion_Alola
+@ 	case 7, SetStarterRegion_Galar
+@ 	case 8, SetStarterRegion_Paldea
+@ 	end
 
-SetStarterRegion_Kanto::
-	setvar VAR_STARTER_REGION, STARTER_REGION_KANTO
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Kanto::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_KANTO
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Johto::
-	setvar VAR_STARTER_REGION, STARTER_REGION_JOHTO
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Johto::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_JOHTO
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Hoenn::
-	setvar VAR_STARTER_REGION, STARTER_REGION_HOENN
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Hoenn::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_HOENN
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Sinnoh::
-	setvar VAR_STARTER_REGION, STARTER_REGION_SINNOH
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Sinnoh::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_SINNOH
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Unova::
-	setvar VAR_STARTER_REGION, STARTER_REGION_UNOVA
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Unova::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_UNOVA
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Kalos::
-	setvar VAR_STARTER_REGION, STARTER_REGION_KALOS
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Kalos::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_KALOS
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Alola::
-	setvar VAR_STARTER_REGION, STARTER_REGION_ALOLA
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Alola::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_ALOLA
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Galar::
-	setvar VAR_STARTER_REGION, STARTER_REGION_GALAR
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Galar::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_GALAR
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
-SetStarterRegion_Paldea::
-	setvar VAR_STARTER_REGION, STARTER_REGION_PALDEA
-	goto Route101_EventScript_BirchsBag_Continued
+@ SetStarterRegion_Paldea::
+@ 	setvar VAR_STARTER_REGION, STARTER_REGION_PALDEA
+@ 	goto Route101_EventScript_BirchsBag_Continued
 
 Route101_EventScript_BirchsBag_Continued::
 	fadescreen FADE_TO_BLACK

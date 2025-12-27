@@ -134,10 +134,16 @@ Route113_EventScript_Wyatt::
 	end
 
 Route113_Text_AshCanBeFashionedIntoGlass:
-	.string "Wahahaha! Die heutige Technologie ist\n"
-	.string "schon eine wundersame Sache!\p"
-	.string "Nimm zum Beispiel diese Vulkanasche\n"
-	.string "hier. Aus ihr kann man Glas machen!$"
+	.string "Ohoho, mir scheint, die Hitze nimmt\n"
+	.string "dieses Jahr kein Ende, mein Junge!\p"
+	.string "Auch die Asche vom SCHLOTBERG ist\n"
+	.string "viel heißer als sonst. Man spürt es, nicht wahr?\p"
+	.string "Ich wette, in den Bäumen hier ganz in\n"
+	.string "der Nähe verbirgt sich ein Geheimgang!\p"
+	.string "Aber meine alten Knochen...\n"
+	.string "Ich kann das nicht überprüfen.\p"
+	.string "Ein junger Abenteurer wie du könnte\n"
+	.string "dort aber etwas Überraschendes finden.$"
 
 Route113_Text_FunWalkingThroughAsh:
 	.string "Es macht Spaß, durch die Vulkanasche zu\n"
@@ -165,8 +171,8 @@ Route113_Text_GlassWorkshopSign:
 	.string "“Glasdekor aus Vulkanasche.”$"
 
 Route113_EventScript_Floink::
-    msgbox Route113_Text_Floink, MSGBOX_NPC
-    end
+	msgbox Route113_Text_Floink, MSGBOX_NPC
+	end
 
 Route113_Text_Floink:
 	.string "Tipp:\p"
