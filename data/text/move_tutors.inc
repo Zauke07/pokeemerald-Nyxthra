@@ -63,6 +63,21 @@ MoveTutor_Text_FuryCutterTaught:
 	.string "Je öfter man zuschlägt,\n"
 	.string "desto mehr tut es weh… herrlich!$"
 
+MoveTutor_MimicTeach::
+	.string "Ah, du junges Ding!\p"
+	.string "Ich bin zwar auch noch jung, aber ich\n"
+	.string "kopiere die Art und Weise, wie die\l"
+	.string "alten Knacker hier im Dorf reden.\p"
+	.string "Was sagst du, Fratz?\n"
+	.string "Würdest du zustimmen, wenn ich deinen\l"
+	.string "Pokémon MIMIKRY beibringe?\p"
+	.string "Es ist toll, jemand anderes zu sein!$"
+
+MoveTutor_MimicDeclined::
+	.string "Pah! Langweiler!\n"
+	.string "Ich wollte deine Pokémon zu perfekten\l"
+	.string "Kopien meiner selbst machen!$"
+
 MoveTutor_Text_MimicTeach:
 	.string "Hehehe… weißt du, ich kopiere\n"
 	.string "andere Leute schon mein Leben lang.\p"

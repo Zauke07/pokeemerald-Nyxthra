@@ -1,9 +1,10 @@
 MoveRelearner_Text_WouldLearnNewMoves:
-	.string "Na, Bock auf neue Attacken?\n"
-	.string "Ich bring deinem Pokémon gern was Neues bei!$"
+	.string "Moin. Ich bin der Attacken-Helfer.\n"
+	.string "Soll ich in den Hirnen deiner Pokémon\l"
+	.string "nach vergessenen Kräften graben?$"
 
 MoveRelearner_Text_LevelUpMoves:
-	.string "Level-Up-Attacken$"
+	.string "Level-Up Attacken$"
 
 MoveRelearner_Text_EggMoves:
 	.string "Ei-Attacken$"
@@ -11,44 +12,48 @@ MoveRelearner_Text_EggMoves:
 MoveRelearner_Text_TMMoves:
 	.string "TM-Attacken$"
 
-MoveRelearner_Text_TutorMoves:
-	.string "Lehrer-Attacken$"
+MoveRelearner_Text_TutormoveMoves:
+	.string "Tutor-Attacken$"
 
 MoveRelearner_Text_SeeYa:
-	.string "Alles klar, dann hau rein!$"
+	.string "Man sieht sich!$"
 
 MoveRelearner_Text_AnythingElse:
-	.string "Noch was, oder war’s das jetzt?$"
+	.string "Kann ich sonst noch was für dich tun?$"
 
 MoveRelearner_Text_ChoosePkmn:
-	.string "Na los, welches Pokémon soll’s sein?$"
+	.string "Wähle das Versuchskaninchen… Äh,\n"
+	.string "das Pokémon aus.$"
 
 MoveRelearner_Text_HaveNoPkmn:
-	.string "Äh… du hast ja gar kein Pokémon.$"
+	.string "Du hast gar keine Pokémon dabei.\n"
+	.string "Willst du mich verarschen?$"
 
 MoveRelearner_Text_CantTeachMoveToEgg:
-	.string "Äh, nein.\n"
-	.string "Ein Ei kann nun wirklich nichts lernen.$"
+	.string "Tut mir leid…\n"
+	.string "Ein Ei hat noch kein Gehirn zum\l"
+	.string "Manipulieren.$"
 
 MoveRelearner_Text_CantTeachMoveToPkmn:
-	.string "Hm… tut mir leid.\n"
-	.string "Dem Pokémon kann ich nichts beibringen.$"
+	.string "Sorry…\p"
+	.string "Dieses Pokémon ist ein hoffnungsloser\n"
+	.string "Fall. Ich kann ihm nichts beibringen.$"
 
-MoveRelearner_Text_LevelUpMoveLWR:
-	.string "Level-Up-Attacke$"
+MoveRelearner_Text_LevelUpMoveLWR::
+	.string "Level-Up Attacke$"
 
-MoveRelearner_Text_EggMoveLWR:
+MoveRelearner_Text_EggMoveLWR::
 	.string "Ei-Attacke$"
 
-MoveRelearner_Text_TMMoveLWR:
+MoveRelearner_Text_TMMoveLWR::
 	.string "TM-Attacke$"
 
-MoveRelearner_Text_TutorMoveLWR:
-	.string "Lehrer-Attacke$"
+MoveRelearner_Text_TutorMoveLWR::
+	.string "Tutor-Attacke$"
 
 MoveRelearner_Text_WhichXmoveShouldTeach:
-	.string "Welche Attacke soll's denn werden?$"
+	.string "Welche {STR_VAR_3} soll ich einprügeln?$"
 
 MoveRelearner_Text_ThankYouComeAgain:
-	.string "Danke fürs Vorbeischauen!\n"
-	.string "Komm ruhig wieder, wenn du mehr willst!$"
+	.string "Danke, dass du mein Versuchskaninchen\n"
+	.string "gebracht hast. Komm bald wieder!$"

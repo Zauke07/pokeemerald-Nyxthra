@@ -43,3 +43,8 @@ ShoalCave_Text_WasShoalSaltNowNothing:
 ShoalCave_Text_WasShoalShellNowNothing:
 	.string "Hier lag mal eine MUSCHELSCHALE.\n"
 	.string "Jetzt ist hier nur noch Sand.$"
+
+ShoalCave_Text_WasShoallShellNowNothing::
+	.string "Hier war mal eine KÜSTENSCHALE.\n"
+	.string "Aber irgendein Penner hat sie schon\l"
+	.string "geklaut. Hier ist nichts mehr!$"

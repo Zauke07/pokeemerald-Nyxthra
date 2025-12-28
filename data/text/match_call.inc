@@ -46,7 +46,7 @@ MatchCall_WildBattleText6::
 	.string "{STR_VAR_1} hier.\l"
 	.string "Hast du in letzter Zeit Glück gehabt?\p"
 	.string "Ich hatte fast eins… wirklich fast!\n"
-	.string "Aber dann – zack – weg war’s.\p"
+	.string "Aber dann - zack - weg war’s.\p"
 	.string "Manchmal ist das Leben mies.$"
 
 MatchCall_WildBattleText7::
@@ -79,7 +79,7 @@ MatchCall_WildBattleText10::
 	.string "Hier ist {STR_VAR_1}.\p"
 	.string "Ich war soooo nah dran,\n"
 	.string "dieses {STR_VAR_2} zu fangen…\p"
-	.string "Und dann? Zack – weg!\p"
+	.string "Und dann? Zack - weg!\p"
 	.string "Das nervt total.\n"
 	.string "Bis dann…$"
 
@@ -88,7 +88,7 @@ MatchCall_WildBattleText11::
 	.string "Hier ist {STR_VAR_1}.\l"
 	.string "Wie läuft’s bei dir?\p"
 	.string "Ich hatte eben ein wildes {STR_VAR_2}\n"
-	.string "vor mir – und hab’s vermasselt.\p"
+	.string "vor mir - und hab’s vermasselt.\p"
 	.string "Echt frustrierend…$"
 
 MatchCall_WildBattleText12::

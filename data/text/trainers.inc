@@ -51,7 +51,7 @@ Route102_Text_AllenPostBattle:
 
 Route102_Text_RickIntro:
 	.string "Haha! Unsere Blicke haben sich\n"
-	.string "getroffen – jetzt gibt’s kein\n"
+	.string "getroffen - jetzt gibt’s kein\n"
 	.string "Zurück mehr! Kämpf!$"
 
 Route102_Text_RickDefeated:
@@ -111,7 +111,7 @@ Route103_Text_AmyNotEnoughPokemon:
 
 
 Route103_Text_LivIntro:
-	.string "JO: Hehe~ Wir sind ein Team!\n"
+	.string "JO: Hehe… Wir sind ein Team!\n"
 	.string "Allein bist du uns unterlegen!$"
 
 Route103_Text_LivDefeated:
@@ -133,7 +133,7 @@ Route103_Text_LivNotEnoughPokemon:
 
 
 Route103_Text_AmyRematchIntro:
-	.string "NORA: Wir sind zurück – und diesmal\n"
+	.string "NORA: Wir sind zurück - und diesmal\n"
 	.string "gibt’s keine Ausreden mehr!$"
 
 Route103_Text_AmyRematchDefeated:
@@ -223,7 +223,7 @@ Route104_Text_GinaNotEnoughMons:
 
 
 Route104_Text_MiaIntro:
-	.string "Wir sind Zwillinge – und doppelt so\n"
+	.string "Wir sind Zwillinge - und doppelt so\n"
 	.string "nervig wie du allein!\p"
 	.string "Bereit, vermöbelt zu werden?$"
 
@@ -246,7 +246,7 @@ Route104_Text_MiaNotEnoughMons:
 Route104_Text_IvanIntro:
 	.string "Ich bin der verdammte\n"
 	.string "Wasser-Meister dieser Gegend!\p"
-	.string "Und du bist gleich nass – im Gesicht!$"
+	.string "Und du bist gleich nass - im Gesicht!$"
 
 Route104_Text_IvanDefeat:
 	.string "Was zum…?!\n"
@@ -333,7 +333,7 @@ Route104_Text_WinstonRematchIntro:
 
 Route104_Text_WinstonRematchDefeat:
 	.string "NEIN!\n"
-	.string "Schon wieder pleite – emotional!$"
+	.string "Schon wieder pleite - emotional!$"
 
 Route104_Text_WinstonPostRematch:
 	.string "Vielleicht kann man Können\n"
@@ -397,7 +397,7 @@ Route105_Text_LuisDefeated:
 
 Route105_Text_LuisPostBattle:
 	.string "Wenn du mal untergehst,\n"
-	.string "wink einfach wie ein Idiot –\n"
+	.string "wink einfach wie ein Idiot -\n"
 	.string "vielleicht rettet dich jemand.$"
 
 
@@ -737,7 +737,7 @@ Route108_Text_TaraDefeated:
 
 Route108_Text_TaraPostBattle:
 	.string "Selbst wenn’s gelogen ist:\n"
-	.string "Komplimente sind wie Snacks –\n"
+	.string "Komplimente sind wie Snacks -\n"
 	.string "ich nehm sie einfach.\n"
 	.string "Und du? Du verteilst eher Klatschen.$"
 
@@ -796,7 +796,7 @@ Route108_Text_CoryRematchPostBattle:
 
 Route108_Text_CarolinaIntro:
 	.string "Meine süßen Pokémon sind mein ganzer Stolz.\n"
-	.string "Ich zeig sie dir – und du benimmst dich,\n"
+	.string "Ich zeig sie dir - und du benimmst dich,\n"
 	.string "verstanden?$"
 
 Route108_Text_CarolinaDefeated:
@@ -936,19 +936,6 @@ Route109_Text_MelDefeated:
 Route109_Text_MelPostBattle:
 	.string "Vielleicht sollten wir weniger knutschen\n"
 	.string "und mehr trainieren.$"
-
-
-Route109_Text_LolaIntro:
-	.string "Mein Schwimmreifen ist stylischer\n"
-	.string "als dein ganzes Outfit.$"
-
-Route109_Text_LolaDefeated:
-	.string "Nein! Mein perfekter Look!$"
-
-Route109_Text_LolaPostBattle:
-	.string "Mode ist alles.\n"
-	.string "Sogar beim Verlieren.$"
-
 
 Route109_Text_ElijahIntro:
 	.string "Ich bin so trainiert, dass selbst das\n"
@@ -1257,111 +1244,15 @@ Route111_Text_DustyPostBattle:
 	.string "und mehr trainieren.$"
 
 
-Route111_Text_BrandonIntro:
+Route111_Text_BrandenIntro:
 	.string "Die Wüste ist mein Trainingsplatz.\n"
 	.string "Und du bist mein heutiges Ziel.$"
 
-Route111_Text_BrandonDefeat:
+Route111_Text_BrandenDefeat:
 	.string "Okay… das lief schlechter als gedacht.$"
 
-Route111_Text_BrandonPostBattle:
+Route111_Text_BrandenPostBattle:
 	.string "Ich brauch definitiv mehr Übung.$"
-
-
-Route111_Text_TimothyIntro:
-	.string "Ich trainiere hier ganz allein.\n"
-	.string "Bitte lach mich nicht aus.$"
-
-Route111_Text_TimothyDefeat:
-	.string "Tja… das war wohl nix.$"
-
-Route111_Text_TimothyPostBattle:
-	.string "Vielleicht sollte ich mir doch\n"
-	.string "einen Trainingspartner suchen.$"
-
-
-Route111_Text_BrendaIntro:
-	.string "Ich genieße die Stille der Wüste.\n"
-	.string "Und dann kommst du vorbei.$"
-
-Route111_Text_BrendaDefeat:
-	.string "Okay… das war überraschend.$"
-
-Route111_Text_BrendaPostBattle:
-	.string "Vielleicht ist Alleinsein doch\n"
-	.string "nicht so schlecht.$"
-
-
-Route111_Text_CedricIntro:
-	.string "Ich trainiere hart, damit ich stärker\n"
-	.string "werde als alle anderen.$"
-
-Route111_Text_CedricDefeat:
-	.string "Verdammt… ich hab’s vermasselt.$"
-
-Route111_Text_CedricPostBattle:
-	.string "Ich werde nicht aufgeben.\n"
-	.string "Ganz sicher nicht.$"
-
-
-Route111_Text_RosaIntro:
-	.string "Die Hitze hier bringt mich um.\n"
-	.string "Aber Aufgeben kommt nicht infrage.$"
-
-Route111_Text_RosaDefeat:
-	.string "Ugh… das war zu viel für mich.$"
-
-Route111_Text_RosaPostBattle:
-	.string "Ich muss stärker werden.\n"
-	.string "Viel stärker.$"
-
-
-Route111_Text_LiamIntro:
-	.string "Ich trainiere hier jeden Tag.\n"
-	.string "Willst du sehen, was ich kann?$"
-
-Route111_Text_LiamDefeat:
-	.string "Verdammt… du bist echt gut.$"
-
-Route111_Text_LiamPostBattle:
-	.string "Ich gebe nicht auf.\n"
-	.string "Nicht heute, nicht morgen.$"
-
-
-Route111_Text_JuliaIntro:
-	.string "Ich liebe die Hitze!\n"
-	.string "Sie macht mich lebendig.$"
-
-Route111_Text_JuliaDefeat:
-	.string "Uff… das war zu viel.$"
-
-Route111_Text_JuliaPostBattle:
-	.string "Vielleicht sollte ich eine Pause\n"
-	.string "einlegen… nur kurz.$"
-
-
-Route111_Text_MarkIntro:
-	.string "Ich teste meine Grenzen.\n"
-	.string "Und jetzt bist du dran.$"
-
-Route111_Text_MarkDefeat:
-	.string "Das war… ernüchternd.$"
-
-Route111_Text_MarkPostBattle:
-	.string "Ich komme stärker zurück.\n"
-	.string "Versprochen.$"
-
-
-Route111_Text_RachelIntro:
-	.string "Die Hitze bringt mich an meine Grenzen.\n"
-	.string "Aber ich gebe nicht auf.$"
-
-Route111_Text_RachelDefeat:
-	.string "Okay… das tat weh.$"
-
-Route111_Text_RachelPostBattle:
-	.string "Ich werde weitermachen.\n"
-	.string "Egal wie schwer es wird.$"
 
 Route112_Text_BriceIntro:
 	.string "Was glotzt du so? Noch nie jemanden\n"
@@ -2455,7 +2346,7 @@ Route117_Text_AishaPostBattle:
 	.string "Und wachst nie wieder auf.$"
 
 Route118_Text_RoseIntro:
-	.string "Vögel im Himmel, ich am Boden –\n"
+	.string "Vögel im Himmel, ich am Boden -\n"
 	.string "aber glaub bloß nicht, dass ich harmlos bin!$"
 
 Route118_Text_RoseDefeat:
@@ -2545,7 +2436,7 @@ Route118_Text_DaltonPostBattle:
 
 Route118_Text_DaltonRegister:
 	.string "Wir gehören zusammen!\n"
-	.string "Trainer und Pokémon – unschlagbar!$"
+	.string "Trainer und Pokémon - unschlagbar!$"
 
 
 Route118_Text_DaltonRematchIntro:
@@ -3856,7 +3747,7 @@ Route126_Text_IsabelDefeat:
 	.string "Uff… das war intensiver als gedacht.$"
 
 Route126_Text_IsabelPostBattle:
-	.string "Manchmal verliert man –\n"
+	.string "Manchmal verliert man -\n"
 	.string "und manchmal lernt man daraus.$"
 
 
@@ -4601,3 +4492,415 @@ VSSeeker_Text_TrainersNotReady::
 	.string "Die TRAINER hier sind noch nicht bereit.\n"
 	.string "Die haben wohl Schiss oder keinen Bock.\p"
 	.string "Versuch es später nochmal.{PAUSE_UNTIL_PRESS}$"
+
+Route103_Text_AmyRematchNotEnoughPokemon::
+	.string "AMY: Sag mal, bist du dumm?\n"
+	.string "Du hast nur ein POKéMON dabei.\l"
+	.string "Komm wieder, wenn du Eier in der\l"
+	.string "Hose hast und ein zweites besitzt!$"
+
+Route103_Text_LivRematchNotEnoughPokemon::
+	.string "LIV: Nur ein POKéMON? Willst du uns\n"
+	.string "verarschen? Verpiss dich und hol\l"
+	.string "Verstärkung, du Lappen!$"
+
+Route103_Text_MarcosIntro::
+	.string "Hat dich das Gejaule meiner Gitarre\n"
+	.string "angelockt, oder willst du Schläge?$"
+
+Route103_Text_MarcosDefeated::
+	.string "Meine Show ist ruiniert…\n"
+	.string "Du mieses Stück Dreck!$"
+
+Route103_Text_MarcosPostBattle::
+	.string "Ich wollte hier eigentlich meine Ruhe\n"
+	.string "vor Idioten wie dir haben.\l"
+	.string "Vielleicht sollte ich Profi werden,\l"
+	.string "um mir Security gegen Abschaum\l"
+	.string "zu leisten.$"
+
+Route103_Text_PeteIntro::
+	.string "Die Strecke hier hättest du auch\n"
+	.string "schwimmen können, du fette Sau!$"
+
+Route103_Text_PeteDefeated::
+	.string "Boah, hast du sonst nichts zu tun?$"
+
+Route103_Text_PetePostBattle::
+	.string "Ja, ja, ich kapier’s.\n"
+	.string "Wenn ich so ein Vieh hätte, würde ich\l"
+	.string "auch lieber surfen als meine fetten\l"
+	.string "Beine zu bewegen.$"
+
+Route103_Text_IsabelleIntro::
+	.string "Pass auf, wo du hinrennst, du Honk!\n"
+	.string "Gleich knallt’s!$"
+
+Route103_Text_IsabelleDefeated::
+	.string "Manno… du Penner!$"
+
+Route103_Text_IsabellePostBattle::
+	.string "Ich bin eine miese Schwimmerin und\n"
+	.string "wollte üben. Sorry, dass ich fast\l"
+	.string "in dich reingebrettert bin,\l"
+	.string "du Blindfisch.$"
+
+Route103_Text_RhettIntro::
+	.string "Boah!\n"
+	.string "Wie hast du deinen fetten Hintern in\l"
+	.string "diese kleine Lücke gequetscht?$"
+
+Route103_Text_RhettDefeated::
+	.string "Krass!\n"
+	.string "Der Zwerg hat’s echt drauf.$"
+
+Route103_Text_RhettPostBattle::
+	.string "Stehst du auf so enge Löcher?\n"
+	.string "Oder hast du einfach nur kein Zuhause?$"
+
+Route104_Text_DarianIntro::
+	.string "Ich hab ein Vieh geangelt, das aussieht,\n"
+	.string "als würde es dir die Fresse polieren!$"
+
+Route104_Text_DarianDefeat::
+	.string "Was zum Fick…?$"
+
+Route104_Text_DarianPostBattle::
+	.string "Hey, KARPADOR, du bist ja noch\n"
+	.string "nutzloser als ich dachte!\l"
+	.string "Sogar dieser Lappen hier besiegt dich!$"
+
+Route109_Text_RickyRegister::
+	.string "Willst du noch ’ne Abreibung, wenn\n"
+	.string "ich nicht mehr so Brand habe?$"
+
+Route109_Text_RickyRematchIntro::
+	.string "Ich hab Kohldampf, aber für dich\n"
+	.string "reicht meine Kraft allemal!$"
+
+Route109_Text_RickyRematchDefeated::
+	.string "Ich hab verloren…\n"
+	.string "Nur weil mein Magen knurrt…$"
+
+Route109_Text_RickyRematchPostBattle::
+	.string "Am Strand schmeckt alles besser.\n"
+	.string "Sogar deine Niederlage!$"
+
+Route109_Text_LolaRegister::
+	.string "Ich?\n"
+	.string "Ich häng hier jeden Tag ab,\l"
+	.string "du Stalker!$"
+
+Route109_Text_LolaRematchIntro::
+	.string "Diesmal mach ich dich platt!\n"
+	.string "Ich hab extra meinen Schwimmreifen\l"
+	.string "aufgepumpt!$"
+
+Route109_Text_LolaRematchDefeated::
+	.string "MAMAAAAAA!$"
+
+Route109_Text_LolaRematchPostBattle::
+	.string "Mit Schwimmreifen sind ich und mein\n"
+	.string "POKéMON viel süßer als du Hackfresse!$"
+
+Route109_Text_AustinaIntro::
+	.string "Ohne Reifen geh ich unter, aber bei\n"
+	.string "POKéMON mach ich dich fertig!$"
+
+Route109_Text_AustinaDefeated::
+	.string "Lag es am Reifen? Bestimmt!$"
+
+Route109_Text_AustinaPostBattle::
+	.string "Mein Schwimmreifen ist Style.\n"
+	.string "Ohne das Ding bin ich nichts.$"
+
+Route109_Text_MelNotEnoughPokemon::
+	.string "MEL: Wir sind so krass verliebt,\n"
+	.string "da wird dir schlecht, oder?\l"
+	.string "Deshalb kämpfen wir zusammen!$"
+
+Route109_Text_PaulNotEnoughPokemon::
+	.string "PAUL: Wir lieben uns über alles.\n"
+	.string "Tja, sowas kriegst du wohl nie ab,\l"
+	.string "du Loser!$"
+
+Route109_Text_ChandlerIntro::
+	.string "Tadaaa! Guck mal!\n"
+	.string "Mein Schwimmreifen ist rund!$"
+
+Route109_Text_ChandlerDefeated::
+	.string "Oh, Mann!\n"
+	.string "Wie fies!$"
+
+Route109_Text_ChandlerPostBattle::
+	.string "Dabei war mein Reifen so schön rund…\n"
+	.string "Was hast du eigentlich für Probleme?$"
+
+Route109_Text_HaileyIntro::
+	.string "Ich kann nicht schwimmen, also tu ich\n"
+	.string "einfach so. Problem damit?$"
+
+Route109_Text_HaileyDefeated::
+	.string "Wusst ich’s doch!\n"
+	.string "Wir sind Versager.$"
+
+Route109_Text_HaileyPostBattle::
+	.string "Wenn ich erst mal schwimmen kann,\n"
+	.string "trete ich dir richtig in den Arsch!$"
+
+Route111_Text_BeckyIntro::
+	.string "Hier in der Wüste soll es Fossilien\n"
+	.string "geben. Wo ist der Dreck?$"
+
+Route111_Text_BeckyDefeat::
+	.string "Ich bin zu kurz gekommen…$"
+
+Route111_Text_BeckyPostBattle::
+	.string "Wenn hier Fossilien sind, war hier\n"
+	.string "früher mal Meer. Jetzt ist hier nur\l"
+	.string "Sand und Elend.$"
+
+Route111_Text_DustyRegister::
+	.string "Ich such gar keine starken POKéMON.\p"
+	.string "Aber ich steh total auf POKéNAVS.\n"
+	.string "Hast du was dagegen, du Vogel?$"
+
+Route111_Text_DustyRematchIntro::
+	.string "Seit 30 Jahren such ich Ruinen!\p"
+	.string "Oder waren es 40? Egal!\n"
+	.string "Willst du jetzt aufs Maul?$"
+
+Route111_Text_DustyRematchDefeat::
+	.string "Weder Ruinen noch starke POKéMON…\n"
+	.string "Mein Leben ist ein Witz.$"
+
+Route111_Text_DustyPostRematch::
+	.string "30 Jahre… oder 40?\p"
+	.string "Vielleicht sogar 50…\n"
+	.string "Wie lange verschwende ich hier schon\l"
+	.string "meine Zeit?$"
+
+Route111_Text_TravisIntro::
+	.string "Ich bin voll aufgedreht!\n"
+	.string "Und mein POKéMON ist auch auf Droge!$"
+
+Route111_Text_TravisDefeat::
+	.string "Der Trip ist vorbei…$"
+
+Route111_Text_TravisPostBattle::
+	.string "Wenn ich jemanden sehe, der so lahm\n"
+	.string "ist wie du, krieg ich das Kotzen.$"
+
+Route111_Text_IreneIntro::
+	.string "Keine Ahnung, wo du hinwillst, aber\n"
+	.string "ich hab Bock dich zu vermöbeln!$"
+
+Route111_Text_IreneDefeat::
+	.string "Boah, du bist widerlich gut!$"
+
+Route111_Text_IrenePostBattle::
+	.string "Ich wollte eigentlich zum SCHLOTBERG,\n"
+	.string "aber hier rumzustehen und Leute zu\l"
+	.string "nerven macht mehr Spaß.$"
+
+Route111_Text_DaisukeIntro::
+	.string "Ich forder jeden heraus, den ich seh!\n"
+	.string "Pech für dich!$"
+
+Route111_Text_DaisukeDefeat::
+	.string "Gnade! Ich geb auf!$"
+
+Route111_Text_DaisukePostBattle::
+	.string "Ich muss wohl weiter trainieren,\n"
+	.string "bis ich Typen wie dir die Zähne\l"
+	.string "rausschlage.$"
+
+Route111_Text_WiltonIntro::
+	.string "Zeig mir, wie sehr du deine Viecher\n"
+	.string "gequält hast!$"
+
+Route111_Text_WiltonDefeat::
+	.string "Aha, du hast sie ordentlich gedrillt.$"
+
+Route111_Text_WiltonPostBattle::
+	.string "Man lernt nur durch Schmerz.\p"
+	.string "Wichtig ist: Gib nie auf, auch wenn\n"
+	.string "du eine miese Pfeife bist.$"
+
+Route111_Text_WiltonRegister::
+	.string "Dein Kampfstil ist echt asozial.\n"
+	.string "Das gefällt mir. Revanche?$"
+
+Route111_Text_WiltonRematchIntro::
+	.string "Wir trainieren hier, um die Weltherrschaft\n"
+	.string "an uns zu reißen. Mach mit oder geh weg!$"
+
+Route111_Text_WiltonRematchDefeat::
+	.string "Oha, du bist ja gar nicht so dumm!$"
+
+Route111_Text_WiltonPostRematch::
+	.string "Wenn du so stark bist, geh zur LIGA\n"
+	.string "und nerv die Leute dort.$"
+
+Route111_Text_BrookeIntro::
+	.string "Deine POKéMON sehen aus wie Laien-\n"
+	.string "Schauspieler. Zeit für ’nen echten\l"
+	.string "Auftritt!$"
+
+Route111_Text_BrookeDefeat::
+	.string "Die waren ja doch echt stark… Fuck!$"
+
+Route111_Text_BrookePostBattle::
+	.string "Ich dachte, ich wäre die Größte,\n"
+	.string "aber ich bin wohl doch nur Abschaum.$"
+
+Route111_Text_BrookeRegister::
+	.string "Ich will mehr starke Freunde.\n"
+	.string "Aber du bist ja eher so ’ne Ausnahme!$"
+
+Route111_Text_BrookeRematchIntro::
+	.string "Es kommt nur auf die Attacken an.\n"
+	.string "Hast du deinen Viechern was Gutes\l"
+	.string "beigebracht oder nur Müll?$"
+
+Route111_Text_BrookeRematchDefeat::
+	.string "Okay, die Attacken waren mies gut.$"
+
+Route111_Text_BrookePostRematch::
+	.string "Hätte ich sie mal nicht so früh\n"
+	.string "entwickelt. Alles versaut…$"
+
+Route111_Text_CeliaIntro::
+	.string "Welcher Vollidiot geht in der Wüste\n"
+	.string "picknicken? Ach ja, ich…$"
+
+Route111_Text_CeliaDefeat::
+	.string "Boah, ich hätte im Bett bleiben sollen!$"
+
+Route111_Text_CeliaPostBattle::
+	.string "Im Sandsturm find ich nicht mal mein\n"
+	.string "Essen, trotz dieser dämlichen Brille!$"
+
+Route111_Text_BryanIntro::
+	.string "Wie hart bist du wirklich?\n"
+	.string "Ich zieh dir die Maske aus!$"
+
+Route111_Text_BryanDefeat::
+	.string "Deine Stärke ist echt gruselig…$"
+
+Route111_Text_BryanPostBattle::
+	.string "Die Wüste verdeckt viele Geheimnisse.\n"
+	.string "Meistens ist es aber nur Dreck.$"
+
+Route111_Text_TyronIntro::
+	.string "Das ist mein Lieblings-POKéMON.\n"
+	.string "Guck’s dir an und wein!$"
+
+Route111_Text_TyronDefeat::
+	.string "Warte! Hast du es überhaupt gesehen?$"
+
+Route111_Text_TyronPostBattle::
+	.string "Ich liebe es, mit meinen Viechern\n"
+	.string "anzugeben. Jeder, der was anderes\l"
+	.string "sagt, lügt doch wie gedruckt!$"
+
+Route111_Text_CelinaIntro::
+	.string "Bring mal ein bisschen Schwung in mein\n"
+	.string "ödes Leben, du Langweiler!$"
+
+Route111_Text_CelinaDefeat::
+	.string "Oh Gott…\n"
+	.string "Das war zu viel Schwung.$"
+
+Route111_Text_CelinaPostBattle::
+	.string "Mein Puls rast immer noch.\n"
+	.string "Du bist echt ’ne krasse Nummer.$"
+
+Route111_Text_HaydenIntro::
+	.string "Wenn man so einen Kohldampf hat wie ich,\n"
+	.string "kennt man keine Gnade!$"
+
+Route111_Text_HaydenDefeat::
+	.string "Gnaaa… Hunger…$"
+
+Route111_Text_HaydenPostBattle::
+	.string "Mein Magen knurrt lauter als meine\n"
+	.string "POKéMON. Vielleicht grill ich mir\l"
+	.string "ein paar BEEREN…$"
+
+Route111_Text_BiancaIntro::
+	.string "Kommst du aus MALVENFROH?\n"
+	.string "Dann hast du bestimmt zu viel Energie!$"
+
+Route111_Text_BiancaDefeat::
+	.string "Ooh lala! Das war hart!$"
+
+Route111_Text_BiancaPostBattle::
+	.string "Der Weg hier ist echt die Hölle.\n"
+	.string "Viel Spaß noch beim Kriechen.$"
+
+Route120_Text_ClarissaIntro::
+	.string "Warum ich diesen Schirm schleppe?\p"
+	.string "Gewinn erst mal, dann sag ich’s dir,\l"
+	.string "du Nase!$"
+
+Route120_Text_ClarissaDefeat::
+	.string "Der Schirm hält deine Schläge nicht\n"
+	.string "ab… Verdammt.$"
+
+Route120_Text_ClarissaPostBattle::
+	.string "Sonne ist scheiße für meine POKéMON.\n"
+	.string "Deshalb schütze ich sie vor der Hitze.$"
+
+Route120_Text_AngelicaIntro::
+	.string "Ich, meine POKéMON und mein Schirm…\p"
+	.string "Wenn eins fehlt, ist der Anblick\n"
+	.string "ruiniert. So wie dein Gesicht.$"
+
+Route120_Text_AngelicaDefeat::
+	.string "Du hast meine Schönheit ruiniert!$"
+
+Route120_Text_AngelicaPostBattle::
+	.string "Ein Schirm würde dir eh nicht stehen.\p"
+	.string "Du bist so hässlich, da hilft gar\n"
+	.string "nichts mehr.$"
+
+Route120_Text_KeigoIntro::
+	.string "Ich kopiere die Moves der POKéMON\n"
+	.string "und werde zum Super-Ninja!$"
+
+Route120_Text_KeigoDefeat::
+	.string "Das mit dem Ninja-Dasein bleibt wohl\n"
+	.string "ein Traum… Scheiße.$"
+
+Route120_Text_KeigoPostBattle::
+	.string "Ich brauch wohl doch ’nen echten\n"
+	.string "Meister und nicht nur YouTube-Videos.$"
+
+Route126_Text_IsobelIntro::
+	.string "Salzwasser in der Nase ist echt ekelhaft,\n"
+	.string "willst du’s mal probieren?$"
+
+Route126_Text_IsobelDefeat::
+	.string "Ack! Du Sau!\n"
+	.string "Glub!$"
+
+Route126_Text_IsobelPostBattle::
+	.string "Ich hab Wasser geschluckt!\n"
+	.string "Bitter! Salzig! Wie dein Charakter!!$"
+
+Route127_Text_KojiRegister::
+	.string "Das mach ich mit Leuten, die mich\n"
+	.string "besiegen! Wir sehen uns wieder!$"
+
+Route127_Text_KojiRematchIntro::
+	.string "Ich renn immer noch barfuß.\n"
+	.string "Meine Sohlen sind wie Leder!$"
+
+Route127_Text_KojiRematchDefeat::
+	.string "Aua! Die Steine bohren sich in meine\n"
+	.string "Fersen! Mist!$"
+
+Route127_Text_KojiPostRematch::
+	.string "Willst du mal barfuß gehen?\n"
+	.string "Dann probier ich mal deine Schuhe an.$"

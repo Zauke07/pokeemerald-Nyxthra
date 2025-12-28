@@ -56,7 +56,7 @@ NavelRock_Harbor_Text_SailorReturn::
 
 FarawayIsland_Entrance_Text_Sign::
 	.string "Die Schrift ist fast verwittert…\p"
-	.string "„…Tag unbekannt…\n"
+	.string "“…Tag unbekannt…\n"
 	.string "Wer diesen Ort betritt…\l"
 	.string "…sollte bereit sein, alles zu verlieren…“$"
 

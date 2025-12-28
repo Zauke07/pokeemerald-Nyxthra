@@ -13,7 +13,7 @@ BerryBlender_Text_TooBusyNowIsee::
 	.string "Hm!\p"
 	.string "Zu beschäftigt, was?\p"
 	.string "Schon gut!\n"
-	.string "Ich bleibe hier – meine Kunst läuft\n"
+	.string "Ich bleibe hier - meine Kunst läuft\n"
 	.string "nicht weg!$"
 
 BerryBlender_Text_BlendMasterNoBerries::
@@ -31,7 +31,7 @@ BerryBlender_Text_BlendMasterKnowHowToMakePokeblocks::
 BerryBlender_Text_BlendMasterExplainBerryBlending::
 	.string "Hör gut zu!\p"
 	.string "Wenn der Zeiger den Punkt trifft,\n"
-	.string "drückst du A – ganz einfach!\p"
+	.string "drückst du A - ganz einfach!\p"
 	.string "Timing ist alles!\p"
 	.string "Schau genau hin, dann lernst du was.$"
 

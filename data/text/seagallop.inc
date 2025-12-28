@@ -5,5 +5,5 @@ Text_WhereDoYouWantToGo::
 
 Text_AllAboardSeagallopNum::
 	.string "Aufsitzen, ihr Landratten!\n"
-	.string "Der SEEGALLOP {STR_VAR_1} legt ab –\n"
+	.string "Der SEEGALLOP {STR_VAR_1} legt ab -\n"
 	.string "und wehe, jemand kotzt mir hier rein!$"

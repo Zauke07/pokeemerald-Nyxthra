@@ -25,5 +25,5 @@ Text_YouCanAccessMysteryGift::
 
 Text_ThankYouForAccessingMysteryGift::
 	.string "Na endlich.\n"
-	.string "Viel Spaß mit dem Kram –\n"
+	.string "Viel Spaß mit dem Kram -\n"
 	.string "und mach keinen Unsinn damit.$"
