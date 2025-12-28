@@ -1564,7 +1564,7 @@ Route113_Text_WyattPostBattle:
 
 Route114_Text_LennyIntro:
 	.string "Hast du eine Schaufel gesehen?\n"
-	.string "Ich muss was... verbuddeln.$"
+	.string "Ich muss was… verbuddeln.$"
 
 Route114_Text_LennyDefeat:
 	.string "Mist!\n"
@@ -1572,7 +1572,7 @@ Route114_Text_LennyDefeat:
 
 Route114_Text_LennyPostBattle:
 	.string "Geh weiter. Hier gibt es nichts zu\n"
-	.string "sehen. Und der Geruch ist nur...\l"
+	.string "sehen. Und der Geruch ist nur…\l"
 	.string "Kompost. Ja, Kompost.$"
 
 Route114_Text_LucasIntro:
@@ -1581,8 +1581,8 @@ Route114_Text_LucasIntro:
 	.string "Mir kommt's gleich wieder hoch!$"
 
 Route114_Text_LucasDefeat:
-	.string "Uärgh...\n"
-	.string "Da ist mein Mittagessen...$"
+	.string "Uärgh…\n"
+	.string "Da ist mein Mittagessen…$"
 
 Route114_Text_LucasPostBattle:
 	.string "Willst du das noch essen?\n"
@@ -1593,15 +1593,15 @@ Route114_Text_ShaneIntro:
 	.string "KNAAAAACK!$"
 
 Route114_Text_ShaneDefeat:
-	.string "Meine Knochen...\n"
-	.string "Sie sind kaputt...$"
+	.string "Meine Knochen…\n"
+	.string "Sie sind kaputt…$"
 
 Route114_Text_ShanePostBattle:
 	.string "Schmerzen sind geil.\n"
 	.string "Aber deine Schmerzen sind geiler.$"
 
 Route114_Text_NancyIntro:
-	.string "Ich hab dich beobachtet...\n"
+	.string "Ich hab dich beobachtet…\n"
 	.string "Seit drei Stunden. Du riechst gut.$"
 
 Route114_Text_NancyDefeat:
@@ -1633,7 +1633,7 @@ Route114_Text_SteveRematchIntro:
 	.string "Wollen wir zündeln?$"
 
 Route114_Text_SteveRematchDefeat:
-	.string "Nur Asche bleibt übrig...\n"
+	.string "Nur Asche bleibt übrig…\n"
 	.string "Wie poetisch.$"
 
 Route114_Text_StevePostRematch:
@@ -1645,7 +1645,7 @@ Route114_Text_BernieIntro:
 	.string "Es kommt auf die Technik an!$"
 
 Route114_Text_BernieDefeat:
-	.string "Okay, vielleicht doch...\n"
+	.string "Okay, vielleicht doch…\n"
 	.string "Deine ist größer.$"
 
 Route114_Text_BerniePostBattle:
@@ -1661,7 +1661,7 @@ Route114_Text_BernieRematchIntro:
 	.string "Meine Rute ist jetzt stahlhart!$"
 
 Route114_Text_BernieRematchDefeat:
-	.string "Wieder schlaff...\n"
+	.string "Wieder schlaff…\n"
 	.string "Das passiert mir öfter.$"
 
 Route114_Text_BerniePostRematch:
@@ -1673,7 +1673,7 @@ Route114_Text_ClaudeIntro:
 	.string "Da gab es noch Zucht und Ordnung!$"
 
 Route114_Text_ClaudeDefeat:
-	.string "Diese Jugend von heute...\n"
+	.string "Diese Jugend von heute…\n"
 	.string "Kein Respekt!$"
 
 Route114_Text_ClaudePostBattle:
@@ -1718,7 +1718,7 @@ Route114_Text_IvyDefeat:
 
 Route114_Text_IvyPostBattle:
 	.string "IVY: Wir warten auf dich.\n"
-	.string "Im Schatten...$"
+	.string "Im Schatten…$"
 
 Route114_Text_IvyNotEnoughMons:
 	.string "IVY: Eins ist keins.\n"
@@ -1726,7 +1726,7 @@ Route114_Text_IvyNotEnoughMons:
 
 Route114_Text_KaiIntro:
 	.string "Möchtest du mein Kostüm sehen?\n"
-	.string "Es ist... anatomisch korrekt.$"
+	.string "Es ist… anatomisch korrekt.$"
 
 Route114_Text_KaiDefeat:
 	.string "Nicht am Schwanz ziehen!\n"
@@ -1734,7 +1734,7 @@ Route114_Text_KaiDefeat:
 
 Route114_Text_KaiPostBattle:
 	.string "Ich schwitze so sehr in diesem Anzug.\n"
-	.string "Riech mal... Moschus.$"
+	.string "Riech mal… Moschus.$"
 
 Route114_Text_CharlotteIntro:
 	.string "Ist das Polyester, was du trägst?\n"

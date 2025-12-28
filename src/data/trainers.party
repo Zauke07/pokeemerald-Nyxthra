@@ -797,7 +797,7 @@ Level: 39
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_CHIP ===
-Name: CHIP
+Name: Chip
 Class: Ruin Maniac
 Pic: Ruin Maniac
 Gender: Male
@@ -806,28 +806,16 @@ Double Battle: No
 AI: Check Bad Move
 
 Baltoy
-Level: 27
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Psybeam
-- Self Destruct
-- Sandstorm
-- Ancient Power
 
 Sandshrew
-Level: 27
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
 
-Sandslash
-Level: 27
+Orthworm
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
 
 === TRAINER_FOSTER ===
 Name: FOSTER
@@ -1821,7 +1809,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JENNIFER ===
-Name: JENNIFER
+Name: Jennifer
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -1830,8 +1818,8 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Sableye
-Level: 30
+Morgrem
+Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_HOPE ===
@@ -4146,7 +4134,7 @@ Level: 31
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_JEFFREY_1 ===
-Name: JEFFREY
+Name: Jeffrey
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -4155,15 +4143,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Surskit
-Level: 27
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Surskit
-Level: 27
+Tarountula
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Surskit
-Level: 27
+Blipbug
+Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DEREK ===
@@ -4184,7 +4172,7 @@ Level: 19
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_JEFFREY_2 ===
-Name: JEFFREY
+Name: Jeffrey
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -4192,20 +4180,20 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Surskit
-Level: 31
+Dewpider
+Level: 34
+IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+
+Nymble
+Level: 34
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 Surskit
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Surskit
-Level: 31
+Level: 34
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_JEFFREY_3 ===
-Name: JEFFREY
+Name: Jeffrey
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -4213,20 +4201,20 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Surskit
-Level: 34
+Araquanid
+Level: 37
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-Surskit
-Level: 34
+Rabsca
+Level: 37
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 Masquerain
-Level: 34
+Level: 37
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 === TRAINER_JEFFREY_4 ===
-Name: JEFFREY
+Name: Jeffrey
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -4234,24 +4222,24 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Surskit
-Level: 36
+Orbeetle
+Level: 39
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Wurmple
-Level: 36
+Dottler
+Level: 39
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Surskit
-Level: 36
+Level: 39
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Masquerain
-Level: 36
+Level: 39
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_JEFFREY_5 ===
-Name: JEFFREY
+Name: Jeffrey
 Class: Bug Maniac
 Pic: Bug Maniac
 Gender: Male
@@ -4259,24 +4247,24 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Surskit
-Level: 38
+Lokix
+Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-Dustox
-Level: 38
+Frosmoth
+Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 Surskit
-Level: 38
+Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 Masquerain @ Silver Powder
-Level: 38
+Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-Beautifly
-Level: 38
+Vikavolt
+Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_EDWARD ===
@@ -7777,7 +7765,7 @@ Level: 32
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_COLIN ===
-Name: COLIN
+Name: Colin
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7786,21 +7774,25 @@ Double Battle: No
 AI: Check Bad Move
 
 Wingull
-Level: 28
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Natu
-Level: 28
+Rookidee
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROBERT_1 ===
-Name: ROBERT
+Name: Robert
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
 Music: Cool
 Double Battle: No
 AI: Check Bad Move
+
+Wattrel
+Level: 32
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Swablu
 Level: 29
@@ -7849,7 +7841,7 @@ Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ROBERT_2 ===
-Name: ROBERT
+Name: Robert
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7858,15 +7850,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Natu
-Level: 32
+Level: 35
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-Swablu
-Level: 32
+Dartrix
+Level: 35
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_ROBERT_3 ===
-Name: ROBERT
+Name: Robert
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7874,16 +7866,16 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Natu
-Level: 35
+Corvisquire
+Level: 38
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 Altaria
-Level: 35
+Level: 38
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 === TRAINER_ROBERT_4 ===
-Name: ROBERT
+Name: Robert
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7891,16 +7883,16 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Natu
-Level: 38
+Bombirdier
+Level: 41
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 Altaria
-Level: 38
+Level: 41
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_ROBERT_5 ===
-Name: ROBERT
+Name: Robert
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7908,12 +7900,12 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Altaria
-Level: 41
+Kilowattrel
+Level: 44
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 Xatu
-Level: 41
+Level: 44
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_ALEX ===
@@ -8407,7 +8399,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Sunny Day
 
 === TRAINER_CLARISSA ===
-Name: CLARISSA
+Name: Clarissa
 Class: Parasol Lady
 Pic: Parasol Lady
 Gender: Female
@@ -8416,15 +8408,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Roselia
-Level: 28
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Wailmer
-Level: 28
+Quaxwell
+Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ANGELICA ===
-Name: ANGELICA
+Name: Angelica
 Class: Parasol Lady
 Pic: Parasol Lady
 Gender: Female
@@ -8433,7 +8425,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Castform
-Level: 30
+Level: 34
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Rain Dance
 - Weather Ball
@@ -10758,7 +10750,7 @@ Level: 30
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_LORENZO ===
-Name: LORENZO
+Name: Lorenzo
 Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
@@ -10767,16 +10759,16 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Seedot
-Level: 28
+Brambleghast
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Nuzleaf
-Level: 28
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Lombre
-Level: 28
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_SEBASTIAN ===
@@ -10897,7 +10889,7 @@ Level: 29
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_JENNA ===
-Name: JENNA
+Name: Jenna
 Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
@@ -10906,16 +10898,16 @@ Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Lotad
-Level: 28
+Ludicolo
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Lombre
-Level: 28
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Nuzleaf
-Level: 28
+Shiftry
+Level: 31
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_SOPHIA ===
@@ -12592,7 +12584,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Swords Dance
 
 === TRAINER_RILEY ===
-Name: RILEY
+Name: Riley
 Class: Ninja Boy
 Pic: Ninja Boy
 Gender: Male
@@ -12600,20 +12592,20 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move / Try To Faint
 
-Nincada
-Level: 28
+Lokix
+Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leech Life
-- Fury Swipes
-- Mind Reader
-- Dig
+- First Impression
+- Lunge
+- Sucker Punch
+- Low Kick
 
 Koffing
-Level: 28
+Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Tackle
-- Self Destruct
 - Sludge
+- Self Destruct
+- Will-O-Wisp
 - Smokescreen
 
 === TRAINER_FLINT ===
@@ -14659,7 +14651,7 @@ Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEONEL ===
-Name: LEONEL
+Name: Leonel
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -14668,15 +14660,16 @@ Items: Hyper Potion
 Double Battle: No
 AI: Basic Trainer
 
-Manectric
-Level: 30
+Boltund
+Level: 34
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Thunder
-- Quick Attack
-- Thunder Wave
+- Wild Charge
+- Crunch
+- Play Rough
+- Psychic Fangs
 
 === TRAINER_CALLIE ===
-Name: CALLIE
+Name: Callie
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -14685,11 +14678,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Meditite
-Level: 28
+Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Makuhita
-Level: 28
+Clobbopus
+Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CALE ===

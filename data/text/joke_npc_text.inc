@@ -20,7 +20,7 @@ gJokeNpc_Text_Joke4:
     .string "Weil es den Tisch mitgegessen hat.$"
 
 gJokeNpc_Text_Joke5:
-    .string "Ein BLUZUK geht zur Therapie...\n"
+    .string "Ein BLUZUK geht zur Therapie…\n"
     .string "und fragt sich, ob es endlich klar sieht.$"
 
 gJokeNpc_Text_Joke6:
@@ -104,7 +104,7 @@ gJokeNpc_Text_Joke24:
 
 gJokeNpc_Text_Joke25:
     .string "Was macht ein SHEDINJA im Bewerbungsgespräch?\n"
-    .string "...Nichts. Es ist nur die Hülle.$"
+    .string "…Nichts. Es ist nur die Hülle.$"
 
 gJokeNpc_Text_Joke26:
     .string "Warum bestellt LAGGRON keinen Kaffee?\n"
