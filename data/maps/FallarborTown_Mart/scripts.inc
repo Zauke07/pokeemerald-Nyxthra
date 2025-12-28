@@ -45,20 +45,25 @@ FallarborTown_Mart_EventScript_Skitty::
 	release
 	end
 
-FallarborTown_Mart_Text_DecidingSkittyEvolve:
-	.string "I'm having a hard time deciding if I\n"
-	.string "should make my SKITTY evolve or not.\p"
-	.string "I only have to use this MOON STONE,\n"
-	.string "but it's so hard to decide…\p"
-	.string "If I make it evolve, it will become\n"
-	.string "much stronger.\p"
-	.string "But it will look so different, too.$"
+FallarborTown_Mart_Text_DecidingSkittyEvolve::
+	.string "Ich kann mich echt nicht entscheiden,\n"
+	.string "ob ich mein ENECO entwickeln soll.\p"
+	.string "Ich müsste nur diesen MONSTEIN drauf-\n"
+	.string "werfen, aber das ist so ein Drama…\p"
+	.string "Klar, es wäre dann viel stärker und\n"
+	.string "würde nicht bei jedem Windstoß umkippen.\p"
+	.string "Aber es sieht danach so… anders aus.\n"
+	.string "Passt das dann überhaupt noch zu\l"
+	.string "meiner Tasche? Echt schwierig!$"
 
-FallarborTown_Mart_Text_Skitty:
-	.string "SKITTY: Miyao?$"
+FallarborTown_Mart_Text_Skitty::
+	.string "ENECO: Miyao? (Lass mich bloß in Ruh!)$"
 
-FallarborTown_Mart_Text_SellNuggetIFound:
-	.string "This NUGGET I found here…\n"
-	.string "I suppose I'll have to sell it, seeing\l"
-	.string "as how it has no other use.$"
+FallarborTown_Mart_Text_SellNuggetIFound::
+	.string "Diesen NUGGET hab ich hier gefunden…\n"
+	.string "Ich werd den Klumpen wohl verkaufen,\l"
+	.string "weil er sonst zu nichts gut ist.\p"
+	.string "Wenigstens kann ich mir von der Kohle\n"
+	.string "was Ordentliches kaufen, statt in\l"
+	.string "diesem staubigen Loch zu versauern.$"
 

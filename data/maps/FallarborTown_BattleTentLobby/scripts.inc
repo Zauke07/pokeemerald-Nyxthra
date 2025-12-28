@@ -300,47 +300,47 @@ FallarborTown_BattleTentLobby_EventScript_ExitRules::
 	releaseall
 	end
 
-FallarborTown_BattleTentLobby_Text_MakeThinkImJustKid:
+FallarborTown_BattleTentLobby_Text_MakeThinkImJustKid::
 	.string "Fufufufufu.\p"
-	.string "I'm going to make everyone think\n"
-	.string "I'm just a kid and let them play down.\p"
-	.string "Then, I'll shock them and grab\n"
-	.string "the title!$"
+	.string "Ich lass die alle glauben, ich wär nur\n"
+	.string "ein harmloses Gör, damit sie mich\l"
+	.string "unterschätzen.\p"
+	.string "Und wenn sie nicht aufpassen, zieh ich\n"
+	.string "ihnen das Fell über die Ohren!$"
 
-FallarborTown_BattleTentLobby_Text_FallarborTentMyFavorite:
-	.string "You know how BATTLE TENTS offer\n"
-	.string "different events in different towns?\p"
-	.string "My favorite is definitely the BATTLE\n"
-	.string "TENT in FALLARBOR TOWN.\p"
-	.string "I think it's fantastic how TRAINERS\n"
-	.string "try to win with all their faith in\l"
-	.string "their POKéMON.$"
+FallarborTown_BattleTentLobby_Text_FallarborTentMyFavorite::
+	.string "Du weißt ja, dass jedes KAMPFCAMP\n"
+	.string "seinen eigenen Mist abzieht, oder?\p"
+	.string "Mein Favorit ist das hier in\n"
+	.string "LAUBWECHSELFELD.\p"
+	.string "Ich find's herrlich, wie die TRAINER\n"
+	.string "hier blind ihren POKéMON vertrauen,\l"
+	.string "nur um dann krachend zu scheitern.$"
 
-FallarborTown_BattleTentLobby_Text_CameToCampOut:
-	.string "I heard something about some tent,\n"
-	.string "so I came to camp out.\p"
-	.string "I didn't know that tents these days\n"
-	.string "are so luxurious!\p"
-	.string "Since I'm here, I may as well try\n"
-	.string "my hand at battling!$"
+FallarborTown_BattleTentLobby_Text_CameToCampOut::
+	.string "Ich hab was von wegen 'Zelt' gehört\n"
+	.string "und wollte hier eigentlich pennen.\p"
+	.string "Wusste ja nicht, dass Zelte heutzutage\n"
+	.string "so luxuriöse Glaskästen sind!\p"
+	.string "Jetzt, wo ich schon mal hier bin, kann\n"
+	.string "ich auch ein paar Leuten aufs Maul geben.$"
 
-FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone:
+FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone::
 	.string "SCOTT: Hi, {PLAYER}{KUN}!\n"
-	.string "So you came out to this BATTLE TENT!\p"
-	.string "The people in these parts tend to be\n"
-	.string "easygoing and laid-back.\p"
-	.string "But, you see, what I'm looking for are\n"
-	.string "people with…\p"
-	.string "How should I say this?\p"
-	.string "Someone bursting with the desire\n"
-	.string "and the drive to win.\p"
-	.string "If there were a TRAINER like that,\n"
-	.string "I'd immediately…\p"
-	.string "Whoops! Never mind!\n"
-	.string "Keep working at it!$"
+	.string "Dich treibt's also auch in dieses Zelt!\p"
+	.string "Die Leute hier in der Gegend sind\n"
+	.string "normalerweise ziemlich weichgespült.\p"
+	.string "Aber ich suche jemanden mit…\n"
+	.string "na ja, wie sag ich das?\p"
+	.string "Jemanden, der diesen krankhaften\n"
+	.string "Drang hat, alles kurz und klein zu schlagen.\p"
+	.string "Wenn ich so einen TRAINER fände, würde\n"
+	.string "ich ihn sofort…\p"
+	.string "Huch! Vergiss es einfach!\n"
+	.string "Hau weiter ordentlich rein!$"
 
-FallarborTown_BattleTentLobby_Text_ScottMakeChallenge:
-	.string "SCOTT: Instead of wasting your\n"
-	.string "time with the likes of me, why not\l"
-	.string "make a challenge?$"
+FallarborTown_BattleTentLobby_Text_ScottMakeChallenge::
+	.string "SCOTT: Statt hier mit mir rumzulabern,\n"
+	.string "solltest du lieber da drin ein paar\l"
+	.string "Leute demütigen, meinst du nicht?$"
 

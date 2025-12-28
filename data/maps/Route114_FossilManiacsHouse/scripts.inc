@@ -30,27 +30,32 @@ Route114_FossilManiacsHouse_EventScript_Bookshelf::
 	msgbox Route114_FossilManiacsHouse_Text_CrammedWithBooks, MSGBOX_SIGN
 	end
 
-Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother:
-	.string "Mein großer Bruder ist ein FOSSIL-\n"
-	.string "MANIAC… Er ist ein netter Kerl, der\l"
-	.string "Fossilien liebt…\p"
-	.string "Er liebt es auch, Löcher zu graben…\n"
-	.string "Dieses Loch hat er alleine gegraben!\p"
-	.string "Hier, das kannst du haben. Damit kannst\n"
-	.string "du Löcher graben, wie mein Bruder…$"
+Route114_FossilManiacsHouse_Text_HaveThisToDigLikeMyBrother::
+	.string "Mein großer Bruder ist der FOSSIL-\n"
+	.string "MANIAC… Er ist ein Freak, der Steine\l"
+	.string "mehr liebt als Menschen…\p"
+	.string "Der Typ gräbt den ganzen Tag Löcher,\n"
+	.string "als hätte er sie nicht mehr alle.\l"
+	.string "Das riesige Loch da? Alles er selbst!\p"
+	.string "Nimm das hier. Damit kannst du auch im\n"
+	.string "Dreck wühlen, wenn du sonst keine\l"
+	.string "Hobbys hast…$"
 
-Route114_FossilManiacsHouse_Text_DigReturnsYouToEntrance:
-	.string "Wenn ein Pokémon in einer Höhle\n"
-	.string "SCHAUFLER einsetzt, kommst du zum\l"
-	.string "Eingang zurück.$"
+Route114_FossilManiacsHouse_Text_DigReturnsYouToEntrance::
+	.string "Wenn ein POKéMON in einer Höhle\n"
+	.string "SCHAUFLER einsetzt, teleportiert es dich\l"
+	.string "zum Eingang zurück. Praktisch für faule\l"
+	.string "Säcke wie dich.$"
 
-Route114_FossilManiacsHouse_Text_RocksFillDisplayCase:
-	.string "Steine in den unterschiedlichsten\n"
-	.string "Formen liegen im Glasschaukasten.$"
+Route114_FossilManiacsHouse_Text_RocksFillDisplayCase::
+	.string "Ein Haufen hässlicher Steine liegt im\n"
+	.string "Schaukasten. Wer stellt sich so einen\l"
+	.string "Schrott bitteschön ins Wohnzimmer?$"
 
-Route114_FossilManiacsHouse_Text_CrammedWithBooks:
-	.string "DIE ZUSAMMENSETZUNG DER ERDSCHICHT…\n"
-	.string "WIE REGEN DAS LAND FORMT…\l"
-	.string "STEINE, BODEN UND FELSEN…\p"
-	.string "Gerammelt voll mit Büchern.$"
+Route114_FossilManiacsHouse_Text_CrammedWithBooks::
+	.string "DIE DRECKIGSTEN ERDSCHICHTEN…\n"
+	.string "WARUM REGEN NERVT…\l"
+	.string "STEINE, BODEN UND ANDERER MÜLL…\p"
+	.string "Das Regal ist gerammelt voll mit\n"
+	.string "stinklangweiligen Büchern.$"
 

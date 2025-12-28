@@ -46,4 +46,4 @@ Route111_OldLadysRestStop_Text_NowYouAreFit:
 	.string "So, deine Mon's sind wieder fresh.\l"
 	.string "Verklopp jetzt ein paar Noobs, klar?\p"
 	.string "Was denn, noch'n Keks?\l"
-	.string "Tsss... die Jugend von heute...$"
+	.string "Tsss… die Jugend von heute…$"

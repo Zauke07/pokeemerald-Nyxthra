@@ -123,15 +123,15 @@ RustboroCity_Flat1_2F_Text_OhShesLaughing:
 	.string "{STR_VAR_1}?!\p"
 	.string "Haha! Oh wow - sie lacht!\n"
 	.string "Sie kann nicht mehr aufhören!\p"
-	.string "Ich... ich auch nicht... danke!$"
+	.string "Ich… ich auch nicht… danke!$"
 
 RustboroCity_Flat1_2F_Text_LetsGiveItATry:
 	.string "Alles klar.\n"
-	.string "Dann mal los. Twix, hör gut zu...$"
+	.string "Dann mal los. Twix, hör gut zu…$"
 
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}...\p"
+	.string "{STR_VAR_1}…\p"
 	.string "Nichts.\n"
 	.string "Kein Zucken, kein Blinzeln.\p"
 	.string "Ich glaube, Twix ist auf innerem\l"
@@ -141,12 +141,12 @@ RustboroCity_Flat1_2F_Text_ThinkOfMyOwnPhrase:
 	.string "Also hast du keinen?\n"
 	.string "Dann denke ich halt selbst nach.\p"
 	.string "Wie wär's mit “Karpador-Karate”?\l"
-	.string "......\n"
+	.string "……\n"
 	.string "Ja, okay. Vergessen wir das.$"
 
 RustboroCity_Flat1_2F_Text_ShesNotSmilingAtAll2:
 	.string "{STR_VAR_1}.\n"
-	.string "{STR_VAR_1}...\p"
+	.string "{STR_VAR_1}…\p"
 	.string "Nope. Keine Reaktion.\n"
 	.string "Vielleicht ist Twix einfach ein kleiner Boss.$"
 

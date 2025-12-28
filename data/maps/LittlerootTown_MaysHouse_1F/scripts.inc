@@ -388,8 +388,8 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2:
 
 RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
 	.string "Oh hey… Wer bist du denn?\p"
-	.string "... ... ... ...\n"
-	.string "... ... ... ...\p"
+	.string "… … … …\n"
+	.string "… … … …\p"
 	.string "Ach du bist {PLAYER}{KUN}, das neue\n"
 	.string "Kind aus der Bude nebenan.\p"
 	.string "Wir haben auch so'n halbwüchsiges\n"
@@ -425,9 +425,9 @@ RivalsHouse_1F_Text_ShouldGoHomeEverySoOften:
 	.string "komplett durch, wenn du dich nicht meldest.$"
 
 RivalsHouse_1F_Text_MayWhoAreYou:
-	.string "Was zum... Wer bist du?\p"
-	.string "... ... ...\n"
-	.string "... ... ...\p"
+	.string "Was zum… Wer bist du?\p"
+	.string "… … …\n"
+	.string "… … …\p"
 	.string "Ach, du bist {PLAYER}{KUN}.\n"
 	.string "Das neue Gesicht von nebenan, oder?\p"
 	.string "Ich bin {RIVAL}.\n"

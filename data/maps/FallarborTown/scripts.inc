@@ -51,45 +51,46 @@ FallarborTown_EventScript_MoveTutorSign::
 	msgbox FallarborTown_Text_MoveTutorSign, MSGBOX_SIGN
 	end
 
-FallarborTown_Text_ShadyCharactersCozmosHome:
-	.string "Something's happening,\n"
-	.string "and I don't like it!\p"
-	.string "I've seen shady characters wandering\n"
-	.string "in and out of PROF. COZMO's home…$"
+FallarborTown_Text_ShadyCharactersCozmosHome::
+	.string "Hier geht irgendwas faul ab,\n"
+	.string "und ich krieg schlechte Laune!\p"
+	.string "Irgendwelche zwielichtigen Gestalten\n"
+	.string "rennen bei PROF. KOSMO ständig rein\l"
+	.string "und raus. Bestimmt die Mafia…$"
 
-FallarborTown_Text_RegionKnownForMeteors:
-	.string "This region's been known for meteors\n"
-	.string "since the olden days.\p"
-	.string "They say METEOR FALLS was gouged out\n"
-	.string "by a falling meteorite long ago.$"
+FallarborTown_Text_RegionKnownForMeteors::
+	.string "Dieses Kaff ist seit Ewigkeiten für\n"
+	.string "Meteore bekannt. Toll, oder?\p"
+	.string "Die METEORFÄLLE wurden angeblich von\n"
+	.string "einem fetten Stein aus dem All aus-\l"
+	.string "gehöhlt. Wer's glaubt…$"
 
-FallarborTown_Text_MyPreciousAzurill:
-	.string "See! Take a look!\n"
-	.string "This is my precious AZURILL!\p"
-	.string "It's slick and smooth and plushy, too!$"
+FallarborTown_Text_MyPreciousAzurill::
+	.string "Glotz nicht so! Guck dir lieber mal\n"
+	.string "mein wertvolles AZURILL an!\p"
+	.string "Es ist glitschig, weich und sieht viel\n"
+	.string "besser aus als deine Visage!$"
 
-FallarborTown_Text_Azurill:
-	.string "AZURILL: Rooreelooo.$"
+FallarborTown_Text_Azurill::
+	.string "AZURILL: Roo-re-würg…$"
 
-FallarborTown_Text_HaveYouChallengedFlannery:
-	.string "Have you already challenged FLANNERY,\n"
-	.string "the LEADER of LAVARIDGE GYM?\p"
-	.string "The girl's grandfather was famous.\n"
-	.string "He was one of the ELITE FOUR in the\l"
-	.string "POKéMON LEAGUE at one point.\p"
-	.string "It wouldn't surprise me to see FLANNERY\n"
-	.string "become a great TRAINER in her own\l"
-	.string "right.$"
+FallarborTown_Text_HaveYouChallengedFlannery::
+	.string "Hast du dich schon mit FLAVIA aus\n"
+	.string "BAD LAVASTADT angelegt?\p"
+	.string "Ihr Oppa war mal ’ne große Nummer bei\n"
+	.string "den TOP VIER der LIGA.\p"
+	.string "Kein Wunder, dass das Mädel so ’ne\n"
+	.string "große Klappe hat. Vitamin B eben!$"
 
-FallarborTown_Text_BattleTentSign:
-	.string "BATTLE TENT FALLARBOR SITE\n"
-	.string "“May the Greatest Teams Gather!”$"
+FallarborTown_Text_BattleTentSign::
+	.string "KAMPFCAMP LAUBWECHSELFELD\n"
+	.string "“Wo sich die größten Angeber treffen!”$"
 
-FallarborTown_Text_TownSign:
-	.string "FALLARBOR TOWN\n"
-	.string "“A farm community with small gardens.”$"
+FallarborTown_Text_TownSign::
+	.string "LAUBWECHSELFELD\n"
+	.string "“Ein staubiges Kaff mit mickrigen Gärten.”$"
 
-FallarborTown_Text_MoveTutorSign:
-	.string "MOVE TUTOR'S HOUSE\n"
-	.string "“New moves taught to POKéMON.”$"
-
+FallarborTown_Text_MoveTutorSign::
+	.string "HAUS DES ATTACKEN-HELFERS\n"
+	.string "“Bringe deinen POKéMON Tricks bei,\n"
+	.string "die sie eh wieder vergessen.”$"

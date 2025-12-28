@@ -74,15 +74,15 @@ Route102_EventScript_Allen::
 	end
 
 Route102_Text_WatchMeCatchPokemon:
-	.string "HEIKO: {PLAYER}...\n"
+	.string "HEIKO: {PLAYER}…\n"
 	.string "Pokémon verstecken sich oft im hohen\l"
 	.string "Gras, so wie hier, oder?\p"
 	.string "Bleib kurz stehen und schau zu, ob ich\n"
 	.string "das richtig hinkriege, ja?\p"
-	.string "...Whoa!$"
+	.string "…Whoa!$"
 
 Route102_Text_WallyIDidIt:
-	.string "HEIKO: Ich hab’s wirklich geschafft...\n"
+	.string "HEIKO: Ich hab’s wirklich geschafft…\n"
 	.string "Es hat geklappt! Mein erstes Pokémon!$"
 
 Route102_Text_LetsGoBack:
@@ -93,13 +93,13 @@ Route102_Text_ImNotVeryTall:
 	.string "Was glotzt du so?! Ja, ich bin klein.\p"
 	.string "Aber ich trete dir trotzdem in die Eier,\n"
 	.string "du kleiner Hurensohn-Trainer!\p"
-	.string "Und wehe, du lachst... Ich schwör,\n"
+	.string "Und wehe, du lachst… Ich schwör,\n"
 	.string "ich hol meine Brüder. Du Opfer.$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
 	.string "Ich will voll viele Pokémon fangen!\p"
-	.string "Aber hey... Manche sagen, irgendwo\n"
-	.string "laufen Leute rum, die Pokémon klauen...\n"
+	.string "Aber hey… Manche sagen, irgendwo\n"
+	.string "laufen Leute rum, die Pokémon klauen…\n"
 	.string "Glaubst du das?$"
 
 Route102_Text_RouteSignOldale:

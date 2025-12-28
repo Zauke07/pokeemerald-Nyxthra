@@ -33,22 +33,23 @@ MauvilleCity_PokemonCenter_1F_EventScript_Youngster::
 	msgbox MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun, MSGBOX_NPC
 	end
 
-MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings:
-	.string "That man over there, he says weird\n"
-	.string "things!\p"
-	.string "He's funny in a weird way.\n"
-	.string "I doubt I'll forget about him!$"
+MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings::
+	.string "Der Typ da drüben labert nur Müll!\p"
+	.string "Der ist auf eine ganz miese Art\n"
+	.string "durchgeknallt. Den vergisst man so\l"
+	.string "schnell nicht, leider!$"
 
-MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner:
-	.string "When I accessed the RECORD CORNER,\n"
-	.string "the data for what's hot in DEWFORD\l"
-	.string "got updated.\p"
-	.string "Now that bit of data is the same\n"
-	.string "as my friend's!$"
+MauvilleCity_PokemonCenter_1F_Text_MyDataUpdatedFromRecordCorner::
+	.string "Ich war in der STATISTIK-ECKE und hab\n"
+	.string "den neuesten Klatsch aus FAUSTAUHAVEN\l"
+	.string "abgegriffen.\p"
+	.string "Jetzt bin ich genauso schlau wie mein\n"
+	.string "Kumpel - also immer noch ziemlich dumm!$"
 
-MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun:
-	.string "A RECORD CORNER opened upstairs in\n"
-	.string "the POKéMON CENTER.\p"
-	.string "I don't know what it's about, but it\n"
-	.string "sounds fun. I'll go check it out!$"
+MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun::
+	.string "Oben im Center hat so ’ne STATISTIK-\n"
+	.string "ECKE aufgemacht.\p"
+	.string "Keine Ahnung, was man da soll, aber\n"
+	.string "vielleicht kann man da ja jemanden\l"
+	.string "abziehen. Ich geh mal gucken!$"
 

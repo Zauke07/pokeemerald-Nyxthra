@@ -56,53 +56,50 @@ Route111_WinstrateFamilysHouse_EventScript_FaceOriginalDirection::
 	release
 	end
 
-Route111_WinstrateFamilysHouse_Text_MySonIsStrongerThanYou:
-	.string "Ich habe noch nie einen TRAINER ge-\n"
-	.string "sehen, der seine Pokémon so meister-\l"
-	.string "haft einsetzt wie du.\p"
-	.string "Aber, ich muss dir auch sagen… mein\n"
-	.string "Sohn ist stärker als du.\p"
-	.string "Er hat sogar die Pokémon LIGA heraus-\n"
-	.string "gefordert. Das solltest du wissen.$"
+Route111_WinstrateFamilysHouse_Text_MySonIsStrongerThanYou::
+	.string "Ich hab ja schon viele Glückspilze gesehen,\n"
+	.string "aber du scheinst deine Viecher ja halbwegs\l"
+	.string "im Griff zu haben.\p"
+	.string "Aber bild dir bloß nichts drauf ein… mein\n"
+	.string "Sohn würde mit dir den Boden aufwischen.\p"
+	.string "Der ist gerade bei der POKéMON LIGA und\n"
+	.string "zeigt denen mal, wie man richtig kämpft.\l"
+	.string "Dagegen bist du gar nichts!$"
 
-Route111_WinstrateFamilysHouse_Text_LikeYouToHaveMachoBrace:
-	.string "Wir benutzen dieses MACHOBAND, um die\n"
-	.string "Pokémon im Training noch mehr\l"
-	.string "zu stärken.\p"
-	.string "Da du unsere gesamte Familie besiegt\n"
-	.string "hast, brauchst du es vielleicht gar\l"
-	.string "nicht. Aber wir möchten dir dieses\l"
-	.string "MACHOBAND trotzdem gerne schenken.$"
+Route111_WinstrateFamilysHouse_Text_LikeYouToHaveMachoBrace::
+	.string "Wir benutzen dieses MACHOBAND, um unsere\n"
+	.string "POKéMON mal so richtig ranzunehmen.\p"
+	.string "Du hast zwar meine ganze Sippe besiegt,\n"
+	.string "aber du siehst aus, als könntest du\l"
+	.string "ein bisschen extra Training gebrauchen.\l"
+	.string "Nimm das MACHOBAND und werd endlich\l"
+	.string "ein echter Mann (oder ’ne Frau)!$"
 
-Route111_WinstrateFamilysHouse_Text_PassionateAboutBattles:
-	.string "Wenn es um Pokémon-Kämpfe geht, ist\n"
-	.string "die ganze Familie sehr leidenschaftlich.$"
+Route111_WinstrateFamilysHouse_Text_PassionateAboutBattles::
+	.string "Wenn’s ums Boxen geht, kennt meine\n"
+	.string "Familie keine Freunde. Wir leben für\l"
+	.string "den Stress!$"
 
-Route111_WinstrateFamilysHouse_Text_StrongerFamilyMembers:
-	.string "Mami ist stärker als Papi.\p"
-	.string "Ich bin stärker als Mami.\p"
-	.string "Und Omi ist stärker als ich!\p"
-	.string "Und mein großer Bruder ist noch\n"
-	.string "stärker als Omi!$"
+Route111_WinstrateFamilysHouse_Text_StrongerFamilyMembers::
+	.string "Mami klatscht Papi.\p"
+	.string "Ich klatsch Mami.\p"
+	.string "Und Omi klatscht mich!\p"
+	.string "Aber mein großer Bruder klatscht sie\n"
+	.string "einfach alle weg!$"
 
-Route111_WinstrateFamilysHouse_Text_GrandsonStrong:
-	.string "Es steht außer Frage, dass du stark\n"
-	.string "bist.\p"
-	.string "Aber wenn du gegen meinen Enkel an-\n"
-	.string "treten willst, bringt dir das nur Tränen\l"
-	.string "der Frustration ein.\p"
-	.string "Er ist viel stärker als jeder TRAINER,\n"
-	.string "den unsere Familie kennt.\p"
-	.string "Er müsste jetzt gerade eigentlich dabei\n"
-	.string "sein, die Pokémon LIGA\l"
-	.string "herauszufordern.\p"
-	.string "Wie ich meinen Enkel kenne, ist er\n"
-	.string "mittlerweile bestimmt schon der CHAMP!$"
+Route111_WinstrateFamilysHouse_Text_GrandsonStrong::
+	.string "Ja ja, du bist stark, bla bla.\p"
+	.string "Aber wenn du gegen meinen Enkel antrittst,\n"
+	.string "wirst du heulend zu deiner Mami rennen.\l"
+	.string "Der zerlegt Typen wie dich zum Frühstück!\p"
+	.string "Der ist gerade dabei, die POKéMON LIGA\n"
+	.string "auseinanderzunehmen.\p"
+	.string "So wie ich den kenne, ist er mittlerweile\n"
+	.string "schon der Boss der Bosse!$"
 
-Route111_WinstrateFamilysHouse_Text_GrandsonStrongShort:
-	.string "Mein Enkel müsste jetzt gerade dabei\n"
-	.string "sein, die Pokémon LIGA\l"
-	.string "herauszufordern.\p"
-	.string "Wie ich meinen Enkel kenne, ist er\n"
-	.string "mittlerweile bestimmt schon der CHAMP!$"
+Route111_WinstrateFamilysHouse_Text_GrandsonStrongShort::
+	.string "Mein Enkel ist gerade dabei, die\n"
+	.string "POKéMON LIGA zu demütigen.\p"
+	.string "Der ist bestimmt schon CHAMP und lacht\n"
+	.string "über Versager wie dich!$"
 

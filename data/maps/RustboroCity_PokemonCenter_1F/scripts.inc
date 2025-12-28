@@ -35,7 +35,7 @@ RustboroCity_PokemonCenter_1F_Text_PokemonHavePersonalities:
     .string "STRATEGIE aufbauen, Bruder?$"
 
 RustboroCity_PokemonCenter_1F_Text_MaleAndFemalePokemon:
-    .string "Männlich, weiblich... bei POKéMON\n"
+    .string "Männlich, weiblich… bei POKéMON\n"
     .string "merkt man eh kaum nen Unterschied.\p"
     .string "Außer bei KUSSILLA. Das schaut dich\n"
     .string "an, und du fühlst dich\l"

@@ -32,14 +32,16 @@ LavaridgeTown_Mart_EventScript_OldWoman::
 	msgbox LavaridgeTown_Mart_Text_LocalSpecialtyOnMtChimney, MSGBOX_NPC
 	end
 
-LavaridgeTown_Mart_Text_XSpeedFirstStrike:
-	.string "Use X SPEED to add to a POKéMON's\n"
-	.string "SPEED in battle.\p"
-	.string "That will help it get in the first\n"
-	.string "strike--a decided advantage!$"
+LavaridgeTown_Mart_Text_XSpeedFirstStrike::
+	.string "Zieh dir X-TEMPO rein, wenn dein\n"
+	.string "POKéMON zu lahmarschig ist.\p"
+	.string "Damit schlägst du vielleicht mal zuerst\n"
+	.string "zu - ein massiver Vorteil für Leute,\l"
+	.string "die sonst nix hinkriegen!$"
 
-LavaridgeTown_Mart_Text_LocalSpecialtyOnMtChimney:
-	.string "On MT. CHIMNEY's peak, there's a local\n"
-	.string "specialty that you can buy only there.\p"
-	.string "Give it to a POKéMON--it will be elated.$"
+LavaridgeTown_Mart_Text_LocalSpecialtyOnMtChimney::
+	.string "Oben auf dem Schlotberg gibt’s so ’nen\n"
+	.string "Spezial-Fraß, den man nur da kriegt.\p"
+	.string "Stopf das in dein POKéMON rein - das\n"
+	.string "Vieh wird vor Freude fast ausrasten.$"
 

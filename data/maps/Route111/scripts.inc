@@ -52,22 +52,22 @@ Route111_EventScript_SetFallingPlayerGfx::
 	goto_if_eq VAR_RESULT, STYLE_MAY, Route111_EventScript_SetFallingPlayerGfxFemale
 	goto_if_eq VAR_RESULT, STYLE_RED, Route111_EventScript_SetFallingPlayerGfxMale
 	goto_if_eq VAR_RESULT, STYLE_LEAF, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_ETHAN, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_LYRA, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_LUCAS, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_DAWN, Route111_EventScript_SetFallingPlayerGfxFemale
-    goto_if_eq VAR_RESULT, STYLE_HILBERT, Route111_EventScript_SetFallingPlayerGfxMale
-    goto_if_eq VAR_RESULT, STYLE_HILDA, Route111_EventScript_SetFallingPlayerGfxFemale
-@     goto_if_eq VAR_RESULT, STYLE_NATE, Route111_EventScript_SetFallingPlayerGfxMale
-@     goto_if_eq VAR_RESULT, STYLE_ROSA, Route111_EventScript_SetFallingPlayerGfxFemale
-@    goto_if_eq VAR_RESULT, STYLE_CALEM, Route111_EventScript_SetFallingPlayerGfxMale
-@    goto_if_eq VAR_RESULT, STYLE_SERENA, Route111_EventScript_SetFallingPlayerGfxFemale
-@    goto_if_eq VAR_RESULT, STYLE_ELIO, Route111_EventScript_SetFallingPlayerGfxMale
-@    goto_if_eq VAR_RESULT, STYLE_SELENE, Route111_EventScript_SetFallingPlayerGfxFemale
-@    goto_if_eq VAR_RESULT, STYLE_VICTOR, Route111_EventScript_SetFallingPlayerGfxMale
-@    goto_if_eq VAR_RESULT, STYLE_GLORIA, Route111_EventScript_SetFallingPlayerGfxFemale
-@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route111_EventScript_SetFallingPlayerGfxMale
-@    goto_if_eq VAR_RESULT, STYLE_JULIANA, Route111_EventScript_SetFallingPlayerGfxFemale
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, Route111_EventScript_SetFallingPlayerGfxMale
+	goto_if_eq VAR_RESULT, STYLE_LYRA, Route111_EventScript_SetFallingPlayerGfxFemale
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route111_EventScript_SetFallingPlayerGfxMale
+	goto_if_eq VAR_RESULT, STYLE_DAWN, Route111_EventScript_SetFallingPlayerGfxFemale
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route111_EventScript_SetFallingPlayerGfxMale
+	goto_if_eq VAR_RESULT, STYLE_HILDA, Route111_EventScript_SetFallingPlayerGfxFemale
+@	 goto_if_eq VAR_RESULT, STYLE_NATE, Route111_EventScript_SetFallingPlayerGfxMale
+@	 goto_if_eq VAR_RESULT, STYLE_ROSA, Route111_EventScript_SetFallingPlayerGfxFemale
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, Route111_EventScript_SetFallingPlayerGfxMale
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, Route111_EventScript_SetFallingPlayerGfxFemale
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, Route111_EventScript_SetFallingPlayerGfxMale
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, Route111_EventScript_SetFallingPlayerGfxFemale
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route111_EventScript_SetFallingPlayerGfxMale
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route111_EventScript_SetFallingPlayerGfxFemale
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route111_EventScript_SetFallingPlayerGfxMale
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route111_EventScript_SetFallingPlayerGfxFemale
 	return
 
 Route111_EventScript_SetFallingPlayerGfxMale::
@@ -581,161 +581,155 @@ Route111_EventScript_TrainerHillSign::
 	msgbox Route111_Text_TrainerHillSign, MSGBOX_SIGN
 	end
 
-Route111_Text_BattleOurFamily:
-	.string "Hallo! Ich hab’s, du bist ein Reisender.\p"
-	.string "Was hältst du davon? Du trittst mit\n"
-	.string "deinen POKéMON gegen alle vier\l"
-	.string "Familienmitglieder hintereinander an?$"
+Route111_Text_BattleOurFamily::
+	.string "Na, du kleiner Landstreicher?\p"
+	.string "Lust auf ’ne ordentliche Tracht Prügel?\n"
+	.string "Traust du dich, gegen meine ganze\l"
+	.string "Sippe nacheinander anzutreten?$"
 
-Route111_Text_IsThatSo:
-	.string "Ach, wirklich? Nun, wenn du deine\n"
-	.string "Meinung änderst, komm einfach wieder.$"
+Route111_Text_IsThatSo::
+	.string "Tzz, hab ich’s mir doch gedacht.\n"
+	.string "Komm wieder, wenn du Eier hast!$"
 
-Route111_Text_VictorIntro:
-	.string "Das nenne ich Kampfgeist! Ich mag dich!$"
+Route111_Text_VictorIntro::
+	.string "Endlich mal ein Opfer mit Mut!\n"
+	.string "Ich polier dir jetzt die Fresse!$"
 
-Route111_Text_VictorDefeat:
+Route111_Text_VictorDefeat::
 	.string "Aiyah!\n"
-	.string "Du bist stärker, als ich dachte.$"
+	.string "Woher hast du diese POKéMON? Geklaut?!$"
 
-Route111_Text_VictorPostBattle:
-	.string "Hey, ihr! Ich habe einen starken\n"
-	.string "TRAINER gefunden!$"
+Route111_Text_VictorPostBattle::
+	.string "Ey, ihr Flaschen! Kommt mal raus!\n"
+	.string "Hier ist einer, der nicht sofort umkippt!$"
 
-Route111_Text_VictoriaIntro:
-	.string "Oh, du meine Güte! Bist du jung!\p"
-	.string "Du musst ein sehr guter TRAINER sein,\n"
-	.string "wenn du meinen Mann besiegen konntest.\p"
-	.string "Nun bin ich an der Reihe.$"
+Route111_Text_VictoriaIntro::
+	.string "Oh, sieh mal an! Ein kleiner Zwerg!\p"
+	.string "Mein Mann ist wohl alt geworden, wenn\n"
+	.string "er gegen so ein Kind verliert.\p"
+	.string "Jetzt zeig ich dir mal, wer hier\n"
+	.string "wirklich die Hosen anhat!$"
 
-Route111_Text_VictoriaDefeat:
-	.string "Ach, nein! Ich komme nicht darüber\n"
-	.string "hinweg, wie stark du bist!$"
+Route111_Text_VictoriaDefeat::
+	.string "Was zur Hölle?!\n"
+	.string "Du kleiner Giftzwerg!$"
 
-Route111_Text_VictoriaPostBattle:
-	.string "Hier draußen ist ein starker TRAINER!\n"
-	.string "Ein wirklich starker, sage ich euch!$"
+Route111_Text_VictoriaPostBattle::
+	.string "Hier draußen lungert ein brutaler\n"
+	.string "TRAINER rum! Passt bloß auf!$"
 
-Route111_Text_ViviIntro:
-	.string "Du bist stärker als Mami? Wow!\p"
-	.string "Aber ich bin auch stark!\n"
-	.string "Wirklich! Ganz ehrlich!$"
+Route111_Text_ViviIntro::
+	.string "Du hast Mami besiegt? Bestimmt nur,\n"
+	.string "weil sie dich bemitleidet hat!\p"
+	.string "Ich mach dich jetzt platt!\n"
+	.string "Ohne Gnade! Echt jetzt!$"
 
-Route111_Text_ViviDefeat:
-	.string "Was? Habe ich verloren?$"
+Route111_Text_ViviDefeat::
+	.string "Bäh! Das zählt nicht!$"
 
-Route111_Text_ViviPostBattle:
-	.string "Das ist gemein…\p"
-	.string "… Schluchz… Heul… Omaaaaa… Schluchz…$"
+Route111_Text_ViviPostBattle::
+	.string "Du bist so gemein…\p"
+	.string "… Schluchz… OMAAAA! Der blöde\n"
+	.string "Typ da ist voll fies! Schluchz…$"
 
-Route111_Text_VickyIntro:
-	.string "Wie konntest du nur meine Enkelin zum\n"
-	.string "Weinen bringen? Schäm dich!\p"
-	.string "Dafür werde ich dich in Grund und Boden\n"
-	.string "stampfen. Mach dich auf was gefasst!$"
+Route111_Text_VickyIntro::
+	.string "Welcher Penner bringt hier meine\n"
+	.string "Enkelin zum Heulen? Schäm dich!\p"
+	.string "Dafür stampf ich dich ungespitzt in\n"
+	.string "den Boden. Mach dein Testament!$"
 
-Route111_Text_VickyDefeat:
-	.string "Uaah! Du bist stark…\n"
-	.string "Meine Enkelin hatte Recht…$"
+Route111_Text_VickyDefeat::
+	.string "Uaah! Verdammt…\n"
+	.string "Das kleine Balg hatte Recht…$"
 
-Route111_Text_VickyPostBattle:
-	.string "Wenn du es nicht allzu eilig hast,\n"
-	.string "besuche uns doch mal wieder!$"
+Route111_Text_VickyPostBattle::
+	.string "Wenn du noch nicht genug hast,\n"
+	.string "komm ruhig wieder vorbei.\l"
+	.string "Irgendwann erwischen wir dich!$"
 
-Route111_Text_ToughToKeepWinningUpTheRanks:
-	.string "Wenn du deine POKéMON nicht ein\n"
-	.string "bisschen besser trainierst, wird es\l"
-	.string "schwer, sich hier durchzukämpfen.\p"
-	.string "Ich habe gehört, dass die TOP VIER der\n"
-	.string "POKéMON LIGA um einiges schwerer zu\l"
-	.string "besiegen sind als die ARENALEITER.$"
+Route111_Text_ToughToKeepWinningUpTheRanks::
+	.string "Wenn du deine Viecher weiter so\n"
+	.string "schlampig trainierst, krepierst du\l"
+	.string "spätestens in der Wüste.\p"
+	.string "Die TOP VIER der LIGA lachen sich\n"
+	.string "über Typen wie dich kaputt.$"
 
-Route111_Text_WinstrateFamilyDestroyedMe:
-	.string "Ich habe die Familie SIHGERS heraus-\n"
-	.string "gefordert und viermal hintereinander\l"
-	.string "gekämpft… Hinterher war ich kaputt…$"
+Route111_Text_WinstrateFamilyDestroyedMe::
+	.string "Diese SIHGERS-Sippe hat mich völlig\n"
+	.string "auseinandergenommen… viermal Stress\l"
+	.string "hintereinander… ich bin bedient.$"
 
-Route111_Text_RouteSignMauville:
+Route111_Text_RouteSignMauville::
 	.string "ROUTE 111\n"
-	.string "{DOWN_ARROW} MALVENFROH CITY$"
+	.string "{DOWN_ARROW} MALVENFROH CITY (Zocker-Loch)$"
 
-Route111_Text_WinstrateHouseSign:
+Route111_Text_WinstrateHouseSign::
 	.string "DAS HAUS DER SIHGERS\n"
-	.string "“Die Herzen unserer Familie schlagen im\l"
-	.string "Einklang!”$"
+	.string "“Wir klatschen jeden, der blöd guckt!”$"
 
-Route111_Text_RouteSign112:
+Route111_Text_RouteSign112::
 	.string "ROUTE 111\n"
-	.string "{LEFT_ARROW} ROUTE 112$"
+	.string "{LEFT_ARROW} ROUTE 112 (Noch mehr Ödnis)$"
 
-Route111_Text_RouteSign113:
+Route111_Text_RouteSign113::
 	.string "ROUTE 111\n"
-	.string "{LEFT_ARROW} ROUTE 113$"
+	.string "{LEFT_ARROW} ROUTE 113 (Asche-Dreck überall)$"
 
-Route111_Text_OldLadysRestStopSign:
-	.string "HOTEL DER ALTEN DAME\n"
-	.string "“Komm, ruh deine müden Knochen aus.”$"
+Route111_Text_OldLadysRestStopSign::
+	.string "ABSTEIGE DER ALTEN HEXE\n"
+	.string "“Komm rein und zahl für ’n Bett.”$"
 
-Route111_Text_TrainerTipsSpAtkSpDef:
-	.string "TIPPS für TRAINER\p"
-	.string "Ein Indikator für die Stärke eines\n"
-	.string "POKéMON ist der SP. ANG. Das steht\l"
-	.string "für “SPEZIAL ANGRIFF”.\p"
-	.string "SP. VER. steht für “SPEZIAL\n"
-	.string "VERTEIDIGUNG”.$"
+Route111_Text_TrainerTipsSpAtkSpDef::
+	.string "TIPPS FÜR DUMMIES\p"
+	.string "SP. ANG. heißt: Deine Spezial-Attacken\n"
+	.string "machen vielleicht mal Schaden.\p"
+	.string "SP. VER. heißt: Deine Verteidigung ist\n"
+	.string "vielleicht nicht ganz so mies.$"
 
-Route111_Text_ShouldBeMirageTowerAroundHere:
-	.string "Hier in der Nähe sollte eigentlich ein\n"
-	.string "Turm sein, der ganz aus Sand besteht.\p"
-	.string "Aber aus irgendeinem Grund ist er\n"
-	.string "nur manchmal sichtbar.\p"
-	.string "Deshalb nenne ich ihn WUNDERTURM.$"
+Route111_Text_ShouldBeMirageTowerAroundHere::
+	.string "Hier soll irgendwo ein Turm aus Sand\n"
+	.string "rumstehen, sagen die Legenden.\p"
+	.string "Aber wer das glaubt, säuft wahrscheinlich\n"
+	.string "auch Salzwasser. Ich seh nix.$"
 
-Route111_Text_MirageTowerClearlyVisible:
-	.string "Ich sehe ihn!\n"
-	.string "Den Turm aus Sand!\p"
-	.string "Der Sandturm, den sie ein Wunder\n"
-	.string "nennen, zeigt sich!\p"
-	.string "Aber er sieht sehr brüchig aus…\n"
-	.string "Er kann jeden Moment zusammenbrechen…\p"
-	.string "Ich würde gerne mal hineingehen, aber\n"
-	.string "so mutig bin ich dann doch nicht…$"
+Route111_Text_MirageTowerClearlyVisible::
+	.string "Alter, ich fass es nicht!\n"
+	.string "Da steht echt ein Sandturm!\p"
+	.string "Das Ding sieht aber so aus, als würde\n"
+	.string "es beim nächsten Pups einstürzen!\p"
+	.string "Ich würd ja reingehen, aber ich häng\n"
+	.string "an meinem Leben. Geh du doch vor!$"
 
-Route111_Text_ThatWasShockingSandRainedDown:
+Route111_Text_ThatWasShockingSandRainedDown::
 	.string "Whoa…\n"
-	.string "Das war vielleicht ein Schreck!\p"
-	.string "Plötzlich war überall Sand.\p"
-	.string "Und wie war es da drin?\n"
-	.string "Gibt es da Sandgeister und so?$"
+	.string "Das war mal ’ne staubige Angelegenheit!\p"
+	.string "Plötzlich ist das Ding einfach weggepofft.\p"
+	.string "Und? Warst du drin? Hast du außer\n"
+	.string "Sand in den Augen was gefunden?$"
 
-Route111_Text_MirageTowerHasntBeenSeenSince:
-	.string "Seit ich das letzte Mal mit dir\n"
-	.string "gesprochen habe, ist der Turm noch\l"
-	.string "nicht wieder sichtbar gewesen.\p"
-	.string "Vielleicht war es wirklich der\n"
-	.string "WUNDERTURM…$"
+Route111_Text_MirageTowerHasntBeenSeenSince::
+	.string "Seit dem Einsturz ist der Turm weg.\n"
+	.string "War wohl doch nur ’ne Fata Morgana.\p"
+	.string "Oder du hast ihn einfach kaputt gemacht!$"
 
-Route111_Text_ClawFossilDisappeared:
+Route111_Text_ClawFossilDisappeared::
 	.string "Das KLAUENFOSSIL ist im Sand\n"
-	.string "versunken…$"
+	.string "abgetaucht… Pech gehabt!$"
 
-Route111_Text_RootFossilDisappeared:
-	.string "Das WURZELFOSSIL ist im Sand\n"
-	.string "versunken…$"
+Route111_Text_RootFossilDisappeared::
+	.string "Das WURZELFOSSIL ist weg…\n"
+	.string "Hättest wohl schneller sein müssen!$"
 
-Route111_Text_MauvilleUncleToldMeToTakeRockSmash:
-	.string "Oh, nein!\p"
-	.string "Und mein Onkel in MALVENFROH CITY hat\n"
-	.string "mir extra noch gesagt, ich soll\l"
-	.string "ZERTRÜMMERER mitnehmen, wenn ich\p"
-	.string "zur ROUTE 111 gehe.\n"
-	.string "Mein Onkel? Der lebt gegenüber vom\l"
-	.string "Fahrradladen in MALVENFROH.$"
+Route111_Text_MauvilleUncleToldMeToTakeRockSmash::
+	.string "Verdammt!\p"
+	.string "Mein Onkel in MALVENFROH hat mich noch\n"
+	.string "gewarnt, dass ich ZERTRÜMMERER brauche.\p"
+	.string "Dieser durchgeknallte Typ gegenüber\n"
+	.string "vom Radladen… er hatte Recht!$"
 
-Route111_Text_TrainerHillSign:
-	.string "{RIGHT_ARROW} EINGANG TRAINERBERG\p"
-	.string "“Erklimm den Gipfel, heißblütiger\n"
-	.string "TRAINER!”$"
+Route111_Text_TrainerHillSign::
+	.string "{RIGHT_ARROW} TRAINERBERG-EINGANG\p"
+	.string "“Komm hoch, wenn du kein Lappen bist!”$"
 
 Route111_EventScript_Ende::
 	msgbox Route111_Text_Ende, MSGBOX_SIGN

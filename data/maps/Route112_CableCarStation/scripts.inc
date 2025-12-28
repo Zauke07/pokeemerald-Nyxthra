@@ -84,13 +84,14 @@ Route112_CableCarStation_Movement_ExitCableCar:
 	delay_16
 	step_end
 
-Route112_CableCarStation_Text_CableCarReadyGetOn:
-	.string "Die SEILBAHN fährt gleich hinauf.\n"
-	.string "Möchtest du mit?$"
+Route112_CableCarStation_Text_CableCarReadyGetOn::
+	.string "Die Schüssel fährt jetzt hoch.\n"
+	.string "Steig ein oder lass es bleiben, mir egal.$"
 
-Route112_CableCarStation_Text_StepThisWay:
-	.string "Bitte hier entlang.$"
+Route112_CableCarStation_Text_StepThisWay::
+	.string "Beweg deinen Hintern hier entlang.$"
 
-Route112_CableCarStation_Text_RideAnotherTime:
-	.string "Dann fahre bitte später mit uns.$"
+Route112_CableCarStation_Text_RideAnotherTime::
+	.string "Dann steh hier nicht im Weg rum und\n"
+	.string "komm später wieder.$"
 

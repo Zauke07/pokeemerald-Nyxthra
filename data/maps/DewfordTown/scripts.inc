@@ -787,7 +787,7 @@ DewfordTown_Text_BrineyBoatBroken:
 	.string "hier erstmal nicht weg.$"
 
 DewfordTown_Text_PlayerAlphaOver:
-	.string "{COLOR RED} {PLAYER}: Hm...\p"
+	.string "{COLOR RED} {PLAYER}: Hm…\p"
 	.string "Ich glaube, das war's mit dieser Alpha.\n"
 	.string "Ich habe alles erledigt, was möglich war.\p"
 	.string "Jetzt heißt es warten, bis die nächste\n"

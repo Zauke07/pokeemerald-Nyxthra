@@ -769,7 +769,7 @@ PetalburgCity_Text_WaterReflection:
 	.string "Mein Gesicht im Wasser…\p"
 	.string "Lächelt's? Oder bin ich einfach müde?\p"
 	.string "Sieht fast aus, als hätt ich diese neue\n"
-	.string "Nyxthra-Form gesehen...$"
+	.string "Nyxthra-Form gesehen…$"
 
 PetalburgCity_Text_FullPartyExplanation:
 	.string "Stell dir vor, du hast 6 POKéMON.\n"

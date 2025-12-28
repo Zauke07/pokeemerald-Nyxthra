@@ -64,7 +64,7 @@ MeteorFalls_Text_Ash_RematchIntro:
 	.string "werden - also gib diesmal alles!$"
 
 MeteorFalls_Text_Ash_Defeat:
-	.string "Ash: Wow... das war ein unfassbar starker\n"
+	.string "Ash: Wow… das war ein unfassbar starker\n"
 	.string "Kampf. Du hast mich echt überrascht!$"
 
 MeteorFalls_Text_Ash_PostBattle:

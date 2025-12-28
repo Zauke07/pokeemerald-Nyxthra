@@ -1,7 +1,7 @@
 MauvilleCity_GameCorner_MapScripts::
 	.byte 0
 
-    @ Game Corner prices
+	@ Game Corner prices
 	.set TM_DOUBLE_TEAM_COINS, 1500
 	.set TM_PSYCHIC_COINS, 3500
 	.set TM_FLAMETHROWER_COINS, 4000
@@ -626,156 +626,150 @@ MauvilleCity_GameCorner_EventScript_NoCoinCase::
 	releaseall
 	end
 
-MauvilleCity_GameCorner_Text_ThisIsMauvilleGameCorner:
-	.string "Willkommen in unserer SPIELHALLE.$"
+MauvilleCity_GameCorner_Text_ThisIsMauvilleGameCorner::
+	.string "Willkommen in der SPIELHALLE.\n"
+	.string "Lass dein Geld hier und verschwinde.$"
 
-MauvilleCity_GameCorner_Text_NeedCoinCaseForCoins:
-	.string "Okay, du möchtest MÜNZEn für die\n"
-	.string "Spiele haben?\p"
-	.string "Aber du hast keinen MÜNZKORB für die\n"
-	.string "MÜNZEn.$"
+MauvilleCity_GameCorner_Text_NeedCoinCaseForCoins::
+	.string "Was willst du? MÜNZEN?\p"
+	.string "Du hast ja nicht mal einen MÜNZKORB!\n"
+	.string "Komm wieder, wenn du deine Sachen\l"
+	.string "zusammen hast, Kleiner.$"
 
-MauvilleCity_GameCorner_Text_WereYouLookingForCoins:
-	.string "Suchst du nach MÜNZEn?\p"
-	.string "Das macht ¥1000 für 50 MÜNZEn.\n"
-	.string "Möchtest du welche haben?$"
+MauvilleCity_GameCorner_Text_WereYouLookingForCoins::
+	.string "Willst du Chips kaufen?\p"
+	.string "Macht ¥1000 für 50 MÜNZEN.\n"
+	.string "Nicht verhandeln, nur zahlen!$"
 
-MauvilleCity_GameCorner_Text_ThankYouHereAreYourCoins:
-	.string "Vielen Dank!\n"
-	.string "Hier sind deine MÜNZEn!$"
+MauvilleCity_GameCorner_Text_ThankYouHereAreYourCoins::
+	.string "Danke für die Kohle.\n"
+	.string "Hier, nimm deine MÜNZEN und verzock sie!$"
 
-MauvilleCity_GameCorner_Text_DontHaveEnoughMoney:
-	.string "Ähm… Es scheint, du hast nicht\n"
-	.string "genügend Geld dabei…$"
+MauvilleCity_GameCorner_Text_DontHaveEnoughMoney::
+	.string "Willst du mich verarschen?\n"
+	.string "Du hast nicht genug Kohle dabei!$"
 
-MauvilleCity_GameCorner_Text_CoinCaseIsFull:
-	.string "Oh?\n"
-	.string "Dein MÜNZKORB ist voll.$"
+MauvilleCity_GameCorner_Text_CoinCaseIsFull::
+	.string "Dein MÜNZKORB platzt gleich.\n"
+	.string "Verzock erst mal was, bevor du mehr willst.$"
 
-MauvilleCity_GameCorner_Text_DontNeedCoinsThen:
-	.string "Oh… Dann brauchst du keine MÜNZEn?\n"
-	.string "Viel Glück bei deinem Abenteuer!$"
+MauvilleCity_GameCorner_Text_DontNeedCoinsThen::
+	.string "Dann eben nicht.\n"
+	.string "Viel Glück, du wirst es brauchen…$"
 
-MauvilleCity_GameCorner_Text_ExchangeCoinsForPrizes:
-	.string "Willkommen.\p"
-	.string "Hier kannst du deine MÜNZEn gegen\n"
-	.string "Preise eintauschen.$"
+MauvilleCity_GameCorner_Text_ExchangeCoinsForPrizes::
+	.string "Willkommen an der Warenausgabe.\p"
+	.string "Hier kriegst du den heißen Scheiß\n"
+	.string "für deine MÜNZEN.$"
 
-MauvilleCity_GameCorner_Text_WhichPrize:
-	.string "Welchen Preis hättest du gerne?$"
+MauvilleCity_GameCorner_Text_WhichPrize::
+	.string "Was willst du haben? Mach schnell!$"
 
-MauvilleCity_GameCorner_Text_SoYourChoiceIsTheTMX:
-	.string "Du möchtest also\n"
-	.string "{STR_VAR_1} {STR_VAR_2}?$"
+MauvilleCity_GameCorner_Text_SoYourChoiceIsTheTMX::
+	.string "Du willst also\n"
+	.string "{STR_VAR_1} {STR_VAR_2}? Sicher?$"
 
-MauvilleCity_GameCorner_Text_SendToYourHomePC:
-	.string "Danke!\n"
-	.string "Wir senden das auf deinen PC.$"
+MauvilleCity_GameCorner_Text_SendToYourHomePC::
+	.string "Abgemacht!\n"
+	.string "Wir 'beamen' das auf deinen PC.$"
 
-MauvilleCity_GameCorner_Text_NotEnoughCoins:
-	.string "Du hast nicht genügend MÜNZEn.$"
+MauvilleCity_GameCorner_Text_NotEnoughCoins::
+	.string "Zu wenig MÜNZEN. Gewinne erst mal was!$"
 
-MauvilleCity_GameCorner_Text_NoRoomForPlacingDecor:
-	.string "There isn’t any room available for\n"
-	.string "placing {STR_VAR_1}.$"
+MauvilleCity_GameCorner_Text_NoRoomForPlacingDecor::
+	.string "In deiner Bude ist kein Platz für\n"
+	.string "{STR_VAR_1}. Räum mal auf!$"
 
-MauvilleCity_GameCorner_Text_OhIsThatSo:
-	.string "Oh, wirklich?\n"
-	.string "Du musst einige MÜNZEn sparen, bevor\l"
-	.string "du wiederkommst.$"
+MauvilleCity_GameCorner_Text_OhIsThatSo::
+	.string "Oh, doch nicht?\n"
+	.string "Komm erst wieder, wenn du genug gespart hast.$"
 
-MauvilleCity_GameCorner_Text_SoYourChoiceIsX:
-	.string "Du möchtest also {STR_VAR_1}?$"
+MauvilleCity_GameCorner_Text_SoYourChoiceIsX::
+	.string "Du nimmst also {STR_VAR_1}, ja?$"
 
-MauvilleCity_GameCorner_Text_HereYouGo:
-	.string "Bitte schön!$"
+MauvilleCity_GameCorner_Text_HereYouGo::
+	.string "Bitte sehr. Einmaliger Umtausch!$"
 
-MauvilleCity_GameCorner_Text_CantCarryAnyMore:
-	.string "Oh, you can’t carry any more than that.$"
+MauvilleCity_GameCorner_Text_CantCarryAnyMore::
+	.string "Deine Taschen sind voll. Wohin damit?$"
 
-MauvilleCity_GameCorner_Text_GotTwoOfSameDollWantOne:
-	.string "Ich habe mich vertan und zweimal die\n"
-	.string "gleiche PUPPE genommen.\p"
-	.string "Möchtest du eine davon haben?$"
+MauvilleCity_GameCorner_Text_GotTwoOfSameDollWantOne::
+	.string "Ich hab beim Klauen… äh, beim Kaufen\n"
+	.string "zweimal die gleiche PUPPE erwischt.\p"
+	.string "Willst du den Staubfänger haben?$"
 
-MauvilleCity_GameCorner_Text_HereYouGo2:
-	.string "Bitte schön!$"
+MauvilleCity_GameCorner_Text_HereYouGo2::
+	.string "Hier, nimm und nerv nicht.$"
 
-MauvilleCity_GameCorner_Text_YouWantItButNotNow:
-	.string "Bitte?\n"
-	.string "Du möchtest sie, aber nicht jetzt???$"
+MauvilleCity_GameCorner_Text_YouWantItButNotNow::
+	.string "Was?\n"
+	.string "Erst ja sagen und dann kneifen?$"
 
-MauvilleCity_GameCorner_Text_DontBeNegative:
-	.string "Oh, sei doch nicht so negativ drauf!\n"
-	.string "Du kannst sie wirklich gerne haben!$"
+MauvilleCity_GameCorner_Text_DontBeNegative::
+	.string "Zieh kein Gesicht!\n"
+	.string "Geschenkt ist geschenkt, nimm’s endlich!$"
 
-MauvilleCity_GameCorner_Text_CantWinJackpot:
-	.string "Es gibt einen Preis, den ich haben\n"
-	.string "möchte, aber ich kann den Jackpot\l"
-	.string "nicht knacken.$"
+MauvilleCity_GameCorner_Text_CantWinJackpot::
+	.string "Ich will unbedingt diesen Preis, aber\n"
+	.string "die Automaten hier sind doch manipuliert!\l"
+	.string "Ich krieg nie den Jackpot…$"
 
-MauvilleCity_GameCorner_Text_NeedCoinCaseGoNextDoor:
-	.string "Hey, Kindchen, wenn du hier spielen\n"
-	.string "willst, brauchst du einen MÜNZKORB.\p"
-	.string "Ich glaube, die junge Dame nebenan hat\n"
-	.string "einen. Besuche sie mal!$"
+MauvilleCity_GameCorner_Text_NeedCoinCaseGoNextDoor::
+	.string "Hör zu, Knirps. Ohne MÜNZKORB darfst\n"
+	.string "du hier nicht mal die Hebel angucken.\p"
+	.string "Die Olle nebenan hat einen.\n"
+	.string "Hol ihn dir, egal wie!$"
 
-MauvilleCity_GameCorner_Text_LuckOnlyLastSoLongTakeCoins:
-	.string "Mein Glück wird nicht immer anhalten.\n"
-	.string "Das ist zu viel für mich.\l"
-	.string "Hier, nimm die MÜNZEn!$"
+MauvilleCity_GameCorner_Text_LuckOnlyLastSoLongTakeCoins::
+	.string "Ich hab genug für heute. Die Luft hier\n"
+	.string "wird mir zu bleihaltig.\l"
+	.string "Hier, nimm die MÜNZEN und lass mich gehen!$"
 
-MauvilleCity_GameCorner_Text_MauvilleSomethingForEveryone:
-	.string "Immer, wenn ich in MALVENFROH CITY bin,\n"
-	.string "gehe ich in die SPIELHALLE.\p"
-	.string "MALVENFROH CITY bringt mir einfach\n"
-	.string "Glück.$"
+MauvilleCity_GameCorner_Text_MauvilleSomethingForEveryone::
+	.string "Immer wenn ich in MALVENFROH bin,\n"
+	.string "verzocke ich meine ganze Rente.\p"
+	.string "Dieses Casino zieht mich einfach an.$"
 
-MauvilleCity_GameCorner_Text_RouletteTablesDifferentRates:
-	.string "Beim ROULETTE gibt es verschiedene\n"
-	.string "Einsatzhöhen.\p"
-	.string "Überprüf deine MÜNZEn, bevor du dich\n"
-	.string "für einen Tisch entscheidest.$"
+MauvilleCity_GameCorner_Text_RouletteTablesDifferentRates::
+	.string "Beim ROULETTE ziehen sie dir das Geld\n"
+	.string "unterschiedlich schnell aus der Tasche.\p"
+	.string "Check dein Budget, bevor du alles verlierst.$"
 
-MauvilleCity_GameCorner_Text_EasyToLoseTrackOfTime:
-	.string "Hier kann man leicht die Zeit vergessen.\n"
-	.string "Ich sollte wieder an die Arbeit gehen.$"
+MauvilleCity_GameCorner_Text_EasyToLoseTrackOfTime::
+	.string "In diesem Loch vergisst man echt die Zeit.\n"
+	.string "Mein Chef bringt mich um, wenn ich\l"
+	.string "nicht gleich wieder auf der Matte stehe.$"
 
-MauvilleCity_GameCorner_Text_CoinsAreNeededToPlay:
-	.string "MÜNZEn werden gebraucht, um hier in der\n"
-	.string "SPIELHALLE spielen zu können.$"
+MauvilleCity_GameCorner_Text_CoinsAreNeededToPlay::
+	.string "Ohne MÜNZEN läuft hier gar nichts.\n"
+	.string "Also rück das Gold raus!$"
 
-MauvilleCity_GameCorner_Text_RouletteOnlyLuck:
-	.string "Dieses ROULETTE-Dingens…\n"
-	.string "Es ist ziemlich anstrengend.\p"
-	.string "Ich versuche, zu gewinnen. Aber ich\n"
-	.string "verliere immer. Doch ich gebe nicht auf.$"
+MauvilleCity_GameCorner_Text_RouletteOnlyLuck::
+	.string "Dieses ROULETTE macht mich fertig.\n"
+	.string "Ich verliere jede Runde, aber ich\l"
+	.string "muss weiterspielen… nur noch einmal!$"
 
-MauvilleCity_GameCorner_Text_UpTo3CoinsCanBeUsed:
-	.string "Bis zu drei MÜNZEn können an den EIN-\n"
-	.string "ARMIGEN BANDITen eingesetzt werden.\p"
-	.string "Je mehr MÜNZEn du einsetzt, desto\n"
-	.string "höher ist deine Chance auf den Jackpot.$"
+MauvilleCity_GameCorner_Text_UpTo3CoinsCanBeUsed::
+	.string "Du kannst bis zu drei MÜNZEN in diese\n"
+	.string "Dinger da stopfen.\p"
+	.string "Je mehr du reinwirfst, desto eher\n"
+	.string "lassen sie dich vielleicht mal gewinnen.$"
 
-MauvilleCity_GameCorner_Text_DifficultToStopOn7:
-	.string "Kannst du es genau bei “7” stoppen?\p"
-	.string "Wenn es bei “7” stoppt,\n"
-	.string "während ein REEL TIME gespielt wird,\l"
-	.string "erhältst du Extra-MÜNZEn.$"
+MauvilleCity_GameCorner_Text_DifficultToStopOn7::
+	.string "Die “7” zu treffen ist fast unmöglich.\p"
+	.string "Die Mechanik ist… sagen wir mal…\n"
+	.string "sehr eigenwillig eingestellt.$"
 
-MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo:
-	.string "Ich kann dir einige nützliche Tipps zu\n"
-	.string "den EINARMIGEN BANDITen geben.\p"
-	.string "Je mehr Blitze du anhältst, desto\n"
-	.string "größer die Chance auf ein REEL TIME,\l"
-	.string "eine Glücksrunde!\p"
-	.string "In einem Spiel mit fünf möglichen\n"
-	.string "Glücksrunden…\p"
-	.string "ist es möglich, vier reguläre Boni und\n"
-	.string "dann einen Big Bonus zu gewinnen.\p"
-	.string "Das ergibt zusammen 660 MÜNZEn,\n"
-	.string "aber ist sehr schwer zu gewinnen.$"
+MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo::
+	.string "Hör zu, ich verrat dir was über die\n"
+	.string "EINARMIGEN BANDITEN.\p"
+	.string "Blitze sind gut für die Glücksrunden,\n"
+	.string "aber meistens fressen sie nur dein Geld.\p"
+	.string "Theoretisch kannst du 660 MÜNZEN\n"
+	.string "mit einem Big Bonus holen.\p"
+	.string "Aber glaub mir, die Betreiber hier\n"
+	.string "passen schon auf, dass das kaum passiert.$"
 
-MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase:
-	.string "Du kannst ohne MÜNZKORB nicht spielen.$"
+MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase::
+	.string "Kein Korb, kein Spiel. Verschwinde!$"
 

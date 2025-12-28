@@ -41,28 +41,34 @@ MauvilleCity_House2_EventScript_DeclineTrade::
 	release
 	end
 
-MauvilleCity_House2_Text_BuyHarborMailAtSlateport:
-	.string "Wenn ich doch nur ein RAD hätte…\n"
-	.string "Dann könnte ich nach GRAPHITPORT\l"
-	.string "CITY zum Einkaufen fahren.\p"
-	.string "Dort würde ich mir dann einen HAFEN-\n"
-	.string "BRIEF im PKMN-SUPERMARKT kaufen…$"
+MauvilleCity_House2_Text_BuyHarborMailAtSlateport::
+	.string "Wenn ich doch nur ein verdammtes RAD\n"
+	.string "hätte… Dann könnte ich endlich aus\l"
+	.string "diesem Loch abhaun und einkaufen.\p"
+	.string "In GRAPHITPORT CITY gibt es diesen\n"
+	.string "HAFENBRIEF im Supermarkt… den brauche\l"
+	.string " ich unbedingt für meine Geschäfte.$"
 
-MauvilleCity_House2_Text_TradeHarborMailForCoinCase:
-	.string "Oh! Du besitzt einen HAFENBRIEF!!!\n"
-	.string "Würdest du den gegen einen MÜNZKORB\l"
-	.string "tauschen?$"
+MauvilleCity_House2_Text_TradeHarborMailForCoinCase::
+	.string "Oh! Du hast einen HAFENBRIEF dabei?!\n"
+	.string "Rück ihn raus! Ich geb dir auch diesen\l"
+	.string "MÜNZKORB dafür. Der bringt mir hier\l"
+	.string "eh nur Unglück! Deal?$"
 
-MauvilleCity_House2_Text_IllTradeYouCoinCase:
-	.string "Oh, ich bin so glücklich!\n"
-	.string "Okay, ich gebe dir diesen MÜNZKORB!$"
+MauvilleCity_House2_Text_IllTradeYouCoinCase::
+	.string "Na endlich! Her mit dem Ding!\n"
+	.string "Hier, nimm den MÜNZKORB und verspiel\l"
+	.string "dein Hab und Gut in der Absteige\l"
+	.string "nebenan!$"
 
-MauvilleCity_House2_Text_UseCoinCaseAtGameCorner:
-	.string "Diesen MÜNZKORB brauchst du in der\n"
-	.string "SPIELHALLE.$"
+MauvilleCity_House2_Text_UseCoinCaseAtGameCorner::
+	.string "Ohne diesen MÜNZKORB lassen dich die\n"
+	.string "Schlägertypen in der SPIELHALLE nicht\l"
+	.string "mal an die Automaten.$"
 
-MauvilleCity_House2_Text_ThatsDisappointing:
-	.string "Oh, das ist schade.\p"
-	.string "In der SPIELHALLE benötigt man einen\n"
-	.string "MÜNZKORB.$"
+MauvilleCity_House2_Text_ThatsDisappointing::
+	.string "Tzz, dann eben nicht.\p"
+	.string "Viel Spaß beim Zugucken in der\n"
+	.string "SPIELHALLE, ohne Korb kriegst du\l"
+	.string "da nämlich gar nichts!$"
 

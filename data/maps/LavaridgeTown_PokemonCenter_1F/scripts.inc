@@ -28,21 +28,24 @@ LavaridgeTown_PokemonCenter_1F_EventScript_Gentleman::
 	msgbox LavaridgeTown_PokemonCenter_1F_Text_TrainersShouldRestToo, MSGBOX_NPC
 	end
 
-LavaridgeTown_PokemonCenter_1F_Text_TrainersPokemonSpendTimeTogether:
-	.string "I think POKéMON get closer to their\n"
-	.string "TRAINERS if they spend time together.\p"
-	.string "The longer the better.\n"
-	.string "That's what I think.$"
+LavaridgeTown_PokemonCenter_1F_Text_TrainersPokemonSpendTimeTogether::
+	.string "Ich glaub ja, dass POKéMON zahmer werden,\n"
+	.string "wenn man ständig mit ihnen abhängt.\p"
+	.string "Je länger, desto besser.\n"
+	.string "Dann merken sie wohl irgendwann nicht\l"
+	.string "mehr, was du für 'n Vogel bist.$"
 
-LavaridgeTown_PokemonCenter_1F_Text_HotSpringCanInvigorate:
-	.string "It's sort of magical how just sitting\n"
-	.string "in a hot-spring pool can invigorate.\p"
-	.string "I wish I could let my POKéMON\n"
-	.string "soak, too.$"
+LavaridgeTown_PokemonCenter_1F_Text_HotSpringCanInvigorate::
+	.string "Schon fast unheimlich, wie man sich\n"
+	.string "wieder wie ein Mensch fühlt, wenn man\l"
+	.string "in der heißen Suppe da draußen hockt.\p"
+	.string "Eigentlich müsste ich meine POKéMON\n"
+	.string "da auch mal reinschmeißen, damit sie\l"
+	.string "endlich aufhören zu schwächeln.$"
 
-LavaridgeTown_PokemonCenter_1F_Text_TrainersShouldRestToo:
-	.string "Hohoho! Hey, kid, you can reach\n"
-	.string "the hot springs from here.\p"
-	.string "If POKéMON are getting rest, so too\n"
-	.string "should their TRAINERS.$"
-
+LavaridgeTown_PokemonCenter_1F_Text_TrainersShouldRestToo::
+	.string "Hohoho! Ey, Kleiner, durch die Hintertür\n"
+	.string "kommst du direkt zu den Quellen.\p"
+	.string "Wenn deine Viecher schon hier drin\n"
+	.string "gepäppelt werden, solltest du deinen\l"
+	.string "Hintern auch mal im Wasser parken.$"

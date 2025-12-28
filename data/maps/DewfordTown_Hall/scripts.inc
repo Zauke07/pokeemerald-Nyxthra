@@ -287,7 +287,7 @@ DewfordTown_Hall_Text_NotEasyToKeepUp:
 	.string "schwer, mitzuhalten.$"
 
 DewfordTown_Hall_Text_TVShowAboutTrend:
-	.string "Dieses “{STR_VAR_1}”...\n"
+	.string "Dieses “{STR_VAR_1}”…\n"
 	.string "Gab’s da nicht ne Doku auf Pokéflix?$"
 
 DewfordTown_Hall_Text_IsTrendMorePopularAcrossSea:

@@ -81,31 +81,34 @@ FallarborTown_PokemonCenter_1F_Movement_LanetteExitWest:
 	delay_8
 	step_end
 
-FallarborTown_PokemonCenter_1F_Text_LanetteGreeting:
-	.string "Oh, hello.\n"
-	.string "You are?\p"
-	.string "Okay, your name's {PLAYER}{KUN}.\n"
-	.string "I can see that you're a TRAINER.\p"
-	.string "So that means you use the POKéMON\n"
-	.string "Storage System I developed.\p"
-	.string "How I arrived at that conclusion is\n"
-	.string "a simple deductive process.\p"
-	.string "You spoke to me because you wanted\n"
-	.string "to access something on this PC.\p"
-	.string "Oh, I'm sorry. I'm LANETTE.\p"
-	.string "Honestly, I'm glad to meet you--it's\n"
-	.string "great you're using the Storage System.\p"
-	.string "If you could, please visit me at home.\n"
-	.string "My house is on ROUTE 114.$"
+FallarborTown_PokemonCenter_1F_Text_LanetteGreeting::
+	.string "Oh, hi.\n"
+	.string "Wer bist du denn?\p"
+	.string "Aha, {PLAYER}{KUN} also.\n"
+	.string "Ein TRAINER, wie originell.\p"
+	.string "Das heißt, du benutzt mein POKéMON-\n"
+	.string "Lagerungssystem. Sei gefälligst dankbar.\p"
+	.string "Wie ich darauf komme? Einfache Logik.\n"
+	.string "Wer so planlos vor einem PC steht wie\l"
+	.string "du, braucht Hilfe von Experten.\p"
+	.string "Oh, ich bin übrigens LANETTE.\p"
+	.string "Eigentlich ist es mir egal, wen ich hier\n"
+	.string "treffe, aber immerhin benutzt du meine\l"
+	.string "Software ohne sie kaputtzumachen.\p"
+	.string "Falls du mal echte Unordnung sehen\n"
+	.string "willst: Mein Haus ist auf ROUTE 114.\l"
+	.string "Aber fass bloß nichts an!$"
 
-FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
-	.string "I wonder what POKéMON looked like\n"
-	.string "long, long ago?\p"
-	.string "Maybe the FOSSIL MANIAC at the edge\n"
-	.string "of town will know.$"
+FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown::
+	.string "Ich frag mich echt, wie hässlich die\n"
+	.string "POKéMON früher ausgesehen haben.\p"
+	.string "Vielleicht weiß der FOSSIL-MANIAC am\n"
+	.string "Stadtrand mehr. Der Typ ist so verrückt,\l"
+	.string "der ist selbst fast ein Fossil.$"
 
-FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees:
-	.string "In the fields of FALLARBOR, we plant\n"
-	.string "seedlings of hardy trees that thrive\l"
-	.string "even in volcanic ash.$"
+FallarborTown_PokemonCenter_1F_Text_PlantHardyTrees::
+	.string "Hier in LAUBWECHSELFELD pflanzen wir\n"
+	.string "Bäume, die so zäh sind, dass ihnen sogar\l"
+	.string "dieser Asche-Dreck nichts ausmacht.\l"
+	.string "Müsste man mal mit Menschen versuchen…$"
 

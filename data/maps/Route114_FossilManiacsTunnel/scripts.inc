@@ -53,37 +53,39 @@ Route114_FossilManiacsTunnel_EventScript_PlayerRevivedFossil::
 	release
 	end
 
-Route114_FossilManiacsTunnel_Text_LookInDesertForFossils:
-	.string "Ich bin der FOSSILMANIAC… Ich bin\n"
-	.string "ein netter Typ, der Fossilien liebt…\p"
-	.string "Möchtest du ein Fossil haben?\p"
-	.string "Die Fossilien in dieser Gegend gehören\n"
-	.string "allerdings alle mir! Keines ist für dich…\p"
-	.string "Wenn du unbedingt ein Fossil haben\n"
-	.string "möchtest, geh in die Wüste und suche\l"
-	.string "bei den Felsen und im Sand. Vielleicht\l"
-	.string "findest du dort eines…$"
+Route114_FossilManiacsTunnel_Text_LookInDesertForFossils::
+	.string "Ich bin der FOSSIL-MANIAC… Ich bin\n"
+	.string "ein ziemlich krasser Typ, der Steine\l"
+	.string "viel geiler findet als Menschen…\p"
+	.string "Was glotzt du so? Willst’n Fossil?\p"
+	.string "Vergiss es! Alles, was hier im Dreck\n"
+	.string "liegt, gehört MIR! Verpiss dich!\p"
+	.string "Wenn du unbedingt im Sand spielen\n"
+	.string "willst, geh in die Wüste und such dir\l"
+	.string "deinen eigenen Müll. Mit viel Glück\l"
+	.string "findest du da was, du Schnorrer…$"
 
-Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils:
-	.string "Du hast ein FOSSIL gefunden, stimmt’s?\n"
-	.string "Das ist schön… Traumhaft…\p"
-	.string "Was wirst du mit dem FOSSIL machen?\p"
-	.string "Ich habe gehört, dass DEVON versucht,\n"
-	.string "aus den FOSSILien Pokémon zum\l"
-	.string "Leben zu erwecken…\p"
-	.string "Ich liebe FOSSILien, daher würde ich\n"
-	.string "so etwas niemals machen…$"
+Route114_FossilManiacsTunnel_Text_DevonCorpRevivingFossils::
+	.string "Du hast echt ein FOSSIL gefunden?\n"
+	.string "Was für ’n unverschämtes Glück…\p"
+	.string "Was hast du jetzt damit vor, Kleiner?\p"
+	.string "Ich hab gehört, die Bonzen von DEVON\n"
+	.string "versuchen, aus den Steinen POKéMON\l"
+	.string "rauszupressen…\p"
+	.string "Ich liebe meine FOSSILIEN so sehr, ich\n"
+	.string "würde sie niemals so einer Tortur\l"
+	.string "aussetzen. Die bleiben schön im Regal!$"
 
-Route114_FossilManiacsTunnel_Text_FossilsAreWonderful:
-	.string "FOSSILien sind so… Wundervoll…\n"
-	.string "Einfach traumhaft…$"
+Route114_FossilManiacsTunnel_Text_FossilsAreWonderful::
+	.string "FOSSILIEN sind so… sexy…\n"
+	.string "Einfach nur geiler, alter Dreck…$"
 
-Route114_FossilManiacsTunnel_Text_NotSafeThatWay:
+Route114_FossilManiacsTunnel_Text_NotSafeThatWay::
 	.string "Oh…\n"
-	.string "So ist es nicht sicher…\p"
-	.string "Ich habe hier gegraben…\n"
-	.string "Die Wand ist auf einmal eingestürzt…\p"
-	.string "Jetzt gibt es hier eine große Höhle…\p"
-	.string "Aber ich habe sie nicht weiter\n"
-	.string "untersucht, denn ich glaube nicht, dass\l"
-	.string "sich dort ein FOSSIL befindet…$"
+	.string "Pass auf, wo du hinstolperst…\p"
+	.string "Ich hab hier ein bisschen zu wild\n"
+	.string "rumgegraben und die Wand gesprengt…\p"
+	.string "Jetzt klafft da dieses riesige Loch…\p"
+	.string "Ich war da nicht drin. Sieht nicht so\n"
+	.string "aus, als gäbe es da was Wertvolles.\l"
+	.string "Also zisch ab und nerv wen anders!$"

@@ -5034,273 +5034,241 @@ Route110_Movement_BirchExit4:
 	walk_up
 	step_end
 
-Route110_Text_WeCantTalkAboutAquaActivities:
-	.string "TEAM AQUAs Aktivitäten müssen im\n"
-	.string "Moment geheim bleiben!$"
+Route110_Text_WeCantTalkAboutAquaActivities::
+    .string "TEAM AQUA macht hier Business, Kapito?\n"
+    .string "Zisch ab, bevor wir dich als Köder\l"
+    .string "für Tohaido benutzen!$"
 
-Route110_Text_KickUpARuckus:
-	.string "Ich würde liebend gerne nach\n"
-	.string "GRAPHITPORT CITY gehen und ein\l"
-	.string "bisschen Krawall machen.$"
+Route110_Text_KickUpARuckus::
+    .string "Ich hab richtig Bock, in GRAPHITPORT\n"
+    .string "ein paar Läden zu zerlegen und\l"
+    .string "Stress zu schieben. Wer will was?!$"
 
-Route110_Text_MyFirstJobInAqua:
-	.string "Das ist mein erster Job, seit ich\n"
-	.string "TEAM AQUA beigetreten bin. Ich bin\l"
-	.string "ganz tatterig.$"
+Route110_Text_MyFirstJobInAqua::
+    .string "Mein erster Job bei TEAM AQUA und ich\n"
+    .string "muss hier Wache schieben…\l"
+    .string "Ich zitter schon vor Wut, Alter!$"
 
-Route110_Text_AquaActionsBringSmiles:
-	.string "TEAM AQUAs Aktionen zaubern ein\n"
-	.string "Lächeln auf jedes Gesicht!$"
+Route110_Text_AquaActionsBringSmiles::
+    .string "Wenn TEAM AQUA fertig ist, werdet\n"
+    .string "ihr alle flennen! Das wird ein Spaß!$"
 
-Route110_Text_MayLetsBattle:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Hi, {PLAYER}{KUN}, wir haben uns ja\n"
-	.string "lange nicht gesehen!\p"
-	.string "Während ich auf der Suche nach\n"
-	.string "weiteren Pokémon war, sind meine\l"
-	.string "Pokémon stärker geworden.\p"
-	.string "Daher…\n"
-	.string "Wie wäre es mit einem kleinen Kampf?{COLOR DARK_GRAY}$"
+Route110_Text_MayLetsBattle::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: Oh, guck mal an, {PLAYER}{KUN}.\n"
+    .string "Lebst du auch noch?\p"
+    .string "Während du nur dumm rumgestanden\n"
+    .string "bist, hab ich meine POKéMON zu\l"
+    .string "echten Killern trainiert.\p"
+    .string "Lust auf ’ne Abreibung? Dann kann ich\n"
+    .string "endlich mal wieder lachen!{COLOR DARK_GRAY}$"
 
-Route110_Text_MayDefeat:
-	.string "AchDuSchande!\n"
-	.string "Du bist besser, als ich gedacht habe.$"
+Route110_Text_MayDefeat::
+    .string "Was zum Teufel?!\n"
+    .string "Hast du etwa gecheatet?$"
 
-Route110_Text_MayTakeThis:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}, du hast auch fleißig\n"
-	.string "trainiert, nicht wahr?\p"
-	.string "Ich denke, du verdienst eine Belohnung!\n"
-	.string "Hier, dies ist von mir für dich!{COLOR DARK_GRAY}$"
+Route110_Text_MayTakeThis::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: Boah, hast wohl heimlich\n"
+    .string "gedopt, was?\p"
+    .string "Nimm das Teil hier und nerv mich nicht.\n"
+    .string "Soll ja keiner sagen, ich sei geizig!{COLOR DARK_GRAY}$"
 
-Route110_Text_MayExplainItemfinder:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
-	.string "Probier ihn mal aus. Wenn irgendwo ein\n"
-	.string "Item versteckt ist, gibt er ein\l"
-	.string "Geräusch von sich.\p"
-	.string "Bis zum nächsten Mal, {PLAYER}{KUN}.\p"
-	.string "Es hört sich aus meinem Munde zwar blöd\n"
-	.string "an, aber bis dahin solltest du viel mehr\l"
-	.string "trainiert haben.{COLOR DARK_GRAY}$"
+Route110_Text_MayExplainItemfinder::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
+    .string "Damit findest du den Müll, den andere\n"
+    .string "verloren haben. Passt ja zu dir.\p"
+    .string "Zieh Leine, {PLAYER}{KUN}.\p"
+    .string "Echt peinlich, dich hier zu sehen.\n"
+    .string "Trainier gefälligst mal ordentlich!{COLOR DARK_GRAY}$"
 
-Route110_Text_BrendanLetsBattle:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Hey, {PLAYER}.\n"
-	.string "Hier treibst du dich also herum.\l"
-	.string "Wie geht es?\p"
-	.string "Hast du deine Pokémon gut aufgezogen?\n"
-	.string "Ich werde das für dich überprüfen.{COLOR DARK_GRAY}$"
+Route110_Text_BrendanLetsBattle::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: Ey, {PLAYER}.\n"
+    .string "Treibst dich wieder im Dreck rum?\l"
+    .string "Was geht?\p"
+    .string "Deine POKéMON sehen aus wie Abfall.\n"
+    .string "Ich zeig dir mal, wie echte Kämpfe\l"
+    .string "funktionieren!{COLOR DARK_GRAY}$"
 
-Route110_Text_BrendanDefeat:
-	.string "Hmm…\n"
-	.string "Du bist sehr gut.$"
+Route110_Text_BrendanDefeat::
+    .string "Tzz…\n"
+    .string "War wohl nur Glück.$"
 
-Route110_Text_BrendanTakeThis:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, du hast trainiert,\n"
-	.string "ohne dass ich etwas davon\l"
-	.string "mitbekommen habe…\p"
-	.string "Aber genug!\n"
-	.string "Hier, das ist für dich!{COLOR DARK_GRAY}$"
+Route110_Text_BrendanTakeThis::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, du hast trainiert,\n"
+    .string "während ich geschlafen hab, oder?\p"
+    .string "Egal, hier, nimm den Schrott!\n"
+    .string "Ich brauch das Ding eh nicht.{COLOR DARK_GRAY}$"
 
-Route110_Text_BrendanExplainItemfinder:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
-	.string "Probier ihn mal aus. \p"
-	.string "Ist irgendwo ein Item versteckt, gibt\n"
-	.string "er ein Geräusch von sich.\p"
-	.string "Wie auch immer, ich suche jetzt weiter\n"
-	.string "nach Pokémon.{COLOR DARK_GRAY}$"
+Route110_Text_BrendanExplainItemfinder::
+    .string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
+    .string "Damit kannst du im Dreck wühlen.\p"
+    .string "Ich geh jetzt weiter und such mir\n"
+    .string "was, das nicht so lahm ist wie du.{COLOR DARK_GRAY}$"
 
-Route110_Text_RideBikeAtFullSpeed:
-	.string "Wäre das nicht ein Spaß, mit einem FAHR-\n"
-	.string "RAD volle Pulle den RADWEG\l"
-	.string "entlangzudüsen?$"
+Route110_Text_RideBikeAtFullSpeed::
+    .string "Nichts geht über Vollgas auf dem\n"
+    .string "RADWEG! Wer bremst, hat Angst!$"
 
-Route110_Text_HairStreamsBehindMe:
-	.string "Gefällt es dir, wie mein raben-\n"
-	.string "schwarzes Haar im Wind weht?\p"
-	.string "Ich habe nur deshalb die Haare wachsen\n"
-	.string "lassen!$"
+Route110_Text_HairStreamsBehindMe::
+    .string "Guck dir meine Mähne an, wie sie im\n"
+    .string "Wind flattert! Neidisch?\p"
+    .string "Ich bin der King auf dem Asphalt!$"
 
-Route110_Text_YouGotBikeFromRydel:
-	.string "Oh, hey, du hast ein RAD von RADLA!\p"
-	.string "Oh, das ist mehr als offensichtlich.\n"
-	.string "Es steht ja dort geschrieben…\p"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\n"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\p"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\n"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\p"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\n"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\p"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\n"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA,\p"
-	.string "RADLA, RADLA, RADLA, RADLA, RADLA…\n"
-	.string "Der Name steht überall.\p"
-	.string "Du solltest damit überall herumfahren,\n"
-	.string "eine bessere Werbung gibt es nicht!$"
+Route110_Text_YouGotBikeFromRydel::
+    .string "Ey, du hast ’ne Karre von RADLA!\p"
+    .string "Sieht man sofort, du Werbeopfer.\n"
+    .string "Steht ja fett überall drauf…\p"
+    .string "RADLA, RADLA, RADLA… überall diese\n"
+    .string "scheiß Aufkleber!\p"
+    .string "Aber hey, fahr ruhig damit rum.\n"
+    .string "Dann weiß jeder direkt, wo du dein\l"
+    .string "Geld verbrannt hast!$"
 
-Route110_Text_TwoRoads:
-	.string "Zwei Straßen, eine oben, eine unten…\p"
-	.string "Eine Straße für Menschen und eine für\n"
-	.string "Pokémon. Das ist nur recht und billig.$"
+Route110_Text_TwoRoads::
+    .string "Zwei Wege. Oben für die Coolen auf\n"
+    .string "Rädern, unten für das Fußvolk.\l"
+    .string "Bleib ruhig unten, wo du hingehörst!$"
 
-Route110_Text_WalkOnTheLowRoad:
-	.string "Ich habe kein RAD, ich werde gemüt-\n"
-	.string "lich über die untere Straße schlendern.$"
+Route110_Text_WalkOnTheLowRoad::
+    .string "Kein Fahrrad? Tja, dann musst du\n"
+    .string "wohl zu Fuß durch den Matsch kriechen.$"
 
-Route110_Text_BikeTechniques:
-	.string "Neue Techniken zu lernen, gibt dem\n"
-	.string "Radfahren erst die richtige Würze.\p"
-	.string "Einige Orte kannst du nur erreichen,\n"
-	.string "wenn du die richtige Technik anwendest.$"
+Route110_Text_BikeTechniques::
+    .string "Wenn du keine Tricks kannst, bist du\n"
+    .string "auf dem Rad ein niemand.\p"
+    .string "Lern erst mal fahren, bevor du hier\n"
+    .string "den Max markierst!$"
 
-Route110_Text_WhichShouldIChoose:
-	.string "Was soll ich tun?\p"
-	.string "Schnurstracks über den RADWEG nach\n"
-	.string "MALVENFROH CITY fahren oder die untere\p"
-	.string "Straße nehmen und nach Pokémon\n"
-	.string "suchen?$"
+Route110_Text_WhichShouldIChoose::
+    .string "Was nun? Baller ich über den RADWEG\n"
+    .string "oder such ich im Gebüsch nach Viechern,\l"
+    .string "die ich verscherbeln kann?$"
 
-Route110_Text_CyclingChallengeResultSummary:
-	.string "Anzahl der Zusammenstöße:\n"
-	.string "… … {STR_VAR_1}!\p"
-	.string "Zeit:\n"
-	.string "… … {STR_VAR_2}!$"
+Route110_Text_CyclingChallengeResultSummary::
+    .string "Du hast {STR_VAR_1} Leute gerammt!\n"
+    .string "Zeit: {STR_VAR_2}!$"
 
-Route110_Text_ChallengeReactionBest:
-	.string "Bravo! Eine hervorragende Leistung!\p"
-	.string "Ich glaube, dein Talent zum Radfahren\n"
-	.string "kommt tief aus deinem innersten Herzen.\l"
-	.string "Du hast mich bis in die Seele getroffen!$"
+Route110_Text_ChallengeReactionBest::
+    .string "Kranker Typ! Du fährst wie ein Gott!\p"
+    .string "Dein Herz muss aus purem Benzin sein!\n"
+    .string "Du hast mich echt umgehauen!$"
 
-Route110_Text_ChallengeReactionGood:
-	.string "Deine Technik ist bemerkenswert.\p"
-	.string "Achte stets darauf, dass du nicht zu\n"
-	.string "schnell fährst und mit niemandem zu-\l"
-	.string "sammenstößt.$"
+Route110_Text_ChallengeReactionGood::
+    .string "Nicht schlecht, du Raser.\p"
+    .string "Aber pass auf, dass du nicht irgendwann\n"
+    .string "frontal in ’ne Wand bretterst.$"
 
-Route110_Text_ChallengeReactionOk:
-	.string "Ich rate dir, weiter zu üben.\p"
-	.string "Und ich wünsche dir, dass du das Ver-\n"
-	.string "gnügen des Radfahrens nie vergisst.$"
+Route110_Text_ChallengeReactionOk::
+    .string "Üb mal weiter, du Sonntagsfahrer.\p"
+    .string "Vielleicht lernst du’s ja noch, bevor\n"
+    .string "du in Rente gehst.$"
 
-Route110_Text_ChallengeReactionBad:
-	.string "Ich sage… dein Talent zum Radfahren\n"
-	.string "ist einfach miserabel.\p"
-	.string "Du brauchst wirklich noch viel mehr\n"
-	.string "Übung im Radfahren.$"
+Route110_Text_ChallengeReactionBad::
+    .string "Ganz ehrlich? Dein Talent ist echt\n"
+    .string "unter aller Sau.\p"
+    .string "Geh lieber zu Fuß, das ist sicherer\n"
+    .string "für alle Beteiligten.$"
 
-Route110_Text_ChallengeReactionWorst:
-	.string "… Ich bin entgeistert…\p"
-	.string "Du hast wirklich kein Talent zum\n"
-	.string "Radfahren.\p"
-	.string "Du solltest ernsthaft darüber nach-\n"
-	.string "denken, dein RAD bei RADLA\l"
-	.string "zurückzugeben.$"
+Route110_Text_ChallengeReactionWorst::
+    .string "… Mir fehlen die Worte…\p"
+    .string "Du bist so unfähig, es tut weh.\p"
+    .string "Gib das Rad bei RADLA zurück und\n"
+    .string "entschuldige dich bei der Menschheit!$"
 
-Route110_Text_RatedForNumberOfCollisions:
-	.string "Dies ist der RADWEG.\p"
-	.string "Wenn du mit einem EILRAD von MALVEN-\n"
-	.string "FROH CITY nach GRAPHITPORT CITY\p"
-	.string "fährst, wirst du nach der Anzahl der\n"
-	.string "Zusammenstöße und deiner Zeit\l"
-	.string "bewertet.$"
+Route110_Text_RatedForNumberOfCollisions::
+    .string "Das ist der RADWEG.\p"
+    .string "Wer hier mit dem EILRAD rumgurkt,\n"
+    .string "wird nach Skill und Speed bewertet.\l"
+    .string "Also zeig, was du kannst oder verpiss dich!$"
 
-Route110_Text_AlwaysAimHigher:
-	.string "Unabhängig von den Resultaten möchte\n"
-	.string "ich mehr Herausforderungen von dir\l"
-	.string "sehen. Immer das höchste Ziel im Auge\l"
-	.string "behalten!$"
+Route110_Text_AlwaysAimHigher::
+    .string "Egal wie mies du bist, hör nicht auf\n"
+    .string "mich zu nerven. Irgendwann klappt’s\l"
+    .string "vielleicht!$"
 
-Route110_Text_AcroBikesDoNotQualify:
-	.string "Auf diesem RADWEG werden die, die\n"
-	.string "EILRÄDER fahren, nach ihren Zu-\l"
-	.string "sammenstößen und ihrer Zeit bewertet.\p"
-	.string "KUNSTRÄDER nehmen nicht am\n"
-	.string "Wettkampf teil. Sie sind zu einfach\l"
-	.string "zu lenken.$"
+Route110_Text_AcroBikesDoNotQualify::
+    .string "Das EILRAD ist für echte Männer.\p"
+    .string "KUNSTRÄDER sind was für Pussys, die\n"
+    .string "nicht schnell fahren können. Die\l"
+    .string "zählen hier nicht!$"
 
-Route110_Text_SlateportCitySign:
-	.string "ROUTE 110\n"
-	.string "{DOWN_ARROW} GRAPHITPORT CITY$"
+Route110_Text_SlateportCitySign::
+    .string "ROUTE 110\n"
+    .string "{DOWN_ARROW} GRAPHITPORT CITY (Hier gibt's Stress)$"
 
-Route110_Text_CyclingRoadSign:
-	.string "KÜSTENRADWEG$"
+Route110_Text_CyclingRoadSign::
+    .string "ASPHALT-HÖLLE$"
 
-Route110_Text_AquaWasHere:
-	.string "“TEAM AQUA war hier!”\p"
-	.string "Das hat jemand auf das Schild\n"
-	.string "gekritzelt. Ein anderer hat es \l"
-	.string "überschrieben.\p"
-	.string "“TEAM MAGMA ist das beste Team!”\n"
-	.string "steht da nun.$"
+Route110_Text_AquaWasHere::
+    .string "“TEAM AQUA hat hier hingepisst!”\p"
+    .string "Irgendein Lappen hat das Schild\n"
+    .string "beschmiert. Ein anderer Depp war’s:\p"
+    .string "“TEAM MAGMA lutscht Eier!”\n"
+    .string "steht da jetzt drüber.$"
 
-Route110_Text_Route103Sign:
-	.string "ROUTE 110\n"
-	.string "{LEFT_ARROW} ROUTE 103$"
+Route110_Text_Route103Sign::
+    .string "ROUTE 110\n"
+    .string "{LEFT_ARROW} ROUTE 103 (Abkürzung für Faule)$"
 
-Route110_Text_SeasideParkingSign:
-	.string "KÜSTENPARKPLATZ$"
+Route110_Text_SeasideParkingSign::
+    .string "PROLL-PARKPLATZ$"
 
-Route110_Text_MauvilleCitySign:
-	.string "ROUTE 110\n"
-	.string "{UP_ARROW} MALVENFROH CITY$"
+Route110_Text_MauvilleCitySign::
+    .string "ROUTE 110\n"
+    .string "{UP_ARROW} MALVENFROH CITY (Zocker-Paradies)$"
 
-Route110_Text_TrainerTipsPrlzSleep:
-	.string "TIPPS für TRAINER\p"
-	.string "Der Gegner kann paralysiert oder\n"
-	.string "in Schlaf versetzt werden und ist damit\l"
-	.string "wehrlos.\p"
-	.string "Das sind wichtige Techniken in einem\n"
-	.string "Pokémon-Kampf.$"
+Route110_Text_TrainerTipsPrlzSleep::
+    .string "TIPPS für NOOBS\p"
+    .string "Mach den Gegner bewegungsunfähig,\n"
+    .string "dann kann er sich nicht wehren.\l"
+    .string "Feige, aber extrem effektiv!$"
 
-Route110_Text_TrainerTipsRegisterItems:
-	.string "TIPPS für TRAINER\p"
-	.string "Die Items in dem BEUTEL können mit\n"
-	.string "SELECT neu geordnet werden.$"
+Route110_Text_TrainerTipsRegisterItems::
+    .string "TIPPS für NOOBS\p"
+    .string "Ordne deinen Beutel mit SELECT,\n"
+    .string "damit du dein Zeug schneller findest!$"
 
-Route110_Text_TrickHouseSign:
-	.string "“Drei Schritte {RIGHT_ARROW} und zwei Schritte {UP_ARROW}\n"
-	.string "und du erreichst das wundersame\l"
-	.string "RÄTSELHAUS.”$"
+Route110_Text_TrickHouseSign::
+    .string "“Drei Schritte {RIGHT_ARROW} und zwei Schritte {UP_ARROW}\n"
+    .string "und du landest in diesem Psycho-Haus\l"
+    .string "vom RÄTSEL-FREAK.”$"
 
-Route110_Text_BestRecord:
-	.string "DAS BESTE ERGEBNIS…\p"
-	.string "Anzahl der Zusammenstöße: {STR_VAR_1}\p"
-	.string "Zeit: {STR_VAR_2}$"
+Route110_Text_BestRecord::
+    .string "DER KRASSESTE TYP…\p"
+    .string "Rempler: {STR_VAR_1}\p"
+    .string "Zeit: {STR_VAR_2}$"
 
-Route110_Text_ThereIsNoRecord:
-	.string "DAS BESTE ERGEBNIS…\p"
-	.string "Niemand scheint sich bis jetzt der He-\n"
-	.string "rausforderung gestellt zu haben…$"
+Route110_Text_ThereIsNoRecord::
+    .string "DER KRASSESTE TYP…\p"
+    .string "Bisher war wohl jeder hier zu feige\n"
+    .string "für eine echte Herausforderung…$"
 
-Route110_Text_ImagineSeeingYouHere:
-	.string "PROF. BIRK: Oh, {PLAYER}{KUN}!\n"
-	.string "Ich dachte mir schon, dass ich dich hier\l"
-	.string "treffe!\p"
-	.string "Und wo mag {RIVAL} sein?$"
+Route110_Text_ImagineSeeingYouHere::
+    .string "PROF. BIRK: Oh, {PLAYER}{KUN}!\n"
+    .string "Musst du hier wieder rumlungern?\p"
+    .string "Wo steckt eigentlich {RIVAL}? Schon\n"
+    .string "wieder abgehängt worden?$"
 
-Route110_Text_HeardYouInstallMatchCall:
-	.string "Ach so.\n"
-	.string "Ihr beiden seid nicht zusammen\l"
-	.string "unterwegs.\p"
-	.string "Ich habe schon davon gehört. Dein\n"
-	.string "POKéNAV ist mit dem TRAINER/RUF-\l"
-	.string "System ausgerüstet.\p"
-	.string "Dann werde ich dich in mein POKéNAV-\n"
-	.string "Verzeichnis eintragen.\p"
-	.string "So kann ich deinen POKéDEX beurteilen,\n"
-	.string "auch wenn du weit weg bist.\p"
-	.string "… … … … …\n"
-	.string "…$"
+Route110_Text_HeardYouInstallMatchCall::
+    .string "Ach, verstehe.\n"
+    .string "Ihr könnt euch wohl nicht riechen.\p"
+    .string "Dein POKéNAV hat jetzt den TRAINER/RUF.\n"
+    .string "Damit kann ich dich nerven, egal\l"
+    .string "wo du bist.\p"
+    .string "Ich trag mich mal ein, damit ich dein\n"
+    .string "Gequengel immer hören kann.\p"
+    .string "… … … … …\n"
+    .string "Fertig!$"
 
-Route110_Text_RegisteredBirchInPokenav:
-	.string "PROF. BIRK wurde in das POKéNAV-\n"
-	.string "Verzeichnis eingetragen.$"
+Route110_Text_RegisteredBirchInPokenav::
+    .string "Der alte Sack BIRK hat sich in dein\n"
+    .string "POKéNAV gehackt.$"
 
-Route110_Text_KeepAnEyeOutForRival:
-	.string "PROF. BIRK: {PLAYER}{KUN}…\p"
-	.string "Bitte achte ein wenig auf {RIVAL}.\n"
-	.string "… … … … …\l"
-	.string "…\p"
-	.string "Nun muss ich mich aber beeilen.\n"
-	.string "Man sieht sich, {PLAYER}{KUN}.$"
+Route110_Text_KeepAnEyeOutForRival::
+    .string "PROF. BIRK: {PLAYER}{KUN}…\p"
+    .string "Pass mal auf {RIVAL} auf, nicht dass\n"
+    .string "noch was Schlimmes passiert…\p"
+    .string "Ich hab jetzt Besseres zu tun.\n"
+    .string "Man riecht sich, {PLAYER}{KUN}.$"
 
 Route110_EventScript_Flemmli::
 	msgbox Route110_Text_Flemmli, MSGBOX_NPC
@@ -5315,7 +5283,7 @@ Route110_Text_Flemmli:
 	.string "herausfinden :D !$"
 
 Route110_Text_SnorlaxSleeping::
-	.string "{COLOR RED}{PLAYER}: Meine Fresse...\n"
+	.string "{COLOR RED}{PLAYER}: Meine Fresse…\n"
 	.string "Was ist das denn?!\p"
 	.string "{PLAYER}: Ah, ein dickes fettes\n"
 	.string "{COLOR BLUE}Relaxo{COLOR RED}.\p"

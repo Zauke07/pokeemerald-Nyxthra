@@ -47,8 +47,8 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalNoticePlayer
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalExitHerbShop
 	delay 20
-    lockall
-    call Common_EventScript_SetupRivalMusic
+	lockall
+	call Common_EventScript_SetupRivalMusic
 	call_if_eq VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer1
 	call_if_ne VAR_0x8008, 9, LavaridgeTown_EventScript_RivalApproachPlayer2
 	
@@ -56,22 +56,22 @@ LavaridgeTown_EventScript_RivalGiveGoGoggles::
 	goto_if_eq VAR_RESULT, STYLE_MAY, LavaridgeTown_EventScript_BrendanGiveGoGoggles
 	goto_if_eq VAR_RESULT, STYLE_RED, LavaridgeTown_EventScript_MayGiveGoGoggles
 	goto_if_eq VAR_RESULT, STYLE_LEAF, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_ETHAN, LavaridgeTown_EventScript_MayGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_LYRA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_LUCAS, LavaridgeTown_EventScript_MayGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_DAWN, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_HILBERT, LavaridgeTown_EventScript_MayGiveGoGoggles
-    goto_if_eq VAR_RESULT, STYLE_HILDA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-@     goto_if_eq VAR_RESULT, STYLE_NATE, LavaridgeTown_EventScript_MayGiveGoGoggles
-@     goto_if_eq VAR_RESULT, STYLE_ROSA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_CALEM, LavaridgeTown_EventScript_MayGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_SERENA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_ELIO, LavaridgeTown_EventScript_MayGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_SELENE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_VICTOR, LavaridgeTown_EventScript_MayGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_GLORIA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_FLORIAN, LavaridgeTown_EventScript_MayGiveGoGoggles
-@    goto_if_eq VAR_RESULT, STYLE_JULIANA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_LYRA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_DAWN, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, LavaridgeTown_EventScript_MayGiveGoGoggles
+	goto_if_eq VAR_RESULT, STYLE_HILDA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@	 goto_if_eq VAR_RESULT, STYLE_NATE, LavaridgeTown_EventScript_MayGiveGoGoggles
+@	 goto_if_eq VAR_RESULT, STYLE_ROSA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, LavaridgeTown_EventScript_MayGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, LavaridgeTown_EventScript_MayGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, LavaridgeTown_EventScript_MayGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LavaridgeTown_EventScript_MayGiveGoGoggles
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LavaridgeTown_EventScript_BrendanGiveGoGoggles
 	end
 
 LavaridgeTown_EventScript_MayGiveGoGoggles::
@@ -282,147 +282,134 @@ LavaridgeTown_EventScript_HerbShopSign::
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
 
-LavaridgeTown_Text_MayNiceBadgesTakeThis:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Lange nicht gesehen!\p"
-	.string "Oh? Während ich die heißen Quellen\n"
-	.string "besuchte, hast du den Bad Lavastadt\n"
-	.string "ARENA-ORDEN bekommen.\p"
-	.string "Du musst gute POKéMON gesammelt\n"
-	.string "haben…\l"
-	.string "Nein, ich glaube, du hast einige\n"
-	.string "aufgezogen.\p"
-	.string "Ich denke, es wäre in Ordnung, wenn\n"
-	.string "du das hier hättest.{COLOR DARK_GRAY}$"
+LavaridgeTown_Text_MayNiceBadgesTakeThis::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Dass ich dich hier\n"
+	.string "treffen muss, versaut mir echt den Tag.\p"
+	.string "Oh? Während ich mich in den Quellen\n"
+	.string "amüsiert habe, hast du dir den Orden\n"
+	.string "erschlichen? Glück muss man haben.\p"
+	.string "Hast wohl im Lotto gewonnen und dir\n"
+	.string "ein paar starke POKéMON gekauft…\l"
+	.string "Oder hast du sie tatsächlich trainiert?\p"
+	.string "Egal, nimm das hier, bevor du in der\n"
+	.string "Wüste noch jämmerlich krepierst.{COLOR DARK_GRAY}$"
 
-LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Mit diesen GO-GOGGLES wirst\n"
-	.string "du keine Probleme haben, durch die Wüste\n"
-	.string "in der Nähe von ROUTE 111 zu kommen.\p"
-	.string "Aber, wow, {PLAYER}{KUN}…\n"
-	.string "Arenen herausfordern…\p"
-	.string "Du gibst dir Mühe, weil du nicht gegen\n"
-	.string "mich verlieren willst, wetten!\p"
-	.string "{PLAYER}{KUN}, ich denke, ich sollte deinen\n"
-	.string "Vadda in der ARENA von Blütenburg City\n"
-	.string "herausfordern.\p"
-	.string "Bis bald!{COLOR DARK_GRAY}$"
+LavaridgeTown_Text_MayExplainGoGogglesChallengeDad::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Mit diesen GO-GOGGLES heulst\n"
+	.string "du wenigstens nicht rum, wenn dir der\n"
+	.string "Sand in die Augen fliegt.\p"
+	.string "Aber mal im Ernst, {PLAYER}{KUN}…\n"
+	.string "Du und Orden sammeln…\p"
+	.string "Du versuchst es echt krampfhaft, nur\n"
+	.string "damit ich dich nicht wieder auslache!\p"
+	.string "{PLAYER}{KUN}, ich geh jetzt mal zu deinem\n"
+	.string "Vadda in die ARENA von Blütenburg City.\p"
+	.string "Der kann mir wenigstens einen echten\n"
+	.string "Kampf bieten. Ciao!{COLOR DARK_GRAY}$"
 
-LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, hey, es ist eine Weile\n"
-	.string "her. Wie läuft's?\p"
+LavaridgeTown_Text_BrendanNiceBadgesTakeThis::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, hey. Musste das sein?\n"
+	.string "Sogar hier muss ich deine Fratze sehen.\p"
 	.string "Hmm…\n"
-	.string "Das ist eine anständige Sammlung von\n"
-	.string "ORDEN.\p"
+	.string "Ein paar Orden hast du ja gesammelt.\n"
+	.string "Muss wohl an der miesen KI liegen.\p"
 	.string "Na gut.\n"
-	.string "Du kannst das hier genauso gut haben.{COLOR DARK_GRAY}$"
+	.string "Nimm den Schrott hier, ich hab eh zwei.{COLOR DARK_GRAY}$"
 
-LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Behalte die bei dir, wenn du\n"
-	.string "vorhast, in die Wüste in der Nähe von\n"
-	.string "ROUTE 111 zu gehen.\p"
-	.string "Es sollte einige POKéMON geben, die\n"
-	.string "ausschließlich in der Wüste leben.\l"
-	.string "Du könntest nach diesen suchen.\p"
-	.string "Was mich betrifft…\n"
-	.string "Ich überlege, dein Vadda herauszufordern,\l"
-	.string "den ARENALEITER von Blütenburg City.\p"
-	.string "Im Gegensatz zu dir, {PLAYER}, sieht dein\n"
-	.string "Vater wirklich stark aus.\p"
-	.string "Bis dann!{COLOR DARK_GRAY}$"
+LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Steck die Brille ein, wenn du\n"
+	.string "in der Wüste nicht blind werden willst.\p"
+	.string "Da gibt's POKéMON, die nur dort im Dreck\n"
+	.string "hocken. Kannst ja mal danach buddeln.\p"
+	.string "Ich hab Wichtigeres vor…\n"
+	.string "Ich werd deinen Vadda herausfordern,\l"
+	.string "den Boss von Blütenburg City.\p"
+	.string "Ganz ehrlich, {PLAYER}, ich frag mich echt,\n"
+	.string "ob du adoptiert bist. Dein Alter sieht\l"
+	.string "nämlich nach was aus, im Gegensatz zu dir.\p"
+	.string "Man sieht sich!{COLOR DARK_GRAY}$"
 
-LavaridgeTown_Text_HaveEggWillYouTakeIt:
-	.string "Ich habe hier ein EI.\p"
-	.string "Ich hatte gehofft, es durch Bedecken\n"
-	.string "mit heißem Sand bei den heißen Quellen\l"
-	.string "auszubrüten. Aber das scheint nicht\l"
-	.string "auszureichen…\p"
-	.string "Ich habe gehört, es wäre am besten,\n"
-	.string "wenn es zusammen mit POKéMON\l"
-	.string "getragen würde.\p"
-	.string "Du bist ein TRAINER, ja?\n"
-	.string "Und deine POKéMON strahlen Vitalität aus.\p"
-	.string "Also, was sagst du?\n"
-	.string "Wirst du dieses EI ausbrüten?$"
+LavaridgeTown_Text_HaveEggWillYouTakeIt::
+	.string "Ich hab hier so ’n EI rumliegen.\p"
+	.string "Ich dachte, wenn ich es im heißen Sand\n"
+	.string "vergrabe, schlüpft es schneller. War wohl\l"
+	.string "nichts. Jetzt hab ich keine Lust mehr drauf.\p"
+	.string "Man sagt, es braucht Bewegung und\n"
+	.string "andere POKéMON um sich rum.\p"
+	.string "Du siehst aus, als hättest du eh nichts\n"
+	.string "Besseres zu tun.\n"
+	.string "Willst du den Ballast hier mitschleppen?$"
 
-LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg:
-	.string "Gut! Ich hoffe, du wirst viel mit diesem\n"
-	.string "EI herumlaufen!$"
+LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg::
+	.string "Gut! Dann beweg mal deinen Hintern\n"
+	.string "und bring das Ding zum Schlüpfen!$"
 
-LavaridgeTown_Text_ReceivedTheEgg:
-	.string "{PLAYER} hat das EI erhalten.$"
+LavaridgeTown_Text_NoRoomForThisEgg::
+	.string "Häh? Dein Team ist voll. Ich behalt\n"
+	.string "den Müll doch nicht für dich auf!$"
 
-LavaridgeTown_Text_NoRoomForThisEgg:
-	.string "Oh? Du hast zu viele POKéMON.\n"
-	.string "Es gibt keinen Platz für dieses EI…$"
+LavaridgeTown_Text_AsYouWishThen::
+	.string "Wie du meinst…\p"
+	.string "Dann gammelt das EI halt weiter hier\n"
+	.string "rum. Wenn du deine Meinung änderst,\n"
+	.string "weißt du ja, wo ich hocke.$"
 
-LavaridgeTown_Text_AsYouWishThen:
-	.string "Wie du willst…\p"
-	.string "Wenn du deine Meinung änderst und\n"
-	.string "dieses EI ausbrüten möchtest, werde\n"
-	.string "ich hier sein.$"
+LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare::
+	.string "In der Pension finden sie ständig EIER.\p"
+	.string "Keine Ahnung, was die POKéMON da\n"
+	.string "treiben, wenn keiner hinguckt.$"
 
-LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare:
-	.string "Hin und wieder wird ein EI in der\n"
-	.string "POKéMON-PENSION gefunden.\p"
-	.string "Zumindest besagt das das Gerücht.$"
+LavaridgeTown_Text_HotSpringsNeverRunDry::
+	.string "Wir pumpen hier ohne Ende Wasser ab,\n"
+	.string "und trotzdem versiegt das Zeug nie.\p"
+	.string "Ziemlich unheimlich, wenn du mich fragst.\p"
+	.string "Unter uns blubbert Magma und erhitzt\n"
+	.string "die ganze Brühe. Hoffentlich fliegen wir\n"
+	.string "nicht irgendwann in die Luft.$"
 
-LavaridgeTown_Text_HotSpringsNeverRunDry:
-	.string "Wir entnehmen so viel heißes Wasser,\n"
-	.string "wie wir brauchen, und doch versiegen\n"
-	.string "die heißen Quellen nie.\p"
-	.string "Ist das nicht magisch?\p"
-	.string "Diese heißen Quellen entstehen in der\n"
-	.string "Nähe aktiver Vulkane. Wasseradern\n"
-	.string "unter der Erde werden durch Magma\n"
-	.string "erhitzt und steigen als heiße Quellen\n"
-	.string "auf.$"
+LavaridgeTown_Text_PokemonNippedBackside::
+	.string "Sich hier im Sand einbuddeln zu lassen…\p"
+	.string "Einfach nur geil… seufz…\p"
+	.string "Häh? GYAah! VERDAMMT!\p"
+	.string "Irgendein Mistvieh hat mir gerade voll\n"
+	.string "in den Arsch gebissen!$"
 
-LavaridgeTown_Text_PokemonNippedBackside:
-	.string "In diesem heißen Sand vergraben zu\n"
-	.string "sein ist… Seufz…\p"
-	.string "So warm und himmlisch…\p"
-	.string "Eh? Gyaah! Autsch!\p"
-	.string "Ein POKéMON hat mir in den Hintern\n"
-	.string "gebissen!$"
+LavaridgeTown_Text_OhYouLikeHotSprings::
+	.string "Was? Du hängst auch in heißen Quellen\n"
+	.string "rum?\p"
+	.string "Bist du nicht ein bisschen zu jung,\n"
+	.string "um hier wie ’n alter Sack zu entspannen?$"
 
-LavaridgeTown_Text_OhYouLikeHotSprings:
-	.string "Oh, du magst heiße Quellen, oder?\p"
-	.string "Das ist überraschend für jemanden\n"
-	.string "so jung wie dich.$"
+LavaridgeTown_Text_BatheInHotSpringsEveryDay::
+	.string "Ich hock hier jeden Tag im Wasser.\p"
+	.string "Vielleicht werd ich dann auch mal so\n"
+	.string "ne heiße Braut wie Flavia.$"
 
-LavaridgeTown_Text_BatheInHotSpringsEveryDay:
-	.string "Ich bade jeden Tag in den heißen\n"
-	.string "Quellen.\p"
-	.string "Ich möchte eine schöne und starke\n"
-	.string "ARENALEITERIN wie Flavia werden.$"
+LavaridgeTown_Text_IfPokemonInHotSprings::
+	.string "Stell dir mal vor, Leute würden ihre\n"
+	.string "POKéMON hier einfach reinschmeißen.\p"
+	.string "Ein Elektro-Bad wär der absolute Killer.\n"
+	.string "Oder direkt ein Lava-Bad… autsch.$"
 
-LavaridgeTown_Text_IfPokemonInHotSprings:
-	.string "Wenn Leute POKéMON in heiße Quellen\n"
-	.string "setzen, könnte das wirklich seltsam\n"
-	.string "sein.\p"
-	.string "Warum, es könnte ein elektrisches Bad,\n"
-	.string "ein Sprudelbad oder sogar ein\n"
-	.string "Lava-Bad sein…$"
+LavaridgeTown_Text_HotSpringsClaims::
+	.string "Die behaupten ja, das Wasser hier heilt\n"
+	.string "alles: Stress, Muskelkater, Liebeskummer\n"
+	.string "und Geldnot… Wer’s glaubt, wird selig.$"
 
-LavaridgeTown_Text_HotSpringsClaims:
-	.string "Sie behaupten, dass diese heißen\n"
-	.string "Quellen gut sind, um nervöse\n"
-	.string "Anspannung zu beruhigen, schmerzende\n"
-	.string "Muskeln zu lindern, romantische\n"
-	.string "Probleme zu lösen und Geld anzuziehen…$"
-
-LavaridgeTown_Text_TownSign:
+LavaridgeTown_Text_TownSign::
 	.string "Bad Lavastadt\p"
-	.string "“POKéMON CENTER HEIßE QUELLEN\n"
-	.string "Ein ausgezeichneter Ort zum Entspannen!”$"
+	.string "“POKéMON CENTER & HEIßE QUELLEN\n"
+	.string "Hier kannst du deine Wunden lecken!”$"
 
-LavaridgeTown_Text_GymSign:
-	.string "Bad Lavastadt POKéMON-ARENA\n"
+LavaridgeTown_Text_GymSign::
+	.string "ARENA von Bad Lavastadt\n"
 	.string "LEITERIN: Flavia\l"
-	.string "“Eine mit einer feurigen Leidenschaft, die\n"
-	.string "brennt!”$"
+	.string "“Vorsicht: Verbrennungsgefahr für Lappen!”$"
 
-LavaridgeTown_Text_HerbShopSign:
+LavaridgeTown_Text_HerbShopSign::
 	.string "POKéMON-KRÄUTERLADEN\n"
-	.string "“Bitterer Geschmack--bessere Heilung!”$"
+	.string "“Schmeckt scheiße, hilft aber - vielleicht!”$"
 
+LavaridgeTown_Text_ReceivedTheEgg::
+	.string "{PLAYER} hat das EI von der alten\n"
+	.string "Schachtel übernommen!$"

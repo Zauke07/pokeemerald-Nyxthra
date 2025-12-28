@@ -45,66 +45,61 @@ Route114_LanettesHouse_EventScript_PC::
 	msgbox Route114_LanettesHouse_Text_EmailFromBill, MSGBOX_SIGN
 	end
 
-Route114_LanettesHouse_Text_EverythingClutteredKeepThis:
+Route114_LanettesHouse_Text_EverythingClutteredKeepThis::
 	.string "LANETTE: Oh! {PLAYER}{KUN}!\p"
-	.string "Entschuldige, dass es hier so chaotisch\n"
-	.string "aussieht. Immer, wenn ich forsche,\l"
-	.string "vergesse ich aufzuräumen…\p"
-	.string "Das ist echt peinlich… Erzähl das bloß\n"
-	.string "niemandem! Ich gebe dir auch dies hier…$"
+	.string "Glotz nicht so blöd, ja, hier sieht’s\n"
+	.string "aus wie bei Hempels unterm Sofa.\l"
+	.string "Ich hab Wichtigeres zu tun als zu\l"
+	.string "putzen, während ich die Welt rette!\p"
+	.string "Echt peinlich… Wenn du das rumtratschst,\n"
+	.string "lösch ich dein Konto! Hier, nimm das\l"
+	.string "Schweigegeld und halt die Klappe!$"
 
-Route114_LanettesHouse_Text_OrganizeYourBoxes:
-	.string "Soll ich dir einige Hinweise zum\n"
-	.string "Pokémon-Lagerungs-System geben?\p"
-	.string "Du solltest deine BOXen gut verwalten,\n"
-	.string "damit du weißt, welche Pokémon sich \l"
-	.string "in welcher BOX befinden…$"
+Route114_LanettesHouse_Text_OrganizeYourBoxes::
+	.string "Soll ich dir erklären, wie man den PC\n"
+	.string "bedient, oder bist du zu hohl dafür?\p"
+	.string "Sortier deine BOXen gefälligst ordentlich,\n"
+	.string "sonst suchst du deine Viecher ewig,\l"
+	.string "du Daten-Messie!$"
 
-Route114_LanettesHouse_Text_ResearchNotesPage1:
-	.string "LANETTEs Forschungs-Aufzeichnungen.\n"
-	.string "Das sind Informationen zu den BOXen.\p"
-	.string "Es sollten BOXen eingerichtet werden,\n"
-	.string "die jeweils 30 Pokémon aufnehmen\l"
-	.string "können.\p"
-	.string "Jeder TRAINER sollte in der Lage sein,\n"
-	.string "420 Pokémon im PC-System zu lagern.\p"
+Route114_LanettesHouse_Text_ResearchNotesPage1::
+	.string "LANETTEs Nerd-Notizen.\n"
+	.string "Hier geht’s um den digitalen Knast.\p"
+	.string "Ich hab BOXen gebaut, in die 30\n"
+	.string "POKéMON reingequetscht werden.\p"
+	.string "Das macht Platz für 420 Viecher.\n"
+	.string "Wer mehr fängt, hat echt Probleme.\p"
 	.string "Weiterlesen?$"
 
-Route114_LanettesHouse_Text_ResearchNotesPage2:
-	.string "Es muss ein Markierungssystem einge-\n"
-	.string "richtet werden, mit dem man eine gute\l"
-	.string "Übersicht über die Pokémon bekommt.\p"
-	.string "Der Name und der Hintergrund jeder BOX\n"
-	.string "lassen sich verändern, zur Freude der\l"
-	.string "darin gelagerten Pokémon.\p"
+Route114_LanettesHouse_Text_ResearchNotesPage2::
+	.string "Man kann die Viecher markieren,\n"
+	.string "damit man sie im Chaos wiederfindet.\p"
+	.string "Namen und Hintergründe kann man auch\n"
+	.string "ändern. Den POKéMON ist das egal,\n"
+	.string "die merken eh nix in ihrer Datenstarre.\p"
 	.string "Weiterlesen?$"
 
-Route114_LanettesHouse_Text_ResearchNotesPage3:
-	.string "Immer, wenn ein Pokémon gelagert wird,\n"
-	.string "wird es in der BOX gelagert, die als\l"
-	.string "Letzte geöffnet wurde.\p"
-	.string "Ist diese BOX voll, wird das Pokémon in\n"
-	.string "der nächsten BOX gelagert.\p"
-	.string "Mit anderen Worten, die zuletzt ge-\n"
-	.string "öffnete BOX wird automatisch gewählt,\l"
-	.string "um ein Pokémon zu lagern.$"
+Route114_LanettesHouse_Text_ResearchNotesPage3::
+	.string "Das System schiebt das POKéMON immer\n"
+	.string "in die BOX, in der du zuletzt rumgefummelt\l"
+	.string "hast.\p"
+	.string "Ist die Bude voll, geht’s in die nächste.\n"
+	.string "Ist doch logisch, oder?\p"
+	.string "Also merk dir einfach, wo du zuletzt\n"
+	.string "geklickt hast. Ist nicht so schwer!$"
 
-Route114_LanettesHouse_Text_ClosedTheNotebook:
-	.string "{PLAYER} schließt das Notizbuch.$"
+Route114_LanettesHouse_Text_ClosedTheNotebook::
+	.string "{PLAYER} knallt das Notizbuch zu.$"
 
-Route114_LanettesHouse_Text_EmailFromBill:
-	.string "Da ist eine E-Mail von jemandem\n"
-	.string "auf dem PC.\p"
+Route114_LanettesHouse_Text_EmailFromBill::
+	.string "Da schleimt jemand per E-Mail rum.\p"
 	.string "“… … … … … … …\p"
-	.string "Dein Lagerungs-System bietet viel mehr\n"
-	.string "Komfort als meines.\p"
-	.string "Es besitzt viele anwenderfreundliche\n"
-	.string "Features, die nützlich sind und Spaß\l"
-	.string "machen.\p"
-	.string "Es macht mich stolz, dass ich Teil\n"
-	.string "dieser Entwicklung war.\p"
-	.string "Ich hoffe sehr, du setzt deine For-\n"
-	.string "schungen in diesem Bereich weiter fort.\p"
-	.string "BILL\n"
+	.string "Ey Lanette, dein System ist viel geiler\n"
+	.string "als mein alter Schrott aus Kanto.\p"
+	.string "Es ist fast so, als hätten die User\n"
+	.string "jetzt endlich mal Spaß am PC.\p"
+	.string "Ich bin dein größter Fan, echt jetzt.\n"
+	.string "Mach weiter so, du IT-Göttin!\p"
+	.string "BILL (dein ergebener Fanboy)\n"
 	.string "… … … … … … … …”$"
 

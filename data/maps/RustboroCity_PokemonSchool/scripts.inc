@@ -223,7 +223,7 @@ RustboroCity_PokemonSchool_Text_ExplainParalysis:
 
 RustboroCity_PokemonSchool_Text_ExplainSleep:
 	.string "Wenn dein Pokémon pennt, macht's\n"
-	.string "nix mehr. Einfach... Pause.\p"
+	.string "nix mehr. Einfach… Pause.\p"
 	.string "Kann von selbst wach werden oder auch\n"
 	.string "nicht. Wie du montags früh.$\p"
 	.string "iPhone Wecker drauf, weiter geht’s.$"
@@ -292,7 +292,7 @@ RustboroCity_PokemonSchool_Text_ScottMetAlreadyCut:
 	.string "bei. Oder geh heim.$"
 
 RustboroCity_PokemonSchool_Text_StudentTalentLevelUnknown:
-	.string "SCOTT: Hm...\n"
+	.string "SCOTT: Hm…\n"
 	.string "Talent hier? Keinen blassen Schimmer.\n"
 	.string "Aber hey, Hoffnung stirbt zuletzt.$"
 

@@ -99,10 +99,10 @@ Text_MayDebugAfterWin:
 	.string "Das war ein guter Test mit Brigitte.$"
 
 Text_RedDebugIntro:
-	.string "Red: ...$"
+	.string "Red: …$"
 
 Text_RedDebugWin:
-	.string "Red: ...$"
+	.string "Red: …$"
 
 Text_RedDebugAfterWin:
 	.string "Das war ein guter Test mit Red.$"

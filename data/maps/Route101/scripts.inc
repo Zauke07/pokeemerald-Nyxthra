@@ -237,7 +237,7 @@ Route101_Movement_BirchApproachPlayer:
 	step_end
 
 Route101_Text_HelpMe:
-	.string "Ey... AAAAAHHHHH!!!\n"
+	.string "Ey… AAAAAHHHHH!!!\n"
 	.string "Was zur Hölle!?$"
 
 Route101_Text_PleaseHelp:
@@ -251,12 +251,12 @@ Route101_Text_DontLeaveMe:
 	.string "Lass mich hier nicht sterben, du Psycho!!!$"
 
 Route101_Text_YouSavedMe:
-	.string "PROF. BIRK: Alter... ich… lebe noch…\p"
+	.string "PROF. BIRK: Alter… ich… lebe noch…\p"
 	.string "Ich wollte bloß ein Pokémon beobachten,\n"
 	.string "und plötzlich krieg ich ein Bodycheck!\p"
 	.string "Danke, echt. Sonst wär ich jetzt\l"
 	.string "Pokéfutter.\p"
-	.string "Moment mal...\n"
+	.string "Moment mal…\n"
 	.string "Bist du {PLAYER}{KUN}, der Neue?\p"
 	.string "Hier draußen ist's bisschen lost,\n"
 	.string "lass uns lieber in mein Labor gehen.$"

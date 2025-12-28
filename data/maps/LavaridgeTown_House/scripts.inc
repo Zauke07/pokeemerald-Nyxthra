@@ -15,12 +15,15 @@ LavaridgeTown_House_EventScript_Zigzagoon::
 	release
 	end
 
-LavaridgeTown_House_Text_WifeWarmingEggInHotSprings:
-	.string "My wife's warming an EGG in the hot\n"
-	.string "springs. This is what she told me.\p"
-	.string "She left two POKéMON with the DAY CARE.\n"
-	.string "And they discovered that EGG!$"
+LavaridgeTown_House_Text_WifeWarmingEggInHotSprings::
+	.string "Meine Olle hockt draußen und wärmt\n"
+	.string "so ein dämliches EI in den Quellen.\p"
+	.string "Sie labert ständig davon, dass sie zwei\n"
+	.string "POKéMON in der PENSION abgegeben hat.\p"
+	.string "Und plötzlich war da dieses EI. Ich will\n"
+	.string "gar nicht wissen, was die Viecher da\l"
+	.string "getrieben haben. Echt eklig!$"
 
 LavaridgeTown_House_Text_Zigzagoon:
-	.string "ZIGZAGOON: Pshoo!$"
+	.string "Zichszachs: Pshoo!$"
 

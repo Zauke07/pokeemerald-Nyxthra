@@ -4,7 +4,7 @@ Route113_GlassWorkshop_MapScripts::
 
 	.set BLUE_FLUTE_PRICE,   250
 	.set YELLOW_FLUTE_PRICE, 500
-	.set RED_FLUTE_PRICE,    500
+	.set RED_FLUTE_PRICE,	500
 	.set WHITE_FLUTE_PRICE,  1000
 	.set BLACK_FLUTE_PRICE,  1000
 	.set PRETTY_CHAIR_PRICE, 6000
@@ -292,92 +292,92 @@ Route113_GlassWorkshop_EventScript_NinjaBoy::
 	msgbox Route113_GlassWorkshop_Text_FunToBlowGlassFlute, MSGBOX_NPC
 	end
 
-Route113_GlassWorkshop_Text_GoCollectAshWithThis:
-	.string "Diese Region ist mit Vulkanasche\n"
-	.string "bedeckt! Schnauf, keuch…\p"
-	.string "Ich habe ein besonderes Talent.\n"
-	.string "Schnauf, keuch…\p"
-	.string "Ich mache aus der Asche Glas und stelle\n"
-	.string "daraus Items her. Schnauf, keuch…\p"
-	.string "Hiermit kannst du Asche sammeln.\n"
-	.string "Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_GoCollectAshWithThis::
+	.string "Alles hier ist mit diesem verdammten\n"
+	.string "Asche-Dreck bedeckt! (keuch, röchel)\p"
+	.string "Ich hab 'ne fiese Staublunge…\n"
+	.string "(hust, schnauf)\p"
+	.string "Aber ich kann aus dem Dreck Glas machen.\n"
+	.string "Frag nicht wie, es brennt in den Augen.\p"
+	.string "Hier, nimm das und kratz den Schmodder\n"
+	.string "vom Boden auf. (keuch, röchel)$"
 
-Route113_GlassWorkshop_Text_ExplainSootSack:
-	.string "Nimm diese ASCHETASCHE und lauf durch\n"
-	.string "die Asche. Schnauf, keuch…\p"
-	.string "Damit füllst du die ASCHETASCHE mit\n"
-	.string "Asche. Schnauf, keuch…\p"
-	.string "Und wenn du meinst, du hast genug ge-\n"
-	.string "sammelt, komm zu mir. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_ExplainSootSack::
+	.string "Nimm diese ASCHETASCHE und renn wie\n"
+	.string "ein Besessener durch die Asche.\p"
+	.string "Damit füllst du den Beutel mit dem\n"
+	.string "Vulkan-Müll. (schnauf, hust)\p"
+	.string "Wenn du genug Dreck gesammelt hast,\n"
+	.string "kriechst du wieder hierher. (keuch)$"
 
-Route113_GlassWorkshop_Text_LetsSeeCollectedAshes:
-	.string "Hast du Asche gesammelt? Schnauf,\n"
-	.string "keuch. Zeig mal her. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_LetsSeeCollectedAshes::
+	.string "Hast du endlich genug Dreck gesammelt?\n"
+	.string "(keuch) Zeig her die Tasche! (röchel)$"
 
-Route113_GlassWorkshop_Text_NotEnoughAshNeedX:
-	.string "Hmmm… Das reicht aber nicht.\n"
-	.string "Schnauf, keuch. Daraus kann ich\l"
-	.string "kein Glas machen. Schnauf, keuch…\p"
-	.string "Mal sehen… Du musst noch {STR_VAR_1} Schritt(e)\n"
-	.string "gehen, damit ich eine BLAUE FLÖTE her-\l"
-	.string "stellen kann. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_NotEnoughAshNeedX::
+	.string "Hmpf… Das ist ja gar nichts!\n"
+	.string "(hust) Daraus kann ich höchstens\l"
+	.string "'ne Scherbe machen. (schnauf)\p"
+	.string "Du musst noch {STR_VAR_1} Schritt(e) durch den\n"
+	.string "Dreck waten, bevor ich dir 'ne BLAUE\l"
+	.string "FLÖTE bastel. Geh weiter! (keuch)$"
 
-Route113_GlassWorkshop_Text_WhichGlassItemWoudYouLike:
-	.string "Oh! Du hast aber viel Asche gesammelt.\n"
-	.string "Schnauf, keuch…\p"
-	.string "Ich mache dir ein Item aus Glas daraus.\n"
-	.string "Welches möchtest du? Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_WhichGlassItemWoudYouLike::
+	.string "Oh! Du hast ja ordentlich geschuftet.\n"
+	.string "Endlich mal genug Material. (keuch)\p"
+	.string "Was soll ich dir aus dem Dreck brennen?\n"
+	.string "Such dir was aus! (schnauf, röchel)$"
 
-Route113_GlassWorkshop_Text_IsThatTheItemForYou:
-	.string "{STR_VAR_1} also? Schnauf, keuch…\n"
-	.string "Das möchtest du haben? Schnauf, keuch.$"
+Route113_GlassWorkshop_Text_IsThatTheItemForYou::
+	.string "{STR_VAR_1} also? (keuch, hust)\n"
+	.string "Sicher, dass du den Plunder willst?$"
 
-Route113_GlassWorkshop_Text_WhichWouldYouLike:
-	.string "Was möchtest du haben? Schnauf, keuch.$"
+Route113_GlassWorkshop_Text_WhichWouldYouLike::
+	.string "Was willst du jetzt? (schnauf, keuch)$"
 
-Route113_GlassWorkshop_Text_IllMakeItemForYou:
-	.string "Also einmal {STR_VAR_1}? Schnauf…\p"
-	.string "O.K. Wird erledigt. Schnauf, keuch. Einen\n"
-	.string "Moment Geduld bitte. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_IllMakeItemForYou::
+	.string "Also einmal {STR_VAR_1}? (röchel)\p"
+	.string "O.K. Wird erledigt. (schnauf, keuch). Einen\n"
+	.string "Moment Geduld bitte. (schnauf, keuch)$"
 
-Route113_GlassWorkshop_Text_NotEnoughAshToMakeItem:
-	.string "{STR_VAR_1}? Schnauf, keuch…\p"
-	.string "Du hast nicht genug Asche für dieses\n"
-	.string "Item mitgebracht. Schnauf, keuch…\p"
-	.string "Mal sehen… Du musst noch {STR_VAR_2}\n"
-	.string "Schritt(e) gehen, damit ich dieses Item\l"
-	.string "herstellen kann. Schnauf, keuch.\p"
+Route113_GlassWorkshop_Text_NotEnoughAshToMakeItem::
+	.string "{STR_VAR_1}? (keuch, röchel)\p"
+	.string "Dafür hast du nicht mal ansatzweise\n"
+	.string "genug Dreck gebracht. (hust)\p"
+	.string "Dir fehlen noch {STR_VAR_2} Schritt(e) in der\n"
+	.string "Asche. Geh wieder raus und staub dich\l"
+	.string "voll! (schnauf)\p"
 	.string "Was möchtest du stattdessen haben?\n"
-	.string "Schnauf, keuch…$"
+	.string "(schnauf, keuch)$"
 
-Route113_GlassWorkshop_Text_AllThatAshButDontWantAnything:
+Route113_GlassWorkshop_Text_AllThatAshButDontWantAnything::
 	.string "Du hast all die Asche gesammelt und\n"
-	.string "willst nichts haben? Schnauf, keuch…$"
+	.string "willst nichts haben? (keuch, hust)$"
 
-Route113_GlassWorkshop_Text_IveFinishedGlassItem:
-	.string "So, hier ist ein(e) {STR_VAR_1} für\n"
-	.string "dich. Hier, für dich. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_IveFinishedGlassItem::
+	.string "So, fertig. Hier ist dein(e) {STR_VAR_1}.\n"
+	.string "Nimm's und verschwinde! (röchel)$"
 
-Route113_GlassWorkshop_Text_NoRoomInBag:
-	.string "Oh. In deinem BEUTEL ist kein Platz\n"
-	.string "dafür. Schnauf, keuch…\p"
-	.string "Ich verwahre es für dich. Hol es dir\n"
-	.string "einfach später ab. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_NoRoomInBag::
+	.string "Dein BEUTEL ist voll mit Müll!\n"
+	.string "(schnauf, keuch)\p"
+	.string "Ich lass das Zeug hier liegen. Hol's dir\n"
+	.string "einfach später ab. (schnauf, keuch)$"
 
-Route113_GlassWorkshop_Text_NoRoomInPC:
-	.string "Oh. Du hast keinen Platz auf deinem PC.\n"
-	.string "Schnauf, keuch…\p"
-	.string "Ich verwahre es für dich. Hol es dir\n"
-	.string "einfach später ab. Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_NoRoomInPC::
+	.string "Sogar dein PC ist zugemüllt!\n"
+	.string "(röchel, hust)\p"
+	.string "Ich behalt das Teil hier, bis du Platz\n"
+	.string "geschaffen hast. (keuch)$"
 
-Route113_GlassWorkshop_Text_HaventGotYourSootSack:
-	.string "Oh. Du hast die ASCHETASCHE nicht\n"
-	.string "dabei? Schnauf, keuch…\p"
-	.string "Du musst sie aber dabei haben, um Asche\n"
-	.string "sammeln zu können! Schnauf, keuch…$"
+Route113_GlassWorkshop_Text_HaventGotYourSootSack::
+	.string "Ohne ASCHETASCHE brauchst du hier gar\n"
+	.string "nicht antanzen! (hust, schnauf)\p"
+	.string "Willst du die Asche etwa in deinen\n"
+	.string "Hosentaschen sammeln? (keuch)$"
 
-Route113_GlassWorkshop_Text_FunToBlowGlassFlute:
+Route113_GlassWorkshop_Text_FunToBlowGlassFlute::
 	.string "Es macht Spaß, das Glas zu einer Flöte\n"
 	.string "zu blasen, wenn der Boss redet.\p"
-	.string "Schnauf, keuch! Pust, pust!$"
+	.string "(keuch, röchel) Pust, pust!$"
 

@@ -62,42 +62,52 @@ VerdanturfTown_FriendshipRatersHouse_EventScript_Pikachu::
 	release
 	end
 
-VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou:
-	.string "Zeig mir doch mal dein POKéMON.\n"
-	.string "Ich prüfe, wie sehr es dich mag.\p"
+VerdanturfTown_FriendshipRatersHouse_Text_SeeHowMuchPokemonLikesYou::
+	.string "Was willst du? Zeig mir dein Vieh.\n"
+	.string "Ich sag dir dann, wie sehr es unter\l"
+	.string "deiner miesen Behandlung leidet.\p"
 	.string "Oh.\n"
-	.string "Dein POKéMON…$"
+	.string "Dieses POKéMON…$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou:
-	.string "Es liebt dich über alles.\n"
-	.string "Mehr lieben könnte es dich gar nicht.\l"
-	.string "Das zu sehen, macht mich glücklich.$"
+VerdanturfTown_FriendshipRatersHouse_Text_AdoresYou::
+	.string "Es liebt dich abgöttisch. Warum auch\n"
+	.string "immer. Wahrscheinlich hat es das\l"
+	.string "Stockholm-Syndrom.\l"
+	.string "Echt traurig, sowas mitanzusehen.$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_VeryHappy:
-	.string "Es scheint sehr glücklich zu sein.\n"
-	.string "Es mag dich wirklich sehr.$"
+VerdanturfTown_FriendshipRatersHouse_Text_VeryHappy::
+	.string "Es scheint glücklich zu sein.\n"
+	.string "Vielleicht ist es auch einfach nur\l"
+	.string "bescheuert und merkt nicht, was du\l"
+	.string "für ein Vogel bist.$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot:
-	.string "Es mag dich.\n"
-	.string "Es möchte von dir verwöhnt werden.$"
+VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot::
+	.string "Es mag dich wohl ganz okay.\n"
+	.string "Es will wahrscheinlich nur mehr Futter\l"
+	.string "und ein warmes Bett. Erwarte nicht,\l"
+	.string "dass es für dich stirbt.$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_GettingUsedToYou:
-	.string "Es gewöhnt sich langsam an dich.\n"
-	.string "Es glaubt an dich.$"
+VerdanturfTown_FriendshipRatersHouse_Text_GettingUsedToYou::
+	.string "Es gewöhnt sich langsam an deine Fratze.\n"
+	.string "Noch hat es die Hoffnung nicht aufgegeben,\l"
+	.string "dass du irgendwann mal was raffst.$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_NotUsedToYou:
-	.string "Es hat sich noch nicht an dich gewöhnt.\n"
-	.string "Weder liebt es dich, noch hasst es dich.$"
+VerdanturfTown_FriendshipRatersHouse_Text_NotUsedToYou::
+	.string "Dem Teil bist du völlig egal.\n"
+	.string "Es würde nicht mal zucken, wenn du\l"
+	.string "über eine Klippe springst.$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_VeryWary:
-	.string "Es schwankt in seinen Gefühlen.\n"
-	.string "Es hat eine beängstigende Bösartigkeit\l"
-	.string "in den Augen. Es mag dich nicht.$"
+VerdanturfTown_FriendshipRatersHouse_Text_VeryWary::
+	.string "Es starrt dich an, als würde es dir\n"
+	.string "nachts die Kehle durchschneiden.\p"
+	.string "Diese Bösartigkeit in den Augen…\n"
+	.string "Es hasst dich abgrundtief!$"
 
-VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou:
-	.string "Es fällt mir schwer, das zu sagen…\p"
-	.string "Dein POKéMON hasst dich. Das ist nicht\n"
-	.string "gerade angenehm für dich, oder?$"
+VerdanturfTown_FriendshipRatersHouse_Text_DetestsYou::
+	.string "Soll ich ehrlich sein? Dein POKéMON\n"
+	.string "findet dich absolut zum Kotzen.\p"
+	.string "Wenn ich es wäre, würde ich dich\n"
+	.string "einfach im Schlaf auffressen.$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_Pikachu:
 	.string "PIKACHU: Pika pika!$"

@@ -71,7 +71,7 @@ RustboroCity_Mart_EventScript_JokeNpc::
 
 RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
 	.string "Ich wollte nur einen PARA-HEILER,\n"
-	.string "aber dann hab ich Booster gesehen...\p"
+	.string "aber dann hab ich Booster gesehen…\p"
 	.string "Jetzt bin ich 20.000¥ ärmer\n"
 	.string "und hab nur 3 Bisasam-Sticker.$"
 

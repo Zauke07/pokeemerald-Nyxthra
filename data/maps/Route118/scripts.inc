@@ -243,67 +243,74 @@ Route118_EventScript_Deandre::
 	msgbox Route118_Text_DeandrePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route118_Text_StevenQuestions:
-	.string "TROY: Hi {PLAYER}{KUN}!\p"
-	.string "Ich bin’s, TROY!\n"
-	.string "Wir haben uns in der Höhle in der Nähe\l"
-	.string "von FAUSTAUHAVEN getroffen.\p"
-	.string "Hast du seitdem viele Pokémon\n"
-	.string "gesehen?\p"
-	.string "In dieser großen Welt gibt es viele\n"
-	.string "verschiedene Arten von Pokémon.\p"
-	.string "Wenn du nur deine Lieblings-\n"
-	.string "Pokémon aufziehst, ist das völlig\l"
-	.string "in Ordnung.\p"
-	.string "Aber vielleicht findest du es ja\n"
-	.string "auch spannender, unterschiedliche\l"
-	.string "Pokémon aufzuziehen.\p"
-	.string "Was denkst du als TRAINER darüber?\p"
-	.string "Okay, das geht mich eigentlich\n"
-	.string "gar nichts an.\p"
-	.string "Nun, ich hoffe, wir sehen uns bald\n"
-	.string "wieder.$"
+Route111_Text_StevenQuestions::
+	.string "TROY: Oh, du bist’s wieder, {PLAYER}{KUN}.\p"
+	.string "Erinnerst du dich? Ich bin TROY. Wir sind\n"
+	.string "uns in dieser staubigen Höhle bei\l"
+	.string "FAUSTAUHAVEN über den Weg gelaufen.\p"
+	.string "Hast du seitdem eigentlich mal was\n"
+	.string "Brauchbares vor die Flinte bekommen?\p"
+	.string "Die Welt ist voll von POKéMON, aber das\n"
+	.string "meiste davon ist nutzloser Abfall.\p"
+	.string "Wenn du nur deine süßen Lieblinge\n"
+	.string "hätscheln willst, bitte. Das ist genau\l"
+	.string "das, was ich von einem Amateur erwarte.\p"
+	.string "Aber wenn du jemals ernst genommen\n"
+	.string "werden willst, solltest du anfangen,\l"
+	.string "auf Qualität statt auf Optik zu setzen.\p"
+	.string "Was sagst du? Hast du überhaupt den\n"
+	.string "Verstand, um das zu begreifen?\p"
+	.string "Ach, vergiss es. Warum verschwende ich\n"
+	.string "meine Zeit mit dir?\p"
+	.string "Wir sehen uns sicher wieder. Versuch bis\n"
+	.string "dahin, nicht komplett zu versagen.$"
 
-Route118_Text_YouAgreeGoodRodIsGood:
+Route118_Text_YouAgreeGoodRodIsGood::
 	.string "Hmm!\n"
-	.string "Eine PROFIANGEL ist wirklich gut!\p"
-	.string "Meinst du nicht auch?$"
+	.string "Die PROFIANGEL ist das einzig Wahre!\p"
+	.string "Oder willst du etwa behaupten, dass du\n"
+	.string "mit dem alten Schrott zufrieden bist?$"
 
-Route118_Text_IdenticalMindsTakeThis:
+Route118_Text_IdenticalMindsTakeThis::
 	.string "Hmm!\n"
-	.string "Da sind wir ja der gleichen Meinung!\p"
+	.string "Wenigstens in diesem Punkt bist du\n"
+	.string "kein totaler Volltrottel!\p"
 	.string "Hmm!\n"
-	.string "Ich schenke dir diese PROFIANGEL!$"
+	.string "Hier, nimm diese PROFIANGEL, damit du\n"
+	.string "nicht länger wie ein Penner aussiehst!$"
 
-Route118_Text_TryYourLuckFishing:
-	.string "Wo immer du Wasser findest, versuche\n"
-	.string "dein Glück mit Angeln.$"
+Route118_Text_TryYourLuckFishing::
+	.string "Wo immer Wasser ist, kannst du deine\n"
+	.string "Zeit mit Angeln verschwenden.\l"
+	.string "Vielleicht ziehst du ja mal keinen Müll raus.$"
 
-Route118_Text_DontYouLikeToFish:
-	.string "Magst du keinen Fisch?$"
+Route118_Text_DontYouLikeToFish::
+	.string "Was ist los? Zu fein, um sich die Hände\n"
+	.string "schmutzig zu machen?$"
 
-Route118_Text_TryCatchingMonWithGoodRod:
-	.string "Versuche, alle möglichen Arten von\n"
-	.string "Pokémon mit der PROFIANGEL zu fangen.$"
+Route118_Text_TryCatchingMonWithGoodRod::
+	.string "Versuch wenigstens mit der PROFIANGEL\n"
+	.string "ein paar POKéMON zu fangen, die nicht\l"
+	.string "nach zwei Sekunden umkippen.$"
 
-Route118_Text_CanCrossRiversWithSurf:
-	.string "Auch wenn gerade kein Schiff in der\n"
-	.string "Nähe ist, kannst du mit einem Pokémon,\l"
-	.string "das SURFER kennt, das Meer überqueren.\p"
-	.string "Auf Pokémon kann man sich immer\n"
-	.string "verlassen!$"
+Route118_Text_CanCrossRiversWithSurf::
+	.string "Wenn kein Schiff da ist, musst du eben\n"
+	.string "eines deiner Viecher zwingen, dich\l"
+	.string "über das Wasser zu schleppen.\p"
+	.string "POKéMON sind Werkzeuge. Man muss sie\n"
+	.string "nur richtig benutzen!$"
 
-Route118_Text_RouteSignMauville:
+Route118_Text_RouteSignMauville::
 	.string "ROUTE 118\n"
-	.string "{LEFT_ARROW} MALVENFROH CITY$"
+	.string "{LEFT_ARROW} MALVENFROH CITY (Zockertreff für Arme)$"
 
-Route118_Text_RouteSign119:
+Route118_Text_RouteSign119::
 	.string "ROUTE 118\n"
-	.string "{UP_ARROW} ROUTE 119$"
+	.string "{UP_ARROW} ROUTE 119 (Viel Spaß im Regen, Loser)$"
 
 Route118_EventScript_Ottaro::
-    msgbox Route118_Text_Ottaro, MSGBOX_NPC
-    end
+	msgbox Route118_Text_Ottaro, MSGBOX_NPC
+	end
 
 Route118_Text_Ottaro:
 	.string "Tipp:\p"
@@ -312,3 +319,10 @@ Route118_Text_Ottaro:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route118_Text_StevenQuestions::
+	.string "TROY: Oh, hi. Ich beobachte dich schon\n"
+	.string "eine Weile. Du wirkst nicht ganz so\l"
+	.string "nutzlos wie der Rest hier.\p"
+	.string "Sag mal, was hältst du eigentlich von\n"
+	.string "richtig harten Steinen?$"

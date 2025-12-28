@@ -54,19 +54,19 @@ RustboroCity_House1_Text_IllTradeIfYouWant:
 	.string "Spitznamen? Ich hab meinem 'nen\l"
     .string "richtig coolen Namen gegeben.\p"
 	.string "Aber immer wenn ich's rufe, lachen\n"
-	.string "sich alle Leute schlapp...\p"
+	.string "sich alle Leute schlapp…\p"
 	.string "Wie wär’s? Willst du dein {STR_VAR_1}\n"
 	.string "gegen mein {STR_VAR_2} tauschen?$"
 
 RustboroCity_House1_Text_PleaseBeGoodToMyPokemon:
-	.string "Hihihi... oh Mann, das ist so aufregend!$"
+	.string "Hihihi… oh Mann, das ist so aufregend!$"
 
 RustboroCity_House1_Text_DoesntLookLikeMonToMe:
 	.string "Hm? Das sieht nicht nach nem {STR_VAR_1} aus.\n"
-	.string "Na toll... wie enttäuschend.$"
+	.string "Na toll… wie enttäuschend.$"
 
 RustboroCity_House1_Text_YouDontWantToThatsOkay:
-	.string "Schade... das ist echt ein gutes POKéMON.$"
+	.string "Schade… das ist echt ein gutes POKéMON.$"
 
 RustboroCity_House1_Text_AnyPokemonCanBeCute:
 	.string "Willst du nicht wissen, welche verrückten\n"

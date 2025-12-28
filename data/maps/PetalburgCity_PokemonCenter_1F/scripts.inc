@@ -62,10 +62,10 @@ PetalburgCity_PokemonCenter_1F_Text_OranBerryRegainedHP:
 	.string "Mein Pokémon hat 'ne Sinelbeere gefressen -\n"
 	.string "zack, HP voll. Einfach magisch.\l"
 	.string "Ich hab dann auch eine gegessen.\n"
-	.string "War... enttäuschend.$"
+	.string "War… enttäuschend.$"
 
 PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon:
-	.string "Es gibt so viele Pokémon-Typen, ey...\p"
+	.string "Es gibt so viele Pokémon-Typen, ey…\p"
 	.string "Feuer, Wasser, Psycho, Drache,\n"
 	.string "Feenstaub, Matsch, irgendwas.\p"
 	.string "Ich google die Schwächen eh jedes Mal.\n"

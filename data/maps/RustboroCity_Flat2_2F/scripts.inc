@@ -22,7 +22,7 @@ RustboroCity_Flat2_2F_EventScript_GavePremierBall::
 	end
 
 RustboroCity_Flat2_2F_Text_DevonWasTinyInOldDays:
-	.string "Weißt du... Früher war DEVON mal klein.\n"
+	.string "Weißt du… Früher war DEVON mal klein.\n"
 	.string "So richtig winzig. Ein Büro, ein\l"
 	.string "Kaffeekocher, und ein Traum.$"
 

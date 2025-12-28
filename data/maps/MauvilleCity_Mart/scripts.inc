@@ -35,19 +35,18 @@ MauvilleCity_Mart_EventScript_Man::
 	msgbox MauvilleCity_Mart_Text_DecisionsDetermineBattle, MSGBOX_NPC
 	end
 
-MauvilleCity_Mart_Text_ItemsToTemporarilyElevateStats:
-	.string "Es gibt Items, die den Status eines\n"
-	.string "Pokémon kurzzeitig erhöhen.\p"
-	.string "Ich weiß, dass man X-ANGRIFF und\n"
-	.string "X-VERTEIDIGUNG im Kampf einsetzen\l"
-	.string "kann…\p"
-	.string "Ich glaube, es gibt aber auch noch\n"
-	.string "andere.$"
+MauvilleCity_Mart_Text_ItemsToTemporarilyElevateStats::
+	.string "Es gibt Zeug, das den Status deiner\n"
+	.string "Viecher kurzzeitig aufpumpt.\p"
+	.string "X-ANGRIFF und X-VERTEIDIGUNG sind\n"
+	.string "was für Leute, die zu faul zum\l"
+	.string "Trainieren sind…\p"
+	.string "Ich wette, es gibt noch mehr von diesem\n"
+	.string "Doping-Müll, wenn man genug blecht.$"
 
-MauvilleCity_Mart_Text_DecisionsDetermineBattle:
-	.string "Setze eine bestimmte Attacke ein,\n"
-	.string "oder stattdessen ein Item…\p"
-	.string "Ich glaube, die Entscheidungen des\n"
-	.string "TRAINERs bestimmen, wie ein Kampf\l"
-	.string "verläuft.$"
-
+MauvilleCity_Mart_Text_DecisionsDetermineBattle::
+	.string "Drückst du wie ein Besoffener auf\n"
+	.string "Attacken oder wirfst du Items?\p"
+	.string "Am Ende ist es deine Schuld, wenn dein\n"
+	.string "POKéMON im Dreck landet. Deine miesen\l"
+	.string "Entscheidungen ruinieren den Kampf.$"

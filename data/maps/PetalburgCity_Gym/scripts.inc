@@ -1163,10 +1163,10 @@ PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
 	.string "Ich glaub, ich werd mich dort bisschen\n"
 	.string "allein fühlen, also…\p"
 	.string "Ich hätte gerne ein Pokémon bei mir.\n"
-	.string "Aber ich hab noch nie eins gefangen...$"
+	.string "Aber ich hab noch nie eins gefangen…$"
 
 PetalburgCity_Gym_Text_DadHmISee:
-	.string "Dad: Hm, ich verstehe...$"
+	.string "Dad: Hm, ich verstehe…$"
 
 PetalburgCity_Gym_Text_DadPlayerGoWithWally:
 	.string "Dad: {PLAYER}, hast du das mitbekommen?\p"
@@ -1208,7 +1208,7 @@ PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "Bis bald, {PLAYER}!$"
 
 PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "Dad: Also...\p"
+	.string "Dad: Also…\p"
 	.string "{PLAYER}, wenn du ein richtig guter\n"
 	.string "Trainer werden willst, hör zu:\p"
 	.string "Geh nach Metarost City, gleich hinter\n"
@@ -1240,7 +1240,7 @@ PetalburgCity_Gym_Text_YouHaveGottenStronger:
 	.string "Man sieht's an deinen Orden.$"
 
 PetalburgCity_Gym_Text_NormanIntro:
-	.string "Dad: Hm...\n"
+	.string "Dad: Hm…\n"
 	.string "Du hast also vier Orden.\p"
 	.string "Wie versprochen gibt’s jetzt den Kampf.\p"
 	.string "{PLAYER}…\p"
@@ -1252,8 +1252,8 @@ PetalburgCity_Gym_Text_NormanIntro:
 	.string "Also los, {PLAYER}. Zeig, was du kannst!$"
 
 PetalburgCity_Gym_Text_NormanDefeat:
-	.string "...\p"
-	.string "Ich… Ich fass es nicht...\p"
+	.string "…\p"
+	.string "Ich… Ich fass es nicht…\p"
 	.string "Ich hab wirklich gegen dich verloren…\p"
 	.string "Regeln sind Regeln.\n"
 	.string "Hier ist dein Orden.$"
@@ -1279,7 +1279,7 @@ PetalburgCity_Gym_Text_ExplainFacade:
 	.string "einen Vorteil machen.$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
-	.string "Dad: Als Arenaleiter bin ich... enttäuscht.\p"
+	.string "Dad: Als Arenaleiter bin ich… enttäuscht.\p"
 	.string "Aber als Vater bin ich stolz - und\n"
 	.string "ein bisschen traurig. Komisches Gefühl.$"
 
@@ -1301,7 +1301,7 @@ PetalburgCity_Gym_Text_DadGoingToKeepTraining:
 
 PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:
 	.string "Dad: {PLAYER}! Na, wie läuft’s?\p"
-	.string "Die Welt der Pokémon ist riesig...\p"
+	.string "Die Welt der Pokémon ist riesig…\p"
 	.string "Egal wie hart man trainiert -\n"
 	.string "man kommt nie ganz an alles ran.$"
 
@@ -1317,7 +1317,7 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "rechts in den GENAUIGKEIT-Raum.\p"
 	.string "Alle Türen sind beschriftet - überleg\n"
 	.string "gut, bevor du eine öffnest.\p"
-	.string "Na dann... Viel Glück!$"
+	.string "Na dann… Viel Glück!$"
 
 PetalburgCity_Gym_Text_GymGuidePostVictory:
 	.string "{PLAYER}! Du hast sogar deinen eigenen\n"
@@ -1344,7 +1344,7 @@ PetalburgCity_Gym_Text_ParkerIntro:
 	.string "Zeig mir, wie gut du dein Team kennst.$"
 
 PetalburgCity_Gym_Text_ParkerDefeat:
-	.string "Unser Band war nicht stark genug...$"
+	.string "Unser Band war nicht stark genug…$"
 
 PetalburgCity_Gym_Text_ParkerPostBattle:
 	.string "Der nächste Raum ist STÄRKE.\n"
@@ -1392,7 +1392,7 @@ PetalburgCity_Gym_Text_MaryIntro:
 	.string "Wenn jeder Angriff trifft… Heftig, oder?$"
 
 PetalburgCity_Gym_Text_MaryDefeat:
-	.string "Du bist... etwas besser als ich.$"
+	.string "Du bist… etwas besser als ich.$"
 
 PetalburgCity_Gym_Text_MaryPostBattle:
 	.string "Links ist der VERTEIDIGUNG-Raum,\n"
@@ -1426,7 +1426,7 @@ PetalburgCity_Gym_Text_JodyDefeat:
 	.string "Oof. Das war nix.$"
 
 PetalburgCity_Gym_Text_JodyPostBattle:
-	.string "Dein Kampfstil... Erinnert an Dad.\p"
+	.string "Dein Kampfstil… Erinnert an Dad.\p"
 	.string "Er wartet schon auf dich.$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
@@ -1504,7 +1504,7 @@ PetalburgCity_Gym_Text_NormanPreRematch:
 	.string "Oder, {PLAYER}?$"
 
 PetalburgCity_Gym_Text_NormanRematchDefeat:
-	.string "Äh… Haha...\n"
+	.string "Äh… Haha…\n"
 	.string "Du bist wirklich ein harter Brocken.$"
 
 PetalburgCity_Gym_Text_NormanPostRematch:

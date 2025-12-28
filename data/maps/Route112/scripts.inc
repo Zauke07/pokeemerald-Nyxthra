@@ -106,45 +106,45 @@ Route112_EventScript_Shayla::
 	msgbox Route112_Text_ShaylaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route112_Text_LeaderGoingToAwakenThing:
-	.string "Hey, ob unser Anführer dieses Ding\n"
-	.string "wirklich aufwecken wird?$"
+Route112_Text_LeaderGoingToAwakenThing::
+	.string "Ey, meinst du der Boss zieht das echt\n"
+	.string "durch und weckt dieses Riesenvieh auf?$"
 
-Route112_Text_YeahWeNeedMeteorite:
-	.string "Hört sich so an, ja. Aber wir brauchen\n"
-	.string "einen METEORITen dafür.$"
+Route112_Text_YeahWeNeedMeteorite::
+	.string "Logisch, Mann. Aber ohne diesen\n"
+	.string "METEORITen läuft hier gar nix.$"
 
-Route112_Text_OhThatsWhyCrewWentToFallarbor:
-	.string "Ach, jetzt verstehe ich! Deshalb sind\n"
-	.string "die anderen nach LAUBWECHSELFELD\l"
-	.string "gegangen.$"
+Route112_Text_OhThatsWhyCrewWentToFallarbor::
+	.string "Ach so! Deswegen sind die anderen\n"
+	.string "Spasten nach LAUBWECHSELFELD abgehauen.$"
 
-Route112_Text_CantLetAnyonePassUntilTheyreBack:
-	.string "Genau! Und solange sie weg sind, darf\n"
-	.string "hier niemand durch.$"
+Route112_Text_CantLetAnyonePassUntilTheyreBack::
+	.string "Ganz genau! Und solange die weg sind,\n"
+	.string "polieren wir jedem die Fresse, der\l"
+	.string "hier durchwill!$"
 
-Route112_Text_NotEasyToGetBackToLavaridge:
-	.string "Ich würde gerne nach MALVENFROH CITY,\n"
-	.string "aber wenn ich diese Stufen hinunter-\p"
-	.string "gehe, komme ich kaum wieder nach\n"
-	.string "BAD LAVASTADT.$"
+Route112_Text_NotEasyToGetBackToLavaridge::
+	.string "Ich hab Bock auf Zocken in MALVENFROH,\n"
+	.string "aber wenn ich diese Stufen runterspringe,\l"
+	.string "muss ich den ganzen Weg zurück nach\l"
+	.string "BAD LAVASTADT latschen. Kotzt mich an!$"
 
-Route112_Text_MtChimneyCableCarSign:
+Route112_Text_MtChimneyCableCarSign::
 	.string "SEILBAHN ZUM SCHLOTBERG\n"
-	.string "“Ein kurzer Weg nach {UP_ARROW}!”$"
+	.string "“Hochfahren oder runterfallen! {UP_ARROW}”$"
 
-Route112_Text_MtChimneySign:
+Route112_Text_MtChimneySign::
 	.string "SCHLOTBERG\p"
-	.string "“BAD LAVASTADT oder den Gipfel\n"
-	.string "erreichen Sie mit der SEILBAHN.”$"
+	.string "“Entweder nach BAD LAVASTADT oder\n"
+	.string "hoch auf den Gipfel. Nerv nicht!”$"
 
-Route112_Text_RouteSignLavaridge:
+Route112_Text_RouteSignLavaridge::
 	.string "ROUTE 112\n"
-	.string "{LEFT_ARROW} BAD LAVASTADT$"
+	.string "{LEFT_ARROW} BAD LAVASTADT (Heißes Pflaster)$"
 
 Route112_EventScript_Plinfa::
-    msgbox Route112_Text_Plinfa, MSGBOX_NPC
-    end
+	msgbox Route112_Text_Plinfa, MSGBOX_NPC
+	end
 
 Route112_Text_Plinfa:
 	.string "Tipp:\p"

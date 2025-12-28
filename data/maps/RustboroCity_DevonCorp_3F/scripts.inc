@@ -241,13 +241,13 @@ RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
 	.string "{PLAYER} erhält den POKéNAV.$"
 
 RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
-	.string "MR. TRUMM: Dieses Gerät...\p"
+	.string "MR. TRUMM: Dieses Gerät…\p"
 	.string "Es ist ein POKéMON NAVIGATOR - oder kurz:\n"
 	.string "POKéNAV. Entwickelt hier bei DEVON.\p"
 	.string "Ich denke, du wirst ihn brauchen.\n"
-	.string "Die Dinge draußen sind... unruhig.\p"
+	.string "Die Dinge draußen sind… unruhig.\p"
 	.string "Nicht nur MAGMA oder AQUA treiben sich\n"
-	.string "herum. Es gibt... andere Gruppen.\p"
+	.string "herum. Es gibt… andere Gruppen.\p"
 	.string "Namenlose, oder solche, die man besser\n"
 	.string "nicht laut ausspricht.\p"
 	.string "Du wirst verstehen, was ich meine,\n"
@@ -284,7 +284,7 @@ RustboroCity_DevonCorp_3F_Text_NotFamiliarWithTrends:
 RustboroCity_DevonCorp_3F_Text_ThisIs3rdFloorWaitHere:
 	.string "Das hier ist der heilige Boden: Etage 2\n"
 	.string "- das Büro des großen MR. TRUMM.\p"
-	.string "Er will dir persönlich danken, also...\n"
+	.string "Er will dir persönlich danken, also…\n"
 	.string "Zeig Respekt. Oder tu zumindest so.\p"
 	.string "Ach ja, das Paket, das du uns\n"
 	.string "zurückgebracht hast - kannst du\l"

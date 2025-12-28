@@ -86,7 +86,7 @@ RustboroCity_DevonCorp_1F_Text_WelcomeToDevonCorp:
 	.string "wickeln, was dein Abenteuer beflügelt.$"
 
 RustboroCity_DevonCorp_1F_Text_StaffGotRobbed:
-	.string "Puh... Eines unserer Forscherteams wurde\n"
+	.string "Puh… Eines unserer Forscherteams wurde\n"
 	.string "tatsächlich beklaut.\p"
     .string "Voll peinlich, ehrlich gesagt.$"
 
@@ -100,7 +100,7 @@ RustboroCity_DevonCorp_1F_Text_RobberWasntVeryBright:
 	.string "Das geklaute Paket?\p"
 	.string "Klar, das war wichtig - aber damit anfangen\n"
 	.string "kann der Dieb nix ohne die Anleitung.\p"
-	.string "Ehrlich gesagt... der war nicht gerade\n"
+	.string "Ehrlich gesagt… der war nicht gerade\n"
 	.string "die hellste Kerze auf der Torte.$"
 
 RustboroCity_DevonCorp_1F_Text_SoundsLikeStolenGoodsRecovered:

@@ -176,35 +176,36 @@ Route114_EventScript_Kai::
 	msgbox Route114_Text_KaiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route114_Text_AllMyMonDoesIsRoarTakeThis:
-	.string "Alles, was mein Pokémon von sich gibt,\n"
-	.string "ist BRÜLLER…\l"
-	.string "Niemand wagt sich nah heran…\p"
-	.string "Seufz… Wenn du magst, dann nimm mir\n"
-	.string "diese Bürde… äh, diese TM ab…$"
+Route114_Text_AllMyMonDoesIsRoarTakeThis::
+	.string "Mein dämliches POKéMON kann absolut\n"
+	.string "gar nichts, außer dumm rumzubrüllen…\l"
+	.string "Mir bluten schon die Ohren!\p"
+	.string "Seufz… Hier, nimm diesen TM-Müll und\n"
+	.string "verschwinde, bevor das Vieh wieder\l"
+	.string "einen Anfall kriegt…$"
 
-Route114_Text_ExplainRoar:
-	.string "TM05 enthält BRÜLLER.\n"
-	.string "Ein BRÜLLER schlägt Pokémon in\l"
-	.string "die Flucht.$"
+Route114_Text_ExplainRoar::
+	.string "In TM05 steckt BRÜLLER.\n"
+	.string "Damit verjagt man POKéMON, die einem\l"
+	.string "genauso auf den Sack gehen wie mir!$"
 
-Route114_Text_Poochyena:
-	.string "Bow! Bowwow!$"
+Route114_Text_Poochyena::
+	.string "Wuff! Wuffwuff! (Halt die Fresse!)$"
 
-Route114_Text_MeteorFallsSign:
+Route114_Text_MeteorFallsSign::
 	.string "METEORFÄLLE\n"
-	.string "HIER ENTLANG NACH METAROST CITY$"
+	.string "NACH METAROST CITY (Wenn du dich traust)$"
 
-Route114_Text_FossilManiacsHouseSign:
-	.string "FOSSILMANIAC\n"
-	.string "“Fossilien gesucht!”$"
+Route114_Text_FossilManiacsHouseSign::
+	.string "HAUS VOM FOSSIL-FREAK\n"
+	.string "“Ich wühl im Dreck, lass mich in Ruh!”$"
 
-Route114_Text_LanettesHouse:
-	.string "LANETTES HAUS$"
+Route114_Text_LanettesHouse::
+	.string "LANETTES NERDEN-BUDE$"
 
 Route114_EventScript_Serpifeu::
-    msgbox Route114_Text_Serpifeu, MSGBOX_NPC
-    end
+	msgbox Route114_Text_Serpifeu, MSGBOX_NPC
+	end
 
 Route114_Text_Serpifeu:
 	.string "Tipp:\p"

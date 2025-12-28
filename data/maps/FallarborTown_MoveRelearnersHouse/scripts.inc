@@ -57,42 +57,47 @@ FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
 	releaseall
 	end
 
-FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
-	.string "I'm the MOVE TUTOR.\p"
-	.string "I know all the moves that POKéMON\n"
-	.string "learn--every one of them--and I can\l"
-	.string "teach POKéMON those moves.\p"
-	.string "I can teach a move to a POKéMON\n"
-	.string "of yours if you'd like.\p"
-	.string "I'll do it for a HEART SCALE.\n"
-	.string "I'm collecting those now.$"
+FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor::
+	.string "Ich bin der ATTACKEN-HELFER.\p"
+	.string "Ich kenne jede einzelne Attacke, die\n"
+	.string "jemals existiert hat. Ich bin quasi\l"
+	.string "ein Gott, was das angeht.\p"
+	.string "Wenn du willst, dass dein POKéMON\n"
+	.string "nicht mehr ganz so nutzlos ist, kann\l"
+	.string "ich ihm was beibringen.\p"
+	.string "Aber ich arbeite nicht umsonst.\n"
+	.string "Rück eine HERZSCHUPPE raus, sonst\l"
+	.string "bleibt dein Vieh so dumm wie es ist.$"
 
-FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
-	.string "Oh! That's it! That's an honest to\n"
-	.string "goodness HEART SCALE!\p"
-	.string "Let me guess, you want me to teach\n"
-	.string "a move?$"
+FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove::
+	.string "Oh! Sieh mal an! Eine echte,\n"
+	.string "ehrliche HERZSCHUPPE!\p"
+	.string "Lass mich raten: Du willst jetzt,\n"
+	.string "dass ich meinen Grips für dich\l"
+	.string "anstrenge?$"
 
-FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon:
-	.string "Which POKéMON needs tutoring?$"
+FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon::
+	.string "Welches POKéMON soll ich vor der\n"
+	.string "Verblödung retten?$"
 
-FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove:
-	.string "Which move should I teach?$"
+FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove::
+	.string "Welche Attacke soll ich in den\n"
+	.string "Schädel reinprügeln?$"
 
-FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
-	.string "Sorry…\p"
-	.string "It doesn't appear as if I have any move\n"
-	.string "I can teach that POKéMON.$"
+FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon::
+	.string "Tja, Pech gehabt…\p"
+	.string "Sogar ich kann diesem hoffnungslosen\n"
+	.string "Fall nichts mehr beibringen.$"
 
-FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
-	.string "{PLAYER} handed over one HEART SCALE\n"
-	.string "in exchange.$"
+FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale::
+	.string "{PLAYER} hat die wertvolle HERZSCHUPPE\n"
+	.string "an den gierigen Typen abgegeben.$"
 
-FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
-	.string "If your POKéMON need to learn a move,\n"
-	.string "come back with a HEART SCALE.$"
+FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale::
+	.string "Wenn du willst, dass deine POKéMON\n"
+	.string "was lernen, besorg gefälligst mehr\l"
+	.string "HERZSCHUPPEN!$"
 
-FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
-	.string "Hunh? There isn't a single move that\n"
-	.string "I can teach an EGG.$"
-
+FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg::
+	.string "Häh? Willst du mich verarschen?\n"
+	.string "Einem EI kann man nichts beibringen!$"

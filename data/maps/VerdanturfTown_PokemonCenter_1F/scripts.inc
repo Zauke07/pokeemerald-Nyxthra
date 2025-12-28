@@ -24,18 +24,21 @@ VerdanturfTown_PokemonCenter_1F_EventScript_ExpertM::
 	msgbox VerdanturfTown_PokemonCenter_1F_Text_VisitForBattleTent, MSGBOX_NPC
 	end
 
-VerdanturfTown_PokemonCenter_1F_Text_FaithInYourPokemon:
-	.string "Du kannst dich nicht TRAINER nennen,\n"
-	.string "wenn du nicht an deine POKéMON glaubst!\p"
-	.string "Nur diejenigen, die an ihre POKéMON\n"
-	.string "glauben, werden am Ende siegen.$"
+VerdanturfTown_PokemonCenter_1F_Text_FaithInYourPokemon::
+	.string "Du willst dich TRAINER nennen? Dass ich\n"
+	.string "nicht lache, du Witzfigur!\p"
+	.string "Wer nicht die Eier hat, seine Viecher\n"
+	.string "bis zum Äußersten zu treiben, wird\l"
+	.string "hier gnadenlos im Dreck landen.\p"
+	.string "Glaubst du etwa, Siege fallen vom Himmel?\n"
+	.string "Nur wer seine POKéMON hart rannimmt,\l"
+	.string "darf am Ende dumm grinsen.$"
 
-VerdanturfTown_PokemonCenter_1F_Text_VisitForBattleTent:
-	.string "Der Grund, warum jeder WIESENFLUR\n"
-	.string "besucht…\p"
-	.string "ist das KAMPFCAMP. Das liegt auf der\n"
-	.string "Hand.\p"
-	.string "Oder bist du aus einem anderen Grund\n"
-	.string "hier?$"
+VerdanturfTown_PokemonCenter_1F_Text_VisitForBattleTent::
+	.string "Der einzige Grund, warum man sich\n"
+	.string "dieses Kaff hier überhaupt antut…\p"
+	.string "ist das KAMPFCAMP. Logisch, oder?\p"
+	.string "Oder hast du dich verlaufen, weil du\n"
+	.string "die Karte nicht lesen kannst?$"
 
 

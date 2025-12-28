@@ -1383,7 +1383,7 @@ SlateportCity_EventScript_Ditto::
     end
 
 SlateportCity_Text_Ditto:
-	.string "Dit...to, Ditto!\p"
+	.string "Dit…to, Ditto!\p"
 	.string "Ach du bist es {PLAYER}!\n"
 	.string "Aktuell läuft ein Polizist hier\l"
 	.string "hreum. Ich kann dir erst deals an-\n"

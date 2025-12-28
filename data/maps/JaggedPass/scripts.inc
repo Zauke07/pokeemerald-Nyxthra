@@ -147,120 +147,127 @@ JaggedPass_EventScript_Autumn::
 	msgbox JaggedPass_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-JaggedPass_Text_EricIntro:
-	.string "MT. CHIMNEY's JAGGED PASS…\p"
-	.string "Now this is what I've always wanted\n"
-	.string "in a mountain.\p"
-	.string "This jagged bumpiness…\n"
-	.string "It rocks my soul!$"
+JaggedPass_Text_EricIntro::
+	.string "Der STEILPASS am SCHLOTBERG…\p"
+	.string "Endlich ein Berg, der einen so richtig\n"
+	.string "fertigmacht!\p"
+	.string "Dieses ganze kantige Zeug hier…\n"
+	.string "Das kickt mich so richtig hart!$"
 
-JaggedPass_Text_EricDefeat:
-	.string "Losing left me bitter!$"
+JaggedPass_Text_EricDefeat::
+	.string "Verlieren macht mich echt sauer!$"
 
-JaggedPass_Text_EricPostBattle:
-	.string "Yes, I did lose at POKéMON…\p"
-	.string "But, when it comes to the love of\n"
-	.string "the mountains, I have you beat!$"
+JaggedPass_Text_EricPostBattle::
+	.string "Ja, okay, im Kämpfen hast du mich\n"
+	.string "abgezogen…\p"
+	.string "Aber wenn’s darum geht, wie man sich\n"
+	.string "an Steinen die Knie aufschlägt, macht\l"
+	.string "mir keiner was vor!$"
 
-JaggedPass_Text_DianaIntro:
-	.string "This place isn't your casual hike.\n"
-	.string "It's not suited for a picnic.$"
+JaggedPass_Text_DianaIntro::
+	.string "Das hier ist kein Sonntagsspaziergang.\n"
+	.string "Pack dein Picknick wieder ein und\l"
+	.string "verpiss dich nach Hause!$"
 
-JaggedPass_Text_DianaDefeat:
-	.string "Ohhh, no!\n"
-	.string "The ground is too bumpy…$"
+JaggedPass_Text_DianaDefeat::
+	.string "Ohhh, nein!\n"
+	.string "Dieser Boden ist verfluchter Abfall!$"
 
-JaggedPass_Text_DianaPostBattle:
-	.string "Did you know?\p"
-	.string "Some people cleverly ride their\n"
-	.string "bicycles up this horribly bumpy pass.$"
+JaggedPass_Text_DianaPostBattle::
+	.string "Wusstest du das?\p"
+	.string "Es gibt so ein paar Verrückte, die mit\n"
+	.string "ihren Drahteseln diesen unmöglichen\l"
+	.string "Pass hochbrettern. Geisteskrank!$"
 
-JaggedPass_Text_DianaRegister:
-	.string "Will you ever be back in this area?\n"
-	.string "If you do return, I'd like a rematch.$"
+JaggedPass_Text_DianaRegister::
+	.string "Willst du hier wirklich nochmal her?\n"
+	.string "Falls du dich wieder herwagst, klatsch\l"
+	.string "ich dich weg!$"
 
-JaggedPass_Text_DianaRematchIntro:
-	.string "Picnics are fun wherever you go.\n"
-	.string "Just like POKéMON!$"
+JaggedPass_Text_DianaRematchIntro::
+	.string "Picknicks sind was für Pussys.\n"
+	.string "POKéMON-Kämpfe sind das Wahre!$"
 
-JaggedPass_Text_DianaRematchDefeat:
-	.string "I only lost because the ground is\n"
-	.string "too bumpy!$"
+JaggedPass_Text_DianaRematchDefeat::
+	.string "Ich hab nur verloren, weil ich über\n"
+	.string "einen Stein gestolpert bin!$"
 
-JaggedPass_Text_DianaPostRematch:
-	.string "I'll forget about losing and just\n"
-	.string "enjoy this bumpy hike.$"
+JaggedPass_Text_DianaPostRematch::
+	.string "Scheiß aufs Verlieren. Ich genieß jetzt\n"
+	.string "einfach diesen harten Aufstieg.$"
 
-JaggedPass_Text_EthanIntro:
-	.string "JAGGED PASS is hard to walk on.\n"
-	.string "It's a good place for training.$"
+JaggedPass_Text_EthanIntro::
+	.string "Der STEILPASS ist die Hölle zum Laufen.\n"
+	.string "Perfekt, um Weicheier auszusortieren.$"
 
-JaggedPass_Text_EthanDefeat:
-	.string "It was all over while we were still\n"
-	.string "trying to find a good footing…$"
+JaggedPass_Text_EthanDefeat::
+	.string "Es war vorbei, bevor ich überhaupt\n"
+	.string "festen Boden unter den Füßen hatte…$"
 
-JaggedPass_Text_EthanPostBattle:
-	.string "If I had an ACRO BIKE, I'd be able to\n"
-	.string "jump ledges.$"
+JaggedPass_Text_EthanPostBattle::
+	.string "Wenn ich ein KUNSTRAD hätte, würde ich\n"
+	.string "über diese Abgründe einfach drüber-\l"
+	.string "hüpfen und über dich lachen.$"
 
-JaggedPass_Text_EthanRegister:
-	.string "When I get more used to this bumpiness,\n"
-	.string "I'll be sure to win!\p"
-	.string "Can you register me in your POKéNAV?$"
+JaggedPass_Text_EthanRegister::
+	.string "Wenn ich gelernt hab, auf diesem Dreck\n"
+	.string "zu stehen, mach ich dich fertig!\p"
+	.string "Lass mal POKéNAV-Daten rüberwachsen.$"
 
-JaggedPass_Text_EthanRematchIntro:
-	.string "I got used to this bumpiness.\n"
-	.string "I sing while I climb now.$"
+JaggedPass_Text_EthanRematchIntro::
+	.string "Ich hab mich an den Schmerz gewöhnt.\n"
+	.string "Ich lach jetzt beim Klettern!$"
 
-JaggedPass_Text_EthanRematchDefeat:
-	.string "It's still not easy to battle on this\n"
-	.string "bumpy ground…$"
+JaggedPass_Text_EthanRematchDefeat::
+	.string "Es ist immer noch ein Drecksboden zum\n"
+	.string "Kämpfen…$"
 
-JaggedPass_Text_EthanPostRematch:
-	.string "I should get an ACRO BIKE from RYDEL\n"
-	.string "in MAUVILLE CITY…$"
+JaggedPass_Text_EthanPostRematch::
+	.string "Ich sollte mir bei RADLA in MALVENFROH\n"
+	.string "endlich ein KUNSTRAD holen…$"
 
-JaggedPass_Text_GruntIntro:
+JaggedPass_Text_GruntIntro::
 	.string "Wah!\n"
-	.string "What are you doing here?\p"
-	.string "What am I doing in a place like this?\p"
-	.string "What business is it of yours?$"
+	.string "Was lungerst du hier rum?\p"
+	.string "Was ich hier mache?\p"
+	.string "Geht dich einen feuchten Dreck an,\n"
+	.string "du Schnüffler!$"
 
-JaggedPass_Text_GruntDefeat:
+JaggedPass_Text_GruntDefeat::
 	.string "Urrrgh…\p"
-	.string "I should've ducked into our HIDEOUT\n"
-	.string "right away…$"
+	.string "Ich hätte sofort in unser VERSTECK\n"
+	.string "verschwinden sollen…$"
 
-JaggedPass_Text_GoWhereverYouWant:
-	.string "Okay, oh-kay!\n"
-	.string "I admit it--you're strong!\p"
-	.string "Don't worry about me.\n"
-	.string "Go wherever you want!$"
+JaggedPass_Text_GoWhereverYouWant::
+	.string "Okay, okay!\n"
+	.string "Du bist ja schon gut, Mann!\p"
+	.string "Vergiss einfach, dass du mich gesehen hast.\n"
+	.string "Zisch ab, wo immer du willst!$"
 
-JaggedPass_Text_BoulderShakingInResponseToEmblem:
-	.string "Oh! This boulder is shaking in response\n"
-	.string "to the MAGMA EMBLEM!$"
+JaggedPass_Text_BoulderShakingInResponseToEmblem::
+	.string "Oh! Dieser Klunker vibriert, weil das\n"
+	.string "MAGMA-EMBLEM in der Nähe ist!$"
 
-JaggedPass_Text_JulioIntro:
-	.string "Aiyeeh! It's awfully scary to shoot\n"
-	.string "down the mountain in one go!$"
+JaggedPass_Text_JulioIntro::
+	.string "Aiyeeh! Es ist so verdammt gruselig,\n"
+	.string "hier den Berg runterzuballern!$"
 
-JaggedPass_Text_JulioDefeat:
-	.string "I feel like I'm falling apart…$"
+JaggedPass_Text_JulioDefeat::
+	.string "Ich fühl mich, als wär ich zerbrochen…$"
 
-JaggedPass_Text_JulioPostBattle:
-	.string "My bicycle bounced around so much,\n"
-	.string "my rear end's sore…$"
+JaggedPass_Text_JulioPostBattle::
+	.string "Mein RAD ist so rumgehüpft, dass mir\n"
+	.string "jetzt der Arsch wehtut…$"
 
-JaggedPass_Text_AutumnIntro:
-	.string "I climb this hill every day.\n"
-	.string "I have confidence in my strength!$"
+JaggedPass_Text_AutumnIntro::
+	.string "Ich kletter hier jeden Tag hoch.\n"
+	.string "Meine Waden sind härter als Stein!$"
 
-JaggedPass_Text_AutumnDefeat:
+JaggedPass_Text_AutumnDefeat::
 	.string "Hmm…\n"
-	.string "What went wrong?$"
+	.string "Was ist da schiefgelaufen?$"
 
-JaggedPass_Text_AutumnPostBattle:
-	.string "What is that odd rock protrusion\n"
-	.string "a little up the hill from here?$"
+JaggedPass_Text_AutumnPostBattle::
+	.string "Was ist das eigentlich für ein hässlicher\n"
+	.string "Felsbrocken da oben am Hügel?$"
 

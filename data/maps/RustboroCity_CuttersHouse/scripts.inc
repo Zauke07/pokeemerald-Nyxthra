@@ -22,8 +22,8 @@ RustboroCity_CuttersHouse_EventScript_Lass::
 	end
 
 RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse:
-	.string "Diese Entschlossenheit...\n"
-	.string "Diese Moves...\l"
+	.string "Diese Entschlossenheit…\n"
+	.string "Diese Moves…\l"
 	.string "Du bist kein 08/15-TRAINER, das seh ich\p"
 	.string "sofort! Sag nix, dein Style spricht Bände.\n"
 	.string "Und du hast diesen Blick - gefährlich \l"

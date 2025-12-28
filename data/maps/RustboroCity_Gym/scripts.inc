@@ -106,7 +106,7 @@ RustboroCity_Gym_EventScript_RegisterRoxanne::
 RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "Na, alles klar?\p"
 	.string "Willst du CHAMP werden?\n"
-	.string "Ich bin zwar kein TRAINER, aber...\p"
+	.string "Ich bin zwar kein TRAINER, aber…\p"
 	.string "Ich kann dir trotzdem nen heißen Tipp\n"
 	.string "geben, Kumpel!\p"
 	.string "Wir arbeiten zusammen an deinem Weg\n"
@@ -133,7 +133,7 @@ RustboroCity_Gym_Text_JoshIntro:
 	.string "Ich zeig dir, was wir draufhaben!$"
 
 RustboroCity_Gym_Text_JoshDefeat:
-	.string "Okay... das war echt heftig...$"
+	.string "Okay… das war echt heftig…$"
 
 RustboroCity_Gym_Text_JoshPostBattle:
 	.string "Du hast noch nicht mal alles gesehen,\n"
@@ -144,7 +144,7 @@ RustboroCity_Gym_Text_TommyIntro:
 	.string "gegen FELIZIA null Chance!$"
 
 RustboroCity_Gym_Text_TommyDefeat:
-	.string "Wow... du bist echt gut!$"
+	.string "Wow… du bist echt gut!$"
 
 RustboroCity_Gym_Text_TommyPostBattle:
 	.string "FELIZIA ist noch mal 'ne andere Liga.\p"
@@ -155,7 +155,7 @@ RustboroCity_Gym_Text_MarcIntro:
 	.string "Meine POKéMON brauchen Action!$"
 
 RustboroCity_Gym_Text_MarcDefeat:
-	.string "Uff... ganz schön zäh, du!$"
+	.string "Uff… ganz schön zäh, du!$"
 
 RustboroCity_Gym_Text_MarcPostBattle:
 	.string "Ich respektiere FELIZIA total.\p"
@@ -170,7 +170,7 @@ RustboroCity_Gym_Text_RoxanneIntro:
 	.string "Lass uns sehen, wie du kämpfst!$"
 
 RustboroCity_Gym_Text_RoxanneDefeat:
-	.string "Oh... verloren...\p"
+	.string "Oh… verloren…\p"
 	.string "Ich hab wohl noch viel zu lernen.\p"
 	.string "Aber okay - Regeln sind Regeln.\p"
 	.string "Nimm diesen offiziellen STEINORDEN\n"
@@ -226,14 +226,14 @@ RustboroCity_Gym_Text_RoxannePreRematch:
 	.string "Auf geht's!$"
 
 RustboroCity_Gym_Text_RoxanneRematchDefeat:
-	.string "Oh Mann...\n"
-	.string "Schon wieder verloren...$"
+	.string "Oh Mann…\n"
+	.string "Schon wieder verloren…$"
 
 RustboroCity_Gym_Text_RoxannePostRematch:
 	.string "Ich liebe Kämpfe noch mehr, je mehr\n"
 	.string "ich über POKéMON lerne!$"
 
 RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons:
-	.string "FELIZIA: Oh... du hast nur ein POKéMON?\p"
+	.string "FELIZIA: Oh… du hast nur ein POKéMON?\p"
 	.string "Bring bitte noch eins mit,\n"
 	.string "dann können wir kämpfen.$"

@@ -69,17 +69,17 @@ PetalburgCity_Mart_EventScript_JokeNpc::
 
 
 PetalburgCity_Mart_Text_WeakWillGrowStronger:
-	.string "Jedes Pokémon wird mal stärker...\n"
+	.string "Jedes Pokémon wird mal stärker…\n"
 	.string "Wenn du's nicht vorher aus Versehen\l"
 	.string "tauschst, vergisst oder abspeicherst.\p"
-	.string "Ich sag nur: “Level 5 mit Liebe”...\n"
+	.string "Ich sag nur: “Level 5 mit Liebe”…\n"
 	.string "Aber wenn’s schwach bleibt, ist halt Müll.$"
 
 PetalburgCity_Mart_Text_RepelIsUseful:
 	.string "Schutz? Klar benutz ich den.\n"
 	.string "Wie soll ich sonst den ganzen Zickzacks\l"
 	.string "aus dem Weg gehen?!\p"
-	.string "Aber gestern... wurde mein Schutz\n"
+	.string "Aber gestern… wurde mein Schutz\n"
 	.string "geklaut. Von so nem Typ in Schwarz.\p"
 	.string "Der hat einfach gelacht und war weg.\n"
 	.string "Ich sag nur: komische Zeiten.$"

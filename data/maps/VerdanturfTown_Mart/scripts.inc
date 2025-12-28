@@ -38,21 +38,27 @@ VerdanturfTown_Mart_EventScript_Lass::
 	msgbox VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon, MSGBOX_NPC
 	end
 
-VerdanturfTown_Mart_Text_XSpecialIsCrucial:
-	.string "X-SPEZIAL ist für jeden POKéMON-Kampf\n"
-	.string "äußerst wichtig.\p"
-	.string "Es erhöht die Stärke mancher Attacken.\n"
-	.string "Aber leider nur für einen Kampf.$"
+VerdanturfTown_Mart_Text_XSpecialIsCrucial::
+	.string "X-SPEZIAL ist für Versager wie dich\n"
+	.string "eigentlich Pflicht.\p"
+	.string "Es pumpt die Attacken künstlich auf,\n"
+	.string "damit du überhaupt mal triffst.\l"
+	.string "Nach dem Kampf ist der Effekt aber weg.\l"
+	.string "Genau wie dein mickriges Taschengeld!$"
 
-VerdanturfTown_Mart_Text_NoStrategyGuidesForBattleTent:
-	.string "Strategie-Ratgeber für das KAMPFCAMP\n"
-	.string "scheinen sie hier leider nicht zu\p"
-	.string "verkaufen… Man muss sich\n"
-	.string "auf sich selbst verlassen.$"
+VerdanturfTown_Mart_Text_NoStrategyGuidesForBattleTent::
+	.string "Echte Strategie-Ratgeber für das\n"
+	.string "KAMPFCAMP verkaufen die hier nicht.\p"
+	.string "Wahrscheinlich, weil die meisten Idioten\n"
+	.string "hier eh nicht lesen können.\l"
+	.string "Musst wohl selbst schauen, wie du\l"
+	.string "da drin nicht komplett abkackst.$"
 
-VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon:
-	.string "Der NESTBALL ist bei schwächeren\n"
-	.string "POKéMON hervorragend geeignet.\p"
-	.string "Den kannst du nur in WIESENFLUR\n"
-	.string "kaufen.$"
+VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon::
+	.string "Der NESTBALL ist perfekt für Luschen-\n"
+	.string "POKéMON auf niedrigem Level.\p"
+	.string "Gibt’s nur hier in diesem Kaff.\n"
+	.string "Passt ja auch: Ein Ball für Babys in\l"
+	.string "einem Dorf voller Heulsusen.$"
+
 

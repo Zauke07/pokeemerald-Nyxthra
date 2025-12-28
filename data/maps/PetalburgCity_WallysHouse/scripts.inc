@@ -79,7 +79,7 @@ PetalburgCity_WallysHouse_Text_ThanksForPlayingWithWally:
 	.string "schon wieder rum?$"
 
 PetalburgCity_WallysHouse_Text_WonderHowWallyIsDoing:
-	.string "Ich frag mich, was Heiko grad so macht...\n"
+	.string "Ich frag mich, was Heiko grad so macht…\n"
 	.string "Hoffentlich hat er endlich gegessen.$"
 
 PetalburgCity_WallysHouse_Text_PleaseExcuseUs:

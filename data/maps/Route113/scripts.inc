@@ -140,7 +140,7 @@ Route113_Text_AshCanBeFashionedIntoGlass:
 	.string "viel heißer als sonst. Man spürt es, nicht wahr?\p"
 	.string "Ich wette, in den Bäumen hier ganz in\n"
 	.string "der Nähe verbirgt sich ein Geheimgang!\p"
-	.string "Aber meine alten Knochen...\n"
+	.string "Aber meine alten Knochen…\n"
 	.string "Ich kann das nicht überprüfen.\p"
 	.string "Ein junger Abenteurer wie du könnte\n"
 	.string "dort aber etwas Überraschendes finden.$"

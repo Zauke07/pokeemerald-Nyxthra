@@ -38,7 +38,7 @@ BabyBootCamp_Text_AlteDame_GiveEgg::
 
 BabyBootCamp_Text_AlteDame_NoBadge::
     .string "Oh {PLAYER}, ich sehe den ersten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_AlteDame_TakeCare::
@@ -89,7 +89,7 @@ BabyBootCamp_Text_Bard_GiveEgg::
 
 BabyBootCamp_Text_Bard_NoBadge::
     .string "Oh {PLAYER}, ich sehe den zweiten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Bard_TakeCare::
@@ -141,7 +141,7 @@ BabyBootCamp_Text_Artist_GiveEgg::
 
 BabyBootCamp_Text_Artist_NoBadge::
     .string "Oh {PLAYER}, ich sehe den dritten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Artist_TakeCare::
@@ -192,7 +192,7 @@ BabyBootCamp_Text_Beauty_GiveEgg::
 
 BabyBootCamp_Text_Beauty_NoBadge::
     .string "Oh {PLAYER}, ich sehe den vierten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Beauty_TakeCare::
@@ -244,7 +244,7 @@ BabyBootCamp_Text_Belt_GiveEgg::
 
 BabyBootCamp_Text_Belt_NoBadge::
     .string "Oh {PLAYER}, ich sehe den fünften Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Belt_TakeCare::
@@ -295,7 +295,7 @@ BabyBootCamp_Text_Boy_1_GiveEgg::
 
 BabyBootCamp_Text_Boy_1_NoBadge::
     .string "Oh {PLAYER}, ich sehe den sechsten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Boy_1_TakeCare::
@@ -346,7 +346,7 @@ BabyBootCamp_Text_Boy_2_GiveEgg::
 
 BabyBootCamp_Text_Boy_2_NoBadge::
     .string "Oh {PLAYER}, ich sehe den siebten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Boy_2_TakeCare::
@@ -398,7 +398,7 @@ BabyBootCamp_Text_Boy_3_GiveEgg::
 
 BabyBootCamp_Text_Boy_3_NoBadge::
     .string "Oh {PLAYER}, ich sehe den achten Orden\n"
-    .string "gar nicht... Komm wieder, wenn du ihn\l"
+    .string "gar nicht… Komm wieder, wenn du ihn\l"
     .string "hast, dann gebe ich dir ein Pokémon-Ei.$"
 
 BabyBootCamp_Text_Boy_3_TakeCare::

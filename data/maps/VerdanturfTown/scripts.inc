@@ -61,70 +61,69 @@ VerdanturfTown_EventScript_RusturfTunnelSign::
 	msgbox VerdanturfTown_Text_RusturfTunnelSign, MSGBOX_SIGN
 	end
 
-VerdanturfTown_Text_ManTryingToDigTunnel:
-	.string "Mein Papa hat mir das erzählt.\p"
-	.string "Er sagt, der Tunnel sei voller scheuer\n"
-	.string "POKéMON.\p"
-	.string "Sie haben Angst vor lauten Geräuschen\n"
-	.string "und machen einen Aufruhr.\p"
-	.string "Daher musste das Tunnelprojekt\n"
-	.string "gestoppt werden.\p"
-	.string "Aber es gibt da einen Mann. Der ver-\n"
-	.string "sucht, den Tunnel alleine zu graben.$"
+VerdanturfTown_Text_ManTryingToDigTunnel::
+	.string "Mein Alter hat mir den Mist erzählt.\p"
+	.string "Er meint, im Tunnel hocken nur feige\n"
+	.string "Mist-POKéMON rum.\p"
+	.string "Die heulen sofort rum, wenn’s mal laut\n"
+	.string "wird. Voll die Pussys!\p"
+	.string "Deswegen haben die den Bau gestoppt.\n"
+	.string "Lächerlich, oder?\p"
+	.string "Aber da ist so ein Irrer, der meint,\n"
+	.string "er müsste den Tunnel alleine graben.$"
 
-VerdanturfTown_Text_ManDugTunnelForLove:
-	.string "Da war ein Mann, der hat den Tunnel\n"
-	.string "ganz alleine für die Frau seines\l"
-	.string "Herzens gegraben.\p"
-	.string "Ich habe das nie so ganz verstanden.\n"
-	.string "Aber, hey, ich finde es trotzdem klasse.$"
+VerdanturfTown_Text_ManDugTunnelForLove::
+	.string "Da war so ein Simp, der hat den Tunnel\n"
+	.string "alleine für seine Alte gegraben.\p"
+	.string "Stell dir das mal vor. Wie dumm kann\n"
+	.string "man eigentlich sein?\l"
+	.string "Aber hey, wenigstens hat er Muckis.$"
 
-VerdanturfTown_Text_AirCleanHere:
-	.string "Der Wind steht immer so günstig, dass\n"
-	.string "die Asche vom Vulkan nie hierher\l"
-	.string "geweht wird.\p"
-	.string "Die Luft ist sauber und klar.\n"
-	.string "Hier zu leben, hilft auch den schwachen\l"
-	.string "und kränklichen Menschen.$"
+VerdanturfTown_Text_AirCleanHere::
+	.string "Der Wind steht hier so, dass wir den\n"
+	.string "ganzen Vulkan-Dreck nicht abkriegen.\p"
+	.string "Die Luft ist hier so ekelhaft sauber,\n"
+	.string "dass das ganze Dorf voll mit kranken\l"
+	.string "Schwächlingen und Heulsusen ist.$"
 
-VerdanturfTown_Text_MakeBattleTentDebut:
+VerdanturfTown_Text_MakeBattleTentDebut::
 	.string "Meine POKéMON und ich haben gerade\n"
-	.string "eine Gewinnserie.\p"
-	.string "Daher werde ich nun meinen Auftritt\n"
-	.string "im KAMPFCAMP haben.$"
+	.string "alles weggemoscht.\p"
+	.string "Jetzt geh ich ins KAMPFCAMP und zeig\n"
+	.string "den Versagern dort, wo der Hammer hängt.$"
 
-VerdanturfTown_Text_GuyTryingToBustThroughCave:
-	.string "Siehst du die Höhle neben dem PKMN-\n"
-	.string "SUPERMARKT?\p"
-	.string "Da ist ein Typ drin, der die Felsbrocken\n"
-	.string "sprengen will, damit er auf die andere\l"
-	.string "Seite gehen kann.\p"
-	.string "Wäre das toll, wenn ich auch dort durch-\n"
-	.string "gehen könnte… Ein Besuch in\l"
-	.string "METAROST CITY wäre dann ganz einfach.$"
+VerdanturfTown_Text_GuyTryingToBustThroughCave::
+	.string "Siehst du das Loch neben dem Laden?\p"
+	.string "Da drin ist ein Psycho, der Felsen mit\n"
+	.string "bloßen Händen zerlegen will, um auf die\l"
+	.string "andere Seite zu kommen.\p"
+	.string "Wär das geil, wenn der mal fertig wird…\n"
+	.string "Dann müsste ich nicht ewig laufen, um\l"
+	.string "in METAROST CITY Leute abzuziehen.$"
 
-VerdanturfTown_Text_EasyToGetToRustboroNow:
-	.string "Die Höhle neben dem PKMN-SUPERMARKT\n"
-	.string "ist nun ein Tunnel zur anderen Seite.\p"
-	.string "Das ist toll! Jetzt kommt man ganz\n"
-	.string "einfach nach METAROST CITY, um\l"
-	.string "DEVON-WAREN zu kaufen.$"
+VerdanturfTown_Text_EasyToGetToRustboroNow::
+	.string "Der Tunnel neben dem Supermarkt ist\n"
+	.string "endlich offen. Gott sei Dank!\p"
+	.string "Jetzt kommt man ruckzuck nach\n"
+	.string "METAROST CITY, um bei DEVON die\l"
+	.string "Regale leerzuräumen.$"
 
-VerdanturfTown_Text_TownSign:
+VerdanturfTown_Text_TownSign::
 	.string "WIESENFLUR\p"
-	.string "“Das vom Wind gestreichelte Hoch-\n"
-	.string "land mit dem süßen Duft des Grases.”$"
+	.string "“Ein snobistisches Kaff voller sauberer\n"
+	.string "Luft und kranker Lappen.”$"
 
-VerdanturfTown_Text_WandasHouse:
-	.string "HEIKES HAUS$"
+VerdanturfTown_Text_WandasHouse::
+	.string "HEIKES BRUCHBUDE$"
 
-VerdanturfTown_Text_BattleTentSign:
+VerdanturfTown_Text_BattleTentSign::
 	.string "KAMPFCAMP WIESENFLUR\n"
-	.string "“Wo Kämpfe Eine Augenweide Sind”$"
+	.string "“Wo du lernst, wie man richtig aufgibt!”$"
 
-VerdanturfTown_Text_RusturfTunnelSign:
+VerdanturfTown_Text_RusturfTunnelSign::
 	.string "METAFLURTUNNEL\n"
-	.string "“Verbindet METAROST CITY und\p"
-	.string "WIESENFLUR.\n"
-	.string "Das Tunnelprojekt wurde abgebrochen.”$"
+	.string "“Verbindung für Leute, die zu faul zum\p"
+	.string "Laufen sind.\n"
+	.string "Baustopp wegen Heul-Attacken.”$"
+
 

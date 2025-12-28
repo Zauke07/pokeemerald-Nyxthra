@@ -21,7 +21,7 @@ GraniteCave_1F_Text_GetsDarkAheadHereYouGo:
 	.string "He, warte kurz!\n"
 	.string "Dort vorne wird's richtig finster.\l"
 	.string "Ohne Licht sieht man kein Stück.\p"
-	.string "So ein anderer Typ war vorhin hier...\n"
+	.string "So ein anderer Typ war vorhin hier…\n"
 	.string "TROY hieß der wohl. Der kennt sich aus.\p"
 	.string "Der kann BLITZ einsetzen - kein Problem\n"
 	.string "für ihn also.\p"

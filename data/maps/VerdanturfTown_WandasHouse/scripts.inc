@@ -82,88 +82,86 @@ VerdanturfTown_WandasHouse_EventScript_WallysAuntEverGrande::
 	release
 	end
 
-VerdanturfTown_WandasHouse_Text_StrongerSpeech:
-	.string "HEIKO: Ich habe gegen dich verloren,\n"
-	.string "{PLAYER}. Aber das betrübt mich nicht.\p"
-	.string "Ich habe ein neues Ziel in meinem Leben.\n"
-	.string "Zusammen mit meinem TRASLA mache\p"
-	.string "ich mich auf, die ARENen herauszu-\n"
-	.string "fordern und ein großer TRAINER zu\l"
-	.string "werden.\p"
-	.string "Behalte mich ruhig im Auge, {PLAYER}.\n"
-	.string "Bald bin ich stärker als du!\p"
-	.string "Und dann werde ich dich zu einem neuen\n"
-	.string "Kampf herausfordern.$"
+VerdanturfTown_WandasHouse_Text_StrongerSpeech::
+	.string "HEIKO: Tja, du hast zwar gewonnen,\n"
+	.string "{PLAYER}, aber bild dir bloß nichts ein!\p"
+	.string "Ich hab jetzt einen Masterplan.\n"
+	.string "Mein TRASLA und ich werden die ARENen\p"
+	.string "komplett rasieren. Ich werd der Boss,\n"
+	.string "während du noch im Matsch spielst.\p"
+	.string "Zitter schon mal, {PLAYER}.\n"
+	.string "Bald zieh ich dir die Ohren lang!\p"
+	.string "Und dann zeig ich dir mal, wie man\n"
+	.string "richtig kämpft, du Amateur!$"
 
-VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:
-	.string "HEIKO: Behalte mich ruhig im Auge,\n"
-	.string "{PLAYER}. Bald bin ich stärker als du!\p"
-	.string "Und dann werde ich dich zu einem neuen\n"
-	.string "Kampf herausfordern.$"
+VerdanturfTown_WandasHouse_Text_StrongerSpeechShort::
+	.string "HEIKO: Putz schon mal deine Orden,\n"
+	.string "{PLAYER}. Bald gehör'n sie mir!\p"
+	.string "Dann polier ich dir die Fresse,\n"
+	.string "dass du Sterne siehst!$"
 
-VerdanturfTown_WandasHouse_Text_WallysNextDoor:
+VerdanturfTown_WandasHouse_Text_WallysNextDoor::
 	.string "ONKEL: Oh! {PLAYER}{KUN}!\n"
-	.string "Du findest HEIKO nebenan.\p"
-	.string "Aber es gibt etwas, das ich dir sagen\n"
-	.string "muss.\p"
-	.string "Diese natürliche Umgebung hat Wunder\n"
-	.string "gewirkt bei HEIKOs Gesundheit.\p"
-	.string "Und nicht nur die natürliche Umgebung!\n"
-	.string "Ich denke, auch die Freundschaft zu\l"
-	.string "den POKéMON hat ihm geholfen…$"
+	.string "Der nervige Bengel hockt nebenan.\p"
+	.string "Aber pass mal auf:\p"
+	.string "Die Luft hier ist so gut, dass HEIKO\n"
+	.string "endlich aufgehört hat, rumzuheulen.\p"
+	.string "Oder er hat gemerkt, dass er mit seiner\n"
+	.string "Mitleids-Tour hier nicht weit kommt.\l"
+	.string "Sein POKéMON tut mir echt leid…$"
 
-VerdanturfTown_WandasHouse_Text_WallySlippedOff:
-	.string "HEIKO ist weggegangen…\n"
-	.string "Er ist nun auf seinem eigenen Weg…$"
+VerdanturfTown_WandasHouse_Text_WallySlippedOff::
+	.string "HEIKO hat sich endlich verpisst…\n"
+	.string "Soll er doch woanders nerven…$"
 
-VerdanturfTown_WandasHouse_Text_WallyGoneThatFar:
-	.string "ONKEL: Stimmt das?\n"
-	.string "HEIKO ist ganz alleine in die Welt\l"
-	.string "hinausgezogen…\p"
-	.string "Ich sollte ihn unterstützen - er ist der\n"
-	.string "Sohn meines kleinen Bruders…$"
+VerdanturfTown_WandasHouse_Text_WallyGoneThatFar::
+	.string "ONKEL: Ernsthaft?\n"
+	.string "HEIKO ist ganz alleine abgehauen?\p"
+	.string "Na endlich! Ich dachte schon, ich\n"
+	.string "muss den Kerl bis zur Rente füttern…$"
 
-VerdanturfTown_WandasHouse_Text_MeetWanda:
-	.string "HEIKE: Wer bist du?\n"
-	.string "Oh, ja, ich weiß schon…\p"
-	.string "Du bist {PLAYER}. HEIKO hat mir schon\n"
-	.string "viel von dir erzählt.\p"
-	.string "Ich bin HEIKOs Cousine.\n"
-	.string "Nett, dich kennen zu lernen!\p"
-	.string "Ich finde, seit HEIKO hier lebt, ist er\n"
-	.string "viel gesünder und lebendiger geworden.$"
+VerdanturfTown_WandasHouse_Text_MeetWanda::
+	.string "HEIKE: Wer zur Hölle bist du?\n"
+	.string "Ach, warte mal…\p"
+	.string "Du bist {PLAYER}. HEIKO hat ständig\n"
+	.string "von dir gelabert, echt nervig.\p"
+	.string "Ich bin seine Cousine.\n"
+	.string "Guck nicht so blöd!\p"
+	.string "Seit er hier ist, hat er zumindest\n"
+	.string "aufgehört, das Bad vollzukotzen.$"
 
-VerdanturfTown_WandasHouse_Text_DontWorryAboutWally:
-	.string "HEIKE: Mach dir keine Sorgen um HEIKO.\n"
-	.string "Ihm geht es mit Sicherheit gut.\p"
-	.string "Ich kenne doch meinen kleinen Vetter.\n"
-	.string "Außerdem hat er sein POKéMON dabei.$"
+VerdanturfTown_WandasHouse_Text_DontWorryAboutWally::
+	.string "HEIKE: Mach dir keinen Kopf um HEIKO.\n"
+	.string "Unkraut vergeht nicht.\p"
+	.string "Der Kleine ist zäher als er aussieht.\n"
+	.string "Und wenn nicht - sein POKéMON regelt.$"
 
-VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay:
-	.string "Dank dir kann ich meine Freundin jetzt\n"
-	.string "jeden Tag sehen. Ob ich glücklich bin?\l"
-	.string "Darauf kannst du wetten!$"
+VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay::
+	.string "Dank dir kann ich meine Olle jetzt\n"
+	.string "jeden Tag sehen. Ob ich happy bin?\l"
+	.string "Klar, jetzt kann ich sie endlich\l"
+	.string "kontrollieren!$"
 
-VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendDriven:
-	.string "Der Freund meiner Tochter besitzt viel\n"
-	.string "Schwung und Energie.\p"
-	.string "Er gräbt ununterbrochen einen Tunnel,\n"
-	.string "damit er meine Tochter sehen kann.\p"
-	.string "Meine Tochter ist etwas besorgt des-\n"
-	.string "wegen und schaut jeden Tag nach ihm.$"
+VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendDriven::
+	.string "Der Typ meiner Tochter ist ein echter\n"
+	.string "Psycho.\p"
+	.string "Er gräbt wie ein Besessener diesen\n"
+	.string "Tunnel, nur um sie zu stalken.\p"
+	.string "Meine Tochter kriegt langsam Panik und\n"
+	.string "schaut jeden Tag, ob er schon durch ist.$"
 
-VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendWasDigging:
-	.string "Es ist unglaublich! Der Freund meiner \n"
-	.string "Tochter hat den Tunnel\p"
-	.string "von Hand gegraben! Einfach sagenhaft!$"
+VerdanturfTown_WandasHouse_Text_DaughtersBoyfriendWasDigging::
+	.string "Unfassbar! Der Freak hat den Tunnel\n"
+	.string "tatsächlich mit den Händen gegraben!\p"
+	.string "Vollkommen geisteskrank!$"
 
-VerdanturfTown_WandasHouse_Text_IfAnythingHappenedToWally:
-	.string "Sollte HEIKO irgendetwas passieren,\n"
-	.string "könnte ich seinen Eltern in BLÜTENBURG\l"
-	.string "CITY nicht mehr in die Augen schauen…$"
+VerdanturfTown_WandasHouse_Text_IfAnythingHappenedToWally::
+	.string "Wenn HEIKO abkratzt, krieg ich Stress\n"
+	.string "mit seinen Eltern in BLÜTENBURG.\l"
+	.string "Darauf hab ich echt keinen Bock…$"
 
-VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande:
-	.string "HEIKO war in PRACHTPOLIS CITY?\p"
-	.string "Seine Eltern in BLÜTENBURG CITY werden\n"
-	.string "erstaunt sein, das zu hören.$"
+VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande::
+	.string "HEIKO ist in PRACHTPOLIS CITY?\p"
+	.string "Sein Vater in BLÜTENBURG kriegt bestimmt\n"
+	.string "’nen Herzinfarkt, wenn er das hört.$"
 

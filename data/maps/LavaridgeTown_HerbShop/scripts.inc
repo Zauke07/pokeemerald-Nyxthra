@@ -39,26 +39,29 @@ LavaridgeTown_HerbShop_EventScript_ExplainCharcoal::
 	release
 	end
 
-LavaridgeTown_HerbShop_Text_WelcomeToHerbShop:
-	.string "Welcome to the HERB SHOP, home of\n"
-	.string "effective and inexpensive medicine!$"
+LavaridgeTown_HerbShop_Text_WelcomeToHerbShop::
+	.string "Willkommen in der Giftmischerei!\n"
+	.string "Hier gibt's Zeug, das wirkt - auch wenn\l"
+	.string "dein POKéMON danach schreit!$"
 
-LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine:
-	.string "You've come to look at herbal medicine\n"
-	.string "in LAVARIDGE?\p"
-	.string "That's rather commendable.\p"
-	.string "I like you! Take this!$"
+LavaridgeTown_HerbShop_Text_YouveComeToLookAtHerbalMedicine::
+	.string "Du willst dich also mit Kräuter-Dreck\n"
+	.string "eindecken, hier in BAD LAVASTADT?\p"
+	.string "Ziemlich skrupellos von dir.\p"
+	.string "Gefällt mir! Nimm den Müll hier mit!$"
 
-LavaridgeTown_HerbShop_Text_ExplainCharcoal:
-	.string "That CHARCOAL I gave you, it's used\n"
-	.string "for making herbal medicine.\p"
-	.string "It also does wonders when held by\n"
-	.string "a POKéMON.\p"
-	.string "It intensifies the power of FIRE-type\n"
-	.string "moves.$"
+LavaridgeTown_HerbShop_Text_ExplainCharcoal::
+	.string "Diese HOLZKOHLE ist eigentlich zum\n"
+	.string "Medizin mischen da.\p"
+	.string "Aber wenn du sie einem POKéMON zum\n"
+	.string "Festhalten gibst, brennen seine Feuer-\l"
+	.string "Attacken dem Gegner Löcher in die Haut.\p"
+	.string "Ziemlich fies, oder?$"
 
-LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike:
-	.string "Herbal medicine works impressively well.\n"
-	.string "But your POKéMON will dislike you for it.\l"
-	.string "It must be horribly bitter!$"
+LavaridgeTown_HerbShop_Text_HerbalMedicineWorksButMonWillDislike::
+	.string "Die Kräuter ziehen ordentlich durch.\n"
+	.string "Aber dein POKéMON wird dich dafür\l"
+	.string "abgrundtief hassen.\p"
+	.string "Das Zeug ist so bitter, da zieht's\n"
+	.string "einem alles zusammen!$"
 

@@ -30,9 +30,11 @@ DesertUnderpass_EventScript_GiveRootFossil::
 
 @ Unused
 DesertUnderpass_Text_FoundRootFossil::
-	.string "{PLAYER} found the ROOT FOSSIL.$"
+	.string "{PLAYER} hat das WURZELFOSSIL eingesackt.\n"
+	.string "Der Fossil-Freak wird im Dreck rotieren!$"
 
 @ Unused
 DesertUnderpass_Text_FoundClawFossil::
-	.string "{PLAYER} found the CLAW FOSSIL.$"
+	.string "{PLAYER} hat das KLAUENFOSSIL geklaut.\n"
+	.string "Pech für den Steine-Sammler!$"
 
