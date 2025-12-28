@@ -49,13 +49,13 @@
 #define B_STATUS_TYPE_IMMUNITY      GEN_LATEST // In Gen1 waren Nebenwirkungen Paral./Frost/Brand immun, wenn der Move denselben Typ wie das Ziel hatte.
 
 // Runden-Einstellungen
-#define B_BINDING_TURNS             GEN_LATEST // In Gen5+ dauern Fessel-Moves 4–5 statt 2–5 Runden. (Mit Griffigklaue 7 bzw. 5.)
-#define B_UPROAR_TURNS              GEN_LATEST // In Gen5+ dauert Aufruhr 3 Runden statt 2–5.
+#define B_BINDING_TURNS             GEN_LATEST // In Gen5+ dauern Fessel-Moves 4-5 statt 2-5 Runden. (Mit Griffigklaue 7 bzw. 5.)
+#define B_UPROAR_TURNS              GEN_LATEST // In Gen5+ dauert Aufruhr 3 Runden statt 2-5.
 #define B_UPROAR_IGNORE_SOUNDPROOF  GEN_LATEST // In Gen5+ ignoriert Aufruhr Lärmschutz.
 #define B_DISABLE_TURNS             GEN_LATEST // Dauer von Aussetzer. Siehe Cmd_disablelastusedattack.
 #define B_TAILWIND_TURNS            GEN_LATEST // In Gen5+ Rückenwind 4 statt 3 Runden.
-#define B_SLEEP_TURNS               GEN_LATEST // In Gen5+ Schlaf 1–3 Runden statt 2–5.
-#define B_TAUNT_TURNS               GEN_LATEST // In Gen5+: Verhöhner 3 Runden, wenn Nutzer schneller; 4, wenn Ziel zuerst handelte. Gen3: 2 Runden; Gen4: 3–5.
+#define B_SLEEP_TURNS               GEN_LATEST // In Gen5+ Schlaf 1-3 Runden statt 2-5.
+#define B_TAUNT_TURNS               GEN_LATEST // In Gen5+: Verhöhner 3 Runden, wenn Nutzer schneller; 4, wenn Ziel zuerst handelte. Gen3: 2 Runden; Gen4: 3-5.
 #define B_SPORT_TURNS               GEN_LATEST // In Gen6+ halten Wasser/Schlammsport 5 Runden, auch nach Wechsel.
 #define B_MEGA_EVO_TURN_ORDER       GEN_LATEST // In Gen7 bestimmt Initiative nach Mega-Entwicklung die Reihenfolge, nicht davor.
 #define B_RECALC_TURN_AFTER_ACTIONS GEN_LATEST // In Gen8 beeinflusst Wechsel/Move die aktuelle Rundenreihenfolge (dynamische Initiative).
@@ -70,7 +70,7 @@
 #define B_KLUTZ_FLING_INTERACTION   GEN_LATEST // In Gen5+ kann Tollpatsch Schleuder nicht einsetzen.
 #define B_UPDATED_CONVERSION        GEN_LATEST // In Gen6+ nimmt Umwandlung den Typ des ersten Moves. Zuvor zufälliger Move.
 #define B_UPDATED_CONVERSION_2      GEN_LATEST // In Gen5+ wählt Umwandlung2 einen Typ, der den letzten Move des Ziels resistet. Struggle gilt vor Gen5 als Normal.
-#define B_PP_REDUCED_BY_SPITE       GEN_LATEST // In Gen4+ senkt Groll die AP des letzten Moves um 4 statt 2–5.
+#define B_PP_REDUCED_BY_SPITE       GEN_LATEST // In Gen4+ senkt Groll die AP des letzten Moves um 4 statt 2-5.
 #define B_EXTRAPOLATED_MOVE_FLAGS   TRUE       // Fügt Moves plausible Flags hinzu, die sie in den neuesten Spielen wahrscheinlich hätten.
 
 // Fähigkeits-Daten
@@ -278,7 +278,7 @@
 #define B_FAST_INTRO_NO_SLIDE               FALSE // TRUE: Überspringt die Anfangs-Slide-Animation.
 #define B_FAST_HP_DRAIN                     TRUE  // TRUE: KP-Balken bewegen sich schneller.
 #define B_FAST_EXP_GROW                     TRUE  // TRUE: EP-Balken bewegen sich schneller.
-#define B_SHOW_TARGETS                      TRUE  // TRUE: Zeigt mögliche Ziele an, bevor man Moves auswählt, die 2–3 Pokémon treffen.
+#define B_SHOW_TARGETS                      TRUE  // TRUE: Zeigt mögliche Ziele an, bevor man Moves auswählt, die 2-3 Pokémon treffen.
 #define B_SHOW_CATEGORY_ICON                TRUE  // TRUE: Zeigt Kategorien-Icon in Übersicht und Move-Lehrer.
 #define B_HIDE_HEALTHBOX_IN_ANIMS           TRUE  // TRUE: Versteckt KP-Boxen während Move-Animationen.
 #define B_WAIT_TIME_MULTIPLIER              16    // Dauer von Textpausen im Kampf. Vanilla 16. Niedriger = schneller.

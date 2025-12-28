@@ -1,4 +1,4 @@
-# Pokémon Nyxthra – Alpha v1.0.3
+# Pokémon Nyxthra - Alpha v1.0.3
 
 **Pokémon Nyxthra** ist eine auf **pokeemerald-expansion** (v1.12.1) basierende Modifikation mit zahlreichen eigenen Erweiterungen, Änderungen und neuen Inhalten.  
 Die Basis stammt vom RHH-Team (rh-hideout). Mehr Infos zum Originalprojekt:  
@@ -21,7 +21,7 @@ Die Basis stammt vom RHH-Team (rh-hideout). Mehr Infos zum Originalprojekt:
 ### 🎮 Gameplay & Story
 - Vollständig überarbeitete Story mit eigenen Dialogen  
 - Neue Events und Szenen eingebaut  
-- Starter frei wählbar – **alle Starter aller Regionen** (Gen 1–9) stehen zur Auswahl, statt nur die Hoenn-Starter  
+- Starter frei wählbar - **alle Starter aller Regionen** (Gen 1-9) stehen zur Auswahl, statt nur die Hoenn-Starter  
 - Neue Trainer & Teams, inklusive Kämpfe gegen Charaktere aus verschiedenen Generationen  
 - Trainerlevel, KI und Begegnungen stark angepasst  
 
@@ -59,7 +59,7 @@ Die Basis stammt vom RHH-Team (rh-hideout). Mehr Infos zum Originalprojekt:
 
 ## ℹ️ Hinweise für Tester
 - Dies ist eine **Alpha-Version**. Fehler, fehlende Grafiken oder falsche Trigger können auftreten.  
-- ⚠️ **Debug-Menü:** Nur in der Alpha vorhanden – noch nicht alle Funktionen sind einsatzbereit.  
+- ⚠️ **Debug-Menü:** Nur in der Alpha vorhanden - noch nicht alle Funktionen sind einsatzbereit.  
   - **Falsche Auswahl kann zu Spielabstürzen oder beschädigten Spielständen führen!**  
   - Viele Einträge erklären sich selbst.  
   - Für gezielte Tests ist das Debug-Menü dennoch sehr nützlich.  
@@ -86,7 +86,7 @@ Die Basis stammt vom RHH-Team (rh-hideout). Mehr Infos zum Originalprojekt:
 - Neue legendäre Events & alternative Enden  
 - **Erweiterte Formen von Shinys** (zunächst nur für legendäre Pokémon)  
 - **Mehrere Teams** ins Spiel einbauen 
-	(alle vorhandenen Teams im Projekt, jedoch aktuell noch ohne Story – derzeit am Ende von Metarost City sichtbar)  
+	(alle vorhandenen Teams im Projekt, jedoch aktuell noch ohne Story - derzeit am Ende von Metarost City sichtbar)  
 
 ---
 

@@ -333,7 +333,7 @@ static void BuildStartMenuActions(void)
     }
 }
 
-// Position/Größe – oben links
+// Position/Größe - oben links
 #define CLOCK_WINDOW_X      0
 #define CLOCK_WINDOW_Y      0
 #define CLOCK_WINDOW_WIDTH  14 // <-- ERHÖHE AUF EINE AUSREICHENDE BREITE (z.B. 15 Kacheln = 120 Pixel)

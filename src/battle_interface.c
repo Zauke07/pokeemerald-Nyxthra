@@ -674,7 +674,7 @@ static void BI_AssignPerBattlerPalettes(u8 battler, u8 healthboxLeftSpriteId, u8
 
     palNum = sHealthboxPalPerBattler[battler];
 
-    // Für 13–15 die Ball-Status-Leiste-Palette laden.
+    // Für 13-15 die Ball-Status-Leiste-Palette laden.
     // Palette 4 ist bei dir schon korrekt initialisiert, die lassen wir in Ruhe.
     if (palNum >= 13)
     {

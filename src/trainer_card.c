@@ -1538,14 +1538,14 @@ static void DrawStarsAndBadgesOnCard(void)
             u8 tileX;
             u16 baseTile;  // statt "tileNum" akkumuliert
 
-            if (i < 8) // Orden 1–8, erste Reihe
+            if (i < 8) // Orden 1-8, erste Reihe
             {
                 tileX        = x + i * 3;
                 currentTileY = 15;
                 palNum       = 3;              // alte Palette
                 baseTile     = 192 + i * 2;    // 192..206
             }
-            else       // Orden 9–16, zweite Reihe
+            else       // Orden 9-16, zweite Reihe
             {
                 tileX        = x + (i - 8) * 3;
                 currentTileY = 17;             // zweite Zeile
