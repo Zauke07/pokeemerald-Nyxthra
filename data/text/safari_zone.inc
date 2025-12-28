@@ -1,168 +1,80 @@
-@ The text here is a copy/paste from Hoenn's Safari Zone, and any unused text was left untranslated
-
 SafariZone_Text_WouldYouLikeToExit::
-	.string "Would you like to exit the SAFARI\n"
-	.string "ZONE right now?$"
+	.string "Willst du hier echt schon abhauen,\n"
+	.string "oder hast du einfach keinen Bock mehr?$"
 
 SafariZone_Text_TimesUp::
-	.string "PA: Ding-dong!\p"
-	.string "Time's up!\p"
-	.string "PA: Your SAFARI GAME is over!$"
+	.string "DING DONG!\p"
+	.string "Zeit ist um, du Schnecke!\p"
+	.string "Dein Safari-Trip ist vorbei!$"
 
 SafariZone_Text_OutOfBalls::
-	.string "PA: Ding-dong!\p"
-	.string "You are out of SAFARI BALLS!\p"
-	.string "PA: Your SAFARI GAME is over!$"
+	.string "Tja, keine Bälle mehr!\p"
+	.string "Was dachtest du denn, dass die ewig halten?$"
 
 SafariZone_Text_WelcomeToSafariZone::
-	.string "サファリゾーンへ　ようこそ！\p"
-	.string "ここでは　ホウエンでは　なかなか\n"
-	.string "みることの　できない　ポケモンを\p"
-	.string "しぜんの　すがたの　まま\n"
-	.string "めに　することが　できます\p"
-	.string "また　ポケモントレーナーの\n"
-	.string "ようぼうに　おこたえ　して\p"
-	.string "ポケモンを\n"
-	.string "つかまえる　ことも　できます！\p"
-	.string "サファリゾーンを　たのしんで　いってね！$"
+	.string "Willkommen in der SAFARI-ZONE!\p"
+	.string "Hier rennen Pokémon frei rum,\n"
+	.string "und du darfst sie fangen wie ein Irrer!\p"
+	.string "Also reiß dich zusammen und los geht’s!$"
 
 SafariZone_Text_WelcomeFirstTime::
-	.string "サファリゾーンへ　ようこそ！\n"
-	.string "サファリゾーンは　はじめて　ですか？$"
+	.string "Na, zum ersten Mal hier?\n"
+	.string "Dann reiß dich zusammen, das hier ist kein Kindergarten!$"
 
 SafariZone_Text_ComeInAndEnjoy::
-	.string "サファリゾーンを　たのしんで　いってね！$"
+	.string "Na los, rein mit dir!\n"
+	.string "Und stell dich nicht so an!$"
 
 SafariZone_Text_FirstTimeInfo::
-	.string "サファリゾーンでは\n"
-	.string "30この　サファリボールを　つかって\l"
-	.string "ポケモンを　つかまえる　ことが　できます\p"
-	.string "サファリボールを　つかいきるか\n"
-	.string "500ぽ　あるくと\p"
-	.string "ゲームは　しゅうりょう　です\p"
-	.string "サファリゾーンを　たのしんで　いってね！$"
+	.string "Hier kriegst du 30 SAFARI-BÄLLE.\n"
+	.string "Mehr gibt’s nicht, also verschwende sie nicht!\p"
+	.string "Wenn sie weg sind oder du genug rumgelatscht bist,\n"
+	.string "ist der Spaß vorbei.$"
 
 SafariZone_Text_WouldYouLikeToPlay::
-	.string "サファリゾーンへ　ようこそ！\p"
-	.string "500えんで　ポケモン　つかまえほうだい！\n"
-	.string "サファリゲームに　さんか　しますか？$"
+	.string "Willst du rein?\n"
+	.string "500 PokéDollar oder du bleibst draußen.$"
 
 SafariZone_Text_PlayAnotherTime::
-	.string "そうですか\n"
-	.string "こんど　ぜひ　さんか　してください！$"
+	.string "Na dann eben nicht.\n"
+	.string "Dein Pech, nicht meins.$"
 
 SafariZone_Text_NotEnoughMoney::
-	.string "おかねが　たりませんよ！$"
+	.string "Kein Geld, kein Spaß.\n"
+	.string "Komm wieder, wenn du zahlen kannst.$"
 
 SafariZone_Text_ThatWillBe500Please::
-	.string "それでは　500えん　いただきます$"
+	.string "Dann mal her mit den 500!\n"
+	.string "Ich warte.$"
 
 SafariZone_Text_HereAreYourSafariBalls::
-	.string "では　サファリボールを　どうぞ！$"
+	.string "Hier, nimm die Bälle.\n"
+	.string "Und verschwende sie nicht sofort.$"
 
 SafariZone_Text_Received30SafariBalls::
-	.string "{PLAYER}は　サファリボールを\n"
-	.string "30こ　うけとった！$"
+	.string "{PLAYER} hat 30 SAFARI-BÄLLE bekommen!\n"
+	.string "Jetzt zeig mal, ob du was drauf hast.$"
 
 SafariZone_Text_PleaseEnjoyYourself::
-	.string "じかんに　なりましたら\n"
-	.string "こちらから　おしらせ　しますので\p"
-	.string "ぞんぶんに　おたのしみ　ください！\n"
-	.string "では　いってらっしゃい！$"
+	.string "Viel Spaß da drin.\n"
+	.string "Und komm nicht heulend zurück!$"
 
 SafariZone_Text_ExcuseMeYourPCBoxIsFull::
-	.string "Excuse me!\n"
-	.string "Your PC BOX is full.$"
+	.string "Äh… dein PC platzt aus allen Nähten.\n"
+	.string "Räum erst mal auf, dann reden wir weiter.$"
 
 SafariZone_Text_YouNeedPokeblockCase::
-	.string "あ！　おきゃくさん\n"
-	.string "ポロックケースを　おもちで　ないですね？\p"
-	.string "サファリゾーンは　ポロックを　つかうと\n"
-	.string "より　おたのしみ　いただけますので\p"
-	.string "ぜひ　ポロックケースを\n"
-	.string "おもちに　なって　おこし　ください！$"
+	.string "Hey, ohne Pokéblock-Box läuft hier gar nichts!\p"
+	.string "Komm wieder, wenn du vorbereitet bist.$"
 
-SafariZone_South_Text_StillHaveTimeExit::
-	.string "まだ　じかんが　のこっていますが\n"
-	.string "サファリゾーンを　やめますか？$"
+SafariZone_Text_SouthExit::
+	.string "Willst du echt schon abhauen?\n"
+	.string "Dann geh halt, wenn du meinst.$"
 
-SafariZone_South_Text_EnjoyTheRestOfYourAdventure::
-	.string "では　ひきつづき　おたのしみ　ください！$"
+SafariZone_Text_ExitThankYou::
+	.string "Na gut, dann tschüss.\n"
+	.string "Vielleicht schaffst du’s ja nächstes Mal.$"
 
-SafariZone_South_Text_ExitEarlyThankYouForPlaying::
-	.string "わかりました\p"
-	.string "それでは　のこりの　サファリボールを\n"
-	.string "おあずかり　します\p"
-	.string "おつかれさまでした\n"
-	.string "また　ごりよう　ください$"
-
-SafariZone_South_Text_GoodLuck::
-	.string "それでは　いってらっしゃい！\l"
-	.string "なにか　ありましたら\n"
-	.string "わたしに　こえを　かけて　くださいね$"
-
-SafariZone_South_Text_Boy::
-	.string "しってた？\p"
-	.string "あの　しかくい　はこに　ポロックを　おくと\n"
-	.string "ポケモンが　あつまって　くるんだよ！$"
-
-SafariZone_South_Text_Man::
-	.string "この　さきに　いきたい　けど\n"
-	.string "じてんしゃ　もって　くるの　わすれた‥‥\p"
-	.string "おくに　めずらしい　ポケモンが\n"
-	.string "いそうな　きが　するのに！$"
-
-SafariZone_Southwest_Text_Woman::
-	.string "ポケモンに　ポロックを　なげても\n"
-	.string "しらんぷり　される　ときが　あるのよ\p"
-	.string "ポケモンにも　すききらいが　あるのかしら？$"
-
-SafariZone_Northwest_Text_Man::
-	.string "ぜぇ‥‥　ぜぇ‥‥\n"
-	.string "やっと　ここまで　きたけど‥‥\p"
-	.string "つかれちゃって　ポケモン　つかまえる\n"
-	.string "げんきも　のこって　ないよ‥‥$"
-
-SafariZone_North_Text_Fisherman::
-	.string "ホウエンに　いない　みずポケモンを\n"
-	.string "さがしに　きたんだけど‥‥\p"
-	.string "みずうみは　どこにあるのか\n"
-	.string "きみ　しってるかい？$"
-
-SafariZone_North_Text_Man::
-	.string "ここで　めずらしい　ポケモンを\n"
-	.string "たくさん　つかまえて\l"
-	.string "ともだちと　こうかん　するんだ！$"
-
-SafariZone_South_Text_Youngster::
-	.string "ポロックおきばに　おいた　ポロックが\n"
-	.string "いつのまにか　なくなっていた‥‥\p"
-	.string "しらない　うちに\n"
-	.string "ポケモンが　たべちゃったのかな？$"
-
-Route121_SafariZoneEntrance_Text_TrainerTip::
-	.string "サファリゾーンの　おとくな　じょうほう！\p"
-	.string "であった　ポケモンに\n"
-	.string "ポロックを　なげると　にげにくく　なります！$"
-
-SafariZone_Southwest_Text_RestHouseSign::
-	.string "あるき　つかれたら　ちょっと　ひといき！\n"
-	.string "‘みんなの　きゅうけいじょ'$"
-
-SafariZone_RestHouse_Text_Youngster::
-	.string "おれ　ポロック　もってないけど\n"
-	.string "ポケモン　たくさん　つかまえたよ\p"
-	.string "ちかづいて　ボールを　なげる　だけで\n"
-	.string "けっこう　つかまえられる　もんだよ！$"
-
-SafariZone_RestHouse_Text_PsychicM::
-	.string "ポロックを　つかうと　いつもより\n"
-	.string "ちょっぴり　にげにくく　なるみたい\p"
-	.string "だから　にげにくい　ポケモンに　つかっても\n"
-	.string "あんまり　いみが　ないかもね$"
-
-SafariZone_RestHouse_Text_FatMan::
-	.string "ポロックおきばに　ポロック　おいて\n"
-	.string "ポケモンを　つかまえると\p"
-	.string "おなじ　ような　せいかくの　ポケモンが\n"
-	.string "あつまる　きが　するなあ$"
+SafariZone_Text_GoodLuck::
+	.string "Viel Glück da drin!\n"
+	.string "Du wirst es brauchen.$"

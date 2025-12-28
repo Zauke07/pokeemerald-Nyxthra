@@ -1,125 +1,130 @@
 gBirchDexRatingText_AreYouCurious::
 	.string "PROF. BIRK: Ah, {PLAYER}{KUN}!\p"
-	.string "Möchtest du mir deine Fortschritte\n"
-	.string "mit dem POKéDEX zeigen?$"
+	.string "Na, du kleiner Lauch?\n"
+	.string "Zeig mal deinen POKéDEX. Ist bestimmt\l"
+	.string "genauso leer wie dein Kopf.$"
 
 gBirchDexRatingText_Cancel::
-	.string "Ach? Du hast erst so wenige\n"
-	.string "Pokémon gefangen, dass es sich\l"
-	.string "nicht lohnt, ihn mir zu zeigen?$"
+	.string "War ja klar.\n"
+	.string "Du schämst dich für dein Versagen.\l"
+	.string "Geh mir aus den Augen.$"
 
 gBirchDexRatingText_SoYouveSeenAndCaught::
-	.string "Hmhm…\p"
-	.string "Oh, du hast {STR_VAR_1} Pokémon gesehen\n"
-	.string "und {STR_VAR_2} Pokémon gefangen…$"
+	.string "Lass mal sehen…\p"
+	.string "Aha. {STR_VAR_1} gesehen.\n"
+	.string "Und {STR_VAR_2} gefangen…\p"
+	.string "Das ist deine Ausbeute? Echt jetzt?$"
 
 gBirchDexRatingText_LessThan10::
-	.string "Du solltest mehr ins hohe Gras\n"
-	.string "gehen und mehr auf Pokémon\l"
-	.string "achten.$"
+	.string "Bist du blind oder einfach nur faul?\n"
+	.string "Geh ins Gras, du Opfer!\l"
+	.string "Die Viecher beißen nicht. Meistens.$"
 
 gBirchDexRatingText_LessThan20::
-	.string "So langsam bekommst du den Bogen\n"
-	.string "raus. Aber es wird immer schwieriger\l"
-	.string "werden!$"
+	.string "Wow, zweistellig. Applaus.\n"
+	.string "Sogar ein Taubsi hat mehr Hirn als\l"
+	.string "du beim Suchen.$"
 
 gBirchDexRatingText_LessThan30::
-	.string "Einige Pokémon tauchen nur in be-\n"
-	.string "stimmten Regionen auf.\l"
-	.string "Hab nur Geduld.$"
+	.string "Du läufst immer nur im Kreis, oder?\n"
+	.string "Beweg deinen Arsch mal in andere\l"
+	.string "Gebiete, sonst wird das nie was.$"
 
 gBirchDexRatingText_LessThan40::
-	.string "Nun, er könnte mehr Einträge\n"
-	.string "enthalten, aber es sieht schon\l"
-	.string "eher nach einem POKéDEX aus.$"
+	.string "Es sieht langsam nicht mehr aus wie\n"
+	.string "ein Malbuch für Dreijährige.\l"
+	.string "Aber gut ist anders.$"
 
 gBirchDexRatingText_LessThan50::
-	.string "Das läuft doch wunderbar.\n"
-	.string "Mach weiter so.$"
+	.string "Die Hälfte von Hundert.\n"
+	.string "Du bist der Durchschnitt. Mittelmaß.\l"
+	.string "Langweilig.$"
 
 gBirchDexRatingText_LessThan60::
-	.string "Verwendest du irgendwelche\n"
-	.string "ANGELn?\l"
-	.string "Hier gibt es viele Pokémon im Meer.$"
+	.string "Hast du Angst vor Wasser?\n"
+	.string "Benutz eine ANGEL, du Landratte!\l"
+	.string "Oder stinkst du zu sehr für Fische?$"
 
 gBirchDexRatingText_LessThan70::
-	.string "Statt die Pokémon nur zu fangen,\n"
-	.string "wie wäre es, sie sich entwickeln zu\l"
-	.string "lassen?$"
+	.string "Deine Pokémon entwickeln sich nicht?\n"
+	.string "Vielleicht weil du ein schlechter\l"
+	.string "TRAINER bist. Denk mal drüber nach.$"
 
 gBirchDexRatingText_LessThan80::
-	.string "Der POKéDEX wird einfach\n"
-	.string "fantastisch.\l"
-	.string "Das habe ich im Gefühl…$"
+	.string "Langsam wird’s was.\n"
+	.string "Vielleicht bist du doch kein\l"
+	.string "hoffnungsloser Fall.$"
 
 gBirchDexRatingText_LessThan90::
-	.string "Du hast so viele gefangen…\n"
-	.string "Du hast ein außergewöhnliches\l"
-	.string "Talent!$"
+	.string "Du hast kein Privatleben, oder?\n"
+	.string "So viele Viecher…\l"
+	.string "Geh mal duschen.$"
 
 gBirchDexRatingText_LessThan100::
-	.string "Warst du schon mal in der\n"
-	.string "SAFARI-ZONE?\p"
-	.string "Ich habe gehört, es gibt Pokémon,\n"
-	.string "die man nur dort finden kann.$"
+	.string "Geh in die SAFARI-ZONE.\n"
+	.string "Ach ne, Eintritt kostet Geld, was?\l"
+	.string "Geh schnorren und dann fang was!$"
 
 gBirchDexRatingText_LessThan110::
-	.string "Du hast die 100er-Marke\n"
-	.string "überschritten!\p"
-	.string "Das ist ein beeindruckender\n"
-	.string "POKéDEX!$"
+	.string "Über 100.\n"
+	.string "Du bist offiziell süchtig.\p"
+	.string "Deine Eltern machen sich sicher\n"
+	.string "Sorgen um dich.$"
 
 gBirchDexRatingText_LessThan120::
-	.string "Es gibt auch Pokémon, die man\n"
-	.string "durch den Einsatz von\l"
-	.string "ZERTRÜMMERER findet.$"
+	.string "Hau mal Steine kaputt mit\n"
+	.string "ZERTRÜMMERER.\l"
+	.string "Randale machen kannst du doch, oder?$"
 
 gBirchDexRatingText_LessThan130::
-	.string "Du solltest einige Pokémon fangen\n"
-	.string "und sie mit anderen tauschen.$"
+	.string "Tausch doch mal mit Freunden.\n"
+	.string "Oh… warte.\l"
+	.string "Du hast keine Freunde, stimmt’s?$"
 
 gBirchDexRatingText_LessThan140::
-	.string "Ich habe von Pokémon gehört, die\n"
-	.string "sich entwickeln, wenn sie ihren\l"
-	.string "TRAINER sehr lieben.$"
+	.string "Manche entwickeln sich nur durch Liebe.\n"
+	.string "Kein Wunder, dass dein POKéDEX\l"
+	.string "Lücken hat. Dich liebt keiner.$"
 
 gBirchDexRatingText_LessThan150::
-	.string "Ich hatte keine Ahnung, dass es in\n"
-	.string "der HOENN-Region so viele\l"
-	.string "verschiedene Pokémon-Arten gibt.$"
+	.string "HOENN ist voll mit Ungeziefer.\n"
+	.string "Und du sammelst es auch noch.\l"
+	.string "Ekelhaft.$"
 
 gBirchDexRatingText_LessThan160::
-	.string "Manchmal erscheinen einige\n"
-	.string "Pokémon in großer Anzahl\p"
-	.string "wie bei einem Ausbruch.\n"
-	.string "Das solltest du nicht verpassen!$"
+	.string "Manchmal gibt es Massen-Ausbrüche.\n"
+	.string "Wie bei der Pest.\l"
+	.string "Verpass das nicht.$"
 
 gBirchDexRatingText_LessThan170::
-	.string "Dein POKéDEX liefert einen\n"
-	.string "erstaunlich guten Einblick in die\l"
-	.string "Pokémon der HOENN-Region!$"
+	.string "Du stalkst die Pokémon ganz schön gut.\n"
+	.string "Hast du das bei deinem Ex auch\l"
+	.string "gemacht? Gruselig.$"
 
 gBirchDexRatingText_LessThan180::
-	.string "Ich sage, du hast dich bereits als\n"
-	.string "guter Pokémon-PROFESSOR\l"
-	.string "qualifiziert.$"
+	.string "Willst du meinen Job?\n"
+	.string "Vergiss es.\l"
+	.string "Ich bin der Prof hier, du Wicht.$"
 
 gBirchDexRatingText_LessThan190::
-	.string "Mit diesem POKéDEX, der schon so\n"
-	.string "weit gediehen ist, bist du ein\l"
-	.string "echter Profi.$"
+	.string "Du bist ein Nerd.\n"
+	.string "Ein richtiger, schwitzender Nerd.\l"
+	.string "Respekt? Nein, Mitleid.$"
 
 gBirchDexRatingText_LessThan200::
-	.string "Du bist sehr nahe dran, den\n"
-	.string "POKéDEX zu vervollständigen.\l"
-	.string "Das fühle ich einfach.$"
+	.string "Fast fertig.\n"
+	.string "Deine Zwangsstörung kickt richtig\l"
+	.string "rein, was?$"
 
 gBirchDexRatingText_DexCompleted::
-	.string "Herzlichen Glückwunsch!\n"
-	.string "Dein POKéDEX ist vollständig!$"
+	.string "Scheiße, du hast ihn voll.\n"
+	.string "Und jetzt? Fühlst du dich besser?\p"
+	.string "Du hast dein Leben verschwendet für\n"
+	.string "eine digitale Liste. Glückwunsch.$"
 
 gBirchDexRatingText_OnANationwideBasis::
 	.string "Hmhm…\n"
 	.string "Auf nationaler Ebene…\p"
-	.string "hast du {STR_VAR_1} Pokémon gesehen\n"
-	.string "und {STR_VAR_2} Pokémon gefangen…$"
+	.string "hast du {STR_VAR_1} gesehen\n"
+	.string "und {STR_VAR_2} gefangen…\p"
+	.string "Es hört nie auf, was? Du armes Schwein.$"

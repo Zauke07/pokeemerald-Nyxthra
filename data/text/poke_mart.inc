@@ -1,31 +1,29 @@
 Text_MayIHelpYou::
-    .string "Hallo, da!\n"
-    .string "Kann ich dir helfen?$"
+	.string "Na los, was glotzt du so?\n"
+	.string "Willst du was oder stehst du nur rum?$"
 
 Text_FillOutQuestionnaire::
-    .string "Es gibt einen Fragebogen.\n"
-    .string "Möchtest du ihn ausfüllen?$"
+	.string "Hier, füll den Mist aus.\n"
+	.string "Oder hast du Angst vor ein paar Fragen?$"
 
 Text_QuestionnaireThankYou::
-    .string "Vielen Dank, dass du dir die Zeit\n"
-    .string "genommen hast, unseren Fragebogen\l"
-    .string "auszufüllen.\p"
-    .string "Dein Feedback wird für zukünftige\n"
-    .string "Referenzen verwendet.$"
+	.string "Na toll… hast du echt alles ausgefüllt.\n"
+	.string "Hätte ich dir gar nicht zugetraut.\p"
+	.string "Na schön, deine Antworten werden\n"
+	.string "irgendwo abgeheftet… wahrscheinlich.$"
 
 Text_YouKnowThoseWords::
-    .string "Oh, hallo!\n"
-    .string "Du kennst diese Wörter?\p"
-    .string "Das bedeutet, du weißt über das\n"
-    .string "GEHEIMNISVOLLE GESCHENK Bescheid.\p"
-    .string "Ab jetzt solltest du\n"
-    .string "GEHEIMNISVOLLE GESCHENKE erhalten!$"
+	.string "Oh? Du kennst die geheimen Worte?\n"
+	.string "Na sowas… hätte ich dir nicht zugetraut.\p"
+	.string "Scheint, als wärst du nicht ganz so\n"
+	.string "ahnungslos, wie du aussiehst.$"
 
 Text_YouCanAccessMysteryGift::
-    .string "Sobald du dein Spiel speicherst,\n"
-    .stirng "kannst du auf das\l"
-    .string "GEHEIMNISVOLLE GESCHENK zugreifen.$"
+	.string "Na gut, jetzt darfst du ran.\n"
+	.string "Speicher dein Spiel, dann kannst du\n"
+	.string "dir das GEHEIMNISVOLLE GESCHENK holen.$"
 
 Text_ThankYouForAccessingMysteryGift::
-    .string "Vielen Dank für den Zugriff auf das\n"
-    .string "GEHEIMNISVOLLE GESCHENK-System.$"
+	.string "Na endlich.\n"
+	.string "Viel Spaß mit dem Kram –\n"
+	.string "und mach keinen Unsinn damit.$"

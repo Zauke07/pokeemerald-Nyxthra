@@ -1,63 +1,70 @@
 @ Only contains the text for the Mauville Man named Giddy. The rest is in scripts/mauville_man.inc
 GiddyText_SoPretty::
-	.string "so pretty!$"
+	.string "so abgefuckt!$"
 
 GiddyText_SoDarling::
-	.string "so darling!$"
+	.string "zum Kotzen!$"
 
 GiddyText_SoRelaxed::
-	.string "so relaxed!$"
+	.string "so drauf!$"
 
 GiddyText_SoSunny::
-	.string "so sunny!$"
+	.string "so ätzend!$"
 
 GiddyText_SoDesirable::
-	.string "so desirable!$"
+	.string "so billig!$"
 
 GiddyText_SoExciting::
-	.string "so exciting!$"
+	.string "so stressig!$"
 
 GiddyText_SoAmusing::
-	.string "so amusing!$"
+	.string "so lächerlich!$"
 
 GiddyText_SoMagical::
-	.string "so magical!$"
+	.string "so krank!$"
 
 GiddyText_Is::
-	.string "is$"
+	.string "ist$"
 
 GiddyText_DontYouAgree::
 	.string "\n"
-	.string "Don't you agree?$"
+	.string "Bist du dumm?$"
 
 GiddyText_ISoWantToGoOnAVacation::
-	.string "I so want to go on a vacation.\n"
-	.string "Would you happen to know a nice place?$"
+	.string "Ich brauche Urlaub vom Leben.\n"
+	.string "Ein goldener Schuss wäre nett.\l"
+	.string "Kennst du ’nen guten Dealer?$"
 
 GiddyText_IBoughtCrayonsWith120Colors::
-	.string "I bought crayons with 120 colors!\n"
-	.string "Don't you think that's nice?$"
+	.string "Ich hab mir 120 Buntstifte in die\n"
+	.string "Nase gesteckt!\l"
+	.string "Jetzt riech ich den Regenbogen!$"
 
 GiddyText_WouldntItBeNiceIfWeCouldFloat::
-	.string "Wouldn't it be nice if we could float\n"
-	.string "away on a cloud of bubbles?$"
+	.string "Wäre es nicht geil, wenn wir einfach\n"
+	.string "platzen würden?\l"
+	.string "Wie riesige Eiterpickel? Platsch!$"
 
 GiddyText_WhenYouWriteOnASandyBeach::
-	.string "When you write on a sandy beach,\n"
-	.string "they wash away. It makes me sad.$"
+	.string "Wenn du was in den Sand schreibst,\n"
+	.string "ist es weg. Genau wie deine Zukunft.\l"
+	.string "Alles ist sinnlos.$"
 
 GiddyText_WhatsTheBottomOfTheSeaLike::
-	.string "What's the bottom of the sea like?\n"
-	.string "Just once I would so love to go!$"
+	.string "Wie ist es wohl am Meeresgrund?\n"
+	.string "Mit Betonschuhen? Ich würde dich\l"
+	.string "so gerne runterschubsen!$"
 
 GiddyText_WhenYouSeeTheSettingSunDoesIt::
-	.string "When you see the setting sun, does it\n"
-	.string "make you want to go home?$"
+	.string "Wenn die Sonne untergeht, werde ich\n"
+	.string "wach. Und hungrig. Lauf weg.$"
 
 GiddyText_LyingBackInTheGreenGrass::
-	.string "Lying back in the green grass…\n"
-	.string "Oh, it's so, so nice!$"
+	.string "Im Gras liegen… zwischen Hundekacke\n"
+	.string "und gebrauchten Spritzen…\l"
+	.string "Das ist Romantik, Alter!$"
 
 GiddyText_SecretBasesAreSoWonderful::
-	.string "SECRET BASES are so wonderful!\n"
-	.string "Can't you feel the excitement?$"
+	.string "GEHEIMBASEN sind super!\n"
+	.string "Da kann man Leichen lagern, ohne\l"
+	.string "dass es sofort stinkt!$"

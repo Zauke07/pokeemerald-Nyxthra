@@ -1,71 +1,64 @@
-EventTicket_Text_OldSeaMapTooFar:
-	.string "What's up, youngster?\p"
-	.string "What, it's you who's supposed to have\n"
-	.string "a tattered old map?\p"
-	.string "Let's have a look.\n"
+EventTicket_Text_OldSeaMapTooFar::
+	.string "Na, Kleiner?\n"
+	.string "Du willst mir erzählen, du hast\n"
+	.string "so ’ne alte, vergammelte Karte?\p"
+	.string "Na, mal sehen…\n"
 	.string "… … … … … …\p"
-	.string "Boy, this is quite a ways away.\n"
-	.string "I'm afraid I can't help you…$"
+	.string "Puh! Das Ding führt verdammt weit weg.\n"
+	.string "Da kann selbst ich nichts machen…$"
 
-EventTicket_Text_BrineyHoldOnASecond:
-	.string "BRINEY: Hold on a second!\p"
-	.string "What's the idea of turning down\n"
-	.string "someone that I owe so much to?$"
+EventTicket_Text_BrineyHoldOnASecond::
+	.string "HEY, WARTE MAL!\p"
+	.string "Wie kannst du jemanden einfach\n"
+	.string "abwimmeln, dem du noch was schuldest?!$"
 
-EventTicket_Text_BrineyLetsSail:
-	.string "{PLAYER}{KUN}, I'm terribly sorry.\p"
-	.string "You came to me seeking my help,\n"
-	.string "and we almost turned you away.\p"
-	.string "Well, let me make things right.\p"
-	.string "We'll sail right away, of course!\p"
-	.string "Let's find this island on\n"
-	.string "this OLD SEA MAP!$"
+EventTicket_Text_BrineyLetsSail::
+	.string "{PLAYER}{KUN}, tut mir leid!\p"
+	.string "So ein Verhalten geht gar nicht.\n"
+	.string "Du hast meine Hilfe verdient!\p"
+	.string "Also gut, wir stechen in See!\p"
+	.string "Los, wir suchen diese verfluchte Insel\n"
+	.string "auf dieser alten Karte!$"
 
-EventTicket_Text_OddTicketGetOnBoard:
-	.string "Is it you who brought that odd\n"
-	.string "ticket?\p"
-	.string "Where you're trying to go is an island\n"
-	.string "that's far, far away.\p"
-	.string "No one knows what awaits there…\p"
-	.string "The very thought excites my blood\n"
-	.string "as a sailing man!\p"
-	.string "Get on board, youngster!$"
+EventTicket_Text_OddTicketGetOnBoard::
+	.string "Du bist also der mit dem seltsamen\n"
+	.string "Ticket, hm?\p"
+	.string "Der Ort liegt verdammt weit draußen.\n"
+	.string "Keiner weiß, was dort lauert.\p"
+	.string "Allein der Gedanke jagt mir\n"
+	.string "einen Schauer über den Rücken!\p"
+	.string "Steig ein, Kleiner!$"
 
-FarawayIsland_Entrance_Text_SailorReturn:
-	.string "CAPT. BRINEY can be so maddeningly\n"
-	.string "fickle…\p"
-	.string "Do you want to return to LILYCOVE?$"
+FarawayIsland_Entrance_Text_SailorReturn::
+	.string "CAPT. BRINEY ist manchmal echt\n"
+	.string "unberechenbar…\p"
+	.string "Willst du zurück nach LILYCOVE?$"
 
-BirthIsland_Harbor_Text_SailorReturn:
-	.string "What an oddly shaped island, eh?\n"
-	.string "Do you want to return to LILYCOVE?$"
+BirthIsland_Harbor_Text_SailorReturn::
+	.string "Seltsame Insel, was?\n"
+	.string "Willst du zurück nach LILYCOVE?$"
 
-EventTicket_Text_OddTicketsWhereTo:
-	.string "Is it you who brought those\n"
-	.string "odd tickets?\p"
-	.string "… … …Hm.\p"
-	.string "These tickets will get you to islands\n"
-	.string "that are far, far away.\p"
-	.string "No one knows what awaits there,\n"
-	.string "or what may happen there.\p"
-	.string "The very thought excites my blood\n"
-	.string "as a sailing man!\p"
-	.string "Get on board, youngster!\n"
-	.string "Where shall we sail first?$"
+EventTicket_Text_OddTicketsWhereTo::
+	.string "Du hast diese komischen Tickets?\p"
+	.string "Hmm…\p"
+	.string "Die führen an Orte, wo sonst keiner\n"
+	.string "auch nur hinzukommen wagt.\p"
+	.string "Niemand weiß, was dort lauert.\p"
+	.string "Allein der Gedanke lässt mir das Blut\n"
+	.string "in den Adern kochen!\p"
+	.string "Also los, wohin soll's gehen?$"
 
-NavelRock_Harbor_Text_SailorReturn:
-	.string "Did… Did you hear that?\n"
-	.string "That low growling from deep in there.\p"
-	.string "Are you sure it's safe?\n"
-	.string "Do you think we should leave?$"
+NavelRock_Harbor_Text_SailorReturn::
+	.string "Hast du das gehört?\n"
+	.string "Dieses Grollen… tief aus dem Inneren.\p"
+	.string "Bist du dir sicher, dass wir hierbleiben\n"
+	.string "sollten?$"
 
-FarawayIsland_Entrance_Text_Sign:
-	.string "The writing is fading as if it was\n"
-	.string "written a long time ago…\p"
-	.string "“…ber, 6th day\n"
-	.string "If any human…sets foot here…\l"
-	.string "again…et it be a kindhearted pers…\l"
-	.string "…ith that hope, I depar…”$"
+FarawayIsland_Entrance_Text_Sign::
+	.string "Die Schrift ist fast verwittert…\p"
+	.string "„…Tag unbekannt…\n"
+	.string "Wer diesen Ort betritt…\l"
+	.string "…sollte bereit sein, alles zu verlieren…“$"
 
-FarawayIsland_Interior_Text_Mew:
-	.string "Myuu…$"
+FarawayIsland_Interior_Text_Mew::
+	.string "Mew…$"

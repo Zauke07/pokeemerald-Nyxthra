@@ -1,96 +1,102 @@
 gContestHallPaintingCaption::
 	.string "{STR_VAR_1}\n"
-	.string "{STR_VAR_2}'s{STR_VAR_3}$"
+	.string "{STR_VAR_2}s {STR_VAR_3}$"
 
 @ Unused
 gContestPaintingContest::
-	.string "CONTEST$"
+	.string "WETTBEWERB$"
 
 gContestRankNormal::
-	.string "NORMAL RANK$"
+	.string "NORMAL-KLASSE$"
 
 gContestRankSuper::
-	.string "SUPER RANK$"
+	.string "SUPER-KLASSE$"
 
 gContestRankHyper::
-	.string "HYPER RANK$"
+	.string "HYPER-KLASSE$"
 
 gContestRankMaster::
-	.string "MASTER RANK$"
+	.string "MEISTER-KLASSE$"
 
 gContestLink::
-	.string "LINK$"
+	.string "LINK-WETTBEWERB$"
 
 gContestCoolness::
 	.string "COOLNESS$"
 
 gContestBeauty::
-	.string "BEAUTY$"
+	.string "SCHÖNHEIT$"
 
 gContestCuteness::
-	.string "CUTENESS$"
+	.string "NIEDLICHKEIT$"
 
 gContestSmartness::
-	.string "SMARTNESS$"
+	.string "KLUGHEIT$"
 
 gContestToughness::
-	.string "TOUGHNESS$"
+	.string "STÄRKE$"
+
 
 gContestPaintingCool1::
-	.string "Nonstop supercool--\n"
-	.string "the inestimable{STR_VAR_1}$"
+	.string "Unfassbar cool!\n"
+	.string "Der legendäre {STR_VAR_1}$"
 
 gContestPaintingCool2::
-	.string "Hey, there!\n"
-	.string "The good-looking POKéMON{STR_VAR_1}$"
+	.string "Hey, schau mal!\n"
+	.string "Das ultra-coole {STR_VAR_1}$"
 
 gContestPaintingCool3::
-	.string "The marvelous, wonderful, and\n"
-	.string "very great{STR_VAR_1}$"
+	.string "Achtung! Hier kommt\n"
+	.string "das unfassbare {STR_VAR_1}$"
+
 
 gContestPaintingBeauty1::
-	.string "This century's last Venus--\n"
-	.string "the beautiful{STR_VAR_1}$"
+	.string "Die Schönheit des Jahrhunderts—\n"
+	.string "{STR_VAR_1}$"
 
 gContestPaintingBeauty2::
-	.string "{STR_VAR_1}'s dazzling,\n"
-	.string "glittering smile$"
+	.string "{STR_VAR_1}s funkelnder\n"
+	.string "Blick verzaubert alle$"
 
 gContestPaintingBeauty3::
-	.string "POKéMON CENTER's super idol--\n"
-	.string "the incomparable{STR_VAR_1}$"
+	.string "Das Idol aller Trainer!\n"
+	.string "{STR_VAR_1}$"
+
 
 gContestPaintingCute1::
-	.string "The lovely and sweet{STR_VAR_1}$"
+	.string "Zum Dahinschmelzen!\n"
+	.string "{STR_VAR_1}$"
 
 gContestPaintingCute2::
-	.string "The pretty{STR_VAR_1}'s\n"
-	.string "winning portrait$"
+	.string "So süß, dass man\n"
+	.string "einfach lächeln muss—{STR_VAR_1}$"
 
 gContestPaintingCute3::
-	.string "Give us a wink!\n"
-	.string "The cutie POKéMON{STR_VAR_1}$"
+	.string "Ein Zwinkern genügt!\n"
+	.string "Das niedliche {STR_VAR_1}$"
+
 
 gContestPaintingSmart1::
-	.string "The smartness maestro--\n"
-	.string "the wise POKéMON{STR_VAR_1}$"
+	.string "Ein wahres Genie!\n"
+	.string "{STR_VAR_1}$"
 
 gContestPaintingSmart2::
-	.string "{STR_VAR_1}--the one chosen\n"
-	.string "above all POKéMON$"
+	.string "{STR_VAR_1}—\n"
+	.string "klüger als der Rest!$"
 
 gContestPaintingSmart3::
-	.string "The excellent{STR_VAR_1}'s\n"
-	.string "moment of elegance$"
+	.string "Ein Meister des Verstands:\n"
+	.string "{STR_VAR_1}$"
+
 
 gContestPaintingTough1::
-	.string "The powerfully muscular\n"
-	.string "speedster{STR_VAR_1}$"
+	.string "Geballte Kraft!\n"
+	.string "{STR_VAR_1}$"
 
 gContestPaintingTough2::
-	.string "The strong, stronger, and\n"
-	.string "strongest{STR_VAR_1}$"
+	.string "Härter, stärker, besser—\n"
+	.string "{STR_VAR_1}$"
 
 gContestPaintingTough3::
-	.string "The mighty tough\n"
-	.string "hyper POKéMON{STR_VAR_1}$"
+	.string "Ein wahres Kraftpaket:\n"
+	.string "{STR_VAR_1}$"

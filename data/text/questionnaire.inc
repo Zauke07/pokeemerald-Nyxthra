@@ -1,46 +1,39 @@
 Questionnaire_Text_FillOut::
-    .string "Es gibt einen Fragebogen.\n"
-    .string "Möchtest du ihn ausfüllen?$"
+	.string "Hier liegt ein Fragebogen rum.\n"
+	.string "Willst du deine wertlose Meinung kundtun?$"
 
 Questionnaire_Text_ThankYou::
-    .string "Vielen Dank, dass du dir die Zeit\n"
-    .string "genommen hast, unseren Fragebogen\l"
-    .string "auszufüllen.\p"
-    .string "Dein Feedback wird für zukünftige\n"
-    .string "Referenzen verwendet.$"
+	.string "Danke, dass du meine Zeit verschwendet hast.\n"
+	.string "Dein Feedback landet direkt im Müll.\l"
+	.string "Wir hassen Kunden.$"
 
 Questionnaire_Text_YouKnowThoseWordsGift::
-    .string "Oh, hallo!\n"
-    .string "Du kennst diese Worte?\p"
-    .string "Das bedeutet, du weißt über das\n"
-    .string "GEHEIMNISVOLLE GESCHENK Bescheid.\p"
-    .string "Ab jetzt solltest du\n"
-    .string "GEHEIMNISVOLLE GESCHENKE erhalten!$"
+	.string "Oh, guck an!\n"
+	.string "Du kennst die geheimen Worte?\p"
+	.string "Du bist bestimmt so ein dreckiger Cheater.\n"
+	.string "Egal, du kriegst dein\l"
+	.string "GEHEIMNISVOLLES GESCHENK.$"
 
 Questionnaire_Text_YouCanAccessMysteryGift::
-    .string "Sobald du dein Spiel speicherst,\n"
-    .string "kannst du das\l"
-    .string "GEHEIMNISVOLLE GESCHENK nutzen.$"
+	.string "Speicher dein Spiel, du Lauch.\n"
+	.string "Dann kannst du den Kram benutzen.$"
 
 Questionnaire_Text_YouKnowThoseWordsEvent::
-    .string "Oh, hallo!\n"
-    .string "Du kennst diese Worte?\p"
-    .string "Das bedeutet, du weißt über das\n"
-    .string "GEHEIMNISVOLLE EVENT Bescheid.$"
+	.string "Was glotzt du?\n"
+	.string "Du kennst die Worte?\p"
+	.string "Du bist tief im kriminellen Sumpf,\n"
+	.string "was? Das GEHEIMNISVOLLE EVENT ist offen.$"
 
 Questionnaire_Text_YouCanAccessMysteryEvent::
-    .string "Sobald du dein Spiel speicherst,\n"
-    .string "kannst du das\l"
-    .string "GEHEIMNISVOLLE GESCHENK nutzen.$"
+	.string "Speicher ab und verschwinde.\n"
+	.string "Dann hast du deinen Willen.$"
 
 MysteryGift_Text_TheresATicketForYou::
-    .string "Danke, dass du das GEHEIMNISVOLLE\n"
-    .string "EVENT-System benutzt hast.\p"
-    .string "Du musst {PLAYER} sein.\n"
-    .string "Hier ist ein Ticket für dich.$"
+	.string "Endlich hab ich dich gefunden, {PLAYER}.\n"
+	.string "Du hast dich gut versteckt, du Ratte.\p"
+	.string "Hier, nimm den Wisch und lass mich in Ruhe.$"
 
 MysteryGift_Text_TryUsingItAtLilycovePort::
-    .string "Es scheint für den Gebrauch am\n"
-    .string "Hafen von GRAPHITPORT CITY zu sein.\p"
-    .string "Probier es doch mal aus und schau,\n"
-    .string "worum es geht!$"
+	.string "Geh damit zum Hafen von GRAPHITPORT CITY.\p"
+	.string "Und komm bloß nicht zurück,\n"
+	.string "wenn es eine Falle ist.$"

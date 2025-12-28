@@ -1,286 +1,259 @@
 SecretBase_Text_Trainer0Intro:
-	.string "Have you made a SECRET BASE already?\p"
-	.string "I went here, there, everywhere before\n"
-	.string "choosing this place.\p"
-	.string "Since you're already here, how would\n"
-	.string "you like to battle?$"
+	.string "Das ist MEIN Loch!\n"
+	.string "Ich hab es zuerst geleckt!\p"
+	.string "Es riecht hier nach mir.\n"
+	.string "Riechst du das?\p"
+	.string "Wenn du hier bleiben willst, musst du\n"
+	.string "kämpfen.$"
 
 SecretBase_Text_Trainer0AcceptBattle:
-	.string "Okay!\n"
-	.string "Here we come!$"
+	.string "Raus aus meinem Revier!$"
 
 SecretBase_Text_Trainer0DeclineBattle:
-	.string "Hunh?\n"
-	.string "Oh, you can't now…$"
+	.string "Gut.\n"
+	.string "Verzieh dich.$"
 
 SecretBase_Text_Trainer0Defeated::
-	.string "Waaargh! You're too strong!\n"
-	.string "About me losing… Please keep it secret!$"
+	.string "Aaaah!\n"
+	.string "Nicht in mein Wohnzimmer bluten!$"
 
 SecretBase_Text_Trainer0PostBattle:
-	.string "What do you think of my SECRET BASE?\n"
-	.string "Come visit me again tomorrow.$"
+	.string "Das ist meine Höhle.\n"
+	.string "Ich bin der Troll. Zahl Miete.$"
 
 SecretBase_Text_Trainer0PreChampion:
-	.string "Have you made a SECRET BASE already?\p"
-	.string "I went here, there, everywhere before\n"
-	.string "choosing this place.\p"
-	.string "Feel free to hang out!$"
+	.string "Das ist MEIN Loch!\n"
+	.string "Ich hab es zuerst geleckt!\p"
+	.string "Geh weg, du machst meine Luft dreckig.$"
 
 SecretBase_Text_Trainer5Intro:
-	.string "There're a lot of places where\n"
-	.string "you can make a SECRET BASE.\p"
-	.string "But I like this spot best.\n"
-	.string "Don't you think it's nice?\p"
-	.string "Oh, would you like to have a battle?$"
+	.string "Ich verstecke mich hier vor der\n"
+	.string "Steuerfahndung.\p"
+	.string "Bist du vom Finanzamt?\n"
+	.string "Sag die Wahrheit!\p"
+	.string "Ich mach dich kalt, wenn du mich\n"
+	.string "verpfeifst!$"
 
 SecretBase_Text_Trainer5AcceptBattle:
-	.string "Okay, here goes!$"
+	.string "Keine Zeugen!$"
 
 SecretBase_Text_Trainer5DeclineBattle:
-	.string "Oh…\n"
-	.string "You can't now, okay.$"
+	.string "Besser für dich.\n"
+	.string "Du hast nichts gesehen.$"
 
 SecretBase_Text_Trainer5Defeated::
-	.string "Hmmm… It's our loss…\n"
-	.string "But don't tell anyone!\l"
-	.string "It's a confidential secret!$"
+	.string "Ich bin unschuldig!\n"
+	.string "Es war Notwehr!$"
 
 SecretBase_Text_Trainer5PostBattle:
-	.string "If you're in this area again,\n"
-	.string "I hope you'll visit me.$"
+	.string "Verrat mich nicht.\n"
+	.string "Ich hab Verbindungen.$"
 
 SecretBase_Text_Trainer5PreChampion:
-	.string "There're a lot of places where you can\n"
-	.string "make a SECRET BASE.\p"
-	.string "But I like this spot best.\n"
-	.string "Don't you think it's nice?$"
+	.string "Ich verstecke mich hier vor der\n"
+	.string "Steuerfahndung.\p"
+	.string "Psst!\n"
+	.string "Sei leise!$"
 
 SecretBase_Text_Trainer1Intro:
-	.string "This is a popular spot.\n"
-	.string "It's always taken.\p"
-	.string "Oh! Were you thinking about\n"
-	.string "taking this spot, too?\p"
-	.string "I'll tell you what, you can have this\n"
-	.string "spot if you can beat me.$"
+	.string "Dieser Ort ist VIP only.\n"
+	.string "Hast du eine Einladung?\p"
+	.string "Nein?\n"
+	.string "Dachte ich mir. Du siehst arm aus.\p"
+	.string "Ich schmeiß dich raus, du Penner.$"
 
 SecretBase_Text_Trainer1AcceptBattle:
-	.string "Okay!\n"
-	.string "I'm going to defend my SECRET BASE!$"
+	.string "Security!\n"
+	.string "Ach egal, ich mach das selbst.$"
 
 SecretBase_Text_Trainer1DeclineBattle:
-	.string "Hunh? Is that right?\n"
-	.string "You're not interested in this spot?$"
+	.string "Geh zurück in die Gosse,\n"
+	.string "wo du herkommst.$"
 
 SecretBase_Text_Trainer1Defeated::
-	.string "I can't keep going!\n"
-	.string "I surrender!$"
+	.string "Mein Anzug!\n"
+	.string "Er war teuer!$"
 
 SecretBase_Text_Trainer1PostBattle:
-	.string "Okay, when I move one day,\n"
-	.string "this place will be yours!$"
+	.string "Du hast hier Hausverbot.\n"
+	.string "Für immer.$"
 
 SecretBase_Text_Trainer1PreChampion:
-	.string "This is a popular spot.\n"
-	.string "It's always taken.\p"
-	.string "I waited a long time for it to open.\n"
-	.string "I finally got to use it!$"
+	.string "Dieser Ort ist VIP only.\n"
+	.string "Du stehst nicht auf der Liste.$"
 
 SecretBase_Text_Trainer6Intro:
-	.string "Welcome to my POKéMON LAB.\p"
-	.string "I carry out research on battling in\n"
-	.string "secrecy.\p"
-	.string "Would you like to see how strong I am?$"
+	.string "Willkommen in meinem Labor.\p"
+	.string "Ich experimentiere an lebenden\n"
+	.string "Subjekten.\p"
+	.string "Du bist mein nächstes Testobjekt.$"
 
 SecretBase_Text_Trainer6AcceptBattle:
-	.string "I'm going to go all out!$"
+	.string "Das wird wehtun.$"
 
 SecretBase_Text_Trainer6DeclineBattle:
-	.string "Oh.\n"
-	.string "Some other time, then!$"
+	.string "Angst vor Nadeln?\n"
+	.string "Schade.$"
 
 SecretBase_Text_Trainer6Defeated::
-	.string "Hmm… I've still got lots to learn.\n"
-	.string "I have to study some more.$"
+	.string "Faszinierend…\n"
+	.string "Deine Schmerztoleranz ist hoch.$"
 
 SecretBase_Text_Trainer6PostBattle:
-	.string "Thanks for battling with me.\n"
-	.string "Please come back again tomorrow.$"
+	.string "Ich brauche mehr Daten.\n"
+	.string "Komm wieder, wenn du geheilt bist.$"
 
 SecretBase_Text_Trainer6PreChampion:
-	.string "Welcome to my POKéMON LAB.\p"
-	.string "I carry out research on battling in\n"
-	.string "secrecy.$"
+	.string "Willkommen in meinem Labor.\p"
+	.string "Fass nichts an.\n"
+	.string "Es könnte explodieren.$"
 
 SecretBase_Text_Trainer2Intro:
-	.string "A big mansion is nice, but I like this\n"
-	.string "sort of place more.\p"
-	.string "I like it because all kinds of people\n"
-	.string "come visit me.\p"
-	.string "So, how would you like a battle?$"
+	.string "Ich wohne hier mietfrei.\n"
+	.string "Das System austricksen, Baby!\p"
+	.string "Willst du wissen, wie man schnorrt?\n"
+	.string "Besieg mich.$"
 
 SecretBase_Text_Trainer2AcceptBattle:
-	.string "That's the way!$"
+	.string "Alles für lau!$"
 
 SecretBase_Text_Trainer2DeclineBattle:
-	.string "When you're ready, give me a shout!$"
+	.string "Hast du Kleingeld?\n"
+	.string "Nein? Dann hau ab.$"
 
 SecretBase_Text_Trainer2Defeated::
-	.string "Aww! Done in!\n"
-	.string "But it's still fun to battle!$"
+	.string "Ich bin pleite…\n"
+	.string "Hast du ’nen Euro?$"
 
 SecretBase_Text_Trainer2PostBattle:
-	.string "Well, anyway, I should go buy some\n"
-	.string "decorations and furniture.\p"
-	.string "I want my SECRET BASE to be a place\n"
-	.string "other people can enjoy.$"
+	.string "Ich klau mir meine Möbel zusammen.\n"
+	.string "Vom Sperrmüll.$"
 
 SecretBase_Text_Trainer2PreChampion:
-	.string "A big mansion is nice, but I like this\n"
-	.string "sort of place more.\p"
-	.string "I like it because all kinds of people\n"
-	.string "come visit me.$"
+	.string "Ich wohne hier mietfrei.\n"
+	.string "Squatting is not a crime.$"
 
 SecretBase_Text_Trainer7Intro:
-	.string "I simply adore shopping for decorations\n"
-	.string "and furniture.\p"
-	.string "I also love raising POKéMON just\n"
-	.string "as much.\p"
-	.string "If you would be so kind, will you battle\n"
-	.string "with my POKéMON?$"
+	.string "Alles hier ist Designerware.\n"
+	.string "Viel zu teuer für dich.\p"
+	.string "Gucken kostet ¥500.\n"
+	.string "Kämpfen kostet dein Leben.$"
 
 SecretBase_Text_Trainer7AcceptBattle:
-	.string "Thank you.\n"
-	.string "Shall we begin?$"
+	.string "Mach nichts kaputt!$"
 
 SecretBase_Text_Trainer7DeclineBattle:
-	.string "Oh.\n"
-	.string "How disappointing…$"
+	.string "Du kannst es dir eh nicht leisten.$"
 
 SecretBase_Text_Trainer7Defeated::
-	.string "I concede…$"
+	.string "Meine Vase!\n"
+	.string "Sie war aus der Ming-Dynastie!$"
 
 SecretBase_Text_Trainer7PostBattle:
-	.string "That was all in good fun!\n"
-	.string "I should go enjoy shopping now.$"
+	.string "Du hast den Feng-Shui ruiniert.\n"
+	.string "Verschwinde.$"
 
 SecretBase_Text_Trainer7PreChampion:
-	.string "I simply adore shopping for decorations\n"
-	.string "and furniture.\p"
-	.string "I also love raising POKéMON just\n"
-	.string "as much.$"
+	.string "Alles hier ist Designerware.\n"
+	.string "Hände weg!$"
 
 SecretBase_Text_Trainer3Intro:
-	.string "Some people make their SECRET BASES in\n"
-	.string "hard-to-find places.\l"
-	.string "Do they want to just lie low?\p"
-	.string "But since you found me, how about we\n"
-	.string "have a battle?$"
+	.string "Wie hast du mich gefunden?!\n"
+	.string "Ich bin im Zeugenschutzprogramm!\p"
+	.string "Du bist ein Auftragskiller, oder?\n"
+	.string "Ich lass mich nicht lebend kriegen!$"
 
 SecretBase_Text_Trainer3AcceptBattle:
-	.string "I'm not going down easily!$"
+	.string "Stirb, Verräter!$"
 
 SecretBase_Text_Trainer3DeclineBattle:
-	.string "Oh… Are you maybe tired from searching\n"
-	.string "for this place?$"
+	.string "Lass mich in Ruhe!\n"
+	.string "Ich sag nichts!$"
 
 SecretBase_Text_Trainer3Defeated::
-	.string "I went down…$"
+	.string "Bitte töte mich nicht!\n"
+	.string "Ich hab Frau und Kinder!$"
 
 SecretBase_Text_Trainer3PostBattle:
-	.string "Where's your SECRET BASE?\n"
-	.string "I should go visit you there.$"
+	.string "Ich muss umziehen…\n"
+	.string "Schon wieder.$"
 
 SecretBase_Text_Trainer3PreChampion:
-	.string "Some people make their SECRET BASES in\n"
-	.string "hard-to-find places.\l"
-	.string "Do they want to just lie low?$"
+	.string "Wie hast du mich gefunden?!\n"
+	.string "Geh weg!$"
 
 SecretBase_Text_Trainer8Intro:
-	.string "People have told me that you can get\n"
-	.string "decorations in several ways.\p"
-	.string "We should have a race to see who can\n"
-	.string "get nicer decorations and furniture!\p"
-	.string "In the meantime, want to battle?$"
+	.string "Mein Haus ist schöner als deins.\n"
+	.string "Meine Pokémon sind stärker als deine.\p"
+	.string "Mein Leben ist besser als deins.\n"
+	.string "Soll ich es dir beweisen?$"
 
 SecretBase_Text_Trainer8AcceptBattle:
-	.string "This is my SECRET BASE.\n"
-	.string "I can't lose!$"
+	.string "Knie nieder!$"
 
 SecretBase_Text_Trainer8DeclineBattle:
-	.string "I'll battle with you anytime.$"
+	.string "Du weißt, dass du minderwertig bist.\n"
+	.string "Gut.$"
 
 SecretBase_Text_Trainer8Defeated::
-	.string "Huh?\n"
-	.string "Did I just lose?$"
+	.string "Das war Glück!\n"
+	.string "Nur Glück!$"
 
 SecretBase_Text_Trainer8PostBattle:
-	.string "I won't lose at collecting decorations.\n"
-	.string "Come visit again!$"
+	.string "Ich bin immer noch besser als du.\n"
+	.string "In allem.$"
 
 SecretBase_Text_Trainer8PreChampion:
-	.string "People have told me that you can get\n"
-	.string "decorations in several ways.\p"
-	.string "We should have a race to see who can\n"
-	.string "get nicer decorations and furniture!$"
+	.string "Mein Haus ist schöner als deins.\n"
+	.string "Du wohnst sicher im Karton.$"
 
 SecretBase_Text_Trainer4Intro:
-	.string "I found a spot I liked, and I did it up\n"
-	.string "with my favorite decorations.\p"
-	.string "I raise my favorite POKéMON and grow\n"
-	.string "stronger with it.\p"
-	.string "That's what I do.\n"
-	.string "Want to battle with me?$"
+	.string "Ich meditiere hier.\n"
+	.string "Über den Untergang der Welt.\p"
+	.string "Willst du mitmachen?\n"
+	.string "Oder lieber kämpfen?$"
 
 SecretBase_Text_Trainer4AcceptBattle:
-	.string "Show me what you're made of!$"
+	.string "Das Ende ist nah!$"
 
 SecretBase_Text_Trainer4DeclineBattle:
-	.string "I guess there are times when you're not\n"
-	.string "into it.$"
+	.string "Die Apokalypse wartet auf niemanden.$"
 
 SecretBase_Text_Trainer4Defeated::
-	.string "I know exactly what you're made of now.$"
+	.string "Ich sehe das Licht…\n"
+	.string "Es ist wunderschön.$"
 
 SecretBase_Text_Trainer4PostBattle:
-	.string "We can both become stronger.\n"
-	.string "Let's keep at it!$"
+	.string "Wir sind alle verdammt.\n"
+	.string "Aber du zuerst.$"
 
 SecretBase_Text_Trainer4PreChampion:
-	.string "I found a spot I liked, and I did it up\n"
-	.string "with my favorite decorations.\p"
-	.string "I raise my favorite POKéMON and grow\n"
-	.string "stronger with it.\p"
-	.string "Every day is a great day.$"
+	.string "Ich meditiere hier.\n"
+	.string "Stör mich nicht bei der Erleuchtung.$"
 
 SecretBase_Text_Trainer9Intro:
-	.string "You can learn a lot about the taste\n"
-	.string "and sense of people by the kinds of\l"
-	.string "decorations they have, and how they\l"
-	.string "display them.\p"
-	.string "What do you think of my taste?\n"
-	.string "Are you speechless?\p"
-	.string "Want to see my taste in battling?$"
+	.string "Ich sammle seltene Dinge.\n"
+	.string "Wie dich.\p"
+	.string "Du würdest gut ausgestopft in die\n"
+	.string "Ecke passen.\p"
+	.string "Darf ich dich konservieren?$"
 
 SecretBase_Text_Trainer9AcceptBattle:
-	.string "There's no holding back!$"
+	.string "Halt still!\n"
+	.string "Das tut nur kurz weh!$"
 
 SecretBase_Text_Trainer9DeclineBattle:
-	.string "I'll be happy to demonstrate my style\n"
-	.string "anytime.$"
+	.string "Du kannst nicht ewig weglaufen.\n"
+	.string "Ich krieg dich.$"
 
 SecretBase_Text_Trainer9Defeated::
-	.string "You're supremely talented!\n"
-	.string "Your power seems to be limitless…$"
+	.string "Schade…\n"
+	.string "Das Fell ist beschädigt.$"
 
 SecretBase_Text_Trainer9PostBattle:
-	.string "What did you think of my style?\n"
-	.string "I'll keep on polishing it!$"
+	.string "Ich finde schon noch einen Platz für\n"
+	.string "dich. In Formaldehyd.$"
 
 SecretBase_Text_Trainer9PreChampion:
-	.string "You can learn a lot about the taste\n"
-	.string "and sense of people by the kinds of\l"
-	.string "decorations they have, and how they\l"
-	.string "display them.\p"
-	.string "What do you think of my taste?\n"
-	.string "Are you speechless?$"
+	.string "Ich sammle seltene Dinge.\n"
+	.string "Du hast schöne Haut.$"

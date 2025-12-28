@@ -1,38 +1,38 @@
 @ With the exception of Link standby, none of the below texts are used
 
 gTest_MissedTurn::
-	.string "Missed turn$"
+	.string "Zug verpennt!$"
 
 gText_LinkStandby4::
-	.string "Link standby!$"
-
-gText_WinnerIsPlayersMonCongrats::
-	.string "The winner is{STR_VAR_1}'s{STR_VAR_2}!\n"
-	.string "Congratulations!$"
+	.string "Verbindung läuft… bleib locker!$"
 
 gText_WinnerIsPlayersMon::
-	.string "The winner is{STR_VAR_1}'s{STR_VAR_2}!{PAUSE_UNTIL_PRESS}$"
+	.string "Der Sieger ist {STR_VAR_1}s{STR_VAR_2}!\n"
+	.string "Respekt!$"
+
+gText_WinnerIsPlayersMon2::
+	.string "Der Sieg geht an {STR_VAR_1}s{STR_VAR_2}!{PAUSE_UNTIL_PRESS}$"
 
 gText_PrimaryJudgingNumX::
-	.string "Primary judging: No.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
+	.string "Hauptwertung: Nummer {STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 gText_SecondaryJudgingNumX::
-	.string "Secondary judging: No.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
+	.string "Zweitwertung: Nummer {STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 gText_SetEventNumX::
-	.string "Set event: No.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
+	.string "Event festgelegt: Nr.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 gText_MoveUsedMostOften::
-	.string "The move used most often:\n"
+	.string "Am häufigsten eingesetzter Move:\n"
 	.string "{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 gText_MostImpressiveMon::
-	.string "The most impressive POKéMON:\n"
-	.string "{STR_VAR_1}'s{STR_VAR_2}{PAUSE_UNTIL_PRESS}$"
+	.string "Das beeindruckendste Pokémon:\n"
+	.string "{STR_VAR_1}s {STR_VAR_2}{PAUSE_UNTIL_PRESS}$"
 
 gText_SetEventNumX2::
-	.string "Set event: No.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
+	.string "Event gesetzt: Nr.{STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 gText_LinkTVProgramWillNotBeMadeTrainerLost::
-	.string "A link TV program will not be made\n"
-	.string "because the TRAINER lost.{PAUSE_UNTIL_PRESS}$"
+	.string "Kein TV-Beitrag heute.\n"
+	.string "Der Trainer hat ordentlich verloren.{PAUSE_UNTIL_PRESS}$"

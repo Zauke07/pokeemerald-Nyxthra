@@ -1,243 +1,241 @@
 gOtherText_NewName::
-    .string "NEW NAME$"
+	.string "ANDERER NAME$"
 
 gNameChoice_Green::
-    .string "GREEN$"
+	.string "KEVIN$"
 
 gNameChoice_Red::
-    .string "RED$"
+	.string "RONNY$"
 
 gNameChoice_Leaf::
-    .string "LEAF$"
+	.string "MANDY$"
 
 gNameChoice_Fire::
-    .string "FIRE$"
+	.string "FEUER$"
 
 gNameChoice_Gary::
-    .string "GARY$"
+	.string "ATZE$"
 
 gNameChoice_Kaz::
-    .string "KAZ$"
+	.string "HORST$"
 
 gNameChoice_Toru::
-    .string "TORU$"
+	.string "DETLEF$"
 
 gNameChoice_Ash::
-    .string "ASH$"
+	.string "LAUCH$"
 
 gNameChoice_Kene::
-    .string "KENE$"
+	.string "JUSTIN$"
 
 gNameChoice_Geki::
-    .string "GEKI$"
+	.string "MURAT$"
 
 gNameChoice_Jak::
-    .string "JAK$"
+	.string "INGO$"
 
 gNameChoice_Janne::
-    .string "JANNE$"
+	.string "USCHI$"
 
 gNameChoice_Jonn::
-    .string "JONN$"
+	.string "UWE$"
 
 gNameChoice_Kamon::
-    .string "KAMON$"
+	.string "PASCAL$"
 
 gNameChoice_Karl::
-    .string "KARL$"
+	.string "KARL$"
 
 gNameChoice_Taylor::
-    .string "TAYLOR$"
+	.string "CHANTAL$"
 
 gNameChoice_Oscar::
-    .string "OSCAR$"
+	.string "OSKAR$"
 
 gNameChoice_Hiro::
-    .string "HIRO$"
+	.string "YUSUF$"
 
 gNameChoice_Max::
-    .string "MAX$"
+	.string "MAX$"
 
 gNameChoice_Jon::
-    .string "JON$"
+	.string "JON$"
 
 gNameChoice_Ralph::
-    .string "RALPH$"
+	.string "RALLE$"
 
 gNameChoice_Kay::
-    .string "KAY$"
+	.string "KAI$"
 
 gNameChoice_Tosh::
-    .string "TOSH$"
+	.string "BODO$"
 
 gNameChoice_Roak::
-    .string "ROAK$"
+	.string "ROCKY$"
 
 gNameChoice_Omi::
-    .string "OMI$"
+	.string "OMI$"
 
 gNameChoice_Jodi::
-    .string "JODI$"
+	.string "GABI$"
 
 gNameChoice_Amanda::
-    .string "AMANDA$"
+	.string "JESSICA$"
 
 gNameChoice_Hillary::
-    .string "HILLARY$"
+	.string "ANGELA$"
 
 gNameChoice_Makey::
-    .string "MAKEY$"
+	.string "MAIK$"
 
 gNameChoice_Michi::
-    .string "MICHI$"
+	.string "MICHI$"
 
 gNameChoice_Paula::
-    .string "PAULA$"
+	.string "PETRA$"
 
 gNameChoice_June::
-    .string "JUNE$"
+	.string "PEGGY$"
 
 gNameChoice_Cassie::
-    .string "CASSIE$"
+	.string "CINDY$"
 
 gNameChoice_Rey::
-    .string "REY$"
+	.string "RENE$"
 
 gNameChoice_Seda::
-    .string "SEDA$"
+	.string "SANDRA$"
 
 gNameChoice_Kiko::
-    .string "KIKO$"
+	.string "KIKI$"
 
 gNameChoice_Mina::
-    .string "MINA$"
+	.string "LISA$"
 
 gNameChoice_Norie::
-    .string "NORIE$"
+	.string "NORA$"
 
 gNameChoice_Sai::
-    .string "SAI$"
+	.string "SAM$"
 
 gNameChoice_Momo::
-    .string "MOMO$"
+	.string "MOMO$"
 
 gNameChoice_Suzi::
-    .string "SUZI$"
+	.string "SUSI$"
 
 gControlsGuide_Text_Intro::
-    .string "The various buttons will be explained in\n"
-    .string "the order of their importance.$"
+	.string "Anleitung für Vollidioten.\n"
+	.string "Lies das, sonst stirbst du.$"
 
 gControlsGuide_Text_DPad::
-    .string "Moves the main character.\n"
-    .string "Also used to choose various data\n"
-    .string "headings.$"
+	.string "Bewegt deine Spielfigur.\n"
+	.string "Damit läufst du weg, wenn du Angst hast.$"
 
 gControlsGuide_Text_AButton::
-    .string "Used to confirm a choice, check\n"
-    .string "things, chat, and scroll text.$"
+	.string "Labertaste. Damit bestätigst du dein\n"
+	.string "Elend und liest Texte, die dich nerven.$"
 
 gControlsGuide_Text_BButton::
-    .string "Used to exit, cancel a choice,\n"
-    .string "and cancel a mode.$"
+	.string "Rückzieher-Taste.\n"
+	.string "Für Feiglinge, die 'Nein' sagen.$"
 
 gControlsGuide_Text_StartButton::
-    .string "Press this button to open the\n"
-    .string "MENU.$"
+	.string "Drück das für das MENÜ.\n"
+	.string "Pause, wenn du heulen musst.$"
 
 gControlsGuide_Text_SelectButton::
-    .string "Used to shift items and to use\n"
-    .string "a registered item.$"
+	.string "Damit sortierst du deine Drogen\n"
+	.string "(Items).$"
 
 gControlsGuide_Text_LRButtons::
-    .string "If you need help playing the\n"
-    .string "game, or on how to do things,\n"
-    .string "press the L or R Button.$"
+	.string "Hilfe für Noobs.\n"
+	.string "Drück das, wenn du überfordert bist.$"
 
 gOakSpeech_Text_AskPlayerGender::
-    .string "Now tell me. Are you a boy?\n"
-    .string "Or are you a girl?$"
+	.string "Hose runter.\n"
+	.string "Bist du ein Junge? Oder ein Mädchen?$"
 
 gPikachuIntro_Text_Page1::
-    .string "In the world which you are about to\n"
-    .string "enter, you will embark on a grand\n"
-    .string "adventure with you as the hero.\n"
-    .string "\n"
-    .string "Speak to people and check things\n"
-    .string "wherever you go, be it towns, roads,\n"
-    .string "or caves. Gather information and\n"
-    .string "hints from every source.$"
+	.string "In der Welt, die du gleich betrittst,\n"
+	.string "wirst du Schmerzen und Leid erfahren.\n"
+	.string "Du bist kein Held, du bist ein Opfer.\n"
+	.string "\n"
+	.string "Rede mit Leuten, auch wenn sie stinken.\n"
+	.string "Durchsuch den Müll nach Hinweisen.\n"
+	.string "Traue niemandem.$"
 
 gPikachuIntro_Text_Page2::
-    .string "New paths will open to you by helping\n"
-    .string "people in need, overcoming challenges,\n"
-    .string "and solving mysteries.\n"
-    .string "\n"
-    .string "At times, you will be challenged by\n"
-    .string "others and attacked by wild creatures.\n"
-    .string "Be brave and keep pushing on.$"
+	.string "Neue Wege öffnen sich nur mit Gewalt.\n"
+	.string "Hilf niemandem, hilf dir selbst.\n"
+	.string "Löse Rätsel oder stirb beim Versuch.\n"
+	.string "\n"
+	.string "Du wirst überfallen und von wilden\n"
+	.string "Bestien gejagt.\n"
+	.string "Sei keine Heulsuse.$"
 
 gPikachuIntro_Text_Page3::
-    .string "Through your adventure, we hope\n"
-    .string "that you will interact with all sorts\n"
-    .string "of people and achieve personal growth.\n"
-    .string "That is our biggest objective.\n"
-    .string "\n"
-    .string "Press the A Button, and let your\n"
-    .string "adventure begin!$"
+	.string "Wir hoffen, dass du auf deiner Reise\n"
+	.string "nicht draufgehst und vielleicht sogar\n"
+	.string "etwas lernst. Wahrscheinlich nicht.\n"
+	.string "Das ist uns eigentlich auch egal.\n"
+	.string "\n"
+	.string "Drück den A-Knopf.\n"
+	.string "Dein Albtraum beginnt!$"
 
 gOakSpeech_Text_WelcomeToTheWorld::
-    .string "Hello, there!\n"
-    .string "Glad to meet you!\p"
-    .string "Welcome to the world of POKéMON!\p"
-    .string "My name is OAK.\p"
-    .string "People affectionately refer to me\n"
-    .string "as the POKéMON PROFESSOR.\p$"
+	.string "Moin.\n"
+	.string "Wer bist du denn?\p"
+	.string "Willkommen in der Hölle von POKéMON!\p"
+	.string "Ich bin EICH.\p"
+	.string "Die Leute nennen mich den POKéMON\n"
+	.string "PROFESSOR, wenn sie nicht lästern.\p$"
 
 gOakSpeech_Text_ThisWorld::
-    .string "This world…$"
+	.string "Diese Dreckswelt…$"
 
 gOakSpeech_Text_IsInhabitedFarAndWide::
-    .string "…is inhabited far and wide by\n"
-    .string "creatures called POKéMON.\p$"
+	.string "…ist verseucht mit Viechern,\n"
+	.string "die wir POKéMON nennen.\p$"
 
 gOakSpeech_Text_IStudyPokemon::
-    .string "For some people, POKéMON are pets.\n"
-    .string "Others use them for battling.\p"
-    .string "As for myself…\p"
-    .string "I study POKéMON as a profession.\p$"
+	.string "Manche halten sie als Haustiere.\n"
+	.string "Andere lassen sie brutal kämpfen.\p"
+	.string "Und ich…\p"
+	.string "Ich glotze sie den ganzen Tag an.\n"
+	.string "Jeder braucht ein Hobby.\p$"
 
 gOakSpeech_Text_TellMeALittleAboutYourself::
-    .string "But first, tell me a little about\n"
-    .string "yourself.\p$"
+	.string "Aber genug von mir. Wer bist du?\n"
+	.string "Siehst nicht sehr helle aus.\p$"
 
 gOakSpeech_Text_YourNameWhatIsIt::
-    .string "Let's begin with your name.\n"
-    .string "What is it?\p$"
+	.string "Wie heißt du?\n"
+	.string "Schreib’s auf, ich hör eh nicht zu.\p$"
 
 gOakSpeech_Text_SoYourNameIsPlayer::
-    .string "Right…\n"
-    .string "So your name is{PLAYER}.$"
+	.string "Echt jetzt?\n"
+	.string "Du heißt {PLAYER}? Mein Beileid.$"
 
 gOakSpeech_Text_WhatWasHisName::
-    .string "This is my grandson.\p"
-    .string "He's been your rival since you both\n"
-    .string "were babies.\p"
-    .string "…Erm, what was his name now?$"
+	.string "Das ist mein Enkel.\p"
+	.string "Er hasst dich, seit ihr Babys wart.\n"
+	.string "Er ist ein ziemlicher Arsch.\p"
+	.string "…Äh, wie hieß der Bastard noch gleich?$"
 
 gOakSpeech_Text_YourRivalsNameWhatWasIt::
-    .string "Your rival's name, what was it now?$"
+	.string "Sag schon, wie heißt die Ratte?$"
 
 gOakSpeech_Text_ConfirmRivalName::
-    .string "…Er, was it{RIVAL}?$"
+	.string "…Ah, hieß er {RIVAL}?$"
 
 gOakSpeech_Text_RememberRivalsName::
-    .string "That's right! I remember now!\n"
-    .string "His name is{RIVAL}!\p$"
+	.string "Stimmt! Jetzt fällt’s mir ein!\n"
+	.string "Er heißt {RIVAL}! Der kleine Pisser!\p$"
 
 gOakSpeech_Text_LetsGo::
-    .string "{PLAYER}!\p"
-    .string "Your very own POKéMON legend is\n"
-    .string "about to unfold!\p"
-    .string "A world of dreams and adventures\n"
-    .string "with POKéMON awaits! Let's go!$"
+	.string "{PLAYER}!\p"
+	.string "Deine Geschichte voller Enttäuschungen\n"
+	.string "beginnt jetzt!\p"
+	.string "Eine Welt voller Schmerz und Verrat\n"
+	.string "erwartet dich! Los, verschwinde!$"

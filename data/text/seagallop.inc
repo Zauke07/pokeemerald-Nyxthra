@@ -1,7 +1,9 @@
 Text_WhereDoYouWantToGo::
-	.string "おつかれさん！\n"
-	.string "どこに　いきたいんだ？$"
+	.string "Na los, wohin willst du jetzt?\n"
+	.string "Sag an, ich fahr dich überall hin,\n"
+	.string "solange du mir nicht auf den Sack gehst!$"
 
 Text_AllAboardSeagallopNum::
-	.string "All right!\n"
-	.string "All aboard SEAGALLOP HI-SPEED{STR_VAR_1}!$"
+	.string "Aufsitzen, ihr Landratten!\n"
+	.string "Der SEEGALLOP {STR_VAR_1} legt ab –\n"
+	.string "und wehe, jemand kotzt mir hier rein!$"

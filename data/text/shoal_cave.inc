@@ -1,53 +1,45 @@
 ShoalCave_LowTideEntranceRoom_Text_AreYouPlanningOnGoingInThere:
-	.string "Are you planning on going deep\n"
-	.string "in there?\p"
-	.string "How about bringing me back some\n"
-	.string "SHOAL SALT and SHOAL SHELLS?\p"
-	.string "I can make you something good if\n"
-	.string "you bring me the ingredients.$"
+	.string "Was glotzt du so blöd?\n"
+	.string "Willst du da wirklich reinlatschen?\p"
+	.string "Dann schlepp mir gefälligst\n"
+	.string "MUSCHELSALZ und MUSCHELSCHALEN ran!$"
 
 ShoalCave_LowTideEntranceRoom_Text_BringMe4ShoalSaltAndShells:
-	.string "If you bring me four each of the\n"
-	.string "SHOAL SALT and SHOAL SHELLS,\l"
-	.string "I can make you a SHELL BELL…\p"
-	.string "You can get those ingredients\n"
-	.string "every day.$"
+	.string "Wenn du mir vier von jedem Scheiß\n"
+	.string "bringst, bastel ich dir was Cooles.\p"
+	.string "Also beweg deinen Hintern!$"
 
 ShoalCave_LowTideEntranceRoom_Text_WouldYouLikeShellBell:
-	.string "Oh, hey! SHOAL SALT and SHOAL SHELLS!\n"
-	.string "And enough of them, too!\p"
-	.string "Would you like me to make you\n"
-	.string "a SHELL BELL with them?$"
+	.string "Na also! Endlich jemand mit Hirn!\n"
+	.string "Du hast alles dabei.\p"
+	.string "Soll ich dir daraus ’ne MUSCHELGLOCKE\n"
+	.string "zusammenzimmern?$"
 
 ShoalCave_LowTideEntranceRoom_Text_MakeShellBellRightAway:
-	.string "All righty, then! I'll make you\n"
-	.string "a SHELL BELL right away.\p"
-	.string "… … … … … … … …\n"
-	.string "… … … … … … … …\p"
-	.string "There! Done!$"
+	.string "Na gut, halt still.\n"
+	.string "Ich bastel das Ding jetzt.\p"
+	.string "… … … … …\n"
+	.string "Fertig! Hoffentlich jammerst du nicht.$"
 
 ShoalCave_LowTideEntranceRoom_Text_ExplainShellBell:
-	.string "Have a POKéMON hold on to that.\n"
-	.string "It'll love it, that's for certain.\p"
-	.string "Why, the SHELL BELL's chime…\n"
-	.string "It's simply sublime!\p"
-	.string "You can get its ingredients every day,\n"
-	.string "so I can make you more.$"
+	.string "Gib das Teil deinem Pokémon.\n"
+	.string "Das steht auf so’n Kram.\p"
+	.string "Die Glocke klingelt bei Treffern.\n"
+	.string "Ziemlich praktisch, oder?$"
 
 ShoalCave_LowTideEntranceRoom_Text_WantedToMakeShellBell:
-	.string "Oh… Is that so…\n"
-	.string "I wanted to make a SHELL BELL…$"
+	.string "Was?! Du willst keine?\n"
+	.string "Dann verschwende nicht meine Zeit!$"
 
 ShoalCave_LowTideEntranceRoom_Text_NoSpaceInYourBag:
-	.string "You don't have space in your BAG\n"
-	.string "if I were to make it for you.\p"
-	.string "You should make room and come back\n"
-	.string "for a SHELL BELL.$"
+	.string "Dein Rucksack platzt aus allen Nähten!\n"
+	.string "Räum erst mal auf, bevor du hier\n"
+	.string "weiter rumstehst.$"
 
 ShoalCave_Text_WasShoalSaltNowNothing:
-	.string "There was some SHOAL SALT here.\n"
-	.string "But, there's nothing here now.$"
+	.string "Hier lag mal MUSCHELSALZ.\n"
+	.string "Jetzt ist es weg. Pech gehabt.$"
 
-ShoalCave_Text_WasShoallShellNowNothing:
-	.string "There was a SHOAL SHELL here.\n"
-	.string "But, there's nothing here now.$"
+ShoalCave_Text_WasShoalShellNowNothing:
+	.string "Hier lag mal eine MUSCHELSCHALE.\n"
+	.string "Jetzt ist hier nur noch Sand.$"

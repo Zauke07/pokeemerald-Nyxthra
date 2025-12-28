@@ -1,6 +1,6 @@
 Text_WouldYouLikeToMixRecords:
-	.string "Would you like to mix records with\n"
-	.string "other TRAINERS?$"
+	.string "Willst du deine peinlichen Daten mit\n"
+	.string "anderen Opfern tauschen?$"
 
 Text_WeHopeToSeeYouAgain:
-	.string "We hope to see you again!$"
+	.string "Hau ab und komm bloß nicht wieder!$"
