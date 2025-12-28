@@ -4972,11 +4972,11 @@ Route103_EventScript_StartJulianaBattleQUAXLY::
 	end
 
 Route103_Text_MayRoute103Pokemon:
-	.string "{RIVAL}: Hm… Ich glaube, auf ROUTE 103\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hm… Ich glaube, auf ROUTE 103\n"
 	.string "gibt’s ein paar wilde Brocken.$"
 
 Route103_Text_MayLetsBattle:
-	.string "Ey, {PLAYER}{KUN}!\p"
+	.string "{COLOR RIVAL_CLR}Ey, {PLAYER}{KUN}!\p"
 	.string "…Ah, ich seh schon. Mein Dad hat dir\n"
 	.string "also auch eins geschenkt, hm?\p"
 	.string "Na dann - lass mal sehen, wie du dich\n"
@@ -4989,17 +4989,17 @@ Route103_Text_MayDefeat:
 	.string "Du hast Talent, sag ich dir!$"
 
 Route103_Text_MayTimeToHeadBack:
-	.string "{RIVAL}: Okay, Respekt…\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Okay, Respekt…\n"
 	.string "Jetzt check ich, warum mein Vater dich\l"
 	.string "wollte.\p"
 	.string "Dein Pokémon hängt jetzt schon an dir,\n"
 	.string "obwohl ihr euch kaum kennt.\p"
 	.string "Du hast das Zeug, richtig\n"
 	.string "durchzustarten.\p"
-	.string "Komm, zurück zum LABOR!$"
+	.string "Komm, zurück zum LABOR!{COLOR DARK_GRAY}$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "{RIVAL}: Sieht aus, als gäbe es hier auf\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Sieht aus, als gäbe es hier auf\n"
 	.string "ROUTE 103 ein paar seltene Pokémon.$"
 
 Route103_Text_BrendanLetsBattle:
@@ -5014,14 +5014,14 @@ Route103_Text_BrendanDefeat:
 	.string "Du hast ganz schön Biss.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "{RIVAL}: Jetzt versteh ich meinen Vater.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Jetzt versteh ich meinen Vater.\n"
 	.string "Du hast den Draht zu Pokémon.\p"
 	.string "Selbst mit wenig Erfahrung wirkt dein Team\n"
 	.string "so, als wär’s schon ewig bei dir.\p"
-	.string "Ab zurück zum LABOR - das wird spannend.$"
+	.string "Ab zurück zum LABOR - das wird spannend.{COLOR DARK_GRAY}$"
 
 Route103_Text_RedRoute103Pokemon:
-	.string "{RIVAL}: Hm… Auf ROUTE 103 treiben sich\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hm… Auf ROUTE 103 treiben sich\n"
 	.string "einige echt zähe Pokémon rum.$"
 
 Route103_Text_RedLetsBattle:
@@ -5038,10 +5038,10 @@ Route103_Text_RedTimeToHeadBack:
 	.string "Okay. Du hast’s drauf.\n"
 	.string "Kein Wunder, dass du auserwählt wurdest.\p"
 	.string "Zurück zum LABOR.\n"
-	.string "Das war erst der Anfang.$"
+	.string "Das war erst der Anfang.{COLOR DARK_GRAY}$"
 
 Route103_Text_LeafRoute103Pokemon:
-	.string "{RIVAL}: Oha… Die Pokémon hier sehen\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oha… Die Pokémon hier sehen\n"
 	.string "echt ungewöhnlich aus…$"
 
 Route103_Text_LeafLetsBattle:
@@ -5058,10 +5058,10 @@ Route103_Text_LeafTimeToHeadBack:
 	.string "Du verstehst dein Team, das sieht man.\p"
 	.string "Vielleicht gehörst du zu denen,\n"
 	.string "die echt was reißen.$\p"
-	.string "Auf ins LABOR - das Abenteuer ruft!$"
+	.string "Auf ins LABOR - das Abenteuer ruft!{COLOR DARK_GRAY}$"
 
 Route103_Text_LucasRoute103Pokemon:
-	.string "{RIVAL}: Hm… Manche sagen, auf dieser Route\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hm… Manche sagen, auf dieser Route\n"
 	.string "gibt’s Pokémon mit seltsamer Aura…$"
 
 Route103_Text_LucasLetsBattle:
@@ -5077,7 +5077,7 @@ Route103_Text_LucasTimeToHeadBack:
 	.string "Das reicht erstmal.\n"
 	.string "Zurück zum LABOR.\n"
 	.string "Ich glaub, du bist jemand, den man\n"
-	.string "im Auge behalten sollte.$"
+	.string "im Auge behalten sollte.{COLOR DARK_GRAY}$"
 
 Route103_Text_ShouldHaveBroughtPotion:
 	.string "Mein Pokémon ist total platt…\n"

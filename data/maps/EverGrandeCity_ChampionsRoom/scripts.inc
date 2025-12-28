@@ -351,42 +351,42 @@ EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside:
 	.string "warten.$"
 
 EverGrandeCity_ChampionsRoom_Text_MayAdvice:
-	.string "{RIVAL}: {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}!\p"
 	.string "Wie wäre es mit einem Tipp, bevor du\n"
-	.string "den CHAMPION herausforderst?…$"
+	.string "den CHAMPION herausforderst?…{COLOR DARK_GRAY}$"
 
 EverGrandeCity_ChampionsRoom_Text_MayItsAlreadyOver:
-	.string "{RIVAL}: Hä?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hä?\n"
 	.string "Was, was, was?\p"
 	.string "{PLAYER}…\n"
 	.string "Soll das heißen…\l"
-	.string "Es ist schon vorbei?$"
+	.string "Es ist schon vorbei?{COLOR DARK_GRAY}$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanAdvice:
-	.string "{RIVAL}: {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}!\p"
 	.string "Wie wäre es mit einem Tipp, bevor du\n"
-	.string "den CHAMPION herausforderst?…$"
+	.string "den CHAMPION herausforderst?…{COLOR DARK_GRAY}$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon:
-	.string "{RIVAL}: {PLAYER}…\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}…\p"
 	.string "Willst du mir sagen…\n"
-	.string "Du hast den CHAMPION besiegt?$"
+	.string "Du hast den CHAMPION besiegt?{COLOR DARK_GRAY}$"
 
 EverGrandeCity_ChampionsRoom_Text_MayCongratulations:
-	.string "{RIVAL}: Hm…\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hm…\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "Ich mache nur Spaß! Ist schon okay!\n"
 	.string "Das sind nun mal die Regeln!\p"
 	.string "{PLAYER}{KUN}!\n"
-	.string "Ganz ehrlich, herzlichen Glückwunsch!$"
+	.string "Ganz ehrlich, herzlichen Glückwunsch!{COLOR DARK_GRAY}$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations:
-	.string "{RIVAL}: Waaas?! … … … … …\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Waaas?! … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "Es lässt sich nicht ändern,\n"
 	.string "so sind die Regeln.\p"
 	.string "{PLAYER}, das hast du gut gemacht!\n"
-	.string "Glückwunsch!$"
+	.string "Glückwunsch!{COLOR DARK_GRAY}$"
 
 

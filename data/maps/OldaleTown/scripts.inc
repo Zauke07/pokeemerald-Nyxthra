@@ -416,13 +416,12 @@ OldaleTown_Text_FinishedSketchingFootprints:
 	.string "Vielleicht waren es… gar keine Spuren.$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "{RIVAL}: {PLAYER}{KUN}!\n"
-	.string "Komm schon! Lass uns zurück ins LABOR!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}!\n"
+	.string "Komm schon! Lass uns zurück ins LABOR!{COLOR DARK_GRAY}$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "{RIVAL}: Ich geh schon mal vor ins LABOR\n"
-	.string "von meinem Dad. Komm ruhig nach.$"
-
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich geh schon mal vor ins LABOR\n"
+	.string "von meinem Dad. Komm ruhig nach.{COLOR DARK_GRAY}$"
 OldaleTown_Text_TownSign:
 	.string "ROSALTSTADT\n"
 	.string "“Die Höhle flüstert - hörst du es auch?”$"

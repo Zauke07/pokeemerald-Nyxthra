@@ -283,7 +283,7 @@ LavaridgeTown_EventScript_HerbShopSign::
 	end
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:
-	.string "{RIVAL}: {PLAYER}{KUN}! Lange nicht gesehen!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Lange nicht gesehen!\p"
 	.string "Oh? Während ich die heißen Quellen\n"
 	.string "besuchte, hast du den Bad Lavastadt\n"
 	.string "ARENA-ORDEN bekommen.\p"
@@ -292,10 +292,10 @@ LavaridgeTown_Text_MayNiceBadgesTakeThis:
 	.string "Nein, ich glaube, du hast einige\n"
 	.string "aufgezogen.\p"
 	.string "Ich denke, es wäre in Ordnung, wenn\n"
-	.string "du das hier hättest.$"
+	.string "du das hier hättest.{COLOR DARK_GRAY}$"
 
 LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
-	.string "{RIVAL}: Mit diesen GO-GOGGLES wirst\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Mit diesen GO-GOGGLES wirst\n"
 	.string "du keine Probleme haben, durch die Wüste\n"
 	.string "in der Nähe von ROUTE 111 zu kommen.\p"
 	.string "Aber, wow, {PLAYER}{KUN}…\n"
@@ -305,19 +305,19 @@ LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
 	.string "{PLAYER}{KUN}, ich denke, ich sollte deinen\n"
 	.string "Vadda in der ARENA von Blütenburg City\n"
 	.string "herausfordern.\p"
-	.string "Bis bald!$"
+	.string "Bis bald!{COLOR DARK_GRAY}$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
-	.string "{RIVAL}: {PLAYER}, hey, es ist eine Weile\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, hey, es ist eine Weile\n"
 	.string "her. Wie läuft's?\p"
 	.string "Hmm…\n"
 	.string "Das ist eine anständige Sammlung von\n"
 	.string "ORDEN.\p"
 	.string "Na gut.\n"
-	.string "Du kannst das hier genauso gut haben.$"
+	.string "Du kannst das hier genauso gut haben.{COLOR DARK_GRAY}$"
 
 LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
-	.string "{RIVAL}: Behalte die bei dir, wenn du\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Behalte die bei dir, wenn du\n"
 	.string "vorhast, in die Wüste in der Nähe von\n"
 	.string "ROUTE 111 zu gehen.\p"
 	.string "Es sollte einige POKéMON geben, die\n"
@@ -328,7 +328,7 @@ LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
 	.string "den ARENALEITER von Blütenburg City.\p"
 	.string "Im Gegensatz zu dir, {PLAYER}, sieht dein\n"
 	.string "Vater wirklich stark aus.\p"
-	.string "Bis dann!$"
+	.string "Bis dann!{COLOR DARK_GRAY}$"
 
 LavaridgeTown_Text_HaveEggWillYouTakeIt:
 	.string "Ich habe hier ein EI.\p"

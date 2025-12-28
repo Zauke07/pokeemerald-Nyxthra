@@ -5053,59 +5053,59 @@ Route110_Text_AquaActionsBringSmiles:
 	.string "Lächeln auf jedes Gesicht!$"
 
 Route110_Text_MayLetsBattle:
-	.string "{RIVAL}: Hi, {PLAYER}{KUN}, wir haben uns ja\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hi, {PLAYER}{KUN}, wir haben uns ja\n"
 	.string "lange nicht gesehen!\p"
 	.string "Während ich auf der Suche nach\n"
 	.string "weiteren Pokémon war, sind meine\l"
 	.string "Pokémon stärker geworden.\p"
 	.string "Daher…\n"
-	.string "Wie wäre es mit einem kleinen Kampf?$"
+	.string "Wie wäre es mit einem kleinen Kampf?{COLOR DARK_GRAY}$"
 
 Route110_Text_MayDefeat:
 	.string "AchDuSchande!\n"
 	.string "Du bist besser, als ich gedacht habe.$"
 
 Route110_Text_MayTakeThis:
-	.string "{RIVAL}: {PLAYER}{KUN}, du hast auch fleißig\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}, du hast auch fleißig\n"
 	.string "trainiert, nicht wahr?\p"
 	.string "Ich denke, du verdienst eine Belohnung!\n"
-	.string "Hier, dies ist von mir für dich!$"
+	.string "Hier, dies ist von mir für dich!{COLOR DARK_GRAY}$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "{RIVAL}: Das ist ein DETEKTOR.\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
 	.string "Probier ihn mal aus. Wenn irgendwo ein\n"
 	.string "Item versteckt ist, gibt er ein\l"
 	.string "Geräusch von sich.\p"
 	.string "Bis zum nächsten Mal, {PLAYER}{KUN}.\p"
 	.string "Es hört sich aus meinem Munde zwar blöd\n"
 	.string "an, aber bis dahin solltest du viel mehr\l"
-	.string "trainiert haben.$"
+	.string "trainiert haben.{COLOR DARK_GRAY}$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "{RIVAL}: Hey, {PLAYER}.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hey, {PLAYER}.\n"
 	.string "Hier treibst du dich also herum.\l"
 	.string "Wie geht es?\p"
 	.string "Hast du deine Pokémon gut aufgezogen?\n"
-	.string "Ich werde das für dich überprüfen.$"
+	.string "Ich werde das für dich überprüfen.{COLOR DARK_GRAY}$"
 
 Route110_Text_BrendanDefeat:
 	.string "Hmm…\n"
 	.string "Du bist sehr gut.$"
 
 Route110_Text_BrendanTakeThis:
-	.string "{RIVAL}: {PLAYER}, du hast trainiert,\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, du hast trainiert,\n"
 	.string "ohne dass ich etwas davon\l"
 	.string "mitbekommen habe…\p"
 	.string "Aber genug!\n"
-	.string "Hier, das ist für dich!$"
+	.string "Hier, das ist für dich!{COLOR DARK_GRAY}$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "{RIVAL}: Das ist ein DETEKTOR.\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Das ist ein DETEKTOR.\p"
 	.string "Probier ihn mal aus. \p"
 	.string "Ist irgendwo ein Item versteckt, gibt\n"
 	.string "er ein Geräusch von sich.\p"
 	.string "Wie auch immer, ich suche jetzt weiter\n"
-	.string "nach Pokémon.$"
+	.string "nach Pokémon.{COLOR DARK_GRAY}$"
 
 Route110_Text_RideBikeAtFullSpeed:
 	.string "Wäre das nicht ein Spaß, mit einem FAHR-\n"

@@ -451,38 +451,38 @@ RivalsHouse_2F_Text_ItsRivalsPokeBall:
 	.string "Finger weg, bevor es Ärger gibt.$"
 
 RivalsHouse_2F_Text_MayJustCheckingMyPokedex:
-	.string "{RIVAL}: Yo, {PLAYER}{KUN}.\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo, {PLAYER}{KUN}.\p"
 	.string "Ich geh grad durch meinen Pokédex\n"
 	.string "wie durch Insta - viel Gesehenes,\n"
 	.string "wenig Gefangenes.\p"
 	.string "Einige entwickeln sich bestimmt bald.\n"
 	.string "Wenn ich sie nicht vorher vergesse.\p"
 	.string "Ich brauch neue Orte. Neues Futter.\n"
-	.string "Also tschüssi.$"
+	.string "Also tschüssi.{COLOR DARK_GRAY}$"
 
 RivalsHouse_2F_Text_MayWhereShouldIGoNext:
-	.string "{RIVAL}: Überleg gerade, wo ich noch hin kann.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Überleg gerade, wo ich noch hin kann.\n"
 	.string "Route? Höhle? Oder wieder Netflix?\p"
 	.string "Falls wir uns über'n Weg laufen:\n"
-	.string "Bring Pokébälle. Und Respekt.$"
+	.string "Bring Pokébälle. Und Respekt.{COLOR DARK_GRAY}$"
 
 RivalsHouse_2F_Text_BrendanJustCheckingMyPokedex:
-	.string "{RIVAL}: {PLAYER}, was geht?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}, was geht?\p"
 	.string "Bin gerade am Pokédex scrollen.\n"
 	.string "Er sieht langsam besser aus als ich.\p"
 	.string "Manchmal denk ich:\n"
-	.string "Geh einfach los. Wird schon spannend.$"
+	.string "Geh einfach los. Wird schon spannend.{COLOR DARK_GRAY}$"
 
 RivalsHouse_2F_Text_BrendanWhereShouldIGoNext:
-	.string "{RIVAL}: Keine Ahnung, wohin als nächstes…\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Keine Ahnung, wohin als nächstes…\n"
 	.string "Vielleicht dahin, wo die coolen Pokémon chillen.\p"
 	.string "Wenn du da bist, machen wir'n Kampf.\n"
-	.string "Und diesmal verlierst du.$"
+	.string "Und diesmal verlierst du.{COLOR DARK_GRAY}$"
 
 LittlerootTown_MaysHouse_2F_Text_BugfixDialog:
-	.string "{RIVAL}: Äh… Sorry!\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Äh… Sorry!\n"
 	.string "Ein Bug verhindert gerade,\l"
 	.string "dass ich normal durch die Tür gehe.\p"
 	.string "Du musst das für mich übernehmen…\n"
-	.string "Danke für's Debuggen!$"
+	.string "Danke für's Debuggen!{COLOR DARK_GRAY}$"
 

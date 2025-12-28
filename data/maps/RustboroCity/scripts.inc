@@ -3604,82 +3604,82 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Komm schnell mit - das musst du sehen.$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "{RIVAL}: Heeeey, {PLAYER}{KUN}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Heeeey, {PLAYER}{KUN}!\p"
 	.string "Du hast jetzt MATCH CALL im POKéNAV!\p"
 	.string "Komm, lass uns Nummern tauschen.\n"
-	.string "Dann bleib ich dir auf den Fersen!$"
+	.string "Dann bleib ich dir auf den Fersen!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_RegisteredMay:
 	.string "{RIVAL} wurde ins POKéNAV eingetragen.$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle:
-	.string "{RIVAL}: Hab grad Mr. Brack im\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hab grad Mr. Brack im\n"
 	.string "Wald getroffen…\p"
 	.string "Der wackelt wohl zurück in seine\n"
 	.string "Hütte am Meer.\p"
 	.string "Und dein POKéDEX, {PLAYER}{KUN}?\n"
 	.string "Meiner füllt sich super!\p"
-	.string "Also, Bock auf 'nen schnellen Kampf?$"
+	.string "Also, Bock auf 'nen schnellen Kampf?{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_MayOhHaventRaisedPokemonEnough:
-	.string "{RIVAL}: Oh… echt jetzt?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh… echt jetzt?\p"
 	.string "Noch keine Pokémon trainiert?\n"
-	.string "Du enttäuschst mich!$"
+	.string "Du enttäuschst mich!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_MayWantToBattle:
-	.string "{RIVAL}: Und? Lust auf einen kleinen Fight?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Und? Lust auf einen kleinen Fight?{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_MayImNotGoingToLose:
-	.string "{RIVAL}: Du bist neu, klar.\n"
-	.string "Aber ich geh hier nicht unter!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du bist neu, klar.\n"
+	.string "Aber ich geh hier nicht unter!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_MayDefeat:
 	.string "Whoa!\n"
 	.string "Du bist besser als ich dachte!$"
 
 RustboroCity_Text_MayMrBrineyHint:
-	.string "{RIVAL}: Ach ja, dieser Mr. Brack…\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ach ja, dieser Mr. Brack…\p"
 	.string "Du bist neu in der Gegend, aber früher war\n"
-	.string "der Typ ’ne echte Seefahrer-Legende.$"
+	.string "der Typ ’ne echte Seefahrer-Legende.{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "{RIVAL}: Yo, {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo, {PLAYER}!\p"
 	.string "MATCH CALL auf deinem POKéNAV? Nice!\p"
 	.string "Lass Nummern tauschen, dann bleib ich\n"
-	.string "up to date!$"
+	.string "up to date!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_RegisteredBrendan:
 	.string "{RIVAL} wurde im POKéNAV gespeichert.$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
-	.string "{RIVAL}: Hab grad Mr. Brack im\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hab grad Mr. Brack im\n"
 	.string "Wald gesehen…\p"
 	.string "Zieht’s wohl wieder an die\n"
 	.string "Küste zurück.\p"
 	.string "Wie läuft dein POKéDEX?\n"
 	.string "Meiner? Voll nice!\p"
 	.string "Komm, wir battlen kurz.\n"
-	.string "Zeig, was du drauf hast!$"
+	.string "Zeig, was du drauf hast!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon:
-	.string "{RIVAL}: Was los?\n"
-	.string "Vertraust du deinen Pokémon nicht?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Was los?\n"
+	.string "Vertraust du deinen Pokémon nicht?{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_BrendanWantToBattle:
-	.string "{RIVAL}: Na los - wie wär’s mit ’nem Battle?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Na los - wie wär’s mit ’nem Battle?{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_BrendanIWontGoEasy:
-	.string "{RIVAL}: Frischling hin oder her -\n"
-	.string "ich nehm dich nicht auf die leichte Schulter!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Frischling hin oder her -\n"
+	.string "ich nehm dich nicht auf die leichte Schulter!{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_BrendanDefeat:
 	.string "Nicht schlecht!\n"
 	.string "Da steckt was in dir.$"
 
 RustboroCity_Text_BrendanMrBrineyHint:
-	.string "{RIVAL}: Kennst du Mr. Brack?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Kennst du Mr. Brack?\n"
 	.string "Der chillt irgendwo am Meer.\p"
-	.string "Der war mal ein richtiger Seemann, kein Witz.$"
+	.string "Der war mal ein richtiger Seemann, kein Witz.{COLOR DARK_GRAY}$"
 
 RustboroCity_Text_TunnelNearingCompletion:
 	.string "“Schneller Tunnel, fast fertig!“\p"

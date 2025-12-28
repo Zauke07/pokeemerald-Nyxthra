@@ -428,7 +428,7 @@ LilycoveCity_EventScript_DontKnowAboutBerryBlender::
 	return
 
 LilycoveCity_Text_MayShoppingLetsBattle:
-	.string "{RIVAL}: Oh, hey?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey?\n"
 	.string "{PLAYER}{KUN}, are you shopping, too?\p"
 	.string "I bought a whole bunch of DOLLS and\n"
 	.string "POSTERS.\p"
@@ -438,21 +438,20 @@ LilycoveCity_Text_MayShoppingLetsBattle:
 	.string "Actually, I'm more worried if you're\n"
 	.string "raising POKéMON properly, {PLAYER}{KUN}.\p"
 	.string "I'll battle with you, so you can show\n"
-	.string "me your POKéMON, {PLAYER}{KUN}.$"
+	.string "me your POKéMON, {PLAYER}{KUN}.{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_MayNotRaisingPokemon:
-	.string "{RIVAL}: Oh, why? {PLAYER}{KUN}, haven't you\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, why? {PLAYER}{KUN}, haven't you\n"
 	.string "been raising your POKéMON?\p"
 	.string "That's not a very good showing as a\n"
-	.string "TRAINER…$"
+	.string "TRAINER…{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_MayBattleMe:
-	.string "{RIVAL}: Come on, battle with me, so I can\n"
-	.string "check out your POKéMON!$"
-
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Come on, battle with me, so I can\n"
+	.string "check out your POKéMON!{COLOR DARK_GRAY}$"
 LilycoveCity_Text_MayWontBeBeaten:
-	.string "{RIVAL}: The POKéMON I raised won't be\n"
-	.string "beaten by your POKéMON, {PLAYER}{KUN}!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: The POKéMON I raised won't be\n"
+	.string "beaten by your POKéMON, {PLAYER}{KUN}!{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_MayDefeat:
 	.string "… … … … … … … …\p"
@@ -462,11 +461,11 @@ LilycoveCity_Text_MayDefeat:
 	.string "strong, {PLAYER}{KUN}, didn't it?$"
 
 LilycoveCity_Text_MayGoingBackToLittleroot:
-	.string "{RIVAL}: I'm thinking of going back to\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: I'm thinking of going back to\n"
 	.string "LITTLEROOT soon.\p"
 	.string "I've caught a decent group of POKéMON,\n"
 	.string "and my POKéDEX is coming along, so\l"
-	.string "I'm going home to show my dad.$"
+	.string "I'm going home to show my dad.{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_MayYouGoingToCollectBadges:
 	.string "{PLAYER}{KUN}, what are you going to do?\p"
@@ -498,24 +497,23 @@ LilycoveCity_Text_MayYouGoingToBattleFrontier:
 	.string "See you!$"
 
 LilycoveCity_Text_BrendanShoppingLetsBattle:
-	.string "{RIVAL}: Oh, hey, it's {PLAYER}.\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey, it's {PLAYER}.\p"
 	.string "I'm running an errand for my dad.\n"
 	.string "No, I'm not buying any DOLLS.\p"
 	.string "Anyways, it's been a while.\p"
 	.string "Want to have a battle to see who's been\n"
-	.string "raising POKéMON better?$"
+	.string "raising POKéMON better?{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_BrendanNoConfidence:
-	.string "{RIVAL}: Oh, what's the matter?\n"
-	.string "Don't have the confidence?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, what's the matter?\n"
+	.string "Don't have the confidence?{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_BrendanBattleMe:
-	.string "{RIVAL}: Want to battle to see who's\n"
-	.string "been raising POKéMON better?$"
-
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Want to battle to see who's\n"
+	.string "been raising POKéMON better?{COLOR DARK_GRAY}$"
 LilycoveCity_Text_BrendanWontBeBeaten:
-	.string "{RIVAL}: Aww, but you know I'm not\n"
-	.string "going to lose to no {PLAYER}.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Aww, but you know I'm not\n"
+	.string "going to lose to no {PLAYER}.{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_BrendanDefeat:
 	.string "Humph…\n"
@@ -524,11 +522,11 @@ LilycoveCity_Text_BrendanDefeat:
 	.string "on you as a TRAINER…$"
 
 LilycoveCity_Text_BrendanGoingBackToLittleroot:
-	.string "{RIVAL}: I…\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: I…\n"
 	.string "I plan on going home to LITTLEROOT.\p"
 	.string "You know I'm helping out my dad on his\n"
 	.string "POKéDEX. It's coming together pretty\l"
-	.string "decently, so I should go show him.$"
+	.string "decently, so I should go show him.{COLOR DARK_GRAY}$"
 
 LilycoveCity_Text_BrendanYouGoingToCollectBadges:
 	.string "{PLAYER}, what are you going to do?\p"

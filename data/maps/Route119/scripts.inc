@@ -686,12 +686,12 @@ Route119_EventScript_ScottWonAtFortreeGymCall::
 	end
 
 Route119_Text_MayIntro:
-	.string "{RIVAL}: {PLAYER}{KUN}! Wo warst du?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Wo warst du?\n"
 	.string "Ich habe dich schon gesucht!\p"
 	.string "Wie stark bist du geworden?\n"
 	.string "Lass mich das für dich herausfinden!\p"
 	.string "Bereit? Du und deine Pokémon?\n"
-	.string "Natürlich seid ihr das! Los!$"
+	.string "Natürlich seid ihr das! Los!{COLOR DARK_GRAY}$"
 
 Route119_Text_MayDefeat:
 	.string "Achah!\n"
@@ -700,13 +700,13 @@ Route119_Text_MayDefeat:
 	.string "hättest im Training nachgelassen.$"
 
 Route119_Text_MayPresentForYou:
-	.string "{RIVAL}: Aber ich hätte mir absolut keine\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Aber ich hätte mir absolut keine\n"
 	.string "Sorgen zu machen brauchen! Weiter so!\p"
 	.string "Und hier!\n"
-	.string "Dies ist ein Geschenk für dich!$"
+	.string "Dies ist ein Geschenk für dich!{COLOR DARK_GRAY}$"
 
 Route119_Text_MayExplainFly:
-	.string "{RIVAL}: Setze FLIEGEN ein und deine\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Setze FLIEGEN ein und deine\n"
 	.string "Pokémon bringen dich an jeden Ort, an\l"
 	.string "dem du schon einmal warst.\p"
 	.string "Aber um FLIEGEN einsetzen zu können,\n"
@@ -717,33 +717,33 @@ Route119_Text_MayExplainFly:
 	.string "FLIEGEN.\p"
 	.string "Ich wette, deine Mutter macht sich\n"
 	.string "schon Sorgen um dich, {PLAYER}{KUN}.\p"
-	.string "Nun, wir treffen uns sicher bald wieder!$"
+	.string "Nun, wir treffen uns sicher bald wieder!{COLOR DARK_GRAY}$"
 
 Route119_Text_BrendanIntro:
-	.string "{RIVAL}: {PLAYER}! Hier schaust du dich\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}! Hier schaust du dich\n"
 	.string "also nach Pokémon um?\p"
 	.string "Zeig mir, wie gut du geworden bist.\n"
 	.string "Ich werde dich jetzt testen!\p"
 	.string "Nun!\n"
-	.string "Das ist ein Kampf, also kämpfen wir!$"
+	.string "Das ist ein Kampf, also kämpfen wir!{COLOR DARK_GRAY}$"
 
 Route119_Text_BrendanDefeat:
 	.string "Hmm…\n"
 	.string "Du bist verdammt gut geworden.$"
 
 Route119_Text_BrendanIllGiveYouThis:
-	.string "{RIVAL}: Ich sage, du bist so gut, dass\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich sage, du bist so gut, dass\n"
 	.string "du überall nach Pokémon suchen kannst.\p"
 	.string "Hier, das ist für dich.\n"
-	.string "Probier es aus.$"
+	.string "Probier es aus.{COLOR DARK_GRAY}$"
 
 Route119_Text_BrendanExplainFly:
-	.string "{RIVAL}: Setze es ein, und deine\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Setze es ein, und deine\n"
 	.string "Pokémon FLIEGEN dich sofort an jeden\l"
 	.string "Ort, an dem du schon einmal warst.\p"
 	.string "Aber du brauchst den ORDEN der ARENA\n"
 	.string "von BAUMHAUSEN CITY dafür.\p"
-	.string "Nun ja, ich muss jetzt weiter. Bis bald.$"
+	.string "Nun ja, ich muss jetzt weiter. Bis bald.{COLOR DARK_GRAY}$"
 
 Route119_Text_ScottWayToGoBeSeeingYou:
 	.string "SCOTT: Hahahaha!\n"

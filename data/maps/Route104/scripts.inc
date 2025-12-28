@@ -1076,84 +1076,84 @@ Route104_Text_TrainerTipsDoubleBattles:
 	.string "Getümmel. Achte auf dein Line-up!$"
 
 Route104_Text_MayWeShouldRegister:
-	.string "{RIVAL}: Yo {PLAYER}{KUN}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo {PLAYER}{KUN}!\p"
 	.string "Dein POKéNAV hat jetzt Bluetooth, huh?\p"
 	.string "Lass mich dich adden - so Insta-mäßig.\n"
-	.string "Dann können wir stalken!$"
+	.string "Dann können wir stalken!{COLOR DARK_GRAY}$"
 
 Route104_Text_RegisteredMay:
 	.string "{PLAYER} added Brigitte als Kontakt.\n"
 	.string "Jetzt seid ihr Rivals auf Snapchat.$"
 
 Route104_Text_MayHowsYourPokedex:
-	.string "{RIVAL}: Und, {PLAYER}{KUN}?\n"
-	.string "Wie läuft der POKéDEX-Grind?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Und, {PLAYER}{KUN}?\n"
+	.string "Wie läuft der POKéDEX-Grind?{COLOR DARK_GRAY}$"
 
 Route104_Text_MayMinesDecentLetsBattle:
 	.string "Meiner? Stabil. TikTok-ready.\n"
 	.string "Bock auf’n Insta-Kampf?$"
 
 Route104_Text_MayHaventRaisedPokemon:
-	.string "{RIVAL}: Oha - du hast deine Pokémon\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oha - du hast deine Pokémon\n"
 	.string "nicht mal gefüttert? Uncool.\p"
-	.string "Und du willst TRAINER sein? Lol.$"
+	.string "Und du willst TRAINER sein? Lol.{COLOR DARK_GRAY}$"
 
 Route104_Text_MayLetsBattle:
-	.string "{RIVAL}: Na los, zeig mir deine Skills!\n"
-	.string "Oder ragequit gleich jetzt.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Na los, zeig mir deine Skills!\n"
+	.string "Oder ragequit gleich jetzt.{COLOR DARK_GRAY}$"
 
 Route104_Text_MayIntro:
-	.string "{RIVAL}: Frisch gebackener TRAINER?\n"
-	.string "Ich back dich gleich um!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Frisch gebackener TRAINER?\n"
+	.string "Ich back dich gleich um!{COLOR DARK_GRAY}$"
 
 Route104_Text_MayDefeat:
 	.string "Whoa - okay, du hast Skills.\n"
 	.string "Respekt… oder Glück? Hmmm.$"
 
 Route104_Text_MayPostBattle:
-	.string "{RIVAL}: Du bist nicht schlecht…\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du bist nicht schlecht…\p"
 	.string "Aber denk dran: Pokémon sind nicht\n"
 	.string "nur Kampfmaschinen, sondern auch\n"
-	.string "Knuddelbuddys. Frag BRACK!$"
+	.string "Knuddelbuddys. Frag BRACK!{COLOR DARK_GRAY}$"
 
 Route104_Text_BrendanWeShouldRegister:
-	.string "{RIVAL}: Yo, {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo, {PLAYER}!\p"
 	.string "POKéNAV hat jetzt Funkgerät-Funktion?\n"
-	.string "Wir sollten uns adden, Bro.$"
+	.string "Wir sollten uns adden, Bro.{COLOR DARK_GRAY}$"
 
 Route104_Text_RegisteredBrendan:
 	.string "{PLAYER} added Hans im POKéNAV.\n"
 	.string "Follower: +1.$"
 
 Route104_Text_BrendanHowsYourPokedex:
-	.string "{RIVAL}: Yo, wie läuft dein Pokédex-\n"
-	.string "Grind? Schon alles geliket?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo, wie läuft dein Pokédex-\n"
+	.string "Grind? Schon alles geliket?{COLOR DARK_GRAY}$"
 
 Route104_Text_BrendanDoingGreatLetsBattle:
 	.string "Ich bin ready. Du auch?\n"
 	.string "Zeig, was du kannst!$"
 
 Route104_Text_BrendanNoConfidence:
-	.string "{RIVAL}: Uff. Kein Selbstvertrauen,\n"
-	.string "keine Freundschaft, keine Likes…$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Uff. Kein Selbstvertrauen,\n"
+	.string "keine Freundschaft, keine Likes…{COLOR DARK_GRAY}$"
 
 Route104_Text_BrendanLetsBattle:
-	.string "{RIVAL}: Zeit für 'nen fairen Fight!\n"
-	.string "Oder auch nicht. Los geht’s!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Zeit für 'nen fairen Fight!\n"
+	.string "Oder auch nicht. Los geht’s!{COLOR DARK_GRAY}$"
 
 Route104_Text_BrendanIntro:
-	.string "{RIVAL}: Du bist zwar neu, aber ich\n"
-	.string "spiel hier nicht mit angezogener Handbremse.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du bist zwar neu, aber ich\n"
+	.string "spiel hier nicht mit angezogener Handbremse.{COLOR DARK_GRAY}$"
 
 Route104_Text_BrendanDefeat:
 	.string "Okay, wow. Du hast mich geklatscht.\n"
 	.string "GG, Bruder.$"
 
 Route104_Text_BrendanPostBattle:
-	.string "{RIVAL}: Du kannst echt mit Pokémon\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du kannst echt mit Pokémon\n"
 	.string "umgehen…\p"
 	.string "Aber vergiss nicht: Freundschaft ist\n"
-	.string "der wahre Cheatcode im Spiel.$"
+	.string "der wahre Cheatcode im Spiel.{COLOR DARK_GRAY}$"
 
 Route104_EventScript_Kanimani::
     msgbox Route104_Text_Kanimani, MSGBOX_NPC

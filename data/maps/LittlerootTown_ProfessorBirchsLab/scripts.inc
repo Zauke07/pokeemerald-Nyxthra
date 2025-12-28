@@ -874,33 +874,33 @@ LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "Mach dich auf den Weg!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese:
-	.string "{RIVAL}: Wow, du hast auch 'nen Pokédex!\p"
-	.string "Hier, nimm das!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Wow, du hast auch 'nen Pokédex!\p"
+	.string "Hier, nimm das!{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls:
-	.string "{RIVAL}: Ich liebe süße Pokémon! Ich fang\n"
-	.string "sie alle! Pokébälle raus und los geht’s!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich liebe süße Pokémon! Ich fang\n"
+	.string "sie alle! Pokébälle raus und los geht’s!{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OhYourBagsFull:
 	.string "Uff… dein Beutel ist voll. Lösch mal was.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
-	.string "{RIVAL}: Hm… Wo finde ich wohl noch mehr\n"
-	.string "süße Pokémon?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hm… Wo finde ich wohl noch mehr\n"
+	.string "süße Pokémon?{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "{RIVAL}: Du hast auch einen? Na gut,\n"
-	.string "hier, nimm das.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du hast auch einen? Na gut,\n"
+	.string "hier, nimm das.{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "{RIVAL}: Je mehr coole Pokémon, desto besser!\n"
-	.string "Ich fang alles, was nicht bei drei wegrennt.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Je mehr coole Pokémon, desto besser!\n"
+	.string "Ich fang alles, was nicht bei drei wegrennt.{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull:
 	.string "Hey, dein Beutel ist rappelvoll!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext:
-	.string "{RIVAL}: Hmmm… Wo gibt’s noch geile Pokémon?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hmmm… Wo gibt’s noch geile Pokémon?{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine:
 	.string "Sieht teuer aus… Finger weg.$"
@@ -921,13 +921,12 @@ LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:
 	.string "den NATIONALEN MODUS um.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool:
-	.string "{RIVAL}: Whoa, mein Pokédex ist jetzt besser!\n"
-	.string "Du bist echt die Beste, {PLAYER}{KUN}!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Whoa, mein Pokédex ist jetzt besser!\n"
+	.string "Du bist echt die Beste, {PLAYER}{KUN}!{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
-	.string "{RIVAL}: Ich hab geforscht wie ein Wahnsinniger.\n"
-	.string "Jetzt kriegen wir den NATIONALDEX. Danke mir.$"
-
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich hab geforscht wie ein Wahnsinniger.\n"
+	.string "Jetzt kriegen wir den NATIONALDEX. Danke mir.{COLOR DARK_GRAY}$"
 LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
 	.string "Prof. Birk: Jo, alles fertig.$"
 
@@ -940,11 +939,11 @@ LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2:
 	.string "und ein wildes Pokémon auf dich.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayTakeBreakFromFieldwork:
-	.string "{RIVAL}: Ich bleib hier und chill im Labor\n"
-	.string "mit dem alten Birk.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich bleib hier und chill im Labor\n"
+	.string "mit dem alten Birk.{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanTakeBreakFromFieldwork:
-	.string "{RIVAL}: Ich mach mal langsam. Reicht für heute.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich mach mal langsam. Reicht für heute.{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
 	.string "Prof. Birk: {PLAYER}{KUN}, dein Pokédex ist voll!\n"
@@ -989,18 +988,17 @@ LittlerootTown_ProfessorBirchsLab_Text_DontHaveAnyRoomForPokemon:
 	.string "Du hast keinen Platz für das Pokémon.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayWhatNextImStayingHere:
-	.string "{RIVAL}: Was machst du jetzt? Kämpfen?\n"
-	.string "Oder alles sammeln? Ich bleib hier.$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Was machst du jetzt? Kämpfen?\n"
+	.string "Oder alles sammeln? Ich bleib hier.{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly:
-	.string "{RIVAL}: Ich trainiere lieber ein starkes\n"
-	.string "Pokémon als alles zu fangen.$"
-
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich trainiere lieber ein starkes\n"
+	.string "Pokémon als alles zu fangen.{COLOR DARK_GRAY}$"
 LittlerootTown_ProfessorBirchsLab_Text_MayHaveYouGoneToBattleFrontier:
-	.string "{RIVAL}: Warst du schon mal in der KAMPFZONE?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Warst du schon mal in der KAMPFZONE?{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanHaveYouGoneToBattleFrontier:
-	.string "{RIVAL}: Yo, KAMPFZONE schon gesehen?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo, KAMPFZONE schon gesehen?{COLOR DARK_GRAY}$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "… … … … …\n"
