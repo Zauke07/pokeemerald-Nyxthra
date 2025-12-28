@@ -15,6 +15,7 @@
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/speaker_names.h"
+#include "save.h"
 
 static u16 RenderText(struct TextPrinter *);
 static u32 RenderFont(struct TextPrinter *);
@@ -1189,9 +1190,19 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             switch (currChar)
             {
             case EXT_CTRL_CODE_COLOR:
-                textPrinter->printerTemplate.fgColor = *textPrinter->printerTemplate.currentChar;
-                textPrinter->printerTemplate.currentChar++;
-                GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.fgColor, textPrinter->printerTemplate.bgColor, textPrinter->printerTemplate.shadowColor);
+                textPrinter->printerTemplate.fgColor = *textPrinter->printerTemplate.currentChar++;
+                if (textPrinter->printerTemplate.fgColor == TEXT_COLOR_RIVAL)
+                {
+                    // Rivalin rot, Rivale blau.
+                    // Standard-Logik: Rival ist immer das Gegen-Geschlecht des Spielers.
+                    textPrinter->printerTemplate.fgColor =
+                        (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_RED : TEXT_COLOR_BLUE;
+                }
+                GenerateFontHalfRowLookupTable(
+                    textPrinter->printerTemplate.fgColor,
+                    textPrinter->printerTemplate.bgColor,
+                    textPrinter->printerTemplate.shadowColor
+                );
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_HIGHLIGHT:
                 textPrinter->printerTemplate.bgColor = *textPrinter->printerTemplate.currentChar;
@@ -1813,6 +1824,11 @@ u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str)
                 continue;
             case EXT_CTRL_CODE_COLOR:
                 fgColor = strLocal[strPos++];
+                if (fgColor == TEXT_COLOR_RIVAL)
+                {
+                    // Rivalin rot, Rivale blau.
+                    fgColor = (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_RED : TEXT_COLOR_BLUE;
+                }
                 GenerateFontHalfRowLookupTable(fgColor, bgColor, shadowColor);
                 continue;
             case EXT_CTRL_CODE_HIGHLIGHT:

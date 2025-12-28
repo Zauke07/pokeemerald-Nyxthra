@@ -501,6 +501,7 @@ DYNAMIC_COLOR3 = 0C @ white 2
 DYNAMIC_COLOR4 = 0D @ aquamarine
 DYNAMIC_COLOR5 = 0E @ blue-green
 DYNAMIC_COLOR6 = 0F @ cerulean
+RIVAL_CLR = 0F
 
 @ sound and music
 
