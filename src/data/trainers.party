@@ -1399,7 +1399,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Swagger
 
 === TRAINER_VINCENT ===
-Name: VINCENT
+Name: Vincent
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -1408,20 +1408,32 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Sableye
-Level: 44
+Mabosstiff
+Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Crunch
+- Play Rough
+- Jaw Lock
+- Swagger
 
-Medicham
-Level: 44
+Pawmot
+Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Double Shock
+- Close Combat
+- Mach Punch
+- Dig
 
-Sharpedo
-Level: 44
+Veluza
+Level: 47
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Aqua Cutter
+- Psycho Cut
+- Night Slash
+- Aqua Jet
 
 === TRAINER_LEROY ===
-Name: LEROY
+Name: Leroy
 Class: Cooltrainer
 Pic: Cooltrainer M
 Gender: Male
@@ -1430,13 +1442,21 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Mawile
-Level: 46
+Tinkaton
+Level: 49
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Gigaton Hammer
+- Play Rough
+- Swords Dance
+- Fake Out
 
-Starmie
-Level: 46
+Armarouge
+Level: 49
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Armor Cannon
+- Psychic
+- Will-O-Wisp
+- Energy Ball
 
 === TRAINER_WILTON_1 ===
 Name: Wilton
@@ -1761,7 +1781,7 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Protect
 
 === TRAINER_KEIRA ===
-Name: KEIRA
+Name: Keira
 Class: Cooltrainer
 Pic: Cooltrainer F
 Gender: Female
@@ -1770,12 +1790,12 @@ Items: Full Restore
 Double Battle: No
 AI: Check Bad Move / Try To Faint / Force Setup First Turn
 
-Lairon
-Level: 45
+Luxray
+Level: 48
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Manectric
-Level: 45
+Togekiss
+Level: 48
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BROOKE_1 ===
@@ -1993,7 +2013,7 @@ Level: 38
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 
 === TRAINER_PATRICIA ===
-Name: PATRICIA
+Name: Patricia
 Class: Hex Maniac
 Pic: Hex Maniac
 Gender: Female
@@ -2001,12 +2021,12 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Banette
-Level: 41
+Mimikyu
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Lunatone
-Level: 41
+Chandelure
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KINDRA ===
@@ -3375,7 +3395,7 @@ Level: 37
 IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
 === TRAINER_YUJI ===
-Name: YUJI
+Name: Yuji
 Class: Black Belt
 Pic: Black Belt
 Gender: Male
@@ -3383,13 +3403,21 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Makuhita
-Level: 26
+Clobbopus
+Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Brick Break
+- Bind
+- Detect
+- Feint
 
 Machoke
-Level: 26
+Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Low Sweep
+- Seismic Toss
+- Revenge
+- Knock Off
 
 === TRAINER_DAISUKE ===
 Name: DAISUKE
@@ -3923,7 +3951,7 @@ Level: 23
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_JUSTIN ===
-Name: JUSTIN
+Name: Justin
 Class: Camper
 Pic: Camper
 Gender: Male
@@ -3931,8 +3959,8 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Kecleon
-Level: 24
+Teddiursa
+Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ETHAN_1 ===
@@ -4326,7 +4354,7 @@ Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JOSHUA ===
-Name: JOSHUA
+Name: Joshua
 Class: Psychic
 Pic: Psychic M
 Gender: Male
@@ -4334,12 +4362,12 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Geodude Alola
-Level: 41
+Orbeetle
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Solrock
-Level: 41
+Rabsca
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CAMERON_1 ===
@@ -4498,7 +4526,7 @@ Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALEXIS ===
-Name: ALEXIS
+Name: Alexis
 Class: Psychic
 Pic: Psychic F
 Gender: Female
@@ -4506,12 +4534,12 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Kirlia
-Level: 41
+Swoobat
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Xatu
-Level: 41
+Hatterene
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_JACKI_1 ===
@@ -5347,7 +5375,7 @@ Level: 9
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_TED ===
-Name: TED
+Name: Ted
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5355,12 +5383,16 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Ralts
-Level: 17
+Flittle
+Level: 20
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Psybeam
+- Disarming Voice
+- Quick Attack
+- Confusion
 
 === TRAINER_PAUL ===
-Name: PAUL
+Name: Paul
 Class: School Kid
 Pic: School Kid M
 Gender: Male
@@ -5368,17 +5400,29 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Numel
-Level: 15
+Charcadet
+Level: 18
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Incinerate
+- Clear Smog
+- Night Shade
+- Will-O-Wisp
 
-Oddish
-Level: 15
+Capsakid
+Level: 18
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Razor Leaf
+- Bite
+- Zen Headbutt
+- Leech Seed
 
-Wingull
-Level: 15
+Wattrel
+Level: 18
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Spark
+- Peck
+- Quick Attack
+- Pluck
 
 === TRAINER_JERRY_2 ===
 Name: JERRY
@@ -5466,7 +5510,7 @@ Level: 9
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_GEORGIA ===
-Name: GEORGIA
+Name: Georgia
 Class: School Kid
 Pic: School Kid F
 Gender: Female
@@ -5474,13 +5518,21 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Shroomish
-Level: 16
+Toedscool
+Level: 19
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Mud-Slap
+- Mega Drain
+- Wrap
+- Supersonic
 
-Beautifly
-Level: 16
+Vivillon
+Level: 19
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Gust
+- Struggle Bug
+- Stun Spore
+- Draining Kiss
 
 === TRAINER_KAREN_2 ===
 Name: KAREN
@@ -6470,7 +6522,7 @@ Level: 50
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 
 === TRAINER_EDDIE ===
-Name: EDDIE
+Name: Eddie
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -6478,13 +6530,21 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Zigzagoon Galar
+Level: 17
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Snarl
+- Headbutt
+- Pin Missile
+- Hone Claws
 
-Zigzagoon
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lechonk
+Level: 19
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Echoed Voice
+- Disarming Voice
+- Work Up
+- Covet
 
 === TRAINER_ALLEN ===
 Name: Allen
@@ -7747,7 +7807,7 @@ Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BENNY ===
-Name: BENNY
+Name: Benny
 Class: Bird Keeper
 Pic: Bird Keeper
 Gender: Male
@@ -7755,17 +7815,17 @@ Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Swellow
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pidgeotto
+Level: 34
+IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-Pelipper
+Staravia
 Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-Xatu
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Noctowl
+Level: 38
+IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_CHESTER ===
 Name: Chester
@@ -8228,7 +8288,7 @@ Level: 18
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_CORA ===
-Name: CORA
+Name: Cora
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -8236,12 +8296,16 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
-Level: 27
+Pawmo
+Level: 30
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Arm Thrust
+- Spark
+- Dig
+- Swift
 
 === TRAINER_PAULA ===
-Name: PAULA
+Name: Paula
 Class: Battle Girl
 Pic: Battle Girl
 Gender: Female
@@ -8249,9 +8313,13 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Breloom
-Level: 27
+Hawlucha
+Level: 30
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Aerial Ace
+- Karate Chop
+- Roost
+- Encore
 
 === TRAINER_CYNDY_2 ===
 Name: CYNDY
@@ -9009,7 +9077,7 @@ Level: 23
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_MARTHA ===
-Name: MARTHA
+Name: Martha
 Class: Picnicker
 Pic: Picnicker
 Gender: Female
@@ -9017,13 +9085,21 @@ Music: Girl
 Double Battle: No
 AI: Check Bad Move
 
-Skitty
-Level: 23
+Oinkologne F
+Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Body Slam
+- Echoed Voice
+- Dig
+- Work Up
 
-Swablu
-Level: 23
+Squawkabilly
+Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Aerial Ace
+- Quick Attack
+- Facade
+- Swagger
 
 === TRAINER_DIANA_1 ===
 Name: Diana
@@ -9224,11 +9300,11 @@ Music: Twins
 Double Battle: Yes
 AI: Check Bad Move
 
-Meowstic Male
+Meowstic M
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Meowstic Female
+Meowstic F
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -10704,7 +10780,7 @@ Level: 28
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_SEBASTIAN ===
-Name: SEBASTIAN
+Name: Sebastian
 Class: Pkmn Ranger
 Pic: Pokemon Ranger M
 Gender: Male
@@ -10714,8 +10790,13 @@ Double Battle: No
 AI: Basic Trainer
 
 Cacturne
-Level: 39
+Level: 40
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Sandile
+Level: 37
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
 
 === TRAINER_JACKSON_2 ===
 Name: Jackson
@@ -10838,7 +10919,7 @@ Level: 28
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_SOPHIA ===
-Name: SOPHIA
+Name: Sophia
 Class: Pkmn Ranger
 Pic: Pokemon Ranger F
 Gender: Female
@@ -10847,13 +10928,21 @@ Items: Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Swablu
-Level: 38
+Cyclizar
+Level: 41
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Dragon Claw
+- Double-Edge
+- U-turn
+- Shift Gear
 
-Roselia
-Level: 38
+Arboliva
+Level: 41
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Energy Ball
+- Earth Power
+- Hyper Voice
+- Giga Drain
 
 === TRAINER_CATHERINE_2 ===
 Name: Catherine
@@ -11690,7 +11779,7 @@ Level: 34
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_SALLY ===
-Name: SALLY
+Name: Sally
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -11698,12 +11787,16 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Oddish
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Smoliv
+Level: 19
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Razor Leaf
+- Rapid Spin
+- Tackle
+- Sweet Scent
 
 === TRAINER_ROBIN ===
-Name: ROBIN
+Name: Robin
 Class: Lass
 Pic: Lass
 Gender: Female
@@ -11711,17 +11804,29 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Skitty
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Tandemaus
+Level: 17
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Echoed Voice
+- Bullet Seed
+- Super Fang
+- Play Rough
 
 Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 17
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Mega Drain
+- Headbutt
+- Stun Spore
+- Leech Seed
 
-Marill
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Pawmi
+Level: 17
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Thunder Shock
+- Quick Attack
+- Nuzzle
+- Bite
 
 === TRAINER_ANDREA ===
 Name: ANDREA
@@ -12033,7 +12138,7 @@ Level: 23
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_ALAN ===
-Name: ALAN
+Name: Alan
 Class: Hiker
 Pic: Hiker
 Gender: Male
@@ -12041,16 +12146,16 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Geodude
-Level: 22
+Rolycoly
+Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Nosepass
-Level: 22
+Nacli
+Level: 24
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Graveler
-Level: 22
+Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLARK ===
@@ -13816,7 +13921,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon-Galar
+Zigzagoon Galar
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -15640,7 +15745,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Crunch
 - Low Kick
 
-Ursaluna Hisui
+Ursaluna  Bloodmoon
 Level: 60
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Headlong Rush
@@ -15698,7 +15803,7 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunderbolt
 - Nasty Plot
 
-Ursaluna Hisui
+Ursaluna  Bloodmoon
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
@@ -17380,47 +17485,55 @@ Level: 40
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_MARIELA ===
-Name: MARIELA
+Name: Mariela
 Class: Psychic
 Pic: Psychic F
 Gender: Female
 Music: Intense
 Double Battle: No
 
-Chimecho
-Level: 41
+Meowstic F
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Farigiraf
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ALVARO ===
-Name: ALVARO
+Name: Alvaro
 Class: Psychic
 Pic: Psychic M
 Gender: Male
 Music: Intense
 Double Battle: No
 
-Banette
-Level: 41
+Malamar
+Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Kadabra
-Level: 41
+Reuniclus
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_EVERETT ===
-Name: EVERETT
+Name: Everett
 Class: Gentleman
 Pic: Gentleman
 Gender: Male
 Music: Rich
 Double Battle: No
 
-Wobbuffet
-Level: 41
+Indeedee M
+Level: 43
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Mr. Rime
+Level: 45
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_RED ===
-Name: RED
+Name: Red
 Class: Rival
 Pic: Red
 Gender: Male
@@ -17432,7 +17545,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_LEAF ===
-Name: LEAF
+Name: Leaf
 Class: Rival
 Pic: Leaf
 Gender: Female
