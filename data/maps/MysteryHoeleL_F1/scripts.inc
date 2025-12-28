@@ -88,7 +88,7 @@ MysteryHoeleL_F1_EventScript_RanFromLavados::
 	end
 
 @ =====================================================================
-@ Bewegungen – einfach 1:1 von Ho-Oh kopiert und umbenannt
+@ Bewegungen - einfach 1:1 von Ho-Oh kopiert und umbenannt
 @ =====================================================================
 
 MysteryHoeleL_F1_Movement_CameraPanUp:

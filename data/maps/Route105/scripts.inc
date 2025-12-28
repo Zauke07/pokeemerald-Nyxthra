@@ -42,7 +42,7 @@ Route105_EventScript_Dominik::
 
 Route105_EventScript_Beverly::
 	trainerbattle_single TRAINER_BEVERLY, Route105_Text_BeverlyIntro, Route105_Text_BeverlyDefeated
-	msgbox Route105_Text_PostBattle, MSGBOX_AUTOCLOSE
+	msgbox Route105_Text_BeverlyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route105_EventScript_Imani::

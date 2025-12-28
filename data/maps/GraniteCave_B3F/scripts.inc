@@ -51,7 +51,7 @@ GraniteCave_B3F_Trigger_Suicune::
 	goto GraniteCave_B3F_TriggerBlocked
 
 @ ==================================================================
-@ Blockierter Trigger – Text nur einmal
+@ Blockierter Trigger - Text nur einmal
 @ ==================================================================
 GraniteCave_B3F_TriggerBlocked::
 	msgbox GraniteCave_B3F_Text_TriggerBlocked, MSGBOX_DEFAULT
