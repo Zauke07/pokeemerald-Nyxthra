@@ -729,7 +729,16 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     }
     else
     {
-        LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+        if (gPlayerPartyCount == 1)
+        {
+            // Wir sind allein im Doppelkampf -> Lade SINGLES Grafik (mit EP)
+            LoadCompressedSpriteSheet(&sSpriteSheet_SinglesPlayerHealthbox);
+        }
+        else
+        {
+            // Wir sind zu zweit -> Lade DOUBLES Grafik (klein)
+            LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[0]);
+        }
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
         LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[1]);
@@ -793,7 +802,14 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 }
             }
             else if (state == 3)
-                LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+            {
+                // Wir laden die Grafik für den Partner nur, wenn wir wirklich zu zweit sind.
+                // Sonst würde sie die EP-Leiste von Spieler 1 überschreiben.
+                if (gPlayerPartyCount > 1)
+                {
+                    LoadCompressedSpriteSheet(&sSpriteSheets_DoublesPlayerHealthbox[1]);
+                }
+            }
             else if (state == 4)
                 LoadCompressedSpriteSheet(&sSpriteSheets_DoublesOpponentHealthbox[0]);
             else if (state == 5)

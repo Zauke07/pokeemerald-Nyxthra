@@ -696,8 +696,14 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
     u8 healthbarSpriteId;
     struct Sprite *healthBarSpritePtr;
 
-    if (!IsDoubleBattle())
+    // Diese Variable macht den Code lesbarer:
+    // "Sind wir im Doppelkampf, aber der Spieler ist allein?"
+    bool8 soloPlayerInDouble = (IsDoubleBattle() && gPlayerPartyCount == 1 && GetBattlerSide(battler) == B_SIDE_PLAYER);
+
+    // WENN: Einzelkampf ODER (Doppelkampf aber Spieler allein)
+    if (!IsDoubleBattle() || soloPlayerInDouble)
     {
+        // --- SINGLES LAYOUT (Große Box mit EP-Leiste) ---
         if (GetBattlerSide(battler) == B_SIDE_PLAYER)
         {
             healthboxLeftSpriteId  = CreateSprite(&sHealthboxPlayerSpriteTemplates[0], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
@@ -705,8 +711,9 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
 
             gSprites[healthboxLeftSpriteId].oam.shape = ST_OAM_SQUARE;
 
+            // WICHTIG: Hier wird das Bild quadratisch und um 64 verschoben -> EP-Leiste sichtbar!
             gSprites[healthboxRightSpriteId].oam.shape   = ST_OAM_SQUARE;
-            gSprites[healthboxRightSpriteId].oam.tileNum += 64;
+            gSprites[healthboxRightSpriteId].oam.tileNum += 64; 
         }
         else
         {
@@ -714,33 +721,35 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
             healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxOpponentSpriteTemplates[0], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
 
             gSprites[healthboxRightSpriteId].oam.tileNum += 32;
-
             data6 = 2;
         }
-        gSprites[healthboxLeftSpriteId].oam.affineParam = healthboxRightSpriteId;
 
+        gSprites[healthboxLeftSpriteId].oam.affineParam = healthboxRightSpriteId;
         gSprites[healthboxRightSpriteId].hOther_HealthBoxSpriteId = healthboxLeftSpriteId;
-        gSprites[healthboxRightSpriteId].callback                 = SpriteCB_HealthBoxOther;
+        gSprites[healthboxRightSpriteId].callback = SpriteCB_HealthBoxOther;
     }
     else
     {
+        // --- DOUBLES LAYOUT (Kleine Box ohne EP) ---
         if (GetBattlerSide(battler) == B_SIDE_PLAYER)
         {
-            healthboxLeftSpriteId  = CreateSprite(&sHealthboxPlayerSpriteTemplates[GetBattlerPosition(battler) / 2], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
-            healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxPlayerSpriteTemplates[GetBattlerPosition(battler) / 2], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
+            u8 which = GetBattlerPosition(battler) / 2;
+            healthboxLeftSpriteId  = CreateSprite(&sHealthboxPlayerSpriteTemplates[which], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
+            healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxPlayerSpriteTemplates[which], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
 
             gSprites[healthboxLeftSpriteId].oam.affineParam = healthboxRightSpriteId;
-
             gSprites[healthboxRightSpriteId].hOther_HealthBoxSpriteId = healthboxLeftSpriteId;
-            gSprites[healthboxRightSpriteId].oam.tileNum             += 32;
-            gSprites[healthboxRightSpriteId].callback                 = SpriteCB_HealthBoxOther;
 
-            data6 = 1;
+            gSprites[healthboxRightSpriteId].oam.tileNum += 32;
+            data6 = 0;
+
+            gSprites[healthboxRightSpriteId].callback = SpriteCB_HealthBoxOther;
         }
         else
         {
-            healthboxLeftSpriteId  = CreateSprite(&sHealthboxOpponentSpriteTemplates[GetBattlerPosition(battler) / 2], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
-            healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxOpponentSpriteTemplates[GetBattlerPosition(battler) / 2], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
+            u8 which = GetBattlerPosition(battler) / 2;
+            healthboxLeftSpriteId  = CreateSprite(&sHealthboxOpponentSpriteTemplates[which], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
+            healthboxRightSpriteId = CreateSpriteAtEnd(&sHealthboxOpponentSpriteTemplates[which], DISPLAY_WIDTH, DISPLAY_HEIGHT, 1);
 
             gSprites[healthboxLeftSpriteId].oam.affineParam = healthboxRightSpriteId;
 
@@ -752,6 +761,7 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
         }
     }
 
+    // Healthbar Setup (Bleibt Standard)
     healthbarSpriteId = CreateSpriteAtEnd(&sHealthbarSpriteTemplates[gBattlerPositions[battler]], 140, 60, 0);
     healthBarSpritePtr = &gSprites[healthbarSpriteId];
     SetSubspriteTables(healthBarSpritePtr, &sHealthBar_SubspriteTables[GetBattlerSide(battler)]);
@@ -778,8 +788,16 @@ u8 CreateBattlerHealthboxSprites(u8 battler)
     gBattleStruct->ballSpriteIds[1]  = MAX_SPRITES;
     gBattleStruct->moveInfoSpriteId  = MAX_SPRITES;
 
-    // Healthbox-Paletten je Battler setzen (0 -> 4, 1 -> 12, 2 -> 13, 3 -> 14)
-    //BI_AssignPerBattlerPalettes(battler, healthboxLeftSpriteId, healthboxRightSpriteId);
+    // -------------------------------------------------------------------
+    // UNSER WICHTIGER FIX AM ENDE:
+    // Verhindert, dass der "Geister-Partner" angezeigt wird.
+    // -------------------------------------------------------------------
+    if (IsDoubleBattle() && gPlayerPartyCount == 1 && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+    {
+        gSprites[healthboxLeftSpriteId].invisible = TRUE;
+        gSprites[healthboxRightSpriteId].invisible = TRUE;
+        healthBarSpritePtr->invisible = TRUE;
+    }
 
     return healthboxLeftSpriteId;
 }
@@ -942,6 +960,23 @@ void GetBattlerHealthboxCoords(u8 battler, s16 *x, s16 *y)
 
     *x = sBattlerHealthboxCoords[index][position][0];
     *y = sBattlerHealthboxCoords[index][position][1];
+
+    // 2v1 Spezialfall: Doppelkampf aktiv, aber Spieler hat nur 1 Mon
+    // -> linker Player wie Singles, rechter Player komplett offscreen
+    if (IsDoubleBattle() && gPlayerPartyCount == 1 && GetBattlerSide(battler) == B_SIDE_PLAYER)
+    {
+        if (position == B_POSITION_PLAYER_LEFT)
+        {
+            *x = sBattlerHealthboxCoords[BATTLE_COORDS_SINGLES][B_POSITION_PLAYER_LEFT][0];
+            *y = sBattlerHealthboxCoords[BATTLE_COORDS_SINGLES][B_POSITION_PLAYER_LEFT][1];
+        }
+        else if (position == B_POSITION_PLAYER_RIGHT)
+        {
+            // weit genug raus, damit wirklich kein "Lv0" o.ä. mehr sichtbar bleibt
+            *x = DISPLAY_WIDTH + 64;   // z.B. 304
+            *y = DISPLAY_HEIGHT + 64;  // z.B. 224
+        }
+    }
 }
 
 void InitBattlerHealthboxCoords(u8 battler)
@@ -960,6 +995,12 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u32 xPos;
     u8 *objVram;
     u8 battler = gSprites[healthboxSpriteId].hMain_Battler;
+
+    // --- NEU: FIX FÜR GEISTER-PARTNER ---
+    // Das hier verhindert, dass "Lv0" geschrieben wird!
+    if (IsDoubleBattle() && gPlayerPartyCount == 1 && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        return;
+    // ------------------------------------
 
     // Don't print Lv char if mon has a gimmick with an indicator active.
     if (GetIndicatorPalTag(battler) != TAG_NONE)
@@ -1108,6 +1149,14 @@ static void UpdateOpponentHpTextSingles(u32 healthboxSpriteId, s16 value, u32 ma
 void UpdateHpTextInHealthbox(u32 healthboxSpriteId, u32 maxOrCurrent, s16 currHp, s16 maxHp)
 {
     u32 battler = gSprites[healthboxSpriteId].hMain_Battler;
+
+    // --- NEU: FIX FÜR GEISTER-PARTNER ---
+    // Wenn wir im Doppelkampf sind, aber nur 1 Pokemon haben,
+    // brechen wir hier sofort ab, damit keine HP-Zahlen für den Geist geschrieben werden.
+    if (IsDoubleBattle() && gPlayerPartyCount == 1 && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)
+        return;
+    // ------------------------------------
+
     switch (GetBattlerCoordsIndex(battler))
     {
     default:
