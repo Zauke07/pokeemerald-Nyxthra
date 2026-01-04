@@ -15,12 +15,13 @@ LilycoveCity_House1_EventScript_Kecleon::
 	release
 	end
 
-LilycoveCity_House1_Text_PokemonPartnersNotTools:
-	.string "POKéMON are partners to people.\n"
-	.string "They aren't our tools.\p"
-	.string "Unfortunately, there are some people\n"
-	.string "who fail to understand that…$"
+LilycoveCity_House1_Text_PokemonPartnersNotTools::
+	.string "POKéMON sind Partner, verdammt noch mal.\n"
+	.string "Kein Werkzeug für deine Zwecke!\p"
+	.string "Leider gibt's genug Vollpfosten da\n"
+	.string "draußen, die zu hohl sind, um das zu\l"
+	.string "kapieren…… Gehörst du auch dazu?$"
 
-LilycoveCity_House1_Text_Kecleon:
-	.string "KECLEON: Ruroro?$"
+LilycoveCity_House1_Text_Kecleon::
+	.string "KECLEON: Ruroro? (Was glotzt du so?)$"
 

@@ -53,17 +53,17 @@ FortreeCity_DecorationShop_PokemartDecor_Chairs:
 	.2byte DECOR_HARD_CHAIR
 	pokemartlistend
 
-FortreeCity_DecorationShop_Text_MerchandiseSentToPC:
-	.string "Die Artikel, die du hier kaufst, werden\n"
-	.string "sofort auf deinen PC gesendet.\p"
-	.string "Das ist großartig! Ich wünschte, ich\n"
-	.string "könnte mich so auch nach Hause\l"
-	.string "senden lassen.$"
+FortreeCity_DecorationShop_Text_MerchandiseSentToPC::
+	.string "Der ganze Plunder, den du hier kaufst,\n"
+	.string "wird direkt auf deinen PC gebeamt.\p"
+	.string "Echt praktisch! Ich wünschte, ich\n"
+	.string "könnte mich auch einfach wegbeamen,\l"
+	.string "wenn mir die Leute hier auf den Sack gehen.$"
 
-FortreeCity_DecorationShop_Text_BuyingDeskForDolls:
-	.string "Ich kaufe mir einen EDLEN TISCH, auf\n"
-	.string "den ich meine PUPPEn setze.\p"
-	.string "Wenn ich das nicht tue, werden meine\n"
-	.string "PUPPEn schmutzig, wenn ich damit meine\l"
-	.string "GEHEIMBASIS dekoriere.$"
-
+FortreeCity_DecorationShop_Text_BuyingDeskForDolls::
+	.string "Ich kauf mir jetzt diesen EDLEN TISCH,\n"
+	.string "nur damit meine PUPPEN nicht im Dreck\l"
+	.string "stehen müssen.\p"
+	.string "Wenn meine PUPPEN in der GEHEIMBASIS\n"
+	.string "schmutzig werden, krieg ich 'nen Anfall!\l"
+	.string "Das ist eine ernste Angelegenheit!$"

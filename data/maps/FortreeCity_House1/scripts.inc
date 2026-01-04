@@ -60,41 +60,41 @@ FortreeCity_House1_EventScript_Zigzagoon::
 	release
 	end
 
-FortreeCity_House1_Text_YouWillTradeWontYou:
-	.string "Wroooaaar! Ich muss das unbedingt\n"
-	.string "haben! Ich muss {STR_VAR_1} haben!\l"
-	.string "Dafür würde ich alles tun!\p"
-	.string "Äh… Hast du ihn gehört?\n"
-	.string "Meinen Ruf aus tiefstem Herzen?\p"
-	.string "Nachdem du den gehört hast, tauschst\n"
-	.string "du doch bestimmt dein {STR_VAR_1}\l"
-	.string "gegen mein {STR_VAR_2}?!?$"
+FortreeCity_House1_Text_YouWillTradeWontYou::
+	.string "Wroooaaar! Ich brauch das Teil!\n"
+	.string "Ich muss unbedingt ein {STR_VAR_1} haben!\l"
+	.string "Ich würd' fast alles dafür tun!\p"
+	.string "Äh…… Hast du das gehört?\n"
+	.string "Das war mein gieriger Schrei nach Blut!\p"
+	.string "Jetzt, wo du weißt, wie verzweifelt ich\n"
+	.string "bin, tauschst du doch sicher dein\l"
+	.string "{STR_VAR_1} gegen mein {STR_VAR_2}?!?$"
 
-FortreeCity_House1_Text_MonYouTakeCare:
-	.string "Oh, super! Dann mal los!\p"
-	.string "Willkommen, {STR_VAR_1}!\n"
-	.string "Pass auf dich auf, {STR_VAR_2}!$"
+FortreeCity_House1_Text_MonYouTakeCare::
+	.string "Geil! Her mit dem Teil!\p"
+	.string "Willkommen in der Hölle, {STR_VAR_1}!\n"
+	.string "Zisch ab und nerv wen anders, {STR_VAR_2}!$"
 
-FortreeCity_House1_Text_ThisIsntAMon:
-	.string "Äh, nee, so geht das nicht!\n"
-	.string "Das ist doch gar kein {STR_VAR_1}.$"
+FortreeCity_House1_Text_ThisIsntAMon::
+	.string "Willst du mich verarschen?\n"
+	.string "Das ist doch gar kein {STR_VAR_1}!$"
 
-FortreeCity_House1_Text_YouWontTradeMe:
-	.string "Nein? Du willst nicht tauschen?\n"
-	.string "Obwohl ich dir mein Herz offenbart\l"
-	.string "habe?$"
+FortreeCity_House1_Text_YouWontTradeMe::
+	.string "Was? Nein? Willst du mich leiden sehen?\n"
+	.string "Obwohl ich mich hier so zum Affen\l"
+	.string "gemacht habe? Asozial!$"
 
-FortreeCity_House1_Text_GoingToMakeVolbeatStrong:
-	.string "Ich werde dafür sorgen, dass VOLBEAT\n"
-	.string "super-megastark wird!\p"
-	.string "Ich hoffe, du sorgst dich genauso um\n"
-	.string "PLUSLE!$"
+FortreeCity_House1_Text_GoingToMakeVolbeatStrong::
+	.string "Ich werd' dafür sorgen, dass VOLBEAT\n"
+	.string "so richtig fies und stark wird!\p"
+	.string "Sieh zu, dass du PLUSLE nicht sofort\n"
+	.string "schrottest!$"
 
-FortreeCity_House1_Text_TradingMemoriesWithOthers:
-	.string "Mit anderen Pokémon tauschen…\p"
-	.string "Das ist, als ob du die Erinnerungen mit\n"
-	.string "anderen Menschen teilst.$"
+FortreeCity_House1_Text_TradingMemoriesWithOthers::
+	.string "Mit anderen POKéMON tauschen……\p"
+	.string "Das ist, als ob man seinen Müll mit\n"
+	.string "anderen Leuten teilt. Irgendwie eklig.$"
 
-FortreeCity_House1_Text_Zigzagoon:
-	.string "ZIGZACHS: Gumomoh?$"
+FortreeCity_House1_Text_Zigzagoon::
+	.string "ZIGZACHS: Gumomoh? (Was glotzt du?)$"
 

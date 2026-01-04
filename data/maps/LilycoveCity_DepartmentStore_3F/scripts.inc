@@ -19,6 +19,11 @@ LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins:
 	.2byte ITEM_ZINC
 	.2byte ITEM_CARBOS
 	.2byte ITEM_HP_UP
+	.2byte ITEM_ADAMANT_MINT
+	.2byte ITEM_MODEST_MINT
+	.2byte ITEM_JOLLY_MINT
+	.2byte ITEM_TIMID_MINT
+	.2byte ITEM_PP_MAX
 	pokemartlistend
 
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkRight::
@@ -37,9 +42,13 @@ LilycoveCity_DepartmentStore_3F_Pokemart_StatBoosters:
 	.2byte ITEM_X_SP_ATK
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_DIRE_HIT
-	.2byte ITEM_GUARD_SPEC
-	.2byte ITEM_X_ACCURACY
+	.2byte ITEM_LIFE_ORB
+	.2byte ITEM_CHOICE_BAND
+	.2byte ITEM_CHOICE_SPECS
+	.2byte ITEM_CHOICE_SCARF
+	.2byte ITEM_FOCUS_SASH
+	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_EVIOLITE
 	pokemartlistend
 
 LilycoveCity_DepartmentStore_3F_EventScript_TriathleteM::
@@ -55,18 +64,19 @@ LilycoveCity_DepartmentStore_3F_EventScript_Woman::
 	end
 
 LilycoveCity_DepartmentStore_3F_Text_ItemsBestForTougheningPokemon:
-	.string "For quickly toughening up POKéMON,\n"
-	.string "items are the best.\p"
-	.string "PROTEIN boosts ATTACK,\n"
-	.string "and CALCIUM raises SP. ATK.$"
+	.string "Wenn du zu faul zum Trainieren bist,\n"
+	.string "stopf deine Viecher einfach mit Zeug voll.\p"
+	.string "PROTEIN für die Muckis, CALCIUM für\n"
+	.string "den Kopf. Kapierst du eh nicht, oder?$"
 
 LilycoveCity_DepartmentStore_3F_Text_WantMoreEndurance:
-	.string "I want my POKéMON to have more\n"
-	.string "endurance.\p"
-	.string "I'm trying to decide whether to raise\n"
-	.string "DEFENSE with IRON, or SP. DEF with ZINC.$"
+	.string "Meine Viecher kippen mir zu schnell aus\n"
+	.string "den Latschen.\p"
+	.string "Soll ich ihnen jetzt EISEN in den Rachen\n"
+	.string "werfen oder ZINK? Ist eh alles teuer.$"
 
 LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon:
-	.string "I gave a CARBOS to my POKéMON,\n"
-	.string "and its SPEED went up.$"
+	.string "Ich hab meinem POKéMON KARBON gegeben.\n"
+	.string "Jetzt rennt es wenigstens nicht mehr\l"
+	.string "gegen jede Wand.$"
 

@@ -18,12 +18,13 @@ LilycoveCity_House2_EventScript_ReceivedRest::
 	release
 	end
 
-LilycoveCity_House2_Text_NotAwakeYetHaveThis:
-	.string "Huh? What? What's that?\p"
-	.string "I'm not near awake yet…\n"
-	.string "You can have this…$"
+LilycoveCity_House2_Text_NotAwakeYetHaveThis::
+	.string "Häh? Was? Wer bist du denn?!\p"
+	.string "Ich bin noch überhaupt nicht wach……\n"
+	.string "Nimm den Schrott hier und verpiss dich!$"
 
-LilycoveCity_House2_Text_SleepIsEssential:
-	.string "Yawn…\p"
-	.string "Sleep is essential for good health…\n"
-	.string "Sleep and regain health…$"
+LilycoveCity_House2_Text_SleepIsEssential::
+	.string "Gähn……\p"
+	.string "Pennen ist das Einzige, was zählt……\n"
+	.string "Lass mich in Ruhe, damit ich endlich\l"
+	.string "wieder klarkommen kann……$"

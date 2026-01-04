@@ -50,70 +50,71 @@ AquaHideout_1F_EventScript_Grunt1Defeated::
 	release
 	end
 
-AquaHideout_1F_Text_OurBossIsSnatchingSomething:
-	.string "What? What? What do you want with \n"
-	.string "TEAM AQUA?\p"
-	.string "Our BOSS isn't here! He's gone off to\n"
-	.string "snatch something important!\p"
-	.string "… …\n"
-	.string "Where did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+AquaHideout_1F_Text_OurBossIsSnatchingSomething::
+	.string "Häh? Was? Was willst du hier bei\n"
+	.string "TEAM AQUA rumlungern?\p"
+	.string "Unser BOSS ist nicht da! Er zieht gerade\n"
+	.string "ein ganz dickes Ding durch!\p"
+	.string "…… ……\n"
+	.string "Wo er hin ist?\p"
+	.string "Wahaha! Glaubst du echt, ich bin so hohl\n"
+	.string "und erzähl dir Spion das einfach so?$"
 
-AquaHideout_1F_Text_WhereMightMagmaHideoutBe:
-	.string "What? What?\n"
-	.string "Are you a TEAM MAGMA grunt?\p"
-	.string "I hear that TEAM MAGMA is trying to\n"
-	.string "awaken an awesome POKéMON at their\l"
-	.string "HIDEOUT.\p"
-	.string "But where might their HIDEOUT be?$"
+AquaHideout_1F_Text_WhereMightMagmaHideoutBe::
+	.string "Was? Wie?\n"
+	.string "Bist du etwa so'ne TEAM MAGMA-Wurst?\p"
+	.string "Ich hab gehört, TEAM MAGMA will in\n"
+	.string "ihrem Loch irgendein krasses POKéMON\l"
+	.string "aus dem Schlaf prügeln.\p"
+	.string "Aber wo verstecken sich diese Penner\n"
+	.string "überhaupt?$"
 
-AquaHideout_1F_Text_BossWentToJackASubmarine:
-	.string "What? What? What do you want with \n"
-	.string "TEAM AQUA?\p"
-	.string "Our BOSS isn't here!\n"
-	.string "He's gone off to jack a submarine!\p"
-	.string "… …\n"
-	.string "Where did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+AquaHideout_1F_Text_BossWentToJackASubmarine::
+	.string "Häh? Was? Was glotzt du so?\n"
+	.string "Willst du Ärger mit TEAM AQUA?\p"
+	.string "Unser BOSS ist gerade beschäftigt!\n"
+	.string "Er zockt sich gerade ein U-Boot!\p"
+	.string "…… ……\n"
+	.string "Wohin er damit tuckert?\p"
+	.string "Wahaha! Als ob ich dir das verraten\n"
+	.string "würde, du Witzfigur!$"
 
-AquaHideout_1F_Text_BossIsOnRoute122:
-	.string "What? What? What do you want with \n"
-	.string "TEAM AQUA?\p"
-	.string "Our BOSS isn't here! He's on his way to\n"
-	.string "MT. PYRE on ROUTE 122!\p"
-	.string "… …\n"
-	.string "Why did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+AquaHideout_1F_Text_BossIsOnRoute122::
+	.string "Was? Wie? Was willst du Vogel hier im\n"
+	.string "Versteck von TEAM AQUA?\p"
+	.string "Unser BOSS ist weg! Der ist gerade auf\n"
+	.string "dem Weg zum PYROBERG auf ROUTE 122!\p"
+	.string "…… ……\n"
+	.string "Warum er da ist?\p"
+	.string "Wahaha! Träum weiter! Ich erzähl dir\n"
+	.string "gar nix!$"
 
-AquaHideout_1F_Text_TeamMagmaAtMtChimney:
-	.string "What? What?\n"
-	.string "Are you a TEAM MAGMA grunt?\p"
-	.string "I hear that TEAM MAGMA is after\n"
-	.string "an awesome POKéMON at MT. CHIMNEY.\p"
-	.string "But what is that POKéMON like?$"
+AquaHideout_1F_Text_TeamMagmaAtMtChimney::
+	.string "Häh? Was?\n"
+	.string "Bist du einer von den MAGMA-Spacken?\p"
+	.string "Man sagt, TEAM MAGMA ist am SCHLOTBERG\n"
+	.string "hinter 'nem legendären Viech her.\p"
+	.string "Aber was ist das für 'ne hässliche\n"
+	.string "Kreatur?$"
 
-AquaHideout_1F_Text_BossIsInSlateportCity:
-	.string "What? What? What do you want with\n"
-	.string "TEAM AQUA?\p"
-	.string "Our BOSS isn't here!\n"
-	.string "He's on his way to SLATEPORT CITY!\p"
-	.string "… …\n"
-	.string "Why did he go?\p"
-	.string "Wahaha! Do you really think I'd tell\n"
-	.string "you something that crucial?$"
+AquaHideout_1F_Text_BossIsInSlateportCity::
+	.string "Was? Wie? Was willst du hier im\n"
+	.string "Hauptquartier von TEAM AQUA?\p"
+	.string "Der BOSS ist ausgeflogen!\n"
+	.string "Er macht gerade GRAPHITPORT CITY unsicher!\p"
+	.string "…… ……\n"
+	.string "Was er da will?\p"
+	.string "Wahaha! Ich bin doch nicht bekloppt und\n"
+	.string "plapper hier unsere Geheimnisse aus!$"
 
-AquaHideout_1F_Text_Grunt1Intro:
+AquaHideout_1F_Text_Grunt1Intro::
 	.string "Ayiyiyi!\n"
-	.string "Suspicious character spotted!$"
+	.string "Verdächtiges Subjekt gesichtet!$"
 
-AquaHideout_1F_Text_Grunt1Defeat:
-	.string "Grrrrr…\n"
-	.string "I lost it!$"
+AquaHideout_1F_Text_Grunt1Defeat::
+	.string "Grrrrr……\n"
+	.string "Voll verkackt!$"
 
-AquaHideout_1F_Text_Grunt1PostBattle:
-	.string "I took the loss for the TEAM,\n"
-	.string "but I did my job…$"
-
+AquaHideout_1F_Text_Grunt1PostBattle::
+	.string "Ich hab zwar geloost, aber ich hab dich\n"
+	.string "wenigstens aufgehalten…… Job erledigt!$"

@@ -138,46 +138,48 @@ LilycoveCity_DepartmentStore_1F_EventScript_FloorNamesSign::
 	msgbox LilycoveCity_DepartmentStore_1F_Text_FloorNamesSign, MSGBOX_SIGN
 	end
 
-LilycoveCity_DepartmentStore_1F_Text_WelcomeToDeptStore:
-	.string "Welcome to LILYCOVE DEPARTMENT STORE.$"
+LilycoveCity_DepartmentStore_1F_Text_WelcomeToDeptStore::
+	.string "Willkommen im EINKAUFSZENTRUM von\n"
+	.string "SEEGRASULB CITY. Kauf was oder geh!$"
 
-LilycoveCity_DepartmentStore_1F_Text_IBuyAllSortsOfThings:
-	.string "Whenever I come to the DEPARTMENT\n"
-	.string "STORE, I always end up buying all sorts\l"
-	.string "of things because it's so fun.$"
+LilycoveCity_DepartmentStore_1F_Text_IBuyAllSortsOfThings::
+	.string "Immer wenn ich hier aufkreuze, verballer\n"
+	.string "ich massig Kohle für allen möglichen\l"
+	.string "Mist. Macht halt süchtig, was?!$"
 
-LilycoveCity_DepartmentStore_1F_Text_MomBuyingMeFurniture:
-	.string "Today, my mom is going to buy me some\n"
-	.string "nice furniture.$"
+LilycoveCity_DepartmentStore_1F_Text_MomBuyingMeFurniture::
+	.string "Heute muss meine Mutter mir endlich\n"
+	.string "geile Möbel für meine Bude kaufen!$"
 
-LilycoveCity_DepartmentStore_1F_Text_BuyingSomethingForAzumarill:
-	.string "I'm buying something for my AZUMARILL\n"
-	.string "as a reward for winning a CONTEST.$"
+LilycoveCity_DepartmentStore_1F_Text_BuyingSomethingForAzumarill::
+	.string "Ich kauf hier gerade 'ne Belohnung für\n"
+	.string "mein AZUMARILL, weil es beim WETTBEWERB\l"
+	.string "die anderen so richtig nass gemacht hat.$"
 
-LilycoveCity_DepartmentStore_1F_Text_Azumarill:
-	.string "AZUMARILL: Maririroo!$"
+LilycoveCity_DepartmentStore_1F_Text_Azumarill::
+	.string "AZUMARILL: Maririroo! (Ich will Kekse!)$"
 
-LilycoveCity_DepartmentStore_1F_Text_FloorNamesSign:
-	.string "1F: SERVICE COUNTER\n"
-	.string "    LOTTERY CORNER\p"
-	.string "2F: TRAINER'S ZONE\p"
-	.string "3F: BATTLE COLLECTION\p"
-	.string "4F: TM CORNER\p"
-	.string "5F: POKé DOLL FLOOR\p"
-	.string "ROOFTOP: ROOFTOP PLAZA$"
-
-@ Unused
-LilycoveCity_DepartmentStore_1F_Text_WirelessCommIsFun:
-	.string "Wireless Communication is a\n"
-	.string "lot of fun, isn't it?\p"
-	.string "I think it lets you do things that\n"
-	.string "weren't possible before.\p"
-	.string "For instance, you can now trade\n"
-	.string "with people you couldn't before.\p"
-	.string "I think it's going to be exciting!$"
+LilycoveCity_DepartmentStore_1F_Text_FloorNamesSign::
+	.string "1. OG: SERVICE-SCHALTER\n"
+	.string "      LOTTERIE-ECKE\p"
+	.string "2. OG: TRAINER-ZONE\p"
+	.string "3. OG: KAMPF-ZEUGS\p"
+	.string "4. OG: TM-ECKE\p"
+	.string "5. OG: POKéPUPPEN-ETAGE\p"
+	.string "DACH: DACHTERRASSE$"
 
 @ Unused
-LilycoveCity_DepartmentStore_1F_Text_SpreadWordAboutWirelessComm:
-	.string "I want to spread the word about how\n"
-	.string "fun Wireless Communication can be.$"
+LilycoveCity_DepartmentStore_1F_Text_WirelessCommIsFun::
+	.string "Dieses kabellose Zeug ist echt der\n"
+	.string "Hammer, oder?\p"
+	.string "Damit kann man Dinge tun, die früher\n"
+	.string "völlig undenkbar waren.\p"
+	.string "Man kann jetzt zum Beispiel mit Leuten\n"
+	.string "tauschen, die man früher gar nicht erst\l"
+	.string "mit dem Arsch angeguckt hätte.\p"
+	.string "Echt abgefahren!$"
 
+@ Unused
+LilycoveCity_DepartmentStore_1F_Text_SpreadWordAboutWirelessComm::
+	.string "Ich will jedem auf die Nerven gehen und\n"
+	.string "erzählen, wie geil kabellose Technik ist.$"

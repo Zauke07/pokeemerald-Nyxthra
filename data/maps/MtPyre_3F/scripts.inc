@@ -32,68 +32,68 @@ MtPyre_3F_EventScript_RematchGabrielle::
 	msgbox MtPyre_3F_Text_GabriellePostRematch, MSGBOX_AUTOCLOSE
 	end
 
-MtPyre_3F_Text_WilliamIntro:
-	.string "The rich atmosphere of the mountain\n"
-	.string "has elevated my psychic power!\p"
-	.string "A mere child like you…\n"
-	.string "You dream of winning?$"
+MtPyre_3F_Text_WilliamIntro::
+	.string "Die dicke Luft hier am Berg hat meine\n"
+	.string "Psycho-Kräfte extrem gepusht!\p"
+	.string "Ein kleiner Pimpf wie du……\n"
+	.string "Du träumst echt vom Sieg? Lächerlich!$"
 
-MtPyre_3F_Text_WilliamDefeat:
-	.string "I drown in self-pity…$"
+MtPyre_3F_Text_WilliamDefeat::
+	.string "Ich ertrinke in Selbstmitleid……$"
 
-MtPyre_3F_Text_WilliamPostBattle:
-	.string "My psychic powers have surely\n"
-	.string "grown several times, but…$"
+MtPyre_3F_Text_WilliamPostBattle::
+	.string "Meine Psycho-Kräfte sind definitiv\n"
+	.string "gewachsen, aber du hast wohl einfach\l"
+	.string "nur krankes Glück gehabt!$"
 
-MtPyre_3F_Text_KaylaIntro:
+MtPyre_3F_Text_KaylaIntro::
 	.string "Ahahahaha!\p"
-	.string "This is no place for children, least\n"
-	.string "of all you!$"
+	.string "Das hier ist kein Spielplatz für Blagen,\n"
+	.string "schon gar nicht für so eine wie dich!$"
 
-MtPyre_3F_Text_KaylaDefeat:
-	.string "I lost that cleanly…$"
+MtPyre_3F_Text_KaylaDefeat::
+	.string "Das war…… verdammt deutlich.$"
 
-MtPyre_3F_Text_KaylaPostBattle:
-	.string "This means my training is still not\n"
-	.string "enough…\p"
-	.string "I've got to keep working toward the\n"
-	.string "summit…\p"
-	.string "Go, me!$"
+MtPyre_3F_Text_KaylaPostBattle::
+	.string "Das heißt wohl, mein Training ist immer\n"
+	.string "noch für die Tonne……\p"
+	.string "Ich muss weiter hoch zum Gipfel,\n"
+	.string "egal wie weh es tut!\p"
+	.string "Reiß dich zusammen, Mädel!$"
 
-MtPyre_3F_Text_GabrielleIntro:
-	.string "Why have you come here?$"
+MtPyre_3F_Text_GabrielleIntro::
+	.string "Was zum Teufel suchst du hier?$"
 
-MtPyre_3F_Text_GabrielleDefeat:
-	.string "That was amazing!\n"
-	.string "You're a very special TRAINER.$"
+MtPyre_3F_Text_GabrielleDefeat::
+	.string "Das war…… heftig!\n"
+	.string "Du bist echt kein gewöhnlicher Trainer.$"
 
-MtPyre_3F_Text_GabriellePostBattle:
-	.string "POKéMON no longer of this world.\n"
-	.string "POKéMON that are with you now.\p"
-	.string "And the POKéMON that you will meet\n"
-	.string "in the future…\p"
-	.string "They are all to be equally cherished.\n"
-	.string "Please remember that.$"
+MtPyre_3F_Text_GabriellePostBattle::
+	.string "POKéMON, die schon lange verrottet sind.\n"
+	.string "POKéMON, die jetzt bei dir hocken.\p"
+	.string "Und die POKéMON, die du erst noch\n"
+	.string "versklaven wirst……\p"
+	.string "Du musst sie alle gleich behandeln.\n"
+	.string "Vergiss das bloß nicht, Kleiner.$"
 
-MtPyre_3F_Text_GabrielleRegister:
-	.string "I would like to see your POKéMON\n"
-	.string "when they grow up some more…\p"
-	.string "Please, I need to see your POKéNAV.$"
+MtPyre_3F_Text_GabrielleRegister::
+	.string "Ich will sehen, wie deine Viecher aus-\n"
+	.string "sehen, wenn sie noch mehr gelitten haben……\p"
+	.string "Rück deinen POKéNAV raus. Sofort!$"
 
-MtPyre_3F_Text_GabrielleRematchIntro:
-	.string "Oh, it's you…\p"
-	.string "Have you come to show me your grown\n"
-	.string "POKéMON?$"
+MtPyre_3F_Text_GabrielleRematchIntro::
+	.string "Oh, du schon wieder……\p"
+	.string "Bist du hier, um mir deine abgehärteten\n"
+	.string "POKéMON unter die Nase zu reiben?$"
 
-MtPyre_3F_Text_GabrielleRematchDefeat:
-	.string "How amazing!\n"
-	.string "You are a special person.$"
+MtPyre_3F_Text_GabrielleRematchDefeat::
+	.string "Einfach nur krank!\n"
+	.string "Du bist echt ein spezieller Typ.$"
 
-MtPyre_3F_Text_GabriellePostRematch:
-	.string "POKéMON no longer of this world.\n"
-	.string "POKéMON that are with you now.\p"
-	.string "And the POKéMON that you will meet\n"
-	.string "in the future…\p"
-	.string "They are all to be equally cherished.\n"
-	.string "I see that you've remembered that.$"
+MtPyre_3F_Text_GabriellePostRematch::
+	.string "Die Toten, die Lebenden und die,\n"
+	.string "die noch kommen werden……\p"
+	.string "Alle verdienen denselben Respekt.\n"
+	.string "Schön zu sehen, dass du das nicht\l"
+	.string "vergessen hast.$"
 

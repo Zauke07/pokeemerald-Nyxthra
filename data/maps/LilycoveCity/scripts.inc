@@ -427,348 +427,307 @@ LilycoveCity_EventScript_DontKnowAboutBerryBlender::
 	msgbox LilycoveCity_Text_ExplainBerryBlender, MSGBOX_DEFAULT
 	return
 
-LilycoveCity_Text_MayShoppingLetsBattle:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey?\n"
-	.string "{PLAYER}{KUN}, are you shopping, too?\p"
-	.string "I bought a whole bunch of DOLLS and\n"
-	.string "POSTERS.\p"
-	.string "Of course, I've also caught a lot of\n"
-	.string "POKéMON, and I'm raising them\l"
-	.string "properly, too.\p"
-	.string "Actually, I'm more worried if you're\n"
-	.string "raising POKéMON properly, {PLAYER}{KUN}.\p"
-	.string "I'll battle with you, so you can show\n"
-	.string "me your POKéMON, {PLAYER}{KUN}.{COLOR DARK_GRAY}$"
+LilycoveCity_Text_MayShoppingLetsBattle::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey……\n"
+	.string "{PLAYER}{KUN}, bist du auch auf Shopping-Tour?\p"
+	.string "Ich hab mir haufenweise PUPPEN und\n"
+	.string "POSTER gegönnt.\p"
+	.string "Natürlich hab ich auch massig POKéMON\n"
+	.string "gefangen und ziehe sie richtig stramm.\p"
+	.string "Ehrlich gesagt frag ich mich, ob du deine\n"
+	.string "Viecher überhaupt im Griff hast.\p"
+	.string "Lass mal kämpfen, damit ich sehen kann,\n"
+	.string "ob du deine POKéMON nur ausführst oder\l"
+	.string "wirklich trainierst!{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_MayNotRaisingPokemon:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, why? {PLAYER}{KUN}, haven't you\n"
-	.string "been raising your POKéMON?\p"
-	.string "That's not a very good showing as a\n"
-	.string "TRAINER…{COLOR DARK_GRAY}$"
+LilycoveCity_Text_MayNotRaisingPokemon::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Äh, warum nicht? {PLAYER}{KUN}, hast du\n"
+	.string "etwa Schiss oder deine POKéMON vernach-\l"
+	.string "lässigt?\p"
+	.string "Das ist ja mal 'ne echt schwache Leistung\n"
+	.string "als TRAINER……{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_MayBattleMe:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Come on, battle with me, so I can\n"
-	.string "check out your POKéMON!{COLOR DARK_GRAY}$"
-LilycoveCity_Text_MayWontBeBeaten:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: The POKéMON I raised won't be\n"
-	.string "beaten by your POKéMON, {PLAYER}{KUN}!{COLOR DARK_GRAY}$"
+LilycoveCity_Text_MayBattleMe::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Jetzt komm schon, kämpf gegen\n"
+	.string "mich! Ich will deine Gurkentruppe sehen!{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_MayDefeat:
-	.string "… … … … … … … …\p"
-	.string "I remember the battle I had with you,\n"
-	.string "{PLAYER}{KUN}, on ROUTE 103.\p"
-	.string "That battle helped you become this\n"
-	.string "strong, {PLAYER}{KUN}, didn't it?$"
+LilycoveCity_Text_MayWontBeBeaten::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Meine POKéMON lassen sich von\n"
+	.string "deinem Haufen sicher nicht abziehen!{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_MayGoingBackToLittleroot:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: I'm thinking of going back to\n"
-	.string "LITTLEROOT soon.\p"
-	.string "I've caught a decent group of POKéMON,\n"
-	.string "and my POKéDEX is coming along, so\l"
-	.string "I'm going home to show my dad.{COLOR DARK_GRAY}$"
+LilycoveCity_Text_MayDefeat::
+	.string "…… …… …… ……\p"
+	.string "Ich erinner mich noch an unseren Kampf\n"
+	.string "auf ROUTE 103, {PLAYER}{KUN}.\p"
+	.string "Anscheinend hat dir die Abreibung damals\n"
+	.string "geholfen, so krass zu werden, was?$"
 
-LilycoveCity_Text_MayYouGoingToCollectBadges:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Collect all the GYM BADGES and take\n"
-	.string "the POKéMON LEAGUE challenge?\p"
-	.string "Well, while you're collecting BADGES,\n"
-	.string "{PLAYER}{KUN}, I'm going to work on my\l"
-	.string "POKéDEX. I'll complete it before you!\p"
-	.string "See you!$"
+LilycoveCity_Text_MayGoingBackToLittleroot::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich werd wohl bald wieder nach\n"
+	.string "WURZELHEIM abhauen.\p"
+	.string "Ich hab genug POKéMON im Sack und mein\n"
+	.string "POKéDEX sieht top aus. Das muss ich\l"
+	.string "meinem Dad unter die Nase reiben.{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_MayYouGoingToPokemonLeague:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Are you taking the POKéMON LEAGUE\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "POKéDEX?\p"
-	.string "I might've lost to you in battling,\n"
-	.string "but I'll finish my POKéDEX before you!\p"
-	.string "See you!$"
+LilycoveCity_Text_MayYouGoingToCollectBadges::
+	.string "{PLAYER}{KUN}, was hast du jetzt vor?\p"
+	.string "Willst du echt alle ORDEN sammeln und die\n"
+	.string "POKéMON LIGA stressen?\p"
+	.string "Während du dich abmühst, mach ich meinen\n"
+	.string "POKéDEX fertig. Ich bin eh schneller!\p"
+	.string "Man sieht sich!$"
 
-LilycoveCity_Text_MayYouGoingToBattleFrontier:
-	.string "{PLAYER}{KUN}, what are you going to do?\p"
-	.string "Are you taking the BATTLE FRONTIER\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "POKéDEX?\p"
-	.string "I might've lost to you in battling,\n"
-	.string "but I'll finish my POKéDEX before you!\p"
-	.string "See you!$"
+LilycoveCity_Text_BrendanShoppingLetsBattle::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey, {PLAYER}.\p"
+	.string "Ich erledige gerade Kram für meinen Dad.\n"
+	.string "Und nein, ich kauf hier keine PUPPEN!\p"
+	.string "Egal, ist ja schon 'ne Weile her.\p"
+	.string "Bock auf 'ne Abreibung? Mal sehen, wer\n"
+	.string "seine Viecher besser im Griff hat.{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_BrendanShoppingLetsBattle:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, hey, it's {PLAYER}.\p"
-	.string "I'm running an errand for my dad.\n"
-	.string "No, I'm not buying any DOLLS.\p"
-	.string "Anyways, it's been a while.\p"
-	.string "Want to have a battle to see who's been\n"
-	.string "raising POKéMON better?{COLOR DARK_GRAY}$"
+LilycoveCity_Text_BrendanNoConfidence::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Was ist los? Hast du keine Eier\n"
+	.string "in der Hose für 'nen echten Kampf?{COLOR DARK_GRAY}$"
 
-LilycoveCity_Text_BrendanNoConfidence:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Oh, what's the matter?\n"
-	.string "Don't have the confidence?{COLOR DARK_GRAY}$"
+LilycoveCity_Text_BrendanDefeat::
+	.string "Hmpf……\n"
+	.string "Du hast deine Viecher echt gut getrimmt.\p"
+	.string "Das wurmt mich jetzt schon ein bisschen,\n"
+	.string "wo ich doch viel länger dabei bin……$"
+
+LilycoveCity_Text_MovedLootIntoHideoutToday::
+	.string "Fufufu……\p"
+	.string "Heute haben wir noch mehr Diebesgut in\n"
+	.string "unser Versteck geschleppt……\p"
+	.string "W-wer bist du?! Verpiss dich!\n"
+	.string "Ich hab nur Selbstgespräche geführt!$"
+
+LilycoveCity_Text_DontGoNearCaveInCove::
+	.string "He, du Blage!\p"
+	.string "Bleib bloß weg von der Höhle in der Bucht!\p"
+	.string "Warum? Weil ich es sage! Ich bin hier\n"
+	.string "der Erwachsene, also zisch ab!$"
+
+LilycoveCity_Text_GetLostMessingUpTraining::
+	.string "Häh? Was willst du hier glotzen?\p"
+	.string "Du störst unser Training, also zieh\n"
+	.string "Leine, bevor es knallt!$"
+
+LilycoveCity_Text_ContestHallSign::
+	.string "WETTBEWERBS-HALLE\n"
+	.string "“Wo Leute ihre POKéMON unnötig stylen!”$"
+
+LilycoveCity_Text_HarborSignUnderConstruction::
+	.string "HAFEN VON SEEGRASULB CITY\p"
+	.string "“Die Fähre S.S. TIDAL wird in GRAPHITPORT\n"
+	.string "zusammengezimmert. Nerv nicht!”$"
+
+LilycoveCity_Text_MoveDeletersHouseSign::
+	.string "HAUS DES ATTACKEN-VERLERNERS\p"
+	.string "“Ich lösche den Müll in deinem Kopf.”$"
+
+LilycoveCity_Text_CitySign::
+	.string "SEEGRASULB CITY\p"
+	.string "“Hier endet das Land und der ganze\n"
+	.string "Mist wird ins Meer gespült.”$"
+
+LilycoveCity_Text_ChanceToDoBigThings::
+	.string "Ich bin nur ein RÜPEL, also hab ich keinen\n"
+	.string "Plan, was der BOSS eigentlich will…\p"
+	.string "Aber bei TEAM AQUA krieg ich wenigstens\n"
+	.string "die Chance, mal so richtig Randale zu\l"
+	.string "machen!\p"
+	.string "W-wer bist du?! Hast du mich belauscht?!\n"
+	.string "Zisch ab!$"
+
+LilycoveCity_Text_IfWorldBecomesOurs::
+	.string "Wenn diese ganze verdammte Welt uns\n"
+	.string "gehört, wird's den POKéMON auch besser\l"
+	.string "gehen. Sagen die Bosse jedenfalls.$"
+
+LilycoveCity_Text_WailmerLeapOutOfWater::
+	.string "Da! WAILMER!\n"
+	.string "Spring gefälligst aus dem Wasser!$"
+
+LilycoveCity_Text_ContestHallInTown::
+	.string "Hier in der Stadt gibt's 'ne WETTBEWERBS-\n"
+	.string "HALLE. \p"
+	.string "Das heißt, haufenweise Leute kommen her,\n"
+	.string "um ihre aufgebrezelten Viecher zu zeigen.\p"
+	.string "Ich krieg jetzt schon das Kotzen vor\n"
+	.string "lauter Aufregung!$"
+
+LilycoveCity_Text_StrangeCaveInCove::
+	.string "Hast du diese schräge Höhle in der Bucht\n"
+	.string "am Stadtrand gesehen? Da geht was vor!$"
+
+LilycoveCity_Text_GoingToMoveDeleterForHMs::
+	.string "Ich will meinen POKéMON neue Moves für\n"
+	.string "den WETTBEWERB beibringen.\p"
+	.string "Deswegen geh ich zum ATTACKEN-VERLERNER,\n"
+	.string "damit er diesen VM-Müll endlich löscht.$"
+
+LilycoveCity_Text_ImFromKanto::
+	.string "Ich komm extra aus KANTO.\p"
+	.string "HOENN ist ja ganz nett mit dem ganzen\n"
+	.string "Wasser und dem Gestrüpp überall.\p"
+	.string "Häh? Warte mal 'ne Sekunde…\p"
+	.string "Gibt's hier etwa Viecher, die man in\n"
+	.string "KANTO nicht mal geschenkt kriegt?$"
+
+LilycoveCity_Text_TeamAquaBeenTrainingWailmer::
+	.string "TEAM AQUA blockiert mit ihren WAILMER\n"
+	.string "die ganze Bucht.\p"
+	.string "Wir SEEMÄNNER kommen mit unseren Pötten\n"
+	.string "gar nicht mehr raus auf's Meer! Dreckspack!$"
+
+LilycoveCity_Text_SomeonePuntedTeamAquaOut::
+	.string "Ahoi, hast du's gehört?\p"
+	.string "Irgendwer hat TEAM AQUA ordentlich in\n"
+	.string "den Arsch getreten!\p"
+	.string "Die WAILMER sind weg und wir können\n"
+	.string "endlich wieder Segel setzen.$"
+
+LilycoveCity_Text_SomeoneStoleMyPokemon::
+	.string "Ich hab gerade friedlich im Hotel am Meer\n"
+	.string "gepennt und dem Wellenrauschen zugehört…\p"
+	.string "Da hat mir so'n Arsch mein POKéMON geklaut!\p"
+	.string "Wer war das?! Team AQUA?\n"
+	.string "Garantiert war das Team AQUA!$"
+
+LilycoveCity_Text_MissingPokemonCameBack::
+	.string "Mein geklautes POKéMON……\n"
+	.string "Es kam einfach wieder zurück! Sachen gibt's.$"
+
+LilycoveCity_Text_ImArtDealer::
+	.string "Ich bin KUNSTHÄNDLER.\p"
+	.string "Ich verkloppe überteuerte Schinken an\n"
+	.string "Leute mit zu viel Kohle.\p"
+	.string "Man sagt, das MUSEUM hier hätte ein paar\n"
+	.string "brauchbare Werke rumstehen……$"
+
+LilycoveCity_Text_SeaRemainsForeverYoung::
+	.string "Während wir alt und schrumpelig werden,\n"
+	.string "bleibt das Meer immer gleich blau……\p"
+	.string "Fwohoho fwohohohoho……$"
+
+LilycoveCity_Text_SixtyYearsAgoHusbandProposed::
+	.string "Vor sechzig Jahren hat mein Alter mir\n"
+	.string "hier 'nen Antrag gemacht.\l"
+	.string "Das Meer ist immer noch schön. Er nicht.\p"
+	.string "Mufufufu mufufufufufu……$"
+
+LilycoveCity_Text_TeamAquaRenovatedCavern::
+	.string "Hm, du weißt von der seltsamen Höhle?\p"
+	.string "Früher war das Natur pur, aber dann kam\n"
+	.string "das Pack von TEAM AQUA und hat alles\l"
+	.string "umgebaut.\p"
+	.string "Die nennen sich ernsthaft\n"
+	.string "“naturverbundenes TEAM AQUA”!\p"
+	.string "Aber was die labern und was sie tun,\n"
+	.string "passt zusammen wie Feuer und Wasser!$"
+
+LilycoveCity_Text_TeamAquaLotGoneForGood::
+	.string "Diese Höhle in der Bucht……\p"
+	.string "Ich hab's erst gar nicht geschnallt,\n"
+	.string "aber jetzt ist sie komplett leer.\p"
+	.string "Dieses AQUA-Gesindel ist anscheinend\n"
+	.string "endlich für immer abgehauen.$"
+
+LilycoveCity_Text_MotelSign::
+	.string "COVE LILY MOTEL\p"
+	.string "“Schlaf hier oder bleib weg. Uns egal.”$"
+
+LilycoveCity_Text_MuseumSign::
+	.string "SEEGRASULB MUSEUM\p"
+	.string "“Krasse POKéMON-Bilder für Leute,\n"
+	.string "die keine Hobbys haben!”$"
+
+LilycoveCity_Text_MuseumSignPlayersExhibit::
+	.string "SEEGRASULB MUSEUM\p"
+	.string "“{PLAYER}s private Sammlung.\n"
+	.string "Glotzen verboten!”$"
+
+LilycoveCity_Text_HarborSign::
+	.string "HAFEN VON SEEGRASULB CITY\p"
+	.string "“Verschwende dein Geld auf der\n"
+	.string "Fähre S.S. TIDAL.”$"
+
+LilycoveCity_Text_TrainerFanClubSign::
+	.string "POKéMON TRAINER FAN CLUB\p"
+	.string "Das Schild ist vollgekritzelt mit Namen\n"
+	.string "von Leuten, die sich wichtig fühlen……$"
+
+LilycoveCity_Text_DepartmentStoreSign::
+	.string "EINKAUFSZENTRUM VON SEEGRASULB\p"
+	.string "“Wir haben alles, was du nicht brauchst,\n"
+	.string "zu Preisen, die dich arm machen!”$"
+
+LilycoveCity_Text_DoYouKnowAboutBerryBlender::
+	.string "Kennst du dieses Beeren-Mix-Teil?$"
+
+LilycoveCity_Text_FasterSpinBetterPokeblocks::
+	.string "Man muss mit anderen zusammenarbeiten,\n"
+	.string "damit das Ding schneller dreht.\p"
+	.string "Je schneller es eiert, desto bessere\n"
+	.string "{POKEBLOCK}S kriegst du raus. Angeblich.$"
+
+LilycoveCity_Text_ExplainBerryBlender::
+	.string "Damit macht man dieses Zeug namens\n"
+	.string "{POKEBLOCK}.\p"
+	.string "Wenn du den Mist an deine POKéMON ver-\n"
+	.string "fütterst, sehen sie vielleicht besser aus.$"
+
+LilycoveCity_Text_HeardTowerCalledSkyPillar::
+	.string "Ich hab gehört, irgendwo auf dem Meer\n"
+	.string "soll ein Turm rumstehen.\p"
+	.string "HIMMELSTURM oder so heißt der Kasten.$"
+
+LilycoveCity_Text_SawTallTowerOnRoute131::
+	.string "Ich hab so 'nen fetten Turm auf der\n"
+	.string "ROUTE 131 gesehen.\p"
+	.string "Könnte das etwa…… neee, oder?$"
+
+LilycoveCity_Text_JustArrivedAndSawRarePokemon::
+	.string "Wir sind gerade auf Hochzeitsreise hier.\p"
+	.string "Haben direkt 'n DRACHEN-POKéMON am Himmel\n"
+	.string "gesehen. Voll abgefahren!\p"
+	.string "Gibt's hier in HOENN nur so krasses Vieh?$"
+
+LilycoveCity_Text_HoneymoonVowToSeeRarePokemon::
+	.string "In unseren Flitterwochen wollten wir so\n"
+	.string "viele seltene Viecher sehen wie möglich.\p"
+	.string "Und zack, kaum da, schon das erste im Sack.\n"
+	.string "Wir sind so verdammt glücklich, ey!$"
+
+LilycoveCity_Text_BrendanWontBeBeaten:
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Ich lass mich von dir doch nicht\n"
+	.string "ewig abziehen! Pass mal auf!$"
 
 LilycoveCity_Text_BrendanBattleMe:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Want to battle to see who's\n"
-	.string "been raising POKéMON better?{COLOR DARK_GRAY}$"
-LilycoveCity_Text_BrendanWontBeBeaten:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Aww, but you know I'm not\n"
-	.string "going to lose to no {PLAYER}.{COLOR DARK_GRAY}$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Na, bereit für 'ne Abreibung?$"
 
-LilycoveCity_Text_BrendanDefeat:
-	.string "Humph…\n"
-	.string "You've done a lot of raising.\p"
-	.string "That stings a bit--I had a head start\n"
-	.string "on you as a TRAINER…$"
+LilycoveCity_Text_MayYouGoingToPokemonLeague:
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Willst du echt zur LIGA?\n"
+	.string "Viel Erfolg, du wirst es brauchen...$"
+
+LilycoveCity_Text_MayYouGoingToBattleFrontier:
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Gehst du zur KAMPFZONE?\n"
+	.string "Da fressen sie dich lebendig!$"
 
 LilycoveCity_Text_BrendanGoingBackToLittleroot:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: I…\n"
-	.string "I plan on going home to LITTLEROOT.\p"
-	.string "You know I'm helping out my dad on his\n"
-	.string "POKéDEX. It's coming together pretty\l"
-	.string "decently, so I should go show him.{COLOR DARK_GRAY}$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Ich verpiss mich zurück nach\n"
+	.string "WURZELHEIM. Muss mehr trainieren...$"
 
 LilycoveCity_Text_BrendanYouGoingToCollectBadges:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Collect all the GYM BADGES and take\n"
-	.string "the POKéMON LEAGUE challenge?\p"
-	.string "Maybe I'll do that, too…\p"
-	.string "Well, anyway, hang in there!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Sammelst du immer noch Orden?\n"
+	.string "Bisschen langsam, was?$"
 
 LilycoveCity_Text_BrendanYouGoingToPokemonLeague:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Since you're that strong, are you\n"
-	.string "taking the POKéMON LEAGUE challenge?\p"
-	.string "Heh, even me--if I trained my POKéMON\n"
-	.string "a bit more, I should be stronger than\l"
-	.string "you, {PLAYER}.\p"
-	.string "Well, anyway, hang in there!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Du willst zur POKéMON LIGA?\n"
+	.string "Träum weiter, Kleiner!$"
 
 LilycoveCity_Text_BrendanYouGoingToBattleFrontier:
-	.string "{PLAYER}, what are you going to do?\p"
-	.string "Are you taking the BATTLE FRONTIER\n"
-	.string "challenge?\p"
-	.string "Or, are you going to complete your\n"
-	.string "POKéDEX?\p"
-	.string "Since you're that strong, you should\n"
-	.string "consider the BATTLE FRONTIER.\p"
-	.string "Heh, if I train my POKéMON a bit more,\n"
-	.string "I'll get stronger than you, {PLAYER}.\p"
-	.string "Maybe I should go to the BATTLE\n"
-	.string "FRONTIER.\p"
-	.string "Well, anyway, hang in there!$"
-
-LilycoveCity_Text_MovedLootIntoHideoutToday:
-	.string "Fufufu…\p"
-	.string "We moved more loot into our secret\n"
-	.string "HIDEOUT today…\p"
-	.string "Wh-who are you?!\n"
-	.string "I was just talking to myself!$"
-
-LilycoveCity_Text_ChanceToDoBigThings:
-	.string "I'm just a GRUNT, so I don't know what\n"
-	.string "the BOSS is thinking…\p"
-	.string "But being on TEAM AQUA, I know I'll get\n"
-	.string "the chance to do big things!\p"
-	.string "Wh-who are you?!\n"
-	.string "I was just talking to myself!$"
-
-LilycoveCity_Text_DontGoNearCaveInCove:
-	.string "Hey, you!\p"
-	.string "Don't go near the cave in the cove!\p"
-	.string "Why? You don't need a reason why!\n"
-	.string "I'm an adult, so you just listen to me!$"
-
-LilycoveCity_Text_IfWorldBecomesOurs:
-	.string "If this whole wide world becomes ours,\n"
-	.string "TEAM AQUA's, it will be a happier\l"
-	.string "place for POKéMON, too.$"
-
-LilycoveCity_Text_WailmerLeapOutOfWater:
-	.string "There! WAILMER!\n"
-	.string "Leap out of the water now!$"
-
-LilycoveCity_Text_GetLostMessingUpTraining:
-	.string "Hunh? What do you want?\p"
-	.string "You're messing up our training,\n"
-	.string "so can you, like, get lost?$"
-
-LilycoveCity_Text_ContestHallInTown:
-	.string "There's a POKéMON CONTEST HALL\n"
-	.string "right in this here town. \p"
-	.string "That means well-raised POKéMON will\n"
-	.string "come from all over the country.\p"
-	.string "My heart swells with excitement!$"
-
-LilycoveCity_Text_StrangeCaveInCove:
-	.string "Have you seen that strange cave in\n"
-	.string "the cove at the edge of town?$"
-
-LilycoveCity_Text_GoingToMoveDeleterForHMs:
-	.string "I'm going to teach my POKéMON some new\n"
-	.string "moves for entering a CONTEST.\p"
-	.string "So, I'm going to see the MOVE DELETER\n"
-	.string "and make it forget HM moves.$"
-
-LilycoveCity_Text_ImFromKanto:
-	.string "I came from KANTO.\p"
-	.string "The HOENN region is beautiful with\n"
-	.string "all its water and verdant nature.\p"
-	.string "Hunh? Wait a second…\p"
-	.string "Could there be rare POKéMON that live\n"
-	.string "only in this area?$"
-
-LilycoveCity_Text_TeamAquaBeenTrainingWailmer:
-	.string "TEAM AQUA's been training their\n"
-	.string "WAILMER in the cove.\p"
-	.string "We SAILORS can't get our boats out\n"
-	.string "to sea with them in the way!$"
-
-LilycoveCity_Text_SomeonePuntedTeamAquaOut:
-	.string "Ahoy, did you know?\p"
-	.string "Someone punted TEAM AQUA out of\n"
-	.string "the way for us!\p"
-	.string "That got the WAILMER out of the cove,\n"
-	.string "so we can get our boats out again.$"
-
-LilycoveCity_Text_SomeoneStoleMyPokemon:
-	.string "I was taking a relaxing snooze at the\n"
-	.string "seaside inn to the sound of waves…\p"
-	.string "When someone stole my POKéMON!\p"
-	.string "Who's the abductor?\n"
-	.string "TEAM AQUA? Is it TEAM AQUA?$"
-
-LilycoveCity_Text_MissingPokemonCameBack:
-	.string "My missing POKéMON…\n"
-	.string "It came back without me noticing!$"
-
-LilycoveCity_Text_ImArtDealer:
-	.string "I'm an ART DEALER.\p"
-	.string "I am a buyer and seller of fine art,\n"
-	.string "especially paintings.\p"
-	.string "I've heard that the MUSEUM here has\n"
-	.string "magnificent works on exhibit…$"
-
-LilycoveCity_Text_SeaRemainsForeverYoung:
-	.string "Even as we grow old and wrinkled,\n"
-	.string "the sea remains forever young with\l"
-	.string "the vivid brilliance of life…\p"
-	.string "Fwohoho fwohohohoho…$"
-
-LilycoveCity_Text_SixtyYearsAgoHusbandProposed:
-	.string "It was sixty years ago that my husband\n"
-	.string "proposed to me here.\l"
-	.string "The sea remains as beautiful as ever.\p"
-	.string "Mufufufu mufufufufufu…$"
-
-LilycoveCity_Text_TeamAquaRenovatedCavern:
-	.string "Hm, you know of the peculiar cavern\n"
-	.string "in this cove?\p"
-	.string "That had been a natural formation,\n"
-	.string "but then that TEAM AQUA lot came\l"
-	.string "along and made their renovations.\p"
-	.string "They call themselves\n"
-	.string "the “nature-loving TEAM AQUA”!\p"
-	.string "But what they do and what they say\n"
-	.string "don't match at all!$"
-
-LilycoveCity_Text_TeamAquaLotGoneForGood:
-	.string "That cave in the cove…\p"
-	.string "I didn't notice it right away,\n"
-	.string "but it's completely empty now.\p"
-	.string "That TEAM AQUA lot, they must\n"
-	.string "have gone away for good.$"
-
-LilycoveCity_Text_CitySign:
-	.string "LILYCOVE CITY\p"
-	.string "“Where the land ends and the\n"
-	.string "sea begins.”$"
-
-LilycoveCity_Text_ContestHallSign:
-	.string "POKéMON CONTEST HALL\n"
-	.string "“The gathering place for TRAINERS!”$"
-
-LilycoveCity_Text_MotelSign:
-	.string "COVE LILY MOTEL\p"
-	.string "“Remember us as COVE LILY of\n"
-	.string "LILYCOVE.”$"
-
-LilycoveCity_Text_MuseumSign:
-	.string "LILYCOVE MUSEUM\p"
-	.string "“POKéMON Masterpiece Collection\n"
-	.string "on exhibit!”$"
-
-LilycoveCity_Text_MuseumSignPlayersExhibit:
-	.string "LILYCOVE MUSEUM\p"
-	.string "“{PLAYER}'s POKéMON Collection\n"
-	.string "on exhibit!”$"
-
-LilycoveCity_Text_HarborSignUnderConstruction:
-	.string "LILYCOVE CITY HARBOR\p"
-	.string "“The ferry S.S. TIDAL is under\n"
-	.string "construction in SLATEPORT CITY.\p"
-	.string "“Service is scheduled to begin\n"
-	.string "shortly.”$"
-
-LilycoveCity_Text_HarborSign:
-	.string "LILYCOVE CITY HARBOR\p"
-	.string "“Enjoy a delightful cruise on\n"
-	.string "the ferry S.S. TIDAL.”$"
-
-LilycoveCity_Text_TrainerFanClubSign:
-	.string "POKéMON TRAINER FAN CLUB\p"
-	.string "The names of TRAINERS are scribbled\n"
-	.string "all over the sign…$"
-
-LilycoveCity_Text_DepartmentStoreSign:
-	.string "LILYCOVE DEPARTMENT STORE\p"
-	.string "“Overflowing with great merchandise\n"
-	.string "and excitement!\p"
-	.string "“A great place to find that something\n"
-	.string "you need!”$"
-
-LilycoveCity_Text_MoveDeletersHouseSign:
-	.string "MOVE DELETER'S HOUSE\p"
-	.string "“Unwanted POKéMON moves deleted.”$"
-
-LilycoveCity_Text_DoYouKnowAboutBerryBlender:
-	.string "Do you know about the machine\n"
-	.string "BERRY BLENDER?$"
-
-LilycoveCity_Text_FasterSpinBetterPokeblocks:
-	.string "People have to work together to get it\n"
-	.string "to spin faster.\p"
-	.string "The faster you can make it spin, the\n"
-	.string "better {POKEBLOCK}S you can get, I've heard.$"
-
-LilycoveCity_Text_ExplainBerryBlender:
-	.string "It's used for making a kind of candy\n"
-	.string "called a {POKEBLOCK}.\p"
-	.string "If you give a good {POKEBLOCK} to a POKéMON,\n"
-	.string "its condition will improve by a lot.$"
-
-LilycoveCity_Text_HeardTowerCalledSkyPillar:
-	.string "I heard there's a tower somewhere out\n"
-	.string "on the sea routes.\p"
-	.string "It's called the SKY PILLAR, I hear.$"
-
-LilycoveCity_Text_SawTallTowerOnRoute131:
-	.string "I saw this tall tower somewhere\n"
-	.string "around ROUTE 131.\p"
-	.string "Could that possibly be…?$"
-
-LilycoveCity_Text_JustArrivedAndSawRarePokemon:
-	.string "We just arrived here on our\n"
-	.string "honeymoon vacation.\p"
-	.string "We happened to see a DRAGON-type\n"
-	.string "POKéMON flying way up in the sky.\p"
-	.string "Do cool POKéMON like that live in\n"
-	.string "the HOENN region?$"
-
-LilycoveCity_Text_HoneymoonVowToSeeRarePokemon:
-	.string "On our honeymoon, we vowed to see as\n"
-	.string "many rare POKéMON as we can.\p"
-	.string "So we were delighted to see a rare\n"
-	.string "POKéMON as soon as we arrived.\p"
-	.string "I mean, we are totally happy!$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: KAMPFZONE? Da wirst du doch\n"
+	.string "eh nur direkt rausgeworfen.$"
 

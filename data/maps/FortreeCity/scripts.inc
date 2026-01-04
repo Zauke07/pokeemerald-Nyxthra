@@ -87,72 +87,74 @@ FortreeCity_Movement_KecleonFlee:
 	walk_right
 	step_end
 
-FortreeCity_Text_SawGiganticPokemonInSky:
-	.string "Niemand glaubt mir. Aber ich habe\n"
-	.string "wirklich ein riesiges Pokémon am\l"
-	.string "Himmel gesehen!\p"
-	.string "Als es Richtung ROUTE 131 flog, schien\n"
-	.string "es sich zu winden.\p"
-	.string "Schnüffel…\n"
-	.string "Äh… Du, uh… riechst angesengt.\p"
-	.string "Warst du auf einem Vulkan oder so?$"
+FortreeCity_Text_SawGiganticPokemonInSky::
+	.string "Kein Schwein glaubt mir. Aber ich hab\n"
+	.string "ein gigantisches POKéMON am Himmel\l"
+	.string "gesehen, ohne Witz!\p"
+	.string "Das Teil ist Richtung ROUTE 131\n"
+	.string "geeiert und hat sich voll gewunden.\p"
+	.string "Schnüffel……\n"
+	.string "Sag mal…… Du riechst nach Grillfest.\p"
+	.string "Warst du in 'nem Vulkan oder hast du\n"
+	.string "beim Kochen versagt?$"
 
-FortreeCity_Text_SomethingBlockingGym:
-	.string "Ich wollte zur Pokémon ARENA, aber\n"
-	.string "irgendetwas blockiert den Weg.\p"
-	.string "Und das, nachdem ich auf der ROUTE 120\n"
-	.string "so fleißig trainiert habe…$"
+FortreeCity_Text_SomethingBlockingGym::
+	.string "Ich wollte gerade zur ARENA, aber\n"
+	.string "da ist irgendwas Unsichtbares im Weg.\p"
+	.string "Echt jetzt? Da trainier ich wie ein\n"
+	.string "Ochse auf ROUTE 120 und dann das……$"
 
-FortreeCity_Text_ThisTimeIllBeatWinona:
-	.string "Dieses Pokémon ist mein ganzer Stolz!\n"
-	.string "Diesmal werde ich WIBKE besiegen!$"
+FortreeCity_Text_ThisTimeIllBeatWinona::
+	.string "Dieses POKéMON hier ist mein ganzer\n"
+	.string "Stolz! Damit mach ich WIBKE platt!\l"
+	.string "Die wird gar nicht wissen, wie ihr\l"
+	.string "geschieht!$"
 
-FortreeCity_Text_TreesGrowByDrinkingRainwater:
-	.string "Der Boden nimmt das Regenwasser auf,\n"
-	.string "die Bäume trinken es und wachsen…\p"
-	.string "Unser BAUMHAUSEN CITY existiert, weil\n"
-	.string "es genügend Wasser und Boden gibt.$"
+FortreeCity_Text_TreesGrowByDrinkingRainwater::
+	.string "Der Boden säuft den Regen und die\n"
+	.string "Bäume saufen den Boden leer……\p"
+	.string "BAUMHAUSEN CITY existiert nur, weil\n"
+	.string "wir hier genug Matsch und Wasser haben.$"
 
-FortreeCity_Text_EveryoneHealthyAndLively:
-	.string "Die STADT besteht aus Häusern, die auf\n"
-	.string "Bäumen gebaut sind.\p"
-	.string "Aufgrund dieser Lebensweise ist jeder\n"
-	.string "hier gesund und munter.\p"
-	.string "Und auch ich fühle mich, als sei ich\n"
-	.string "30 Jahre jünger geworden.$"
+FortreeCity_Text_EveryoneHealthyAndLively::
+	.string "Wir hocken hier oben auf den Bäumen\n"
+	.string "wie die Affen.\p"
+	.string "Anscheinend macht das gesund und\n"
+	.string "munter, oder so'n Quatsch.\p"
+	.string "Ich fühl mich jedenfalls, als wär ich\n"
+	.string "30 Jahre jünger. Fast schon gruselig.$"
 
-FortreeCity_Text_BugPokemonComeThroughWindow:
-	.string "Auf Bäumen zu leben, ist klasse.\p"
-	.string "Aber manchmal kommen KÄFER-Pokémon\n"
-	.string "durch die Fenster herein.\l"
-	.string "Das kann einen ganz schön erschrecken.$"
+FortreeCity_Text_BugPokemonComeThroughWindow::
+	.string "Klar, Baumhaus ist cool.\p"
+	.string "Blöd nur, wenn einem ständig diese\n"
+	.string "KÄFER-Viecher durchs Fenster fliegen.\l"
+	.string "Da kriegst du echt 'nen Anfall!$"
 
-FortreeCity_Text_PokemonThatEvolveWhenTraded:
-	.string "Manche Pokémon entwickeln sich, wenn\n"
-	.string "man sie tauscht. Das habe ich\l"
-	.string "jedenfalls gehört.$"
+FortreeCity_Text_PokemonThatEvolveWhenTraded::
+	.string "Manche POKéMON entwickeln sich erst,\n"
+	.string "wenn man sie wegtauscht. Wer lässt\l"
+	.string "sich so einen Mist einfallen?$"
 
-FortreeCity_Text_SomethingUnseeable:
-	.string "Etwas Unsichtbares blockiert den Weg.$"
+FortreeCity_Text_SomethingUnseeable::
+	.string "Irgendwas Unsichtbares nervt hier rum\n"
+	.string "und blockiert den Weg.$"
 
-FortreeCity_Text_UnseeableUseDevonScope:
-	.string "Etwas Unsichtbares blockiert den Weg.\p"
-	.string "Willst du das DEVON-SCOPE einsetzen?$"
+FortreeCity_Text_UnseeableUseDevonScope::
+	.string "Da ist wieder dieser unsichtbare Mist im\n"
+	.string "Weg. Willst du das DEVON-SCOPE nutzen?$"
 
-FortreeCity_Text_UsedDevonScopePokemonFled:
+FortreeCity_Text_UsedDevonScopePokemonFled::
 	.string "{PLAYER} setzt das DEVON-SCOPE ein.\p"
-	.string "Ein unsichtbares Pokémon ist sichtbar\n"
-	.string "geworden!\p"
-	.string "Das erschrockene Pokémon flieht!$"
+	.string "Das POKéMON wird sichtbar gemacht!\p"
+	.string "Das kleine feige Ding haut sofort ab!$"
 
-FortreeCity_Text_CitySign:
+FortreeCity_Text_CitySign::
 	.string "BAUMHAUSEN CITY\n"
-	.string "“Die Stadt in den Baumkronen,\l"
-	.string "verbrüdert mit der Natur.”$"
+	.string "“Wir hocken auf Bäumen und halten\l"
+	.string "uns für was Besseres.”$"
 
-FortreeCity_Text_GymSign:
-	.string "Pokémon ARENA von BAUMHAUSEN CITY\n"
+FortreeCity_Text_GymSign::
+	.string "POKéMON ARENA von BAUMHAUSEN CITY\n"
 	.string "LEITERIN: WIBKE\p"
-	.string "“Die Vogel-Liebhaberin hebt ab zum\n"
-	.string "Flug in die Welt.”$"
+	.string "“Die Vögel-Tante macht den Abflug!”$"
 

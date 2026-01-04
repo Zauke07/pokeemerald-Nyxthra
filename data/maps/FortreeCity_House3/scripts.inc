@@ -9,22 +9,24 @@ FortreeCity_House3_EventScript_SchoolKidM::
 	msgbox FortreeCity_House3_Text_OhYouHavePokedex, MSGBOX_NPC
 	end
 
-FortreeCity_House3_Text_MetStevenHadAmazingPokemon:
-	.string "Da wir gerade vom POKéDEX reden… Ich\n"
-	.string "erinnere mich…\p"
-	.string "Ich habe diesen TRAINER, TROY,\n"
-	.string "getroffen, als ich seltene Steine\l"
-	.string "suchte.\p"
-	.string "Oh Junge, der hatte vielleicht\n"
-	.string "interessante Pokémon bei sich!\p"
+FortreeCity_House3_Text_MetStevenHadAmazingPokemon::
+	.string "Wo wir gerade von deinem mickrigen\n"
+	.string "POKéDEX reden…… Ich erinnere mich……\p"
+	.string "Ich hab diesen Typen, TROY, getroffen,\n"
+	.string "als ich im Dreck nach Steinen gewühlt hab.\p"
+	.string "Heilige Scheiße, hatte der krasse\n"
+	.string "POKéMON dabei!\p"
 	.string "Die waren nicht nur selten, sondern\n"
-	.string "auch ausgesprochen gut trainiert!\p"
-	.string "Er ist bestimmt stärker als die ARENA-\n"
-	.string "LEITERIN in diesem Ort…$"
+	.string "hätten dich wahrscheinlich mit einem\l"
+	.string "Hustenstoß weggepustet!\p"
+	.string "Der Typ ist garantiert tausendmal stärker\n"
+	.string "als unsere eingebildete ARENALEITERIN!$"
 
-FortreeCity_House3_Text_OhYouHavePokedex:
-	.string "Was ist das da? Was hast du da?\p"
-	.string "… … … … … …\p"
-	.string "Oh, das ist also ein POKéDEX?\n"
-	.string "Der ist aber wirklich klasse!$"
+FortreeCity_House3_Text_OhYouHavePokedex::
+	.string "Was glotzt du so? Was hast du da in\n"
+	.string "deiner ungewaschenen Hand?\p"
+	.string "…… …… …… ……\n"
+	.string "…… …… …… ……\p"
+	.string "Oh, ein POKéDEX? Wer hat dir denn\n"
+	.string "das teure Teil anvertraut?$"
 

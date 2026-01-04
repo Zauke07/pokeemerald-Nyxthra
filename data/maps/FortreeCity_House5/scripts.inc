@@ -19,18 +19,20 @@ FortreeCity_House5_EventScript_Zigzagoon::
 	release
 	end
 
-FortreeCity_House5_Text_TreeHousesAreGreat:
-	.string "Die Baumhäuser von BAUMHAUSEN\n"
-	.string "CITY sind fantastisch!\p"
-	.string "Ich glaube, es ist der beste Platz, um\n"
-	.string "mit seinen Pokémon zusammenzuleben.$"
+FortreeCity_House5_Text_TreeHousesAreGreat::
+	.string "Die Baumhäuser hier in BAUMHAUSEN\n"
+	.string "sind der absolute Hammer!\p"
+	.string "Wer in 'ner normalen Bude wohnt, hat\n"
+	.string "die Kontrolle über sein Leben verloren.\l"
+	.string "Hier oben ist man unter sich!$"
 
-FortreeCity_House5_Text_AdaptedToNature:
-	.string "Pokémon und Menschen sind auf die\n"
-	.string "Natur angewiesen, um zu überleben.\p"
-	.string "Es gibt überhaupt keinen Grund, die\n"
-	.string "Natur nach unserem Willen zu formen.$"
+FortreeCity_House5_Text_AdaptedToNature::
+	.string "Wir hängen hier am Tropf der Natur,\n"
+	.string "ob du's glaubst oder nicht.\p"
+	.string "Nur ignorante Stadt-Deppen versuchen,\n"
+	.string "der Welt ihren Willen aufzuzwingen.\l"
+	.string "Friss den Matsch oder geh weg!$"
 
-FortreeCity_House5_Text_Zigzagoon:
-	.string "ZIGZACHS: Bufuu!$"
+FortreeCity_House5_Text_Zigzagoon::
+	.string "ZIGZACHS: Bufuu! (Verpiss dich!)$"
 

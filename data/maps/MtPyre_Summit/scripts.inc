@@ -421,197 +421,197 @@ MtPyre_Summit_EventScript_Grunt4::
 	msgbox MtPyre_Summit_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MtPyre_Summit_Text_Grunt1Intro:
-	.string "No! Those TEAM MAGMA goons got\n"
-	.string "here ahead of us!\p"
-	.string "We can't fall behind!$"
+MtPyre_Summit_Text_Grunt1Intro::
+	.string "{COLOR BLUE}Verdammt! Diese MAGMA-Idioten waren\n"
+	.string "tatsächlich vor uns hier!\p"
+	.string "Wir dürfen uns von diesen Lappen nicht\n"
+	.string "abhängen lassen!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt1Defeat:
-	.string "I thought you were one of the MAGMAS\n"
-	.string "who happened to come back…$"
+MtPyre_Summit_Text_Grunt1Defeat::
+	.string "{COLOR BLUE}Ich dachte, du wärst einer von den\n"
+	.string "MAGMAS, der zu dumm zum Weglaufen war…{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt1PostBattle:
-	.string "Yeah, so you are strong…\n"
-	.string "But there're a lot of us!$"
+MtPyre_Summit_Text_Grunt1PostBattle::
+	.string "{COLOR BLUE}Ja, ja, du kannst kämpfen… Aber wir\n"
+	.string "haben noch 'ne ganze Armee am Start!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt2Intro:
-	.string "Hah!\n"
-	.string "Too bad for you!\p"
-	.string "If you came earlier, you only would've\n"
-	.string "had to battle the wimpy TEAM MAGMA.\p"
-	.string "But since you arrived now, you have\n"
-	.string "to take on us toughies!$"
+MtPyre_Summit_Text_Grunt2Intro::
+	.string "{COLOR BLUE}Hah! Pech für dich, Kleiner!\p"
+	.string "Wärst du früher gekommen, hättest du\n"
+	.string "nur gegen Team Magma kämpfen müssen.\p"
+	.string "Aber jetzt hast du die Ehre, von den\n"
+	.string "echten Kerlen vermöbelt zu werden!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt2Defeat:
-	.string "Urgh… I should've let you take on\n"
-	.string "TEAM MAGMA first…$"
+MtPyre_Summit_Text_Grunt2Defeat::
+	.string "{COLOR BLUE}Urgh… Ich hätte dich erst Team Magma\n"
+	.string "abfertigen lassen sollen…{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt2PostBattle:
-	.string "You don't know anything!\n"
-	.string "So why are you messing with us?$"
+MtPyre_Summit_Text_Grunt2PostBattle::
+	.string "{COLOR BLUE}Du hast doch keine Ahnung!\n"
+	.string "Warum mischt du dich überhaupt ein?{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt3Intro:
-	.string "You…\n"
-	.string "We saw you at MT. CHIMNEY.\p"
-	.string "You don't belong to either TEAM,\n"
-	.string "so why would you be here?$"
+MtPyre_Summit_Text_Grunt3Intro::
+	.string "{COLOR BLUE}Dich Kenn ich doch…\n"
+	.string "Du hast am SCHORNSTEINBERG genervt.\p"
+	.string "Du gehörst zu keinem Verein, also was\n"
+	.string "willst du hier auf dem Friedhof?{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt3Defeat:
-	.string "If you're going to mess with anyone,\n"
-	.string "let it be TEAM MAGMA…$"
+MtPyre_Summit_Text_Grunt3Defeat::
+	.string "{COLOR BLUE}Wenn du unbedingt jemanden stressen\n"
+	.string "willst, dann geh zu TEAM MAGMA…{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt3PostBattle:
-	.string "Heh, it doesn't matter!\n"
-	.string "We bought ourselves some time!\p"
-	.string "The BOSS should have snatched what\n"
-	.string "he was after!$"
+MtPyre_Summit_Text_Grunt3PostBattle::
+	.string "{COLOR BLUE}Heh, egal! Wir haben genug Zeit\n"
+	.string "geschunden!\p"
+	.string "Der BOSS sollte sich das Teil jetzt\n"
+	.string "unter den Nagel gerissen haben!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt4Intro:
-	.string "Oh, I know!\n"
-	.string "You tried to join TEAM MAGMA,\l"
-	.string "but they wouldn't have you!\p"
-	.string "Well, don't think that we'll let you\n"
-	.string "join our TEAM AQUA!$"
+MtPyre_Summit_Text_Grunt4Intro::
+	.string "{COLOR BLUE}Oh, ich weiß es!\n"
+	.string "Du wolltest bei Team Magma mitmachen,\l"
+	.string "aber die wollten dich nicht mal geschenkt!\p"
+	.string "Glaub bloß nicht, dass wir bei\n"
+	.string "TEAM AQUA jeden Versager nehmen!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt4Defeat:
-	.string "If you want to join TEAM AQUA that\n"
-	.string "badly, we can consider it…$"
+MtPyre_Summit_Text_Grunt4Defeat::
+	.string "{COLOR BLUE}Na gut, wenn du unbedingt zu uns willst,\n"
+	.string "könnten wir drüber reden… vielleicht.{COLOR WHITE}$"
 
-MtPyre_Summit_Text_Grunt4PostBattle:
-	.string "We have a great combination going\n"
-	.string "with us members and our leader.$"
+MtPyre_Summit_Text_Grunt4PostBattle::
+	.string "{COLOR BLUE}Wir sind ein unschlagbares Team,\n"
+	.string "solange der Boss uns sagt, was wir tun!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "ARCHIE: TEAM MAGMA's MAXIE got ahead\n"
-	.string "of us, but we also got what we wanted.\p"
-	.string "The RED ORB preserved at MT. PYRE…\n"
-	.string "I, ARCHIE, now have it in my possession!\p"
-	.string "Fufufu… Now we can bring our ultimate\n"
-	.string "objective to fruition!\p"
-	.string "Okay, TEAM!\n"
-	.string "We're pulling out!$"
+MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo::
+	.string "{COLOR BLUE}ADRIAN: Team Magma war zwar schneller,\n"
+	.string "aber wir haben auch, was wir wollten.\p"
+	.string "Die ROTE KUGEL vom PYROBERG…\n"
+	.string "Ich, ADRIAN, hab sie jetzt im Sack!\p"
+	.string "Fufufu… Jetzt können wir unseren Plan\n"
+	.string "endlich durchziehen!\p"
+	.string "Abflug, Leute!\n"
+	.string "Wir verschwinden!{COLOR WHITE}$"
 
-MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:
-	.string "Oh, no…\n"
-	.string "This cannot happen…\p"
-	.string "Not only the BLUE ORB, but even\n"
-	.string "the RED ORB has been taken…\p"
-	.string "The BLUE ORB and RED ORB must never\n"
-	.string "be separated. They belong together.\p"
-	.string "What are those men trying to do with\n"
-	.string "the two ORBS?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Oh, yes. Was it TEAM MAGMA who came\n"
-	.string "and took the BLUE ORB first?\p"
-	.string "Well, in their haste, they left this\n"
-	.string "behind.\p"
-	.string "I couldn't imagine what exactly it\n"
-	.string "could be.\p"
-	.string "I would like you to have it.\n"
-	.string "Perhaps it will be useful in some way.$"
+MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis::
+	.string "Oh, nein…\n"
+	.string "Das darf doch nicht wahr sein…\p"
+	.string "Nicht nur die BLAUE KUGEL, sondern\n"
+	.string "auch noch die ROTE KUGEL weg…\p"
+	.string "Die Kugeln gehören zusammen. Wenn man\n"
+	.string "sie trennt, gibt's richtig Ärger.\p"
+	.string "Was wollen diese Spinner bloß mit\n"
+	.string "den zwei Dingern anstellen?\p"
+	.string "…… …… …… ……\n"
+	.string "…… …… …… ……\p"
+	.string "Ach ja. Team Magma war zuerst hier und\n"
+	.string "hat die BLAUE KUGEL geklaut.\p"
+	.string "Dabei haben diese Hektiker das hier\n"
+	.string "einfach liegen lassen.\p"
+	.string "Keine Ahnung, was das für'n Schrott ist.\p"
+	.string "Hier, nimm's mit. Vielleicht kannst du\n"
+	.string "damit ja irgendwas anfangen.$"
 
-MtPyre_Summit_Text_OrbsHaveBeenTaken:
-	.string "The BLUE ORB and RED ORB taken by\n"
-	.string "those sinister men…\p"
-	.string "They must never be apart…\n"
-	.string "I fear something terrible will happen…$"
+MtPyre_Summit_Text_OrbsHaveBeenTaken::
+	.string "Diese kriminellen Typen haben beide\n"
+	.string "Kugeln mitgehen lassen…\p"
+	.string "Das wird böse enden… Ich hab echt\n"
+	.string "Schiss, dass die Welt jetzt untergeht…$"
 
-MtPyre_Summit_Text_GroudonKyogreAwakened:
-	.string "Oh, my goodness…\p"
-	.string "You say that both GROUDON and KYOGRE\n"
-	.string "have been awakened?\p"
-	.string "It is said that the BLUE ORB and\n"
-	.string "the RED ORB quelled the rage of\l"
-	.string "the two POKéMON…\p"
-	.string "It is also said that the true owner\n"
-	.string "of the ORBS still exists.\p"
-	.string "However, no one knows who, or what\n"
-	.string "exactly, the ORBS belong to.\p"
-	.string "It could be a human, or perhaps\n"
-	.string "a POKéMON, but no one knows.$"
+MtPyre_Summit_Text_GroudonKyogreAwakened::
+	.string "Ach du heilige Sch…\p"
+	.string "Du sagst, dass sowohl GROUDON als auch\n"
+	.string "KYOGRE aufgewacht sind?\p"
+	.string "Die Legende sagt, dass die Kugeln den\n"
+	.string "Zorn der beiden Viecher bändigen…\p"
+	.string "Es heißt auch, dass es einen wahren\n"
+	.string "Besitzer der Kugeln gibt.\p"
+	.string "Aber keiner weiß, wer das sein soll.\p"
+	.string "Vielleicht ein Mensch, vielleicht ein\n"
+	.string "POKéMON… keine Ahnung.$"
 
-MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs:
-	.string "The two men who took the ORBS came\n"
-	.string "back to return them on their own.\p"
-	.string "Those men…\n"
-	.string "Perhaps they are not so evil after all…$"
+MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs::
+	.string "Die zwei Typen haben die Kugeln\n"
+	.string "tatsächlich freiwillig zurückgebracht.\p"
+	.string "Vielleicht sind sie doch nicht so\n"
+	.string "kaputt im Kopf, wie ich dachte…$"
 
-MtPyre_Summit_Text_SuperAncientPokemonTaughtUs:
-	.string "The embodiments of the land, sea,\n"
-	.string "and the sky…\p"
-	.string "That is said to be the identities of\n"
-	.string "the super-ancient POKéMON…\p"
-	.string "In the same way that we humans and\n"
-	.string "POKéMON have life, our world, too,\l"
-	.string "is alive…\p"
-	.string "The super-ancient POKéMON have\n"
-	.string "taught us that…$"
+MtPyre_Summit_Text_SuperAncientPokemonTaughtUs::
+	.string "Land, Meer und Himmel…\p"
+	.string "Das sind die Identitäten dieser\n"
+	.string "uralten Monster-POKéMON…\p"
+	.string "Genau wie wir und die POKéMON lebt,\n"
+	.string "lebt auch unsere Welt…\p"
+	.string "Diese Urzeit-Viecher haben uns das\n"
+	.string "auf die harte Tour beigebracht…$"
 
-MtPyre_Summit_Text_WillYouHearOutMyTale:
-	.string "MT. PYRE is where we calm the spirits\n"
-	.string "of POKéMON that have passed on…\p"
-	.string "This is a high place where one can\n"
-	.string "see all of HOENN…\p"
-	.string "The disembodied spirits of POKéMON\n"
-	.string "must find solace here…\p"
-	.string "Is it coincidence that you are here…\p"
-	.string "Will you hear out my tale? A tale long\n"
-	.string "told in the HOENN region?$"
+MtPyre_Summit_Text_WillYouHearOutMyTale::
+	.string "Der PYROBERG ist der Ort, an dem wir\n"
+	.string "tote POKéMON-Geister beruhigen…\p"
+	.string "Hier oben hat man 'nen fetten Ausblick\n"
+	.string "über ganz HOENN…\p"
+	.string "Ein guter Ort für die Geister, um\n"
+	.string "endlich die Klappe zu halten…\p"
+	.string "Ist es Zufall, dass du hier bist?\p"
+	.string "Willst du dir meine Story anhören?\n"
+	.string "Ist ein Klassiker hier in HOENN.$"
 
-MtPyre_Summit_Text_GroudonKyogreTale:
-	.string "It happened long, long ago…\p"
-	.string "The world was wracked by a ferocious\n"
-	.string "clash between the POKéMON of the land\l"
-	.string "and the POKéMON of the sea…\p"
-	.string "The POKéMON of the land raised\n"
-	.string "mountains and created continents…\p"
-	.string "The POKéMON of the sea raised huge\n"
-	.string "waves and carved out oceans…\p"
-	.string "Their fierce duel raged without end.\p"
-	.string "The world was engulfed in massive\n"
-	.string "infernos and vicious storms.\p"
-	.string "The BLUE ORB and the RED ORB brought\n"
-	.string "an end to the calamity.\p"
-	.string "Light poured from the two ORBS and\n"
-	.string "becalmed the enraged adversaries.\p"
-	.string "The pair, made docile, dove deep into\n"
-	.string "the sea where eventually they\l"
-	.string "disappeared…$"
+MtPyre_Summit_Text_GroudonKyogreTale::
+	.string "Das ist schon ewig her…\p"
+	.string "Die Welt wurde fast zerlegt, weil das\n"
+	.string "Land-Vieh und das Meer-Vieh sich\l"
+	.string "gegenseitig auf die Fresse gaben…\p"
+	.string "Das Land-Vieh hat Berge hochgezogen\n"
+	.string "und Kontinente erschaffen…\p"
+	.string "Das Meer-Vieh hat fette Wellen gemacht\n"
+	.string "und Ozeane ausgegraben…\p"
+	.string "Der Kampf ging ohne Ende weiter.\p"
+	.string "Überall gab's Feuer und heftige Stürme.\p"
+	.string "Erst die BLAUE und die ROTE KUGEL haben\n"
+	.string "das Massaker beendet.\p"
+	.string "Ein krasses Licht kam aus den Kugeln\n"
+	.string "und hat die beiden beruhigt.\p"
+	.string "Danach sind sie im Meer abgetaucht und\n"
+	.string "endlich verschwunden…$"
 
-MtPyre_Summit_Text_WellThatTooIsFine:
-	.string "I see…\n"
-	.string "Well, that, too, is fine…$"
+MtPyre_Summit_Text_WellThatTooIsFine::
+	.string "Ach so…\n"
+	.string "Na ja, dann eben nicht…$"
 
-MtPyre_Summit_Text_MaxieSilence:
-	.string "MAXIE: {PLAYER}…\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …$"
+MtPyre_Summit_Text_MaxieSilence::
+	.string "{COLOR RED}MARC: {PLAYER}…\p"
+	.string "…… …… …… ……\n"
+	.string "…… …… …… ……{COLOR WHITE}$"
 
-MtPyre_Summit_Text_HearTheNewLegendOfHoenn:
-	.string "It is my role to pass on the legends\n"
-	.string "of HOENN to future generations.\p"
-	.string "And the crisis that just ended in\n"
-	.string "SOOTOPOLIS rewrote a legend…\p"
-	.string "Have you the time to hear the new\n"
-	.string "legend of HOENN?$"
+MtPyre_Summit_Text_HearTheNewLegendOfHoenn::
+	.string "Es ist mein Job, die Legenden von\n"
+	.string "HOENN an die nächste Brut weiterzugeben.\p"
+	.string "Und die Krise in XENEROVILLE hat die\n"
+	.string "Legende gerade neu geschrieben…\p"
+	.string "Hast du Zeit für die neue Version?$"
 
-MtPyre_Summit_Text_HoennTrioTale:
-	.string "It happened long, long ago…\p"
-	.string "The world was wracked by a ferocious\n"
-	.string "clash between the POKéMON of the land\l"
-	.string "and the POKéMON of the sea…\p"
-	.string "The POKéMON of the land raised\n"
-	.string "mountains and created continents…\p"
-	.string "The POKéMON of the sea raised huge\n"
-	.string "waves and carved out oceans…\p"
-	.string "Their fierce duel raged without end.\p"
-	.string "The world was engulfed in massive\n"
-	.string "fires and vicious storms.\p"
-	.string "It was then that the POKéMON of\n"
-	.string "the sky descended from a storm.\p"
-	.string "The POKéMON, shining a vivid green,\n"
-	.string "becalmed the two enraged POKéMON.\p"
-	.string "Then, its duty done, the green POKéMON\n"
-	.string "flew off into the wild blue yonder…$"
+MtPyre_Summit_Text_HoennTrioTale::
+	.string "Das ist ewig her…\p"
+	.string "Land-Monster und Meer-Monster haben\n"
+	.string "sich bis aufs Blut bekämpft…\p"
+	.string "Berge wurden hochgezogen, Ozeane\n"
+	.string "ausgehoben, das volle Programm…\p"
+	.string "Der Krieg hörte einfach nicht auf.\p"
+	.string "Die Welt brannte und soff gleichzeitig\n"
+	.string "in Stürmen ab.\p"
+	.string "Da kam das POKéMON des Himmels aus\n"
+	.string "einem fetten Gewitter runtergekracht.\p"
+	.string "Das Teil war giftgrün und hat die\n"
+	.string "beiden Streithähne zur Räson gebracht.\p"
+	.string "Danach ist das grüne Ding wieder\n"
+	.string "nach oben abgezischt…$"
 
+MtPyre_Summit_EventScript_Kwaks::
+	msgbox MtPyre_Summit_Text_Kwaks, MSGBOX_NPC
+	end
+
+MtPyre_Summit_Text_Kwaks:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 7 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"

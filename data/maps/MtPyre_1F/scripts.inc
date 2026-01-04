@@ -25,23 +25,27 @@ MtPyre_1F_EventScript_Man::
 	msgbox MtPyre_1F_Text_RestingPlaceOfZigzagoon, MSGBOX_NPC
 	end
 
-MtPyre_1F_Text_TakeThisForYourOwnGood:
-	.string "All sorts of beings wander the slopes\n"
-	.string "of MT. PYRE…\p"
-	.string "There is no telling what may happen.\n"
-	.string "Take this. It's for your own good.$"
+MtPyre_1F_Text_TakeThisForYourOwnGood::
+	.string "Hier am Berg treiben sich alle möglichen\n"
+	.string "schrägen Gestalten rum…\p"
+	.string "Wer weiß, welcher Geist dich als Nächstes\n"
+	.string "anspringen will. Nimm das hier gefälligst.\l"
+	.string "Ist zu deinem eigenen Schutz, Kleiner.$"
 
-MtPyre_1F_Text_ExplainCleanseTag:
-	.string "Have a POKéMON hold that\n"
-	.string "CLEANSE TAG.\p"
-	.string "It will help ward off wild POKéMON.$"
+MtPyre_1F_Text_ExplainCleanseTag::
+	.string "Gib das SCHUTZBAND einem deiner\n"
+	.string "POKéMON zum Halten.\p"
+	.string "Es hält dir die wilden Viecher vom Hals,\n"
+	.string "damit du hier in Ruhe wandern kannst.$"
 
-MtPyre_1F_Text_ComeToPayRespects:
-	.string "Did you come to pay your respect\n"
-	.string "to the spirits of departed POKéMON?\p"
-	.string "You must care for your POKéMON a lot.$"
+MtPyre_1F_Text_ComeToPayRespects::
+	.string "Bist du hier, um den POKéMON-Geistern\n"
+	.string "die letzte Ehre zu erweisen?\p"
+	.string "Du scheinst deine Viecher ja echt zu\n"
+	.string "mögen. Hoffentlich krepieren sie nicht\l"
+	.string "so bald wie die hier…$"
 
-MtPyre_1F_Text_RestingPlaceOfZigzagoon:
-	.string "This is the final resting place of my\n"
-	.string "ZIGZAGOON. I cherished it…$"
-
+MtPyre_1F_Text_RestingPlaceOfZigzagoon::
+	.string "Hier vergammelt mein ZIGZACHS.\n"
+	.string "Ich hab das kleine Ding echt geliebt……\l"
+	.string "Jetzt ist es nur noch Dünger.$"

@@ -73,57 +73,58 @@ LilycoveCity_CoveLilyMotel_1F_Movement_OwnerReturn:
 	face_up
 	step_end
 
-LilycoveCity_CoveLilyMotel_1F_Text_GuestsDoubledByMascot:
-	.string "Hm, so they doubled the guests by\n"
-	.string "using POKéMON as attractions?\p"
-	.string "Hm, well, maybe I should make a cute\n"
-	.string "POKéMON our inn's mascot.\p"
-	.string "I wonder if that will attract more\n"
-	.string "guests to stay with us?$"
+LilycoveCity_CoveLilyMotel_1F_Text_GuestsDoubledByMascot::
+	.string "Hm, die haben die Gästezahlen verdoppelt,\n"
+	.string "nur weil sie Viecher als Köder nutzen?\p"
+	.string "Vielleicht sollte ich mir auch so ein\n"
+	.string "süßes POKéMON als Maskottchen zulegen.\p"
+	.string "Ob die Leute uns dann die Bude einrennen\n"
+	.string "und ihre Kohle hierlassen?$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_NoGuestsWithTeamAqua:
-	.string "Oh, sorry, sorry!\n"
-	.string "I was too involved in watching TV!\p"
-	.string "Since that TEAM AQUA came to town,\n"
-	.string "the tourists have been staying away.$"
+LilycoveCity_CoveLilyMotel_1F_Text_NoGuestsWithTeamAqua::
+	.string "Oh, verdammt! Sorry!\n"
+	.string "Die Glotze war gerade viel spannender!\p"
+	.string "Seit dieses Pack von TEAM AQUA hier rum-\n"
+	.string "lungert, traut sich kein Tourist mehr in\l"
+	.string "diese Absteige. Mies fürs Geschäft!$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_CantSeeTheTV:
-	.string "Hey, down in front!\n"
-	.string "I can't see the TV!$"
+LilycoveCity_CoveLilyMotel_1F_Text_CantSeeTheTV::
+	.string "He, nimm dein Haupt aus der Sonne!\n"
+	.string "Ich seh nix vom TV!$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_MonFoundLostItem:
-	.string "Amazing! You're telling me a POKéMON\n"
-	.string "found someone's lost item?\p"
-	.string "That's something. If we had some smart\n"
-	.string "POKéMON like that…\p"
-	.string "We could recover anything that our\n"
-	.string "guests mislaid…$"
+LilycoveCity_CoveLilyMotel_1F_Text_MonFoundLostItem::
+	.string "Krass! Du willst mir sagen, ein POKéMON\n"
+	.string "hat verlorenen Kram wiedergefunden?\p"
+	.string "Nicht schlecht. Wenn wir auch so ein\n"
+	.string "schlaues Viech hätten……\p"
+	.string "Dann könnten wir den Müll einsammeln,\n"
+	.string "den die Gäste ständig liegen lassen.$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_HeardAquaHideoutBusted:
-	.string "Oh, sorry, sorry!\n"
-	.string "I was too involved in watching TV!\p"
-	.string "I heard that someone busted\n"
-	.string "the TEAM AQUA HIDEOUT.\p"
-	.string "Thanks to that, we just booked\n"
-	.string "a reservation from a big group.\p"
-	.string "It was a company called… Uh…\n"
-	.string "GAME something…$"
+LilycoveCity_CoveLilyMotel_1F_Text_HeardAquaHideoutBusted::
+	.string "Oh, Ups! Sorry!\n"
+	.string "Ich war voll im TV-Modus gefangen!\p"
+	.string "Hab gehört, irgendwer hat das Versteck\n"
+	.string "von TEAM AQUA hochgenommen.\p"
+	.string "Dank dieser Aktion haben wir direkt 'ne\n"
+	.string "fette Buchung von 'ner großen Gruppe.\p"
+	.string "Die Firma hieß irgendwie……\n"
+	.string "GAME irgendwas……$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_HouseSittingMonCaughtBurglar:
-	.string "Amazing! A house-sitting POKéMON\n"
-	.string "caught a burglar?\p"
-	.string "That's something. If we had a tough\n"
-	.string "POKéMON as a security guard…\p"
-	.string "We would be able to provide our guests\n"
-	.string "with greater safety.$"
+LilycoveCity_CoveLilyMotel_1F_Text_HouseSittingMonCaughtBurglar::
+	.string "Abgefahren! Ein POKéMON hat als Sitter\n"
+	.string "einen Einbrecher gestellt?\p"
+	.string "Nicht übel. Wenn wir so ein brutales\n"
+	.string "Viech als Türsteher hätten……\p"
+	.string "Dann müssten wir uns hier nicht mehr mit\n"
+	.string "diesem kriminellen Gesindel rumärgern.$"
 
-LilycoveCity_CoveLilyMotel_1F_Text_BetterGetWorkingOnGuestsDinner:
-	.string "Oh, sorry, sorry!\n"
-	.string "I was too involved in watching TV.\p"
-	.string "Oh, yes. A big group of guests arrived\n"
-	.string "a little while ago.\p"
-	.string "They booked in as GAME FREAK,\n"
-	.string "so I guess they must make games.\p"
-	.string "Uh-oh, I'd better get working on\n"
-	.string "their dinner!$"
-
+LilycoveCity_CoveLilyMotel_1F_Text_BetterGetWorkingOnGuestsDinner::
+	.string "Oh, Mist! Sorry!\n"
+	.string "Ich bin schon wieder vor der Glotze\l"
+	.string "verklebt.\p"
+	.string "Stimmt ja, vorhin ist ein ganzer Haufen\n"
+	.string "Gäste hier aufgeschlagen.\p"
+	.string "Die haben unter dem Namen GAME FREAK\n"
+	.string "gebucht. Machen wohl Videospiele.\p"
+	.string "Oh-ha, ich sollte wohl mal langsam an\n"
+	.string "ihrem Fraß arbeiten!$"

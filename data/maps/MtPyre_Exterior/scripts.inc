@@ -25,3 +25,14 @@ MtPyre_Exterior_EventScript_SunTrigger::
 	doweather
 	end
 
+MtPyre_Exterior_EventScript_Fynx::
+	msgbox MtPyre_Exterior_Text_Fynx, MSGBOX_NPC
+	end
+
+MtPyre_Exterior_Text_Fynx:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 6. Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"

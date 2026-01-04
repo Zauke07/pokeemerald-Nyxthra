@@ -685,145 +685,140 @@ Route119_EventScript_ScottWonAtFortreeGymCall::
 	releaseall
 	end
 
-Route119_Text_MayIntro:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Wo warst du?\n"
-	.string "Ich habe dich schon gesucht!\p"
-	.string "Wie stark bist du geworden?\n"
-	.string "Lass mich das für dich herausfinden!\p"
-	.string "Bereit? Du und deine Pokémon?\n"
-	.string "Natürlich seid ihr das! Los!{COLOR DARK_GRAY}$"
+Route119_Text_MayIntro::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}{KUN}! Wo hast du dich\n"
+	.string "wieder rumgetrieben?\l"
+	.string "Ich hab dich schon überall gesucht!\p"
+	.string "Bist du eigentlich stärker geworden oder\n"
+	.string "immer noch so 'ne Nulpe?\p"
+	.string "Komm, wir testen das jetzt mal.\n"
+	.string "Zieh deine Viecher und wehe,\l"
+	.string "du enttäuschst mich! Los!{COLOR DARK_GRAY}$"
 
-Route119_Text_MayDefeat:
+Route119_Text_MayDefeat::
 	.string "Achah!\n"
-	.string "{PLAYER}{KUN}, du bist stark!\p"
-	.string "Ich hatte schon befürchtet, du\n"
-	.string "hättest im Training nachgelassen.$"
+	.string "{PLAYER}{KUN}, du bist ja echt giftig!\p"
+	.string "Ich dachte schon, du hättest dich\n"
+	.string "nur auf die faule Haut gelegt.$"
 
-Route119_Text_MayPresentForYou:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Aber ich hätte mir absolut keine\n"
-	.string "Sorgen zu machen brauchen! Weiter so!\p"
-	.string "Und hier!\n"
-	.string "Dies ist ein Geschenk für dich!{COLOR DARK_GRAY}$"
+Route119_Text_MayPresentForYou::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Na gut, ich hätte mir denken können,\n"
+	.string "dass du nicht ganz unfähig bist.\p"
+	.string "Hier! Nimm das Zeug und nerv wen anders!{COLOR DARK_GRAY}$"
 
-Route119_Text_MayExplainFly:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Setze FLIEGEN ein und deine\n"
-	.string "Pokémon bringen dich an jeden Ort, an\l"
-	.string "dem du schon einmal warst.\p"
-	.string "Aber um FLIEGEN einsetzen zu können,\n"
-	.string "brauchst du erst den ORDEN der ARENA\l"
-	.string "von BAUMHAUSEN CITY.\l"
-	.string "Vergiss das nicht!\p"
+Route119_Text_MayExplainFly::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Mit FLIEGEN kannst du dich von\n"
+	.string "deinen POKéMON überall hinkutschen\l"
+	.string "lassen, wo du schon mal warst.\p"
+	.string "Aber ohne den ORDEN von der Vögel-Tante\n"
+	.string "aus BAUMHAUSEN CITY läuft da gar nix!\l"
+	.string "Vergiss das bloß nicht!\p"
 	.string "Du solltest mal nach WURZELHEIM\n"
-	.string "FLIEGEN.\p"
-	.string "Ich wette, deine Mutter macht sich\n"
-	.string "schon Sorgen um dich, {PLAYER}{KUN}.\p"
-	.string "Nun, wir treffen uns sicher bald wieder!{COLOR DARK_GRAY}$"
+	.string "gurken.\p"
+	.string "Deine Mutter fragt sich sicher schon,\n"
+	.string "ob du irgendwo im Graben liegst.\p"
+	.string "Na ja, wir sehen uns sicher bald wieder!{COLOR DARK_GRAY}$"
 
-Route119_Text_BrendanIntro:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}! Hier schaust du dich\n"
-	.string "also nach Pokémon um?\p"
-	.string "Zeig mir, wie gut du geworden bist.\n"
-	.string "Ich werde dich jetzt testen!\p"
-	.string "Nun!\n"
-	.string "Das ist ein Kampf, also kämpfen wir!{COLOR DARK_GRAY}$"
+Route119_Text_BrendanIntro::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}! Suchst du hier im\n"
+	.string "Dreck wieder nach POKéMON?\p"
+	.string "Zeig mal, ob du mittlerweile was drauf\n"
+	.string "hast oder immer noch ein Anfänger bist!\p"
+	.string "Jetzt wird gekämpft!\n"
+	.string "Und wein nicht, wenn du verlierst!{COLOR DARK_GRAY}$"
 
-Route119_Text_BrendanDefeat:
-	.string "Hmm…\n"
-	.string "Du bist verdammt gut geworden.$"
+Route119_Text_BrendanDefeat::
+	.string "Hmm……\n"
+	.string "Du bist ja doch ganz schön aggressiv.$"
 
-Route119_Text_BrendanIllGiveYouThis:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich sage, du bist so gut, dass\n"
-	.string "du überall nach Pokémon suchen kannst.\p"
-	.string "Hier, das ist für dich.\n"
-	.string "Probier es aus.{COLOR DARK_GRAY}$"
+Route119_Text_BrendanIllGiveYouThis::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Okay, du scheinst ja halbwegs\n"
+	.string "klarzukommen beim Sammeln.\p"
+	.string "Hier, nimm das. Das macht dein Leben\n"
+	.string "vielleicht ein bisschen leichter.{COLOR DARK_GRAY}$"
 
-Route119_Text_BrendanExplainFly:
-	.string "{COLOR RIVAL_CLR}{RIVAL}: Setze es ein, und deine\n"
-	.string "Pokémon FLIEGEN dich sofort an jeden\l"
-	.string "Ort, an dem du schon einmal warst.\p"
-	.string "Aber du brauchst den ORDEN der ARENA\n"
-	.string "von BAUMHAUSEN CITY dafür.\p"
-	.string "Nun ja, ich muss jetzt weiter. Bis bald.{COLOR DARK_GRAY}$"
+Route119_Text_BrendanExplainFly::
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Benutz das, und deine Viecher\n"
+	.string "FLIEGEN dich sofort überall hin.\p"
+	.string "Aber ohne den ORDEN von BAUMHAUSEN\n"
+	.string "CITY kannst du das Teil knicken.\p"
+	.string "Ich muss jetzt weiter. Ciao.{COLOR DARK_GRAY}$"
 
-Route119_Text_ScottWayToGoBeSeeingYou:
+Route119_Text_ScottWayToGoBeSeeingYou::
 	.string "SCOTT: Hahahaha!\n"
-	.string "Mach weiter so, {PLAYER}{KUN}!\p"
-	.string "Ich bin gerade einem TRAINER begegnet,\n"
-	.string "der auf einem FAHRRAD fuhr.\p"
-	.string "Du hast den TRAINER besiegt, stimmt’s?\n"
-	.string "Das war ihm anzumerken.\p"
-	.string "Das Kind war richtig wütend und sein\n"
-	.string "Gesicht war rot vor Zorn.\p"
-	.string "Wir laufen uns wirklich oft über den\n"
-	.string "Weg! Gehst du jetzt zur ARENA in\l"
-	.string "BAUMHAUSEN CITY?\p"
-	.string "Ich erwarte, dass du dich dort\n"
-	.string "besonders anstrengst. Mach’s gut.$"
+	.string "Zieh's durch, {PLAYER}{KUN}!\p"
+	.string "Ich hab gerade 'nen anderen Spinner\n"
+	.string "auf 'nem Fahrrad getroffen.\p"
+	.string "Du hast ihn ordentlich vermöbelt, was?\n"
+	.string "Das hat man ihm an der Fresse angesehen.\p"
+	.string "Der Kleine war rot wie 'ne Tomate vor\n"
+	.string "Wut. Wir sehen uns ja echt ständig!\l"
+	.string "Willst du jetzt zur Tante in die ARENA\l"
+	.string "nach BAUMHAUSEN CITY?\p"
+	.string "Streng dich mal an, ich will was sehen!$"
 
-Route119_Text_ScottYouWonAtFortreeGym:
-	.string "… … … … …\n"
-	.string "…\l"
-	.string "… … … … …\l"
+Route119_Text_ScottYouWonAtFortreeGym::
+	.string "…… …… …… ……\n"
+	.string "……\l"
+	.string "…… …… …… ……\l"
 	.string "Piep!\p"
-	.string "SCOTT: Hi {PLAYER}{KUN}, ich bin’s!\p"
-	.string "Ich wusste, dass du in der ARENA\n"
-	.string "von BAUMHAUSEN gewinnen würdest.\p"
-	.string "Deine Stärke…\n"
-	.string "Vielleicht bist du wirklich der\l"
-	.string "TRAINER, den ich die ganze Zeit\p"
-	.string "suche. Ich bin dein Fan, vergiss\n"
-	.string "das nicht. Ich werde dir zujubeln.\l"
-	.string "Mach weiter so!\p"
-	.string "… … … … …\n"
-	.string "…\l"
-	.string "… … … … …\l"
+	.string "SCOTT: Hi {PLAYER}{KUN}, ich bin's wieder!\p"
+	.string "Ich wusste doch, dass du die Vögel-Braut\n"
+	.string "in der ARENA von BAUMHAUSEN abziehst.\p"
+	.string "Deine Stärke……\n"
+	.string "Vielleicht bist du ja echt der Typ,\l"
+	.string "den ich schon die ganze Zeit suche.\p"
+	.string "Ich bin dein größter Fan, Bro!\n"
+	.string "Ich feier dich total! Mach weiter so!\p"
+	.string "…… …… …… ……\n"
+	.string "……\l"
+	.string "…… …… …… ……\l"
 	.string "Klick!$"
 
-Route119_Text_StayAwayFromWeatherInstitute:
-	.string "Wir stehen hier Wache.\p"
-	.string "Hey, du! Halt dich bloß von dem KLIMA-\n"
-	.string "INSTITUT fern. Da ist es nicht sicher!$"
+Route119_Text_StayAwayFromWeatherInstitute::
+	.string "Wir stehen hier Schmiere.\p"
+	.string "Hey, du! Halt bloß die Klüsen vom\n"
+	.string "KLIMA-INSTITUT fern, wenn du keine\l"
+	.string "Aufs Maul willst!$"
 
-Route119_Text_DontGoNearWeatherInstitute:
-	.string "Wache schieben ist langweilig.\p"
-	.string "Hey, du! Komm nicht in die Nähe des\n"
-	.string "KLIMA-INSTITUTs.$"
+Route119_Text_DontGoNearWeatherInstitute::
+	.string "Wache schieben ist so 'ne Drecksarbeit.\p"
+	.string "Hey, du! Wenn du dich dem KLIMA-INSTITUT\n"
+	.string "näherst, gibt's Ärger!$"
 
-Route119_Text_ThoughtFlyByCatchingBirdMons:
-	.string "Ich dachte, FLIEGEN könnte man, indem\n"
-	.string "man viele VOGEL-Pokémon fängt, sie\p"
-	.string "zusammenbindet und sich dann\n"
-	.string "dranhängt.\p"
-	.string "Aber es gibt tatsächlich eine VM, die\n"
-	.string "FLIEGEN heißt!\p"
-	.string "Wenn ich das doch nur eher gewusst\n"
-	.string "hätte…$"
+Route119_Text_ThoughtFlyByCatchingBirdMons::
+	.string "Ich dachte immer, man könnte FLIEGEN,\n"
+	.string "indem man sich einfach ganz viele\p"
+	.string "VOGEL-POKéMON fängt, die aneinander\n"
+	.string "bindet und sich dann dranhängt.\p"
+	.string "Aber es gibt echt 'ne VM dafür?!\p"
+	.string "Hätte mir das mal früher jemand gesagt,\n"
+	.string "statt mich hier rumzuhängen……$"
 
-Route119_Text_TallGrassSnaresBikeTires:
-	.string "Tse… So geht es nicht weiter…\p"
-	.string "Das hohe Gras verfängt sich in den \n"
-	.string "Speichen des RADs…$"
+Route119_Text_TallGrassSnaresBikeTires::
+	.string "Tse…… Was'n Müll hier……\p"
+	.string "Das hohe Gras verheddert sich ständig\n"
+	.string "in meinen Speichen. Schrottteil!$"
 
-Route119_Text_CanYourMonMakeSecretBase:
-	.string "Kann dein Pokémon GEHEIMPOWER an\n"
-	.string "einem Berg von Gras einsetzen und eine\l"
-	.string "GEHEIMBASIS einrichten?$"
+Route119_Text_CanYourMonMakeSecretBase::
+	.string "Kann dein Vieh GEHEIMPOWER?\n"
+	.string "Dann könntest du dir in dem ganzen\l"
+	.string "Gras-Dschungel 'ne GEHEIMBASIS bauen.$"
 
-Route119_Text_RouteSignFortree:
+Route119_Text_RouteSignFortree::
 	.string "ROUTE 119\n"
 	.string "{RIGHT_ARROW} BAUMHAUSEN CITY$"
 
-Route119_Text_WeatherInstitute:
+Route119_Text_WeatherInstitute::
 	.string "KLIMA-INSTITUT$"
 
-Route119_Text_TrainerTipsDecoration:
+Route119_Text_TrainerTipsDecoration::
 	.string "TIPPS für TRAINER\p"
-	.string "In der GEHEIMBASIS können bis zu 16\n"
-	.string "Dekorationen und Möbel untergebracht\l"
-	.string "werden.\p"
-	.string "Nimm deine Lieblingsitems und richte dir\n"
-	.string "deine GEHEIMBASIS ganz nach deinem\l"
-	.string "Geschmack ein.$"
+	.string "In deiner GEHEIMBASIS kannst du bis zu\n"
+	.string "16 Möbel und anderen Plunder abstellen.\p"
+	.string "Such dir deinen Lieblingsmüll aus und\n"
+	.string "richte dir deine Bude so ein, wie es\l"
+	.string "dir passt!$"
 
 Route119_EventScript_Froxy::
 	msgbox Route119_Text_Froxy, MSGBOX_NPC

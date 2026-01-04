@@ -66,71 +66,73 @@ LilycoveCity_CoveLilyMotel_2F_EventScript_MetScott::
 	release
 	end
 
-LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex:
-	.string "I'm the GAME DESIGNER.\p"
-	.string "Oh, is that right?\n"
-	.string "You're working on a POKéDEX?\p"
-	.string "It's tough trying to complete it,\n"
-	.string "but don't give up.\p"
-	.string "If you do complete it, please come\n"
-	.string "show me.$"
+LilycoveCity_CoveLilyMotel_2F_Text_ShowMeCompletedDex::
+	.string "Ich bin der GAME DESIGNER.\p"
+	.string "Ach was? Du arbeitest echt an diesem\n"
+	.string "POKéDEX-Dingsbums?\p"
+	.string "Ist 'ne miese Plackerei, das Ding vollzu-\n"
+	.string "kriegen, also heul nicht rum.\p"
+	.string "Falls du es wider Erwarten doch schaffst,\n"
+	.string "kannst du's mir ja mal zeigen.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis:
-	.string "Wow! That's awesome!\n"
-	.string "Yep, it's totally awesome!\p"
-	.string "This POKéDEX is completely filled!\n"
-	.string "You really must love POKéMON!\p"
-	.string "I'm so impressed!\p"
-	.string "Let me give you something in\n"
-	.string "recognition of your feat!$"
+LilycoveCity_CoveLilyMotel_2F_Text_FilledPokedexGiveYouThis::
+	.string "Oha! Das ist ja mal fett!\n"
+	.string "Echt jetzt, absolut krank!\p"
+	.string "Der POKéDEX ist komplett voll!\n"
+	.string "Du hast doch echt kein Leben, oder?!\p"
+	.string "Ich bin fast schon beeindruckt……\p"
+	.string "Hier, nimm das als Anerkennung dafür,\n"
+	.string "dass du so'n krasser Nerd bist!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer:
-	.string "Me? You're talking to me?\n"
-	.string "I'm the PROGRAMMER.\p"
-	.string "I wonder what the SLOTS are\n"
-	.string "like here.$"
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheProgrammer::
+	.string "Häh? Du laberst mich an?\n"
+	.string "Ich bin hier der PROGRAMMIERER.\p"
+	.string "Ich frag mich eher, ob die EINARMIGEN\n"
+	.string "BANDITEN hier gut programmiert sind.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist:
-	.string "I'm the GRAPHIC ARTIST! Aren't the\n"
-	.string "POKéMON of HOENN interesting?$"
+LilycoveCity_CoveLilyMotel_2F_Text_ImTheGraphicArtist::
+	.string "Ich bin der GRAFIKER! Sind die POKéMON\n"
+	.string "in HOENN nicht ein optischer Genuss?\l"
+	.string "Hab ich schließlich hingepinselt!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute:
-	.string "The girl TUBERS, they're cute, hey?\n"
-	.string "To battle against a cute TUBER…\p"
-	.string "Whoop, it's so awesome!\p"
-	.string "And the TWINS! Aren't they cute?\n"
-	.string "A 2-on-2 battle with TWINS…\p"
-	.string "Whoop, it's unbearably fun!$"
+LilycoveCity_CoveLilyMotel_2F_Text_GirlsAreCute::
+	.string "Die kleinen GÖREN am Strand sind ja\n"
+	.string "ganz niedlich, was?\l"
+	.string "Gegen so'ne süße Maus zu kämpfen……\p"
+	.string "Boah, das macht so richtig Laune!\p"
+	.string "Und die ZWILLINGE! Sind die nicht goldig?\n"
+	.string "Ein 2-gegen-2 mit ZWILLINGEN……\p"
+	.string "Einfach unschlagbar gut!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart:
-	.string "The sea breeze tickles my heart.\n"
-	.string "It feels wonderful here!$"
+LilycoveCity_CoveLilyMotel_2F_Text_SeaBreezeTicklesHeart::
+	.string "Die Seebrise kitzelt meine Nerven.\n"
+	.string "Echt herrlich hier oben!$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy:
-	.string "You never know when and where\n"
-	.string "people will challenge you.\p"
-	.string "That's why I never leave home without\n"
-	.string "my GAME BOY ADVANCE.$"
+LilycoveCity_CoveLilyMotel_2F_Text_NeverLeaveWithoutGameBoy::
+	.string "Man weiß nie, welcher Vollpfosten einen\n"
+	.string "als Nächstes herausfordert.\p"
+	.string "Deswegen geh ich ohne meinen GAME BOY\n"
+	.string "ADVANCE nicht mal kacken.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles:
-	.string "SCOTT: … … … … …\n"
-	.string "… … … … … Zzz…\p"
-	.string "… … … … … Huh?!\n"
-	.string "Oh, sorry, sorry! I was snoozing!\p"
-	.string "I came to check out this POKéMON\n"
-	.string "CONTEST thing.\p"
-	.string "I have to admit, it does look quite\n"
-	.string "entertaining, but…\p"
-	.string "Consider me a purist--I prefer\n"
-	.string "battles and tough TRAINERS.\p"
-	.string "But that's just me.\p"
-	.string "{PLAYER}{KUN}, I hope you'll enjoy everything\n"
-	.string "like the GYMS, CONTESTS, BATTLE TENT,\l"
-	.string "the whole works!$"
+LilycoveCity_CoveLilyMotel_2F_Text_SnoozingPreferBattles::
+	.string "SCOTT: …… …… …… …… ……\n"
+	.string "…… …… …… …… …… Chrr……\p"
+	.string "…… …… …… …… …… Häh?!\n"
+	.string "Oh, sorry! Ich hab gepennt!\p"
+	.string "Ich wollte mir mal diesen POKéMON-\n"
+	.string "WETTBEWERB-Quatsch ansehen.\p"
+	.string "Ganz ehrlich, ist ja ganz nett zur\n"
+	.string "Unterhaltung, aber……\p"
+	.string "Nenn mich altmodisch, aber ich steh auf\n"
+	.string "echte Kämpfe und brutale TRAINER.\p"
+	.string "Aber das ist nur mein Ding.\p"
+	.string "{PLAYER}{KUN}, zieh dir ruhig den ganzen Rest\n"
+	.string "rein: ARENEN, WETTBEWERBE, KAMPFCAMP……\l"
+	.string "wenn du auf sowas stehst.$"
 
-LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
-	.string "SCOTT: I think it does take strategy\n"
-	.string "to win a CONTEST.\p"
-	.string "Devising CONTEST strategies is one way\n"
-	.string "of becoming a better TRAINER, I'd say.$"
-
+LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy::
+	.string "SCOTT: Ich schätze, man braucht schon\n"
+	.string "ein bisschen Hirn für die WETTBEWERBE.\p"
+	.string "Wer da Strategien austüftelt, ist am\n"
+	.string "Ende vielleicht ein weniger mieser\l"
+	.string "TRAINER, schätze ich mal.$"

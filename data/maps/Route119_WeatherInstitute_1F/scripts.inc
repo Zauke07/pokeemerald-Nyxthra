@@ -68,67 +68,66 @@ Route119_WeatherInstitute_1F_EventScript_Grunt4::
 	msgbox Route119_WeatherInstitute_1F_Text_Grunt4PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route119_WeatherInstitute_1F_Text_Grunt1Intro:
-	.string "Der BOSS hat Interesse an den \n"
-	.string "Forschungen gezeigt, daher hat er uns\l"
-	.string "hergeschickt.\p"
-	.string "Stör uns gefälligst nicht!$"
+Route119_WeatherInstitute_1F_Text_Grunt1Intro::
+	.string "Der BOSS will die Forschungsdaten haben,\n"
+	.string "also ziehen wir das hier durch.\p"
+	.string "Verpiss dich, Kleiner, oder du fängst\n"
+	.string "dir eine!$"
 
-Route119_WeatherInstitute_1F_Text_Grunt1Defeat:
-	.string "So ein Mist…\n"
-	.string "Besiegt… von einem Kind!$"
+Route119_WeatherInstitute_1F_Text_Grunt1Defeat::
+	.string "Was zum……?\n"
+	.string "Abgezogen von 'ner halben Portion!$"
 
-Route119_WeatherInstitute_1F_Text_Grunt1PostBattle:
-	.string "Unser BOSS weiß alles.\p"
-	.string "Ich bin nur ein RÜPEL. Woher soll ich\n"
-	.string "wissen, was er denkt?$"
+Route119_WeatherInstitute_1F_Text_Grunt1PostBattle::
+	.string "Der BOSS hat den Plan, ich bin nur für's\n"
+	.string "Grobe hier.\p"
+	.string "Glaubst du echt, ich krieg als RÜPEL\n"
+	.string "erzählt, was in seinem Kopf abgeht?$"
 
-Route119_WeatherInstitute_1F_Text_Grunt4Intro:
-	.string "Wie?\n"
-	.string "Was macht denn das Kind hier?$"
+Route119_WeatherInstitute_1F_Text_Grunt4Intro::
+	.string "Häh?\n"
+	.string "Was stolpert denn hier für 'ne Blage rum?$"
 
-Route119_WeatherInstitute_1F_Text_Grunt4Defeat:
-	.string "Wie?\n"
-	.string "Ich habe verloren?!?$"
+Route119_WeatherInstitute_1F_Text_Grunt4Defeat::
+	.string "Wie jetzt?\n"
+	.string "Ich hab echt geloost?!?$"
 
-Route119_WeatherInstitute_1F_Text_Grunt4PostBattle:
-	.string "Oh. Ich werde mir etwas anhören müssen,\n"
-	.string "weil ich gegen ein Kind verloren habe…\p"
-	.string "Ich muss mich jetzt dringend hinlegen…$"
+Route119_WeatherInstitute_1F_Text_Grunt4PostBattle::
+	.string "Oh Mann. Der Boss macht mich zur Sau,\n"
+	.string "weil ich gegen ein Kind verloren hab……\p"
+	.string "Ich leg mich jetzt erst mal hin und\n"
+	.string "heul 'ne Runde.$"
 
-Route119_WeatherInstitute_1F_Text_EveryoneWentUpstairs:
-	.string "Als ich schlief, schlich sich jemand\n"
-	.string "nach oben!$"
+Route119_WeatherInstitute_1F_Text_EveryoneWentUpstairs::
+	.string "Während ich hier gepennt hab, sind die\n"
+	.string "anderen nach oben abgezischt!$"
 
-Route119_WeatherInstitute_1F_Text_WowYoureStrong:
-	.string "Wow! Bist du aber stark!\p"
-	.string "Ich wäre auch gerne ein Pokémon-\n"
-	.string "TRAINER wie du!$"
+Route119_WeatherInstitute_1F_Text_WowYoureStrong::
+	.string "Boah! Du hast die ja voll plattgemacht!\p"
+	.string "Ich wünschte, ich wär auch so'n krasser\n"
+	.string "TRAINER und kein Schreibtischtäter!$"
 
-Route119_WeatherInstitute_1F_Text_ProfStudyingRain:
-	.string "Der PROFESSOR liebt den Regen.\n"
-	.string "Das ist eine Tatsache.\p"
-	.string "Aber wenn es noch lange so regnet,\n"
-	.string "wird das zu Problemen führen. Das ist\l"
-	.string "die andere Seite der Medaille.\p"
-	.string "Und daher erforscht der PROFESSOR,\n"
-	.string "wie man den Regen positiv nutzen kann.$"
+Route119_WeatherInstitute_1F_Text_ProfStudyingRain::
+	.string "Der PROFESSOR ist total besessen vom\n"
+	.string "Regen. Der Typ ist echt schräg.\p"
+	.string "Aber wenn es weiter so schifft, saufen\n"
+	.string "wir hier alle ab. Das ist die Kacke dabei.\p"
+	.string "Deswegen versucht er rauszufinden, ob\n"
+	.string "der Regen für irgendwas gut ist.$"
 
-Route119_WeatherInstitute_1F_Text_NoticingAbnormalWeather:
-	.string "Im ersten Stock des INSTITUTs\n"
-	.string "untersuchen wir die Klimaveränderungen\l"
-	.string "in der HOENN-Region.\p"
-	.string "Wir haben dort eine temporäre Dürre\n"
-	.string "und einzelne Fälle von heftigem\l"
-	.string "Niederschlag verzeichnen können.$"
+Route119_WeatherInstitute_1F_Text_NoticingAbnormalWeather::
+	.string "Hier im ersten Stock glotzen wir auf\n"
+	.string "die Klimawerte von ganz HOENN.\p"
+	.string "Momentan gibt's entweder extreme\n"
+	.string "Dürre oder totale Sintfluten. Echt übel!$"
 
-Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo:
-	.string "Hallo! Dein beherztes Eingreifen hat\n"
-	.string "uns gerettet!\p"
-	.string "Ich verstehe nur nicht, was die AQUAs\n"
-	.string "von uns wollten…$"
+Route119_WeatherInstitute_1F_Text_WhatWereAquasUpTo::
+	.string "Tagchen! Danke, dass du die Spinner\n"
+	.string "hier rausgeprügelt hast!\p"
+	.string "Keine Ahnung, was Team AQUA von uns\n"
+	.string "wollte…… wir haben doch nur Daten!$"
 
-Route119_WeatherInstitute_1F_Text_TakeRestInBed:
-	.string "Da steht ein Bett…\n"
-	.string "Eine Pause wäre willkommen.$"
+Route119_WeatherInstitute_1F_Text_TakeRestInBed::
+	.string "Da steht 'ne Gammel-Pritsche……\n"
+	.string "Bock auf 'ne Runde pennen?$"
 

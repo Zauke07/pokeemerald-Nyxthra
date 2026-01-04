@@ -106,55 +106,61 @@ AquaHideout_B1F_EventScript_Grunt7::
 	msgbox AquaHideout_B1F_Text_Grunt7PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-AquaHideout_B1F_Text_Grunt2Intro:
-	.string "If you want to know the secret about\n"
-	.string "our HIDEOUT, you have me to beat!$"
+AquaHideout_B1F_Text_Grunt2Intro::
+	.string "Du willst wissen, was wir hier im\n"
+	.string "Versteck treiben? Dann musst du mich\l"
+	.string "erst mal aus dem Weg räumen!$"
 
-AquaHideout_B1F_Text_Grunt2Defeat:
-	.string "I can't win at all…$"
+AquaHideout_B1F_Text_Grunt2Defeat::
+	.string "Verdammt, ich seh kein Land……$"
 
-AquaHideout_B1F_Text_Grunt2PostBattle:
-	.string "Our HIDEOUT's secret?\p"
-	.string "Well, let's just say…\n"
-	.string "There's a submarine at the far end!\p"
-	.string "But, by now…\n"
-	.string "Kekekeke…$"
+AquaHideout_B1F_Text_Grunt2PostBattle::
+	.string "Unser Geheimnis?\p"
+	.string "Sagen wir einfach…… Da hinten liegt\n"
+	.string "ein fettes U-Boot vor Anker!\p"
+	.string "Aber bis du da ankommst……\n"
+	.string "Kekekeke……$"
 
-AquaHideout_B1F_Text_Grunt3Intro:
-	.string "Fuel supply loaded A-OK!\n"
-	.string "In-cruise snacks loaded A-OK!\p"
-	.string "Nothing left to do but KO a pesky\n"
-	.string "meddler!$"
+AquaHideout_B1F_Text_Grunt3Intro::
+	.string "Sprit ist getankt! Check!\n"
+	.string "Fressalien sind an Bord! Check!\p"
+	.string "Jetzt muss ich nur noch so 'ne nervige\n"
+	.string "Zecke wie dich zerquetschen!$"
 
-AquaHideout_B1F_Text_Grunt3Defeat:
-	.string "I took a serious licking!$"
+AquaHideout_B1F_Text_Grunt3Defeat::
+	.string "Das gab ordentlich auf die Fresse!$"
 
-AquaHideout_B1F_Text_Grunt3PostBattle:
-	.string "Humph!\n"
-	.string "This was supposed to happen!\p"
-	.string "My mission was to just hold you up!$"
+AquaHideout_B1F_Text_Grunt3PostBattle::
+	.string "Pah!\n"
+	.string "War eh so geplant!\p"
+	.string "Mein Job war es nur, dich hier so lange\n"
+	.string "wie möglich aufzuhalten!$"
 
-AquaHideout_B1F_Text_Grunt5Intro:
-	.string "Yawn… Keeping watch over the\n"
-	.string "HIDEOUT bores me. I'll take you on.$"
+AquaHideout_B1F_Text_Grunt5Intro::
+	.string "Gähn…… Wache schieben ist so öde.\n"
+	.string "Komm her, ich brauch jetzt 'ne Tracht\l"
+	.string "Prügel zur Unterhaltung.$"
 
-AquaHideout_B1F_Text_Grunt5Defeat:
-	.string "Yawn…\n"
-	.string "Oh, I lost…$"
+AquaHideout_B1F_Text_Grunt5Defeat::
+	.string "Gähn……\n"
+	.string "Oh, ich hab wohl verloren……$"
 
-AquaHideout_B1F_Text_Grunt5PostBattle:
-	.string "If you scurry too much, other TEAM\n"
-	.string "AQUA members might get you.$"
+AquaHideout_B1F_Text_Grunt5PostBattle::
+	.string "Wenn du hier weiter so rumstresst,\n"
+	.string "knöpfen sich dich die anderen Jungs\l"
+	.string "von TEAM AQUA noch vor.$"
 
-AquaHideout_B1F_Text_Grunt7Intro:
+AquaHideout_B1F_Text_Grunt7Intro::
 	.string "Hey!\n"
-	.string "You there!\p"
-	.string "Which do you think is cooler?\n"
-	.string "TEAM AQUA's uniform or TEAM MAGMA's?$"
+	.string "Du da!\p"
+	.string "Wer sieht geiler aus?\n"
+	.string "Wir in unseren Klamotten oder diese\l"
+	.string "MAGMA-Pfeifen in ihren roten Pyjamas?$"
 
-AquaHideout_B1F_Text_Grunt7Defeat:
-	.string "I lost in a cool way…$"
+AquaHideout_B1F_Text_Grunt7Defeat::
+	.string "Wenigstens bin ich stilvoll verreckt……$"
 
-AquaHideout_B1F_Text_Grunt7PostBattle:
-	.string "If you have a cool uniform, you look\n"
-	.string "good even in a loss, don't you think?$"
+AquaHideout_B1F_Text_Grunt7PostBattle::
+	.string "Wenn die Uniform sitzt, sieht man sogar\n"
+	.string "beim Verlieren noch verdammt gut aus,\n"
+	.string "findest du nicht auch?$"

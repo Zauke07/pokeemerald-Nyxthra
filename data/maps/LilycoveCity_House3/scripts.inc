@@ -97,72 +97,71 @@ LilycoveCity_House3_EventScript_WereDoingContest::
 	release
 	end
 
-LilycoveCity_House3_Text_LearnFromMasterOfPokeblocks:
-	.string "Oh, my, my! Are you traveling alone?\n"
-	.string "But you're so young! Good for you!\p"
-	.string "I'm sure my kids could learn a thing\n"
-	.string "or two from you!\p"
-	.string "Me? I'm a master of {POKEBLOCK}S.\p"
-	.string "If I get serious just a little, why,\n"
-	.string "I can concoct great {POKEBLOCK}S.\p"
-	.string "Would you like to learn from me,\n"
-	.string "a master of {POKEBLOCK}S?$"
+LilycoveCity_House3_Text_LearnFromMasterOfPokeblocks::
+	.string "Oha! Ganz allein unterwegs, Kleiner?\n"
+	.string "Bist ja noch halb feucht hinter den Ohren!\p"
+	.string "Meine Bälger könnten dir sicher noch\n"
+	.string "einiges beibringen!\p"
+	.string "Ich? Ich bin der Gott der {POKEBLOCK}.\p"
+	.string "Wenn ich mich nur minimal anstrenge,\n"
+	.string "braue ich Zeug, das dich umhaut.\p"
+	.string "Willst du was vom Meister lernen oder\n"
+	.string "lieber weiter im Dunkeln tappen?$"
 
-LilycoveCity_House3_Text_OhAreYouSure:
-	.string "Oh? Are you sure?\p"
-	.string "You shouldn't always try to do\n"
-	.string "everything by yourself, dear!$"
+LilycoveCity_House3_Text_OhAreYouSure::
+	.string "Oh? Sicher? Musst ja wissen, wie du\n"
+	.string "deine Zeit verschwendest!\p"
+	.string "Versuch nicht immer, den harten Max zu\n"
+	.string "markieren, Schätzchen!$"
 
-LilycoveCity_House3_Text_ExplainPokeblocks:
-	.string "Oh, good! You're a smart soul!\n"
-	.string "This is a bit long, so listen up!\p"
-	.string "Are you ready?\p"
-	.string "If you look at {POKEBLOCK}S, you should see\n"
-	.string "that they are rated on how they feel.\p"
-	.string "The lower the feel rating,\n"
-	.string "the better it is. Don't forget this!\p"
-	.string "A good {POKEBLOCK} has a low feel\n"
-	.string "rating and a high level.\p"
-	.string "A POKéMON can eat more good\n"
-	.string "{POKEBLOCK}S than ordinary ones, too.\p"
-	.string "And this is important.\p"
-	.string "If you want to make smooth {POKEBLOCK}S,\n"
-	.string "use different kinds of BERRIES.\p"
-	.string "Don't be stingy--the kinds of BERRIES\n"
-	.string "affect the smoothness of {POKEBLOCK}S.\p"
-	.string "And another thing.\p"
-	.string "The more people blending BERRIES,\n"
-	.string "the smoother the {POKEBLOCK}S.\p"
-	.string "That's why you should talk to other\n"
-	.string "people and make {POKEBLOCK}S together.\p"
-	.string "That's about all you need to know to\n"
-	.string "make good {POKEBLOCK}S.\p"
-	.string "If everyone had POKéMON they love,\n"
-	.string "smooth {POKEBLOCK}S, and a loving family,\l"
-	.string "the world would be a happier place.\p"
-	.string "Don't give up, dear!$"
+LilycoveCity_House3_Text_ExplainPokeblocks::
+	.string "Na also! Bist ja doch nicht ganz hohl!\n"
+	.string "Hör gut zu, ich sag's nur einmal!\p"
+	.string "Bereit?\p"
+	.string "Bei {POKEBLOCK} zählt vor allem die Würze.\n"
+	.string "Je niedriger dieser Wert, desto besser\l"
+	.string "flutscht das Zeug. Merk dir das!\p"
+	.string "Ein guter {POKEBLOCK} hat 'ne niedrige Würze\n"
+	.string "und ein verdammt hohes Level.\p"
+	.string "Davon fressen dir deine Viecher auch\n"
+	.string "viel mehr aus der Hand.\p"
+	.string "Und jetzt pass auf.\p"
+	.string "Wenn du geschmeidige {POKEBLOCK} willst,\n"
+	.string "musst du verschiedene BEEREN mischen.\p"
+	.string "Sei kein Geizkragen! Die Sorte bestimmt,\n"
+	.string "ob das Ergebnis Müll ist oder nicht.\p"
+	.string "Und noch was……\p"
+	.string "Je mehr Leute am Mixer kurbeln, desto\n"
+	.string "geiler wird der {POKEBLOCK}.\p"
+	.string "Also laber andere Leute voll und macht\n"
+	.string "das Zeug gefälligst zusammen.\p"
+	.string "Das ist eigentlich alles, was du wissen\n"
+	.string "musst, um kein Versager zu sein.\p"
+	.string "Wenn jeder POKéMON, fette {POKEBLOCK} und\n"
+	.string "keine nervigen Nachbarn hätte, wäre\l"
+	.string "die Welt ein besserer Ort.\p"
+	.string "Lass dich nicht unterkriegen!$"
 
-LilycoveCity_House3_Text_HappyToHaveQuadruplets:
-	.string "When my wife gave birth to quadruplets,\n"
-	.string "you bet I was shocked.\p"
-	.string "But, now, seeing them play together,\n"
-	.string "it makes me happy.$"
+LilycoveCity_House3_Text_HappyToHaveQuadruplets::
+	.string "Als meine Alte Vierlinge geworfen hat,\n"
+	.string "war ich erst mal bedient, ohne Witz.\p"
+	.string "Aber wenn ich sehe, wie sie jetzt andere\n"
+	.string "Leute nerven, bin ich fast stolz.$"
 
-LilycoveCity_House3_Text_GoingToWinMultiBattles:
-	.string "We're having MULTI BATTLES, but I know\n"
-	.string "I'm going to win.$"
+LilycoveCity_House3_Text_GoingToWinMultiBattles::
+	.string "Wir machen hier MULTIKÄMPFE und ich\n"
+	.string "werd' dich so was von nass machen!$"
 
-LilycoveCity_House3_Text_LikeMixingAtRecordCorner:
-	.string "We like mixing stuff at\n"
-	.string "the RECORD CORNER.\p"
-	.string "But what gets mixed up?$"
+LilycoveCity_House3_Text_LikeMixingAtRecordCorner::
+	.string "Wir hängen ständig in der STATISTIK-\n"
+	.string "ECKE rum und mischen Zeug.\p"
+	.string "Was dabei rauskommt? Keine Ahnung!$"
 
-LilycoveCity_House3_Text_MakePokeblocksWithBerryBlender:
-	.string "We're going to make super {POKEBLOCK}S\n"
-	.string "with a BERRY BLENDER!$"
+LilycoveCity_House3_Text_MakePokeblocksWithBerryBlender::
+	.string "Wir werden die krassesten {POKEBLOCK} mit\n"
+	.string "dem BEEREN-MIXER zusammenmatschen!$"
 
-LilycoveCity_House3_Text_GoingToEnterContest:
-	.string "I want to brag about how tough my\n"
-	.string "POKéMON is, so we're going to enter\l"
-	.string "a CONTEST together.$"
-
+LilycoveCity_House3_Text_GoingToEnterContest::
+	.string "Ich will damit angeben, wie brutal mein\n"
+	.string "POKéMON ist. Deshalb meld ich uns beim\l"
+	.string "WETTBEWERB an. Die werden staunen!$"

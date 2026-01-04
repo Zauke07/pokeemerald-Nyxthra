@@ -8,15 +8,17 @@ MtPyre_5F_EventScript_Atsushi::
 	msgbox MtPyre_5F_Text_AtsushiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MtPyre_5F_Text_AtsushiIntro:
-	.string "Teacher…\n"
-	.string "Please watch over my progress!$"
+MtPyre_5F_Text_AtsushiIntro::
+	.string "Meister……\n"
+	.string "Schau zu, wie ich diesen Eindringling\l"
+	.string "aus dem Leben trete!$"
 
-MtPyre_5F_Text_AtsushiDefeat:
-	.string "Teacher…\n"
-	.string "Please forgive me!$"
+MtPyre_5F_Text_AtsushiDefeat::
+	.string "Meister……\n"
+	.string "Vergib mir meine Unfähigkeit!$"
 
-MtPyre_5F_Text_AtsushiPostBattle:
-	.string "Until I improve, my teacher, who rests\n"
-	.string "here, will never find true peace…$"
+MtPyre_5F_Text_AtsushiPostBattle::
+	.string "Solange ich so eine Nullnummer bin,\n"
+	.string "wird mein Meister hier niemals seinen\l"
+	.string "verdammten Frieden finden……$"
 

@@ -48,19 +48,22 @@ LilycoveCity_PokemonCenter_1F_EventScript_ManiacBadTeamGone::
 	release
 	end
 
-LilycoveCity_PokemonCenter_1F_Text_HowManyKindsOfPokemon:
-	.string "I wonder how many kinds of POKéMON\n"
-	.string "there are in the world.\p"
-	.string "It'd be great to cross seas and\n"
-	.string "trade POKéMON with people far away.$"
+LilycoveCity_PokemonCenter_1F_Text_HowManyKindsOfPokemon::
+	.string "Ich frag mich, wie viele Arten von\n"
+	.string "POKéMON es auf dieser Welt gibt.\p"
+	.string "Wär schon geil, übers Meer zu schippern\n"
+	.string "und Leuten, die weit weg wohnen, ihren\l"
+	.string "Kram beim Tauschen abzuluchsen.$"
 
-LilycoveCity_PokemonCenter_1F_Text_HeardAboutRottenScoundrels:
-	.string "I've been hearing about some rotten\n"
-	.string "scoundrels who steal POKéMON and rip\l"
-	.string "off METEORITES.$"
+LilycoveCity_PokemonCenter_1F_Text_HeardAboutRottenScoundrels::
+	.string "Ich hab von so 'nem asozialen Pack\n"
+	.string "gehört, das POKéMON klaut und sogar\l"
+	.string "METEORITEN abzieht.\p"
+	.string "Echt unter aller Sau, was hier abgeht!$"
 
-LilycoveCity_PokemonCenter_1F_Text_HaventSeenRottenScoundrels:
-	.string "Those rotten scoundrels who steal\n"
-	.string "POKéMON and rip off METEORITES…\p"
-	.string "I haven't seen them around recently.$"
+LilycoveCity_PokemonCenter_1F_Text_HaventSeenRottenScoundrels::
+	.string "Dieses kriminelle Gesindel, das Viecher\n"
+	.string "klaut und METEORITEN einsackt……\p"
+	.string "In letzter Zeit hab ich die Visagen hier\n"
+	.string "nicht mehr gesehen. Wurde auch Zeit!$"
 

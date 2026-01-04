@@ -196,3 +196,14 @@ Route123_Text_RouteSignMtPyre:
 Route123_Text_BerryMastersHouse:
 	.string "BERRY MASTER'S HOUSE$"
 
+Route123_EventScript_Flamiau::
+	msgbox Route123_Text_Flamiau, MSGBOX_NPC
+	end
+
+Route123_Text_Flamiau:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 7 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"

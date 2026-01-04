@@ -359,80 +359,81 @@ Route120_EventScript_Callie::
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route120_Text_StevenGreeting:
-	.string "TROY: Hm? {PLAYER}{KUN}, hi.\n"
-	.string "Es ist lange her…\p"
-	.string "Hier ist etwas, das du nicht sehen\n"
-	.string "kannst, richtig?\p"
-	.string "Also, wenn ich dieses Gerät bei einem\n"
-	.string "unsichtbaren Objekt benutzen würde…\p"
-	.string "Nein, nein. Statt es zu beschreiben,\n"
-	.string "zeige ich es dir lieber.\l"
-	.string "Das macht mehr Spaß.\p"
-	.string "{PLAYER}{KUN}, sind deine Pokémon bereit\n"
-	.string "für einen Kampf?$"
+Route120_Text_StevenGreeting::
+	.string "TROY: Hm? {PLAYER}{KUN}, du schon wieder.\n"
+	.string "Ist ja ewig her……\p"
+	.string "Hier ist irgendwas im Weg, das du mit\n"
+	.string "deinen einfachen Augen nicht siehst, was?\p"
+	.string "Pass auf, wenn ich dieses High-Tech-Teil\n"
+	.string "jetzt benutzen würde……\p"
+	.string "Ach was, ich laber nicht lange.\n"
+	.string "Ich zeig dir lieber, wie krass das ist.\l"
+	.string "Das macht mehr Fun.\p"
+	.string "{PLAYER}{KUN}, sind deine POKéMON überhaupt\n"
+	.string "bereit für 'nen echten Kampf?$"
 
-Route120_Text_StevenIllWaitHere:
-	.string "TROY: Nein?\p"
-	.string "Ich warte hier, dann kannst du sie vor-\n"
-	.string "bereiten.$"
+Route120_Text_StevenIllWaitHere::
+	.string "TROY: Was? Nein?\p"
+	.string "Typisch…… Ich warte hier, bis du deine\n"
+	.string "Hausaufgaben gemacht hast.$"
 
-Route120_Text_StevenReadyForBattle:
-	.string "TROY: {PLAYER}{KUN}, sind deine\n"
-	.string "Pokémon bereit für einen Kampf?$"
+Route120_Text_StevenReadyForBattle::
+	.string "TROY: {PLAYER}{KUN}, bist du jetzt endlich\n"
+	.string "bereit für 'nen Kampf?$"
 
-Route120_Text_StevenShowMeYourPower:
-	.string "TROY: {PLAYER}{KUN}, zeig mir deine\n"
-	.string "wahre Stärke als TRAINER!$"
+Route120_Text_StevenShowMeYourPower::
+	.string "TROY: {PLAYER}{KUN}, jetzt zeig mir mal,\n"
+	.string "ob du mehr kannst als nur dumm gucken!$"
 
-Route120_Text_StevenUsedDevonScope:
-	.string "TROY setzt das DEVON-SCOPE ein.\p"
-	.string "Ein unsichtbares Pokémon wird\n"
-	.string "sichtbar!\p"
-	.string "Das erschreckte Pokémon greift an!$"
+Route120_Text_StevenUsedDevonScope::
+	.string "TROY benutzt das DEVON-SCOPE.\p"
+	.string "Ein unsichtbares POKéMON wird aus seinem\n"
+	.string "Versteck gezerrt!\p"
+	.string "Das völlig panische POKéMON greift an!$"
 
-Route120_Text_StevenGiveDevonScope:
-	.string "TROY: Bemerkenswert… Dein\n"
-	.string "Kampfstil ist wirklich bemerkenswert.\p"
-	.string "Deine Pokémon sind offensichtlich sehr\n"
-	.string "gewachsen, seit wir uns das erste Mal in\l"
-	.string "FAUSTAUHAVEN getroffen haben.\p"
-	.string "Ich möchte dir dieses DEVON-SCOPE\n"
-	.string "geben.\p"
-	.string "Wer weiß, es gibt bestimmt noch andere\n"
-	.string "verborgene Pokémon.$"
+Route120_Text_StevenGiveDevonScope::
+	.string "TROY: Nicht schlecht…… Dein Kampfstil\n"
+	.string "ist ja fast schon brauchbar.\p"
+	.string "Deine Viecher sind wohl gewachsen,\n"
+	.string "seit wir uns in FAUSTAUHAVEN getroffen\l"
+	.string "haben. Hätte ich dir gar nicht zugetraut.\p"
+	.string "Hier, nimm das DEVON-SCOPE.\p"
+	.string "Wer weiß, wie viele von diesen feigen\n"
+	.string "Viechern sich hier noch verstecken.$"
 
-Route120_Text_StevenGoodbye:
+Route120_Text_StevenGoodbye::
 	.string "TROY: {PLAYER}{KUN}.\p"
-	.string "Ich liebe es, TRAINER und Pokémon zu\n"
-	.string "sehen, die fest zusammenhalten.\p"
-	.string "Ich finde, du machst das großartig.\p"
-	.string "Nun, mach’s gut. Wir sehen uns!$"
+	.string "Ich finde es ja irgendwie süß, wie fest\n"
+	.string "du und deine POKéMON zusammenhaltet.\p"
+	.string "Schon fast rührend. Mach weiter so.\p"
+	.string "Na ja, mach's gut. Man sieht sich!$"
 
-Kecleon_Text_SomethingUnseeable:
-	.string "Etwas Unsichtbares blockiert den Weg.$"
+Kecleon_Text_SomethingUnseeable::
+	.string "Irgendwas Unsichtbares versperrt den Weg.\n"
+	.string "Ziemlich nervig.$"
 
-Kecleon_Text_WantToUseDevonScope:
-	.string "Etwas Unsichtbares blockiert den Weg.\p"
+Kecleon_Text_WantToUseDevonScope::
+	.string "Irgendein unsichtbarer Mist blockiert\n"
+	.string "den Weg.\p"
 	.string "Willst du das DEVON-SCOPE einsetzen?$"
 
-Kecleon_Text_UseDevonScopeMonAttacked:
-	.string "{PLAYER} setzt DEVON-SCOPE ein.\p"
-	.string "Ein unsichtbares Pokémon wird\n"
-	.string "sichtbar!\p"
-	.string "Das erschreckte Pokémon greift an!$"
+Kecleon_Text_UseDevonScopeMonAttacked::
+	.string "{PLAYER} setzt das DEVON-SCOPE ein.\p"
+	.string "Ein unsichtbares POKéMON wird\n"
+	.string "entlarvt!\p"
+	.string "Das erschreckte POKéMON greift an!$"
 
-Route120_Text_RouteSignFortree:
+Route120_Text_RouteSignFortree::
 	.string "ROUTE 120\n"
 	.string "{LEFT_ARROW} BAUMHAUSEN CITY$"
 
-Route120_Text_RouteSign121:
+Route120_Text_RouteSign121::
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
 
 Route120_EventScript_Ende::
-    msgbox Route120_Text_Ende, MSGBOX_NPC
-    end
+	msgbox Route120_Text_Ende, MSGBOX_NPC
+	end
 
 Route120_Text_Ende:
 	.string "Hi, {PLAYER}!\p"
@@ -441,3 +442,16 @@ Route120_Text_Ende:
 	.string "Endet. Sorry!\p"
 	.string "Du kannst von dieser höhle aus\n"
 	.string "direkt zum Speicherort gehen.$"
+
+
+Route120_EventScript_Igamaro::
+	msgbox Route120_Text_Igamaro, MSGBOX_NPC
+	end
+
+Route120_Text_Igamaro:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 8 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"

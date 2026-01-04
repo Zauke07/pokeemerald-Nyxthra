@@ -41,41 +41,42 @@ FortreeCity_House2_EventScript_WrongGuess::
 	release
 	end
 
-FortreeCity_House2_Text_HiddenPowersArousedByNature:
-	.string "Menschen… Pokémon…\p"
-	.string "Ihre versteckten Kräfte werden durch\n"
-	.string "das Leben in der Natur geweckt.$"
+FortreeCity_House2_Text_HiddenPowersArousedByNature::
+	.string "Menschen…… POKéMON……\p"
+	.string "Ihre versteckten Kräfte werden nur wach,\n"
+	.string "wenn sie hier im Dreck der Natur hausen.$"
 
-FortreeCity_House2_Text_CoinInWhichHand:
-	.string "Lass diese alte Frau mal sehen, ob deine\n"
-	.string "versteckten Kräfte erwacht sind…\p"
-	.string "Ich halte eine Münze in meiner Hand.\p"
-	.string "Nun? In welcher Hand halte ich sie?\n"
-	.string "In der linken oder rechten Hand?$"
+FortreeCity_House2_Text_CoinInWhichHand::
+	.string "Lass die alte Frau mal sehen, ob dein\n"
+	.string "Spatzenhirn überhaupt was peilt……\p"
+	.string "Ich hab 'ne Münze in der Hand.\p"
+	.string "Na? Wo ist sie drin, Bürschchen?\n"
+	.string "Links oder rechts? Rate mal!$"
 
-FortreeCity_House2_Text_CorrectTryAgainWhichHand:
-	.string "Oh! Das stimmt!\p"
-	.string "Versuchen wir es noch einmal.\p"
-	.string "In welcher Hand halte ich die Münze?\n"
+FortreeCity_House2_Text_CorrectTryAgainWhichHand::
+	.string "Oh! Ein blindes Huhn findet auch mal……\p"
+	.string "Versuchen wir es noch mal.\p"
+	.string "In welcher Hand ist die Münze?\n"
 	.string "Rechts oder links?$"
 
-FortreeCity_House2_Text_CorrectTryAgainWhichHand2:
-	.string "Oh! Schon wieder richtig!\p"
-	.string "Probieren wir es noch einmal.\p"
-	.string "In welcher Hand ist die Münze nun?\n"
-	.string "In der linken oder der rechten Hand?$"
+FortreeCity_House2_Text_CorrectTryAgainWhichHand2::
+	.string "Was? Schon wieder richtig?\n"
+	.string "Hast du etwa geschummelt?\p"
+	.string "Aller guten Dinge sind drei.\n"
+	.string "Links oder rechts? Sag schon!$"
 
-FortreeCity_House2_Text_YourHiddenPowerHasAwoken:
-	.string "Oh! Hervorragend!\n"
-	.string "Deine versteckten Kräfte sind erwacht!\p"
-	.string "Hier, das ist für dich. Wecke damit die\n"
-	.string "versteckten Kräfte deiner Pokémon.$"
+FortreeCity_House2_Text_YourHiddenPowerHasAwoken::
+	.string "Oh! Na sieh mal einer an!\n"
+	.string "Anscheinend bist du doch nicht so hohl!\p"
+	.string "Hier, nimm das und wecke damit die\n"
+	.string "mickrigen Kräfte deiner POKéMON.$"
 
-FortreeCity_House2_Text_ExplainHiddenPower:
-	.string "KRAFTRESERVE ist eine Attacke, die je\n"
-	.string "nach Pokémon anders aussieht.$"
+FortreeCity_House2_Text_ExplainHiddenPower::
+	.string "KRAFTRESERVE ist 'ne Attacke, die je\n"
+	.string "nach POKéMON anders reinhaut.\l"
+	.string "Ist halt 'ne Überraschungstüte!$"
 
-FortreeCity_House2_Text_YouGuessedWrong:
-	.string "Och, zu schade!\n"
-	.string "Du hast falsch geraten.$"
+FortreeCity_House2_Text_YouGuessedWrong::
+	.string "Och, wie traurig!\n"
+	.string "Voll daneben geraten, Kleiner.$"
 

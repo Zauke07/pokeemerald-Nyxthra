@@ -168,21 +168,32 @@ Route121_EventScript_RematchCristin::
 	msgbox Route121_Text_CristinPostRematch, MSGBOX_AUTOCLOSE
 	end
 
-Route121_Text_OkayMoveOutToMtPyre:
-	.string "Okay!\n"
-	.string "We're to move out to MT. PYRE!$"
+Route121_Text_OkayMoveOutToMtPyre::
+	.string "Alles klar!\n"
+	.string "Abmarsch zum PYROBERG, ihr Lappen!$"
 
-Route121_Text_AheadLoomsMtPyre:
-	.string "Ahead looms MT. PYRE…\p"
-	.string "It is a natural monument to the spirits \n"
-	.string "of departed POKéMON…$"
+Route121_Text_AheadLoomsMtPyre::
+	.string "Da vorne ragt der PYROBERG auf……\p"
+	.string "Ein riesiger Steinhaufen für die Geister\n"
+	.string "verreckt…… äh, verstorbener POKéMON.$"
 
-Route121_Text_MtPyrePierSign:
-	.string "MT. PYRE PIER\p"
-	.string "…The sign is old and worn out.\n"
-	.string "The words are barely legible…$"
+Route121_Text_MtPyrePierSign::
+	.string "ANLEGESTELLE PYROBERG\p"
+	.string "……Das Schild ist alt und total vergammelt.\n"
+	.string "Man kann das Gekritzel kaum noch lesen……$"
 
-Route121_Text_SafariZoneSign:
-	.string "“Filled with rare POKéMON!”\n"
-	.string "SAFARI ZONE$"
+Route121_Text_SafariZoneSign::
+	.string "“Vollgestopft mit seltenen POKéMON!”\n"
+	.string "SAFARI-ZONE$"
 
+Route121_EventScript_Bauz::
+	msgbox Route121_Text_Bauz, MSGBOX_NPC
+	end
+
+Route121_Text_Bauz:
+	.string "Tipp:\p"
+	.string "Auf dieser Route versteckt sich ein\n"
+	.string "Starter aus der 7 Generation mit\l"
+	.string "einer Spawnrate von 1%!\p"
+	.string "Welches es ist, musst du selbst\n"
+	.string "herausfinden :D !$"

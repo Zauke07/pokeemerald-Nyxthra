@@ -86,74 +86,77 @@ AquaHideout_B2F_EventScript_Grunt8::
 	msgbox AquaHideout_B2F_Text_Grunt8PostBattle, MSGBOX_AUTOCLOSE
 	end
 
-AquaHideout_B2F_Text_MattIntro:
-	.string "Hehehe…\p"
-	.string "Got here already, did you?\n"
-	.string "We underestimated you!\p"
-	.string "But this is it!\p"
-	.string "I'm a cut above the GRUNTS you've seen\n"
-	.string "so far.\p"
-	.string "I'm not stalling for time.\n"
-	.string "I'm going to pulverize you!$"
+AquaHideout_B2F_Text_MattIntro::
+	.string "Hehehe……\p"
+	.string "Schon hier angekommen? Wir haben dich\n"
+	.string "wohl echt unterschätzt, du kleiner Wurm!\p"
+	.string "Aber hier ist Endstation!\p"
+	.string "Ich spiel in einer ganz anderen Liga als\n"
+	.string "die Versager, die du bisher besiegt hast.\p"
+	.string "Ich schinde keine Zeit.\n"
+	.string "Ich werd dich einfach pulverisieren!$"
 
-AquaHideout_B2F_Text_MattDefeat:
-	.string "Hehehe…\n"
-	.string "So, I lost, too…$"
+AquaHideout_B2F_Text_MattDefeat::
+	.string "Hehehe……\n"
+	.string "Na toll, jetzt hab ich auch abgekackt……$"
 
-AquaHideout_B2F_Text_OurBossGotThroughHisPreparations:
+AquaHideout_B2F_Text_OurBossGotThroughHisPreparations::
 	.string "Hehehe!\p"
-	.string "While I was toying with you, our BOSS\n"
-	.string "got through his preparations!$"
+	.string "Während ich dich ein bisschen verprügelt\n"
+	.string "habe, ist unser BOSS fertig geworden!$"
 
-AquaHideout_B2F_Text_MattPostBattle:
+AquaHideout_B2F_Text_MattPostBattle::
 	.string "Hehehe!\p"
-	.string "Our BOSS has already gone on his way to\n"
-	.string "some cave under the sea!\p"
-	.string "If you're going to give chase, you'd\n"
-	.string "better search the big, wide sea beyond\l"
-	.string "LILYCOVE.\p"
-	.string "But will you find it then?\n"
-	.string "Hehehe!$"
+	.string "Der BOSS ist schon längst auf dem Weg\n"
+	.string "zu einer Höhle tief unter dem Meer!\p"
+	.string "Wenn du ihn jagen willst, musst du die\n"
+	.string "ganze verdammte See vor SEEGRASULB\l"
+	.string "CITY absuchen.\p"
+	.string "Aber ob du da was findest?\n"
+	.string "Hehehe! Träum weiter!$"
 
-AquaHideout_B2F_Text_Grunt4Intro:
-	.string "Wahahah, I grew weary of waiting!\n"
-	.string "You owe me a battle, too!$"
+AquaHideout_B2F_Text_Grunt4Intro::
+	.string "Wahaha! Ich hab mir schon den Arsch\n"
+	.string "abgewartet! Du schuldest mir auch\l"
+	.string "einen Kampf, du Nervensäge!$"
 
-AquaHideout_B2F_Text_Grunt4Defeat:
-	.string "Tired of waiting…\n"
-	.string "Lost and dazed…$"
+AquaHideout_B2F_Text_Grunt4Defeat::
+	.string "Erst ewig gewartet……\n"
+	.string "Und dann direkt kassiert……$"
 
-AquaHideout_B2F_Text_Grunt4PostBattle:
-	.string "BOSS…\n"
-	.string "Is this good enough?$"
+AquaHideout_B2F_Text_Grunt4PostBattle::
+	.string "BOSS……\n"
+	.string "Reicht das als Ablenkung?$"
 
-AquaHideout_B2F_Text_Grunt6Intro:
-	.string "Warp panels, the HIDEOUT's pride\n"
-	.string "and joy!\p"
-	.string "You're clueless about where you are,\n"
-	.string "aren't you?\p"
-	.string "Fluster and tire out the enemy, then\n"
-	.string "lower the boom! That's our plan!$"
+AquaHideout_B2F_Text_Grunt6Intro::
+	.string "Teleporter-Felder! Der ganze Stolz\n"
+	.string "unseres Verstecks!\p"
+	.string "Du hast doch keinen Plan mehr, wo\n"
+	.string "oben und unten ist, oder?\p"
+	.string "Den Gegner verwirren und mürbe machen,\n"
+	.string "und dann bumm! Das ist unser Plan!$"
 
-AquaHideout_B2F_Text_Grunt6Defeat:
-	.string "What's wrong with you?\n"
-	.string "You're not tired at all!$"
+AquaHideout_B2F_Text_Grunt6Defeat::
+	.string "Was ist los mit dir?\n"
+	.string "Du bist ja gar nicht am Ende!$"
 
-AquaHideout_B2F_Text_Grunt6PostBattle:
-	.string "That reminds me… I can't remember\n"
-	.string "where I put the MASTER BALL.\p"
-	.string "If I fail to guard it, our BOSS will\n"
-	.string "chew me out…$"
+AquaHideout_B2F_Text_Grunt6PostBattle::
+	.string "Wo du es sagst…… Ich weiß nicht mal\n"
+	.string "mehr, wo ich den MEISTERBALL hingepfeffert\l"
+	.string "habe.\p"
+	.string "Wenn ich den verliere, reißt mir der BOSS\n"
+	.string "den Arsch bis zu den Ohren auf……$"
 
-AquaHideout_B2F_Text_Grunt8Intro:
-	.string "When I joined TEAM AQUA, the first\n"
-	.string "thing I had to learn was how these\l"
-	.string "warp panels connected.$"
+AquaHideout_B2F_Text_Grunt8Intro::
+	.string "Als ich bei TEAM AQUA angefangen habe,\n"
+	.string "musste ich erst mal diesen Mist mit den\l"
+	.string "Teleportern auswendig lernen.$"
 
-AquaHideout_B2F_Text_Grunt8Defeat:
-	.string "I was too occupied thinking about\n"
-	.string "the warp panels…$"
+AquaHideout_B2F_Text_Grunt8Defeat::
+	.string "Ich war zu sehr damit beschäftigt, über\n"
+	.string "diese blöden Felder nachzudenken……$"
 
-AquaHideout_B2F_Text_Grunt8PostBattle:
-	.string "I'll have to learn about how I can\n"
-	.string "battle more effectively…$"
+AquaHideout_B2F_Text_Grunt8PostBattle::
+	.string "Ich sollte wohl eher mal lernen, wie man\n"
+	.string "richtig kämpft und nicht nur doof in der\l"
+	.string "Gegend rumsteht……$"

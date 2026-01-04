@@ -62,34 +62,35 @@ FortreeCity_House4_EventScript_Wingull::
 	release
 	end
 
-FortreeCity_House4_Text_BringsWorldCloserTogether:
-	.string "Wenn sie mit Pokémon zusammen sind,\n"
-	.string "finden die Menschen schnell Freunde.\p"
-	.string "Und so rücken die Menschen weltweit\n"
-	.string "näher zusammen. Wunderbar, nicht wahr?$"
+FortreeCity_House4_Text_BringsWorldCloserTogether::
+	.string "Wenn man POKéMON dabei hat, finden\n"
+	.string "selbst die größten Creeps Freunde.\p"
+	.string "So rückt die Welt zusammen, ob man will\n"
+	.string "oder nicht. Ziemlich nervig, oder?$"
 
-FortreeCity_House4_Text_GoBirdPokemon:
-	.string "Fertig!\n"
-	.string "Los, VOGEL-Pokémon!$"
+FortreeCity_House4_Text_GoBirdPokemon::
+	.string "Abflug!\n"
+	.string "Los, du nutzloses VOGEL-POKéMON!$"
 
-FortreeCity_House4_Text_AskedWingullToRunErrand:
-	.string "Hähähä, mein WINGULL macht\n"
-	.string "Besorgungen für mich.$"
+FortreeCity_House4_Text_AskedWingullToRunErrand::
+	.string "Hähähä, mein WINGULL muss für mich\n"
+	.string "die Drecksarbeit erledigen.$"
 
-FortreeCity_House4_Text_WelcomeWingullTakeMentalHerb:
-	.string "Gut!\n"
-	.string "Komm zurück, WINGULL!\p"
-	.string "Huch! Was ist das?\n"
-	.string "Was trägt es denn da?\p"
+FortreeCity_House4_Text_WelcomeWingullTakeMentalHerb::
+	.string "Na endlich!\n"
+	.string "Komm zurück, du lahme Ente!\p"
+	.string "Huch! Was hast du da im Schnabel?\n"
+	.string "Wo hast du das denn mitgehen lassen?\p"
 	.string "Ein MENTALKRAUT?\n"
-	.string "Das muss es irgendwo gefunden haben.\p"
-	.string "Aber, ich bin kein TRAINER, daher kannst\n"
-	.string "du es haben.$"
+	.string "Wahrscheinlich hat es das irgendwo geklaut.\p"
+	.string "Da ich kein Trainer bin, kannst du das\n"
+	.string "Zeug haben. Ich fang damit nix an.$"
 
-FortreeCity_House4_Text_FriendsFarAwayThanksToWingull:
-	.string "Dank meines WINGULL habe ich Freunde,\n"
-	.string "die sehr weit weg von hier wohnen.$"
+FortreeCity_House4_Text_FriendsFarAwayThanksToWingull::
+	.string "Dank meines WINGULLS hab ich Brieffreunde,\n"
+	.string "die so weit weg wohnen, dass ich sie\l"
+	.string "zum Glück nie persönlich sehen muss.$"
 
-FortreeCity_House4_Text_Wingull:
-	.string "WINGULL: Pihyoh!$"
+FortreeCity_House4_Text_Wingull::
+	.string "WINGULL: Pihyoh! (Lass mich in Ruhe!)$"
 
