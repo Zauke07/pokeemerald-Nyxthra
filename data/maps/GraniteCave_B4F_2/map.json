@@ -129,7 +129,7 @@
       "y": 39,
       "elevation": 0,
       "item": "ITEM_FULL_RESTORE",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B4F2_FULL_RESTORE"
     },
     {
       "type": "hidden_item",
@@ -137,7 +137,7 @@
       "y": 39,
       "elevation": 0,
       "item": "ITEM_EXP_CHARM",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B4F2_EXP_CHARM"
     }
   ]
 }

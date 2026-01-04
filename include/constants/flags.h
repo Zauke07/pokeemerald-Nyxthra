@@ -55,7 +55,7 @@
 #define FLAG_PLAYER_IN_GARDEN                  0x29 // Spieler ist im Garten
 #define FLAG_DAYCARE_MAN_FIRST_EXIT_DONE       0x2A // Alter Mann hat ersten Ausgang erledigt
 #define FLAG_SHINY_MODE_ON                      0x2B // Shiny-Mode ist AN
-#define FLAG_HIDDEN_ITEM_BASEMENT_KEY    0x2C // Versteckter Gegenstand KELLERSCHLÜSSEL
+#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_CAUGHT_LAVADOS      0x2D // Lavados wurde gefangen
 #define FLAG_DEFEATED_LAVADOS    0x2E // Lavados wurde besiegt
 #define FLAG_HIDE_LAVADOS        0x2F // Lavados verstecken
@@ -659,6 +659,10 @@
 #define FLAG_HIDDEN_ITEM_Route_119_BIG_NUGGET                (FLAG_HIDDEN_ITEMS_START + 0x71)
 #define FLAG_HIDDEN_ITEM_ROUTE_109_POKE_FLUTE                (FLAG_HIDDEN_ITEMS_START + 0x72)
 #define FLAG_HIDDEN_ITEM_ROUTE_111_1_BIG_NUGGET              (FLAG_HIDDEN_ITEMS_START + 0x73)
+#define FLAG_HIDDEN_ITEM_BASEMENT_KEY                      (FLAG_HIDDEN_ITEMS_START + 0x74)
+#define FLAG_HIDDEN_ITEM_GRANITE_CAVE_B4F2_FULL_RESTORE     (FLAG_HIDDEN_ITEMS_START + 0x75)
+#define FLAG_HIDDEN_ITEM_GRANITE_CAVE_B4F2_EXP_CHARM        (FLAG_HIDDEN_ITEMS_START + 0x76)
+
 
 #define FLAG_UNUSED_0x264  0x264 // Zeit bleibt im pausen menü stehen
 #define FLAG_REPEL_LURE_MENU  0x265 // Schutz-/Lockmittel frage
