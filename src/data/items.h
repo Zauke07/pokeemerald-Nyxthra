@@ -12007,9 +12007,9 @@ const struct Item gItemsInfo[] =
         .price = 5500,
         .description = COMPOUND_STRING(
         #if B_USE_FROSTBITE == TRUE
-            "A snow-and-wind\n"
-            "attack that may\n"
-            "inflict frostbite."),
+            "Brutaler Schnee-\n"
+            "und Windangriff,\n"
+            "der Kältebrand bewirkt."),
         #else
             "A brutal snow-and-\n"
             "wind attack that\n"
