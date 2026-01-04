@@ -305,7 +305,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
 {
     [TRAINER_CLASS_PKMN_TRAINER_1] = { _("{PKMN} Trainer") },
     [TRAINER_CLASS_PKMN_TRAINER_2] = { _("{PKMN} Trainer") },
-    [TRAINER_CLASS_HIKER] = { _("Wanderer"), 10 },
+    [TRAINER_CLASS_HIKER] = { _("Wanderer"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
     [TRAINER_CLASS_TEAM_AQUA] = { _("Team Aqua") },
     [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} Züchter"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_HEAL : BALL_FRIEND },
     [TRAINER_CLASS_COOLTRAINER] = { _("Cooltrainer"), 12, BALL_ULTRA },
@@ -324,7 +324,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_TUBER_F] = { _("Kleinkind"), 1 },
     [TRAINER_CLASS_TUBER_M] = { _("Kleinkind"), 1 },
     [TRAINER_CLASS_LADY] = { _("Dame"), 50 },
-    [TRAINER_CLASS_BEAUTY] = { _("Schönheit"), 20 },
+    [TRAINER_CLASS_BEAUTY] = { _("Schönheit"), 20, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_GREAT : BALL_POKE },
     [TRAINER_CLASS_RICH_BOY] = { _("Schnösel"), 50 },
     [TRAINER_CLASS_POKEMANIAC] = { _("Pokémaniac"), 15 },
     [TRAINER_CLASS_GUITARIST] = { _("Gitarrist"), 8 },
@@ -335,13 +335,13 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_PSYCHIC] = { _("Psychic"), 6 },
     [TRAINER_CLASS_GENTLEMAN] = { _("Gentleman"), 20, BALL_LUXURY },
     [TRAINER_CLASS_ELITE_FOUR] = { _("Top Vier"), 25, BALL_ULTRA },
-    [TRAINER_CLASS_LEADER] = { _("Leiter"), 25 },
+    [TRAINER_CLASS_LEADER] = { _("Leiter"), 25, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_ULTRA : BALL_POKE },
     [TRAINER_CLASS_SCHOOL_KID] = { _("Schulkind") },
     [TRAINER_CLASS_SR_AND_JR] = { _("Sen und Jun"), 4 },
     [TRAINER_CLASS_WINSTRATE] = { _("Winstrate"), 10 },
     [TRAINER_CLASS_POKEFAN] = { _("Pokéfan"), 20 },
     [TRAINER_CLASS_YOUNGSTER] = { _("Teenager"), 4 },
-    [TRAINER_CLASS_CHAMPION] = { _("Champion"), 50 },
+    [TRAINER_CLASS_CHAMPION] = { _("Champion"), 50, BALL_ULTRA },
     [TRAINER_CLASS_FISHERMAN] = { _("Angler"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? BALL_DIVE : BALL_LURE },
     [TRAINER_CLASS_TRIATHLETE] = { _("Triathlet"), 10 },
     [TRAINER_CLASS_DRAGON_TAMER] = { _("Drachenprofi"), 12 },
@@ -361,7 +361,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_YOUNG_COUPLE] = { _("Junges paar"), 8 },
     [TRAINER_CLASS_OLD_COUPLE] = { _("Altes paar"), 10 },
     [TRAINER_CLASS_SIS_AND_BRO] = { _("Geschwister"), 3 },
-    [TRAINER_CLASS_SALON_MAIDEN] = { _("Salon Maiden") },
+    [TRAINER_CLASS_SALON_MAIDEN] = { _("Salon Maiden"), 5, BALL_ULTRA },
     [TRAINER_CLASS_DOME_ACE] = { _("Dome ace") },
     [TRAINER_CLASS_PALACE_MAVEN] = { _("Palace Maven") },
     [TRAINER_CLASS_ARENA_TYCOON] = { _("Arena Tycoon") },
@@ -3020,7 +3020,7 @@ static void ClearSetBScriptingStruct(void)
         gBattleScripting.battleStyle = OPTIONS_BATTLE_STYLE_SET;
     else
         gBattleScripting.battleStyle = gSaveBlock2Ptr->optionsBattleStyle;
-    gBattleScripting.expOnCatch = (B_EXP_CATCH >= GEN_6);
+    gBattleScripting.expOnCatch = (GetConfig(CONFIG_EXP_CATCH) >= GEN_6);
     gBattleScripting.specialTrainerBattleType = specialBattleType;
 }
 
@@ -3295,10 +3295,10 @@ void SwitchInClearSetData(u32 battler, struct Volatiles *volatilesCopy)
     #if TESTING
     if (gTestRunnerEnabled)
     {
-        u32 side = GetBattlerSide(battler);
+        u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        if (TestRunner_Battle_GetForcedAbility(side, partyIndex))
-            gBattleMons[i].ability = TestRunner_Battle_GetForcedAbility(side, partyIndex);
+        if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
+            gBattleMons[i].ability = TestRunner_Battle_GetForcedAbility(array, partyIndex);
     }
     #endif // TESTING
 
@@ -3506,10 +3506,10 @@ static void DoBattleIntro(void)
                 #if TESTING
                 if (gTestRunnerEnabled)
                 {
-                    u32 side = GetBattlerSide(battler);
+                    u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
                     u32 partyIndex = gBattlerPartyIndexes[battler];
-                    if (TestRunner_Battle_GetForcedAbility(side, partyIndex))
-                        gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(side, partyIndex);
+                    if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
+                        gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(array, partyIndex);
                 }
                 #endif
             }
@@ -3746,7 +3746,7 @@ static void DoBattleIntro(void)
     case BATTLE_INTRO_STATE_SET_DEX_AND_BATTLE_VARS:
         if (!gBattleControllerExecFlags)
         {
-            gBattleStruct->eventState.beforeFristTurn = 0;
+            gBattleStruct->eventState.beforeFirstTurn = 0;
             gBattleStruct->switchInBattlerCounter = 0;
             Ai_InitPartyStruct(); // Save mons party counts, and first 2/4 mons on the battlefield.
 
@@ -3784,7 +3784,7 @@ static void TryDoEventsBeforeFirstTurn(void)
     if (gBattleControllerExecFlags)
         return;
 
-    switch (gBattleStruct->eventState.beforeFristTurn)
+    switch (gBattleStruct->eventState.beforeFirstTurn)
     {
     case FIRST_TURN_EVENTS_START:
         // Set invalid mons as absent(for example when starting a double battle with only one pokemon).
@@ -3805,10 +3805,10 @@ static void TryDoEventsBeforeFirstTurn(void)
         {
             for (i = 0; i < gBattlersCount; ++i)
             {
-                u32 side = GetBattlerSide(i);
+                u32 array = (!IsPartnerMonFromSameTrainer(i)) ? i : GetBattlerSide(i);
                 u32 partyIndex = gBattlerPartyIndexes[i];
-                if (TestRunner_Battle_GetForcedAbility(side, partyIndex))
-                    gBattleMons[i].ability = TestRunner_Battle_GetForcedAbility(side, partyIndex);
+                if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
+                    gBattleMons[i].ability = TestRunner_Battle_GetForcedAbility(array, partyIndex);
             }
         }
         #endif // TESTING
@@ -3834,20 +3834,20 @@ static void TryDoEventsBeforeFirstTurn(void)
                     SwapTurnOrder(i, j);
             }
         }
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_OVERWORLD_WEATHER:
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         if (TryFieldEffects(FIELD_EFFECT_OVERWORLD_WEATHER))
             return;
         break;
     case FIRST_TURN_EVENTS_TERRAIN:
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         if (TryFieldEffects(FIELD_EFFECT_OVERWORLD_TERRAIN))
             return;
         break;
     case FIRST_TURN_EVENTS_STARTING_STATUS:
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         if (TryFieldEffects(FIELD_EFFECT_TRAINER_STATUSES))
             return;
         break;
@@ -3862,7 +3862,7 @@ static void TryDoEventsBeforeFirstTurn(void)
             }
         }
         memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts)); // erase all totem boosts for Mirror Herb and Opportunist
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_NEUTRALIZING_GAS:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3872,7 +3872,7 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_SWITCH_IN_ABILITIES:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3889,7 +3889,7 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_ITEM_EFFECTS:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3899,7 +3899,7 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_WHITE_HERB:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3909,7 +3909,7 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_OPPORTUNIST:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3919,7 +3919,7 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_MIRROR_HERB:
         while (gBattleStruct->switchInBattlerCounter < gBattlersCount) // From fastest to slowest
@@ -3929,10 +3929,10 @@ static void TryDoEventsBeforeFirstTurn(void)
                 return;
         }
         gBattleStruct->switchInBattlerCounter = 0;
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         break;
     case FIRST_TURN_EVENTS_EJECT_PACK:
-        gBattleStruct->eventState.beforeFristTurn++;
+        gBattleStruct->eventState.beforeFirstTurn++;
         if (TrySwitchInEjectPack(FIRST_TURN))
             return;
         break;
@@ -3971,7 +3971,7 @@ static void TryDoEventsBeforeFirstTurn(void)
 
         if ((i = ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_BEFORE_FIRST_TURN)))
             BattleScriptExecute(i == 1 ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_TrainerBSlideMsgEnd2);
-        gBattleStruct->eventState.beforeFristTurn = 0;
+        gBattleStruct->eventState.beforeFirstTurn = 0;
         break;
     }
 }

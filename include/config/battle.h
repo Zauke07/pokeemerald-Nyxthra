@@ -165,31 +165,29 @@
 #define B_POWDER_OVERCOAT           GEN_LATEST // In Gen6+ blockt Wetterfest Puder- und Sporen-Moves.
 
 // Item-Einstellungen
-#define B_HP_BERRIES                GEN_LATEST // In Gen4+ triggern KP-Beeren sofort bei 50% KP. In Gen3 erst am Rundenende.
-#define B_BERRIES_INSTANT           GEN_LATEST // In Gen4+ triggern viele Beeren beim Kampfbeginn/Einwechseln. In Gen3 nur nach Move-Ende oder Rundenende.
-#define B_CONFUSE_BERRIES_HEAL      GEN_LATEST // Vor Gen7: 1/8 KP bei 50%. Gen7: 1/2 KP bei 25%. Gen8: 1/3 KP.
-#define B_X_ITEMS_BUFF              GEN_LATEST // In Gen7+ erhöhen X-Items Stats um 2 statt 1 Stufe.
-#define B_MENTAL_HERB               GEN_LATEST // In Gen5+ heilt Mentalkraut Spott, Zugabe, Folterknecht, Heilblockade, Aussetzer zusätzlich zu Anziehung.
-#define B_TRAINERS_KNOCK_OFF_ITEMS  TRUE       // TRUE: Trainer können Items stehlen/tauschen (Nicht-Beeren nach Kampf zurück). Vanilla: Trainer stehlen keine Items.
-#define B_RETURN_STOLEN_NPC_ITEMS   GEN_LATEST // In Gen5+ stehlen Raub/Rücksack keine Items von NPCs.
-#define B_STEAL_WILD_ITEMS          GEN_LATEST // In Gen9 stehlen Raub/Rücksack Items wilder Pokémon und senden sie in die Tasche. Vor Gen9 trägt der Nutzer das Item.
-#define B_RESTORE_HELD_BATTLE_ITEMS GEN_LATEST // In Gen9 werden alle Nicht-Beeren-Items nach Kampf wiederhergestellt.
-#define B_SOUL_DEW_BOOST            GEN_LATEST // Gen3-6: Seelentau pusht SpA/SpD der Lati@s. Gen7+: boostet Psycho- und Drachen-Moves.
-#define B_NET_BALL_MODIFIER         GEN_LATEST // In Gen7+ Fangmultiplikator Netzball x5 statt x3.
-#define B_DIVE_BALL_MODIFIER        GEN_LATEST // In Gen4+ x3.5 beim Surfen/Angeln.
-#define B_NEST_BALL_MODIFIER        GEN_LATEST // Formel je Gen unterschiedlich. Siehe Cmd_handleballthrow.
-#define B_REPEAT_BALL_MODIFIER      GEN_LATEST // In Gen7+ Wiederball x3.5 statt x3.
-#define B_TIMER_BALL_MODIFIER       GEN_LATEST // In Gen5+ steigt Timerball um x0.3 pro Runde statt x0.1.
-#define B_DUSK_BALL_MODIFIER        GEN_LATEST // In Gen7+ Finsterball x3 statt x3.5.
-#define B_QUICK_BALL_MODIFIER       GEN_LATEST // In Gen5+ Flottball x5 statt x4.
-#define B_LURE_BALL_MODIFIER        GEN_LATEST // In Gen8+ Köderball x4; Gen7 x5; Gen6- x3.
-#define B_HEAVY_BALL_MODIFIER       GEN_LATEST // In Gen7+ andere Gewichtsbereiche. Siehe Cmd_handleballthrow.
-#define B_DREAM_BALL_MODIFIER       GEN_LATEST // In Gen8+ Traumball x4 bei Schlaf/Komatös.
-#define B_SPORT_BALL_MODIFIER       GEN_LATEST // In Gen8+ Sportball von x1.5 auf x1 reduziert.
-#define B_SAFARI_BALL_MODIFIER      GEN_LATEST // In Gen8+ Safariball von x1.5 auf x1 reduziert.
-#define B_FRIEND_BALL_MODIFIER      GEN_LATEST // In Gen8+ Freundesball-Freundschaftsboost 150 statt 200.
-#define B_SERENE_GRACE_BOOST        GEN_LATEST // In Gen5+ erhöht Edelmut die Zusatz-Flinch-Chance von King-Stein/Rasierklinge.
-#define B_IRON_BALL                 GEN_LATEST // In Gen5+ nimmt Flug-Typ mit Eisenkugel normalen Bodenschaden, außer in Invers-Kämpfen oder wenn bereits geerdet.
+#define B_CONFUSE_BERRIES_HEAL      GEN_LATEST // In Gen3-6 stellen Tsitrubeere und ähnliche Beeren 1/8 der KP wieder her und wirken bei halben KP. In Gen7 stellen sie die Hälfte der KP wieder her und wirken bei 25% KP. In Gen8 heilen sie 1/3 der KP.
+#define B_X_ITEMS_BUFF              GEN_LATEST // In Gen7+ erhöhen X-Items einen Statuswert um 2 Stufen statt 1.
+#define B_MENTAL_HERB               GEN_LATEST // In Gen5+ heilt das Mentalkraut zusätzlich zur Betörung auch Verhöhner, Zugabe, Folterknecht, Heilsperre und Aussetzer.
+#define B_TRAINERS_KNOCK_OFF_ITEMS  TRUE       // Wenn TRUE, können Trainer deine Items stehlen/tauschen (Nicht-Beeren werden nach dem Kampf zurückgegeben). In den Original-Spielen können Trainer keine Items außerhalb von Facilities stehlen.
+#define B_RETURN_STOLEN_NPC_ITEMS   GEN_LATEST // In Gen5+ stehlen Raub und Bezirzer keine Items mehr von NPCs.
+#define B_STEAL_WILD_ITEMS          GEN_LATEST // In Gen9+ stehlen Raub und Bezirzer das Item eines wilden Pokémon und schicken es in die Tasche. In Gen2-8 wurde das gestohlene Item vom Raub/Bezirzer-Nutzer gehalten.
+#define B_RESTORE_HELD_BATTLE_ITEMS GEN_LATEST // In Gen9+ werden alle Nicht-Beeren-Items nach dem Kampf wiederhergestellt.
+#define B_SOUL_DEW_BOOST            GEN_LATEST // In Gens3-6, Soul Dew boosts Latis' Sp. Atk and Sp. Def. In Gen7+ it boosts the power of their Psychic and Dragon type moves instead.
+#define B_NET_BALL_MODIFIER         GEN_LATEST // In Gen7+, Net Ball's catch multiplier is x5 instead of x3.
+#define B_DIVE_BALL_MODIFIER        GEN_LATEST // In Gen4+, Dive Ball's effectiveness increases by x3.5 when Surfing or Fishing.
+#define B_NEST_BALL_MODIFIER        GEN_LATEST // Nest Ball's formula varies depending on the Gen. See Cmd_handleballthrow.
+#define B_REPEAT_BALL_MODIFIER      GEN_LATEST // In Gen7+, Repeat Ball's catch multiplier is x3.5 instead of x3.
+#define B_TIMER_BALL_MODIFIER       GEN_LATEST // In Gen5+, Timer Ball's effectiveness increases by x0.3 per turn instead of x0.1
+#define B_DUSK_BALL_MODIFIER        GEN_LATEST // In Gen7+, Dusk Ball's catch multiplier is x3 instead of x3.5.
+#define B_QUICK_BALL_MODIFIER       GEN_LATEST // In Gen5+, Quick Ball's catch multiplier is x5 instead of x4.
+#define B_LURE_BALL_MODIFIER        GEN_LATEST // In Gen8+, Lure Ball's catch multiplier is x4. In Gen7, it's x5. In Gen6 and earlier, it's x3.
+#define B_HEAVY_BALL_MODIFIER       GEN_LATEST // In Gen7+, Heavy Ball's ranges change. See Cmd_handleballthrow.
+#define B_DREAM_BALL_MODIFIER       GEN_LATEST // In Gen8+, Dream Ball's catch multiplier is x4 when the target is asleep or has the ability Comatose.
+#define B_SPORT_BALL_MODIFIER       GEN_LATEST // In Gen8+, Sport Ball's catch multiplier was reduced from x1.5 to x1.
+#define B_SAFARI_BALL_MODIFIER      GEN_LATEST // In Gen8+, Safari Ball's catch multiplier was reduced from x1.5 to x1.
+#define B_FRIEND_BALL_MODIFIER      GEN_LATEST // In Gen8+, Friend Ball's friendship boost was reduced from 200 to 150.
+#define B_SERENE_GRACE_BOOST        GEN_LATEST // In Gen5+, Serene Grace boosts the added flinch chance of King's Rock and Razor Fang.
+#define B_IRON_BALL                 GEN_LATEST // In Gen5+, Flying-type Pokemon holding Iron Ball take x1 damage from Ground-type moves regardless of their other types, except during Inverse Battles or if the Pokemon is grounded by any other effect.
 
 // Flag-Einstellungen
 // Um die folgenden Features zu nutzen, ersetze 0 durch ein Flag in include/constants/flags.h, idealerweise ein ungenutztes.

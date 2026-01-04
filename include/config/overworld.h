@@ -21,7 +21,7 @@
 
 // Diese Generation-Defines unterscheiden nur bei Beeren und OW_PC_MOVE_ORDER
 #define GEN_6_XY GEN_6
-#define GEN_6_ORAS GEN_LATEST + 1
+#define GEN_6_ORAS GEN_COUNT + 1
 
 // PC-Einstellungen
 #define OW_PC_PRESS_B               GEN_LATEST // In Gen4 entspricht das Drücken von B beim Halten eines Pokémon dem Ablegen. In Gen3 gibt es eine Fehlermeldung.
