@@ -14,7 +14,7 @@ Route119_EventScript_TryRemoveKecleon::
 	return
 
 Route119_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId_Route110
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
@@ -4833,4 +4833,3 @@ Route119_EventScript_DefeatedMay:
 	call Route119_EventScript_RivalExitScottArrive
 	releaseall
 	end
-

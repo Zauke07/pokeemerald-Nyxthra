@@ -4,7 +4,7 @@ LittlerootTown_MaysHouse_2F_MapScripts::
 	.byte 0
 
 LittlerootTown_MaysHouse_2F_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_MaysHouse_2F_EventScript_SetRivalPos
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
@@ -486,4 +486,3 @@ LittlerootTown_MaysHouse_2F_Text_BugfixDialog:
 	.string "dass ich normal durch die Tür gehe.\p"
 	.string "Du musst das für mich übernehmen…\n"
 	.string "Danke für's Debuggen!{COLOR DARK_GRAY}$"
-

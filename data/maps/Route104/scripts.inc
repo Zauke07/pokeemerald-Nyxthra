@@ -13,7 +13,7 @@ Route104_EventScript_StartSailToDewford::
 	end
 
 Route104_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
 	end
@@ -1173,4 +1173,3 @@ Route104_Text_Kanimani:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
-

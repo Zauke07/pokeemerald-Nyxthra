@@ -17,7 +17,7 @@
                                           // GEN_1/2/3/4/5/6/7: Lernsets von Gelb, Kristall, RSE, HGSS, S2W2, ORAS bzw. USUM.
                                           // GEN_8: Verwende die folgende Priorität: BDSP für Pokémon der Gen. 1-4, dann LA (Legenden: Arceus) für Spezies, die in diesem Spiel eingeführt wurden, dann SwSh für Spezies, die in diesen Spielen vorhanden sind. Andernfalls verwende GEN_7.
                                           // GEN_9: SV (Karmesin/Purpur) für Spezies, die in diesen Spielen vorhanden sind. Andernfalls verwende GEN_8.
-#define P_EVOLUTION_LEVEL_1_LEARN GEN_LATEST // In Gen. 8+ erhalten Pokémon, die sich auf Level 1 entwickeln, nicht die Möglichkeit, ihre Level-1-Attacken zu erlernen, während dies zuvor der Fall war.
+#define P_EVOLUTION_LEVEL_1_LEARN GEN_LATEST // Since Gen. 8 erhalten Pokémon, die sich auf Level 1 entwickeln, nicht die Möglichkeit, ihre Level-1-Attacken zu erlernen, während dies zuvor der Fall war.
 
 // Entwicklungseinstellungen
 #define P_FRIENDSHIP_EVO_THRESHOLD GEN_LATEST // Seit Gen. 8 entwickeln sich Pokémon, die sich durch Freundschaft entwickeln, bei oder über 160 Freundschaft statt bei 220.

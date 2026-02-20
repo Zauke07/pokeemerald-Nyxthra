@@ -4,6 +4,7 @@ OldaleTown_MapScripts::
 
 OldaleTown_OnTransition:
     setflag FLAG_VISITED_OLDALE_TOWN
+    call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
     call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
     call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
     call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
@@ -425,4 +426,3 @@ OldaleTown_Text_BrendanLetsGoBack:
 OldaleTown_Text_TownSign:
 	.string "ROSALTSTADT\n"
 	.string "“Die Höhle flüstert - hörst du es auch?”$"
-

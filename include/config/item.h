@@ -12,7 +12,7 @@
 #define I_GRISEOUS_ORB_FORM_CHANGE      GEN_LATEST  // Ab Gen9+ ändert die Griseous-Orb Giratinas Form nicht mehr, wenn sie getragen wird.
 #define I_GEM_BOOST_POWER               GEN_LATEST  // Ab Gen6+ wurde der Kraftschub von Juwelen von 50% auf 30% reduziert.
 #define I_USE_EVO_HELD_ITEMS_FROM_BAG   TRUE       // Wenn TRUE, können Entwicklungsitems wie Rasierklaue oder Stromisierer direkt aus der Tasche zum Entwickeln verwendet werden (wie in LA).
-#define I_TYPE_BOOST_POWER              GEN_LATEST  // Ab Gen4+ wurde die Kraft aller normalen Typ-Verstärker-Items von 10% auf 20% erhöht (z.B. Holzkohle).
+#define I_TYPE_BOOST_POWER              GEN_LATEST  // Ab Gen4+ wurden die Multiplikatoren von Typ-verstärkenden gehaltenen Items (wie Holzkohle) von 1,1x auf 1,2x erhöht. Seerosenkranz wurde von 1,05x auf 1,2x geändert.
 #define I_SELL_VALUE_FRACTION           GEN_LATEST  // Ab Gen9+ verkaufen sich Items nur noch für 1/4 ihres Wertes statt für die Hälfte.
 #define I_PRICE                         GEN_LATEST  // Einige Items haben ihren Wert über die Generationen hinweg verändert.
 #define I_BERRY_PRICE                   GEN_7       // Da Beeren ab Gen8+ nicht mehr gepflanzt werden können, ist ihr Preis gestiegen.
@@ -30,7 +30,7 @@
 #define I_EXP_SHARE_FLAG        FLAG_EXP_SHARE           // Wenn diese Flag gesetzt ist, erhalten alle Pokémon im Team Erfahrung, unabhängig davon, ob sie am Kampf teilgenommen haben.
 #define I_EXP_SHARE_ITEM        GEN_6                       // Ab Gen6+ wurde der EP-Teiler von einem gehaltenen Item zu einem Schlüssel-Item, das den oben beschriebenen Effekt aktiviert.
 
-// Repel/Lure config
+// Schutz-/Lockmittel-Konfiguration
 // Diese beiden Einstellungen sind unabhängig und ergänzen sich.
 #define VAR_LAST_REPEL_LURE_USED    VAR_REPEL_LURE_MENU       // Wenn diese Variable gesetzt ist, wird das zuletzt verwendete Schutz-/Lockmittel gespeichert und der Spieler bekommt die Standard-Schutzabfrage, außer I_REPEL_LURE_MENU ist TRUE.
 #define I_REPEL_LURE_MENU           FALSE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.

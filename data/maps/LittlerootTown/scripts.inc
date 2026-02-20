@@ -35,7 +35,7 @@ LittlerootTown_MapScripts::
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	setvar VAR_0x8004, LOCALID_LITTLEROOT_RIVAL
 	spawnrival_style
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
@@ -1292,4 +1292,3 @@ TestlaborGuard_WrongPassword:
 
 TestlaborGuard_WelcomeBack:
 	.string "Du bist berechtigt.\nGeh ruhig rein.$"
-

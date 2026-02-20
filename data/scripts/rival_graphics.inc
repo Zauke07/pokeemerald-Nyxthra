@@ -41,6 +41,7 @@ Common_EventScript_SetupRivalGfxId::
 @    compare VAR_RESULT, STYLE_JULIANA
 @    goto_if_eq EventScript_SetupRivalGfxIdFlorian
 
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
     end
 
 EventScript_SetupRivalGfxIdMay::
@@ -208,6 +209,7 @@ Common_EventScript_SetupRivalOnBikeGfxId::
 @    compare VAR_RESULT, STYLE_JULIANA
 @    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdFlorian
 
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
 end
 
 Common_EventScript_SetupRivalOnBikeGfxId_Route110::
@@ -232,6 +234,7 @@ Common_EventScript_SetupRivalOnBikeGfxId_Route110::
     goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilda_Route110
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilbert_Route110
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
     end
 
 EventScript_SetupRivalOnMachBikeGfxIdMay::
@@ -529,6 +532,7 @@ Common_EventScript_SetupRivalGfxId_FromPlayerStyle::
 @    goto_if_eq EventScript_SetupRivalGfxIdJuliana_Switch
 @    compare VAR_RESULT, STYLE_JULIANA
 @    goto_if_eq EventScript_SetupRivalGfxIdFlorian_Switch
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
     end
 
 EventScript_SetupRivalGfxIdMay_Switch::

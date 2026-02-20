@@ -3,7 +3,7 @@ Testlabor_fieldmoves_MapScripts::
 	.byte 0
 
 Testlabor_fieldmoves_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId
+	call Common_EventScript_SetupRivalGfxId
 	setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_RIVAL_LYRA_FIELD_MOVE
 	setvar VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_RIVAL_ETHAN_FIELD_MOVE
 	setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LUCAS_FIELD_MOVE
@@ -199,5 +199,4 @@ Testlabor_fieldmoves_Text_RivalVarE_EthanAcro:
 
 Testlabor_fieldmoves_Text_RivalVarF_LucasMach:
 	.string "VAR F:\nIch sollte LUCAS (Eilrad) sein.$"
-
 

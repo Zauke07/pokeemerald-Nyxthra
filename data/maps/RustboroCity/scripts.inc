@@ -5,7 +5,7 @@ RustboroCity_MapScripts::
 
 RustboroCity_OnTransition:
 	setflag FLAG_VISITED_RUSTBORO_CITY
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_HideMapNamePopup
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	goto_if_eq VAR_RUSTBORO_CITY_STATE, 6, RustboroCity_EventScript_PositionScientistForExit
@@ -673,7 +673,7 @@ RustboroCity_EventScript_EmployeeFacePlayerRight::
 RustboroCity_EventScript_Rival::
 	lockall
 	call_if_unset FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_PlayRivalMusic
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	setvar VAR_0x8004, LOCALID_RUSTBORO_RIVAL
 	spawnrival_style
 	applymovement LOCALID_RUSTBORO_RIVAL, Common_Movement_FacePlayer
@@ -3811,4 +3811,3 @@ RustboroCity_Text_TeamYell:
 
 RustboroCity_Text_TeamStar:
 	.string "Ich bin ein Mitglied von Team Star!$"
-

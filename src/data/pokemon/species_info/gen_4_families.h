@@ -850,7 +850,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 243,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_7
+    #elif P_UPDATED_EXP_YIELDS >= GEN_6
         .expYield = 218,
     #elif P_UPDATED_EXP_YIELDS >= GEN_5
         .expYield = 214,
@@ -2292,7 +2292,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .catchRate = 120,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 49 : 63,
         .evYield_Speed = 1,
-        .itemRare = ITEM_HONEY,
+        .itemCommon = ITEM_HONEY,
         .genderRatio = PERCENT_FEMALE(12.5),
         .eggCycles = 15,
         .friendship = STANDARD_FRIENDSHIP,
@@ -5628,6 +5628,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #endif //P_FAMILY_SNOVER
 
 #if P_FAMILY_ROTOM
+#define ROTOM_FAMILY_TYPES { TYPE_ELECTRIC, TYPE_GHOST }
+
     [SPECIES_ROTOM] =
     {
         .baseHP        = 50,
@@ -5636,7 +5638,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 91,
         .baseSpAttack  = 95,
         .baseSpDefense = 77,
-        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_GHOST),
+        .types = ROTOM_FAMILY_TYPES,
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 154 : 132,
         .evYield_Speed = 1,
@@ -5717,7 +5719,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 86,
         .baseSpAttack  = 105,
         .baseSpDefense = 107,
+    #if P_UPDATED_TYPES >= GEN_5
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FIRE),
+    #else
+        .types = ROTOM_FAMILY_TYPES,
+    #endif
         .catchRate = 45,
         .expYield = ROTOM_APPLIANCE_EXP_YIELD,
         .evYield_Speed = 1,
@@ -5788,7 +5794,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 86,
         .baseSpAttack  = 105,
         .baseSpDefense = 107,
+    #if P_UPDATED_TYPES >= GEN_5
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_WATER),
+    #else
+        .types = ROTOM_FAMILY_TYPES,
+    #endif
         .catchRate = 45,
         .expYield = ROTOM_APPLIANCE_EXP_YIELD,
         .evYield_Speed = 1,
@@ -5860,7 +5870,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 86,
         .baseSpAttack  = 105,
         .baseSpDefense = 107,
+    #if P_UPDATED_TYPES >= GEN_5
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_ICE),
+    #else
+        .types = ROTOM_FAMILY_TYPES,
+    #endif
         .catchRate = 45,
         .expYield = ROTOM_APPLIANCE_EXP_YIELD,
         .evYield_Speed = 1,
@@ -5930,7 +5944,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 86,
         .baseSpAttack  = 105,
         .baseSpDefense = 107,
+    #if P_UPDATED_TYPES >= GEN_5
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
+    #else
+        .types = ROTOM_FAMILY_TYPES,
+    #endif
         .catchRate = 45,
         .expYield = ROTOM_APPLIANCE_EXP_YIELD,
         .evYield_Speed = 1,
@@ -6025,7 +6043,11 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpeed     = 86,
         .baseSpAttack  = 105,
         .baseSpDefense = 107,
+    #if P_UPDATED_TYPES >= GEN_5
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_GRASS),
+    #else
+        .types = ROTOM_FAMILY_TYPES,
+    #endif
         .catchRate = 45,
         .expYield = ROTOM_APPLIANCE_EXP_YIELD,
         .evYield_Speed = 1,
@@ -6335,14 +6357,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #endif //P_FAMILY_AZELF
 
 #if P_FAMILY_DIALGA
-#if P_UPDATED_EXP_YIELDS >= GEN_8
-    #define DIALGA_EXP_YIELD 340
-#elif P_UPDATED_EXP_YIELDS >= GEN_5
-    #define DIALGA_EXP_YIELD  306
-#else
-    #define DIALGA_EXP_YIELD  220
-#endif
-
     [SPECIES_DIALGA] =
     {
         .baseHP        = 100,
@@ -6353,7 +6367,13 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_STEEL, TYPE_DRAGON),
         .catchRate = 3,
-        .expYield = DIALGA_EXP_YIELD,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -6424,7 +6444,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpDefense = 120,
         .types = MON_TYPES(TYPE_STEEL, TYPE_DRAGON),
         .catchRate = 3,
-        .expYield = DIALGA_EXP_YIELD,
+        .expYield = 340,
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -6484,14 +6504,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #endif //P_FAMILY_DIALGA
 
 #if P_FAMILY_PALKIA
-#if P_UPDATED_EXP_YIELDS >= GEN_8
-    #define PALKIA_EXP_YIELD 340
-#elif P_UPDATED_EXP_YIELDS >= GEN_5
-    #define PALKIA_EXP_YIELD  306
-#else
-    #define PALKIA_EXP_YIELD  220
-#endif
-
     [SPECIES_PALKIA] =
     {
         .baseHP        = 90,
@@ -6502,7 +6514,13 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpDefense = 120,
         .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
         .catchRate = 3,
-        .expYield = PALKIA_EXP_YIELD,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -6573,7 +6591,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpDefense = 120,
         .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
         .catchRate = 3,
-        .expYield = PALKIA_EXP_YIELD,
+        .expYield = 340,
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -6953,7 +6971,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseSpDefense = P_UPDATED_STATS >= GEN_9 ? 120 : 130,
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
+    #if P_UPDATED_EXP_YIELDS >= GEN_9
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_8
         .expYield = 300,
     #elif P_UPDATED_EXP_YIELDS >= GEN_5
         .expYield = 270,
@@ -7206,6 +7226,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
         .abilities = { ABILITY_BAD_DREAMS, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLACK,
+        .noFlip = TRUE,
         .speciesName = _("Darkrai"),
         .cryId = CRY_DARKRAI,
         .natDexNum = NATIONAL_DEX_DARKRAI,

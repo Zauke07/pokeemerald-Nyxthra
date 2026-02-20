@@ -9,7 +9,7 @@ Route110_OnResume:
 	end
 
 Route110_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
@@ -5459,4 +5459,3 @@ Route110_Text_SnorlaxWokeUp::
 Route110_Text_SnorlaxLeft::
 	.string "{COLOR BLUE}Relaxo{COLOR DARK_GRAY} beruhigte sich…\n"
 	.string "und verschwand in den Bäumen.$"
-

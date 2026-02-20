@@ -5,7 +5,7 @@ EverGrandeCity_ChampionsRoom_MapScripts::
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition:
-	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	end
 
 EverGrandeCity_ChampionsRoom_OnWarp:
@@ -389,5 +389,4 @@ EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations:
 	.string "so sind die Regeln.\p"
 	.string "{PLAYER}, das hast du gut gemacht!\n"
 	.string "Glückwunsch!{COLOR DARK_GRAY}$"
-
 
