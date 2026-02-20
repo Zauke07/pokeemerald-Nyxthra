@@ -67,3 +67,5 @@ preprocessed.c
 out.c
 porymap.json
 grit/
+missing_*.csv
+missing_*.txt
