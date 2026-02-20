@@ -517,7 +517,7 @@
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
 #define FLAG_DEFEATED_LANDORUS                0x1DE
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
+#define FLAG_DEFEATED_UXIE                    0x1DF // Uxie besiegt/erledigt (caught/defeated)
 #define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
 #define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
@@ -1232,11 +1232,11 @@
 
 #define FLAG_ITEM_GRANITE_CAVE_B4F2_FULL_RESTORE                    0x493 // Rocket höhle am ende
 #define FLAG_HIDE_NEW_MAUVILLE_ZAPDOS                               0x494 // Zapdos 
-#define FLAG_HIDE_ROUTE_111_01_SUPERBALL                             0x495 // new route 111.1
-#define FLAG_HIDE_ROUTE_111_01_EVERSTONE                             0x496 // new route 111.1
-#define FLAG_HIDE_ROUTE_111_02_LANDORUS                              0x497 // new route 111.2
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
+#define FLAG_HIDE_ROUTE_111_01_SUPERBALL                            0x495 // new route 111.1
+#define FLAG_HIDE_ROUTE_111_01_EVERSTONE                            0x496 // new route 111.1
+#define FLAG_HIDE_ROUTE_111_02_LANDORUS                             0x497 // new route 111.2
+#define FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE                         0x498 // ScorchedSlabSecret Uxie verstecken
+//#define FLAG_SCORCHED_SLAB_SECRET_REMOVE_UXIE                       0x499 // ScorchedSlabSecret Uxie entfernen
 #define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
 #define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag

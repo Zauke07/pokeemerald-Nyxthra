@@ -49,6 +49,7 @@
 #include "difficulty.h"
 #include "constants/battle.h"
 #include "follower_npc.h"
+#include "option_menu.h"
 
 //#include "mgba.h"
 
@@ -118,15 +119,16 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsWildBattleScene = OPTIONS_BATTLE_SCENE_2X;
     gSaveBlock2Ptr->optionsTrainerBattleScene = OPTIONS_BATTLE_SCENE_1X;
     gSaveBlock2Ptr->optionsBossBattleScene = OPTIONS_BATTLE_SCENE_1X;
-    gSaveBlock2Ptr->optionsAutoRunToggle = FALSE;
+    gSaveBlock2Ptr->optionsAutoRunToggle = TRUE;
     gSaveBlock2Ptr->optionsNicknameMode = OPTIONS_NICKNAME_MODE_NEVER;
     gSaveBlock2Ptr->optionsLowHealthBeep = OPTIONS_HEALTH_BEEP_3_BEEPS;
     gSaveBlock2Ptr->timeOfDayVisuals = TRUE;
     gSaveBlock2Ptr->seasonVisuals = TRUE;
     gSaveBlock2Ptr->weatherVisuals = TRUE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
-    VarSet(VAR_Password_TestLabor, 1337);  // Passwort-Nummer, z. B. 1337 für "openai"
+    VarSet(VAR_Password_TestLabor, 1337);
     Rogue_SetDefaultOptions();
+    Rogue_ResetRunningToggle();
 }
 
 static void ClearPokedexFlags(void)

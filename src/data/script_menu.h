@@ -816,6 +816,68 @@ static const struct MenuAction MultichoiceList_JokeNpc1[] =
     {COMPOUND_STRING("Mach mich fertig.")},
 };
 
+static const struct MenuAction MultichoiceList_TestLabTransitionsPage1[] =
+{
+    {COMPOUND_STRING("Blur")},
+    {COMPOUND_STRING("Swirl")},
+    {COMPOUND_STRING("Shuffle")},
+    {COMPOUND_STRING("Big Pokeball")},
+    {COMPOUND_STRING("Pokeballs Trail")},
+    {COMPOUND_STRING("Clockwise Wipe")},
+    {COMPOUND_STRING("Ripple")},
+    {COMPOUND_STRING("Wave")},
+    {COMPOUND_STRING("WEITER")},
+};
+
+static const struct MenuAction MultichoiceList_TestLabTransitionsPage2[] =
+{
+    {COMPOUND_STRING("Slice")},
+    {COMPOUND_STRING("White Bars")},
+    {COMPOUND_STRING("Grid Squares")},
+    {COMPOUND_STRING("Angled Wipes")},
+    {COMPOUND_STRING("Mugshot")},
+    {COMPOUND_STRING("Aqua")},
+    {COMPOUND_STRING("Magma")},
+    {COMPOUND_STRING("ChatGPT")},
+    {COMPOUND_STRING("WEITER")},
+};
+
+static const struct MenuAction MultichoiceList_TestLabTransitionsPage3[] =
+{
+    {COMPOUND_STRING("Regice")},
+    {COMPOUND_STRING("Registeel")},
+    {COMPOUND_STRING("Regirock")},
+    {COMPOUND_STRING("Kyogre")},
+    {COMPOUND_STRING("Groudon")},
+    {COMPOUND_STRING("Rayquaza")},
+    {COMPOUND_STRING("Shred Split")},
+    {COMPOUND_STRING("Blackhole")},
+    {COMPOUND_STRING("WEITER")},
+};
+
+static const struct MenuAction MultichoiceList_TestLabTransitionsPage4[] =
+{
+    {COMPOUND_STRING("BH Pulsate")},
+    {COMPOUND_STRING("Rect Spiral")},
+    {COMPOUND_STRING("Frontier Wiggle")},
+    {COMPOUND_STRING("Frontier Wave")},
+    {COMPOUND_STRING("Frontier Sq")},
+    {COMPOUND_STRING("Frontier SqSc")},
+    {COMPOUND_STRING("Frontier SqSp")},
+    {COMPOUND_STRING("WEITER")},
+};
+
+static const struct MenuAction MultichoiceList_TestLabTransitionsPage5[] =
+{
+    {COMPOUND_STRING("Circles Meet")},
+    {COMPOUND_STRING("Circles Cross")},
+    {COMPOUND_STRING("Circles Asym")},
+    {COMPOUND_STRING("Circles Sym")},
+    {COMPOUND_STRING("Galactic")},
+    {COMPOUND_STRING("Shiny")},
+    {COMPOUND_STRING("ABBRUCH")},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -946,6 +1008,11 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
     [MULTI_STARTER_REGIONALITY]        = MULTICHOICE(MultichoiceList_Regionality),
     [MULTI_JOKE_NPC]                   = MULTICHOICE(MultichoiceList_JokeNpc1),
+    [MULTI_TESTLAB_TRANSITIONS_PAGE1] = MULTICHOICE(MultichoiceList_TestLabTransitionsPage1),
+    [MULTI_TESTLAB_TRANSITIONS_PAGE2] = MULTICHOICE(MultichoiceList_TestLabTransitionsPage2),
+    [MULTI_TESTLAB_TRANSITIONS_PAGE3] = MULTICHOICE(MultichoiceList_TestLabTransitionsPage3),
+    [MULTI_TESTLAB_TRANSITIONS_PAGE4] = MULTICHOICE(MultichoiceList_TestLabTransitionsPage4),
+    [MULTI_TESTLAB_TRANSITIONS_PAGE5] = MULTICHOICE(MultichoiceList_TestLabTransitionsPage5),
 
 };
 

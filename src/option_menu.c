@@ -36,6 +36,11 @@ struct RogueLocalData
 
 extern struct RogueLocalData gRogueLocal;
 
+void Rogue_ResetRunningToggle(void)
+{
+    gRogueLocal.runningToggleActive = FALSE;
+}
+
 // Task data
 enum
 {
@@ -826,7 +831,14 @@ static void InvertedToggle_DrawChoices(u8 menuOffset, u8 selection)
 
 static u8 AutoRun_ProcessInput(u8 menuOffset, u8 selection)
 {
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    // Manche Menüs reichen JOY_NEW nicht sauber durch.
+    // Deshalb both: NEW und REPEAT.
+    if (JOY_NEW(DPAD_LEFT) || JOY_REPEAT(DPAD_LEFT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+    else if (JOY_NEW(DPAD_RIGHT) || JOY_REPEAT(DPAD_RIGHT))
     {
         selection ^= 1;
         sArrowPressed = TRUE;
@@ -837,7 +849,7 @@ static u8 AutoRun_ProcessInput(u8 menuOffset, u8 selection)
 
 static void AutoRun_DrawChoices(u8 menuOffset, u8 selection)
 {
-    u8 const* options[] = 
+    u8 const* options[] =
     {
         gText_AutoRunHold,
         gText_AutoRunToggle,
@@ -1260,6 +1272,8 @@ static void SetMenuItemValue(u8 menuItem, u8 value)
 
     case MENUITEM_AUTORUN_TOGGLE:
         gSaveBlock2Ptr->optionsAutoRunToggle = value;
+        gRogueLocal.runningToggleActive = FALSE;
+        PlaySE(value ? SE_PC_LOGIN : SE_PC_OFF);
         break;
 
     case MENUITEM_NICKNAME_MODE:
@@ -1518,7 +1532,7 @@ bool8 Rogue_ShouldForceNicknameScreen()
     return FALSE;
 }
 
-/*
+
 void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
 {
     if(inputActive)
@@ -1533,7 +1547,7 @@ void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
         }
     }
 }
-*/
+
 
 u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType)
 {

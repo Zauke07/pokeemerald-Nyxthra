@@ -425,7 +425,7 @@ RivalsHouse_1F_Text_ShouldGoHomeEverySoOften:
 	.string "komplett durch, wenn du dich nicht meldest.$"
 
 RivalsHouse_1F_Text_MayWhoAreYou:
-	.string "Was zum… Wer bist du?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Was zum… Wer bist du?\p"
 	.string "… … …\n"
 	.string "… … …\p"
 	.string "Ach, du bist {PLAYER}{KUN}.\n"
@@ -445,7 +445,7 @@ RivalsHouse_1F_Text_MayWhoAreYou:
 	.string "Bis Später, {PLAYER}{KUN}, wir sehen uns.$"
 
 RivalsHouse_1F_Text_BrendanWhoAreYou:
-	.string "Ey! Was willst du?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ey! Was willst du?\p"
 	.string "…Ach, du bist das neue Nachbarskind?\n"
 	.string "Dachte, das wär’n Typ.\p"
 	.string "Mein Vater hat was von ’nem Arena-Kind\n"

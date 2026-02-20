@@ -35,7 +35,7 @@ LittlerootTown_MapScripts::
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	setvar VAR_0x8004, LOCALID_LITTLEROOT_RIVAL
 	spawnrival_style
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, LittlerootTown_EventScript_MoveMomToMaysDoor
@@ -276,7 +276,8 @@ LittlerootTown_OnWarp:
 
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade::
 	addobject LOCALID_LITTLEROOT_BIRCH
-	addobject LOCALID_LITTLEROOT_RIVAL
+	setvar VAR_0x8004, LOCALID_LITTLEROOT_RIVAL
+	spawnrival_style
 	getplayerstyle
 
 	compare VAR_RESULT, STYLE_BRENDAN
@@ -1104,15 +1105,17 @@ LittlerootTown_Text_WearTheseRunningShoes:
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
 	.string "{PLAYER} zieht die TURBOTRETER an.$"
-	.string "{PLAYER} zieht die TURBOTRETER an.$"
 
 LittlerootTown_Text_ExplainRunningShoes:
 	.string "Mom: Und bevor du losrennst…\n"
-	.string "gibt’s auch ’ne Anleitung!\p"
-	.string "“Halte den B-Knopf gedrückt,\n"
-	.string "wenn du die TURBOTRETER trägst,\l"
-	.string "und flitz los wie der Blitz!”\p"
-	.string "Jetzt hast du keine Ausrede mehr.\n"
+	.string "kurz die Anleitung!\p"
+	.string "“Mit TURBOTRETERN:\n"
+	.string "Drück B einmal = Rennen AN.\l"
+	.string "Drück B nochmal = Rennen AUS.”\p"
+	.string "Wenn du willst, kannst du das in den\n"
+	.string "Optionen auch umstellen,\l"
+	.string "damit man B gedrückt halten muss.\p"
+	.string "Alles klar? Dann los.\n"
 	.string "Ab in die große, gefährliche Welt!$"
 
 LittlerootTown_Text_ComeHomeIfAnythingHappens:

@@ -210,6 +210,30 @@ Common_EventScript_SetupRivalOnBikeGfxId::
 
 end
 
+Common_EventScript_SetupRivalOnBikeGfxId_Route110::
+    checkplayerstyle
+    compare VAR_RESULT, STYLE_BRENDAN
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdMay_Route110
+    compare VAR_RESULT, STYLE_MAY
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdBrendan_Route110
+    compare VAR_RESULT, STYLE_RED
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdLeaf_Route110
+    compare VAR_RESULT, STYLE_LEAF
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdRed_Route110
+    compare VAR_RESULT, STYLE_ETHAN
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdLyra_Route110
+    compare VAR_RESULT, STYLE_LYRA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdEthan_Route110
+    compare VAR_RESULT, STYLE_LUCAS
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdDawn_Route110
+    compare VAR_RESULT, STYLE_DAWN
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdLucas_Route110
+    compare VAR_RESULT, STYLE_HILBERT
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilda_Route110
+    compare VAR_RESULT, STYLE_HILDA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilbert_Route110
+    end
+
 EventScript_SetupRivalOnMachBikeGfxIdMay::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE
     return
@@ -368,6 +392,46 @@ EventScript_SetupRivalOnAcroBikeGfxIdFlorian::
 
 EventScript_SetupRivalOnAcroBikeGfxIdJuliana::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_JULIANA_ACRO_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdMay_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdBrendan_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdRed_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_RED_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdLeaf_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LEAF_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdEthan_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_ETHAN_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdLyra_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LYRA_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdLucas_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_LUCAS_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdDawn_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdHilbert_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILBERT_MACH_BIKE
+    return
+
+EventScript_SetupRivalOnMachBikeGfxIdHilda_Route110::
+    setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_HILDA_MACH_BIKE
     return
 
 Common_EventScript_SetupRivalMusic::

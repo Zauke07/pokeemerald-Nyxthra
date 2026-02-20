@@ -4,6 +4,7 @@ LittlerootTown_MaysHouse_2F_MapScripts::
 	.byte 0
 
 LittlerootTown_MaysHouse_2F_OnTransition:
+	@ call Common_EventScript_SetupRivalGfxId
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_MaysHouse_2F_EventScript_CheckSetReadyToMeetMay
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_MaysHouse_2F_EventScript_SetRivalPos
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
@@ -405,7 +406,7 @@ LittlerootTown_MaysHouse_2F_EventScript_CheckRivalsPC::
 	end
 
 RivalsHouse_2F_Text_MayWhoAreYou:
-	.string "Hä?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hä?\n"
 	.string "Was willst du hier?\p"
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
@@ -424,12 +425,12 @@ RivalsHouse_2F_Text_MayWhoAreYou:
 	.string "Bye, {PLAYER}{KUN}. Vielleicht sieht man sich.$"
 
 RivalsHouse_2F_Text_MayGettingReady:
-	.string "Pokémon: alive.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Pokémon: alive.\n"
 	.string "Items: gepackt. Was fehlt?\p"
     .string "Ah, Motivation.$"
 
 RivalsHouse_2F_Text_BrendanWhoAreYou:
-	.string "Ey! Stalker oder was?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ey! Stalker oder was?\p"
 	.string "… Ach so, du bist {PLAYER}, ne?\n"
 	.string "Neu hier - wow, interessiert keinen.\p"
 	.string "Wusste nicht mal, dass du 'n Girl bist.\n"
@@ -443,7 +444,7 @@ RivalsHouse_2F_Text_BrendanWhoAreYou:
 	.string "Vielleicht sehen wir uns draußen.$"
 
 RivalsHouse_2F_Text_BrendanGettingReady:
-	.string "Pokémon: gecheckt.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Pokémon: gecheckt.\n"
 	.string "Items: auch. Jetzt noch… Red Bull? Hm.$"
 
 RivalsHouse_2F_Text_ItsRivalsPokeBall:

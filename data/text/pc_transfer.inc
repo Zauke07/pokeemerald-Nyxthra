@@ -36,5 +36,5 @@ gText_NoMoreRoomForPokemon::
 	.string "abgelegt werden!$"
 
 gText_NicknameThisPokemon::
-	.string "Möchtest du{STR_VAR_1}einen\n"
+	.string "Möchtest du {STR_VAR_1} einen\n"
 	.string "Spitznamen geben?$"

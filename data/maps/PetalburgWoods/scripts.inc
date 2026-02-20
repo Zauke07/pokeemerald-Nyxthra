@@ -3,6 +3,8 @@ PetalburgWoods_MapScripts::
 
 PetalburgWoods_EventScript_DevonResearcherLeft::
 	lockall
+	clearflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+	clearflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
 	call PetalburgWoods_EventScript_DevonResearcherIntro
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerLeft
 	waitmovement 0
@@ -38,6 +40,8 @@ PetalburgWoods_EventScript_DevonResearcherLeft::
 
 PetalburgWoods_EventScript_DevonResearcherRight::
 	lockall
+	clearflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+	clearflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
 	call PetalburgWoods_EventScript_DevonResearcherIntro
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherApproachPlayerRight
 	waitmovement 0
@@ -90,13 +94,15 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
 	giveitem ITEM_GREAT_BALL
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
-	goto PetalburgWoods_EventScript_DevonResearcherFinish
+	msgbox PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherStartExit
+	waitmovement 0
+	msgbox PetalburgWoods_Text_ICantBeWastingTime, MSGBOX_DEFAULT
+	closemessage
+	return
 
 PetalburgWoods_EventScript_BagFull::
 	msgbox PetalburgWoods_Text_YoureLoadedWithItems, MSGBOX_DEFAULT
-	goto PetalburgWoods_EventScript_DevonResearcherFinish
-
-PetalburgWoods_EventScript_DevonResearcherFinish::
 	msgbox PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro, MSGBOX_DEFAULT
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherStartExit
 	waitmovement 0
@@ -320,7 +326,7 @@ PetalburgWoods_Text_NotAOneToBeFound:
 PetalburgWoods_Text_HaveYouSeenShroomish:
 	.string "Hey… hast du hier irgendwo\n"
 	.string "KNILZ gesehen? Ich LIEBE Knilz!\p"
-	.string "Ich würd sogar mein Team dafür\l"
+	.string "Ich würd sogar mein Team dafür\n"
 	.string "rausschmeißen.$"
 
 PetalburgWoods_Text_IWasGoingToAmbushYou:
@@ -359,7 +365,7 @@ PetalburgWoods_Text_YouveGotSomeNerve:
 	.string "Du hast Glück gehabt - diesmal.$"
 
 PetalburgWoods_Text_ThatWasAwfullyClose:
-	.string "Puh… Das war mehr als knapp!\p"
+	.string "Puh… Das war mehr als knapp!\n"
 	.string "Danke dir, sonst wär ich jetzt\l"
 	.string "papierlos.\p"
 	.string "Hier - nimm diesen SUPERBALL\n"
@@ -379,7 +385,7 @@ PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "dir den SUPERBALL nicht geben.$"
 
 PetalburgWoods_Text_GoBugPokemonTeam:
-	.string "Ich hab mir voll viele Pokémon gefangen!\p"
+	.string "Ich hab mir voll viele Pokémon gefangen!\n"
 	.string "Jetzt: Käfer-Power! GO, mein Team!$"
 
 PetalburgWoods_Text_ICouldntWin:
@@ -443,7 +449,7 @@ PetalburgWoods_Text_TryUsingThisItem:
 
 PetalburgWoods_Text_MiracleSeedExplanation:
 	.string "Das ist WUNDERSAAT.\n"
-	.string "Damit macht dein Pflanzen-Pokémon\n"
+	.string "Damit macht dein Pflanzen-Pokémon\l"
 	.string "richtig Alarm!\p"
 	.string "Es gibt viele Items, die Pokémon\n"
 	.string "tragen können. Versuch mal was aus!$"

@@ -53,6 +53,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "fishing.h"
+#include "constants/vars.h"
 
 enum TransitionType
 {
@@ -523,6 +524,13 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_LANDORUS:
         CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_C_VS_LEGEND_BEAST);
         break;
+
+    // ✅ Neu: Lake Trio (Uxie/Mesprit/Azelf)
+    case SPECIES_UXIE:
+    case SPECIES_MESPRIT:
+    case SPECIES_AZELF:
+        CreateBattleStartTask(B_TRANSITION_SHRED_SPLIT, MUS_DP_VS_UXIE_MESPRIT_AZELF);
+        break;
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -819,6 +827,14 @@ enum BattleTransition GetTrainerBattleTransition(void)
     if (DoesTrainerHaveMugshot(trainerId))
         return B_TRANSITION_MUGSHOT;
 
+    // DEBUG OVERRIDE (0 = aus)
+        u16 dbg = VarGet(VAR_DEBUG_BATTLE_TRANSITION);
+        if (dbg != 0 && dbg < B_TRANSITION_COUNT)
+        {
+            VarSet(VAR_DEBUG_BATTLE_TRANSITION, 0); // ← Reset nach Benutzung
+            return (enum BattleTransition)dbg;
+        }
+
     if (trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || trainerClass == TRAINER_CLASS_MAGMA_LEADER
         || trainerClass == TRAINER_CLASS_MAGMA_ADMIN)
@@ -837,7 +853,6 @@ enum BattleTransition GetTrainerBattleTransition(void)
     if (trainerClass == TRAINER_CLASS_CHATGPT)
         return B_TRANSITION_CHATGPT;
 
-    // Hier ersetzt du den switch durch deinen neuen Style-basierten Check
     if (IsTrainerDoubleBattle(trainerId))
         minPartyCount = 2;
     else

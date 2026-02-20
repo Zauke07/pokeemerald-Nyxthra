@@ -114,6 +114,49 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayMac
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMaySurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalMayFieldMove;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaUnderwater;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHildaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHildaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHilbertMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHilbertAcroBike;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasAcroBike;
+
+// Rival Ethan
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalEthanMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalEthanAcroBike;
+
+// Rival Lyra
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLyraMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLyraAcroBike;
+
+// Rival Lucas
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLucasMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLucasAcroBike;
+// Rival Dawn
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnAcroBike;
+
+// Rival Graphics
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalEthanFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLyraFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLucasFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalDawnFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHilbertFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalHildaFieldMove;
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Cameraman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanUnderwater;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayUnderwater;
@@ -255,11 +298,16 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes;
 
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertFieldMove;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaFieldMove;
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaWatering;
 */
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasMachBike;
@@ -270,6 +318,12 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasFieldM
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnFieldMove;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LucasWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DawnWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalRedFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalLeafFieldMove;
+
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaSurfing;
 
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse_ow;
@@ -277,6 +331,81 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rocky;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_James_Rocket;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rogue_Egg;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UxieOW;
+
+//Platinum
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cynthia;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Aaron;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_AceTrainerF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_AceTrainerM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_AceTrainerSnowM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Barry;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_BattleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Beauty;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Bertha;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_BlackBelt;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_BreederF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_BugCatcher;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Byron;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Camper;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Charon;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cheryl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cowgirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_CrasherWake;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cyrus;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_DragonTamer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Fantina;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Fisherman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_GalacticGruntF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_GalacticGruntM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Gentleman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Hiker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Jupiter;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Lady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Looker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Lucian;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Marley;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Mars;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Maylene;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Mira;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Officer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Painter;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Palmer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_ParasolLady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Picnicker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeKid;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeRangerF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeRangerM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeFanF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeFanM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Rowan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PsychicM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Rancher;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_RichBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_RichLady;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Rocker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Roughneck;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_RuinManiac;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Sailor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Saturn;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Scientist;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SkierF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SkierM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Socialite;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Supernerd;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SwimmerF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SwimmerF2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SwimmerM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_SwimmerM2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Volkner;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Waiter;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Waitress;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Worker;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_YoungCoupleF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_YoungCoupleM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Youngster;
+
+//NEW END
 
 //Pokeemerald-Rogue
 
@@ -287,15 +416,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketM;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bill;
 
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerLeafMachBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerLeafAcroBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafSurfing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerLeafFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerLeafRiding;
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerRedMachBike;
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerRedAcroBike;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurfing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerRedFishing;
@@ -308,6 +433,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraSurfing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraFieldMove;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraFishing;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraRiding;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LyraWatering;
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ethan;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanMachBike;
@@ -619,7 +745,6 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ZapdosOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MoltresOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ArticunoOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LandorusOW;
-// extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AzurillOW; // Freeze
 
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
@@ -898,8 +1023,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     //  Gen 1 (Red & Leaf)
     [OBJ_EVENT_GFX_RED] =                      &gObjectEventGraphicsInfo_PlayerRedNormal,
     [OBJ_EVENT_GFX_RIVAL_RED] =                &gObjectEventGraphicsInfo_Rival_Red,
-    [OBJ_EVENT_GFX_RED_MACH_BIKE] =            &gObjectEventGraphicsInfo_PlayerRedMachBike,
-    [OBJ_EVENT_GFX_RED_ACRO_BIKE] =            &gObjectEventGraphicsInfo_PlayerRedAcroBike,
     [OBJ_EVENT_GFX_RED_SURFING] =              &gObjectEventGraphicsInfo_RedSurfing,
     [OBJ_EVENT_GFX_RED_FIELD_MOVE] =           &gObjectEventGraphicsInfo_RedFieldMove,
     [OBJ_EVENT_GFX_RED_FISHING] =              &gObjectEventGraphicsInfo_PlayerRedFishing,
@@ -909,8 +1032,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
 
     [OBJ_EVENT_GFX_LEAF] =                     &gObjectEventGraphicsInfo_PlayerLeafNormal,
     [OBJ_EVENT_GFX_RIVAL_LEAF] =               &gObjectEventGraphicsInfo_Rival_Leaf,
-    [OBJ_EVENT_GFX_LEAF_MACH_BIKE] =           &gObjectEventGraphicsInfo_PlayerLeafMachBike,
-    [OBJ_EVENT_GFX_LEAF_ACRO_BIKE] =           &gObjectEventGraphicsInfo_PlayerLeafAcroBike,
     [OBJ_EVENT_GFX_LEAF_SURFING] =             &gObjectEventGraphicsInfo_LeafSurfing,
     [OBJ_EVENT_GFX_LEAF_FIELD_MOVE] =          &gObjectEventGraphicsInfo_LeafFieldMove,
     [OBJ_EVENT_GFX_LEAF_FISHING] =             &gObjectEventGraphicsInfo_PlayerLeafFishing,
@@ -934,6 +1055,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LYRA_FIELD_MOVE] =          &gObjectEventGraphicsInfo_LyraFieldMove,
     [OBJ_EVENT_GFX_LYRA_FISHING] =             &gObjectEventGraphicsInfo_LyraFishing,
     [OBJ_EVENT_GFX_LYRA_RIDING] =              &gObjectEventGraphicsInfo_LyraRiding,
+    [OBJ_EVENT_GFX_LYRA_WATERING] =            &gObjectEventGraphicsInfo_LyraWatering,
 
     //  Gen 4-9 (Lucas, Dawn, Hilbert, Hilda, etc.)
     [OBJ_EVENT_GFX_LUCAS] =                    &gObjectEventGraphicsInfo_Lucas,
@@ -944,6 +1066,16 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SERENA] =                   &gObjectEventGraphicsInfo_Serena,
     [OBJ_EVENT_GFX_ELIO] =                     &gObjectEventGraphicsInfo_Elio,
     [OBJ_EVENT_GFX_SELENE] =                   &gObjectEventGraphicsInfo_Selene,
+
+    // Hilbert
+    [OBJ_EVENT_GFX_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_HilbertFieldMove,
+    [OBJ_EVENT_GFX_HILBERT_MACH_BIKE]  = &gObjectEventGraphicsInfo_HilbertMachBike,
+    [OBJ_EVENT_GFX_HILBERT_ACRO_BIKE]  = &gObjectEventGraphicsInfo_HilbertAcroBike,
+
+    // Hilda
+    [OBJ_EVENT_GFX_HILDA_FIELD_MOVE]   = &gObjectEventGraphicsInfo_HildaFieldMove,
+    [OBJ_EVENT_GFX_HILDA_MACH_BIKE]    = &gObjectEventGraphicsInfo_HildaMachBike,
+    [OBJ_EVENT_GFX_HILDA_ACRO_BIKE]    = &gObjectEventGraphicsInfo_HildaAcroBike,
 
     //  Gen 8 (Victor & Gloria)
     [OBJ_EVENT_GFX_VICTOR] =                   &gObjectEventGraphicsInfo_Victor,
@@ -969,8 +1101,6 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
     [OBJ_EVENT_GFX_RIVAL_ASH] =               &gObjectEventGraphicsInfo_Rival_Ash,
 
-    [OBJ_EVENT_GFX_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_HilbertFieldMove,
-    [OBJ_EVENT_GFX_HILDA_FIELD_MOVE]   = &gObjectEventGraphicsInfo_HildaFieldMove,
     [OBJ_EVENT_GFX_HILBERT_WATERING]   = &gObjectEventGraphicsInfo_HilbertWatering,
     [OBJ_EVENT_GFX_HILDA_WATERING]     = &gObjectEventGraphicsInfo_HildaWatering,
 */
@@ -980,10 +1110,12 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DAWN_MACH_BIKE]     = &gObjectEventGraphicsInfo_DawnMachBike,
     [OBJ_EVENT_GFX_LUCAS_FISHING]      = &gObjectEventGraphicsInfo_LucasFishing,
     [OBJ_EVENT_GFX_DAWN_FISHING]       = &gObjectEventGraphicsInfo_DawnFishing,
-    [OBJ_EVENT_GFX_LUCAS_RIDING]      = &gObjectEventGraphicsInfo_LucasRiding,
-    [OBJ_EVENT_GFX_DAWN_RIDING]       = &gObjectEventGraphicsInfo_DawnRiding,
-    [OBJ_EVENT_GFX_LUCAS_WATERING]  = &gObjectEventGraphicsInfo_LucasWatering,
-    [OBJ_EVENT_GFX_DAWN_WATERING]   = &gObjectEventGraphicsInfo_DawnWatering,
+    [OBJ_EVENT_GFX_LUCAS_RIDING]       = &gObjectEventGraphicsInfo_LucasRiding,
+    [OBJ_EVENT_GFX_DAWN_RIDING]        = &gObjectEventGraphicsInfo_DawnRiding,
+    [OBJ_EVENT_GFX_LUCAS_WATERING]     = &gObjectEventGraphicsInfo_LucasWatering,
+    [OBJ_EVENT_GFX_DAWN_WATERING]      = &gObjectEventGraphicsInfo_DawnWatering,
+    [OBJ_EVENT_GFX_HILBERT_SURFING]    = &gObjectEventGraphicsInfo_HilbertSurfing,
+    [OBJ_EVENT_GFX_HILDA_SURFING]      = &gObjectEventGraphicsInfo_HildaSurfing,
 
     [OBJ_EVENT_GFX_BUG_CATCHER_RIDING] =       &gObjectEventGraphicsInfo_BugCatcherRiding,
 
@@ -1251,8 +1383,122 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MOLTRES_OLD] =               &gObjectEventGraphicsInfo_MoltresOW,
     [OBJ_EVENT_GFX_ARTICUNO_OLD] =              &gObjectEventGraphicsInfo_ArticunoOW,
     [OBJ_EVENT_GFX_LANDORUS] =                  &gObjectEventGraphicsInfo_LandorusOW,
-//    [OBJ_EVENT_GFX_AZURILL_OW] =                &gObjectEventGraphicsInfo_AzurillOW, // Freeze
     [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
+    [OBJ_EVENT_GFX_UXIE] =                      &gObjectEventGraphicsInfo_UxieOW,
+    [OBJ_EVENT_GFX_RIVAL_HILDA_ACRO_BIKE]    = &gObjectEventGraphicsInfo_RivalHildaAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_HILDA_MACH_BIKE]    = &gObjectEventGraphicsInfo_RivalHildaMachBike,
+    [OBJ_EVENT_GFX_RIVAL_HILBERT_ACRO_BIKE]  = &gObjectEventGraphicsInfo_RivalHilbertAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_HILBERT_MACH_BIKE]  = &gObjectEventGraphicsInfo_RivalHilbertMachBike,
+    // Rival Ethan
+    [OBJ_EVENT_GFX_RIVAL_ETHAN_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalEthanMachBike,
+    [OBJ_EVENT_GFX_RIVAL_ETHAN_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalEthanAcroBike,
+
+    // Rival Lyra
+    [OBJ_EVENT_GFX_RIVAL_LYRA_MACH_BIKE]  = &gObjectEventGraphicsInfo_RivalLyraMachBike,
+    [OBJ_EVENT_GFX_RIVAL_LYRA_ACRO_BIKE]  = &gObjectEventGraphicsInfo_RivalLyraAcroBike,
+
+    // Rival Lucas
+    [OBJ_EVENT_GFX_RIVAL_LUCAS_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalLucasMachBike,
+    [OBJ_EVENT_GFX_RIVAL_LUCAS_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalLucasAcroBike,
+
+    // Rival Dawn
+    [OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE]  = &gObjectEventGraphicsInfo_RivalDawnMachBike,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_ACRO_BIKE]  = &gObjectEventGraphicsInfo_RivalDawnAcroBike,
+    // Rival FieldMove Graphics
+    [OBJ_EVENT_GFX_RIVAL_ETHAN_FIELD_MOVE]   = &gObjectEventGraphicsInfo_RivalEthanFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_LYRA_FIELD_MOVE]    = &gObjectEventGraphicsInfo_RivalLyraFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_LUCAS_FIELD_MOVE]   = &gObjectEventGraphicsInfo_RivalLucasFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_DAWN_FIELD_MOVE]    = &gObjectEventGraphicsInfo_RivalDawnFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_RivalHilbertFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_HILDA_FIELD_MOVE]   = &gObjectEventGraphicsInfo_RivalHildaFieldMove,
+    [OBJ_EVENT_GFX_ETHAN_UNDERWATER]         = &gObjectEventGraphicsInfo_EthanUnderwater,
+    [OBJ_EVENT_GFX_LYRA_UNDERWATER]          = &gObjectEventGraphicsInfo_LyraUnderwater,
+    [OBJ_EVENT_GFX_LUCAS_UNDERWATER]         = &gObjectEventGraphicsInfo_LucasUnderwater,
+    [OBJ_EVENT_GFX_DAWN_UNDERWATER]          = &gObjectEventGraphicsInfo_DawnUnderwater,
+    [OBJ_EVENT_GFX_HILBERT_UNDERWATER]       = &gObjectEventGraphicsInfo_HilbertUnderwater,
+    [OBJ_EVENT_GFX_HILDA_UNDERWATER]         = &gObjectEventGraphicsInfo_HildaUnderwater,
+
+    [OBJ_EVENT_GFX_RED_MACH_BIKE] =      &gObjectEventGraphicsInfo_RedMachBike,
+    [OBJ_EVENT_GFX_RED_ACRO_BIKE] =      &gObjectEventGraphicsInfo_RedAcroBike,
+    [OBJ_EVENT_GFX_LEAF_MACH_BIKE] =     &gObjectEventGraphicsInfo_LeafMachBike,
+    [OBJ_EVENT_GFX_LEAF_ACRO_BIKE] =     &gObjectEventGraphicsInfo_LeafAcroBike,
+    [OBJ_EVENT_GFX_LUCAS_FIELD_MOVE] =  &gObjectEventGraphicsInfo_LucasFieldMove,
+    [OBJ_EVENT_GFX_DAWN_FIELD_MOVE] =   &gObjectEventGraphicsInfo_DawnFieldMove,
+
+    [OBJ_EVENT_GFX_RIVAL_RED_FIELD_MOVE] =   &gObjectEventGraphicsInfo_RivalRedFieldMove,
+    [OBJ_EVENT_GFX_RIVAL_LEAF_FIELD_MOVE] =  &gObjectEventGraphicsInfo_RivalLeafFieldMove,
+
+        //Platinum
+    [OBJ_EVENT_GFX_DP_CYNTHIA] =               &gObjectEventGraphicsInfo_DP_Cynthia,
+    [OBJ_EVENT_GFX_DP_AARON] =               &gObjectEventGraphicsInfo_DP_Aaron,
+    [OBJ_EVENT_GFX_DP_ACE_TRAINERF] =               &gObjectEventGraphicsInfo_DP_AceTrainerF,
+    [OBJ_EVENT_GFX_DP_ACE_TRAINERM] =               &gObjectEventGraphicsInfo_DP_AceTrainerM,
+    [OBJ_EVENT_GFX_DP_ACE_TRAINER_SNOWM] =               &gObjectEventGraphicsInfo_DP_AceTrainerSnowM,
+    [OBJ_EVENT_GFX_DP_BARRY] =               &gObjectEventGraphicsInfo_DP_Barry,
+    [OBJ_EVENT_GFX_DP_BATTLE_GIRL] =               &gObjectEventGraphicsInfo_DP_BattleGirl,
+    [OBJ_EVENT_GFX_DP_BEAUTY] =               &gObjectEventGraphicsInfo_DP_Beauty,
+    [OBJ_EVENT_GFX_DP_BERTHA] =               &gObjectEventGraphicsInfo_DP_Bertha,
+    [OBJ_EVENT_GFX_DP_BLACK_BELT] =               &gObjectEventGraphicsInfo_DP_BlackBelt,
+    [OBJ_EVENT_GFX_DP_BREEDERF] =               &gObjectEventGraphicsInfo_DP_BreederF,
+    [OBJ_EVENT_GFX_DP_BUG_CATCHER] =               &gObjectEventGraphicsInfo_DP_BugCatcher,
+    [OBJ_EVENT_GFX_DP_BYRON] =               &gObjectEventGraphicsInfo_DP_Byron,
+    [OBJ_EVENT_GFX_DP_CAMPER] =               &gObjectEventGraphicsInfo_DP_Camper,
+    [OBJ_EVENT_GFX_DP_CHARON] =               &gObjectEventGraphicsInfo_DP_Charon,
+    [OBJ_EVENT_GFX_DP_CHERYL] =               &gObjectEventGraphicsInfo_DP_Cheryl,
+    [OBJ_EVENT_GFX_DP_COWGIRL] =               &gObjectEventGraphicsInfo_DP_Cowgirl,
+    [OBJ_EVENT_GFX_DP_CRASHER_WAKE] =               &gObjectEventGraphicsInfo_DP_CrasherWake,
+    [OBJ_EVENT_GFX_DP_CYRUS] =               &gObjectEventGraphicsInfo_DP_Cyrus,
+    [OBJ_EVENT_GFX_DP_DRAGON_TAMER] =               &gObjectEventGraphicsInfo_DP_DragonTamer,
+    [OBJ_EVENT_GFX_DP_FANTINA] =               &gObjectEventGraphicsInfo_DP_Fantina,
+    [OBJ_EVENT_GFX_DP_FISHERMAN] =               &gObjectEventGraphicsInfo_DP_Fisherman,
+    [OBJ_EVENT_GFX_DP_GALACTIC_GRUNTF] =               &gObjectEventGraphicsInfo_DP_GalacticGruntF,
+    [OBJ_EVENT_GFX_DP_GALACTIC_GRUNTM] =               &gObjectEventGraphicsInfo_DP_GalacticGruntM,
+    [OBJ_EVENT_GFX_DP_GENTLEMAN] =               &gObjectEventGraphicsInfo_DP_Gentleman,
+    [OBJ_EVENT_GFX_DP_HIKER] =               &gObjectEventGraphicsInfo_DP_Hiker,
+    [OBJ_EVENT_GFX_DP_JUPITER] =               &gObjectEventGraphicsInfo_DP_Jupiter,
+    [OBJ_EVENT_GFX_DP_LADY] =               &gObjectEventGraphicsInfo_DP_Lady,
+    [OBJ_EVENT_GFX_DP_LOOKER] =               &gObjectEventGraphicsInfo_DP_Looker,
+    [OBJ_EVENT_GFX_DP_LUCIAN] =               &gObjectEventGraphicsInfo_DP_Lucian,
+    [OBJ_EVENT_GFX_DP_MARLEY] =               &gObjectEventGraphicsInfo_DP_Marley,
+    [OBJ_EVENT_GFX_DP_MARS] =               &gObjectEventGraphicsInfo_DP_Mars,
+    [OBJ_EVENT_GFX_DP_MAYLENE] =               &gObjectEventGraphicsInfo_DP_Maylene,
+    [OBJ_EVENT_GFX_DP_MIRA] =               &gObjectEventGraphicsInfo_DP_Mira,
+    [OBJ_EVENT_GFX_DP_OFFICER] =               &gObjectEventGraphicsInfo_DP_Officer,
+    [OBJ_EVENT_GFX_DP_PAINTER] =               &gObjectEventGraphicsInfo_DP_Painter,
+    [OBJ_EVENT_GFX_DP_PALMER] =               &gObjectEventGraphicsInfo_DP_Palmer,
+    [OBJ_EVENT_GFX_DP_PARASOL_LADY] =               &gObjectEventGraphicsInfo_DP_ParasolLady,
+    [OBJ_EVENT_GFX_DP_PICNICKER] =               &gObjectEventGraphicsInfo_DP_Picnicker,
+    [OBJ_EVENT_GFX_DP_POKE_KID] =               &gObjectEventGraphicsInfo_DP_PokeKid,
+    [OBJ_EVENT_GFX_DP_POKE_RANGERF] =               &gObjectEventGraphicsInfo_DP_PokeRangerF,
+    [OBJ_EVENT_GFX_DP_POKE_RANGERM] =               &gObjectEventGraphicsInfo_DP_PokeRangerM,
+    [OBJ_EVENT_GFX_DP_POKEFAN_F] =               &gObjectEventGraphicsInfo_DP_PokeFanF,
+    [OBJ_EVENT_GFX_DP_POKEFAN_M] =               &gObjectEventGraphicsInfo_DP_PokeFanM,
+    [OBJ_EVENT_GFX_DP_ROWAN] =               &gObjectEventGraphicsInfo_DP_Rowan,
+    [OBJ_EVENT_GFX_DP_PSYCHIC] =               &gObjectEventGraphicsInfo_DP_PsychicM,
+    [OBJ_EVENT_GFX_DP_RANCHER] =               &gObjectEventGraphicsInfo_DP_Rancher,
+    [OBJ_EVENT_GFX_DP_RICH_BOY] =               &gObjectEventGraphicsInfo_DP_RichBoy,
+    [OBJ_EVENT_GFX_DP_RICH_LADY] =               &gObjectEventGraphicsInfo_DP_RichLady,
+    [OBJ_EVENT_GFX_DP_ROCKER] =               &gObjectEventGraphicsInfo_DP_Rocker,
+    [OBJ_EVENT_GFX_DP_ROUGHNECK] =               &gObjectEventGraphicsInfo_DP_Roughneck,
+    [OBJ_EVENT_GFX_DP_RUIN_MANIAC] =               &gObjectEventGraphicsInfo_DP_RuinManiac,
+    [OBJ_EVENT_GFX_DP_SAILOR] =               &gObjectEventGraphicsInfo_DP_Sailor,
+    [OBJ_EVENT_GFX_DP_SATURN] =               &gObjectEventGraphicsInfo_DP_Saturn,
+    [OBJ_EVENT_GFX_DP_SCIENTIST] =               &gObjectEventGraphicsInfo_DP_Scientist,
+    [OBJ_EVENT_GFX_DP_SKIERF] =               &gObjectEventGraphicsInfo_DP_SkierF,
+    [OBJ_EVENT_GFX_DP_SKIERM] =               &gObjectEventGraphicsInfo_DP_SkierM,
+    [OBJ_EVENT_GFX_DP_SOCIALITE] =               &gObjectEventGraphicsInfo_DP_Socialite,
+    [OBJ_EVENT_GFX_DP_SUPERNERD] =               &gObjectEventGraphicsInfo_DP_Supernerd,
+    [OBJ_EVENT_GFX_DP_SWIMMERF] =               &gObjectEventGraphicsInfo_DP_SwimmerF,
+    [OBJ_EVENT_GFX_DP_SWIMMERF2] =               &gObjectEventGraphicsInfo_DP_SwimmerF2,
+    [OBJ_EVENT_GFX_DP_SWIMMERM] =               &gObjectEventGraphicsInfo_DP_SwimmerM,
+    [OBJ_EVENT_GFX_DP_SWIMMERM2] =               &gObjectEventGraphicsInfo_DP_SwimmerM2,
+    [OBJ_EVENT_GFX_DP_VOLKNER] =               &gObjectEventGraphicsInfo_DP_Volkner,
+    [OBJ_EVENT_GFX_DP_WAITER] =               &gObjectEventGraphicsInfo_DP_Waiter,
+    [OBJ_EVENT_GFX_DP_WAITRESS] =               &gObjectEventGraphicsInfo_DP_Waitress,
+    [OBJ_EVENT_GFX_DP_WORKER] =               &gObjectEventGraphicsInfo_DP_Worker,
+    [OBJ_EVENT_GFX_DP_YOUNG_COUPLEF] =               &gObjectEventGraphicsInfo_DP_YoungCoupleF,
+    [OBJ_EVENT_GFX_DP_YOUNG_COUPLEM] =               &gObjectEventGraphicsInfo_DP_YoungCoupleM,
+    [OBJ_EVENT_GFX_DP_YOUNGSTER] =               &gObjectEventGraphicsInfo_DP_Youngster,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

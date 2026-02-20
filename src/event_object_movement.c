@@ -581,7 +581,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Rocky,                   OBJ_EVENT_PAL_TAG_Rocky},
     {gObjectEventPal_LandorusOld,             OBJ_EVENT_PAL_TAG_LANDORUS},
     {gObjectEventPal_EthanFieldMove,          OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE},
-//    {gObjectEventPal_AzurillOW,               OBJ_EVENT_PAL_TAG_AZURILL_OW}, // Freeze 
+//    {gObjectEventPal_UxieOld,                 OBJ_EVENT_PAL_TAG_UXIE},
 
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
@@ -718,6 +718,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Rival_Juliana,     OBJ_EVENT_PAL_TAG_RIVAL_JULIANA},
     {gObjectEventPal_Rival_Ash,         OBJ_EVENT_PAL_TAG_RIVAL_ASH},
     {gObjectEventPal_Rival_Wes,         OBJ_EVENT_PAL_TAG_RIVAL_WES},
+    {gObjectEventPal_LyraFieldMove,     OBJ_EVENT_PAL_TAG_LYRA_FIELD_MOVE},
+    {gObjectEventPal_HilbertFieldMove,  OBJ_EVENT_PAL_TAG_HILBERT_FIELD_MOVE},
+    {gObjectEventPal_HildaFieldMove,    OBJ_EVENT_PAL_TAG_HILDA_FIELD_MOVE},
+    {gObjectEventPal_LucasMachBike,     OBJ_EVENT_PAL_TAG_LUCAS_MACH_BIKE},
+    {gObjectEventPal_LucasFieldMove,    OBJ_EVENT_PAL_TAG_LUCAS_FIELD_MOVE},
 
     {gObjectEventPal_Team_Flare_Lysander, OBJ_EVENT_PAL_TAG_TEAM_FLARE_LYSANDER},
     {gObjectEventPal_Team_Galactic_Cyrus, OBJ_EVENT_PAL_TAG_TEAM_GALACTIC_CYRUS},

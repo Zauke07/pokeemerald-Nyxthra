@@ -4,6 +4,7 @@ LittlerootTown_BrendansHouse_2F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_OnTransition:
+	@ call Common_EventScript_SetupRivalGfxId
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_BrendansHouse_2F_EventScript_SetRivalPos
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet

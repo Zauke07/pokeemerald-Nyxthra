@@ -1236,8 +1236,8 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *pla
 {
     if (mapType != MAP_TYPE_INDOOR && FlagGet(FLAG_SYS_CRUISE_MODE))
         return PLAYER_AVATAR_FLAG_ON_FOOT;
-    //else if (mapType == MAP_TYPE_UNDERWATER)
-    //    return PLAYER_AVATAR_FLAG_UNDERWATER;
+    else if (mapType == MAP_TYPE_UNDERWATER)
+        return PLAYER_AVATAR_FLAG_UNDERWATER;
     else if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == TRUE)
         return PLAYER_AVATAR_FLAG_SURFING;
     else if (Overworld_IsBikingAllowed() != TRUE)
@@ -1763,6 +1763,15 @@ bool32 IsOverworldLinkActive(void)
         return FALSE;
 }
 
+// =====================
+// 1) TEST-PATCH: DoCB1_Overworld
+// =====================
+// Copy/Paste komplett ersetzen (nur diese Funktion).
+// Effekt:
+// - Wenn optionsAutoRunToggle = 1: B-drücken togglet runningToggleActive + Sound (an/aus)
+// - Wenn optionsAutoRunToggle = 0: Sound kommt NICHT, weil dann Hold-Run aktiv ist
+// - Die ganzen Bike/Surf/Controllable Checks bleiben drin, aber mit eindeutigem Debug-Sound.
+
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
     struct FieldInput inputStruct;
@@ -1781,24 +1790,30 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
         }
         else
         {
-            // Autolauf: B gedrückt = Toggle
-            if (!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
-                                    | PLAYER_AVATAR_FLAG_ACRO_BIKE
-                                    | PLAYER_AVATAR_FLAG_SURFING
-                                    | PLAYER_AVATAR_FLAG_UNDERWATER)) &&
-                (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_CONTROLLABLE) &&
-                gSaveBlock2Ptr->optionsAutoRunToggle &&
-                (newKeys & B_BUTTON))
+            // Autolauf: B gedrückt = Toggle (nur wenn Option aktiv)
+            if (gSaveBlock2Ptr->optionsAutoRunToggle
+             && (newKeys & B_BUTTON)
+             && !(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
+                                      | PLAYER_AVATAR_FLAG_ACRO_BIKE
+                                      | PLAYER_AVATAR_FLAG_SURFING
+                                      | PLAYER_AVATAR_FLAG_UNDERWATER))
+             && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_CONTROLLABLE))
             {
                 gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
+                PlaySE(gRogueLocal.runningToggleActive ? SE_PC_LOGIN : SE_PC_OFF);
             }
 
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }
     // If stop running but keep holding B -> fix follower frame.
-    if (PlayerHasFollowerNPC() && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT) && IsPlayerStandingStill())
-        ObjectEventSetHeldMovement(&gObjectEvents[GetFollowerNPCObjectId()], GetFaceDirectionAnimNum(gObjectEvents[GetFollowerNPCObjectId()].facingDirection));
+    if (PlayerHasFollowerNPC()
+     && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT)
+     && IsPlayerStandingStill())
+    {
+        ObjectEventSetHeldMovement(&gObjectEvents[GetFollowerNPCObjectId()],
+                                   GetFaceDirectionAnimNum(gObjectEvents[GetFollowerNPCObjectId()].facingDirection));
+    }
 }
 
 void CB1_Overworld(void)
@@ -2179,12 +2194,8 @@ static void CB2_ReturnToFieldLocal(void)
             sprite->animCmdIndex = 0;
             sprite->y2 = 0;
 
-            u8 behavior = MapGridGetMetatileBehaviorAt(objEvent->currentCoords.x, objEvent->currentCoords.y);
-            if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))
-                gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING;
-            else
-                gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
-
+            // ✅ FIX: Gespeicherte Flags wiederherstellen statt neu berechnen
+            gPlayerAvatar.flags = sInitialPlayerAvatarState.transitionFlags;
             gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
 
             // ✅ WICHTIG: avatarState statt state!

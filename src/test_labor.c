@@ -272,3 +272,7 @@ void BufferDebugExpLevelVars(struct Pokemon *mon)
     ConvertIntToDecimalStringN(gStringVar3, mappedLevel, STR_CONV_MODE_LEADING_ZEROS, 3);
 }
 
+void SetDebugBattleTransition(void)
+{
+    VarSet(VAR_DEBUG_BATTLE_TRANSITION, gSpecialVar_0x8004);
+}

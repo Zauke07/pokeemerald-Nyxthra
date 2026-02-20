@@ -3378,6 +3378,12 @@ extern const u16 gObjectEventPal_Rival_Victor[];
 extern const u16 gObjectEventPal_Rival_Gloria[];
 extern const u16 gObjectEventPal_Rival_Florian[];
 extern const u16 gObjectEventPal_Rival_Juliana[];
+extern const u16 gObjectEventPal_UxieOld[];
+extern const u16 gObjectEventPal_LucasMachBike[];
+extern const u16 gObjectEventPal_HildaFieldMove[];
+extern const u16 gObjectEventPal_HilbertFieldMove[];
+extern const u16 gObjectEventPal_LyraFieldMove[];
+
 
 // Mail
 extern const u16 gMailPalette_Orange[];
@@ -5772,6 +5778,8 @@ extern const u32 gTrainerFrontPic_BackpackerF[];
 extern const u32 gTrainerFrontPic_BackpackerM[];
 extern const u32 gTrainerFrontPic_James_Rocket[];
 extern const u32 gTrainerFrontPic_Ash[];
+extern const u32 gTrainerFrontPic_Klara[];
+
 
 
 

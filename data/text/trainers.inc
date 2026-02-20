@@ -1,6 +1,6 @@
 Route102_Text_CalvinIntro:
 	.string "Sobald du Pokémon bei dir hast,\n"
-	.string "bist du offiziell im Game drin!\l"
+	.string "bist du offiziell im Game drin!\p"
 	.string "Heißt: Du kannst mir jetzt nicht\n"
 	.string "einfach aus dem Weg gehen!$"
 
@@ -10,7 +10,7 @@ Route102_Text_CalvinDefeated:
 
 Route102_Text_CalvinPostBattle:
 	.string "Hättest du mir vorher gesagt, dass\n"
-	.string "du so krank stark bist, hätte ich\n"
+	.string "du so krank stark bist, hätte ich\l"
 	.string "mich vielleicht warmgemacht!$"
 
 Route102_Text_CalvinRegister:
@@ -80,7 +80,7 @@ Route102_Text_TianaPostBattle:
 
 Route103_Text_DaisyIntro:
 	.string "Riechst du das? Pure Entspannung!\n"
-	.string "Oder bist du zu hektisch, um das zu\n"
+	.string "Oder bist du zu hektisch, um das zu\l"
 	.string "verstehen?$"
 
 Route103_Text_DaisyDefeated:
@@ -127,7 +127,7 @@ Route103_Text_AmyLivRegister:
 	.string "das verspreche ich dir!$"
 
 Route103_Text_LivNotEnoughPokemon:
-	.string "JO: Ähm… mit nur einem Pokémon?\n"
+	.string "JO: Ähm… mit nur einem Pokémon?\p"
 	.string "Das ist unfair, komm wieder wenn du\n"
 	.string "bereit bist!$"
 
@@ -160,7 +160,7 @@ Route103_Text_LivRematchPostBattle:
 
 Route103_Text_AndrewIntro:
 	.string "Verdammt! Meine Angelschnur hat sich\n"
-	.string "schon wieder verknotet!\n"
+	.string "schon wieder verknotet!\p"
 	.string "Jetzt brauch ich erst mal Dampf ablassen!$"
 
 Route103_Text_AndrewDefeated:
@@ -375,7 +375,7 @@ Route104_Text_CindyPostRematch:
 
 Route105_Text_FosterIntro:
 	.string "Ey Alter, ich such hier seit Stunden\n"
-	.string "nach ’nem magischen Felsen!\n"
+	.string "nach ’nem magischen Felsen!\p"
 	.string "Und jetzt stehst DU mir im Weg, du Otto!$"
 
 Route105_Text_FosterDefeated:
@@ -397,7 +397,7 @@ Route105_Text_LuisDefeated:
 
 Route105_Text_LuisPostBattle:
 	.string "Wenn du mal untergehst,\n"
-	.string "wink einfach wie ein Idiot -\n"
+	.string "wink einfach wie ein Idiot -\l"
 	.string "vielleicht rettet dich jemand.$"
 
 
@@ -497,12 +497,12 @@ Route106_Text_ElliotPostBattle:
 
 Route106_Text_ElliotRegister:
 	.string "Angeln ist geil, Kämpfen auch.\n"
-	.string "Hast du Bock auf eine Revanche, oder\n"
+	.string "Hast du Bock auf eine Revanche, oder\l"
 	.string "bleibst du weiterhin so ein Glückspilz?$"
 
 Route106_Text_ElliotRematchIntro:
 	.string "Ich hab so viele Pokémon geangelt,\n"
-	.string "dass selbst das Meer genervt ist.\n"
+	.string "dass selbst das Meer genervt ist.\p"
 	.string "Jetzt zeig ich sie dir!$"
 
 Route106_Text_ElliotRematchDefeated:
@@ -511,7 +511,7 @@ Route106_Text_ElliotRematchDefeated:
 
 Route106_Text_ElliotRematchPostBattle:
 	.string "Gewinnen, verlieren, alles egal!\n"
-	.string "Pokémon sind trotzdem geil.\n"
+	.string "Pokémon sind trotzdem geil.\p"
 	.string "Du wirst mir doch wenigstens da zustimmen?$"
 
 
@@ -523,18 +523,18 @@ Route106_Text_NedIntro:
 
 Route106_Text_NedDefeated:
 	.string "Ich hab verloren, weil ich nicht aufs\n"
-	.string "Klo gegangen bin.\n"
+	.string "Klo gegangen bin.\p"
 	.string "Das ist jetzt mein offizielles Alibi.$"
 
 Route106_Text_NedPostBattle:
 	.string "Oh oh… ich spür’s.\n"
-	.string "Gleich beißt was Großes an.\n"
+	.string "Gleich beißt was Großes an.\p"
 	.string "Oder ich kipp einfach um. Mal sehen.$"
 
 
 Route106_Text_DouglasIntro:
 	.string "Hahaha! Ich laufe wie ein Kartoffelsack,\n"
-	.string "aber im Wasser kriegst du mich nicht,\n"
+	.string "aber im Wasser kriegst du mich nicht,\l"
 	.string "du Landratte!$"
 
 Route106_Text_DouglasDefeated:
@@ -548,7 +548,7 @@ Route106_Text_DouglasPostBattle:
 
 Route106_Text_KylaIntro:
 	.string "Das Meer ist mein Revier.\n"
-	.string "Ich mach’s dir nicht leicht, Kleiner.\n"
+	.string "Ich mach’s dir nicht leicht, Kleiner.\p"
 	.string "Also streng dich an, bevor du absäufst.$"
 
 Route106_Text_KylaDefeated:
@@ -556,7 +556,7 @@ Route106_Text_KylaDefeated:
 	.string "Du Nervensäge.$"
 
 Route106_Text_KylaPostBattle:
-	.string "Auf den Wellen treiben lassen… herrlich.\n"
+	.string "Auf den Wellen treiben lassen… herrlich.\p"
 	.string "Probier’s mal. Vielleicht wird dann auch\n"
 	.string "dein Gesicht weniger aggressiv.$"
 
@@ -568,18 +568,18 @@ Route107_Text_DarrinIntro:
 
 Route107_Text_DarrinDefeated:
 	.string "Hahaha… verloren.\n"
-	.string "Egal. Ich penn jetzt weiter.\n"
+	.string "Egal. Ich penn jetzt weiter.\p"
 	.string "Du kannst ja noch bisschen flexen.$"
 
 Route107_Text_DarrinPostBattle:
 	.string "Treiben lassen ist wie ein Bett.\n"
-	.string "Und du bist wie ein Wecker:\n"
+	.string "Und du bist wie ein Wecker:\p"
 	.string "unnötig und nervig.$"
 
 
 Route107_Text_TonyIntro:
 	.string "Das Meer ist wie mein Garten.\n"
-	.string "Und du trampelst da rein wie ein Esel.\n"
+	.string "Und du trampelst da rein wie ein Esel.\p"
 	.string "Komm, Kampf!$"
 
 Route107_Text_TonyDefeated:
@@ -588,12 +588,12 @@ Route107_Text_TonyDefeated:
 
 Route107_Text_TonyPostBattle:
 	.string "Ich schwimme im Meer, Herz voller Träume…\p"
-	.string "Ja okay, klingt wie ein billiger Song.\n"
+	.string "Ja okay, klingt wie ein billiger Song.\p"
 	.string "Egal, ich schwimm weiter.$"
 
 Route107_Text_TonyRegister:
 	.string "Du hast mich zu Tode erschreckt!\n"
-	.string "Trag mich ein, damit ich dich wiederfinde,\n"
+	.string "Trag mich ein, damit ich dich wiederfinde,\l"
 	.string "du wandelnde Blamage für mich.$"
 
 Route107_Text_TonyRematchIntro:
@@ -607,13 +607,13 @@ Route107_Text_TonyRematchDefeated:
 
 Route107_Text_TonyRematchPostBattle:
 	.string "Im Kampf lernst du, hart zu werden.\n"
-	.string "Die Wellen haben’s mir beigebracht.\n"
+	.string "Die Wellen haben’s mir beigebracht.\p"
 	.string "Du hast’s mir reingeprügelt.$"
 
 
 Route107_Text_DeniseIntro:
 	.string "Kennst du FAUSTAUHAVEN?\n"
-	.string "Da erzählen alle so viel Quatsch,\n"
+	.string "Da erzählen alle so viel Quatsch,\l"
 	.string "du würdest da perfekt reinpassen.$"
 
 Route107_Text_DeniseDefeated:
@@ -622,13 +622,13 @@ Route107_Text_DeniseDefeated:
 
 Route107_Text_DenisePostBattle:
 	.string "In der FAUSTAUHAVEN HALLE ist der Trend:\n"
-	.string "einfach irgendwas labern.\n"
+	.string "einfach irgendwas labern.\p"
 	.string "Du bist quasi schon Profi.$"
 
 
 Route107_Text_BethIntro:
 	.string "Du willst kämpfen?\n"
-	.string "Na komm, dann kriegst du’s halt.\n"
+	.string "Na komm, dann kriegst du’s halt.\p"
 	.string "Ich hab eh Bock, jemanden zu ärgern.$"
 
 Route107_Text_BethDefeated:
@@ -637,7 +637,7 @@ Route107_Text_BethDefeated:
 
 Route107_Text_BethPostBattle:
 	.string "Du wirst bestimmt noch stärker.\n"
-	.string "Und ich auch.\n"
+	.string "Und ich auch.\p"
 	.string "Also gewöhn dich nicht dran, du Glückskeks.$"
 
 
@@ -647,12 +647,12 @@ Route107_Text_LisaIntro:
 
 Route107_Text_LisaDefeated:
 	.string "BEA: Unglaublich.\n"
-	.string "BEA: Du spielst in einer anderen Liga.\n"
+	.string "BEA: Du spielst in einer anderen Liga.\p"
 	.string "BEA: Ich hasse dich ein bisschen dafür.$"
 
 Route107_Text_LisaPostBattle:
 	.string "BEA: Hast du überhaupt Freunde,\n"
-	.string "BEA: die mit dir an den Strand gehen?\n"
+	.string "BEA: die mit dir an den Strand gehen?\p"
 	.string "BEA: Oder bist du immer Solo-Modus?$"
 
 Route107_Text_LisaNotEnoughPokemon:
@@ -667,23 +667,23 @@ Route107_Text_RayIntro:
 
 Route107_Text_RayDefeated:
 	.string "ERKO: Uff!\n"
-	.string "ERKO: Du bist viel zu krass.\n"
+	.string "ERKO: Du bist viel zu krass.\p"
 	.string "ERKO: Ich fühl mich grad wie Deko.$"
 
 Route107_Text_RayPostBattle:
 	.string "ERKO: Meine Schwester gab mir mein Pokémon.\n"
-	.string "ERKO: Jetzt ist es mein Partner.\n"
+	.string "ERKO: Jetzt ist es mein Partner.\p"
 	.string "ERKO: Und du bist… mein Trauma.$"
 
 Route107_Text_RayNotEnoughPokemon:
 	.string "ERKO: Bring mehr Pokémon mit!\n"
-	.string "ERKO: Sonst ist das kein 2-gegen-2.\n"
+	.string "ERKO: Sonst ist das kein 2-gegen-2.\p"
 	.string "ERKO: Mathe, kennste?$"
 
 
 Route107_Text_CamronIntro:
 	.string "Ich bin mitten im Triathlon\n"
-	.string "und null müde!\n"
+	.string "und null müde!\p"
 	.string "Du hingegen siehst aus wie Pause.$"
 
 Route107_Text_CamronDefeated:
@@ -697,17 +697,17 @@ Route107_Text_CamronPostBattle:
 
 Route108_Text_JeromeIntro:
 	.string "Mein Traum ist’s, durch alle sieben\n"
-	.string "Weltmeere zu schwimmen.\n"
+	.string "Weltmeere zu schwimmen.\p"
 	.string "Und dann kommst du und störst wie’n Klotz.$"
 
 Route108_Text_JeromeDefeated:
 	.string "So… werde ich nie die sieben Weltmeere\n"
-	.string "schaffen.\n"
+	.string "schaffen.\p"
 	.string "Du hast mich komplett zerlegt…$"
 
 Route108_Text_JeromePostBattle:
 	.string "Mit Wasser-Pokémon rumalbern ist\n"
-	.string "eigentlich das Beste am Schwimmen.\n"
+	.string "eigentlich das Beste am Schwimmen.\p"
 	.string "Heute war’s eher Trauma-Therapie.$"
 
 
@@ -717,18 +717,18 @@ Route108_Text_MatthewIntro:
 
 Route108_Text_MatthewDefeated:
 	.string "Ich gehe unter!\n"
-	.string "Blubb… blubb… blubb…\n"
+	.string "Blubb… blubb… blubb…\p"
 	.string "Genau wie mein Stolz.$"
 
 Route108_Text_MatthewPostBattle:
-	.string "Manche gehen echt ins SCHIFFSWRACK rein!\n"
+	.string "Manche gehen echt ins SCHIFFSWRACK rein!\p"
 	.string "Ich geh lieber nicht… sonst finde ich\n"
 	.string "da drin noch meine Würde.$"
 
 
 Route108_Text_TaraIntro:
 	.string "Mein Freund meint, ich seh im Bikini\n"
-	.string "mega aus… dieser Lügner.\n"
+	.string "mega aus… dieser Lügner.\p"
 	.string "Aber ich nehm’s trotzdem. Deal?$"
 
 Route108_Text_TaraDefeated:
@@ -737,14 +737,14 @@ Route108_Text_TaraDefeated:
 
 Route108_Text_TaraPostBattle:
 	.string "Selbst wenn’s gelogen ist:\n"
-	.string "Komplimente sind wie Snacks -\n"
-	.string "ich nehm sie einfach.\n"
+	.string "Komplimente sind wie Snacks -\l"
+	.string "ich nehm sie einfach.\p"
 	.string "Und du? Du verteilst eher Klatschen.$"
 
 
 Route108_Text_MissyIntro:
 	.string "Ich liebe das Meer!\n"
-	.string "Beim Schwimmen vergesse ich alle Probleme.\n"
+	.string "Beim Schwimmen vergesse ich alle Probleme.\p"
 	.string "Außer dich, du wandelnder Stressfaktor.$"
 
 Route108_Text_MissyDefeated:
@@ -753,50 +753,50 @@ Route108_Text_MissyDefeated:
 
 Route108_Text_MissyPostBattle:
 	.string "Stress abbauen durch Schwimmen.\n"
-	.string "Sehr gesund.\n"
+	.string "Sehr gesund.\p"
 	.string "Und du baust Stress auf wie ein Profi.$"
 
 
 Route108_Text_CoryIntro:
 	.string "Ich liebe WASSER-Pokémon!\n"
-	.string "Und eigentlich liebe ich alles.\n"
+	.string "Und eigentlich liebe ich alles.\p"
 	.string "Außer Leute, die mich gleich plattmachen.$"
 
 Route108_Text_CoryDefeated:
 	.string "WAAAHAAA! Ich hab verloren!\n"
-	.string "WAAAAHAAAAA!\n"
+	.string "WAAAAHAAAAA!\p"
 	.string "Ich schrei so laut, bis das Meer kocht!$"
 
 Route108_Text_CoryPostBattle:
 	.string "Schreien ist Selbstfürsorge!\n"
-	.string "Das hebt meine Stimmung.\n"
+	.string "Das hebt meine Stimmung.\p"
 	.string "Und vertreibt Leute wie dich leider nicht.$"
 
 Route108_Text_CoryRegister:
-	.string "Ich liebe starke TRAINER!\n"
+	.string "Ich liebe starke TRAINER!\p"
 	.string "Trag mich in dein POKéNAV ein,\n"
 	.string "damit ich dich wieder anschreien kann!$"
 
 Route108_Text_CoryRematchIntro:
 	.string "Sieg oder Niederlage… egal!\n"
-	.string "Ich liebe es, im Meer zu kämpfen!\n"
+	.string "Ich liebe es, im Meer zu kämpfen!\p"
 	.string "Und ich liebe Drama!$"
 
 Route108_Text_CoryRematchDefeated:
 	.string "WAAAHAAA! Schon wieder verloren!\n"
-	.string "WAAAAHAAAAA!\n"
+	.string "WAAAAHAAAAA!\l"
 	.string "Ich bin ein wandelnder Lautsprecher der Niederlage!$"
 
 Route108_Text_CoryRematchPostBattle:
 	.string "Wenn du vor ’ner Herausforderung stehst,\n"
-	.string "brüll’s einfach raus!\n"
+	.string "brüll’s einfach raus!\p"
 	.string "Und wenn’s nix bringt, brüll lauter!\n"
 	.string "So mach ich’s auch.$"
 
 
 Route108_Text_CarolinaIntro:
 	.string "Meine süßen Pokémon sind mein ganzer Stolz.\n"
-	.string "Ich zeig sie dir - und du benimmst dich,\n"
+	.string "Ich zeig sie dir - und du benimmst dich,\l"
 	.string "verstanden?$"
 
 Route108_Text_CarolinaDefeated:
@@ -805,13 +805,13 @@ Route108_Text_CarolinaDefeated:
 
 Route108_Text_CarolinaPostBattle:
 	.string "Wenn ich schon hier rumschwimme,\n"
-	.string "will ich wenigstens stylisch sein.\n"
+	.string "will ich wenigstens stylisch sein.\p"
 	.string "Ein rosa Badeanzug wär echt cute.\n"
 	.string "Du hingegen bist eher… 'aggressiv'.$"
 
 Route109_Text_DavidIntro:
 	.string "Ey, guck dir meine Muckis an!\n"
-	.string "Reiner Stahl, Junge! Und jetzt komm her,\n"
+	.string "Reiner Stahl, Junge! Und jetzt komm her,\l"
 	.string "ich klatsch dich gleich um!$"
 
 Route109_Text_DavidDefeated:
@@ -825,7 +825,7 @@ Route109_Text_DavidPostBattle:
 
 Route109_Text_AliceIntro:
 	.string "Hast du Sonnencreme drauf?\n"
-	.string "Oder willst du gleich als Brathähnchen\n"
+	.string "Oder willst du gleich als Brathähnchen\l"
 	.string "vom Strand rollen?$"
 
 Route109_Text_AliceDefeated:
@@ -845,7 +845,7 @@ Route109_Text_HueyDefeated:
 
 Route109_Text_HueyPostBattle:
 	.string "Manche gewinnen mit Kraft,\n"
-	.string "andere mit Glück.\n"
+	.string "andere mit Glück.\p"
 	.string "Und du? Mit Frechheit.$"
 
 
@@ -889,7 +889,7 @@ Route109_Text_LolaPostBattle:
 
 Route109_Text_GwenIntro:
 	.string "He, du da!\n"
-	.string "Siehst du auch so aus, als würdest du\n"
+	.string "Siehst du auch so aus, als würdest du\l"
 	.string "gleich verlieren?$"
 
 Route109_Text_GwenDefeated:

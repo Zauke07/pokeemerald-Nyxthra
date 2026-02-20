@@ -109,7 +109,9 @@
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab",
-    "Testlabor"
+    "Testlabor",
+    "Testlabor_fieldmoves",
+    "Testlabor_Unterwasser"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -447,7 +449,8 @@
     "GraniteCave_B3F",
     "GraniteCave_B4F",
     "GraniteCave_B4F_2",
-    "MeteorFalls"
+    "MeteorFalls",
+    "ScorchedSlabSecret"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",
@@ -601,7 +604,9 @@
     "NavelRock_Down10",
     "NavelRock_Down11",
     "NavelRock_Bottom",
-    "TrainerHill_Elevator"
+    "TrainerHill_Elevator",
+    "ScorchedSlabUnderwater",
+    "ScorchedSlabUnderwater_2"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

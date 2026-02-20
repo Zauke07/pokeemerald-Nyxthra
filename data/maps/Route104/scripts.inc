@@ -13,7 +13,7 @@ Route104_EventScript_StartSailToDewford::
 	end
 
 Route104_OnTransition:
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
 	end
@@ -53,7 +53,8 @@ Route104_EventScript_RivalTrigger::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 10
-	addobject LOCALID_ROUTE104_RIVAL
+	setvar VAR_0x8004, LOCALID_ROUTE104_RIVAL
+	spawnrival_style
 	clearflag FLAG_HIDE_ROUTE_104_RIVAL
 	applymovement LOCALID_PLAYER, Route104_Movement_PlayerBackUp
 	waitmovement 0

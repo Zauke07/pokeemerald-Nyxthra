@@ -703,3 +703,304 @@ Testlabor_EventScript_Route104_MiaBattle::
 	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
 	release
 	end
+
+Testlabor_EventScript_TransitionTester::
+	lock
+	faceplayer
+	msgbox Testlabor_Text_TransIntro, MSGBOX_DEFAULT
+	goto Testlabor_TransMenu_Page1
+	end
+
+Testlabor_TransMenu_Page1:
+	multichoice 0, 0, MULTI_TESTLAB_TRANSITIONS_PAGE1, 0
+	compare VAR_RESULT, 0
+	goto_if_eq Testlabor_SetTrans_Blur
+	compare VAR_RESULT, 1
+	goto_if_eq Testlabor_SetTrans_Swirl
+	compare VAR_RESULT, 2
+	goto_if_eq Testlabor_SetTrans_Shuffle
+	compare VAR_RESULT, 3
+	goto_if_eq Testlabor_SetTrans_BigPokeBall
+	compare VAR_RESULT, 4
+	goto_if_eq Testlabor_SetTrans_PokeBallsTrail
+	compare VAR_RESULT, 5
+	goto_if_eq Testlabor_SetTrans_ClockwiseWipe
+	compare VAR_RESULT, 6
+	goto_if_eq Testlabor_SetTrans_Ripple
+	compare VAR_RESULT, 7
+	goto_if_eq Testlabor_SetTrans_Wave
+	compare VAR_RESULT, 8
+	goto_if_eq Testlabor_TransMenu_Page2
+	goto Testlabor_TransExit
+
+Testlabor_TransMenu_Page2:
+	multichoice 0, 0, MULTI_TESTLAB_TRANSITIONS_PAGE2, 0
+	compare VAR_RESULT, 0
+	goto_if_eq Testlabor_SetTrans_Slice
+	compare VAR_RESULT, 1
+	goto_if_eq Testlabor_SetTrans_WhiteBarsFade
+	compare VAR_RESULT, 2
+	goto_if_eq Testlabor_SetTrans_GridSquares
+	compare VAR_RESULT, 3
+	goto_if_eq Testlabor_SetTrans_AngledWipes
+	compare VAR_RESULT, 4
+	goto_if_eq Testlabor_SetTrans_Mugshot
+	compare VAR_RESULT, 5
+	goto_if_eq Testlabor_SetTrans_Aqua
+	compare VAR_RESULT, 6
+	goto_if_eq Testlabor_SetTrans_Magma
+	compare VAR_RESULT, 7
+	goto_if_eq Testlabor_SetTrans_ChatGPT
+	compare VAR_RESULT, 8
+	goto_if_eq Testlabor_TransMenu_Page3
+	goto Testlabor_TransExit
+
+Testlabor_TransMenu_Page3:
+	multichoice 0, 0, MULTI_TESTLAB_TRANSITIONS_PAGE3, 0
+	compare VAR_RESULT, 0
+	goto_if_eq Testlabor_SetTrans_Regice
+	compare VAR_RESULT, 1
+	goto_if_eq Testlabor_SetTrans_Registeel
+	compare VAR_RESULT, 2
+	goto_if_eq Testlabor_SetTrans_Regirock
+	compare VAR_RESULT, 3
+	goto_if_eq Testlabor_SetTrans_Kyogre
+	compare VAR_RESULT, 4
+	goto_if_eq Testlabor_SetTrans_Groudon
+	compare VAR_RESULT, 5
+	goto_if_eq Testlabor_SetTrans_Rayquaza
+	compare VAR_RESULT, 6
+	goto_if_eq Testlabor_SetTrans_ShredSplit
+	compare VAR_RESULT, 7
+	goto_if_eq Testlabor_SetTrans_Blackhole
+	compare VAR_RESULT, 8
+	goto_if_eq Testlabor_TransMenu_Page4
+	goto Testlabor_TransExit
+
+Testlabor_TransMenu_Page4:
+	multichoice 0, 0, MULTI_TESTLAB_TRANSITIONS_PAGE4, 0
+	compare VAR_RESULT, 0
+	goto_if_eq Testlabor_SetTrans_BlackholePulsate
+	compare VAR_RESULT, 1
+	goto_if_eq Testlabor_SetTrans_RectSpiral
+	compare VAR_RESULT, 2
+	goto_if_eq Testlabor_SetTrans_FrontierWiggle
+	compare VAR_RESULT, 3
+	goto_if_eq Testlabor_SetTrans_FrontierWave
+	compare VAR_RESULT, 4
+	goto_if_eq Testlabor_SetTrans_FrontierSquares
+	compare VAR_RESULT, 5
+	goto_if_eq Testlabor_SetTrans_FrontierSquaresScroll
+	compare VAR_RESULT, 6
+	goto_if_eq Testlabor_SetTrans_FrontierSquaresSpiral
+	compare VAR_RESULT, 7
+	goto_if_eq Testlabor_TransMenu_Page5
+	goto Testlabor_TransExit
+
+Testlabor_TransMenu_Page5:
+	multichoice 0, 0, MULTI_TESTLAB_TRANSITIONS_PAGE5, 0
+	compare VAR_RESULT, 0
+	goto_if_eq Testlabor_SetTrans_FrontierCirclesMeet
+	compare VAR_RESULT, 1
+	goto_if_eq Testlabor_SetTrans_FrontierCirclesCross
+	compare VAR_RESULT, 2
+	goto_if_eq Testlabor_SetTrans_FrontierCirclesAsym
+	compare VAR_RESULT, 3
+	goto_if_eq Testlabor_SetTrans_FrontierCirclesSym
+	compare VAR_RESULT, 4
+	goto_if_eq Testlabor_SetTrans_Galactic
+	compare VAR_RESULT, 5
+	goto_if_eq Testlabor_SetTrans_Shiny
+	compare VAR_RESULT, 6
+	goto_if_eq Testlabor_TransExit
+	goto Testlabor_TransExit
+
+Testlabor_TransExit:
+	setvar VAR_DEBUG_BATTLE_TRANSITION, 0xFFFF
+	msgbox Testlabor_Text_TransBye, MSGBOX_DEFAULT
+	release
+	end
+
+Testlabor_SetTrans_Blur:
+	setvar VAR_0x8004, 0
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Swirl:
+	setvar VAR_0x8004, 1
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Shuffle:
+	setvar VAR_0x8004, 2
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_BigPokeBall:
+	setvar VAR_0x8004, 3
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_PokeBallsTrail:
+	setvar VAR_0x8004, 4
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_ClockwiseWipe:
+	setvar VAR_0x8004, 5
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Ripple:
+	setvar VAR_0x8004, 6
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Wave:
+	setvar VAR_0x8004, 7
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Slice:
+	setvar VAR_0x8004, 8
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_WhiteBarsFade:
+	setvar VAR_0x8004, 9
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_GridSquares:
+	setvar VAR_0x8004, 10
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_AngledWipes:
+	setvar VAR_0x8004, 11
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Mugshot:
+	setvar VAR_0x8004, 12
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Aqua:
+	setvar VAR_0x8004, 13
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Magma:
+	setvar VAR_0x8004, 14
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_ChatGPT:
+	setvar VAR_0x8004, 15
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Regice:
+	setvar VAR_0x8004, 16
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Registeel:
+	setvar VAR_0x8004, 17
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Regirock:
+	setvar VAR_0x8004, 18
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Kyogre:
+	setvar VAR_0x8004, 19
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Groudon:
+	setvar VAR_0x8004, 20
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Rayquaza:
+	setvar VAR_0x8004, 21
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_ShredSplit:
+	setvar VAR_0x8004, 22
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Blackhole:
+	setvar VAR_0x8004, 23
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_BlackholePulsate:
+	setvar VAR_0x8004, 24
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_RectSpiral:
+	setvar VAR_0x8004, 25
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierWiggle:
+	setvar VAR_0x8004, 26
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierWave:
+	setvar VAR_0x8004, 27
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierSquares:
+	setvar VAR_0x8004, 28
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierSquaresScroll:
+	setvar VAR_0x8004, 29
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierSquaresSpiral:
+	setvar VAR_0x8004, 30
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierCirclesMeet:
+	setvar VAR_0x8004, 31
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierCirclesCross:
+	setvar VAR_0x8004, 32
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierCirclesAsym:
+	setvar VAR_0x8004, 33
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_FrontierCirclesSym:
+	setvar VAR_0x8004, 34
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Galactic:
+	setvar VAR_0x8004, 39
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_SetTrans_Shiny:
+	setvar VAR_0x8004, 40
+	goto Testlabor_CallSpecialAndBattle
+
+Testlabor_CallSpecialAndBattle:
+	special SetDebugBattleTransition
+	goto Testlabor_DoTransitionBattle
+
+Testlabor_DoTransitionBattle:
+	closemessage
+	playbgm MUS_ENCOUNTER_MAY, TRUE
+	trainerbattle_no_intro TRAINER_TRANSITION_TEST, Testlabor_Text_DummyWin
+	msgbox Testlabor_Text_AfterBattle, MSGBOX_DEFAULT
+	goto Testlabor_TransMenu_Page1
+
+Testlabor_Text_TransIntro:
+	.string "Wähle eine Battle-Transition.$"
+
+Testlabor_Text_TransBye:
+	.string "Okay.$"
+
+Testlabor_Text_DummyWin:
+	.string "ok$"
+
+Testlabor_Text_AfterBattle:
+	.string "Noch eine?$"
+
+Testlabor_EventScript_UxieRepeat::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_UXIE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	seteventmon SPECIES_UXIE, 1
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	release
+	end

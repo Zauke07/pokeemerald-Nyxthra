@@ -4620,6 +4620,56 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MysteryHoeleL_F1/border.bin",
       "blockdata_filepath": "data/layouts/MysteryHoeleL_F1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_UNDERWATER",
+      "name": "ScorchedSlabUnderwater_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/ScorchedSlabUnderwater/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlabUnderwater/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_UNDERWATER_2",
+      "name": "ScorchedSlabUnderwater_2_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/ScorchedSlabUnderwater_2/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlabUnderwater_2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCORCHED_SLAB_SECRET",
+      "name": "ScorchedSlabSecret_Layout",
+      "width": 15,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/ScorchedSlabSecret/border.bin",
+      "blockdata_filepath": "data/layouts/ScorchedSlabSecret/map.bin"
+    },
+    {
+      "id": "LAYOUT_TESTLABOR_FIELDMOVES",
+      "name": "Testlabor_fieldmoves_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Testlabor_fieldmoves/border.bin",
+      "blockdata_filepath": "data/layouts/Testlabor_fieldmoves/map.bin"
+    },
+    {
+      "id": "LAYOUT_TESTLABOR_UNTERWASSER",
+      "name": "Testlabor_Unterwasser_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/Testlabor_Unterwasser/border.bin",
+      "blockdata_filepath": "data/layouts/Testlabor_Unterwasser/map.bin"
     }
   ]
 }

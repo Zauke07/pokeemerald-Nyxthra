@@ -9,7 +9,7 @@ Route110_OnResume:
 	end
 
 Route110_OnTransition:
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId
 	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
@@ -379,6 +379,9 @@ Route110_EventScript_RivalTrigger3::
 
 Route110_EventScript_RivalScene::
 	lockall
+	@ Stelle sicher, dass der Rivalen-OW direkt korrekt gesetzt wird
+	setvar VAR_0x8004, LOCALID_ROUTE110_RIVAL
+	spawnrival_style
 	call Common_EventScript_SetupRivalMusic
 	applymovement LOCALID_ROUTE110_RIVAL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
@@ -395,20 +398,22 @@ Route110_EventScript_RivalScene::
 	goto_if_eq VAR_RESULT, STYLE_MAY, Route110_EventScript_BrendanBattleRegion
 	goto_if_eq VAR_RESULT, STYLE_RED, Route110_EventScript_LeafBattleRegion
 	goto_if_eq VAR_RESULT, STYLE_LEAF, Route110_EventScript_RedBattleRegion
-	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route110_EventScript_StartBattle_Lucas
-	goto_if_eq VAR_RESULT, STYLE_DAWN, Route110_EventScript_StartBattle_Dawn
-	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route110_EventScript_StartBattle_Hilbert
-	goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_EventScript_StartBattle_Hilda
-@	 goto_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_StartBattle_Nate
-@	 goto_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_StartBattle_Rosa
-@	goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Calem
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Serena
-@	goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Elio
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Selene
-@	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Victor
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Gloria
-@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Florian
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Juliana
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, Route110_EventScript_StartBattle_Lyra
+	goto_if_eq VAR_RESULT, STYLE_LYRA, Route110_EventScript_StartBattle_Ethan
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route110_EventScript_StartBattle_Dawn
+	goto_if_eq VAR_RESULT, STYLE_DAWN, Route110_EventScript_StartBattle_Lucas
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route110_EventScript_StartBattle_Hilda
+	goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_EventScript_StartBattle_Hilbert
+@	 goto_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_StartBattle_Rosa
+@	 goto_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_StartBattle_Nate
+@	goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Serena
+@	goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Calem
+@	goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Selene
+@	goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Elio
+@	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Gloria
+@	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Victor
+@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Juliana
+@	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Florian
 	end
 
 Route110_EventScript_GiveItemfinder::
@@ -424,6 +429,8 @@ Route110_EventScript_RivalExit::
 	setobjectmovementtype LOCALID_ROUTE110_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_RIGHT
 	removeobject LOCALID_ROUTE110_RIVAL
 	addobject LOCALID_ROUTE110_RIVAL_ON_BIKE
+	@ Setze das Bike-Sprite des Rivalen explizit nach Style
+	call Route110_EventScript_SetRivalBikeGfx_ByStyle
 	delay 45
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalExit1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
@@ -434,6 +441,118 @@ Route110_EventScript_RivalExit::
 	fadedefaultbgm
 	releaseall
 	end
+
+@ -----------------------------
+@ Sprite-Fix: setobjectgfxid je nach Spielerstil
+@ -----------------------------
+
+Route110_EventScript_SetRivalNormalGfx_ByStyle::
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route110_SetRivalNormal_May
+	goto_if_eq VAR_RESULT, STYLE_MAY, Route110_SetRivalNormal_Brendan
+	goto_if_eq VAR_RESULT, STYLE_RED, Route110_SetRivalNormal_Leaf
+	goto_if_eq VAR_RESULT, STYLE_LEAF, Route110_SetRivalNormal_Red
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, Route110_SetRivalNormal_Lyra
+	goto_if_eq VAR_RESULT, STYLE_LYRA, Route110_SetRivalNormal_Ethan
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route110_SetRivalNormal_Dawn
+	goto_if_eq VAR_RESULT, STYLE_DAWN, Route110_SetRivalNormal_Lucas
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route110_SetRivalNormal_Hilda
+	goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_SetRivalNormal_Hilbert
+	end
+
+Route110_SetRivalNormal_May::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	return
+
+Route110_SetRivalNormal_Brendan::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	return
+
+Route110_SetRivalNormal_Red::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_RED
+	return
+
+Route110_SetRivalNormal_Leaf::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_LEAF
+	return
+
+Route110_SetRivalNormal_Ethan::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_ETHAN
+	return
+
+Route110_SetRivalNormal_Lyra::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_LYRA
+	return
+
+Route110_SetRivalNormal_Lucas::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_LUCAS
+	return
+
+Route110_SetRivalNormal_Dawn::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_DAWN
+	return
+
+Route110_SetRivalNormal_Hilbert::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_HILBERT
+	return
+
+Route110_SetRivalNormal_Hilda::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL, OBJ_EVENT_GFX_RIVAL_HILDA
+	return
+
+Route110_EventScript_SetRivalBikeGfx_ByStyle::
+	getplayerstyle
+	goto_if_eq VAR_RESULT, STYLE_BRENDAN, Route110_SetRivalBike_May
+	goto_if_eq VAR_RESULT, STYLE_MAY, Route110_SetRivalBike_Brendan
+	goto_if_eq VAR_RESULT, STYLE_RED, Route110_SetRivalBike_Leaf
+	goto_if_eq VAR_RESULT, STYLE_LEAF, Route110_SetRivalBike_Red
+	goto_if_eq VAR_RESULT, STYLE_ETHAN, Route110_SetRivalBike_Lyra
+	goto_if_eq VAR_RESULT, STYLE_LYRA, Route110_SetRivalBike_Ethan
+	goto_if_eq VAR_RESULT, STYLE_LUCAS, Route110_SetRivalBike_Dawn
+	goto_if_eq VAR_RESULT, STYLE_DAWN, Route110_SetRivalBike_Lucas
+	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route110_SetRivalBike_Hilda
+	goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_SetRivalBike_Hilbert
+	end
+
+Route110_SetRivalBike_May::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Brendan::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Red::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_RED_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Leaf::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_LEAF_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Ethan::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_ETHAN_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Lyra::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_LYRA_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Lucas::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_LUCAS_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Dawn::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_DAWN_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Hilbert::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_HILBERT_MACH_BIKE
+	return
+
+Route110_SetRivalBike_Hilda::
+	setobjectgfxid LOCALID_ROUTE110_RIVAL_ON_BIKE, OBJ_EVENT_GFX_RIVAL_HILDA_MACH_BIKE
+	return
 
 Route110_EventScript_RivalApproachPlayer1::
 	applymovement LOCALID_ROUTE110_RIVAL, Route110_Movement_RivalApproachPlayer1
@@ -1613,6 +1732,7 @@ Route110_EventScript_RedBattleQUAXLY::
 	end
 
 Route110_EventScript_StartEthan_Kanto::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleBULBASAUR
 	case 1, Route110_EventScript_StartEthanBattleCHARMANDER
@@ -1635,6 +1755,7 @@ Route110_EventScript_StartEthanBattleSQUIRTLE::
 	end
 
 Route110_EventScript_StartEthan_Johto::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleCHIKORITA
 	case 1, Route110_EventScript_StartEthanBattleCYNDAQUIL
@@ -1657,6 +1778,7 @@ Route110_EventScript_StartEthanBattleTOTODILE::
 	end
 
 Route110_EventScript_StartEthan_Hoenn::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleTREECKO
 	case 1, Route110_EventScript_StartEthanBattleTORCHIC
@@ -1679,6 +1801,7 @@ Route110_EventScript_StartEthanBattleMUDKIP::
 	end
 
 Route110_EventScript_StartEthan_Sinnoh::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleTURTWIG
 	case 1, Route110_EventScript_StartEthanBattleCHIMCHAR
@@ -1701,6 +1824,7 @@ Route110_EventScript_StartEthanBattlePIPLUP::
 	end
 
 Route110_EventScript_StartEthan_Unova::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleSNIVY
 	case 1, Route110_EventScript_StartEthanBattleTEPIG
@@ -1723,6 +1847,7 @@ Route110_EventScript_StartEthanBattleOSHAWOTT::
 	end
 
 Route110_EventScript_StartEthan_Kalos::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleCHESPIN
 	case 1, Route110_EventScript_StartEthanBattleFENNEKIN
@@ -1745,6 +1870,7 @@ Route110_EventScript_StartEthanBattleFROAKIE::
 	end
 
 Route110_EventScript_StartEthan_Alola::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleROWLET
 	case 1, Route110_EventScript_StartEthanBattleLITTEN
@@ -1767,6 +1893,7 @@ Route110_EventScript_StartEthanBattlePOPPLIO::
 	end
 
 Route110_EventScript_StartEthan_Galar::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleGROOKEY
 	case 1, Route110_EventScript_StartEthanBattleSCORBUNNY
@@ -1789,6 +1916,7 @@ Route110_EventScript_StartEthanBattleSOBBLE::
 	end
 
 Route110_EventScript_StartEthan_Paldea::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartEthanBattleSPRIGATITO
 	case 1, Route110_EventScript_StartEthanBattleFUECOCO
@@ -1811,6 +1939,7 @@ Route110_EventScript_StartEthanBattleQUAXLY::
 	end
 
 Route110_EventScript_StartLyra_Kanto::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleBULBASAUR
 	case 1, Route110_EventScript_StartLyraBattleCHARMANDER
@@ -1833,6 +1962,7 @@ Route110_EventScript_StartLyraBattleSQUIRTLE::
 	end
 
 Route110_EventScript_StartLyra_Johto::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleCHIKORITA
 	case 1, Route110_EventScript_StartLyraBattleCYNDAQUIL
@@ -1855,6 +1985,7 @@ Route110_EventScript_StartLyraBattleTOTODILE::
 	end
 
 Route110_EventScript_StartLyra_Hoenn::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleTREECKO
 	case 1, Route110_EventScript_StartLyraBattleTORCHIC
@@ -1877,6 +2008,7 @@ Route110_EventScript_StartLyraBattleMUDKIP::
 	end
 
 Route110_EventScript_StartLyra_Sinnoh::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleTURTWIG
 	case 1, Route110_EventScript_StartLyraBattleCHIMCHAR
@@ -1899,6 +2031,7 @@ Route110_EventScript_StartLyraBattlePIPLUP::
 	end
 
 Route110_EventScript_StartLyra_Unova::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleSNIVY
 	case 1, Route110_EventScript_StartLyraBattleTEPIG
@@ -1921,6 +2054,7 @@ Route110_EventScript_StartLyraBattleOSHAWOTT::
 	end
 
 Route110_EventScript_StartLyra_Kalos::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleCHESPIN
 	case 1, Route110_EventScript_StartLyraBattleFENNEKIN
@@ -1943,6 +2077,7 @@ Route110_EventScript_StartLyraBattleFROAKIE::
 	end
 
 Route110_EventScript_StartLyra_Alola::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleROWLET
 	case 1, Route110_EventScript_StartLyraBattleLITTEN
@@ -1965,6 +2100,7 @@ Route110_EventScript_StartLyraBattlePOPPLIO::
 	end
 
 Route110_EventScript_StartLyra_Galar::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleGROOKEY
 	case 1, Route110_EventScript_StartLyraBattleSCORBUNNY
@@ -1987,6 +2123,7 @@ Route110_EventScript_StartLyraBattleSOBBLE::
 	end
 
 Route110_EventScript_StartLyra_Paldea::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	switch VAR_STARTER_MON
 	case 0, Route110_EventScript_StartLyraBattleSPRIGATITO
 	case 1, Route110_EventScript_StartLyraBattleFUECOCO
@@ -2016,16 +2153,19 @@ Route110_EventScript_StartLucas_Kanto::
 	end
 
 Route110_EventScript_StartLucasBattleBULBASAUR::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_110_BULBASAUR, Route110_Text_BrendanDefeat
 	goto Route110_EventScript_BrendanDefeated
 	end
 
 Route110_EventScript_StartLucasBattleCHARMANDER::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_110_CHARMANDER, Route110_Text_BrendanDefeat
 	goto Route110_EventScript_BrendanDefeated
 	end
 
 Route110_EventScript_StartLucasBattleSQUIRTLE::
+	msgbox Route110_Text_BrendanLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_LUCAS_ROUTE_110_SQUIRTLE, Route110_Text_BrendanDefeat
 	goto Route110_EventScript_BrendanDefeated
 	end
@@ -2214,16 +2354,19 @@ Route110_EventScript_StartDawn_Kanto::
 	end
 
 Route110_EventScript_StartDawnBattleBULBASAUR::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_DAWN_ROUTE_110_BULBASAUR, Route110_Text_MayDefeat
 	goto Route110_EventScript_MayDefeated
 	end
 
 Route110_EventScript_StartDawnBattleCHARMANDER::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_DAWN_ROUTE_110_CHARMANDER, Route110_Text_MayDefeat
 	goto Route110_EventScript_MayDefeated
 	end
 
 Route110_EventScript_StartDawnBattleSQUIRTLE::
+	msgbox Route110_Text_MayLetsBattle, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_DAWN_ROUTE_110_SQUIRTLE, Route110_Text_MayDefeat
 	goto Route110_EventScript_MayDefeated
 	end
@@ -4916,7 +5059,8 @@ Route110_EventScript_BirchExit4::
 Route110_EventScript_BigSnorlax::
 	lockall
 	faceplayer
-	goto_if_unset FLAG_GOT_POKE_FLUTE, Route110_EventScript_SnorlaxNoFlute
+	checkitem ITEM_POKE_FLUTE
+	goto_if_eq VAR_RESULT, FALSE, Route110_EventScript_SnorlaxNoFlute
 	msgbox Route110_Text_UseFlute, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route110_EventScript_SnorlaxDontUse
 
@@ -5309,10 +5453,10 @@ Route110_Text_PlayedFlute::
 	.string "{PLAYER} spielt die Pokéflöte.$"
 
 Route110_Text_SnorlaxWokeUp::
-	.string "{COLOR BLUE}Relaxo{COLOR WHITE} wacht auf!\n"
+	.string "{COLOR BLUE}Relaxo{COLOR DARK_GRAY} wacht auf!\n"
 	.string "Es wirkt extrem genervt!$"
 
 Route110_Text_SnorlaxLeft::
-	.string "{COLOR BLUE}Relaxo{COLOR WHITE} beruhigte sich…\n"
+	.string "{COLOR BLUE}Relaxo{COLOR DARK_GRAY} beruhigte sich…\n"
 	.string "und verschwand in den Bäumen.$"
 

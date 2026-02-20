@@ -1235,3 +1235,13 @@ JokeNpc_EventScript_TellJoke3::
 	.include "data/maps/MysteryHoeleL_F1/scripts.inc"
 
 	.include "data/maps/MysteryhoeleL/scripts.inc"
+
+	.include "data/maps/ScorchedSlabUnderwater/scripts.inc"
+
+	.include "data/maps/ScorchedSlabUnderwater_2/scripts.inc"
+
+	.include "data/maps/ScorchedSlabSecret/scripts.inc"
+
+	.include "data/maps/Testlabor_fieldmoves/scripts.inc"
+
+	.include "data/maps/Testlabor_Unterwasser/scripts.inc"

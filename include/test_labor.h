@@ -5,4 +5,5 @@ void BufferClockToStrVars123(void);
 bool8 ShowNpcExpLevelDebugMessage(void);
 void BufferNpcExpLevelDebug(struct Pokemon *mon);
 void BufferDebugExpLevelVars(struct Pokemon *mon);
+void SetDebugBattleTransition(void);
 #endif // GUARD_TEST_LABOR_H

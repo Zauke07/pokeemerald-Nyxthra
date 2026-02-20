@@ -3147,9 +3147,10 @@
 #define TRAINER_JAMES_TEAM_ROCKET              2765
 #define TRAINER_GALACTIC_GRUNT_F_TEST          2766
 #define TRAINER_CHATGPT_TEST                   2767
+#define TRAINER_TRANSITION_TEST                2768
 
-#define TRAINERS_COUNT                         2768
-#define MAX_TRAINERS_COUNT                     2769
+#define TRAINERS_COUNT                         2769
+#define MAX_TRAINERS_COUNT                     2770
 
 #define TRAINER_PARTNER(partner)   (MAX_TRAINERS_COUNT + partner)
 

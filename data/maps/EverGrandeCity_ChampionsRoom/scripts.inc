@@ -5,7 +5,7 @@ EverGrandeCity_ChampionsRoom_MapScripts::
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition:
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	end
 
 EverGrandeCity_ChampionsRoom_OnWarp:
@@ -54,7 +54,8 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	playse SE_DOOR
 	lockall
     call Common_EventScript_SetupRivalMusic
-	addobject LOCALID_CHAMPIONS_ROOM_RIVAL
+	setvar VAR_0x8004, LOCALID_CHAMPIONS_ROOM_RIVAL
+	spawnrival_style
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer
 	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice

@@ -14,8 +14,8 @@ Route119_EventScript_TryRemoveKecleon::
 	return
 
 Route119_OnTransition:
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
-	call Common_EventScript_SetupRivalOnBikeGfxId
+	@ call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	call Common_EventScript_SetupRivalOnBikeGfxId_Route110
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
 	end
@@ -27,18 +27,22 @@ Route119_EventScript_MoveInstituteWorkersDownstairs::
 	return
 
 Route119_EventScript_RivalTrigger1::
+	goto_if_set FLAG_HIDE_ROUTE_119_RIVAL, Common_EventScript_NopReturn
 	setvar VAR_TEMP_1, 1
 	goto Route119_EventScript_RivalEncounter
 	end
 
 Route119_EventScript_RivalTrigger2::
+	goto_if_set FLAG_HIDE_ROUTE_119_RIVAL, Common_EventScript_NopReturn
 	setvar VAR_TEMP_1, 2
 	goto Route119_EventScript_RivalEncounter
 	end
 
 Route119_EventScript_RivalEncounter::
 	lockall
-	addobject LOCALID_ROUTE119_RIVAL_ON_BIKE
+	special GetRivalStyleGraphicsIdAndSetVar
+	setvar VAR_0x8004, LOCALID_ROUTE119_RIVAL_ON_BIKE
+	spawnrival_style
 	call Common_EventScript_SetupRivalMusic
 	delay 65
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
@@ -49,10 +53,22 @@ Route119_EventScript_RivalEncounter::
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
 	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
 	removeobject LOCALID_ROUTE119_RIVAL_ON_BIKE
-	addobject LOCALID_ROUTE119_RIVAL
+	special GetRivalStyleGraphicsIdAndSetVar
+	setvar VAR_0x8004, LOCALID_ROUTE119_RIVAL
+	spawnrival_style
 	delay 30
 	getplayerstyle
 	copyvar VAR_TEMP_2, VAR_RESULT
+	call_if_eq VAR_TEMP_2, STYLE_BRENDAN, Route119_EventScript_ShowBrendanIntro
+	call_if_eq VAR_TEMP_2, STYLE_MAY, Route119_EventScript_ShowMayIntro
+	call_if_eq VAR_TEMP_2, STYLE_RED, Route119_EventScript_ShowBrendanIntro
+	call_if_eq VAR_TEMP_2, STYLE_LEAF, Route119_EventScript_ShowMayIntro
+	call_if_eq VAR_TEMP_2, STYLE_ETHAN, Route119_EventScript_ShowMayIntro
+	call_if_eq VAR_TEMP_2, STYLE_LYRA, Route119_EventScript_ShowBrendanIntro
+	call_if_eq VAR_TEMP_2, STYLE_LUCAS, Route119_EventScript_ShowBrendanIntro
+	call_if_eq VAR_TEMP_2, STYLE_DAWN, Route119_EventScript_ShowMayIntro
+	call_if_eq VAR_TEMP_2, STYLE_HILBERT, Route119_EventScript_ShowBrendanIntro
+	call_if_eq VAR_TEMP_2, STYLE_HILDA, Route119_EventScript_ShowMayIntro
 	switch VAR_TEMP_2
 	case STYLE_BRENDAN, Route119_EventScript_StartBattle_Brendan
 	case STYLE_MAY, Route119_EventScript_StartBattle_May
@@ -336,6 +352,14 @@ Route119_EventScript_StartBattle_Juliana::
 	case STARTER_REGION_GALAR, Route119_EventScript_StartJuliana_Galar
 	case STARTER_REGION_PALDEA, Route119_EventScript_StartJuliana_Paldea
 	end
+
+Route119_EventScript_ShowBrendanIntro::
+	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
+	return
+
+Route119_EventScript_ShowMayIntro::
+	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
+	return
 
 Route119_EventScript_GiveFlyHM::
 	giveitem ITEM_HM_FLY
@@ -1632,18 +1656,18 @@ Route119_EventScript_StartEthan_Kanto::
 	end
 
 Route119_EventScript_StartEthanBattleBULBASAUR::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_BULBASAUR, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_BULBASAUR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleCHARMANDER::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_CHARMANDER, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_CHARMANDER, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleSQUIRTLE::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_SQUIRTLE, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_SQUIRTLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Johto::
@@ -1654,18 +1678,18 @@ Route119_EventScript_StartEthan_Johto::
 	end
 
 Route119_EventScript_StartEthanBattleCHIKORITA::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_CHIKORITA, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_CHIKORITA, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleCYNDAQUIL::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_CYNDAQUIL, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_CYNDAQUIL, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleTOTODILE::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_TOTODILE, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_TOTODILE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Hoenn::
@@ -1676,18 +1700,18 @@ Route119_EventScript_StartEthan_Hoenn::
 	end
 
 Route119_EventScript_StartEthanBattleTREECKO::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_TREECKO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleTORCHIC::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleMUDKIP::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Sinnoh::
@@ -1698,18 +1722,18 @@ Route119_EventScript_StartEthan_Sinnoh::
 	end
 
 Route119_EventScript_StartEthanBattleTURTWIG::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_TURTWIG, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_TURTWIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleCHIMCHAR::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_CHIMCHAR, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_CHIMCHAR, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattlePIPLUP::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_PIPLUP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_PIPLUP, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Unova::
@@ -1720,18 +1744,18 @@ Route119_EventScript_StartEthan_Unova::
 	end
 
 Route119_EventScript_StartEthanBattleSNIVY::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_SNIVY, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_SNIVY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleTEPIG::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_TEPIG, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_TEPIG, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleOSHAWOTT::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_OSHAWOTT, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_OSHAWOTT, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Kalos::
@@ -1742,18 +1766,18 @@ Route119_EventScript_StartEthan_Kalos::
 	end
 
 Route119_EventScript_StartEthanBattleCHESPIN::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_CHESPIN, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_CHESPIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleFENNEKIN::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_FENNEKIN, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_FENNEKIN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleFROAKIE::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_FROAKIE, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_FROAKIE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Alola::
@@ -1764,18 +1788,18 @@ Route119_EventScript_StartEthan_Alola::
 	end
 
 Route119_EventScript_StartEthanBattleROWLET::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_ROWLET, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_ROWLET, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleLITTEN::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_LITTEN, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_LITTEN, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattlePOPPLIO::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_POPPLIO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_POPPLIO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Galar::
@@ -1786,18 +1810,18 @@ Route119_EventScript_StartEthan_Galar::
 	end
 
 Route119_EventScript_StartEthanBattleGROOKEY::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_GROOKEY, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_GROOKEY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleSCORBUNNY::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_SCORBUNNY, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_SCORBUNNY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleSOBBLE::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_SOBBLE, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_SOBBLE, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthan_Paldea::
@@ -1808,18 +1832,18 @@ Route119_EventScript_StartEthan_Paldea::
 	end
 
 Route119_EventScript_StartEthanBattleSPRIGATITO::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_SPRIGATITO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_SPRIGATITO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleFUECOCO::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_FUECOCO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_FUECOCO, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartEthanBattleQUAXLY::
-	trainerbattle_no_intro TRAINER_ETHAN_ROUTE_119_QUAXLY, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	trainerbattle_no_intro TRAINER_LYRA_ROUTE_119_QUAXLY, Route119_Text_MayDefeat
+	goto Route119_EventScript_DefeatedMay
 	end
 
 Route119_EventScript_StartLyra_Kanto::
@@ -4793,16 +4817,20 @@ Route119_EventScript_StartJulianaBattleQUAXLY::
 	end
 
 Route119_EventScript_DefeatedBrendan:
-	msgbox Route119_Text_BrendanIntro, MSGBOX_DEFAULT
+	setflag FLAG_HIDE_ROUTE_119_RIVAL
 	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
+	call Route119_EventScript_RivalExitScottArrive
+	releaseall
 	end
 
 Route119_EventScript_DefeatedMay:
-	msgbox Route119_Text_MayIntro, MSGBOX_DEFAULT
+	setflag FLAG_HIDE_ROUTE_119_RIVAL
 	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
+	call Route119_EventScript_RivalExitScottArrive
+	releaseall
 	end
 

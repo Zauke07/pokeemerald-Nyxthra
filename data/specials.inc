@@ -589,6 +589,8 @@ gSpecials::
 	def_special ShowFieldCmdGetExpDebug
 	def_special BufferDebugExpLevelVars
 	def_special GetDaycareMonSpecies
+	def_special SetDebugBattleTransition
+
 
 
 

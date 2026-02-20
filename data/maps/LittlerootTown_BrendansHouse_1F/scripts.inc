@@ -185,7 +185,8 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 LittlerootTown_BrendansHouse_1F_ContinueMeetRival::
 	playse SE_EXIT
 	delay 10
-	addobject LOCALID_BRENDANSHOUSE_1F_RIVAL
+	setvar VAR_0x8004, LOCALID_BRENDANSHOUSE_1F_RIVAL
+	spawnrival_style
 	delay 30
 	playse SE_PIN
 	applymovement LOCALID_BRENDANSHOUSE_1F_RIVAL, Common_Movement_ExclamationMark
