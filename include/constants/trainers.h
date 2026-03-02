@@ -422,7 +422,6 @@
 #define TRAINER_BACK_PIC_DAWN                   7
 #define TRAINER_BACK_PIC_HILBERT                8
 #define TRAINER_BACK_PIC_HILDA                  9
-/*
 #define TRAINER_BACK_PIC_NATE                   10
 #define TRAINER_BACK_PIC_ROSA                   11
 #define TRAINER_BACK_PIC_CALEM                  12
@@ -433,13 +432,12 @@
 #define TRAINER_BACK_PIC_GLORIA                 17
 #define TRAINER_BACK_PIC_FLORIAN                18
 #define TRAINER_BACK_PIC_JULIANA                19
-*/
-#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  10
-#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      11
-#define TRAINER_BACK_PIC_WALLY                  12
-#define TRAINER_BACK_PIC_STEVEN                 13
+#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN  20
+#define TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY      21
+#define TRAINER_BACK_PIC_WALLY                  22
+#define TRAINER_BACK_PIC_STEVEN                 23
 
-#define TRAINER_BACK_PIC_COUNT                  14
+#define TRAINER_BACK_PIC_COUNT                  24
 
 #define FACILITY_CLASS_HIKER                 0x0
 #define FACILITY_CLASS_AQUA_GRUNT_M          0x1

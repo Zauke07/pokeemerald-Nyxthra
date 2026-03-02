@@ -694,6 +694,18 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Gloria;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Florian;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Juliana;
 
+//NEW PLAYER SPRITES
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nate;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rosa;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Calem;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Serena;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elio;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Selene;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Victor;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gloria;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Florian;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juliana;
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrendanNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerBrendanRiding;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerMayNormal;
@@ -1066,6 +1078,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SERENA] =                   &gObjectEventGraphicsInfo_Serena,
     [OBJ_EVENT_GFX_ELIO] =                     &gObjectEventGraphicsInfo_Elio,
     [OBJ_EVENT_GFX_SELENE] =                   &gObjectEventGraphicsInfo_Selene,
+    [OBJ_EVENT_GFX_NATE] =                     &gObjectEventGraphicsInfo_Nate,
+    [OBJ_EVENT_GFX_ROSA] =                     &gObjectEventGraphicsInfo_Rosa,
 
     // Hilbert
     [OBJ_EVENT_GFX_HILBERT_FIELD_MOVE] = &gObjectEventGraphicsInfo_HilbertFieldMove,

@@ -17,12 +17,12 @@ const u8 gEasyChatWord_Get[] = _("Fangen");
 const u8 gEasyChatWord_Pokedex[] = _("Pokédex");
 const u8 gEasyChatWord_Ruby[] = _("Rubin");
 const u8 gEasyChatWord_Level[] = _("Level");
-const u8 gEasyChatWord_Red[] = _("Rot");
+const u8 gEasyChatWord_Red[] = _("Red");
 const u8 gEasyChatWord_Green[] = _("Grün");
 const u8 gEasyChatWord_Bag[] = _("Tasche");
 const u8 gEasyChatWord_Flame[] = _("Flamme");
 const u8 gEasyChatWord_Gold[] = _("Gold");
-const u8 gEasyChatWord_Leaf[] = _("Blatt");
+const u8 gEasyChatWord_Leaf[] = _("Leaf");
 const u8 gEasyChatWord_Silver[] = _("Silber");
 const u8 gEasyChatWord_Emerald[] = _("Smaragd");
 

@@ -56,6 +56,20 @@ const u8 gText_TrainerName_Red[] = _("Red");
 const u8 gText_TrainerName_Leaf[] = _("Leaf");
 const u8 gText_TrainerName_Ethan[] = _("Klarin");
 const u8 gText_TrainerName_Lyra[] = _("Lyra");
+const u8 gText_TrainerName_Lucas[] = _("Lucas");
+const u8 gText_TrainerName_Dawn[] = _("Lucia");
+const u8 gText_TrainerName_Hilbert[] = _("Warren");
+const u8 gText_TrainerName_Hilda[] = _("Lotta");
+const u8 gText_TrainerName_Nate[] = _("Tony");
+const u8 gText_TrainerName_Rosa[] = _("Rosy");
+const u8 gText_TrainerName_Calem[] = _("Kalem");
+const u8 gText_TrainerName_Serena[] = _("Serena");
+const u8 gText_TrainerName_Elio[] = _("Elio");
+const u8 gText_TrainerName_Selene[] = _("Selene");
+const u8 gText_TrainerName_Victor[] = _("Victor");
+const u8 gText_TrainerName_Gloria[] = _("Gloria");
+const u8 gText_TrainerName_Florian[] = _("Florian");
+const u8 gText_TrainerName_Juliana[] = _("Juliana");
 
 // Items
 //

@@ -701,16 +701,23 @@ const u8 gTrainerBackPic_Lucas[] = INCBIN_U8("graphics/trainers/back_pics/lucas_
 const u8 gTrainerBackPic_Dawn[] = INCBIN_U8("graphics/trainers/back_pics/dawn_back_pic.4bpp");
 const u8 gTrainerBackPic_Hilbert[] = INCBIN_U8("graphics/trainers/back_pics/hilbert_back_pic.4bpp");
 const u8 gTrainerBackPic_Hilda[] = INCBIN_U8("graphics/trainers/back_pics/may_rs.4bpp"); // vorrübergehend, da noch kein backpic
-// const u8 gTrainerBackPic_Nate[] = INCBIN_U8("graphics/trainers/back_pics/nate_back_pic.4bpp");
-// const u8 gTrainerBackPic_Rosa[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp"); // vorrübergehend, da noch kein backpic
-//const u8 gTrainerBackPic_Calem[] = INCBIN_U8("graphics/trainers/back_pics/calem_back_pic.4bpp");
-//const u8 gTrainerBackPic_Serena[] = INCBIN_U8("graphics/trainers/back_pics/serena_back_pic.4bpp");
-//const u8 gTrainerBackPic_Elio[] = INCBIN_U8("graphics/trainers/back_pics/elio_back_pic.4bpp");
-//const u8 gTrainerBackPic_Selene[] = INCBIN_U8("graphics/trainers/back_pics/selene_back_pic.4bpp");
-// const u8 gTrainerBackPic_Victor[] = INCBIN_U8("graphics/trainers/back_pics/brendan.4bpp"); // vorrübergehend, da noch kein backpic
-// const u8 gTrainerBackPic_Gloria[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp"); // vorrübergehend, da noch kein backpic
-// const u8 gTrainerBackPic_Florian[] = INCBIN_U8("graphics/trainers/back_pics/brendan_rs.4bpp"); // vorrübergehend, da noch kein backpic
-// const u8 gTrainerBackPic_Juliana[] = INCBIN_U8("graphics/trainers/back_pics/may_rs.4bpp"); // vorrübergehend, da noch kein backpic
+const u8 gTrainerBackPic_Nate[] = INCBIN_U8("graphics/trainers/back_pics/nate_back_pic.4bpp");
+const u8 gTrainerBackPic_Rosa[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp"); // vorrübergehend, da noch kein backpic
+const u8 gTrainerBackPic_Calem[] = INCBIN_U8("graphics/trainers/back_pics/calem_back_pic.4bpp");
+const u8 gTrainerBackPic_Serena[] = INCBIN_U8("graphics/trainers/back_pics/serena_back_pic.4bpp");
+const u8 gTrainerBackPic_Elio[] = INCBIN_U8("graphics/trainers/back_pics/elio_back_pic.4bpp");
+const u8 gTrainerBackPic_Selene[] = INCBIN_U8("graphics/trainers/back_pics/selene_back_pic.4bpp");
+const u8 gTrainerBackPic_Victor[] = INCBIN_U8("graphics/trainers/back_pics/brendan.4bpp"); // vorrübergehend, da noch kein backpic
+const u8 gTrainerBackPic_Gloria[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp"); // vorrübergehend, da noch kein backpic
+const u8 gTrainerBackPic_Florian[] = INCBIN_U8("graphics/trainers/back_pics/brendan_rs.4bpp"); // vorrübergehend, da noch kein backpic
+const u8 gTrainerBackPic_Juliana[] = INCBIN_U8("graphics/trainers/back_pics/may_rs.4bpp"); // vorrübergehend, da noch kein backpic
+
+// --- PALETTEN-DATEN (BACK PICS) ---
+const u16 gTrainerPalette_NateBack[] = INCBIN_U16("graphics/trainers/palettes/nate_back.gbapal");
+const u16 gTrainerPalette_CalemBack[] = INCBIN_U16("graphics/trainers/palettes/calem_back.gbapal");
+const u16 gTrainerPalette_SerenaBack[] = INCBIN_U16("graphics/trainers/palettes/serena_back.gbapal");
+const u16 gTrainerPalette_ElioBack[] = INCBIN_U16("graphics/trainers/palettes/elio_back.gbapal");
+const u16 gTrainerPalette_SeleneBack[] = INCBIN_U16("graphics/trainers/palettes/selene_back.gbapal");
 
 //const u8 gTrainerBackPic_CommunityZefa[] = INCBIN_U8("graphics/trainers/back_pics/community/zefa_back_pic.4bpp");
 //const u8 gTrainerBackPic_CommunityNacholord[] = INCBIN_U8("graphics/trainers/back_pics/community/nacho_back_pic.4bpp");
@@ -1699,7 +1706,6 @@ const struct SpriteFrameImage gTrainerBackPicTable_Hilda [] =
     {gTrainerBackPic_Hilda + TRAINER_PIC_SIZE * 3, TRAINER_PIC_SIZE},
 };
 
-/*
 const struct SpriteFrameImage gTrainerBackPicTable_Nate[] =
 {
     {gTrainerBackPic_Nate + TRAINER_PIC_SIZE * 0, TRAINER_PIC_SIZE},
@@ -1780,7 +1786,7 @@ const struct SpriteFrameImage gTrainerBackPicTable_Juliana[] =
     {gTrainerBackPic_Juliana + TRAINER_PIC_SIZE * 2, TRAINER_PIC_SIZE},
     {gTrainerBackPic_Juliana + TRAINER_PIC_SIZE * 3, TRAINER_PIC_SIZE},
 };
-
+/*
 const struct SpriteFrameImage gTrainerBackPicTable_Ash[] =
 {
     {gTrainerBackPic_Ash + TRAINER_PIC_SIZE * 0, TRAINER_PIC_SIZE},
@@ -1828,12 +1834,26 @@ const struct TrainerBacksprite gTrainerBacksprites[] =
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_RUBY_SAPPHIRE_MAY, 4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_WALLY, 4, gTrainerBackPic_Wally, gTrainerPalette_Wally, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_STEVEN, 4, gTrainerBackPic_Steven, gTrainerPalette_Steven, sBackAnims_Hoenn),
-    // Am Ende der bestehenden Liste ergänzen:
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_ETHAN,  5, gTrainerBackPic_Ethan,  gTrainerPalette_EthanBack,  sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LYRA,   5, gTrainerBackPic_Lyra,   gTrainerPalette_LyraBack,   sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_LUCAS,  5, gTrainerBackPic_Lucas,  gTrainerPalette_LucasBack,  sBackAnims_Kanto),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_DAWN,   5, gTrainerBackPic_Dawn,   gTrainerPalette_DawnBack,   sBackAnims_Kanto),
-    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILBERT,4, gTrainerBackPic_Hilbert,gTrainerPalette_HilbertBack,sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILBERT,4, gTrainerBackPic_Hilbert, gTrainerPalette_HilbertBack, sBackAnims_Hoenn),
     TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_HILDA, 4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
+    
+    // --- NEU HINZUGEFÜGT ---
+    // Die, von denen du sagst, du hast die Bilder (4 Frames):
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_NATE,   4, gTrainerBackPic_Nate,   gTrainerPalette_NateBack,   sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_CALEM,  4, gTrainerBackPic_Calem,  gTrainerPalette_CalemBack,  sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_SERENA, 4, gTrainerBackPic_Serena, gTrainerPalette_SerenaBack, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_ELIO,   4, gTrainerBackPic_Elio,   gTrainerPalette_ElioBack,   sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_SELENE, 4, gTrainerBackPic_Selene, gTrainerPalette_SeleneBack, sBackAnims_Hoenn),
+    
+    // Die noch fehlenden Bilder (Platzhalter, damit das Spiel nicht crasht):
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_ROSA,    4, gTrainerBackPic_May,     gTrainerPalette_May,     sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_VICTOR,  4, gTrainerBackPic_Brendan, gTrainerPalette_Brendan, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_GLORIA,  4, gTrainerBackPic_May,     gTrainerPalette_May,     sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_FLORIAN, 4, gTrainerBackPic_Brendan, gTrainerPalette_Brendan, sBackAnims_Hoenn),
+    TRAINER_BACK_SPRITE(TRAINER_BACK_PIC_JULIANA, 4, gTrainerBackPic_May,     gTrainerPalette_May,     sBackAnims_Hoenn),
 };
 

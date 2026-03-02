@@ -163,7 +163,6 @@
 #define STYLE_DAWN          7
 #define STYLE_HILBERT       8
 #define STYLE_HILDA         9
-/*
 #define STYLE_NATE         10
 #define STYLE_ROSA         11
 #define STYLE_CALEM        12
@@ -174,8 +173,7 @@
 #define STYLE_GLORIA       17
 #define STYLE_FLORIAN      18
 #define STYLE_JULIANA      19
-*/
-#define PLAYER_STYLE_COUNT 10
+#define PLAYER_STYLE_COUNT 20
 #define NUM_PLAYER_CHARACTERS PLAYER_STYLE_COUNT
 #define NUM_PLAYER_STYLES PLAYER_STYLE_COUNT
 
@@ -192,11 +190,6 @@ enum
     PLAYER_OUTFIT_DAWN,
     PLAYER_OUTFIT_HILBERT,
     PLAYER_OUTFIT_HILDA,
-    PLAYER_OUTFIT_COUNT,
-};
-
-// für später
- /*
     PLAYER_OUTFIT_NATE,
     PLAYER_OUTFIT_ROSA,
     PLAYER_OUTFIT_CALEM,
@@ -207,7 +200,8 @@ enum
     PLAYER_OUTFIT_GLORIA,
     PLAYER_OUTFIT_FLORIAN,
     PLAYER_OUTFIT_JULIANA,
- */
+    PLAYER_OUTFIT_COUNT,
+};
 
 enum 
 {
