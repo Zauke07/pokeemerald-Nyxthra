@@ -6230,7 +6230,6 @@ u16 GetPlayerBackSpriteId(void)
         return TRAINER_BACK_PIC_HILBERT;
     case STYLE_HILDA:
         return TRAINER_BACK_PIC_HILDA;
-     /*
     case STYLE_NATE:
         return TRAINER_BACK_PIC_NATE;
     case STYLE_ROSA:
@@ -6255,7 +6254,6 @@ u16 GetPlayerBackSpriteId(void)
     //     return TRAINER_BACK_PIC_WES;
     // case STYLE_ASH:
     //     return TRAINER_BACK_PIC_ASH;
-        */
     default:
         return TRAINER_BACK_PIC_BRENDAN;
     }

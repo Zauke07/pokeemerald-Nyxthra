@@ -58,15 +58,7 @@ static u8 sStyleMenuTaskId;
 #define tTimer             data[7]
 #define tBirchSpriteId     data[8]
 #define tLotadSpriteId     data[9]
-#define tBrendanSpriteId   data[10]
-#define tMaySpriteId       data[11]
-#define tRedSpriteId       data[12]
-#define tLeafSpriteId      data[13]
-#define tEthanSpriteId data[14]
-#define tLyraSpriteId data[15]
-#define tLucasSpriteId data[16]
-#define tDawnSpriteId data[17]
-#define tStyleSelectId     data[18]
+#define tStyleSelectId     data[10]
 
 
 bool8 WarpToTestlaborAfterStyleSelect(struct ScriptContext *ctx)
@@ -187,6 +179,18 @@ bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx)
     case STYLE_LYRA:     StringCopy(gStringVar1, gText_TrainerName_Lyra); break;
     case STYLE_LUCAS:    StringCopy(gStringVar1, gText_TrainerName_Lucas); break;
     case STYLE_DAWN:     StringCopy(gStringVar1, gText_TrainerName_Dawn); break;
+    case STYLE_HILBERT:  StringCopy(gStringVar1, gText_TrainerName_Hilbert); break;
+    case STYLE_HILDA:    StringCopy(gStringVar1, gText_TrainerName_Hilda); break;
+    case STYLE_NATE:     StringCopy(gStringVar1, gText_TrainerName_Nate); break;
+    case STYLE_ROSA:     StringCopy(gStringVar1, gText_TrainerName_Rosa); break;
+    case STYLE_CALEM:    StringCopy(gStringVar1, gText_TrainerName_Calem); break;
+    case STYLE_SERENA:   StringCopy(gStringVar1, gText_TrainerName_Serena); break;
+    case STYLE_ELIO:     StringCopy(gStringVar1, gText_TrainerName_Elio); break;
+    case STYLE_SELENE:   StringCopy(gStringVar1, gText_TrainerName_Selene); break;
+    case STYLE_VICTOR:   StringCopy(gStringVar1, gText_TrainerName_Victor); break;
+    case STYLE_GLORIA:   StringCopy(gStringVar1, gText_TrainerName_Gloria); break;
+    case STYLE_FLORIAN:  StringCopy(gStringVar1, gText_TrainerName_Florian); break;
+    case STYLE_JULIANA:  StringCopy(gStringVar1, gText_TrainerName_Juliana); break;
     default:             StringCopy(gStringVar1, gText_QuestionMark); break;
     }
 
@@ -196,16 +200,10 @@ bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx)
 #undef tPlayerSpriteId
 #undef tBG1HOFS
 #undef tIsDoneFadingSprites
+#undef tPlayerGender
+#undef tTimer
 #undef tBirchSpriteId
 #undef tLotadSpriteId
-#undef tBrendanSpriteId
-#undef tMaySpriteId
-#undef tRedSpriteId
-#undef tLeafSpriteId
-#undef tEthanSpriteId
-#undef tLyraSpriteId
-#undef tLucasSpriteId
-#undef tDawnSpriteId
 #undef tStyleSelectId
 
 static const u8 sMorning[] = _("morgens");

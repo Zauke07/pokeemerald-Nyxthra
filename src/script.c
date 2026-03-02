@@ -770,7 +770,6 @@ bool8 SpawnRivalObjectEventFromStyle(void)
         case STYLE_HILDA:
             graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
             break;
-         /*
         case STYLE_NATE:
             graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
             break;
@@ -801,7 +800,6 @@ bool8 SpawnRivalObjectEventFromStyle(void)
         case STYLE_JULIANA:
             graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
             break;
-         */
         default:
             graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
             break;

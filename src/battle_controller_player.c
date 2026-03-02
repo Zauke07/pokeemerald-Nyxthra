@@ -1906,7 +1906,17 @@ u8 GetTrainerBackPicIdByStyle(u8 style)
     case STYLE_DAWN:    return TRAINER_BACK_PIC_DAWN;
     case STYLE_HILBERT: return TRAINER_BACK_PIC_HILBERT;
     case STYLE_HILDA:   return TRAINER_BACK_PIC_HILDA;
-    // ggf. weitere Styles
+    // --- NEU HINZUGEFÜGT ---
+    case STYLE_NATE:    return TRAINER_BACK_PIC_NATE;
+    case STYLE_ROSA:    return TRAINER_BACK_PIC_ROSA;
+    case STYLE_CALEM:   return TRAINER_BACK_PIC_CALEM;
+    case STYLE_SERENA:  return TRAINER_BACK_PIC_SERENA;
+    case STYLE_ELIO:    return TRAINER_BACK_PIC_ELIO;
+    case STYLE_SELENE:  return TRAINER_BACK_PIC_SELENE;
+    case STYLE_VICTOR:  return TRAINER_BACK_PIC_VICTOR;
+    case STYLE_GLORIA:  return TRAINER_BACK_PIC_GLORIA;
+    case STYLE_FLORIAN: return TRAINER_BACK_PIC_FLORIAN;
+    case STYLE_JULIANA: return TRAINER_BACK_PIC_JULIANA;
     default:            return TRAINER_BACK_PIC_BRENDAN;
     }
 }

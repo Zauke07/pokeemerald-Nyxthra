@@ -3469,7 +3469,6 @@ u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
     case STYLE_HILDA:
         paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_HILDA;
         break;
-        /*
     case STYLE_NATE:
         paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_NATE;
         break;
@@ -3506,7 +3505,6 @@ u8 LoadPlayerObjectEventPaletteByStyle(u8 style)
     // case STYLE_WES:
     //     paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_WES;
     //     break;
-        */
     default:
         paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN; // Fallback
         break;
@@ -11824,7 +11822,12 @@ u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
     case STYLE_HILDA:
         rivalId = OBJ_EVENT_GFX_RIVAL_HILBERT;
         break;
-        /*
+    case STYLE_NATE:
+        rivalId = OBJ_EVENT_GFX_RIVAL_ROSA;
+        break;
+    case STYLE_ROSA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_NATE;
+        break;
     case STYLE_CALEM:
         rivalId = OBJ_EVENT_GFX_RIVAL_SERENA;
         break;
@@ -11837,13 +11840,18 @@ u16 GetRivalGraphicsIdByPlayerStyle(u8 style, u8 state)
     case STYLE_SELENE:
         rivalId = OBJ_EVENT_GFX_RIVAL_ELIO;
         break;
+    case STYLE_VICTOR:
+        rivalId = OBJ_EVENT_GFX_RIVAL_GLORIA;
+        break;
+    case STYLE_GLORIA:
+        rivalId = OBJ_EVENT_GFX_RIVAL_VICTOR;
+        break;
     case STYLE_FLORIAN:
         rivalId = OBJ_EVENT_GFX_RIVAL_JULIANA;
         break;
     case STYLE_JULIANA:
         rivalId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
         break;
-        */
     default:
         rivalId = OBJ_EVENT_GFX_RIVAL_RED;
         break;

@@ -4417,72 +4417,8 @@ bool8 ShowFieldMessageVarObjGfxId0AndStyle(void)
 void GetRivalStyleGraphicsIdAndSetVar(void)
 {
     u8 style = gSaveBlock2Ptr->playerStyles[0];
-    u16 gfxId;
-
-    switch (style)
-    {
-        case STYLE_BRENDAN:
-            gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
-            break;
-        case STYLE_MAY:
-            gfxId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
-            break;
-        case STYLE_RED:
-            gfxId = OBJ_EVENT_GFX_RIVAL_RED;
-            break;
-        case STYLE_LEAF:
-            gfxId = OBJ_EVENT_GFX_RIVAL_LEAF;
-            break;
-        case STYLE_LUCAS:
-            gfxId = OBJ_EVENT_GFX_RIVAL_LUCAS;
-            break;
-        case STYLE_DAWN:
-            gfxId = OBJ_EVENT_GFX_RIVAL_DAWN;
-            break;
-        case STYLE_ETHAN:
-            gfxId = OBJ_EVENT_GFX_RIVAL_ETHAN;
-            break;
-        case STYLE_LYRA:
-            gfxId = OBJ_EVENT_GFX_RIVAL_LYRA;
-            break;
-        case STYLE_HILBERT:
-            gfxId = OBJ_EVENT_GFX_RIVAL_HILBERT;
-            break;
-        case STYLE_HILDA:
-            gfxId = OBJ_EVENT_GFX_RIVAL_HILDA;
-            break;
-        /*
-        case STYLE_CALEM:
-            gfxId = OBJ_EVENT_GFX_RIVAL_CALEM;
-            break;
-        case STYLE_SERENA:
-            gfxId = OBJ_EVENT_GFX_RIVAL_SERENA;
-            break;
-        case STYLE_ELIO:
-            gfxId = OBJ_EVENT_GFX_RIVAL_ELIO;
-            break;
-        case STYLE_SELENE:
-            gfxId = OBJ_EVENT_GFX_RIVAL_SELENE;
-            break;
-        case STYLE_VICTOR:
-            gfxId = OBJ_EVENT_GFX_RIVAL_VICTOR;
-            break;
-        case STYLE_GLORIA:
-            gfxId = OBJ_EVENT_GFX_RIVAL_GLORIA;
-            break;
-        case STYLE_FLORIAN:
-            gfxId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
-            break;
-        case STYLE_JULIANA:
-            gfxId = OBJ_EVENT_GFX_RIVAL_JULIANA;
-            break;
-        */
-        default:
-            gfxId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
-            break;
-    }
-
-    VarSet(VAR_OBJ_GFX_ID_0, gfxId - OBJ_EVENT_GFX_VAR_0);
+    u16 gfxId = GetRivalGraphicsIdByPlayerStyle(style, PLAYER_AVATAR_STATE_NORMAL);
+    VarSet(VAR_OBJ_GFX_ID_0, gfxId);
 }
 
 bool8 BufferIntToStringVar1(void)

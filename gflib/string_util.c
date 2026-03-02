@@ -518,9 +518,9 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         case PLAYER_OUTFIT_SELENE:
             return gText_ExpandedPlaceholder_Elio;
         case PLAYER_OUTFIT_VICTOR:
-            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+            return gText_ExpandedPlaceholder_Gloria;
         case PLAYER_OUTFIT_GLORIA:
-            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+            return gText_ExpandedPlaceholder_Victor;
         case PLAYER_OUTFIT_FLORIAN:
             return gText_ExpandedPlaceholder_Juliana;
         case PLAYER_OUTFIT_JULIANA:

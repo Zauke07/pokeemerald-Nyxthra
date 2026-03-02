@@ -477,13 +477,11 @@ static const u8 *ExpandPlaceholder_KunChan(void)
         case STYLE_ETHAN:
         case STYLE_LUCAS:
         case STYLE_HILBERT:
-        /*
         case STYLE_NATE:
         case STYLE_CALEM:
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
-        */
             return gText_ExpandedPlaceholder_Kun; // "Brendan-kun", "Red-kun", etc.
 
         case STYLE_MAY:
@@ -491,13 +489,11 @@ static const u8 *ExpandPlaceholder_KunChan(void)
         case STYLE_LYRA:
         case STYLE_DAWN:
         case STYLE_HILDA:
-        /*
         case STYLE_ROSA:
         case STYLE_SERENA:
         case STYLE_SELENE:
         case STYLE_GLORIA:
         case STYLE_JULIANA:
-        */
             return gText_ExpandedPlaceholder_Chan; // "May-chan", "Leaf-chan", etc.
 
         default:
@@ -529,7 +525,6 @@ static const u8 *ExpandPlaceholder_RivalName(void)
             return gText_ExpandedPlaceholder_Hilda;
         case PLAYER_OUTFIT_HILDA:
             return gText_ExpandedPlaceholder_Hilbert;
-        /*
         case PLAYER_OUTFIT_NATE:
             return gText_ExpandedPlaceholder_Rosa;
         case PLAYER_OUTFIT_ROSA:
@@ -543,13 +538,14 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         case PLAYER_OUTFIT_SELENE:
             return gText_ExpandedPlaceholder_Elio;
         case PLAYER_OUTFIT_VICTOR:
-            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+            return gText_ExpandedPlaceholder_Gloria;
         case PLAYER_OUTFIT_GLORIA:
-            return gText_ExpandedPlaceholder_Hop;  // Rival aus Schwert & Schild
+            return gText_ExpandedPlaceholder_Victor;
         case PLAYER_OUTFIT_FLORIAN:
             return gText_ExpandedPlaceholder_Juliana;
         case PLAYER_OUTFIT_JULIANA:
             return gText_ExpandedPlaceholder_Florian;
+        /*
         case PLAYER_OUTFIT_WES:
             return gText_ExpandedPlaceholder_Ash;
         case PLAYER_OUTFIT_ASH:

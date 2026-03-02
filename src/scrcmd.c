@@ -2706,8 +2706,7 @@ bool8 ScrCmd_GetPlayerStyle(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkplayerstyle(struct ScriptContext *ctx)
 {
-    u8 expectedStyle = ScriptReadByte(ctx); // Liest das Style-Argument aus dem Skript
-    gSpecialVar_Result = (gSaveBlock2Ptr->playerStyles[0] == expectedStyle);
+    gSpecialVar_Result = gSaveBlock2Ptr->playerStyles[0];
     return FALSE;
 }
 

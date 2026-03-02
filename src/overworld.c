@@ -486,7 +486,6 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_ETHAN:
     case STYLE_LUCAS:
     case STYLE_HILBERT:
-/*
     case STYLE_NATE:
     case STYLE_CALEM:
     case STYLE_ELIO:
@@ -494,20 +493,17 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_FLORIAN:
 //    case STYLE_ASH:
 //    case STYLE_WES:
-*/
         return TRUE;
     case STYLE_MAY:
     case STYLE_LEAF:
     case STYLE_LYRA:
     case STYLE_DAWN:
     case STYLE_HILDA:
-/*
     case STYLE_ROSA:
     case STYLE_SERENA:
     case STYLE_SELENE:
     case STYLE_GLORIA:
     case STYLE_JULIANA:
-*/
         return FALSE;
     default:
         return TRUE; // Fallback: männlich
@@ -523,7 +519,6 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_ETHAN:
     case STYLE_LUCAS:
     case STYLE_HILBERT:
-        /*
     case STYLE_NATE:
     case STYLE_CALEM:
     case STYLE_ELIO:
@@ -531,7 +526,6 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_FLORIAN:
      // case STYLE_ASH:
      // case STYLE_WES:
-        */
         return MALE;
 
     case STYLE_MAY:
@@ -539,13 +533,11 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_LYRA:
     case STYLE_DAWN:
     case STYLE_HILDA:
-        /*
     case STYLE_ROSA:
     case STYLE_SERENA:
     case STYLE_SELENE:
     case STYLE_GLORIA:
     case STYLE_JULIANA:
-        */
         return FEMALE;
 
     default:
@@ -1799,9 +1791,9 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
             if (gSaveBlock2Ptr->optionsAutoRunToggle
              && (newKeys & B_BUTTON)
              && !(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
-                                      | PLAYER_AVATAR_FLAG_ACRO_BIKE
-                                      | PLAYER_AVATAR_FLAG_SURFING
-                                      | PLAYER_AVATAR_FLAG_UNDERWATER))
+                                       | PLAYER_AVATAR_FLAG_ACRO_BIKE
+                                       | PLAYER_AVATAR_FLAG_SURFING
+                                       | PLAYER_AVATAR_FLAG_UNDERWATER))
              && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_CONTROLLABLE))
             {
                 gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;

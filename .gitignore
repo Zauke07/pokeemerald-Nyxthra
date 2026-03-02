@@ -70,3 +70,6 @@ porymap.json
 grit/
 missing_*.csv
 missing_*.txt
+.venv/
+venv/
+tools/py_tests/

@@ -610,6 +610,16 @@ static const struct DebugMenuOption sDebugMenu_Actions_Player_SelectStyle[] =
     [STYLE_DAWN]    = { COMPOUND_STRING("Dawn"),    DebugAction_Player_SetStyle },
     [STYLE_HILBERT] = { COMPOUND_STRING("Hilbert"), DebugAction_Player_SetStyle },
     [STYLE_HILDA]   = { COMPOUND_STRING("Hilda"),   DebugAction_Player_SetStyle },
+    [STYLE_NATE]    = { COMPOUND_STRING("Nate"),    DebugAction_Player_SetStyle },
+    [STYLE_ROSA]    = { COMPOUND_STRING("Rosa"),    DebugAction_Player_SetStyle },
+    [STYLE_CALEM]   = { COMPOUND_STRING("Calem"),   DebugAction_Player_SetStyle },
+    [STYLE_SERENA]  = { COMPOUND_STRING("Serena"),  DebugAction_Player_SetStyle },
+    [STYLE_ELIO]    = { COMPOUND_STRING("Elio"),    DebugAction_Player_SetStyle },
+    [STYLE_SELENE]  = { COMPOUND_STRING("Selene"),  DebugAction_Player_SetStyle },
+    [STYLE_VICTOR]  = { COMPOUND_STRING("Victor"),  DebugAction_Player_SetStyle },
+    [STYLE_GLORIA]  = { COMPOUND_STRING("Gloria"),  DebugAction_Player_SetStyle },
+    [STYLE_FLORIAN] = { COMPOUND_STRING("Florian"), DebugAction_Player_SetStyle },
+    [STYLE_JULIANA] = { COMPOUND_STRING("Juliana"), DebugAction_Player_SetStyle },
     { NULL }
 };
 

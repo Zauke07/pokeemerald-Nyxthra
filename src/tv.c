@@ -3340,13 +3340,11 @@ u8 CheckForPlayersHouseNews(void)
         case STYLE_ETHAN:
         case STYLE_LUCAS:
         case STYLE_HILBERT:
-            /*
         case STYLE_NATE:
         case STYLE_CALEM:
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
-            */
             if (gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
                 return PLAYERS_HOUSE_TV_NONE;
             break;
@@ -3378,13 +3376,11 @@ void GetMomOrDadStringForTVMessage(void)
             case STYLE_ETHAN:
             case STYLE_LUCAS:
             case STYLE_HILBERT:
-                /*
             case STYLE_NATE:
             case STYLE_CALEM:
             case STYLE_ELIO:
             case STYLE_VICTOR:
             case STYLE_FLORIAN:
-                */
                 if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F))
                 {
                     StringCopy(gStringVar1, gText_Mom);
