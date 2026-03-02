@@ -20,29 +20,29 @@ Common_EventScript_SetupRivalGfxId::
     goto_if_eq EventScript_SetupRivalGfxIdHilda
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalGfxIdHilbert
-@    compare VAR_RESULT, STYLE_NATE
-@    goto_if_eq EventScript_SetupRivalGfxIdRosa
-@    compare VAR_RESULT, STYLE_ROSA
-@    goto_if_eq EventScript_SetupRivalGfxIdNate
-@    compare VAR_RESULT, STYLE_CALEM
-@    goto_if_eq EventScript_SetupRivalGfxIdSerena
-@    compare VAR_RESULT, STYLE_SERENA
-@    goto_if_eq EventScript_SetupRivalGfxIdCalem
-@    compare VAR_RESULT, STYLE_ELIO
-@    goto_if_eq EventScript_SetupRivalGfxIdSelene
-@    compare VAR_RESULT, STYLE_SELENE
-@    goto_if_eq EventScript_SetupRivalGfxIdElio
-@    compare VAR_RESULT, STYLE_VICTOR
-@    goto_if_eq EventScript_SetupRivalGfxIdGloria
-@    compare VAR_RESULT, STYLE_GLORIA
-@    goto_if_eq EventScript_SetupRivalGfxIdVictor
-@    compare VAR_RESULT, STYLE_FLORIAN
-@    goto_if_eq EventScript_SetupRivalGfxIdJuliana
-@    compare VAR_RESULT, STYLE_JULIANA
-@    goto_if_eq EventScript_SetupRivalGfxIdFlorian
+    compare VAR_RESULT, STYLE_NATE
+    goto_if_eq EventScript_SetupRivalGfxIdRosa
+    compare VAR_RESULT, STYLE_ROSA
+    goto_if_eq EventScript_SetupRivalGfxIdNate
+    compare VAR_RESULT, STYLE_CALEM
+    goto_if_eq EventScript_SetupRivalGfxIdSerena
+    compare VAR_RESULT, STYLE_SERENA
+    goto_if_eq EventScript_SetupRivalGfxIdCalem
+    compare VAR_RESULT, STYLE_ELIO
+    goto_if_eq EventScript_SetupRivalGfxIdSelene
+    compare VAR_RESULT, STYLE_SELENE
+    goto_if_eq EventScript_SetupRivalGfxIdElio
+    compare VAR_RESULT, STYLE_VICTOR
+    goto_if_eq EventScript_SetupRivalGfxIdGloria
+    compare VAR_RESULT, STYLE_GLORIA
+    goto_if_eq EventScript_SetupRivalGfxIdVictor
+    compare VAR_RESULT, STYLE_FLORIAN
+    goto_if_eq EventScript_SetupRivalGfxIdJuliana
+    compare VAR_RESULT, STYLE_JULIANA
+    goto_if_eq EventScript_SetupRivalGfxIdFlorian
 
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-    end
+    return
 
 EventScript_SetupRivalGfxIdMay::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
@@ -146,26 +146,26 @@ Common_EventScript_SetupRivalOnBikeGfxId::
     goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilda
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilbert
-@     compare VAR_RESULT, STYLE_NATE
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdRosa
-@    compare VAR_RESULT, STYLE_ROSA
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdNate
-@    compare VAR_RESULT, STYLE_CALEM
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdSerena
-@    compare VAR_RESULT, STYLE_SERENA
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdCalem
-@    compare VAR_RESULT, STYLE_ELIO
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdSelene
-@    compare VAR_RESULT, STYLE_SELENE
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdElio
-@    compare VAR_RESULT, STYLE_VICTOR
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdGloria
-@    compare VAR_RESULT, STYLE_GLORIA
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdVictor
-@    compare VAR_RESULT, STYLE_FLORIAN
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdJuliana
-@    compare VAR_RESULT, STYLE_JULIANA
-@    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdFlorian
+    compare VAR_RESULT, STYLE_NATE
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdRosa
+    compare VAR_RESULT, STYLE_ROSA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdNate
+    compare VAR_RESULT, STYLE_CALEM
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdSerena
+    compare VAR_RESULT, STYLE_SERENA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdCalem
+    compare VAR_RESULT, STYLE_ELIO
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdSelene
+    compare VAR_RESULT, STYLE_SELENE
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdElio
+    compare VAR_RESULT, STYLE_VICTOR
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdGloria
+    compare VAR_RESULT, STYLE_GLORIA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdVictor
+    compare VAR_RESULT, STYLE_FLORIAN
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdJuliana
+    compare VAR_RESULT, STYLE_JULIANA
+    goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdFlorian
 
     checkplayerstyle
     compare VAR_RESULT, STYLE_BRENDAN
@@ -188,29 +188,29 @@ Common_EventScript_SetupRivalOnBikeGfxId::
     goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdHilda
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdHilbert
-@     compare VAR_RESULT, STYLE_NATE
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdRosa
-@    compare VAR_RESULT, STYLE_ROSA
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdNate
-@    compare VAR_RESULT, STYLE_CALEM
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdSerena
-@    compare VAR_RESULT, STYLE_SERENA
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdCalem
-@    compare VAR_RESULT, STYLE_ELIO
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdSelene
-@    compare VAR_RESULT, STYLE_SELENE
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdElio
-@    compare VAR_RESULT, STYLE_VICTOR
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdGloria
-@    compare VAR_RESULT, STYLE_GLORIA
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdVictor
-@    compare VAR_RESULT, STYLE_FLORIAN
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdJuliana
-@    compare VAR_RESULT, STYLE_JULIANA
-@    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdFlorian
+    compare VAR_RESULT, STYLE_NATE
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdRosa
+    compare VAR_RESULT, STYLE_ROSA
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdNate
+    compare VAR_RESULT, STYLE_CALEM
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdSerena
+    compare VAR_RESULT, STYLE_SERENA
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdCalem
+    compare VAR_RESULT, STYLE_ELIO
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdSelene
+    compare VAR_RESULT, STYLE_SELENE
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdElio
+    compare VAR_RESULT, STYLE_VICTOR
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdGloria
+    compare VAR_RESULT, STYLE_GLORIA
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdVictor
+    compare VAR_RESULT, STYLE_FLORIAN
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdJuliana
+    compare VAR_RESULT, STYLE_JULIANA
+    goto_if_eq EventScript_SetupRivalOnAcroBikeGfxIdFlorian
 
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
-end
+return
 
 Common_EventScript_SetupRivalOnBikeGfxId_Route110::
     checkplayerstyle
@@ -235,7 +235,7 @@ Common_EventScript_SetupRivalOnBikeGfxId_Route110::
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalOnMachBikeGfxIdHilbert_Route110
     setvar VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_RIVAL_BRENDAN_MACH_BIKE
-    end
+    return
 
 EventScript_SetupRivalOnMachBikeGfxIdMay::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_MACH_BIKE
@@ -459,28 +459,28 @@ Common_EventScript_SetupRivalMusic::
     goto_if_eq EventScript_PlayMayMusic
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_PlayBrendanMusic
-@     compare VAR_RESULT, STYLE_NATE
-@    goto_if_eq EventScript_PlayMayMusic
-@    compare VAR_RESULT, STYLE_ROSA
-@    goto_if_eq EventScript_PlayBrendanMusic
-@    compare VAR_RESULT, STYLE_CALEM
-@    goto_if_eq EventScript_PlayMayMusic
-@    compare VAR_RESULT, STYLE_SERENA
-@    goto_if_eq EventScript_PlayBrendanMusic
-@    compare VAR_RESULT, STYLE_ELIO
-@    goto_if_eq EventScript_PlayMayMusic
-@    compare VAR_RESULT, STYLE_SELENE
-@    goto_if_eq EventScript_PlayBrendanMusic
-@    compare VAR_RESULT, STYLE_VICTOR
-@    goto_if_eq EventScript_PlayMayMusic
-@    compare VAR_RESULT, STYLE_GLORIA
-@    goto_if_eq EventScript_PlayBrendanMusic
-@    compare VAR_RESULT, STYLE_FLORIAN
-@    goto_if_eq EventScript_PlayMayMusic
-@    compare VAR_RESULT, STYLE_JULIANA
-@    goto_if_eq EventScript_PlayBrendanMusic
+    compare VAR_RESULT, STYLE_NATE
+    goto_if_eq EventScript_PlayMayMusic
+    compare VAR_RESULT, STYLE_ROSA
+    goto_if_eq EventScript_PlayBrendanMusic
+    compare VAR_RESULT, STYLE_CALEM
+    goto_if_eq EventScript_PlayMayMusic
+    compare VAR_RESULT, STYLE_SERENA
+    goto_if_eq EventScript_PlayBrendanMusic
+    compare VAR_RESULT, STYLE_ELIO
+    goto_if_eq EventScript_PlayMayMusic
+    compare VAR_RESULT, STYLE_SELENE
+    goto_if_eq EventScript_PlayBrendanMusic
+    compare VAR_RESULT, STYLE_VICTOR
+    goto_if_eq EventScript_PlayMayMusic
+    compare VAR_RESULT, STYLE_GLORIA
+    goto_if_eq EventScript_PlayBrendanMusic
+    compare VAR_RESULT, STYLE_FLORIAN
+    goto_if_eq EventScript_PlayMayMusic
+    compare VAR_RESULT, STYLE_JULIANA
+    goto_if_eq EventScript_PlayBrendanMusic
 
-end
+return
 
 EventScript_PlayMayMusic::
     playbgm MUS_ENCOUNTER_MAY, TRUE
@@ -512,28 +512,28 @@ Common_EventScript_SetupRivalGfxId_FromPlayerStyle::
     goto_if_eq EventScript_SetupRivalGfxIdHilda_Switch
     compare VAR_RESULT, STYLE_HILDA
     goto_if_eq EventScript_SetupRivalGfxIdHilbert_Switch
-@     compare VAR_RESULT, STYLE_NATE
-@    goto_if_eq EventScript_SetupRivalGfxIdRosa_Switch
-@    compare VAR_RESULT, STYLE_ROSA
-@    goto_if_eq EventScript_SetupRivalGfxIdNate_Switch
-@    compare VAR_RESULT, STYLE_CALEM
-@    goto_if_eq EventScript_SetupRivalGfxIdSerena_Switch
-@    compare VAR_RESULT, STYLE_SERENA
-@    goto_if_eq EventScript_SetupRivalGfxIdCalem_Switch
-@    compare VAR_RESULT, STYLE_ELIO
-@    goto_if_eq EventScript_SetupRivalGfxIdSelene_Switch
-@    compare VAR_RESULT, STYLE_SELENE
-@    goto_if_eq EventScript_SetupRivalGfxIdElio_Switch
-@    compare VAR_RESULT, STYLE_VICTOR
-@    goto_if_eq EventScript_SetupRivalGfxIdGloria_Switch
-@    compare VAR_RESULT, STYLE_GLORIA
-@    goto_if_eq EventScript_SetupRivalGfxIdVictor_Switch
-@    compare VAR_RESULT, STYLE_FLORIAN
-@    goto_if_eq EventScript_SetupRivalGfxIdJuliana_Switch
-@    compare VAR_RESULT, STYLE_JULIANA
-@    goto_if_eq EventScript_SetupRivalGfxIdFlorian_Switch
+    compare VAR_RESULT, STYLE_NATE
+    goto_if_eq EventScript_SetupRivalGfxIdRosa_Switch
+    compare VAR_RESULT, STYLE_ROSA
+    goto_if_eq EventScript_SetupRivalGfxIdNate_Switch
+    compare VAR_RESULT, STYLE_CALEM
+    goto_if_eq EventScript_SetupRivalGfxIdSerena_Switch
+    compare VAR_RESULT, STYLE_SERENA
+    goto_if_eq EventScript_SetupRivalGfxIdCalem_Switch
+    compare VAR_RESULT, STYLE_ELIO
+    goto_if_eq EventScript_SetupRivalGfxIdSelene_Switch
+    compare VAR_RESULT, STYLE_SELENE
+    goto_if_eq EventScript_SetupRivalGfxIdElio_Switch
+    compare VAR_RESULT, STYLE_VICTOR
+    goto_if_eq EventScript_SetupRivalGfxIdGloria_Switch
+    compare VAR_RESULT, STYLE_GLORIA
+    goto_if_eq EventScript_SetupRivalGfxIdVictor_Switch
+    compare VAR_RESULT, STYLE_FLORIAN
+    goto_if_eq EventScript_SetupRivalGfxIdJuliana_Switch
+    compare VAR_RESULT, STYLE_JULIANA
+    goto_if_eq EventScript_SetupRivalGfxIdFlorian_Switch
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
-    end
+    return
 
 EventScript_SetupRivalGfxIdMay_Switch::
     setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL

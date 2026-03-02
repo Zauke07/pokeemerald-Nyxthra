@@ -230,38 +230,4406 @@ LilycoveCity_EventScript_Rival::
 	lock
 	faceplayer
 	getplayerstyle
-	call_if_eq VAR_RESULT, STYLE_BRENDAN, LilycoveCity_EventScript_May
-	call_if_eq VAR_RESULT, STYLE_MAY, LilycoveCity_EventScript_Brendan
-	call_if_eq VAR_RESULT, STYLE_RED, LilycoveCity_EventScript_May
-	call_if_eq VAR_RESULT, STYLE_LEAF, LilycoveCity_EventScript_Brendan
-    call_if_eq VAR_RESULT, STYLE_ETHAN, LilycoveCity_EventScript_May
-    call_if_eq VAR_RESULT, STYLE_LYRA, LilycoveCity_EventScript_Brendan
-    call_if_eq VAR_RESULT, STYLE_LUCAS, LilycoveCity_EventScript_May
-    call_if_eq VAR_RESULT, STYLE_DAWN, LilycoveCity_EventScript_Brendan
-    call_if_eq VAR_RESULT, STYLE_HILBERT, LilycoveCity_EventScript_May
-    call_if_eq VAR_RESULT, STYLE_HILDA, LilycoveCity_EventScript_Brendan
-@     call_if_eq VAR_RESULT, STYLE_NATE, LilycoveCity_EventScript_May
-@     call_if_eq VAR_RESULT, STYLE_ROSA, LilycoveCity_EventScript_Brendan
-@    call_if_eq VAR_RESULT, STYLE_CALEM, LilycoveCity_EventScript_May
-@    call_if_eq VAR_RESULT, STYLE_SERENA, LilycoveCity_EventScript_Brendan
-@    call_if_eq VAR_RESULT, STYLE_ELIO, LilycoveCity_EventScript_May
-@    call_if_eq VAR_RESULT, STYLE_SELENE, LilycoveCity_EventScript_Brendan
-@    call_if_eq VAR_RESULT, STYLE_VICTOR, LilycoveCity_EventScript_May
-@    call_if_eq VAR_RESULT, STYLE_GLORIA, LilycoveCity_EventScript_Brendan
-@    call_if_eq VAR_RESULT, STYLE_FLORIAN, LilycoveCity_EventScript_May
-@    call_if_eq VAR_RESULT, STYLE_JULIANA, LilycoveCity_EventScript_Brendan
+	copyvar VAR_TEMP_2, VAR_RESULT
+	compare VAR_TEMP_2, STYLE_BRENDAN
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_MAY
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_RED
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_LEAF
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_ETHAN
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_LYRA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_LUCAS
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_DAWN
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_HILBERT
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_HILDA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_NATE
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_ROSA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_CALEM
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_SERENA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_ELIO
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_SELENE
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_VICTOR
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_GLORIA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	compare VAR_TEMP_2, STYLE_FLORIAN
+	call_if_eq LilycoveCity_EventScript_AskBattle_Female
+	compare VAR_TEMP_2, STYLE_JULIANA
+	call_if_eq LilycoveCity_EventScript_AskBattle_Male
+	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineRivalBattle
+	compare VAR_TEMP_2, STYLE_BRENDAN
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_MAY
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_RED
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_LEAF
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_ETHAN
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_LYRA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_LUCAS
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_DAWN
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_HILBERT
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_HILDA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_NATE
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_ROSA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_CALEM
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_SERENA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_ELIO
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_SELENE
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_VICTOR
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_GLORIA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	compare VAR_TEMP_2, STYLE_FLORIAN
+	call_if_eq LilycoveCity_EventScript_PreBattle_Female
+	compare VAR_TEMP_2, STYLE_JULIANA
+	call_if_eq LilycoveCity_EventScript_PreBattle_Male
+	switch VAR_TEMP_2
+	case STYLE_BRENDAN, LilycoveCity_EventScript_StartBattle_MAY
+	case STYLE_MAY, LilycoveCity_EventScript_StartBattle_BRENDAN
+	case STYLE_RED, LilycoveCity_EventScript_StartBattle_LEAF
+	case STYLE_LEAF, LilycoveCity_EventScript_StartBattle_RED
+	case STYLE_ETHAN, LilycoveCity_EventScript_StartBattle_LYRA
+	case STYLE_LYRA, LilycoveCity_EventScript_StartBattle_ETHAN
+	case STYLE_LUCAS, LilycoveCity_EventScript_StartBattle_DAWN
+	case STYLE_DAWN, LilycoveCity_EventScript_StartBattle_LUCAS
+	case STYLE_HILBERT, LilycoveCity_EventScript_StartBattle_HILDA
+	case STYLE_HILDA, LilycoveCity_EventScript_StartBattle_HILBERT
+	case STYLE_NATE, LilycoveCity_EventScript_StartBattle_ROSA
+	case STYLE_ROSA, LilycoveCity_EventScript_StartBattle_NATE
+	case STYLE_CALEM, LilycoveCity_EventScript_StartBattle_SERENA
+	case STYLE_SERENA, LilycoveCity_EventScript_StartBattle_CALEM
+	case STYLE_ELIO, LilycoveCity_EventScript_StartBattle_SELENE
+	case STYLE_SELENE, LilycoveCity_EventScript_StartBattle_ELIO
+	case STYLE_VICTOR, LilycoveCity_EventScript_StartBattle_GLORIA
+	case STYLE_GLORIA, LilycoveCity_EventScript_StartBattle_VICTOR
+	case STYLE_FLORIAN, LilycoveCity_EventScript_StartBattle_JULIANA
+	case STYLE_JULIANA, LilycoveCity_EventScript_StartBattle_FLORIAN
 	end
 
-LilycoveCity_EventScript_May::
+LilycoveCity_EventScript_AskBattle_Female::
 	playbgm MUS_ENCOUNTER_MAY, TRUE
 	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_MayAskToBattleAgain
 	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_MayAskToBattle
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineMayBattle
+	return
+
+LilycoveCity_EventScript_AskBattle_Male::
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattleAgain
+	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattle
+	return
+
+LilycoveCity_EventScript_DeclineRivalBattle::
+	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+	getplayerstyle
+	copyvar VAR_TEMP_2, VAR_RESULT
+	compare VAR_TEMP_2, STYLE_BRENDAN
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_MAY
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_RED
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_LEAF
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_ETHAN
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_LYRA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_LUCAS
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_DAWN
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_HILBERT
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_HILDA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_NATE
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_ROSA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_CALEM
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_SERENA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_ELIO
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_SELENE
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_VICTOR
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_GLORIA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	compare VAR_TEMP_2, STYLE_FLORIAN
+	call_if_eq LilycoveCity_EventScript_DeclineText_Female
+	compare VAR_TEMP_2, STYLE_JULIANA
+	call_if_eq LilycoveCity_EventScript_DeclineText_Male
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	release
+	end
+
+LilycoveCity_EventScript_DeclineText_Female::
+	msgbox LilycoveCity_Text_MayNotRaisingPokemon, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_EventScript_DeclineText_Male::
+	msgbox LilycoveCity_Text_BrendanNoConfidence, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_EventScript_PreBattle_Female::
 	msgbox LilycoveCity_Text_MayWontBeBeaten, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_EventScript_PreBattle_Male::
+	msgbox LilycoveCity_Text_BrendanWontBeBeaten, MSGBOX_DEFAULT
+	return
+
+LilycoveCity_EventScript_StartBattle_MAY::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartMAY_KANTO
+	case 1, LilycoveCity_EventScript_StartMAY_JOHTO
+	case 2, LilycoveCity_EventScript_StartMAY_HOENN
+	case 3, LilycoveCity_EventScript_StartMAY_SINNOH
+	case 4, LilycoveCity_EventScript_StartMAY_UNOVA
+	case 5, LilycoveCity_EventScript_StartMAY_KALOS
+	case 6, LilycoveCity_EventScript_StartMAY_ALOLA
+	case 7, LilycoveCity_EventScript_StartMAY_GALAR
+	case 8, LilycoveCity_EventScript_StartMAY_PALDEA
+	end
+
+LilycoveCity_EventScript_StartMAY_KANTO::
 	switch VAR_STARTER_MON
-	case 0, LilycoveCity_EventScript_BattleMayTreecko
-	case 1, LilycoveCity_EventScript_BattleMayTorchic
-	case 2, LilycoveCity_EventScript_BattleMayMudkip
+	case 0, LilycoveCity_EventScript_BattleMAY_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleMAY_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleMAY_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleMAY_BULBASAUR::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_CHARMANDER::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleMAY_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleMAY_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleMAY_CHIKORITA::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_TOTODILE::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_TREECKO
+	case 1, LilycoveCity_EventScript_BattleMAY_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleMAY_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleMAY_TREECKO::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_TORCHIC::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_MUDKIP::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleMAY_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleMAY_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleMAY_TURTWIG::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_PIPLUP::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_SNIVY
+	case 1, LilycoveCity_EventScript_BattleMAY_TEPIG
+	case 2, LilycoveCity_EventScript_BattleMAY_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleMAY_SNIVY::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_TEPIG::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleMAY_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleMAY_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleMAY_CHESPIN::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_FENNEKIN::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_FROAKIE::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_ROWLET
+	case 1, LilycoveCity_EventScript_BattleMAY_LITTEN
+	case 2, LilycoveCity_EventScript_BattleMAY_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleMAY_ROWLET::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_LITTEN::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_POPPLIO::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleMAY_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleMAY_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleMAY_GROOKEY::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_SOBBLE::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartMAY_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleMAY_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleMAY_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleMAY_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleMAY_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_FUECOCO::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleMAY_QUAXLY::
+	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_BRENDAN::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartBRENDAN_KANTO
+	case 1, LilycoveCity_EventScript_StartBRENDAN_JOHTO
+	case 2, LilycoveCity_EventScript_StartBRENDAN_HOENN
+	case 3, LilycoveCity_EventScript_StartBRENDAN_SINNOH
+	case 4, LilycoveCity_EventScript_StartBRENDAN_UNOVA
+	case 5, LilycoveCity_EventScript_StartBRENDAN_KALOS
+	case 6, LilycoveCity_EventScript_StartBRENDAN_ALOLA
+	case 7, LilycoveCity_EventScript_StartBRENDAN_GALAR
+	case 8, LilycoveCity_EventScript_StartBRENDAN_PALDEA
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_BULBASAUR::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_CHARMANDER::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_CHIKORITA::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_TOTODILE::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_TREECKO
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_TREECKO::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_TORCHIC::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_MUDKIP::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_TURTWIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_PIPLUP::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_SNIVY
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_TEPIG
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_SNIVY::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_TEPIG::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_CHESPIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_FENNEKIN::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_FROAKIE::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_ROWLET
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_LITTEN
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_ROWLET::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_LITTEN::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_POPPLIO::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_GROOKEY::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_SOBBLE::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBRENDAN_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleBRENDAN_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleBRENDAN_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleBRENDAN_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_FUECOCO::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleBRENDAN_QUAXLY::
+	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_LEAF::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartLEAF_KANTO
+	case 1, LilycoveCity_EventScript_StartLEAF_JOHTO
+	case 2, LilycoveCity_EventScript_StartLEAF_HOENN
+	case 3, LilycoveCity_EventScript_StartLEAF_SINNOH
+	case 4, LilycoveCity_EventScript_StartLEAF_UNOVA
+	case 5, LilycoveCity_EventScript_StartLEAF_KALOS
+	case 6, LilycoveCity_EventScript_StartLEAF_ALOLA
+	case 7, LilycoveCity_EventScript_StartLEAF_GALAR
+	case 8, LilycoveCity_EventScript_StartLEAF_PALDEA
+	end
+
+LilycoveCity_EventScript_StartLEAF_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleLEAF_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleLEAF_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleLEAF_BULBASAUR::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_CHARMANDER::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleLEAF_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleLEAF_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleLEAF_CHIKORITA::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_TOTODILE::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_TREECKO
+	case 1, LilycoveCity_EventScript_BattleLEAF_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleLEAF_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleLEAF_TREECKO::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_TORCHIC::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_MUDKIP::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleLEAF_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleLEAF_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleLEAF_TURTWIG::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_PIPLUP::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_SNIVY
+	case 1, LilycoveCity_EventScript_BattleLEAF_TEPIG
+	case 2, LilycoveCity_EventScript_BattleLEAF_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleLEAF_SNIVY::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_TEPIG::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleLEAF_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleLEAF_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleLEAF_CHESPIN::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_FENNEKIN::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_FROAKIE::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_ROWLET
+	case 1, LilycoveCity_EventScript_BattleLEAF_LITTEN
+	case 2, LilycoveCity_EventScript_BattleLEAF_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleLEAF_ROWLET::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_LITTEN::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_POPPLIO::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleLEAF_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleLEAF_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleLEAF_GROOKEY::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_SOBBLE::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLEAF_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLEAF_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleLEAF_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleLEAF_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleLEAF_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_FUECOCO::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLEAF_QUAXLY::
+	trainerbattle_no_intro TRAINER_LEAF_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_RED::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartRED_KANTO
+	case 1, LilycoveCity_EventScript_StartRED_JOHTO
+	case 2, LilycoveCity_EventScript_StartRED_HOENN
+	case 3, LilycoveCity_EventScript_StartRED_SINNOH
+	case 4, LilycoveCity_EventScript_StartRED_UNOVA
+	case 5, LilycoveCity_EventScript_StartRED_KALOS
+	case 6, LilycoveCity_EventScript_StartRED_ALOLA
+	case 7, LilycoveCity_EventScript_StartRED_GALAR
+	case 8, LilycoveCity_EventScript_StartRED_PALDEA
+	end
+
+LilycoveCity_EventScript_StartRED_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleRED_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleRED_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleRED_BULBASAUR::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_CHARMANDER::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleRED_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleRED_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleRED_CHIKORITA::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_TOTODILE::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_TREECKO
+	case 1, LilycoveCity_EventScript_BattleRED_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleRED_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleRED_TREECKO::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_TORCHIC::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_MUDKIP::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleRED_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleRED_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleRED_TURTWIG::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_PIPLUP::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_SNIVY
+	case 1, LilycoveCity_EventScript_BattleRED_TEPIG
+	case 2, LilycoveCity_EventScript_BattleRED_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleRED_SNIVY::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_TEPIG::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleRED_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleRED_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleRED_CHESPIN::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_FENNEKIN::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_FROAKIE::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_ROWLET
+	case 1, LilycoveCity_EventScript_BattleRED_LITTEN
+	case 2, LilycoveCity_EventScript_BattleRED_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleRED_ROWLET::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_LITTEN::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_POPPLIO::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleRED_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleRED_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleRED_GROOKEY::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_SOBBLE::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartRED_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleRED_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleRED_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleRED_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleRED_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_FUECOCO::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleRED_QUAXLY::
+	trainerbattle_no_intro TRAINER_RED_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_LYRA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartLYRA_KANTO
+	case 1, LilycoveCity_EventScript_StartLYRA_JOHTO
+	case 2, LilycoveCity_EventScript_StartLYRA_HOENN
+	case 3, LilycoveCity_EventScript_StartLYRA_SINNOH
+	case 4, LilycoveCity_EventScript_StartLYRA_UNOVA
+	case 5, LilycoveCity_EventScript_StartLYRA_KALOS
+	case 6, LilycoveCity_EventScript_StartLYRA_ALOLA
+	case 7, LilycoveCity_EventScript_StartLYRA_GALAR
+	case 8, LilycoveCity_EventScript_StartLYRA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartLYRA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleLYRA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleLYRA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleLYRA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleLYRA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleLYRA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleLYRA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_TOTODILE::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleLYRA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleLYRA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleLYRA_TREECKO::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_TORCHIC::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_MUDKIP::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleLYRA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleLYRA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleLYRA_TURTWIG::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_PIPLUP::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleLYRA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleLYRA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleLYRA_SNIVY::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_TEPIG::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleLYRA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleLYRA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleLYRA_CHESPIN::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_FROAKIE::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleLYRA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleLYRA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleLYRA_ROWLET::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_LITTEN::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_POPPLIO::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleLYRA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleLYRA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleLYRA_GROOKEY::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_SOBBLE::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartLYRA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLYRA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleLYRA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleLYRA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleLYRA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_FUECOCO::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleLYRA_QUAXLY::
+	trainerbattle_no_intro TRAINER_LYRA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_ETHAN::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartETHAN_KANTO
+	case 1, LilycoveCity_EventScript_StartETHAN_JOHTO
+	case 2, LilycoveCity_EventScript_StartETHAN_HOENN
+	case 3, LilycoveCity_EventScript_StartETHAN_SINNOH
+	case 4, LilycoveCity_EventScript_StartETHAN_UNOVA
+	case 5, LilycoveCity_EventScript_StartETHAN_KALOS
+	case 6, LilycoveCity_EventScript_StartETHAN_ALOLA
+	case 7, LilycoveCity_EventScript_StartETHAN_GALAR
+	case 8, LilycoveCity_EventScript_StartETHAN_PALDEA
+	end
+
+LilycoveCity_EventScript_StartETHAN_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleETHAN_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleETHAN_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleETHAN_BULBASAUR::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_CHARMANDER::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleETHAN_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleETHAN_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleETHAN_CHIKORITA::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_TOTODILE::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_TREECKO
+	case 1, LilycoveCity_EventScript_BattleETHAN_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleETHAN_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleETHAN_TREECKO::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_TORCHIC::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_MUDKIP::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleETHAN_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleETHAN_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleETHAN_TURTWIG::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_PIPLUP::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_SNIVY
+	case 1, LilycoveCity_EventScript_BattleETHAN_TEPIG
+	case 2, LilycoveCity_EventScript_BattleETHAN_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleETHAN_SNIVY::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_TEPIG::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleETHAN_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleETHAN_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleETHAN_CHESPIN::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_FENNEKIN::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_FROAKIE::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_ROWLET
+	case 1, LilycoveCity_EventScript_BattleETHAN_LITTEN
+	case 2, LilycoveCity_EventScript_BattleETHAN_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleETHAN_ROWLET::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_LITTEN::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_POPPLIO::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleETHAN_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleETHAN_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleETHAN_GROOKEY::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_SOBBLE::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartETHAN_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleETHAN_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleETHAN_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleETHAN_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleETHAN_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_FUECOCO::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleETHAN_QUAXLY::
+	trainerbattle_no_intro TRAINER_ETHAN_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_DAWN::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartDAWN_KANTO
+	case 1, LilycoveCity_EventScript_StartDAWN_JOHTO
+	case 2, LilycoveCity_EventScript_StartDAWN_HOENN
+	case 3, LilycoveCity_EventScript_StartDAWN_SINNOH
+	case 4, LilycoveCity_EventScript_StartDAWN_UNOVA
+	case 5, LilycoveCity_EventScript_StartDAWN_KALOS
+	case 6, LilycoveCity_EventScript_StartDAWN_ALOLA
+	case 7, LilycoveCity_EventScript_StartDAWN_GALAR
+	case 8, LilycoveCity_EventScript_StartDAWN_PALDEA
+	end
+
+LilycoveCity_EventScript_StartDAWN_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleDAWN_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleDAWN_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleDAWN_BULBASAUR::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_CHARMANDER::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleDAWN_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleDAWN_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleDAWN_CHIKORITA::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_TOTODILE::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_TREECKO
+	case 1, LilycoveCity_EventScript_BattleDAWN_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleDAWN_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleDAWN_TREECKO::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_TORCHIC::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_MUDKIP::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleDAWN_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleDAWN_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleDAWN_TURTWIG::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_PIPLUP::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_SNIVY
+	case 1, LilycoveCity_EventScript_BattleDAWN_TEPIG
+	case 2, LilycoveCity_EventScript_BattleDAWN_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleDAWN_SNIVY::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_TEPIG::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleDAWN_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleDAWN_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleDAWN_CHESPIN::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_FENNEKIN::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_FROAKIE::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_ROWLET
+	case 1, LilycoveCity_EventScript_BattleDAWN_LITTEN
+	case 2, LilycoveCity_EventScript_BattleDAWN_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleDAWN_ROWLET::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_LITTEN::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_POPPLIO::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleDAWN_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleDAWN_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleDAWN_GROOKEY::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_SOBBLE::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartDAWN_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleDAWN_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleDAWN_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleDAWN_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleDAWN_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_FUECOCO::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleDAWN_QUAXLY::
+	trainerbattle_no_intro TRAINER_DAWN_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_LUCAS::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartLUCAS_KANTO
+	case 1, LilycoveCity_EventScript_StartLUCAS_JOHTO
+	case 2, LilycoveCity_EventScript_StartLUCAS_HOENN
+	case 3, LilycoveCity_EventScript_StartLUCAS_SINNOH
+	case 4, LilycoveCity_EventScript_StartLUCAS_UNOVA
+	case 5, LilycoveCity_EventScript_StartLUCAS_KALOS
+	case 6, LilycoveCity_EventScript_StartLUCAS_ALOLA
+	case 7, LilycoveCity_EventScript_StartLUCAS_GALAR
+	case 8, LilycoveCity_EventScript_StartLUCAS_PALDEA
+	end
+
+LilycoveCity_EventScript_StartLUCAS_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleLUCAS_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleLUCAS_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_BULBASAUR::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_CHARMANDER::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleLUCAS_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleLUCAS_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_CHIKORITA::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_TOTODILE::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_TREECKO
+	case 1, LilycoveCity_EventScript_BattleLUCAS_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleLUCAS_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_TREECKO::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_TORCHIC::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_MUDKIP::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleLUCAS_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleLUCAS_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_TURTWIG::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_PIPLUP::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_SNIVY
+	case 1, LilycoveCity_EventScript_BattleLUCAS_TEPIG
+	case 2, LilycoveCity_EventScript_BattleLUCAS_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_SNIVY::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_TEPIG::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleLUCAS_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleLUCAS_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_CHESPIN::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_FENNEKIN::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_FROAKIE::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_ROWLET
+	case 1, LilycoveCity_EventScript_BattleLUCAS_LITTEN
+	case 2, LilycoveCity_EventScript_BattleLUCAS_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_ROWLET::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_LITTEN::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_POPPLIO::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleLUCAS_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleLUCAS_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_GROOKEY::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_SOBBLE::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartLUCAS_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleLUCAS_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleLUCAS_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleLUCAS_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_FUECOCO::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleLUCAS_QUAXLY::
+	trainerbattle_no_intro TRAINER_LUCAS_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_HILDA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartHILDA_KANTO
+	case 1, LilycoveCity_EventScript_StartHILDA_JOHTO
+	case 2, LilycoveCity_EventScript_StartHILDA_HOENN
+	case 3, LilycoveCity_EventScript_StartHILDA_SINNOH
+	case 4, LilycoveCity_EventScript_StartHILDA_UNOVA
+	case 5, LilycoveCity_EventScript_StartHILDA_KALOS
+	case 6, LilycoveCity_EventScript_StartHILDA_ALOLA
+	case 7, LilycoveCity_EventScript_StartHILDA_GALAR
+	case 8, LilycoveCity_EventScript_StartHILDA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartHILDA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleHILDA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleHILDA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleHILDA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleHILDA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleHILDA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleHILDA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_TOTODILE::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleHILDA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleHILDA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleHILDA_TREECKO::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_TORCHIC::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_MUDKIP::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleHILDA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleHILDA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleHILDA_TURTWIG::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_PIPLUP::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleHILDA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleHILDA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleHILDA_SNIVY::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_TEPIG::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleHILDA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleHILDA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleHILDA_CHESPIN::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_FROAKIE::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleHILDA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleHILDA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleHILDA_ROWLET::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_LITTEN::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_POPPLIO::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleHILDA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleHILDA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleHILDA_GROOKEY::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_SOBBLE::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartHILDA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILDA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleHILDA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleHILDA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleHILDA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_FUECOCO::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleHILDA_QUAXLY::
+	trainerbattle_no_intro TRAINER_HILDA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_HILBERT::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartHILBERT_KANTO
+	case 1, LilycoveCity_EventScript_StartHILBERT_JOHTO
+	case 2, LilycoveCity_EventScript_StartHILBERT_HOENN
+	case 3, LilycoveCity_EventScript_StartHILBERT_SINNOH
+	case 4, LilycoveCity_EventScript_StartHILBERT_UNOVA
+	case 5, LilycoveCity_EventScript_StartHILBERT_KALOS
+	case 6, LilycoveCity_EventScript_StartHILBERT_ALOLA
+	case 7, LilycoveCity_EventScript_StartHILBERT_GALAR
+	case 8, LilycoveCity_EventScript_StartHILBERT_PALDEA
+	end
+
+LilycoveCity_EventScript_StartHILBERT_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleHILBERT_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleHILBERT_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_BULBASAUR::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_CHARMANDER::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleHILBERT_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleHILBERT_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_CHIKORITA::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_TOTODILE::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_TREECKO
+	case 1, LilycoveCity_EventScript_BattleHILBERT_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleHILBERT_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_TREECKO::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_TORCHIC::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_MUDKIP::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleHILBERT_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleHILBERT_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_TURTWIG::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_PIPLUP::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_SNIVY
+	case 1, LilycoveCity_EventScript_BattleHILBERT_TEPIG
+	case 2, LilycoveCity_EventScript_BattleHILBERT_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_SNIVY::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_TEPIG::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleHILBERT_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleHILBERT_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_CHESPIN::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_FENNEKIN::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_FROAKIE::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_ROWLET
+	case 1, LilycoveCity_EventScript_BattleHILBERT_LITTEN
+	case 2, LilycoveCity_EventScript_BattleHILBERT_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_ROWLET::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_LITTEN::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_POPPLIO::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleHILBERT_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleHILBERT_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_GROOKEY::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_SOBBLE::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartHILBERT_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleHILBERT_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleHILBERT_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleHILBERT_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_FUECOCO::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleHILBERT_QUAXLY::
+	trainerbattle_no_intro TRAINER_HILBERT_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_ROSA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartROSA_KANTO
+	case 1, LilycoveCity_EventScript_StartROSA_JOHTO
+	case 2, LilycoveCity_EventScript_StartROSA_HOENN
+	case 3, LilycoveCity_EventScript_StartROSA_SINNOH
+	case 4, LilycoveCity_EventScript_StartROSA_UNOVA
+	case 5, LilycoveCity_EventScript_StartROSA_KALOS
+	case 6, LilycoveCity_EventScript_StartROSA_ALOLA
+	case 7, LilycoveCity_EventScript_StartROSA_GALAR
+	case 8, LilycoveCity_EventScript_StartROSA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartROSA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleROSA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleROSA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleROSA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleROSA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleROSA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleROSA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_TOTODILE::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleROSA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleROSA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleROSA_TREECKO::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_TORCHIC::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_MUDKIP::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleROSA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleROSA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleROSA_TURTWIG::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_PIPLUP::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleROSA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleROSA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleROSA_SNIVY::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_TEPIG::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleROSA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleROSA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleROSA_CHESPIN::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_FROAKIE::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleROSA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleROSA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleROSA_ROWLET::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_LITTEN::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_POPPLIO::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleROSA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleROSA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleROSA_GROOKEY::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_SOBBLE::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartROSA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleROSA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleROSA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleROSA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleROSA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_FUECOCO::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleROSA_QUAXLY::
+	trainerbattle_no_intro TRAINER_ROSA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_NATE::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartNATE_KANTO
+	case 1, LilycoveCity_EventScript_StartNATE_JOHTO
+	case 2, LilycoveCity_EventScript_StartNATE_HOENN
+	case 3, LilycoveCity_EventScript_StartNATE_SINNOH
+	case 4, LilycoveCity_EventScript_StartNATE_UNOVA
+	case 5, LilycoveCity_EventScript_StartNATE_KALOS
+	case 6, LilycoveCity_EventScript_StartNATE_ALOLA
+	case 7, LilycoveCity_EventScript_StartNATE_GALAR
+	case 8, LilycoveCity_EventScript_StartNATE_PALDEA
+	end
+
+LilycoveCity_EventScript_StartNATE_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleNATE_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleNATE_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleNATE_BULBASAUR::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_CHARMANDER::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleNATE_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleNATE_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleNATE_CHIKORITA::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_TOTODILE::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_TREECKO
+	case 1, LilycoveCity_EventScript_BattleNATE_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleNATE_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleNATE_TREECKO::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_TORCHIC::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_MUDKIP::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleNATE_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleNATE_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleNATE_TURTWIG::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_PIPLUP::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_SNIVY
+	case 1, LilycoveCity_EventScript_BattleNATE_TEPIG
+	case 2, LilycoveCity_EventScript_BattleNATE_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleNATE_SNIVY::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_TEPIG::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleNATE_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleNATE_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleNATE_CHESPIN::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_FENNEKIN::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_FROAKIE::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_ROWLET
+	case 1, LilycoveCity_EventScript_BattleNATE_LITTEN
+	case 2, LilycoveCity_EventScript_BattleNATE_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleNATE_ROWLET::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_LITTEN::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_POPPLIO::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleNATE_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleNATE_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleNATE_GROOKEY::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_SOBBLE::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartNATE_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleNATE_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleNATE_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleNATE_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleNATE_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_FUECOCO::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleNATE_QUAXLY::
+	trainerbattle_no_intro TRAINER_NATE_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_SERENA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartSERENA_KANTO
+	case 1, LilycoveCity_EventScript_StartSERENA_JOHTO
+	case 2, LilycoveCity_EventScript_StartSERENA_HOENN
+	case 3, LilycoveCity_EventScript_StartSERENA_SINNOH
+	case 4, LilycoveCity_EventScript_StartSERENA_UNOVA
+	case 5, LilycoveCity_EventScript_StartSERENA_KALOS
+	case 6, LilycoveCity_EventScript_StartSERENA_ALOLA
+	case 7, LilycoveCity_EventScript_StartSERENA_GALAR
+	case 8, LilycoveCity_EventScript_StartSERENA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartSERENA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleSERENA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleSERENA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleSERENA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleSERENA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleSERENA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleSERENA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_TOTODILE::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleSERENA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleSERENA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleSERENA_TREECKO::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_TORCHIC::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_MUDKIP::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleSERENA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleSERENA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleSERENA_TURTWIG::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_PIPLUP::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleSERENA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleSERENA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleSERENA_SNIVY::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_TEPIG::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleSERENA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleSERENA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleSERENA_CHESPIN::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_FROAKIE::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleSERENA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleSERENA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleSERENA_ROWLET::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_LITTEN::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_POPPLIO::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleSERENA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleSERENA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleSERENA_GROOKEY::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_SOBBLE::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSERENA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSERENA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleSERENA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleSERENA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleSERENA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_FUECOCO::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSERENA_QUAXLY::
+	trainerbattle_no_intro TRAINER_SERENA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_CALEM::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartCALEM_KANTO
+	case 1, LilycoveCity_EventScript_StartCALEM_JOHTO
+	case 2, LilycoveCity_EventScript_StartCALEM_HOENN
+	case 3, LilycoveCity_EventScript_StartCALEM_SINNOH
+	case 4, LilycoveCity_EventScript_StartCALEM_UNOVA
+	case 5, LilycoveCity_EventScript_StartCALEM_KALOS
+	case 6, LilycoveCity_EventScript_StartCALEM_ALOLA
+	case 7, LilycoveCity_EventScript_StartCALEM_GALAR
+	case 8, LilycoveCity_EventScript_StartCALEM_PALDEA
+	end
+
+LilycoveCity_EventScript_StartCALEM_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleCALEM_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleCALEM_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleCALEM_BULBASAUR::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_CHARMANDER::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleCALEM_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleCALEM_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleCALEM_CHIKORITA::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_TOTODILE::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_TREECKO
+	case 1, LilycoveCity_EventScript_BattleCALEM_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleCALEM_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleCALEM_TREECKO::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_TORCHIC::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_MUDKIP::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleCALEM_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleCALEM_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleCALEM_TURTWIG::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_PIPLUP::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_SNIVY
+	case 1, LilycoveCity_EventScript_BattleCALEM_TEPIG
+	case 2, LilycoveCity_EventScript_BattleCALEM_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleCALEM_SNIVY::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_TEPIG::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleCALEM_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleCALEM_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleCALEM_CHESPIN::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_FENNEKIN::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_FROAKIE::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_ROWLET
+	case 1, LilycoveCity_EventScript_BattleCALEM_LITTEN
+	case 2, LilycoveCity_EventScript_BattleCALEM_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleCALEM_ROWLET::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_LITTEN::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_POPPLIO::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleCALEM_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleCALEM_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleCALEM_GROOKEY::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_SOBBLE::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartCALEM_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleCALEM_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleCALEM_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleCALEM_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleCALEM_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_FUECOCO::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleCALEM_QUAXLY::
+	trainerbattle_no_intro TRAINER_CALEM_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_SELENE::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartSELENE_KANTO
+	case 1, LilycoveCity_EventScript_StartSELENE_JOHTO
+	case 2, LilycoveCity_EventScript_StartSELENE_HOENN
+	case 3, LilycoveCity_EventScript_StartSELENE_SINNOH
+	case 4, LilycoveCity_EventScript_StartSELENE_UNOVA
+	case 5, LilycoveCity_EventScript_StartSELENE_KALOS
+	case 6, LilycoveCity_EventScript_StartSELENE_ALOLA
+	case 7, LilycoveCity_EventScript_StartSELENE_GALAR
+	case 8, LilycoveCity_EventScript_StartSELENE_PALDEA
+	end
+
+LilycoveCity_EventScript_StartSELENE_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleSELENE_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleSELENE_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleSELENE_BULBASAUR::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_CHARMANDER::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleSELENE_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleSELENE_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleSELENE_CHIKORITA::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_TOTODILE::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_TREECKO
+	case 1, LilycoveCity_EventScript_BattleSELENE_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleSELENE_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleSELENE_TREECKO::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_TORCHIC::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_MUDKIP::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleSELENE_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleSELENE_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleSELENE_TURTWIG::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_PIPLUP::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_SNIVY
+	case 1, LilycoveCity_EventScript_BattleSELENE_TEPIG
+	case 2, LilycoveCity_EventScript_BattleSELENE_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleSELENE_SNIVY::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_TEPIG::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleSELENE_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleSELENE_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleSELENE_CHESPIN::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_FENNEKIN::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_FROAKIE::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_ROWLET
+	case 1, LilycoveCity_EventScript_BattleSELENE_LITTEN
+	case 2, LilycoveCity_EventScript_BattleSELENE_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleSELENE_ROWLET::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_LITTEN::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_POPPLIO::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleSELENE_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleSELENE_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleSELENE_GROOKEY::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_SOBBLE::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartSELENE_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleSELENE_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleSELENE_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleSELENE_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleSELENE_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_FUECOCO::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleSELENE_QUAXLY::
+	trainerbattle_no_intro TRAINER_SELENE_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_ELIO::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartELIO_KANTO
+	case 1, LilycoveCity_EventScript_StartELIO_JOHTO
+	case 2, LilycoveCity_EventScript_StartELIO_HOENN
+	case 3, LilycoveCity_EventScript_StartELIO_SINNOH
+	case 4, LilycoveCity_EventScript_StartELIO_UNOVA
+	case 5, LilycoveCity_EventScript_StartELIO_KALOS
+	case 6, LilycoveCity_EventScript_StartELIO_ALOLA
+	case 7, LilycoveCity_EventScript_StartELIO_GALAR
+	case 8, LilycoveCity_EventScript_StartELIO_PALDEA
+	end
+
+LilycoveCity_EventScript_StartELIO_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleELIO_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleELIO_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleELIO_BULBASAUR::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_CHARMANDER::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleELIO_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleELIO_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleELIO_CHIKORITA::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_TOTODILE::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_TREECKO
+	case 1, LilycoveCity_EventScript_BattleELIO_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleELIO_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleELIO_TREECKO::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_TORCHIC::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_MUDKIP::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleELIO_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleELIO_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleELIO_TURTWIG::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_PIPLUP::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_SNIVY
+	case 1, LilycoveCity_EventScript_BattleELIO_TEPIG
+	case 2, LilycoveCity_EventScript_BattleELIO_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleELIO_SNIVY::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_TEPIG::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleELIO_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleELIO_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleELIO_CHESPIN::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_FENNEKIN::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_FROAKIE::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_ROWLET
+	case 1, LilycoveCity_EventScript_BattleELIO_LITTEN
+	case 2, LilycoveCity_EventScript_BattleELIO_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleELIO_ROWLET::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_LITTEN::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_POPPLIO::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleELIO_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleELIO_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleELIO_GROOKEY::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_SOBBLE::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartELIO_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleELIO_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleELIO_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleELIO_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleELIO_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_FUECOCO::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleELIO_QUAXLY::
+	trainerbattle_no_intro TRAINER_ELIO_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_GLORIA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartGLORIA_KANTO
+	case 1, LilycoveCity_EventScript_StartGLORIA_JOHTO
+	case 2, LilycoveCity_EventScript_StartGLORIA_HOENN
+	case 3, LilycoveCity_EventScript_StartGLORIA_SINNOH
+	case 4, LilycoveCity_EventScript_StartGLORIA_UNOVA
+	case 5, LilycoveCity_EventScript_StartGLORIA_KALOS
+	case 6, LilycoveCity_EventScript_StartGLORIA_ALOLA
+	case 7, LilycoveCity_EventScript_StartGLORIA_GALAR
+	case 8, LilycoveCity_EventScript_StartGLORIA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartGLORIA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleGLORIA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleGLORIA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleGLORIA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleGLORIA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_TOTODILE::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleGLORIA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleGLORIA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_TREECKO::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_TORCHIC::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_MUDKIP::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleGLORIA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleGLORIA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_TURTWIG::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_PIPLUP::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleGLORIA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleGLORIA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_SNIVY::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_TEPIG::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleGLORIA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleGLORIA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_CHESPIN::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_FROAKIE::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleGLORIA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleGLORIA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_ROWLET::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_LITTEN::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_POPPLIO::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleGLORIA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleGLORIA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_GROOKEY::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_SOBBLE::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartGLORIA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleGLORIA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleGLORIA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleGLORIA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_FUECOCO::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleGLORIA_QUAXLY::
+	trainerbattle_no_intro TRAINER_GLORIA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_VICTOR::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartVICTOR_KANTO
+	case 1, LilycoveCity_EventScript_StartVICTOR_JOHTO
+	case 2, LilycoveCity_EventScript_StartVICTOR_HOENN
+	case 3, LilycoveCity_EventScript_StartVICTOR_SINNOH
+	case 4, LilycoveCity_EventScript_StartVICTOR_UNOVA
+	case 5, LilycoveCity_EventScript_StartVICTOR_KALOS
+	case 6, LilycoveCity_EventScript_StartVICTOR_ALOLA
+	case 7, LilycoveCity_EventScript_StartVICTOR_GALAR
+	case 8, LilycoveCity_EventScript_StartVICTOR_PALDEA
+	end
+
+LilycoveCity_EventScript_StartVICTOR_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleVICTOR_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleVICTOR_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_BULBASAUR::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_CHARMANDER::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleVICTOR_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleVICTOR_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_CHIKORITA::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_TOTODILE::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_TREECKO
+	case 1, LilycoveCity_EventScript_BattleVICTOR_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleVICTOR_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_TREECKO::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_TORCHIC::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_MUDKIP::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleVICTOR_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleVICTOR_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_TURTWIG::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_PIPLUP::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_SNIVY
+	case 1, LilycoveCity_EventScript_BattleVICTOR_TEPIG
+	case 2, LilycoveCity_EventScript_BattleVICTOR_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_SNIVY::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_TEPIG::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleVICTOR_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleVICTOR_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_CHESPIN::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_FENNEKIN::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_FROAKIE::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_ROWLET
+	case 1, LilycoveCity_EventScript_BattleVICTOR_LITTEN
+	case 2, LilycoveCity_EventScript_BattleVICTOR_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_ROWLET::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_LITTEN::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_POPPLIO::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleVICTOR_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleVICTOR_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_GROOKEY::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_SOBBLE::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartVICTOR_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleVICTOR_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleVICTOR_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleVICTOR_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_FUECOCO::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleVICTOR_QUAXLY::
+	trainerbattle_no_intro TRAINER_VICTOR_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartBattle_JULIANA::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartJULIANA_KANTO
+	case 1, LilycoveCity_EventScript_StartJULIANA_JOHTO
+	case 2, LilycoveCity_EventScript_StartJULIANA_HOENN
+	case 3, LilycoveCity_EventScript_StartJULIANA_SINNOH
+	case 4, LilycoveCity_EventScript_StartJULIANA_UNOVA
+	case 5, LilycoveCity_EventScript_StartJULIANA_KALOS
+	case 6, LilycoveCity_EventScript_StartJULIANA_ALOLA
+	case 7, LilycoveCity_EventScript_StartJULIANA_GALAR
+	case 8, LilycoveCity_EventScript_StartJULIANA_PALDEA
+	end
+
+LilycoveCity_EventScript_StartJULIANA_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleJULIANA_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleJULIANA_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_BULBASAUR::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_BULBASAUR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_CHARMANDER::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_CHARMANDER, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_SQUIRTLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleJULIANA_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleJULIANA_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_CHIKORITA::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_CHIKORITA, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_TOTODILE::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_TOTODILE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_TREECKO
+	case 1, LilycoveCity_EventScript_BattleJULIANA_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleJULIANA_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_TREECKO::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_TORCHIC::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_MUDKIP::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleJULIANA_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleJULIANA_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_TURTWIG::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_TURTWIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_CHIMCHAR, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_PIPLUP::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_PIPLUP, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_SNIVY
+	case 1, LilycoveCity_EventScript_BattleJULIANA_TEPIG
+	case 2, LilycoveCity_EventScript_BattleJULIANA_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_SNIVY::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_SNIVY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_TEPIG::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_TEPIG, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_OSHAWOTT, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleJULIANA_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleJULIANA_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_CHESPIN::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_CHESPIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_FENNEKIN::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_FENNEKIN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_FROAKIE::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_FROAKIE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_ROWLET
+	case 1, LilycoveCity_EventScript_BattleJULIANA_LITTEN
+	case 2, LilycoveCity_EventScript_BattleJULIANA_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_ROWLET::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_ROWLET, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_LITTEN::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_LITTEN, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_POPPLIO::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_POPPLIO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleJULIANA_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleJULIANA_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_GROOKEY::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_GROOKEY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_SCORBUNNY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_SOBBLE::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_SOBBLE, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartJULIANA_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleJULIANA_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleJULIANA_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleJULIANA_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_SPRIGATITO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_FUECOCO::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_FUECOCO, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_BattleJULIANA_QUAXLY::
+	trainerbattle_no_intro TRAINER_JULIANA_LILYCOVE_QUAXLY, LilycoveCity_Text_MayDefeat
+	goto LilycoveCity_EventScript_DefeatedMay
+	end
+
+LilycoveCity_EventScript_StartBattle_FLORIAN::
+	switch VAR_STARTER_REGION
+	case 0, LilycoveCity_EventScript_StartFLORIAN_KANTO
+	case 1, LilycoveCity_EventScript_StartFLORIAN_JOHTO
+	case 2, LilycoveCity_EventScript_StartFLORIAN_HOENN
+	case 3, LilycoveCity_EventScript_StartFLORIAN_SINNOH
+	case 4, LilycoveCity_EventScript_StartFLORIAN_UNOVA
+	case 5, LilycoveCity_EventScript_StartFLORIAN_KALOS
+	case 6, LilycoveCity_EventScript_StartFLORIAN_ALOLA
+	case 7, LilycoveCity_EventScript_StartFLORIAN_GALAR
+	case 8, LilycoveCity_EventScript_StartFLORIAN_PALDEA
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_KANTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_BULBASAUR
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_CHARMANDER
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_SQUIRTLE
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_BULBASAUR::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_BULBASAUR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_CHARMANDER::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_CHARMANDER, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_SQUIRTLE::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_SQUIRTLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_JOHTO::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_CHIKORITA
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_CYNDAQUIL
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_TOTODILE
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_CHIKORITA::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_CHIKORITA, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_CYNDAQUIL::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_CYNDAQUIL, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_TOTODILE::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_TOTODILE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_HOENN::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_TREECKO
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_TORCHIC
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_MUDKIP
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_TREECKO::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_TORCHIC::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_MUDKIP::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_SINNOH::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_TURTWIG
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_CHIMCHAR
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_PIPLUP
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_TURTWIG::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_TURTWIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_CHIMCHAR::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_CHIMCHAR, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_PIPLUP::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_PIPLUP, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_UNOVA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_SNIVY
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_TEPIG
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_OSHAWOTT
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_SNIVY::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_SNIVY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_TEPIG::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_TEPIG, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_OSHAWOTT::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_OSHAWOTT, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_KALOS::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_CHESPIN
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_FENNEKIN
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_FROAKIE
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_CHESPIN::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_CHESPIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_FENNEKIN::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_FENNEKIN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_FROAKIE::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_FROAKIE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_ALOLA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_ROWLET
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_LITTEN
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_POPPLIO
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_ROWLET::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_ROWLET, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_LITTEN::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_LITTEN, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_POPPLIO::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_POPPLIO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_GALAR::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_GROOKEY
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_SCORBUNNY
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_SOBBLE
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_GROOKEY::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_GROOKEY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_SCORBUNNY::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_SCORBUNNY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_SOBBLE::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_SOBBLE, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_StartFLORIAN_PALDEA::
+	switch VAR_STARTER_MON
+	case 0, LilycoveCity_EventScript_BattleFLORIAN_SPRIGATITO
+	case 1, LilycoveCity_EventScript_BattleFLORIAN_FUECOCO
+	case 2, LilycoveCity_EventScript_BattleFLORIAN_QUAXLY
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_SPRIGATITO::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_SPRIGATITO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_FUECOCO::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_FUECOCO, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
+	end
+
+LilycoveCity_EventScript_BattleFLORIAN_QUAXLY::
+	trainerbattle_no_intro TRAINER_FLORIAN_LILYCOVE_QUAXLY, LilycoveCity_Text_BrendanDefeat
+	goto LilycoveCity_EventScript_DefeatedBrendan
 	end
 
 LilycoveCity_EventScript_MayAskToBattleAgain::
@@ -272,26 +4640,6 @@ LilycoveCity_EventScript_MayAskToBattle::
 	msgbox LilycoveCity_Text_MayShoppingLetsBattle, MSGBOX_YESNO
 	return
 
-LilycoveCity_EventScript_DeclineMayBattle::
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox LilycoveCity_Text_MayNotRaisingPokemon, MSGBOX_DEFAULT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
-	end
-
-LilycoveCity_EventScript_Brendan::
-	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
-	call_if_set FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattleAgain
-	call_if_unset FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, LilycoveCity_EventScript_BrendanAskToBattle
-	goto_if_eq VAR_RESULT, NO, LilycoveCity_EventScript_DeclineBrendanBattle
-	msgbox LilycoveCity_Text_BrendanWontBeBeaten, MSGBOX_DEFAULT
-	switch VAR_STARTER_MON
-	case 0, LilycoveCity_EventScript_BattleBrendanTreecko
-	case 1, LilycoveCity_EventScript_BattleBrendanTorchic
-	case 2, LilycoveCity_EventScript_BattleBrendanMudkip
-	end
-
 LilycoveCity_EventScript_BrendanAskToBattleAgain::
 	msgbox LilycoveCity_Text_BrendanBattleMe, MSGBOX_YESNO
 	return
@@ -299,44 +4647,6 @@ LilycoveCity_EventScript_BrendanAskToBattleAgain::
 LilycoveCity_EventScript_BrendanAskToBattle::
 	msgbox LilycoveCity_Text_BrendanShoppingLetsBattle, MSGBOX_YESNO
 	return
-
-LilycoveCity_EventScript_DeclineBrendanBattle::
-	setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
-	msgbox LilycoveCity_Text_BrendanNoConfidence, MSGBOX_DEFAULT
-	savebgm MUS_DUMMY
-	fadedefaultbgm
-	release
-	end
-
-LilycoveCity_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TREECKO, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_TORCHIC, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_LILYCOVE_MUDKIP, LilycoveCity_Text_MayDefeat
-	goto LilycoveCity_EventScript_DefeatedMay
-	end
-
-LilycoveCity_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TREECKO, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
-
-LilycoveCity_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_TORCHIC, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
-
-LilycoveCity_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_LILYCOVE_MUDKIP, LilycoveCity_Text_BrendanDefeat
-	goto LilycoveCity_EventScript_DefeatedBrendan
-	end
 
 LilycoveCity_EventScript_DefeatedMay::
 	msgbox LilycoveCity_Text_MayGoingBackToLittleroot, MSGBOX_DEFAULT

@@ -404,16 +404,16 @@ Route110_EventScript_RivalScene::
 	goto_if_eq VAR_RESULT, STYLE_DAWN, Route110_EventScript_StartBattle_Lucas
 	goto_if_eq VAR_RESULT, STYLE_HILBERT, Route110_EventScript_StartBattle_Hilda
 	goto_if_eq VAR_RESULT, STYLE_HILDA, Route110_EventScript_StartBattle_Hilbert
-@	 goto_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_StartBattle_Rosa
-@	 goto_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_StartBattle_Nate
-@	goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Serena
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Calem
-@	goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Selene
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Elio
-@	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Gloria
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Victor
-@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Juliana
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Florian
+	goto_if_eq VAR_RESULT, STYLE_NATE, Route110_EventScript_StartBattle_Rosa
+	goto_if_eq VAR_RESULT, STYLE_ROSA, Route110_EventScript_StartBattle_Nate
+	goto_if_eq VAR_RESULT, STYLE_CALEM, Route110_EventScript_StartBattle_Serena
+	goto_if_eq VAR_RESULT, STYLE_SERENA, Route110_EventScript_StartBattle_Calem
+	goto_if_eq VAR_RESULT, STYLE_ELIO, Route110_EventScript_StartBattle_Selene
+	goto_if_eq VAR_RESULT, STYLE_SELENE, Route110_EventScript_StartBattle_Elio
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, Route110_EventScript_StartBattle_Gloria
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, Route110_EventScript_StartBattle_Victor
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, Route110_EventScript_StartBattle_Juliana
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, Route110_EventScript_StartBattle_Florian
 	end
 
 Route110_EventScript_GiveItemfinder::

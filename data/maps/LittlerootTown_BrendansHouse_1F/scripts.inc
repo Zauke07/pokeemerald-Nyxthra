@@ -10,6 +10,7 @@ LittlerootTown_BrendansHouse_1F_OnLoad:
 	end
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
@@ -23,11 +24,11 @@ LittlerootTown_BrendansHouse_1F_EventScript_SetReadyToMeetBrendan::
 	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
 	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_1F_EventScript_Ready
 	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
-@	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_1F_EventScript_Ready
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_1F_EventScript_Ready
 	return
 
 LittlerootTown_BrendansHouse_1F_EventScript_Ready::

@@ -3,6 +3,7 @@ Testlabor_MapScripts::
 	.byte 0
 
 Testlabor_OnTransition:
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	clearflag FLAG_ENCOUNTERED_ENTEI
 	clearflag FLAG_ENCOUNTERED_RAIKOU
 	clearflag FLAG_ENCOUNTERED_SUICUNE

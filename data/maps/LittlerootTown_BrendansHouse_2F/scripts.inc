@@ -37,16 +37,16 @@ LittlerootTown_BrendansHouse_2F_EventScript_TryUpdateBrendanPos::
 	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	goto_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@ 	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 
 	@ Die Bedingung mit dem Pokedex-Upgrade bleibt unverändert
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_Ret
@@ -64,11 +64,11 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan::
 	goto_if_eq VAR_RESULT, STYLE_LYRA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	goto_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	goto_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan
 	return
 
 LittlerootTown_BrendansHouse_2F_EventScript_SetReadyToMeetBrendan::
@@ -91,16 +91,16 @@ LittlerootTown_BrendansHouse_2F_EventScript_CheckInitDecor::
 	goto_if_eq VAR_RESULT, STYLE_DAWN, SecretBase_EventScript_InitDecorations
 	goto_if_eq VAR_RESULT, STYLE_HILBERT, SecretBase_EventScript_InitDecorations
 	goto_if_eq VAR_RESULT, STYLE_HILDA, SecretBase_EventScript_InitDecorations
-@ 	goto_if_eq VAR_RESULT, STYLE_NATE, SecretBase_EventScript_InitDecorations
-@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_CALEM, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_ELIO, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_VICTOR, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, SecretBase_EventScript_InitDecorations
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_NATE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_ROSA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_CALEM, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SERENA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_ELIO, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_SELENE, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, SecretBase_EventScript_InitDecorations
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, SecretBase_EventScript_InitDecorations
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::

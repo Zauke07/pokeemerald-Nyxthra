@@ -4,6 +4,7 @@ Route103_MapScripts::
 	.byte 0
 
 Route103_OnTransition:
+	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call ProfBirch_EventScript_UpdateLocation
 	end
 
@@ -48,26 +49,26 @@ Route103_EventScript_ShowRivalMessage::
 	goto_if_eq Route103_EventScript_Rival_HILDA
 	compare VAR_TEMP_0, STYLE_HILDA
 	goto_if_eq Route103_EventScript_Rival_HILBERT
-	@compare VAR_TEMP_0, STYLE_NATE
-	@goto_if_eq Route103_EventScript_Rival_ROSA
-	@compare VAR_TEMP_0, STYLE_ROSA
-	@goto_if_eq Route103_EventScript_Rival_NATE
-	@compare VAR_TEMP_0, STYLE_CALEM
-	@goto_if_eq Route103_EventScript_Rival_SERENA
-	@compare VAR_TEMP_0, STYLE_SERENA
-	@goto_if_eq Route103_EventScript_Rival_CALEM
-	@compare VAR_TEMP_0, STYLE_ELIO
-	@goto_if_eq Route103_EventScript_Rival_SELENE
-	@compare VAR_TEMP_0, STYLE_SELENE
-	@goto_if_eq Route103_EventScript_Rival_ELIO
-	@compare VAR_TEMP_0, STYLE_VICTOR
-	@goto_if_eq Route103_EventScript_Rival_GLORIA
-	@compare VAR_TEMP_0, STYLE_GLORIA
-	@goto_if_eq Route103_EventScript_Rival_VICTOR
-	@compare VAR_TEMP_0, STYLE_FLORIAN
-	@goto_if_eq Route103_EventScript_Rival_JULIANA
-	@compare VAR_TEMP_0, STYLE_JULIANA
-	@goto_if_eq Route103_EventScript_Rival_FLORIAN
+	compare VAR_TEMP_0, STYLE_NATE
+	goto_if_eq Route103_EventScript_Rival_ROSA
+	compare VAR_TEMP_0, STYLE_ROSA
+	goto_if_eq Route103_EventScript_Rival_NATE
+	compare VAR_TEMP_0, STYLE_CALEM
+	goto_if_eq Route103_EventScript_Rival_SERENA
+	compare VAR_TEMP_0, STYLE_SERENA
+	goto_if_eq Route103_EventScript_Rival_CALEM
+	compare VAR_TEMP_0, STYLE_ELIO
+	goto_if_eq Route103_EventScript_Rival_SELENE
+	compare VAR_TEMP_0, STYLE_SELENE
+	goto_if_eq Route103_EventScript_Rival_ELIO
+	compare VAR_TEMP_0, STYLE_VICTOR
+	goto_if_eq Route103_EventScript_Rival_GLORIA
+	compare VAR_TEMP_0, STYLE_GLORIA
+	goto_if_eq Route103_EventScript_Rival_VICTOR
+	compare VAR_TEMP_0, STYLE_FLORIAN
+	goto_if_eq Route103_EventScript_Rival_JULIANA
+	compare VAR_TEMP_0, STYLE_JULIANA
+	goto_if_eq Route103_EventScript_Rival_FLORIAN
 	bufferintvar1 VAR_TEMP_1
 	bufferintvar2 VAR_STARTER_MON
 	msgbox Text_Debug_StarterRegion, MSGBOX_DEFAULT

@@ -109,16 +109,16 @@ LittlerootTown_EventScript_SetMomStandingInFrontOfDoorPos::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetMomInFrontOfDoorMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetMomInFrontOfDoorFemale
 	return
 
 LittlerootTown_EventScript_SetMomInFrontOfDoorMale::
@@ -290,16 +290,16 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgrade::
 	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
 	compare VAR_RESULT, STYLE_HILBERT
 	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
-@	compare VAR_RESULT, STYLE_NATE
-@	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
-@	compare VAR_RESULT, STYLE_CALEM
-@	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
-@	compare VAR_RESULT, STYLE_ELIO
-@	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
-@	compare VAR_RESULT, STYLE_VICTOR
-@	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
-@	compare VAR_RESULT, STYLE_FLORIAN
-@	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
+	compare VAR_RESULT, STYLE_NATE
+	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
+	compare VAR_RESULT, STYLE_CALEM
+	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
+	compare VAR_RESULT, STYLE_ELIO
+	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
+	compare VAR_RESULT, STYLE_VICTOR
+	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
+	compare VAR_RESULT, STYLE_FLORIAN
+	goto_if_eq LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeRight
 
 	goto LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeLeft
 
@@ -548,16 +548,16 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomNoticePlayerFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomNoticePlayerMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomNoticePlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomNoticePlayerMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomNoticePlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomNoticePlayerMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomNoticePlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomNoticePlayerMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomNoticePlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomNoticePlayerMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomNoticePlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomNoticePlayerMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomNoticePlayerFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomNoticePlayerMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomNoticePlayerFemale
 
 	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
 	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
@@ -569,16 +569,16 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetHomeDoorCoordsMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
 
 	msgbox LittlerootTown_Text_WaitPlayer, MSGBOX_DEFAULT
 	closemessage
@@ -592,16 +592,16 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomApproachPlayerFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomApproachPlayerMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomApproachPlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomApproachPlayerMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomApproachPlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomApproachPlayerMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomApproachPlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomApproachPlayerMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomApproachPlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomApproachPlayerMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomApproachPlayerFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomApproachPlayerMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomApproachPlayerFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomApproachPlayerMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomApproachPlayerFemale
 	call LittlerootTown_EventScript_GiveRunningShoes
 	call_if_eq VAR_RESULT, STYLE_BRENDAN, LittlerootTown_EventScript_MomReturnHomeMale
 	call_if_eq VAR_RESULT, STYLE_MAY, LittlerootTown_EventScript_MomReturnHomeFemale
@@ -613,16 +613,16 @@ LittlerootTown_EventScript_GiveRunningShoesTrigger::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_MomReturnHomeFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_MomReturnHomeMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_MomReturnHomeFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomReturnHomeMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomReturnHomeFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomReturnHomeMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomReturnHomeFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomReturnHomeMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomReturnHomeFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomReturnHomeMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomReturnHomeFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomReturnHomeMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_MomReturnHomeFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_MomReturnHomeMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_MomReturnHomeFemale
 
 	goto LittlerootTown_EventScript_SetReceivedRunningShoes
 	end
@@ -1023,16 +1023,16 @@ LittlerootTown_EventScript_Mom::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_EventScript_SetHomeDoorCoordsMale
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
-@	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
-@	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_NATE, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_ROSA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_CALEM, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_SERENA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_ELIO, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_SELENE, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_VICTOR, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_GLORIA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
+	call_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_EventScript_SetHomeDoorCoordsMale
+	call_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_EventScript_SetHomeDoorCoordsFemale
 
 	call LittlerootTown_EventScript_GiveRunningShoes
 	applymovement LOCALID_LITTLEROOT_MOM, Common_Movement_WalkInPlaceFasterUp

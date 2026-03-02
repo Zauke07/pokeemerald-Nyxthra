@@ -4,7 +4,7 @@ OldaleTown_MapScripts::
 
 OldaleTown_OnTransition:
     setflag FLAG_VISITED_OLDALE_TOWN
-    call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+    @call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
     call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
     call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
     call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
@@ -267,16 +267,16 @@ OldaleTown_EventScript_ShowRivalMessage::
 	goto_if_eq VAR_RESULT, STYLE_DAWN, OldaleTown_EventScript_ShowBrendanMessage
 	goto_if_eq VAR_RESULT, STYLE_HILBERT, OldaleTown_EventScript_ShowMayMessage
 	goto_if_eq VAR_RESULT, STYLE_HILDA, OldaleTown_EventScript_ShowBrendanMessage
-@ 	goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
-@ 	goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
-@	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
-@	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
-@	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
-@	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
-@	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
-@	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
-@	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
-@	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_NATE, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_ROSA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_CALEM, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SERENA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_ELIO, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_SELENE, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_VICTOR, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_GLORIA, OldaleTown_EventScript_ShowBrendanMessage
+	goto_if_eq VAR_RESULT, STYLE_FLORIAN, OldaleTown_EventScript_ShowMayMessage
+	goto_if_eq VAR_RESULT, STYLE_JULIANA, OldaleTown_EventScript_ShowBrendanMessage
 	end
 
 OldaleTown_EventScript_ShowMayMessage::

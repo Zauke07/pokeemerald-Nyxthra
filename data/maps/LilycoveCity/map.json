@@ -425,6 +425,13 @@
       "elevation": 0,
       "dest_map": "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_1F",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 53,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_TESTLABOR",
+      "dest_warp_id": "6"
     }
   ],
   "coord_events": [],

@@ -844,6 +844,3614 @@ RustboroCity_EventScript_ShowRivalMessage::
 	goto_if_eq RustboroCity_EventScript_Rival_HILDA
 	compare VAR_TEMP_0, STYLE_HILDA
 	goto_if_eq RustboroCity_EventScript_Rival_HILBERT
+	compare VAR_TEMP_0, STYLE_NATE
+	goto_if_eq RustboroCity_EventScript_Rival_ROSA
+	compare VAR_TEMP_0, STYLE_ROSA
+	goto_if_eq RustboroCity_EventScript_Rival_NATE
+	compare VAR_TEMP_0, STYLE_CALEM
+	goto_if_eq RustboroCity_EventScript_Rival_SERENA
+	compare VAR_TEMP_0, STYLE_SERENA
+	goto_if_eq RustboroCity_EventScript_Rival_CALEM
+	compare VAR_TEMP_0, STYLE_ELIO
+	goto_if_eq RustboroCity_EventScript_Rival_SELENE
+	compare VAR_TEMP_0, STYLE_SELENE
+	goto_if_eq RustboroCity_EventScript_Rival_ELIO
+	compare VAR_TEMP_0, STYLE_VICTOR
+	goto_if_eq RustboroCity_EventScript_Rival_GLORIA
+	compare VAR_TEMP_0, STYLE_GLORIA
+	goto_if_eq RustboroCity_EventScript_Rival_VICTOR
+	compare VAR_TEMP_0, STYLE_FLORIAN
+	goto_if_eq RustboroCity_EventScript_Rival_JULIANA
+	compare VAR_TEMP_0, STYLE_JULIANA
+	goto_if_eq RustboroCity_EventScript_Rival_FLORIAN
+	end
+
+RustboroCity_EventScript_Rival_BRENDAN::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleBrendan
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_BrendanAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleBrendan
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleBrendan::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleBrendan_Kanto
+	case 1, RustboroCity_EventScript_BattleBrendan_Johto
+	case 2, RustboroCity_EventScript_BattleBrendan_Hoenn
+	case 3, RustboroCity_EventScript_BattleBrendan_Sinnoh
+	case 4, RustboroCity_EventScript_BattleBrendan_Unova
+	case 5, RustboroCity_EventScript_BattleBrendan_Kalos
+	case 6, RustboroCity_EventScript_BattleBrendan_Alola
+	case 7, RustboroCity_EventScript_BattleBrendan_Galar
+	case 8, RustboroCity_EventScript_BattleBrendan_Paldea
+	end
+
+RustboroCity_EventScript_BattleBrendan_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleBrendan_Charmander
+	case 2, RustboroCity_EventScript_BattleBrendan_Squirtle
+	end
+
+RustboroCity_EventScript_BattleBrendan_Bulbasaur::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Charmander::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Squirtle::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Chikorita
+	case 1, RustboroCity_EventScript_BattleBrendan_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleBrendan_Totodile
+	end
+
+RustboroCity_EventScript_BattleBrendan_Chikorita::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Cyndaquil::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Totodile::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Treecko
+	case 1, RustboroCity_EventScript_BattleBrendan_Torchic
+	case 2, RustboroCity_EventScript_BattleBrendan_Mudkip
+	end
+
+RustboroCity_EventScript_BattleBrendan_Treecko::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Torchic::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Mudkip::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Turtwig
+	case 1, RustboroCity_EventScript_BattleBrendan_Chimchar
+	case 2, RustboroCity_EventScript_BattleBrendan_Piplup
+	end
+
+RustboroCity_EventScript_BattleBrendan_Turtwig::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Chimchar::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Piplup::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Snivy
+	case 1, RustboroCity_EventScript_BattleBrendan_Tepig
+	case 2, RustboroCity_EventScript_BattleBrendan_Oshawott
+	end
+
+RustboroCity_EventScript_BattleBrendan_Snivy::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Tepig::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Oshawott::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Chespin
+	case 1, RustboroCity_EventScript_BattleBrendan_Fennekin
+	case 2, RustboroCity_EventScript_BattleBrendan_Froakie
+	end
+
+RustboroCity_EventScript_BattleBrendan_Chespin::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Fennekin::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Froakie::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Rowlet
+	case 1, RustboroCity_EventScript_BattleBrendan_Litten
+	case 2, RustboroCity_EventScript_BattleBrendan_Popplio
+	end
+
+RustboroCity_EventScript_BattleBrendan_Rowlet::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Litten::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Popplio::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Grookey
+	case 1, RustboroCity_EventScript_BattleBrendan_Scorbunny
+	case 2, RustboroCity_EventScript_BattleBrendan_Sobble
+	end
+
+RustboroCity_EventScript_BattleBrendan_Grookey::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Scorbunny::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Sobble::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleBrendan_Sprigatito
+	case 1, RustboroCity_EventScript_BattleBrendan_Fuecoco
+	case 2, RustboroCity_EventScript_BattleBrendan_Quaxly
+	end
+
+RustboroCity_EventScript_BattleBrendan_Sprigatito::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Fuecoco::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleBrendan_Quaxly::
+	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_BrendanBrineyHint
+	end
+
+RustboroCity_EventScript_BrendanBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_CALEM::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_CalemBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_CalemAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleCalem
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_CalemAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleCalem
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleCalem::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleCalem_Kanto
+	case 1, RustboroCity_EventScript_BattleCalem_Johto
+	case 2, RustboroCity_EventScript_BattleCalem_Hoenn
+	case 3, RustboroCity_EventScript_BattleCalem_Sinnoh
+	case 4, RustboroCity_EventScript_BattleCalem_Unova
+	case 5, RustboroCity_EventScript_BattleCalem_Kalos
+	case 6, RustboroCity_EventScript_BattleCalem_Alola
+	case 7, RustboroCity_EventScript_BattleCalem_Galar
+	case 8, RustboroCity_EventScript_BattleCalem_Paldea
+	end
+
+RustboroCity_EventScript_BattleCalem_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleCalem_Charmander
+	case 2, RustboroCity_EventScript_BattleCalem_Squirtle
+	end
+
+RustboroCity_EventScript_BattleCalem_Bulbasaur::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Charmander::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Squirtle::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Chikorita
+	case 1, RustboroCity_EventScript_BattleCalem_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleCalem_Totodile
+	end
+
+RustboroCity_EventScript_BattleCalem_Chikorita::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Cyndaquil::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Totodile::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Treecko
+	case 1, RustboroCity_EventScript_BattleCalem_Torchic
+	case 2, RustboroCity_EventScript_BattleCalem_Mudkip
+	end
+
+RustboroCity_EventScript_BattleCalem_Treecko::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Torchic::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Mudkip::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Turtwig
+	case 1, RustboroCity_EventScript_BattleCalem_Chimchar
+	case 2, RustboroCity_EventScript_BattleCalem_Piplup
+	end
+
+RustboroCity_EventScript_BattleCalem_Turtwig::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Chimchar::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Piplup::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Snivy
+	case 1, RustboroCity_EventScript_BattleCalem_Tepig
+	case 2, RustboroCity_EventScript_BattleCalem_Oshawott
+	end
+
+RustboroCity_EventScript_BattleCalem_Snivy::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Tepig::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Oshawott::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Chespin
+	case 1, RustboroCity_EventScript_BattleCalem_Fennekin
+	case 2, RustboroCity_EventScript_BattleCalem_Froakie
+	end
+
+RustboroCity_EventScript_BattleCalem_Chespin::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Fennekin::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Froakie::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Rowlet
+	case 1, RustboroCity_EventScript_BattleCalem_Litten
+	case 2, RustboroCity_EventScript_BattleCalem_Popplio
+	end
+
+RustboroCity_EventScript_BattleCalem_Rowlet::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Litten::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Popplio::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Grookey
+	case 1, RustboroCity_EventScript_BattleCalem_Scorbunny
+	case 2, RustboroCity_EventScript_BattleCalem_Sobble
+	end
+
+RustboroCity_EventScript_BattleCalem_Grookey::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Scorbunny::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Sobble::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleCalem_Sprigatito
+	case 1, RustboroCity_EventScript_BattleCalem_Fuecoco
+	case 2, RustboroCity_EventScript_BattleCalem_Quaxly
+	end
+
+RustboroCity_EventScript_BattleCalem_Sprigatito::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Fuecoco::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_BattleCalem_Quaxly::
+	trainerbattle_no_intro TRAINER_CALEM_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_CalemBrineyHint
+	end
+
+RustboroCity_EventScript_CalemBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_DAWN::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_DawnBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_DawnAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleDawn
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_DawnAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleDawn
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleDawn::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleDawn_Kanto
+	case 1, RustboroCity_EventScript_BattleDawn_Johto
+	case 2, RustboroCity_EventScript_BattleDawn_Hoenn
+	case 3, RustboroCity_EventScript_BattleDawn_Sinnoh
+	case 4, RustboroCity_EventScript_BattleDawn_Unova
+	case 5, RustboroCity_EventScript_BattleDawn_Kalos
+	case 6, RustboroCity_EventScript_BattleDawn_Alola
+	case 7, RustboroCity_EventScript_BattleDawn_Galar
+	case 8, RustboroCity_EventScript_BattleDawn_Paldea
+	end
+
+RustboroCity_EventScript_BattleDawn_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleDawn_Charmander
+	case 2, RustboroCity_EventScript_BattleDawn_Squirtle
+	end
+
+RustboroCity_EventScript_BattleDawn_Bulbasaur::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Charmander::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Squirtle::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Chikorita
+	case 1, RustboroCity_EventScript_BattleDawn_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleDawn_Totodile
+	end
+
+RustboroCity_EventScript_BattleDawn_Chikorita::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Cyndaquil::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Totodile::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Treecko
+	case 1, RustboroCity_EventScript_BattleDawn_Torchic
+	case 2, RustboroCity_EventScript_BattleDawn_Mudkip
+	end
+
+RustboroCity_EventScript_BattleDawn_Treecko::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Torchic::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Mudkip::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Turtwig
+	case 1, RustboroCity_EventScript_BattleDawn_Chimchar
+	case 2, RustboroCity_EventScript_BattleDawn_Piplup
+	end
+
+RustboroCity_EventScript_BattleDawn_Turtwig::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Chimchar::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Piplup::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Snivy
+	case 1, RustboroCity_EventScript_BattleDawn_Tepig
+	case 2, RustboroCity_EventScript_BattleDawn_Oshawott
+	end
+
+RustboroCity_EventScript_BattleDawn_Snivy::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Tepig::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Oshawott::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Chespin
+	case 1, RustboroCity_EventScript_BattleDawn_Fennekin
+	case 2, RustboroCity_EventScript_BattleDawn_Froakie
+	end
+
+RustboroCity_EventScript_BattleDawn_Chespin::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Fennekin::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Froakie::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Rowlet
+	case 1, RustboroCity_EventScript_BattleDawn_Litten
+	case 2, RustboroCity_EventScript_BattleDawn_Popplio
+	end
+
+RustboroCity_EventScript_BattleDawn_Rowlet::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Litten::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Popplio::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Grookey
+	case 1, RustboroCity_EventScript_BattleDawn_Scorbunny
+	case 2, RustboroCity_EventScript_BattleDawn_Sobble
+	end
+
+RustboroCity_EventScript_BattleDawn_Grookey::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Scorbunny::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Sobble::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleDawn_Sprigatito
+	case 1, RustboroCity_EventScript_BattleDawn_Fuecoco
+	case 2, RustboroCity_EventScript_BattleDawn_Quaxly
+	end
+
+RustboroCity_EventScript_BattleDawn_Sprigatito::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Fuecoco::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_BattleDawn_Quaxly::
+	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_DawnBrineyHint
+	end
+
+RustboroCity_EventScript_DawnBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_ELIO::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_ElioBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_ElioAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleElio
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_ElioAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleElio
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleElio::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleElio_Kanto
+	case 1, RustboroCity_EventScript_BattleElio_Johto
+	case 2, RustboroCity_EventScript_BattleElio_Hoenn
+	case 3, RustboroCity_EventScript_BattleElio_Sinnoh
+	case 4, RustboroCity_EventScript_BattleElio_Unova
+	case 5, RustboroCity_EventScript_BattleElio_Kalos
+	case 6, RustboroCity_EventScript_BattleElio_Alola
+	case 7, RustboroCity_EventScript_BattleElio_Galar
+	case 8, RustboroCity_EventScript_BattleElio_Paldea
+	end
+
+RustboroCity_EventScript_BattleElio_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleElio_Charmander
+	case 2, RustboroCity_EventScript_BattleElio_Squirtle
+	end
+
+RustboroCity_EventScript_BattleElio_Bulbasaur::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Charmander::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Squirtle::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Chikorita
+	case 1, RustboroCity_EventScript_BattleElio_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleElio_Totodile
+	end
+
+RustboroCity_EventScript_BattleElio_Chikorita::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Cyndaquil::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Totodile::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Treecko
+	case 1, RustboroCity_EventScript_BattleElio_Torchic
+	case 2, RustboroCity_EventScript_BattleElio_Mudkip
+	end
+
+RustboroCity_EventScript_BattleElio_Treecko::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Torchic::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Mudkip::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Turtwig
+	case 1, RustboroCity_EventScript_BattleElio_Chimchar
+	case 2, RustboroCity_EventScript_BattleElio_Piplup
+	end
+
+RustboroCity_EventScript_BattleElio_Turtwig::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Chimchar::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Piplup::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Snivy
+	case 1, RustboroCity_EventScript_BattleElio_Tepig
+	case 2, RustboroCity_EventScript_BattleElio_Oshawott
+	end
+
+RustboroCity_EventScript_BattleElio_Snivy::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Tepig::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Oshawott::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Chespin
+	case 1, RustboroCity_EventScript_BattleElio_Fennekin
+	case 2, RustboroCity_EventScript_BattleElio_Froakie
+	end
+
+RustboroCity_EventScript_BattleElio_Chespin::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Fennekin::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Froakie::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Rowlet
+	case 1, RustboroCity_EventScript_BattleElio_Litten
+	case 2, RustboroCity_EventScript_BattleElio_Popplio
+	end
+
+RustboroCity_EventScript_BattleElio_Rowlet::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Litten::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Popplio::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Grookey
+	case 1, RustboroCity_EventScript_BattleElio_Scorbunny
+	case 2, RustboroCity_EventScript_BattleElio_Sobble
+	end
+
+RustboroCity_EventScript_BattleElio_Grookey::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Scorbunny::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Sobble::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleElio_Sprigatito
+	case 1, RustboroCity_EventScript_BattleElio_Fuecoco
+	case 2, RustboroCity_EventScript_BattleElio_Quaxly
+	end
+
+RustboroCity_EventScript_BattleElio_Sprigatito::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Fuecoco::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_BattleElio_Quaxly::
+	trainerbattle_no_intro TRAINER_ELIO_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_ElioBrineyHint
+	end
+
+RustboroCity_EventScript_ElioBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_ETHAN::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_EthanBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_EthanAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleEthan
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_EthanAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleEthan
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleEthan::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleEthan_Kanto
+	case 1, RustboroCity_EventScript_BattleEthan_Johto
+	case 2, RustboroCity_EventScript_BattleEthan_Hoenn
+	case 3, RustboroCity_EventScript_BattleEthan_Sinnoh
+	case 4, RustboroCity_EventScript_BattleEthan_Unova
+	case 5, RustboroCity_EventScript_BattleEthan_Kalos
+	case 6, RustboroCity_EventScript_BattleEthan_Alola
+	case 7, RustboroCity_EventScript_BattleEthan_Galar
+	case 8, RustboroCity_EventScript_BattleEthan_Paldea
+	end
+
+RustboroCity_EventScript_BattleEthan_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleEthan_Charmander
+	case 2, RustboroCity_EventScript_BattleEthan_Squirtle
+	end
+
+RustboroCity_EventScript_BattleEthan_Bulbasaur::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Charmander::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Squirtle::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Chikorita
+	case 1, RustboroCity_EventScript_BattleEthan_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleEthan_Totodile
+	end
+
+RustboroCity_EventScript_BattleEthan_Chikorita::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Cyndaquil::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Totodile::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Treecko
+	case 1, RustboroCity_EventScript_BattleEthan_Torchic
+	case 2, RustboroCity_EventScript_BattleEthan_Mudkip
+	end
+
+RustboroCity_EventScript_BattleEthan_Treecko::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Torchic::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Mudkip::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Turtwig
+	case 1, RustboroCity_EventScript_BattleEthan_Chimchar
+	case 2, RustboroCity_EventScript_BattleEthan_Piplup
+	end
+
+RustboroCity_EventScript_BattleEthan_Turtwig::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Chimchar::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Piplup::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Snivy
+	case 1, RustboroCity_EventScript_BattleEthan_Tepig
+	case 2, RustboroCity_EventScript_BattleEthan_Oshawott
+	end
+
+RustboroCity_EventScript_BattleEthan_Snivy::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Tepig::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Oshawott::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Chespin
+	case 1, RustboroCity_EventScript_BattleEthan_Fennekin
+	case 2, RustboroCity_EventScript_BattleEthan_Froakie
+	end
+
+RustboroCity_EventScript_BattleEthan_Chespin::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Fennekin::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Froakie::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Rowlet
+	case 1, RustboroCity_EventScript_BattleEthan_Litten
+	case 2, RustboroCity_EventScript_BattleEthan_Popplio
+	end
+
+RustboroCity_EventScript_BattleEthan_Rowlet::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Litten::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Popplio::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Grookey
+	case 1, RustboroCity_EventScript_BattleEthan_Scorbunny
+	case 2, RustboroCity_EventScript_BattleEthan_Sobble
+	end
+
+RustboroCity_EventScript_BattleEthan_Grookey::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Scorbunny::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Sobble::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleEthan_Sprigatito
+	case 1, RustboroCity_EventScript_BattleEthan_Fuecoco
+	case 2, RustboroCity_EventScript_BattleEthan_Quaxly
+	end
+
+RustboroCity_EventScript_BattleEthan_Sprigatito::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Fuecoco::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_BattleEthan_Quaxly::
+	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_EthanBrineyHint
+	end
+
+RustboroCity_EventScript_EthanBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_FLORIAN::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_FlorianBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_FlorianAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleFlorian
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_FlorianAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleFlorian
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleFlorian::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleFlorian_Kanto
+	case 1, RustboroCity_EventScript_BattleFlorian_Johto
+	case 2, RustboroCity_EventScript_BattleFlorian_Hoenn
+	case 3, RustboroCity_EventScript_BattleFlorian_Sinnoh
+	case 4, RustboroCity_EventScript_BattleFlorian_Unova
+	case 5, RustboroCity_EventScript_BattleFlorian_Kalos
+	case 6, RustboroCity_EventScript_BattleFlorian_Alola
+	case 7, RustboroCity_EventScript_BattleFlorian_Galar
+	case 8, RustboroCity_EventScript_BattleFlorian_Paldea
+	end
+
+RustboroCity_EventScript_BattleFlorian_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleFlorian_Charmander
+	case 2, RustboroCity_EventScript_BattleFlorian_Squirtle
+	end
+
+RustboroCity_EventScript_BattleFlorian_Bulbasaur::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Charmander::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Squirtle::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Chikorita
+	case 1, RustboroCity_EventScript_BattleFlorian_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleFlorian_Totodile
+	end
+
+RustboroCity_EventScript_BattleFlorian_Chikorita::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Cyndaquil::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Totodile::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Treecko
+	case 1, RustboroCity_EventScript_BattleFlorian_Torchic
+	case 2, RustboroCity_EventScript_BattleFlorian_Mudkip
+	end
+
+RustboroCity_EventScript_BattleFlorian_Treecko::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Torchic::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Mudkip::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Turtwig
+	case 1, RustboroCity_EventScript_BattleFlorian_Chimchar
+	case 2, RustboroCity_EventScript_BattleFlorian_Piplup
+	end
+
+RustboroCity_EventScript_BattleFlorian_Turtwig::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Chimchar::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Piplup::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Snivy
+	case 1, RustboroCity_EventScript_BattleFlorian_Tepig
+	case 2, RustboroCity_EventScript_BattleFlorian_Oshawott
+	end
+
+RustboroCity_EventScript_BattleFlorian_Snivy::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Tepig::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Oshawott::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Chespin
+	case 1, RustboroCity_EventScript_BattleFlorian_Fennekin
+	case 2, RustboroCity_EventScript_BattleFlorian_Froakie
+	end
+
+RustboroCity_EventScript_BattleFlorian_Chespin::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Fennekin::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Froakie::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Rowlet
+	case 1, RustboroCity_EventScript_BattleFlorian_Litten
+	case 2, RustboroCity_EventScript_BattleFlorian_Popplio
+	end
+
+RustboroCity_EventScript_BattleFlorian_Rowlet::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Litten::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Popplio::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Grookey
+	case 1, RustboroCity_EventScript_BattleFlorian_Scorbunny
+	case 2, RustboroCity_EventScript_BattleFlorian_Sobble
+	end
+
+RustboroCity_EventScript_BattleFlorian_Grookey::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Scorbunny::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Sobble::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleFlorian_Sprigatito
+	case 1, RustboroCity_EventScript_BattleFlorian_Fuecoco
+	case 2, RustboroCity_EventScript_BattleFlorian_Quaxly
+	end
+
+RustboroCity_EventScript_BattleFlorian_Sprigatito::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Fuecoco::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_BattleFlorian_Quaxly::
+	trainerbattle_no_intro TRAINER_FLORIAN_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_FlorianBrineyHint
+	end
+
+RustboroCity_EventScript_FlorianBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_GLORIA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_GloriaBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_GloriaAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleGloria
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_GloriaAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleGloria
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleGloria::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleGloria_Kanto
+	case 1, RustboroCity_EventScript_BattleGloria_Johto
+	case 2, RustboroCity_EventScript_BattleGloria_Hoenn
+	case 3, RustboroCity_EventScript_BattleGloria_Sinnoh
+	case 4, RustboroCity_EventScript_BattleGloria_Unova
+	case 5, RustboroCity_EventScript_BattleGloria_Kalos
+	case 6, RustboroCity_EventScript_BattleGloria_Alola
+	case 7, RustboroCity_EventScript_BattleGloria_Galar
+	case 8, RustboroCity_EventScript_BattleGloria_Paldea
+	end
+
+RustboroCity_EventScript_BattleGloria_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleGloria_Charmander
+	case 2, RustboroCity_EventScript_BattleGloria_Squirtle
+	end
+
+RustboroCity_EventScript_BattleGloria_Bulbasaur::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Charmander::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Squirtle::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Chikorita
+	case 1, RustboroCity_EventScript_BattleGloria_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleGloria_Totodile
+	end
+
+RustboroCity_EventScript_BattleGloria_Chikorita::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Cyndaquil::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Totodile::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Treecko
+	case 1, RustboroCity_EventScript_BattleGloria_Torchic
+	case 2, RustboroCity_EventScript_BattleGloria_Mudkip
+	end
+
+RustboroCity_EventScript_BattleGloria_Treecko::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Torchic::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Mudkip::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Turtwig
+	case 1, RustboroCity_EventScript_BattleGloria_Chimchar
+	case 2, RustboroCity_EventScript_BattleGloria_Piplup
+	end
+
+RustboroCity_EventScript_BattleGloria_Turtwig::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Chimchar::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Piplup::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Snivy
+	case 1, RustboroCity_EventScript_BattleGloria_Tepig
+	case 2, RustboroCity_EventScript_BattleGloria_Oshawott
+	end
+
+RustboroCity_EventScript_BattleGloria_Snivy::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Tepig::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Oshawott::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Chespin
+	case 1, RustboroCity_EventScript_BattleGloria_Fennekin
+	case 2, RustboroCity_EventScript_BattleGloria_Froakie
+	end
+
+RustboroCity_EventScript_BattleGloria_Chespin::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Fennekin::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Froakie::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Rowlet
+	case 1, RustboroCity_EventScript_BattleGloria_Litten
+	case 2, RustboroCity_EventScript_BattleGloria_Popplio
+	end
+
+RustboroCity_EventScript_BattleGloria_Rowlet::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Litten::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Popplio::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Grookey
+	case 1, RustboroCity_EventScript_BattleGloria_Scorbunny
+	case 2, RustboroCity_EventScript_BattleGloria_Sobble
+	end
+
+RustboroCity_EventScript_BattleGloria_Grookey::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Scorbunny::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Sobble::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleGloria_Sprigatito
+	case 1, RustboroCity_EventScript_BattleGloria_Fuecoco
+	case 2, RustboroCity_EventScript_BattleGloria_Quaxly
+	end
+
+RustboroCity_EventScript_BattleGloria_Sprigatito::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Fuecoco::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleGloria_Quaxly::
+	trainerbattle_no_intro TRAINER_GLORIA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_GloriaBrineyHint
+	end
+
+RustboroCity_EventScript_GloriaBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_HILBERT::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_HilbertBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_HilbertAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilbert
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_HilbertAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilbert
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleHilbert::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleHilbert_Kanto
+	case 1, RustboroCity_EventScript_BattleHilbert_Johto
+	case 2, RustboroCity_EventScript_BattleHilbert_Hoenn
+	case 3, RustboroCity_EventScript_BattleHilbert_Sinnoh
+	case 4, RustboroCity_EventScript_BattleHilbert_Unova
+	case 5, RustboroCity_EventScript_BattleHilbert_Kalos
+	case 6, RustboroCity_EventScript_BattleHilbert_Alola
+	case 7, RustboroCity_EventScript_BattleHilbert_Galar
+	case 8, RustboroCity_EventScript_BattleHilbert_Paldea
+	end
+
+RustboroCity_EventScript_BattleHilbert_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleHilbert_Charmander
+	case 2, RustboroCity_EventScript_BattleHilbert_Squirtle
+	end
+
+RustboroCity_EventScript_BattleHilbert_Bulbasaur::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Charmander::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Squirtle::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Chikorita
+	case 1, RustboroCity_EventScript_BattleHilbert_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleHilbert_Totodile
+	end
+
+RustboroCity_EventScript_BattleHilbert_Chikorita::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Cyndaquil::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Totodile::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Treecko
+	case 1, RustboroCity_EventScript_BattleHilbert_Torchic
+	case 2, RustboroCity_EventScript_BattleHilbert_Mudkip
+	end
+
+RustboroCity_EventScript_BattleHilbert_Treecko::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Torchic::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Mudkip::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Turtwig
+	case 1, RustboroCity_EventScript_BattleHilbert_Chimchar
+	case 2, RustboroCity_EventScript_BattleHilbert_Piplup
+	end
+
+RustboroCity_EventScript_BattleHilbert_Turtwig::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Chimchar::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Piplup::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Snivy
+	case 1, RustboroCity_EventScript_BattleHilbert_Tepig
+	case 2, RustboroCity_EventScript_BattleHilbert_Oshawott
+	end
+
+RustboroCity_EventScript_BattleHilbert_Snivy::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Tepig::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Oshawott::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Chespin
+	case 1, RustboroCity_EventScript_BattleHilbert_Fennekin
+	case 2, RustboroCity_EventScript_BattleHilbert_Froakie
+	end
+
+RustboroCity_EventScript_BattleHilbert_Chespin::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Fennekin::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Froakie::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Rowlet
+	case 1, RustboroCity_EventScript_BattleHilbert_Litten
+	case 2, RustboroCity_EventScript_BattleHilbert_Popplio
+	end
+
+RustboroCity_EventScript_BattleHilbert_Rowlet::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Litten::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Popplio::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Grookey
+	case 1, RustboroCity_EventScript_BattleHilbert_Scorbunny
+	case 2, RustboroCity_EventScript_BattleHilbert_Sobble
+	end
+
+RustboroCity_EventScript_BattleHilbert_Grookey::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Scorbunny::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Sobble::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilbert_Sprigatito
+	case 1, RustboroCity_EventScript_BattleHilbert_Fuecoco
+	case 2, RustboroCity_EventScript_BattleHilbert_Quaxly
+	end
+
+RustboroCity_EventScript_BattleHilbert_Sprigatito::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Fuecoco::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilbert_Quaxly::
+	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HilbertBrineyHint
+	end
+
+RustboroCity_EventScript_HilbertBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_HILDA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_HildaBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_HildaAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilda
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_HildaAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilda
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleHilda::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleHilda_Kanto
+	case 1, RustboroCity_EventScript_BattleHilda_Johto
+	case 2, RustboroCity_EventScript_BattleHilda_Hoenn
+	case 3, RustboroCity_EventScript_BattleHilda_Sinnoh
+	case 4, RustboroCity_EventScript_BattleHilda_Unova
+	case 5, RustboroCity_EventScript_BattleHilda_Kalos
+	case 6, RustboroCity_EventScript_BattleHilda_Alola
+	case 7, RustboroCity_EventScript_BattleHilda_Galar
+	case 8, RustboroCity_EventScript_BattleHilda_Paldea
+	end
+
+RustboroCity_EventScript_BattleHilda_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleHilda_Charmander
+	case 2, RustboroCity_EventScript_BattleHilda_Squirtle
+	end
+
+RustboroCity_EventScript_BattleHilda_Bulbasaur::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Charmander::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Squirtle::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Chikorita
+	case 1, RustboroCity_EventScript_BattleHilda_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleHilda_Totodile
+	end
+
+RustboroCity_EventScript_BattleHilda_Chikorita::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Cyndaquil::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Totodile::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Treecko
+	case 1, RustboroCity_EventScript_BattleHilda_Torchic
+	case 2, RustboroCity_EventScript_BattleHilda_Mudkip
+	end
+
+RustboroCity_EventScript_BattleHilda_Treecko::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Torchic::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Mudkip::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Turtwig
+	case 1, RustboroCity_EventScript_BattleHilda_Chimchar
+	case 2, RustboroCity_EventScript_BattleHilda_Piplup
+	end
+
+RustboroCity_EventScript_BattleHilda_Turtwig::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Chimchar::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Piplup::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Snivy
+	case 1, RustboroCity_EventScript_BattleHilda_Tepig
+	case 2, RustboroCity_EventScript_BattleHilda_Oshawott
+	end
+
+RustboroCity_EventScript_BattleHilda_Snivy::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Tepig::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Oshawott::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Chespin
+	case 1, RustboroCity_EventScript_BattleHilda_Fennekin
+	case 2, RustboroCity_EventScript_BattleHilda_Froakie
+	end
+
+RustboroCity_EventScript_BattleHilda_Chespin::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Fennekin::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Froakie::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Rowlet
+	case 1, RustboroCity_EventScript_BattleHilda_Litten
+	case 2, RustboroCity_EventScript_BattleHilda_Popplio
+	end
+
+RustboroCity_EventScript_BattleHilda_Rowlet::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Litten::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Popplio::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Grookey
+	case 1, RustboroCity_EventScript_BattleHilda_Scorbunny
+	case 2, RustboroCity_EventScript_BattleHilda_Sobble
+	end
+
+RustboroCity_EventScript_BattleHilda_Grookey::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Scorbunny::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Sobble::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleHilda_Sprigatito
+	case 1, RustboroCity_EventScript_BattleHilda_Fuecoco
+	case 2, RustboroCity_EventScript_BattleHilda_Quaxly
+	end
+
+RustboroCity_EventScript_BattleHilda_Sprigatito::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Fuecoco::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleHilda_Quaxly::
+	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_HildaBrineyHint
+	end
+
+RustboroCity_EventScript_HildaBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_JULIANA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_JulianaBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_JulianaAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleJuliana
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_JulianaAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleJuliana
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleJuliana::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleJuliana_Kanto
+	case 1, RustboroCity_EventScript_BattleJuliana_Johto
+	case 2, RustboroCity_EventScript_BattleJuliana_Hoenn
+	case 3, RustboroCity_EventScript_BattleJuliana_Sinnoh
+	case 4, RustboroCity_EventScript_BattleJuliana_Unova
+	case 5, RustboroCity_EventScript_BattleJuliana_Kalos
+	case 6, RustboroCity_EventScript_BattleJuliana_Alola
+	case 7, RustboroCity_EventScript_BattleJuliana_Galar
+	case 8, RustboroCity_EventScript_BattleJuliana_Paldea
+	end
+
+RustboroCity_EventScript_BattleJuliana_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleJuliana_Charmander
+	case 2, RustboroCity_EventScript_BattleJuliana_Squirtle
+	end
+
+RustboroCity_EventScript_BattleJuliana_Bulbasaur::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Charmander::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Squirtle::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Chikorita
+	case 1, RustboroCity_EventScript_BattleJuliana_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleJuliana_Totodile
+	end
+
+RustboroCity_EventScript_BattleJuliana_Chikorita::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Cyndaquil::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Totodile::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Treecko
+	case 1, RustboroCity_EventScript_BattleJuliana_Torchic
+	case 2, RustboroCity_EventScript_BattleJuliana_Mudkip
+	end
+
+RustboroCity_EventScript_BattleJuliana_Treecko::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Torchic::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Mudkip::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Turtwig
+	case 1, RustboroCity_EventScript_BattleJuliana_Chimchar
+	case 2, RustboroCity_EventScript_BattleJuliana_Piplup
+	end
+
+RustboroCity_EventScript_BattleJuliana_Turtwig::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Chimchar::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Piplup::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Snivy
+	case 1, RustboroCity_EventScript_BattleJuliana_Tepig
+	case 2, RustboroCity_EventScript_BattleJuliana_Oshawott
+	end
+
+RustboroCity_EventScript_BattleJuliana_Snivy::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Tepig::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Oshawott::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Chespin
+	case 1, RustboroCity_EventScript_BattleJuliana_Fennekin
+	case 2, RustboroCity_EventScript_BattleJuliana_Froakie
+	end
+
+RustboroCity_EventScript_BattleJuliana_Chespin::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Fennekin::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Froakie::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Rowlet
+	case 1, RustboroCity_EventScript_BattleJuliana_Litten
+	case 2, RustboroCity_EventScript_BattleJuliana_Popplio
+	end
+
+RustboroCity_EventScript_BattleJuliana_Rowlet::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Litten::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Popplio::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Grookey
+	case 1, RustboroCity_EventScript_BattleJuliana_Scorbunny
+	case 2, RustboroCity_EventScript_BattleJuliana_Sobble
+	end
+
+RustboroCity_EventScript_BattleJuliana_Grookey::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Scorbunny::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Sobble::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleJuliana_Sprigatito
+	case 1, RustboroCity_EventScript_BattleJuliana_Fuecoco
+	case 2, RustboroCity_EventScript_BattleJuliana_Quaxly
+	end
+
+RustboroCity_EventScript_BattleJuliana_Sprigatito::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Fuecoco::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleJuliana_Quaxly::
+	trainerbattle_no_intro TRAINER_JULIANA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_JulianaBrineyHint
+	end
+
+RustboroCity_EventScript_JulianaBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_LEAF::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_LeafBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_LeafAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLeaf
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_LeafAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLeaf
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleLeaf::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleLeaf_Kanto
+	case 1, RustboroCity_EventScript_BattleLeaf_Johto
+	case 2, RustboroCity_EventScript_BattleLeaf_Hoenn
+	case 3, RustboroCity_EventScript_BattleLeaf_Sinnoh
+	case 4, RustboroCity_EventScript_BattleLeaf_Unova
+	case 5, RustboroCity_EventScript_BattleLeaf_Kalos
+	case 6, RustboroCity_EventScript_BattleLeaf_Alola
+	case 7, RustboroCity_EventScript_BattleLeaf_Galar
+	case 8, RustboroCity_EventScript_BattleLeaf_Paldea
+	end
+
+RustboroCity_EventScript_BattleLeaf_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleLeaf_Charmander
+	case 2, RustboroCity_EventScript_BattleLeaf_Squirtle
+	end
+
+RustboroCity_EventScript_BattleLeaf_Bulbasaur::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Charmander::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Squirtle::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Chikorita
+	case 1, RustboroCity_EventScript_BattleLeaf_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleLeaf_Totodile
+	end
+
+RustboroCity_EventScript_BattleLeaf_Chikorita::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Cyndaquil::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Totodile::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Treecko
+	case 1, RustboroCity_EventScript_BattleLeaf_Torchic
+	case 2, RustboroCity_EventScript_BattleLeaf_Mudkip
+	end
+
+RustboroCity_EventScript_BattleLeaf_Treecko::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Torchic::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Mudkip::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Turtwig
+	case 1, RustboroCity_EventScript_BattleLeaf_Chimchar
+	case 2, RustboroCity_EventScript_BattleLeaf_Piplup
+	end
+
+RustboroCity_EventScript_BattleLeaf_Turtwig::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Chimchar::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Piplup::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Snivy
+	case 1, RustboroCity_EventScript_BattleLeaf_Tepig
+	case 2, RustboroCity_EventScript_BattleLeaf_Oshawott
+	end
+
+RustboroCity_EventScript_BattleLeaf_Snivy::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Tepig::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Oshawott::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Chespin
+	case 1, RustboroCity_EventScript_BattleLeaf_Fennekin
+	case 2, RustboroCity_EventScript_BattleLeaf_Froakie
+	end
+
+RustboroCity_EventScript_BattleLeaf_Chespin::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Fennekin::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Froakie::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Rowlet
+	case 1, RustboroCity_EventScript_BattleLeaf_Litten
+	case 2, RustboroCity_EventScript_BattleLeaf_Popplio
+	end
+
+RustboroCity_EventScript_BattleLeaf_Rowlet::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Litten::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Popplio::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Grookey
+	case 1, RustboroCity_EventScript_BattleLeaf_Scorbunny
+	case 2, RustboroCity_EventScript_BattleLeaf_Sobble
+	end
+
+RustboroCity_EventScript_BattleLeaf_Grookey::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Scorbunny::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Sobble::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLeaf_Sprigatito
+	case 1, RustboroCity_EventScript_BattleLeaf_Fuecoco
+	case 2, RustboroCity_EventScript_BattleLeaf_Quaxly
+	end
+
+RustboroCity_EventScript_BattleLeaf_Sprigatito::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Fuecoco::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLeaf_Quaxly::
+	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LeafBrineyHint
+	end
+
+RustboroCity_EventScript_LeafBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_LUCAS::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_LucasBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_LucasAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLucas
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_LucasAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLucas
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleLucas::
+	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleLucas_Kanto
+	case 1, RustboroCity_EventScript_BattleLucas_Johto
+	case 2, RustboroCity_EventScript_BattleLucas_Hoenn
+	case 3, RustboroCity_EventScript_BattleLucas_Sinnoh
+	case 4, RustboroCity_EventScript_BattleLucas_Unova
+	case 5, RustboroCity_EventScript_BattleLucas_Kalos
+	case 6, RustboroCity_EventScript_BattleLucas_Alola
+	case 7, RustboroCity_EventScript_BattleLucas_Galar
+	case 8, RustboroCity_EventScript_BattleLucas_Paldea
+	end
+
+RustboroCity_EventScript_BattleLucas_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleLucas_Charmander
+	case 2, RustboroCity_EventScript_BattleLucas_Squirtle
+	end
+
+RustboroCity_EventScript_BattleLucas_Bulbasaur::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Charmander::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Squirtle::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Chikorita
+	case 1, RustboroCity_EventScript_BattleLucas_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleLucas_Totodile
+	end
+
+RustboroCity_EventScript_BattleLucas_Chikorita::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Cyndaquil::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Totodile::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Treecko
+	case 1, RustboroCity_EventScript_BattleLucas_Torchic
+	case 2, RustboroCity_EventScript_BattleLucas_Mudkip
+	end
+
+RustboroCity_EventScript_BattleLucas_Treecko::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Torchic::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Mudkip::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Turtwig
+	case 1, RustboroCity_EventScript_BattleLucas_Chimchar
+	case 2, RustboroCity_EventScript_BattleLucas_Piplup
+	end
+
+RustboroCity_EventScript_BattleLucas_Turtwig::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Chimchar::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Piplup::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Snivy
+	case 1, RustboroCity_EventScript_BattleLucas_Tepig
+	case 2, RustboroCity_EventScript_BattleLucas_Oshawott
+	end
+
+RustboroCity_EventScript_BattleLucas_Snivy::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Tepig::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Oshawott::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Chespin
+	case 1, RustboroCity_EventScript_BattleLucas_Fennekin
+	case 2, RustboroCity_EventScript_BattleLucas_Froakie
+	end
+
+RustboroCity_EventScript_BattleLucas_Chespin::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Fennekin::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Froakie::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Rowlet
+	case 1, RustboroCity_EventScript_BattleLucas_Litten
+	case 2, RustboroCity_EventScript_BattleLucas_Popplio
+	end
+
+RustboroCity_EventScript_BattleLucas_Rowlet::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Litten::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Popplio::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Grookey
+	case 1, RustboroCity_EventScript_BattleLucas_Scorbunny
+	case 2, RustboroCity_EventScript_BattleLucas_Sobble
+	end
+
+RustboroCity_EventScript_BattleLucas_Grookey::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Scorbunny::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Sobble::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLucas_Sprigatito
+	case 1, RustboroCity_EventScript_BattleLucas_Fuecoco
+	case 2, RustboroCity_EventScript_BattleLucas_Quaxly
+	end
+
+RustboroCity_EventScript_BattleLucas_Sprigatito::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Fuecoco::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLucas_Quaxly::
+	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LucasBrineyHint
+	end
+
+RustboroCity_EventScript_LucasBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_LYRA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_LyraBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_LyraAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLyra
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_LyraAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLyra
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleLyra::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleLyra_Kanto
+	case 1, RustboroCity_EventScript_BattleLyra_Johto
+	case 2, RustboroCity_EventScript_BattleLyra_Hoenn
+	case 3, RustboroCity_EventScript_BattleLyra_Sinnoh
+	case 4, RustboroCity_EventScript_BattleLyra_Unova
+	case 5, RustboroCity_EventScript_BattleLyra_Kalos
+	case 6, RustboroCity_EventScript_BattleLyra_Alola
+	case 7, RustboroCity_EventScript_BattleLyra_Galar
+	case 8, RustboroCity_EventScript_BattleLyra_Paldea
+	end
+
+RustboroCity_EventScript_BattleLyra_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleLyra_Charmander
+	case 2, RustboroCity_EventScript_BattleLyra_Squirtle
+	end
+
+RustboroCity_EventScript_BattleLyra_Bulbasaur::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Charmander::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Squirtle::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Chikorita
+	case 1, RustboroCity_EventScript_BattleLyra_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleLyra_Totodile
+	end
+
+RustboroCity_EventScript_BattleLyra_Chikorita::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Cyndaquil::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Totodile::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Treecko
+	case 1, RustboroCity_EventScript_BattleLyra_Torchic
+	case 2, RustboroCity_EventScript_BattleLyra_Mudkip
+	end
+
+RustboroCity_EventScript_BattleLyra_Treecko::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Torchic::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Mudkip::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Turtwig
+	case 1, RustboroCity_EventScript_BattleLyra_Chimchar
+	case 2, RustboroCity_EventScript_BattleLyra_Piplup
+	end
+
+RustboroCity_EventScript_BattleLyra_Turtwig::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Chimchar::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Piplup::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Snivy
+	case 1, RustboroCity_EventScript_BattleLyra_Tepig
+	case 2, RustboroCity_EventScript_BattleLyra_Oshawott
+	end
+
+RustboroCity_EventScript_BattleLyra_Snivy::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Tepig::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Oshawott::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Chespin
+	case 1, RustboroCity_EventScript_BattleLyra_Fennekin
+	case 2, RustboroCity_EventScript_BattleLyra_Froakie
+	end
+
+RustboroCity_EventScript_BattleLyra_Chespin::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Fennekin::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Froakie::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Rowlet
+	case 1, RustboroCity_EventScript_BattleLyra_Litten
+	case 2, RustboroCity_EventScript_BattleLyra_Popplio
+	end
+
+RustboroCity_EventScript_BattleLyra_Rowlet::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Litten::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Popplio::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Grookey
+	case 1, RustboroCity_EventScript_BattleLyra_Scorbunny
+	case 2, RustboroCity_EventScript_BattleLyra_Sobble
+	end
+
+RustboroCity_EventScript_BattleLyra_Grookey::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Scorbunny::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Sobble::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleLyra_Sprigatito
+	case 1, RustboroCity_EventScript_BattleLyra_Fuecoco
+	case 2, RustboroCity_EventScript_BattleLyra_Quaxly
+	end
+
+RustboroCity_EventScript_BattleLyra_Sprigatito::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Fuecoco::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_BattleLyra_Quaxly::
+	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_LyraBrineyHint
+	end
+
+RustboroCity_EventScript_LyraBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
 	end
 
 RustboroCity_EventScript_Rival_MAY::
@@ -880,24 +4488,17 @@ RustboroCity_EventScript_MayAskToBattle::
 RustboroCity_EventScript_BattleMay::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleMay_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleMay_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleMay_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleMay_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleMay_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleMay_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleMay_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleMay_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleMay_Paldea
+	case 0, RustboroCity_EventScript_BattleMay_Kanto
+	case 1, RustboroCity_EventScript_BattleMay_Johto
+	case 2, RustboroCity_EventScript_BattleMay_Hoenn
+	case 3, RustboroCity_EventScript_BattleMay_Sinnoh
+	case 4, RustboroCity_EventScript_BattleMay_Unova
+	case 5, RustboroCity_EventScript_BattleMay_Kalos
+	case 6, RustboroCity_EventScript_BattleMay_Alola
+	case 7, RustboroCity_EventScript_BattleMay_Galar
+	case 8, RustboroCity_EventScript_BattleMay_Paldea
 	end
 
-RustboroCity_EventScript_MayBrineyHint::
-	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
-	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
-	releaseall
-	end
-
-@ ---------- KANTO ----------
 RustboroCity_EventScript_BattleMay_Kanto::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Bulbasaur
@@ -923,7 +4524,6 @@ RustboroCity_EventScript_BattleMay_Squirtle::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- JOHTO ----------
 RustboroCity_EventScript_BattleMay_Johto::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Chikorita
@@ -949,33 +4549,31 @@ RustboroCity_EventScript_BattleMay_Totodile::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- HOENN ----------
 RustboroCity_EventScript_BattleMay_Hoenn::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleMayTreecko
-	case 1, RustboroCity_EventScript_BattleMayTorchic
-	case 2, RustboroCity_EventScript_BattleMayMudkip
+	case 0, RustboroCity_EventScript_BattleMay_Treecko
+	case 1, RustboroCity_EventScript_BattleMay_Torchic
+	case 2, RustboroCity_EventScript_BattleMay_Mudkip
 	end
 
-RustboroCity_EventScript_BattleMayTreecko::
+RustboroCity_EventScript_BattleMay_Treecko::
 	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-RustboroCity_EventScript_BattleMayTorchic::
+RustboroCity_EventScript_BattleMay_Torchic::
 	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-RustboroCity_EventScript_BattleMayMudkip::
+RustboroCity_EventScript_BattleMay_Mudkip::
 	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- SINNOH ----------
 RustboroCity_EventScript_BattleMay_Sinnoh::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Turtwig
@@ -1001,7 +4599,6 @@ RustboroCity_EventScript_BattleMay_Piplup::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- UNOVA ----------
 RustboroCity_EventScript_BattleMay_Unova::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Snivy
@@ -1027,7 +4624,6 @@ RustboroCity_EventScript_BattleMay_Oshawott::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- KALOS ----------
 RustboroCity_EventScript_BattleMay_Kalos::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Chespin
@@ -1053,7 +4649,6 @@ RustboroCity_EventScript_BattleMay_Froakie::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- ALOLA ----------
 RustboroCity_EventScript_BattleMay_Alola::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Rowlet
@@ -1079,7 +4674,6 @@ RustboroCity_EventScript_BattleMay_Popplio::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- GALAR ----------
 RustboroCity_EventScript_BattleMay_Galar::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Grookey
@@ -1105,7 +4699,6 @@ RustboroCity_EventScript_BattleMay_Sobble::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-@ ---------- PALDEA ----------
 RustboroCity_EventScript_BattleMay_Paldea::
 	switch VAR_STARTER_MON
 	case 0, RustboroCity_EventScript_BattleMay_Sprigatito
@@ -1131,9 +4724,15 @@ RustboroCity_EventScript_BattleMay_Quaxly::
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
-RustboroCity_EventScript_Rival_BRENDAN::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanAskToBattle
+RustboroCity_EventScript_MayBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_NATE::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_NateBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_NateAskToBattle
 	setflag FLAG_MET_RIVAL_RUSTBORO
 	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
 	closemessage
@@ -1146,277 +4745,270 @@ RustboroCity_EventScript_Rival_BRENDAN::
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
 	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleBrendan
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleNate
 	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
 	call RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end
 
-RustboroCity_EventScript_BrendanAskToBattle::
+RustboroCity_EventScript_NateAskToBattle::
+	setvar VAR_0x8008, 1
 	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleBrendan
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleNate
 	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
 	releaseall
 	end
 
-RustboroCity_EventScript_BattleBrendan::
+RustboroCity_EventScript_BattleNate::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleBrendan_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleBrendan_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleBrendan_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleBrendan_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleBrendan_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleBrendan_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleBrendan_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleBrendan_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleBrendan_Paldea
+	case 0, RustboroCity_EventScript_BattleNate_Kanto
+	case 1, RustboroCity_EventScript_BattleNate_Johto
+	case 2, RustboroCity_EventScript_BattleNate_Hoenn
+	case 3, RustboroCity_EventScript_BattleNate_Sinnoh
+	case 4, RustboroCity_EventScript_BattleNate_Unova
+	case 5, RustboroCity_EventScript_BattleNate_Kalos
+	case 6, RustboroCity_EventScript_BattleNate_Alola
+	case 7, RustboroCity_EventScript_BattleNate_Galar
+	case 8, RustboroCity_EventScript_BattleNate_Paldea
 	end
 
-RustboroCity_EventScript_BrendanBrineyHint::
+RustboroCity_EventScript_BattleNate_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleNate_Charmander
+	case 2, RustboroCity_EventScript_BattleNate_Squirtle
+	end
+
+RustboroCity_EventScript_BattleNate_Bulbasaur::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Charmander::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Squirtle::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Chikorita
+	case 1, RustboroCity_EventScript_BattleNate_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleNate_Totodile
+	end
+
+RustboroCity_EventScript_BattleNate_Chikorita::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Cyndaquil::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Totodile::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Treecko
+	case 1, RustboroCity_EventScript_BattleNate_Torchic
+	case 2, RustboroCity_EventScript_BattleNate_Mudkip
+	end
+
+RustboroCity_EventScript_BattleNate_Treecko::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Torchic::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Mudkip::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Turtwig
+	case 1, RustboroCity_EventScript_BattleNate_Chimchar
+	case 2, RustboroCity_EventScript_BattleNate_Piplup
+	end
+
+RustboroCity_EventScript_BattleNate_Turtwig::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Chimchar::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Piplup::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Snivy
+	case 1, RustboroCity_EventScript_BattleNate_Tepig
+	case 2, RustboroCity_EventScript_BattleNate_Oshawott
+	end
+
+RustboroCity_EventScript_BattleNate_Snivy::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Tepig::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Oshawott::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Chespin
+	case 1, RustboroCity_EventScript_BattleNate_Fennekin
+	case 2, RustboroCity_EventScript_BattleNate_Froakie
+	end
+
+RustboroCity_EventScript_BattleNate_Chespin::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Fennekin::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Froakie::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Rowlet
+	case 1, RustboroCity_EventScript_BattleNate_Litten
+	case 2, RustboroCity_EventScript_BattleNate_Popplio
+	end
+
+RustboroCity_EventScript_BattleNate_Rowlet::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Litten::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Popplio::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Grookey
+	case 1, RustboroCity_EventScript_BattleNate_Scorbunny
+	case 2, RustboroCity_EventScript_BattleNate_Sobble
+	end
+
+RustboroCity_EventScript_BattleNate_Grookey::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Scorbunny::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Sobble::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleNate_Sprigatito
+	case 1, RustboroCity_EventScript_BattleNate_Fuecoco
+	case 2, RustboroCity_EventScript_BattleNate_Quaxly
+	end
+
+RustboroCity_EventScript_BattleNate_Sprigatito::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Fuecoco::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_BattleNate_Quaxly::
+	trainerbattle_no_intro TRAINER_NATE_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_NateBrineyHint
+	end
+
+RustboroCity_EventScript_NateBrineyHint::
 	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
 	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end
 
-@ --- KANTO ---
-RustboroCity_EventScript_BattleBrendan_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanBulbasaur
-	case 1, RustboroCity_EventScript_BattleBrendanCharmander
-	case 2, RustboroCity_EventScript_BattleBrendanSquirtle
-	end
-
-RustboroCity_EventScript_BattleBrendanBulbasaur::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanCharmander::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanSquirtle::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- JOHTO ---
-RustboroCity_EventScript_BattleBrendan_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanChikorita
-	case 1, RustboroCity_EventScript_BattleBrendanCyndaquil
-	case 2, RustboroCity_EventScript_BattleBrendanTotodile
-	end
-
-RustboroCity_EventScript_BattleBrendanChikorita::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanCyndaquil::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanTotodile::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- HOENN ---
-RustboroCity_EventScript_BattleBrendan_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanTreecko
-	case 1, RustboroCity_EventScript_BattleBrendanTorchic
-	case 2, RustboroCity_EventScript_BattleBrendanMudkip
-	end
-
-RustboroCity_EventScript_BattleBrendanTreecko::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanTorchic::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanMudkip::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- SINNOH ---
-RustboroCity_EventScript_BattleBrendan_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanTurtwig
-	case 1, RustboroCity_EventScript_BattleBrendanChimchar
-	case 2, RustboroCity_EventScript_BattleBrendanPiplup
-	end
-
-RustboroCity_EventScript_BattleBrendanTurtwig::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanChimchar::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanPiplup::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- UNOVA ---
-RustboroCity_EventScript_BattleBrendan_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanSnivy
-	case 1, RustboroCity_EventScript_BattleBrendanTepig
-	case 2, RustboroCity_EventScript_BattleBrendanOshawott
-	end
-
-RustboroCity_EventScript_BattleBrendanSnivy::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanTepig::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanOshawott::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- KALOS ---
-RustboroCity_EventScript_BattleBrendan_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanChespin
-	case 1, RustboroCity_EventScript_BattleBrendanFennekin
-	case 2, RustboroCity_EventScript_BattleBrendanFroakie
-	end
-
-RustboroCity_EventScript_BattleBrendanChespin::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanFennekin::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanFroakie::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- ALOLA ---
-RustboroCity_EventScript_BattleBrendan_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanRowlet
-	case 1, RustboroCity_EventScript_BattleBrendanLitten
-	case 2, RustboroCity_EventScript_BattleBrendanPopplio
-	end
-
-RustboroCity_EventScript_BattleBrendanRowlet::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanLitten::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanPopplio::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- GALAR ---
-RustboroCity_EventScript_BattleBrendan_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanGrookey
-	case 1, RustboroCity_EventScript_BattleBrendanScorbunny
-	case 2, RustboroCity_EventScript_BattleBrendanSobble
-	end
-
-RustboroCity_EventScript_BattleBrendanGrookey::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanScorbunny::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanSobble::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ --- PALDEA ---
-RustboroCity_EventScript_BattleBrendan_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleBrendanSprigatito
-	case 1, RustboroCity_EventScript_BattleBrendanFuecoco
-	case 2, RustboroCity_EventScript_BattleBrendanQuaxly
-	end
-
-RustboroCity_EventScript_BattleBrendanSprigatito::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanFuecoco::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_BattleBrendanQuaxly::
-	trainerbattle_no_intro TRAINER_BRENDAN_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
 RustboroCity_EventScript_Rival_RED::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanAskToBattle
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_RedBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_RedAskToBattle
 	setflag FLAG_MET_RIVAL_RUSTBORO
 	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
 	closemessage
@@ -1429,6 +5021,7 @@ RustboroCity_EventScript_Rival_RED::
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
 	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleRed
 	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
@@ -1436,248 +5029,262 @@ RustboroCity_EventScript_Rival_RED::
 	releaseall
 	end
 
+RustboroCity_EventScript_RedAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleRed
+	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
+	releaseall
+	end
+
 RustboroCity_EventScript_BattleRed::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleRed_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleRed_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleRed_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleRed_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleRed_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleRed_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleRed_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleRed_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleRed_Paldea
+	case 0, RustboroCity_EventScript_BattleRed_Kanto
+	case 1, RustboroCity_EventScript_BattleRed_Johto
+	case 2, RustboroCity_EventScript_BattleRed_Hoenn
+	case 3, RustboroCity_EventScript_BattleRed_Sinnoh
+	case 4, RustboroCity_EventScript_BattleRed_Unova
+	case 5, RustboroCity_EventScript_BattleRed_Kalos
+	case 6, RustboroCity_EventScript_BattleRed_Alola
+	case 7, RustboroCity_EventScript_BattleRed_Galar
+	case 8, RustboroCity_EventScript_BattleRed_Paldea
 	end
 
 RustboroCity_EventScript_BattleRed_Kanto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedBulbasaur
-	case 1, RustboroCity_EventScript_BattleRedCharmander
-	case 2, RustboroCity_EventScript_BattleRedSquirtle
+	case 0, RustboroCity_EventScript_BattleRed_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleRed_Charmander
+	case 2, RustboroCity_EventScript_BattleRed_Squirtle
 	end
 
-RustboroCity_EventScript_BattleRedBulbasaur::
+RustboroCity_EventScript_BattleRed_Bulbasaur::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedCharmander::
+RustboroCity_EventScript_BattleRed_Charmander::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedSquirtle::
+RustboroCity_EventScript_BattleRed_Squirtle::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Johto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedChikorita
-	case 1, RustboroCity_EventScript_BattleRedCyndaquil
-	case 2, RustboroCity_EventScript_BattleRedTotodile
+	case 0, RustboroCity_EventScript_BattleRed_Chikorita
+	case 1, RustboroCity_EventScript_BattleRed_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleRed_Totodile
 	end
 
-RustboroCity_EventScript_BattleRedChikorita::
+RustboroCity_EventScript_BattleRed_Chikorita::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedCyndaquil::
+RustboroCity_EventScript_BattleRed_Cyndaquil::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedTotodile::
+RustboroCity_EventScript_BattleRed_Totodile::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Hoenn::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedTreecko
-	case 1, RustboroCity_EventScript_BattleRedTorchic
-	case 2, RustboroCity_EventScript_BattleRedMudkip
+	case 0, RustboroCity_EventScript_BattleRed_Treecko
+	case 1, RustboroCity_EventScript_BattleRed_Torchic
+	case 2, RustboroCity_EventScript_BattleRed_Mudkip
 	end
 
-RustboroCity_EventScript_BattleRedTreecko::
+RustboroCity_EventScript_BattleRed_Treecko::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedTorchic::
+RustboroCity_EventScript_BattleRed_Torchic::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedMudkip::
+RustboroCity_EventScript_BattleRed_Mudkip::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Sinnoh::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedTurtwig
-	case 1, RustboroCity_EventScript_BattleRedChimchar
-	case 2, RustboroCity_EventScript_BattleRedPiplup
+	case 0, RustboroCity_EventScript_BattleRed_Turtwig
+	case 1, RustboroCity_EventScript_BattleRed_Chimchar
+	case 2, RustboroCity_EventScript_BattleRed_Piplup
 	end
 
-RustboroCity_EventScript_BattleRedTurtwig::
+RustboroCity_EventScript_BattleRed_Turtwig::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedChimchar::
+RustboroCity_EventScript_BattleRed_Chimchar::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedPiplup::
+RustboroCity_EventScript_BattleRed_Piplup::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Unova::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedSnivy
-	case 1, RustboroCity_EventScript_BattleRedTepig
-	case 2, RustboroCity_EventScript_BattleRedOshawott
+	case 0, RustboroCity_EventScript_BattleRed_Snivy
+	case 1, RustboroCity_EventScript_BattleRed_Tepig
+	case 2, RustboroCity_EventScript_BattleRed_Oshawott
 	end
 
-RustboroCity_EventScript_BattleRedSnivy::
+RustboroCity_EventScript_BattleRed_Snivy::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedTepig::
+RustboroCity_EventScript_BattleRed_Tepig::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedOshawott::
+RustboroCity_EventScript_BattleRed_Oshawott::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Kalos::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedChespin
-	case 1, RustboroCity_EventScript_BattleRedFennekin
-	case 2, RustboroCity_EventScript_BattleRedFroakie
+	case 0, RustboroCity_EventScript_BattleRed_Chespin
+	case 1, RustboroCity_EventScript_BattleRed_Fennekin
+	case 2, RustboroCity_EventScript_BattleRed_Froakie
 	end
 
-RustboroCity_EventScript_BattleRedChespin::
+RustboroCity_EventScript_BattleRed_Chespin::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedFennekin::
+RustboroCity_EventScript_BattleRed_Fennekin::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedFroakie::
+RustboroCity_EventScript_BattleRed_Froakie::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Alola::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedRowlet
-	case 1, RustboroCity_EventScript_BattleRedLitten
-	case 2, RustboroCity_EventScript_BattleRedPopplio
+	case 0, RustboroCity_EventScript_BattleRed_Rowlet
+	case 1, RustboroCity_EventScript_BattleRed_Litten
+	case 2, RustboroCity_EventScript_BattleRed_Popplio
 	end
 
-RustboroCity_EventScript_BattleRedRowlet::
+RustboroCity_EventScript_BattleRed_Rowlet::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedLitten::
+RustboroCity_EventScript_BattleRed_Litten::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedPopplio::
+RustboroCity_EventScript_BattleRed_Popplio::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Galar::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedGrookey
-	case 1, RustboroCity_EventScript_BattleRedScorbunny
-	case 2, RustboroCity_EventScript_BattleRedSobble
+	case 0, RustboroCity_EventScript_BattleRed_Grookey
+	case 1, RustboroCity_EventScript_BattleRed_Scorbunny
+	case 2, RustboroCity_EventScript_BattleRed_Sobble
 	end
 
-RustboroCity_EventScript_BattleRedGrookey::
+RustboroCity_EventScript_BattleRed_Grookey::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedScorbunny::
+RustboroCity_EventScript_BattleRed_Scorbunny::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedSobble::
+RustboroCity_EventScript_BattleRed_Sobble::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
 RustboroCity_EventScript_BattleRed_Paldea::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleRedSprigatito
-	case 1, RustboroCity_EventScript_BattleRedFuecoco
-	case 2, RustboroCity_EventScript_BattleRedQuaxly
+	case 0, RustboroCity_EventScript_BattleRed_Sprigatito
+	case 1, RustboroCity_EventScript_BattleRed_Fuecoco
+	case 2, RustboroCity_EventScript_BattleRed_Quaxly
 	end
 
-RustboroCity_EventScript_BattleRedSprigatito::
+RustboroCity_EventScript_BattleRed_Sprigatito::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedFuecoco::
+RustboroCity_EventScript_BattleRed_Fuecoco::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_BattleRedQuaxly::
+RustboroCity_EventScript_BattleRed_Quaxly::
 	trainerbattle_no_intro TRAINER_RED_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	goto RustboroCity_EventScript_RedBrineyHint
 	end
 
-RustboroCity_EventScript_Rival_LEAF::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_MayAskToBattle
+RustboroCity_EventScript_RedBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_ROSA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_RosaBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_RosaAskToBattle
 	setflag FLAG_MET_RIVAL_RUSTBORO
 	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
 	closemessage
@@ -1692,245 +5299,820 @@ RustboroCity_EventScript_Rival_LEAF::
 	setvar VAR_ROUTE104_STATE, 2
 	setvar VAR_0x8008, 0
 	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLeaf
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleRosa
 	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
 	call RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end
 
-RustboroCity_EventScript_BattleLeaf::
+RustboroCity_EventScript_RosaAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleRosa
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleRosa::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLeaf_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLeaf_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLeaf_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLeaf_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLeaf_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLeaf_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLeaf_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLeaf_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLeaf_Paldea
+	case 0, RustboroCity_EventScript_BattleRosa_Kanto
+	case 1, RustboroCity_EventScript_BattleRosa_Johto
+	case 2, RustboroCity_EventScript_BattleRosa_Hoenn
+	case 3, RustboroCity_EventScript_BattleRosa_Sinnoh
+	case 4, RustboroCity_EventScript_BattleRosa_Unova
+	case 5, RustboroCity_EventScript_BattleRosa_Kalos
+	case 6, RustboroCity_EventScript_BattleRosa_Alola
+	case 7, RustboroCity_EventScript_BattleRosa_Galar
+	case 8, RustboroCity_EventScript_BattleRosa_Paldea
 	end
 
-@ ---------- KANTO ----------
-RustboroCity_EventScript_BattleLeaf_Kanto::
+RustboroCity_EventScript_BattleRosa_Kanto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafBulbasaur
-	case 1, RustboroCity_EventScript_BattleLeafCharmander
-	case 2, RustboroCity_EventScript_BattleLeafSquirtle
+	case 0, RustboroCity_EventScript_BattleRosa_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleRosa_Charmander
+	case 2, RustboroCity_EventScript_BattleRosa_Squirtle
 	end
 
-RustboroCity_EventScript_BattleLeafBulbasaur::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Bulbasaur::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafCharmander::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafSquirtle::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- JOHTO ----------
-RustboroCity_EventScript_BattleLeaf_Johto::
+RustboroCity_EventScript_BattleRosa_Charmander::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Squirtle::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Johto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafChikorita
-	case 1, RustboroCity_EventScript_BattleLeafCyndaquil
-	case 2, RustboroCity_EventScript_BattleLeafTotodile
+	case 0, RustboroCity_EventScript_BattleRosa_Chikorita
+	case 1, RustboroCity_EventScript_BattleRosa_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleRosa_Totodile
 	end
 
-RustboroCity_EventScript_BattleLeafChikorita::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Chikorita::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafCyndaquil::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafTotodile::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- HOENN ----------
-RustboroCity_EventScript_BattleLeaf_Hoenn::
+RustboroCity_EventScript_BattleRosa_Cyndaquil::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Totodile::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Hoenn::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafTreecko
-	case 1, RustboroCity_EventScript_BattleLeafTorchic
-	case 2, RustboroCity_EventScript_BattleLeafMudkip
+	case 0, RustboroCity_EventScript_BattleRosa_Treecko
+	case 1, RustboroCity_EventScript_BattleRosa_Torchic
+	case 2, RustboroCity_EventScript_BattleRosa_Mudkip
 	end
 
-RustboroCity_EventScript_BattleLeafTreecko::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Treecko::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafTorchic::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafMudkip::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- SINNOH ----------
-RustboroCity_EventScript_BattleLeaf_Sinnoh::
+RustboroCity_EventScript_BattleRosa_Torchic::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Mudkip::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Sinnoh::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafTurtwig
-	case 1, RustboroCity_EventScript_BattleLeafChimchar
-	case 2, RustboroCity_EventScript_BattleLeafPiplup
+	case 0, RustboroCity_EventScript_BattleRosa_Turtwig
+	case 1, RustboroCity_EventScript_BattleRosa_Chimchar
+	case 2, RustboroCity_EventScript_BattleRosa_Piplup
 	end
 
-RustboroCity_EventScript_BattleLeafTurtwig::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Turtwig::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafChimchar::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafPiplup::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- UNOVA ----------
-RustboroCity_EventScript_BattleLeaf_Unova::
+RustboroCity_EventScript_BattleRosa_Chimchar::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Piplup::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Unova::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafSnivy
-	case 1, RustboroCity_EventScript_BattleLeafTepig
-	case 2, RustboroCity_EventScript_BattleLeafOshawott
+	case 0, RustboroCity_EventScript_BattleRosa_Snivy
+	case 1, RustboroCity_EventScript_BattleRosa_Tepig
+	case 2, RustboroCity_EventScript_BattleRosa_Oshawott
 	end
 
-RustboroCity_EventScript_BattleLeafSnivy::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Snivy::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafTepig::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafOshawott::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- KALOS ----------
-RustboroCity_EventScript_BattleLeaf_Kalos::
+RustboroCity_EventScript_BattleRosa_Tepig::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Oshawott::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Kalos::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafChespin
-	case 1, RustboroCity_EventScript_BattleLeafFennekin
-	case 2, RustboroCity_EventScript_BattleLeafFroakie
+	case 0, RustboroCity_EventScript_BattleRosa_Chespin
+	case 1, RustboroCity_EventScript_BattleRosa_Fennekin
+	case 2, RustboroCity_EventScript_BattleRosa_Froakie
 	end
 
-RustboroCity_EventScript_BattleLeafChespin::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Chespin::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafFennekin::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafFroakie::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- ALOLA ----------
-RustboroCity_EventScript_BattleLeaf_Alola::
+RustboroCity_EventScript_BattleRosa_Fennekin::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Froakie::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Alola::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafRowlet
-	case 1, RustboroCity_EventScript_BattleLeafLitten
-	case 2, RustboroCity_EventScript_BattleLeafPopplio
+	case 0, RustboroCity_EventScript_BattleRosa_Rowlet
+	case 1, RustboroCity_EventScript_BattleRosa_Litten
+	case 2, RustboroCity_EventScript_BattleRosa_Popplio
 	end
 
-RustboroCity_EventScript_BattleLeafRowlet::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Rowlet::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafLitten::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafPopplio::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- GALAR ----------
-RustboroCity_EventScript_BattleLeaf_Galar::
+RustboroCity_EventScript_BattleRosa_Litten::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Popplio::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Galar::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafGrookey
-	case 1, RustboroCity_EventScript_BattleLeafScorbunny
-	case 2, RustboroCity_EventScript_BattleLeafSobble
+	case 0, RustboroCity_EventScript_BattleRosa_Grookey
+	case 1, RustboroCity_EventScript_BattleRosa_Scorbunny
+	case 2, RustboroCity_EventScript_BattleRosa_Sobble
 	end
 
-RustboroCity_EventScript_BattleLeafGrookey::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Grookey::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafScorbunny::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafSobble::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-@ ---------- PALDEA ----------
-RustboroCity_EventScript_BattleLeaf_Paldea::
+RustboroCity_EventScript_BattleRosa_Scorbunny::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Sobble::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Paldea::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLeafSprigatito
-	case 1, RustboroCity_EventScript_BattleLeafFuecoco
-	case 2, RustboroCity_EventScript_BattleLeafQuaxly
+	case 0, RustboroCity_EventScript_BattleRosa_Sprigatito
+	case 1, RustboroCity_EventScript_BattleRosa_Fuecoco
+	case 2, RustboroCity_EventScript_BattleRosa_Quaxly
 	end
 
-RustboroCity_EventScript_BattleLeafSprigatito::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+RustboroCity_EventScript_BattleRosa_Sprigatito::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafFuecoco::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLeafQuaxly::
-	trainerbattle_no_intro TRAINER_LEAF_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
+	goto RustboroCity_EventScript_RosaBrineyHint
 	end
 
-RustboroCity_EventScript_Rival_ETHAN::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_EthanAskToBattle
+RustboroCity_EventScript_BattleRosa_Fuecoco::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleRosa_Quaxly::
+	trainerbattle_no_intro TRAINER_ROSA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_RosaBrineyHint
+	end
+
+RustboroCity_EventScript_RosaBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_SELENE::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_SeleneBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_SeleneAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleSelene
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_SeleneAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleSelene
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleSelene::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleSelene_Kanto
+	case 1, RustboroCity_EventScript_BattleSelene_Johto
+	case 2, RustboroCity_EventScript_BattleSelene_Hoenn
+	case 3, RustboroCity_EventScript_BattleSelene_Sinnoh
+	case 4, RustboroCity_EventScript_BattleSelene_Unova
+	case 5, RustboroCity_EventScript_BattleSelene_Kalos
+	case 6, RustboroCity_EventScript_BattleSelene_Alola
+	case 7, RustboroCity_EventScript_BattleSelene_Galar
+	case 8, RustboroCity_EventScript_BattleSelene_Paldea
+	end
+
+RustboroCity_EventScript_BattleSelene_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleSelene_Charmander
+	case 2, RustboroCity_EventScript_BattleSelene_Squirtle
+	end
+
+RustboroCity_EventScript_BattleSelene_Bulbasaur::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Charmander::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Squirtle::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Chikorita
+	case 1, RustboroCity_EventScript_BattleSelene_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleSelene_Totodile
+	end
+
+RustboroCity_EventScript_BattleSelene_Chikorita::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Cyndaquil::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Totodile::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Treecko
+	case 1, RustboroCity_EventScript_BattleSelene_Torchic
+	case 2, RustboroCity_EventScript_BattleSelene_Mudkip
+	end
+
+RustboroCity_EventScript_BattleSelene_Treecko::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Torchic::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Mudkip::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Turtwig
+	case 1, RustboroCity_EventScript_BattleSelene_Chimchar
+	case 2, RustboroCity_EventScript_BattleSelene_Piplup
+	end
+
+RustboroCity_EventScript_BattleSelene_Turtwig::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Chimchar::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Piplup::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Snivy
+	case 1, RustboroCity_EventScript_BattleSelene_Tepig
+	case 2, RustboroCity_EventScript_BattleSelene_Oshawott
+	end
+
+RustboroCity_EventScript_BattleSelene_Snivy::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Tepig::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Oshawott::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Chespin
+	case 1, RustboroCity_EventScript_BattleSelene_Fennekin
+	case 2, RustboroCity_EventScript_BattleSelene_Froakie
+	end
+
+RustboroCity_EventScript_BattleSelene_Chespin::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Fennekin::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Froakie::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Rowlet
+	case 1, RustboroCity_EventScript_BattleSelene_Litten
+	case 2, RustboroCity_EventScript_BattleSelene_Popplio
+	end
+
+RustboroCity_EventScript_BattleSelene_Rowlet::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Litten::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Popplio::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Grookey
+	case 1, RustboroCity_EventScript_BattleSelene_Scorbunny
+	case 2, RustboroCity_EventScript_BattleSelene_Sobble
+	end
+
+RustboroCity_EventScript_BattleSelene_Grookey::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Scorbunny::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Sobble::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSelene_Sprigatito
+	case 1, RustboroCity_EventScript_BattleSelene_Fuecoco
+	case 2, RustboroCity_EventScript_BattleSelene_Quaxly
+	end
+
+RustboroCity_EventScript_BattleSelene_Sprigatito::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Fuecoco::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSelene_Quaxly::
+	trainerbattle_no_intro TRAINER_SELENE_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SeleneBrineyHint
+	end
+
+RustboroCity_EventScript_SeleneBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_SERENA::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_SerenaBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_SerenaAskToBattle
+	setflag FLAG_MET_RIVAL_RUSTBORO
+	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	playfanfare MUS_REGISTER_MATCH_CALL
+	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
+	waitfanfare
+	closemessage
+	delay 30
+	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+	setvar VAR_RUSTBORO_CITY_STATE, 8
+	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
+	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleSerena
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	call RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_SerenaAskToBattle::
+	setvar VAR_0x8008, 1
+	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleSerena
+	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
+	releaseall
+	end
+
+RustboroCity_EventScript_BattleSerena::
+	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
+	switch VAR_STARTER_REGION
+	case 0, RustboroCity_EventScript_BattleSerena_Kanto
+	case 1, RustboroCity_EventScript_BattleSerena_Johto
+	case 2, RustboroCity_EventScript_BattleSerena_Hoenn
+	case 3, RustboroCity_EventScript_BattleSerena_Sinnoh
+	case 4, RustboroCity_EventScript_BattleSerena_Unova
+	case 5, RustboroCity_EventScript_BattleSerena_Kalos
+	case 6, RustboroCity_EventScript_BattleSerena_Alola
+	case 7, RustboroCity_EventScript_BattleSerena_Galar
+	case 8, RustboroCity_EventScript_BattleSerena_Paldea
+	end
+
+RustboroCity_EventScript_BattleSerena_Kanto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleSerena_Charmander
+	case 2, RustboroCity_EventScript_BattleSerena_Squirtle
+	end
+
+RustboroCity_EventScript_BattleSerena_Bulbasaur::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Charmander::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Squirtle::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Johto::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Chikorita
+	case 1, RustboroCity_EventScript_BattleSerena_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleSerena_Totodile
+	end
+
+RustboroCity_EventScript_BattleSerena_Chikorita::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Cyndaquil::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Totodile::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Hoenn::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Treecko
+	case 1, RustboroCity_EventScript_BattleSerena_Torchic
+	case 2, RustboroCity_EventScript_BattleSerena_Mudkip
+	end
+
+RustboroCity_EventScript_BattleSerena_Treecko::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Torchic::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Mudkip::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Sinnoh::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Turtwig
+	case 1, RustboroCity_EventScript_BattleSerena_Chimchar
+	case 2, RustboroCity_EventScript_BattleSerena_Piplup
+	end
+
+RustboroCity_EventScript_BattleSerena_Turtwig::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Chimchar::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Piplup::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Unova::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Snivy
+	case 1, RustboroCity_EventScript_BattleSerena_Tepig
+	case 2, RustboroCity_EventScript_BattleSerena_Oshawott
+	end
+
+RustboroCity_EventScript_BattleSerena_Snivy::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Tepig::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Oshawott::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Kalos::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Chespin
+	case 1, RustboroCity_EventScript_BattleSerena_Fennekin
+	case 2, RustboroCity_EventScript_BattleSerena_Froakie
+	end
+
+RustboroCity_EventScript_BattleSerena_Chespin::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Fennekin::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Froakie::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Alola::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Rowlet
+	case 1, RustboroCity_EventScript_BattleSerena_Litten
+	case 2, RustboroCity_EventScript_BattleSerena_Popplio
+	end
+
+RustboroCity_EventScript_BattleSerena_Rowlet::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Litten::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Popplio::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Galar::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Grookey
+	case 1, RustboroCity_EventScript_BattleSerena_Scorbunny
+	case 2, RustboroCity_EventScript_BattleSerena_Sobble
+	end
+
+RustboroCity_EventScript_BattleSerena_Grookey::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Scorbunny::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Sobble::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Paldea::
+	switch VAR_STARTER_MON
+	case 0, RustboroCity_EventScript_BattleSerena_Sprigatito
+	case 1, RustboroCity_EventScript_BattleSerena_Fuecoco
+	case 2, RustboroCity_EventScript_BattleSerena_Quaxly
+	end
+
+RustboroCity_EventScript_BattleSerena_Sprigatito::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Fuecoco::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_BattleSerena_Quaxly::
+	trainerbattle_no_intro TRAINER_SERENA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_SerenaBrineyHint
+	end
+
+RustboroCity_EventScript_SerenaBrineyHint::
+	msgbox RustboroCity_Text_MayMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
+	releaseall
+	end
+
+RustboroCity_EventScript_Rival_VICTOR::
+	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_VictorBrineyHint
+	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_VictorAskToBattle
 	setflag FLAG_MET_RIVAL_RUSTBORO
 	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
 	closemessage
@@ -1943,1495 +6125,265 @@ RustboroCity_EventScript_Rival_ETHAN::
 	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
 	setvar VAR_RUSTBORO_CITY_STATE, 8
 	setvar VAR_ROUTE104_STATE, 2
+	setvar VAR_0x8008, 0
 	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleEthan
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleVictor
 	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
 	call RustboroCity_EventScript_RestoreBgm
 	releaseall
 	end
 
-RustboroCity_EventScript_EthanAskToBattle::
+RustboroCity_EventScript_VictorAskToBattle::
+	setvar VAR_0x8008, 1
 	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleEthan
+	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleVictor
 	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
 	releaseall
 	end
 
-RustboroCity_EventScript_BattleEthan::
+RustboroCity_EventScript_BattleVictor::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleEthan_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleEthan_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleEthan_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleEthan_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleEthan_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleEthan_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleEthan_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleEthan_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleEthan_Paldea
+	case 0, RustboroCity_EventScript_BattleVictor_Kanto
+	case 1, RustboroCity_EventScript_BattleVictor_Johto
+	case 2, RustboroCity_EventScript_BattleVictor_Hoenn
+	case 3, RustboroCity_EventScript_BattleVictor_Sinnoh
+	case 4, RustboroCity_EventScript_BattleVictor_Unova
+	case 5, RustboroCity_EventScript_BattleVictor_Kalos
+	case 6, RustboroCity_EventScript_BattleVictor_Alola
+	case 7, RustboroCity_EventScript_BattleVictor_Galar
+	case 8, RustboroCity_EventScript_BattleVictor_Paldea
 	end
 
-@ KANTO
-RustboroCity_EventScript_BattleEthan_Kanto::
+RustboroCity_EventScript_BattleVictor_Kanto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanBulbasaur
-	case 1, RustboroCity_EventScript_BattleEthanCharmander
-	case 2, RustboroCity_EventScript_BattleEthanSquirtle
-	end
-RustboroCity_EventScript_BattleEthanBulbasaur::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanCharmander::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanSquirtle::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Bulbasaur
+	case 1, RustboroCity_EventScript_BattleVictor_Charmander
+	case 2, RustboroCity_EventScript_BattleVictor_Squirtle
 	end
 
-@ JOHTO
-RustboroCity_EventScript_BattleEthan_Johto::
+RustboroCity_EventScript_BattleVictor_Bulbasaur::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Charmander::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Squirtle::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Johto::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanChikorita
-	case 1, RustboroCity_EventScript_BattleEthanCyndaquil
-	case 2, RustboroCity_EventScript_BattleEthanTotodile
-	end
-RustboroCity_EventScript_BattleEthanChikorita::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanCyndaquil::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanTotodile::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Chikorita
+	case 1, RustboroCity_EventScript_BattleVictor_Cyndaquil
+	case 2, RustboroCity_EventScript_BattleVictor_Totodile
 	end
 
-@ HOENN
-RustboroCity_EventScript_BattleEthan_Hoenn::
+RustboroCity_EventScript_BattleVictor_Chikorita::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Cyndaquil::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Totodile::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Hoenn::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanTreecko
-	case 1, RustboroCity_EventScript_BattleEthanTorchic
-	case 2, RustboroCity_EventScript_BattleEthanMudkip
-	end
-RustboroCity_EventScript_BattleEthanTreecko::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanTorchic::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanMudkip::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Treecko
+	case 1, RustboroCity_EventScript_BattleVictor_Torchic
+	case 2, RustboroCity_EventScript_BattleVictor_Mudkip
 	end
 
-@ SINNOH
-RustboroCity_EventScript_BattleEthan_Sinnoh::
+RustboroCity_EventScript_BattleVictor_Treecko::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Torchic::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Mudkip::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Sinnoh::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanTurtwig
-	case 1, RustboroCity_EventScript_BattleEthanChimchar
-	case 2, RustboroCity_EventScript_BattleEthanPiplup
-	end
-RustboroCity_EventScript_BattleEthanTurtwig::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanChimchar::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanPiplup::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Turtwig
+	case 1, RustboroCity_EventScript_BattleVictor_Chimchar
+	case 2, RustboroCity_EventScript_BattleVictor_Piplup
 	end
 
-@ UNOVA
-RustboroCity_EventScript_BattleEthan_Unova::
+RustboroCity_EventScript_BattleVictor_Turtwig::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Chimchar::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Piplup::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Unova::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanSnivy
-	case 1, RustboroCity_EventScript_BattleEthanTepig
-	case 2, RustboroCity_EventScript_BattleEthanOshawott
-	end
-RustboroCity_EventScript_BattleEthanSnivy::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanTepig::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanOshawott::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Snivy
+	case 1, RustboroCity_EventScript_BattleVictor_Tepig
+	case 2, RustboroCity_EventScript_BattleVictor_Oshawott
 	end
 
-@ KALOS
-RustboroCity_EventScript_BattleEthan_Kalos::
+RustboroCity_EventScript_BattleVictor_Snivy::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Tepig::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Oshawott::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Kalos::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanChespin
-	case 1, RustboroCity_EventScript_BattleEthanFennekin
-	case 2, RustboroCity_EventScript_BattleEthanFroakie
-	end
-RustboroCity_EventScript_BattleEthanChespin::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanFennekin::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanFroakie::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Chespin
+	case 1, RustboroCity_EventScript_BattleVictor_Fennekin
+	case 2, RustboroCity_EventScript_BattleVictor_Froakie
 	end
 
-@ ALOLA
-RustboroCity_EventScript_BattleEthan_Alola::
+RustboroCity_EventScript_BattleVictor_Chespin::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Fennekin::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Froakie::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Alola::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanRowlet
-	case 1, RustboroCity_EventScript_BattleEthanLitten
-	case 2, RustboroCity_EventScript_BattleEthanPopplio
-	end
-RustboroCity_EventScript_BattleEthanRowlet::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanLitten::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanPopplio::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Rowlet
+	case 1, RustboroCity_EventScript_BattleVictor_Litten
+	case 2, RustboroCity_EventScript_BattleVictor_Popplio
 	end
 
-@ GALAR
-RustboroCity_EventScript_BattleEthan_Galar::
+RustboroCity_EventScript_BattleVictor_Rowlet::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Litten::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Popplio::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Galar::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanGrookey
-	case 1, RustboroCity_EventScript_BattleEthanScorbunny
-	case 2, RustboroCity_EventScript_BattleEthanSobble
-	end
-RustboroCity_EventScript_BattleEthanGrookey::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanScorbunny::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanSobble::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Grookey
+	case 1, RustboroCity_EventScript_BattleVictor_Scorbunny
+	case 2, RustboroCity_EventScript_BattleVictor_Sobble
 	end
 
-@ PALDEA
-RustboroCity_EventScript_BattleEthan_Paldea::
+RustboroCity_EventScript_BattleVictor_Grookey::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Scorbunny::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Sobble::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Paldea::
 	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleEthanSprigatito
-	case 1, RustboroCity_EventScript_BattleEthanFuecoco
-	case 2, RustboroCity_EventScript_BattleEthanQuaxly
-	end
-RustboroCity_EventScript_BattleEthanSprigatito::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanFuecoco::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleEthanQuaxly::
-	trainerbattle_no_intro TRAINER_ETHAN_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
+	case 0, RustboroCity_EventScript_BattleVictor_Sprigatito
+	case 1, RustboroCity_EventScript_BattleVictor_Fuecoco
+	case 2, RustboroCity_EventScript_BattleVictor_Quaxly
 	end
 
-RustboroCity_EventScript_Rival_LYRA::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_LyraAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	setvar VAR_0x8008, 0
-	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLyra
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
+RustboroCity_EventScript_BattleVictor_Sprigatito::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Fuecoco::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_BattleVictor_Quaxly::
+	trainerbattle_no_intro TRAINER_VICTOR_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
+	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+	goto RustboroCity_EventScript_VictorBrineyHint
+	end
+
+RustboroCity_EventScript_VictorBrineyHint::
+	msgbox RustboroCity_Text_BrendanMrBrineyHint, MSGBOX_DEFAULT
+	call_if_eq VAR_0x8008, 0, RustboroCity_EventScript_RestoreBgm
 	releaseall
-	end
-
-RustboroCity_EventScript_LyraAskToBattle::
-	setvar VAR_0x8008, 1
-	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLyra
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	releaseall
-	end
-
-RustboroCity_EventScript_BattleLyra::
-	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
-	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLyra_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLyra_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLyra_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLyra_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLyra_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLyra_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLyra_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLyra_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLyra_Paldea
-	end
-
-@ ================= KANTO =================
-RustboroCity_EventScript_BattleLyra_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraBulbasaur
-	case 1, RustboroCity_EventScript_BattleLyraCharmander
-	case 2, RustboroCity_EventScript_BattleLyraSquirtle
-	end
-RustboroCity_EventScript_BattleLyraBulbasaur::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraCharmander::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraSquirtle::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= JOHTO =================
-RustboroCity_EventScript_BattleLyra_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraChikorita
-	case 1, RustboroCity_EventScript_BattleLyraCyndaquil
-	case 2, RustboroCity_EventScript_BattleLyraTotodile
-	end
-RustboroCity_EventScript_BattleLyraChikorita::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraCyndaquil::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraTotodile::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= HOENN =================
-RustboroCity_EventScript_BattleLyra_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraTreecko
-	case 1, RustboroCity_EventScript_BattleLyraTorchic
-	case 2, RustboroCity_EventScript_BattleLyraMudkip
-	end
-RustboroCity_EventScript_BattleLyraTreecko::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraTorchic::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraMudkip::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= SINNOH =================
-RustboroCity_EventScript_BattleLyra_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraTurtwig
-	case 1, RustboroCity_EventScript_BattleLyraChimchar
-	case 2, RustboroCity_EventScript_BattleLyraPiplup
-	end
-RustboroCity_EventScript_BattleLyraTurtwig::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraChimchar::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraPiplup::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= UNOVA =================
-RustboroCity_EventScript_BattleLyra_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraSnivy
-	case 1, RustboroCity_EventScript_BattleLyraTepig
-	case 2, RustboroCity_EventScript_BattleLyraOshawott
-	end
-RustboroCity_EventScript_BattleLyraSnivy::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraTepig::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraOshawott::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= KALOS =================
-RustboroCity_EventScript_BattleLyra_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraChespin
-	case 1, RustboroCity_EventScript_BattleLyraFennekin
-	case 2, RustboroCity_EventScript_BattleLyraFroakie
-	end
-RustboroCity_EventScript_BattleLyraChespin::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraFennekin::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraFroakie::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= ALOLA =================
-RustboroCity_EventScript_BattleLyra_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraRowlet
-	case 1, RustboroCity_EventScript_BattleLyraLitten
-	case 2, RustboroCity_EventScript_BattleLyraPopplio
-	end
-RustboroCity_EventScript_BattleLyraRowlet::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraLitten::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraPopplio::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= GALAR =================
-RustboroCity_EventScript_BattleLyra_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraGrookey
-	case 1, RustboroCity_EventScript_BattleLyraScorbunny
-	case 2, RustboroCity_EventScript_BattleLyraSobble
-	end
-RustboroCity_EventScript_BattleLyraGrookey::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraScorbunny::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraSobble::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ================= PALDEA =================
-RustboroCity_EventScript_BattleLyra_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLyraSprigatito
-	case 1, RustboroCity_EventScript_BattleLyraFuecoco
-	case 2, RustboroCity_EventScript_BattleLyraQuaxly
-	end
-RustboroCity_EventScript_BattleLyraSprigatito::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraFuecoco::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleLyraQuaxly::
-	trainerbattle_no_intro TRAINER_LYRA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-RustboroCity_EventScript_Rival_LUCAS::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_LucasAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLucas
-	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
-	releaseall
-	end
-
-RustboroCity_EventScript_LucasAskToBattle::
-	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleLucas
-	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
-	releaseall
-	end
-
-RustboroCity_EventScript_BattleLucas::
-	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
-	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLucas_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLucas_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLucas_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLucas_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLucas_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLucas_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLucas_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLucas_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLucas_Paldea
-	end
-
-@ ================= KANTO =================
-RustboroCity_EventScript_BattleLucas_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasBulbasaur
-	case 1, RustboroCity_EventScript_BattleLucasCharmander
-	case 2, RustboroCity_EventScript_BattleLucasSquirtle
-	end
-RustboroCity_EventScript_BattleLucasBulbasaur::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasCharmander::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasSquirtle::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= JOHTO =================
-RustboroCity_EventScript_BattleLucas_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasChikorita
-	case 1, RustboroCity_EventScript_BattleLucasCyndaquil
-	case 2, RustboroCity_EventScript_BattleLucasTotodile
-	end
-RustboroCity_EventScript_BattleLucasChikorita::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasCyndaquil::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasTotodile::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= HOENN =================
-RustboroCity_EventScript_BattleLucas_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasTreecko
-	case 1, RustboroCity_EventScript_BattleLucasTorchic
-	case 2, RustboroCity_EventScript_BattleLucasMudkip
-	end
-RustboroCity_EventScript_BattleLucasTreecko::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasTorchic::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasMudkip::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= SINNOH =================
-RustboroCity_EventScript_BattleLucas_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasTurtwig
-	case 1, RustboroCity_EventScript_BattleLucasChimchar
-	case 2, RustboroCity_EventScript_BattleLucasPiplup
-	end
-RustboroCity_EventScript_BattleLucasTurtwig::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasChimchar::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasPiplup::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= UNOVA =================
-RustboroCity_EventScript_BattleLucas_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasSnivy
-	case 1, RustboroCity_EventScript_BattleLucasTepig
-	case 2, RustboroCity_EventScript_BattleLucasOshawott
-	end
-RustboroCity_EventScript_BattleLucasSnivy::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasTepig::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasOshawott::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= KALOS =================
-RustboroCity_EventScript_BattleLucas_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasChespin
-	case 1, RustboroCity_EventScript_BattleLucasFennekin
-	case 2, RustboroCity_EventScript_BattleLucasFroakie
-	end
-RustboroCity_EventScript_BattleLucasChespin::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasFennekin::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasFroakie::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= ALOLA =================
-RustboroCity_EventScript_BattleLucas_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasRowlet
-	case 1, RustboroCity_EventScript_BattleLucasLitten
-	case 2, RustboroCity_EventScript_BattleLucasPopplio
-	end
-RustboroCity_EventScript_BattleLucasRowlet::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasLitten::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasPopplio::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= GALAR =================
-RustboroCity_EventScript_BattleLucas_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasGrookey
-	case 1, RustboroCity_EventScript_BattleLucasScorbunny
-	case 2, RustboroCity_EventScript_BattleLucasSobble
-	end
-RustboroCity_EventScript_BattleLucasGrookey::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasScorbunny::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasSobble::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ================= PALDEA =================
-RustboroCity_EventScript_BattleLucas_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleLucasSprigatito
-	case 1, RustboroCity_EventScript_BattleLucasFuecoco
-	case 2, RustboroCity_EventScript_BattleLucasQuaxly
-	end
-RustboroCity_EventScript_BattleLucasSprigatito::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasFuecoco::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleLucasQuaxly::
-	trainerbattle_no_intro TRAINER_LUCAS_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_Rival_DAWN::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_DawnAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	setvar VAR_0x8008, 0
-	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleDawn
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
-	releaseall
-	end
-
-RustboroCity_EventScript_DawnAskToBattle::
-	setvar VAR_0x8008, 1
-	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleDawn
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	releaseall
-	end
-
-RustboroCity_EventScript_BattleDawn::
-	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
-	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleDawn_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleDawn_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleDawn_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleDawn_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleDawn_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleDawn_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleDawn_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleDawn_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleDawn_Paldea
-	end
-
-@ ========== KANTO ==========
-RustboroCity_EventScript_BattleDawn_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnBulbasaur
-	case 1, RustboroCity_EventScript_BattleDawnCharmander
-	case 2, RustboroCity_EventScript_BattleDawnSquirtle
-	end
-RustboroCity_EventScript_BattleDawnBulbasaur::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnCharmander::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnSquirtle::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== JOHTO ==========
-RustboroCity_EventScript_BattleDawn_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnChikorita
-	case 1, RustboroCity_EventScript_BattleDawnCyndaquil
-	case 2, RustboroCity_EventScript_BattleDawnTotodile
-	end
-RustboroCity_EventScript_BattleDawnChikorita::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnCyndaquil::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnTotodile::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== HOENN ==========
-RustboroCity_EventScript_BattleDawn_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnTreecko
-	case 1, RustboroCity_EventScript_BattleDawnTorchic
-	case 2, RustboroCity_EventScript_BattleDawnMudkip
-	end
-RustboroCity_EventScript_BattleDawnTreecko::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnTorchic::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnMudkip::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== SINNOH ==========
-RustboroCity_EventScript_BattleDawn_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnTurtwig
-	case 1, RustboroCity_EventScript_BattleDawnChimchar
-	case 2, RustboroCity_EventScript_BattleDawnPiplup
-	end
-RustboroCity_EventScript_BattleDawnTurtwig::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnChimchar::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnPiplup::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== UNOVA ==========
-RustboroCity_EventScript_BattleDawn_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnSnivy
-	case 1, RustboroCity_EventScript_BattleDawnTepig
-	case 2, RustboroCity_EventScript_BattleDawnOshawott
-	end
-RustboroCity_EventScript_BattleDawnSnivy::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnTepig::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnOshawott::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== KALOS ==========
-RustboroCity_EventScript_BattleDawn_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnChespin
-	case 1, RustboroCity_EventScript_BattleDawnFennekin
-	case 2, RustboroCity_EventScript_BattleDawnFroakie
-	end
-RustboroCity_EventScript_BattleDawnChespin::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnFennekin::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnFroakie::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== ALOLA ==========
-RustboroCity_EventScript_BattleDawn_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnRowlet
-	case 1, RustboroCity_EventScript_BattleDawnLitten
-	case 2, RustboroCity_EventScript_BattleDawnPopplio
-	end
-RustboroCity_EventScript_BattleDawnRowlet::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnLitten::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnPopplio::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== GALAR ==========
-RustboroCity_EventScript_BattleDawn_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnGrookey
-	case 1, RustboroCity_EventScript_BattleDawnScorbunny
-	case 2, RustboroCity_EventScript_BattleDawnSobble
-	end
-RustboroCity_EventScript_BattleDawnGrookey::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnScorbunny::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnSobble::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ========== PALDEA ==========
-RustboroCity_EventScript_BattleDawn_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleDawnSprigatito
-	case 1, RustboroCity_EventScript_BattleDawnFuecoco
-	case 2, RustboroCity_EventScript_BattleDawnQuaxly
-	end
-RustboroCity_EventScript_BattleDawnSprigatito::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnFuecoco::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleDawnQuaxly::
-	trainerbattle_no_intro TRAINER_DAWN_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-RustboroCity_EventScript_Rival_HILBERT::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_BrendanBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_HilbertAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_BrendanHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox RustboroCity_Text_RegisteredBrendan, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	msgbox RustboroCity_Text_BrendanPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilbert
-	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
-	releaseall
-	end
-
-RustboroCity_EventScript_HilbertAskToBattle::
-	msgbox RustboroCity_Text_BrendanWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilbert
-	msgbox RustboroCity_Text_BrendanNoConfidenceInPokemon, MSGBOX_DEFAULT
-	releaseall
-	end
-
-RustboroCity_EventScript_BattleHilbert::
-	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
-	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleHilbert_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleHilbert_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleHilbert_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleHilbert_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleHilbert_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleHilbert_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleHilbert_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleHilbert_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleHilbert_Paldea
-	end
-
-@ ===== KANTO =====
-RustboroCity_EventScript_BattleHilbert_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertBulbasaur
-	case 1, RustboroCity_EventScript_BattleHilbertCharmander
-	case 2, RustboroCity_EventScript_BattleHilbertSquirtle
-	end
-RustboroCity_EventScript_BattleHilbertBulbasaur::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_BULBASAUR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertCharmander::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHARMANDER, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertSquirtle::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SQUIRTLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== JOHTO =====
-RustboroCity_EventScript_BattleHilbert_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertChikorita
-	case 1, RustboroCity_EventScript_BattleHilbertCyndaquil
-	case 2, RustboroCity_EventScript_BattleHilbertTotodile
-	end
-RustboroCity_EventScript_BattleHilbertChikorita::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHIKORITA, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertCyndaquil::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CYNDAQUIL, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertTotodile::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TOTODILE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== HOENN =====
-RustboroCity_EventScript_BattleHilbert_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertTreecko
-	case 1, RustboroCity_EventScript_BattleHilbertTorchic
-	case 2, RustboroCity_EventScript_BattleHilbertMudkip
-	end
-RustboroCity_EventScript_BattleHilbertTreecko::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TREECKO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertTorchic::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TORCHIC, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertMudkip::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_MUDKIP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== SINNOH =====
-RustboroCity_EventScript_BattleHilbert_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertTurtwig
-	case 1, RustboroCity_EventScript_BattleHilbertChimchar
-	case 2, RustboroCity_EventScript_BattleHilbertPiplup
-	end
-RustboroCity_EventScript_BattleHilbertTurtwig::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TURTWIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertChimchar::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHIMCHAR, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertPiplup::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_PIPLUP, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== UNOVA =====
-RustboroCity_EventScript_BattleHilbert_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertSnivy
-	case 1, RustboroCity_EventScript_BattleHilbertTepig
-	case 2, RustboroCity_EventScript_BattleHilbertOshawott
-	end
-RustboroCity_EventScript_BattleHilbertSnivy::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SNIVY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertTepig::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_TEPIG, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertOshawott::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_OSHAWOTT, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== KALOS =====
-RustboroCity_EventScript_BattleHilbert_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertChespin
-	case 1, RustboroCity_EventScript_BattleHilbertFennekin
-	case 2, RustboroCity_EventScript_BattleHilbertFroakie
-	end
-RustboroCity_EventScript_BattleHilbertChespin::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_CHESPIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertFennekin::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FENNEKIN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertFroakie::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FROAKIE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== ALOLA =====
-RustboroCity_EventScript_BattleHilbert_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertRowlet
-	case 1, RustboroCity_EventScript_BattleHilbertLitten
-	case 2, RustboroCity_EventScript_BattleHilbertPopplio
-	end
-RustboroCity_EventScript_BattleHilbertRowlet::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_ROWLET, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertLitten::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_LITTEN, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertPopplio::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_POPPLIO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== GALAR =====
-RustboroCity_EventScript_BattleHilbert_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertGrookey
-	case 1, RustboroCity_EventScript_BattleHilbertScorbunny
-	case 2, RustboroCity_EventScript_BattleHilbertSobble
-	end
-RustboroCity_EventScript_BattleHilbertGrookey::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_GROOKEY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertScorbunny::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SCORBUNNY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertSobble::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SOBBLE, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-@ ===== PALDEA =====
-RustboroCity_EventScript_BattleHilbert_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHilbertSprigatito
-	case 1, RustboroCity_EventScript_BattleHilbertFuecoco
-	case 2, RustboroCity_EventScript_BattleHilbertQuaxly
-	end
-RustboroCity_EventScript_BattleHilbertSprigatito::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_SPRIGATITO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertFuecoco::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_FUECOCO, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-RustboroCity_EventScript_BattleHilbertQuaxly::
-	trainerbattle_no_intro TRAINER_HILBERT_RUSTBORO_QUAXLY, RustboroCity_Text_BrendanDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_BrendanBrineyHint
-	end
-
-RustboroCity_EventScript_Rival_HILDA::
-	goto_if_set FLAG_DEFEATED_RIVAL_RUSTBORO, RustboroCity_EventScript_MayBrineyHint
-	goto_if_set FLAG_MET_RIVAL_RUSTBORO, RustboroCity_EventScript_HildaAskToBattle
-	setflag FLAG_MET_RIVAL_RUSTBORO
-	msgbox RustboroCity_Text_MayHiLetsRegister, MSGBOX_DEFAULT
-	closemessage
-	delay 30
-	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox RustboroCity_Text_RegisteredMay, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
-	delay 30
-	setflag FLAG_ENABLE_RIVAL_MATCH_CALL
-	setvar VAR_RUSTBORO_CITY_STATE, 8
-	setvar VAR_ROUTE104_STATE, 2
-	setvar VAR_0x8008, 0
-	msgbox RustboroCity_Text_MayPassedBrineyWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilda
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	call RustboroCity_EventScript_RestoreBgm
-	releaseall
-	end
-
-RustboroCity_EventScript_HildaAskToBattle::
-	setvar VAR_0x8008, 1
-	msgbox RustboroCity_Text_MayWantToBattle, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, RustboroCity_EventScript_BattleHilda
-	msgbox RustboroCity_Text_MayOhHaventRaisedPokemonEnough, MSGBOX_DEFAULT
-	releaseall
-	end
-
-RustboroCity_EventScript_BattleHilda::
-	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
-	switch VAR_STARTER_REGION
-	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleHilda_Kanto
-	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleHilda_Johto
-	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleHilda_Hoenn
-	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleHilda_Sinnoh
-	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleHilda_Unova
-	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleHilda_Kalos
-	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleHilda_Alola
-	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleHilda_Galar
-	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleHilda_Paldea
-	end
-
-@ ===== KANTO =====
-RustboroCity_EventScript_BattleHilda_Kanto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaBulbasaur
-	case 1, RustboroCity_EventScript_BattleHildaCharmander
-	case 2, RustboroCity_EventScript_BattleHildaSquirtle
-	end
-RustboroCity_EventScript_BattleHildaBulbasaur::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_BULBASAUR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaCharmander::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHARMANDER, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaSquirtle::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SQUIRTLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== JOHTO =====
-RustboroCity_EventScript_BattleHilda_Johto::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaChikorita
-	case 1, RustboroCity_EventScript_BattleHildaCyndaquil
-	case 2, RustboroCity_EventScript_BattleHildaTotodile
-	end
-RustboroCity_EventScript_BattleHildaChikorita::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHIKORITA, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaCyndaquil::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CYNDAQUIL, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaTotodile::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TOTODILE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== HOENN =====
-RustboroCity_EventScript_BattleHilda_Hoenn::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaTreecko
-	case 1, RustboroCity_EventScript_BattleHildaTorchic
-	case 2, RustboroCity_EventScript_BattleHildaMudkip
-	end
-RustboroCity_EventScript_BattleHildaTreecko::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TREECKO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaTorchic::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TORCHIC, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaMudkip::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_MUDKIP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== SINNOH =====
-RustboroCity_EventScript_BattleHilda_Sinnoh::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaTurtwig
-	case 1, RustboroCity_EventScript_BattleHildaChimchar
-	case 2, RustboroCity_EventScript_BattleHildaPiplup
-	end
-RustboroCity_EventScript_BattleHildaTurtwig::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TURTWIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaChimchar::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHIMCHAR, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaPiplup::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_PIPLUP, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== UNOVA =====
-RustboroCity_EventScript_BattleHilda_Unova::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaSnivy
-	case 1, RustboroCity_EventScript_BattleHildaTepig
-	case 2, RustboroCity_EventScript_BattleHildaOshawott
-	end
-RustboroCity_EventScript_BattleHildaSnivy::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SNIVY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaTepig::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_TEPIG, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaOshawott::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_OSHAWOTT, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== KALOS =====
-RustboroCity_EventScript_BattleHilda_Kalos::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaChespin
-	case 1, RustboroCity_EventScript_BattleHildaFennekin
-	case 2, RustboroCity_EventScript_BattleHildaFroakie
-	end
-RustboroCity_EventScript_BattleHildaChespin::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_CHESPIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaFennekin::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FENNEKIN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaFroakie::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FROAKIE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== ALOLA =====
-RustboroCity_EventScript_BattleHilda_Alola::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaRowlet
-	case 1, RustboroCity_EventScript_BattleHildaLitten
-	case 2, RustboroCity_EventScript_BattleHildaPopplio
-	end
-RustboroCity_EventScript_BattleHildaRowlet::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_ROWLET, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaLitten::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_LITTEN, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaPopplio::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_POPPLIO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== GALAR =====
-RustboroCity_EventScript_BattleHilda_Galar::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaGrookey
-	case 1, RustboroCity_EventScript_BattleHildaScorbunny
-	case 2, RustboroCity_EventScript_BattleHildaSobble
-	end
-RustboroCity_EventScript_BattleHildaGrookey::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_GROOKEY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaScorbunny::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SCORBUNNY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaSobble::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SOBBLE, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-
-@ ===== PALDEA =====
-RustboroCity_EventScript_BattleHilda_Paldea::
-	switch VAR_STARTER_MON
-	case 0, RustboroCity_EventScript_BattleHildaSprigatito
-	case 1, RustboroCity_EventScript_BattleHildaFuecoco
-	case 2, RustboroCity_EventScript_BattleHildaQuaxly
-	end
-RustboroCity_EventScript_BattleHildaSprigatito::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_SPRIGATITO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaFuecoco::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_FUECOCO, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
-	end
-RustboroCity_EventScript_BattleHildaQuaxly::
-	trainerbattle_no_intro TRAINER_HILDA_RUSTBORO_QUAXLY, RustboroCity_Text_MayDefeat
-	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
-	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
 RustboroCity_EventScript_RestoreBgm::
