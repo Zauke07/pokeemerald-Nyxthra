@@ -405,6 +405,76 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_YoungCou
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_YoungCoupleM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Youngster;
 
+// CALEM
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Calem;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemUnderwater;
+
+// ELIO
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elio;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalElioMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalElioAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalElioSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ElioUnderwater;
+
+// FLORIAN
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Florian;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalFlorianMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalFlorianAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalFlorianSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FlorianUnderwater;
+
+// GLORIA
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gloria;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalGloriaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalGloriaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalGloriaSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GloriaUnderwater;
+
+// JULIANA
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Juliana;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalJulianaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalJulianaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalJulianaSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_JulianaUnderwater;
+
+// NATE
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nate;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalNateMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalNateAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalNateSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NateUnderwater;
+
+// ROSA
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rosa;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalRosaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalRosaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalRosaSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RosaUnderwater;
+
+// SELENE
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Selene;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSeleneMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSeleneAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSeleneSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneUnderwater;
+
+// SERENA
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Serena;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSerenaMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSerenaAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalSerenaSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SerenaUnderwater;
+
+// VICTOR
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Victor;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictorMachBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictorAcroBike;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictorSurfing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorUnderwater;
+
 //NEW END
 
 //Pokeemerald-Rogue
@@ -1513,6 +1583,55 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DP_YOUNG_COUPLEF] =               &gObjectEventGraphicsInfo_DP_YoungCoupleF,
     [OBJ_EVENT_GFX_DP_YOUNG_COUPLEM] =               &gObjectEventGraphicsInfo_DP_YoungCoupleM,
     [OBJ_EVENT_GFX_DP_YOUNGSTER] =               &gObjectEventGraphicsInfo_DP_Youngster,
+    [OBJ_EVENT_GFX_RIVAL_CALEM_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalCalemMachBike,
+    [OBJ_EVENT_GFX_RIVAL_CALEM_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalCalemAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_CALEM_SURFING] = &gObjectEventGraphicsInfo_RivalCalemSurfing,
+    [OBJ_EVENT_GFX_CALEM_UNDERWATER] = &gObjectEventGraphicsInfo_CalemUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_ELIO_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalElioMachBike,
+    [OBJ_EVENT_GFX_RIVAL_ELIO_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalElioAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_ELIO_SURFING] = &gObjectEventGraphicsInfo_RivalElioSurfing,
+    [OBJ_EVENT_GFX_ELIO_UNDERWATER] = &gObjectEventGraphicsInfo_ElioUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_FLORIAN_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalFlorianMachBike,
+    [OBJ_EVENT_GFX_RIVAL_FLORIAN_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalFlorianAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_FLORIAN_SURFING] = &gObjectEventGraphicsInfo_RivalFlorianSurfing,
+    [OBJ_EVENT_GFX_FLORIAN_UNDERWATER] = &gObjectEventGraphicsInfo_FlorianUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_GLORIA_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalGloriaMachBike,
+    [OBJ_EVENT_GFX_RIVAL_GLORIA_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalGloriaAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_GLORIA_SURFING] = &gObjectEventGraphicsInfo_RivalGloriaSurfing,
+    [OBJ_EVENT_GFX_GLORIA_UNDERWATER] = &gObjectEventGraphicsInfo_GloriaUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_JULIANA_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalJulianaMachBike,
+    [OBJ_EVENT_GFX_RIVAL_JULIANA_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalJulianaAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_JULIANA_SURFING] = &gObjectEventGraphicsInfo_RivalJulianaSurfing,
+    [OBJ_EVENT_GFX_JULIANA_UNDERWATER] = &gObjectEventGraphicsInfo_JulianaUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_NATE_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalNateMachBike,
+    [OBJ_EVENT_GFX_RIVAL_NATE_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalNateAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_NATE_SURFING] = &gObjectEventGraphicsInfo_RivalNateSurfing,
+    [OBJ_EVENT_GFX_NATE_UNDERWATER] = &gObjectEventGraphicsInfo_NateUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_ROSA_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalRosaMachBike,
+    [OBJ_EVENT_GFX_RIVAL_ROSA_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalRosaAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_ROSA_SURFING] = &gObjectEventGraphicsInfo_RivalRosaSurfing,
+    [OBJ_EVENT_GFX_ROSA_UNDERWATER] = &gObjectEventGraphicsInfo_RosaUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_SELENE_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalSeleneMachBike,
+    [OBJ_EVENT_GFX_RIVAL_SELENE_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalSeleneAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_SELENE_SURFING] = &gObjectEventGraphicsInfo_RivalSeleneSurfing,
+    [OBJ_EVENT_GFX_SELENE_UNDERWATER] = &gObjectEventGraphicsInfo_SeleneUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_SERENA_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalSerenaMachBike,
+    [OBJ_EVENT_GFX_RIVAL_SERENA_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalSerenaAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_SERENA_SURFING] = &gObjectEventGraphicsInfo_RivalSerenaSurfing,
+    [OBJ_EVENT_GFX_SERENA_UNDERWATER] = &gObjectEventGraphicsInfo_SerenaUnderwater,
+
+    [OBJ_EVENT_GFX_RIVAL_VICTOR_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalVictorMachBike,
+    [OBJ_EVENT_GFX_RIVAL_VICTOR_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalVictorAcroBike,
+    [OBJ_EVENT_GFX_RIVAL_VICTOR_SURFING] = &gObjectEventGraphicsInfo_RivalVictorSurfing,
+    [OBJ_EVENT_GFX_VICTOR_UNDERWATER] = &gObjectEventGraphicsInfo_VictorUnderwater,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

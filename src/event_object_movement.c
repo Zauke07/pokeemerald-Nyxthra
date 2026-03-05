@@ -2856,20 +2856,29 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
 // Sprite callback for light sprites
 void UpdateLightSprite(struct Sprite *sprite)
 {
+    if (gSaveBlock1Ptr == NULL)
+    {
+        DestroySprite(sprite);
+        return;
+    }
+
     s16 left =   gSaveBlock1Ptr->pos.x - 2;
     s16 right =  gSaveBlock1Ptr->pos.x + 17;
     s16 top =    gSaveBlock1Ptr->pos.y;
     s16 bottom = gSaveBlock1Ptr->pos.y + 15;
     s16 x = sprite->sLightXPos;
     s16 y = sprite->sLightYPos;
+    bool8 usingSheet;
     u16 sheetTileStart;
     u32 paletteNum;
     if (!(x >= left && x <= right && y >= top && y <= bottom))
     {
+        usingSheet = sprite->usingSheet;
         sheetTileStart = sprite->sheetTileStart;
         paletteNum = sprite->oam.paletteNum;
         DestroySprite(sprite);
-        FieldEffectFreeTilesIfUnused(sheetTileStart);
+        if (usingSheet)
+            FieldEffectFreeTilesIfUnused(sheetTileStart);
         FieldEffectFreePaletteIfUnused(paletteNum);
         Weather_SetBlendCoeffs(7, BASE_SHADOW_INTENSITY); // TODO: Restore original blend coeffs at dawn
         return;
@@ -2891,13 +2900,21 @@ void UpdateLightSprite(struct Sprite *sprite)
         {
             sprite->invisible = FALSE;
             if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT_2)
-                LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT)], sprite->oam.paletteNum);
+            {
+                u8 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
+                if (paletteIndex != 0xFF)
+                    LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[paletteIndex], sprite->oam.paletteNum);
+            }
         }
         else if ((sprite->invisible = gTimeUpdateCounter & 1))
         {
             sprite->invisible = FALSE;
             if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT_2)
-                LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT)], sprite->oam.paletteNum);
+            {
+                u8 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
+                if (paletteIndex != 0xFF)
+                    LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[paletteIndex], sprite->oam.paletteNum);
+            }
         }
     } else {
         sprite->invisible = FALSE;
@@ -2909,6 +2926,7 @@ void UpdateLightSprite(struct Sprite *sprite)
 // Spawn a light at a map coordinate
 static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType)
 {
+    u8 spriteId;
     struct Sprite *sprite;
     const struct SpriteTemplate *template;
     u32 i;
@@ -2921,7 +2939,11 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType)
     lightType = min(lightType, ARRAY_COUNT(gFieldEffectLightTemplates) - 1); // bounds checking
     template = gFieldEffectLightTemplates[lightType];
     LoadSpriteSheetByTemplate(template, 0, 0);
-    sprite = &gSprites[CreateSprite(template, 0, 0, 0)];
+    spriteId = CreateSprite(template, 0, 0, 0);
+    if (spriteId == MAX_SPRITES)
+        return;
+
+    sprite = &gSprites[spriteId];
     if (lightType == 0 && (i = IndexOfSpritePaletteTag(template->paletteTag + 1)) < 16)
         sprite->oam.paletteNum = i;
     else
@@ -2964,6 +2986,10 @@ void TrySpawnLightSprites(s16 camX, s16 camY)
 {
     u32 i;
     u8 objectCount;
+
+    if (gSaveBlock1Ptr == NULL)
+        return;
+
     s16 left = gSaveBlock1Ptr->pos.x - 2;
     s16 right = gSaveBlock1Ptr->pos.x + MAP_OFFSET_W + 2;
     s16 top = gSaveBlock1Ptr->pos.y;
@@ -3553,12 +3579,14 @@ void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
 
 static u8 FindObjectEventPaletteIndexByTag(u16 tag)
 {
-    u8 i;
+    u16 i;
 
-    for (i = 0; sObjectEventSpritePalettes[i].tag != OBJ_EVENT_PAL_TAG_NONE; i++)
+    for (i = 0; i < ARRAY_COUNT(sObjectEventSpritePalettes); i++)
     {
+        if (sObjectEventSpritePalettes[i].tag == OBJ_EVENT_PAL_TAG_NONE)
+            break;
         if (sObjectEventSpritePalettes[i].tag == tag)
-            return i;
+            return (u8)i;
     }
     return 0xFF;
 }

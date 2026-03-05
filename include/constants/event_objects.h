@@ -790,10 +790,30 @@
 #define OBJ_EVENT_GFX_DP_YOUNG_COUPLEF                 767
 #define OBJ_EVENT_GFX_DP_YOUNG_COUPLEM                 768
 #define OBJ_EVENT_GFX_DP_YOUNGSTER                 769
+#define OBJ_EVENT_GFX_RIVAL_CALEM_SURFING          770
+#define OBJ_EVENT_GFX_CALEM_UNDERWATER             771
+#define OBJ_EVENT_GFX_RIVAL_ELIO_SURFING           772
+#define OBJ_EVENT_GFX_ELIO_UNDERWATER              773
+#define OBJ_EVENT_GFX_RIVAL_FLORIAN_SURFING        774
+#define OBJ_EVENT_GFX_FLORIAN_UNDERWATER           775
+#define OBJ_EVENT_GFX_RIVAL_GLORIA_SURFING         776
+#define OBJ_EVENT_GFX_GLORIA_UNDERWATER            777
+#define OBJ_EVENT_GFX_RIVAL_JULIANA_SURFING        778
+#define OBJ_EVENT_GFX_JULIANA_UNDERWATER           779
+#define OBJ_EVENT_GFX_RIVAL_NATE_SURFING           780
+#define OBJ_EVENT_GFX_NATE_UNDERWATER              781
+#define OBJ_EVENT_GFX_RIVAL_ROSA_SURFING           782
+#define OBJ_EVENT_GFX_ROSA_UNDERWATER              783
+#define OBJ_EVENT_GFX_RIVAL_SELENE_SURFING         784
+#define OBJ_EVENT_GFX_SELENE_UNDERWATER            785
+#define OBJ_EVENT_GFX_RIVAL_SERENA_SURFING         786
+#define OBJ_EVENT_GFX_SERENA_UNDERWATER            787
+#define OBJ_EVENT_GFX_RIVAL_VICTOR_SURFING         788
+#define OBJ_EVENT_GFX_VICTOR_UNDERWATER            789
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                       770
+#define NUM_OBJ_EVENT_GFX                       790
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

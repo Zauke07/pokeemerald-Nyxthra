@@ -46,7 +46,6 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_BallLight = {
     .oam = &gObjectEventBaseOam_32x32,
     .anims = sAnimTable_Inanimate,
     .images = gFieldEffectObjectPicTable_BallLight,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateLightSprite,
 };
 
@@ -56,7 +55,6 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_PokeCenterLight = {
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_Inanimate,
     .images = gFieldEffectObjectPicTable_PokeCenterLight,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateLightSprite,
 };
 
@@ -66,7 +64,6 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_MartLight = {
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_Inanimate,
     .images = gFieldEffectObjectPicTable_MartLight,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateLightSprite,
 };
 
