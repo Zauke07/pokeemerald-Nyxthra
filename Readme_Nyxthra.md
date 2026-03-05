@@ -1,97 +1,117 @@
-# Pokémon Nyxthra - Alpha v1.0.3
+# Pokémon Nyxthra - Alpha v1.0.8
 
-**Pokémon Nyxthra** ist eine auf **pokeemerald-expansion** (v1.12.1) basierende Modifikation mit zahlreichen eigenen Erweiterungen, Änderungen und neuen Inhalten.  
-Die Basis stammt vom RHH-Team (rh-hideout). Mehr Infos zum Originalprojekt:  
-🔗 https://github.com/rh-hideout/pokeemerald-expansion/blob/master/README.md
+Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.15.0) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
 
----
-
-## 🧪 Versionsinfo
-
-- **Projektstart:** 01.01.2024  
-- **Basis:** pokeemerald-expansion v1.12.1  
-- **Nyxthra-Version:** Alpha v1.0.3  
-- **Sprache:** Deutsch  
-- **Status:** Testphase (nur ausgewählte Tester)
+Basisprojekt (RHH):  
+https://github.com/rh-hideout/pokeemerald-expansion
 
 ---
 
-## ✨ Hauptänderungen gegenüber pokeemerald-expansion
+## 🧪 Projektstatus
+
+- Projektstart: 01.01.2024
+- Basis: pokeemerald-expansion v1.15.0
+- Aktuelle Nyxthra-Version: Alpha v1.0.8
+- Sprache: Deutsch
+- Status: Interne Testphase (ausgewählte Tester)
+
+---
+
+## ✨ Features & Änderungen
 
 ### 🎮 Gameplay & Story
-- Vollständig überarbeitete Story mit eigenen Dialogen  
-- Neue Events und Szenen eingebaut  
-- Starter frei wählbar - **alle Starter aller Regionen** (Gen 1-9) stehen zur Auswahl, statt nur die Hoenn-Starter  
-- Neue Trainer & Teams, inklusive Kämpfe gegen Charaktere aus verschiedenen Generationen  
-- Trainerlevel, KI und Begegnungen stark angepasst  
+- Vollständig überarbeitete Hauptstory mit eigenen Dialogen, Events und Szenen
+- Neue Trainer, Teams und Begegnungen über mehrere Generationen hinweg
+- Überarbeitetes Balancing für Levelkurve, KI und Kampfverlauf
+- Freie Starterwahl: Starter aus Gen 1-9 statt klassischer Hoenn-Auswahl
 
-### 🌞 Tag-Nacht-System & Uhr
-- Tag-Nacht-System aus **pokeemerald-expansion (RHH)** integriert, **Codes jedoch komplett selbst angepasst**  
-- Anzeige der **aktuellen Uhrzeit direkt im Startmenü** (eigene Implementierung)  
-- Dynamische **Lichteffekte** in Abhängigkeit von der Tageszeit (Code teils von uns, teils von RHH)  
+### 🌞 Tag/Nacht, Uhr & Overworld
+- DNS-System (Day/Night) auf Nyxthra angepasst
+- Uhrzeit-Anzeige direkt im Startmenü (eigene Implementierung)
+- Dynamische Lichtquellen in der Overworld
+- Mehrere Stabilitätsfixes für Overworld-/Licht-Handling (u. a. Freeze-Fixes in Städten)
 
-### 👤 Charakterauswahl & Stylesystem
-- Statt geschlechtsbasierter Auswahl wurde ein **komplettes Style-System** eingeführt  
-- Direkt zu Beginn wählbar:
-  - **Ethan**
-  - **Lyra**
-  - **Red**
-  - **Leaf**
-  - **Hans** (Brendan)
-  - **Brigitte** (May)
-  - **Lukas** (Lucas)
-  - **Lucia** (Dawn)
-  - **Warren** (Hilbert)
-  - **Lotta** (Hilda)
-- Das Spiel nutzt intern den Style statt dem Geschlecht → **dynamische Rivalen, Dialoge und Events**  
+### 👤 Stylesystem statt Geschlechterwahl
+- Komplettes Style-System als Kernmechanik
+- Verfügbare Styles zu Spielbeginn (aktuell 20):
+  - Hans (Brendan)
+  - Brigitte (May)
+  - Red
+  - Leaf
+  - Ethan
+  - Lyra
+  - Lukas (Lucas)
+  - Lucia (Dawn)
+  - Warren (Hilbert)
+  - Lotta (Hilda)
+  - Nate
+  - Rosy (Rosa)
+  - Kalem
+  - Serena
+  - Elio
+  - Selene
+  - Victor
+  - Gloria
+  - Florian
+  - Juliana
+- Rivalen, Dialoge und Eventabläufe reagieren dynamisch auf den gewählten Style
+- Hinweis: Für einige Styles sind noch nicht alle Sprite-Zustände final (z. B. Surf/Fishing/Field Move/Rival-Varianten). In diesen Fällen nutzt das Spiel aktuell bewusst Fallback-Grafiken, bis alle finalen Assets fertig sind.
 
 ### ⚙️ Komfortfunktionen
-- **Spitznamen-Überspringen** beim Fangen oder Erhalten eines Pokémon möglich *(Idee aus Pokémon Rogue)*  
-- **Dauerhaftes Rennen** einstellbar: Im Optionsmenü wählbar zwischen „Halten“ oder „Umschalten“ *(Idee aus Pokémon Rogue)*  
+- Spitznamen-Dialog beim Fangen/Erhalten optional überspringbar
+- Dauerhaftes Rennen im Optionsmenü konfigurierbar:
+  - Halten
+  - Umschalten
 
-### 🧠 Technisch & Code
-- Eigenes Stylesystem vollständig implementiert  
-- Über 50 neue Scripts und zahlreiche zusätzliche Funktionen (u.a. Event-Handling, Debugfunktionen, Spezial-Events)  
-- Komplette Neuordnung und Vereinheitlichung von geschlechterbasierten Checks  
-- Neue Grafiken, Paletten und Charaktersprites eingebunden  
+### 🧠 Technische Erweiterungen
+- Eigenes Stylesystem vollständig in den Code integriert
+- 50+ neue Scripts und zusätzliche Funktionslogik
+- Geschlechterbasierte Checks weitgehend vereinheitlicht/ersetzt
+- Neue Grafiken, Paletten und Overworld-Sprites eingebunden
+
+---
+
+## 🆕 Neu in Alpha v1.0.8
+
+- Weitere Story-/Eventanpassungen
+- Überarbeitungen an Overworld-Objekten und Lichtverhalten
+- Verbesserte Stabilität bei Stadt-/Gebäudewechseln
+- Diverse interne Codebereinigungen und Bugfixes
 
 ---
 
 ## ℹ️ Hinweise für Tester
-- Dies ist eine **Alpha-Version**. Fehler, fehlende Grafiken oder falsche Trigger können auftreten.  
-- ⚠️ **Debug-Menü:** Nur in der Alpha vorhanden - noch nicht alle Funktionen sind einsatzbereit.  
-  - **Falsche Auswahl kann zu Spielabstürzen oder beschädigten Spielständen führen!**  
-  - Viele Einträge erklären sich selbst.  
-  - Für gezielte Tests ist das Debug-Menü dennoch sehr nützlich.  
-- Bitte dokumentiert alle Fehler möglichst genau (Ort, Situation, ggf. Screenshots) und meldet sie an den Dev.
+
+- Dies ist eine Alpha-Version. Fehler, fehlende Assets oder falsche Trigger sind möglich.
+- Das Debug-Menü ist nur für Testzwecke vorhanden und nicht vollständig abgesichert.
+- Falsche Debug-Auswahl kann Abstürze oder beschädigte Saves verursachen.
+- Bitte Bugs möglichst genau melden (Ort, Situation, Schritte, ggf. Screenshot/Video).
+
 ---
 
 ## 🐞 Bekannte Probleme
-- **Grafikfehler mit dem Eilrad** (gelegentlich auch beim Kunstrad)  
-	Beim fahren läuft der spieler aber die musik vom rad ist da und auch der speed. Problem ist, sobald ein kampf oder so kommt bleibt die musik aber die schnelligkeit ist weg. Dann muss man wieder das Rad auswählen. Tipp: Bei sachen wo man fahren muss, einfach am besten Schutz aktivieren und evenutell vorher alle trainer in der nähe besiegen bis das problem gefixt ist.
 
-- **Field Move Effekte** könnten in bestimmten Situationen nicht korrekt funktionieren (z. B. *Fliegen*, *Blitz* usw.)
-
-- **Overworld Grafikfehler** 
-	einige Pokémon haben noch grafikfehler in der oberwelt, voraussichtlicher fix in der nächsten oder übernächsten version
-
+- Eilrad/Kunstrad kann in Einzelfällen nach Kämpfen fehlerhaft weiterlaufen (Musik aktiv, Effekt in Teilen verloren)
+- Einige Field Moves können situativ fehlerhaft reagieren (z. B. Fliegen, Blitz)
+- Einzelne Overworld-Sprites besitzen noch grafische Ungenauigkeiten
 
 ---
 
-## 📌 Noch geplant / In Arbeit
-- Abschluss der Postgame-Inhalte  
-- Neue Musik, Titelbildschirm & Startsequenz  
-- Update auf neuere Expansion-Version  
-- Trainerkämpfe mit vollständigen Teams für alle Rivalen in jeder Phase  
-- Neue legendäre Events & alternative Enden  
-- **Erweiterte Formen von Shinys** (zunächst nur für legendäre Pokémon)  
-- **Mehrere Teams** ins Spiel einbauen 
-	(alle vorhandenen Teams im Projekt, jedoch aktuell noch ohne Story - derzeit am Ende von Metarost City sichtbar)  
+## 📌 Geplant / In Arbeit
+
+- Postgame-Inhalte abschließen
+- Neue Musik, Titelbildschirm und Startsequenz
+- Update auf neuere Expansion-Version
+- Vollständige Rivalen-Teams für alle Storyphasen
+- Weitere legendäre Events und alternative Enden
+- Erweiterte Shiny-Formen (zunächst für legendäre Pokémon)
+- Mehr Team-Fraktionen mit eigener Story-Integration
 
 ---
 
 ## 🔗 Credits
 
-- **pokeemerald-expansion (RHH)**  
-  → https://github.com/rh-hideout/pokeemerald-expansion  
-- Diverse Sprites, Musik und Tools stammen aus der Pokémon-Romhack-Community (Credits folgen zum Release)  
+- pokeemerald-expansion (RHH):
+  https://github.com/rh-hideout/pokeemerald-expansion
+- Weitere Sprites, Musik und Tools aus der Romhack-Community
+- Detaillierte Einzelcredits folgen zum Release
