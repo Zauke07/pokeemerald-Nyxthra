@@ -13558,7 +13558,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_DOWSING_MACHINE] =
     {
-        .name = ITEM_NAME("Dowsing Machine"),
+        .name = ITEM_NAME("Itemradar"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Ein Gerät, das ver-\n"
