@@ -414,15 +414,15 @@ LilycoveCity_EventScript_PreBattle_Male::
 
 LilycoveCity_EventScript_StartBattle_MAY::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartMAY_KANTO
-	case 1, LilycoveCity_EventScript_StartMAY_JOHTO
-	case 2, LilycoveCity_EventScript_StartMAY_HOENN
-	case 3, LilycoveCity_EventScript_StartMAY_SINNOH
-	case 4, LilycoveCity_EventScript_StartMAY_UNOVA
-	case 5, LilycoveCity_EventScript_StartMAY_KALOS
-	case 6, LilycoveCity_EventScript_StartMAY_ALOLA
-	case 7, LilycoveCity_EventScript_StartMAY_GALAR
-	case 8, LilycoveCity_EventScript_StartMAY_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartMAY_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartMAY_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartMAY_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartMAY_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartMAY_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartMAY_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartMAY_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartMAY_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartMAY_PALDEA
 	end
 
 LilycoveCity_EventScript_StartMAY_KANTO::
@@ -625,15 +625,15 @@ LilycoveCity_EventScript_BattleMAY_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_BRENDAN::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartBRENDAN_KANTO
-	case 1, LilycoveCity_EventScript_StartBRENDAN_JOHTO
-	case 2, LilycoveCity_EventScript_StartBRENDAN_HOENN
-	case 3, LilycoveCity_EventScript_StartBRENDAN_SINNOH
-	case 4, LilycoveCity_EventScript_StartBRENDAN_UNOVA
-	case 5, LilycoveCity_EventScript_StartBRENDAN_KALOS
-	case 6, LilycoveCity_EventScript_StartBRENDAN_ALOLA
-	case 7, LilycoveCity_EventScript_StartBRENDAN_GALAR
-	case 8, LilycoveCity_EventScript_StartBRENDAN_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartBRENDAN_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartBRENDAN_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartBRENDAN_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartBRENDAN_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartBRENDAN_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartBRENDAN_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartBRENDAN_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartBRENDAN_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartBRENDAN_PALDEA
 	end
 
 LilycoveCity_EventScript_StartBRENDAN_KANTO::
@@ -836,15 +836,15 @@ LilycoveCity_EventScript_BattleBRENDAN_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_LEAF::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartLEAF_KANTO
-	case 1, LilycoveCity_EventScript_StartLEAF_JOHTO
-	case 2, LilycoveCity_EventScript_StartLEAF_HOENN
-	case 3, LilycoveCity_EventScript_StartLEAF_SINNOH
-	case 4, LilycoveCity_EventScript_StartLEAF_UNOVA
-	case 5, LilycoveCity_EventScript_StartLEAF_KALOS
-	case 6, LilycoveCity_EventScript_StartLEAF_ALOLA
-	case 7, LilycoveCity_EventScript_StartLEAF_GALAR
-	case 8, LilycoveCity_EventScript_StartLEAF_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartLEAF_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartLEAF_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartLEAF_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartLEAF_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartLEAF_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartLEAF_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartLEAF_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartLEAF_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartLEAF_PALDEA
 	end
 
 LilycoveCity_EventScript_StartLEAF_KANTO::
@@ -1047,15 +1047,15 @@ LilycoveCity_EventScript_BattleLEAF_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_RED::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartRED_KANTO
-	case 1, LilycoveCity_EventScript_StartRED_JOHTO
-	case 2, LilycoveCity_EventScript_StartRED_HOENN
-	case 3, LilycoveCity_EventScript_StartRED_SINNOH
-	case 4, LilycoveCity_EventScript_StartRED_UNOVA
-	case 5, LilycoveCity_EventScript_StartRED_KALOS
-	case 6, LilycoveCity_EventScript_StartRED_ALOLA
-	case 7, LilycoveCity_EventScript_StartRED_GALAR
-	case 8, LilycoveCity_EventScript_StartRED_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartRED_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartRED_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartRED_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartRED_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartRED_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartRED_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartRED_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartRED_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartRED_PALDEA
 	end
 
 LilycoveCity_EventScript_StartRED_KANTO::
@@ -1258,15 +1258,15 @@ LilycoveCity_EventScript_BattleRED_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_LYRA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartLYRA_KANTO
-	case 1, LilycoveCity_EventScript_StartLYRA_JOHTO
-	case 2, LilycoveCity_EventScript_StartLYRA_HOENN
-	case 3, LilycoveCity_EventScript_StartLYRA_SINNOH
-	case 4, LilycoveCity_EventScript_StartLYRA_UNOVA
-	case 5, LilycoveCity_EventScript_StartLYRA_KALOS
-	case 6, LilycoveCity_EventScript_StartLYRA_ALOLA
-	case 7, LilycoveCity_EventScript_StartLYRA_GALAR
-	case 8, LilycoveCity_EventScript_StartLYRA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartLYRA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartLYRA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartLYRA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartLYRA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartLYRA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartLYRA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartLYRA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartLYRA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartLYRA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartLYRA_KANTO::
@@ -1469,15 +1469,15 @@ LilycoveCity_EventScript_BattleLYRA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_ETHAN::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartETHAN_KANTO
-	case 1, LilycoveCity_EventScript_StartETHAN_JOHTO
-	case 2, LilycoveCity_EventScript_StartETHAN_HOENN
-	case 3, LilycoveCity_EventScript_StartETHAN_SINNOH
-	case 4, LilycoveCity_EventScript_StartETHAN_UNOVA
-	case 5, LilycoveCity_EventScript_StartETHAN_KALOS
-	case 6, LilycoveCity_EventScript_StartETHAN_ALOLA
-	case 7, LilycoveCity_EventScript_StartETHAN_GALAR
-	case 8, LilycoveCity_EventScript_StartETHAN_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartETHAN_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartETHAN_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartETHAN_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartETHAN_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartETHAN_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartETHAN_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartETHAN_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartETHAN_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartETHAN_PALDEA
 	end
 
 LilycoveCity_EventScript_StartETHAN_KANTO::
@@ -1680,15 +1680,15 @@ LilycoveCity_EventScript_BattleETHAN_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_DAWN::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartDAWN_KANTO
-	case 1, LilycoveCity_EventScript_StartDAWN_JOHTO
-	case 2, LilycoveCity_EventScript_StartDAWN_HOENN
-	case 3, LilycoveCity_EventScript_StartDAWN_SINNOH
-	case 4, LilycoveCity_EventScript_StartDAWN_UNOVA
-	case 5, LilycoveCity_EventScript_StartDAWN_KALOS
-	case 6, LilycoveCity_EventScript_StartDAWN_ALOLA
-	case 7, LilycoveCity_EventScript_StartDAWN_GALAR
-	case 8, LilycoveCity_EventScript_StartDAWN_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartDAWN_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartDAWN_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartDAWN_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartDAWN_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartDAWN_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartDAWN_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartDAWN_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartDAWN_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartDAWN_PALDEA
 	end
 
 LilycoveCity_EventScript_StartDAWN_KANTO::
@@ -1891,15 +1891,15 @@ LilycoveCity_EventScript_BattleDAWN_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_LUCAS::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartLUCAS_KANTO
-	case 1, LilycoveCity_EventScript_StartLUCAS_JOHTO
-	case 2, LilycoveCity_EventScript_StartLUCAS_HOENN
-	case 3, LilycoveCity_EventScript_StartLUCAS_SINNOH
-	case 4, LilycoveCity_EventScript_StartLUCAS_UNOVA
-	case 5, LilycoveCity_EventScript_StartLUCAS_KALOS
-	case 6, LilycoveCity_EventScript_StartLUCAS_ALOLA
-	case 7, LilycoveCity_EventScript_StartLUCAS_GALAR
-	case 8, LilycoveCity_EventScript_StartLUCAS_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartLUCAS_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartLUCAS_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartLUCAS_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartLUCAS_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartLUCAS_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartLUCAS_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartLUCAS_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartLUCAS_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartLUCAS_PALDEA
 	end
 
 LilycoveCity_EventScript_StartLUCAS_KANTO::
@@ -2102,15 +2102,15 @@ LilycoveCity_EventScript_BattleLUCAS_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_HILDA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartHILDA_KANTO
-	case 1, LilycoveCity_EventScript_StartHILDA_JOHTO
-	case 2, LilycoveCity_EventScript_StartHILDA_HOENN
-	case 3, LilycoveCity_EventScript_StartHILDA_SINNOH
-	case 4, LilycoveCity_EventScript_StartHILDA_UNOVA
-	case 5, LilycoveCity_EventScript_StartHILDA_KALOS
-	case 6, LilycoveCity_EventScript_StartHILDA_ALOLA
-	case 7, LilycoveCity_EventScript_StartHILDA_GALAR
-	case 8, LilycoveCity_EventScript_StartHILDA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartHILDA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartHILDA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartHILDA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartHILDA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartHILDA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartHILDA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartHILDA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartHILDA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartHILDA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartHILDA_KANTO::
@@ -2313,15 +2313,15 @@ LilycoveCity_EventScript_BattleHILDA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_HILBERT::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartHILBERT_KANTO
-	case 1, LilycoveCity_EventScript_StartHILBERT_JOHTO
-	case 2, LilycoveCity_EventScript_StartHILBERT_HOENN
-	case 3, LilycoveCity_EventScript_StartHILBERT_SINNOH
-	case 4, LilycoveCity_EventScript_StartHILBERT_UNOVA
-	case 5, LilycoveCity_EventScript_StartHILBERT_KALOS
-	case 6, LilycoveCity_EventScript_StartHILBERT_ALOLA
-	case 7, LilycoveCity_EventScript_StartHILBERT_GALAR
-	case 8, LilycoveCity_EventScript_StartHILBERT_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartHILBERT_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartHILBERT_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartHILBERT_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartHILBERT_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartHILBERT_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartHILBERT_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartHILBERT_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartHILBERT_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartHILBERT_PALDEA
 	end
 
 LilycoveCity_EventScript_StartHILBERT_KANTO::
@@ -2524,15 +2524,15 @@ LilycoveCity_EventScript_BattleHILBERT_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_ROSA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartROSA_KANTO
-	case 1, LilycoveCity_EventScript_StartROSA_JOHTO
-	case 2, LilycoveCity_EventScript_StartROSA_HOENN
-	case 3, LilycoveCity_EventScript_StartROSA_SINNOH
-	case 4, LilycoveCity_EventScript_StartROSA_UNOVA
-	case 5, LilycoveCity_EventScript_StartROSA_KALOS
-	case 6, LilycoveCity_EventScript_StartROSA_ALOLA
-	case 7, LilycoveCity_EventScript_StartROSA_GALAR
-	case 8, LilycoveCity_EventScript_StartROSA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartROSA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartROSA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartROSA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartROSA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartROSA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartROSA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartROSA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartROSA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartROSA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartROSA_KANTO::
@@ -2735,15 +2735,15 @@ LilycoveCity_EventScript_BattleROSA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_NATE::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartNATE_KANTO
-	case 1, LilycoveCity_EventScript_StartNATE_JOHTO
-	case 2, LilycoveCity_EventScript_StartNATE_HOENN
-	case 3, LilycoveCity_EventScript_StartNATE_SINNOH
-	case 4, LilycoveCity_EventScript_StartNATE_UNOVA
-	case 5, LilycoveCity_EventScript_StartNATE_KALOS
-	case 6, LilycoveCity_EventScript_StartNATE_ALOLA
-	case 7, LilycoveCity_EventScript_StartNATE_GALAR
-	case 8, LilycoveCity_EventScript_StartNATE_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartNATE_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartNATE_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartNATE_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartNATE_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartNATE_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartNATE_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartNATE_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartNATE_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartNATE_PALDEA
 	end
 
 LilycoveCity_EventScript_StartNATE_KANTO::
@@ -2946,15 +2946,15 @@ LilycoveCity_EventScript_BattleNATE_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_SERENA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartSERENA_KANTO
-	case 1, LilycoveCity_EventScript_StartSERENA_JOHTO
-	case 2, LilycoveCity_EventScript_StartSERENA_HOENN
-	case 3, LilycoveCity_EventScript_StartSERENA_SINNOH
-	case 4, LilycoveCity_EventScript_StartSERENA_UNOVA
-	case 5, LilycoveCity_EventScript_StartSERENA_KALOS
-	case 6, LilycoveCity_EventScript_StartSERENA_ALOLA
-	case 7, LilycoveCity_EventScript_StartSERENA_GALAR
-	case 8, LilycoveCity_EventScript_StartSERENA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartSERENA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartSERENA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartSERENA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartSERENA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartSERENA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartSERENA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartSERENA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartSERENA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartSERENA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartSERENA_KANTO::
@@ -3157,15 +3157,15 @@ LilycoveCity_EventScript_BattleSERENA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_CALEM::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartCALEM_KANTO
-	case 1, LilycoveCity_EventScript_StartCALEM_JOHTO
-	case 2, LilycoveCity_EventScript_StartCALEM_HOENN
-	case 3, LilycoveCity_EventScript_StartCALEM_SINNOH
-	case 4, LilycoveCity_EventScript_StartCALEM_UNOVA
-	case 5, LilycoveCity_EventScript_StartCALEM_KALOS
-	case 6, LilycoveCity_EventScript_StartCALEM_ALOLA
-	case 7, LilycoveCity_EventScript_StartCALEM_GALAR
-	case 8, LilycoveCity_EventScript_StartCALEM_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartCALEM_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartCALEM_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartCALEM_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartCALEM_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartCALEM_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartCALEM_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartCALEM_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartCALEM_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartCALEM_PALDEA
 	end
 
 LilycoveCity_EventScript_StartCALEM_KANTO::
@@ -3368,15 +3368,15 @@ LilycoveCity_EventScript_BattleCALEM_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_SELENE::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartSELENE_KANTO
-	case 1, LilycoveCity_EventScript_StartSELENE_JOHTO
-	case 2, LilycoveCity_EventScript_StartSELENE_HOENN
-	case 3, LilycoveCity_EventScript_StartSELENE_SINNOH
-	case 4, LilycoveCity_EventScript_StartSELENE_UNOVA
-	case 5, LilycoveCity_EventScript_StartSELENE_KALOS
-	case 6, LilycoveCity_EventScript_StartSELENE_ALOLA
-	case 7, LilycoveCity_EventScript_StartSELENE_GALAR
-	case 8, LilycoveCity_EventScript_StartSELENE_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartSELENE_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartSELENE_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartSELENE_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartSELENE_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartSELENE_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartSELENE_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartSELENE_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartSELENE_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartSELENE_PALDEA
 	end
 
 LilycoveCity_EventScript_StartSELENE_KANTO::
@@ -3579,15 +3579,15 @@ LilycoveCity_EventScript_BattleSELENE_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_ELIO::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartELIO_KANTO
-	case 1, LilycoveCity_EventScript_StartELIO_JOHTO
-	case 2, LilycoveCity_EventScript_StartELIO_HOENN
-	case 3, LilycoveCity_EventScript_StartELIO_SINNOH
-	case 4, LilycoveCity_EventScript_StartELIO_UNOVA
-	case 5, LilycoveCity_EventScript_StartELIO_KALOS
-	case 6, LilycoveCity_EventScript_StartELIO_ALOLA
-	case 7, LilycoveCity_EventScript_StartELIO_GALAR
-	case 8, LilycoveCity_EventScript_StartELIO_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartELIO_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartELIO_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartELIO_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartELIO_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartELIO_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartELIO_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartELIO_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartELIO_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartELIO_PALDEA
 	end
 
 LilycoveCity_EventScript_StartELIO_KANTO::
@@ -3790,15 +3790,15 @@ LilycoveCity_EventScript_BattleELIO_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_GLORIA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartGLORIA_KANTO
-	case 1, LilycoveCity_EventScript_StartGLORIA_JOHTO
-	case 2, LilycoveCity_EventScript_StartGLORIA_HOENN
-	case 3, LilycoveCity_EventScript_StartGLORIA_SINNOH
-	case 4, LilycoveCity_EventScript_StartGLORIA_UNOVA
-	case 5, LilycoveCity_EventScript_StartGLORIA_KALOS
-	case 6, LilycoveCity_EventScript_StartGLORIA_ALOLA
-	case 7, LilycoveCity_EventScript_StartGLORIA_GALAR
-	case 8, LilycoveCity_EventScript_StartGLORIA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartGLORIA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartGLORIA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartGLORIA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartGLORIA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartGLORIA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartGLORIA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartGLORIA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartGLORIA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartGLORIA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartGLORIA_KANTO::
@@ -4001,15 +4001,15 @@ LilycoveCity_EventScript_BattleGLORIA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_VICTOR::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartVICTOR_KANTO
-	case 1, LilycoveCity_EventScript_StartVICTOR_JOHTO
-	case 2, LilycoveCity_EventScript_StartVICTOR_HOENN
-	case 3, LilycoveCity_EventScript_StartVICTOR_SINNOH
-	case 4, LilycoveCity_EventScript_StartVICTOR_UNOVA
-	case 5, LilycoveCity_EventScript_StartVICTOR_KALOS
-	case 6, LilycoveCity_EventScript_StartVICTOR_ALOLA
-	case 7, LilycoveCity_EventScript_StartVICTOR_GALAR
-	case 8, LilycoveCity_EventScript_StartVICTOR_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartVICTOR_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartVICTOR_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartVICTOR_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartVICTOR_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartVICTOR_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartVICTOR_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartVICTOR_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartVICTOR_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartVICTOR_PALDEA
 	end
 
 LilycoveCity_EventScript_StartVICTOR_KANTO::
@@ -4212,15 +4212,15 @@ LilycoveCity_EventScript_BattleVICTOR_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_JULIANA::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartJULIANA_KANTO
-	case 1, LilycoveCity_EventScript_StartJULIANA_JOHTO
-	case 2, LilycoveCity_EventScript_StartJULIANA_HOENN
-	case 3, LilycoveCity_EventScript_StartJULIANA_SINNOH
-	case 4, LilycoveCity_EventScript_StartJULIANA_UNOVA
-	case 5, LilycoveCity_EventScript_StartJULIANA_KALOS
-	case 6, LilycoveCity_EventScript_StartJULIANA_ALOLA
-	case 7, LilycoveCity_EventScript_StartJULIANA_GALAR
-	case 8, LilycoveCity_EventScript_StartJULIANA_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartJULIANA_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartJULIANA_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartJULIANA_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartJULIANA_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartJULIANA_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartJULIANA_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartJULIANA_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartJULIANA_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartJULIANA_PALDEA
 	end
 
 LilycoveCity_EventScript_StartJULIANA_KANTO::
@@ -4423,15 +4423,15 @@ LilycoveCity_EventScript_BattleJULIANA_QUAXLY::
 
 LilycoveCity_EventScript_StartBattle_FLORIAN::
 	switch VAR_STARTER_REGION
-	case 0, LilycoveCity_EventScript_StartFLORIAN_KANTO
-	case 1, LilycoveCity_EventScript_StartFLORIAN_JOHTO
-	case 2, LilycoveCity_EventScript_StartFLORIAN_HOENN
-	case 3, LilycoveCity_EventScript_StartFLORIAN_SINNOH
-	case 4, LilycoveCity_EventScript_StartFLORIAN_UNOVA
-	case 5, LilycoveCity_EventScript_StartFLORIAN_KALOS
-	case 6, LilycoveCity_EventScript_StartFLORIAN_ALOLA
-	case 7, LilycoveCity_EventScript_StartFLORIAN_GALAR
-	case 8, LilycoveCity_EventScript_StartFLORIAN_PALDEA
+	case STARTER_REGION_KANTO, LilycoveCity_EventScript_StartFLORIAN_KANTO
+	case STARTER_REGION_JOHTO, LilycoveCity_EventScript_StartFLORIAN_JOHTO
+	case STARTER_REGION_HOENN, LilycoveCity_EventScript_StartFLORIAN_HOENN
+	case STARTER_REGION_SINNOH, LilycoveCity_EventScript_StartFLORIAN_SINNOH
+	case STARTER_REGION_UNOVA, LilycoveCity_EventScript_StartFLORIAN_UNOVA
+	case STARTER_REGION_KALOS, LilycoveCity_EventScript_StartFLORIAN_KALOS
+	case STARTER_REGION_ALOLA, LilycoveCity_EventScript_StartFLORIAN_ALOLA
+	case STARTER_REGION_GALAR, LilycoveCity_EventScript_StartFLORIAN_GALAR
+	case STARTER_REGION_PALDEA, LilycoveCity_EventScript_StartFLORIAN_PALDEA
 	end
 
 LilycoveCity_EventScript_StartFLORIAN_KANTO::
@@ -5011,32 +5011,32 @@ LilycoveCity_Text_HoneymoonVowToSeeRarePokemon::
 	.string "Wir sind so verdammt glücklich, ey!$"
 
 LilycoveCity_Text_BrendanWontBeBeaten:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Ich lass mich von dir doch nicht\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich lass mich von dir doch nicht\n"
 	.string "ewig abziehen! Pass mal auf!$"
 
 LilycoveCity_Text_BrendanBattleMe:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Na, bereit für 'ne Abreibung?$"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Na, bereit für 'ne Abreibung?$"
 
 LilycoveCity_Text_MayYouGoingToPokemonLeague:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Willst du echt zur LIGA?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Willst du echt zur LIGA?\n"
 	.string "Viel Erfolg, du wirst es brauchen...$"
 
 LilycoveCity_Text_MayYouGoingToBattleFrontier:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Gehst du zur KAMPFZONE?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Gehst du zur KAMPFZONE?\n"
 	.string "Da fressen sie dich lebendig!$"
 
 LilycoveCity_Text_BrendanGoingBackToLittleroot:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Ich verpiss mich zurück nach\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich verpiss mich zurück nach\n"
 	.string "WURZELHEIM. Muss mehr trainieren...$"
 
 LilycoveCity_Text_BrendanYouGoingToCollectBadges:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Sammelst du immer noch Orden?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Sammelst du immer noch Orden?\n"
 	.string "Bisschen langsam, was?$"
 
 LilycoveCity_Text_BrendanYouGoingToPokemonLeague:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: Du willst zur POKéMON LIGA?\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du willst zur POKéMON LIGA?\n"
 	.string "Träum weiter, Kleiner!$"
 
 LilycoveCity_Text_BrendanYouGoingToBattleFrontier:
-	.string "{COLOR RIVAL_CLR}{RIVAL}{COLOR DARK_GRAY}: KAMPFZONE? Da wirst du doch\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: KAMPFZONE? Da wirst du doch\n"
 	.string "eh nur direkt rausgeworfen.$"

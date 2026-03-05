@@ -16,6 +16,10 @@ Route119_EventScript_TryRemoveKecleon::
 Route119_OnTransition:
 	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Common_EventScript_SetupRivalOnBikeGfxId_Route110
+	setflag FLAG_HIDE_ROUTE_119_RIVAL
+	setflag FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE
+	removeobject LOCALID_ROUTE119_RIVAL
+	removeobject LOCALID_ROUTE119_RIVAL_ON_BIKE
 	call_if_eq VAR_WEATHER_INSTITUTE_STATE, 1, Route119_EventScript_MoveInstituteWorkersDownstairs
 	special SetRoute119Weather
 	end
@@ -27,22 +31,18 @@ Route119_EventScript_MoveInstituteWorkersDownstairs::
 	return
 
 Route119_EventScript_RivalTrigger1::
-	clearflag FLAG_HIDE_ROUTE_119_RIVAL
 	setvar VAR_TEMP_1, 1
 	goto Route119_EventScript_RivalEncounter
 	end
 
 Route119_EventScript_RivalTrigger2::
-	clearflag FLAG_HIDE_ROUTE_119_RIVAL
 	setvar VAR_TEMP_1, 2
 	goto Route119_EventScript_RivalEncounter
 	end
 
 Route119_EventScript_RivalEncounter::
 	lockall
-	special GetRivalStyleGraphicsIdAndSetVar
-	setvar VAR_0x8004, LOCALID_ROUTE119_RIVAL_ON_BIKE
-	spawnrival_style
+	addobject LOCALID_ROUTE119_RIVAL_ON_BIKE
 	call Common_EventScript_SetupRivalMusic
 	delay 65
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_RivalEnter1
@@ -53,13 +53,10 @@ Route119_EventScript_RivalEncounter::
 	call_if_eq VAR_TEMP_1, 1, Route119_EventScript_SetRivalPos1
 	call_if_eq VAR_TEMP_1, 2, Route119_EventScript_SetRivalPos2
 	removeobject LOCALID_ROUTE119_RIVAL_ON_BIKE
-	special GetRivalStyleGraphicsIdAndSetVar
-	setvar VAR_0x8004, LOCALID_ROUTE119_RIVAL
-	spawnrival_style
+	addobject LOCALID_ROUTE119_RIVAL
 	delay 30
 	getplayerstyle
 	copyvar VAR_TEMP_2, VAR_RESULT
-
 	compare VAR_TEMP_2, STYLE_BRENDAN
 	call_if_eq Route119_EventScript_ShowMayIntro
 	compare VAR_TEMP_2, STYLE_MAY
@@ -100,7 +97,6 @@ Route119_EventScript_RivalEncounter::
 	call_if_eq Route119_EventScript_ShowMayIntro
 	compare VAR_TEMP_2, STYLE_JULIANA
 	call_if_eq Route119_EventScript_ShowBrendanIntro
-
 	switch VAR_TEMP_2
 	case STYLE_BRENDAN, Route119_EventScript_StartBattle_May
 	case STYLE_MAY, Route119_EventScript_StartBattle_Brendan
@@ -127,15 +123,15 @@ Route119_EventScript_RivalEncounter::
 
 Route119_EventScript_StartBattle_May::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_May_KANTO
-	case 1, Route119_EventScript_Battle_May_JOHTO
-	case 2, Route119_EventScript_Battle_May_HOENN
-	case 3, Route119_EventScript_Battle_May_SINNOH
-	case 4, Route119_EventScript_Battle_May_UNOVA
-	case 5, Route119_EventScript_Battle_May_KALOS
-	case 6, Route119_EventScript_Battle_May_ALOLA
-	case 7, Route119_EventScript_Battle_May_GALAR
-	case 8, Route119_EventScript_Battle_May_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_May_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_May_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_May_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_May_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_May_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_May_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_May_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_May_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_May_PALDEA
 	releaseall
 	end
 
@@ -348,15 +344,15 @@ Route119_EventScript_DoBattle_May_QUAXLY::
 
 Route119_EventScript_StartBattle_Brendan::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Brendan_KANTO
-	case 1, Route119_EventScript_Battle_Brendan_JOHTO
-	case 2, Route119_EventScript_Battle_Brendan_HOENN
-	case 3, Route119_EventScript_Battle_Brendan_SINNOH
-	case 4, Route119_EventScript_Battle_Brendan_UNOVA
-	case 5, Route119_EventScript_Battle_Brendan_KALOS
-	case 6, Route119_EventScript_Battle_Brendan_ALOLA
-	case 7, Route119_EventScript_Battle_Brendan_GALAR
-	case 8, Route119_EventScript_Battle_Brendan_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Brendan_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Brendan_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Brendan_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Brendan_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Brendan_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Brendan_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Brendan_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Brendan_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Brendan_PALDEA
 	releaseall
 	end
 
@@ -569,15 +565,15 @@ Route119_EventScript_DoBattle_Brendan_QUAXLY::
 
 Route119_EventScript_StartBattle_Leaf::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Leaf_KANTO
-	case 1, Route119_EventScript_Battle_Leaf_JOHTO
-	case 2, Route119_EventScript_Battle_Leaf_HOENN
-	case 3, Route119_EventScript_Battle_Leaf_SINNOH
-	case 4, Route119_EventScript_Battle_Leaf_UNOVA
-	case 5, Route119_EventScript_Battle_Leaf_KALOS
-	case 6, Route119_EventScript_Battle_Leaf_ALOLA
-	case 7, Route119_EventScript_Battle_Leaf_GALAR
-	case 8, Route119_EventScript_Battle_Leaf_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Leaf_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Leaf_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Leaf_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Leaf_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Leaf_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Leaf_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Leaf_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Leaf_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Leaf_PALDEA
 	releaseall
 	end
 
@@ -790,15 +786,15 @@ Route119_EventScript_DoBattle_Leaf_QUAXLY::
 
 Route119_EventScript_StartBattle_Red::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Red_KANTO
-	case 1, Route119_EventScript_Battle_Red_JOHTO
-	case 2, Route119_EventScript_Battle_Red_HOENN
-	case 3, Route119_EventScript_Battle_Red_SINNOH
-	case 4, Route119_EventScript_Battle_Red_UNOVA
-	case 5, Route119_EventScript_Battle_Red_KALOS
-	case 6, Route119_EventScript_Battle_Red_ALOLA
-	case 7, Route119_EventScript_Battle_Red_GALAR
-	case 8, Route119_EventScript_Battle_Red_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Red_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Red_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Red_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Red_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Red_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Red_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Red_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Red_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Red_PALDEA
 	releaseall
 	end
 
@@ -1011,15 +1007,15 @@ Route119_EventScript_DoBattle_Red_QUAXLY::
 
 Route119_EventScript_StartBattle_Lyra::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Lyra_KANTO
-	case 1, Route119_EventScript_Battle_Lyra_JOHTO
-	case 2, Route119_EventScript_Battle_Lyra_HOENN
-	case 3, Route119_EventScript_Battle_Lyra_SINNOH
-	case 4, Route119_EventScript_Battle_Lyra_UNOVA
-	case 5, Route119_EventScript_Battle_Lyra_KALOS
-	case 6, Route119_EventScript_Battle_Lyra_ALOLA
-	case 7, Route119_EventScript_Battle_Lyra_GALAR
-	case 8, Route119_EventScript_Battle_Lyra_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Lyra_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Lyra_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Lyra_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Lyra_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Lyra_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Lyra_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Lyra_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Lyra_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Lyra_PALDEA
 	releaseall
 	end
 
@@ -1232,15 +1228,15 @@ Route119_EventScript_DoBattle_Lyra_QUAXLY::
 
 Route119_EventScript_StartBattle_Ethan::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Ethan_KANTO
-	case 1, Route119_EventScript_Battle_Ethan_JOHTO
-	case 2, Route119_EventScript_Battle_Ethan_HOENN
-	case 3, Route119_EventScript_Battle_Ethan_SINNOH
-	case 4, Route119_EventScript_Battle_Ethan_UNOVA
-	case 5, Route119_EventScript_Battle_Ethan_KALOS
-	case 6, Route119_EventScript_Battle_Ethan_ALOLA
-	case 7, Route119_EventScript_Battle_Ethan_GALAR
-	case 8, Route119_EventScript_Battle_Ethan_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Ethan_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Ethan_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Ethan_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Ethan_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Ethan_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Ethan_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Ethan_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Ethan_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Ethan_PALDEA
 	releaseall
 	end
 
@@ -1453,15 +1449,15 @@ Route119_EventScript_DoBattle_Ethan_QUAXLY::
 
 Route119_EventScript_StartBattle_Dawn::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Dawn_KANTO
-	case 1, Route119_EventScript_Battle_Dawn_JOHTO
-	case 2, Route119_EventScript_Battle_Dawn_HOENN
-	case 3, Route119_EventScript_Battle_Dawn_SINNOH
-	case 4, Route119_EventScript_Battle_Dawn_UNOVA
-	case 5, Route119_EventScript_Battle_Dawn_KALOS
-	case 6, Route119_EventScript_Battle_Dawn_ALOLA
-	case 7, Route119_EventScript_Battle_Dawn_GALAR
-	case 8, Route119_EventScript_Battle_Dawn_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Dawn_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Dawn_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Dawn_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Dawn_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Dawn_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Dawn_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Dawn_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Dawn_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Dawn_PALDEA
 	releaseall
 	end
 
@@ -1674,15 +1670,15 @@ Route119_EventScript_DoBattle_Dawn_QUAXLY::
 
 Route119_EventScript_StartBattle_Lucas::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Lucas_KANTO
-	case 1, Route119_EventScript_Battle_Lucas_JOHTO
-	case 2, Route119_EventScript_Battle_Lucas_HOENN
-	case 3, Route119_EventScript_Battle_Lucas_SINNOH
-	case 4, Route119_EventScript_Battle_Lucas_UNOVA
-	case 5, Route119_EventScript_Battle_Lucas_KALOS
-	case 6, Route119_EventScript_Battle_Lucas_ALOLA
-	case 7, Route119_EventScript_Battle_Lucas_GALAR
-	case 8, Route119_EventScript_Battle_Lucas_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Lucas_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Lucas_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Lucas_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Lucas_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Lucas_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Lucas_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Lucas_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Lucas_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Lucas_PALDEA
 	releaseall
 	end
 
@@ -1895,15 +1891,15 @@ Route119_EventScript_DoBattle_Lucas_QUAXLY::
 
 Route119_EventScript_StartBattle_Hilda::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Hilda_KANTO
-	case 1, Route119_EventScript_Battle_Hilda_JOHTO
-	case 2, Route119_EventScript_Battle_Hilda_HOENN
-	case 3, Route119_EventScript_Battle_Hilda_SINNOH
-	case 4, Route119_EventScript_Battle_Hilda_UNOVA
-	case 5, Route119_EventScript_Battle_Hilda_KALOS
-	case 6, Route119_EventScript_Battle_Hilda_ALOLA
-	case 7, Route119_EventScript_Battle_Hilda_GALAR
-	case 8, Route119_EventScript_Battle_Hilda_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Hilda_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Hilda_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Hilda_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Hilda_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Hilda_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Hilda_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Hilda_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Hilda_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Hilda_PALDEA
 	releaseall
 	end
 
@@ -2116,15 +2112,15 @@ Route119_EventScript_DoBattle_Hilda_QUAXLY::
 
 Route119_EventScript_StartBattle_Hilbert::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Hilbert_KANTO
-	case 1, Route119_EventScript_Battle_Hilbert_JOHTO
-	case 2, Route119_EventScript_Battle_Hilbert_HOENN
-	case 3, Route119_EventScript_Battle_Hilbert_SINNOH
-	case 4, Route119_EventScript_Battle_Hilbert_UNOVA
-	case 5, Route119_EventScript_Battle_Hilbert_KALOS
-	case 6, Route119_EventScript_Battle_Hilbert_ALOLA
-	case 7, Route119_EventScript_Battle_Hilbert_GALAR
-	case 8, Route119_EventScript_Battle_Hilbert_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Hilbert_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Hilbert_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Hilbert_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Hilbert_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Hilbert_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Hilbert_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Hilbert_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Hilbert_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Hilbert_PALDEA
 	releaseall
 	end
 
@@ -2337,15 +2333,15 @@ Route119_EventScript_DoBattle_Hilbert_QUAXLY::
 
 Route119_EventScript_StartBattle_Rosa::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Rosa_KANTO
-	case 1, Route119_EventScript_Battle_Rosa_JOHTO
-	case 2, Route119_EventScript_Battle_Rosa_HOENN
-	case 3, Route119_EventScript_Battle_Rosa_SINNOH
-	case 4, Route119_EventScript_Battle_Rosa_UNOVA
-	case 5, Route119_EventScript_Battle_Rosa_KALOS
-	case 6, Route119_EventScript_Battle_Rosa_ALOLA
-	case 7, Route119_EventScript_Battle_Rosa_GALAR
-	case 8, Route119_EventScript_Battle_Rosa_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Rosa_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Rosa_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Rosa_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Rosa_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Rosa_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Rosa_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Rosa_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Rosa_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Rosa_PALDEA
 	releaseall
 	end
 
@@ -2558,15 +2554,15 @@ Route119_EventScript_DoBattle_Rosa_QUAXLY::
 
 Route119_EventScript_StartBattle_Nate::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Nate_KANTO
-	case 1, Route119_EventScript_Battle_Nate_JOHTO
-	case 2, Route119_EventScript_Battle_Nate_HOENN
-	case 3, Route119_EventScript_Battle_Nate_SINNOH
-	case 4, Route119_EventScript_Battle_Nate_UNOVA
-	case 5, Route119_EventScript_Battle_Nate_KALOS
-	case 6, Route119_EventScript_Battle_Nate_ALOLA
-	case 7, Route119_EventScript_Battle_Nate_GALAR
-	case 8, Route119_EventScript_Battle_Nate_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Nate_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Nate_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Nate_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Nate_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Nate_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Nate_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Nate_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Nate_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Nate_PALDEA
 	releaseall
 	end
 
@@ -2779,15 +2775,15 @@ Route119_EventScript_DoBattle_Nate_QUAXLY::
 
 Route119_EventScript_StartBattle_Serena::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Serena_KANTO
-	case 1, Route119_EventScript_Battle_Serena_JOHTO
-	case 2, Route119_EventScript_Battle_Serena_HOENN
-	case 3, Route119_EventScript_Battle_Serena_SINNOH
-	case 4, Route119_EventScript_Battle_Serena_UNOVA
-	case 5, Route119_EventScript_Battle_Serena_KALOS
-	case 6, Route119_EventScript_Battle_Serena_ALOLA
-	case 7, Route119_EventScript_Battle_Serena_GALAR
-	case 8, Route119_EventScript_Battle_Serena_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Serena_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Serena_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Serena_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Serena_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Serena_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Serena_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Serena_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Serena_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Serena_PALDEA
 	releaseall
 	end
 
@@ -3000,15 +2996,15 @@ Route119_EventScript_DoBattle_Serena_QUAXLY::
 
 Route119_EventScript_StartBattle_Calem::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Calem_KANTO
-	case 1, Route119_EventScript_Battle_Calem_JOHTO
-	case 2, Route119_EventScript_Battle_Calem_HOENN
-	case 3, Route119_EventScript_Battle_Calem_SINNOH
-	case 4, Route119_EventScript_Battle_Calem_UNOVA
-	case 5, Route119_EventScript_Battle_Calem_KALOS
-	case 6, Route119_EventScript_Battle_Calem_ALOLA
-	case 7, Route119_EventScript_Battle_Calem_GALAR
-	case 8, Route119_EventScript_Battle_Calem_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Calem_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Calem_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Calem_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Calem_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Calem_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Calem_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Calem_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Calem_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Calem_PALDEA
 	releaseall
 	end
 
@@ -3221,15 +3217,15 @@ Route119_EventScript_DoBattle_Calem_QUAXLY::
 
 Route119_EventScript_StartBattle_Selene::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Selene_KANTO
-	case 1, Route119_EventScript_Battle_Selene_JOHTO
-	case 2, Route119_EventScript_Battle_Selene_HOENN
-	case 3, Route119_EventScript_Battle_Selene_SINNOH
-	case 4, Route119_EventScript_Battle_Selene_UNOVA
-	case 5, Route119_EventScript_Battle_Selene_KALOS
-	case 6, Route119_EventScript_Battle_Selene_ALOLA
-	case 7, Route119_EventScript_Battle_Selene_GALAR
-	case 8, Route119_EventScript_Battle_Selene_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Selene_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Selene_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Selene_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Selene_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Selene_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Selene_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Selene_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Selene_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Selene_PALDEA
 	releaseall
 	end
 
@@ -3442,15 +3438,15 @@ Route119_EventScript_DoBattle_Selene_QUAXLY::
 
 Route119_EventScript_StartBattle_Elio::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Elio_KANTO
-	case 1, Route119_EventScript_Battle_Elio_JOHTO
-	case 2, Route119_EventScript_Battle_Elio_HOENN
-	case 3, Route119_EventScript_Battle_Elio_SINNOH
-	case 4, Route119_EventScript_Battle_Elio_UNOVA
-	case 5, Route119_EventScript_Battle_Elio_KALOS
-	case 6, Route119_EventScript_Battle_Elio_ALOLA
-	case 7, Route119_EventScript_Battle_Elio_GALAR
-	case 8, Route119_EventScript_Battle_Elio_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Elio_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Elio_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Elio_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Elio_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Elio_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Elio_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Elio_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Elio_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Elio_PALDEA
 	releaseall
 	end
 
@@ -3663,15 +3659,15 @@ Route119_EventScript_DoBattle_Elio_QUAXLY::
 
 Route119_EventScript_StartBattle_Gloria::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Gloria_KANTO
-	case 1, Route119_EventScript_Battle_Gloria_JOHTO
-	case 2, Route119_EventScript_Battle_Gloria_HOENN
-	case 3, Route119_EventScript_Battle_Gloria_SINNOH
-	case 4, Route119_EventScript_Battle_Gloria_UNOVA
-	case 5, Route119_EventScript_Battle_Gloria_KALOS
-	case 6, Route119_EventScript_Battle_Gloria_ALOLA
-	case 7, Route119_EventScript_Battle_Gloria_GALAR
-	case 8, Route119_EventScript_Battle_Gloria_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Gloria_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Gloria_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Gloria_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Gloria_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Gloria_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Gloria_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Gloria_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Gloria_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Gloria_PALDEA
 	releaseall
 	end
 
@@ -3884,15 +3880,15 @@ Route119_EventScript_DoBattle_Gloria_QUAXLY::
 
 Route119_EventScript_StartBattle_Victor::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Victor_KANTO
-	case 1, Route119_EventScript_Battle_Victor_JOHTO
-	case 2, Route119_EventScript_Battle_Victor_HOENN
-	case 3, Route119_EventScript_Battle_Victor_SINNOH
-	case 4, Route119_EventScript_Battle_Victor_UNOVA
-	case 5, Route119_EventScript_Battle_Victor_KALOS
-	case 6, Route119_EventScript_Battle_Victor_ALOLA
-	case 7, Route119_EventScript_Battle_Victor_GALAR
-	case 8, Route119_EventScript_Battle_Victor_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Victor_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Victor_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Victor_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Victor_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Victor_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Victor_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Victor_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Victor_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Victor_PALDEA
 	releaseall
 	end
 
@@ -4105,15 +4101,15 @@ Route119_EventScript_DoBattle_Victor_QUAXLY::
 
 Route119_EventScript_StartBattle_Juliana::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Juliana_KANTO
-	case 1, Route119_EventScript_Battle_Juliana_JOHTO
-	case 2, Route119_EventScript_Battle_Juliana_HOENN
-	case 3, Route119_EventScript_Battle_Juliana_SINNOH
-	case 4, Route119_EventScript_Battle_Juliana_UNOVA
-	case 5, Route119_EventScript_Battle_Juliana_KALOS
-	case 6, Route119_EventScript_Battle_Juliana_ALOLA
-	case 7, Route119_EventScript_Battle_Juliana_GALAR
-	case 8, Route119_EventScript_Battle_Juliana_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Juliana_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Juliana_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Juliana_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Juliana_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Juliana_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Juliana_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Juliana_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Juliana_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Juliana_PALDEA
 	releaseall
 	end
 
@@ -4326,15 +4322,15 @@ Route119_EventScript_DoBattle_Juliana_QUAXLY::
 
 Route119_EventScript_StartBattle_Florian::
 	switch VAR_STARTER_REGION
-	case 0, Route119_EventScript_Battle_Florian_KANTO
-	case 1, Route119_EventScript_Battle_Florian_JOHTO
-	case 2, Route119_EventScript_Battle_Florian_HOENN
-	case 3, Route119_EventScript_Battle_Florian_SINNOH
-	case 4, Route119_EventScript_Battle_Florian_UNOVA
-	case 5, Route119_EventScript_Battle_Florian_KALOS
-	case 6, Route119_EventScript_Battle_Florian_ALOLA
-	case 7, Route119_EventScript_Battle_Florian_GALAR
-	case 8, Route119_EventScript_Battle_Florian_PALDEA
+	case STARTER_REGION_KANTO, Route119_EventScript_Battle_Florian_KANTO
+	case STARTER_REGION_JOHTO, Route119_EventScript_Battle_Florian_JOHTO
+	case STARTER_REGION_HOENN, Route119_EventScript_Battle_Florian_HOENN
+	case STARTER_REGION_SINNOH, Route119_EventScript_Battle_Florian_SINNOH
+	case STARTER_REGION_UNOVA, Route119_EventScript_Battle_Florian_UNOVA
+	case STARTER_REGION_KALOS, Route119_EventScript_Battle_Florian_KALOS
+	case STARTER_REGION_ALOLA, Route119_EventScript_Battle_Florian_ALOLA
+	case STARTER_REGION_GALAR, Route119_EventScript_Battle_Florian_GALAR
+	case STARTER_REGION_PALDEA, Route119_EventScript_Battle_Florian_PALDEA
 	releaseall
 	end
 

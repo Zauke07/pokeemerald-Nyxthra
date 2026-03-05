@@ -10,7 +10,7 @@ Route110_OnResume:
 
 Route110_OnTransition:
 	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
-	call Common_EventScript_SetupRivalOnBikeGfxId
+	call Common_EventScript_SetupRivalOnBikeGfxId_Route110
 	call_if_eq VAR_CYCLING_CHALLENGE_STATE, 1, Route110_EventScript_SaveCyclingMusic
 	end
 
@@ -427,10 +427,9 @@ Route110_EventScript_RivalExit::
 	call_if_eq VAR_0x8008, 3, Route110_EventScript_MoveRival3
 	setobjectmovementtype LOCALID_ROUTE110_RIVAL, MOVEMENT_TYPE_FACE_RIGHT
 	setobjectmovementtype LOCALID_ROUTE110_RIVAL_ON_BIKE, MOVEMENT_TYPE_FACE_RIGHT
+	call Common_EventScript_SetupRivalOnBikeGfxId_Route110
 	removeobject LOCALID_ROUTE110_RIVAL
 	addobject LOCALID_ROUTE110_RIVAL_ON_BIKE
-	@ Setze das Bike-Sprite des Rivalen explizit nach Style
-	call Route110_EventScript_SetRivalBikeGfx_ByStyle
 	delay 45
 	call_if_eq VAR_0x8008, 1, Route110_EventScript_RivalExit1
 	call_if_eq VAR_0x8008, 2, Route110_EventScript_RivalExit2
@@ -645,54 +644,54 @@ Route110_Movement_RivalExit3:
 
 Route110_EventScript_MayBattleRegion::
 	switch VAR_STARTER_REGION
-	case 0, Route110_EventScript_MayBattleKanto
-	case 1, Route110_EventScript_MayBattleJohto
-	case 2, Route110_EventScript_MayBattleHoenn
-	case 3, Route110_EventScript_MayBattleSinnoh
-	case 4, Route110_EventScript_MayBattleUnova
-	case 5, Route110_EventScript_MayBattleKalos
-	case 6, Route110_EventScript_MayBattleAlola
-	case 7, Route110_EventScript_MayBattleGalar
-	case 8, Route110_EventScript_MayBattlePaldea
+	case STARTER_REGION_KANTO, Route110_EventScript_MayBattleKanto
+	case STARTER_REGION_JOHTO, Route110_EventScript_MayBattleJohto
+	case STARTER_REGION_HOENN, Route110_EventScript_MayBattleHoenn
+	case STARTER_REGION_SINNOH, Route110_EventScript_MayBattleSinnoh
+	case STARTER_REGION_UNOVA, Route110_EventScript_MayBattleUnova
+	case STARTER_REGION_KALOS, Route110_EventScript_MayBattleKalos
+	case STARTER_REGION_ALOLA, Route110_EventScript_MayBattleAlola
+	case STARTER_REGION_GALAR, Route110_EventScript_MayBattleGalar
+	case STARTER_REGION_PALDEA, Route110_EventScript_MayBattlePaldea
 	end
 
 Route110_EventScript_BrendanBattleRegion::
 	switch VAR_STARTER_REGION
-	case 0, Route110_EventScript_BrendanBattleKanto
-	case 1, Route110_EventScript_BrendanBattleJohto
-	case 2, Route110_EventScript_BrendanBattleHoenn
-	case 3, Route110_EventScript_BrendanBattleSinnoh
-	case 4, Route110_EventScript_BrendanBattleUnova
-	case 5, Route110_EventScript_BrendanBattleKalos
-	case 6, Route110_EventScript_BrendanBattleAlola
-	case 7, Route110_EventScript_BrendanBattleGalar
-	case 8, Route110_EventScript_BrendanBattlePaldea
+	case STARTER_REGION_KANTO, Route110_EventScript_BrendanBattleKanto
+	case STARTER_REGION_JOHTO, Route110_EventScript_BrendanBattleJohto
+	case STARTER_REGION_HOENN, Route110_EventScript_BrendanBattleHoenn
+	case STARTER_REGION_SINNOH, Route110_EventScript_BrendanBattleSinnoh
+	case STARTER_REGION_UNOVA, Route110_EventScript_BrendanBattleUnova
+	case STARTER_REGION_KALOS, Route110_EventScript_BrendanBattleKalos
+	case STARTER_REGION_ALOLA, Route110_EventScript_BrendanBattleAlola
+	case STARTER_REGION_GALAR, Route110_EventScript_BrendanBattleGalar
+	case STARTER_REGION_PALDEA, Route110_EventScript_BrendanBattlePaldea
 	end
 
 Route110_EventScript_LeafBattleRegion::
 	switch VAR_STARTER_REGION
-	case 0, Route110_EventScript_LeafBattleKanto
-	case 1, Route110_EventScript_LeafBattleJohto
-	case 2, Route110_EventScript_LeafBattleHoenn
-	case 3, Route110_EventScript_LeafBattleSinnoh
-	case 4, Route110_EventScript_LeafBattleUnova
-	case 5, Route110_EventScript_LeafBattleKalos
-	case 6, Route110_EventScript_LeafBattleAlola
-	case 7, Route110_EventScript_LeafBattleGalar
-	case 8, Route110_EventScript_LeafBattlePaldea
+	case STARTER_REGION_KANTO, Route110_EventScript_LeafBattleKanto
+	case STARTER_REGION_JOHTO, Route110_EventScript_LeafBattleJohto
+	case STARTER_REGION_HOENN, Route110_EventScript_LeafBattleHoenn
+	case STARTER_REGION_SINNOH, Route110_EventScript_LeafBattleSinnoh
+	case STARTER_REGION_UNOVA, Route110_EventScript_LeafBattleUnova
+	case STARTER_REGION_KALOS, Route110_EventScript_LeafBattleKalos
+	case STARTER_REGION_ALOLA, Route110_EventScript_LeafBattleAlola
+	case STARTER_REGION_GALAR, Route110_EventScript_LeafBattleGalar
+	case STARTER_REGION_PALDEA, Route110_EventScript_LeafBattlePaldea
 	end
 
 Route110_EventScript_RedBattleRegion::
 	switch VAR_STARTER_REGION
-	case 0, Route110_EventScript_RedBattleKanto
-	case 1, Route110_EventScript_RedBattleJohto
-	case 2, Route110_EventScript_RedBattleHoenn
-	case 3, Route110_EventScript_RedBattleSinnoh
-	case 4, Route110_EventScript_RedBattleUnova
-	case 5, Route110_EventScript_RedBattleKalos
-	case 6, Route110_EventScript_RedBattleAlola
-	case 7, Route110_EventScript_RedBattleGalar
-	case 8, Route110_EventScript_RedBattlePaldea
+	case STARTER_REGION_KANTO, Route110_EventScript_RedBattleKanto
+	case STARTER_REGION_JOHTO, Route110_EventScript_RedBattleJohto
+	case STARTER_REGION_HOENN, Route110_EventScript_RedBattleHoenn
+	case STARTER_REGION_SINNOH, Route110_EventScript_RedBattleSinnoh
+	case STARTER_REGION_UNOVA, Route110_EventScript_RedBattleUnova
+	case STARTER_REGION_KALOS, Route110_EventScript_RedBattleKalos
+	case STARTER_REGION_ALOLA, Route110_EventScript_RedBattleAlola
+	case STARTER_REGION_GALAR, Route110_EventScript_RedBattleGalar
+	case STARTER_REGION_PALDEA, Route110_EventScript_RedBattlePaldea
 	end
 
 Route110_EventScript_StartBattle_Ethan::

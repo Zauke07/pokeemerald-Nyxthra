@@ -900,15 +900,15 @@ RustboroCity_EventScript_BrendanAskToBattle::
 RustboroCity_EventScript_BattleBrendan::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleBrendan_Kanto
-	case 1, RustboroCity_EventScript_BattleBrendan_Johto
-	case 2, RustboroCity_EventScript_BattleBrendan_Hoenn
-	case 3, RustboroCity_EventScript_BattleBrendan_Sinnoh
-	case 4, RustboroCity_EventScript_BattleBrendan_Unova
-	case 5, RustboroCity_EventScript_BattleBrendan_Kalos
-	case 6, RustboroCity_EventScript_BattleBrendan_Alola
-	case 7, RustboroCity_EventScript_BattleBrendan_Galar
-	case 8, RustboroCity_EventScript_BattleBrendan_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleBrendan_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleBrendan_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleBrendan_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleBrendan_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleBrendan_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleBrendan_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleBrendan_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleBrendan_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleBrendan_Paldea
 	end
 
 RustboroCity_EventScript_BattleBrendan_Kanto::
@@ -1176,15 +1176,15 @@ RustboroCity_EventScript_CalemAskToBattle::
 RustboroCity_EventScript_BattleCalem::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleCalem_Kanto
-	case 1, RustboroCity_EventScript_BattleCalem_Johto
-	case 2, RustboroCity_EventScript_BattleCalem_Hoenn
-	case 3, RustboroCity_EventScript_BattleCalem_Sinnoh
-	case 4, RustboroCity_EventScript_BattleCalem_Unova
-	case 5, RustboroCity_EventScript_BattleCalem_Kalos
-	case 6, RustboroCity_EventScript_BattleCalem_Alola
-	case 7, RustboroCity_EventScript_BattleCalem_Galar
-	case 8, RustboroCity_EventScript_BattleCalem_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleCalem_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleCalem_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleCalem_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleCalem_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleCalem_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleCalem_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleCalem_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleCalem_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleCalem_Paldea
 	end
 
 RustboroCity_EventScript_BattleCalem_Kanto::
@@ -1452,15 +1452,15 @@ RustboroCity_EventScript_DawnAskToBattle::
 RustboroCity_EventScript_BattleDawn::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleDawn_Kanto
-	case 1, RustboroCity_EventScript_BattleDawn_Johto
-	case 2, RustboroCity_EventScript_BattleDawn_Hoenn
-	case 3, RustboroCity_EventScript_BattleDawn_Sinnoh
-	case 4, RustboroCity_EventScript_BattleDawn_Unova
-	case 5, RustboroCity_EventScript_BattleDawn_Kalos
-	case 6, RustboroCity_EventScript_BattleDawn_Alola
-	case 7, RustboroCity_EventScript_BattleDawn_Galar
-	case 8, RustboroCity_EventScript_BattleDawn_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleDawn_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleDawn_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleDawn_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleDawn_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleDawn_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleDawn_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleDawn_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleDawn_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleDawn_Paldea
 	end
 
 RustboroCity_EventScript_BattleDawn_Kanto::
@@ -1728,15 +1728,15 @@ RustboroCity_EventScript_ElioAskToBattle::
 RustboroCity_EventScript_BattleElio::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleElio_Kanto
-	case 1, RustboroCity_EventScript_BattleElio_Johto
-	case 2, RustboroCity_EventScript_BattleElio_Hoenn
-	case 3, RustboroCity_EventScript_BattleElio_Sinnoh
-	case 4, RustboroCity_EventScript_BattleElio_Unova
-	case 5, RustboroCity_EventScript_BattleElio_Kalos
-	case 6, RustboroCity_EventScript_BattleElio_Alola
-	case 7, RustboroCity_EventScript_BattleElio_Galar
-	case 8, RustboroCity_EventScript_BattleElio_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleElio_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleElio_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleElio_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleElio_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleElio_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleElio_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleElio_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleElio_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleElio_Paldea
 	end
 
 RustboroCity_EventScript_BattleElio_Kanto::
@@ -2004,15 +2004,15 @@ RustboroCity_EventScript_EthanAskToBattle::
 RustboroCity_EventScript_BattleEthan::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleEthan_Kanto
-	case 1, RustboroCity_EventScript_BattleEthan_Johto
-	case 2, RustboroCity_EventScript_BattleEthan_Hoenn
-	case 3, RustboroCity_EventScript_BattleEthan_Sinnoh
-	case 4, RustboroCity_EventScript_BattleEthan_Unova
-	case 5, RustboroCity_EventScript_BattleEthan_Kalos
-	case 6, RustboroCity_EventScript_BattleEthan_Alola
-	case 7, RustboroCity_EventScript_BattleEthan_Galar
-	case 8, RustboroCity_EventScript_BattleEthan_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleEthan_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleEthan_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleEthan_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleEthan_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleEthan_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleEthan_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleEthan_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleEthan_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleEthan_Paldea
 	end
 
 RustboroCity_EventScript_BattleEthan_Kanto::
@@ -2280,15 +2280,15 @@ RustboroCity_EventScript_FlorianAskToBattle::
 RustboroCity_EventScript_BattleFlorian::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleFlorian_Kanto
-	case 1, RustboroCity_EventScript_BattleFlorian_Johto
-	case 2, RustboroCity_EventScript_BattleFlorian_Hoenn
-	case 3, RustboroCity_EventScript_BattleFlorian_Sinnoh
-	case 4, RustboroCity_EventScript_BattleFlorian_Unova
-	case 5, RustboroCity_EventScript_BattleFlorian_Kalos
-	case 6, RustboroCity_EventScript_BattleFlorian_Alola
-	case 7, RustboroCity_EventScript_BattleFlorian_Galar
-	case 8, RustboroCity_EventScript_BattleFlorian_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleFlorian_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleFlorian_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleFlorian_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleFlorian_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleFlorian_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleFlorian_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleFlorian_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleFlorian_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleFlorian_Paldea
 	end
 
 RustboroCity_EventScript_BattleFlorian_Kanto::
@@ -2556,15 +2556,15 @@ RustboroCity_EventScript_GloriaAskToBattle::
 RustboroCity_EventScript_BattleGloria::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleGloria_Kanto
-	case 1, RustboroCity_EventScript_BattleGloria_Johto
-	case 2, RustboroCity_EventScript_BattleGloria_Hoenn
-	case 3, RustboroCity_EventScript_BattleGloria_Sinnoh
-	case 4, RustboroCity_EventScript_BattleGloria_Unova
-	case 5, RustboroCity_EventScript_BattleGloria_Kalos
-	case 6, RustboroCity_EventScript_BattleGloria_Alola
-	case 7, RustboroCity_EventScript_BattleGloria_Galar
-	case 8, RustboroCity_EventScript_BattleGloria_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleGloria_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleGloria_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleGloria_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleGloria_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleGloria_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleGloria_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleGloria_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleGloria_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleGloria_Paldea
 	end
 
 RustboroCity_EventScript_BattleGloria_Kanto::
@@ -2832,15 +2832,15 @@ RustboroCity_EventScript_HilbertAskToBattle::
 RustboroCity_EventScript_BattleHilbert::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleHilbert_Kanto
-	case 1, RustboroCity_EventScript_BattleHilbert_Johto
-	case 2, RustboroCity_EventScript_BattleHilbert_Hoenn
-	case 3, RustboroCity_EventScript_BattleHilbert_Sinnoh
-	case 4, RustboroCity_EventScript_BattleHilbert_Unova
-	case 5, RustboroCity_EventScript_BattleHilbert_Kalos
-	case 6, RustboroCity_EventScript_BattleHilbert_Alola
-	case 7, RustboroCity_EventScript_BattleHilbert_Galar
-	case 8, RustboroCity_EventScript_BattleHilbert_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleHilbert_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleHilbert_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleHilbert_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleHilbert_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleHilbert_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleHilbert_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleHilbert_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleHilbert_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleHilbert_Paldea
 	end
 
 RustboroCity_EventScript_BattleHilbert_Kanto::
@@ -3108,15 +3108,15 @@ RustboroCity_EventScript_HildaAskToBattle::
 RustboroCity_EventScript_BattleHilda::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleHilda_Kanto
-	case 1, RustboroCity_EventScript_BattleHilda_Johto
-	case 2, RustboroCity_EventScript_BattleHilda_Hoenn
-	case 3, RustboroCity_EventScript_BattleHilda_Sinnoh
-	case 4, RustboroCity_EventScript_BattleHilda_Unova
-	case 5, RustboroCity_EventScript_BattleHilda_Kalos
-	case 6, RustboroCity_EventScript_BattleHilda_Alola
-	case 7, RustboroCity_EventScript_BattleHilda_Galar
-	case 8, RustboroCity_EventScript_BattleHilda_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleHilda_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleHilda_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleHilda_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleHilda_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleHilda_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleHilda_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleHilda_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleHilda_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleHilda_Paldea
 	end
 
 RustboroCity_EventScript_BattleHilda_Kanto::
@@ -3384,15 +3384,15 @@ RustboroCity_EventScript_JulianaAskToBattle::
 RustboroCity_EventScript_BattleJuliana::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleJuliana_Kanto
-	case 1, RustboroCity_EventScript_BattleJuliana_Johto
-	case 2, RustboroCity_EventScript_BattleJuliana_Hoenn
-	case 3, RustboroCity_EventScript_BattleJuliana_Sinnoh
-	case 4, RustboroCity_EventScript_BattleJuliana_Unova
-	case 5, RustboroCity_EventScript_BattleJuliana_Kalos
-	case 6, RustboroCity_EventScript_BattleJuliana_Alola
-	case 7, RustboroCity_EventScript_BattleJuliana_Galar
-	case 8, RustboroCity_EventScript_BattleJuliana_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleJuliana_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleJuliana_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleJuliana_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleJuliana_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleJuliana_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleJuliana_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleJuliana_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleJuliana_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleJuliana_Paldea
 	end
 
 RustboroCity_EventScript_BattleJuliana_Kanto::
@@ -3660,15 +3660,15 @@ RustboroCity_EventScript_LeafAskToBattle::
 RustboroCity_EventScript_BattleLeaf::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleLeaf_Kanto
-	case 1, RustboroCity_EventScript_BattleLeaf_Johto
-	case 2, RustboroCity_EventScript_BattleLeaf_Hoenn
-	case 3, RustboroCity_EventScript_BattleLeaf_Sinnoh
-	case 4, RustboroCity_EventScript_BattleLeaf_Unova
-	case 5, RustboroCity_EventScript_BattleLeaf_Kalos
-	case 6, RustboroCity_EventScript_BattleLeaf_Alola
-	case 7, RustboroCity_EventScript_BattleLeaf_Galar
-	case 8, RustboroCity_EventScript_BattleLeaf_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLeaf_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLeaf_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLeaf_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLeaf_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLeaf_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLeaf_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLeaf_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLeaf_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLeaf_Paldea
 	end
 
 RustboroCity_EventScript_BattleLeaf_Kanto::
@@ -3936,15 +3936,15 @@ RustboroCity_EventScript_LucasAskToBattle::
 RustboroCity_EventScript_BattleLucas::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleLucas_Kanto
-	case 1, RustboroCity_EventScript_BattleLucas_Johto
-	case 2, RustboroCity_EventScript_BattleLucas_Hoenn
-	case 3, RustboroCity_EventScript_BattleLucas_Sinnoh
-	case 4, RustboroCity_EventScript_BattleLucas_Unova
-	case 5, RustboroCity_EventScript_BattleLucas_Kalos
-	case 6, RustboroCity_EventScript_BattleLucas_Alola
-	case 7, RustboroCity_EventScript_BattleLucas_Galar
-	case 8, RustboroCity_EventScript_BattleLucas_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLucas_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLucas_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLucas_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLucas_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLucas_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLucas_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLucas_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLucas_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLucas_Paldea
 	end
 
 RustboroCity_EventScript_BattleLucas_Kanto::
@@ -4212,15 +4212,15 @@ RustboroCity_EventScript_LyraAskToBattle::
 RustboroCity_EventScript_BattleLyra::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleLyra_Kanto
-	case 1, RustboroCity_EventScript_BattleLyra_Johto
-	case 2, RustboroCity_EventScript_BattleLyra_Hoenn
-	case 3, RustboroCity_EventScript_BattleLyra_Sinnoh
-	case 4, RustboroCity_EventScript_BattleLyra_Unova
-	case 5, RustboroCity_EventScript_BattleLyra_Kalos
-	case 6, RustboroCity_EventScript_BattleLyra_Alola
-	case 7, RustboroCity_EventScript_BattleLyra_Galar
-	case 8, RustboroCity_EventScript_BattleLyra_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleLyra_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleLyra_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleLyra_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleLyra_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleLyra_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleLyra_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleLyra_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleLyra_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleLyra_Paldea
 	end
 
 RustboroCity_EventScript_BattleLyra_Kanto::
@@ -4488,15 +4488,15 @@ RustboroCity_EventScript_MayAskToBattle::
 RustboroCity_EventScript_BattleMay::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleMay_Kanto
-	case 1, RustboroCity_EventScript_BattleMay_Johto
-	case 2, RustboroCity_EventScript_BattleMay_Hoenn
-	case 3, RustboroCity_EventScript_BattleMay_Sinnoh
-	case 4, RustboroCity_EventScript_BattleMay_Unova
-	case 5, RustboroCity_EventScript_BattleMay_Kalos
-	case 6, RustboroCity_EventScript_BattleMay_Alola
-	case 7, RustboroCity_EventScript_BattleMay_Galar
-	case 8, RustboroCity_EventScript_BattleMay_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleMay_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleMay_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleMay_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleMay_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleMay_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleMay_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleMay_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleMay_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleMay_Paldea
 	end
 
 RustboroCity_EventScript_BattleMay_Kanto::
@@ -4764,15 +4764,15 @@ RustboroCity_EventScript_NateAskToBattle::
 RustboroCity_EventScript_BattleNate::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleNate_Kanto
-	case 1, RustboroCity_EventScript_BattleNate_Johto
-	case 2, RustboroCity_EventScript_BattleNate_Hoenn
-	case 3, RustboroCity_EventScript_BattleNate_Sinnoh
-	case 4, RustboroCity_EventScript_BattleNate_Unova
-	case 5, RustboroCity_EventScript_BattleNate_Kalos
-	case 6, RustboroCity_EventScript_BattleNate_Alola
-	case 7, RustboroCity_EventScript_BattleNate_Galar
-	case 8, RustboroCity_EventScript_BattleNate_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleNate_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleNate_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleNate_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleNate_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleNate_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleNate_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleNate_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleNate_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleNate_Paldea
 	end
 
 RustboroCity_EventScript_BattleNate_Kanto::
@@ -5040,15 +5040,15 @@ RustboroCity_EventScript_RedAskToBattle::
 RustboroCity_EventScript_BattleRed::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleRed_Kanto
-	case 1, RustboroCity_EventScript_BattleRed_Johto
-	case 2, RustboroCity_EventScript_BattleRed_Hoenn
-	case 3, RustboroCity_EventScript_BattleRed_Sinnoh
-	case 4, RustboroCity_EventScript_BattleRed_Unova
-	case 5, RustboroCity_EventScript_BattleRed_Kalos
-	case 6, RustboroCity_EventScript_BattleRed_Alola
-	case 7, RustboroCity_EventScript_BattleRed_Galar
-	case 8, RustboroCity_EventScript_BattleRed_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleRed_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleRed_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleRed_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleRed_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleRed_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleRed_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleRed_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleRed_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleRed_Paldea
 	end
 
 RustboroCity_EventScript_BattleRed_Kanto::
@@ -5316,15 +5316,15 @@ RustboroCity_EventScript_RosaAskToBattle::
 RustboroCity_EventScript_BattleRosa::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleRosa_Kanto
-	case 1, RustboroCity_EventScript_BattleRosa_Johto
-	case 2, RustboroCity_EventScript_BattleRosa_Hoenn
-	case 3, RustboroCity_EventScript_BattleRosa_Sinnoh
-	case 4, RustboroCity_EventScript_BattleRosa_Unova
-	case 5, RustboroCity_EventScript_BattleRosa_Kalos
-	case 6, RustboroCity_EventScript_BattleRosa_Alola
-	case 7, RustboroCity_EventScript_BattleRosa_Galar
-	case 8, RustboroCity_EventScript_BattleRosa_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleRosa_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleRosa_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleRosa_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleRosa_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleRosa_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleRosa_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleRosa_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleRosa_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleRosa_Paldea
 	end
 
 RustboroCity_EventScript_BattleRosa_Kanto::
@@ -5592,15 +5592,15 @@ RustboroCity_EventScript_SeleneAskToBattle::
 RustboroCity_EventScript_BattleSelene::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleSelene_Kanto
-	case 1, RustboroCity_EventScript_BattleSelene_Johto
-	case 2, RustboroCity_EventScript_BattleSelene_Hoenn
-	case 3, RustboroCity_EventScript_BattleSelene_Sinnoh
-	case 4, RustboroCity_EventScript_BattleSelene_Unova
-	case 5, RustboroCity_EventScript_BattleSelene_Kalos
-	case 6, RustboroCity_EventScript_BattleSelene_Alola
-	case 7, RustboroCity_EventScript_BattleSelene_Galar
-	case 8, RustboroCity_EventScript_BattleSelene_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleSelene_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleSelene_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleSelene_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleSelene_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleSelene_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleSelene_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleSelene_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleSelene_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleSelene_Paldea
 	end
 
 RustboroCity_EventScript_BattleSelene_Kanto::
@@ -5868,15 +5868,15 @@ RustboroCity_EventScript_SerenaAskToBattle::
 RustboroCity_EventScript_BattleSerena::
 	msgbox RustboroCity_Text_MayImNotGoingToLose, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleSerena_Kanto
-	case 1, RustboroCity_EventScript_BattleSerena_Johto
-	case 2, RustboroCity_EventScript_BattleSerena_Hoenn
-	case 3, RustboroCity_EventScript_BattleSerena_Sinnoh
-	case 4, RustboroCity_EventScript_BattleSerena_Unova
-	case 5, RustboroCity_EventScript_BattleSerena_Kalos
-	case 6, RustboroCity_EventScript_BattleSerena_Alola
-	case 7, RustboroCity_EventScript_BattleSerena_Galar
-	case 8, RustboroCity_EventScript_BattleSerena_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleSerena_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleSerena_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleSerena_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleSerena_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleSerena_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleSerena_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleSerena_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleSerena_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleSerena_Paldea
 	end
 
 RustboroCity_EventScript_BattleSerena_Kanto::
@@ -6144,15 +6144,15 @@ RustboroCity_EventScript_VictorAskToBattle::
 RustboroCity_EventScript_BattleVictor::
 	msgbox RustboroCity_Text_BrendanIWontGoEasy, MSGBOX_DEFAULT
 	switch VAR_STARTER_REGION
-	case 0, RustboroCity_EventScript_BattleVictor_Kanto
-	case 1, RustboroCity_EventScript_BattleVictor_Johto
-	case 2, RustboroCity_EventScript_BattleVictor_Hoenn
-	case 3, RustboroCity_EventScript_BattleVictor_Sinnoh
-	case 4, RustboroCity_EventScript_BattleVictor_Unova
-	case 5, RustboroCity_EventScript_BattleVictor_Kalos
-	case 6, RustboroCity_EventScript_BattleVictor_Alola
-	case 7, RustboroCity_EventScript_BattleVictor_Galar
-	case 8, RustboroCity_EventScript_BattleVictor_Paldea
+	case STARTER_REGION_KANTO, RustboroCity_EventScript_BattleVictor_Kanto
+	case STARTER_REGION_JOHTO, RustboroCity_EventScript_BattleVictor_Johto
+	case STARTER_REGION_HOENN, RustboroCity_EventScript_BattleVictor_Hoenn
+	case STARTER_REGION_SINNOH, RustboroCity_EventScript_BattleVictor_Sinnoh
+	case STARTER_REGION_UNOVA, RustboroCity_EventScript_BattleVictor_Unova
+	case STARTER_REGION_KALOS, RustboroCity_EventScript_BattleVictor_Kalos
+	case STARTER_REGION_ALOLA, RustboroCity_EventScript_BattleVictor_Alola
+	case STARTER_REGION_GALAR, RustboroCity_EventScript_BattleVictor_Galar
+	case STARTER_REGION_PALDEA, RustboroCity_EventScript_BattleVictor_Paldea
 	end
 
 RustboroCity_EventScript_BattleVictor_Kanto::
