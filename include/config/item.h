@@ -20,6 +20,7 @@
 #define I_PREMIER_BALL_BONUS            GEN_LATEST  // Ab LGPE (Gen8+) erhält man für je 10 beliebige Pokébälle in einem Kauf einen Premierball. Früher galt das nur für normale Pokébälle und nur 1 pro Kauf.
 #define I_ROTOM_CATALOG_THUNDER_SHOCK   GEN_LATEST  // Ab Gen9+ lernt Rotom beim Zurücksetzen in die Basisform Donnerschock, auch wenn es schon 4 Attacken hat.
 #define I_REPEL_INCLUDE_FAINTED         GEN_LATEST  // In Gen1 und Gen6+ wird für Schutz-Items immer das Level des ersten Teammitglieds verwendet, auch wenn es besiegt ist. In Gen2-5 zählt nur das erste nicht besiegte Pokémon.
+#define I_LAX_INCENSE_BOOST             GEN_LATEST  // In Gen4+ erhöht Laxrauch den Fluchtwert um 10% statt 5%.
 
 // TM config
 #define I_REUSABLE_TMS          FALSE       // In Gen5-8 sind TMs wiederverwendbar. TRUE macht alle Standard-TMs wiederverwendbar, kann aber auch einzeln über die Wichtigkeit gesteuert werden.
@@ -36,7 +37,8 @@
 #define I_REPEL_LURE_MENU           FALSE    // Wenn TRUE, kann der Spieler auswählen, welches Schutz-/Lockmittel er nach Ablauf verwenden möchte. Die Cursorposition wird von VAR_LAST_REPEL_LURE_USED gespeichert, falls nicht 0.
 
 // Vs. Seeker
-#define I_VS_SEEKER_CHARGING        0     // Falls diese Flag zugewiesen wird, wird die Vs. Seeker Funktionalität aktiviert. Wenn der Spieler den Vs. Seeker hat, funktionieren die Kampfanruf-Rückkampf-Funktionen nicht mehr. Dokumentation für den Vs. Seeker findet sich in docs/tutorials/vs_seeker.md.
+#define I_VS_SEEKER_CHARGING        0                     // Falls diese Flag zugewiesen wird, wird die Vs. Seeker Funktionalität aktiviert. Wenn der Spieler den Vs. Seeker hat, funktionieren die Kampfanruf-Rückkampf-Funktionen nicht mehr. Dokumentation für den Vs. Seeker findet sich in docs/tutorials/vs_seeker.md.
+#define I_SHOW_NO_ID_TRAINER        DISABLED_ON_RELEASE   // Wenn TRUE, werden Objekt-Events mit einem Trainer-Typ, aber ohne sichtbare Trainer-ID, mit einem Fragezeichen angezeigt. Du solltest eventuell vsseeker_rematchid TRAINER_ID am Anfang des Skripts hinzufügen, damit der Kampffahnder weiß, welche Reaktion er zeigen soll.
 
 // ORAS Detektor
 #define I_ORAS_DOWSING_FLAG         FLAG_ORAS_DOWSING  // Ersetze 0 durch eine unbenutzte Flag, um den Detektor-Mechanismus aus ORAS zu aktivieren.

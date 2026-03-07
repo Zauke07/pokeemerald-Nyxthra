@@ -1,4 +1,5 @@
 #include "global.h"
+#include "config/save.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
@@ -1227,7 +1228,7 @@ static u8 SaveConfirmInputCallback(void)
         {
         case SAVE_STATUS_EMPTY:
         case SAVE_STATUS_CORRUPT:
-            if (gDifferentSaveFile == FALSE)
+            if (gDifferentSaveFile == FALSE && !SKIP_SAVE_CONFIRMATION)
             {
                 sSaveDialogCallback = SaveFileExistsCallback;
                 return SAVE_IN_PROGRESS;
@@ -1236,7 +1237,10 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
-            sSaveDialogCallback = SaveFileExistsCallback;
+            if (SKIP_SAVE_CONFIRMATION)
+                sSaveDialogCallback = SaveSavingMessageCallback;
+            else
+                sSaveDialogCallback = SaveFileExistsCallback;
             return SAVE_IN_PROGRESS;
         }
     case MENU_B_PRESSED:
@@ -1329,7 +1333,7 @@ static u8 SaveDoSaveCallback(void)
 
 static u8 SaveSuccessCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_SAVE);
         sSaveDialogCallback = SaveReturnSuccessCallback;
@@ -1353,7 +1357,7 @@ static u8 SaveReturnSuccessCallback(void)
 
 static u8 SaveErrorCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_BOO);
         sSaveDialogCallback = SaveReturnErrorCallback;
@@ -1551,7 +1555,7 @@ static void ShowSaveInfoWindow(void)
 {
     HideClockWindow();
     struct WindowTemplate saveInfoWindow = sSaveInfoWindowTemplate;
-    u8 playerStyle; // Richtig benannte Variable
+    u8 playerStyle; 
     u8 color;
     u32 xOffset;
     u32 yOffset;
@@ -1564,10 +1568,10 @@ static void ShowSaveInfoWindow(void)
     sSaveInfoWindowId = AddWindow(&saveInfoWindow);
     DrawStdWindowFrame(sSaveInfoWindowId, FALSE);
 
-    playerStyle = gSaveBlock2Ptr->playerStyles[0]; // Korrekt: einzelne Variable nutzen
+    // Wir nutzen dein Style-System statt des einfachen Genders der Expansion
+    playerStyle = gSaveBlock2Ptr->playerStyles[0];
 
-    // Standard-Farbzuordnung für verschiedene Charakterstile
-    switch (playerStyle)  // Jetzt wird der richtige Typ genutzt
+    switch (playerStyle)
     {
         case STYLE_BRENDAN:
         case STYLE_RED:
@@ -1579,9 +1583,7 @@ static void ShowSaveInfoWindow(void)
         case STYLE_ELIO:
         case STYLE_VICTOR:
         case STYLE_FLORIAN:
-        //case STYLE_ASH:
-        //case STYLE_WES:
-            color = TEXT_COLOR_BLUE;  // Blautöne für männliche Charaktere
+            color = TEXT_COLOR_BLUE;  // Männliche Styles
             break;
 
         case STYLE_MAY:
@@ -1594,14 +1596,15 @@ static void ShowSaveInfoWindow(void)
         case STYLE_SELENE:
         case STYLE_GLORIA:
         case STYLE_JULIANA:
-            color = TEXT_COLOR_RED;  // Rottöne für weibliche Charaktere
+            color = TEXT_COLOR_RED;   // Weibliche Styles
             break;
 
         default:
-            color = TEXT_COLOR_GREEN; // Standardfarbe, falls Stil nicht erkannt wird
+            color = TEXT_COLOR_GREEN; // Fallback
             break;
     }
 
+    // Ab hier folgt der restliche Druck-Code (Region, Name, Orden etc.)
     // Print region name
     yOffset = 1;
     BufferSaveMenuText(SAVE_MENU_LOCATION, gStringVar4, TEXT_COLOR_GREEN);

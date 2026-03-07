@@ -128,3 +128,121 @@ gBirchDexRatingText_OnANationwideBasis::
 	.string "hast du {STR_VAR_1} gesehen\n"
 	.string "und {STR_VAR_2} gefangen…\p"
 	.string "Es hört nie auf, was? Du armes Schwein.$"
+
+@ FRLG
+
+PokedexRating_Text_HowIsPokedexComingAlong::
+	.string "EICH: Yo, was geht!\n"
+	.string "Wie läuft's mit dem Pokédex, Digga?\p"
+	.string "Hier, zeig mal her den Lachs!$"
+
+PokedexRating_Text_SeenXOwnedY::
+	.string "So sieht's aktuell bei dir aus, Bro:\p"
+	.string "{STR_VAR_1} Pokémon abgecheckt und\n"
+	.string "{STR_VAR_2} Pokémon eingesteckt.\p"
+	.string "{FONT_NORMAL}PROF. EICHs Rating:$"
+
+PokedexRating_Text_LessThan10::
+	.string "Bruder, da geht noch was.\p"
+	.string "Geh mal ins hohe Gras und\n"
+	.string "hustle für mehr Pokémon!$"
+
+PokedexRating_Text_LessThan20::
+	.string "Läuft bei dir, Diggi!\p"
+	.string "Hab nem ASSISTENTEN die VM BLITZ\n"
+	.string "gegeben. Gönn dir die mal!$"
+
+PokedexRating_Text_LessThan30::
+	.string "Dein Pokédex ist noch bisschen\n"
+	.string "cringe, Bro!\p"
+	.string "Fang mal paar andere Pokémon!$"
+
+PokedexRating_Text_LessThan40::
+	.string "Ey, man sieht, du schwitzt richtig\n"
+	.string "rein!\p"
+	.string "Hab nem ASSISTENTEN den DETEKTOR\n"
+	.string "gegeben. Hol dir das Teil!$"
+
+PokedexRating_Text_LessThan50::
+	.string "Dein Pokédex wird langsam wild!\p"
+	.string "Ein ASSISTENT hat das MÜNZAMULETT\n"
+	.string "für dich. Mach Cash damit!$"
+
+PokedexRating_Text_LessThan60::
+	.string "Krass, 50 Arten geknackt!\p"
+	.string "Ein ASSISTENT chillt mit nem\n"
+	.string "EP-TEILER. Schnapp ihn dir!$"
+
+PokedexRating_Text_LessThan70::
+	.string "Uff! Das wird langsam ein echt\n"
+	.string "stabiler Pokédex!$"
+
+PokedexRating_Text_LessThan80::
+	.string "Mashallah, sehr geil!\p"
+	.string "Schmeiß mal ne Angel aus,\n"
+	.string "dann kriegst du noch mehr Pokémon!$"
+
+PokedexRating_Text_LessThan90::
+	.string "Heftig! Du bist so ein richtiger\n"
+	.string "Loot-Goblin, oder?$"
+
+PokedexRating_Text_LessThan100::
+	.string "Bin baff, no cap!\n"
+	.string "Das war safe mies anstrengend!$"
+
+PokedexRating_Text_LessThan110::
+	.string "100 Arten! Geisteskrank,\n"
+	.string "wie du ablieferst!$"
+
+PokedexRating_Text_LessThan120::
+	.string "Du hast sogar die ganzen\n"
+	.string "Entwicklungen? Sick!$"
+
+PokedexRating_Text_LessThan130::
+	.string "Baba! Tausch bisschen mit den\n"
+	.string "Zuhausis für noch mehr!$"
+
+PokedexRating_Text_LessThan140::
+	.string "Endlevel!\n"
+	.string "Du bist echt ein Macher geworden!$"
+
+PokedexRating_Text_LessThan150::
+	.string "Wallah, mir fehlen die Worte!\n"
+	.string "Du bist jetzt der wahre PROFESSOR!$"
+
+PokedexRating_Text_Complete::
+	.string "Dein Pokédex ist 100% durch!\n"
+	.string "GG, mein Bester!!$"
+
+PokedexRating_Text_NationalDexSeenXOwnedY::
+	.string "Und dein NATIONALER Pokédex sagt:\p"
+	.string "{STR_VAR_1} Pokémon abgecheckt und\n"
+	.string "{STR_VAR_2} Pokémon eingesteckt.$"
+
+PokedexRating_Text_LookForwardToFilledNationalDex::
+	.string "Bin hyped zu sehen, wie du den\n"
+	.string "NATIONALEN Pokédex rasierst!$"
+
+PokedexRating_Text_YouveCompletedDex::
+	.string "Diggi, endlich...\p"
+	.string "Du hast den Pokédex komplett\n"
+	.string "durchgespielt!\p"
+	.string "Einfach wild!\n"
+	.string "Was für ein krasser Flex!$"
+
+PokedexRating_Text_Wroooaaarrr::
+	.string "Wroooooooaaaaaarrrr!$"
+
+PokedexRating_Text_ThankYouMadeDreamReality::
+	.string "Ehrenmann, {PLAYER}!\n"
+	.string "Kuss auf's Auge, danke!\l"
+	.string "Du hast meinen Traum wahr gemacht!$"
+
+PokedexRating_Text_LoveSeeingYourPokedex::
+	.string "EICH: Yo, was geht!\p"
+	.string "Sag mal, wie läuft's mit deinem\n"
+	.string "Pokédex?\p"
+	.string "Wahaha!\p"
+	.string "Ich weiß es eh schon, aber\n"
+	.string "ich feier das einfach extrem!\p"
+	.string "Lass mal gucken...$"

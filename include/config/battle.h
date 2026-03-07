@@ -72,6 +72,9 @@
 #define B_UPDATED_CONVERSION_2      GEN_LATEST // In Gen5+ wählt Umwandlung2 einen Typ, der den letzten Move des Ziels resistet. Struggle gilt vor Gen5 als Normal.
 #define B_PP_REDUCED_BY_SPITE       GEN_LATEST // In Gen4+ senkt Groll die AP des letzten Moves um 4 statt 2-5.
 #define B_EXTRAPOLATED_MOVE_FLAGS   TRUE       // Fügt Moves plausible Flags hinzu, die sie in den neuesten Spielen wahrscheinlich hätten.
+#define B_HIDDEN_POWER_COUNTER      GEN_LATEST // Prior to Gen4, Counter and Mirror Coat treat Hidden Power as Physical regardless of type.
+#define B_MODERN_TRICK_CHOICE_LOCK  GEN_LATEST // In Gen5+, if a Choice Item is swapped for a Choice Item, the Trick/Switcheroo user can pick another move, and then they'll be locked into it.
+#define B_PROTECT_FAILURE_RATE      GEN_LATEST // In Gen5+, protect moves fails 1/3 of the time instead of 1/2
 
 // Fähigkeits-Daten
 #define B_UPDATED_ABILITY_DATA      GEN_LATEST // Beeinflusst Fähigkeits-Flags
@@ -126,6 +129,7 @@
 #define B_HEAL_BELL_SOUNDPROOF      GEN_LATEST // Gen5: Glocke heilt alle mit Lärmschutz. Gen6-8: Inaktive, nicht Kämpfer. Gen9: Nutzer immer.
 #define B_CHARGE                    GEN_LATEST // Gen3-7: Ladevorgang-Status verloren unabhängig Typ.
 #define B_POWDER_RAIN               GEN_LATEST // In Gen7+: Puder schadet nicht an Nutzer bei Starkregen.
+#define B_POWDER_STATUS_HEAVY_RAIN  GEN_LATEST // In Gen9+: Puder-Statusattacken schlagen bei extremem Regen fehl.
 #define B_AFTER_YOU_TURN_ORDER      GEN_LATEST // In Gen8+: Nachher schlägt nicht fehl wenn Reihenfolge gleich.
 #define B_QUASH_TURN_ORDER          GEN_LATEST // Gen8+: Quash-Nutzer nach Geschwindigkeit. Gen7-: In Quash-Reihenfolge.
 #define B_DESTINY_BOND_FAIL         GEN_LATEST // In Gen7+: Verhängnis schlägt bei Wiederholung fehl.
@@ -138,6 +142,15 @@
                                                // OW_TIMES_OF_DAY Gen3+: Morgengrauen geht bei Tag.
 #define B_DREAM_EATER_LIQUID_OOZE   GEN_LATEST // In Gen5+: Traumfresser betroffen von Flüssiger Schleim.
 #define B_DREAM_EATER_SUBSTITUTE    GEN_LATEST // In Gen5+: Traumfresser trifft und drainiert Delegation.
+#define B_SNATCH                    GEN_LATEST // In Gen5+ stiehlt Übernahme keine Attacken mehr, die bereits im selben Zug von einem anderen Pokémon durch Übernahme gestohlen wurden.
+#define B_FOCUS_PUNCH_FAILURE       GEN_LATEST // Um zu bestimmen, ob der Fokus verloren geht, wird in Gen4- geprüft, ob die aktuelle Attacke Power-Punch ist.
+                                               // In Gen5-6 wird geprüft, ob die ausgewählte Attacke Power-Punch ist.
+                                               // In Gen7+ wird geprüft, ob sowohl die aktuelle als auch die ausgewählte Attacke Power-Punch ist.
+                                               // In Gen4- passiert die Prüfung auf Fehlschlag von Power-Punch nach Effekten wie AP-Verbrauch oder Zurückschrecken, während sie in Gen5+ davor stattfindet.
+#define B_COUNTER_MIRROR_COAT_ALLY  GEN_LATEST // In Gen5+ zählt die Attacke eines Verbündeten nicht für den Einsatz von Konter/Spiegelcape/Metallstoß. In Gen4- schlagen Konter/Spiegelcape/Metallstoß fehl, wenn der letzte erlittene Treffer von einem Verbündeten stammte.
+#define B_COUNTER_TRY_HIT_PARTNER   GEN_LATEST // In Gen5+ wird der Angriff auf den Partner umgeleitet, wenn das Pokémon, das den letzten Angriff ausgeführt hat, nicht mehr auf dem Feld ist. In Gen4- würden Konter/Spiegelcape/Metallstoß in diesem Fall fehlschlagen.
+#define B_RAGE_BUILDS               GEN_LATEST // In Gen4+ tritt der Effekt von Raserei nur ein, wenn die Attacke erfolgreich trifft. In Gen3 tritt der Effekt ein, egal ob sie trifft, danebengeht oder fehlschlägt.
+#define B_CHECK_USER_FAILURE        GEN_LATEST // In Gen5+ prüft der Anwender nicht mehr auf eigenes Fehlschlagen, z.B. blockiert Lärmschutz nicht mehr den eigenen Abgesang.
 
 // Fähigkeits-Einstellungen
 #define B_GALE_WINGS                GEN_LATEST // In Gen7+ nur bei vollen KP aktiv.
@@ -168,34 +181,54 @@
 #define B_MAGIC_GUARD               GEN_LATEST // Nur Gen4: Magieschild ignoriert Lähmungs-Unbeweglichkeit.
 #define B_BATTLE_BOND               GEN_LATEST // In Gen9+ erhöht Band des Kampfes Atk/SpA/Init um je 1 Stufe, einmal pro Kampf.
 #define B_ATE_MULTIPLIER            GEN_LATEST // In Gen7+ multiplizieren die -wandler-Fähigkeiten 1.2x, sonst 1.3x, außer Variabilität ohne Multiplikator.
-#define B_DEFIANT_STICKY_WEB        GEN_LATEST // In Gen9+ triggert Siegeswille durch Klebenetz unabhängig vom Urheber. In Gen8 nicht, wenn nach Court Change auf eigene Seite gewechselt.
+#define B_DEFIANT_STICKY_WEB        GEN_LATEST // In Gen9+ triggert Siegeswille durch Klebenetz unabhängig vom Urheber...
 #define B_POWDER_OVERCOAT           GEN_LATEST // In Gen6+ blockt Wetterfest Puder- und Sporen-Moves.
-#define B_INFILTRATOR_SUBSTITUTE    GEN_LATEST // In Gen6+ umgeht Infiltrator Delegation bei Moves, außer für Verwandlung und Himmelssturz.
+#define B_INFILTRATOR_SUBSTITUTE    GEN_LATEST // In Gen6+ ignoriert Schwebedurch den gegnerischen Delegator.
+
+// Verschiedene temporäre Timer (Statusveränderungen)
+#define B_CONFUSION_TURNS    5
+#define B_UPROAR_TURN_COUNT  5
+#define B_RAMPAGE_TURNS      3
+#define B_DISABLE_TIMER      4
+#define B_ENCORE_TIMER       4
+#define B_PERISH_SONG_TIMER  3
+#define B_TAUNT_TIMER        5
+#define B_SLOW_START_TIMER   5
+#define B_EMBARGO_TIMER      5
+#define B_MAGNET_RISE_TIMER  5
+#define B_TELEKINESIS_TIMER  3
+#define B_HEAL_BLOCK_TIMER   5
+#define B_LASER_FOCUS_TIMER  2
+#define B_THROAT_CHOP_TIMER  2
+#define B_WRAP_TURNS         7 // Maximale Anzahl an Runden mit Griffklaue
+#define B_SYRUP_BOMB_TIMER   3
+#define B_TORMENT_TIMER      3
 
 // Item-Einstellungen
 #define B_CONFUSE_BERRIES_HEAL      GEN_LATEST // In Gen3-6 stellen Tsitrubeere und ähnliche Beeren 1/8 der KP wieder her und wirken bei halben KP. In Gen7 stellen sie die Hälfte der KP wieder her und wirken bei 25% KP. In Gen8 heilen sie 1/3 der KP.
 #define B_X_ITEMS_BUFF              GEN_LATEST // In Gen7+ erhöhen X-Items einen Statuswert um 2 Stufen statt 1.
+#define B_X_ITEMS_CROSSUSE          TRUE       // In Gen3 kann man X-Items nur auf das aktive Pokémon anwenden. In Gen7+ kann man sie im Doppelkampf auf jeden verbündeten Kämpfer anwenden (genaue Generation der Änderung unklar).
 #define B_MENTAL_HERB               GEN_LATEST // In Gen5+ heilt das Mentalkraut zusätzlich zur Betörung auch Verhöhner, Zugabe, Folterknecht, Heilsperre und Aussetzer.
 #define B_TRAINERS_KNOCK_OFF_ITEMS  TRUE       // Wenn TRUE, können Trainer deine Items stehlen/tauschen (Nicht-Beeren werden nach dem Kampf zurückgegeben). In den Original-Spielen können Trainer keine Items außerhalb von Facilities stehlen.
 #define B_RETURN_STOLEN_NPC_ITEMS   GEN_LATEST // In Gen5+ stehlen Raub und Bezirzer keine Items mehr von NPCs.
 #define B_STEAL_WILD_ITEMS          GEN_LATEST // In Gen9+ stehlen Raub und Bezirzer das Item eines wilden Pokémon und schicken es in die Tasche. In Gen2-8 wurde das gestohlene Item vom Raub/Bezirzer-Nutzer gehalten.
 #define B_RESTORE_HELD_BATTLE_ITEMS GEN_LATEST // In Gen9+ werden alle Nicht-Beeren-Items nach dem Kampf wiederhergestellt.
-#define B_SOUL_DEW_BOOST            GEN_LATEST // In Gens3-6, Soul Dew boosts Latis' Sp. Atk and Sp. Def. In Gen7+ it boosts the power of their Psychic and Dragon type moves instead.
-#define B_NET_BALL_MODIFIER         GEN_LATEST // In Gen7+, Net Ball's catch multiplier is x5 instead of x3.
-#define B_DIVE_BALL_MODIFIER        GEN_LATEST // In Gen4+, Dive Ball's effectiveness increases by x3.5 when Surfing or Fishing.
-#define B_NEST_BALL_MODIFIER        GEN_LATEST // Nest Ball's formula varies depending on the Gen. See Cmd_handleballthrow.
-#define B_REPEAT_BALL_MODIFIER      GEN_LATEST // In Gen7+, Repeat Ball's catch multiplier is x3.5 instead of x3.
-#define B_TIMER_BALL_MODIFIER       GEN_LATEST // In Gen5+, Timer Ball's effectiveness increases by x0.3 per turn instead of x0.1
-#define B_DUSK_BALL_MODIFIER        GEN_LATEST // In Gen7+, Dusk Ball's catch multiplier is x3 instead of x3.5.
-#define B_QUICK_BALL_MODIFIER       GEN_LATEST // In Gen5+, Quick Ball's catch multiplier is x5 instead of x4.
-#define B_LURE_BALL_MODIFIER        GEN_LATEST // In Gen8+, Lure Ball's catch multiplier is x4. In Gen7, it's x5. In Gen6 and earlier, it's x3.
-#define B_HEAVY_BALL_MODIFIER       GEN_LATEST // In Gen7+, Heavy Ball's ranges change. See Cmd_handleballthrow.
-#define B_DREAM_BALL_MODIFIER       GEN_LATEST // In Gen8+, Dream Ball's catch multiplier is x4 when the target is asleep or has the ability Comatose.
-#define B_SPORT_BALL_MODIFIER       GEN_LATEST // In Gen8+, Sport Ball's catch multiplier was reduced from x1.5 to x1.
-#define B_SAFARI_BALL_MODIFIER      GEN_LATEST // In Gen8+, Safari Ball's catch multiplier was reduced from x1.5 to x1.
-#define B_FRIEND_BALL_MODIFIER      GEN_LATEST // In Gen8+, Friend Ball's friendship boost was reduced from 200 to 150.
-#define B_SERENE_GRACE_BOOST        GEN_LATEST // In Gen5+, Serene Grace boosts the added flinch chance of King's Rock and Razor Fang.
-#define B_IRON_BALL                 GEN_LATEST // In Gen5+, Flying-type Pokemon holding Iron Ball take x1 damage from Ground-type moves regardless of their other types, except during Inverse Battles or if the Pokemon is grounded by any other effect.
+#define B_SOUL_DEW_BOOST            GEN_LATEST // In Gen3-6 erhöht Seelentau den Spezial-Angriff und die Spezial-Verteidigung von Latias und Latios. In Gen7+ verstärkt es stattdessen ihre Psycho- und Drachen-Attacken.
+#define B_NET_BALL_MODIFIER         GEN_LATEST // In Gen7+ beträgt der Fang-Multiplikator des Netzballs x5 statt x3.
+#define B_DIVE_BALL_MODIFIER        GEN_LATEST // In Gen4+ steigt die Effektivität des Tauchballs beim Surfen oder Angeln um x3,5.
+#define B_NEST_BALL_MODIFIER        GEN_LATEST // Die Formel des Nestballs variiert je nach Generation. Siehe Cmd_handleballthrow.
+#define B_REPEAT_BALL_MODIFIER      GEN_LATEST // In Gen7+ beträgt der Fang-Multiplikator des Wiederballs x3,5 statt x3.
+#define B_TIMER_BALL_MODIFIER       GEN_LATEST // In Gen5+ steigt die Effektivität des Timerballs um x0,3 pro Runde statt x0,1.
+#define B_DUSK_BALL_MODIFIER        GEN_LATEST // In Gen7+ beträgt der Fang-Multiplikator des Finsterballs x3 statt x3,5.
+#define B_QUICK_BALL_MODIFIER       GEN_LATEST // In Gen5+ beträgt der Fang-Multiplikator des Flottballs x5 statt x4.
+#define B_LURE_BALL_MODIFIER        GEN_LATEST // In Gen8+ beträgt der Fang-Multiplikator des Köderballs x4. In Gen7 ist er x5. In Gen6 und älter ist er x3.
+#define B_HEAVY_BALL_MODIFIER       GEN_LATEST // In Gen7+ ändern sich die Wertebereiche des Schwerballs. Siehe Cmd_handleballthrow.
+#define B_DREAM_BALL_MODIFIER       GEN_LATEST // In Gen8+ beträgt der Fang-Multiplikator des Traumballs x4, wenn das Ziel schläft oder die Fähigkeit Dauerschlaf hat.
+#define B_SPORT_BALL_MODIFIER       GEN_LATEST // In Gen8+ wurde der Fang-Multiplikator des Turnierballs von x1,5 auf x1 reduziert.
+#define B_SAFARI_BALL_MODIFIER      GEN_LATEST // In Gen8+ wurde der Fang-Multiplikator des Safariballs von x1,5 auf x1 reduziert.
+#define B_FRIEND_BALL_MODIFIER      GEN_LATEST // In Gen8+ wurde der Freundschafts-Boost des Freundesballs von 200 auf 150 reduziert.
+#define B_SERENE_GRACE_BOOST        GEN_LATEST // In Gen5+ erhöht Edelmut die zusätzliche Zurückschreck-Chance von King-Stein und Scharfzahn.
+#define B_IRON_BALL                 GEN_LATEST // In Gen5+ erleiden Flug-Pokémon, die eine Eisenkugel tragen, x1 Schaden durch Boden-Attacken unabhängig von ihren anderen Typen, außer in Umkehrkämpfen oder wenn das Pokémon durch einen anderen Effekt am Boden gehalten wird.
 
 // Flag-Einstellungen
 // Um die folgenden Features zu nutzen, ersetze 0 durch ein Flag in include/constants/flags.h, idealerweise ein ungenutztes.
@@ -221,12 +254,9 @@
 #define B_FLAG_SLEEP_CLAUSE         0     // Wenn gesetzt, Schlafklausel aktiv: Hat die Seite bereits ein gegnerisches Pokémon eingeschläfert, darf kein weiteres eingeschläfert werden. KI benötigt AI_FLAG_CHECK_BAD_MOVE.
 #define B_FLAG_NO_WHITEOUT          0     // Wenn gesetzt, kann der Spieler gegen Trainer nicht ohnmächtig werden. Hinweis: Team wird nicht automatisch geheilt!
 
-// Var-Einstellungen
-// Um die folgenden Features zu nutzen, ersetze 0 durch eine Var in include/constants/vars.h, idealerweise ungenutzt.
-// Beispiel: VAR_UNUSED_0x404E umbenennen und unten verwenden.
-#define B_VAR_STARTING_STATUS       0     // Wenn diese Var einen Wert hat und ein STATUS_FIELD_xx_TERRAIN vor dem Kampf gesetzt wird, startet der Kampf mit aktivem Terrain.
-                                          // Diese Var darf nie lange genug ungleich 0 bleiben, um gespeichert zu werden.
-#define B_VAR_STARTING_STATUS_TIMER 0     // Wenn >= 1, hält das Terrain diese Rundenzahl; sonst bleibt es, bis es überschrieben wird.
+// Var Settings
+// To use the following features, change the 0 for a var present in include/constants/vars.h, preferably an unused one.
+// Eg: You may rename VAR_UNUSED_0x404E to a descriptive name and use it below.
 #define B_VAR_WILD_AI_FLAGS         0     // Wenn nicht 0, können hier zusätzliche Wild-AI-Flags gesetzt werden. WICHTIG: Nicht mit obigen Flags (1 << 15) nutzbar.
                                           // Diese Var darf nie lange genug ungleich 0 bleiben, um gespeichert zu werden.
                                           // Für bessere Wild-AI siehe GetWildAiFlags() in src/battle_ai_main.c
@@ -263,6 +293,7 @@
 
 #define B_ABILITY_WEATHER               GEN_LATEST // In Gen6+ halten Fähigkeits-Wetter 5 Runden. Zuvor bis Kampfende oder Wechsel des Wetters.
 #define B_SANDSTORM_SPDEF_BOOST         GEN_LATEST // In Gen4+ Sandsturm: Sp.-Vert. von Gestein x1.5.
+#define B_SANDSTORM_SOLAR_BEAM          GEN_LATEST // In Gen3+ verringert Sandsturm die Stärke von Solarstrahl, was vorher nicht der Fall war.
 #define B_OVERWORLD_FOG                 GEN_LATEST // In Gen8+ erzeugt OW-Nebel Feen-Terrain im Kampf. Nur Gen4: spezielles Nebel-Wetter.
 #define B_OVERWORLD_SNOW                GEN_LATEST // In Gen9+ erzeugt OW-Schnee im Kampf Schnee statt Hagel.
 #define B_SNOW_WARNING                  GEN_LATEST // In Gen9+ ruft Schneewalzer Schnee statt Hagel hervor.
@@ -295,10 +326,14 @@
 #define B_ANIMATE_MON_AFTER_KO              TRUE // TRUE: Nach K.O. des Gegners zeigt eigenes Mon Sieges-Animation.
 #define B_ANIMATE_MON_AFTER_FAILED_POKEBALL TRUE  // TRUE: Bricht ein Ball, zeigt wildes Mon seine Animation.
 #define B_SHOW_DYNAMAX_MESSAGE              FALSE // TRUE: Zusätzliche Meldung nach abgeschlossener Dynamax/Gigadynamax.
+#define B_HPBAR_COLOR_THRESHOLD             GEN_LATEST // In Gen 5+, HP bar color thresholds were changed to be based on the actual HP values instead of the pixel length of the HP bar, leading to more accurate HP bar colors.
 
 // Fang-Einstellungen
 #define B_SEMI_INVULNERABLE_CATCH       GEN_LATEST // In Gen4+ kann man keine Bälle auf halb-unverwundbare Ziele (Schaufler/Flieger/etc.) werfen.
-#define B_CATCHING_CHARM_BOOST          20         // %-Bonus auf Krit-Fang mit Fang-Amulett.
+#define B_CATCHING_CHARM_BOOST          100         // %-Bonus auf Krit-Fang mit Fang-Amulett.
+#define B_INCAPACITATED_CATCH_BONUS     GEN_LATEST // In Gen5+, the catch rate bonus for a mon with sleep or freeze is 2.5x. In Gen4 and below its only a 2x bonus.
+#define B_LOW_LEVEL_CATCH_BONUS         GEN_LATEST // In Gen8, a bonus is added to the catch rate if catching a mon lower than level 20. In Gen9, the bonus is only applied to mons lower than level 13.
+#define B_MISSING_BADGE_CATCH_MALUS     GEN_LATEST // In Gen9, a penalty is added to the catch rate if trying to catch a mon 5 levels above the current obedience level, based on the number of gym badges obtained.
 #define B_CRITICAL_CAPTURE              TRUE       // Aktiviert Kritische Fangchance.
 #define B_CRITICAL_CAPTURE_LOCAL_DEX    TRUE       // FALSE: Krit-Fang basierend auf Nationaldex (per aktivierten Generationen geschätzt).
 #define B_CRITICAL_CAPTURE_IF_OWNED     GEN_LATEST // In Gen9+ erscheint ein Fang als kritisch, wenn das Pokémon bereits einen Pokédex-Eintrag hat (bereits gefangen wurde).

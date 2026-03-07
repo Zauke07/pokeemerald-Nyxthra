@@ -28,6 +28,10 @@ gText_PkmnSentToPCAfterCatch::
     .string "Es wurde in \n"
     .string "BOX “{STR_VAR_1}” gelegt.$"
 
+gText_PlayerObtainedTheMon::
+    .string "{PLAYER} obtained\n"
+    .string "the {STR_VAR_1}!$"
+
 gText_NoMoreRoomForPokemon::
 	.string "Es ist kein Platz mehr für POKéMON\n"
 	.string "vorhanden!\p"

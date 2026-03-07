@@ -68,19 +68,6 @@ enum {
  // When showing the main list, the first window to this window are drawn
 #define ITEMPC_WIN_LIST_END ITEMPC_WIN_TITLE
 
-// Message IDs for Item Storage
-enum {
-    MSG_SWITCH_WHICH_ITEM = 0xFFF7,
-    MSG_OKAY_TO_THROW_AWAY,
-    MSG_TOO_IMPORTANT,
-    MSG_NO_MORE_ROOM,
-    MSG_THREW_AWAY_ITEM,
-    MSG_HOW_MANY_TO_TOSS,
-    MSG_WITHDREW_ITEM,
-    MSG_HOW_MANY_TO_WITHDRAW,
-    MSG_GO_BACK_TO_PREV
-};
-
 #define TAG_ITEM_ICON    5110
 #define TAG_SCROLL_ARROW 5112
 
@@ -111,33 +98,31 @@ u16 GetPlayerOverworldSpriteId(u8 style)
     return playerSprites[style];
 }
 
-u16 GetTrainerPicFromStyle(u8 style)
+enum TrainerPicID GetTrainerPicFromStyle(u8 style)
 {
     switch (style)
     {
-        case STYLE_BRENDAN:   return TRAINER_BACK_PIC_BRENDAN;
-        case STYLE_MAY:       return TRAINER_BACK_PIC_MAY;
-        case STYLE_RED:       return TRAINER_BACK_PIC_RED;
-        case STYLE_LEAF:      return TRAINER_BACK_PIC_LEAF;
-        case STYLE_ETHAN:     return TRAINER_BACK_PIC_ETHAN;
-        case STYLE_LYRA:      return TRAINER_BACK_PIC_LYRA;
-        case STYLE_LUCAS:     return TRAINER_BACK_PIC_LUCAS;
-        case STYLE_DAWN:      return TRAINER_BACK_PIC_DAWN;
-        case STYLE_HILBERT:   return TRAINER_BACK_PIC_HILBERT;
-        case STYLE_HILDA:     return TRAINER_BACK_PIC_HILDA;
-        case STYLE_NATE:      return TRAINER_BACK_PIC_NATE;
-        case STYLE_ROSA:      return TRAINER_BACK_PIC_ROSA;
-        case STYLE_CALEM:     return TRAINER_BACK_PIC_CALEM;
-        case STYLE_SERENA:    return TRAINER_BACK_PIC_SERENA;
-        case STYLE_ELIO:      return TRAINER_BACK_PIC_ELIO;
-        case STYLE_SELENE:    return TRAINER_BACK_PIC_SELENE;
-        case STYLE_VICTOR:    return TRAINER_BACK_PIC_VICTOR;
-        case STYLE_GLORIA:    return TRAINER_BACK_PIC_GLORIA;
-        case STYLE_FLORIAN:   return TRAINER_BACK_PIC_FLORIAN;
-        case STYLE_JULIANA:   return TRAINER_BACK_PIC_JULIANA;
-        // case STYLE_WES:       return TRAINER_BACK_PIC_WES;
-        // case STYLE_ASH:       return TRAINER_BACK_PIC_ASH;
-        default:              return TRAINER_BACK_PIC_BRENDAN; // Fallback
+        case STYLE_BRENDAN: return TRAINER_PIC_BACK_BRENDAN;
+        case STYLE_MAY:     return TRAINER_PIC_BACK_MAY;
+        case STYLE_RED:     return TRAINER_PIC_BACK_RED;
+        case STYLE_LEAF:    return TRAINER_PIC_BACK_LEAF;
+        case STYLE_ETHAN:   return TRAINER_PIC_BACK_ETHAN;
+        case STYLE_LYRA:    return TRAINER_PIC_BACK_LYRA;
+        case STYLE_LUCAS:   return TRAINER_PIC_BACK_LUCAS;
+        case STYLE_DAWN:    return TRAINER_PIC_BACK_DAWN;
+        case STYLE_HILBERT: return TRAINER_PIC_BACK_HILBERT;
+        case STYLE_HILDA:   return TRAINER_PIC_BACK_HILDA;
+        case STYLE_NATE:    return TRAINER_PIC_BACK_NATE;
+        case STYLE_ROSA:    return TRAINER_PIC_BACK_ROSA;
+        case STYLE_CALEM:   return TRAINER_PIC_BACK_CALEM;
+        case STYLE_SERENA:  return TRAINER_PIC_BACK_SERENA;
+        case STYLE_ELIO:    return TRAINER_PIC_BACK_ELIO;
+        case STYLE_SELENE:  return TRAINER_PIC_BACK_SELENE;
+        case STYLE_VICTOR:  return TRAINER_PIC_BACK_VICTOR;
+        case STYLE_GLORIA:  return TRAINER_PIC_BACK_GLORIA;
+        case STYLE_FLORIAN: return TRAINER_PIC_BACK_FLORIAN;
+        case STYLE_JULIANA: return TRAINER_PIC_BACK_JULIANA;
+        default:            return TRAINER_PIC_BACK_BRENDAN; // WICHTIG: Das fängt den letzten Fehler (Zeile 129) ab!
     }
 }
 
@@ -274,8 +259,7 @@ static void ItemStorage_HandleRemoveItem(u8);
 static void ItemStorage_HandleErrorMessageInput(u8);
 static void ItemStorage_ReturnToListInput(u8);
 
-static const u8 *ItemStorage_GetMessage(u16);
-static void CopyItemName_PlayerPC(u8 *, u16);
+static void CopyItemName_PlayerPC(u8 *, enum Item);
 
 static void ItemStorage_Init(void);
 static void ItemStorage_DrawSwapArrow(u8, u8, u8);
@@ -283,7 +267,7 @@ static void ItemStorage_RemoveWindow(u8);
 static void ItemStorage_UpdateSwapLinePos(u8);
 static void ItemStorage_ProcessItemSwapInput(u8);
 static void ItemStorage_EraseItemIcon(void);
-static void ItemStorage_DrawItemIcon(u16);
+static void ItemStorage_DrawItemIcon(enum Item);
 static void ItemStorage_PrintDescription(s32);
 static void ItemStorage_EraseMainMenu(u8);
 static void ItemStorage_MoveCursor(s32, bool8, struct ListMenu *);
@@ -1157,7 +1141,7 @@ void ItemStorage_RefreshListMenu(void)
     gMultiuseListMenuTemplate.maxShowed = gPlayerPCItemPageInfo.pageItems;
 }
 
-void CopyItemName_PlayerPC(u8 *string, u16 itemId)
+void CopyItemName_PlayerPC(u8 *string, enum Item itemId)
 {
     CopyItemName(itemId, string);
 }
@@ -1203,7 +1187,7 @@ static void ItemStorage_PrintDescription(s32 id)
     if (id != LIST_CANCEL)
         description = (u8 *)GetItemDescription(gSaveBlock1Ptr->pcItems[id].itemId);
     else
-        description = ItemStorage_GetMessage(MSG_GO_BACK_TO_PREV);
+        description = gText_GoBackPrevMenu;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
     AddTextPrinterParameterized(windowId, FONT_NORMAL, description, 0, 1, 0, NULL);
@@ -1242,7 +1226,7 @@ static void ItemStorage_DrawSwapArrow(u8 y, u8 b, u8 speed)
         AddTextPrinterParameterized4(windowId, FONT_NORMAL, 0, y, 0, 0, sSwapArrowTextColors, speed, gText_SelectorArrow2);
 }
 
-static void ItemStorage_DrawItemIcon(u16 itemId)
+static void ItemStorage_DrawItemIcon(enum Item itemId)
 {
     u8 spriteId;
     u8 *spriteIdLoc = &sItemStorageMenu->spriteId;
@@ -1309,46 +1293,6 @@ static void ItemStorage_CreateListMenu(u8 taskId)
     ItemStorage_AddScrollIndicator();
     ScheduleBgCopyTilemapToVram(0);
     gTasks[taskId].func = ItemStorage_ProcessInput;
-}
-
-static const u8 *ItemStorage_GetMessage(u16 itemId)
-{
-    const u8 *string;
-
-    switch(itemId)
-    {
-    case MSG_GO_BACK_TO_PREV:
-        string = gText_GoBackPrevMenu;
-        break;
-    case MSG_HOW_MANY_TO_WITHDRAW:
-        string = sText_WithdrawHowManyItems;
-        break;
-    case MSG_WITHDREW_ITEM:
-        string = sText_WithdrawXItems;
-        break;
-    case MSG_HOW_MANY_TO_TOSS:
-        string = gText_TossHowManyVar1s;
-        break;
-    case MSG_THREW_AWAY_ITEM:
-        string = gText_ThrewAwayVar2Var1s;
-        break;
-    case MSG_NO_MORE_ROOM:
-        string = sText_NoRoomInBag;
-        break;
-    case MSG_TOO_IMPORTANT:
-        string = sText_TooImportantToToss;
-        break;
-    case MSG_OKAY_TO_THROW_AWAY:
-        string = gText_ConfirmTossItems;
-        break;
-    case MSG_SWITCH_WHICH_ITEM:
-        string = gText_MoveVar1Where;
-        break;
-    default:
-        string = GetItemDescription(itemId);
-        break;
-    }
-    return string;
 }
 
 static void ItemStorage_PrintMessage(const u8 *string)
@@ -1428,7 +1372,7 @@ static void ItemStorage_StartItemSwap(u8 taskId)
     ItemStorage_SetSwapArrow(tListTaskId, 0, 0);
     ItemStorage_UpdateSwapLinePos(sItemStorageMenu->toSwapPos);
     CopyItemName(gSaveBlock1Ptr->pcItems[sItemStorageMenu->toSwapPos].itemId, gStringVar1);
-    ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_SWITCH_WHICH_ITEM));
+    ItemStorage_PrintMessage(gText_MoveVar1Where);
     gTasks[taskId].func = ItemStorage_ProcessItemSwapInput;
 }
 
@@ -1519,7 +1463,7 @@ static void ItemStorage_DoItemAction(u8 taskId)
         // Withdrawing multiple items, show "how many" message
         end = CopyItemNameHandlePlural(gSaveBlock1Ptr->pcItems[pos].itemId, gStringVar1, 2);
         WrapFontIdToFit(gStringVar1, end, FONT_NORMAL, WindowWidthPx(ITEMPC_WIN_MESSAGE) - 6);
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_HOW_MANY_TO_WITHDRAW));
+        ItemStorage_PrintMessage(sText_WithdrawHowManyItems);
     }
     else
     {
@@ -1533,7 +1477,7 @@ static void ItemStorage_DoItemAction(u8 taskId)
         // Tossing multiple items, show "how many" message
         end = CopyItemNameHandlePlural(gSaveBlock1Ptr->pcItems[pos].itemId, gStringVar1, 2);
         WrapFontIdToFit(gStringVar1, end, FONT_NORMAL, WindowWidthPx(ITEMPC_WIN_MESSAGE) - 6);
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_HOW_MANY_TO_TOSS));
+        ItemStorage_PrintMessage(gText_TossHowManyVar1s);
     }
 
     // Set up "how many" prompt
@@ -1567,7 +1511,7 @@ static void ItemStorage_HandleQuantityRolling(u8 taskId)
             // Canceled action
             PlaySE(SE_SELECT);
             ItemStorage_RemoveWindow(ITEMPC_WIN_QUANTITY);
-            ItemStorage_PrintMessage(ItemStorage_GetMessage(gSaveBlock1Ptr->pcItems[pos].itemId));
+            ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[pos].itemId));
             ItemStorage_ReturnToListInput(taskId);
         }
     }
@@ -1584,14 +1528,14 @@ static void ItemStorage_DoItemWithdraw(u8 taskId)
         u8 *end = CopyItemNameHandlePlural(gSaveBlock1Ptr->pcItems[pos].itemId, gStringVar1, tQuantity);
         WrapFontIdToFit(gStringVar1, end, FONT_NORMAL, WindowWidthPx(ITEMPC_WIN_MESSAGE) - 6);
         ConvertIntToDecimalStringN(gStringVar2, tQuantity, STR_CONV_MODE_LEFT_ALIGN, 3);
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_WITHDREW_ITEM));
+        ItemStorage_PrintMessage(sText_WithdrawXItems);
         gTasks[taskId].func = ItemStorage_HandleRemoveItem;
     }
     else
     {
         // No room to withdraw items
         tQuantity = 0;
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_NO_MORE_ROOM));
+        ItemStorage_PrintMessage(sText_NoRoomInBag);
         gTasks[taskId].func = ItemStorage_HandleErrorMessageInput;
     }
 }
@@ -1607,27 +1551,27 @@ static void ItemStorage_DoItemToss(u8 taskId)
         u8 *end = CopyItemNameHandlePlural(gSaveBlock1Ptr->pcItems[pos].itemId, gStringVar1, tQuantity);
         WrapFontIdToFit(gStringVar1, end, FONT_NORMAL, WindowWidthPx(ITEMPC_WIN_MESSAGE) - 6);
         ConvertIntToDecimalStringN(gStringVar2, tQuantity, STR_CONV_MODE_LEFT_ALIGN, 3);
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_OKAY_TO_THROW_AWAY));
+        ItemStorage_PrintMessage(gText_ConfirmTossItems);
         CreateYesNoMenuWithCallbacks(taskId, &sWindowTemplates_ItemStorage[ITEMPC_WIN_YESNO], 1, 0, 1, 0x214, 0xE, &ItemTossYesNoFuncs);
     }
     else
     {
         // Can't toss important items
         tQuantity = 0;
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_TOO_IMPORTANT));
+        ItemStorage_PrintMessage(sText_TooImportantToToss);
         gTasks[taskId].func = ItemStorage_HandleErrorMessageInput;
     }
 }
 
 static void ItemStorage_TossItemYes(u8 taskId)
 {
-    ItemStorage_PrintMessage(ItemStorage_GetMessage(MSG_THREW_AWAY_ITEM));
+    ItemStorage_PrintMessage(gText_ThrewAwayVar2Var1s);
     gTasks[taskId].func = ItemStorage_HandleRemoveItem;
 }
 
 static void ItemStorage_TossItemNo(u8 taskId)
 {
-    ItemStorage_PrintMessage(ItemStorage_GetMessage(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
+    ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
     ItemStorage_ReturnToListInput(taskId);
 }
 
@@ -1651,7 +1595,7 @@ static void ItemStorage_HandleErrorMessageInput(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        ItemStorage_PrintMessage(ItemStorage_GetMessage(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
+        ItemStorage_PrintMessage(GetItemDescription(gSaveBlock1Ptr->pcItems[gPlayerPCItemPageInfo.itemsAbove + gPlayerPCItemPageInfo.cursorPos].itemId));
         ItemStorage_ReturnToListInput(taskId);
     }
 }

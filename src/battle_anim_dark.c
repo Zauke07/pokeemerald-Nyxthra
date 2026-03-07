@@ -30,9 +30,6 @@ static const struct SpriteTemplate sUnusedBagStealSpriteTemplate =
     .tileTag = ANIM_TAG_TIED_BAG,
     .paletteTag = ANIM_TAG_TIED_BAG,
     .oam = &gOamData_AffineOff_ObjNormal_16x16,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimUnusedBagSteal,
 };
 
@@ -101,8 +98,6 @@ const struct SpriteTemplate gSharpTeethSpriteTemplate =
     .tileTag = ANIM_TAG_SHARP_TEETH,
     .paletteTag = ANIM_TAG_SHARP_TEETH,
     .oam = &gOamData_AffineNormal_ObjBlend_64x64,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
     .affineAnims = gAffineAnims_Bite,
     .callback = AnimBite,
 };
@@ -112,8 +107,6 @@ const struct SpriteTemplate gClampJawSpriteTemplate =
     .tileTag = ANIM_TAG_CLAMP,
     .paletteTag = ANIM_TAG_CLAMP,
     .oam = &gOamData_AffineNormal_ObjBlend_64x64,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
     .affineAnims = gAffineAnims_Bite,
     .callback = AnimBite,
 };
@@ -143,8 +136,6 @@ const struct SpriteTemplate gTearDropSpriteTemplate =
     .tileTag = ANIM_TAG_SMALL_BUBBLES,
     .paletteTag = ANIM_TAG_SMALL_BUBBLES,
     .oam = &gOamData_AffineNormal_ObjNormal_16x16,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
     .affineAnims = gAffineAnims_TearDrop,
     .callback = AnimTearDrop,
 };
@@ -181,8 +172,6 @@ const struct SpriteTemplate gClawSlashSpriteTemplate =
     .paletteTag = ANIM_TAG_CLAW_SLASH,
     .oam = &gOamData_AffineOff_ObjNormal_32x32,
     .anims = gAnims_ClawSlash,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimClawSlash,
 };
 
@@ -242,8 +231,6 @@ const struct SpriteTemplate gPunishmentSpriteTemplate =
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
     .oam = &gOamData_AffineNormal_ObjNormal_32x32,
     .anims = gPunishmentAnim,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimSpriteOnMonPos,
 };
 
@@ -252,8 +239,6 @@ const struct SpriteTemplate gPunishmentImpactSpriteTemplate =
     .tileTag = ANIM_TAG_IMPACT,
     .paletteTag = ANIM_TAG_POISON_BUBBLE,
     .oam = &gOamData_AffineNormal_ObjNormal_32x32,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
     .affineAnims = gPunishmentImpactAffineAnim,
     .callback = AnimPunishment,
 };
@@ -267,8 +252,6 @@ const struct SpriteTemplate gDarkPulseSpriteTemplate =
     .tileTag = ANIM_TAG_PURPLE_RING,
     .paletteTag = ANIM_TAG_PURPLE_RING,
     .oam = &gOamData_AffineDouble_ObjNormal_16x32,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
     .affineAnims = gAffineAnims_SpinningBone,
     .callback = AnimShadowBall,
 };
@@ -291,13 +274,15 @@ static void AnimPunishment(struct Sprite *sprite)
 
 void AnimTask_AttackerFadeToInvisible(u8 taskId)
 {
-    CMD_ARGS(stepDelay);
-
-    int battler;
-    gTasks[taskId].data[0] = cmd->stepDelay;
+    enum BattlerId battler;
+    
+    // Die Expansion nutzt jetzt gBattleAnimArgs statt CMD_ARGS
+    gTasks[taskId].data[0] = gBattleAnimArgs[0]; 
     battler = gBattleAnimAttacker;
     gTasks[taskId].data[1] = 16;
+    
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 0));
+    
     if (GetBattlerSpriteBGPriorityRank(battler) == 1)
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL | BLDCNT_EFFECT_BLEND | BLDCNT_TGT1_BG1);
     else
@@ -454,12 +439,11 @@ static void AnimBite_Step2(struct Sprite *sprite)
 // Launches a tear drop away from the battler. Used by Fake Tears
 void AnimTearDrop(struct Sprite *sprite)
 {
-    CMD_ARGS(relativeTo, type);
-
-    u8 battler;
+    enum BattlerId battler;
     s8 xOffset;
 
-    if (cmd->relativeTo == ANIM_ATTACKER)
+    // In 1.15.0 nutzen wir gBattleAnimArgs[index] statt cmd->
+    if (gBattleAnimArgs[0] == ANIM_ATTACKER)
         battler = gBattleAnimAttacker;
     else
         battler = gBattleAnimTarget;
@@ -467,7 +451,8 @@ void AnimTearDrop(struct Sprite *sprite)
     xOffset = 20;
     sprite->oam.tileNum += 4;
 
-    switch (cmd->type)
+    // gBattleAnimArgs[1] entspricht dem alten cmd->type
+    switch (gBattleAnimArgs[1])
     {
     case 0:
         sprite->x = GetBattlerSpriteCoordAttr(battler, BATTLER_COORD_ATTR_RIGHT) - 8;
@@ -1032,20 +1017,19 @@ static void AnimTask_MetallicShine_Step(u8 taskId)
 // Changes battler's palette to either grayscale or original.
 void AnimTask_SetGrayscaleOrOriginalPal(u8 taskId)
 {
-    CMD_ARGS(battler, mode);
-
     u8 spriteId;
-    u8 battler;
+    enum BattlerId battlerId;
     bool8 calcSpriteId = FALSE;
     u8 position = B_POSITION_PLAYER_LEFT;
+    enum AnimBattler animBattler = gBattleAnimArgs[0];
 
-    switch (cmd->battler)
+    switch (animBattler)
     {
     case ANIM_ATTACKER:
     case ANIM_TARGET:
     case ANIM_ATK_PARTNER:
     case ANIM_DEF_PARTNER:
-        spriteId = GetAnimBattlerSpriteId(cmd->battler);
+        spriteId = GetAnimBattlerSpriteId(animBattler);
         break;
     case ANIM_PLAYER_LEFT:
         position = B_POSITION_PLAYER_LEFT;
@@ -1070,15 +1054,18 @@ void AnimTask_SetGrayscaleOrOriginalPal(u8 taskId)
 
     if (calcSpriteId)
     {
-        battler = GetBattlerAtPosition(position);
-        if (IsBattlerSpriteVisible(battler))
-            spriteId = gBattlerSpriteIds[battler];
+        battlerId = GetBattlerAtPosition(position);
+        if (IsBattlerSpriteVisible(battlerId))
+            spriteId = gBattlerSpriteIds[battlerId];
         else
             spriteId = SPRITE_NONE;
     }
 
     if (spriteId != SPRITE_NONE)
-        SetGrayscaleOrOriginalPalette(gSprites[spriteId].oam.paletteNum + 16, cmd->mode);
+    {
+        // gBattleAnimArgs[1] ersetzt das alte cmd->mode
+        SetGrayscaleOrOriginalPalette(gSprites[spriteId].oam.paletteNum + 16, gBattleAnimArgs[1]);
+    }
 
     DestroyAnimVisualTask(taskId);
 }

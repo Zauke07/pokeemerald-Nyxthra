@@ -64,14 +64,20 @@
 
 // Schalter für Lernset-Helfer
 #define P_LEARNSET_HELPER_TEACHABLE TRUE  // Wenn WAHR, wird teachable_learnsets.h von tools/learnset_helpers/make_teachables.py anhand der enthaltenen JSON-Dateien und basierend auf verfügbaren TMs und Tutoren befüllt.
-#define P_TUTOR_MOVES_ARRAY FALSE         // Wenn WAHR, wird ein gTutorMoves-Array automatisch mit make_teachables.py generiert (wird normalerweise nicht benötigt, aber der HGSS-Pokédex hat eine optionale Verwendung dafür).
 
 // Flag-Einstellungen
-// Um die folgenden Funktionen im Scripting zu verwenden, ersetze die 0en durch die Flag-ID, die du ihr zuweist. // Z.B.: Ersetze durch FLAG_UNUSED_0x264, damit du dieses Flag zum Umschalten der Funktion verwenden kannst.
+// Um die folgenden Funktionen im Scripting zu verwenden, ersetze die 0en durch die Flag-ID, die du ihr zuweist.
+// Z.B.: Ersetze durch FLAG_UNUSED_0x264, damit du dieses Flag zum Umschalten der Funktion verwenden kannst.
 #define P_FLAG_FORCE_SHINY 0              // Wenn dieses Flag gesetzt ist, werden alle wilden und Geschenk-Pokémon dazu gezwungen, Shiny zu sein.
 #define P_FLAG_FORCE_NO_SHINY 0           // Wenn dieses Flag gesetzt ist, werden alle wilden und Geschenk-Pokémon dazu gezwungen, NICHT Shiny zu sein.
 
 // Gehe hierhin, wenn du bestimmte Pokémon-Familien deaktivieren möchtest.
 #include "config/species_enabled.h"
+
+#include "constants/sound.h"
+
+// Sound related settings
+#define P_MODIFIED_MEGA_CRIES            P_MEGA_EVOLUTIONS  // If TRUE, will use the extra separate Mega Cries (approx. 3% space of ROM). if FALSE, will use the same cry for all Mega Evolutions except modified with P_MODIFIED_MEGA_CRY_MODE. By default, this is set based on if mega evolutions are enabled.
+#define P_MODIFIED_MEGA_CRY_MODE         CRY_MODE_HIGH_PITCH
 
 #endif // GUARD_CONFIG_POKEMON_H

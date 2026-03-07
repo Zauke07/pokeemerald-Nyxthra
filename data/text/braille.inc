@@ -129,3 +129,161 @@ GraniteCave_B2F_Braille_JohtoStarters:
 	.braille "VIERTE GLUMANDA\n"
 	.braille "SECHSTE SCHIGGY.$"
 
+
+@ FRLG
+Braille_Text_Up::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "OBEN$"
+
+Braille_Text_Down::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "UNTEN$"
+
+Braille_Text_Right::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "RECHTS$"
+
+Braille_Text_Left::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "LINKS$"
+
+Braille_Text_Cut::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "ZERSCHNEIDER$"
+
+Braille_Text_ABC::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "ABC$"
+
+Braille_Text_GHI::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "GHI$"
+
+Braille_Text_MNO::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "MNO$"
+
+Braille_Text_TUV::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "TUV$"
+
+Braille_Text_DEF::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "DEF$"
+
+Braille_Text_JKL::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "JKL$"
+
+Braille_Text_PQRS::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "PQRS$"
+
+Braille_Text_WXYZ::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "WXYZ$"
+
+Braille_Text_Period::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille ".$"
+
+Braille_Text_Comma::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille ",$"
+
+Braille_Text_Everything::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "ALLES$"
+
+Braille_Text_HasMeaning1::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "HAT BEDEUTUNG$"
+
+Braille_Text_Existence::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "EXISTENZ$"
+
+Braille_Text_HasMeaning2::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "HAT BEDEUTUNG$"
+
+Braille_Text_BeingAlive::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "AM LEBEN SEIN$"
+
+Braille_Text_HasMeaning3::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "HAT BEDEUTUNG$"
+
+Braille_Text_HaveDreams::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "HABE TRAEUME$"
+
+Braille_Text_UsePower::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "NUTZE KRAFT.$"
+
+Braille_Text_LetTheTwo::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "LASS DIE ZWEI$"
+
+Braille_Text_Glittering::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "GLITZERNDEN$"
+
+Braille_Text_Stones::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "STEINE$"
+
+Braille_Text_OneInRed::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "EINEN IN ROT$"
+
+Braille_Text_OneInBlue::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "EINEN IN BLAU$"
+
+Braille_Text_ConnectThe::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "VERBINDEN DIE$"
+
+Braille_Text_Past::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "VERGANGENHEIT.$"
+
+Braille_Text_TwoFriends::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "ZWEI FREUNDE$"
+
+Braille_Text_Sharing::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "TEILEN$"
+
+Braille_Text_PowerOpen::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "KRAFT OEFFNEN$"
+
+Braille_Text_AWindowTo::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "EIN FENSTER IN$"
+
+Braille_Text_ANewWorld::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "EINE NEUE WELT$"
+
+Braille_Text_ThatGlows::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "DIE LEUCHTET.$"
+
+Braille_Text_TheNext::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "DIE NAECHSTE$"
+
+Braille_Text_WorldWaits::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "WELT WARTET$"
+
+Braille_Text_ForYou::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "AUF DICH.$"
+

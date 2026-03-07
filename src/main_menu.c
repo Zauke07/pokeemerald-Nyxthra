@@ -72,7 +72,6 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8);
-static void NewGameBirchSpeech_ShowDialogueWindow(u8, u8);
 static void NewGameBirchSpeech_ClearWindow(u8);
 static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8);
 static void Task_NewGameBirchSpeech_MainSpeech(u8);
@@ -129,6 +128,9 @@ static void NewGameBirchSpeech_ShowGenderMenu(void);
 
 static void Task_NewGameBirchSpeech_GenderMenuSlideOut(u8 taskId);
 static void Task_NewGameBirchSpeech_GenderMenuSlideIn(u8 taskId);
+
+static enum Gender NewGameBirchSpeech_ProcessGenderMenuInput(void);
+static void NewGameBirchSpeech_ClearGenderWindow(u8 arg1, u8 arg2);
 
 // ROM declarations
 static const u16 sBirchSpeechBgPals[][16] = {
@@ -481,7 +483,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
 static void Task_WaitForSaveFileErrorWindow(u8 taskId)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
+    if (!IsTextPrinterActiveOnWindow(7) && (JOY_NEW(A_BUTTON)))
     {
         ClearWindowTilemap(7);
         ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
@@ -514,7 +516,7 @@ static void Task_MainMenuCheckBattery(u8 taskId)
 static void Task_WaitForBatteryDryErrorWindow(u8 taskId)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
+    if (!IsTextPrinterActiveOnWindow(7) && (JOY_NEW(A_BUTTON)))
     {
         ClearWindowTilemap(7);
         ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
@@ -869,7 +871,8 @@ static void Task_DisplayMainMenuInvalidActionError(u8 taskId)
             break;
         case 2:
             RunTextPrinters();
-            if (!IsTextPrinterActive(7)) gTasks[taskId].tCurrItem++;
+            if (!IsTextPrinterActiveOnWindow(7))
+                gTasks[taskId].tCurrItem++;
             break;
         case 3:
             if (JOY_NEW(A_BUTTON | B_BUTTON))
@@ -1021,7 +1024,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             InitWindows(sNewGameBirchSpeechTextWindows);
             LoadMainMenuWindowFrameTiles(0, 0xF3);
             LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
-            NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+            DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
             PutWindowTilemap(0);
             CopyWindowToVram(0, COPYWIN_GFX);
             NewGameBirchSpeech_ClearWindow(0);
@@ -1262,34 +1265,36 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
 
 static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 {
-    int gender = Menu_ProcessInputNoWrap();
-    int menuPos = Menu_GetCursorPos(); // 0 = Junge, 1 = Mädchen
+    // Standard-Eingabeabfrage der Engine
+    int input = Menu_ProcessInputNoWrap(); 
+    // Für die Slide-Logik brauchen wir die Cursor-Position (0 = Junge, 1 = Mädchen)
+    int menuPos = Menu_GetCursorPos(); 
 
-    // Cursor-Slide für Junge/Mädchen
+    // --- Nyxthra Cursor-Slide Logik ---
+    // Wir schauen, welcher Style basierend auf der Cursor-Position erwartet wird
     u8 expectedStyleId = (menuPos == 1) ? sFemaleStyleList[0].id : sMaleStyleList[0].id;
-    if (gTasks[taskId].tStyleSelectId != expectedStyleId && gender == -2)
+    
+    // MENU_NOTHING_CHOSEN bedeutet, der Spieler überlegt noch (kein A oder B gedrückt)
+    if (gTasks[taskId].tStyleSelectId != expectedStyleId && input == MENU_NOTHING_CHOSEN)
     {
         gTasks[taskId].tStyleSelectId = expectedStyleId;
         gTasks[taskId].func = Task_NewGameBirchSpeech_GenderMenuSlideOut;
         return;
     }
 
-    if (gender != -2)
+    // --- Auswahl-Logik ---
+    if (input != MENU_NOTHING_CHOSEN && input != MENU_B_PRESSED) // Wenn A gedrückt wurde (0 = MALE, 1 = FEMALE)
     {
-        if (gender == -1) 
-        {
-            PlaySE(SE_BOO);
-            return;
-        }
-
         PlaySE(SE_SELECT);
-        gSaveBlock2Ptr->playerGender = gender; 
-        
-        ClearStdWindowAndFrame(2, TRUE);
-        FillWindowPixelBuffer(2, PIXEL_FILL(0));
-        ClearWindowTilemap(2);
-        CopyWindowToVram(2, COPYWIN_FULL);
+        gSaveBlock2Ptr->playerGender = (input == 0) ? MALE : FEMALE; 
 
+        // RHH 1.15.0 Standard zum Schließen und Aufräumen des Fensters OHNE es zu zerstören!
+        ClearStdWindowAndFrameToTransparent(2, TRUE);
+        ClearWindowTilemap(2);
+        CopyWindowToVram(2, COPYWIN_MAP);
+        
+        // WICHTIG: Wir springen NICHT direkt zum Namen, 
+        // sondern zu deiner Style-Auswahl!
         gTasks[taskId].func = Task_NewGameBirchSpeech_AskStyle;
     }
 }
@@ -1546,11 +1551,17 @@ static void Task_NewGameBirchSpeech_SlideOutBeforeReturn(u8 taskId)
         if (gSprites[oldId].x >= 280)
         {
             DestroyCurrentTrainerSprite(taskId); // Restlos löschen!
+            
+            // FIX: Bevor wir zurückspringen, zeichnen wir das Auswahl-Fenster neu!
+            NewGameBirchSpeech_ShowGenderMenu(); 
+            
             gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
         }
     }
     else
     {
+        // FIX: Auch hier für den Fall, dass kein Sprite da war!
+        NewGameBirchSpeech_ShowGenderMenu(); 
         gTasks[taskId].func = Task_NewGameBirchSpeech_BoyOrGirl;
     }
 }
@@ -2113,7 +2124,7 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 {
     if (gTasks[taskId].tTimer-- <= 0)
     {
-        NewGameBirchSpeech_ShowDialogueWindow(0, 1);
+        DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SoItsPlayerName;
     }
 }

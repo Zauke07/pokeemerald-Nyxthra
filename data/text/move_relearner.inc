@@ -51,6 +51,9 @@ MoveRelearner_Text_TMMoveLWR::
 MoveRelearner_Text_TutorMoveLWR::
 	.string "Tutor-Attacke$"
 
+MoveRelearner_Text_MoveLWR::
+	.string "move$"
+
 MoveRelearner_Text_WhichXmoveShouldTeach:
 	.string "Welche {STR_VAR_3} soll ich einprügeln?$"
 

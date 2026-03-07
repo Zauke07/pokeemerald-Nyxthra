@@ -807,11 +807,12 @@ LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 	.string "Wenn du was reißen willst mit Pokémon,\n"
-	.string "geh mal zu {RIVAL}. {RIVAL} weiß, wie’s läuft.$"
+	.string "geh mal zu {RIVAL}.\l"
+	.string "{RIVAL} weiß, wie’s läuft.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou:
-	.string "Perfekt! {RIVAL} bringt dir schon bei, wie\n"
-	.string "man ein echter Boss wird.$"
+	.string "Perfekt! {RIVAL} bringt dir schon\n"
+	.string "bei, wie man ein echter Boss wird.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "Jetzt sei kein Frosch! Geh zu {RIVAL}.\n"

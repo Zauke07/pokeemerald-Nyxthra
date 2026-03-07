@@ -4,3 +4,7 @@ gText_WantToUseSurf::
 
 gText_PlayerUsedSurf::
 	.string "{STR_VAR_1} setzt SURFER ein!$"
+
+Text_CurrentTooFast::
+	.string "Die Strömung ist viel zu stark!\n"
+	.string "SURFER kann hier nicht eingesetzt werden…$"

@@ -8,6 +8,7 @@
 #include "constants/event_objects.h"
 #include "constants/flags.h"
 #include "constants/map_scripts.h"
+#include "constants/script_commands.h"
 #include "field_message_box.h"
 #include "overworld.h"
 #include "fieldmap.h"
@@ -181,7 +182,11 @@ void ScriptJump(struct ScriptContext *ctx, const u8 *ptr)
 
 void ScriptCall(struct ScriptContext *ctx, const u8 *ptr)
 {
-    ScriptPush(ctx, ctx->scriptPtr);
+    bool32 failed = ScriptPush(ctx, ctx->scriptPtr);
+    assertf(!failed, "could not push %p", ptr)
+    {
+        return;
+    }
     ctx->scriptPtr = ptr;
 }
 
@@ -194,6 +199,13 @@ u16 ScriptReadHalfword(struct ScriptContext *ctx)
 {
     u16 value = *(ctx->scriptPtr++);
     value |= *(ctx->scriptPtr++) << 8;
+    return value;
+}
+
+u16 ScriptPeekHalfword(struct ScriptContext *ctx)
+{
+    u16 value = *(ctx->scriptPtr);
+    value |= *(ctx->scriptPtr + 1) << 8;
     return value;
 }
 
@@ -658,6 +670,33 @@ void Script_RequestWriteVar_Internal(u32 varId)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 }
 
+// --- Expansion 1.15.0 Engine Utility Functions ---
+bool32 Script_MatchesCallNative(const u8 *script, void *funcPtr, bool32 requestEffects)
+{
+    if (script[0] != SCR_OP_CALLNATIVE)
+        return FALSE;
+    u32 callnativeFunc = (((((script[4] << 8) + script[3]) << 8) + script[2]) << 8) + script[1];
+    u32 targetFunc = (u32)funcPtr;
+    if (requestEffects)
+        targetFunc |= 0xA000000;
+    if (callnativeFunc == targetFunc)
+        return TRUE;
+    return FALSE;
+}
+
+bool32 Script_MatchesSpecial(const u8 *script, void *funcPtr)
+{
+    if (script[0] != SCR_OP_SPECIAL)
+        return FALSE;
+    typedef u16 (*SpecialFunc)(void);
+    extern const SpecialFunc gSpecials[];
+    SpecialFunc specialFunc = gSpecials[(script[2] << 8) + script[1]];
+    if ((u32)specialFunc == ((u32)funcPtr))
+        return TRUE;
+    return FALSE;
+}
+
+// --- Nyxthra Custom Script Commands ---
 bool8 ScrCmd_IsStyleMale(struct ScriptContext *ctx)
 {
     u8 style = gSaveBlock2Ptr->playerStyles[0];
@@ -669,7 +708,6 @@ bool8 isstylemale(u8 style)
 {
     return IsPlayerStyleMale(style);
 }
-
 
 bool8 ScrCmd_hideobject(struct ScriptContext *ctx)
 {
@@ -698,7 +736,7 @@ bool8 ScriptCmd_SpawnRivalForStyle(struct ScriptContext *ctx)
     u8 style = VarGet(VAR_0x8004);
     s16 x = VarGet(VAR_0x8005);
     s16 y = VarGet(VAR_0x8006);
-    u8 localId = VarGet(VAR_0x8007); // neuer Parameter für localId
+    u8 localId = VarGet(VAR_0x8007);
 
     SpawnRivalObjectEventForStyle(style, localId, x, y, DIR_SOUTH);
     return FALSE;
@@ -734,75 +772,33 @@ bool8 SpawnRivalObjectEventFromStyle(void)
 {
     u8 style = gSaveBlock2Ptr->playerStyles[0];
     u16 graphicsId;
-    u8 localId = VarGet(VAR_0x8004); // z. B. LOCALID_RIVAL
+    u8 localId = VarGet(VAR_0x8004); 
     u8 x = VarGet(VAR_0x8005);
     u8 y = VarGet(VAR_0x8006);
 
     switch (style)
     {
-        case STYLE_BRENDAN:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
-            break;
-        case STYLE_MAY:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
-            break;
-        case STYLE_RED:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_LEAF;
-            break;
-        case STYLE_LEAF:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_RED;
-            break;
-        case STYLE_LUCAS:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_DAWN;
-            break;
-        case STYLE_DAWN:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_LUCAS;
-            break;
-        case STYLE_ETHAN:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_LYRA;
-            break;
-        case STYLE_LYRA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_ETHAN;
-            break;
-        case STYLE_HILBERT:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_HILDA;
-            break;
-        case STYLE_HILDA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT;
-            break;
-        case STYLE_NATE:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA;
-            break;
-        case STYLE_ROSA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_NATE;
-            break;
-        case STYLE_CALEM:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_SERENA;
-            break;
-        case STYLE_SERENA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_CALEM;
-            break;
-        case STYLE_ELIO:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_SELENE;
-            break;
-        case STYLE_SELENE:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_ELIO;
-            break;
-        case STYLE_VICTOR:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_GLORIA;
-            break;
-        case STYLE_GLORIA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_VICTOR;
-            break;
-        case STYLE_FLORIAN:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_JULIANA;
-            break;
-        case STYLE_JULIANA:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN;
-            break;
-        default:
-            graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
-            break;
+        case STYLE_BRENDAN: graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL; break;
+        case STYLE_MAY:     graphicsId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL; break;
+        case STYLE_RED:     graphicsId = OBJ_EVENT_GFX_RIVAL_LEAF; break;
+        case STYLE_LEAF:    graphicsId = OBJ_EVENT_GFX_RIVAL_RED; break;
+        case STYLE_LUCAS:   graphicsId = OBJ_EVENT_GFX_RIVAL_DAWN; break;
+        case STYLE_DAWN:    graphicsId = OBJ_EVENT_GFX_RIVAL_LUCAS; break;
+        case STYLE_ETHAN:   graphicsId = OBJ_EVENT_GFX_RIVAL_LYRA; break;
+        case STYLE_LYRA:    graphicsId = OBJ_EVENT_GFX_RIVAL_ETHAN; break;
+        case STYLE_HILBERT: graphicsId = OBJ_EVENT_GFX_RIVAL_HILDA; break;
+        case STYLE_HILDA:   graphicsId = OBJ_EVENT_GFX_RIVAL_HILBERT; break;
+        case STYLE_NATE:    graphicsId = OBJ_EVENT_GFX_RIVAL_ROSA; break;
+        case STYLE_ROSA:    graphicsId = OBJ_EVENT_GFX_RIVAL_NATE; break;
+        case STYLE_CALEM:   graphicsId = OBJ_EVENT_GFX_RIVAL_SERENA; break;
+        case STYLE_SERENA:  graphicsId = OBJ_EVENT_GFX_RIVAL_CALEM; break;
+        case STYLE_ELIO:    graphicsId = OBJ_EVENT_GFX_RIVAL_SELENE; break;
+        case STYLE_SELENE:  graphicsId = OBJ_EVENT_GFX_RIVAL_ELIO; break;
+        case STYLE_VICTOR:  graphicsId = OBJ_EVENT_GFX_RIVAL_GLORIA; break;
+        case STYLE_GLORIA:  graphicsId = OBJ_EVENT_GFX_RIVAL_VICTOR; break;
+        case STYLE_FLORIAN: graphicsId = OBJ_EVENT_GFX_RIVAL_JULIANA; break;
+        case STYLE_JULIANA: graphicsId = OBJ_EVENT_GFX_RIVAL_FLORIAN; break;
+        default:            graphicsId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL; break;
     }
 
     SpawnSpecialObjectEventParameterized(graphicsId, MOVEMENT_TYPE_FACE_DOWN, localId, x, y, 0);
@@ -815,13 +811,8 @@ void Task_ShowChatGPTLogoFromScript(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
-        // Sichtbare Nachricht vor dem Logo anzeigen
         ShowFieldMessage((const u8 *)"Lade Logo...");
-
-        // Logo-Übergang starten
         DoLogoBattleTransition(taskId, sChatGPT_Tileset, sChatGPT_Tilemap, sChatGPT_Palette);
-
-        // Task nicht sofort zerstören - Übergang läuft
         gTasks[taskId].func = NULL;
     }
 }
@@ -838,7 +829,6 @@ bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx)
 {
     s16 x, y;
     PlayerGetDestCoords(&x, &y);
-
     VarSet(ScriptReadHalfword(ctx), x);
     VarSet(ScriptReadHalfword(ctx), y);
     return FALSE;
@@ -846,6 +836,6 @@ bool8 ScrCmd_getplayerpos(struct ScriptContext *ctx)
 
 bool8 ScrCmd_FormatCurrentTimeAndDaytime(struct ScriptContext *ctx)
 {
-    FormatCurrentTimeAndDaytime(); // Funktion unten
+    FormatCurrentTimeAndDaytime();
     return FALSE;
 }

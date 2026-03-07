@@ -11,7 +11,8 @@
 #define OW_HIDE_REPEAT_MAP_POPUP        TRUE       // Wenn aktiviert, erscheinen Karten-Popups nicht, wenn man eine Karte mit derselben Map Section Id wie zuvor betritt.
 #define OW_WHITEOUT_CUTSCENE            GEN_LATEST // In Gen4+ zeigt das Whiteout eine zusätzliche Nachricht und eine Cutscene mit einem heilenden NPC nach dem Whiteout-Event. (Obwohl diese Änderung auch in FRLG vorhanden war, führt die Einstellung auf GEN_3 der Einfachheit halber zum RSE-Verhalten.)
 #define OW_DEFOG_FIELD_MOVE             TRUE       // Wenn aktiviert, kann Entnebel als Feldattacke wie in DPPt verwendet werden.
-#define OW_ROCK_CLIMB_FIELD_MOVE        TRUE      // Wenn aktiviert, kann Kletterer als Feldattacke wie in DPPt verwendet werden.
+#define OW_ROCK_CLIMB_FIELD_MOVE        TRUE       // Wenn aktiviert, kann Kletterer als Feldattacke wie in DPPt verwendet werden.
+#define OW_CHOOSE_FROM_PC_AND_PARTY     TRUE       // Wenn aktiviert, lassen dich NPCs wie Attacken-Lehrer oder Tausch-Trainer ein Pokémon aus dem PC oder Team auswählen, anstatt nur aus dem aktiven Team.
 
 // Item-Beschreibungsbox
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // Nie Beschreibungen anzeigen
@@ -43,6 +44,7 @@
 #define OW_BERRY_YIELD_RATE            GEN_3      // Voreinstellungen, wie viele Beeren eine Pflanze tragen kann.
 #define OW_BERRY_DRAIN_RATE            GEN_6_ORAS // Wenn OW_BERRY_MOISTURE aktiviert ist, bestimmt dies, wie schnell der Boden austrocknet. Andere Werte sind illegal.
 #define OW_BERRY_IMMORTAL              TRUE      // Wenn aktiviert, verschwindet ein Beerenbaum mit Beeren nicht, bis sie gepflückt wurden.
+#define OW_BERRY_COLORS                GEN_6_ORAS // Wenn auf GEN_6_XY oder GEN_6_ORAS gesetzt, verwenden die Maron-, Wiki-, Morb-, Saim-, Pallm-, Myrtil-, Lingan-, Wassmel-, Qualot-, Kiroy-, Zitarz-, Burleo-, Lansat-, Aki-, Payapa-, Hibis-, Lydzi-, Enigma- und Tarabeere ihre Farben aus dem jeweiligen Spiel. Andere Werte sind ungültig.
 
 // Overworld-Pokémon
 #define OW_POKEMON_OBJECT_EVENTS       TRUE       // Fügt für jede Spezies ein Object Event hinzu. Kann für NPCs mit dem Makro OBJ_EVENT_GFX_SPECIES verwendet werden.

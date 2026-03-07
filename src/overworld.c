@@ -2,6 +2,7 @@
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
+#include "battle_util.h"
 #include "berry.h"
 #include "bg.h"
 #include "cable_club.h"
@@ -296,9 +297,9 @@ static void ClearAllPlayerKeys(void);
 static void ResetAllPlayerLinkStates(void);
 static void UpdateHeldKeyCode(u16);
 static void UpdateAllLinkPlayers(u16 *, s32);
-static u8 FlipVerticalAndClearForced(u8, u8);
-static u8 LinkPlayerGetCollision(u8, u8, s16, s16);
-static void CreateLinkPlayerSprite(u8, u8);
+static enum Direction FlipVerticalAndClearForced(u8, u8);
+static u8 LinkPlayerGetCollision(u8, enum Direction, s16, s16);
+static void CreateLinkPlayerSprite(u8, enum GameVersion);
 static void GetLinkPlayerCoords(u8, s16 *, s16 *);
 static u8 GetLinkPlayerFacingDirection(u8);
 static u8 GetLinkPlayerElevation(u8);
@@ -336,7 +337,7 @@ static void SetFieldVBlankCallback(void);
 static void FieldClearVBlankHBlankCallbacks(void);
 static void TransitionMapMusic(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *playerStruct, u16 metatileBehavior, enum MapType mapType);
-static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType);
+static enum Direction GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType);
 static u16 GetCenterScreenMetatileBehavior(void);
 
 //void Overworld_CleanUpFromActiveMenu(void);
@@ -491,28 +492,9 @@ static const struct ScanlineEffectParams sFlashEffectParams =
     0,
 };
 
-static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-
-/*
-void DebugIntToString(u8 *dest, s32 value, u8 digits)
-{
-    u8 i;
-    u32 place = 1;
-
-    for (i = 1; i < digits; i++)
-        place *= 10;
-
-    for (i = 0; i < digits; i++)
-    {
-        *dest++ = CHAR_0 + (value / place) % 10;
-        place /= 10;
-    }
-
-    *dest = EOS;
-}
-*/
+static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
 
 bool8 IsPlayerStyleMale(u8 style)
 {
@@ -528,8 +510,6 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_ELIO:
     case STYLE_VICTOR:
     case STYLE_FLORIAN:
-//    case STYLE_ASH:
-//    case STYLE_WES:
         return TRUE;
     case STYLE_MAY:
     case STYLE_LEAF:
@@ -543,7 +523,7 @@ bool8 IsPlayerStyleMale(u8 style)
     case STYLE_JULIANA:
         return FALSE;
     default:
-        return TRUE; // Fallback: männlich
+        return TRUE;
     }
 }
 
@@ -561,8 +541,6 @@ u8 GetPlayerGenderFromStyle(void)
     case STYLE_ELIO:
     case STYLE_VICTOR:
     case STYLE_FLORIAN:
-     // case STYLE_ASH:
-     // case STYLE_WES:
         return MALE;
 
     case STYLE_MAY:
@@ -578,7 +556,7 @@ u8 GetPlayerGenderFromStyle(void)
         return FEMALE;
 
     default:
-        return MALE; // fallback für zukünftige Styles
+        return MALE;
     }
 }
 
@@ -587,37 +565,21 @@ void SyncPlayerGenderToStyle(void)
     if (gSaveBlock2Ptr != NULL)
         gSaveBlock2Ptr->playerGender = IsPlayerStyleMale(gSaveBlock2Ptr->playerStyles[0]) ? MALE : FEMALE;
 }
-/*
-void Debug_UpdatePlayerNameWithStyleInfo(void)
-{
-    u8 style = gPlayerAvatar.style;
-    u8 flags = gPlayerAvatar.flags;
 
-    // Aktuelle Grafik-ID
-    u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(style, flags);
-
-    // Setze ersten 5 Zeichen des Spielernamens als Debug-Info
-    gSaveBlock2Ptr->playerName[0] = style + '0';          // Style-Zahl
-    gSaveBlock2Ptr->playerName[1] = '-';
-    gSaveBlock2Ptr->playerName[2] = (gfxId / 10) + '0';   // Zehnerstelle von gfxId
-    gSaveBlock2Ptr->playerName[3] = (gfxId % 10) + '0';   // Einerstelle von gfxId
-    gSaveBlock2Ptr->playerName[4] = EOS;
-}
-*/
-
-static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
+// Hier nutzen wir jetzt enum Direction für die Typsicherheit der Expansion
+static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction) =
 {
     [MOVEMENT_MODE_FREE]     = MovementEventModeCB_Normal,
     [MOVEMENT_MODE_FROZEN]   = MovementEventModeCB_Ignored,
     [MOVEMENT_MODE_SCRIPTED] = MovementEventModeCB_Scripted,
 };
 
-static u8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
+static u8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
 
 // These handlers return TRUE if the movement was scripted and successful, and FALSE otherwise.
-static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
+static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction) =
 {
     FacingHandler_DoNothing,
     FacingHandler_DpadMovement,
@@ -685,16 +647,10 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_USE_FLASH);
 }
 
-#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
+#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT == TRUE
 void Overworld_ResetBattleFlagsAndVars(void)
 {
-    #if B_VAR_STARTING_STATUS != 0
-        VarSet(B_VAR_STARTING_STATUS, 0);
-    #endif
-
-    #if B_VAR_STARTING_STATUS_TIMER != 0
-        VarSet(B_VAR_STARTING_STATUS_TIMER, 0);
-    #endif
+    ResetStartingStatuses();
 
     #if B_VAR_WILD_AI_FLAGS != 0
         VarSet(B_VAR_WILD_AI_FLAGS,0);
@@ -809,37 +765,33 @@ void LoadSaveblockObjEventScripts(void)
         savObjTemplates[i].script = mapHeaderObjTemplates[i].script;
 }
 
+static struct ObjectEventTemplate *GetObjectEventTemplate(u8 localId)
+{
+    for (u32 i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        if (gSaveBlock1Ptr->objectEventTemplates[i].localId == localId)
+            return &gSaveBlock1Ptr->objectEventTemplates[i];
+    }
+
+    errorf("no object event template for localId %d", localId);
+    return NULL;
+}
+
 void SetObjEventTemplateCoords(u8 localId, s16 x, s16 y)
 {
-    s32 i;
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
     {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->x = x;
-            objectEventTemplate->y = y;
-            return;
-        }
+        objectEventTemplate->x = x;
+        objectEventTemplate->y = y;
     }
 }
 
 void SetObjEventTemplateMovementType(u8 localId, u8 movementType)
 {
-    s32 i;
-
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
-    {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->movementType = movementType;
-            return;
-        }
-    }
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
+        objectEventTemplate->movementType = movementType;
 }
 
 static void InitMapView(void)
@@ -1099,7 +1051,7 @@ const struct MapConnection *GetMapConnection(u8 dir)
     return NULL;
 }
 
-static bool8 SetDiveWarp(u8 dir, u16 x, u16 y)
+static bool8 SetDiveWarp(enum Connection dir, u16 x, u16 y)
 {
     const struct MapConnection *connection = GetMapConnection(dir);
 
@@ -1296,7 +1248,7 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *pla
         return PLAYER_AVATAR_FLAG_ACRO_BIKE;
 }
 
-static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType)
+static enum Direction GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType)
 {
     if (FlagGet(FLAG_SYS_CRUISE_MODE) && mapType == MAP_TYPE_OCEAN_ROUTE)
         return DIR_EAST;
@@ -3626,7 +3578,7 @@ static void InitLinkPlayerObjectEventPos(struct ObjectEvent *objEvent, s16 x, s1
     ObjectEventUpdateElevation(objEvent, NULL);
 }
 
-static void UNUSED SetLinkPlayerObjectRange(u8 linkPlayerId, u8 dir)
+static void UNUSED SetLinkPlayerObjectRange(u8 linkPlayerId, enum Direction dir)
 {
     if (gLinkPlayerObjectEvents[linkPlayerId].active)
     {
@@ -3727,28 +3679,28 @@ static void SetPlayerFacingDirection(u8 linkPlayerId, u8 facing)
 }
 
 
-static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return sLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
 }
 
-static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return FACING_UP;
 }
 
 // Identical to MovementEventModeCB_Normal
-static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return sLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
 }
 
-static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return FALSE;
 }
 
-static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     s16 x, y;
 
@@ -3768,7 +3720,7 @@ static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayer
     }
 }
 
-static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     linkDirection(objEvent) = FlipVerticalAndClearForced(dir, linkDirection(objEvent));
     return FALSE;
@@ -3795,7 +3747,7 @@ static void MovementStatusHandler_TryAdvanceScript(struct LinkPlayerObjectEvent 
 // Flip Up/Down facing codes. If newFacing doesn't specify a direction, default
 // to oldFacing. Note that this clears also the "FORCED" part of the facing code,
 // even for Left/Right codes.
-static u8 FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
+static enum Direction FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
 {
     switch (newFacing)
     {
@@ -3815,7 +3767,7 @@ static u8 FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
     return oldFacing;
 }
 
-static u8 LinkPlayerGetCollision(u8 selfObjEventId, u8 direction, s16 x, s16 y)
+static u8 LinkPlayerGetCollision(u8 selfObjEventId, enum Direction direction, s16 x, s16 y)
 {
     u8 i;
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
@@ -3832,7 +3784,7 @@ static u8 LinkPlayerGetCollision(u8 selfObjEventId, u8 direction, s16 x, s16 y)
     return MapGridGetCollisionAt(x, y);
 }
 
-static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
+static void CreateLinkPlayerSprite(u8 linkPlayerId, enum GameVersion gameVersion)
 {
     struct LinkPlayerObjectEvent *linkPlayerObjEvent = &gLinkPlayerObjectEvents[linkPlayerId];
     u8 objEventId = linkPlayerObjEvent->objEventId;
@@ -3899,7 +3851,7 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
 #define ITEM_ICON_Y     24
 #define ITEM_TAG        0x2722 //same as money label
 
-bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId)
+bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId)
 {
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
     u8 index = item / 8;
@@ -3921,10 +3873,10 @@ EWRAM_DATA static u8 sHeaderBoxWindowId = 0;
 EWRAM_DATA u8 sItemIconSpriteId = 0;
 EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 
-static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash);
+static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
 
-static u8 ReformatItemDescription(u16 item, u8 *dest)
+static u8 ReformatItemDescription(enum Item item, u8 *dest)
 {
     u8 count = 0;
     u8 numLines = 1;
@@ -3979,7 +3931,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
     struct WindowTemplate template;
-    u16 item = gSpecialVar_0x8006;
+    enum Item item = gSpecialVar_0x8006;
     u8 textY;
     u8 *dst;
     bool8 handleFlash = FALSE;
@@ -4034,7 +3986,7 @@ void ScriptHideItemDescription(struct ScriptContext *ctx)
     }
 }
 
-static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash)
+static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
 {
     s16 x = 0, y = 0;
     u8 iconSpriteId;

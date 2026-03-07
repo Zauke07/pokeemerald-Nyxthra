@@ -69,7 +69,7 @@ static bool16 DecompressPic(u16 picId, u32 personality, bool8 isFrontPic, u8 *de
     }
     else
     {
-        u16 trainerPicId = picId;
+        enum TrainerPicID trainerPicId = picId;
         if (isFrontPic)
             DecompressPicFromTable(&gTrainerSprites[trainerPicId].frontPic, dest);
         else
@@ -352,29 +352,26 @@ u16 CreateTrainerCardTrainerPicSprite(u16 species, bool8 isFrontPic, u16 destX, 
 }
 
 static const u16 sPlayerStyleToTrainerPicId[] = {
-    [STYLE_BRENDAN] = TRAINER_PIC_BRENDAN,
-    [STYLE_MAY]     = TRAINER_PIC_MAY,
-    [STYLE_RED]     = TRAINER_PIC_RED,
-    [STYLE_LEAF]    = TRAINER_PIC_LEAF,
-    [STYLE_ETHAN]  = TRAINER_PIC_ETHAN,
-    [STYLE_LYRA]    = TRAINER_PIC_LYRA,
-    [STYLE_LUCAS]   = TRAINER_PIC_LUCAS,
-    [STYLE_DAWN]    = TRAINER_PIC_DAWN,
-    [STYLE_HILBERT] = TRAINER_PIC_HILBERT,
-    [STYLE_HILDA]   = TRAINER_PIC_HILDA,
-    [STYLE_NATE]    = TRAINER_PIC_NATE,
-    [STYLE_ROSA]    = TRAINER_PIC_ROSA,
-    [STYLE_CALEM]   = TRAINER_PIC_CALEM,
-    [STYLE_SERENA]  = TRAINER_PIC_SERENA,
-    [STYLE_ELIO]    = TRAINER_PIC_ELIO,
-    [STYLE_SELENE]  = TRAINER_PIC_SELENE,
-    [STYLE_VICTOR]   = TRAINER_PIC_VICTOR,
-    [STYLE_GLORIA]  = TRAINER_PIC_GLORIA,
-    [STYLE_FLORIAN] = TRAINER_PIC_FLORIAN,
-    [STYLE_JULIANA] = TRAINER_PIC_JULIANA,
- //    [STYLE_WES]     = TRAINER_PIC_WES,
- //    [STYLE_ASH]     = TRAINER_PIC_ASH,
-    // weitere Styles hier ergänzen...
+    [STYLE_BRENDAN] = TRAINER_PIC_FRONT_BRENDAN,
+    [STYLE_MAY]     = TRAINER_PIC_FRONT_MAY,
+    [STYLE_RED]     = TRAINER_PIC_FRONT_RED,
+    [STYLE_LEAF]    = TRAINER_PIC_FRONT_LEAF,
+    [STYLE_ETHAN]   = TRAINER_PIC_FRONT_ETHAN,
+    [STYLE_LYRA]    = TRAINER_PIC_FRONT_LYRA,
+    [STYLE_LUCAS]   = TRAINER_PIC_FRONT_LUCAS,
+    [STYLE_DAWN]    = TRAINER_PIC_FRONT_DAWN,
+    [STYLE_HILBERT] = TRAINER_PIC_FRONT_HILBERT,
+    [STYLE_HILDA]   = TRAINER_PIC_FRONT_HILDA,
+    [STYLE_NATE]    = TRAINER_PIC_FRONT_NATE,
+    [STYLE_ROSA]    = TRAINER_PIC_FRONT_ROSA,
+    [STYLE_CALEM]   = TRAINER_PIC_FRONT_CALEM,
+    [STYLE_SERENA]  = TRAINER_PIC_FRONT_SERENA,
+    [STYLE_ELIO]    = TRAINER_PIC_FRONT_ELIO,
+    [STYLE_SELENE]  = TRAINER_PIC_FRONT_SELENE,
+    [STYLE_VICTOR]  = TRAINER_PIC_FRONT_VICTOR,
+    [STYLE_GLORIA]  = TRAINER_PIC_FRONT_GLORIA,
+    [STYLE_FLORIAN] = TRAINER_PIC_FRONT_FLORIAN,
+    [STYLE_JULIANA] = TRAINER_PIC_FRONT_JULIANA,
 };
 
 u16 PlayerStyleToFrontTrainerPicId(u8 style, bool8 getClass)
@@ -382,56 +379,58 @@ u16 PlayerStyleToFrontTrainerPicId(u8 style, bool8 getClass)
     switch (style)
     {
     case STYLE_BRENDAN:
-        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_BRENDAN;
+        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_FRONT_BRENDAN;
     case STYLE_MAY:
-        return getClass ? FACILITY_CLASS_MAY : TRAINER_PIC_MAY;
+        return getClass ? FACILITY_CLASS_MAY : TRAINER_PIC_FRONT_MAY;
     case STYLE_RED:
-        return getClass ? FACILITY_CLASS_RED : TRAINER_PIC_RED;
+        return getClass ? FACILITY_CLASS_RED : TRAINER_PIC_FRONT_RED;
     case STYLE_LEAF:
-        return getClass ? FACILITY_CLASS_LEAF : TRAINER_PIC_LEAF;
+        return getClass ? FACILITY_CLASS_LEAF : TRAINER_PIC_FRONT_LEAF;
     case STYLE_ETHAN:
-        return getClass ? FACILITY_CLASS_ETHAN : TRAINER_PIC_ETHAN;
+        return getClass ? FACILITY_CLASS_ETHAN : TRAINER_PIC_FRONT_ETHAN;
     case STYLE_LYRA:
-        return getClass ? FACILITY_CLASS_LYRA : TRAINER_PIC_LYRA;
+        return getClass ? FACILITY_CLASS_LYRA : TRAINER_PIC_FRONT_LYRA;
     case STYLE_LUCAS:
-        return getClass ? FACILITY_CLASS_LUCAS : TRAINER_PIC_LUCAS;
+        return getClass ? FACILITY_CLASS_LUCAS : TRAINER_PIC_FRONT_LUCAS;
     case STYLE_DAWN:
-        return getClass ? FACILITY_CLASS_DAWN : TRAINER_PIC_DAWN;
+        return getClass ? FACILITY_CLASS_DAWN : TRAINER_PIC_FRONT_DAWN;
     case STYLE_HILBERT:
-        return getClass ? FACILITY_CLASS_HILBERT : TRAINER_PIC_HILBERT;
+        return getClass ? FACILITY_CLASS_HILBERT : TRAINER_PIC_FRONT_HILBERT;
     case STYLE_HILDA:
-        return getClass ? FACILITY_CLASS_HILDA : TRAINER_PIC_HILDA;
+        return getClass ? FACILITY_CLASS_HILDA : TRAINER_PIC_FRONT_HILDA;
     case STYLE_NATE:
-        return getClass ? FACILITY_CLASS_NATE : TRAINER_PIC_NATE;
+        return getClass ? FACILITY_CLASS_NATE : TRAINER_PIC_FRONT_NATE;
     case STYLE_ROSA:
-        return getClass ? FACILITY_CLASS_ROSA : TRAINER_PIC_ROSA;
+        return getClass ? FACILITY_CLASS_ROSA : TRAINER_PIC_FRONT_ROSA;
     case STYLE_CALEM:
-        return getClass ? FACILITY_CLASS_CALEM : TRAINER_PIC_CALEM;
+        return getClass ? FACILITY_CLASS_CALEM : TRAINER_PIC_FRONT_CALEM;
     case STYLE_SERENA:
-        return getClass ? FACILITY_CLASS_SERENA : TRAINER_PIC_SERENA;
+        return getClass ? FACILITY_CLASS_SERENA : TRAINER_PIC_FRONT_SERENA;
     case STYLE_ELIO:
-        return getClass ? FACILITY_CLASS_ELIO : TRAINER_PIC_ELIO;
+        return getClass ? FACILITY_CLASS_ELIO : TRAINER_PIC_FRONT_ELIO;
     case STYLE_SELENE:
-        return getClass ? FACILITY_CLASS_SELENE : TRAINER_PIC_SELENE;
+        return getClass ? FACILITY_CLASS_SELENE : TRAINER_PIC_FRONT_SELENE;
     case STYLE_VICTOR:
-        return getClass ? FACILITY_CLASS_VICTOR : TRAINER_PIC_VICTOR;
+        return getClass ? FACILITY_CLASS_VICTOR : TRAINER_PIC_FRONT_VICTOR;
     case STYLE_GLORIA:
-        return getClass ? FACILITY_CLASS_GLORIA : TRAINER_PIC_GLORIA;
+        return getClass ? FACILITY_CLASS_GLORIA : TRAINER_PIC_FRONT_GLORIA;
     case STYLE_FLORIAN:
-        return getClass ? FACILITY_CLASS_FLORIAN : TRAINER_PIC_FLORIAN;
+        return getClass ? FACILITY_CLASS_FLORIAN : TRAINER_PIC_FRONT_FLORIAN;
     case STYLE_JULIANA:
-        return getClass ? FACILITY_CLASS_JULIANA : TRAINER_PIC_JULIANA;
-    //case STYLE_WES:
-    //    return getClass ? FACILITY_CLASS_WES : TRAINER_PIC_WES;
-    //case STYLE_ASH:
-    //    return getClass ? FACILITY_CLASS_ASH : TRAINER_PIC_ASH;
-    // weitere Styles später hier ergänzen
+        return getClass ? FACILITY_CLASS_JULIANA : TRAINER_PIC_FRONT_JULIANA;
     default:
-        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_BRENDAN;
+        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_FRONT_BRENDAN;
     }
 }
 
-void CopyTrainerBackspriteFramesToDest(u8 trainerPicId, u8 *dest)
+u16 PlayerGenderToFrontTrainerPicId_Debug(enum Gender gender, bool8 getClass)
+{
+    if (gender == MALE)
+        return getClass ? FACILITY_CLASS_BRENDAN : TRAINER_PIC_FRONT_BRENDAN;
+    return getClass ? FACILITY_CLASS_MAY : TRAINER_PIC_FRONT_MAY;
+}
+
+void CopyTrainerBackspriteFramesToDest(enum TrainerPicID trainerPicId, u8 *dest)
 {
     const struct SpriteFrameImage *frame = &gTrainerBacksprites[trainerPicId].backPic;
     // y_offset is repurposed to indicates how many frames does the trainer pic have.
