@@ -39,5 +39,7 @@ bool32 CheckPartyHasSpecies(u32);
 void GetRivalStyleGraphicsIdAndSetVar(void);
 bool8 ShowFieldExpLevelDebug(void);
 bool8 ShowFieldCmdGetExpDebug(void);
+bool8 CutMoveRuinValleyCheck(void);
+void CutMoveOpenDottedHoleDoor(void);
 
 #endif // GUARD_FIELD_SPECIALS_H

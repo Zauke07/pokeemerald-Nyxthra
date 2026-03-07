@@ -111,3 +111,128 @@ EventScript_Indigo_UltimateGoal::
 EventScript_Indigo_HighestAuthority::
 	msgbox Text_Indigo_HighestAuthority, MSGBOX_SIGN
 	end
+
+Text_Bookshelf::
+	.string "Vollgestopft mit scheiß Pokemon-Büchern.\n"
+	.string "Liest das echt jemand?$"
+
+Text_NothingButPokemonBooks::
+	.string "Nur bekackte Pokemon-Bücher im Regal.\n"
+	.string "Richtiger Nerd-Scheiß.$"
+
+Text_ATownMap::
+	.string "Ne gammlige Karte.\n"
+	.string "Wer braucht den Müll heutzutage noch?$"
+
+Text_PokeMartShelf::
+	.string "Alter!\n"
+	.string "Ein Haufen überteuerter Pokemon-Scheiß!$"
+
+Text_DishesPlatesNeatlyLinedUp::
+	.string "Teller und Tassen, feinsäuberlich aufgereiht.\n"
+	.string "Hat hier jemand nen Putzzwang?$"
+
+Text_Kitchen::
+	.string "Riecht geil!\n"
+	.string "Irgendein Spast hat hier gekocht.$"
+
+Text_Dresser::
+	.string "Ne fette Kommode.\n"
+	.string "Da passt ordentlich viel Scheiß rein.$"
+
+Text_Snacks::
+	.string "Geil, Snacks!\n"
+	.string "Ich fress dem Fettsack hier alles weg.$"
+
+Text_PokemartSign::
+	.string "Wir ziehen dir die Kohle aus der Tasche!\n"
+	.string "Pokemon-Supermarkt$"
+
+Text_PokecenterSign::
+	.string "Heil deine schwachen Pokemon!\n"
+	.string "Pokemon-Center$"
+
+Text_Indigo_UltimateGoal::
+	.string "Indigo Plateau\p"
+	.string "Das Ziel für alle Tryhards!\n"
+	.string "Pokemon-Liga HQ$"
+
+Text_Indigo_HighestAuthority::
+	.string "Indigo Plateau\p"
+	.string "Die fettesten Bosse hängen hier ab!\n"
+	.string "Pokemon-Liga HQ$"
+
+Text_Food::
+	.string "Sollte voll mit geilem Fressen sein.\n"
+	.string "Hab todes Hunger.$"
+
+Text_Blueprints::
+	.string "Irgendwelche Baupläne.\n"
+	.string "Voll mit dummen Skizzen für Streber.$"
+
+Text_Painting::
+	.string "Ein dummes Bild von nem Pokemon.\n"
+	.string "Sieht aus, als hätte es einen geraucht.$"
+
+Text_PowerPlantMachine::
+	.string "Was ist das für ne Scheiß-Maschine?\n"
+	.string "Fass das bloß nicht an, sonst knallts!$"
+
+Text_Telephone::
+	.string "Ein uraltes Telefon.\n"
+	.string "Wer ruft damit noch an, du Boomer?$"
+
+Text_Computer::
+	.string "Nur dumme Zahlen auf dem Bildschirm…\n"
+	.string "Was für ein elendiger Nerd-Kram.$"
+
+Text_AdvertisingPoster::
+	.string "Irgendein billiges Werbeplakat.\n"
+	.string "Kauf den Scheiß eh nicht.$"
+
+Text_TastyFood::
+	.string "Boah, das riecht verdammt geil!\n"
+	.string "Da knurrt mir direkt der Magen, verdammt.$"
+
+Text_TrashBin::
+	.string "Da drin ist…\n"
+	.string "……\p"
+	.string "Nur Müll, genau wie du!$"
+
+Text_Cup::
+	.string "Ne billige Tasse mit nem Pokemon-Logo.\n"
+	.string "Bestimmt aus China.$"
+
+Text_PolishedWindow::
+	.string "Das Fenster ist sauber wie sau.\n"
+	.string "Da hatte jemand echt kein Leben.$"
+
+Text_BeautifulSkyWindow::
+	.string "Draußen vorm Fenster…\p"
+	.string "Der Himmel sieht ganz okay aus.\n"
+	.string "Wayne juckts?$"
+
+Text_BlinkingLights::
+	.string "Bunte Lichter blinken wie blöd.\n"
+	.string "Krieg hier gleich nen Anfall.$"
+
+Text_NeatlyLinedUpTools::
+	.string "Haufenweise Werkzeug.\n"
+	.string "Wer braucht den ganzen Scheiß?$"
+
+Text_ImpressiveMachine::
+	.string "Irgendeine fette Maschine.\n"
+	.string "Sieht teuer aus, vielleicht klau ich die.$"
+
+Text_VideoGame::
+	.string "Das neueste Videospiel!\n"
+	.string "Kostet bestimmt ein Vermögen, die Wichser.$"
+
+Text_Burglary::
+	.string "Hier wurde safe eingebrochen…\n"
+	.string "Die dreckigen Bastarde haben alles zerlegt.$"
+
+Text_PlayerFacingTVScreen::
+	.string "Alter, Schnauze jetzt!\n"
+	.string "Da läuft Joko & Klaas gegen {COLOR RED}ProSieben{COLOR DARK_GRAY}!\p"
+	.string "Aber ich muss weiter…$"

@@ -839,3 +839,15 @@ bool8 ScrCmd_FormatCurrentTimeAndDaytime(struct ScriptContext *ctx)
     FormatCurrentTimeAndDaytime();
     return FALSE;
 }
+
+// FRLG
+void DisableMsgBoxWalkaway(void)
+{
+    // sMsgBoxWalkawayDisabled = TRUE;
+}
+
+void SetWalkingIntoSignVars(void)
+{
+    // gWalkAwayFromSignInhibitTimer = 6;
+    // sMsgBoxIsCancelable = TRUE;
+}

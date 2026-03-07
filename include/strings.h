@@ -36,6 +36,7 @@ extern const u8 gText_ExpandedPlaceholder_Florian[];
 extern const u8 gText_ExpandedPlaceholder_Juliana[];
 extern const u8 gText_ExpandedPlaceholder_Hop[];
 extern const u8 gText_ExpandedPlaceholder_Rival[];
+extern const u8 gText_ExpandedPlaceholder_Green[];
 
 extern const u8 gText_Lv50[];
 extern const u8 gText_OpenLevel[];
@@ -73,6 +74,8 @@ extern const u8 gText_MultiLink[];
 
 extern const u8 gText_Single[];
 extern const u8 gText_Double[];
+extern const u8 gText_Knockout[];
+extern const u8 gText_Mixed[];
 
 extern const u8 gText_Spicy2[];
 extern const u8 gText_Dry2[];
@@ -781,6 +784,7 @@ extern const u8 gText_SoldOut[];
 extern const u8 gText_HallOfFame[];
 extern const u8 gText_LogOff[];
 extern const u8 gText_LanettesPC[];
+extern const u8 gText_BillsPc[];
 extern const u8 gText_SomeonesPC[];
 extern const u8 gText_PlayersPC[];
 extern const u8 gText_WhichPCShouldBeAccessed[];
@@ -2831,5 +2835,21 @@ extern const u8 gText_ClockFormat[];
 extern const u8 gText_ClockTimeFormat[];
 extern const u8 gText_DebugExpLevel[];
 extern const u8 gText_DebugCmdGetExp[];
+
+extern const u8 gText_Ghost[];
+extern const u8 gText_Boulderbadge[];
+extern const u8 gText_Cascadebadge[];
+extern const u8 gText_Thunderbadge[];
+extern const u8 gText_Rainbowbadge[];
+extern const u8 gText_Soulbadge[];
+extern const u8 gText_Marshbadge[];
+extern const u8 gText_Volcanobadge[];
+extern const u8 gText_Earthbadge[];
+extern const u8 gText_OakImportantToGetToKnowPokemonThroughly[];
+extern const u8 gText_OakThisIsListOfPokemon[];
+
+extern const u8 gText_Boy[];
+extern const u8 gText_Girl[];
+
 
 #endif // GUARD_STRINGS_H

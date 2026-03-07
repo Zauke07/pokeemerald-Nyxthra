@@ -34,4 +34,25 @@ gText_ObtainedTheItems::
 	.string "{STR_VAR_1} {STR_VAR_2} Erhalten!$"
 
 gText_PlayerFoundItems::
-	.string "{PLAYER} findet {STR_VAR_1} {STR_VAR_2}!$"
+	.string "{PLAYER} krallt sich {STR_VAR_1} {STR_VAR_2}!$"
+
+gText_PutCoinsAwayInCoinCase::
+	.string "{PLAYER} stopft die MÜNZEN in\n"
+	.string "den scheiß MÜNZKORB.$"
+
+gText_FoundXCoins::
+	.string "{PLAYER} grappt sich\n"
+	.string "{STR_VAR_1} {STR_VAR_2}!$"
+
+gText_FoundXItems::
+	.string "{PLAYER} sackt fette\n"
+	.string "{STR_VAR_1} {STR_VAR_2} ein!$"
+
+gText_CoinCaseIsFull::
+	.string "Pech gehabt, du Lappen!\n"
+	.string "Dein MÜNZKORB ist randvoll…$"
+
+gText_NothingToPutThemIn::
+	.string "Bist du komplett lost?!\n"
+	.string "Du hast nix, wo du den\l"
+	.string "Scheiß reinpacken kannst…$"

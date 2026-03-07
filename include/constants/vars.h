@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_VARS_H
 
 #include "constants/regions.h"
+#include "constants/vars_frlg.h"
 
 #define VARS_START 0x4000
 

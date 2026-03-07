@@ -172,7 +172,7 @@ Route23_EventScript_MissingBoulderBadgeTrigger::
 	playse SE_BOO
 	msgbox Text_CantLetYouPass
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_WalkDown
+	applymovement LOCALID_PLAYER, Route23_Movement_WalkDown
 	applymovement VAR_0x8009, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	releaseall
@@ -185,7 +185,7 @@ Route23_EventScript_MissingBadgeTrigger::
 	waitbuttonpress
 	closemessage
 	waitse
-	applymovement OBJ_EVENT_ID_PLAYER, Route23_Movement_WalkDown
+	applymovement LOCALID_PLAYER, Route23_Movement_WalkDown
 	applymovement VAR_0x8009, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	releaseall
@@ -210,3 +210,33 @@ Route23_EventScript_RecognizeBadgeTrigger::
 Route23_Movement_WalkDown::
 	walk_down
 	step_end
+
+Text_OnlySkilledTrainersAllowedThrough::
+	.string "Nur echte Tryhard-Trainer dürfen\n"
+	.string "hier durch!\p"
+	.string "Du hast den mickrigen {STR_VAR_1}\n"
+	.string "noch gar nicht, du Lappen!$"
+
+Text_CantLetYouPass::
+	.string "Verpiss dich!\n"
+	.string "Ohne den Scheiß lass ich dich\l"
+	.string "hier nicht durch.$"
+
+Text_OhThatsBadgeGoRightAhead::
+	.string "Oh! Du hast echt den {STR_VAR_1}?!\n"
+	.string "Krasser Scheiß. Na dann los,\l"
+	.string "verpiss dich nach drüben.$"
+
+Text_OnlyPassWithBadgeDontHaveYet::
+	.string "Hier kommst du nur mit dem\n"
+	.string "{STR_VAR_1} durch, du Spast.\p"
+	.string "Und den hast du nicht!\p"
+	.string "Ohne das Ding kommst du safe nicht\n"
+	.string "zur Pokemon-Liga, also zieh ab!$"
+
+Text_OnlyPassWithBadgeOhGoAhead::
+	.string "Hier kommst du nur mit dem\n"
+	.string "{STR_VAR_1} durch, du Spast.\p"
+	.string "Oh Shit! Du hast den {STR_VAR_1}\n"
+	.string "ja wirklich!{PAUSE_MUSIC}{PLAY_BGM}{MUS_LEVEL_UP}{PAUSE 0x60}{RESUME_MUSIC}\p"
+	.string "Na gut, dann beweg deinen Arsch weiter.$"

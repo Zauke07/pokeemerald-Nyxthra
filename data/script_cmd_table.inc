@@ -221,7 +221,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_SETESCAPEWARP                 ScrCmd_setescapewarp,               requests_effects=1  @ 0xc4
 	script_cmd_table_entry SCR_OP_WAITMONCRY                    ScrCmd_waitmoncry,                  requests_effects=1  @ 0xc5
 	script_cmd_table_entry SCR_OP_BUFFERBOXNAME                 ScrCmd_bufferboxname,               requests_effects=1  @ 0xc6
-	script_cmd_table_entry SCR_OP_TEXTCOLOR                     ScrCmd_nop1,                        requests_effects=1  @ 0xc7
+	script_cmd_table_entry SCR_OP_TEXTCOLOR                     ScrCmd_textcolor,                   requests_effects=1  @ 0xc7
 	script_cmd_table_entry SCR_OP_LOADHELP                      ScrCmd_nop1,                        requests_effects=1  @ 0xc8
 	script_cmd_table_entry SCR_OP_UNLOADHELP                    ScrCmd_nop1,                        requests_effects=1  @ 0xc9
 	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_nop1,                        requests_effects=1  @ 0xca
@@ -230,7 +230,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_SETMODERNFATEFULENCOUNTER     ScrCmd_setmodernfatefulencounter,   requests_effects=1  @ 0xcd
 	script_cmd_table_entry SCR_OP_CHECKMODERNFATEFULENCOUNTER   ScrCmd_checkmodernfatefulencounter, requests_effects=1  @ 0xce
 	script_cmd_table_entry SCR_OP_TRYWONDERCARDSCRIPT           ScrCmd_trywondercardscript,         requests_effects=1  @ 0xcf
-	script_cmd_table_entry SCR_OP_SETWORLDMAPFLAG               ScrCmd_nop1,                        requests_effects=1  @ 0xd0
+	script_cmd_table_entry SCR_OP_SETWORLDMAPFLAG               ScrCmd_setworldmapflag,             requests_effects=1  @ 0xd0
 	script_cmd_table_entry SCR_OP_WARPSPINENTER                 ScrCmd_warpspinenter,               requests_effects=1  @ 0xd1
 	script_cmd_table_entry SCR_OP_SETMONMETLOCATION             ScrCmd_setmonmetlocation,           requests_effects=1  @ 0xd2
 	script_cmd_table_entry SCR_OP_MOVEROTATINGTILEOBJECTS       ScrCmd_moverotatingtileobjects,     requests_effects=1  @ 0xd3
@@ -270,6 +270,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_BUFFER_FOLLOWER_NICKNAME_TO_VAR1 ScrCmd_BufferFollowerNicknameToVar1, requests_effects=1 @ 0xf5
 	script_cmd_table_entry SCR_OP_FORMAT_CURRENT_TIME           ScrCmd_FormatCurrentTimeAndDaytime, requests_effects=1 @ 0xf6
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xf7
+	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xf8
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

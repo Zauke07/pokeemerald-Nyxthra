@@ -555,6 +555,15 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         default:
             return gText_ExpandedPlaceholder_Rival; // Fallback für unbestimmte Rivalen
     }
+#if IS_FRLG
+    if (gSaveBlock1Ptr->rivalName[0] != EOS)
+        return gSaveBlock1Ptr->rivalName;
+#endif
+
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        return (IS_FRLG ? gText_ExpandedPlaceholder_Green : gText_ExpandedPlaceholder_May);
+    else
+        return (IS_FRLG ? gText_ExpandedPlaceholder_Red : gText_ExpandedPlaceholder_Brendan);
 }
 
 static const u8 *ExpandPlaceholder_Version(void)

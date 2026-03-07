@@ -772,7 +772,8 @@ const u8 gText_TMs_Hms[] = _("TMs & VMs");
 const u8 gText_Berries2[] = _("Beeren");
 const u8 gText_SomeonesPC[] = _("JEMANDES PC");
 const u8 gText_LanettesPC[] = _("LANETTE'S PC");
-const u8 gText_PlayersPC[] = _("PC von {PLAYER}");
+const u8 gText_BillsPc[] = _("BILL'S PC");
+const u8 gText_PlayersPC[] = _("{PLAYER}'s PC");
 const u8 gText_HallOfFame[] = _("HALL OF FAME");
 const u8 gText_LogOff[] = _("Ausloggen");
 const u8 gText_Opponent[] = _("Gegner");
@@ -1169,6 +1170,36 @@ const u8 gText_GamePlayCannotBeContinued[] = _("{COLOR RED}“Das Spiel kann nic
 const u8 gText_CheckCompleted[] = _("Überprüfung abgeschlossen.\nVersuche erneut zu speichern.\nBitte warten.");
 const u8 gText_SaveCompleteGameCannotContinue[] = _("Speichern abgeschlossen.\n{COLOR RED}“Das Spiel kann nicht fortgesetzt werden.\nRückkehr zum Titelbildschirm.“");
 const u8 gText_SaveCompletePressA[] = _("Speichern abgeschlossen.\n{COLOR RED}“Bitte drücke die A-Taste.“");
+
+// Neue RTC & System Texte (übersetzt)
+const u8 gText_ResetRTCConfirmCancel[] = _("Echtzeituhr (RTC) zurücksetzen?\nA: Bestätigen, B: Abbrechen");
+const u8 gText_PresentTime[] = _("Aktuelle Spielzeit");
+const u8 gText_PreviousTime[] = _("Vorherige Spielzeit");
+const u8 gText_PleaseResetTime[] = _("Bitte stelle die Zeit neu ein.");
+const u8 gText_ClockHasBeenReset[] = _("Die Uhr wurde zurückgesetzt.\nDaten werden gespeichert. Bitte warten.");
+const u8 gText_SaveCompleted[] = _("Speichern abgeschlossen.");
+const u8 gText_SaveFailed[] = _("Speichern fehlgeschlagen…");
+const u8 gText_NoSaveFileCantSetTime[] = _("Kein Spielstand vorhanden. Die Zeit\nkann nicht eingestellt werden.");
+const u8 gText_InGameClockUsable[] = _("Das System zur Zeiteinstellung kann\nnun verwendet werden.");
+
+const u8 gText_Spicy2[] = _("scharf");
+const u8 gText_Dry2[] = _("trocken");
+const u8 gText_Sweet2[] = _("süß");
+const u8 gText_Bitter2[] = _("bitter");
+const u8 gText_Sour2[] = _("sauer");
+
+const u8 gText_Single[] = _("EINZEL");
+const u8 gText_Double[] = _("DOPPEL");
+const u8 gText_Knockout[] = _("K.O.");
+const u8 gText_Mixed[] = _("MIX");
+const u8 gText_First[] = _("Erster");
+const u8 gText_Second[] = _("Zweiter");
+const u8 gText_Third[] = _("Dritter");
+
+#if OW_POISON_DAMAGE < GEN_4
+const u8 gText_PkmnFainted_FldPsn[] = _("{STR_VAR_1} ist besiegt…\p\n");
+#endif
+
 #if (DECAP_ENABLED) && !(DECAP_MAP_NAMES)
 const u8 gText_Ferry[] = _C("FÄHRE");
 const u8 gText_SecretBase[] = _C("GEHEIMBASIS");
@@ -2581,6 +2612,19 @@ const u8 gText_MUS_MOVE_DELETED_SLOW[] = _("Unbekannt");
 const u8 gText_MUS_DEBUG_TEST[] = _("Unbekannt");
 const u8 gText_MUS_ROUTE118[] = _("Route");
 const u8 gText_MUS_NONE[] = _("Unbekannt");
+
+ALIGNED(4) const u8 gText_Ghost[] = _("Geist");
+const u8 gText_Boulderbadge[] = _("Felsorden");
+const u8 gText_Cascadebadge[] = _("Quellorden");
+const u8 gText_Thunderbadge[] = _("Donnerorden");
+const u8 gText_Rainbowbadge[] = _("Farborden");
+const u8 gText_Soulbadge[] = _("Seelenorden");
+const u8 gText_Marshbadge[] = _("Sumpforden");
+const u8 gText_Volcanobadge[] = _("Vulkanorden");
+const u8 gText_Earthbadge[] = _("Erdorden");
+
+const u8 gText_OakImportantToGetToKnowPokemonThroughly[] = _("EICH: Es ist wichtig, deine POKéMON\ngründlich kennenzulernen.\p");
+const u8 gText_OakThisIsListOfPokemon[] = _("Dies ist eine Liste deiner POKéMON,\n{PLAYER}.\pÖffne sie, um die Werte und\nAttacken deiner POKéMON zu prüfen.\pWähle hier auch ein POKéMON aus,\nwenn du ein Item einsetzen willst.{PAUSE_UNTIL_PRESS}");
 
 // German Plural of Balls (Items)
 

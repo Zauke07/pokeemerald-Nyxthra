@@ -47,7 +47,7 @@ MauvilleCity_House2_Text_BuyHarborMailAtSlateport::
 	.string "diesem Loch abhaun und einkaufen.\p"
 	.string "In GRAPHITPORT CITY gibt es diesen\n"
 	.string "HAFENBRIEF im Supermarkt… den brauche\l"
-	.string " ich unbedingt für meine Geschäfte.$"
+	.string "ich unbedingt für meine Geschäfte.$"
 
 MauvilleCity_House2_Text_TradeHarborMailForCoinCase::
 	.string "Oh! Du hast einen HAFENBRIEF dabei?!\n"

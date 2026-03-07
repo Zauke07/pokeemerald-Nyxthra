@@ -15,3 +15,6 @@ gText_AccessedPlayersPC::
 
 gText_AccessedLanettesPC::
 	.string "Verbindung zu LANETTEs PC hergestellt.$"
+
+gText_AccessedBillsPC::
+	.string "Verbindung zu BILLs PC hergestellt$"

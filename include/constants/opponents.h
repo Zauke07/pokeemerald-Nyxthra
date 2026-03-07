@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #include "constants/battle_partner.h"
+#include "constants/opponents_frlg.h"
 
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
@@ -3973,9 +3974,14 @@
 #define TRAINER_JULIANA_RUSTBORO_FUECOCO         3571
 #define TRAINER_JULIANA_RUSTBORO_QUAXLY          3572
 
-#define TRAINERS_COUNT                         3573
-#define MAX_TRAINERS_COUNT                     3574
+#if IS_FRLG
+#define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
+#else
+#define TRAINERS_COUNT                      3573
+#define MAX_TRAINERS_COUNT                  3574
+#endif
 
-#define TRAINER_PARTNER(partner)   (MAX_TRAINERS_COUNT + partner)
+#define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

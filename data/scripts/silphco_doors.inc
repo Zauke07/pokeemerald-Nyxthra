@@ -542,3 +542,15 @@ EventScript_OpenDoor::
 	special SetHiddenItemFlag
 	releaseall
 	end
+
+Text_CardKeyOpenedDoor::
+	.string "Bäm, Alter!\n"
+	.string "Die scheiß Karte hat die Tür geknackt!$"
+
+Text_ItNeedsCardKey::
+	.string "Verdammte Scheiße!\n"
+	.string "Du brauchst ne bekackte Türöffner-Karte!$"
+
+Text_TheDoorIsOpen::
+	.string "Die Kacktür ist schon offen…\n"
+	.string "Beweg deinen Arsch da rein!$"

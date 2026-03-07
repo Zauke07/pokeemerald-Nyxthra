@@ -405,13 +405,10 @@ static void RecordedPlayerHandleIntroTrainerBallThrow(enum BattlerId battler)
 
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
     {
-        // Bei Link-Aufnahmen nutzen wir die aufgenommenen Daten
-        // Falls du Link-Styles noch nicht voll unterstützt, bleibt es beim Gender-Offset
         trainerPicId = TRAINER_PIC_BACK_BRENDAN + gLinkPlayers[GetBattlerMultiplayerId(battler)].gender;
     }
     else
     {
-        // Dein Nyxthra-Style-System für lokale Aufnahmen
         trainerPicId = GetPlayerBackSpriteId();
     }
 

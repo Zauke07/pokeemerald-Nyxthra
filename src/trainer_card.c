@@ -686,7 +686,7 @@ u32 CountPlayerTrainerStars(void)
 
     if (GetGameStat(GAME_STAT_ENTERED_HOF))
         stars++;
-    if (HasAllHoennMons())
+    if (HasAllRegionalMons())
         stars++;
     if (CountPlayerMuseumPaintings() >= CONTEST_CATEGORIES_COUNT)
         stars++;
@@ -736,7 +736,7 @@ static void SetPlayerCardData(struct TrainerCard *trainerCard, u8 cardType)
     }
 
     trainerCard->hasPokedex = FlagGet(FLAG_SYS_POKEDEX_GET);
-    trainerCard->caughtAllHoenn = HasAllHoennMons();
+    trainerCard->caughtAllHoenn = HasAllRegionalMons();
     trainerCard->caughtMonsCount = GetCaughtMonsCount();
 
     trainerCard->trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
@@ -1088,7 +1088,7 @@ static u16 GetCaughtMonsCount(void)
     if (IsNationalPokedexEnabled())
         return GetNationalPokedexCount(FLAG_GET_CAUGHT);
     else
-        return GetHoennPokedexCount(FLAG_GET_CAUGHT);
+        return GetRegionalPokedexCount(FLAG_GET_CAUGHT);
 }
 
 static void PrintPokedexOnCard(void)
@@ -1521,44 +1521,46 @@ static void DrawStarsAndBadgesOnCard(void)
 {
     static const u8 yOffsets[] = {7, 7};
 
-    s16 i;
+    s16 i, x;
     u8 palNum;
     u8 currentTileY;
 
-    // Sterne wie gehabt
+    // Sterne anzeigen
     FillBgTilemapBufferRect(3, 143, 15, yOffsets[sData->isHoenn],
                             sData->trainerCard.stars, 1, 4);
 
     if (!sData->isLink)
     {
-        u8 x = 4;
+        x = 4;
 
         for (i = 0; i < NUM_BADGES; i++)
         {
             u8 tileX;
-            u16 baseTile;  // statt "tileNum" akkumuliert
+            u16 baseTile;
 
-            if (i < 8) // Orden 1-8, erste Reihe
+            if (i < 8) // Orden 1-8 (Hoenn), erste Reihe
             {
                 tileX        = x + i * 3;
                 currentTileY = 15;
-                palNum       = 3;              // alte Palette
-                baseTile     = 192 + i * 2;    // 192..206
+                palNum       = 3; 
+                baseTile     = 192 + i * 2;
             }
-            else       // Orden 9-16, zweite Reihe
+            else       // Orden 9-16 (Kanto), zweite Reihe
             {
                 tileX        = x + (i - 8) * 3;
-                currentTileY = 17;             // zweite Zeile
-                palNum       = 4;              // neue Palette für Reihe 2
-                baseTile     = 224 + (i - 8) * 2; // 224..238
+                // Falls du in Kanto bist, schieben wir die Karte evtl. ein Stück (IS_FRLG Check)
+                currentTileY = IS_FRLG ? 17 : 17; 
+                palNum       = 4; 
+                baseTile     = 224 + (i - 8) * 2;
             }
 
             if (sData->badgeCount[i])
             {
-                // oben links / rechts
-                FillBgTilemapBufferRect(3, baseTile,     tileX,     currentTileY,     1, 1, palNum);
-                FillBgTilemapBufferRect(3, baseTile + 1, tileX + 1, currentTileY,     1, 1, palNum);
-                // unten links / rechts (gleicher Block +16)
+                // Zeichne die 2x2 Tiles des Ordens
+                // Oben links & rechts
+                FillBgTilemapBufferRect(3, baseTile,      tileX,     currentTileY,     1, 1, palNum);
+                FillBgTilemapBufferRect(3, baseTile + 1,  tileX + 1, currentTileY,     1, 1, palNum);
+                // Unten links & rechts
                 FillBgTilemapBufferRect(3, baseTile + 16, tileX,     currentTileY + 1, 1, 1, palNum);
                 FillBgTilemapBufferRect(3, baseTile + 17, tileX + 1, currentTileY + 1, 1, 1, palNum);
             }

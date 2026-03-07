@@ -271,19 +271,22 @@ static bool8 LoadBattlerSpriteGfx(enum BattlerId battler)
         enum BattlerPosition position = GetBattlerPosition(battler);
         if (!IsOnPlayerSide(battler))
         {
-            if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
+            if (IsGhostBattleWithoutScope())
+                DecompressGhostFrontPic(battler);
+            else if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
                 BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
             else
                 BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
         {
-            // Safari-Zone: Nutzt den Style + Startpunkt der Back-Pics im neuen Enum
+            // Safari-Zone: Nutzt deinen gewählten Style
             DecompressTrainerBackPic(TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0], battler);
         }
-        else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
+        else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
         {
-            DecompressTrainerBackPic(TRAINER_PIC_BACK_WALLY, battler);
+            // Tutorial: Alter Mann in Kanto, Heiko in Hoenn
+            DecompressTrainerBackPic(IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN : TRAINER_PIC_BACK_WALLY, battler);
         }
         else if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
             BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
@@ -304,7 +307,9 @@ void CreateBattlerSprite(enum BattlerId battler)
         u8 posY;
         enum BattlerPosition position = GetBattlerPosition(battler);
 
-        if (gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
+        if (IsGhostBattleWithoutScope())
+            posY = GetGhostSpriteDefault_Y(battler);
+        else if (gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
             posY = GetSubstituteSpriteDefault_Y(battler);
         else
             posY = GetBattlerSpriteDefault_Y(battler);
@@ -340,11 +345,11 @@ void CreateBattlerSprite(enum BattlerId battler)
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
         }
-        else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
+        else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
         {
-            SetMultiuseSpriteTemplateToTrainerBack(TRAINER_PIC_BACK_WALLY, position);
+            SetMultiuseSpriteTemplateToTrainerBack(IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN : TRAINER_PIC_BACK_WALLY, position);
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 0x50,
-                                                (8 - gTrainerBacksprites[TRAINER_PIC_BACK_WALLY].coordinates.size) * 4 + 80,
+                                                (8 - gTrainerBacksprites[IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN :TRAINER_PIC_BACK_WALLY].coordinates.size) * 4 + 80,
                                                  GetBattlerSpriteSubpriority(0));
             gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = (8 + battler / 2);
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
@@ -380,7 +385,7 @@ static void CreateHealthboxSprite(enum BattlerId battler)
         enum BattlerPosition position = GetBattlerPosition(battler);
         if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
             healthboxSpriteId = CreateSafariPlayerHealthboxSprites();
-        else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
+        else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
             return;
         else
             healthboxSpriteId = CreateBattlerHealthboxSprites(battler);

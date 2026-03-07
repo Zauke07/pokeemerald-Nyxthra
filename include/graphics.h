@@ -5926,4 +5926,7 @@ extern const u16 gObjectEventPal_LaterMannerNormal[];
 extern const u16 gObjectEventPal_DolphinNormal[];
 extern const u16 gObjectEventPal_Kanto_Blue[];
 extern const u16 gObjectEventPal_Johto_NPC_Red[];
+extern const u32 gGhostFrontPic[];
+extern const u16 gGhostPalette[];
+
 #endif //GUARD_GRAPHICS_H

@@ -31,6 +31,7 @@
 #include "menu_specialized.h"
 #include "trainer_pokemon_sprites.h"
 #include "event_data.h"
+#include "constants/layouts.h"
 
 // Top level PC menu options
 enum {
@@ -603,12 +604,15 @@ static void PlayerPC_TurnOff(u8 taskId)
     {
         u8 style = gSaveBlock2Ptr->playerStyles[0];
 
-        // Alle männlichen Charaktere → Brendans Haus
-        if (style == STYLE_BRENDAN
-         || style == STYLE_RED
-         || style == STYLE_ETHAN
-         || style == STYLE_LUCAS
-         || style == STYLE_HILBERT)
+        if (gMapHeader.mapLayoutId == LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F_FRLG)
+        {
+            ScriptContext_SetupScript(EventScript_PalletTown_PlayersHouse_2F_ShutDownPC);
+        }
+        else if (style == STYLE_BRENDAN
+              || style == STYLE_RED
+              || style == STYLE_ETHAN
+              || style == STYLE_LUCAS
+              || style == STYLE_HILBERT)
         {
             ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
         }
