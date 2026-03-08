@@ -2098,7 +2098,7 @@
 #define FLAG_GOT_HM04                                    0
 #define FLAG_GOT_HM05                                    0
 #define FLAG_RESCUED_MR_FUJI                             0
-#define FLAG_GOT_POKE_FLUTE                              0
+#define FLAG_GOT_POKE_FLUTE_FRLG                         0
 #define FLAG_0x23E                                       0
 #define FLAG_GOT_TM28_FROM_ROCKET                        0
 #define FLAG_GOT_OLD_ROD                                 0

@@ -120,6 +120,9 @@
 #define MULTI_BATTLE_TOWER_FEELINGS        109
 #define MULTI_WHERES_RAYQUAZA              110
 #define MULTI_SLATEPORT_TENT_RULES         111
+#define MULTI_FALLARBOR_TENT_RULES         112
+#define MULTI_TAG_MATCH_TYPE               113
+#define MULTI_BERRY_PLOT                   114
 #define MULTI_STARTER_REGIONALITY           115
 #define MULTI_JOKE_NPC                      116
 #define MULTI_TESTLAB_TRANSITIONS_PAGE1     117

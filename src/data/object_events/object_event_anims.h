@@ -755,42 +755,6 @@ static const union AnimCmd sAnim_RunEastFrlg[] = {
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sAnim_SpinSouth[] = {
-    ANIMCMD_FRAME(0, 2),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 2),
-    ANIMCMD_FRAME(2, 2),
-    ANIMCMD_LOOP(1),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_SpinNorth[] = {
-    ANIMCMD_FRAME(1, 2),
-    ANIMCMD_FRAME(2, 2),
-    ANIMCMD_FRAME(0, 2),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
-    ANIMCMD_LOOP(1),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_SpinWest[] = {
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE), // Starts by facing East?
-    ANIMCMD_FRAME(1, 2),
-    ANIMCMD_FRAME(2, 2),
-    ANIMCMD_FRAME(0, 2),
-    ANIMCMD_LOOP(1),
-    ANIMCMD_END,
-};
-
-static const union AnimCmd sAnim_SpinEast[] = {
-    ANIMCMD_FRAME(2, 2), // Starts by facing West?
-    ANIMCMD_FRAME(0, 2),
-    ANIMCMD_FRAME(2, 2, .hFlip = TRUE),
-    ANIMCMD_FRAME(1, 2),
-    ANIMCMD_LOOP(1),
-    ANIMCMD_END,
-};
-
 static const union AnimCmd sAnim_FieldMove[] =
 {
     ANIMCMD_FRAME(0, 4),

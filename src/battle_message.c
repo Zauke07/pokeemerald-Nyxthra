@@ -191,7 +191,8 @@ const u8 *const gPokeblockWasTooXStringTable[FLAVOR_COUNT] =
 };
 
 static const u8 sText_Someones[] = _("jemandens");
-static const u8 sText_Lanettes[] = _("LANETTEs"); //no decapitalize until it is everywhere
+static const u8 sText_Bills[] = _("Bills");
+static const u8 sText_Lanettes[] = _("Lanettes"); //no decapitalize until it is everywhere
 static const u8 sText_EnigmaBerry[] = _("ENIGMA BEERE"); //no decapitalize until it is everywhere
 static const u8 sText_BerrySuffix[] = _(" BEERE"); //no decapitalize until it is everywhere
 const u8 gText_EmptyString3[] = _("");
@@ -2215,7 +2216,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                 else
                     stringPtr = sText_TwoWildPkmnAppeared;
             }
-            else if (gBattleTypeFlags & (BATTLE_TYPE_WALLY_TUTORIAL | BATTLE_TYPE_CATCH_TUTORIAL))
+            else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL)
             {
                 stringPtr = sText_WildPkmnAppearedPause;
             }

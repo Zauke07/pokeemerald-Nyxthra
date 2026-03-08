@@ -35,7 +35,7 @@
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124",
     "gMapGroup_BabyBootCamp_Tests",
-    "gMapGroup_Indoor_Route113Secret"
+    "gMapGroup_Indoor_Route113Secret",
     "gMapGroup_Link_Frlg",
     "gMapGroup_Dungeons_Frlg",
     "gMapGroup_SpecialArea_Frlg",
@@ -693,6 +693,7 @@
   "gMapGroup_Indoor_Route113Secret": [
     "MysteryhoeleL",
     "MysteryHoeleL_F1"
+  ],
   "gMapGroup_Link_Frlg": [
     "BattleColosseum_2P_Frlg",
     "TradeCenter_Frlg",

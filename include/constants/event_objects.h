@@ -834,6 +834,7 @@
 #define OBJ_EVENT_GFX_RED_NORMAL                 790
 #define OBJ_EVENT_GFX_RED_BIKE                   791
 #define OBJ_EVENT_GFX_RED_SURF                   792
+#undef OBJ_EVENT_GFX_RED_FIELD_MOVE
 #define OBJ_EVENT_GFX_RED_FIELD_MOVE             793
 #define OBJ_EVENT_GFX_RED_FISH                   794
 #define OBJ_EVENT_GFX_RED_VS_SEEKER              795
@@ -851,6 +852,7 @@
 #define OBJ_EVENT_GFX_ROCKER                     808
 #define OBJ_EVENT_GFX_BALDING_MAN                809
 #define OBJ_EVENT_GFX_OLD_MAN_1                  810
+#undef OBJ_EVENT_GFX_OLD_MAN_2
 #define OBJ_EVENT_GFX_OLD_MAN_2                  811
 #define OBJ_EVENT_GFX_OLD_MAN_LYING_DOWN         812
 #define OBJ_EVENT_GFX_TUBER_M_WATER              813
@@ -863,10 +865,13 @@
 #define OBJ_EVENT_GFX_SWIMMER_F_LAND             820
 #define OBJ_EVENT_GFX_WORKER_M                   821
 #define OBJ_EVENT_GFX_WORKER_F                   822
+#undef OBJ_EVENT_GFX_ROCKET_M
 #define OBJ_EVENT_GFX_ROCKET_M                   823
+#undef OBJ_EVENT_GFX_ROCKET_F
 #define OBJ_EVENT_GFX_ROCKET_F                   824
 #define OBJ_EVENT_GFX_GBA_KID                    825
 #define OBJ_EVENT_GFX_SUPER_NERD                 826
+#undef OBJ_EVENT_GFX_BIKER
 #define OBJ_EVENT_GFX_BIKER                      827
 #define OBJ_EVENT_GFX_BLACKBELT                  828
 #define OBJ_EVENT_GFX_SCIENTIST                  829
@@ -882,6 +887,7 @@
 #define OBJ_EVENT_GFX_TRAINER_TOWER_DUDE         839
 #define OBJ_EVENT_GFX_PROF_OAK                   840
 #define OBJ_EVENT_GFX_BLUE                       841
+#undef OBJ_EVENT_GFX_BILL
 #define OBJ_EVENT_GFX_BILL                       842
 #define OBJ_EVENT_GFX_LANCE                      843
 #define OBJ_EVENT_GFX_AGATHA                     844
@@ -932,6 +938,7 @@
 #define OBJ_EVENT_GFX_METEORITE                  889
 #define OBJ_EVENT_GFX_LAPRAS_DOLL                890
 #define OBJ_EVENT_GFX_SEAGALLOP                  891
+#undef OBJ_EVENT_GFX_SNORLAX
 #define OBJ_EVENT_GFX_SNORLAX                    892
 #define OBJ_EVENT_GFX_SPEAROW                    893
 #define OBJ_EVENT_GFX_CUBONE                     894
@@ -963,9 +970,13 @@
 #define OBJ_EVENT_GFX_MOLTRES                    920
 #define OBJ_EVENT_GFX_ARTICUNO                   921
 #define OBJ_EVENT_GFX_MEWTWO                     922
+#undef OBJ_EVENT_GFX_ENTEI
 #define OBJ_EVENT_GFX_ENTEI                      923
+#undef OBJ_EVENT_GFX_SUICUNE
 #define OBJ_EVENT_GFX_SUICUNE                    924
+#undef OBJ_EVENT_GFX_RAIKOU
 #define OBJ_EVENT_GFX_RAIKOU                     925
+#undef OBJ_EVENT_GFX_CELEBI
 #define OBJ_EVENT_GFX_CELEBI                     926
 #define OBJ_EVENT_GFX_KABUTO                     927
 #define OBJ_EVENT_GFX_DEOXYS_D                   928
@@ -1071,7 +1082,6 @@
 
 // Aliases for old names. "object event id" normally refers to an index into gObjectEvents, which these are not.
 // Used for link player OWs in CreateLinkPlayerSprite
-#define OBJ_EVENT_ID_DYNAMIC_BASE 0xF0
 #define OBJ_EVENT_ID_CAMERA LOCALID_CAMERA
 #define OBJ_EVENT_ID_PLAYER LOCALID_PLAYER
 
@@ -1177,8 +1187,10 @@
 #define OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PETREL      0x11B8
 #define OBJ_EVENT_PAL_TAG_TEAM_ROCKET_PROTON      0x11B9
 #define OBJ_EVENT_PAL_TAG_TRUCK_F                 0x11C0
+#undef OBJ_EVENT_PAL_TAG_PLAYER_RED
 #define OBJ_EVENT_PAL_TAG_PLAYER_RED              0x11C1
 #define OBJ_EVENT_PAL_TAG_PLAYER_LEAF             0x11C2
+#undef OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION
 #define OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION   0x11C3
 #define OBJ_EVENT_PAL_TAG_PLAYER_LEAF_REFLECTION  0x11C4
 

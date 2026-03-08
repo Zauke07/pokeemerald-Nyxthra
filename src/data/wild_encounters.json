@@ -11513,6 +11513,46 @@
                 "min_level": 22,
                 "max_level": 22,
                 "species": "SPECIES_DIGLETT_ALOLA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
               }
             ]
           }
@@ -13283,30 +13323,6 @@
           }
         },
         {
-          "map": "MAP_MYSTERYHOELE_L",
-          "base_label": "gMysteryhoeleL",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 22,
-                "max_level": 23,
-                "species": "SPECIES_HOUNDOUR"
-              },
-              {
-                "min_level": 21,
-                "max_level": 23,
-                "species": "SPECIES_LITWICK"
-              },
-              {
-                "min_level": 21,
-                "max_level": 23,
-                "species": "SPECIES_GROWLITHE"
-              }
-            ]
-          }
-        },
-        {
           "map": "MAP_DIGLETTS_CAVE_B1F",
           "base_label": "sDiglettsCaveB1F_LeafGreen",
           "land_mons": {
@@ -13371,6 +13387,75 @@
                 "min_level": 31,
                 "max_level": 31,
                 "species": "SPECIES_DUGTRIO"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_MYSTERYHOELE_L",
+          "base_label": "gMysteryhoeleL",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 22,
+                "max_level": 23,
+                "species": "SPECIES_HOUNDOUR"
+              },
+              {
+                "min_level": 21,
+                "max_level": 23,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 21,
+                "max_level": 23,
+                "species": "SPECIES_GROWLITHE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NONE"
               }
             ]
           }

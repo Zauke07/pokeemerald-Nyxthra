@@ -279,8 +279,13 @@ void Script_BufferFanClubTrainerName(void)
 #endif //FREE_LINK_BATTLE_RECORDS
 }
 
-static const u8 sText_LtSurge[] = _("LT. SURGE");
-static const u8 sText_Koga[] = _("KOGA");
+#if FREE_LINK_BATTLE_RECORDS == FALSE
+static const u8 sText_LtSurge[] = _("Major Bob");
+static const u8 sText_Koga[] = _("Koga");
+#else
+static const u8 sText_LtSurge[] = _("Major Bob");
+static const u8 sText_Koga[] = _("Koga");
+#endif
 
 #if FREE_LINK_BATTLE_RECORDS == FALSE
 static void BufferFanClubTrainerName(struct LinkBattleRecords *linkRecords, u8 whichLinkTrainer, u8 whichNPCTrainer)
@@ -348,10 +353,10 @@ static void BufferFanClubTrainerName(u8 whichLinkTrainer, u8 whichNPCTrainer)
         break;
 #endif
     case 1:
-        StringCopy(gStringVar1, gText_LtSurge);
+        StringCopy(gStringVar1, sText_LtSurge);
         break;
     case 2:
-        StringCopy(gStringVar1, gText_Koga);
+        StringCopy(gStringVar1, sText_Koga);
         break;
     }
 }
