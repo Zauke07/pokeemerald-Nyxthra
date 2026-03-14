@@ -1600,12 +1600,12 @@ u16 copy_decompressed_tile_data_to_vram(u8 bgId, const void *src, u16 size, u16 
 {
     switch (mode)
     {
-        case 0:
-            return LoadBgTiles(bgId, src, size, offset);
-        case 1:
-            return LoadBgTilemap(bgId, src, size, offset);
-        default:
-            return -1;
+    case 0:
+        return LoadBgTiles(bgId, src, size, offset);
+    case 1:
+        return LoadBgTilemap(bgId, src, size, offset);
+    default:
+        return -1;
     }
 }
 
@@ -1862,16 +1862,16 @@ void ListMenuLoadStdPalAt(u8 palOffset, u8 palId)
 
     switch (palId)
     {
-        case 0:
-        default:
-            palette = gMenuInfoElements1_Pal;
-            break;
-        case 1:
-            palette = gMenuInfoElements2_Pal;
-            break;
-        case 2:
-            palette = gMenuInfoElements3_Pal;
-            break;
+    case 0:
+    default:
+        palette = gMenuInfoElements1_Pal;
+        break;
+    case 1:
+        palette = gMenuInfoElements2_Pal;
+        break;
+    case 2:
+        palette = gMenuInfoElements3_Pal;
+        break;
     }
 
     LoadPalette(palette, palOffset, PLTT_SIZE_4BPP);
@@ -1908,26 +1908,19 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
     case SAVE_MENU_PLAY_TIME:
         string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
         *(string++) = CHAR_COLON;
-        string = ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-        *string = EOS;
+        ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
         break;
     case SAVE_MENU_LOCATION:
         GetMapNameGeneric(string, gMapHeader.regionMapSectionId);
         break;
     case SAVE_MENU_BADGES:
+        for (curFlag = FLAG_BADGE01_GET, flagCount = 0, endOfString = string + 1; curFlag < FLAG_BADGE01_GET + NUM_BADGES; curFlag++)
         {
-            u8 i;
-            u8 badgeCount = 0;
-
-            for (i = 0; i < NUM_BADGES; i++)
-            {
-                if (FlagGet(gBadgeFlags[i]))
-                    badgeCount++;
-            }
-
-            string = ConvertIntToDecimalStringN(string, badgeCount, STR_CONV_MODE_LEFT_ALIGN, 2);
-            *string = EOS;
+            if (FlagGet(curFlag))
+                flagCount++;
         }
+        *string = flagCount + CHAR_0;
+        *endOfString = EOS;
         break;
     }
 }
@@ -1962,7 +1955,7 @@ void HBlankCB_DoublePopupWindow(void)
     if (scanline < 80 || scanline > 160)
     {
         REG_BG0VOFS = offset;
-        if(OW_POPUP_BW_ALPHA_BLEND && !IsWeatherAlphaBlend())
+        if (OW_POPUP_BW_ALPHA_BLEND && !IsWeatherAlphaBlend())
             REG_BLDALPHA = BLDALPHA_BLEND(15, 5);
     }
     else

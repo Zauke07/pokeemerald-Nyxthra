@@ -506,70 +506,70 @@ static bool8 MailReadBuildGraphics(void)
 
     switch (gMain.state)
     {
-        case 0:
-            SetVBlankCallback(NULL);
-            ScanlineEffect_Stop();
-            SetGpuReg(REG_OFFSET_DISPCNT, 0);
-            break;
-        case 1:
-            CpuFill16(0, (void *)OAM, OAM_SIZE);
-            break;
-        case 2:
-            ResetPaletteFade();
-            break;
-        case 3:
-            ResetTasks();
-            break;
-        case 4:
-            ResetSpriteData();
-            break;
-        case 5:
-            FreeAllSpritePalettes();
-            ResetTempTileDataBuffers();
-            SetGpuReg(REG_OFFSET_BG0HOFS, 0);
-            SetGpuReg(REG_OFFSET_BG0VOFS, 0);
-            SetGpuReg(REG_OFFSET_BG1HOFS, 0);
-            SetGpuReg(REG_OFFSET_BG1VOFS, 0);
-            SetGpuReg(REG_OFFSET_BG2VOFS, 0);
-            SetGpuReg(REG_OFFSET_BG2HOFS, 0);
-            SetGpuReg(REG_OFFSET_BG3HOFS, 0);
-            SetGpuReg(REG_OFFSET_BG3VOFS, 0);
-            SetGpuReg(REG_OFFSET_BLDCNT,  0);
-            SetGpuReg(REG_OFFSET_BLDALPHA, 0);
-            break;
-        case 6:
-            ResetBgsAndClearDma3BusyFlags(0);
-            InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-            SetBgTilemapBuffer(1, sMailRead->bg1TilemapBuffer);
-            SetBgTilemapBuffer(2, sMailRead->bg2TilemapBuffer);
-            break;
-        case 7:
-            InitWindows(sWindowTemplates);
-            DeactivateAllTextPrinters();
-            break;
-        case 8:
-            DecompressAndCopyTileDataToVram(1, sMailGraphics[sMailRead->mailType].tiles, 0, 0, 0);
-            break;
-        case 9:
-            if (FreeTempTileDataBuffersIfPossible())
-                return FALSE;
-            break;
-        case 10:
-            FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
-            FillBgTilemapBufferRect_Palette0(2, 1, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
-            CopyToBgTilemapBuffer(1, sMailGraphics[sMailRead->mailType].tileMap, 0, 0);
-            break;
-        case 11:
-            CopyBgTilemapBufferToVram(0);
-            CopyBgTilemapBufferToVram(1);
-            CopyBgTilemapBufferToVram(2);
-            break;
-        case 12:
-            LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
-            gPlttBufferUnfaded[BG_PLTT_ID(15) + 10] = sMailGraphics[sMailRead->mailType].textColor;
-            gPlttBufferFaded[BG_PLTT_ID(15) + 10] = sMailGraphics[sMailRead->mailType].textColor;
-            gPlttBufferUnfaded[BG_PLTT_ID(15) + 11] = sMailGraphics[sMailRead->mailType].textShadow;
-            gPlttBufferFaded[BG_PLTT_ID(15) + 11] = sMailGraphics[sMailRead->mailType].textShadow;
+    case 0:
+        SetVBlankCallback(NULL);
+        ScanlineEffect_Stop();
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        break;
+    case 1:
+        CpuFill16(0, (void *)OAM, OAM_SIZE);
+        break;
+    case 2:
+        ResetPaletteFade();
+        break;
+    case 3:
+        ResetTasks();
+        break;
+    case 4:
+        ResetSpriteData();
+        break;
+    case 5:
+        FreeAllSpritePalettes();
+        ResetTempTileDataBuffers();
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG1VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2VOFS, 0);
+        SetGpuReg(REG_OFFSET_BG2HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG3HOFS, 0);
+        SetGpuReg(REG_OFFSET_BG3VOFS, 0);
+        SetGpuReg(REG_OFFSET_BLDCNT,  0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        break;
+    case 6:
+        ResetBgsAndClearDma3BusyFlags(0);
+        InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
+        SetBgTilemapBuffer(1, sMailRead->bg1TilemapBuffer);
+        SetBgTilemapBuffer(2, sMailRead->bg2TilemapBuffer);
+        break;
+    case 7:
+        InitWindows(sWindowTemplates);
+        DeactivateAllTextPrinters();
+        break;
+    case 8:
+        DecompressAndCopyTileDataToVram(1, sMailGraphics[sMailRead->mailType].tiles, 0, 0, 0);
+        break;
+    case 9:
+        if (FreeTempTileDataBuffersIfPossible())
+            return FALSE;
+        break;
+    case 10:
+        FillBgTilemapBufferRect_Palette0(0, 0, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
+        FillBgTilemapBufferRect_Palette0(2, 1, 0, 0, DISPLAY_TILE_WIDTH, DISPLAY_TILE_HEIGHT);
+        CopyToBgTilemapBuffer(1, sMailGraphics[sMailRead->mailType].tileMap, 0, 0);
+        break;
+    case 11:
+        CopyBgTilemapBufferToVram(0);
+        CopyBgTilemapBufferToVram(1);
+        CopyBgTilemapBufferToVram(2);
+        break;
+    case 12:
+        LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+        gPlttBufferUnfaded[BG_PLTT_ID(15) + 10] = sMailGraphics[sMailRead->mailType].textColor;
+        gPlttBufferFaded[BG_PLTT_ID(15) + 10] = sMailGraphics[sMailRead->mailType].textColor;
+        gPlttBufferUnfaded[BG_PLTT_ID(15) + 11] = sMailGraphics[sMailRead->mailType].textShadow;
+        gPlttBufferFaded[BG_PLTT_ID(15) + 11] = sMailGraphics[sMailRead->mailType].textShadow;
 
             LoadPalette(sMailGraphics[sMailRead->mailType].palette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
 

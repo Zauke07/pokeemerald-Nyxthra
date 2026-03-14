@@ -133,10 +133,12 @@ GraniteCave_B2F_Braille_JohtoStarters:
 @ FRLG
 Braille_Text_Up::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "UP$"
 	.braille "OBEN$"
 
 Braille_Text_Down::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "DOWN$"
 	.braille "UNTEN$"
 
 Braille_Text_Right::
@@ -154,41 +156,51 @@ Braille_Text_Cut::
 Braille_Text_ABC::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille "ABC$"
+	.braille "ABC$"
 
 Braille_Text_GHI::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "GHI$"
 	.braille "GHI$"
 
 Braille_Text_MNO::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille "MNO$"
+	.braille "MNO$"
 
 Braille_Text_TUV::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "TUV$"
 	.braille "TUV$"
 
 Braille_Text_DEF::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille "DEF$"
+	.braille "DEF$"
 
 Braille_Text_JKL::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "JKL$"
 	.braille "JKL$"
 
 Braille_Text_PQRS::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille "PQRS$"
+	.braille "PQRS$"
 
 Braille_Text_WXYZ::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "WXYZ$"
 	.braille "WXYZ$"
 
 Braille_Text_Period::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille ".$"
+	.braille ".$"
 
 Braille_Text_Comma::
 	brailleformat 3, 0, 25, 19, 6, 3
+	.braille ",$"
 	.braille ",$"
 
 Braille_Text_Everything::

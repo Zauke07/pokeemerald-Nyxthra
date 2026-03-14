@@ -1604,6 +1604,7 @@ const u8 gText_MenuRetire[] = _("Aufhören");
 const u8 gText_MenuRest[] = _("Ausruhen");
 const u8 gText_MenuDexNav[] = _("Dexnav");
 const u8 gText_SafariBallStock[] = _("SAFARI-BÄLLE\nBestand: {STR_VAR_1}");
+const u8 gText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBälle  {STR_VAR_3}");
 const u8 gText_BattlePyramidFloor[] = _("Kampfpyramide\n{STR_VAR_1}");
 const u8 gText_Floor1[] = _("Etage 1");
 const u8 gText_Floor2[] = _("Etage 2");

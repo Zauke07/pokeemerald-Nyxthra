@@ -24,6 +24,8 @@ static void CreateHealthboxSprite(enum BattlerId battler);
 static void ClearBattleBgCntBaseBlocks(void);
 static void CreateCaughtMonSprite(void);
 
+#define CATCH_TUTORIAL_TRAINER_PIC_BACK (IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN : TRAINER_PIC_BACK_WALLY)
+
 void ReshowBattleScreenDummy(void)
 {
 
@@ -82,6 +84,7 @@ static void CB2_ReshowBattleScreenAfterMenu(void)
     case 6:
         if (BattleLoadAllHealthBoxesGfx(gBattleScripting.reshowHelperState))
         {
+            LoadIndicatorSpritesGfx();
             gBattleScripting.reshowHelperState = 0;
         }
         else
@@ -280,20 +283,18 @@ static bool8 LoadBattlerSpriteGfx(enum BattlerId battler)
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
         {
-            // Safari-Zone: Nutzt deinen gewählten Style
+            // Safari-Zone: Nutzt deinen gewählten Style (Nyxthra Custom)
             DecompressTrainerBackPic(TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0], battler);
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
         {
-            // Tutorial: Alter Mann in Kanto, Heiko in Hoenn
-            DecompressTrainerBackPic(IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN : TRAINER_PIC_BACK_WALLY, battler);
+            // Tutorial: Nutzt das neue RHH 1.15.0 Makro für Kanto/Hoenn
+            DecompressTrainerBackPic(CATCH_TUTORIAL_TRAINER_PIC_BACK, battler);
         }
         else if (!gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
             BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
         else
-        {
             BattleLoadSubstituteOrMonSpriteGfx(battler, FALSE);
-        }
 
         gBattleScripting.reshowHelperState = 0;
     }
@@ -319,7 +320,7 @@ void CreateBattlerSprite(enum BattlerId battler)
             struct Pokemon *mon = GetBattlerMon(battler);
             if (GetMonData(mon, MON_DATA_HP) == 0)
                 return;
-            if (gBattleScripting.monCaught)
+            if (gBattleScripting.monCaught) // Don't create opponent sprite if it has been caught.
                 return;
             u32 species = GetMonData(mon, MON_DATA_SPECIES);
 
@@ -334,24 +335,24 @@ void CreateBattlerSprite(enum BattlerId battler)
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
         {
-            // Wir berechnen die korrekte ID für dein Style-System im neuen Enum-Layout
-            u16 backPicId = TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
-            
-            SetMultiuseSpriteTemplateToTrainerBack(backPicId, position);
+            // Nyxthra Custom Style System für Safari Zone
+            u16 trainerPicId = TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
+            SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, position);
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 0x50,
-                                                (8 - gTrainerBacksprites[backPicId].coordinates.size) * 4 + 80,
+                                                (8 - gTrainerBacksprites[trainerPicId].coordinates.size) * 4 + 80,
                                                  GetBattlerSpriteSubpriority(0));
-            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = (8 + battler / 2);
+            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = IndexOfSpritePaletteTag(gTrainerBacksprites[trainerPicId].palette.tag);
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
         {
-            SetMultiuseSpriteTemplateToTrainerBack(IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN : TRAINER_PIC_BACK_WALLY, position);
+            // RHH 1.15.0 Makro für das Fang-Tutorial
+            SetMultiuseSpriteTemplateToTrainerBack(CATCH_TUTORIAL_TRAINER_PIC_BACK, position);
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 0x50,
-                                                (8 - gTrainerBacksprites[IS_FRLG ? TRAINER_PIC_BACK_OLD_MAN :TRAINER_PIC_BACK_WALLY].coordinates.size) * 4 + 80,
+                                                (8 - gTrainerBacksprites[CATCH_TUTORIAL_TRAINER_PIC_BACK].coordinates.size) * 4 + 80,
                                                  GetBattlerSpriteSubpriority(0));
-            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = (8 + battler / 2);
+            gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = IndexOfSpritePaletteTag(gTrainerBacksprites[CATCH_TUTORIAL_TRAINER_PIC_BACK].palette.tag);
             gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
             gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
         }

@@ -194,7 +194,7 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         GetBoxMonNickname(boxmon, gStringVar1);
         StringCopy(gStringVar2, GetMoveName(move));
         gSpecialVar_Result = FALSE;
-        switch(CanMonLearnMove(boxmon))
+        switch (CanMonLearnMove(boxmon))
         {
         case VALID_MON:
             return LEARN_MOVE;
@@ -273,19 +273,18 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         ui->printMessage(gText_12PoofForgotMove);
         return REPLACE_MOVE_1;
     case REPLACE_MOVE_1:
-        {
-            u32 slot = GetMoveSlotToReplace();
-            u32 pp = GetMovePP(move);
-            
-            RemoveBoxMonPPBonus(boxmon, slot);
-            SetBoxMonData(boxmon, MON_DATA_MOVE1 + slot, &move);
-            SetBoxMonData(boxmon, MON_DATA_PP1 + slot, &pp);
-            GetBoxMonNickname(boxmon, gStringVar1);
-            StringCopy(gStringVar2, GetMoveName(move));
-            gSpecialVar_Result = TRUE;
-            ui->printMessage(gText_PkmnLearnedMove4);
-            return LEARN_MOVE_END;
-        }
+    {
+        u32 slot = GetMoveSlotToReplace();
+        RemoveBoxMonPPBonus(boxmon, slot);
+        u32 pp = GetMovePP(move);
+        SetBoxMonData(boxmon, MON_DATA_MOVE1 + slot, &move);
+        SetBoxMonData(boxmon, MON_DATA_PP1 + slot, &pp);
+        GetBoxMonNickname(boxmon, gStringVar1);
+        StringCopy(gStringVar2, GetMoveName(move));
+        gSpecialVar_Result = TRUE;
+        ui->printMessage(gText_PkmnLearnedMove4);
+        return LEARN_MOVE_END;
+    }
     case DID_NOT_LEARN_1:
         GetBoxMonNickname(boxmon, gStringVar1);
         StringCopy(gStringVar2, GetMoveName(move));

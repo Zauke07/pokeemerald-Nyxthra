@@ -95,12 +95,13 @@
 #define B_FOCUS_ENERGY_CRIT_RATIO   GEN_LATEST // In Gen3+ erhöht Fokus-Energie die Crit-Stufe um 2 statt 1.
 #define B_PSYCH_UP_CRIT_RATIO       GEN_LATEST // In Gen6+: Psych Up kopiert auch das Kritische-Treffer-Verhältnis des Ziels.
 
-// Sonstige Move-Einstellungen
+// Other move settings
 #define B_INCINERATE_GEMS           GEN_LATEST // In Gen6+: Verbrennung kann Juwelen zerstören.
 #define B_CAN_SPITE_FAIL            GEN_LATEST // In Gen4+: Groll schlägt nicht fehl, wenn der gegnerische letzte Move nur noch 1 AP hat.
 #define B_CRASH_IF_TARGET_IMMUNE    GEN_LATEST // In Gen4+: Moves mit Crash-Schaden treffen ihr Ziel und crashen, wenn das Ziel immun ist.
 #define B_MEMENTO_FAIL              GEN_LATEST // In Gen4+: Memento schlägt nicht fehl, wenn Ziel bereits -6 Atk/SpA hat. Gen5+: Schlägt fehl, wenn kein Ziel, oder geschützt/Delegation.
 #define B_PARTING_SHOT_SWITCH       GEN_LATEST // In Gen7+: Nutzer wechselt nicht, wenn Gnadenstoß fehlschlägt.
+#define B_BATON_PASS_TRAPPING       GEN_LATEST // In Gen5+: Staffette behält keine Trapping-Effekte (Festhalte-Effekte) auf anderen Kämpfern bei, wenn der Anwender auswechselt.
 #define B_GLARE_GHOST               GEN_LATEST // In Gen4+: Augenblick trifft Geist-Pokémon normal.
 #define B_SKILL_SWAP                GEN_LATEST // In Gen4+: Fähigkeitentausch triggert Switch-in-Fähigkeiten nach Einsatz.
 #define B_BRICK_BREAK               GEN_LATEST // In Gen4+: Kann eigene Seiten-Bildschirme zerstören. Gen5+: Bildschirme werden nicht entfernt, wenn Ziel immun.
@@ -112,35 +113,39 @@
 #define B_METRONOME_MOVES           GEN_LATEST // Bestimmt bis zu welcher Gen. Metronom Moves zieht.
 #define B_TELEPORT_BEHAVIOR         GEN_LATEST // LGPE+ (Gen8+ hier): Teleport erlaubt Wechsel mit anderem Team-Mitglied.
 #define B_BEAT_UP                   GEN_LATEST // In Gen5+: Beat Up nutzt andere Schadensformel, Unlicht-Typ. Gen5-: Kündigt Party-Mitglieder an.
-#define B_DARK_VOID_FAIL            GEN_LATEST // In Gen7+: Nur Darkrai kann Dunklen Loch nutzen.
-#define B_BURN_HIT_THAW             GEN_LATEST // In Gen6+: Moves mit Brand-Chance tauen Ziel auf, unabhängig Feuer-Typ.
+#define B_DARK_VOID_FAIL            GEN_LATEST // In Gen7+: Nur Darkrai kann Schlummerort nutzen.
+#define B_HIT_THAW                  GEN_LATEST // In Gen6+: Schaden verursachende Attacken, die den Anwender auftauen, tauen auch das Ziel auf. Gen3+: Feuer-Attacken tauen das Ziel auf. Gen1-2: Attacken mit Brand-Chance tauen Ziel auf, egal ob es brennen kann oder nicht.
 #define B_HEALING_WISH_SWITCH       GEN_LATEST // In Gen5+: Empfänger von Heilwunsch kommt am Rundenende rein.
                                                // Gen8+: Heilwunsch-Effekt speichert sich bis Nutzer in Status/verletztes Mon wechselt.
-#define B_DEFOG_EFFECT_CLEARING     GEN_LATEST // Gen5+: Nebelfeld senkt nicht Fluchtwert hinter Delegation. Gen6+: Löscht Stachler, Giftspitzen, Tarnsteine, Klebenetz. Gen8+: Löscht Terrain.
-#define B_STOCKPILE_RAISES_DEFS     GEN_LATEST // In Gen4+: Lagerung erhöht auch Vert./Sp.-Vert. Beim Einsatz verloren.
-#define B_TRANSFORM_SHINY           GEN_LATEST // In Gen4+: Verwandlung kopiert Glitzer-Zustand statt beibehält.
+#define B_DEFOG_EFFECT_CLEARING     GEN_LATEST // Gen5+: Auflockern senkt nicht Fluchtwert hinter Delegation. Gen6+: Löscht Stachler, Giftspitzen, Tarnsteine, Klebenetz. Gen8+: Löscht Terrain.
+#define B_STOCKPILE_RAISES_DEFS     GEN_LATEST // In Gen4+: Horten erhöht auch Vert./Sp.-Vert. Beim Einsatz von Entfessler/Verzehrer verloren.
+#define B_TRANSFORM_SEMI_INV_FAIL   GEN_LATEST // In Gen2+: Verwandlung schlägt fehl, wenn das Ziel halbunverwundbar ist.
+#define B_TRANSFORM_TARGET_FAIL     GEN_LATEST // In Gen2+: Verwandlung schlägt fehl, wenn das Ziel bereits verwandelt ist.
+#define B_TRANSFORM_USER_FAIL       GEN_LATEST // In Gen5+: Verwandlung schlägt fehl, wenn der Anwender bereits verwandelt ist.
+#define B_TRANSFORM_SUBSTITUTE_FAIL GEN_LATEST // In Gen5+: Verwandlung schlägt fehl, wenn sich das Ziel hinter einem Delegator befindet.
+#define B_TRANSFORM_SHINY           GEN_LATEST // In Gen4+: Verwandlung kopiert Glitzer-Zustand statt ihn beizubehalten.
 #define B_TRANSFORM_FORM_CHANGES    GEN_LATEST // In Gen5+: Verwandelte Pokémon können Formen nicht wechseln.
-#define B_WIDE_GUARD                GEN_LATEST // Gen5 nur: Breitseit kaum fehl bei wiederholtem Einsatz.
-#define B_QUICK_GUARD               GEN_LATEST // Gen5 nur: Schnellschuss kaum fehl bei wiederholtem Einsatz.
-#define B_IMPRISON                  GEN_LATEST // In Gen5+: Einsperren schlägt nicht fehl, wenn Gegner keine Moves des Nutzers kennen.
-#define B_ALLY_SWITCH_FAIL_CHANCE   GEN_LATEST // In Gen9+: Wiederholter Verbündeten-Switch senkt Erfolgs-Chance.
-#define B_SKETCH_BANS               GEN_LATEST // In Gen9+: Skizze kopiert weniger Moves als frühere Gen.
+#define B_WIDE_GUARD                GEN_LATEST // Gen5 nur: Rundumschutz kaum fehl bei wiederholtem Einsatz.
+#define B_QUICK_GUARD               GEN_LATEST // Gen5 nur: Rapidschutz kaum fehl bei wiederholtem Einsatz.
+#define B_IMPRISON                  GEN_LATEST // In Gen5+: Begrenzer schlägt nicht fehl, wenn Gegner keine Moves des Nutzers kennen.
+#define B_TAUNT_ME_FIRST            GEN_LATEST // In Gen5+: Verhöhner blockiert Egotrip (Me First) nicht.
+#define B_ALLY_SWITCH_FAIL_CHANCE   GEN_LATEST // In Gen9+: Wiederholter Seitentausch senkt Erfolgs-Chance.
+#define B_SKETCH_BANS               GEN_LATEST // In Gen9+: Nachahmer kopiert weniger Moves als frühere Gen.
 #define B_KNOCK_OFF_REMOVAL         GEN_LATEST // In Gen5+: Abschlag entfernt Item statt macht es nutzlos.
-#define B_HEAL_BELL_SOUNDPROOF      GEN_LATEST // Gen5: Glocke heilt alle mit Lärmschutz. Gen6-8: Inaktive, nicht Kämpfer. Gen9: Nutzer immer.
-#define B_CHARGE                    GEN_LATEST // Gen3-7: Ladevorgang-Status verloren unabhängig Typ.
-#define B_POWDER_RAIN               GEN_LATEST // In Gen7+: Puder schadet nicht an Nutzer bei Starkregen.
-#define B_POWDER_STATUS_HEAVY_RAIN  GEN_LATEST // In Gen9+: Puder-Statusattacken schlagen bei extremem Regen fehl.
-#define B_AFTER_YOU_TURN_ORDER      GEN_LATEST // In Gen8+: Nachher schlägt nicht fehl wenn Reihenfolge gleich.
-#define B_QUASH_TURN_ORDER          GEN_LATEST // Gen8+: Quash-Nutzer nach Geschwindigkeit. Gen7-: In Quash-Reihenfolge.
-#define B_DESTINY_BOND_FAIL         GEN_LATEST // In Gen7+: Verhängnis schlägt bei Wiederholung fehl.
-#define B_FORESIGHT_FAIL            GEN_LATEST // Gen2 und Gen5+: Durchschauen schlägt gegen Ziel unter Effekt fehl.
+#define B_HEAL_BELL_SOUNDPROOF      GEN_LATEST // Gen5: Vitalglocke heilt alle mit Lärmschutz. Gen6-8: Inaktive, nicht Kämpfer. Gen9: Nutzer immer.
+#define B_CHARGE                    GEN_LATEST // In Gen9+: Ladevorgang-Status geht verloren, unabhängig vom Typ der nächsten Attacke.
+#define B_POWDER_STATUS_HEAVY_RAIN  GEN_LATEST // In Gen7+: Pulverschleuder fügt dem Anwender einer Feuer-Attacke bei Starkregen keinen Schaden zu.
+#define B_AFTER_YOU_TURN_ORDER      GEN_LATEST // In Gen8+: Verzögerung schlägt nicht fehl, wenn Reihenfolge gleich bleibt.
+#define B_QUASH_TURN_ORDER          GEN_LATEST // Gen8+: Verzögerer-Nutzer nach Geschwindigkeit. Gen7-: In Verzögerer-Reihenfolge.
+#define B_DESTINY_BOND_FAIL         GEN_LATEST // In Gen7+: Abgangsbund schlägt bei Wiederholung fehl.
+#define B_FORESIGHT_FAIL            GEN_LATEST // Gen2 und Gen5+: Gesichte schlägt gegen Ziel unter Effekt fehl.
 #define B_MIRACLE_EYE_FAIL          GEN_LATEST // In Gen5+: Wunderauge schlägt gegen Ziel unter Effekt fehl.
 #define B_PURSUIT_TARGET            GEN_LATEST // Gen4+: Verfolgung greift Wechsel-Gegner an, auch nicht gezielt. Gen3-: Nur gezielt.
-#define B_SKIP_RECHARGE             GEN_LATEST // Gen1: Auflade-Moves springen Aufladung, wenn Ziel K.O.
+#define B_SKIP_RECHARGE             GEN_LATEST // Gen1: Auflade-Moves überspringen Aufladung, wenn Ziel K.O.
 #define B_ENCORE_TARGET             GEN_LATEST // In Gen5+: Zugabe-Moves dürfen Ziel wählen.
 #define B_TIME_OF_DAY_HEALING_MOVES GEN_LATEST // Gen2: Morgengrauen/Mondschein/Synthese heilen 2x bei Tageszeit. Abend hilft Mondschein.
                                                // OW_TIMES_OF_DAY Gen3+: Morgengrauen geht bei Tag.
-#define B_DREAM_EATER_LIQUID_OOZE   GEN_LATEST // In Gen5+: Traumfresser betroffen von Flüssiger Schleim.
+#define B_DREAM_EATER_LIQUID_OOZE   GEN_LATEST // In Gen5+: Traumfresser betroffen von Kloakensoße.
 #define B_DREAM_EATER_SUBSTITUTE    GEN_LATEST // In Gen5+: Traumfresser trifft und drainiert Delegation.
 #define B_SNATCH                    GEN_LATEST // In Gen5+ stiehlt Übernahme keine Attacken mehr, die bereits im selben Zug von einem anderen Pokémon durch Übernahme gestohlen wurden.
 #define B_FOCUS_PUNCH_FAILURE       GEN_LATEST // Um zu bestimmen, ob der Fokus verloren geht, wird in Gen4- geprüft, ob die aktuelle Attacke Power-Punch ist.
@@ -151,7 +156,7 @@
 #define B_COUNTER_TRY_HIT_PARTNER   GEN_LATEST // In Gen5+ wird der Angriff auf den Partner umgeleitet, wenn das Pokémon, das den letzten Angriff ausgeführt hat, nicht mehr auf dem Feld ist. In Gen4- würden Konter/Spiegelcape/Metallstoß in diesem Fall fehlschlagen.
 #define B_RAGE_BUILDS               GEN_LATEST // In Gen4+ tritt der Effekt von Raserei nur ein, wenn die Attacke erfolgreich trifft. In Gen3 tritt der Effekt ein, egal ob sie trifft, danebengeht oder fehlschlägt.
 #define B_CHECK_USER_FAILURE        GEN_LATEST // In Gen5+ prüft der Anwender nicht mehr auf eigenes Fehlschlagen, z.B. blockiert Lärmschutz nicht mehr den eigenen Abgesang.
-
+#define B_ABSORB_MESSAGE            GEN_LATEST // In Gen5+: Keine Absorber-Nachricht wird angezeigt, wenn der Anwender bereits volle KP hat.
 // Fähigkeits-Einstellungen
 #define B_GALE_WINGS                GEN_LATEST // In Gen7+ nur bei vollen KP aktiv.
 #define B_STANCE_CHANGE_FAIL        GEN_LATEST // In Gen7+ scheitert Taktikwechsel bei Status wie Paralyse/Verwirrung. In Gen6 nicht.

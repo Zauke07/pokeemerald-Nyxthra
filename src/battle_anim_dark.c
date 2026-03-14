@@ -274,10 +274,10 @@ static void AnimPunishment(struct Sprite *sprite)
 
 void AnimTask_AttackerFadeToInvisible(u8 taskId)
 {
+    CMD_ARGS(stepDelay);
+
     enum BattlerId battler;
-    
-    // Die Expansion nutzt jetzt gBattleAnimArgs statt CMD_ARGS
-    gTasks[taskId].data[0] = gBattleAnimArgs[0]; 
+    gTasks[taskId].data[0] = cmd->stepDelay;
     battler = gBattleAnimAttacker;
     gTasks[taskId].data[1] = 16;
     
@@ -439,11 +439,12 @@ static void AnimBite_Step2(struct Sprite *sprite)
 // Launches a tear drop away from the battler. Used by Fake Tears
 void AnimTearDrop(struct Sprite *sprite)
 {
-    enum BattlerId battler;
+    CMD_ARGS(relativeTo, type);
+
+    u8 battler;
     s8 xOffset;
 
-    // In 1.15.0 nutzen wir gBattleAnimArgs[index] statt cmd->
-    if (gBattleAnimArgs[0] == ANIM_ATTACKER)
+    if (cmd->relativeTo == ANIM_ATTACKER)
         battler = gBattleAnimAttacker;
     else
         battler = gBattleAnimTarget;
@@ -451,8 +452,7 @@ void AnimTearDrop(struct Sprite *sprite)
     xOffset = 20;
     sprite->oam.tileNum += 4;
 
-    // gBattleAnimArgs[1] entspricht dem alten cmd->type
-    switch (gBattleAnimArgs[1])
+    switch (cmd->type)
     {
     case 0:
         sprite->x = GetBattlerSpriteCoordAttr(battler, BATTLER_COORD_ATTR_RIGHT) - 8;
@@ -1021,7 +1021,7 @@ void AnimTask_SetGrayscaleOrOriginalPal(u8 taskId)
     enum BattlerId battlerId;
     bool8 calcSpriteId = FALSE;
     u8 position = B_POSITION_PLAYER_LEFT;
-    enum AnimBattler animBattler = gBattleAnimArgs[0];
+    enum AnimBattler animBattler = cmd->battler;
 
     switch (animBattler)
     {

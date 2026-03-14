@@ -289,7 +289,7 @@ static void AnimMovePowerSwapGuardSwapWait(struct Sprite *sprite)
 static void AnimMovePowerSwapGuardSwap(struct Sprite *sprite)
 {
     StartSpriteAnim(sprite, gBattleAnimArgs[2]);
-    if(gBattleAnimArgs[3] == 0)
+    if (gBattleAnimArgs[3] == 0)
     {
         InitSpritePosToAnimAttacker(sprite, TRUE);
         sprite->data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X);
@@ -582,6 +582,8 @@ static void AnimTask_BlendColorCycleLoop(u8 taskId)
 // See AnimTask_BlendColorCycle. Same, but excludes Attacker and Target
 void AnimTask_BlendColorCycleExclude(u8 taskId)
 {
+    CMD_ARGS(unk0, delay, numBlends, initialBlendY, targetBlendY, color);
+
     u32 selectedPalettes = 0;
 
     // In 1.15.0 mappen wir die Argumente direkt aus gBattleAnimArgs
@@ -863,6 +865,8 @@ void AnimTask_InvertScreenColor(u8 taskId)
 #define tColorB        data[7]
 void AnimTask_TintPalettes(u8 taskId)
 {
+    CMD_ARGS(flagsScenery, flagsAttacker, flagsTarget, duration, r, g, b);
+
     enum BattlerId attackerBattler;
     enum BattlerId targetBattler;
     u8 paletteIndex;
@@ -962,8 +966,6 @@ static void AnimShakeMonOrBattlePlatforms(struct Sprite *sprite)
 
 static void AnimShakeMonOrBattlePlatforms_Step(struct Sprite *sprite)
 {
-    u16 var0; // Übernommen aus der Expansion für künftige Pointer-Arithmetik
-
     if (sprite->sTimer > 0)
     {
         sprite->sTimer--;
@@ -1130,12 +1132,11 @@ static void AnimHitSplatHandleInvert(struct Sprite *sprite)
 
 void AnimHitSplatRandom(struct Sprite *sprite)
 {
-    // gBattleAnimArgs[0] entspricht relativeTo
-    enum AnimBattler animBattler = gBattleAnimArgs[0];
+    CMD_ARGS(relativeTo, animation);
 
-    // gBattleAnimArgs[1] entspricht animation
-    if (gBattleAnimArgs[1] == -1)
-        gBattleAnimArgs[1] = Random2() & 3;
+    enum AnimBattler animBattler = cmd->relativeTo;
+    if (cmd->animation == -1)
+        cmd->animation = Random2() & 3;
 
     if (!InitSpritePosToAnimBattler(animBattler, sprite, FALSE))
         return;
@@ -1151,9 +1152,9 @@ void AnimHitSplatRandom(struct Sprite *sprite)
 
 void AnimHitSplatOnMonEdge(struct Sprite *sprite)
 {
-    // Mapping der Argumente: 0: battler, 1: x, 2: y, 3: animation
-    enum AnimBattler animBattler = gBattleAnimArgs[0];
+    CMD_ARGS(relativeTo, x, y, animation);
 
+    enum AnimBattler animBattler = cmd->relativeTo;
     sprite->data[0] = GetAnimBattlerSpriteId(animBattler);
     sprite->x = gSprites[sprite->data[0]].x + gSprites[sprite->data[0]].x2;
     sprite->y = gSprites[sprite->data[0]].y + gSprites[sprite->data[0]].y2;

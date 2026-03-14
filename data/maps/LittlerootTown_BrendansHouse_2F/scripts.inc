@@ -361,7 +361,7 @@ PlayersHouse_2F_Text_Notebook:
 
 Common_Text_LookCloserAtMap:
 	.string "{PLAYER} schaut sich die Karte der\n"
-	.string "HOENN-Region genauer an.$"
+	.string "{REGION}-Region genauer an.$"
 
 PlayersHouse_2F_Text_ItsAGameCube:
 	.string "Das ist ein Nintendo GameCube.\p"
