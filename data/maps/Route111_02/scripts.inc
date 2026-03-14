@@ -69,7 +69,7 @@ Route111_02_EventScript_TriggerBlockedPath::
 	end
 
 Route111_02_Text_PlayerBlockedPath:
-	.string "{COLOR RED}{PLAYER}: Hm… Hier gehts erstmal\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Hm… Hier gehts erstmal\n"
 	.string "nicht weiter.\p"
 	.string "Ich frage mich, was in den drei Höhlen\n"
 	.string "drin sein könnte…{COLOR WHITE}$"

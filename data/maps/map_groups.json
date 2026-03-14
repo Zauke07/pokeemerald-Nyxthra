@@ -491,7 +491,9 @@
     "GraniteCave_B4F",
     "GraniteCave_B4F_2",
     "MeteorFalls",
-    "ScorchedSlabSecret"
+    "ScorchedSlabSecret",
+    "Meteorfalls_B1F_3R",
+    "MeteorFalls_B1F_4R"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

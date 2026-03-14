@@ -192,6 +192,13 @@
       "elevation": 0,
       "dest_map": "MAP_METEOR_FALLS_STEVENS_CAVE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 39,
+      "elevation": 0,
+      "dest_map": "MAP_METEORFALLS_B1F_3R",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

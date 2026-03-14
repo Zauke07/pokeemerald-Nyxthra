@@ -34,7 +34,7 @@ Baustelle_Movement_RunUpLook:
 	step_end
 
 Baustelle_Text_PlayerBlockedStairs:
-	.string "{COLOR RED}{PLAYER}: Hm… Beide Treppen sind mit\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Hm… Beide Treppen sind mit\n"
 	.string "Steinen umstellt. Da komme ich erstmal\l"
 	.string "nicht weiter.\p"
 	.string "Merkwürdig…{COLOR WHITE}$"

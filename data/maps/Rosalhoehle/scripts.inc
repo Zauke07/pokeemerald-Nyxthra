@@ -34,7 +34,7 @@ Rosalhoehle_Movement_RunUpLook:
 	step_end
 
 Rosalhoehle_Text_PlayerBlockedStairs:
-	.string "{PLAYER}: Hm… Beide Treppen sind mit\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Hm… Beide Treppen sind mit\n"
 	.string "Steinen umstellt. Da komme ich erstmal\l"
 	.string "nicht weiter.\p"
-	.string "Merkwürdig…$"
+	.string "Merkwürdig…{COLOR WHITE}$"

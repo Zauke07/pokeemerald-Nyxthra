@@ -4874,7 +4874,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_PlayersHouse_1F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F_FRLG",
@@ -4887,7 +4887,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_PlayersHouse_2F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_RIVALS_HOUSE",
@@ -4900,7 +4900,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_RivalsHouse_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_PROFESSOR_OAKS_LAB",
@@ -4913,7 +4913,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_ProfessorOaksLab_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_HOUSE1_FRLG",
@@ -5381,7 +5381,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_VIRIDIAN_CITY",
@@ -9440,7 +9440,7 @@
       "width": 39,
       "height": 50,
       "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/PansionLabor/border.bin",
       "blockdata_filepath": "data/layouts/PansionLabor/map.bin",
       "layout_version": "emerald"
@@ -9609,6 +9609,26 @@
       "border_filepath": "data/layouts/Testlabor_Unterwasser/border.bin",
       "blockdata_filepath": "data/layouts/Testlabor_Unterwasser/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_METEORFALLS_B1F_3R",
+      "name": "Meteorfalls_B1F_3R_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MeteorFalls",
+      "border_filepath": "data/layouts/Meteorfalls_B1F_3R/border.bin",
+      "blockdata_filepath": "data/layouts/Meteorfalls_B1F_3R/map.bin"
+    },
+    {
+      "id": "LAYOUT_METEOR_FALLS_B1F_4R",
+      "name": "MeteorFalls_B1F_4R_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General_Frlg",
+      "secondary_tileset": "gTileset_SeafoamIslands",
+      "border_filepath": "data/layouts/MeteorFalls_B1F_4R/border.bin",
+      "blockdata_filepath": "data/layouts/MeteorFalls_B1F_4R/map.bin"
     }
   ]
 }

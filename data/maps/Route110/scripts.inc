@@ -5426,21 +5426,21 @@ Route110_Text_Flemmli:
 	.string "herausfinden :D !$"
 
 Route110_Text_SnorlaxSleeping::
-	.string "{COLOR RED}{PLAYER}: Meine Fresse…\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Meine Fresse…\n"
 	.string "Was ist das denn?!\p"
-	.string "{PLAYER}: Ah, ein dickes fettes\n"
-	.string "{COLOR BLUE}Relaxo{COLOR RED}.\p"
-	.string "{PLAYER}: Wenn ich hier durch will,\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Ah, ein dickes fettes\n"
+	.string "{COLOR BLUE}Relaxo{COLOR PLAYER_CLR}.\p"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Wenn ich hier durch will,\n"
 	.string "muss ich wohl die Pokéflöte spielen…{COLOR WHITE}$"
 
 Route110_Text_SnorlaxSearchBag::
-	.string "{COLOR RED}{PLAYER}: Durchsucht den Beutel…\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Durchsucht den Beutel…\n"
 	.string "…\l"
 	.string "…\p"
 	.string "…{COLOR WHITE}$"
 
 Route110_Text_SnorlaxNoFluteFound::
-	.string "{COLOR RED}{PLAYER}: Fuck!\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Fuck!\n"
 	.string "Ich hab noch keine Pokéflöte…\p"
 	.string "Vielleicht sollte ich den Strand\n"
 	.string "absuchen…{COLOR WHITE}$"

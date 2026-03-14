@@ -1511,10 +1511,10 @@ PetalburgCity_Gym_Text_NormanRematchDefeat:
 PetalburgCity_Gym_Text_NormanPostRematch:
 	.string "Dad: {PLAYER}…\n"
 	.string "Was ist eigentlich dein Traum?\p"
-	.string "{PLAYER}: Mein Traum…?\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Mein Traum…?\n"
 	.string "Hahaha…\l"
 	.string "Ich glaub, der ist längst wahr geworden.\p"
-    .string "Spaß, natürlich der Stärkste werden!\p"
+    .string "Spaß, natürlich der Stärkste werden!\p{COLOR WHITE}"
     .string "Dad: Hm, das ist ein guter Traum.\p"
     .string "Ich bin stolz auf dich, {PLAYER}.\n"
     .string "Du bist ein toller Trainer geworden.\l"

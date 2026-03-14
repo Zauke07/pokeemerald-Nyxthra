@@ -19,6 +19,6 @@ GraniteCave_B4F_EventScript_IntroAlreadyDone::
 	end
 
 GraniteCave_B4F_Text_Intro:
-	.string "{PLAYER}: Wow, die Höhle hier sieht\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Wow, die Höhle hier sieht\n"
 	.string "aber lang aus…\p"
-	.string "Was mich am Ende wohl erwartet?$"
+	.string "Was mich am Ende wohl erwartet?{COLOR WHITE}$"
