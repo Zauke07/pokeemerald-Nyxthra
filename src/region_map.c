@@ -144,10 +144,26 @@ static const u16 sRegionMapPlayerIcon_HilbertPal[] = INCBIN_U16("graphics/pokena
 static const u8  sRegionMapPlayerIcon_HilbertGfx[] = INCBIN_U8("graphics/pokenav/region_map/hilbert_icon.4bpp");
 static const u16 sRegionMapPlayerIcon_HildaPal[]   = INCBIN_U16("graphics/pokenav/region_map/hilda_icon.gbapal");
 static const u8  sRegionMapPlayerIcon_HildaGfx[]   = INCBIN_U8("graphics/pokenav/region_map/hilda_icon.4bpp");
-static const u16 sRegionMapPlayerIcon_RedPal[] = INCBIN_U16("graphics/pokenav/region_map/red_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_RedGfx[] = INCBIN_U8("graphics/pokenav/region_map/red_icon.4bpp");
-static const u16 sRegionMapPlayerIcon_LeafPal[] = INCBIN_U16("graphics/pokenav/region_map/leaf_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_LeafGfx[] = INCBIN_U8("graphics/pokenav/region_map/leaf_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_NatePal[]    = INCBIN_U16("graphics/pokenav/region_map/nate_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_NateGfx[]    = INCBIN_U8("graphics/pokenav/region_map/nate_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_RosaPal[]    = INCBIN_U16("graphics/pokenav/region_map/rosa_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_RosaGfx[]    = INCBIN_U8("graphics/pokenav/region_map/rosa_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_CalemPal[]   = INCBIN_U16("graphics/pokenav/region_map/calem_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_CalemGfx[]   = INCBIN_U8("graphics/pokenav/region_map/calem_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_SerenaPal[]  = INCBIN_U16("graphics/pokenav/region_map/serena_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_SerenaGfx[]  = INCBIN_U8("graphics/pokenav/region_map/serena_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_ElioPal[]    = INCBIN_U16("graphics/pokenav/region_map/elio_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_ElioGfx[]    = INCBIN_U8("graphics/pokenav/region_map/elio_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_SelenePal[]  = INCBIN_U16("graphics/pokenav/region_map/selene_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_SeleneGfx[]  = INCBIN_U8("graphics/pokenav/region_map/selene_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_VictorPal[]  = INCBIN_U16("graphics/pokenav/region_map/victor_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_VictorGfx[]  = INCBIN_U8("graphics/pokenav/region_map/victor_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_GloriaPal[]  = INCBIN_U16("graphics/pokenav/region_map/gloria_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_GloriaGfx[]  = INCBIN_U8("graphics/pokenav/region_map/gloria_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_FlorianPal[] = INCBIN_U16("graphics/pokenav/region_map/florian_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_FlorianGfx[] = INCBIN_U8("graphics/pokenav/region_map/florian_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_JulianaPal[] = INCBIN_U16("graphics/pokenav/region_map/juliana_icon.gbapal");
+static const u8  sRegionMapPlayerIcon_JulianaGfx[] = INCBIN_U8("graphics/pokenav/region_map/juliana_icon.4bpp");
 
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
@@ -1793,6 +1809,46 @@ void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag)
         case STYLE_HILDA:
             sheet.data   = sRegionMapPlayerIcon_HildaGfx;
             palette.data = sRegionMapPlayerIcon_HildaPal;
+            break;
+        case STYLE_NATE:
+            sheet.data   = sRegionMapPlayerIcon_NateGfx;
+            palette.data = sRegionMapPlayerIcon_NatePal;
+            break;
+        case STYLE_ROSA:
+            sheet.data   = sRegionMapPlayerIcon_RosaGfx;
+            palette.data = sRegionMapPlayerIcon_RosaPal;
+            break;
+        case STYLE_CALEM:
+            sheet.data   = sRegionMapPlayerIcon_CalemGfx;
+            palette.data = sRegionMapPlayerIcon_CalemPal;
+            break;
+        case STYLE_SERENA:
+            sheet.data   = sRegionMapPlayerIcon_SerenaGfx;
+            palette.data = sRegionMapPlayerIcon_SerenaPal;
+            break;
+        case STYLE_ELIO:
+            sheet.data   = sRegionMapPlayerIcon_ElioGfx;
+            palette.data = sRegionMapPlayerIcon_ElioPal;
+            break;
+        case STYLE_SELENE:
+            sheet.data   = sRegionMapPlayerIcon_SeleneGfx;
+            palette.data = sRegionMapPlayerIcon_SelenePal;
+            break;
+        case STYLE_VICTOR:
+            sheet.data   = sRegionMapPlayerIcon_VictorGfx;
+            palette.data = sRegionMapPlayerIcon_VictorPal;
+            break;
+        case STYLE_GLORIA:
+            sheet.data   = sRegionMapPlayerIcon_GloriaGfx;
+            palette.data = sRegionMapPlayerIcon_GloriaPal;
+            break;
+        case STYLE_FLORIAN:
+            sheet.data   = sRegionMapPlayerIcon_FlorianGfx;
+            palette.data = sRegionMapPlayerIcon_FlorianPal;
+            break;
+        case STYLE_JULIANA:
+            sheet.data   = sRegionMapPlayerIcon_JulianaGfx;
+            palette.data = sRegionMapPlayerIcon_JulianaPal;
             break;
         default:
             if (IsFemaleStyle(style))

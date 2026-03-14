@@ -584,6 +584,8 @@ void PlaySE12WithPanning(u16 songNum, s8 pan)
     m4aSongNumStart(songNum);
     m4aMPlayImmInit(&gMPlayInfo_SE1);
     m4aMPlayImmInit(&gMPlayInfo_SE2);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE1, TRACKS_ALL, 256);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE2, TRACKS_ALL, 256);
     m4aMPlayPanpotControl(&gMPlayInfo_SE1, TRACKS_ALL, pan);
     m4aMPlayPanpotControl(&gMPlayInfo_SE2, TRACKS_ALL, pan);
 }
@@ -592,6 +594,7 @@ void PlaySE1WithPanning(u16 songNum, s8 pan)
 {
     m4aSongNumStart(songNum);
     m4aMPlayImmInit(&gMPlayInfo_SE1);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE1, TRACKS_ALL, 256);
     m4aMPlayPanpotControl(&gMPlayInfo_SE1, TRACKS_ALL, pan);
 }
 
@@ -599,6 +602,7 @@ void PlaySE2WithPanning(u16 songNum, s8 pan)
 {
     m4aSongNumStart(songNum);
     m4aMPlayImmInit(&gMPlayInfo_SE2);
+    m4aMPlayVolumeControl(&gMPlayInfo_SE2, TRACKS_ALL, 256);
     m4aMPlayPanpotControl(&gMPlayInfo_SE2, TRACKS_ALL, pan);
 }
 

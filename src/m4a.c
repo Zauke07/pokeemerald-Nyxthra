@@ -111,6 +111,9 @@ void m4aSongNumStart(u16 n)
     const struct MusicPlayer *mplay = &mplayTable[song->ms];
 
     MPlayStart(mplay->info, song->header);
+
+    // Ensure current channel options are applied immediately to newly started songs.
+    m4aMPlayVolumeControl(mplay->info, TRACKS_ALL, 256);
 }
 
 void m4aSongNumStartOrChange(u16 n)
@@ -132,6 +135,8 @@ void m4aSongNumStartOrChange(u16 n)
             MPlayStart(mplay->info, song->header);
         }
     }
+
+    m4aMPlayVolumeControl(mplay->info, TRACKS_ALL, 256);
 }
 
 static void UNUSED m4aSongNumStartOrContinue(u16 n)
@@ -750,9 +755,11 @@ void FadeOutBody(struct MusicPlayerInfo *mplayInfo)
     {
         if (track->flags & MPT_FLG_EXIST)
         {
+            u16 rawVol;
             fadeOV = mplayInfo->fadeOV;
-
-            track->volX = (fadeOV >> FADE_VOL_SHIFT);
+            // Scale through user volume setting so fade-in ends at configured level.
+            rawVol = (u16)((fadeOV >> FADE_VOL_SHIFT) * 4);
+            track->volX = Rogue_ModifySoundVolume(mplayInfo, rawVol, ROGUE_SOUND_TYPE_UNKNOWN) / 4;
             track->flags |= MPT_FLG_VOLCHG;
         }
 
@@ -1245,10 +1252,14 @@ void m4aMPlayVolumeControl(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u16
 {
     s32 i;
     u32 bit;
+    u16 adjustedVolume;
     struct MusicPlayerTrack *track;
 
     if (mplayInfo->ident != ID_NUMBER)
         return;
+
+    // Apply user-configured audio channel scaling (BGM / UI SE / battle SE).
+    adjustedVolume = Rogue_ModifySoundVolume(mplayInfo, volume, ROGUE_SOUND_TYPE_UNKNOWN);
 
     mplayInfo->ident++;
 
@@ -1262,7 +1273,7 @@ void m4aMPlayVolumeControl(struct MusicPlayerInfo *mplayInfo, u16 trackBits, u16
         {
             if (track->flags & MPT_FLG_EXIST)
             {
-                track->volX = volume / 4;
+                track->volX = adjustedVolume / 4;
                 track->flags |= MPT_FLG_VOLCHG;
             }
         }

@@ -2965,3 +2965,8 @@
 	getbraillestringwidth \text
 	call EventScript_BrailleCursorWaitButton
 	.endm
+
+	@ Stores the player's gender (MALE=0, FEMALE=1) in VAR_RESULT.
+	.macro checkplayergender
+	.byte SCR_OP_CHECKPLAYERGENDER
+	.endm

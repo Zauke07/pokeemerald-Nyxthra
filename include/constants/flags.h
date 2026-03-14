@@ -1236,10 +1236,10 @@
 #define FLAG_HIDE_ROUTE_111_02_LANDORUS                             0x497 // new route 111.2
 #define FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE                         0x498 // ScorchedSlabSecret Uxie verstecken
 //#define FLAG_SCORCHED_SLAB_SECRET_REMOVE_UXIE                       0x499 // ScorchedSlabSecret Uxie entfernen
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
+#define FLAG_HIDE_METEOR_FALLS_B1F_4R_ARTICUNO                      0x49A // Meteor Falls Aktos verstecken
+#define FLAG_ITEM_METEOR_FALLS_B1F_4R_FULL_RESTORE                  0x49B // Meteor Falls Aktosraum Top-Genesung
+#define FLAG_ITEM_METEOR_FALLS_B1F_4R_ICE_HEAL                      0x49C // Meteor Falls Aktosraum Eisheiler
+#define FLAG_DEFEATED_METEOR_FALLS_ARTICUNO                         0x49D // Meteor Falls Aktos besiegt/gefangen
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
 #define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
 #define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag

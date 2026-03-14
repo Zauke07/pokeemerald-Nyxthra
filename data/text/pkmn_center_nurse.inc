@@ -9,7 +9,7 @@ gText_IllTakeYourPkmn::
 
 gText_RestoredPkmnToFullHealth::
 	.string "Fertig.\p"
-	.string "Sie leben noch. Leider.$"
+	.string "Sie leben wieder.$"
 
 gText_WeHopeToSeeYouAgain::
 	.string "Hau ab und lass dich nicht überfahren!$"

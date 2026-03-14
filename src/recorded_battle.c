@@ -3,6 +3,7 @@
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "recorded_battle.h"
+#include "option_menu.h"
 #include "main.h"
 #include "pokemon.h"
 #include "random.h"
@@ -401,7 +402,7 @@ bool32 MoveRecordedBattleToSaveData(void)
     battleSave->lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
     battleSave->frontierFacility = sFrontierFacility;
     battleSave->frontierBrainSymbol = sFrontierBrainSymbol;
-    battleSave->battleScene = gSaveBlock2Ptr->optionsBattleSceneOff;
+    battleSave->battleScene = !Rogue_GetBattleAnimsEnabled();
     battleSave->textSpeed = gSaveBlock2Ptr->optionsTextSpeed;
 
     if (TRAINER_BATTLE_PARAM.opponentA >= TRAINER_RECORD_MIXING_FRIEND && TRAINER_BATTLE_PARAM.opponentA < TRAINER_RECORD_MIXING_APPRENTICE)

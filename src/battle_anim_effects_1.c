@@ -7117,8 +7117,11 @@ void SetSpriteNextToMonHead(enum BattlerId battler, struct Sprite *sprite)
 
 void AnimThoughtBubble(struct Sprite *sprite)
 {
+    CMD_ARGS(unk0, unk1);
+
     u8 animNum;
     enum BattlerId battler;
+
     if (cmd->unk0 == 0)
         battler = gBattleAnimAttacker;
     else
@@ -7127,8 +7130,7 @@ void AnimThoughtBubble(struct Sprite *sprite)
     SetSpriteNextToMonHead(battler, sprite);
     animNum = (IsOnPlayerSide(battler)) ? 0 : 1;
 
-    // gBattleAnimArgs[1] ersetzt cmd->unk1 (Dauer/Delay)
-    sprite->data[0] = gBattleAnimArgs[1];
+    sprite->data[0] = cmd->unk1;
     sprite->data[1] = animNum + 2;
     
     StartSpriteAnim(sprite, animNum);

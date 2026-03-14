@@ -54,6 +54,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 20
             .lvl = 42,
+            .ball = POKEBALL_COUNT,
 #line 19
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -75,6 +76,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 30
             .lvl = 43,
+            .ball = POKEBALL_COUNT,
 #line 29
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
@@ -96,6 +98,7 @@
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 40
             .lvl = 44,
+            .ball = POKEBALL_COUNT,
 #line 39
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,

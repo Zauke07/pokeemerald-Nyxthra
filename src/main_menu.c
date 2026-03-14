@@ -130,8 +130,8 @@ static void NewGameBirchSpeech_ShowGenderMenu(void);
 static void Task_NewGameBirchSpeech_GenderMenuSlideOut(u8 taskId);
 static void Task_NewGameBirchSpeech_GenderMenuSlideIn(u8 taskId);
 
-static enum Gender NewGameBirchSpeech_ProcessGenderMenuInput(void);
-static void NewGameBirchSpeech_ClearGenderWindow(u8 arg1, u8 arg2);
+// static enum Gender NewGameBirchSpeech_ProcessGenderMenuInput(void);
+// static void NewGameBirchSpeech_ClearGenderWindow(u8 arg1, u8 arg2);
 
 // ROM declarations
 static const u16 sBirchSpeechBgPals[][16] = {
@@ -418,6 +418,8 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
 
 static void Task_MainMenuCheckSaveFile(u8 taskId)
 {
+    s16 *data = gTasks[taskId].data;
+    
     if (!gPaletteFade.active)
     {
         SetGpuReg(REG_OFFSET_WIN0H, 0);
@@ -529,6 +531,8 @@ static void Task_WaitForBatteryDryErrorWindow(u8 taskId)
 
 static void Task_DisplayMainMenu(u8 taskId)
 {
+    s16 *data = gTasks[taskId].data;
+    
     u16 palette;
 
     if (!gPaletteFade.active)
@@ -2230,6 +2234,7 @@ void CreateYesNoMenuParameterized(u8 x, u8 y, u16 baseTileNum, u16 baseBlock, u8
     CreateYesNoMenu(&template, baseTileNum, yesNoPalNum, 0);
 }
 
+/*
 static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
 {
     CallWindowFunction(windowId, NewGameBirchSpeech_CreateDialogueWindowBorder);
@@ -2237,6 +2242,7 @@ static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
     PutWindowTilemap(windowId);
     if (copyToVram == TRUE) CopyWindowToVram(windowId, COPYWIN_FULL);
 }
+*/
 
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
 {

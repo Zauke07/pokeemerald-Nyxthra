@@ -253,6 +253,7 @@
 #define TEXT_DYNAMIC_COLOR_4    0xD // Usually aquamarine
 #define TEXT_DYNAMIC_COLOR_5    0xE // Usually blue-green
 #define TEXT_DYNAMIC_COLOR_6    0xF // Usually cerulean
+#define TEXT_COLOR_PLAYER       0x10
 #define TEXT_COLOR_RIVAL        TEXT_DYNAMIC_COLOR_6
 //#define TEXT_COLOR_RIVAL_MALE   TEXT_COLOR_RED
 //#define TEXT_COLOR_RIVAL_FEMALE TEXT_COLOR_BLUE

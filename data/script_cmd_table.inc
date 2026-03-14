@@ -271,6 +271,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_FORMAT_CURRENT_TIME           ScrCmd_FormatCurrentTimeAndDaytime, requests_effects=1 @ 0xf6
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xf7
 	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xf8
+	script_cmd_table_entry SCR_OP_CHECKPLAYERGENDER             ScrCmd_checkplayergender,           requests_effects=1  @ 0xf9
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

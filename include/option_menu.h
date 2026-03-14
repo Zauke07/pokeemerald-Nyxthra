@@ -9,7 +9,7 @@
 void CB2_InitOptionMenu(void);
 bool8 Rogue_GetBattleAnimsEnabled(void);
 //bool8 RogueToD_ApplyTimeVisuals();
-u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType);
+u16 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u16 volume, u16 soundType);
 void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive);
 bool8 Rogue_ShouldForceNicknameScreen();
 bool8 Rogue_ShouldSkipAssignNickname(struct Pokemon* mon);
@@ -26,6 +26,7 @@ bool8 RogueGift_CanRenameCustomMon(u32 id);
 bool8 Rogue_CanRenameMon(struct Pokemon* mon);
 void Rogue_AssistantOverworldCB();
 void Rogue_ResetRunningToggle(void);
+void Rogue_ResetBattleSpeedState(void);
 
 
 #endif // GUARD_OPTION_MENU_H

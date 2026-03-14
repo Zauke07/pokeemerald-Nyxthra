@@ -1654,7 +1654,7 @@ const u16 gTilesetPalettes_Team_Rocket[][16] =
 
 const u32 gTilesetTiles_Team_Rocket[] = INCBIN_U32("data/tilesets/primary/team_rocket/tiles.4bpp.lz");
 
-#if IS_FRLG
+#if 1
 
 const u32 gTilesetTiles_Building_Frlg[] = INCBIN_U32("data/tilesets/primary/building_frlg/tiles.4bpp.smol");
 

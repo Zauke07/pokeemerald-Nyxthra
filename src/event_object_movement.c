@@ -737,7 +737,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 
     {gObjectEventPal_Misc_Peonia,           OBJ_EVENT_PAL_TAG_MISC_PEONIA},
     {gObjectEventPal_RouteExt,              OBJ_EVENT_PAL_TAG_ROUTE_EXT},
-#if IS_FRLG
+#if 1
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflectionFrlg,  OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_GREEN},

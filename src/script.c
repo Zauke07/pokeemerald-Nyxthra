@@ -704,6 +704,12 @@ bool8 ScrCmd_IsStyleMale(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = gSaveBlock2Ptr->playerGender;
+    return FALSE;
+}
+
 bool8 isstylemale(u8 style)
 {
     return IsPlayerStyleMale(style);

@@ -87,6 +87,7 @@ bool8 StartCharacterStyleSelection(struct ScriptContext *ctx);
 bool8 ScrCmd_BufferStyleNameToStringVar1(struct ScriptContext *ctx);
 bool8 ScrCmd_CheckPlayerPCStyle_MaysHouse(struct ScriptContext *ctx);
 bool8 ScrCmd_CheckPlayerPCStyle_BrendansHouse(struct ScriptContext *ctx);
+bool8 ScrCmd_checkplayergender(struct ScriptContext *ctx);
 
 
 

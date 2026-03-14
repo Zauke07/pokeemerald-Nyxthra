@@ -16,6 +16,7 @@
 #include "malloc.h"
 #include "menu.h"
 #include "m4a.h"
+#include "option_menu.h"
 #include "palette.h"
 #include "pokemon.h"
 #include "sound.h"
@@ -528,6 +529,29 @@ static void WaitAnimFrameCount(void)
     {
         sAnimFramesToWait--;
     }
+}
+
+void RunBattleAnimScriptFrame(void)
+{
+    u8 speedScale = Rogue_GetBattleSpeedScale(FALSE);
+    u8 steps = speedScale;
+    u8 i;
+
+    if (steps < 1)
+        steps = 1;
+
+    while (steps-- && gAnimScriptActive)
+    {
+        if (gAnimScriptCallback == NULL)
+            break;
+
+        gAnimScriptCallback();
+    }
+
+    // Visual tasks often depend on sprite callbacks, so advance sprite animation
+    // extra times to make 2x/3x/4x settings perceptible.
+    for (i = 1; i < speedScale; i++)
+        AnimateSprites();
 }
 
 static void RunAnimScriptCommand(void)

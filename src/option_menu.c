@@ -41,6 +41,11 @@ void Rogue_ResetRunningToggle(void)
     gRogueLocal.runningToggleActive = FALSE;
 }
 
+void Rogue_ResetBattleSpeedState(void)
+{
+    gRogueLocal.hasBattleInputStarted = FALSE;
+}
+
 // Task data
 enum
 {
@@ -383,7 +388,6 @@ static const struct MenuEntries sOptionMenuEntries[SUBMENUITEM_COUNT] =
             MENUITEM_POPUP_SOUND,
             MENUITEM_SOUND_LOW_HEALTH,
             MENUITEM_SOUND_CHANNEL_BGM,
-            MENUITEM_SOUND_CHANNEL_SE,
             MENUITEM_SOUND_CHANNEL_BATTLE_SE,
             MENUITEM_CANCEL
         }
@@ -1301,16 +1305,8 @@ static void SetMenuItemValue(u8 menuItem, u8 value)
         break;
         
     case MENUITEM_SOUND_CHANNEL_BGM:
-        {
-            bool8 refreshMus = gSaveBlock2Ptr->optionsSoundChannelBGM == 0 || value == 0;
-
-            gSaveBlock2Ptr->optionsSoundChannelBGM = value;
-
-            if(refreshMus)
-                FadeOutAndPlayNewMapMusic(GetCurrentMapMusic(), 1);
-            else
-                m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 256);
-        }
+        gSaveBlock2Ptr->optionsSoundChannelBGM = value;
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 256);
         break;
         
     case MENUITEM_SOUND_CHANNEL_SE:
@@ -1403,7 +1399,11 @@ bool8 RogueGift_CanRenameCustomMon(u32 id)
 
 bool8 Rogue_UseKeyBattleAnims(void)
 {
-    return FALSE;
+    // Key/Boss battles are detected via dedicated battle flags.
+    return (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY
+                              | BATTLE_TYPE_FRONTIER
+                              | BATTLE_TYPE_TRAINER_HILL
+                              | BATTLE_TYPE_RAID)) != 0;
 }
 
 u16 GetCurrentNicknameMode(void)
@@ -1436,42 +1436,27 @@ u8 Rogue_GetBattleSpeedScale(bool8 forHealthbar)
     if(JOY_HELD(L_BUTTON))
         return 1;
 
-    // We want to speed up all anims until input selection starts
-    if(InBattleChoosingMoves())
-        gRogueLocal.hasBattleInputStarted = TRUE;
+    // Keep health bars readable.
+    if (forHealthbar)
+        return 1;
 
-    if(gRogueLocal.hasBattleInputStarted)
-    {
-        // Always run at 1x speed here
-        if(InBattleChoosingMoves())
-            return 1;
-
-        // When battle anims are turned off, it's a bit too hard to read text, so force running at normal speed
-        if(!forHealthbar && battleSceneOption == OPTIONS_BATTLE_SCENE_DISABLED && InBattleRunningActions())
-            return 1;
-    }
-
-    // We don't need to speed up health bar anymore as that passively happens now
     switch (battleSceneOption)
     {
     case OPTIONS_BATTLE_SCENE_1X:
-        return forHealthbar ? 1 : 1;
+        return 1;
 
     case OPTIONS_BATTLE_SCENE_2X:
-        return forHealthbar ? 1 : 2;
+        return 2;
 
     case OPTIONS_BATTLE_SCENE_3X:
-        return forHealthbar ? 1 : 3;
+        return 3;
 
     case OPTIONS_BATTLE_SCENE_4X:
-        return forHealthbar ? 1 : 4;
+        return 4;
 
-    // Print text at a readable speed still
+    // Disabled keeps battle flow readable while move animations are skipped elsewhere.
     case OPTIONS_BATTLE_SCENE_DISABLED:
-        if(gRogueLocal.hasBattleInputStarted)
-            return forHealthbar ? 10 : 1;
-        else
-            return 4;
+        return 1;
     }
 
     return 1;
@@ -1535,21 +1520,25 @@ bool8 Rogue_ShouldForceNicknameScreen()
 
 void Rogue_OverworldCB(u16 newKeys, u16 heldKeys, bool8 inputActive)
 {
-    if(inputActive)
+    (void)heldKeys;
+
+    if (inputActive
+     && FlagGet(FLAG_SYS_B_DASH)
+     && !(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
+                               | PLAYER_AVATAR_FLAG_ACRO_BIKE
+                               | PLAYER_AVATAR_FLAG_SURFING
+                               | PLAYER_AVATAR_FLAG_UNDERWATER)))
     {
-        if(!(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE | PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER | PLAYER_AVATAR_FLAG_CONTROLLABLE)))
+        // Toggle running on B-press while on foot.
+        if (gSaveBlock2Ptr->optionsAutoRunToggle && (newKeys & B_BUTTON) != 0)
         {
-            // Update running toggle
-            if(gSaveBlock2Ptr->optionsAutoRunToggle && (newKeys & B_BUTTON) != 0)
-            {
-                gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
-            }
+            gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
         }
     }
 }
 
 
-u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 soundType)
+u16 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u16 volume, u16 soundType)
 {
     // 10 is eqv of 100%
     u8 audioLevel = 10;
@@ -1562,58 +1551,16 @@ u8 Rogue_ModifySoundVolume(struct MusicPlayerInfo *mplayInfo, u8 volume, u16 sou
     default:
         if(mplayInfo == &gMPlayInfo_BGM)
         {
-            // Fanfares are exempt
-            if(
-                mplayInfo->songHeader == gSongTable[MUS_LEVEL_UP].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_ITEM].header ||
-                mplayInfo->songHeader == gSongTable[MUS_EVOLVED].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_TMHM].header ||
-                mplayInfo->songHeader == gSongTable[MUS_HEAL].header ||
-                mplayInfo->songHeader == gSongTable[MUS_DP_HEAL].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_BADGE].header ||
-                mplayInfo->songHeader == gSongTable[MUS_MOVE_DELETED].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_BERRY].header ||
-                mplayInfo->songHeader == gSongTable[MUS_AWAKEN_LEGEND].header ||
-                mplayInfo->songHeader == gSongTable[MUS_SLOTS_JACKPOT].header ||
-                mplayInfo->songHeader == gSongTable[MUS_SLOTS_WIN].header ||
-                mplayInfo->songHeader == gSongTable[MUS_TOO_BAD].header ||
-                mplayInfo->songHeader == gSongTable[MUS_RG_POKE_FLUTE].header ||
-                mplayInfo->songHeader == gSongTable[MUS_RG_OBTAIN_KEY_ITEM].header ||
-                mplayInfo->songHeader == gSongTable[MUS_RG_DEX_RATING].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_B_POINTS].header ||
-                mplayInfo->songHeader == gSongTable[MUS_OBTAIN_SYMBOL].header ||
-                mplayInfo->songHeader == gSongTable[MUS_REGISTER_MATCH_CALL].header ||
-                mplayInfo->songHeader == gSongTable[MUS_HG_LEVEL_UP].header ||
-                mplayInfo->songHeader == gSongTable[MUS_HG_EVOLVED].header ||
-                mplayInfo->songHeader == gSongTable[MUS_DP_LEVEL_UP].header ||
-                mplayInfo->songHeader == gSongTable[MUS_DP_EVOLVED].header
-            )
-            {
-                // do nothing
-            }
-            else
-            {
-                audioLevel = gSaveBlock2Ptr->optionsSoundChannelBGM;
-            }
+            audioLevel = gSaveBlock2Ptr->optionsSoundChannelBGM;
         }
-        else 
+        else
         {
-            if(
-                mplayInfo->songHeader == gSongTable[SE_SELECT].header ||
-                mplayInfo->songHeader == gSongTable[SE_DEX_SCROLL].header ||
-                mplayInfo->songHeader == gSongTable[SE_PIN].header ||
-                mplayInfo->songHeader == gSongTable[SE_WIN_OPEN].header ||
-                mplayInfo->songHeader == gSongTable[SE_BALL].header
-            )
-            {
-                // UI sound effects
-                audioLevel = gSaveBlock2Ptr->optionsSoundChannelSE;
-            }
-            else if(gMain.inBattle)
-            {
-                // Assume all sounds are battle effects
+            // Outside battle: UI/overworld SE slider.
+            // In battle: battle SE slider.
+            if (gMain.inBattle)
                 audioLevel = gSaveBlock2Ptr->optionsSoundChannelBattleSE;
-            }
+            else
+                audioLevel = gSaveBlock2Ptr->optionsSoundChannelSE;
         }
         break;
     }

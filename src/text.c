@@ -1381,6 +1381,12 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             {
             case EXT_CTRL_CODE_COLOR:
                 textPrinter->printerTemplate.color.foreground = *textPrinter->printerTemplate.currentChar++;
+                if (textPrinter->printerTemplate.color.foreground == TEXT_COLOR_PLAYER)
+                {
+                    // Spieler: maennlich blau, weiblich rot.
+                    textPrinter->printerTemplate.color.foreground =
+                        (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_BLUE : TEXT_COLOR_RED;
+                }
                 if (textPrinter->printerTemplate.color.foreground == TEXT_COLOR_RIVAL)
                 {
                     // Rivalin rot, Rivale blau.
@@ -2057,6 +2063,11 @@ u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str)
                 continue;
             case EXT_CTRL_CODE_COLOR:
                 textColor.foreground = strLocal[strPos++];
+                if (textColor.foreground == TEXT_COLOR_PLAYER)
+                {
+                    // Spieler: maennlich blau, weiblich rot.
+                    textColor.foreground = (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_BLUE : TEXT_COLOR_RED;
+                }
                 if (textColor.foreground == TEXT_COLOR_RIVAL)
                 {
                     // Rivalin rot, Rivale blau.

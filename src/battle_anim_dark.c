@@ -1017,6 +1017,8 @@ static void AnimTask_MetallicShine_Step(u8 taskId)
 // Changes battler's palette to either grayscale or original.
 void AnimTask_SetGrayscaleOrOriginalPal(u8 taskId)
 {
+    CMD_ARGS(battler, isGrayscale);
+
     u8 spriteId;
     enum BattlerId battlerId;
     bool8 calcSpriteId = FALSE;
@@ -1063,8 +1065,7 @@ void AnimTask_SetGrayscaleOrOriginalPal(u8 taskId)
 
     if (spriteId != SPRITE_NONE)
     {
-        // gBattleAnimArgs[1] ersetzt das alte cmd->mode
-        SetGrayscaleOrOriginalPalette(gSprites[spriteId].oam.paletteNum + 16, gBattleAnimArgs[1]);
+        SetGrayscaleOrOriginalPalette(gSprites[spriteId].oam.paletteNum + 16, cmd->isGrayscale);
     }
 
     DestroyAnimVisualTask(taskId);

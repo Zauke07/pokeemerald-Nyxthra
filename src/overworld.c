@@ -1884,19 +1884,6 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
         }
         else
         {
-            // Autolauf: B gedrückt = Toggle (nur wenn Option aktiv)
-            if (gSaveBlock2Ptr->optionsAutoRunToggle
-             && (newKeys & B_BUTTON)
-             && !(gPlayerAvatar.flags & (PLAYER_AVATAR_FLAG_MACH_BIKE
-                                       | PLAYER_AVATAR_FLAG_ACRO_BIKE
-                                       | PLAYER_AVATAR_FLAG_SURFING
-                                       | PLAYER_AVATAR_FLAG_UNDERWATER))
-             && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_CONTROLLABLE))
-            {
-                gRogueLocal.runningToggleActive = !gRogueLocal.runningToggleActive;
-                PlaySE(gRogueLocal.runningToggleActive ? SE_PC_LOGIN : SE_PC_OFF);
-            }
-
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
     }

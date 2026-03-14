@@ -864,7 +864,11 @@ enum BattleTransition GetWildBattleTransition(void)
     u8 transitionType = GetBattleTransitionTypeByMap();
     u8 enemyLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
     u8 playerLevel = GetSumOfPlayerPartyLevel(1);
+    bool8 hasSecondEnemy = IsDoubleBattle() && GetMonData(&gEnemyParty[1], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE;
     bool8 isShiny = GetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY);
+
+    if (hasSecondEnemy)
+        isShiny |= GetMonData(&gEnemyParty[1], MON_DATA_IS_SHINY);
 
     // Debug: Force Shiny transition für Test
     //isShiny = TRUE;  // ← Uncomment zum Testen!
@@ -874,6 +878,8 @@ enum BattleTransition GetWildBattleTransition(void)
     {
         bool8 shinyTrue = TRUE;
         SetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY, &shinyTrue);
+        if (hasSecondEnemy)
+            SetMonData(&gEnemyParty[1], MON_DATA_IS_SHINY, &shinyTrue);
         isShiny = TRUE;
     }
 

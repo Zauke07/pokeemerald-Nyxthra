@@ -1,4 +1,4 @@
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal = {
+﻿const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanNormal = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
@@ -4230,7 +4230,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayRiding = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_BrendanMayNormal, // Überprüfe, ob das korrekt ist!
+    .anims = sAnimTable_BrendanMayNormal,
     .images = sPicTable_MayRiding,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -4280,7 +4280,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Chuck = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4299,7 +4299,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Clair = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4318,7 +4318,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Falkner = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4337,7 +4337,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Jasmine = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4356,7 +4356,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Karen = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4375,7 +4375,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Morty = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4394,7 +4394,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Pryce = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4413,7 +4413,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Whitney = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4432,7 +4432,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Will = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4451,7 +4451,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Johto_Red = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4470,7 +4470,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Agatha = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4489,7 +4489,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Blaine = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4508,7 +4508,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Blue = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4527,7 +4527,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Brock = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4546,7 +4546,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Bruno = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4565,7 +4565,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Erika = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4584,7 +4584,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Giovanni = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4603,7 +4603,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Koga = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4622,7 +4622,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Lance = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4641,7 +4641,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Lorelei = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4660,7 +4660,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_LtSurge = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4679,7 +4679,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Misty = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4698,7 +4698,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_ProfOak = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4717,7 +4717,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kanto_Sabrina = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL, // Überprüfe, ob das korrekt ist!
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -4743,7 +4743,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ethan = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_BrendanMayNormal, // Überprüfe, ob das korrekt ist!
+    .anims = sAnimTable_BrendanMayNormal,
     .images = sPicTable_Ethan,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -4762,7 +4762,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lyra = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
-    .anims = sAnimTable_BrendanMayNormal, // Überprüfe, ob das korrekt ist!
+    .anims = sAnimTable_BrendanMayNormal,
     .images = sPicTable_Lyra,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -4805,7 +4805,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerRedRiding = 
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-// --- Leaf (Grüne Trainerin aus FR/LG) ---
+// --- Leaf (GrÃ¼ne Trainerin aus FR/LG) ---
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PlayerLeafNormal = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_RED_LEAF,
@@ -5038,7 +5038,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketFRiding = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-// Gleiches Schema für alle anderen Teams
+// Gleiches Schema fÃ¼r alle anderen Teams
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketMNormal = {
     .tileTag = TAG_NONE,
@@ -5350,7 +5350,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_NacholordRiding = 
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-// LaterManner (großes 32x32 Sprite)
+// LaterManner (groÃŸes 32x32 Sprite)
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LaterMannerNormal = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER,
@@ -12028,7 +12028,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertSurfing = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-// Underwater Sprites für Rival Characters
+// Underwater Sprites fÃ¼r Rival Characters
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_EthanUnderwater = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER,
@@ -14359,7 +14359,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneUnderwater =
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-#if IS_FRLG
+#if 1
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal = {
     .tileTag = TAG_NONE,
@@ -14376,7 +14376,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_BrendanMayNormal,
-    .images = sPicTable_RedNormal,
+    .images = sPicTable_RedNormalFrLg,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -14418,7 +14418,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedSurf = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFieldMove = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFieldMoveFrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_RED,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION,
@@ -14988,7 +14988,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Chef = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldMan2 = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldMan2FrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
@@ -15003,7 +15003,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OldMan2 = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_OldMan2,
+    .images = sPicTable_OldMan2FrLg,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -15444,7 +15444,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HikerFrlg = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Biker = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BikerFrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_PINK,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
@@ -15459,7 +15459,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Biker = {
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_Biker,
+    .images = sPicTable_BikerFrLg,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -15767,7 +15767,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PushableBoulderFrl
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketM = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketMFrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_WHITE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
@@ -15782,7 +15782,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketM = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_RocketM,
+    .images = sPicTable_RocketMFrLg,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
@@ -16128,7 +16128,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GBAKid = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Snorlax = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SnorlaxFrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_BLUE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
@@ -16850,7 +16850,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Suicune = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CelebiFrLg = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_GREEN,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
