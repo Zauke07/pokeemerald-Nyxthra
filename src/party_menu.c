@@ -8335,6 +8335,7 @@ static void FieldCallback_RockClimb(void)
 static void CursorCb_SetFollower(u8 taskId)
 {
     PlaySE(SE_SELECT);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
 
     if (FlagGet(FLAG_FOLLOWER_ACTIVE) && gPartyMenu.slotId == GetFollowerMonIndex())
     {

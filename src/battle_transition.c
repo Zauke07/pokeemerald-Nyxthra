@@ -29,6 +29,7 @@
 #include "strings.h"
 #include "field_message_box.h"
 #include "menu_helpers.h"
+#include "graphics.h"
 
 #define PALTAG_UNUSED_MUGSHOT 0x100A
 
@@ -299,9 +300,8 @@ void Task_LogoBattleTransition_Wait(u8 taskId);
 static bool8 Galactic_Init(struct Task *);
 static bool8 Galactic_SetGfx(struct Task *);
 
+static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite);
 static void Task_ShinyEncounter(u8 taskId);
-static bool8 ShinyEncounter_Init(struct Task *task);
-static bool8 ShinyEncounter_SetGfx(struct Task *task);
 
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
@@ -359,6 +359,9 @@ const u16 sTeamGalactic_Palette[] = INCBIN_U16("graphics/battle_transitions/team
 const u32 sShinyEncounter_Tileset[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.4bpp.smol");
 const u32 sShinyEncounter_Tilemap[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.bin.smolTM");
 const u16 sShinyEncounter_Palette[] = INCBIN_U16("graphics/battle_transitions/shiny_encounter.gbapal");
+
+#define SHINY_SPARKLE_TILE_TAG 0x45E0
+#define SHINY_SPARKLE_PAL_TAG  0x45E1
 
 // All battle transitions use the same intro
 static const TaskFunc sTasks_Intro[B_TRANSITION_COUNT] =
@@ -1958,50 +1961,231 @@ static bool8 Galactic_SetGfx(struct Task *task)
 // B_TRANSITION_SHINY_ENCOUNTER
 //------------------------------
 
+#define SHINY_SPARKLE_TILE_TAG 0x45E0
+#define SHINY_SPARKLE_PAL_TAG  0x45E1
+
+static const struct CompressedSpriteSheet sSpriteSheet_ShinySparkle =
+{
+    .data = gBattleAnimSpriteGfx_Sparkle1,
+    .size = 0x1000,
+    .tag = SHINY_SPARKLE_TILE_TAG,
+};
+
+static const struct SpritePalette sSpritePalette_ShinySparkle =
+{
+    .data = gBattleAnimSpritePal_Sparkle6,
+    .tag = SHINY_SPARKLE_PAL_TAG,
+};
+
+static const struct OamData sOam_ShinySparkle =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x32),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x32),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sAnim_ShinySparkle[] =
+{
+    ANIMCMD_FRAME(0, 10),  // Von 6 auf 10 Ticks -> Jetzt richtig schön langsam
+    ANIMCMD_FRAME(16, 10),
+    ANIMCMD_FRAME(32, 10),
+    ANIMCMD_FRAME(48, 10),
+    ANIMCMD_FRAME(64, 10),
+    ANIMCMD_FRAME(80, 10),
+    ANIMCMD_FRAME(96, 10),
+    ANIMCMD_FRAME(112, 10),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnimTable_ShinySparkle[] =
+{
+    sAnim_ShinySparkle,
+};
+
+static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite);
+
+static const struct SpriteTemplate sSpriteTemplate_ShinySparkle =
+{
+    .tileTag = SHINY_SPARKLE_TILE_TAG,
+    .paletteTag = SHINY_SPARKLE_PAL_TAG,
+    .oam = &sOam_ShinySparkle,
+    .anims = sAnimTable_ShinySparkle,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_ShinyTransitionSparkle,
+};
+
+//------------------------------
+// B_TRANSITION_SHINY_ENCOUNTER
+//------------------------------
+
+static bool8 ShinyEncounter_Init(struct Task *task);
+static bool8 ShinyEncounter_DarkenBg(struct Task *task);
+static bool8 ShinyEncounter_SparkleBurst(struct Task *task);
+static bool8 ShinyEncounter_Hold(struct Task *task);
+static bool8 ShinyEncounter_End(struct Task *task);
+
 static const TransitionStateFunc sShinyEncounter_Funcs[] =
 {
     ShinyEncounter_Init,
-    ShinyEncounter_SetGfx,
-    PatternWeave_Blend1,       // ← Zurück zum ursprünglichen Effekt
-    PatternWeave_Blend2,       // ← Shimmer-Blend-Effekt
-    PatternWeave_FinishAppear, // ← Smooth finish
-    FramesCountdown,           // ← Wartezeit
-    PatternWeave_CircularMask  // ← Kreisförmige Maske zum Ende
+    ShinyEncounter_DarkenBg,
+    ShinyEncounter_SparkleBurst,
+    ShinyEncounter_Hold,
+    ShinyEncounter_End,
 };
+
+#define tDarkLevel      data[1]
+#define tSparkleTimer   data[2]
+#define tHoldTimer      data[3]
+#define tPlayerScreenX  data[4]
+#define tPlayerScreenY  data[5]
 
 static bool8 ShinyEncounter_Init(struct Task *task)
 {
-    u16 *tilemap, *tileset;
+    u8 spriteId;
 
-    //PlayNewMapMusic(MUS_DP_VS_WILD);
+    InitTransitionData();
+    ScanlineEffect_Clear();
 
-    task->tEndDelay = 60;
-    InitPatternWeaveTransition(task);
-    GetBg0TilesDst(&tilemap, &tileset);
-    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
-    DecompressDataWithHeaderVram(sShinyEncounter_Tileset, tileset);
-    LoadPalette(sShinyEncounter_Palette, BG_PLTT_ID(15), sizeof(sShinyEncounter_Palette));
+    spriteId = gPlayerAvatar.spriteId;
+    if (spriteId < MAX_SPRITES && gSprites[spriteId].inUse)
+    {
+        task->tPlayerScreenX = gSprites[spriteId].x;
+        task->tPlayerScreenY = gSprites[spriteId].y;
+    }
+    else
+    {
+        task->tPlayerScreenX = DISPLAY_WIDTH / 2;
+        task->tPlayerScreenY = DISPLAY_HEIGHT / 2;
+    }
+
+    LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_ShinySparkle);
+    LoadSpritePalette(&sSpritePalette_ShinySparkle);
+
+    SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, DISPLAY_WIDTH));
+    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, DISPLAY_HEIGHT));
+    SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_ALL);
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL | WINOUT_WINOBJ_ALL);
+    ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+
+    SetGpuReg(REG_OFFSET_BLDCNT,
+              BLDCNT_TGT1_BG0
+            | BLDCNT_TGT1_BG1
+            | BLDCNT_TGT1_BG2
+            | BLDCNT_TGT1_BG3
+            | BLDCNT_TGT1_BD
+            | BLDCNT_EFFECT_DARKEN);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+
+    task->tDarkLevel = 0;
+    task->tSparkleTimer = 0;
+    task->tHoldTimer = 0;
 
     task->tState++;
     return FALSE;
 }
 
-static bool8 ShinyEncounter_SetGfx(struct Task *task)
+static bool8 ShinyEncounter_DarkenBg(struct Task *task)
 {
-    u16 *tilemap, *tileset;
+    if (task->tDarkLevel < 16)
+    {
+        task->tDarkLevel++;
+        SetGpuReg(REG_OFFSET_BLDY, task->tDarkLevel);
+    }
 
-    GetBg0TilesDst(&tilemap, &tileset);
-    DecompressDataWithHeaderVram(sShinyEncounter_Tilemap, tilemap);
-    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+    if (task->tDarkLevel >= 16)
+    {
+        task->tSparkleTimer = 0;
+        task->tState++;
+    }
 
-    task->tState++;
     return FALSE;
+}
+
+static bool8 ShinyEncounter_SparkleBurst(struct Task *task)
+{
+    // Wir spawnen jetzt JEDEN Tick einen Stern für maximale Dichte
+    s16 x = (Random() % 240); // Exakt Bildschirmbreite
+    s16 y = (Random() % 160); // Exakt Bildschirmhöhe
+    u8 spriteId = CreateSprite(&sSpriteTemplate_ShinySparkle, x, y, 0);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        gSprites[spriteId].data[0] = 0;
+        // Zufälliges Schwebe-Tempo
+        gSprites[spriteId].data[1] = ((Random() % 2) + 1);
+        gSprites[spriteId].data[2] = (Random() & 1) ? 1 : -1;
+        gSprites[spriteId].oam.priority = 0;
+    }
+
+    task->tSparkleTimer++;
+    // Wir lassen es jetzt über 130 Ticks lang knallen -> deutlich länger!
+    if (task->tSparkleTimer > 130)
+    {
+        task->tHoldTimer = 0;
+        task->tState++;
+    }
+
+    return FALSE;
+}
+
+static bool8 ShinyEncounter_Hold(struct Task *task)
+{
+    if (++task->tHoldTimer > 85)
+        task->tState++;
+
+    return FALSE;
+}
+
+static bool8 ShinyEncounter_End(struct Task *task)
+{
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetGpuReg(REG_OFFSET_WIN0H, 0);
+    SetGpuReg(REG_OFFSET_WIN0V, 0);
+    SetGpuReg(REG_OFFSET_WININ, 0);
+    SetGpuReg(REG_OFFSET_WINOUT, 0);
+    ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+    FreeSpriteTilesByTag(SHINY_SPARKLE_TILE_TAG);
+    FreeSpritePaletteByTag(SHINY_SPARKLE_PAL_TAG);
+    FadeScreenBlack();
+    DestroyTask(FindTaskIdByFunc(Task_ShinyEncounter));
+    return FALSE;
+}
+
+static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite)
+{
+    sprite->data[0]++;
+    
+    // Ganz langsames Aufsteigen (alle 4 Frames ein Pixel)
+    if (sprite->data[0] % 4 == 0)
+        sprite->y2 -= 1;
+
+    // Der Stern löscht sich erst, wenn seine 80 Ticks (8 Frames * 10 Ticks) vorbei sind
+    if (sprite->animEnded)
+        DestroySprite(sprite);
 }
 
 static void Task_ShinyEncounter(u8 taskId)
 {
     while (sShinyEncounter_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
+
+#undef tDarkLevel
+#undef tSparkleTimer
+#undef tHoldTimer
+#undef tPlayerScreenX
+#undef tPlayerScreenY
 
 #undef tAmplitude
 #undef tSinIndex

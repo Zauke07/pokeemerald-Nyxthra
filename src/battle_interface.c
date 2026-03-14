@@ -579,6 +579,14 @@ static const union TextColor sHealthBoxTextColor =
     .accent = 0
 };
 
+static const union TextColor sHealthBoxTextColorShiny =
+{
+    .background = 0,
+    .foreground = 9,
+    .shadow = 3,
+    .accent = 0
+};
+
 // Because the healthbox is too large to fit into one sprite, it is divided into two sprites.
 // healthboxLeft  or healthboxMain  is the left part that is used as the 'main' sprite.
 // healthboxRight or healthboxOther is the right part of the healthbox.
@@ -1763,14 +1771,7 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     u8 *ptr;
     u32 species;
     u8 gender;
-    u8 bgColor = 2;
-    u8 fgColor = 1;
-    u8 shadowColor = 3;
-
-    // Compiler-Warnungen unterdrücken
-    (void)bgColor;
-    (void)fgColor;
-    (void)shadowColor;
+    const union TextColor *nameColor = &sHealthBoxTextColor;
 
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
     
@@ -1778,7 +1779,7 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         mon = illusionMon;
     
     if (GetMonData(mon, MON_DATA_IS_SHINY))
-        fgColor = 4;
+        nameColor = &sHealthBoxTextColorShiny;
 
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGet_Nickname(nickname);
@@ -1817,12 +1818,12 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (IsOnPlayerSide(gSprites[healthboxSpriteId].hMain_Battler))
     {
         FillSpriteRectColor(healthboxSpriteId, 16, 5, 55, 11, HEALTHBOX_BG_INDEX);
-        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 16, 3, 0, 0, sHealthBoxTextColor, 0, gDisplayedStringBattle);
+        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 16, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
     }
     else
     {
         FillSpriteRectColor(healthboxSpriteId, 8, 5, 55, 11, HEALTHBOX_BG_INDEX);
-        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 8, 3, 0, 0, sHealthBoxTextColor, 0, gDisplayedStringBattle);
+        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 8, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
     }
 
     gSprites[healthboxSpriteId].data[1] = savedValue1;
