@@ -4370,7 +4370,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_DRAGON_SCALE] =
     {
-        .name = ITEM_NAME("Drachenschu"),
+        .name = ITEM_NAME("Drachenhaut"),
         .price = (I_PRICE >= GEN_7) ? 2000 * TREASURE_FACTOR : 2100,
         .holdEffectParam = 10,
         .description = COMPOUND_STRING(

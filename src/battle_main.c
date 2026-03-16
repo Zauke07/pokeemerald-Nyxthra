@@ -5743,7 +5743,7 @@ static void TryEvolvePokemon(void)
             u32 species = GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
             sTriedEvolving |= 1u << i;
 
-            if (species == SPECIES_NONE && (gLeveledUpInBattle & (1u << i)))
+            if (species == SPECIES_NONE && (gLeveledUpInBattle & (1u << i)) && !gSaveBlock2Ptr->optionsManualEvolution)
             {
                 gLeveledUpInBattle &= ~(1u << i);
                 mode = EVO_MODE_BATTLE_ONLY;

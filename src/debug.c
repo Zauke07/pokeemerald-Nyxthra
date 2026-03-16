@@ -4779,7 +4779,8 @@ static void DebugNativeStep_Party_SetFriendshipSelect(u8 taskId)
 static void DebugNativeStep_Party_SetFriendshipMain(u8 taskId)
 {
     u8 windowId = DebugNativeStep_CreateDebugWindow();
-    u32 friendship = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_FRIENDSHIP);
+    u32 partyId = gTasks[taskId].tPartyId;
+    u32 friendship = GetMonData(&gPlayerParty[partyId], MON_DATA_FRIENDSHIP);
 
     // Display initial flag
     Debug_Display_FriendshipInfo(friendship, friendship, 0, windowId);
@@ -4789,7 +4790,6 @@ static void DebugNativeStep_Party_SetFriendshipMain(u8 taskId)
     gTasks[taskId].tFriendship = friendship;
     gTasks[taskId].tInput = friendship;
     gTasks[taskId].tDigit = 0;
-    gTasks[taskId].tPartyId = 0;
 }
 
 void DebugNative_Party_SetFriendship(void)

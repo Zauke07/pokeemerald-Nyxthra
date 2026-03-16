@@ -66,6 +66,7 @@ enum
     MENUITEM_BATTLESCENE_TRAINER_BATTLES,
     MENUITEM_BATTLESCENE_KEY_BATTLES,
     MENUITEM_AUTORUN_TOGGLE,
+    MENUITEM_MANUAL_EVOLUTION,
     MENUITEM_NICKNAME_MODE,
     MENUITEM_TIME_OF_DAY,
     MENUITEM_SEASON,
@@ -124,6 +125,8 @@ static u8 InvertedToggle_ProcessInput(u8 menuOffset, u8 selection);
 static void InvertedToggle_DrawChoices(u8 menuOffset, u8 selection);
 static u8 AutoRun_ProcessInput(u8 menuOffset, u8 selection);
 static void AutoRun_DrawChoices(u8 menuOffset, u8 selection);
+static u8 ManualEvolution_ProcessInput(u8 menuOffset, u8 selection);
+static void ManualEvolution_DrawChoices(u8 menuOffset, u8 selection);
 static u8 NicknameMode_ProcessInput(u8 menuOffset, u8 selection);
 static void NicknameMode_DrawChoices(u8 menuOffset, u8 selection);
 static u8 TimeOfDaySeason_ProcessInput(u8 menuOffset, u8 selection);
@@ -250,6 +253,12 @@ static const struct MenuEntry sOptionMenuItems[] =
         .processInput = AutoRun_ProcessInput,
         .drawChoices = AutoRun_DrawChoices
     },
+    [MENUITEM_MANUAL_EVOLUTION] =
+    {
+        .itemName = gText_ManualEvolution,
+        .processInput = ManualEvolution_ProcessInput,
+        .drawChoices = ManualEvolution_DrawChoices
+    },
     [MENUITEM_NICKNAME_MODE] = 
     {
         .itemName = gText_NicknameMode,
@@ -351,6 +360,7 @@ static const struct MenuEntries sOptionMenuEntries[SUBMENUITEM_COUNT] =
         {
             MENUITEM_NICKNAME_MODE,
             MENUITEM_AUTORUN_TOGGLE,
+            MENUITEM_MANUAL_EVOLUTION,
             MENUITEM_BUTTONMODE,
             MENUITEM_CANCEL
         }
@@ -861,6 +871,26 @@ static void AutoRun_DrawChoices(u8 menuOffset, u8 selection)
     DrawChoiceSelection(menuOffset, selection, options, ARRAY_COUNT(options));
 }
 
+static u8 ManualEvolution_ProcessInput(u8 menuOffset, u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void ManualEvolution_DrawChoices(u8 menuOffset, u8 selection)
+{
+    u8 const* options[] =
+    {
+        gText_ManualEvolveOff,
+        gText_ManualEvolveOn,
+    };
+    DrawChoiceSelection(menuOffset, selection, options, ARRAY_COUNT(options));
+}
+
 static u8 NicknameMode_ProcessInput(u8 menuOffset, u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
@@ -1214,6 +1244,9 @@ static u8 GetMenuItemValue(u8 menuItem)
     case MENUITEM_AUTORUN_TOGGLE:
         return gSaveBlock2Ptr->optionsAutoRunToggle;
         
+    case MENUITEM_MANUAL_EVOLUTION:
+        return gSaveBlock2Ptr->optionsManualEvolution;
+
     case MENUITEM_NICKNAME_MODE:
         return gSaveBlock2Ptr->optionsNicknameMode;
 
@@ -1278,6 +1311,10 @@ static void SetMenuItemValue(u8 menuItem, u8 value)
         gSaveBlock2Ptr->optionsAutoRunToggle = value;
         gRogueLocal.runningToggleActive = FALSE;
         PlaySE(value ? SE_PC_LOGIN : SE_PC_OFF);
+        break;
+
+    case MENUITEM_MANUAL_EVOLUTION:
+        gSaveBlock2Ptr->optionsManualEvolution = value;
         break;
 
     case MENUITEM_NICKNAME_MODE:

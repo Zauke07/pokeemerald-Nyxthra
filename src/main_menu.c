@@ -89,6 +89,7 @@ static void Task_NewGameBirchSpeech_BoyOrGirl(u8);
 static void LoadMainMenuWindowFrameTiles(u8, u16);
 static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 static void Task_HighlightSelectedMainMenuItem(u8);
+static void PrintMainMenuVersionText(void);
 
 static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8);
 static void Task_NewGameBirchSpeech_ChooseGender(u8);
@@ -154,6 +155,8 @@ static const u8 gText_MainMenuOption[] = _("Option");
 static const u8 gText_MainMenuMysteryGift[] = _("Geheim-Geschenk");
 static const u8 gText_MainMenuMysteryGift2[] = _("Geheim-Geschenk");
 static const u8 gText_MainMenuMysteryEvents[] = _("Geheim-Events");
+static const u8 gText_MainMenuNyxthraVersion[] = _("Pokemon Nyxthra - Version: Alpha v1.0.8");
+static const u8 gText_MainMenuExpansionVersion[] = _("pokeemerald-expansion v1.15.0");
 static const u8 gText_WirelessNotConnected[] = _("Der Wireless-Adapter ist nicht\nangeschlossen.");
 static const u8 gText_MysteryGiftCantUse[] = _("Geheim-Geschenk kann nicht verwendet werden,\nwährend der Wireless-Adapter angeschlossen ist.");
 static const u8 gText_MysteryEventsCantUse[] = _("Geheim-Events können nicht verwendet werden,\nwährend der Wireless-Adapter angeschlossen ist.");
@@ -246,6 +249,7 @@ static const u16 sMainMenuTextPal[] = INCBIN_U16("graphics/interface/main_menu_t
 static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_Version[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sTextColor_VersionSub[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_DARK_GRAY};
 
 const struct BgTemplate sMainMenuBgTemplates[] = {
     { .bg = 0, .charBaseIndex = 2, .mapBaseIndex = 30, .screenSize = 0, .paletteMode = 0, .priority = 0, .baseTile = 0 },
@@ -665,8 +669,21 @@ static void Task_DisplayMainMenu(u8 taskId)
             }
             break;
         }
+
+        PrintMainMenuVersionText();
         gTasks[taskId].func = Task_HighlightSelectedMainMenuItem;
     }
+}
+
+static void PrintMainMenuVersionText(void)
+{
+    FillWindowPixelBuffer(7, PIXEL_FILL(0));
+
+    AddTextPrinterParameterized3(7, FONT_SMALL, 2, 1, sTextColor_Version, TEXT_SKIP_DRAW, gText_MainMenuNyxthraVersion);
+    AddTextPrinterParameterized3(7, FONT_SMALL, 2, 13, sTextColor_VersionSub, TEXT_SKIP_DRAW, gText_MainMenuExpansionVersion);
+
+    PutWindowTilemap(7);
+    CopyWindowToVram(7, COPYWIN_GFX);
 }
 
 static void Task_HighlightSelectedMainMenuItem(u8 taskId)

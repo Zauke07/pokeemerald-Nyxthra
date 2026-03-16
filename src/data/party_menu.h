@@ -734,6 +734,7 @@ struct
     [MENU_CATALOG_MOWER]   = {COMPOUND_STRING("Rasenmäher"),          CursorCb_CatalogMower},
     [MENU_CHANGE_FORM]     = {COMPOUND_STRING("Form wechseln"),       CursorCb_ChangeForm},
     [MENU_CHANGE_ABILITY]  = {COMPOUND_STRING("Fähigkeit ändern"),    CursorCb_ChangeAbility},
+    [MENU_MANUAL_EVOLVE]   = {COMPOUND_STRING("Entwicklung"),         CursorCb_ManualEvolve},
     [MENU_SET_FOLLOWER]    = {COMPOUND_STRING("Begleiter"),           CursorCb_SetFollower},
 };
 

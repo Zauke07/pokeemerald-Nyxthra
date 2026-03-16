@@ -278,6 +278,7 @@ static void PrintHeldItemName(void);
 static void PrintSkillsPageText(void);
 // static void PrintRibbonCount(void);
 static void PrintFriendship(void);
+static u16 GetSummaryFriendshipThreshold(void);
 static void BufferLeftColumnStats(void);
 static void PrintLeftColumnStats(void);
 static void BufferRightColumnStats(void);
@@ -577,9 +578,9 @@ static const struct WindowTemplate sSummaryTemplate[] =
     },
     [PSS_LABEL_WINDOW_PROMPT_RELEARN] = {
         .bg = 0,
-        .tilemapLeft = (P_ENABLE_MOVE_RELEARNERS) ? 18 : 22,
+        .tilemapLeft = (P_ENABLE_MOVE_RELEARNERS) ? 17 : 22,
         .tilemapTop = 2,
-        .width = 11,
+        .width = 12,
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 800,
@@ -768,11 +769,11 @@ static const TaskFunc sTextPrinterTasks[] =
     [PSS_PAGE_CONTEST_MOVES] = Task_PrintContestMoves
 };
 
-static const u8 sText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
-static const u8 sText_Relearn_LevelUp[] = _("{START_BUTTON} RELEARN LEVEL");
-static const u8 sText_Relearn_Egg[] = _("{START_BUTTON} RELEARN EGG");
-static const u8 sText_Relearn_TM[] = _("{START_BUTTON} RELEARN TM");
-static const u8 sText_Relearn_Tutor[] = _("{START_BUTTON} RELEARN TUTOR");
+static const u8 sText_Relearn[] = _("{START_BUTTON} ERLERNEN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
+static const u8 sText_Relearn_LevelUp[] = _("{START_BUTTON} ERLERNEN LEVEL");
+static const u8 sText_Relearn_Egg[] = _("{START_BUTTON} ERLERNEN EI");
+static const u8 sText_Relearn_TM[] = _("{START_BUTTON} ERLERNEN TM");
+static const u8 sText_Relearn_Tutor[] = _("{START_BUTTON} ERLERNEN TUTOR");
 
 static const u8 sMemoNatureTextColor[] = _("{COLOR LIGHT_RED}{SHADOW GREEN}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}"); // This is also affected by palettes, apparently
@@ -3979,28 +3980,62 @@ static void PrintRibbonCount(void)
 
 static void PrintFriendship(void)
 {
-    const u8 bgColour[] = _("{COLOR BLUE}{SHADOW DARK_GRAY}");
-    const u8 starIcon[] = _("{STAR_ICON}");
-    u8 *text;
     int x;
-    u16 i;
+    int currentWidth;
+    int slashWidth;
+    int totalWidth;
+    u16 friendship = sMonSummaryScreen->summary.friendship;
+    u16 threshold = GetSummaryFriendshipThreshold();
+    const u8 *currentColorTag = (friendship >= threshold) ? COMPOUND_STRING("{COLOR}{08}") : COMPOUND_STRING("{COLOR}{05}");
+    const u8 *targetColorTag = COMPOUND_STRING("{COLOR}{08}");
+    u8 windowId = AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT);
 
-    text = StringCopy(gStringVar1, bgColour);
+    ConvertIntToDecimalStringN(gStringVar1, friendship, STR_CONV_MODE_LEFT_ALIGN, 3);
+    ConvertIntToDecimalStringN(gStringVar2, 255, STR_CONV_MODE_LEFT_ALIGN, 3);
 
-    if(sMonSummaryScreen->summary.affection == 0)
+    StringCopy(gStringVar3, currentColorTag);
+    StringAppend(gStringVar3, gStringVar1);
+    StringAppend(gStringVar3, COMPOUND_STRING("{COLOR}{01}"));
+
+    StringCopy(gStringVar4, targetColorTag);
+    StringAppend(gStringVar4, gStringVar2);
+    StringAppend(gStringVar4, COMPOUND_STRING("{COLOR}{01}"));
+
+    currentWidth = GetStringWidth(FONT_NORMAL, gStringVar3, 0);
+    slashWidth = GetStringWidth(FONT_NORMAL, gText_Slash, 0);
+    totalWidth = currentWidth + slashWidth + GetStringWidth(FONT_NORMAL, gStringVar4, 0);
+
+    x = ((70 - totalWidth) / 2) + 4;
+    PrintTextOnWindow(windowId, gStringVar3, x, 1, 0, 0);
+    x += currentWidth;
+    PrintTextOnWindow(windowId, gText_Slash, x, 1, 0, 0);
+    x += slashWidth;
+    PrintTextOnWindow(windowId, gStringVar4, x, 1, 0, 0);
+}
+
+static u16 GetSummaryFriendshipThreshold(void)
+{
+    int i;
+    int j;
+    u16 species = sMonSummaryScreen->summary.species;
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+
+    if (evolutions == NULL)
+        return 255;
+
+    for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
     {
-        text = StringAppend(gStringVar1, gText_Dash);
-    }
-    else
-    {
-        for(i = 0; i < sMonSummaryScreen->summary.affection; ++i)
-            text = StringAppend(text, starIcon);
+        if (evolutions[i].params == NULL)
+            continue;
+
+        for (j = 0; evolutions[i].params[j].condition != CONDITIONS_END; j++)
+        {
+            if (evolutions[i].params[j].condition == IF_MIN_FRIENDSHIP)
+                return evolutions[i].params[j].arg1;
+        }
     }
 
-    text = gStringVar1;
-
-    x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 4;
-    PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 0);
+    return 255;
 }
 
 static void BufferStat(u8 *dst, enum Stat statIndex, u32 stat, u32 strId, u32 n)
@@ -4935,7 +4970,7 @@ static inline void ShowUtilityPrompt(s16 mode)
     const u8* gText_SkillPageIvs = COMPOUND_STRING("IVs");
     const u8* gText_SkillPageEvs = COMPOUND_STRING("EVs");
     const u8* gText_SkillPageStats = COMPOUND_STRING("STATS");
-    const u8* gText_Rename = COMPOUND_STRING("RENAME");
+    const u8* gText_Rename = COMPOUND_STRING("Umbenenn.");
 
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
     {
@@ -5038,7 +5073,7 @@ static void ShowRelearnPrompt(void)
             relearnText = sText_Relearn_LevelUp;
             break;
         }
-        relearnTextXPos = GetStringRightAlignXOffset(FONT_NORMAL, relearnText, 0);
+        relearnTextXPos = 0;
     }
 
     FillWindowPixelBuffer(PSS_LABEL_WINDOW_PROMPT_RELEARN, PIXEL_FILL(0));

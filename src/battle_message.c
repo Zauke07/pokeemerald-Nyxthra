@@ -1421,9 +1421,9 @@ const u16 gZenModeStringIds[] =
     [B_MSG_ZEN_MODE_ENDED] = STRINGID_ZENMODEENDED
 };
 
-const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");
-const u8 gText_CongratsPkmnEvolved[] = _("Congratulations! Your {STR_VAR_1}\nevolved into {STR_VAR_2}!{WAIT_SE}\p");
-const u8 gText_PkmnStoppedEvolving[] = _("Huh? {STR_VAR_1}\nstopped evolving!\p");
+const u8 gText_PkmnIsEvolving[] = _("Was?\n{STR_VAR_1} entwickelt sich!");
+const u8 gText_CongratsPkmnEvolved[] = _("Herzlichen Glückwunsch! Dein {STR_VAR_1}\nentwickelte sich zu {STR_VAR_2}!{WAIT_SE}\p");
+const u8 gText_PkmnStoppedEvolving[] = _("Wie? {STR_VAR_1}\nhat die Entwicklung abgebrochen!\p");
 const u8 gText_EllipsisQuestionMark[] = _("……?\p");
 const u8 gText_WhatWillPkmnDo[] = _("Was soll {B_BUFF1}\ntun?");
 const u8 gText_WhatWillPkmnDo2[] = _("Was soll {B_PLAYER_NAME}\ntun?");

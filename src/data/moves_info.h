@@ -14867,10 +14867,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_DISARMING_VOICE] =
     {
-        .name = COMPOUND_STRING("Disarming Voice"),
+        .name = COMPOUND_STRING("Säuselstimme"),
         .description = COMPOUND_STRING(
-            "Stößt einen bezaubernden Schrei aus\n"
-            "dem man sich nicht entziehen kann."),
+            "Ein betörender Schrei,\n"
+            "der immer trifft."),
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_FAIRY,
@@ -15718,7 +15718,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BABY_DOLL_EYES] =
     {
-        .name = COMPOUND_STRING("Baby-Doll Eyes"),
+        .name = COMPOUND_STRING("Kulleraugen"),
         .description = COMPOUND_STRING(
             "Senkt den Angr. des Gegners,\n"
             "bevor er sich bewegen kann."),

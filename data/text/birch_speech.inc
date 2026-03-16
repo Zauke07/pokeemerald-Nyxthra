@@ -9,8 +9,8 @@ gText_Birch_Welcome::
 gText_Birch_Pokemon::
 	.string "In dieser Version gibt es ALLE\n"
 	.string "Pokémon bis zur 9. Generation.\p"
-    .string "Also auch deine Lieblings-\n"
-    .string "Pokémon.\p"
+	.string "Also auch deine Lieblings-\n"
+	.string "Pokémon.\p"
 	.string "Ach ja…\n"
 	.string "Es passieren seltsame Dinge…\p"
 	.string "Legendäre Pokémon tauchen in einer\n"
@@ -30,7 +30,7 @@ gText_Birch_MainSpeech::
 
 gText_Birch_AndYouAre::
 	.string "Aber gut, kommen wir\n"
-    .string "erstmal zu dir!$"
+	.string "erstmal zu dir!$"
 
 gText_Birch_BoyOrGirl::
 	.string "Bist du ein Junge?\n"
@@ -59,5 +59,10 @@ gText_Birch_AreYouReady::
 	.string "Sprich mit allen. Hör hin.\n"
 	.string "Vielleicht hat jemand Antworten…\p"
 	.string "Ich bin im LABOR. Komm vorbei,\n"
-	.string "wemm du Infos hast.\p"
-	.string "$"
+	.string "wenn du Infos hast.\p"
+	.string "… … …\p"
+	.string "… … …\p"
+	.string "… … …\p"
+	.string "Ah bevor ich es vergesse!\p"
+	.string "Schau dir die Optionen an.\n"
+	.string "Es sind coole neue Sachen dabei.$"

@@ -69,6 +69,7 @@
 #include "trade.h"
 #include "union_room.h"
 #include "window.h"
+#include "rtc.h"
 #include "constants/battle.h"
 #include "constants/battle_frontier.h"
 #include "constants/field_effects.h"
@@ -76,8 +77,10 @@
 #include "constants/form_change_types.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
+#include "constants/maps.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
+#include "constants/rtc.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "event_scripts.h"
@@ -119,6 +122,7 @@ enum {
     MENU_CATALOG_MOWER,
     MENU_CHANGE_FORM,
     MENU_CHANGE_ABILITY,
+    MENU_MANUAL_EVOLVE,
     MENU_SET_FOLLOWER,
     MENU_FIELD_MOVES
 };
@@ -505,6 +509,13 @@ static void Task_HideFollowerNPCForTeleport(u8);
 static void FieldCallback_RockClimb(void);
 static void CursorCb_SetFollower(u8 taskId);
 static void Task_HandleFollowerYesNoInput(u8 taskId);
+static void CursorCb_ManualEvolve(u8 taskId);
+static void Task_ShowManualEvolveYesNo(u8 taskId);
+static void Task_ShowManualEvolveRequirementAfterFailure(u8 taskId);
+static void Task_HandleManualEvolveYesNo(u8 taskId);
+static bool8 CanMonUseManualEvolutionAction(struct Pokemon *mon);
+static bool8 MonKnowsMoveType(struct Pokemon *mon, u8 type);
+static bool8 BufferManualEvolutionRequirementMessage(struct Pokemon *mon);
 //void SetFollowerPartyId(u8 partyId);
 static void Task_ClosePartyMenu(u8 taskId);
 //static u8 sFollowerYesNoWindowId;
@@ -2976,6 +2987,15 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
      && GetMonData(&mons[slotId], MON_DATA_IS_EGG) == FALSE)
     {
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SET_FOLLOWER);
+    }
+
+    // "Entwicklung" anzeigen wenn Option aktiv und Mon prinzipiell eine Entwicklung hat.
+    if (gSaveBlock2Ptr->optionsManualEvolution
+     && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
+     && GetMonData(&mons[slotId], MON_DATA_IS_EGG) == FALSE)
+    {
+        if (CanMonUseManualEvolutionAction(&mons[slotId]))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MANUAL_EVOLVE);
     }
 
     // Item-Aktionen (nicht im Battle Pike)
@@ -5844,7 +5864,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         sInitialLevel = 0;
         sFinalLevel = 0;
 
-        if (holdEffectParam == 0) // Rare Candy
+        if (holdEffectParam == 0 && !gSaveBlock2Ptr->optionsManualEvolution) // Rare Candy
         {
             targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
         }
@@ -6036,7 +6056,8 @@ static void PartyMenuTryEvolution(u8 taskId)
     sInitialLevel = 0;
     sFinalLevel = 0;
 
-    targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
+    if (!gSaveBlock2Ptr->optionsManualEvolution)
+        targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
 
     if (targetSpecies != SPECIES_NONE)
     {
@@ -8357,6 +8378,263 @@ static void CursorCb_SetFollower(u8 taskId)
     }
     PartyMenuDisplayYesNoMenu();
     gTasks[taskId].func = Task_HandleFollowerYesNoInput;
+}
+
+static void CursorCb_ManualEvolve(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+    GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
+    StringExpandPlaceholders(gStringVar4, gText_ManualEvolvePrompt);
+    DisplayPartyMenuMessage(gStringVar4, TRUE);
+    gTasks[taskId].func = Task_ShowManualEvolveYesNo;
+}
+
+static void Task_ShowManualEvolveYesNo(u8 taskId)
+{
+    if (IsPartyMenuTextPrinterActive() != TRUE)
+    {
+        PartyMenuDisplayYesNoMenu();
+        gTasks[taskId].func = Task_HandleManualEvolveYesNo;
+    }
+}
+
+static bool8 CanMonUseManualEvolutionAction(struct Pokemon *mon)
+{
+    int i;
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+
+    if (evolutions == NULL)
+        return FALSE;
+
+    for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
+    {
+        if (SanitizeSpeciesId(evolutions[i].targetSpecies) != SPECIES_NONE
+         && evolutions[i].method != EVO_NONE
+         && evolutions[i].method != EVO_SPLIT_FROM_EVO)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 MonKnowsMoveType(struct Pokemon *mon, u8 type)
+{
+    int i;
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (GetMoveType(GetMonData(mon, MON_DATA_MOVE1 + i)) == type)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+static bool8 BufferManualEvolutionRequirementMessage(struct Pokemon *mon)
+{
+    int i;
+    int j;
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    const struct Evolution *evolutions = GetSpeciesEvolutions(species);
+    const struct Evolution *firstEvoAny = NULL;
+    const struct Evolution *firstEvoLevel = NULL;
+    const struct Evolution *hintEvo = NULL;
+    u32 currentLevel = GetMonData(mon, MON_DATA_LEVEL);
+
+    if (evolutions == NULL)
+        return FALSE;
+
+    for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
+    {
+        if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
+            continue;
+        if (evolutions[i].method == EVO_NONE || evolutions[i].method == EVO_SPLIT_FROM_EVO)
+            continue;
+
+        if (firstEvoAny == NULL)
+            firstEvoAny = &evolutions[i];
+
+        if (firstEvoLevel == NULL
+         && (evolutions[i].method == EVO_LEVEL || evolutions[i].method == EVO_LEVEL_BATTLE_ONLY))
+        {
+            firstEvoLevel = &evolutions[i];
+        }
+    }
+
+    hintEvo = (firstEvoLevel != NULL) ? firstEvoLevel : firstEvoAny;
+
+    if (hintEvo == NULL)
+        return FALSE;
+
+    StringCopy(gStringVar1, GetSpeciesName(hintEvo->targetSpecies));
+
+    if (hintEvo->params != NULL)
+    {
+        for (j = 0; hintEvo->params[j].condition != CONDITIONS_END; j++)
+        {
+            switch (hintEvo->params[j].condition)
+            {
+            case IF_MIN_FRIENDSHIP:
+            {
+                u32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+                ConvertIntToDecimalStringN(gStringVar2, friendship, STR_CONV_MODE_LEFT_ALIGN, 3);
+                ConvertIntToDecimalStringN(gStringVar3, hintEvo->params[j].arg1, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Freundschaft {STR_VAR_3}.\nAktuell: {STR_VAR_2}."));
+                return TRUE;
+            }
+            case IF_KNOWS_MOVE_TYPE:
+                if (!MonKnowsMoveType(mon, hintEvo->params[j].arg1))
+                {
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Eine Attacke vom\ngeforderten Typ lernen."));
+                    return TRUE;
+                }
+                break;
+            case IF_KNOWS_MOVE:
+                StringCopy(gStringVar2, GetMoveName(hintEvo->params[j].arg1));
+                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Attacke {STR_VAR_2}\nbeherrschen."));
+                return TRUE;
+            case IF_HOLD_ITEM:
+                CopyItemName(hintEvo->params[j].arg1, gStringVar2);
+                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Beim Tausch {STR_VAR_2}\ntragen."));
+                return TRUE;
+            case IF_USED_MOVE_X_TIMES:
+                StringCopy(gStringVar2, GetMoveName(hintEvo->params[j].arg1));
+                ConvertIntToDecimalStringN(gStringVar3, hintEvo->params[j].arg2, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: {STR_VAR_2} {STR_VAR_3}x\neinsetzen, dann Level-Up."));
+                return TRUE;
+            case IF_IN_MAP:
+            {
+                const struct MapHeader *mapHeader = Overworld_GetMapHeaderByGroupAndId(MAP_GROUP(hintEvo->params[j].arg1), MAP_NUM(hintEvo->params[j].arg1));
+
+                if (mapHeader != NULL)
+                {
+                    GetMapNameGeneric(gStringVar2, mapHeader->regionMapSectionId);
+                    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: In {STR_VAR_2} leveln\nund dann entwickeln."));
+                }
+                else
+                {
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Auf der richtigen Karte\nleveln und dann entwickeln."));
+                }
+                return TRUE;
+            }
+            case IF_IN_MAPSEC:
+                GetMapNameGeneric(gStringVar2, hintEvo->params[j].arg1);
+                StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: In {STR_VAR_2} leveln\nund dann entwickeln."));
+                return TRUE;
+            case IF_TIME:
+                if (hintEvo->params[j].arg1 == TIME_NIGHT)
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Nur nachts möglich."));
+                else
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Nur zu dieser Tageszeit\nmöglich."));
+                return TRUE;
+            case IF_NOT_TIME:
+                if (hintEvo->params[j].arg1 == TIME_NIGHT)
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Nicht nachts möglich."));
+                else
+                    StringCopy(gStringVar4, COMPOUND_STRING("Nötig: Zu einer anderen\nTageszeit entwickeln."));
+                return TRUE;
+            }
+        }
+    }
+
+    switch (hintEvo->method)
+    {
+    case EVO_LEVEL:
+        if (hintEvo->param != 0)
+        {
+            ConvertIntToDecimalStringN(gStringVar2, currentLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+            ConvertIntToDecimalStringN(gStringVar3, hintEvo->param, STR_CONV_MODE_LEFT_ALIGN, 3);
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Level {STR_VAR_3} für\n{STR_VAR_1}. Aktuell: {STR_VAR_2}."));
+        }
+        else
+        {
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Level-Up-Bedingung für\n{STR_VAR_1} erfüllen."));
+        }
+        return TRUE;
+    case EVO_LEVEL_BATTLE_ONLY:
+        if (hintEvo->param != 0)
+        {
+            ConvertIntToDecimalStringN(gStringVar2, currentLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+            ConvertIntToDecimalStringN(gStringVar3, hintEvo->param, STR_CONV_MODE_LEFT_ALIGN, 3);
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Im Kampf auf Level {STR_VAR_3}\nsteigen für {STR_VAR_1}. Aktuell: {STR_VAR_2}."));
+        }
+        else
+        {
+            StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Spezielle Kampf-Level-Up-\nBedingung für {STR_VAR_1}."));
+        }
+        return TRUE;
+    case EVO_ITEM:
+        CopyItemName(hintEvo->param, gStringVar2);
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: {STR_VAR_2} auf dieses\nPokémon einsetzen."));
+        return TRUE;
+    case EVO_TRADE:
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Dieses Pokémon tauschen\n(Entwicklung: {STR_VAR_1})."));
+        return TRUE;
+    case EVO_BATTLE_END:
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Kampf beenden, dann wird\n{STR_VAR_1} geprüft."));
+        return TRUE;
+    case EVO_SPIN:
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Dreh-Bedingung im Feld für\n{STR_VAR_1} erfüllen."));
+        return TRUE;
+    case EVO_SCRIPT_TRIGGER:
+        StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Nötig: Spezielles Event/Script für\n{STR_VAR_1} auslösen."));
+        return TRUE;
+    default:
+        break;
+    }
+
+    return FALSE;
+}
+
+static void Task_ShowManualEvolveRequirementAfterFailure(u8 taskId)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+
+    if (IsPartyMenuTextPrinterActive() == TRUE)
+        return;
+
+    if (!BufferManualEvolutionRequirementMessage(mon))
+        StringCopy(gStringVar4, COMPOUND_STRING("Voraussetzungen unbekannt oder\naktuell nicht erfüllbar."));
+
+    StringAppend(gStringVar4, gText_PauseUntilPress);
+    DisplayPartyMenuMessage(gStringVar4, TRUE);
+    gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+}
+
+static void Task_HandleManualEvolveYesNo(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0: // Ja
+        {
+            struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+            bool32 canStopEvo = TRUE;
+            u32 targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
+            if (targetSpecies != SPECIES_NONE)
+            {
+                GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, DO_EVO);
+                FreePartyPointers();
+                gCB2_AfterEvolution = gPartyMenu.exitCallback;
+                BeginEvolutionScene(mon, targetSpecies, canStopEvo, gPartyMenu.slotId);
+                DestroyTask(taskId);
+            }
+            else
+            {
+                StringCopy(gStringVar4, COMPOUND_STRING("Dieses Pokémon kann sich jetzt\nnicht entwickeln."));
+                StringAppend(gStringVar4, gText_PauseUntilPress);
+                DisplayPartyMenuMessage(gStringVar4, TRUE);
+                gTasks[taskId].func = Task_ShowManualEvolveRequirementAfterFailure;
+            }
+        }
+        break;
+    case 1: // Nein
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        Task_ReturnToChooseMonAfterText(taskId);
+        break;
+    }
 }
 
 void ShowFollowerInfoDebug(void)
