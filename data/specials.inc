@@ -667,3 +667,6 @@ gSpecials::
 	def_special UpdateTrainerCardPhotoIcons
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
+	def_special IsWildRandomizerEnabled
+	def_special RandomizeFieldItemVar8004
+	def_special RandomizeFieldItemVar8005

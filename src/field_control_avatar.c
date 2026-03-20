@@ -47,6 +47,9 @@ static EWRAM_DATA u16 sPrevMetatileBehavior = 0;
 
 COMMON_DATA u8 gSelectedObjectEvent = 0;
 
+extern ScrCmdFunc gScriptCmdTable[];
+extern ScrCmdFunc gScriptCmdTableEnd[];
+
 static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
 static u16 GetPlayerCurMetatileBehavior(int);
@@ -68,6 +71,30 @@ static void SetupWarp(struct MapHeader *, s8, struct MapPosition *);
 static bool8 TryDoorWarp(struct MapPosition *, u16, enum Direction);
 static s8 GetWarpEventAtPosition(struct MapHeader *, u16, u16, u8);
 static const u8 *GetCoordEventScriptAtPosition(struct MapHeader *, u16, u16, u8);
+static bool8 IsValidScriptPointerAndOpcode(const u8 *script);
+
+static bool8 IsValidScriptPointerAndOpcode(const u8 *script)
+{
+    uintptr_t addr;
+    u32 cmdCount;
+
+    if (script == NULL)
+        return FALSE;
+
+    addr = (uintptr_t)script;
+    // Valid script pointers are typically in ROM (0x08/0x0A mirrors) or WRAM.
+    if (((addr & 0x0E000000) != 0x08000000)
+     && ((addr & 0x0E000000) != 0x0A000000)
+     && ((addr & 0x0F000000) != 0x02000000)
+     && ((addr & 0x0F000000) != 0x03000000))
+        return FALSE;
+
+    cmdCount = (u32)(gScriptCmdTableEnd - gScriptCmdTable);
+    if (script[0] >= cmdCount)
+        return FALSE;
+
+    return TRUE;
+}
 static const struct BgEvent *GetBackgroundEventAtPosition(struct MapHeader *, u16, u16, u8);
 static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
@@ -285,7 +312,14 @@ static u16 GetPlayerCurMetatileBehavior(int runningState)
 static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
 {
     const u8 *script = GetInteractionScript(position, metatileBehavior, direction);
-    if (script == NULL || Script_HasNoEffect(script))
+    if (!IsValidScriptPointerAndOpcode(script))
+    {
+        if (script != NULL)
+            errorf("Rejected invalid interaction script ptr=%08x cmd=%02x lastTalked=%d map=%d/%d", (u32)script, script[0], gSpecialVar_LastTalked, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+        return FALSE;
+    }
+
+    if (Script_HasNoEffect(script))
         return FALSE;
 
     // Don't play interaction sound for certain scripts.

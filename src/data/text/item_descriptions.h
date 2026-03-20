@@ -2860,7 +2860,7 @@ static const u8 sDurinBerryDesc[] = _(
     "Plant in loamy soil\n"
     "to grow Durin.");
 
-static const u8 sBelueBerryDesc[] = _(
+static const u8 sBelüberryDesc[] = _(
     "{POKEBLOCK} ingredient.\n"
     "Plant in loamy soil\n"
     "to grow Belue.");

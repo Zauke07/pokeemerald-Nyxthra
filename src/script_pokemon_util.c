@@ -22,6 +22,7 @@
 #include "pokemon_storage_system.h"
 #include "random.h"
 #include "script.h"
+#include "randomizer.h"
 #include "sprite.h"
 #include "string_util.h"
 #include "tv.h"
@@ -67,6 +68,8 @@ u8 ScriptGiveEgg(u16 species)
 {
     struct Pokemon mon;
     u8 isEgg;
+
+    species = Randomizer_GetSpecies(species, RANDOMIZER_MODE_GIFT);
 
     CreateEgg(&mon, species, TRUE);
     isEgg = TRUE;
@@ -488,6 +491,8 @@ u32 ScriptGiveMon(u16 species, u8 level, enum Item item)
 {
     struct Pokemon mon;
     u8 heldItem[2];
+
+    species = Randomizer_GetSpecies(species, RANDOMIZER_MODE_GIFT);
 
     CreateRandomMon(&mon, species, level);
     if (item)

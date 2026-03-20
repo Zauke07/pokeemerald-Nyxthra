@@ -277,7 +277,13 @@ Route101_Text_RouteSign:
 	.string "{UP_ARROW} ROSALTSTADT (da gibt's WLAN)$"
 
 Route101_EventScript_Glumanda::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route101_EventScript_Glumanda_RandomizerText
 	msgbox Route101_Text_Glumanda, MSGBOX_NPC
+	end
+
+Route101_EventScript_Glumanda_RandomizerText::
+	msgbox Route101_Text_GlumandaRandomizer, MSGBOX_NPC
 	end
 
 Route101_Text_Glumanda:
@@ -293,6 +299,14 @@ Route101_Text_Glumanda:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route101_Text_GlumandaRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 @ Route101_EventScript_ChooseStarterRegion::
 @ 	msgbox Route101_Text_WhichStarterRegion, MSGBOX_DEFAULT

@@ -11518,8 +11518,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 10,
-        .iconPic = gItemIcon_BelueBerry,
-        .iconPalette = gItemIconPalette_BelueBerry,
+        .iconPic = gItemIcon_Belüberry,
+        .iconPalette = gItemIconPalette_Belüberry,
     },
 
     [ITEM_CHILAN_BERRY] =

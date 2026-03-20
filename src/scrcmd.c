@@ -50,6 +50,7 @@
 #include "script_menu.h"
 #include "script_movement.h"
 #include "script_pokemon_util.h"
+#include "randomizer.h"
 #include "shop.h"
 #include "slot_machine.h"
 #include "sound.h"
@@ -2524,6 +2525,10 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     enum Item item2 = ScriptReadHalfword(ctx);
 
     Script_RequestEffects(SCREFF_V1);
+
+    species = Randomizer_GetStaticSpecies(species);
+    if (species2 != SPECIES_NONE)
+        species2 = Randomizer_GetStaticSpecies(species2);
 
     if (species2 == SPECIES_NONE)
     {

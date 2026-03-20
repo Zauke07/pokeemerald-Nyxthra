@@ -26,7 +26,13 @@ MtPyre_Exterior_EventScript_SunTrigger::
 	end
 
 MtPyre_Exterior_EventScript_Fynx::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, MtPyre_Exterior_EventScript_Fynx_RandomizerText
 	msgbox MtPyre_Exterior_Text_Fynx, MSGBOX_NPC
+	end
+
+MtPyre_Exterior_EventScript_Fynx_RandomizerText::
+	msgbox MtPyre_Exterior_Text_FynxRandomizer, MSGBOX_NPC
 	end
 
 MtPyre_Exterior_Text_Fynx:
@@ -36,3 +42,11 @@ MtPyre_Exterior_Text_Fynx:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+MtPyre_Exterior_Text_FynxRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

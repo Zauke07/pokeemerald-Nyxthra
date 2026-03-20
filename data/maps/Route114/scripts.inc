@@ -204,7 +204,13 @@ Route114_Text_LanettesHouse::
 	.string "LANETTES NERDEN-BUDE$"
 
 Route114_EventScript_Serpifeu::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route114_EventScript_Serpifeu_RandomizerText
 	msgbox Route114_Text_Serpifeu, MSGBOX_NPC
+	end
+
+Route114_EventScript_Serpifeu_RandomizerText::
+	msgbox Route114_Text_SerpifeuRandomizer, MSGBOX_NPC
 	end
 
 Route114_Text_Serpifeu:
@@ -214,3 +220,11 @@ Route114_Text_Serpifeu:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route114_Text_SerpifeuRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

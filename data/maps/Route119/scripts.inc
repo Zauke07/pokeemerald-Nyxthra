@@ -5034,7 +5034,13 @@ Route119_Text_TrainerTipsDecoration::
 	.string "dir passt!$"
 
 Route119_EventScript_Froxy::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route119_EventScript_Froxy_RandomizerText
 	msgbox Route119_Text_Froxy, MSGBOX_NPC
+	end
+
+Route119_EventScript_Froxy_RandomizerText::
+	msgbox Route119_Text_FroxyRandomizer, MSGBOX_NPC
 	end
 
 Route119_Text_Froxy:
@@ -5045,20 +5051,24 @@ Route119_Text_Froxy:
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
 
+Route119_Text_FroxyRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
+
 Route119_EventScript_DefeatedBrendan:
 	setflag FLAG_HIDE_ROUTE_119_RIVAL
 	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
-	call Route119_EventScript_RivalExitScottArrive
-	releaseall
-	end
+	goto Route119_EventScript_RivalExitScottArrive
 
 Route119_EventScript_DefeatedMay:
 	setflag FLAG_HIDE_ROUTE_119_RIVAL
 	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
-	call Route119_EventScript_RivalExitScottArrive
-	releaseall
-	end
+	goto Route119_EventScript_RivalExitScottArrive

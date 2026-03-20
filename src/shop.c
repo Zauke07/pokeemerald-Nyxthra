@@ -28,6 +28,7 @@
 #include "scanline_effect.h"
 #include "script.h"
 #include "shop.h"
+#include "randomizer.h"
 #include "sound.h"
 #include "sprite.h"
 #include "string_util.h"
@@ -115,6 +116,9 @@ static EWRAM_DATA struct ListMenuItem *sListMenuItems = NULL;
 static EWRAM_DATA u8 (*sItemNames)[ITEM_NAME_LENGTH + 2] = {0};
 static EWRAM_DATA u8 sPurchaseHistoryId = 0;
 EWRAM_DATA struct ItemSlot gMartPurchaseHistory[SMARTSHOPPER_NUM_ITEMS] = {0};
+static EWRAM_DATA u16 sRandomizedMartItems[256] = {0};
+
+#define MAX_SHOP_MENU_ITEMS (ARRAY_COUNT(sRandomizedMartItems) - 1)
 
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
@@ -386,12 +390,30 @@ static void SetShopItemsForSale(const u16 *items)
 {
     u16 i = 0;
 
-    sMartInfo.itemList = items;
+    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    {
+        while (items[i] != ITEM_NONE && i < ARRAY_COUNT(sRandomizedMartItems) - 1)
+        {
+            sRandomizedMartItems[i] = Randomizer_GetItem(items[i], RANDOMIZER_MODE_FIELD_ITEM);
+            i++;
+        }
+        sRandomizedMartItems[i] = ITEM_NONE;
+        sMartInfo.itemList = sRandomizedMartItems;
+    }
+    else
+    {
+        sMartInfo.itemList = items;
+    }
+
     sMartInfo.itemCount = 0;
+    i = 0;
 
     // Read items until ITEM_NONE / DECOR_NONE is reached
     while (sMartInfo.itemList[i])
     {
+        if (sMartInfo.itemCount >= MAX_SHOP_MENU_ITEMS)
+            break;
+
         sMartInfo.itemCount++;
         i++;
     }

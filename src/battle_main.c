@@ -47,6 +47,7 @@
 #include "pokerus.h"
 #include "random.h"
 #include "recorded_battle.h"
+#include "randomizer.h"
 #include "roamer.h"
 #include "safari_zone.h"
 #include "scanline_effect.h"
@@ -1967,11 +1968,15 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         for (i = 0; i < monsCount; i++)
         {
             u32 monIndex = monIndices[i];
+            u16 trainerSpecies;
+            u16 trainerItem;
             s32 ball = -1;
             u32 personalityHash = GeneratePartyHash(trainer, i);
             const struct TrainerMon *partyData = trainer->party;
             struct OriginalTrainerId otId = OTID_STRUCT_RANDOM_NO_SHINY;
             u32 abilityNum = 0;
+
+            trainerSpecies = Randomizer_GetSpecies(partyData[monIndex].species, RANDOMIZER_MODE_TRAINER);
 
             if (trainer->battleType != TRAINER_BATTLE_TYPE_SINGLES)
                 personalityValue = 0x80;
@@ -1982,19 +1987,24 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
 
             personalityValue += personalityHash << 8;
             if (partyData[monIndex].gender == TRAINER_MON_MALE)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, partyData[monIndex].species);
+                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_MALE, trainerSpecies);
             else if (partyData[monIndex].gender == TRAINER_MON_FEMALE)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[monIndex].species);
+                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, trainerSpecies);
             else if (partyData[monIndex].gender == TRAINER_MON_RANDOM_GENDER)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
+                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, trainerSpecies);
             ModifyPersonalityForNature(&personalityValue, partyData[monIndex].nature);
             if (partyData[monIndex].isShiny)
             {
                 otId.method = OT_ID_PRESET;
                 otId.value = HIHALF(personalityValue) ^ LOHALF(personalityValue);
             }
-            CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, personalityValue, otId);
-            SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
+            CreateMon(&party[i], trainerSpecies, partyData[monIndex].lvl, personalityValue, otId);
+            trainerItem = partyData[monIndex].heldItem;
+            if (trainerItem != ITEM_NONE)
+                trainerItem = Randomizer_GetItem(trainerItem, RANDOMIZER_MODE_TRAINER);
+            if (trainerItem >= ITEMS_COUNT)
+                trainerItem = ITEM_NONE;
+            SetMonData(&party[i], MON_DATA_HELD_ITEM, &trainerItem);
 
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
             SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
@@ -2007,9 +2017,9 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                 SetMonData(&party[i], MON_DATA_SPDEF_EV, &(partyData[monIndex].ev[4]));
                 SetMonData(&party[i], MON_DATA_SPEED_EV, &(partyData[monIndex].ev[5]));
             }
-            if (partyData[monIndex].ability != ABILITY_NONE)
+            if (partyData[monIndex].ability != ABILITY_NONE && trainerSpecies == partyData[monIndex].species)
             {
-                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
+                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[trainerSpecies];
                 u32 maxAbilityNum = ARRAY_COUNT(speciesInfo->abilities);
                 for (abilityNum = 0; abilityNum < maxAbilityNum; ++abilityNum)
                 {
@@ -2020,12 +2030,16 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             }
             else if (B_TRAINER_MON_RANDOM_ABILITY)
             {
-                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[partyData[monIndex].species];
+                const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[trainerSpecies];
                 abilityNum = personalityHash % 3;
                 while (speciesInfo->abilities[abilityNum] == ABILITY_NONE)
                 {
                     abilityNum--;
                 }
+            }
+            else
+            {
+                abilityNum = 0;
             }
             SetMonData(&party[i], MON_DATA_ABILITY_NUM, &abilityNum);
             SetMonData(&party[i], MON_DATA_FRIENDSHIP, &(partyData[monIndex].friendship));

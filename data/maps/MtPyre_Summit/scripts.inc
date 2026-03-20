@@ -605,7 +605,13 @@ MtPyre_Summit_Text_HoennTrioTale::
 	.string "nach oben abgezischt…$"
 
 MtPyre_Summit_EventScript_Kwaks::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, MtPyre_Summit_EventScript_Kwaks_RandomizerText
 	msgbox MtPyre_Summit_Text_Kwaks, MSGBOX_NPC
+	end
+
+MtPyre_Summit_EventScript_Kwaks_RandomizerText::
+	msgbox MtPyre_Summit_Text_KwaksRandomizer, MSGBOX_NPC
 	end
 
 MtPyre_Summit_Text_Kwaks:
@@ -615,3 +621,11 @@ MtPyre_Summit_Text_Kwaks:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+MtPyre_Summit_Text_KwaksRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

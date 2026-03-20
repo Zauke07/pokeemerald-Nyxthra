@@ -38,6 +38,7 @@
 #include "pokemon.h"
 #include "pokemon_animation.h"
 #include "pokemon_icon.h"
+#include "randomizer.h"
 #include "pokemon_summary_screen.h"
 #include "pokemon_storage_system.h"
 #include "pokerus.h"
@@ -1753,12 +1754,32 @@ void CreateEnemyEventMon(void)
     s32 species = gSpecialVar_0x8004;
     s32 level = gSpecialVar_0x8005;
     s32 itemId = gSpecialVar_0x8006;
+    u16 hp;
+
+    species = Randomizer_GetStaticSpecies(species);
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species == SPECIES_EGG || !IsSpeciesEnabled(species))
+    {
+        species = SPECIES_NONE + 1;
+        while (species < NUM_SPECIES && (!IsSpeciesEnabled(species) || species == SPECIES_EGG))
+            species++;
+        if (species >= NUM_SPECIES)
+            species = SPECIES_BULBASAUR;
+    }
+
+    if (level < 1)
+        level = 1;
+    else if (level > MAX_LEVEL)
+        level = MAX_LEVEL;
 
     ZeroEnemyPartyMons();
 
     CreateEventMon(&gEnemyParty[0], species, level, Random32(), OTID_STRUCT_PLAYER_ID);
     SetBoxMonIVs(&gEnemyParty[0].box, USE_RANDOM_IVS);
     GiveMonInitialMoveset(&gEnemyParty[0]);
+    CalculateMonStats(&gEnemyParty[0]);
+    hp = GetMonData(&gEnemyParty[0], MON_DATA_MAX_HP);
+    SetMonData(&gEnemyParty[0], MON_DATA_HP, &hp);
     if (itemId)
     {
         u8 heldItem[2];
@@ -5152,6 +5173,9 @@ u32 GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode mode, u16 
         return SPECIES_NONE;
     }
 
+    if (targetSpecies != SPECIES_NONE)
+        targetSpecies = Randomizer_GetSpecies(targetSpecies, RANDOMIZER_MODE_EVOLUTION);
+
     return targetSpecies;
 }
 
@@ -6110,6 +6134,15 @@ static inline bool32 CanFirstMonBoostHeldItemRarity(void)
     return FALSE;
 }
 
+static void TrySetRandomizedWildHeldItem(struct Pokemon *mon, enum Item item)
+{
+    if (item == ITEM_NONE)
+        return;
+
+    item = Randomizer_GetItem(item, RANDOMIZER_MODE_WILD);
+    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+}
+
 void SetWildMonHeldItem(void)
 {
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE)))
@@ -6137,7 +6170,7 @@ void SetWildMonHeldItem(void)
                     // In active Altering Cave, use special item list
                     if (rnd < chanceNotRare)
                         continue;
-                    SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
+                    TrySetRandomizedWildHeldItem(&gEnemyParty[i], sAlteringCaveWildMonHeldItems[alteringCaveId].item);
                 }
                 else
                 {
@@ -6145,9 +6178,9 @@ void SetWildMonHeldItem(void)
                     if (rnd < chanceNoItem)
                         continue;
                     if (rnd < chanceNotRare)
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gSpeciesInfo[species].itemCommon);
+                        TrySetRandomizedWildHeldItem(&gEnemyParty[i], gSpeciesInfo[species].itemCommon);
                     else
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gSpeciesInfo[species].itemRare);
+                        TrySetRandomizedWildHeldItem(&gEnemyParty[i], gSpeciesInfo[species].itemRare);
                 }
             }
             else
@@ -6155,16 +6188,16 @@ void SetWildMonHeldItem(void)
                 if (gSpeciesInfo[species].itemCommon == gSpeciesInfo[species].itemRare && gSpeciesInfo[species].itemCommon != ITEM_NONE)
                 {
                     // Both held items are the same, 100% chance to hold item
-                    SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gSpeciesInfo[species].itemCommon);
+                    TrySetRandomizedWildHeldItem(&gEnemyParty[i], gSpeciesInfo[species].itemCommon);
                 }
                 else
                 {
                     if (rnd < chanceNoItem)
                         continue;
                     if (rnd < chanceNotRare)
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gSpeciesInfo[species].itemCommon);
+                        TrySetRandomizedWildHeldItem(&gEnemyParty[i], gSpeciesInfo[species].itemCommon);
                     else
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gSpeciesInfo[species].itemRare);
+                        TrySetRandomizedWildHeldItem(&gEnemyParty[i], gSpeciesInfo[species].itemRare);
                 }
             }
         }

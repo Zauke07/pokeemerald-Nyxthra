@@ -1,0 +1,6 @@
+#ifndef GUARD_NEW_GAME_RANDOMIZER_H
+#define GUARD_NEW_GAME_RANDOMIZER_H
+
+void CB2_InitNewGameRandomizer(void);
+
+#endif // GUARD_NEW_GAME_RANDOMIZER_H

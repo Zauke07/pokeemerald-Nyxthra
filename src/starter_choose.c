@@ -10,6 +10,7 @@
 #include "palette.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "randomizer.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "sprite.h"
@@ -282,6 +283,9 @@ static const u16 sStarterMon[STARTER_MON_COUNT] =
 
 void SetStarterMonListFromRegion(u8 region)
 {
+    u8 i;
+    u8 j;
+
     switch (region)
     {
     case STARTER_REGION_KANTO:
@@ -334,6 +338,38 @@ void SetStarterMonListFromRegion(u8 region)
         sStarterMon[1] = SPECIES_TORCHIC;
         sStarterMon[2] = SPECIES_MUDKIP;
         break;
+    }
+
+    for (i = 0; i < STARTER_MON_COUNT; i++)
+        sStarterMon[i] = Randomizer_GetSpecies(sStarterMon[i], RANDOMIZER_MODE_STARTER);
+
+    for (i = 1; i < STARTER_MON_COUNT; i++)
+    {
+        while (TRUE)
+        {
+            bool8 duplicate = FALSE;
+            for (j = 0; j < i; j++)
+            {
+                if (sStarterMon[i] == sStarterMon[j])
+                {
+                    duplicate = TRUE;
+                    break;
+                }
+            }
+
+            if (!duplicate)
+                break;
+
+            sStarterMon[i]++;
+            if (sStarterMon[i] >= NUM_SPECIES)
+                sStarterMon[i] = SPECIES_NONE + 1;
+            while (!IsSpeciesEnabled(sStarterMon[i]) || sStarterMon[i] == SPECIES_EGG)
+            {
+                sStarterMon[i]++;
+                if (sStarterMon[i] >= NUM_SPECIES)
+                    sStarterMon[i] = SPECIES_NONE + 1;
+            }
+        }
     }
 }
 

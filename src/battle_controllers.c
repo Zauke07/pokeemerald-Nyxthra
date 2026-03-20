@@ -28,6 +28,7 @@
 #include "test_runner.h"
 #include "text.h"
 #include "util.h"
+#include "randomizer.h"
 #include "wild_encounter.h"
 #include "constants/abilities.h"
 #include "constants/item_effects.h"
@@ -153,7 +154,7 @@ void SetUpBattleVarsAndBirchZigzagoon(void)
     BattleAI_SetupFlags();
 
     if (!IS_FRLG && gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)
-        CreateWildMon(SPECIES_ZIGZAGOON, 2);
+        CreateWildMon(Randomizer_GetStaticSpecies(SPECIES_ZIGZAGOON), 2);
 }
 
 void InitBattleControllers(void)

@@ -114,8 +114,14 @@ Route102_Text_RouteSignPetalburg:
 	.string "wurden in der Nähe gesehen.)$"
 
 Route102_EventScript_Shiggy::
-    msgbox Route102_Text_Shiggy, MSGBOX_NPC
-    end
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_Shiggy_RandomizerText
+	msgbox Route102_Text_Shiggy, MSGBOX_NPC
+	end
+
+Route102_EventScript_Shiggy_RandomizerText::
+	msgbox Route102_Text_ShiggyRandomizer, MSGBOX_NPC
+	end
 
 Route102_Text_Shiggy:
     .string "Hey {PLAYER}, ich bin ein\n"
@@ -130,4 +136,12 @@ Route102_Text_Shiggy:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route102_Text_ShiggyRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 

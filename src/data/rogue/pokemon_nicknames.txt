@@ -68,7 +68,7 @@ Blackcurrant
 Blood Lime
 Blood Orange
 Blue Passionfruit
-Blueberry
+Blüberry
 Bolivian Mountain Coconut
 Bottle Gourd
 Boysenberry
@@ -242,7 +242,7 @@ Hawaiian Mountain Apple
 Hawthorn Berry
 Hebesu
 Heirloom Tomato
-Highbush Blueberry
+Highbush Blüberry
 Highbush Cranberry
 Himalayan Mulberry
 Hog Plum
@@ -475,7 +475,7 @@ Pineapple
 Pineberry
 Pink Banana
 Pink Lady Apple
-Pink Lemonade Blueberry
+Pink Lemonade Blüberry
 Pink Pearl Apple
 Pinot Noir Grape
 Pinova Apple

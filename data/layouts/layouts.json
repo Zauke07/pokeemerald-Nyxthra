@@ -9629,6 +9629,16 @@
       "secondary_tileset": "gTileset_SeafoamIslands",
       "border_filepath": "data/layouts/MeteorFalls_B1F_4R/border.bin",
       "blockdata_filepath": "data/layouts/MeteorFalls_B1F_4R/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERBORGENE_LICHTUNG",
+      "name": "Verborgene_Lichtung_Layout",
+      "width": 22,
+      "height": 25,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Verborgene_Lichtung/border.bin",
+      "blockdata_filepath": "data/layouts/Verborgene_Lichtung/map.bin"
     }
   ]
 }

@@ -197,7 +197,13 @@ Route123_Text_BerryMastersHouse:
 	.string "BERRY MASTER'S HOUSE$"
 
 Route123_EventScript_Flamiau::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route123_EventScript_Flamiau_RandomizerText
 	msgbox Route123_Text_Flamiau, MSGBOX_NPC
+	end
+
+Route123_EventScript_Flamiau_RandomizerText::
+	msgbox Route123_Text_FlamiauRandomizer, MSGBOX_NPC
 	end
 
 Route123_Text_Flamiau:
@@ -207,3 +213,11 @@ Route123_Text_Flamiau:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route123_Text_FlamiauRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

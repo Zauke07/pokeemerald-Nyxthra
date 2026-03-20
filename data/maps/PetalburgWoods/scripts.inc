@@ -468,7 +468,13 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "Vergiss das nie. Ohne AP keine Action!$"
 
 PetalburgWoods_EventScript_Endivie::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, PetalburgWoods_EventScript_Endivie_RandomizerText
 	msgbox PetalburgWoods_Text_Endivie, MSGBOX_NPC
+	end
+
+PetalburgWoods_EventScript_Endivie_RandomizerText::
+	msgbox PetalburgWoods_Text_EndivieRandomizer, MSGBOX_NPC
 	end
 
 PetalburgWoods_Text_Endivie:
@@ -484,4 +490,12 @@ PetalburgWoods_Text_Endivie:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+PetalburgWoods_Text_EndivieRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 

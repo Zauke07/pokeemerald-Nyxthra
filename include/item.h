@@ -8,6 +8,7 @@
 #include "constants/tms_hms.h"
 #include "constants/item_effects.h"
 #include "constants/hold_effects.h"
+#include "randomizer.h"
 
 /* Each of these TM_HM enums corresponds an index in the list of TMs + HMs item ids in
  * gTMHMItemMoveIds. The index for an item can be retrieved with GetItemTMHMIndex below.
@@ -130,6 +131,8 @@ static inline enum TMHMIndex GetItemTMHMIndex(enum Item item)
 
 static inline enum Move GetItemTMHMMoveId(enum Item item)
 {
+    enum Move move;
+
     switch (item)
     {
     /* Expands to:
@@ -141,8 +144,14 @@ static inline enum Move GetItemTMHMMoveId(enum Item item)
     FOREACH_TM(UNPACK_ITEM_TO_TM_MOVE_ID)
     FOREACH_HM(UNPACK_ITEM_TO_HM_MOVE_ID)
     default:
-        return MOVE_NONE;
+        move = MOVE_NONE;
+        break;
     }
+
+    // HM moves are never randomized - they are required for story progression
+    if (item >= ITEM_HM_CUT && item <= ITEM_HM_DIVE)
+        return move;
+    return Randomizer_GetMove(move, RANDOMIZER_MODE_TMHM);
 }
 
 static inline enum Item GetTMHMItemIdFromMoveId(enum Move move)
@@ -176,7 +185,10 @@ static inline enum Item GetTMHMItemId(enum TMHMIndex index)
 
 static inline u16 GetTMHMMoveId(enum TMHMIndex index)
 {
-    return gTMHMItemMoveIds[index].moveId;
+    // HM moves are never randomized - they are required for story progression
+    if (gTMHMItemMoveIds[index].itemId >= ITEM_HM_CUT && gTMHMItemMoveIds[index].itemId <= ITEM_HM_DIVE)
+        return gTMHMItemMoveIds[index].moveId;
+    return Randomizer_GetMove(gTMHMItemMoveIds[index].moveId, RANDOMIZER_MODE_TMHM);
 }
 
 void BagPocket_SetSlotData(struct BagPocket *pocket, u32 pocketPos, struct ItemSlot newSlot);

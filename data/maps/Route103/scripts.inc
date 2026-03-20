@@ -4977,7 +4977,7 @@ Route103_Text_MayRoute103Pokemon:
 	.string "gibt’s ein paar wilde Brocken.$"
 
 Route103_Text_MayLetsBattle:
-	.string "{COLOR RIVAL_CLR}Ey, {PLAYER}{KUN}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Ey, {PLAYER}{KUN}!\p"
 	.string "…Ah, ich seh schon. Mein Dad hat dir\n"
 	.string "also auch eins geschenkt, hm?\p"
 	.string "Na dann - lass mal sehen, wie du dich\n"
@@ -5004,7 +5004,7 @@ Route103_Text_BrendanRoute103Pokemon:
 	.string "ROUTE 103 ein paar seltene Pokémon.$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Yo {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Yo {PLAYER}!\p"
 	.string "…Ah, dir wurde auch eins geschenkt?\n"
 	.string "Dann lass uns gleich mal die Kräfte messen!\p"
 	.string "Ich zeig dir, wie man als Trainer denkt\n"
@@ -5026,7 +5026,7 @@ Route103_Text_RedRoute103Pokemon:
 	.string "einige echt zähe Pokémon rum.$"
 
 Route103_Text_RedLetsBattle:
-	.string "Du hast also ein Pokémon, {PLAYER}…?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du hast also ein Pokémon, {PLAYER}…?\p"
 	.string "Dann beweis, dass du damit umgehen kannst.\p"
 	.string "Keine Ausreden. Kein Zurück.\n"
 	.string "Nur Kampf.$"
@@ -5036,7 +5036,7 @@ Route103_Text_RedDefeated:
 	.string "Ich unterschätze dich nicht nochmal.$"
 
 Route103_Text_RedTimeToHeadBack:
-	.string "Okay. Du hast’s drauf.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Okay. Du hast’s drauf.\n"
 	.string "Kein Wunder, dass du auserwählt wurdest.\p"
 	.string "Zurück zum LABOR.\n"
 	.string "Das war erst der Anfang.{COLOR DARK_GRAY}$"
@@ -5046,9 +5046,10 @@ Route103_Text_LeafRoute103Pokemon:
 	.string "echt ungewöhnlich aus…$"
 
 Route103_Text_LeafLetsBattle:
-	.string "Hey {PLAYER}!\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Hey {PLAYER}!\p"
 	.string "Na, auch ein Geschenk bekommen?\p"
-	.string "Lass uns das gleich klären - eins gegen eins!\p"
+	.string "Lass uns das gleich klären!\n"
+	.string "eins gegen eins!\p"
 	.string "Hoffentlich kannst du einstecken!$"
 
 Route103_Text_LeafDefeated:
@@ -5056,7 +5057,7 @@ Route103_Text_LeafDefeated:
 	.string "Ich seh Potenzial!$"
 
 Route103_Text_LeafTimeToHeadBack:
-	.string "Du verstehst dein Team, das sieht man.\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du verstehst dein Team, das sieht man.\p"
 	.string "Vielleicht gehörst du zu denen,\n"
 	.string "die echt was reißen.$\p"
 	.string "Auf ins LABOR - das Abenteuer ruft!{COLOR DARK_GRAY}$"
@@ -5066,7 +5067,7 @@ Route103_Text_LucasRoute103Pokemon:
 	.string "gibt’s Pokémon mit seltsamer Aura…$"
 
 Route103_Text_LucasLetsBattle:
-	.string "Du hast also ein Pokémon bekommen?\p"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Du hast also ein Pokémon bekommen?\p"
 	.string "Ich bin gespannt, was du drauf hast.\p"
 	.string "Das hier wird kein Spielplatzkampf!$"
 
@@ -5075,7 +5076,7 @@ Route103_Text_LucasDefeated:
 	.string "Vielleicht sogar besser als ich.$"
 
 Route103_Text_LucasTimeToHeadBack:
-	.string "Das reicht erstmal.\n"
+	.string "{COLOR RIVAL_CLR}{RIVAL}: Das reicht erstmal.\n"
 	.string "Zurück zum LABOR.\n"
 	.string "Ich glaub, du bist jemand, den man\n"
 	.string "im Auge behalten sollte.{COLOR DARK_GRAY}$"
@@ -5095,7 +5096,13 @@ Route103_Text_RouteSign:
 	.string "{DOWN_ARROW} ROSALTSTADT$"
 
 Route103_EventScript_Bisasam::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route103_EventScript_Bisasam_RandomizerText
 	msgbox Route103_Text_Bisasam, MSGBOX_NPC
+	end
+
+Route103_EventScript_Bisasam_RandomizerText::
+	msgbox Route103_Text_BisasamRandomizer, MSGBOX_NPC
 	end
 
 Route103_Text_Bisasam:
@@ -5111,6 +5118,14 @@ Route103_Text_Bisasam:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route103_Text_BisasamRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 Route103_Text_DebugStarterRegion:
 	.string "Region = {STR_VAR_1}$"

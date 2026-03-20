@@ -309,7 +309,13 @@ Route118_Text_RouteSign119::
 	.string "{UP_ARROW} ROUTE 119 (Viel Spaß im Regen, Loser)$"
 
 Route118_EventScript_Ottaro::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route118_EventScript_Ottaro_RandomizerText
 	msgbox Route118_Text_Ottaro, MSGBOX_NPC
+	end
+
+Route118_EventScript_Ottaro_RandomizerText::
+	msgbox Route118_Text_OttaroRandomizer, MSGBOX_NPC
 	end
 
 Route118_Text_Ottaro:
@@ -319,6 +325,14 @@ Route118_Text_Ottaro:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route118_Text_OttaroRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 Route118_Text_StevenQuestions::
 	.string "TROY: Oh, hi. Ich beobachte dich schon\n"
