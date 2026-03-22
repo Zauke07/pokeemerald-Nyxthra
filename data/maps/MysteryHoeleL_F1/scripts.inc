@@ -20,10 +20,13 @@ MysteryHoeleL_F1_EventScript_TryShowLavados::
 	goto_if_set FLAG_DEFEATED_LAVADOS, Common_EventScript_NopReturn
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_LAVADOS
+	addobject LOCALID_MYSTERY_HOELE_LAVADOS
 	return
 
 MysteryHoeleL_F1_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MysteryHoeleL_F1_EventScript_TryRemoveLavados
+	call_if_set   FLAG_CAUGHT_LAVADOS, MysteryHoeleL_F1_EventScript_HideLavados
+	call_if_unset FLAG_CAUGHT_LAVADOS, MysteryHoeleL_F1_EventScript_TryShowLavados
 	end
 
 MysteryHoeleL_F1_EventScript_TryRemoveLavados::
@@ -61,12 +64,12 @@ MysteryHoeleL_F1_EventScript_Lavados::
 	waitmovement 0
 	special RemoveCameraObject
 
+	setvar VAR_LAST_TALKED, LOCALID_MYSTERY_HOELE_LAVADOS
 	seteventmon SPECIES_MOLTRES, 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
-	setvar VAR_LAST_TALKED, LOCALID_MYSTERY_HOELE_LAVADOS
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MysteryHoeleL_F1_EventScript_DefeatedLavados
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MysteryHoeleL_F1_EventScript_RanFromLavados

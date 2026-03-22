@@ -4182,7 +4182,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_CELEBI,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 128,
+    .size = 512,
     .width = 32,
     .height = 32,
     .paletteSlot = PALSLOT_NPC_SPECIAL,
@@ -14359,7 +14359,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneUnderwater =
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-#if 1
+#if IS_FRLG
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal = {
     .tileTag = TAG_NONE,

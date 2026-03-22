@@ -1922,7 +1922,7 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
             if (FlagGet(gBadgeFlags[curFlag]))
                 flagCount++;
         }
-        *string = flagCount + CHAR_0;
+        endOfString = ConvertIntToDecimalStringN(string, flagCount, STR_CONV_MODE_LEFT_ALIGN, 2);
         *endOfString = EOS;
         break;
     }

@@ -795,10 +795,17 @@ void LoadSaveblockObjEventScripts(void)
 {
     const struct ObjectEventTemplate *mapHeaderObjTemplates = gMapHeader.events->objectEvents;
     struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-    s32 i;
+    u32 count = gMapHeader.events->objectEventCount;
+    u32 i;
 
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    if (count > OBJECT_EVENT_TEMPLATES_COUNT)
+        count = OBJECT_EVENT_TEMPLATES_COUNT;
+
+    for (i = 0; i < count; i++)
         savObjTemplates[i].script = mapHeaderObjTemplates[i].script;
+
+    for (; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+        savObjTemplates[i].script = NULL;
 }
 
 static struct ObjectEventTemplate *GetObjectEventTemplate(u8 localId)

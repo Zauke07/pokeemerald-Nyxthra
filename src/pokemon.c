@@ -1759,6 +1759,7 @@ void CreateEnemyEventMon(void)
     CreateEventMon(&gEnemyParty[0], species, level, Random32(), OTID_STRUCT_PLAYER_ID);
     SetBoxMonIVs(&gEnemyParty[0].box, USE_RANDOM_IVS);
     GiveMonInitialMoveset(&gEnemyParty[0]);
+    CalculateMonStats(&gEnemyParty[0]);
     if (itemId)
     {
         u8 heldItem[2];

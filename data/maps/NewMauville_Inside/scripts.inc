@@ -8,6 +8,7 @@ NewMauville_Inside_OnResume:
 	call_if_eq VAR_TEMP_1, 1, NewMauville_Inside_EventScript_SetBarrierStateBlueButton
 	call_if_eq VAR_TEMP_2, 1, NewMauville_Inside_EventScript_SetBarrierStateGreenButton
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, NewMauville_Inside_EventScript_TryRemoveVoltorb
+	call_if_unset FLAG_DEFEATED_ZAPDOS, NewMauville_Inside_EventScript_ShowZapdos
 	end
 
 NewMauville_Inside_EventScript_TryRemoveVoltorb::
@@ -273,6 +274,7 @@ NewMauville_Inside_EventScript_Zapdos::
 	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_NEWMAUVILLE_ZAPDOS
 	seteventmon SPECIES_ZAPDOS, 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle

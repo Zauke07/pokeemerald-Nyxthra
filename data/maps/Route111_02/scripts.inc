@@ -5,6 +5,7 @@ Route111_02_MapScripts::
 
 Route111_02_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, Route111_02_EventScript_TryRemoveLandorus
+	call_if_unset FLAG_DEFEATED_LANDORUS, Route111_02_EventScript_ShowLandorusAndWeather
 	end
 
 Route111_02_EventScript_TryRemoveLandorus::
@@ -32,6 +33,7 @@ Route111_02_EventScript_Landorus::
 	playmoncry SPECIES_LANDORUS, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_ROUTE111_LANDORUS
 	seteventmon SPECIES_LANDORUS, 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle

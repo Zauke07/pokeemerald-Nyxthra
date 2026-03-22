@@ -5,6 +5,7 @@ MeteorFalls_B1F_4R_MapScripts::
 
 MeteorFalls_B1F_4R_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MeteorFalls_B1F_4R_EventScript_TryRemoveArticuno
+	call_if_unset FLAG_DEFEATED_METEOR_FALLS_ARTICUNO, MeteorFalls_B1F_4R_EventScript_ShowArticuno
 	end
 
 MeteorFalls_B1F_4R_EventScript_TryRemoveArticuno::
@@ -28,6 +29,7 @@ MeteorFalls_B1F_4R_EventScript_Articuno::
 	playmoncry SPECIES_ARTICUNO, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_METEOR_ARTICUNO
 	seteventmon SPECIES_ARTICUNO, 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle

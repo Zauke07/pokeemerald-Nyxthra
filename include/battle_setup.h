@@ -37,12 +37,7 @@ typedef union PACKED TrainerBattleParameter
         u8 rivalBattleFlags;
     } params;
 
-    // +2 für z. B. eine .2byte-Transition-ID
-    u8 data[sizeof(struct _TrainerBattleParameter) + 2];
-
-    // Optionaler Zeiger auf Zusatzdaten - NICHT notwendig, aber hilfreich bei Bedarf
-    // Kann auch weggelassen werden, wenn nicht aktiv genutzt
-    // const void *extra; ← kannst du rauslassen, wenn du ihn nicht brauchst
+    u8 data[sizeof(struct _TrainerBattleParameter)];
 } TrainerBattleParameter;
 
 extern const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES];

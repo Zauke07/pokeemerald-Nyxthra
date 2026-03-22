@@ -4874,7 +4874,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_PlayersHouse_1F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "emerald"
+      "layout_version": "frlg"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_PLAYERS_HOUSE_2F_FRLG",
@@ -4887,7 +4887,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_PlayersHouse_2F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "emerald"
+      "layout_version": "frlg"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_RIVALS_HOUSE",
@@ -4900,7 +4900,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_RivalsHouse_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "emerald"
+      "layout_version": "frlg"
     },
     {
       "id": "LAYOUT_PALLET_TOWN_PROFESSOR_OAKS_LAB",
@@ -4913,7 +4913,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_ProfessorOaksLab_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "emerald"
+      "layout_version": "frlg"
     },
     {
       "id": "LAYOUT_HOUSE1_FRLG",
@@ -5381,7 +5381,7 @@
       "blockdata_filepath": "data/layouts/PalletTown_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "emerald"
+      "layout_version": "frlg"
     },
     {
       "id": "LAYOUT_VIRIDIAN_CITY",
@@ -9625,10 +9625,20 @@
       "name": "MeteorFalls_B1F_4R_Layout",
       "width": 20,
       "height": 20,
-      "primary_tileset": "gTileset_General_Frlg",
-      "secondary_tileset": "gTileset_SeafoamIslands",
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/MeteorFalls_B1F_4R/border.bin",
       "blockdata_filepath": "data/layouts/MeteorFalls_B1F_4R/map.bin"
+    },
+    {
+      "id": "LAYOUT_VERBORGENE_LICHTUNG",
+      "name": "Verborgene_Lichtung_Layout",
+      "width": 22,
+      "height": 25,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Verborgene_Lichtung/border.bin",
+      "blockdata_filepath": "data/layouts/Verborgene_Lichtung/map.bin"
     }
   ]
 }

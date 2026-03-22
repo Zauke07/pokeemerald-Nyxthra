@@ -4,49 +4,57 @@ ScorchedSlabSecret_MapScripts::
 	.byte 0
 
 ScorchedSlabSecret_OnTransition:
-	call_if_unset FLAG_DEFEATED_UXIE, ScorchedSlabSecret_EventScript_ShowUxie
+	call_if_set   FLAG_CAUGHT_UXIE, ScorchedSlabSecret_EventScript_HideUxie
+	call_if_unset FLAG_CAUGHT_UXIE, ScorchedSlabSecret_EventScript_TryShowUxie
 	end
 
 ScorchedSlabSecret_OnResume:
-@	call_if_set FLAG_SCORCHED_SLAB_SECRET_REMOVE_UXIE, ScorchedSlabSecret_EventScript_TryRemoveUxie
+	call_if_set   FLAG_SYS_CTRL_OBJ_DELETE, ScorchedSlabSecret_EventScript_TryRemoveUxie
+	call_if_set   FLAG_CAUGHT_UXIE, ScorchedSlabSecret_EventScript_HideUxie
+	call_if_unset FLAG_CAUGHT_UXIE, ScorchedSlabSecret_EventScript_TryShowUxie
 	end
 
-ScorchedSlabSecret_EventScript_ShowUxie::
+ScorchedSlabSecret_EventScript_HideUxie::
+	setflag FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE
+	return
+
+ScorchedSlabSecret_EventScript_TryShowUxie::
+	goto_if_set FLAG_DEFEATED_UXIE, Common_EventScript_NopReturn
 	clearflag FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE
+	addobject 1
 	return
 
 ScorchedSlabSecret_EventScript_TryRemoveUxie::
-@	clearflag FLAG_SCORCHED_SLAB_SECRET_REMOVE_UXIE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
-	removeobject VAR_LAST_TALKED
+	removeobject 1
 	return
 
-@ScorchedSlabSecret_EventScript_Uxie::
-@	lock
-@	faceplayer
-@	waitse
-@	playmoncry SPECIES_UXIE, CRY_MODE_ENCOUNTER
-@	delay 40
-@	waitmoncry
-@	seteventmon SPECIES_UXIE, 30
-
-@	setflag FLAG_SCORCHED_SLAB_SECRET_REMOVE_UXIE
-@	special BattleSetup_StartLegendaryBattle
-@	waitstate
-    
-@	specialvar VAR_RESULT, GetBattleOutcome
-@	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ScorchedSlabSecret_EventScript_DefeatedUxie
-@	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ScorchedSlabSecret_EventScript_RanFromUxie
-@	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ScorchedSlabSecret_EventScript_RanFromUxie
-
-@	setflag FLAG_DEFEATED_UXIE
-@	release
-@	end
+ScorchedSlabSecret_EventScript_Uxie::
+	lockall
+	faceplayer
+	waitse
+	playmoncry SPECIES_UXIE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, 1
+	seteventmon SPECIES_UXIE, 30
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, ScorchedSlabSecret_EventScript_DefeatedUxie
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, ScorchedSlabSecret_EventScript_RanFromUxie
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ScorchedSlabSecret_EventScript_RanFromUxie
+	setflag FLAG_CAUGHT_UXIE
+	releaseall
+	end
 
 ScorchedSlabSecret_EventScript_DefeatedUxie::
 	setflag FLAG_DEFEATED_UXIE
-	goto Common_EventScript_RemoveStaticPokemon
+	setvar VAR_0x8004, SPECIES_UXIE
+	goto Common_EventScript_LegendaryFlewAway
 	end
 
 ScorchedSlabSecret_EventScript_RanFromUxie::

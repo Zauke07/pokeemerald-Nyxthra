@@ -15,7 +15,7 @@
 
 static EWRAM_DATA bool8 sHasVisitedMapBefore = FALSE;
 
-#if 1
+#if IS_FRLG
 
 static EWRAM_DATA bool8 sAllocedBg0TilemapBuffer = FALSE;
 

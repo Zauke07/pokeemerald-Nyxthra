@@ -39,7 +39,9 @@
 #include "constants/event_objects.h"
 #include "constants/field_poison.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/script_commands.h"
 #include "constants/songs.h"
+#include "constants/trainer_types.h"
 #include "constants/trainer_hill.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
@@ -56,6 +58,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *, u8, enum D
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedMetatileScript(struct MapPosition *, u8, enum Direction);
 static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, enum Direction);
+static bool8 IsExpectedTrainerInteractionScript(u8 objectEventId, const u8 *script);
 static bool32 TrySetupDiveDownScript(void);
 static bool32 TrySetupDiveEmergeScript(void);
 static bool8 TryStartStepBasedScript(struct MapPosition *, u16, enum Direction);
@@ -303,6 +306,26 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
     return TRUE;
 }
 
+static bool8 IsExpectedTrainerInteractionScript(u8 objectEventId, const u8 *script)
+{
+    if (script == NULL)
+        return FALSE;
+
+    if (gObjectEvents[objectEventId].trainerType == TRAINER_TYPE_NONE)
+        return TRUE;
+
+    if (*script == SCR_OP_TRAINERBATTLE)
+        return TRUE;
+
+    errorf("Rejected non-trainer script %p for trainer localId=%d map=%d/%d opcode=%02x",
+           script,
+           gObjectEvents[objectEventId].localId,
+           gObjectEvents[objectEventId].mapGroup,
+           gObjectEvents[objectEventId].mapNum,
+           *script);
+    return FALSE;
+}
+
 static const u8 *GetInteractionScript(struct MapPosition *position, u8 metatileBehavior, enum Direction direction)
 {
     const u8 *script = GetInteractedObjectEventScript(position, metatileBehavior, direction);
@@ -409,6 +432,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
+    if (!IsExpectedTrainerInteractionScript(objectEventId, script))
+        return NULL;
+
     return script;
 }
 

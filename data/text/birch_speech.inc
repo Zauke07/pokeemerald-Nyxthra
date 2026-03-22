@@ -65,4 +65,5 @@ gText_Birch_AreYouReady::
 	.string "… … …\p"
 	.string "Ah bevor ich es vergesse!\p"
 	.string "Schau dir die Optionen an.\n"
-	.string "Es sind coole neue Sachen dabei.$"
+	.string "Es sind coole neue Sachen dabei.\p"
+	.string "$"

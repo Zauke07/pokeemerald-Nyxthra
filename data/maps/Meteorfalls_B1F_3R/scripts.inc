@@ -4,7 +4,7 @@ Meteorfalls_B1F_3R_MapScripts::
 Meteorfalls_B1F_3R_EventScript_TriggerColdSpot::
 	lockall
 	msgbox Meteorfalls_B1F_3R_Text_PlayerColdSpot, MSGBOX_DEFAULT
-	setvar VAR_TEMP_0, 1
+	setvar VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED, 1
 	releaseall
 	end
 

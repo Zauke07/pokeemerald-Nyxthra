@@ -120,6 +120,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ZAPDOS_OLD",
+      "local_id": "LOCALID_NEWMAUVILLE_ZAPDOS",
       "x": 9,
       "y": 48,
       "elevation": 0,

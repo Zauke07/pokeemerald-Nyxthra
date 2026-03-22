@@ -1113,21 +1113,22 @@ void InitTrainerBattleParameter(void)
 
 void TrainerBattleLoadArgs(const u8 *data)
 {
-    InitTrainerBattleParameter(); // Neuer Name in Expansion 1.15.0
+    size_t parameterSize = sizeof(gTrainerBattleParameter.data);
 
-    // Gesamte Datenstruktur kopieren (nutzt jetzt den Typnamen für die Größe)
-    memcpy(gTrainerBattleParameter.data, data, sizeof(TrainerBattleParameter));
+    InitTrainerBattleParameter();
 
-    // Nyxthra-Spezial: Prüfen, ob der Modus eine zusätzliche Transition-ID enthält
+    memcpy(gTrainerBattleParameter.data, data, parameterSize);
+
     if (TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_SINGLE_CUSTOM_TRANSITION)
     {
-        // Sicherer Zugriff auf den Speicher *nach* dem Parameter-Block, ohne Array-Index-Warnungen
-        const u8 *extra = data + sizeof(TrainerBattleParameter);
+        const u8 *extra = data + parameterSize;
         gTrainerBattleTransition = *(const u16 *)extra;
+        sTrainerBattleEndScript = (u8 *)extra + sizeof(u16);
     }
-
-    // Rücksprung-Adresse nach dem Kampf festlegen
-    sTrainerBattleEndScript = (u8 *)data + sizeof(TrainerBattleParameter);
+    else
+    {
+        sTrainerBattleEndScript = (u8 *)data + parameterSize;
+    }
 }
 
 void TrainerBattleLoadArgsTrainerA(const u8 *data)

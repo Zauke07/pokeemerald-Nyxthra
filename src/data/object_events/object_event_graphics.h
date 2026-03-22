@@ -481,8 +481,8 @@ const u32 gObjectEventPic_James_Rocket[] = INCBIN_U32("graphics/object_events/pi
 const u16 gObjectEventPal_James_Rocket[] = INCBIN_U16("graphics/object_events/palettes/james_rocket.gbapal");
 const u32 gObjectEventPic_Rogue_Egg[] = INCBIN_U32("graphics/object_events/pics/misc/rogue_egg.4bpp");
 const u16 gObjectEventPal_Rogue_Egg[] = INCBIN_U16("graphics/object_events/palettes/rogue_egg.gbapal");
-const u32 gObjectEventPic_UxieOld[] ALIGNED(4) = INCBIN_U32("graphics/object_events/pics/pokemon_old/uxie.4bpp");
-const u16 gObjectEventPal_UxieOld[] ALIGNED(4) = INCBIN_U16("graphics/object_events/palettes/uxie.gbapal");
+const u32 gObjectEventPic_UxieOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/uxie.4bpp");
+const u16 gObjectEventPal_UxieOld[] = INCBIN_U16("graphics/object_events/palettes/uxie.gbapal");
 
 // NPC
 const u16 gObjectEventPal_Nurse_OW[] = INCBIN_U16("graphics/object_events/palettes/nurse_joy_OW.gbapal");
@@ -1258,7 +1258,7 @@ const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effe
 
 const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
 
-#if 1
+#if IS_FRLG
 
 const u16 gObjectEventPic_RedNormalFrLg[] = INCBIN_U16("graphics/object_events/pics/people/red/red_normal.4bpp");
 const u16 gObjectEventPic_RedBike[] = INCBIN_U16("graphics/object_events/pics/people/red/red_bike.4bpp");

@@ -547,6 +547,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_BirthIslandStone,      OBJ_EVENT_PAL_TAG_BIRTH_ISLAND_STONE},
     {gObjectEventPal_HoOh,                  OBJ_EVENT_PAL_TAG_HO_OH},
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
+    {gObjectEventPal_Celebi,                OBJ_EVENT_PAL_TAG_CELEBI},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
     {gObjectEventPal_PlayerRedLeafBase,     OBJ_EVENT_PAL_TAG_RIVAL_RED},
@@ -579,7 +580,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Rocky,                   OBJ_EVENT_PAL_TAG_Rocky},
     {gObjectEventPal_LandorusOld,             OBJ_EVENT_PAL_TAG_LANDORUS},
     {gObjectEventPal_EthanFieldMove,          OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE},
-//    {gObjectEventPal_UxieOld,                 OBJ_EVENT_PAL_TAG_UXIE},
+    {gObjectEventPal_UxieOld,                 OBJ_EVENT_PAL_TAG_UXIE},
 
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
@@ -737,7 +738,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
 
     {gObjectEventPal_Misc_Peonia,           OBJ_EVENT_PAL_TAG_MISC_PEONIA},
     {gObjectEventPal_RouteExt,              OBJ_EVENT_PAL_TAG_ROUTE_EXT},
-#if 1
+#if IS_FRLG
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflectionFrlg,  OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_GREEN},
@@ -4039,9 +4040,16 @@ void SetObjectEventDirection(struct ObjectEvent *objectEvent, enum Direction dir
 
 static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
+    const struct ObjectEventTemplate *template;
+
     if (localId == OBJ_EVENT_ID_FOLLOWER)
         return EventScript_Follower;
-    return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
+
+    template = GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup);
+    if (template == NULL)
+        return NULL;
+
+    return template->script;
 }
 
 const u8 *GetObjectEventScriptPointerByObjectEventId(u8 objectEventId)

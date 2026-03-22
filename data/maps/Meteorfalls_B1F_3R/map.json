@@ -36,45 +36,45 @@
       "x": 7,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Meteorfalls_B1F_3R_EventScript_TriggerColdSpot"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Meteorfalls_B1F_3R_EventScript_TriggerColdSpot"
     },
     {
       "type": "trigger",
       "x": 10,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Meteorfalls_B1F_3R_EventScript_TriggerColdSpot"
     },
     {
       "type": "trigger",
       "x": 11,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Meteorfalls_B1F_3R_EventScript_TriggerColdSpot"
     },
     {
       "type": "trigger",
       "x": 8,
       "y": 14,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_METEORFALLS_B1F_3R_COLD_SPOT_TRIGGERED",
       "var_value": "0",
-      "script": "NULL"
+      "script": "Meteorfalls_B1F_3R_EventScript_TriggerColdSpot"
     }
   ],
   "bg_events": []

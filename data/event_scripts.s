@@ -163,6 +163,7 @@ gStdScripts_End::
 	.include "data/maps/Route118/scripts.inc"
 	.include "data/maps/Route119/scripts.inc"
 	.include "data/maps/Route120/scripts.inc"
+	.include "data/maps/Verborgene_Lichtung/scripts.inc"
 	.include "data/maps/Route121/scripts.inc"
 	.include "data/maps/Route122/scripts.inc"
 	.include "data/maps/Route123/scripts.inc"
@@ -597,7 +598,7 @@ gStdScripts_End::
 	.include "data/maps/Route119_House/scripts.inc"
 	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
 
-@ .if IS_FRLG
+.if IS_FRLG
 
 @ FRLG scripts
 	.include "data/maps/BattleColosseum_2P_Frlg/scripts.inc"
@@ -1044,7 +1045,7 @@ gStdScripts_End::
 	.include "data/scripts/flavor_text.inc"
 	.include "data/scripts/pkmn_center_nurse_frlg.inc"
 
-@ .endif
+.endif
 
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"

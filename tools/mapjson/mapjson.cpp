@@ -110,6 +110,30 @@ string get_generated_warning(const string &filename, bool isAsm) {
     return warning.str();
 }
 
+bool string_ends_with(const string &value, const string &suffix) {
+    if (value.length() < suffix.length())
+        return false;
+
+    return value.compare(value.length() - suffix.length(), suffix.length(), suffix) == 0;
+}
+
+bool should_exclude_map_for_version(const Json &map_data) {
+    string map_name = json_to_string(map_data, "name", true);
+    string region = json_to_string(map_data, "region", true);
+
+    if (version == "emerald") {
+        if (string_ends_with(map_name, "_Frlg"))
+            return true;
+        if (!region.empty() && region != "REGION_HOENN")
+            return true;
+    } else if (version == "firered") {
+        if (!region.empty() && region != "REGION_KANTO")
+            return true;
+    }
+
+    return false;
+}
+
 string get_include_guard_start(const string &name) {
     ostringstream guard;
     guard << "#ifndef GUARD_" << name << "_H\n"
@@ -728,15 +752,9 @@ void process_groups(string groups_filepath, vector<string> &map_filepaths, strin
         if (map_data == Json())
             FATAL_ERROR("Failed to read '%s' while processing groups: %s\n", filepath.c_str(), err.c_str());
 
-        string region = json_to_string(map_data, "region", true);
-
-        if (region.empty()) {
-            region = "REGION_HOENN";
-        }
         string map_name = json_to_string(map_data, "name");
 
-        if ((version == "emerald" && region != "REGION_HOENN")
-         || (version == "firered" && region != "REGION_KANTO")) {
+        if (should_exclude_map_for_version(map_data)) {
             invalid_maps.push_back(map_name);
         }
     }

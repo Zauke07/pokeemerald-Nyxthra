@@ -21,7 +21,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_VICTOR",
+      "graphics_id": "OBJ_EVENT_GFX_UXIE",
       "x": 7,
       "y": 5,
       "elevation": 0,
@@ -30,8 +30,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ScorchedSlabSecret_EventScript_Victor",
-      "flag": "0"
+      "script": "ScorchedSlabSecret_EventScript_Uxie",
+      "flag": "FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE"
     }
   ],
   "warp_events": [],
