@@ -68,6 +68,13 @@
       "elevation": 3,
       "dest_map": "MAP_MT_PYRE_5F",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_MT_PYRE_6F_2",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

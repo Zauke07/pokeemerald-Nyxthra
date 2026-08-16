@@ -5063,8 +5063,8 @@ Route110_EventScript_BigSnorlax::
 	msgbox Route110_Text_UseFlute, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route110_EventScript_SnorlaxDontUse
 
-	call Route110_EventScript_AwakenSnorlax
 	setwildbattle SPECIES_SNORLAX, 30
+	call Route110_EventScript_AwakenSnorlax
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	setflag FLAG_FORCE_SHINY_WILD_BATTLE
 	setflag FLAG_SPECIAL_BATTLE_MUSIC
@@ -5088,6 +5088,7 @@ Route110_EventScript_SnorlaxDefeated::
 	fadescreen FADE_FROM_BLACK
 	setflag FLAG_HIDE_ROUTE_110_BIG_SNORLAX
 	setflag FLAG_WOKE_UP_BIG_SNORLAX
+	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox Route110_Text_SnorlaxLeft, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -5111,6 +5112,7 @@ Route110_EventScript_AwakenSnorlax::
 	waitmessage
 	playfanfare MUS_RG_POKE_FLUTE
 	waitfanfare
+	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox Route110_Text_SnorlaxWokeUp, MSGBOX_DEFAULT
 	return
 
@@ -5466,9 +5468,9 @@ Route110_Text_PlayedFlute::
 	.string "{PLAYER} spielt die Pokéflöte.$"
 
 Route110_Text_SnorlaxWokeUp::
-	.string "{COLOR BLUE}Relaxo{COLOR DARK_GRAY} wacht auf!\n"
+	.string "{COLOR BLUE}{STR_VAR_1}{COLOR DARK_GRAY} wacht auf!\n"
 	.string "Es wirkt extrem genervt!$"
 
 Route110_Text_SnorlaxLeft::
-	.string "{COLOR BLUE}Relaxo{COLOR DARK_GRAY} beruhigte sich…\n"
+	.string "{COLOR BLUE}{STR_VAR_1}{COLOR DARK_GRAY} beruhigte sich…\n"
 	.string "und verschwand in den Bäumen.$"

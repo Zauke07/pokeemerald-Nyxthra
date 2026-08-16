@@ -588,6 +588,101 @@ Testlabor_EventScript_CelebiRepeat::
 	release
 	end
 
+Testlabor_EventScript_DittoRepeat::
+	lock
+	faceplayer
+	msgbox Testlabor_Text_DittoIntro, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	playmoncry SPECIES_DITTO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_DITTO, 10
+	dowildbattle
+	release
+	end
+
+Testlabor_Text_DittoIntro:
+	.string "Ditto!$"
+
+Testlabor_EventScript_LugiaRepeat::
+	lock
+	faceplayer
+	msgbox Testlabor_Text_LugiaIntro, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_LUGIA, 1
+	dowildbattle
+	release
+	end
+
+Testlabor_Text_LugiaIntro:
+	.string "Lugia!$"
+
+Testlabor_EventScript_LugiaShadowRepeat::
+	lock
+	faceplayer
+	msgbox Testlabor_Text_LugiaShadowIntro, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	playmoncry SPECIES_LUGIA, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_LUGIA_SHADOW, 1
+	dowildbattle
+	release
+	end
+
+Testlabor_Text_LugiaShadowIntro:
+	.string "Shadow Lugia!$"
+
+Testlabor_EventScript_RocketTest::
+	trainerbattle_single TRAINER_ROCKET_PROTON_TEST, Testlabor_Text_RocketIntro, Testlabor_Text_RocketOutro
+	msgbox Testlabor_Text_RocketPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+@ ========== TEXTE ==========
+
+Testlabor_Text_RocketIntro:
+	.string "Rocket Transition Test.$"
+
+Testlabor_Text_RocketOutro:
+	.string "Test.$"
+
+Testlabor_Text_RocketPostBattle:
+	.string "Fertig.$"
+
+Testlabor_EventScript_RocketTestJames::
+	trainerbattle_single TRAINER_ROCKET_JAMES_TEST, Testlabor_Text_RocketIntroJames, Testlabor_Text_RocketOutroJames
+	msgbox Testlabor_Text_RocketPostBattleJames, MSGBOX_AUTOCLOSE
+	end
+
+Testlabor_Text_RocketIntroJames:
+	.string "Rocket Transition James.$"
+
+Testlabor_Text_RocketOutroJames:
+	.string "James.$"
+
+Testlabor_Text_RocketPostBattleJames:
+	.string "Fertig James.$"
+
+Testlabor_EventScript_RocketTestJessie::
+	trainerbattle_single TRAINER_ROCKET_JESSIE_TEST, Testlabor_Text_RocketIntroJessie, Testlabor_Text_RocketOutroJessie
+	msgbox Testlabor_Text_RocketPostBattleJessie, MSGBOX_AUTOCLOSE
+	end
+
+Testlabor_Text_RocketIntroJessie:
+	.string "Rocket Transition Jessie.$"
+
+Testlabor_Text_RocketOutroJessie:
+	.string "Jessie.$"
+
+Testlabor_Text_RocketPostBattleJessie:
+	.string "Fertig Jessie.$"
+
 Testlabor_Eventscript_BackpackerMtest::
 	trainerbattle_single TRAINER_BACKPACKER_M_TEST, Testlabor_Text_BackpackerMtest_Intro, Testlabor_Text_BackpackerMtest_Defeat
 	msgbox Testlabor_Text_BackpackerMtest_Post, MSGBOX_AUTOCLOSE

@@ -581,6 +581,13 @@ Route111_EventScript_TrainerHillSign::
 	msgbox Route111_Text_TrainerHillSign, MSGBOX_SIGN
 	end
 
+Route111_EventScript_BillTrainerHillNotice::
+	lock
+	faceplayer
+	msgbox Route111_Text_BillTrainerHillNotice, MSGBOX_DEFAULT
+	release
+	end
+
 Route111_Text_BattleOurFamily::
 	.string "Na, du kleiner Landstreicher?\p"
 	.string "Lust auf ’ne ordentliche Tracht Prügel?\n"
@@ -730,6 +737,16 @@ Route111_Text_MauvilleUncleToldMeToTakeRockSmash::
 Route111_Text_TrainerHillSign::
 	.string "{RIGHT_ARROW} TRAINERBERG-EINGANG\p"
 	.string "“Komm hoch, wenn du kein Lappen bist!”$"
+
+Route111_Text_BillTrainerHillNotice::
+	.string "Yo, hier kurz als Hinweis:\p"
+	.string "Der DUELLTURM/TRAINERBERG ist in dieser\n"
+	.string "Version noch nicht bearbeitet und wird\l"
+	.string "später ersetzt oder entfernt.\p"
+	.string "Mit dem Debug-Menü kommst du zwar rein,\n"
+	.string "aber das führt aktuell nur zu Fehlern\l"
+	.string "und Softlocks.\p"
+	.string "Lass den Eingang lieber in Ruhe.$"
 
 Route111_EventScript_Ende::
 	msgbox Route111_Text_Ende, MSGBOX_SIGN

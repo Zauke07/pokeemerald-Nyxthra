@@ -50,100 +50,100 @@ AbandonedShip_Rooms2_1F_EventScript_Garrison::
 	end
 
 AbandonedShip_Rooms2_1F_Text_DanIntro:
-	.string "DAN: While searching for treasures,\n"
-	.string "we discovered a TRAINER!$"
+	.string "DAN: Während wir nach Schätzen gesucht haben,\n"
+	.string "haben wir einen TRAINER entdeckt!$"
 
 AbandonedShip_Rooms2_1F_Text_DanDefeat:
-	.string "DAN: We couldn't win even though\n"
-	.string "we worked together…$"
+	.string "DAN: Wir konnten nicht gewinnen, obwohl\n"
+	.string "wir zusammen gekämpft haben…$"
 
 AbandonedShip_Rooms2_1F_Text_DanPostBattle:
-	.string "DAN: We can't find any treasures…\n"
-	.string "I wonder if someone got them already?$"
+	.string "DAN: Wir finden einfach keine Schätze…\n"
+	.string "Vielleicht hat sie schon jemand eingesackt?$"
 
 AbandonedShip_Rooms2_1F_Text_DanNotEnoughMons:
-	.string "DAN: You don't even have two POKéMON.\n"
-	.string "You can't expect to beat us like that.$"
+	.string "DAN: Du hast nicht mal zwei POKéMON.\n"
+	.string "So kannst du uns nicht besiegen.$"
 
 AbandonedShip_Rooms2_1F_Text_KiraIntro:
 	.string "KIRA: Oh?\n"
-	.string "We were searching for treasures.\l"
-	.string "But we discovered a TRAINER instead!$"
+	.string "Wir waren auf Schatzsuche.\l"
+	.string "Und stattdessen finden wir einen TRAINER!$"
 
 AbandonedShip_Rooms2_1F_Text_KiraDefeat:
-	.string "KIRA: Ooh, so strong!$"
+	.string "KIRA: Oha, ganz schön stark!$"
 
 AbandonedShip_Rooms2_1F_Text_KiraPostBattle:
-	.string "KIRA: Where could the treasures be?\p"
-	.string "I've already decided what I'm buying\n"
-	.string "when we find the treasures!$"
+	.string "KIRA: Wo sind diese Schätze bloß?\p"
+	.string "Ich weiß schon genau, was ich kaufe,\n"
+	.string "sobald wir sie finden!$"
 
 AbandonedShip_Rooms2_1F_Text_KiraNotEnoughMons:
-	.string "KIRA: Oh, you don't have two POKéMON?\n"
-	.string "We'll have to battle some other time!$"
+	.string "KIRA: Oh, du hast keine zwei POKéMON?\n"
+	.string "Dann kämpfen wir ein andermal!$"
 
 AbandonedShip_Rooms2_1F_Text_KiraRegister:
-	.string "KIRA: Oh, you make me so angry!\n"
-	.string "I'm going to register you for that!$"
+	.string "KIRA: Boah, du nervst ja mal komplett!\n"
+	.string "Dafür landest du jetzt in meinem POKéNAV!$"
 
 AbandonedShip_Rooms2_1F_Text_DanRematchIntro:
-	.string "DAN: We've been searching for\n"
-	.string "treasures all this time.\p"
-	.string "Our POKéMON have grown stronger, too.\n"
-	.string "Let us show you, okay?$"
+	.string "DAN: Wir suchen die ganze Zeit schon\n"
+	.string "nach Schätzen.\p"
+	.string "Unsere POKéMON sind dabei auch stärker geworden.\n"
+	.string "Zeigen wir dir, was wir draufhaben, okay?$"
 
 AbandonedShip_Rooms2_1F_Text_DanRematchDefeat:
-	.string "DAN: You're strong, as usual!$"
+	.string "DAN: Du bist wie immer stark!$"
 
 AbandonedShip_Rooms2_1F_Text_DanPostRematch:
-	.string "DAN: We can't find any treasures,\n"
-	.string "we lose at POKéMON…\p"
-	.string "I want to go home… But if I say that,\n"
-	.string "she gets all angry with me…$"
+	.string "DAN: Keine Schätze,\n"
+	.string "bei POKéMON verlieren wir auch…\p"
+	.string "Ich will eigentlich nach Hause… Aber wenn ich das sage,\n"
+	.string "macht sie mich direkt zur Schnecke…$"
 
 AbandonedShip_Rooms2_1F_Text_DanRematchNotEnoughMons:
-	.string "DAN: You don't even have two POKéMON.\n"
-	.string "You can't expect to beat us like that.$"
+	.string "DAN: Du hast nicht mal zwei POKéMON.\n"
+	.string "So kannst du uns nicht besiegen.$"
 
 AbandonedShip_Rooms2_1F_Text_KiraRematchIntro:
-	.string "KIRA: Oh? We meet again!\p"
-	.string "Just like us, you still haven't given up\n"
-	.string "searching for treasures, have you?\p"
-	.string "Want to make it so the loser has\n"
-	.string "to give up searching?$"
+	.string "KIRA: Oh? Wir treffen uns wieder!\p"
+	.string "Genau wie wir hast du die Schatzsuche\n"
+	.string "auch noch nicht aufgegeben, oder?\p"
+	.string "Wie wär's: Wer verliert,\n"
+	.string "gibt die Suche auf?$"
 
 AbandonedShip_Rooms2_1F_Text_KiraRematchDefeat:
-	.string "KIRA: Oh, we lost again…$"
+	.string "KIRA: Oh nein, schon wieder verloren…$"
 
 AbandonedShip_Rooms2_1F_Text_KiraPostRematch:
-	.string "KIRA: We're not leaving until we raise\n"
-	.string "our POKéMON some more and we find\l"
-	.string "the treasures here!$"
+	.string "KIRA: Wir gehen erst, wenn unsere\n"
+	.string "POKéMON noch stärker sind und wir hier\l"
+	.string "die Schätze gefunden haben!$"
 
 AbandonedShip_Rooms2_1F_Text_KiraRematchNotEnoughMons:
-	.string "KIRA: Oh, you don't have two POKéMON?\n"
-	.string "We'll have to battle some other time!$"
+	.string "KIRA: Oh, du hast keine zwei POKéMON?\n"
+	.string "Dann kämpfen wir ein andermal!$"
 
 AbandonedShip_Rooms2_1F_Text_JaniIntro:
-	.string "I'm not good at swimming,\n"
-	.string "but I am good at battles!$"
+	.string "Ich bin kein Ass im Schwimmen,\n"
+	.string "aber im Kampf kann ich was!$"
 
 AbandonedShip_Rooms2_1F_Text_JaniDefeat:
-	.string "Oops.\n"
-	.string "That didn't go very well.$"
+	.string "Ups.\n"
+	.string "Das lief nicht so gut.$"
 
 AbandonedShip_Rooms2_1F_Text_JaniPostBattle:
-	.string "Walking around barefoot in this ship\n"
-	.string "is kind of gross.$"
+	.string "Hier barfuß durch das Schiff zu laufen\n"
+	.string "ist schon ziemlich eklig.$"
 
 AbandonedShip_Rooms2_1F_Text_GarrisonIntro:
-	.string "Strength and compassion…\n"
-	.string "Those are a TRAINER's treasures!$"
+	.string "Stärke und Mitgefühl…\n"
+	.string "Das sind die wahren Schätze eines TRAINERS!$"
 
 AbandonedShip_Rooms2_1F_Text_GarrisonDefeat:
-	.string "Ah, there is something about you\n"
-	.string "that sparkles.$"
+	.string "Ah, irgendetwas an dir\n"
+	.string "strahlt richtig.$"
 
 AbandonedShip_Rooms2_1F_Text_GarrisonPostBattle:
-	.string "In a cabin somewhere on board,\n"
-	.string "I saw something sparkle.$"
+	.string "In irgendeiner Kabine hier an Bord\n"
+	.string "habe ich etwas glitzern sehen.$"

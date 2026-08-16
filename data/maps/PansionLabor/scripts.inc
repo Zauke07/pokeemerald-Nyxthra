@@ -18,11 +18,7 @@ PansionLabor_CheckShowNPCs:
 
 PansionLabor_ShowNPCs:
 	goto_if_unset FLAG_DEFEATED_DAYCARE_KIDNAPPER, PansionLabor_ShowDisguised
-	goto_if_set FLAG_PENDING_DAYCARE_EGG, PansionLabor_ShowOldManAtJamesPosition
-	setflag FLAG_HIDE_PANSION_DISGUISED_NPC
-	setflag FLAG_HIDE_PANSION_JAMES
-	setflag FLAG_HIDE_PANSION_OLD_MAN
-	end
+	goto PansionLabor_ShowOldManAtJamesPosition
 
 PansionLabor_ShowDisguised:
 	clearflag FLAG_HIDE_PANSION_DISGUISED_NPC
@@ -31,8 +27,11 @@ PansionLabor_ShowDisguised:
 	end
 
 PansionLabor_ShowOldManAtJamesPosition:
+	setobjectxyperm LOCALID_OLD_MAN, 16, 9
 	setflag FLAG_HIDE_PANSION_DISGUISED_NPC
 	setflag FLAG_HIDE_PANSION_JAMES
+	clearflag FLAG_HIDE_PANSION_OLD_MAN
+	end
 	end
 
 @ Verkleideter NPC (wird zu James)
@@ -145,6 +144,7 @@ PansionLabor_EventScript_DisguisedNPC::
 
 	@ Quest KOMPLETT abgeschlossen!
 	setflag FLAG_DAYCARE_RESCUE_QUEST_COMPLETED
+	clearflag FLAG_DAYCARE_MAN_FIRST_EXIT_DONE @ Sicherstellen dass Danke-Dialog nicht uebersprungen wird
 	setflag FLAG_HIDE_PANSION_OLD_MAN
 	clearflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
 
@@ -154,6 +154,10 @@ PansionLabor_EventScript_DisguisedNPC::
 
 PansionLabor_EventScript_NoRoomForEgg::
 	msgbox PansionLabor_Text_NoRoomForEgg, MSGBOX_DEFAULT
+	setobjectxyperm LOCALID_OLD_MAN, 16, 9
+	setflag FLAG_HIDE_PANSION_DISGUISED_NPC
+	setflag FLAG_HIDE_PANSION_JAMES
+	clearflag FLAG_HIDE_PANSION_OLD_MAN
 	setflag FLAG_DEFEATED_DAYCARE_KIDNAPPER
 	release
 	end
@@ -176,7 +180,43 @@ PansionLabor_EventScript_OldMan::
 	lock
 	faceplayer
 	goto_if_unset FLAG_DEFEATED_DAYCARE_KIDNAPPER, PansionLabor_EventScript_OldManCaptive
+	@ James besiegt, aber Ei noch nicht erhalten (kein Platz hatte)
+	goto_if_set FLAG_PENDING_DAYCARE_EGG, PansionLabor_EventScript_OldManRetryEgg
+	@ Quest vollständig abgeschlossen
 	msgbox PansionLabor_Text_OldManAfterRescue, MSGBOX_DEFAULT
+	release
+	end
+
+PansionLabor_EventScript_OldManRetryEgg:
+	@ Prüfe ob jetzt Platz vorhanden
+	specialvar VAR_RESULT, CalculatePlayerPartyCount
+	goto_if_eq VAR_RESULT, PARTY_SIZE, PansionLabor_EventScript_NoRoomForEgg
+	@ EI ÜBERGABE!
+	message PansionLabor_Text_ReceivedEgg
+	playfanfare MUS_LEVEL_UP
+	waitfanfare
+	waitbuttonpress
+	special GiveEggFromDaycare
+	clearflag FLAG_PENDING_DAYCARE_EGG
+	msgbox PansionLabor_Text_TakeGoodCareOfIt, MSGBOX_DEFAULT
+	@ Old Man verlässt das Labor
+	msgbox PansionLabor_Text_OldManLeaving, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, PansionLabor_Movement_PlayerMakeSpace
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 5
+	applymovement LOCALID_OLD_MAN, PansionLabor_Movement_OldManLeave
+	delay 16
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement LOCALID_OLD_MAN
+	playse SE_EXIT
+	removeobject LOCALID_OLD_MAN
+	setflag FLAG_DAYCARE_RESCUE_QUEST_COMPLETED
+	clearflag FLAG_DAYCARE_MAN_FIRST_EXIT_DONE @ Sicherstellen dass Danke-Dialog nicht uebersprungen wird
+	setflag FLAG_HIDE_PANSION_OLD_MAN
+	clearflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
+	msgbox PansionLabor_Text_OldManGone, MSGBOX_DEFAULT
 	release
 	end
 

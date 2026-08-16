@@ -26,26 +26,30 @@ MossdeepCity_House3_EventScript_DeclineSuperRod::
 	end
 
 MossdeepCity_House3_Text_YouWantSuperRod:
-	.string "Hey there, TRAINER!\n"
-	.string "A SUPER ROD really is super!\p"
-	.string "Say all you want, but this baby can\n"
-	.string "catch POKéMON off the seafloor!\p"
-	.string "What do you think?\n"
-	.string "You want it, don't you?$"
+	.string "Yo, du kleines Trainer-Opfer!\n"
+	.string "Die Superangel ist der absolute Boss!\p"
+	.string "Digga, das Ding zieht dir die krassesten\n"
+	.string "Viecher vom Meeresgrund hoch, no cap!\p"
+	.string "Was guckst du so lost?\n"
+	.string "Willst du den fetten Loot haben oder was?$"
 
 MossdeepCity_House3_Text_SuperRodIsSuper:
-	.string "You bet, you bet!\n"
-	.string "After all, a SUPER ROD is really super!$"
+	.string "Dacht ich mir doch, du Geringverdiener!\n"
+	.string "Wer sagt schon nein zu free Stuff?\p"
+	.string "Die Superangel ist einfach komplett OP!$"
 
 MossdeepCity_House3_Text_TryDroppingRodInWater:
-	.string "If there's any water, try dropping in\n"
-	.string "your ROD and see what bites!$"
+	.string "Schmeiß das Ding einfach in jede\n"
+	.string "Pfütze rein und guck, was anbeißt.\p"
+	.string "Aber heul mir nachher nicht die Ohren\n"
+	.string "voll, wenn du nur Trash-Mobs ziehst!$"
 
 MossdeepCity_House3_Text_DontYouLikeToFish:
-	.string "Hunh?\n"
-	.string "Don't you like to fish?$"
+	.string "Hä? Angeln ist dir nicht wild genug?\n"
+	.string "Bist du komplett cringe oder was?\p"
+	.string "Geh mal lieber Gras berühren, du NPC.$"
 
 MossdeepCity_House3_Text_GoAfterSeafloorPokemon:
-	.string "Go after the seafloor POKéMON with\n"
-	.string "your SUPER ROD.$"
-
+	.string "Flex einfach 'ne Runde mit der\n"
+	.string "Superangel auf dem Meeresgrund.\p"
+	.string "Und jetzt mach 'nen Abflug, du nervst.$"

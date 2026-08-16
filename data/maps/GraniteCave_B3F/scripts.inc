@@ -144,7 +144,8 @@ GraniteCave_B3F_Event_AllHounds_Common::
 @ ==================================================================
 
 GraniteCave_B3F_Text_TriggerBlocked:
-	.string "Es scheint nichts zu passieren…\n"
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Es scheint\n"
+	.string "nichts zu passieren…\p"
 	.string "Vielleicht fehlt etwas.$"
 
 @ ==================================================================

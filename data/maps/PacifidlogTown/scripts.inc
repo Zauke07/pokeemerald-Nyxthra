@@ -28,27 +28,31 @@ PacifidlogTown_EventScript_TownSign::
 	end
 
 PacifidlogTown_Text_FastRunningCurrent:
-	.string "The sea between PACIFIDLOG and\n"
-	.string "SLATEPORT has a fast-running tide.\p"
-	.string "If you decide to SURF, you could end\n"
-	.string "up swept away somewhere else.$"
+	.string "Das Wasser zwischen Floßbrunn und\n"
+	.string "GRAPHITPORT CITY hat 'ne brutale\l"
+	.string "Strömung.\p"
+	.string "Einmal falsch gesurft und du wachst in\n"
+	.string "irgendeinem scheiß Niemandsland auf.$"
 
 PacifidlogTown_Text_NeatHousesOnWater:
-	.string "See, isn't it neat?\n"
-	.string "These houses are on water!\p"
-	.string "I was born here!$"
+	.string "Schon mal gecheckt, wie krass das ist?\n"
+	.string "Die Buden chillen einfach auf dem Wasser!\p"
+	.string "Bin hier geboren. Wild, oder?$"
 
 PacifidlogTown_Text_SkyPillarTooScary:
-	.string "The SKY PILLAR?\p"
-	.string "…Oh, you must mean that tall, tall\n"
-	.string "tower a little further out.\p"
-	.string "If you asked me, I wouldn't climb it.\n"
-	.string "It's too scary to get up that high.\p"
-	.string "Life at sea level in PACIFIDLOG,\n"
-	.string "that suits me fine.$"
+	.string "Der HIMMELSTURM?\p"
+	.string "… Ach, du meinst diesen fetten Turm\n"
+	.string "da hinten.\p"
+	.string "Kein Plan, wer da freiwillig raufklettert.\n"
+	.string "Ich scheiß mir da oben\l"
+	.string "original in die Hose.\p"
+	.string "Auf Meereshöhe hier in FLOßBRUNN zu\n"
+	.string "chillen, bockt eh viel mehr.$"
 
 PacifidlogTown_Text_TownSign:
-	.string "PACIFIDLOG TOWN\p"
-	.string "“Where the morning sun smiles upon\n"
-	.string "the waters.”$"
+	.string "FLOßBRUNN\p"
+	.string "“Wo die Morgensonne entspannt aufs\n"
+	.string "Wasser ballert.”$"
+
+
 

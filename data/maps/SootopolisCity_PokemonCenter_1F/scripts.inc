@@ -44,27 +44,27 @@ SootopolisCity_PokemonCenter_1F_EventScript_WomanNoLegendaries::
 	end
 
 SootopolisCity_PokemonCenter_1F_Text_WallaceToughestInHoenn:
-	.string "WALLACE is rumored to be the toughest\n"
-	.string "TRAINER in the whole HOENN region.\p"
-	.string "This town's GYM is led by the TRAINER\n"
-	.string "who taught WALLACE.\p"
-	.string "But the ELITE FOUR… They're said to be\n"
-	.string "even stronger than WALLACE's mentor.\p"
-	.string "How strong could they be?$"
+	.string "Man sagt, Wassili sei der\n"
+	.string "krasseste Tryharder in Hoenn.\p"
+	.string "Dieser Arena-Heini hier hat\n"
+	.string "ihm alles beigebracht.\p"
+	.string "Aber die Top Vier… Die sollen\n"
+	.string "noch mehr reinhauen als er.\p"
+	.string "Wie OP können die bitte sein?$"
 
 SootopolisCity_PokemonCenter_1F_Text_EveryoneTakenRefuge:
-	.string "Everyone in town has taken refuge\n"
-	.string "and won't come out of their homes.\p"
-	.string "Even I would rather not venture\n"
-	.string "outside.$"
+	.string "Alle campen in ihren Buden\n"
+	.string "und trauen sich nicht raus.\p"
+	.string "Ich bleib auch lieber AFK im\n"
+	.string "Pokémon-Center.$"
 
 SootopolisCity_PokemonCenter_1F_Text_AlwaysBeFriendsWithPokemon:
-	.string "Whenever, wherever, and whatever\n"
-	.string "happens, I will always be friends with\l"
-	.string "POKéMON.\p"
-	.string "Because it's fun to be with POKéMON!$"
+	.string "Egal was für ein Bullshit\n"
+	.string "passiert, ich chille immer\l"
+	.string "mit meinen Pokémon.\p"
+	.string "Ist halt der beste Vibe!$"
 
 SootopolisCity_PokemonCenter_1F_Text_ArentPokemonOurFriends:
-	.string "Aren't POKéMON our friends?\p"
-	.string "Why are they going wild this way?$"
-
+	.string "Pokémon sind doch unsere Bros?\p"
+	.string "Warum intet dieses Viehzeug\n"
+	.string "da draußen dann so rein?$"

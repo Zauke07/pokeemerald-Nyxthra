@@ -20,13 +20,11 @@ MysteryHoeleL_F1_EventScript_TryShowLavados::
 	goto_if_set FLAG_DEFEATED_LAVADOS, Common_EventScript_NopReturn
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_LAVADOS
-	addobject LOCALID_MYSTERY_HOELE_LAVADOS
 	return
 
 MysteryHoeleL_F1_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, MysteryHoeleL_F1_EventScript_TryRemoveLavados
 	call_if_set   FLAG_CAUGHT_LAVADOS, MysteryHoeleL_F1_EventScript_HideLavados
-	call_if_unset FLAG_CAUGHT_LAVADOS, MysteryHoeleL_F1_EventScript_TryShowLavados
 	end
 
 MysteryHoeleL_F1_EventScript_TryRemoveLavados::
@@ -49,8 +47,10 @@ MysteryHoeleL_F1_EventScript_Lavados::
 	delay 50
 	setweather WEATHER_NONE
 	doweather
+	setvar VAR_0x8004, SPECIES_MOLTRES
+	special RandomizeStaticMonVar8004
 	waitse
-	playmoncry SPECIES_MOLTRES, CRY_MODE_ENCOUNTER
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
 	delay 30
 	waitmoncry
 	delay 60
@@ -66,6 +66,10 @@ MysteryHoeleL_F1_EventScript_Lavados::
 
 	setvar VAR_LAST_TALKED, LOCALID_MYSTERY_HOELE_LAVADOS
 	seteventmon SPECIES_MOLTRES, 30
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	delay 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -75,18 +79,18 @@ MysteryHoeleL_F1_EventScript_Lavados::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MysteryHoeleL_F1_EventScript_RanFromLavados
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MysteryHoeleL_F1_EventScript_RanFromLavados
 	setflag FLAG_CAUGHT_LAVADOS
-	releaseall
+	setvar VAR_TEMP_1, 1
+	setflag FLAG_HIDE_LAVADOS
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 
 MysteryHoeleL_F1_EventScript_DefeatedLavados::
 	setflag FLAG_DEFEATED_LAVADOS
-	setvar VAR_0x8004, SPECIES_MOLTRES
 	goto Common_EventScript_LegendaryFlewAway
 	end
 
 MysteryHoeleL_F1_EventScript_RanFromLavados::
-	setvar VAR_0x8004, SPECIES_MOLTRES
 	goto Common_EventScript_LegendaryFlewAway
 	end
 

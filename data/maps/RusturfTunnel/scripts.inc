@@ -429,7 +429,7 @@ RusturfTunnel_Text_GruntIntro:
 	.string "Ugh… Ich hätte lieber bei Burger King\n"
 	.string "angefangen.\p"
 	.string "Dieses Geisel-Pokémon ist komplett lost!\n"
-	.string "Nicht mal zum Einschüchtern\n"
+	.string "Nicht mal zum Einschüchtern\l"
     .string "zu gebrauchen!\p"
 	.string "Ich hab mir für diesen Crap nen Tunnel\n"
 	.string "nach Mordor gegraben…\p"

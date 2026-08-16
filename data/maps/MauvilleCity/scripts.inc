@@ -663,3 +663,24 @@ MauvilleCity_Text_ExplainTV::
 
 MauvilleCity_Text_BeenCheckingOutTV::
 	.string "Na, wieder nur vor der Glotze gehangen?$"
+
+MauvilleCity_EventScript_QuestBlockPensionEntry::
+	@ Nur aktiv, nachdem der boese Pensionsleiter mit dem Ei abgehauen ist.
+	goto_if_unset FLAG_PENDING_DAYCARE_EGG, MauvilleCity_EventScript_QuestBlockPensionEntry_End
+	goto_if_unset FLAG_HIDE_ROUTE117_EVIL_NPC, MauvilleCity_EventScript_QuestBlockPensionEntry_End
+	goto_if_set FLAG_DEFEATED_DAYCARE_KIDNAPPER, MauvilleCity_EventScript_QuestBlockPensionEntry_End
+	lockall
+	msgbox MauvilleCity_Text_PlayerCheckDaycareManFirst, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MauvilleCity_EventScript_QuestBlockPensionEntry_End:
+	end
+
+MauvilleCity_Text_PlayerCheckDaycareManFirst:
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Das stinkt doch bis\n"
+	.string "zum Himmel…\p"
+	.string "Bevor ich hier weiter laufe, check\n"
+	.string "ich lieber, was mit dem Pensionsleiter\n"
+	.string "abgeht.{COLOR WHITE}$"
+

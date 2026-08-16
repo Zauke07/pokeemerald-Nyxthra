@@ -18,6 +18,7 @@ static void StartDrawFieldMessage(void);
 void InitFieldMessageBox(void)
 {
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+    SetNpcDialogueDarkModePaletteOverride(FALSE);
     gTextFlags.canABSpeedUpPrint = FALSE;
     gTextFlags.useAlternateDownArrow = FALSE;
     gTextFlags.autoScroll = FALSE;
@@ -36,13 +37,17 @@ static void Task_DrawFieldMessage(u8 taskId)
         if (gMsgIsSignPost)
             LoadSignPostWindowFrameGfx();
         else
+        {
+            SetNpcDialogueDarkModePaletteOverride(TRUE);
             LoadMessageBoxAndBorderGfx();
+        }
         task->tState++;
         break;
     case 1:
     {
         u32 nameboxWinId = GetNameboxWindowId();
         DrawDialogueFrame(0, TRUE);
+        SetNpcDialogueDarkModePaletteOverride(FALSE);
         if (nameboxWinId != WINDOW_NONE)
             DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
         task->tState++;
@@ -131,12 +136,18 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
 {
     TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
+    // Flag muss VOR AddTextPrinterForMessage gesetzt werden, damit die
+    // dunklen Textfarben korrekt eingetragen werden (Timing-Fix).
+    if (!gMsgIsSignPost)
+        SetNpcDialogueDarkModePaletteOverride(TRUE);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
 }
 
 static void StartDrawFieldMessage(void)
 {
+    if (!gMsgIsSignPost)
+        SetNpcDialogueDarkModePaletteOverride(TRUE);
     AddTextPrinterForMessage(TRUE);
     CreateTask_DrawFieldMessage();
 }
@@ -144,6 +155,7 @@ static void StartDrawFieldMessage(void)
 void HideFieldMessageBox(void)
 {
     DestroyTask_DrawFieldMessage();
+    SetNpcDialogueDarkModePaletteOverride(FALSE);
     ClearDialogWindowAndFrame(0, TRUE);
     DestroyNamebox();
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
@@ -171,5 +183,6 @@ static void UNUSED ReplaceFieldMessageWithFrame(void)
 void StopFieldMessage(void)
 {
     DestroyTask_DrawFieldMessage();
+    SetNpcDialogueDarkModePaletteOverride(FALSE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
 }

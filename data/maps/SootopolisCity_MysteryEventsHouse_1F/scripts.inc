@@ -6,6 +6,7 @@ SootopolisCity_MysteryEventsHouse_1F_MapScripts::
 SootopolisCity_MysteryEventsHouse_1F_OnTransition:
 	frontier_checkvisittrainer
 	call_if_eq VAR_RESULT, 0, SootopolisCity_MysteryEventsHouse_1F_EventScript_SetTrainerVisitingLayout
+	call_if_set FLAG_SYS_GAME_CLEAR, SootopolisCity_MysteryEventsHouse_1F_EventScript_OpenStairsForChamp
 	call_if_ne VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 0, SootopolisCity_MysteryEventsHouse_1F_EventScript_MoveOldManToDoor
 	end
 
@@ -16,45 +17,19 @@ SootopolisCity_MysteryEventsHouse_1F_EventScript_SetTrainerVisitingLayout::
 	setmaplayoutindex LAYOUT_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F_STAIRS_UNBLOCKED
 	return
 
+SootopolisCity_MysteryEventsHouse_1F_EventScript_OpenStairsForChamp::
+	setmaplayoutindex LAYOUT_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F_STAIRS_UNBLOCKED
+	return
+
 SootopolisCity_MysteryEventsHouse_1F_EventScript_MoveOldManToDoor::
 	setobjectxyperm LOCALID_MYSTERY_EVENTS_OLD_MAN, 2, 2
 	setobjectmovementtype LOCALID_MYSTERY_EVENTS_OLD_MAN, MOVEMENT_TYPE_FACE_RIGHT
 	return
 
 SootopolisCity_MysteryEventsHouse_1F_OnFrame:
-	map_script_2 VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_OldManCommentOnBattle
-	map_script_2 VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 2, SootopolisCity_MysteryEventsHouse_1F_EventScript_OldManCommentOnBattle
-	map_script_2 VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 3, SootopolisCity_MysteryEventsHouse_1F_EventScript_OldManCommentOnBattle
 	.2byte 0
 
-SootopolisCity_MysteryEventsHouse_1F_EventScript_OldManCommentOnBattle::
-	lockall
-	applymovement LOCALID_PLAYER, SootopolisCity_MysteryEventsHouse_1F_Movement_PlayerExitStairs
-	waitmovement 0
-	applymovement LOCALID_MYSTERY_EVENTS_OLD_MAN, SootopolisCity_MysteryEventsHouse_1F_Movement_OldManWalkBehindPlayer
-	waitmovement 0
-	copyobjectxytoperm LOCALID_MYSTERY_EVENTS_OLD_MAN
-	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	call_if_eq VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleWonComment
-	call_if_eq VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 2, SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleLostComment
-	call_if_eq VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 3, SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleTiedComment
-	special LoadPlayerParty
-	setvar VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE, 0
-	releaseall
-	end
 
-SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleWonComment::
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_ThatWasSuperlative, MSGBOX_DEFAULT
-	return
-
-SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleLostComment::
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_TooBadForYou, MSGBOX_DEFAULT
-	return
-
-SootopolisCity_MysteryEventsHouse_1F_EventScript_BattleTiedComment::
-	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_BrilliantStandoff, MSGBOX_DEFAULT
-	return
 
 SootopolisCity_MysteryEventsHouse_1F_Movement_PlayerExitStairs:
 	walk_down
@@ -68,6 +43,7 @@ SootopolisCity_MysteryEventsHouse_1F_Movement_OldManWalkBehindPlayer:
 SootopolisCity_MysteryEventsHouse_1F_EventScript_OldMan::
 	lock
 	faceplayer
+	goto_if_eq VAR_PROTAGONIST_CHALLENGE_PROGRESS, 18, SootopolisCity_MysteryEventsHouse_1F_EventScript_ChallengeReward
 	frontier_checkvisittrainer
 	goto_if_eq VAR_RESULT, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_InvalidVisitingTrainer
 	goto_if_eq VAR_TEMP_1, 1, SootopolisCity_MysteryEventsHouse_1F_EventScript_TrainerVisiting
@@ -164,65 +140,91 @@ SootopolisCity_MysteryEventsHouse_1F_Movement_OldManMoveAsideRight:
 	step_end
 
 SootopolisCity_MysteryEventsHouse_1F_Text_OnlyAmusementWatchingBattles:
-	.string "When I was young, I traveled the world\n"
-	.string "as a POKéMON TRAINER.\p"
-	.string "Now that I've become an old buzzard,\n"
-	.string "my only amusement is watching young\l"
-	.string "TRAINERS battle.$"
+	.string "Als ich jung war, hab ich\n"
+	.string "die Map komplett leergeräumt.\p"
+	.string "Jetzt bin ich alt und ergötze\n"
+	.string "mich nur noch an Noob-Fights.$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_DoorAppearsToBeLocked:
-	.string "The door appears to be locked.$"
+	.string "Die Tür ist verrammelt.$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_ChallengeVisitingTrainer:
-	.string "A TRAINER named {STR_VAR_1}\n"
-	.string "is visiting my home.\p"
-	.string "Would you like to challenge\n"
-	.string "{STR_VAR_1}?$"
+	.string "Ein Tryharder namens\n"
+	.string "{STR_VAR_1} ist zu Besuch.\p"
+	.string "Willst du {STR_VAR_1}\n"
+	.string "wegklatschen?$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_YouWontBattle:
-	.string "You won't battle? I'm disappointed\n"
-	.string "that I can't see you battle…$"
+	.string "Du kneifst? Ich bin echt\n"
+	.string "enttäuscht von dir…$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_KeepItTo3On3:
-	.string "Oh, good, good!\p"
-	.string "But my house isn't all that sturdy.\p"
-	.string "Could I ask you to keep it down to\n"
-	.string "a 3-on-3 match?$"
+	.string "Oh, sehr geil!\p"
+	.string "Aber meine Bude ist alt.\p"
+	.string "Mach bitte nur ein 3-gegen-3,\n"
+	.string "sonst stürzt hier alles ein.$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_SaveProgressBeforeBattle:
-	.string "Before you two battle, you should\n"
-	.string "save your progress.$"
+	.string "Speicher dein Game ab, bevor\n"
+	.string "ihr euch auf die Fresse gebt.$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_HopeToSeeGoodMatch:
-	.string "I hope to see a good match!$"
+	.string "Ich will krasse Plays sehen!$"
 
-@ Unused
 SootopolisCity_MysteryEventsHouse_1F_Text_StrVar1Tie:
 	.string "{STR_VAR_1}$"
 
 SootopolisCity_MysteryEventsHouse_B1F_Text_MatchEndedUpDraw:
-	.string "The match ended up a draw.$"
+	.string "Das war wohl ein Unentschieden.$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_BrilliantStandoff:
-	.string "So, it became a standoff.\p"
-	.string "It was a brilliant match in which\n"
-	.string "neither side conceded a step!$"
+	.string "Ein fettes Patt.\p"
+	.string "Ihr habt beide so krass\n"
+	.string "reingeschwitzt, GG!$"
 
-@ Unused
 SootopolisCity_MysteryEventsHouse_1F_Text_StrVar1Won:
 	.string "{STR_VAR_1}$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_ThatWasSuperlative:
-	.string "That was superlative!\p"
-	.string "Why, it was like seeing myself in\n"
-	.string "my youth again!$"
+	.string "Absolut OP!\p"
+	.string "Ich dachte kurz, ich seh mir\n"
+	.string "selbst beim Zocken zu!$"
 
-@ Unused
 SootopolisCity_MysteryEventsHouse_1F_Text_StrVar1Lost:
 	.string "{STR_VAR_1}$"
 
 SootopolisCity_MysteryEventsHouse_1F_Text_TooBadForYou:
-	.string "Ah, too bad for you!\p"
-	.string "But it was a good match.\n"
-	.string "I hope you can win next time.$"
+	.string "Tja, du wurdest rasiert!\p"
+	.string "Trotzdem GG.\n"
+	.string "Vielleicht nächstes Mal.$"
+
+SootopolisCity_MysteryEventsHouse_1F_EventScript_ChallengeReward::
+	goto_if_set FLAG_CHALLENGE_HOUSE_REWARD_GIVEN, SootopolisCity_MysteryEventsHouse_1F_EventScript_AlreadyRewarded
+	setflag FLAG_CHALLENGE_HOUSE_REWARD_GIVEN
+	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_ChallengeReward, MSGBOX_DEFAULT
+	additem ITEM_SACRED_ASH, 1
+	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_ReceivedSacredAsh, MSGBOX_DEFAULT
+	release
+	end
+
+SootopolisCity_MysteryEventsHouse_1F_EventScript_AlreadyRewarded::
+	msgbox SootopolisCity_MysteryEventsHouse_1F_Text_ChampionGreeting, MSGBOX_DEFAULT
+	release
+	end
+
+SootopolisCity_MysteryEventsHouse_1F_Text_ChallengeReward:
+	.string "Was?! Du hast alle 18\n"
+	.string "Protagonisten besiegt?!\p"
+	.string "Das ist die krasseste Leistung,\n"
+	.string "die ich in meinem Leben gesehen habe!\p"
+	.string "Nimm das hier -\n"
+	.string "du hast es dir verdient!$"
+
+SootopolisCity_MysteryEventsHouse_1F_Text_ReceivedSacredAsh:
+	.string "{PLAYER} erhielt\n"
+	.string "die Belohnung!$"
+
+SootopolisCity_MysteryEventsHouse_1F_Text_ChampionGreeting:
+	.string "Der stärkste Trainer aller\n"
+	.string "Regionen. Absolute Legende!$"
 

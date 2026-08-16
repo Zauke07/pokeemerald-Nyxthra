@@ -138,33 +138,33 @@ SkyPillar_Outside_EventScript_ClosedDoor::
 	end
 
 SkyPillar_Outside_Text_DoorIsClosed:
-	.string "The door is closed.$"
+	.string "Die Tür ist dicht, du Lappen.$"
 
 SkyPillar_Outside_Text_OpenedDoorToSkyPillar:
-	.string "WALLACE: Oh, my, I'm terribly sorry!\p"
-	.string "In my haste, I didn't notice that\n"
-	.string "I'd left you behind!\p"
-	.string "I've opened the locked door of\n"
-	.string "the SKY PILLAR.\p"
-	.string "{PLAYER}{KUN}, let's be on our way!$"
+	.string "Wassili: Fuck, mein Fehler!\p"
+	.string "Hab beim Rushen gar nicht\n"
+	.string "gecheckt, dass du AFK warst!\p"
+	.string "Ich hab die Tür zum Himmelturm\n"
+	.string "geknackt.\p"
+	.string "Los {PLAYER}{KUN}, push jetzt rein!$"
 
 SkyPillar_Outside_Text_EarthquakeNotMomentToWaste:
-	.string "WALLACE: It's an earthquake!\p"
-	.string "There's not a moment to waste!\n"
-	.string "We've got to hurry!$"
+	.string "Wassili: Krasses Erdbeben!\p"
+	.string "Wir haben null Zeit mehr!\n"
+	.string "Beweg deinen Arsch!$"
 
 SkyPillar_Outside_Text_SituationGettingWorse:
-	.string "WALLACE: Hmm…\n"
-	.string "The situation is getting worse…$"
+	.string "Wassili: Hmm…\n"
+	.string "Die Scheiße eskaliert komplett…$"
 
 SkyPillar_Outside_Text_GotToGoBackForSootopolis:
-	.string "WALLACE: This isn't good…\p"
-	.string "The weather distortion is spreading\n"
-	.string "even here…\p"
+	.string "Wassili: Gar nicht geil…\p"
+	.string "Dieser Dreckswetter-Bug zieht\n"
+	.string "sich bis hierher…\p"
 	.string "{PLAYER}{KUN}.\p"
-	.string "RAYQUAZA should be farther up\n"
-	.string "from here.\p"
-	.string "I'm worried about SOOTOPOLIS.\n"
-	.string "I've got to go back.\p"
-	.string "Everything is in your hands now.\n"
-	.string "Don't fail us!$"
+	.string "Rayquaza spawnt irgendwo da\n"
+	.string "oben auf der Map.\p"
+	.string "Ich hab Schiss um Xeneroville.\n"
+	.string "Ich porte mich zurück.\p"
+	.string "Du musst das jetzt carrien.\n"
+	.string "Troll bloß nicht rein!$"

@@ -95,11 +95,9 @@ GraniteCave_B2F_Text_NPC_Before:
 	.string "Man sagt, tief in dieser Höhle\n"
 	.string "sollen sich uralte Gesteinswesen\l"
 	.string "verborgen haben.\p"
-	.string "Sie schlafen seit Jahrtausenden.\p"
 	.string "Alte Schriften berichten, dass\n"
 	.string "man drei bestimmte Pokémon bei\l"
-	.string "sich tragen muss, um sie zu\n"
-	.string "erwecken.\p"
+	.string "sich tragen muss zum Erwecken.\p"
 	.string "Doch niemand kennt die Sprache\n"
 	.string "dieser Schriften mehr…$"
 

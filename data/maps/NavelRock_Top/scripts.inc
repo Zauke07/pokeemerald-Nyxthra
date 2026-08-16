@@ -44,10 +44,6 @@ NavelRock_Top_EventScript_HoOh::
 	setweather WEATHER_NONE
 	doweather
 	waitse
-	playmoncry SPECIES_HO_OH, CRY_MODE_ENCOUNTER
-	delay 30
-	waitmoncry
-	delay 60
 	setvar VAR_0x8004, 3  @ num loops
 	setvar VAR_0x8005, 35 @ delay
 	special LoopWingFlapSE
@@ -56,6 +52,10 @@ NavelRock_Top_EventScript_HoOh::
 	waitmovement 0
 	special RemoveCameraObject
 	seteventmon SPECIES_HO_OH, 70
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	delay 30
+	waitmoncry
+	delay 60
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -71,12 +71,10 @@ NavelRock_Top_EventScript_HoOh::
 
 NavelRock_Top_EventScript_DefeatedHoOh::
 	setflag FLAG_DEFEATED_HO_OH
-	setvar VAR_0x8004, SPECIES_HO_OH
 	goto Common_EventScript_LegendaryFlewAway
 	end
 
 NavelRock_Top_EventScript_RanFromHoOh::
-	setvar VAR_0x8004, SPECIES_HO_OH
 	goto Common_EventScript_LegendaryFlewAway
 	end
 

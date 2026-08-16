@@ -3368,17 +3368,6 @@
       "layout_version": "emerald"
     },
     {
-      "id": "LAYOUT_MOSSDEEP_CITY_GAME_CORNER_B1F",
-      "name": "MossdeepCity_GameCorner_B1F_Layout",
-      "width": 12,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
-      "border_filepath": "data/layouts/MossdeepCity_GameCorner_B1F/border.bin",
-      "blockdata_filepath": "data/layouts/MossdeepCity_GameCorner_B1F/map.bin",
-      "layout_version": "emerald"
-    },
-    {
       "id": "LAYOUT_SOOTOPOLIS_CITY_HOUSE1",
       "name": "SootopolisCity_House1_Layout",
       "width": 8,
@@ -6031,7 +6020,7 @@
       "blockdata_filepath": "data/layouts/RocketHideout_B1F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_ROCKET_HIDEOUT_B2F",
@@ -6044,7 +6033,7 @@
       "blockdata_filepath": "data/layouts/RocketHideout_B2F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_ROCKET_HIDEOUT_B3F",
@@ -6057,7 +6046,7 @@
       "blockdata_filepath": "data/layouts/RocketHideout_B3F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_ROCKET_HIDEOUT_B4F",
@@ -6070,7 +6059,7 @@
       "blockdata_filepath": "data/layouts/RocketHideout_B4F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_1F",
@@ -6083,7 +6072,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_1F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_2F",
@@ -6096,7 +6085,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_2F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_3F",
@@ -6109,7 +6098,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_3F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_4F",
@@ -6122,7 +6111,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_4F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_5F",
@@ -6135,7 +6124,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_5F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_6F",
@@ -6148,7 +6137,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_6F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_7F",
@@ -6161,7 +6150,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_7F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_8F",
@@ -6174,7 +6163,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_8F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_9F",
@@ -6187,7 +6176,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_9F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_10F",
@@ -6200,7 +6189,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_10F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_SILPH_CO_11F",
@@ -6213,7 +6202,7 @@
       "blockdata_filepath": "data/layouts/SilphCo_11F_Frlg/map.bin",
       "border_height": 2,
       "border_width": 2,
-      "layout_version": "frlg"
+      "layout_version": "emerald"
     },
     {
       "id": "LAYOUT_POKEMON_MANSION_1F",
@@ -9571,8 +9560,8 @@
       "name": "TestWald_Layout",
       "width": 50,
       "height": 50,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
+      "primary_tileset": "gTileset_BuildingFrlg",
+      "secondary_tileset": "gTileset_SilphCo",
       "border_filepath": "data/layouts/TestWald/border.bin",
       "blockdata_filepath": "data/layouts/TestWald/map.bin",
       "layout_version": "emerald"
@@ -9639,6 +9628,17 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Verborgene_Lichtung/border.bin",
       "blockdata_filepath": "data/layouts/Verborgene_Lichtung/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_PYRE_6F_2",
+      "name": "MtPyre_6F_2_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/MtPyre_6F_2/border.bin",
+      "blockdata_filepath": "data/layouts/MtPyre_6F_2/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

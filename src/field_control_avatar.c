@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle_setup.h"
 #include "bike.h"
+#include "challenge_mode.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
 #include "debug.h"
@@ -1095,6 +1096,9 @@ static s8 GetWarpEventAtMapPosition(struct MapHeader *mapHeader, struct MapPosit
 static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPosition *position)
 {
     const struct WarpEvent *warpEvent;
+    u8 overrideMapGroup;
+    u8 overrideMapNum;
+    u8 overrideWarpId;
 
     u8 trainerHillMapId = GetCurrentTrainerHillMapId();
 
@@ -1121,6 +1125,36 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         warpEvent = &gMapHeader.events->warps[warpEventId];
     }
 
+    if (!trainerHillMapId
+     && ChallengeMode_GetWarpDestinationOverride(gSaveBlock1Ptr->location.mapGroup,
+                                                 gSaveBlock1Ptr->location.mapNum,
+                                                 warpEventId,
+                                                 &overrideMapGroup,
+                                                 &overrideMapNum,
+                                                 &overrideWarpId))
+    {
+        const struct MapHeader *mapHeader;
+
+        mapHeader = Overworld_GetMapHeaderByGroupAndId(overrideMapGroup, overrideMapNum);
+        if (mapHeader == NULL
+         || mapHeader->events == NULL
+         || mapHeader->events->warps == NULL
+         || overrideWarpId >= mapHeader->events->warpCount)
+            goto UseRegularWarp;
+
+        SetWarpDestinationToMapWarp(overrideMapGroup, overrideMapNum, overrideWarpId);
+        UpdateEscapeWarp(position->x, position->y);
+        if (mapHeader != NULL
+         && mapHeader->events != NULL
+         && mapHeader->events->warps != NULL
+         && overrideWarpId < mapHeader->events->warpCount
+         && mapHeader->events->warps[overrideWarpId].mapNum == MAP_NUM(MAP_DYNAMIC))
+            SetDynamicWarp(mapHeader->events->warps[overrideWarpId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
+        return;
+    }
+
+UseRegularWarp:
+
     if (warpEvent->mapNum == MAP_NUM(MAP_DYNAMIC))
     {
         SetWarpDestinationToDynamicWarp(warpEvent->warpId);
@@ -1132,8 +1166,12 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
         SetWarpDestinationToMapWarp(warpEvent->mapGroup, warpEvent->mapNum, warpEvent->warpId);
         UpdateEscapeWarp(position->x, position->y);
         mapHeader = Overworld_GetMapHeaderByGroupAndId(warpEvent->mapGroup, warpEvent->mapNum);
-        if (mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(MAP_DYNAMIC))
-            SetDynamicWarp(mapHeader->events->warps[warpEventId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
+        if (mapHeader != NULL
+         && mapHeader->events != NULL
+         && mapHeader->events->warps != NULL
+         && warpEvent->warpId < mapHeader->events->warpCount
+         && mapHeader->events->warps[warpEvent->warpId].mapNum == MAP_NUM(MAP_DYNAMIC))
+            SetDynamicWarp(mapHeader->events->warps[warpEvent->warpId].warpId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, warpEventId);
     }
 }
 

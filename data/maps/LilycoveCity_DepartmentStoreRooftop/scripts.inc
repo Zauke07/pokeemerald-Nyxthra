@@ -201,7 +201,7 @@ LilycoveCity_DepartmentStoreRooftop_Text_BoneDryThirsty:
 	.string "Boah…… ich vertrockne hier gleich!$"
 
 LilycoveCity_DepartmentStoreRooftop_Text_WhichDrinkWouldYouLike:
-	.string "Ein GETRÄNKEAUTOMAT.\n"
+	.string "Ein Getränkeautomat.\n"
 	.string "Was willst du dir hinter die Binde kippen?$"
 
 LilycoveCity_DepartmentStoreRooftop_Text_CanOfDrinkDroppedDown:

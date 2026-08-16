@@ -92,9 +92,24 @@ PetalburgWoods_EventScript_DevonResearcherPostBattle::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ThatWasAwfullyClose, MSGBOX_DEFAULT
-	giveitem ITEM_GREAT_BALL
+	setvar VAR_0x8004, ITEM_GREAT_BALL
+	special RandomizeGiftItemVar8004
+	checkitemspace VAR_0x8004, 1
 	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_BagFull
+	bufferitemnameplural STR_VAR_2, VAR_0x8004, 1
+	additem VAR_0x8004, 1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+	waitmessage
+	waitfanfare
+	goto_if_eq VAR_0x8004, ITEM_GREAT_BALL, PetalburgWoods_EventScript_ExplainGreatBallReward
+	msgbox PetalburgWoods_Text_RandomizedReward, MSGBOX_DEFAULT
+	goto PetalburgWoods_EventScript_ResearcherExit
+
+PetalburgWoods_EventScript_ExplainGreatBallReward::
 	msgbox PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro, MSGBOX_DEFAULT
+
+PetalburgWoods_EventScript_ResearcherExit::
 	applymovement LOCALID_PETALBURG_WOODS_DEVON_EMPLOYEE, PetalburgWoods_Movement_DevonResearcherStartExit
 	waitmovement 0
 	msgbox PetalburgWoods_Text_ICantBeWastingTime, MSGBOX_DEFAULT
@@ -375,10 +390,17 @@ PetalburgWoods_Text_TeamAquaAfterSomethingInRustboro:
 	.string "Der Typ von TEAM AQUA meinte doch,\n"
 	.string "sie haben noch was in METAROST vor.$"
 
+PetalburgWoods_Text_RandomizedReward:
+	.string "TEAM AQUA hatte auch etwas bei sich.\p"
+	.string "Im Randomizer wurde daraus\n"
+	.string "{STR_VAR_2}.\p"
+	.string "In METAROST scheinen sie noch nach\n"
+	.string "etwas anderem zu suchen.$"
+
 PetalburgWoods_Text_ICantBeWastingTime:
 	.string "Oh Mist, keine Zeit!\n"
 	.string "Kaffepause gestrichen, das ist\l"
-	.string "ein Notfall.\p"
+	.string "ein Notfall.$"
 
 PetalburgWoods_Text_YoureLoadedWithItems:
 	.string "Dein Beutel platzt gleich! Ich kann\n"
@@ -464,7 +486,7 @@ PetalburgWoods_Text_TrainerTipsExperience:
 PetalburgWoods_Text_TrainerTipsPP:
 	.string "TIPPS für TRAINER\p"
 	.string "Attacken verbrauchen AP - wenn die weg\n"
-	.string "sind, ist’s Zeit fürs Pokémon-CENTER.\p"
+	.string "sind, ist’s Zeit fürs Pokémon-Center.\p"
 	.string "Vergiss das nie. Ohne AP keine Action!$"
 
 PetalburgWoods_EventScript_Endivie::

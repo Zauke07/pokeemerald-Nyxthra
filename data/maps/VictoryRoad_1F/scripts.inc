@@ -167,7 +167,7 @@ VictoryRoad_1F_Text_EdgarDefeat:
 
 VictoryRoad_1F_Text_EdgarPostBattle:
 	.string "Du bist weit gekommen. Lasse nicht nach\n"
-	.string "und versuche, der CHAMP zu werden!\l"
+	.string "und versuche, CHAMP zu werden!\l"
 	.string "Wenn einer das kann, dann du!$"
 
 VictoryRoad_1F_Text_AlbertIntro:

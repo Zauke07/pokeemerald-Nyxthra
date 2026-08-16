@@ -4,20 +4,17 @@ LittlerootTown_BrendansHouse_2F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_2F_OnTransition:
-	call Common_EventScript_SetupRivalGfxId
 	call_if_lt VAR_LITTLEROOT_RIVAL_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_CheckSetReadyToMeetBrendan
 	call_if_ge VAR_LITTLEROOT_RIVAL_STATE, 3, LittlerootTown_BrendansHouse_2F_EventScript_SetRivalPos
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 4, PlayersHouse_2F_EventScript_BlockStairsUntilClockIsSet
 	call SecretBase_EventScript_SetDecorationFlags
+	call Common_EventScript_SetupRivalGfxId
 	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	end
 
 LittlerootTown_BrendansHouse_2F_EventScript_SetRivalPos:
-@	checkflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
-	goto_if_eq VAR_RESULT, TRUE, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
 	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
-@	setflag FLAG_FIX_RIVAL_DOOR_RAN_BRENDAN
 	return
 
 @LittlerootTown_BrendansHouse_2F_EventScript_CheckShouldUpdateBrendanPos::
@@ -48,7 +45,6 @@ LittlerootTown_BrendansHouse_2F_EventScript_TryUpdateBrendanPos::
 	goto_if_eq VAR_RESULT, STYLE_FLORIAN, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	goto_if_eq VAR_RESULT, STYLE_JULIANA, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 
-	@ Die Bedingung mit dem Pokedex-Upgrade bleibt unverändert
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_BrendansHouse_2F_EventScript_Ret
 	setobjectxyperm LOCALID_RIVALS_HOUSE_2F_RIVAL, 0, 2
 	setobjectmovementtype LOCALID_RIVALS_HOUSE_2F_RIVAL, MOVEMENT_TYPE_FACE_UP
@@ -112,6 +108,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall::
 
 LittlerootTown_BrendansHouse_2F_EventScript_MeetBrendan:
 	setvar VAR_0x8004, LOCALID_RIVALS_HOUSE_2F_RIVAL
+	spawnrival_style
 	getplayerstyle
 	delay 10
 

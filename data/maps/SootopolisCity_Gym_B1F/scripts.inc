@@ -52,132 +52,137 @@ SootopolisCity_Gym_B1F_EventScript_Daphne::
 	end
 
 SootopolisCity_Gym_B1F_Text_AndreaIntro:
-	.string "I'll show you the sublime techniques\n"
-	.string "I learned from our LEADER JUAN!$"
+	.string "Ich zeig dir die OP-Taktiken,\n"
+	.string "die Juan mir beigebracht hat!\l"
+	.string "Mach dich bereit zu heulen!$"
 
 SootopolisCity_Gym_B1F_Text_AndreaDefeat:
-	.string "Please forgive me, JUAN…$"
+	.string "Sorry, Juan… Ich bin ein Lappen…$"
 
 SootopolisCity_Gym_B1F_Text_AndreaPostBattle:
-	.string "Watch what happens if you crack all\n"
-	.string "the floor tiles.$"
+	.string "Pass auf, was passiert, wenn du\n"
+	.string "nochmal durchs Eis brichst, Noob.$"
 
 SootopolisCity_Gym_B1F_Text_CrissyIntro:
-	.string "You came all the way here, but you won't\n"
-	.string "get to see JUAN.\p"
-	.string "Not if you lose to me, you won't!$"
+	.string "Du bist bis hierher gegrindet,\n"
+	.string "aber Juan kriegst du nicht zu\l"
+	.string "sehen. Ich schick dich heim!$"
 
 SootopolisCity_Gym_B1F_Text_CrissyDefeat:
-	.string "You're strong!\n"
-	.string "I was fooled by your cute looks!$"
+	.string "WTF! Du siehst aus wie ein\n"
+	.string "Noob, aber haust mies rein!$"
 
 SootopolisCity_Gym_B1F_Text_CrissyPostBattle:
-	.string "You might be good enough to avoid\n"
-	.string "being wiped out in one hit by JUAN.$"
+	.string "Vielleicht überlebst du bei\n"
+	.string "Juan ja wenigstens einen Hit, bevor\l"
+	.string "er dich wegklatscht.$"
 
 SootopolisCity_Gym_B1F_Text_DaphneIntro:
-	.string "The sight of JUAN conducting\n"
-	.string "a battle…\p"
-	.string "The very beauty of it compelled me to\n"
-	.string "become a TRAINER.$"
+	.string "Wenn Juan kämpft… das ist\n"
+	.string "so ein geiler Flex, dass ich\l"
+	.string "direkt Trainerin wurde.$"
 
 SootopolisCity_Gym_B1F_Text_DaphneDefeat:
-	.string "You battled with more beauty than\n"
-	.string "I could muster…$"
+	.string "Dein Tryhard-Style war einfach\n"
+	.string "zu viel für mich…$"
 
 SootopolisCity_Gym_B1F_Text_DaphnePostBattle:
-	.string "The grace you bring to battle is\n"
-	.string "fabulous.\p"
-	.string "Oh… I'm so fortunate to have found\n"
-	.string "POKéMON.$"
+	.string "Dein Grind ist echt krass.\n"
+	.string "Gut, dass ich überhaupt ins\l"
+	.string "Game gefunden hab.$"
 
 SootopolisCity_Gym_B1F_Text_ConnieIntro:
-	.string "I should teach you how harsh battles\n"
-	.string "can be.$"
+	.string "Ich zeig dir jetzt mal, wie\n"
+	.string "richtig geschwitzt wird, Opfer.$"
 
 SootopolisCity_Gym_B1F_Text_ConnieDefeat:
-	.string "Oh.\n"
-	.string "You're strong.$"
+	.string "Fuck.\n"
+	.string "Du bist echt OP.$"
 
 SootopolisCity_Gym_B1F_Text_ConniePostBattle:
-	.string "I'll tell you something good.\p"
-	.string "If you want to reach JUAN, you\n"
-	.string "need to walk on each floor tile once.$"
+	.string "Hör gut zu, du Lappen.\p"
+	.string "Wenn du zu Juan willst, musst\n"
+	.string "du über jedes verfickte\l"
+	.string "Eisfeld einmal latschen.$"
 
 SootopolisCity_Gym_B1F_Text_BridgetIntro:
-	.string "The POKéMON GYM of the highest level\n"
-	.string "in the HOENN region…\p"
-	.string "That's the SOOTOPOLIS GYM.$"
+	.string "Die Arena mit dem krassesten\n"
+	.string "Elo in ganz Hoenn…\p"
+	.string "Das ist Xeneroville, Digga.$"
 
 SootopolisCity_Gym_B1F_Text_BridgetDefeat:
-	.string "What a high level you are!$"
+	.string "Was für ein abgefuckt hohes\n"
+	.string "Level hast du bitte?!$"
 
 SootopolisCity_Gym_B1F_Text_BridgetPostBattle:
-	.string "Rather than being satisfied by being\n"
-	.string "in a strong GYM, I imagine training in\l"
-	.string "other places will make you stronger.\l"
-	.string "But above all, it looks more fun.$"
+	.string "Anstatt hier im Eis rumzu-\n"
+	.string "campen, solltest du lieber\l"
+	.string "draußen weitergrinden.\l"
+	.string "Ist auch weniger abfuck.$"
 
 SootopolisCity_Gym_B1F_Text_OliviaIntro:
-	.string "I train my POKéMON together with\n"
-	.string "JUAN.\p"
-	.string "Don't think I'm a pushover.$"
+	.string "Ich grinde immer im Duo-Q mit\n"
+	.string "Juan. Denk bloß nicht, ich\l"
+	.string "wäre ein Free Kill.$"
 
 SootopolisCity_Gym_B1F_Text_OliviaDefeat:
-	.string "I was beaten…$"
+	.string "Einfach weggeklatscht…$"
 
 SootopolisCity_Gym_B1F_Text_OliviaPostBattle:
-	.string "I think you have potential.\n"
-	.string "Why don't you stay and train with us?$"
+	.string "Du hast echt Skills.\n"
+	.string "Willst du nicht hier bleiben\l"
+	.string "und mit uns Tryhards smurfen?$"
 
 SootopolisCity_Gym_B1F_Text_TiffanyIntro:
-	.string "A graceful glide across the ice while\n"
-	.string "crossing no lines…\p"
-	.string "A TRAINER putting on that performance\n"
-	.string "would be elegantly beautiful!$"
+	.string "Elegant über das Eis sliden,\n"
+	.string "ohne reinzuinten…\p"
+	.string "Wer das schafft, ist ein\n"
+	.string "absoluter Pro-Gamer!$"
 
 SootopolisCity_Gym_B1F_Text_TiffanyDefeat:
-	.string "Well, excuse me?!$"
+	.string "Geht's noch, du Schwitzer?!$"
 
 SootopolisCity_Gym_B1F_Text_TiffanyPostBattle:
-	.string "This is really obvious, but how strong\n"
-	.string "you are as a TRAINER has nothing to do\l"
-	.string "with how young or old you are.$"
+	.string "Es juckt echt niemanden, wie\n"
+	.string "alt du bist. Hauptsache, dein\l"
+	.string "Elo ist hoch genug.$"
 
 SootopolisCity_Gym_B1F_Text_BethanyIntro:
-	.string "When I'm with my POKéMON, the time\n"
-	.string "flies by before you can say, “Oops!”$"
+	.string "Beim Grinden vergeht die Zeit\n"
+	.string "so schnell, da sag ich nur:\l"
+	.string "“Ups!”$"
 
 SootopolisCity_Gym_B1F_Text_BethanyDefeat:
-	.string "Oops!$"
+	.string "Kompletter Int!$"
 
 SootopolisCity_Gym_B1F_Text_BethanyPostBattle:
-	.string "I wish I could forget about lost causes\n"
-	.string "before I can manage an “Oops!”$"
+	.string "Ich wünschte, ich könnte\n"
+	.string "meine Losses einfach löschen.\l"
+	.string "Meine Win-Rate ist im Arsch!$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaIntro:
-	.string "I can battle with really rare POKéMON\n"
-	.string "if you'd like.$"
+	.string "Ich flex mal kurz mit meinen\n"
+	.string "absolut seltenen Pokémon.$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaDefeat:
-	.string "Oh, there now! Did you have a good look\n"
-	.string "at my POKéMON?$"
+	.string "Was für ein Bullshit!\n"
+	.string "Hast du meine Sammlung\l"
+	.string "wenigstens angeguckt?$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaPostBattle:
-	.string "I came to this GYM because JUAN\n"
-	.string "praised me for my darling POKéMON.\p"
-	.string "Oh, if only I'd met JUAN years ago\n"
-	.string "when I was younger…$"
+	.string "Juan hat meinen Loot gelobt,\n"
+	.string "deshalb bin ich hier.\p"
+	.string "Wäre ich bloß jünger gewesen,\n"
+	.string "als ich ihn getroffen hab…$"
 
 SootopolisCity_Gym_B1F_Text_BriannaIntro:
-	.string "Giggle…\n"
-	.string "Your grim look is so charming.$"
+	.string "Kicher…\n"
+	.string "Dein Tryhard-Face ist echt süß.$"
 
 SootopolisCity_Gym_B1F_Text_BriannaDefeat:
-	.string "Oh, dear.\n"
-	.string "I went much too easy on you.$"
+	.string "Oh Mann.\n"
+	.string "Ich hab komplett reingetrollt.$"
 
 SootopolisCity_Gym_B1F_Text_BriannaPostBattle:
-	.string "You couldn't lay a finger on JUAN,\n"
-	.string "I'm sure. Giggle…$"
-
+	.string "Du triffst bei Juan eh keinen\n"
+	.string "einzigen Skillshot. Kicher…$"

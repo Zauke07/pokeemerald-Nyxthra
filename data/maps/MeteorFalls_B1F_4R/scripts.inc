@@ -11,7 +11,7 @@ MeteorFalls_B1F_4R_OnResume:
 MeteorFalls_B1F_4R_EventScript_TryRemoveArticuno::
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_ne VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn
-	removeobject VAR_LAST_TALKED
+	removeobject LOCALID_METEOR_ARTICUNO
 	return
 
 MeteorFalls_B1F_4R_OnTransition:
@@ -20,17 +20,18 @@ MeteorFalls_B1F_4R_OnTransition:
 
 MeteorFalls_B1F_4R_EventScript_ShowArticuno::
 	clearflag FLAG_HIDE_METEOR_FALLS_B1F_4R_ARTICUNO
+	showobject LOCALID_METEOR_ARTICUNO
 	return
 
 MeteorFalls_B1F_4R_EventScript_Articuno::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_ARTICUNO, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_METEOR_ARTICUNO
 	seteventmon SPECIES_ARTICUNO, 30
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -40,7 +41,8 @@ MeteorFalls_B1F_4R_EventScript_Articuno::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MeteorFalls_B1F_4R_EventScript_RanFromArticuno
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MeteorFalls_B1F_4R_EventScript_RanFromArticuno
 	setflag FLAG_DEFEATED_METEOR_FALLS_ARTICUNO
-	release
+	setflag FLAG_HIDE_METEOR_FALLS_B1F_4R_ARTICUNO
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 MeteorFalls_B1F_4R_EventScript_DefeatedArticuno::
@@ -49,6 +51,5 @@ MeteorFalls_B1F_4R_EventScript_DefeatedArticuno::
 	end
 
 MeteorFalls_B1F_4R_EventScript_RanFromArticuno::
-	setvar VAR_0x8004, SPECIES_ARTICUNO
 	goto Common_EventScript_LegendaryFlewAway
 	end

@@ -156,21 +156,13 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-    {
-      "x": 29,
-      "y": 47,
-      "elevation": 0,
-      "dest_map": "MAP_TESTLABOR",
-      "dest_warp_id": "3"
-    }
-  ],
+  "warp_events": [],
   "coord_events": [],
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 17,
-      "y": 36,
+      "x": 11,
+      "y": 38,
       "elevation": 0,
       "item": "ITEM_BIG_NUGGET",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_111_1_BIG_NUGGET"

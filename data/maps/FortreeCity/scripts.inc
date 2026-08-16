@@ -72,8 +72,10 @@ FortreeCity_EventScript_UseDevonScope::
 	closemessage
 	applymovement VAR_LAST_TALKED, Movement_KecleonAppears
 	waitmovement 0
+	setvar VAR_0x8004, SPECIES_KECLEON
+	special RandomizeStaticMonVar8004
 	waitse
-	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
 	applymovement VAR_LAST_TALKED, FortreeCity_Movement_KecleonFlee

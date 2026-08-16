@@ -581,6 +581,11 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_LandorusOld,             OBJ_EVENT_PAL_TAG_LANDORUS},
     {gObjectEventPal_EthanFieldMove,          OBJ_EVENT_PAL_TAG_ETHAN_FIELD_MOVE},
     {gObjectEventPal_UxieOld,                 OBJ_EVENT_PAL_TAG_UXIE},
+    {gObjectEventPal_LugiaShadowOld,        OBJ_EVENT_PAL_TAG_LUGIA_SHADOW},
+    {gObjectEventPal_OldMan1,               OBJ_EVENT_PAL_TAG_NPC_OLD_MAN_1},
+    {gObjectEventPal_OldMan2,               OBJ_EVENT_PAL_TAG_NPC_OLD_MAN_2},
+    {gObjectEventPal_Big_Snorlax,            OBJ_EVENT_PAL_TAG_BIG_SNORLAX},
+    {gObjectEventPal_DarkraiOld,              OBJ_EVENT_PAL_TAG_DARKRAI},
 
     {gObjectEventPal_Sinnoh_Aaron, OBJ_EVENT_PAL_TAG_SINNOH_AARON},
     {gObjectEventPal_Sinnoh_Bertha, OBJ_EVENT_PAL_TAG_SINNOH_BERTHA},
@@ -734,10 +739,13 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RocketM_F,                OBJ_EVENT_PAL_TAG_TEAM_ROCKET_M_F},
     {gObjectEventPal_Team_Flare_Gunt,         OBJ_EVENT_PAL_TAG_TEAM_FLARE_GUNT},
     {gObjectEventPal_James_Rocket,           OBJ_EVENT_PAL_TAG_JAMES_ROCKET},
+    {gObjectEventPal_Jessie_Rocket,           OBJ_EVENT_PAL_TAG_JESSIE_ROCKET},
     {gObjectEventPal_Rogue_Egg,              OBJ_EVENT_PAL_TAG_ROGUE_EGG},
 
     {gObjectEventPal_Misc_Peonia,           OBJ_EVENT_PAL_TAG_MISC_PEONIA},
     {gObjectEventPal_RouteExt,              OBJ_EVENT_PAL_TAG_ROUTE_EXT},
+    {gObjectEventPal_NpcBlue,               OBJ_EVENT_PAL_TAG_NPC_BLUE},
+    {gObjectEventPal_NpcBlueReflection,     OBJ_EVENT_PAL_TAG_NPC_BLUE_REFLECTION},
 #if IS_FRLG
     {gObjectEventPal_PlayerFrlg,            OBJ_EVENT_PAL_TAG_PLAYER_RED},
     {gObjectEventPal_PlayerReflectionFrlg,  OBJ_EVENT_PAL_TAG_PLAYER_RED_REFLECTION},
@@ -2425,8 +2433,8 @@ static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female)
     u32 paletteNum;
     // Use standalone palette, unless entry is OOB or NULL (fallback to front-sprite-based)
 #if OW_POKEMON_OBJECT_EVENTS == TRUE && OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    if ((shiny && gSpeciesInfo[species].overworldPalette)
-    || (!shiny && gSpeciesInfo[species].overworldShinyPalette))
+    if ((shiny && ((female && gSpeciesInfo[species].overworldShinyPaletteFemale != NULL) || gSpeciesInfo[species].overworldShinyPalette != NULL))
+    || (!shiny && ((female && gSpeciesInfo[species].overworldPaletteFemale != NULL) || gSpeciesInfo[species].overworldPalette != NULL)))
     {
         struct SpritePalette spritePalette;
         u16 palTag = species + OBJ_EVENT_MON + (shiny ? OBJ_EVENT_MON_SHINY : 0);
@@ -3338,7 +3346,7 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 {
     gPlayerAvatar.objectEventId = objectEventId;
     gPlayerAvatar.spriteId = spriteId;
-    gPlayerAvatar.style = GetPlayerAvatarGenderByGraphicsId(gObjectEvents[objectEventId].graphicsId);
+    gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
     SetPlayerAvatarExtraStateTransition(gObjectEvents[objectEventId].graphicsId, PLAYER_AVATAR_FLAG_CONTROLLABLE);
 }
 

@@ -19,16 +19,19 @@ SootopolisCity_House2_EventScript_DontKnowAboutOrbs::
 	return
 
 SootopolisCity_House2_Text_DidYouKnowAboutMtPyreOrbs:
-	.string "MT. PYRE…\p"
-	.string "At its peak are two orbs placed side\n"
-	.string "by side. Did you know?$"
+	.string "Der Pyroberg…\p"
+	.string "Ganz oben liegen zwei fette\n"
+	.string "Kugeln nebeneinander.\l"
+	.string "Wusstest du das, du Lappen?$"
 
 SootopolisCity_House2_Text_YesTwoOrbsSideBySide:
-	.string "Yes, two orbs side by side…\p"
-	.string "The sight of them together…\n"
-	.string "It is somehow soothing…$"
+	.string "Genau, zwei fette Kugeln…\p"
+	.string "Wenn man die zusammen anguckt…\n"
+	.string "Das ist so ein geiler Vibe…\l"
+	.string "Richtig chillig.$"
 
 SootopolisCity_House2_Text_OughtToVisitAndSee:
-	.string "Is that so?\n"
-	.string "Perhaps you ought to visit and see…$"
+	.string "Ach, echt nicht?\n"
+	.string "Dann beweg deinen Arsch mal\l"
+	.string "hoch und guck dir das an.$"
 

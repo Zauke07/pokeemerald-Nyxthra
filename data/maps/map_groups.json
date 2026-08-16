@@ -313,8 +313,7 @@
     "MossdeepCity_House4",
     "MossdeepCity_SpaceCenter_1F",
     "MossdeepCity_SpaceCenter_2F",
-    "MossdeepCity_GameCorner_1F",
-    "MossdeepCity_GameCorner_B1F"
+    "MossdeepCity_GameCorner_1F"
   ],
   "gMapGroup_IndoorSootopolis": [
     "SootopolisCity_Gym_1F",
@@ -494,7 +493,8 @@
     "MeteorFalls",
     "ScorchedSlabSecret",
     "Meteorfalls_B1F_3R",
-    "MeteorFalls_B1F_4R"
+    "MeteorFalls_B1F_4R",
+    "MtPyre_6F_2"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

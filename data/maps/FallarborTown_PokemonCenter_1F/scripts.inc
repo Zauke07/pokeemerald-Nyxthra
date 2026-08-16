@@ -28,6 +28,9 @@ FallarborTown_PokemonCenter_1F_EventScript_Lanette::
 	lock
 	faceplayer
 	msgbox FallarborTown_PokemonCenter_1F_Text_LanetteGreeting, MSGBOX_DEFAULT
+	setflag FLAG_SYS_PC_LANETTE
+	giveitem ITEM_POKEMON_BOX_LINK
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	closemessage
 	switch VAR_FACING
 	case DIR_NORTH, FallarborTown_PokemonCenter_1F_EventScript_LanetteExitNorth
@@ -87,10 +90,11 @@ FallarborTown_PokemonCenter_1F_Text_LanetteGreeting::
 	.string "Aha, {PLAYER}{KUN} also.\n"
 	.string "Ein TRAINER, wie originell.\p"
 	.string "Das heißt, du benutzt mein POKéMON-\n"
-	.string "Lagerungssystem. Sei gefälligst dankbar.\p"
-	.string "Wie ich darauf komme? Einfache Logik.\n"
-	.string "Wer so planlos vor einem PC steht wie\l"
-	.string "du, braucht Hilfe von Experten.\p"
+	.string "Lagersystem. Sei gefälligst dankbar.\p"
+	.string "Damit du mit deiner Inkompetenz nicht\n"
+	.string "die lokalen Server überlastest, nimm das\l"
+	.string "hier. Das ist eine POKéMON-BOX.\p"
+	.string "Damit verwaltest du dein Team remote.\n"
 	.string "Oh, ich bin übrigens LANETTE.\p"
 	.string "Eigentlich ist es mir egal, wen ich hier\n"
 	.string "treffe, aber immerhin benutzt du meine\l"

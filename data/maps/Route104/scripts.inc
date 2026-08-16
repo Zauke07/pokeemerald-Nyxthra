@@ -70,6 +70,57 @@ Route104_EventScript_RivalTrigger::
 	waitmovement 0
 	goto Route104_EventScript_RivalEncounter
 
+Route104_EventScript_HaleyLongRangeTriggerX10::
+	lockall
+	goto_if_defeated TRAINER_HALEY_1, Route104_EventScript_HaleyLongRangeNoBattle
+	playse SE_PIN
+	special PlayTrainerEncounterMusic
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE104_HALEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, Route104_Movement_CameraPanToHaleyFast
+	waitmovement 0
+	goto Route104_EventScript_HaleyApproachLeftTrigger
+
+Route104_EventScript_HaleyLongRangeTriggerX11::
+	lockall
+	goto_if_defeated TRAINER_HALEY_1, Route104_EventScript_HaleyLongRangeNoBattle
+	playse SE_PIN
+	special PlayTrainerEncounterMusic
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ROUTE104_HALEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, Route104_Movement_CameraPanToHaleyFast
+	waitmovement 0
+	goto Route104_EventScript_HaleyApproachRightTrigger
+
+Route104_EventScript_HaleyApproachLeftTrigger::
+	applymovement LOCALID_ROUTE104_HALEY, Route104_Movement_HaleyApproachFromLongRange_LeftTrigger
+	applymovement LOCALID_CAMERA, Route104_Movement_CameraFollowHaley_LeftTrigger
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	goto Route104_EventScript_HaleyLongRangeBattle
+
+Route104_EventScript_HaleyApproachRightTrigger::
+	applymovement LOCALID_ROUTE104_HALEY, Route104_Movement_HaleyApproachFromLongRange_RightTrigger
+	applymovement LOCALID_CAMERA, Route104_Movement_CameraFollowHaley_RightTrigger
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	goto Route104_EventScript_HaleyLongRangeBattle
+
+Route104_EventScript_HaleyLongRangeBattle::
+	goto Route104_EventScript_HaleyLongRange
+
+Route104_EventScript_HaleyLongRangeNoBattle::
+	releaseall
+	end
+
 @ Unused, shares script with Rustboro encounter instead
 Route104_EventScript_PlayRivalMusic::
     lockall
@@ -852,6 +903,119 @@ Route104_Movement_BrineyExitBoat:
 	walk_in_place_faster_left
 	step_end
 
+Route104_Movement_CameraPanToHaleyFast:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+
+Route104_Movement_CameraFollowHaley_LeftTrigger:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route104_Movement_CameraFollowHaley_RightTrigger:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route104_Movement_HaleyApproachFromLongRange_LeftTrigger:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+Route104_Movement_HaleyApproachFromLongRange_RightTrigger:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
 Route104_EventScript_Ivan::
 	trainerbattle_single TRAINER_IVAN, Route104_Text_IvanIntro, Route104_Text_IvanDefeat
 	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
@@ -864,6 +1028,20 @@ Route104_EventScript_Billy::
 
 Route104_EventScript_Haley::
 	trainerbattle_single TRAINER_HALEY_1, Route104_Text_HaleyIntro, Route104_Text_HaleyDefeat, Route104_EventScript_TryRegisterHaleyAfterBattle
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_RematchHaley
+	setvar VAR_0x8004, TRAINER_HALEY_1
+	specialvar VAR_RESULT, IsTrainerRegistered
+	goto_if_eq VAR_RESULT, FALSE, Route104_EventScript_TryRegisterHaley
+	msgbox Route104_Text_HaleyPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_EventScript_HaleyLongRange::
+	applymovement LOCALID_PLAYER, Common_Movement_FaceRight
+	waitmovement 0
+	msgbox Route104_Text_HaleyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_HALEY_1, Route104_Text_HaleyDefeat
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_RematchHaley
 	setvar VAR_0x8004, TRAINER_HALEY_1

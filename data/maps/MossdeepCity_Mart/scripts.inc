@@ -37,22 +37,27 @@ MossdeepCity_Mart_EventScript_Sailor::
 	end
 
 MossdeepCity_Mart_Text_ReviveIsFantastic:
-	.string "REVIVE is fantastic!\p"
-	.string "Give it to a fainted POKéMON,\n"
-	.string "and the POKéMON will arise.\p"
-	.string "But be careful, REVIVE doesn't restore\n"
-	.string "the used-up PP of moves.$"
+	.string "Beleber ist komplett OP!\p"
+	.string "Pump das Zeug in ein abgekratztes Pokémon\n"
+	.string "und das Vieh spawnt direkt neu.\p"
+	.string "Aber chill mal, das füllt null AP auf.\n"
+	.string "Dein Opfer-Team muss also trotzdem\l"
+	.string "Attacken sparen, du Lappen.$"
 
 MossdeepCity_Mart_Text_MaxRepelLastsLongest:
-	.string "MAX REPEL keeps all weak POKéMON away.\p"
-	.string "Out of all the REPEL sprays, it lasts\n"
-	.string "the longest.$"
+	.string "Top-Schutz ist quasi Deo gegen diese\n"
+	.string "ganzen nervigen Trash-Mobs.\p"
+	.string "Von den ganzen Sprays hier hält das am\n"
+	.string "längsten. Perfekt für Noobs wie dich,\l"
+	.string "die vor jedem Kampf heulend wegrennen.$"
 
 MossdeepCity_Mart_Text_NetAndDiveBallsRare:
-	.string "The NET and DIVE BALLS are rare POKé\n"
-	.string "BALLS that are only made in MOSSDEEP.\p"
-	.string "A NET BALL is effective against\n"
-	.string "BUG-type and WATER-type POKéMON.\p"
-	.string "A DIVE BALL works best on POKéMON\n"
-	.string "at the bottom of the sea.$"
+	.string "Netzbälle und Tauchbälle sind richtig rare\n"
+	.string "Items. Die werden nur hier in Moosbach\l"
+	.string "zusammengeklöppelt.\p"
+	.string "Netzbälle sind der Shit gegen eklige\n"
+	.string "Käfer und diese nassen Wasser-Viecher.\p"
+	.string "Und der Tauchball ist dein bester Bro,\n"
+	.string "wenn du Monster aus der tiefsten\l"
+	.string "Meeresritze kratzen willst.$"
 

@@ -30,11 +30,11 @@ Route111_02_EventScript_Landorus::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_LANDORUS, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_ROUTE111_LANDORUS
 	seteventmon SPECIES_LANDORUS, 30
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -44,7 +44,8 @@ Route111_02_EventScript_Landorus::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Route111_02_EventScript_RanFromLandorus
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Route111_02_EventScript_RanFromLandorus
 	setflag FLAG_DEFEATED_LANDORUS
-	release
+	setflag FLAG_HIDE_ROUTE_111_02_LANDORUS
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 Route111_02_EventScript_DefeatedLandorus::
@@ -55,7 +56,6 @@ Route111_02_EventScript_DefeatedLandorus::
 	end
 
 Route111_02_EventScript_RanFromLandorus::
-	setvar VAR_0x8004, SPECIES_LANDORUS
 	goto Common_EventScript_LegendaryFlewAway
 	end
 

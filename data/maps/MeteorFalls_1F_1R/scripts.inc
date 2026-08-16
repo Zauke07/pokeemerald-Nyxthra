@@ -221,8 +221,9 @@ MeteorFalls_1F_1R_EventScript_ProfCozmo::
 	lock
 	faceplayer
 	goto_if_set FLAG_MET_PROF_COZMO, MeteorFalls_1F_1R_EventScript_MetCozmo
-	setflag FLAG_MET_PROF_COZMO
 	msgbox MeteorFalls_1F_1R_Text_MeetProfCozmo, MSGBOX_DEFAULT
+	giveitem ITEM_SHINY_CHARM
+	setflag FLAG_MET_PROF_COZMO
 	release
 	end
 
@@ -291,20 +292,21 @@ MeteorFalls_1F_1R_Text_ArchieFarewell:
 MeteorFalls_1F_1R_Text_MeetProfCozmo:
 	.string "I-Ich bin COZMO…\n"
 	.string "Ich bin ein PROFESSOR…\p"
-	.string "{COLOR LIGHT_RED}TEAM MAGMA{COLOR DARK_GRAY} hat mich gebeten, sie\n"
+	.string "{COLOR LIGHT_RED}TEAM MAGMA{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY} hat mich gebeten, sie\n"
 	.string "zu den METEORFÄLLEN zu führen…\p"
 	.string "Aber sie haben mich hereingelegt.\n"
-	.string "Sie haben mir sogar den METEORIT\n"
+	.string "Sie haben mir den METEORIT\l"
 	.string "abgenommen…\p"
-	.string "Und dann tauchte eine andere, ähnliche\n"
-	.string "Gruppe auf - {COLOR LIGHT_BLUE}TEAM AQUA{COLOR DARK_GRAY}.\p"
-	.string "Danach… ich verstehe nichts mehr.\p"
-	.string "Aber {COLOR LIGHT_RED}TEAM MAGMA{COLOR DARK_GRAY}…\p"
-	.string "Was haben sie mit diesem METEORIT\n"
-	.string "am SCHLOTBERG vor?$"
+	.string "Sie waren auch hinter meinem\n"
+	.string "{COLOR LIGHT_BLUE}{SHADOW BLUE}SCHILLERPIN{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY} her! Aber in dem Chaos\l"
+	.string "mit {COLOR LIGHT_BLUE}TEAM AQUA{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY} haben sie ihn übersehen.\p"
+	.string "Du hast dich ihnen furchtlos in den Weg\n"
+	.string "gestellt, um mir zu helfen.\p"
+	.string "Bitte, nimm diesen {COLOR LIGHT_BLUE}{SHADOW BLUE}SCHILLERPIN{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}.\n"
+	.string "Bei dir ist er in viel sichereren Händen!$"
 
 MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney:
-	.string "PROF. COZMO: Aber {COLOR LIGHT_RED}TEAM MAGMA{COLOR DARK_GRAY}…\p"
-	.string "Was haben sie mit diesem METEORIT\n"
+	.string "PROF. COZMO: Aber {COLOR LIGHT_RED}TEAM MAGMA{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}…\p"
+	.string "Was haben sie nur mit diesem METEORIT\n"
 	.string "am SCHLOTBERG vor?$"
 

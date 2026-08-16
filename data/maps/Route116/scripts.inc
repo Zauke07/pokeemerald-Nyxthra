@@ -351,7 +351,7 @@ Route116_EventScript_Johnson::
 Route116_Text_ScoundrelMadeOffWithPeeko:
 	.string "Oooh, was mach ich bloß?!?\p"
 	.string "PECKO und ich waren nur gemütlich\n"
-	.string "unterwegs, und plötzlich tauchte so'n\n"
+	.string "unterwegs, und plötzlich tauchte so'n\l"
 	.string "Zwielichtiger Typ auf!\p"
 	.string "Der hat mir einfach PECKO geklaut!\p"
 	.string "Oooooaaah! PECKO!!$"

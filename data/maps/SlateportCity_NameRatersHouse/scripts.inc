@@ -62,7 +62,7 @@ SlateportCity_NameRatersHouse_EventScript_NewNameDifferent::
 	end
 
 SlateportCity_NameRatersHouse_Text_PleasedToRateMonNickname:
-	.string "ÁHallo! Ich bin der NAMENBEWERTER!\n"
+	.string "Hallo! Ich bin der Namenbewerter!\n"
 	.string "Ich bin das Orakel der Namen!\p"
 	.string "Ich würde mich freuen, die Kosenamen\n"
 	.string "deiner POKéMON bewerten zu dürfen.$"

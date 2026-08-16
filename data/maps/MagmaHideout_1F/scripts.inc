@@ -17,37 +17,37 @@ MagmaHideout_1F_EventScript_Grunt2::
 	end
 
 MagmaHideout_1F_Text_Grunt1Intro:
-	.string "When TEAM MAGMA has roll call, we get\n"
-	.string "important guarding assignments in\l"
-	.string "the order that we line up.\p"
-	.string "That's why I'm stuck off in this corner.\n"
-	.string "I'm always late to roll call!$"
+	.string "Wenn TEAM MAGMA zum Appell antreten muss,\n"
+	.string "werden die wichtigen Wachposten nach\l"
+	.string "Reihenfolge verteilt.\p"
+	.string "Deshalb hänge ich hier in dieser Ecke fest.\n"
+	.string "Ich bin immer zu spät beim Appell!$"
 
 MagmaHideout_1F_Text_Grunt1Defeat:
-	.string "I'm always late for training sessions,\n"
-	.string "too!\p"
-	.string "I hate to say it, but I'm wimpy…$"
+	.string "Beim Training bin ich auch immer zu spät…\n"
+	.string "immer!\p"
+	.string "Ich sag's ungern, aber ich bin echt ein Lauch…$"
 
 MagmaHideout_1F_Text_Grunt1PostBattle:
-	.string "Okay, I'll try to put a little more\n"
-	.string "effort into things from now on…$"
+	.string "Okay, ich geb mir ab jetzt\n"
+	.string "ein bisschen mehr Mühe…$"
 
 MagmaHideout_1F_Text_Grunt2Intro:
-	.string "Our leader told us to dig into\n"
-	.string "MT. CHIMNEY, so we dug and dug.\p"
-	.string "And in the course of digging, we came\n"
-	.string "across something that blew our minds!\p"
-	.string "What did we find?\p"
+	.string "Unser Boss hat uns befohlen, am\n"
+	.string "SCHLOTBERG zu graben, also haben wir gegraben ohne Ende.\p"
+	.string "Und dabei sind wir auf etwas gestoßen,\n"
+	.string "das komplett krank ist!\p"
+	.string "Was wir gefunden haben?\p"
 	.string "Fuhahaha!\n"
-	.string "I'll tell you if you beat me!$"
+	.string "Sag ich dir, wenn du mich schlägst!$"
 
 MagmaHideout_1F_Text_Grunt2Defeat:
 	.string "Arrgh!\n"
-	.string "Taken down!$"
+	.string "Voll weggehauen!$"
 
 MagmaHideout_1F_Text_Grunt2PostBattle:
-	.string "I won't tell you after all.\n"
-	.string "You'll find out when you get there!\p"
-	.string "It'd be better if you saved surprises\n"
-	.string "to the end, don't you think?$"
+	.string "Nö, ich sag's dir doch nicht.\n"
+	.string "Find's selbst raus, wenn du da bist!\p"
+	.string "Ist doch viel besser, wenn die große\n"
+	.string "Überraschung bis zum Ende bleibt, oder?$"
 

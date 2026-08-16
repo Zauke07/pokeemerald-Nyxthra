@@ -28,21 +28,21 @@ PacifidlogTown_PokemonCenter_1F_EventScript_OldMan::
 	end
 
 PacifidlogTown_PokemonCenter_1F_Text_WhatColorTrainerCard:
-	.string "What color is your TRAINER CARD?\n"
-	.string "Mine's copper!$"
+	.string "Ey, welche Farbe hat dein TRAINERPASS?\p"
+	.string "Meiner ist aus Kupfer. Ziemlich\n"
+	.string "räudiger Flex, aber was soll's.$"
 
 PacifidlogTown_PokemonCenter_1F_Text_OnColonyOfCorsola:
-	.string "PACIFIDLOG TOWN floats on top of\n"
-	.string "a colony of CORSOLA.\p"
-	.string "If I told you that, would you believe\n"
-	.string "me?$"
+	.string "Ganz ehrlich, FLOßBRUNN schwimmt auf\n"
+	.string "einem fetten Haufen von CORASONN.\p"
+	.string "Wenn ich dir den kranken Scheiß jetzt\n"
+	.string "erzähle, kaufst du mir das ab?$"
 
 PacifidlogTown_PokemonCenter_1F_Text_AncestorsLivedOnBoats:
-	.string "The ancestors of the people in\n"
-	.string "PACIFIDLOG were said to have been\l"
-	.string "born on boats and then lived and died \l"
-	.string "aboard them.\p"
-	.string "I understand that they lived that way\n"
-	.string "because they were searching for\l"
-	.string "something.$"
+	.string "Angeblich sind die Urahnen der Leute\n"
+	.string "hier in FLOßBRUNN auf Booten geboren,\l"
+	.string "haben da gelebt und sind da verreckt.\p"
+	.string "Einfach das komplette Leben auf'm\n"
+	.string "Wasser verschwendet, nur weil sie auf\l"
+	.string "der Jagd nach irgendeinem Scheiß waren.$"
 

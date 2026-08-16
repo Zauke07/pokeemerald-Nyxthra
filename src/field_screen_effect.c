@@ -70,7 +70,7 @@ const u8 sText_PlayerScurriedToCenter[] = _(
     "{PLAYER}, das war erbärmlich.\n"
     "Deine Pokémon leiden nur,\n"
     "weil du ein miserabler Trainer bist.\n"
-    "Zieh ab ins Pokémon-CENTER!\p"
+    "Zieh ab ins Pokémon-Center!\p"
 );
 
 const u8 sText_PlayerScurriedBackHome[] = _(
@@ -80,8 +80,8 @@ const u8 sText_PlayerScurriedBackHome[] = _(
     "Schleich dich nach Hause und schäm dich!\p"
 );
 
-static const u8 sText_PlayerRegroupCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nto regroup and reconsider the battle\nstrategy…\p");
-static const u8 sText_PlayerRegroupHome[] = _("{PLAYER} scurried back home, to regroup\nand reconsider the battle strategy…\p");
+static const u8 sText_PlayerRegroupCenter[] = _("{PLAYER} kriecht heulend ins\nPokémon-Center, um sein\nTrash-Team zu überdenken…\p");
+static const u8 sText_PlayerRegroupHome[] = _("{PLAYER} rennt heulend zu Mama,\num ihr die Ohren vollzuheulen\nund das Meta zu googeln…\p");
 
 // data[0] is used universally by tasks in this file as a state for switches
 #define tState       data[0]

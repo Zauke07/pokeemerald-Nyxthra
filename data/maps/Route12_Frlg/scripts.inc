@@ -16,10 +16,10 @@ Route12_EventScript_Snorlax::
 	goto_if_unset FLAG_GOT_POKE_FLUTE, Route12_EventScript_SnorlaxNoPokeFlute
 	msgbox Text_WantToUsePokeFlute, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route12_EventScript_DontUsePokeFlute
-	call EventScript_AwakenSnorlax
 	setwildbattle SPECIES_SNORLAX, 30
+	call EventScript_AwakenSnorlax
 	waitse
-	playmoncry SPECIES_SNORLAX, CRY_MODE_ENCOUNTER
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
 	setflag FLAG_HIDE_ROUTE_12_SNORLAX
@@ -39,6 +39,7 @@ Route12_EventScript_DontUsePokeFlute::
 	end
 
 Route12_EventScript_FoughtSnorlax::
+	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox Text_SnorlaxReturnedToMountains
 	release
 	end

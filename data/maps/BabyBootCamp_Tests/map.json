@@ -89,20 +89,6 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 61,
-      "y": 68,
-      "elevation": 0,
-      "dest_map": "MAP_NAVEL_ROCK_BOTTOM",
-      "dest_warp_id": "1"
-    },
-    {
-      "x": 55,
-      "y": 68,
-      "elevation": 0,
-      "dest_map": "MAP_NAVEL_ROCK_TOP",
-      "dest_warp_id": "1"
-    },
-    {
       "x": 65,
       "y": 58,
       "elevation": 0,

@@ -767,7 +767,13 @@ DewfordTown_Text_YeahDefinitionOfInRightNow:
 	.string "“{STR_VAR_1}” ist voll im Trend!$"
 
 DewfordTown_EventScript_Hydropi::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, DewfordTown_EventScript_Hydropi_RandomizerText
 	msgbox DewfordTown_Text_Hydropi, MSGBOX_NPC
+	end
+
+DewfordTown_EventScript_Hydropi_RandomizerText::
+	msgbox DewfordTown_Text_HydropiRandomizer, MSGBOX_NPC
 	end
 
 DewfordTown_Text_Hydropi:
@@ -779,6 +785,14 @@ DewfordTown_Text_Hydropi:
 	.string "einer Spawnrate von 30%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+DewfordTown_Text_HydropiRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 DewfordTown_Text_BrineyBoatBroken:
 	.string "MR. BRACK: Oh weh!\n"

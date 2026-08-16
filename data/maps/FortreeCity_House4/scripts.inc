@@ -63,34 +63,46 @@ FortreeCity_House4_EventScript_Wingull::
 	end
 
 FortreeCity_House4_Text_BringsWorldCloserTogether::
-	.string "Wenn man POKéMON dabei hat, finden\n"
-	.string "selbst die größten Creeps Freunde.\p"
-	.string "So rückt die Welt zusammen, ob man will\n"
-	.string "oder nicht. Ziemlich nervig, oder?$"
+	.string "Mit Pokémon kriegen selbst die\n"
+	.string "hässlichsten Wichser 'ne Alte ab.\p"
+	.string "Dank diesen Viechern rückt die Welt\n"
+	.string "enger zusammen. Richtig widerlich, wenn\l"
+	.string "man mal genauer drüber nachdenkt, oder?$"
 
 FortreeCity_House4_Text_GoBirdPokemon::
-	.string "Abflug!\n"
-	.string "Los, du nutzloses VOGEL-POKéMON!$"
+	.string "Beweg deinen Arsch!\n"
+	.string "Bring meiner Perle die versaute Post,\l"
+	.string "du nutzloser Drecksvogel!$"
 
 FortreeCity_House4_Text_AskedWingullToRunErrand::
-	.string "Hähähä, mein WINGULL muss für mich\n"
-	.string "die Drecksarbeit erledigen.$"
+	.string "Hehehe… Mein dummes Wingull muss\n"
+	.string "meine Nacktbilder nach Moosbach fliegen.\p"
+	.string "Ist billiger als Internet und der Vogel\n"
+	.string "kann mich bei den Bullen eh nicht\l"
+	.string "verpetzen. Genial, oder?$"
 
 FortreeCity_House4_Text_WelcomeWingullTakeMentalHerb::
-	.string "Na endlich!\n"
-	.string "Komm zurück, du lahme Ente!\p"
-	.string "Huch! Was hast du da im Schnabel?\n"
-	.string "Wo hast du das denn mitgehen lassen?\p"
-	.string "Ein MENTALKRAUT?\n"
-	.string "Wahrscheinlich hat es das irgendwo geklaut.\p"
-	.string "Da ich kein Trainer bin, kannst du das\n"
-	.string "Zeug haben. Ich fang damit nix an.$"
+	.string "Na endlich! Da bist du ja wieder,\n"
+	.string "du fliegende Ratte!\p"
+	.string "Was hast du mir von ihr mitgebracht?\n"
+	.string "Ihre getragenen Höschen? Lass sehen!\p"
+	.string "… Ein Mentalkraut?!\n"
+	.string "Will die mich verarschen? Denkt die,\l"
+	.string "ich brauche Potenzmittel oder was?!\p"
+	.string "Hier, nimm den Müll mit. Ich hab eh\n"
+	.string "'nen Ständer wie ein Laternenpfahl.\l"
+	.string "Ich fang mit dem Dreck nix an.$"
 
 FortreeCity_House4_Text_FriendsFarAwayThanksToWingull::
-	.string "Dank meines WINGULLS hab ich Brieffreunde,\n"
-	.string "die so weit weg wohnen, dass ich sie\l"
-	.string "zum Glück nie persönlich sehen muss.$"
+	.string "Dank meinem Wingull hab ich 'ne geile\n"
+	.string "Fernbeziehung am Laufen.\p"
+	.string "Ist eigentlich der absolute Jackpot.\n"
+	.string "Ich krieg versaute Post und muss ihr\l"
+	.string "Gelaber nicht im echten Leben ertragen.$"
 
 FortreeCity_House4_Text_Wingull::
-	.string "WINGULL: Pihyoh! (Lass mich in Ruhe!)$"
+	.string "Wingull: Pi… Pihyoh…\n"
+	.string "(Bitte… ich rieche immer noch nach\l"
+	.string "seinen ungewaschenen Eiern…\l"
+	.string "erlöse mich…)$"
 

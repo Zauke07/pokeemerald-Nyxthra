@@ -195,3 +195,9 @@ Route113_Text_FloinkRandomizer:
 	.string "gilt deshalb hier nicht.\p"
 	.string "Die Wild-Spawns werden über deinen\n"
 	.string "Seed neu gemappt!$"
+
+Route113_EventScript_Alina::
+	trainerbattle_single TRAINER_ALINA, Route113_Text_AlinaIntro, Route113_Text_AlinaDefeat
+	msgbox Route113_Text_AlinaPostBattle, MSGBOX_AUTOCLOSE
+	end
+

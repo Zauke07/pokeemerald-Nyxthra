@@ -24,6 +24,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokemon.h"
+#include "pokemon_icon.h"
 #include "pokemon_storage_system.h"
 #include "script.h"
 #include "sound.h"
@@ -46,6 +47,7 @@
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
 EWRAM_DATA bool8 gSkipShowMonAnim = FALSE;
+EWRAM_DATA u8 sPokecenterHealPartySlots[PARTY_SIZE] = {0};
 
 // Static type declarations
 
@@ -54,6 +56,8 @@ static void PokecenterHealEffect_Init(struct Task *);
 static void PokecenterHealEffect_WaitForBallPlacement(struct Task *);
 static void PokecenterHealEffect_WaitForBallFlashing(struct Task *);
 static void PokecenterHealEffect_WaitForSoundAndEnd(struct Task *);
+static void PokecenterHealEffect_UpdateMonitorMonIcon(struct Task *);
+static void PokecenterHealEffect_DestroyMonitorMonIcon(struct Task *);
 static u8 CreatePokecenterMonitorSprite(s16, s16);
 static void SpriteCB_PokecenterMonitor(struct Sprite *);
 
@@ -1132,6 +1136,8 @@ void MultiplyPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b)
 #define tMonitorY        data[5]
 #define tBallSpriteId    data[6]
 #define tMonitorSpriteId data[7]
+#define tMonIconSpriteId data[8]
+#define tShownMonCount   data[9]
 #define tStartHofFlash   data[15]
 
 // Sprite data for SpriteCB_PokeballGlowEffect
@@ -1147,16 +1153,30 @@ void MultiplyPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b)
 
 bool8 FldEff_PokecenterHeal(void)
 {
-    u32 nPokemon;
+    u32 i;
+    u32 slotCount;
+    bool32 includeEggs;
     struct Task *task;
 
-    nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
+    slotCount = 0;
+    includeEggs = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3);
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) == SPECIES_NONE)
+            continue;
+        if (!includeEggs && GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+            continue;
+        sPokecenterHealPartySlots[slotCount++] = i;
+    }
+
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
-    task->tNumMons = nPokemon;
+    task->tNumMons = slotCount;
     task->tFirstBallX = 93;
     task->tFirstBallY = 36;
     task->tMonitorX = 124;
     task->tMonitorY = 24;
+    task->tMonIconSpriteId = SPRITE_NONE;
+    task->tShownMonCount = 0;
     return FALSE;
 }
 
@@ -1176,8 +1196,11 @@ static void PokecenterHealEffect_Init(struct Task *task)
 
 static void PokecenterHealEffect_WaitForBallPlacement(struct Task *task)
 {
+    PokecenterHealEffect_UpdateMonitorMonIcon(task);
+
     if (gSprites[task->tBallSpriteId].sState > 1)
     {
+        PokecenterHealEffect_DestroyMonitorMonIcon(task);
         gSprites[task->tMonitorSpriteId].data[0]++;
         task->tState++;
     }
@@ -1196,6 +1219,7 @@ static void PokecenterHealEffect_WaitForSoundAndEnd(struct Task *task)
     if (gSprites[task->tBallSpriteId].sState > 6)
     {
         DestroySprite(&gSprites[task->tBallSpriteId]);
+        PokecenterHealEffect_DestroyMonitorMonIcon(task);
         FieldEffectActiveListRemove(FLDEFF_POKECENTER_HEAL);
         DestroyTask(FindTaskIdByFunc(Task_PokecenterHeal));
     }
@@ -1266,6 +1290,39 @@ static void HallOfFameRecordEffect_WaitForSoundAndEnd(struct Task *task)
         else
             FieldEffectActiveListRemove(FLDEFF_HALL_OF_FAME_RECORD);
         DestroyTask(FindTaskIdByFunc(Task_HallOfFameRecord));
+    }
+}
+
+static void PokecenterHealEffect_UpdateMonitorMonIcon(struct Task *task)
+{
+    struct Sprite *ballSprite;
+
+    ballSprite = &gSprites[task->tBallSpriteId];
+    while (task->tShownMonCount < ballSprite->sCounter && task->tShownMonCount < task->tNumMons)
+    {
+        u8 partySlot = sPokecenterHealPartySlots[task->tShownMonCount];
+        struct Pokemon *mon = &gPlayerParty[partySlot];
+        u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
+        u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
+        bool32 isEgg = GetMonData(mon, MON_DATA_IS_EGG);
+        s16 iconX = task->tMonitorX + (IS_FRLG ? 6 : 2);
+        s16 iconY = task->tMonitorY + (IS_FRLG ? 3 : 4);
+
+        PokecenterHealEffect_DestroyMonitorMonIcon(task);
+        LoadMonIconPalettePersonality(species, personality);
+        task->tMonIconSpriteId = CreateMonIconIsEgg(species, SpriteCB_MonIcon, iconX, iconY, 0, personality, isEgg);
+        gSprites[task->tMonIconSpriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[task->tMonIconSpriteId].oam.priority = 1;
+        task->tShownMonCount++;
+    }
+}
+
+static void PokecenterHealEffect_DestroyMonitorMonIcon(struct Task *task)
+{
+    if (task->tMonIconSpriteId != SPRITE_NONE)
+    {
+        FreeAndDestroyMonIconSprite(&gSprites[task->tMonIconSpriteId]);
+        task->tMonIconSpriteId = SPRITE_NONE;
     }
 }
 
@@ -1491,6 +1548,8 @@ static void SpriteCB_HallOfFameMonitorFrlg(struct Sprite *sprite)
 #undef tMonitorY
 #undef tBallSpriteId
 #undef tMonitorSpriteId
+#undef tMonIconSpriteId
+#undef tShownMonCount
 #undef tStartHofFlash
 #undef sState
 #undef sTimer

@@ -71,9 +71,18 @@ OldaleTown_EventScript_GoToMartEast::
 
 OldaleTown_EventScript_ExplainPokemonMart::
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION
+	setvar VAR_0x8004, ITEM_POTION
+	special RandomizeGiftItemVar8004
+	checkitemspace VAR_0x8004, 1
 	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
-	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
+	bufferitemnameplural STR_VAR_2, VAR_0x8004, 1
+	additem VAR_0x8004, 1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+	waitmessage
+	waitfanfare
+	goto_if_eq VAR_0x8004, ITEM_POTION, OldaleTown_EventScript_ExplainPotion
+	msgbox OldaleTown_Text_GiftItemExplanation, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_POTION_OLDALE
 	fadedefaultbgm
 	release
@@ -388,6 +397,12 @@ OldaleTown_Text_PotionExplanation:
 	.string "ganz ohne CENTER.\p"
 	.string "Manchmal macht genau das den Unter-\n"
 	.string "schied zwischen Sieg und Niederlage.$"
+
+OldaleTown_Text_GiftItemExplanation:
+	.string "{STR_VAR_2} kann auf Reisen richtig\n"
+	.string "nützlich sein.\p"
+	.string "Im SUPERMARKT findest du noch mehr\n"
+	.string "solcher hilfreichen Items.$"
 
 OldaleTown_Text_WaitDontComeInHere:
 	.string "Warte! Geh da nicht hin!\n"

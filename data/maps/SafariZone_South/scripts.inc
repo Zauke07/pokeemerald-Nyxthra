@@ -150,13 +150,31 @@ SafariZone_Northeast_EventScript_Girl::
 	end
 
 SafariZone_South_EventScript_Robball::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, SafariZone_South_EventScript_Robball_RandomizerText
 	msgbox SafariZone_South_Text_Robball, MSGBOX_NPC
 	end
 
+SafariZone_South_EventScript_Robball_RandomizerText::
+	msgbox SafariZone_South_Text_RobballRandomizer, MSGBOX_NPC
+	end
+
 SafariZone_Northeast_EventScript_Krokel::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, SafariZone_Northeast_EventScript_Krokel_RandomizerText
 	msgbox SafariZone_Northeast_Text_Krokel, MSGBOX_NPC
 	end
 
+SafariZone_Northeast_EventScript_Krokel_RandomizerText::
+	msgbox SafariZone_Northeast_Text_KrokelRandomizer, MSGBOX_NPC
+	end
+
 SafariZone_Southeast_EventScript_Felori::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, SafariZone_Southeast_EventScript_Felori_RandomizerText
 	msgbox SafariZone_Southeast_Text_Felori, MSGBOX_NPC
+	end
+
+SafariZone_Southeast_EventScript_Felori_RandomizerText::
+	msgbox SafariZone_Southeast_Text_FeloriRandomizer, MSGBOX_NPC
 	end

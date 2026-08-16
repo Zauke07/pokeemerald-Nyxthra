@@ -68,6 +68,7 @@
 #include "trainer_pokemon_sprites.h"
 #include "tv.h"
 #include "scanline_effect.h"
+#include "constants/heal_locations.h"
 #include "wild_encounter.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
@@ -380,6 +381,7 @@ EWRAM_DATA struct WarpData gLastUsedWarp = {0};
 EWRAM_DATA static struct WarpData sWarpDestination = {0};  // new warp position
 EWRAM_DATA static struct WarpData sFixedDiveWarp = {0};
 EWRAM_DATA static struct WarpData sFixedHoleWarp = {0};
+EWRAM_DATA static bool8 sTeleportWarpToPlayerRoom = FALSE;
 EWRAM_DATA static mapsec_u16_t sLastMapSectionId = 0;
 EWRAM_DATA static struct InitialPlayerAvatarState sInitialPlayerAvatarState = {0};
 EWRAM_DATA static u16 sAmbientCrySpecies = 0;
@@ -1005,7 +1007,50 @@ void SetWarpDestinationToLastHealLocation(void)
 
 void SetWarpDestinationForTeleport(void)
 {
+    if (sTeleportWarpToPlayerRoom)
+    {
+        sTeleportWarpToPlayerRoom = FALSE;
+
+        switch (gSaveBlock2Ptr->playerStyles[0])
+        {
+        case STYLE_BRENDAN:
+        case STYLE_RED:
+        case STYLE_ETHAN:
+        case STYLE_LUCAS:
+        case STYLE_HILBERT:
+        case STYLE_NATE:
+        case STYLE_CALEM:
+        case STYLE_ELIO:
+        case STYLE_VICTOR:
+        case STYLE_FLORIAN:
+            SetWarpDestinationToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
+            return;
+
+        case STYLE_MAY:
+        case STYLE_LEAF:
+        case STYLE_LYRA:
+        case STYLE_DAWN:
+        case STYLE_HILDA:
+        case STYLE_ROSA:
+        case STYLE_SERENA:
+        case STYLE_SELENE:
+        case STYLE_GLORIA:
+        case STYLE_JULIANA:
+            SetWarpDestinationToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE_2F);
+            return;
+
+        default:
+            SetWarpDestinationToHealLocation(HEAL_LOCATION_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F);
+            return;
+        }
+    }
+
     sWarpDestination = gSaveBlock1Ptr->lastHealLocation;
+}
+
+void RequestTeleportWarpToPlayerRoom(void)
+{
+    sTeleportWarpToPlayerRoom = TRUE;
 }
 
 void SetLastHealLocationWarp(u8 healLocationId)
@@ -2284,24 +2329,6 @@ static void CB2_ReturnToFieldLocal(void)
             sprite->animNum = 0;
             sprite->animCmdIndex = 0;
             sprite->y2 = 0;
-
-            // ✅ FIX: Gespeicherte Flags wiederherstellen statt neu berechnen
-            gPlayerAvatar.flags = sInitialPlayerAvatarState.transitionFlags;
-            gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
-
-            // ✅ WICHTIG: avatarState statt state!
-            u8 avatarState = PLAYER_AVATAR_STATE_NORMAL;
-            if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_MACH_BIKE)
-                avatarState = PLAYER_AVATAR_STATE_MACH_BIKE;
-            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ACRO_BIKE)
-                avatarState = PLAYER_AVATAR_STATE_ACRO_BIKE;
-            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
-                avatarState = PLAYER_AVATAR_STATE_SURFING;
-            else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
-                avatarState = PLAYER_AVATAR_STATE_UNDERWATER;
-
-            u16 gfxId = GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, avatarState);
-            ObjectEventSetGraphicsId(objEvent, gfxId);
             
             // ✅ SICHTBARKEIT!
             objEvent->invisible = FALSE;
@@ -2644,21 +2671,22 @@ static bool32 ReturnToFieldLocal(u8 *state)
         ResetScreenForMapLoad();
         ResumeMap(FALSE);
 
-        // *** WICHTIGE ÄNDERUNG HIER ***
-        // Setze Style und Flags VOR dem Aufruf von InitObjectEventsReturnToField().
-        // Nur so kann InitObjectEventsReturnToField den korrekten Start-Sprite laden.
+        // Preserve the required state bits while resetting to the current tile state.
+        // This prevents stale surf/bike flags from surviving a battle/menu return,
+        // while still reapplying the correct surf state for the map start tile.
         gPlayerAvatar.style = gSaveBlock2Ptr->playerStyles[0];
-        gPlayerAvatar.flags = PLAYER_AVATAR_FLAG_ON_FOOT;
-        // Die Zuweisung zu gPlayerAvatar.playerDirection = gSaveBlock1Ptr->playerDir;
-        // wurde entfernt, da diese Felder nicht existieren.
-        // Die Initialisierung der Richtung sollte durch InitObjectEventsReturnToField()
-        // und die Nachjustierung in CB2_ReturnToFieldLocal erfolgen.
+        gPlayerAvatar.transitionFlags = 0;
 
-        // Prüfe hier auch den MetatileBehavior der Startposition, um die Surf-Flag
-        // für die INITIALE Ladung des Spielers korrekt zu setzen.
+        if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
+            SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_SURFING);
+        else if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+            SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_UNDERWATER);
+        else
+            SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ON_FOOT);
+
         u8 behavior = MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);
-        if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior))
-            gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_SURFING; // Setzt die Surf-Flagge
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(behavior) && !(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER))
+            SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_SURFING);
 
         InitObjectEventsReturnToField(); // Dieser Aufruf verwendet jetzt die VORHER gesetzten gPlayerAvatar.style und flags
 
@@ -2674,17 +2702,21 @@ static bool32 ReturnToFieldLocal(u8 *state)
     case 1:
         InitViewGraphics();
         TryLoadTrainerHillEReaderPalette();
+        (*state)++;
+        break;
+
+    case 2:
         FollowerNPC_BindToSurfBlobOnReloadScreen();
         ResumeORASDowseFieldEffect();
         (*state)++;
         break;
 
-    case 2:
+    case 3:
         if (RunFieldCallback())
             (*state)++;
         break;
 
-    case 3:
+    case 4:
         return TRUE;
     }
 

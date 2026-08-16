@@ -206,7 +206,71 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 25,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_ROUTE124_STATE",
+      "var_value": "0",
+      "script": "Wasser_EventScript_BetaEndTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

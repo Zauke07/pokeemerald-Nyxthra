@@ -211,3 +211,33 @@ Route121_Text_BauzRandomizer:
 	.string "gilt deshalb hier nicht.\p"
 	.string "Die Wild-Spawns werden über deinen\n"
 	.string "Seed neu gemappt!$"
+
+Route121_EventScript_Falle::
+	msgbox Route121_Text_Falle, MSGBOX_NPC
+	end
+
+Route121_Text_Falle:
+	.string "Man ist das Scheiße...\n"
+	.string "Da liegt ein Meisterball!\p"
+	.string "Aber es sieht so aus, als\n"
+	.string "ob es ein softlock ist.\l"
+	.string "Da kommt man nicht mehr weg!$"
+
+Route121_EventScript_FalleSign::
+	msgbox Route121_Text_FalleSign, MSGBOX_SIGN
+	end
+
+Route121_Text_FalleSign:
+	.string "War die Gier nach Loot zu groß,\n"
+	.string "geht der Abfuck jetzt erst los!\p"
+	.string "Dachtest wohl, der Ball ist echt?\n"
+	.string "Tja, du Lappen, hast du Pech!\p"
+	.string "Hier kommst du nie wieder weg,\n"
+	.string "verreckst in diesem miesen Dreck!\p"
+	.string "Drück Reset, du kleines Licht,\n"
+	.string "nen andern Ausweg gibt es nicht!\p"
+	.string "Und wehe, du hast grad gespeichert...\n"
+	.string "dann hast du dein Leben mit Frust bereichert!\p"
+	.string "Dein Savegame ist nämlich am Arsch!\n"
+	.string "HAHAHA, DU OPFER!$"
+

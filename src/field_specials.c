@@ -191,12 +191,12 @@ static const u8 sText_1MinutePlus[] = _("1 Minute +");
 static const u8 sText_SpaceSeconds[] = _(" Sekunden");
 static const u8 sText_SpaceTimes[] = _(" Mal");
 
-static const u8 sText_Wallace[] = _("WALLACE");
-static const u8 sText_Steven[] = _("STEVEN");
-static const u8 sText_Brawly[] = _("BRAWLY");
-static const u8 sText_Winona[] = _("WINONA");
-static const u8 sText_Phoebe[] = _("PHOEBE");
-static const u8 sText_Glacia[] = _("GLACIA");
+static const u8 sText_Wallace[] = _("Wassili");
+static const u8 sText_Steven[] = _("Troy");
+static const u8 sText_Brawly[] = _("Kamillo");
+static const u8 sText_Winona[] = _("Wibke");
+static const u8 sText_Phoebe[] = _("Antonia");
+static const u8 sText_Glacia[] = _("Frosina");
 
 void Special_ShowDiploma(void)
 {
@@ -2569,23 +2569,23 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
     {
         COMPOUND_STRING("KISS POSTER{CLEAR_TO 0x5E}16BP"),
         COMPOUND_STRING("KISS CUSHION{CLEAR_TO 0x5E}32BP"),
-        COMPOUND_STRING("SMOOCHUM DOLL{CLEAR_TO 0x5E}32BP"),
-        COMPOUND_STRING("TOGEPI DOLL{CLEAR_TO 0x5E}48BP"),
-        COMPOUND_STRING("MEOWTH DOLL{CLEAR_TO 0x5E}48BP"),
-        COMPOUND_STRING("CLEFAIRY DOLL{CLEAR_TO 0x5E}48BP"),
-        COMPOUND_STRING("DITTO DOLL{CLEAR_TO 0x5E}48BP"),
-        COMPOUND_STRING("CYNDAQUIL DOLL{CLEAR_TO 0x5E}80BP"),
-        COMPOUND_STRING("CHIKORITA DOLL{CLEAR_TO 0x5E}80BP"),
-        COMPOUND_STRING("TOTODILE DOLL{CLEAR_TO 0x5E}80BP"),
+        gText_SmoochumDoll32BP,
+        gText_TogepiDoll48BP,
+        gText_MeowthDoll48BP,
+        gText_ClefairyDoll48BP,
+        gText_DittoDoll48BP,
+        gText_CyndaquilDoll80BP,
+        gText_ChikoritaDoll80BP,
+        gText_TotodileDoll80BP,
         gText_Exit
     },
     [SCROLL_MULTI_BF_EXCHANGE_CORNER_DECOR_VENDOR_2] =
     {
-        COMPOUND_STRING("LAPRAS DOLL{CLEAR_TO 0x58}128BP"),
-        COMPOUND_STRING("SNORLAX DOLL{CLEAR_TO 0x58}128BP"),
-        COMPOUND_STRING("VENUSAUR DOLL{CLEAR_TO 0x58}256BP"),
-        COMPOUND_STRING("CHARIZARD DOLL{CLEAR_TO 0x58}256BP"),
-        COMPOUND_STRING("BLASTOISE DOLL{CLEAR_TO 0x58}256BP"),
+        gText_LaprasDoll128BP,
+        gText_SnorlaxDoll128BP,
+        gText_VenusaurDoll256BP,
+        gText_CharizardDoll256BP,
+        gText_BlastoiseDoll256BP,
         gText_Exit
     },
     [SCROLL_MULTI_BF_EXCHANGE_CORNER_VITAMIN_VENDOR] =
@@ -4791,7 +4791,7 @@ bool8 HasLearnedAllMovesFromCapeBrinkTutor(void)
 
 void SetSeenMon(void)
 {
-    GetSetPokedexFlag(SpeciesToNationalPokedexNum(gSpecialVar_0x8004), 2);
+    HandleSetPokedexFlagFromSpecies(gSpecialVar_0x8004, FLAG_SET_SEEN, 0);
 }
 
 #define tTimer data[0]
@@ -5890,18 +5890,45 @@ u16 IsWildRandomizerEnabled(void)
     return (flags & RANDOMIZER_FLAG_WILD) != 0;
 }
 
+static u32 GetCurrentItemRandomizerContext(u16 originalItem)
+{
+    u32 context = originalItem;
+
+    if (gSaveBlock1Ptr != NULL)
+    {
+        context ^= ((u32)gSaveBlock1Ptr->location.mapGroup << 24);
+        context ^= ((u32)gSaveBlock1Ptr->location.mapNum << 16);
+        context ^= ((u32)gSaveBlock1Ptr->pos.x << 8);
+        context ^= (u32)gSaveBlock1Ptr->pos.y;
+    }
+
+    context ^= ((u32)gSpecialVar_LastTalked << 12);
+    return context;
+}
+
 u16 RandomizeFieldItemVar8004(void)
 {
-    if (GetItemPocket(gSpecialVar_0x8004) != POCKET_KEY_ITEMS
-     && (gSpecialVar_0x8004 < ITEM_HM_CUT || gSpecialVar_0x8004 > ITEM_HM_DIVE))
-        gSpecialVar_0x8004 = Randomizer_GetItem(gSpecialVar_0x8004, RANDOMIZER_MODE_FIELD_ITEM);
+    gSpecialVar_0x8004 = Randomizer_GetAllowedContextualItem(gSpecialVar_0x8004, RANDOMIZER_MODE_FIELD_ITEM,
+                                                             GetCurrentItemRandomizerContext(gSpecialVar_0x8004));
     return gSpecialVar_0x8004;
 }
 
 u16 RandomizeFieldItemVar8005(void)
 {
-    if (GetItemPocket(gSpecialVar_0x8005) != POCKET_KEY_ITEMS
-     && (gSpecialVar_0x8005 < ITEM_HM_CUT || gSpecialVar_0x8005 > ITEM_HM_DIVE))
-        gSpecialVar_0x8005 = Randomizer_GetItem(gSpecialVar_0x8005, RANDOMIZER_MODE_FIELD_ITEM);
+    gSpecialVar_0x8005 = Randomizer_GetAllowedContextualItem(gSpecialVar_0x8005, RANDOMIZER_MODE_FIELD_ITEM,
+                                                             GetCurrentItemRandomizerContext(gSpecialVar_0x8005));
     return gSpecialVar_0x8005;
+}
+
+u16 RandomizeGiftItemVar8004(void)
+{
+    gSpecialVar_0x8004 = Randomizer_GetAllowedContextualItem(gSpecialVar_0x8004, RANDOMIZER_MODE_GIFT,
+                                                             GetCurrentItemRandomizerContext(gSpecialVar_0x8004));
+    return gSpecialVar_0x8004;
+}
+
+u16 RandomizeStaticMonVar8004(void)
+{
+    gSpecialVar_0x8004 = Randomizer_GetStaticSpecies(gSpecialVar_0x8004);
+    return gSpecialVar_0x8004;
 }

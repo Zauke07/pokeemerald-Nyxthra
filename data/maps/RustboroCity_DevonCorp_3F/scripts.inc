@@ -299,7 +299,7 @@ RustboroCity_DevonCorp_3F_Text_WordWithPresidentComeWithMe:
 	.string "Komm mit.$"
 
 RustboroCity_DevonCorp_3F_Text_PleaseGoAhead:
-	.string "Bitte, geh voran.\n"
+	.string "Bitte, geh voran.\p"
 	.string "Er steht drauf, wenn Leute\n"
     .string "ehrfürchtig wirken.$"
 

@@ -38,13 +38,13 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "Der PC in der Ecke ist für POKéMON-\n"
-	.string "TRAINER gedacht.\p"
+	.string "Der PC in der Ecke ist für Pokémon-\n"
+	.string "Trainer gedacht.\p"
 	.string "Man sagt, manche Trainer finden darin\n"
 	.string "mehr als nur Boxen…$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "POKéMON-CENTER sind wahre Wunderwerke!\p"
+	.string "Pokémon-Center sind wahre Wunderwerke!\p"
 	.string "Kostenlos heilen, speichern, durchatmen…\n"
 	.string "Du wirst sie auf deiner Reise brauchen.$"
 
@@ -56,6 +56,6 @@ OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 	.string "Ich habe im DRAHTLOSKLUB schon ein\n"
-	.string "POKéMON getauscht!\p"
+	.string "Pokémon getauscht!\p"
 	.string "Es hieß, manche Formen zeigen sich\n"
 	.string "nur nach einem Tausch.$"

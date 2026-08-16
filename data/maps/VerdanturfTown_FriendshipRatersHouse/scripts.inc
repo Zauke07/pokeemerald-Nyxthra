@@ -88,9 +88,10 @@ VerdanturfTown_FriendshipRatersHouse_Text_LikesYouQuiteALot::
 	.string "dass es für dich stirbt.$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_GettingUsedToYou::
-	.string "Es gewöhnt sich langsam an deine Fratze.\n"
-	.string "Noch hat es die Hoffnung nicht aufgegeben,\l"
-	.string "dass du irgendwann mal was raffst.$"
+	.string "Es gewöhnt sich langsam an deine Fratze.\p"
+	.string "Noch hat es die Hoffnung\n"
+	.string "nicht aufgegeben, dass\l"
+	.string "du irgendwann mal was raffst.$"
 
 VerdanturfTown_FriendshipRatersHouse_Text_NotUsedToYou::
 	.string "Dem Teil bist du völlig egal.\n"

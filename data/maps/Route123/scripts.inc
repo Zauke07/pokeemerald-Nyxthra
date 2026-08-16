@@ -171,30 +171,31 @@ Route123_EventScript_RematchFernando::
 	end
 
 Route123_Text_LoveGrassMonsHaveAny:
-	.string "I love GRASS-type POKéMON!\p"
-	.string "Do you have any GRASS-type POKéMON?$"
+	.string "Ich liebe POKéMON vom Typ PFLANZE!\p"
+	.string "Hast du auch welche vom Typ PFLANZE?$"
 
 Route123_Text_YouLikeGrassMonsTooHaveThis:
 	.string "Oh?\p"
-	.string "You like GRASS-type POKéMON, too,\n"
-	.string "don't you?\p"
-	.string "I'm so happy, you can have this!\n"
-	.string "It's a token of our friendship.$"
+	.string "Du magst also auch PFLANZEN-POKéMON,\n"
+	.string "stimmt's?\p"
+	.string "Das freut mich total, hier nimm das!\n"
+	.string "Als Zeichen unserer Freundschaft.$"
 
 Route123_Text_CheckTreesWithMyGrassMon:
-	.string "I check trees with my GRASS-type\n"
-	.string "POKéMON. I'm like a tree doctor.$"
+	.string "Ich untersuche Bäume mit meinen\n"
+	.string "PFLANZEN-POKéMON. Bin quasi ein Baumdoktor.$"
 
 Route123_Text_RouteSign:
 	.string "{RIGHT_ARROW} ROUTE 123\n"
 	.string "{LEFT_ARROW} ROUTE 118$"
 
 Route123_Text_RouteSignMtPyre:
-	.string "{UP_ARROW} MT. PYRE\n"
-	.string "“Forbidden to the faint of heart.”$"
+	.string "{UP_ARROW} Pyroberg\n"
+	.string "“Zutritt nur für Tryharder.\l"
+	.string "Heulsusen bleiben draußen.”$"
 
 Route123_Text_BerryMastersHouse:
-	.string "BERRY MASTER'S HOUSE$"
+	.string "HAUS DES BEERENMEISTERS$"
 
 Route123_EventScript_Flamiau::
 	specialvar VAR_RESULT, IsWildRandomizerEnabled

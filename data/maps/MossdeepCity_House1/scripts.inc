@@ -22,20 +22,24 @@ MossdeepCity_House1_EventScript_Woman::
 	end
 
 MossdeepCity_House1_Text_HmmYourPokemon:
-	.string "Hmm!\n"
-	.string "Your {STR_VAR_1}…$"
+	.string "Ey!\n"
+	.string "Dein hässliches {STR_VAR_1}…$"
 
 MossdeepCity_House1_Text_ItLikesXPokeblocks:
-	.string "It likes {STR_VAR_1}S,\n"
-	.string "doesn't it?\p"
-	.string "No, I'm positive of it! It definitely\n"
-	.string "likes {STR_VAR_1}S!$"
+	.string "Das Vieh frisst am liebsten {STR_VAR_1},\n"
+	.string "hab ich recht?\p"
+	.string "Scheiß drauf, ich weiß es einfach!\n"
+	.string "Das Ding geiert komplett auf\l"
+	.string "{STR_VAR_1}! Richtiger Fettsack!$"
 
 MossdeepCity_House1_Text_DoesntLikeOrDislikePokeblocks:
-	.string "It doesn't appear to like or dislike\n"
-	.string "any {POKEBLOCK}S.$"
+	.string "Dem Vieh ist es komplett scheißegal,\n"
+	.string "was für {POKEBLOCK} du ihm in die Fresse\l"
+	.string "stopfst. Hat null Geschmack, das Opfer.$"
 
 MossdeepCity_House1_Text_HusbandCanTellPokeblockMonLikes:
-	.string "My husband can tell what kind of\n"
-	.string "{POKEBLOCK}S a POKéMON likes at a glance.$"
+	.string "Mein Macker ist komplett hängen\n"
+	.string "geblieben. Der sieht auf einen Blick,\l"
+	.string "welche {POKEBLOCK} dein Vieh am liebsten\l"
+	.string "in seinen Schlund reinorgelt.$"
 

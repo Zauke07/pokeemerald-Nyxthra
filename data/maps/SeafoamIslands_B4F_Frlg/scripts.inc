@@ -194,31 +194,35 @@ SeafoamIslands_B4F_EventScript_FastCurrentSign::
 	end
 
 Text_RockSlideTeach::
-	.string "When you're up on a rocky mountain\n"
-	.string "like this, rockslides are a threat.\p"
-	.string "Can you imagine?\n"
-	.string "Boulders tumbling down on you?\p"
-	.string "That'd be, like, waaaaaaaaaaah!\n"
-	.string "Total terror!\p"
-	.string "You don't seem to be scared.\n"
-	.string "Want to try using ROCK SLIDE?$"
+	.string "Wenn du auf so einem kack Berg\n"
+	.string "chillst, ist Steinhagel halt\l"
+	.string "eine echte Gefahr.\p"
+	.string "Stell dir vor, fette Felsen\n"
+	.string "ballern auf dich runter!\p"
+	.string "Das wäre so: Waaaaaaah!\n"
+	.string "Kompletter Abfuck!\p"
+	.string "Du siehst nicht so aus, als\n"
+	.string "würdest du direkt rumheulen.\p"
+	.string "Willst du den OP-Move\n"
+	.string "Steinhagel lernen?$"
 
 Text_RockSlideDeclined::
-	.string "Oh, so you are scared after all.$"
+	.string "Oh, also hast du doch Schiss,\n"
+	.string "du Lappen.$"
 
 Text_RockSlideWhichMon::
-	.string "Which POKéMON should I teach\n"
-	.string "ROCK SLIDE?$"
+	.string "Welches Vieh soll Steinhagel\n"
+	.string "lernen?$"
 
 Text_RockSlideTaught::
-	.string "It might be scary to use it in this\n"
-	.string "tunnel…$"
+	.string "Den Move hier im Tunnel zu\n"
+	.string "spammen, wäre komplett irre…$"
 
 SeafoamIslands_B4F_Text_BouldersMightChangeWaterFlow::
-	.string "Hint: Boulders might change the\n"
-	.string "flow of water.$"
+	.string "Tipp: Fette Steine im Wasser\n"
+	.string "blockieren die Strömung.$"
 
 SeafoamIslands_B4F_Text_DangerFastCurrent::
-	.string "DANGER\n"
-	.string "Fast current!$"
+	.string "ACHTUNG!\n"
+	.string "Kranke Strömung!$"
 

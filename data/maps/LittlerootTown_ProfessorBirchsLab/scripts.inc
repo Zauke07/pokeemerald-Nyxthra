@@ -5,9 +5,9 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 	.byte 0
 
 	@ State descriptions for VAR_DEX_UPGRADE_JOHTO_STARTER_STATE
-	@ 1: Beat Elite Four, Dex upgrade ready
-	@ 2: Received National Dex
-	@ 3: Left lab after receiving National Dex
+	@ 1: Legacy postgame Dex-upgrade state
+	@ 2: Legacy postgame Dex-upgrade state
+	@ 3: Postgame Dex progression active
 	@ 4: Entered lab after catching all Hoenn mons
 	@ 5: Birch told player to choose Johto starter
 	@ 6: Chose Johto starter
@@ -22,10 +22,16 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 LittlerootTown_ProfessorBirchsLab_OnTransition:
 	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call ProfBirch_EventScript_UpdateLocation
+	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_NormalizePostgameDexState
+	call_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_NormalizePostgameDexState
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout
 	goto_if_ge VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetJohtoStarterLayout
 	goto_if_eq VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter
 	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_NormalizePostgameDexState::
+	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3
+	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_CheckReadyForJohtoStarter::
 	specialvar VAR_RESULT, HasAllHoennMons
@@ -50,9 +56,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout::
 
 LittlerootTown_ProfessorBirchsLab_OnWarp:
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 0, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 6, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters
@@ -105,7 +108,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 LittlerootTown_ProfessorBirchsLab_OnFrame:
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
 	map_script_2 VAR_BIRCH_LAB_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
-	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter
 	.2byte 0
 
@@ -563,6 +565,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	call_if_eq VAR_RESULT, STYLE_DAWN, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	call_if_eq VAR_RESULT, STYLE_HILBERT, LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls
 	call_if_eq VAR_RESULT, STYLE_HILDA, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
+	call LittlerootTown_ProfessorBirchsLab_EventScript_GiveTeleporterIfDoorWarpRandom
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
 	setvar VAR_OLDALE_TOWN_STATE, 1
@@ -573,7 +576,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MayGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 10
+	setvar VAR_0x8000, ITEM_POKE_BALL
+	setvar VAR_0x8001, 50
+	call LittlerootTown_ProfessorBirchsLab_EventScript_ObtainFixedGiftItem
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_MayNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCutePokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
@@ -581,10 +586,42 @@ LittlerootTown_ProfessorBirchsLab_EventScript_MayGivePokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 10
+	setvar VAR_0x8000, ITEM_POKE_BALL
+	setvar VAR_0x8001, 50
+	call LittlerootTown_ProfessorBirchsLab_EventScript_ObtainFixedGiftItem
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 1
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_ObtainFixedGiftItem::
+	copyvar VAR_0x8006, VAR_0x8000
+	additem VAR_0x8000, VAR_0x8001
+	copyvar VAR_0x8007, VAR_RESULT
+	call EventScript_ObtainItemMessage
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_GiveTeleporterIfDoorWarpRandom::
+	specialvar VAR_RESULT, IsDoorWarpRandomizerActiveSpecial
+	goto_if_ne VAR_RESULT, TRUE, LittlerootTown_ProfessorBirchsLab_EventScript_EndGiveTeleporterIfDoorWarpRandom
+	checkitem ITEM_TELEPORTER, 1
+	goto_if_eq VAR_RESULT, TRUE, LittlerootTown_ProfessorBirchsLab_EventScript_EndGiveTeleporterIfDoorWarpRandom
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_BIRCHS_LAB_BIRCH, Common_Movement_FacePlayer
+	waitmovement 0
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_DoorWarpRandomActiveTakeTeleporter, MSGBOX_DEFAULT
+	setvar VAR_0x8000, ITEM_TELEPORTER
+	setvar VAR_0x8001, 1
+	call LittlerootTown_ProfessorBirchsLab_EventScript_ObtainFixedGiftItem
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_NoRoomForTeleporter
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_TeleporterUsageHint, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_ProfessorBirchsLab_EventScript_NoRoomForTeleporter::
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_NoRoomForTeleporter, MSGBOX_DEFAULT
+
+LittlerootTown_ProfessorBirchsLab_EventScript_EndGiveTeleporterIfDoorWarpRandom::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
@@ -593,6 +630,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
+	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
@@ -782,8 +820,9 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchAwayOnFieldwork:
 	.string "Der ist draußen unterwegs.\p"
 	.string "Der Typ kann nicht stillsitzen, also rennt er\n"
 	.string "lieber durch's Gebüsch als hier zu forschen.\p"
-	.string "“Feldforschung” nennt man das. Hauptsache,\n"
-	.string "weg vom Schreibtisch. Spinner.$"
+	.string "“Feldforschung” nennt man das.\n"
+	.string "Hauptsache weg vom Schreibtisch.\p"
+	.string "Spinner.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
 	.string "Der PROF? Der hasst Büros.\n"
@@ -803,7 +842,8 @@ LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "{PLAYER} erhält {STR_VAR_1}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon:
-	.string "Willst du {STR_VAR_1} einen Spitznamen geben?$"
+	.string "Willst du {STR_VAR_1}\n"
+	.string "einen Spitznamen geben?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MightBeGoodIdeaToGoSeeRival:
 	.string "Wenn du was reißen willst mit Pokémon,\n"
@@ -819,8 +859,9 @@ LittlerootTown_ProfessorBirchsLab_Text_DontBeThatWay:
 	.string "Glaub mir, lohnt sich.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "{RIVAL}? Bestimmt zu Hause oder mal wieder\n"
-	.string "am Gras schnüffeln. Geh mal gucken.$"
+	.string "{RIVAL}? Bestimmt zu Hause oder mal\n"
+	.string "wieder am Gras schnüffeln.\p"
+	.string "Geh mal gucken.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "PROF. BIRK: Oh, {PLAYER}{KUN}!\n"
@@ -856,6 +897,10 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 	.string "{PLAYER} erhält den Pokédex!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
+	.string "Prof. Birk: In dieser ROM-Hack-Edition\n"
+	.string "gibt es alle Pokémon.\p"
+	.string "Darum ist dein {COLOR RED}NATIONALDEX{COLOR DARK_GRAY}\n"
+	.string "direkt freigeschaltet.\p"
 	.string "Der POKéDEX scannt automatisch jedes\n"
 	.string "POKéMON, das du siehst oder fängst.\p"
 	.string "Er speichert Daten zu Typ, Verhalten\n"
@@ -1019,3 +1064,17 @@ LittlerootTown_ProfessorBirchsLab_Text_PleaseHelp:
 LittlerootTown_ProfessorBirchsLab_Text_AskHelpAgain:
 	.string "Also, was sagst du?\n"
 	.string "Hilfst du mir bei diesem Rätsel?$"
+
+LittlerootTown_ProfessorBirchsLab_Text_DoorWarpRandomActiveTakeTeleporter:
+	.string "Prof. Birk: Ach ja, da du den Tür-Warp-\n"
+	.string "Randomizer aktiv hast…\p"
+	.string "Nimm lieber dieses Item mit.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_TeleporterUsageHint:
+	.string "Prof. Birk: Wenn du irgendwo feststeckst, kannst du\n"
+	.string "mit dem TELEPORTER direkt zu deinem\l"
+	.string "letzten Heilpunkt zurückkehren.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_NoRoomForTeleporter:
+	.string "Prof. Birk: Dein Beutel ist voll. Komm kurz wieder,\n"
+	.string "dann gebe ich dir den TELEPORTER.$"

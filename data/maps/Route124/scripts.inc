@@ -102,3 +102,34 @@ Route124_EventScript_Isabella::
 Route124_Text_HuntersHouse:
 	.string "HUNTER'S HOUSE$"
 
+Wasser_EventScript_BetaEndTrigger::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_QuestionMark
+	playse SE_PIN
+	waitmovement 0
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, Wasser_Movement_LookAround
+	waitmovement 0
+	msgbox Wasser_Text_BetaEnd, MSGBOX_DEFAULT
+	setvar VAR_ROUTE124_STATE, 1
+	releaseall
+	end
+
+Wasser_Movement_LookAround:
+	walk_in_place_faster_left
+	delay_16
+	walk_in_place_faster_right
+	delay_16
+	walk_in_place_faster_up
+	step_end
+
+Wasser_Text_BetaEnd:
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Hmm… Hier geht es wohl noch\n"
+	.string "nicht weiter. Das ist wohl das Ende\l"
+	.string "der ersten Beta!\p"
+	.string "Es hat auf jeden Fall viel Spaß gemacht!\n"
+	.string "Ich schau mich am besten noch etwas um,\l"
+	.string "ob ich Nebenquests übersehen habe.\p"
+	.string "Vielleicht finde ich ja auch noch Bugs,\n"
+	.string "die ich dem Entwickler melden kann.{COLOR WHITE}$"
+

@@ -1,5 +1,15 @@
 MauvilleCity_GameCorner_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MauvilleCity_GameCorner_OnTransition
 	.byte 0
+
+MauvilleCity_GameCorner_OnTransition:
+	goto_if_set FLAG_UNLOCKED_MAUVILLE_GAME_CORNER_BACKROOM, MauvilleCity_GameCorner_EventScript_ShowRocket
+	setflag FLAG_HIDE_MAUVILLE_GAME_CORNER_ROCKET
+	end
+
+MauvilleCity_GameCorner_EventScript_ShowRocket:
+	clearflag FLAG_HIDE_MAUVILLE_GAME_CORNER_ROCKET
+	end
 
 	@ Game Corner prices
 	.set TM_DOUBLE_TEAM_COINS, 1500
@@ -626,6 +636,24 @@ MauvilleCity_GameCorner_EventScript_NoCoinCase::
 	releaseall
 	end
 
+MauvilleCity_GameCorner_EventScript_BackroomWarpLeft::
+	goto_if_set FLAG_UNLOCKED_MAUVILLE_GAME_CORNER_BACKROOM, MauvilleCity_GameCorner_EventScript_UseBackroomWarpLeft
+	msgbox MauvilleCity_GameCorner_Text_BackroomClosed, MSGBOX_DEFAULT
+	end
+
+MauvilleCity_GameCorner_EventScript_BackroomWarpRight::
+	goto_if_set FLAG_UNLOCKED_MAUVILLE_GAME_CORNER_BACKROOM, MauvilleCity_GameCorner_EventScript_UseBackroomWarpRight
+	msgbox MauvilleCity_GameCorner_Text_BackroomClosed, MSGBOX_DEFAULT
+	end
+
+MauvilleCity_GameCorner_EventScript_UseBackroomWarpLeft::
+	warp MAP_MAUVILLE_CITY_GAME_CORNER, 0, 11
+	end
+
+MauvilleCity_GameCorner_EventScript_UseBackroomWarpRight::
+	warp MAP_MAUVILLE_CITY_GAME_CORNER, 0, 12
+	end
+
 MauvilleCity_GameCorner_Text_ThisIsMauvilleGameCorner::
 	.string "Willkommen in der SPIELHALLE.\n"
 	.string "Lass dein Geld hier und verschwinde.$"
@@ -772,4 +800,7 @@ MauvilleCity_GameCorner_Text_HeresSomeSlotsInfo::
 
 MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase::
 	.string "Kein Korb, kein Spiel. Verschwinde!$"
+
+MauvilleCity_GameCorner_Text_BackroomClosed::
+	.string "Zutritt verboten. Nur Personal.$"
 

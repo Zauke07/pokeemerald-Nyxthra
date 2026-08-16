@@ -414,7 +414,8 @@ RivalsHouse_1F_Text_TooBusyToNoticeVisit:
 
 
 RivalsHouse_1F_Text_WentOutToRoute103:
-	.string "{RIVAL} ist abgehauen Richtung Route 103.\p"
+	.string "{RIVAL} ist abgehauen Richtung\n"
+	.string "Route 103.\p"
 	.string "Typisch - keine fünf Minuten Ruhe\n"
 	.string "im Haus. Muss wohl wieder Gras lecken.$"
 

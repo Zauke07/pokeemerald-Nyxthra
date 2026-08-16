@@ -271,11 +271,11 @@ NewMauville_Inside_EventScript_Zapdos::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_ZAPDOS, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
 	setvar VAR_LAST_TALKED, LOCALID_NEWMAUVILLE_ZAPDOS
 	seteventmon SPECIES_ZAPDOS, 30
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -285,7 +285,8 @@ NewMauville_Inside_EventScript_Zapdos::
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, NewMauville_Inside_EventScript_RanFromZapdos
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, NewMauville_Inside_EventScript_RanFromZapdos
 	setflag FLAG_DEFEATED_ZAPDOS
-	release
+	setflag FLAG_HIDE_NEW_MAUVILLE_ZAPDOS
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 NewMauville_Inside_EventScript_DefeatedZapdos::
@@ -294,6 +295,5 @@ NewMauville_Inside_EventScript_DefeatedZapdos::
 	end
 
 NewMauville_Inside_EventScript_RanFromZapdos::
-	setvar VAR_0x8004, SPECIES_ZAPDOS
 	goto Common_EventScript_LegendaryFlewAway
 	end

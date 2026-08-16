@@ -44,24 +44,31 @@ Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
 	return
 
 Route117_EventScript_TryMoveDayCareMan::
-	@ Quest noch nicht abgeschlossen
-	goto_if_unset FLAG_DAYCARE_RESCUE_QUEST_COMPLETED, Route117_EventScript_RescueQuestActive
 	@ Quest abgeschlossen - normales Verhalten
+	goto_if_set FLAG_DAYCARE_RESCUE_QUEST_COMPLETED, Route117_EventScript_QuestCompleted
+	@ NEU: Checken, ob der böse NPC bereits weggerannt ist!
+	goto_if_set FLAG_EVIL_NPC_RAN_AWAY, Route117_EventScript_HideBothNPCs
+	@ Nach James-Kampf, aber vor Abschluss: auf Route niemanden anzeigen
+	goto_if_set FLAG_DEFEATED_DAYCARE_KIDNAPPER, Route117_EventScript_HideBothNPCs
+	@ Quest aktiv und James noch nicht besiegt: boeser NPC sichtbar
+	goto Route117_EventScript_RescueQuestActive
+
+Route117_EventScript_QuestCompleted:
+	clearflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
+	setflag FLAG_HIDE_ROUTE117_EVIL_NPC
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan
 	setobjectxyperm LOCALID_DAYCARE_MAN, 47, 6
 Route117_EventScript_StopMoveDayCareMan::
 	return
 
 Route117_EventScript_RescueQuestActive::
-	@ Wenn Ei bereit ist, verstecke den bösen NPC (er ist dann im Labor)
-	goto_if_set FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_HideEvilNPC
-	@ Sonst: Verstecke Old Man, zeige bösen NPC
+	@ Normalfall: Quest aktiv, Ei noch nicht ausgeloest - boesen NPC zeigen.
 	setflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
 	clearflag FLAG_HIDE_ROUTE117_EVIL_NPC
 	return
 
-Route117_EventScript_HideEvilNPC::
-	@ Böser NPC ist jetzt im Labor
+Route117_EventScript_HideBothNPCs::
+	@ Zwischen James-Kampf und Questabschluss bleibt Route 117 leer.
 	setflag FLAG_HIDE_ROUTE117_EVIL_NPC
 	setflag FLAG_HIDE_ROUTE117_DAYCARE_MAN
 	return
@@ -70,10 +77,19 @@ Route117_EventScript_HideEvilNPC::
 Route117_EventScript_EvilNPC::
 	lock
 	faceplayer
-	@ Vor dem Ei - normales Verhalten wie Old Man
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_EvilNPCNormalDialogue
 	@ Wenn Ei bereit ist, soll Spieler ins Labor gehen
 	msgbox Route117_Text_EvilNPCEggReady, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_EVIL_NPC, Route117_Movement_EvilNPCWalkAway
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_EVIL_NPC
+	setflag FLAG_HIDE_ROUTE117_EVIL_NPC
+	setflag FLAG_EVIL_NPC_RAN_AWAY   @ <--- Hält ihn für immer fern!
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox Route117_Text_PlayerSuspicious, MSGBOX_DEFAULT
 	release
 	end
 
@@ -119,6 +135,10 @@ Route117_Text_EvilNPCEggReady:
 	.string "Hm… wo ist das EI geblieben?\p"
 	.string "Ich glaube… äh… ich muss mal kurz\n"
 	.string "nachschauen…$"
+
+Route117_Text_PlayerSuspicious:
+	.string "{COLOR PLAYER_CLR}{PLAYER}: Hm… irgendwas ist komisch…\p"
+	.string "Ich laufe ihn mal besser nach!{COLOR WHITE}$"
 
 Route117_EventScript_Isaac::
 	trainerbattle_single TRAINER_ISAAC_1, Route117_Text_IsaacIntro, Route117_Text_IsaacDefeat, Route117_EventScript_RegisterIsaac
@@ -381,4 +401,17 @@ Route117_Text_Azumarill:
 
 Route117_Text_Pikachu:
 	.string "Pikachu: Pika Pika!$"
+
+@ ========== BEWEGUNGSBLÖCKE ==========
+
+Route117_Movement_EvilNPCWalkAway:
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	set_invisible
+	step_end
 
