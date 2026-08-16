@@ -3346,6 +3346,18 @@ static const struct SpriteFrameImage sPicTable_Mon_lugia[] = {
     overworld_frame(gObjectEventPic_Overworld_lugia, 8, 8, 5),
 };
 
+static const struct SpriteFrameImage sPicTable_Mon_lugia_shadow[] = {
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 0),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 1),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 2),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 0),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 3),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 1),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 4),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 2),
+    overworld_frame(gObjectEventPic_Overworld_lugia_shadow, 8, 8, 5),
+};
+
 static const struct SpriteFrameImage sPicTable_Mon_ho_oh[] = {
     overworld_frame(gObjectEventPic_Overworld_ho_oh, 8, 8, 0),
     overworld_frame(gObjectEventPic_Overworld_ho_oh, 8, 8, 1),
@@ -14402,6 +14414,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_larvitar = {TA
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_pupitar = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Mon_pupitar, gDummySpriteAffineAnimTable};
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_tyranitar = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Mon_tyranitar, gDummySpriteAffineAnimTable};
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_lugia = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 2048, 64, 64, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_64x64, sOamTables_64x64, sAnimTable_Standard, sPicTable_Mon_lugia, gDummySpriteAffineAnimTable};
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_lugia_shadow = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 2048, 64, 64, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_64x64, sOamTables_64x64, sAnimTable_Standard, sPicTable_Mon_lugia_shadow, gDummySpriteAffineAnimTable};
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_ho_oh = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 2048, 64, 64, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_64x64, sOamTables_64x64, sAnimTable_Standard, sPicTable_Mon_ho_oh, gDummySpriteAffineAnimTable};
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_celebi = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Mon_celebi, gDummySpriteAffineAnimTable};
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mon_treecko = {TAG_NONE, OBJ_EVENT_PAL_TAG_FOLLOW_MON_0, OBJ_EVENT_PAL_TAG_NONE, 512, 32, 32, 10, SHADOW_SIZE_M, FALSE, FALSE, TRACKS_FOOT, &gObjectEventBaseOam_32x32, sOamTables_32x32, sAnimTable_Standard, sPicTable_Mon_treecko, gDummySpriteAffineAnimTable};
@@ -16975,6 +16988,12 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_lugia,
 		.normalPal = gObjectEventPal_Overworld_lugia,
 		.shinyPal = gObjectEventPal_Overworld_lugia_shiny,
+	},
+	[SPECIES_LUGIA_SHADOW] =
+	{
+		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_lugia_shadow,
+		.normalPal = gObjectEventPal_Overworld_lugia_shadow,
+		.shinyPal = gObjectEventPal_Overworld_lugia_shadow_shiny,
 	},
 	[SPECIES_HO_OH] =
 	{
@@ -20504,7 +20523,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_grookey,
 		.shinyPal = gObjectEventPal_Overworld_grookey_shiny,
 	},
-	[SPECIES_DECIDUEYE_HISUIAN] =
+	[SPECIES_DECIDUEYE_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_decidueye_hisuian,
 		.normalPal = gObjectEventPal_Overworld_decidueye_hisuian,
@@ -20528,7 +20547,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_thwackey,
 		.shinyPal = gObjectEventPal_Overworld_thwackey_shiny,
 	},
-	[SPECIES_TYPHLOSION_HISUIAN] =
+	[SPECIES_TYPHLOSION_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_typhlosion_hisuian,
 		.normalPal = gObjectEventPal_Overworld_typhlosion_hisuian,
@@ -20552,7 +20571,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_rillaboom,
 		.shinyPal = gObjectEventPal_Overworld_rillaboom_shiny,
 	},
-	[SPECIES_SAMUROTT_HISUIAN] =
+	[SPECIES_SAMUROTT_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_samurott_hisuian,
 		.normalPal = gObjectEventPal_Overworld_samurott_hisuian,
@@ -20624,7 +20643,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_cinderace,
 		.shinyPal = gObjectEventPal_Overworld_cinderace_shiny,
 	},
-	[SPECIES_QWILFISH_HISUIAN] =
+	[SPECIES_QWILFISH_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_qwilfish_hisuian,
 		.normalPal = gObjectEventPal_Overworld_qwilfish_hisuian,
@@ -20672,7 +20691,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_drizzile,
 		.shinyPal = gObjectEventPal_Overworld_drizzile_shiny,
 	},
-	[SPECIES_LILLIGANT_HISUIAN] =
+	[SPECIES_LILLIGANT_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_lilligant_hisuian,
 		.normalPal = gObjectEventPal_Overworld_lilligant_hisuian,
@@ -20684,7 +20703,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_quaxwell,
 		.shinyPal = gObjectEventPal_Overworld_quaxwell_shiny,
 	},
-	[SPECIES_MAROWAK_ALOLAN] =
+	[SPECIES_MAROWAK_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_marowak_alolan,
 		.normalPal = gObjectEventPal_Overworld_marowak_alolan,
@@ -20708,7 +20727,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_quaquaval,
 		.shinyPal = gObjectEventPal_Overworld_quaquaval_shiny,
 	},
-	[SPECIES_RATTATA_ALOLAN] =
+	[SPECIES_RATTATA_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_rattata_alolan,
 		.normalPal = gObjectEventPal_Overworld_rattata_alolan,
@@ -20720,7 +20739,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_skwovet,
 		.shinyPal = gObjectEventPal_Overworld_skwovet_shiny,
 	},
-	[SPECIES_SLIGGOO_HISUIAN] =
+	[SPECIES_SLIGGOO_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_sliggoo_hisuian,
 		.normalPal = gObjectEventPal_Overworld_sliggoo_hisuian,
@@ -20732,7 +20751,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_lechonk,
 		.shinyPal = gObjectEventPal_Overworld_lechonk_shiny,
 	},
-	[SPECIES_RATICATE_ALOLAN] =
+	[SPECIES_RATICATE_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_raticate_alolan,
 		.normalPal = gObjectEventPal_Overworld_raticate_alolan,
@@ -20744,7 +20763,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_greedent,
 		.shinyPal = gObjectEventPal_Overworld_greedent_shiny,
 	},
-	[SPECIES_GOODRA_HISUIAN] =
+	[SPECIES_GOODRA_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_goodra_hisuian,
 		.normalPal = gObjectEventPal_Overworld_goodra_hisuian,
@@ -20756,7 +20775,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_oinkologne_male,
 		.shinyPal = gObjectEventPal_Overworld_oinkologne_male_shiny,
 	},
-	[SPECIES_RAICHU_ALOLAN] =
+	[SPECIES_RAICHU_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_raichu_alolan,
 		.normalPal = gObjectEventPal_Overworld_raichu_alolan,
@@ -20780,7 +20799,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_oinkologne_female,
 		.shinyPal = gObjectEventPal_Overworld_oinkologne_female_shiny,
 	},
-	[SPECIES_SANDSHREW_ALOLAN] =
+	[SPECIES_SANDSHREW_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_sandshrew_alolan,
 		.normalPal = gObjectEventPal_Overworld_sandshrew_alolan,
@@ -20804,7 +20823,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_tarountula,
 		.shinyPal = gObjectEventPal_Overworld_tarountula_shiny,
 	},
-	[SPECIES_SANDSLASH_ALOLAN] =
+	[SPECIES_SANDSLASH_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_sandslash_alolan,
 		.normalPal = gObjectEventPal_Overworld_sandslash_alolan,
@@ -20828,7 +20847,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_spidops,
 		.shinyPal = gObjectEventPal_Overworld_spidops_shiny,
 	},
-	[SPECIES_VULPIX_ALOLAN] =
+	[SPECIES_VULPIX_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_vulpix_alolan,
 		.normalPal = gObjectEventPal_Overworld_vulpix_alolan,
@@ -20840,7 +20859,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_blipbug,
 		.shinyPal = gObjectEventPal_Overworld_blipbug_shiny,
 	},
-	[SPECIES_GROWLITHE_HISUIAN] =
+	[SPECIES_GROWLITHE_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_growlithe_hisuian,
 		.normalPal = gObjectEventPal_Overworld_growlithe_hisuian,
@@ -20852,7 +20871,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_nymble,
 		.shinyPal = gObjectEventPal_Overworld_nymble_shiny,
 	},
-	[SPECIES_NINETALES_ALOLAN] =
+	[SPECIES_NINETALES_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_ninetales_alolan,
 		.normalPal = gObjectEventPal_Overworld_ninetales_alolan,
@@ -20864,7 +20883,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_dottler,
 		.shinyPal = gObjectEventPal_Overworld_dottler_shiny,
 	},
-	[SPECIES_ARCANINE_HISUIAN] =
+	[SPECIES_ARCANINE_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_arcanine_hisuian,
 		.normalPal = gObjectEventPal_Overworld_arcanine_hisuian,
@@ -20876,7 +20895,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_lokix,
 		.shinyPal = gObjectEventPal_Overworld_lokix_shiny,
 	},
-	[SPECIES_DIGLETT_ALOLAN] =
+	[SPECIES_DIGLETT_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_diglett_alolan,
 		.normalPal = gObjectEventPal_Overworld_diglett_alolan,
@@ -20888,7 +20907,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_orbeetle,
 		.shinyPal = gObjectEventPal_Overworld_orbeetle_shiny,
 	},
-	[SPECIES_VOLTORB_HISUIAN] =
+	[SPECIES_VOLTORB_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_voltorb_hisuian,
 		.normalPal = gObjectEventPal_Overworld_voltorb_hisuian,
@@ -20900,7 +20919,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_pawmi,
 		.shinyPal = gObjectEventPal_Overworld_pawmi_shiny,
 	},
-	[SPECIES_DUGTRIO_ALOLAN] =
+	[SPECIES_DUGTRIO_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_dugtrio_alolan,
 		.normalPal = gObjectEventPal_Overworld_dugtrio_alolan,
@@ -20912,7 +20931,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_nickit,
 		.shinyPal = gObjectEventPal_Overworld_nickit_shiny,
 	},
-	[SPECIES_ELECTRODE_HISUIAN] =
+	[SPECIES_ELECTRODE_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_electrode_hisuian,
 		.normalPal = gObjectEventPal_Overworld_electrode_hisuian,
@@ -20924,7 +20943,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_pawmo,
 		.shinyPal = gObjectEventPal_Overworld_pawmo_shiny,
 	},
-	[SPECIES_MEOWTH_ALOLAN] =
+	[SPECIES_MEOWTH_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_meowth_alolan,
 		.normalPal = gObjectEventPal_Overworld_meowth_alolan,
@@ -20936,7 +20955,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_thievul,
 		.shinyPal = gObjectEventPal_Overworld_thievul_shiny,
 	},
-	[SPECIES_SNEASEL_HISUIAN] =
+	[SPECIES_SNEASEL_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_sneasel_hisuian,
 		.normalPal = gObjectEventPal_Overworld_sneasel_hisuian,
@@ -20948,7 +20967,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_pawmot,
 		.shinyPal = gObjectEventPal_Overworld_pawmot_shiny,
 	},
-	[SPECIES_PERSIAN_ALOLAN] =
+	[SPECIES_PERSIAN_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_persian_alolan,
 		.normalPal = gObjectEventPal_Overworld_persian_alolan,
@@ -20972,7 +20991,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_tandemaus,
 		.shinyPal = gObjectEventPal_Overworld_tandemaus_shiny,
 	},
-	[SPECIES_GEODUDE_ALOLAN] =
+	[SPECIES_GEODUDE_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_geodude_alolan,
 		.normalPal = gObjectEventPal_Overworld_geodude_alolan,
@@ -20984,7 +21003,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_eldegoss,
 		.shinyPal = gObjectEventPal_Overworld_eldegoss_shiny,
 	},
-	[SPECIES_AVALUGG_HISUIAN] =
+	[SPECIES_AVALUGG_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_avalugg_hisuian,
 		.normalPal = gObjectEventPal_Overworld_avalugg_hisuian,
@@ -20996,7 +21015,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_maushold_family_of_four,
 		.shinyPal = gObjectEventPal_Overworld_maushold_family_of_four_shiny,
 	},
-	[SPECIES_GRAVELER_ALOLAN] =
+	[SPECIES_GRAVELER_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_graveler_alolan,
 		.normalPal = gObjectEventPal_Overworld_graveler_alolan,
@@ -21008,7 +21027,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_wooloo,
 		.shinyPal = gObjectEventPal_Overworld_wooloo_shiny,
 	},
-	[SPECIES_ZORUA_HISUIAN] =
+	[SPECIES_ZORUA_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_zorua_hisuian,
 		.normalPal = gObjectEventPal_Overworld_zorua_hisuian,
@@ -21020,7 +21039,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_maushold_family_of_three,
 		.shinyPal = gObjectEventPal_Overworld_maushold_family_of_three_shiny,
 	},
-	[SPECIES_GOLEM_ALOLAN] =
+	[SPECIES_GOLEM_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_golem_alolan,
 		.normalPal = gObjectEventPal_Overworld_golem_alolan,
@@ -21032,7 +21051,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_dubwool,
 		.shinyPal = gObjectEventPal_Overworld_dubwool_shiny,
 	},
-	[SPECIES_ZOROARK_HISUIAN] =
+	[SPECIES_ZOROARK_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_zoroark_hisuian,
 		.normalPal = gObjectEventPal_Overworld_zoroark_hisuian,
@@ -21044,7 +21063,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_fidough,
 		.shinyPal = gObjectEventPal_Overworld_fidough_shiny,
 	},
-	[SPECIES_GRIMER_ALOLAN] =
+	[SPECIES_GRIMER_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_grimer_alolan,
 		.normalPal = gObjectEventPal_Overworld_grimer_alolan,
@@ -21056,7 +21075,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_chewtle,
 		.shinyPal = gObjectEventPal_Overworld_chewtle_shiny,
 	},
-	[SPECIES_BRAVIARY_HISUIAN] =
+	[SPECIES_BRAVIARY_HISUI] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_braviary_hisuian,
 		.normalPal = gObjectEventPal_Overworld_braviary_hisuian,
@@ -21068,7 +21087,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_dachsbun,
 		.shinyPal = gObjectEventPal_Overworld_dachsbun_shiny,
 	},
-	[SPECIES_MUK_ALOLAN] =
+	[SPECIES_MUK_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_muk_alolan,
 		.normalPal = gObjectEventPal_Overworld_muk_alolan,
@@ -21140,7 +21159,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_arboliva,
 		.shinyPal = gObjectEventPal_Overworld_arboliva_shiny,
 	},
-	[SPECIES_EXEGGUTOR_ALOLAN] =
+	[SPECIES_EXEGGUTOR_ALOLA] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_exeggutor_alolan,
 		.normalPal = gObjectEventPal_Overworld_exeggutor_alolan,
@@ -21908,7 +21927,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_sandy_shocks,
 		.shinyPal = gObjectEventPal_Overworld_sandy_shocks_shiny,
 	},
-	[SPECIES_MEOWTH_GALARIAN] =
+	[SPECIES_MEOWTH_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_meowth_galarian,
 		.normalPal = gObjectEventPal_Overworld_meowth_galarian,
@@ -21932,7 +21951,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_bundle,
 		.shinyPal = gObjectEventPal_Overworld_iron_bundle_shiny,
 	},
-	[SPECIES_PONYTA_GALARIAN] =
+	[SPECIES_PONYTA_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_ponyta_galarian,
 		.normalPal = gObjectEventPal_Overworld_ponyta_galarian,
@@ -21944,7 +21963,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_hands,
 		.shinyPal = gObjectEventPal_Overworld_iron_hands_shiny,
 	},
-	[SPECIES_RAPIDASH_GALARIAN] =
+	[SPECIES_RAPIDASH_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_rapidash_galarian,
 		.normalPal = gObjectEventPal_Overworld_rapidash_galarian,
@@ -21956,7 +21975,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_jugulis,
 		.shinyPal = gObjectEventPal_Overworld_iron_jugulis_shiny,
 	},
-	[SPECIES_FARFETCHD_GALARIAN] =
+	[SPECIES_FARFETCHD_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_farfetchd_galarian,
 		.normalPal = gObjectEventPal_Overworld_farfetchd_galarian,
@@ -21980,7 +21999,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_thorns,
 		.shinyPal = gObjectEventPal_Overworld_iron_thorns_shiny,
 	},
-	[SPECIES_WEEZING_GALARIAN] =
+	[SPECIES_WEEZING_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_weezing_galarian,
 		.normalPal = gObjectEventPal_Overworld_weezing_galarian,
@@ -21992,7 +22011,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_frigibax,
 		.shinyPal = gObjectEventPal_Overworld_frigibax_shiny,
 	},
-	[SPECIES_MR_MIME_GALARIAN] =
+	[SPECIES_MR_MIME_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_mr_mime_galarian,
 		.normalPal = gObjectEventPal_Overworld_mr_mime_galarian,
@@ -22016,7 +22035,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_baxcalibur,
 		.shinyPal = gObjectEventPal_Overworld_baxcalibur_shiny,
 	},
-	[SPECIES_CORSOLA_GALARIAN] =
+	[SPECIES_CORSOLA_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_corsola_galarian,
 		.normalPal = gObjectEventPal_Overworld_corsola_galarian,
@@ -22040,7 +22059,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_gholdengo,
 		.shinyPal = gObjectEventPal_Overworld_gholdengo_shiny,
 	},
-	[SPECIES_ZIGZAGOON_GALARIAN] =
+	[SPECIES_ZIGZAGOON_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_zigzagoon_galarian,
 		.normalPal = gObjectEventPal_Overworld_zigzagoon_galarian,
@@ -22052,7 +22071,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_wo_chien,
 		.shinyPal = gObjectEventPal_Overworld_wo_chien_shiny,
 	},
-	[SPECIES_LINOONE_GALARIAN] =
+	[SPECIES_LINOONE_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_linoone_galarian,
 		.normalPal = gObjectEventPal_Overworld_linoone_galarian,
@@ -22076,7 +22095,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_ting_lu,
 		.shinyPal = gObjectEventPal_Overworld_ting_lu_shiny,
 	},
-	[SPECIES_DARUMAKA_GALARIAN] =
+	[SPECIES_DARUMAKA_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_darumaka_galarian,
 		.normalPal = gObjectEventPal_Overworld_darumaka_galarian,
@@ -22088,7 +22107,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_chi_yu,
 		.shinyPal = gObjectEventPal_Overworld_chi_yu_shiny,
 	},
-	[SPECIES_DARMANITAN_GALARIAN] =
+	[SPECIES_DARMANITAN_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_darmanitan_galarian,
 		.normalPal = gObjectEventPal_Overworld_darmanitan_galarian,
@@ -22112,7 +22131,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_valiant,
 		.shinyPal = gObjectEventPal_Overworld_iron_valiant_shiny,
 	},
-	[SPECIES_YAMASK_GALARIAN] =
+	[SPECIES_YAMASK_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_yamask_galarian,
 		.normalPal = gObjectEventPal_Overworld_yamask_galarian,
@@ -22136,7 +22155,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_iron_leaves,
 		.shinyPal = gObjectEventPal_Overworld_iron_leaves_shiny,
 	},
-	[SPECIES_STUNFISK_GALARIAN] =
+	[SPECIES_STUNFISK_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_stunfisk_galarian,
 		.normalPal = gObjectEventPal_Overworld_stunfisk_galarian,
@@ -22148,7 +22167,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_dipplin,
 		.shinyPal = gObjectEventPal_Overworld_dipplin_shiny,
 	},
-	[SPECIES_SLOWPOKE_GALARIAN] =
+	[SPECIES_SLOWPOKE_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_slowpoke_galarian,
 		.normalPal = gObjectEventPal_Overworld_slowpoke_galarian,
@@ -22160,7 +22179,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_poltchageist,
 		.shinyPal = gObjectEventPal_Overworld_poltchageist_shiny,
 	},
-	[SPECIES_SLOWBRO_GALARIAN] =
+	[SPECIES_SLOWBRO_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_slowbro_galarian,
 		.normalPal = gObjectEventPal_Overworld_slowbro_galarian,
@@ -22172,7 +22191,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_sinistcha,
 		.shinyPal = gObjectEventPal_Overworld_sinistcha_shiny,
 	},
-	[SPECIES_SLOWKING_GALARIAN] =
+	[SPECIES_SLOWKING_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_slowking_galarian,
 		.normalPal = gObjectEventPal_Overworld_slowking_galarian,
@@ -22184,7 +22203,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_okidogi,
 		.shinyPal = gObjectEventPal_Overworld_okidogi_shiny,
 	},
-	[SPECIES_ARTICUNO_GALARIAN] =
+	[SPECIES_ARTICUNO_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_articuno_galarian,
 		.normalPal = gObjectEventPal_Overworld_articuno_galarian,
@@ -22196,7 +22215,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_munkidori,
 		.shinyPal = gObjectEventPal_Overworld_munkidori_shiny,
 	},
-	[SPECIES_ZAPDOS_GALARIAN] =
+	[SPECIES_ZAPDOS_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_zapdos_galarian,
 		.normalPal = gObjectEventPal_Overworld_zapdos_galarian,
@@ -22208,7 +22227,7 @@ const struct RogueFollowMonGraphicsInfo gFollowMonGraphicsInfo[NUM_SPECIES] = {
 		.normalPal = gObjectEventPal_Overworld_fezandipiti,
 		.shinyPal = gObjectEventPal_Overworld_fezandipiti_shiny,
 	},
-	[SPECIES_MOLTRES_GALARIAN] =
+	[SPECIES_MOLTRES_GALAR] =
 	{
 		.objectEventGfxInfo = &gObjectEventGraphicsInfo_Mon_moltres_galarian,
 		.normalPal = gObjectEventPal_Overworld_moltres_galarian,

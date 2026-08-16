@@ -329,9 +329,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaSurfin
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Nurse_ow;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rocky;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_James_Rocket;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jessie_Rocket;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rogue_Egg;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UxieOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia_Shadow;
 
 //Platinum
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cynthia;
@@ -411,6 +413,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemM
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalCalemSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemUnderwater;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemWatering;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemFieldMove;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CalemSurfing;
+
 
 // ELIO
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elio;
@@ -474,6 +481,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictor
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictorAcroBike;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RivalVictorSurfing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_VictorUnderwater;
+
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedFishing;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LeafFishing;
+
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Cowgirl;
 
 //NEW END
 
@@ -831,6 +843,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ZapdosOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MoltresOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ArticunoOW;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LandorusOW;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DarkraiOW;
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedNormal;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RedBike;
@@ -977,8 +990,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Suicune;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Raikou;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lugia;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CelebiFrLg;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kabuto;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Darkrai;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysD;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
@@ -1247,10 +1261,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
     [OBJ_EVENT_GFX_CELEBI] =                   &gObjectEventGraphicsInfo_Celebi,
-    [OBJ_EVENT_GFX_BIKER] =                    &gObjectEventGraphicsInfo_BikerFrLg,
-    [OBJ_EVENT_GFX_OLD_MAN_2] =                &gObjectEventGraphicsInfo_OldMan2FrLg,
+    [OBJ_EVENT_GFX_BIKER] =                    &gObjectEventGraphicsInfo_Biker,
+    [OBJ_EVENT_GFX_OLD_MAN_2] =                &gObjectEventGraphicsInfo_OldMan2,
     [OBJ_EVENT_GFX_ROCKET_F] =                 &gObjectEventGraphicsInfo_RocketF,
-    [OBJ_EVENT_GFX_ROCKET_M] =                 &gObjectEventGraphicsInfo_RocketMFrLg,
+    [OBJ_EVENT_GFX_ROCKET_M] =                 &gObjectEventGraphicsInfo_RocketM,
     [OBJ_EVENT_GFX_BILL] =                     &gObjectEventGraphicsInfo_Bill,
 
     // Placeholder GFX (Will be expanded later)
@@ -1262,8 +1276,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RED] =                      &gObjectEventGraphicsInfo_PlayerRedNormal,
     [OBJ_EVENT_GFX_RIVAL_RED] =                &gObjectEventGraphicsInfo_Rival_Red,
     [OBJ_EVENT_GFX_RED_SURFING] =              &gObjectEventGraphicsInfo_RedSurfing,
-    [OBJ_EVENT_GFX_RED_FIELD_MOVE] =           &gObjectEventGraphicsInfo_RedFieldMoveFrLg,
-    [OBJ_EVENT_GFX_RED_FISHING] =              &gObjectEventGraphicsInfo_PlayerRedFishing,
+    [OBJ_EVENT_GFX_RED_FIELD_MOVE] =           &gObjectEventGraphicsInfo_RedFieldMove,
+    [OBJ_EVENT_GFX_RED_FISHING] =              &gObjectEventGraphicsInfo_RedFishing,
     [OBJ_EVENT_GFX_RED_RIDING] =               &gObjectEventGraphicsInfo_PlayerRedRiding,
     [OBJ_EVENT_GFX_RED_UNDERWATER] =           &gObjectEventGraphicsInfo_RedUnderwater,
     [OBJ_EVENT_GFX_RED_NPC] =                  &gObjectEventGraphicsInfo_Red,
@@ -1272,7 +1286,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_LEAF] =               &gObjectEventGraphicsInfo_Rival_Leaf,
     [OBJ_EVENT_GFX_LEAF_SURFING] =             &gObjectEventGraphicsInfo_LeafSurfing,
     [OBJ_EVENT_GFX_LEAF_FIELD_MOVE] =          &gObjectEventGraphicsInfo_LeafFieldMove,
-    [OBJ_EVENT_GFX_LEAF_FISHING] =             &gObjectEventGraphicsInfo_PlayerLeafFishing,
+    [OBJ_EVENT_GFX_LEAF_FISHING] =             &gObjectEventGraphicsInfo_LeafFishing,
     [OBJ_EVENT_GFX_LEAF_RIDING] =              &gObjectEventGraphicsInfo_PlayerLeafRiding,
     [OBJ_EVENT_GFX_LEAF_UNDERWATER] =          &gObjectEventGraphicsInfo_LeafUnderwater,
     [OBJ_EVENT_GFX_LEAF_NPC] =                 &gObjectEventGraphicsInfo_Leaf,
@@ -1335,7 +1349,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_NURSE_JOY] =                    &gObjectEventGraphicsInfo_Nurse_ow,
     [OBJ_EVENT_GFX_ROCKY] =                        &gObjectEventGraphicsInfo_Rocky,
     [OBJ_EVENT_GFX_JAMES_ROCKET] =                 &gObjectEventGraphicsInfo_James_Rocket,
+    [OBJ_EVENT_GFX_JESSIE_ROCKET] =                &gObjectEventGraphicsInfo_Jessie_Rocket,
     [OBJ_EVENT_GFX_ROGUE_EGG] =                    &gObjectEventGraphicsInfo_Rogue_Egg,
+    [OBJ_EVENT_GFX_LUGIA_SHADOW] =                 &gObjectEventGraphicsInfo_Lugia_Shadow,
 /*
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
@@ -1356,6 +1372,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DAWN_WATERING]      = &gObjectEventGraphicsInfo_DawnWatering,
     [OBJ_EVENT_GFX_HILBERT_SURFING]    = &gObjectEventGraphicsInfo_HilbertSurfing,
     [OBJ_EVENT_GFX_HILDA_SURFING]      = &gObjectEventGraphicsInfo_HildaSurfing,
+    [OBJ_EVENT_GFX_HILBERT_FISHING]    = &gObjectEventGraphicsInfo_BrendanFishing, // Fallback
+    [OBJ_EVENT_GFX_HILDA_FISHING]      = &gObjectEventGraphicsInfo_MayFishing, // Fallback
+    [OBJ_EVENT_GFX_HILBERT_WATERING]   = &gObjectEventGraphicsInfo_BrendanWatering, // Fallback
+    [OBJ_EVENT_GFX_HILDA_WATERING]     = &gObjectEventGraphicsInfo_MayWatering, // Fallback
 
     [OBJ_EVENT_GFX_BUG_CATCHER_RIDING] =       &gObjectEventGraphicsInfo_BugCatcherRiding,
 
@@ -1623,6 +1643,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MOLTRES_OLD] =               &gObjectEventGraphicsInfo_MoltresOW,
     [OBJ_EVENT_GFX_ARTICUNO_OLD] =              &gObjectEventGraphicsInfo_ArticunoOW,
     [OBJ_EVENT_GFX_LANDORUS] =                  &gObjectEventGraphicsInfo_LandorusOW,
+    [OBJ_EVENT_GFX_DARKRAI] =                   &gObjectEventGraphicsInfo_DarkraiOW,
     [OBJ_EVENT_GFX_ASH] =                     &gObjectEventGraphicsInfo_Ash,
     [OBJ_EVENT_GFX_UXIE] =                      &gObjectEventGraphicsInfo_UxieOW,
     [OBJ_EVENT_GFX_RIVAL_HILDA_ACRO_BIKE]    = &gObjectEventGraphicsInfo_RivalHildaAcroBike,
@@ -1739,10 +1760,15 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DP_YOUNG_COUPLEF] =               &gObjectEventGraphicsInfo_DP_YoungCoupleF,
     [OBJ_EVENT_GFX_DP_YOUNG_COUPLEM] =               &gObjectEventGraphicsInfo_DP_YoungCoupleM,
     [OBJ_EVENT_GFX_DP_YOUNGSTER] =               &gObjectEventGraphicsInfo_DP_Youngster,
+    [OBJ_EVENT_GFX_CALEM_SURFING] = &gObjectEventGraphicsInfo_CalemSurfing,
+    [OBJ_EVENT_GFX_CALEM_FIELD_MOVE] = &gObjectEventGraphicsInfo_CalemFieldMove,
+    [OBJ_EVENT_GFX_CALEM_FISHING] = &gObjectEventGraphicsInfo_CalemFishing,
+    [OBJ_EVENT_GFX_CALEM_RIDING] = &gObjectEventGraphicsInfo_CalemRiding,
     [OBJ_EVENT_GFX_RIVAL_CALEM_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalCalemMachBike,
     [OBJ_EVENT_GFX_RIVAL_CALEM_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalCalemAcroBike,
     [OBJ_EVENT_GFX_RIVAL_CALEM_SURFING] = &gObjectEventGraphicsInfo_RivalCalemSurfing,
     [OBJ_EVENT_GFX_CALEM_UNDERWATER] = &gObjectEventGraphicsInfo_CalemUnderwater,
+    [OBJ_EVENT_GFX_CALEM_WATERING] = &gObjectEventGraphicsInfo_CalemWatering,
 
     [OBJ_EVENT_GFX_RIVAL_ELIO_MACH_BIKE] = &gObjectEventGraphicsInfo_RivalElioMachBike,
     [OBJ_EVENT_GFX_RIVAL_ELIO_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalElioAcroBike,
@@ -1788,6 +1814,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_RIVAL_VICTOR_ACRO_BIKE] = &gObjectEventGraphicsInfo_RivalVictorAcroBike,
     [OBJ_EVENT_GFX_RIVAL_VICTOR_SURFING] = &gObjectEventGraphicsInfo_RivalVictorSurfing,
     [OBJ_EVENT_GFX_VICTOR_UNDERWATER] = &gObjectEventGraphicsInfo_VictorUnderwater,
+    [OBJ_EVENT_GFX_OLD_MAN_LYING_DOWN]       = &gObjectEventGraphicsInfo_OldManLyingDown,
+    [OBJ_EVENT_GFX_OLD_MAN_1]                = &gObjectEventGraphicsInfo_OldMan1,
+
 #if IS_FRLG
     [OBJ_EVENT_GFX_RED_NORMAL] =               &gObjectEventGraphicsInfo_RedNormal,
     [OBJ_EVENT_GFX_RED_BIKE] =                 &gObjectEventGraphicsInfo_RedBike,

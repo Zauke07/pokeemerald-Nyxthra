@@ -2120,7 +2120,26 @@ static const struct SpriteFrameImage sPicTable_TyranitarMega[] = {
 
 #if P_FAMILY_LUGIA
 static const struct SpriteFrameImage sPicTable_Lugia[] = {
-    overworld_ascending_frames(gObjectEventPic_Lugia, 8, 8),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 0),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 1),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 2),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 0),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 3),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 1),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 4),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 2),
+    overworld_frame(gObjectEventPic_Lugia, 8, 8, 5),
+};
+static const struct SpriteFrameImage sPicTable_LugiaShadow[] = {
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 0),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 1),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 2),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 0),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 3),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 1),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 4),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 2),
+    overworld_frame(gObjectEventPic_LugiaShadow, 8, 8, 5),
 };
 #endif //P_FAMILY_LUGIA
 

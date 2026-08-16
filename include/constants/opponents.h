@@ -3974,12 +3974,37 @@
 #define TRAINER_JULIANA_RUSTBORO_FUECOCO         3571
 #define TRAINER_JULIANA_RUSTBORO_QUAXLY          3572
 
+//NEW
+#define TRAINER_ALINA                            3573
+#define TRAINER_ROCKET_PROTON_TEST               3574
+#define TRAINER_ROCKET_JAMES_TEST                3575
+#define TRAINER_ROCKET_JESSIE_TEST               3576
+
+#define TRAINER_CHALLENGE_HOUSE_RED              3577
+#define TRAINER_CHALLENGE_HOUSE_LEAF             3578
+#define TRAINER_CHALLENGE_HOUSE_ETHAN            3579
+#define TRAINER_CHALLENGE_HOUSE_LYRA             3580
+#define TRAINER_CHALLENGE_HOUSE_BRENDAN          3581
+#define TRAINER_CHALLENGE_HOUSE_MAY              3582
+#define TRAINER_CHALLENGE_HOUSE_LUCAS            3583
+#define TRAINER_CHALLENGE_HOUSE_DAWN             3584
+#define TRAINER_CHALLENGE_HOUSE_HILBERT          3585
+#define TRAINER_CHALLENGE_HOUSE_HILDA            3586
+#define TRAINER_CHALLENGE_HOUSE_CALEM            3587
+#define TRAINER_CHALLENGE_HOUSE_SERENA           3588
+#define TRAINER_CHALLENGE_HOUSE_ELIO             3589
+#define TRAINER_CHALLENGE_HOUSE_SELENE           3590
+#define TRAINER_CHALLENGE_HOUSE_VICTOR           3591
+#define TRAINER_CHALLENGE_HOUSE_GLORIA           3592
+#define TRAINER_CHALLENGE_HOUSE_FLORIAN          3593
+#define TRAINER_CHALLENGE_HOUSE_JULIANA          3594
+
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
 #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
 #else
-#define TRAINERS_COUNT                      3573
-#define MAX_TRAINERS_COUNT                  3574
+#define TRAINERS_COUNT                      3595
+#define MAX_TRAINERS_COUNT                  3596
 #endif
 
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)

@@ -835,6 +835,9 @@ $(OBJEVENTGFXDIR)/pokemon_ow/tyranitar.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/pokemon_ow/lugia.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 
+$(OBJEVENTGFXDIR)/pokemon_ow/lugia_shadow.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
 $(OBJEVENTGFXDIR)/pokemon_ow/ho_oh.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 

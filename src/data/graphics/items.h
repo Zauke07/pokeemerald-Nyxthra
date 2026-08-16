@@ -291,6 +291,9 @@ const u16 gItemIconPalette_MaxLure[] = INCBIN_U16("graphics/items/icon_palettes/
 const u32 gItemIcon_EscapeRope[] = INCBIN_U32("graphics/items/icons/escape_rope.4bpp.smol");
 const u16 gItemIconPalette_EscapeRope[] = INCBIN_U16("graphics/items/icon_palettes/escape_rope.gbapal");
 
+const u32 gItemIcon_Teleporter[] = INCBIN_U32("graphics/items/icons/teleporter.4bpp.smol");
+const u16 gItemIconPalette_Teleporter[] = INCBIN_U16("graphics/items/icon_palettes/teleporter.gbapal");
+
 // X Items
 
 const u32 gItemIcon_BattleStatItem[] = INCBIN_U32("graphics/items/icons/battle_stat_item.4bpp.smol");
