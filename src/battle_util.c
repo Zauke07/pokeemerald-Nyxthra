@@ -8851,6 +8851,12 @@ bool32 TryBattleFormChange(enum BattlerId battler, enum FormChanges method, enum
         targetSpecies = battlePartyState->changedSpecies;
     }
 
+    if (targetSpecies == SPECIES_NONE
+        && (method == FORM_CHANGE_END_BATTLE || method == FORM_CHANGE_FAINT))
+    {
+        return FALSE;
+    }
+
     assertf(targetSpecies != SPECIES_NONE, "form change target returned NONE. cur:%d, method:%d", currentSpecies, method)
     {
         return FALSE;

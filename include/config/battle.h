@@ -92,7 +92,7 @@
 #define B_CHARGE_SPDEF_RAISE        GEN_LATEST // In Gen5+ erhöht Ladevorgang die Sp.-Vert. um 1 Stufe.
 #define B_MINIMIZE_EVASION          GEN_LATEST // In Gen5+ erhöht Komprimator die Fluchtwert um 2 statt 1 Stufe.
 #define B_GROWTH_STAT_RAISE         GEN_LATEST // In Gen5+ erhöht Wuchtschlag Angriff und Sp.-Angr. je 1 Stufe; bei Sonne je 2.
-#define B_FOCUS_ENERGY_CRIT_RATIO   GEN_LATEST // In Gen3+ erhöht Fokus-Energie die Crit-Stufe um 2 statt 1.
+#define B_FOCUS_ENERGY_CRIT_RATIO   GEN_2      // Fokus-Energie erhöht die Crit-Stufe nur um 1 statt um 2. Reduziert die Kritrate deutlich.
 #define B_PSYCH_UP_CRIT_RATIO       GEN_LATEST // In Gen6+: Psych Up kopiert auch das Kritische-Treffer-Verhältnis des Ziels.
 
 // Other move settings
@@ -248,7 +248,7 @@
 // Weitere Kampf-Flags
 #define B_FLAG_INVERSE_BATTLE       0     // Wenn gesetzt, werden Typ-Effektivität invertiert. Feuer ist z. B. sehr effektiv gegen Wasser.
 #define B_FLAG_FORCE_DOUBLE_WILD    0     // Wenn gesetzt, sind alle Land/Surf-Wilde Kämpfe Doppelkämpfe.
-#define B_SMART_WILD_AI_FLAG        0     // Wenn gesetzt, werden wilde Pokémon „smart“ (alle AI-Flags aktiv).
+#define B_SMART_WILD_AI_FLAG        FLAG_SMART_WILD_AI_FLAG     // Wenn gesetzt, werden wilde Pokémon „smart“ (alle AI-Flags aktiv).
 #define B_FLAG_NO_BAG_USE           0     // Wenn gesetzt, keine Taschen-Nutzung im Kampf.
 #define B_FLAG_NO_CATCHING          0     // Wenn gesetzt, kann man keine wilden Pokémon fangen.
 #define B_FLAG_NO_RUNNING           0     // Wenn gesetzt, keine Flucht aus wilden Kämpfen. Brüllt/Wirbelwind und Teleport (Gen8) scheitern ebenfalls.
@@ -337,8 +337,8 @@
 #define B_SEMI_INVULNERABLE_CATCH       GEN_LATEST // In Gen4+ kann man keine Bälle auf halb-unverwundbare Ziele (Schaufler/Flieger/etc.) werfen.
 #define B_CATCHING_CHARM_BOOST          100         // %-Bonus auf Krit-Fang mit Fang-Amulett.
 #define B_INCAPACITATED_CATCH_BONUS     GEN_LATEST // In Gen5+, the catch rate bonus for a mon with sleep or freeze is 2.5x. In Gen4 and below its only a 2x bonus.
-#define B_LOW_LEVEL_CATCH_BONUS         GEN_LATEST // In Gen8, a bonus is added to the catch rate if catching a mon lower than level 20. In Gen9, the bonus is only applied to mons lower than level 13.
-#define B_MISSING_BADGE_CATCH_MALUS     GEN_LATEST // In Gen9, a penalty is added to the catch rate if trying to catch a mon 5 levels above the current obedience level, based on the number of gym badges obtained.
+#define B_LOW_LEVEL_CATCH_BONUS         GEN_3       // In Gen8 wird ein Bonus auf die Fangchance gewährt, wenn das Pokémon unter Level 20 ist. In Gen9 gilt der Bonus nur für Pokémon unter Level 13.
+#define B_MISSING_BADGE_CATCH_MALUS     GEN_LATEST // In Gen9 wird ein Malus auf die Fangchance angewendet, wenn das Pokémon mehr als 5 Level über dem aktuellen Gehorsamslevel liegt, basierend auf der Anzahl der erhaltenen Orden.
 #define B_CRITICAL_CAPTURE              TRUE       // Aktiviert Kritische Fangchance.
 #define B_CRITICAL_CAPTURE_LOCAL_DEX    TRUE       // FALSE: Krit-Fang basierend auf Nationaldex (per aktivierten Generationen geschätzt).
 #define B_CRITICAL_CAPTURE_IF_OWNED     GEN_LATEST // In Gen9+ erscheint ein Fang als kritisch, wenn das Pokémon bereits einen Pokédex-Eintrag hat (bereits gefangen wurde).

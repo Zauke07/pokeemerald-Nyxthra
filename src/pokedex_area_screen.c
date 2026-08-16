@@ -12,6 +12,7 @@
 #include "palette.h"
 #include "pokedex.h"
 #include "pokedex_area_screen.h"
+#include "randomizer.h"
 #include "regions.h"
 #include "region_map.h"
 #include "roamer.h"
@@ -123,6 +124,7 @@ static void SetSpecialMapHasMon(u16, u16);
 static mapsec_u16_t GetRegionMapSectionId(u8, u8);
 static bool8 MapHasSpecies(const struct WildEncounterTypes *, u16);
 static bool8 MonListHasSpecies(const struct WildPokemonInfo *, u16, u16);
+static u16 GetAreaScreenEncounterSpecies(u16 species);
 static void DoAreaGlow(void);
 static void Task_ShowPokedexAreaScreen(u8 taskId);
 static void Task_UpdatePokedexAreaScreen(u8 taskId);
@@ -321,7 +323,7 @@ static void FindMapsWithMon(u16 species)
     // up to allow handling others.
     for (i = 0; sFeebasData[i][0] != NUM_SPECIES; i++)
     {
-        if (species == sFeebasData[i][0])
+        if (species == GetAreaScreenEncounterSpecies(sFeebasData[i][0]))
         {
             switch (sFeebasData[i][1])
             {
@@ -379,6 +381,11 @@ static void FindMapsWithMon(u16 species)
             sPokedexAreaScreen->numOverworldAreas++;
         }
     }
+}
+
+static u16 GetAreaScreenEncounterSpecies(u16 species)
+{
+    return Randomizer_GetSpecies(species, RANDOMIZER_MODE_WILD);
 }
 
 static void SetAreaHasMon(u16 mapGroup, u16 mapNum)
@@ -470,11 +477,12 @@ static bool8 MapHasSpecies(const struct WildEncounterTypes *info, u16 species)
 static bool8 MonListHasSpecies(const struct WildPokemonInfo *info, u16 species, u16 size)
 {
     u16 i;
+
     if (info != NULL)
     {
         for (i = 0; i < size; i++)
         {
-            if (info->wildPokemon[i].species == species)
+            if (GetAreaScreenEncounterSpecies(info->wildPokemon[i].species) == species)
                 return TRUE;
         }
     }
@@ -718,6 +726,7 @@ bool32 ShouldShowAreaUnknownLabel(void)
 }
 
 #define tState data[0]
+#define tNextScreen data[1]
 
 void DisplayPokedexAreaScreen(u16 species, u8 *screenSwitchState, enum TimeOfDay timeOfDay, enum PokedexAreaScreenState areaState)
 {
@@ -857,6 +866,7 @@ static void Task_UpdatePokedexAreaScreen(u8 taskId)
     case 6:
         gTasks[taskId].func = Task_HandlePokedexAreaScreenInput;
         gTasks[taskId].tState = 0;
+        gTasks[taskId].tNextScreen = 0;
         return;
     }
 
@@ -878,12 +888,12 @@ static void Task_HandlePokedexAreaScreenInput(u8 taskId)
     case 1:
         if (JOY_NEW(B_BUTTON))
         {
-            gTasks[taskId].data[1] = 1;
+            gTasks[taskId].tNextScreen = 1;
             PlaySE(SE_DEX_PAGE);
         }
         else if (JOY_NEW(DPAD_LEFT) || (JOY_NEW(L_BUTTON) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR))
         {
-            gTasks[taskId].data[1] = 1;
+            gTasks[taskId].tNextScreen = 1;
             PlaySE(SE_DEX_PAGE);
         }
         else if (JOY_NEW(DPAD_RIGHT) || (JOY_NEW(R_BUTTON) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_LR))
@@ -893,19 +903,19 @@ static void Task_HandlePokedexAreaScreenInput(u8 taskId)
                 PlaySE(SE_FAILURE);
                 return;
             }
-            gTasks[taskId].data[1] = 2;
+            gTasks[taskId].tNextScreen = 2;
             PlaySE(SE_DEX_PAGE);
         }
         else if (JOY_NEW(DPAD_UP) && OW_TIME_OF_DAY_ENCOUNTERS == TRUE)
         {
-            gTasks[taskId].data[1] = 3;
+            gTasks[taskId].tNextScreen = 3;
             gAreaTimeOfDay = TryDecrementTimeOfDay(gAreaTimeOfDay);
             sPokedexAreaScreen->areaState = DEX_UPDATE_AREA_SCREEN;
             PlaySE(SE_DEX_PAGE);
         }
         else if (JOY_NEW(DPAD_DOWN) && OW_TIME_OF_DAY_ENCOUNTERS == TRUE)
         {
-            gTasks[taskId].data[1] = 3;
+            gTasks[taskId].tNextScreen = 3;
             gAreaTimeOfDay = TryIncrementTimeOfDay(gAreaTimeOfDay);
             sPokedexAreaScreen->areaState = DEX_UPDATE_AREA_SCREEN;
             PlaySE(SE_DEX_PAGE);
@@ -932,7 +942,7 @@ static void Task_HandlePokedexAreaScreenInput(u8 taskId)
             RemoveAllWindowsOnBg(LABEL_WINDOW_BG);
         }
 
-        sPokedexAreaScreen->screenSwitchState[0] = gTasks[taskId].data[1];
+        sPokedexAreaScreen->screenSwitchState[0] = gTasks[taskId].tNextScreen;
         ResetPokedexAreaMapBg();
         DestroyTask(taskId);
         FreePokedexAreaMapBgNum();

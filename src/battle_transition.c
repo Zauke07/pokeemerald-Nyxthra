@@ -118,6 +118,7 @@ static void Task_Mugshot(u8);
 static void Task_Aqua(u8);
 static void Task_Magma(u8);
 static void Task_Galactic(u8);
+static void Task_Rocket(u8);
 static void Task_Regice(u8);
 static void Task_Registeel(u8);
 static void Task_Regirock(u8);
@@ -299,6 +300,8 @@ void Task_LogoBattleTransition(u8 taskId);
 void Task_LogoBattleTransition_Wait(u8 taskId);
 static bool8 Galactic_Init(struct Task *);
 static bool8 Galactic_SetGfx(struct Task *);
+static bool8 Rocket_Init(struct Task *);
+static bool8 Rocket_SetGfx(struct Task *);
 
 static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite);
 static void Task_ShinyEncounter(u8 taskId);
@@ -356,6 +359,9 @@ const u16 sChatGPT_Palette[] = INCBIN_U16("graphics/battle_transitions/chatgpt.g
 const u32 sTeamGalactic_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_galactic.4bpp.smol");
 const u32 sTeamGalactic_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_galactic.bin.smolTM");
 const u16 sTeamGalactic_Palette[] = INCBIN_U16("graphics/battle_transitions/team_galactic.gbapal");
+static const u32 sTeamRocket_Tileset[] = INCBIN_U32("graphics/battle_transitions/team_rocket.4bpp.smol");
+static const u32 sTeamRocket_Tilemap[] = INCBIN_U32("graphics/battle_transitions/team_rocket.bin.smolTM");
+static const u16 sTeamRocket_Palette[] = INCBIN_U16("graphics/battle_transitions/team_rocket.gbapal");
 const u32 sShinyEncounter_Tileset[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.4bpp.smol");
 const u32 sShinyEncounter_Tilemap[] = INCBIN_U32("graphics/battle_transitions/shiny_encounter.bin.smolTM");
 const u16 sShinyEncounter_Palette[] = INCBIN_U16("graphics/battle_transitions/shiny_encounter.gbapal");
@@ -414,6 +420,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_SHINY_ENCOUNTER] = Task_ShinyEncounter,
+    [B_TRANSITION_ROCKET] = Task_Rocket,
 };
 
 void DoLogoBattleTransition(u8 taskId, const u32 *tiles, const u32 *tilemap, const u16 *palette)
@@ -521,11 +528,13 @@ static void LoadChatGPTTileset(u16 *dest)
         CpuCopy16(sChatGPT_Tileset, dest, sizeof(sChatGPT_Tileset));
 }
 
+/*
 static void LoadChatGPTTilemap(u16 *dest)
 {
     if (!TryDecompressChatGPTData(sChatGPT_Tilemap, dest, TRUE))
         CpuCopy16(sChatGPT_Tilemap, dest, sizeof(sChatGPT_Tilemap));
 }
+*/
 
 static const TransitionStateFunc sTaskHandlers[] =
 {
@@ -1951,6 +1960,53 @@ static bool8 Galactic_SetGfx(struct Task *task)
 
     GetBg0TilesDst(&tilemap, &tileset);
     DecompressDataWithHeaderVram(sTeamGalactic_Tilemap, tilemap);
+    SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
+
+    task->tState++;
+    return FALSE;
+}
+
+//------------------------------
+// B_TRANSITION_ROCKET
+//------------------------------
+
+static const TransitionStateFunc sRocket_Funcs[] =
+{
+    Rocket_Init,
+    Rocket_SetGfx,
+    PatternWeave_Blend1,
+    PatternWeave_Blend2,
+    PatternWeave_FinishAppear,
+    FramesCountdown,
+    PatternWeave_CircularMask
+};
+
+static void Task_Rocket(u8 taskId)
+{
+    while (sRocket_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+static bool8 Rocket_Init(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    task->tEndDelay = 60;
+    InitPatternWeaveTransition(task);
+    GetBg0TilesDst(&tilemap, &tileset);
+    CpuFill16(0, tilemap, BG_SCREEN_SIZE);
+    DecompressDataWithHeaderVram(sTeamRocket_Tileset, tileset);
+    LoadPalette(sTeamRocket_Palette, BG_PLTT_ID(15), sizeof(sTeamRocket_Palette));
+
+    task->tState++;
+    return FALSE;
+}
+
+static bool8 Rocket_SetGfx(struct Task *task)
+{
+    u16 *tilemap, *tileset;
+
+    GetBg0TilesDst(&tilemap, &tileset);
+    DecompressDataWithHeaderVram(sTeamRocket_Tilemap, tilemap);
     SetSinWave((s16*)gScanlineEffectRegBuffers[0], 0, task->tSinIndex, 132, task->tAmplitude, DISPLAY_HEIGHT);
 
     task->tState++;

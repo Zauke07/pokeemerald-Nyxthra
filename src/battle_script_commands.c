@@ -566,6 +566,8 @@ static void Cmd_pursuitdoubles(void);
 static void Cmd_snatchsetbattlers(void);
 static void Cmd_handleballthrow(void);
 static void Cmd_givecaughtmon(void);
+static u16 GetCaughtMonOriginalSpecies(enum BattlerId caughtBattler);
+static u16 NormalizeCaughtMonSpecies(struct Pokemon *caughtMon, enum BattlerId caughtBattler);
 static void Cmd_trysetcaughtmondexflags(void);
 static void Cmd_displaydexinfo(void);
 static void Cmd_trygivecaughtmonnick(void);
@@ -11064,10 +11066,12 @@ static void Cmd_givecaughtmon(void)
         break;
     case GIVECAUGHTMON_GIVE_AND_SHOW_MSG:
     {
-        struct Pokemon *caughtMon = GetBattlerMon(GetCatchingBattler());
+        enum BattlerId caughtBattler = GetCatchingBattler();
+        struct Pokemon *caughtMon = GetBattlerMon(caughtBattler);
+        u16 caughtSpecies = NormalizeCaughtMonSpecies(caughtMon, caughtBattler);
         if (B_RESTORE_HELD_BATTLE_ITEMS >= GEN_9)
         {
-            u16 lostItem = gBattleStruct->itemLost[B_SIDE_OPPONENT][gBattlerPartyIndexes[GetCatchingBattler()]].originalItem;
+            u16 lostItem = gBattleStruct->itemLost[B_SIDE_OPPONENT][gBattlerPartyIndexes[caughtBattler]].originalItem;
             if (lostItem != ITEM_NONE && GetItemPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(caughtMon, MON_DATA_HELD_ITEM, &lostItem);  // Restore non-berry items
         }
@@ -11103,9 +11107,9 @@ static void Cmd_givecaughtmon(void)
 
         // Copy changedSpecies to allow caught mon to revert to its original species.
         if (emptySlot != PARTY_SIZE)
-            gBattleStruct->partyState[B_SIDE_PLAYER][emptySlot].changedSpecies = GetBattlerPartyState(GetCatchingBattler())->changedSpecies;
+            gBattleStruct->partyState[B_SIDE_PLAYER][emptySlot].changedSpecies = GetBattlerPartyState(caughtBattler)->changedSpecies;
 
-        gBattleResults.caughtMonSpecies = GetMonData(caughtMon, MON_DATA_SPECIES);
+        gBattleResults.caughtMonSpecies = caughtSpecies;
         GetMonData(caughtMon, MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
         gBattleResults.caughtMonBall = GetMonData(caughtMon, MON_DATA_POKEBALL);
 
@@ -11124,12 +11128,40 @@ static void Cmd_givecaughtmon(void)
         SavePlayerParty();
 }
 
+static u16 GetCaughtMonOriginalSpecies(enum BattlerId caughtBattler)
+{
+    struct PartyState *partyState = GetBattlerPartyState(caughtBattler);
+    u16 species = GetMonData(GetBattlerMon(caughtBattler), MON_DATA_SPECIES);
+
+    if (partyState != NULL && partyState->changedSpecies != SPECIES_NONE)
+        species = partyState->changedSpecies;
+
+    return species;
+}
+
+static u16 NormalizeCaughtMonSpecies(struct Pokemon *caughtMon, enum BattlerId caughtBattler)
+{
+    u16 species = GetMonData(caughtMon, MON_DATA_SPECIES);
+    u16 originalSpecies = GetCaughtMonOriginalSpecies(caughtBattler);
+
+    if (originalSpecies != species)
+    {
+        // Preserve custom nicknames while updating untouched default names.
+        EvolutionRenameMon(caughtMon, species, originalSpecies);
+        SetMonData(caughtMon, MON_DATA_SPECIES, &originalSpecies);
+        species = originalSpecies;
+    }
+
+    return species;
+}
+
 static void Cmd_trysetcaughtmondexflags(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
-    struct Pokemon *caughtMon = GetBattlerMon(GetCatchingBattler());
-    u32 species = GetMonData(caughtMon, MON_DATA_SPECIES);
+    enum BattlerId caughtBattler = GetCatchingBattler();
+    struct Pokemon *caughtMon = GetBattlerMon(caughtBattler);
+    u32 species = GetCaughtMonOriginalSpecies(caughtBattler);
     u32 personality = GetMonData(caughtMon, MON_DATA_PERSONALITY);
 
     if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
@@ -11138,7 +11170,7 @@ static void Cmd_trysetcaughtmondexflags(void)
     }
     else
     {
-        HandleSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT, personality);
+        HandleSetPokedexFlagFromSpecies(species, FLAG_SET_CAUGHT, personality);
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -11149,7 +11181,7 @@ static void Cmd_displaydexinfo(void)
 
     u32 caughtBattler = GetCatchingBattler();
     struct Pokemon *mon = GetBattlerMon(caughtBattler);
-    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u16 species = GetCaughtMonOriginalSpecies(caughtBattler);
 
     switch (gBattleCommunication[0])
     {
@@ -11332,7 +11364,7 @@ static void Cmd_trygivecaughtmonnick(void)
             MainCallback callback = CalculatePlayerPartyCount() == PARTY_SIZE ? ReshowBlankBattleScreenAfterMenu : BattleMainCB2;
 
             DoNamingScreen(NAMING_SCREEN_CAUGHT_MON, gBattleStruct->caughtMonNick,
-                           GetMonData(caughtMon, MON_DATA_SPECIES),
+                           GetCaughtMonOriginalSpecies(gBattlerTarget),
                            GetMonGender(caughtMon),
                            GetMonData(caughtMon, MON_DATA_PERSONALITY),
                            callback);

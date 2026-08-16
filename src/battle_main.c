@@ -382,6 +382,10 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_JAMES_ROCKET] = { _("Team Rocket"), 10, BALL_ULTRA },
     [TRAINER_CLASS_TEAM_GALACTIC] = { _("Team Galactic"), 10, BALL_ULTRA },
     [TRAINER_CLASS_KLARA] = { _("{PKMN} Trainer"), 10, BALL_ULTRA },
+    [TRAINER_CLASS_COWGIRL] = { _("Cowgirl"), 10, BALL_ULTRA },
+    [TRAINER_CLASS_JESSIE_ROCKET] = { _("Team Rocket"), 10, BALL_ULTRA },
+    [TRAINER_CLASS_ROCKET_ADMIN] = { _("Rocket Vors."), 10 },
+    [TRAINER_CLASS_ROCKET_LEADER] = { _("Rocket Boss"), 20, BALL_MASTER },
 
     [TRAINER_CLASS_YOUNGSTER_FRLG] =       { _("Teenager"), 4 },
     [TRAINER_CLASS_BUG_CATCHER_FRLG] =     { _("Käfersammler"), 3 },

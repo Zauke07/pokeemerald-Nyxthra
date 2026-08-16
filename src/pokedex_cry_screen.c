@@ -234,7 +234,14 @@ bool8 LoadCryWaveformWindow(struct CryScreenWindow *window, u8 windowId)
         if (!sDexCryScreen)
         {
             sDexCryScreen = AllocZeroed(sizeof(*sDexCryScreen));
+            if (sDexCryScreen == NULL)
+                return FALSE;
             sCryWaveformWindowTiledata = (u8 *)GetWindowAttribute(windowId, WINDOW_TILE_DATA);
+            if (sCryWaveformWindowTiledata == NULL)
+            {
+                FREE_AND_SET_NULL(sDexCryScreen);
+                return FALSE;
+            }
         }
 
         sDexCryScreen->unk = window->unk0;
@@ -269,6 +276,9 @@ bool8 LoadCryWaveformWindow(struct CryScreenWindow *window, u8 windowId)
 void UpdateCryWaveformWindow(u8 windowId)
 {
     u8 waveformIdx;
+
+    if (sDexCryScreen == NULL || sCryWaveformWindowTiledata == NULL)
+        return;
 
     DrawWaveformWindow(windowId);
     AdvancePlayhead(windowId);
@@ -324,6 +334,9 @@ void UpdateCryWaveformWindow(u8 windowId)
 
 void CryScreenPlayButton(u16 species)
 {
+    if (sDexCryScreen == NULL)
+        return;
+
     if (gMPlayInfo_BGM.status & MUSICPLAYER_STATUS_PAUSE && !sDexCryScreen->cryOverrideCountdown)
     {
         if (!sDexCryScreen->cryRepeatDelay)
@@ -455,7 +468,11 @@ bool8 LoadCryMeter(struct CryScreenWindow *window, u8 windowId)
     {
     case 0:
         if (!sCryMeterNeedle)
+        {
             sCryMeterNeedle = AllocZeroed(sizeof(*sCryMeterNeedle));
+            if (sCryMeterNeedle == NULL)
+                return FALSE;
+        }
 
         CopyToWindowPixelBuffer(windowId, sCryMeter_Gfx, 0, 0);
         LoadPalette(sCryMeter_Pal, BG_PLTT_ID(window->paletteNo), PLTT_SIZE_4BPP);
@@ -465,6 +482,13 @@ bool8 LoadCryMeter(struct CryScreenWindow *window, u8 windowId)
         LoadSpriteSheets(sCryMeterNeedleSpriteSheets);
         LoadSpritePalettes(sCryMeterNeedleSpritePalettes);
         sCryMeterNeedle->spriteId = CreateSprite(&sCryMeterNeedleSpriteTemplate, 40 + window->xPos * 8, 56 + window->yPos * 8, 1);
+        if (sCryMeterNeedle->spriteId >= MAX_SPRITES)
+        {
+            FreeSpriteTilesByTag(TAG_NEEDLE);
+            FreeSpritePaletteByTag(TAG_NEEDLE);
+            FREE_AND_SET_NULL(sCryMeterNeedle);
+            return FALSE;
+        }
         sCryMeterNeedle->rotation = MIN_NEEDLE_POS;
         sCryMeterNeedle->targetRotation = MIN_NEEDLE_POS;
         sCryMeterNeedle->moveIncrement = 0;
@@ -477,9 +501,20 @@ bool8 LoadCryMeter(struct CryScreenWindow *window, u8 windowId)
 
 void FreeCryScreen(void)
 {
-    FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(gSprites[sCryMeterNeedle->spriteId].oam.paletteNum));
-    DestroySprite(gSprites + sCryMeterNeedle->spriteId);
+    if (sCryMeterNeedle != NULL)
+    {
+        if (sCryMeterNeedle->spriteId < MAX_SPRITES)
+        {
+            FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(gSprites[sCryMeterNeedle->spriteId].oam.paletteNum));
+            DestroySprite(gSprites + sCryMeterNeedle->spriteId);
+        }
+        else
+        {
+            FreeSpritePaletteByTag(TAG_NEEDLE);
+        }
+    }
     FREE_AND_SET_NULL(sDexCryScreen);
+    sCryWaveformWindowTiledata = NULL;
     FREE_AND_SET_NULL(sCryMeterNeedle);
 }
 
@@ -492,6 +527,12 @@ static void SpriteCB_CryMeterNeedle(struct Sprite *sprite)
     struct ObjAffineSrcData affine;
     struct OamMatrix matrix;
     u8 amplitude;
+
+    if (sDexCryScreen == NULL || sCryMeterNeedle == NULL)
+    {
+        DestroySprite(sprite);
+        return;
+    }
 
     gSprites[sCryMeterNeedle->spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
     gSprites[sCryMeterNeedle->spriteId].oam.affineParam = 0;
@@ -567,6 +608,9 @@ static void SpriteCB_CryMeterNeedle(struct Sprite *sprite)
 static void SetCryMeterNeedleTarget(s8 offset)
 {
     u16 rotation = (MIN_NEEDLE_POS - offset) & 0xFF;
+
+    if (sCryMeterNeedle == NULL)
+        return;
 
     // Min is positive, max is negative. Make sure needle hasnt moved out of bounds
     if (rotation > MIN_NEEDLE_POS && rotation < (u8)MAX_NEEDLE_POS)

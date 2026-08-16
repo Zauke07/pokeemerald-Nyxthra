@@ -14,6 +14,7 @@
 #include "fieldmap.h"
 #include "follower_npc.h"
 #include "random.h"
+#include "randomizer.h"
 #include "starter_choose.h"
 #include "script_pokemon_util.h"
 #include "palette.h"
@@ -68,6 +69,8 @@ enum TransitionType
 //extern const u8 *gEventObjectScriptPointer;
 
 // this file's functions
+static bool32 IsLegendaryEncounterSpecies(u16 species);
+static bool32 TryGetLegendaryBattleConfig(u16 species, enum BattleTransition *transition, u16 *song);
 static void DoBattlePikeWildBattle(void);
 static void DoSafariBattle(void);
 static void DoGhostBattle(void);
@@ -274,9 +277,330 @@ static void Task_BattleStart(u8 taskId)
 static void CreateBattleStartTask(enum BattleTransition transition, u16 song)
 {
     u8 taskId = CreateTask(Task_BattleStart, 1);
+    enum BattleTransition legendaryTransition;
+    u16 legendarySong;
+
+    if (song == 0
+     && (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
+     && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SAFARI))
+     && TryGetLegendaryBattleConfig(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), &legendaryTransition, &legendarySong))
+    {
+        transition = legendaryTransition;
+        song = legendarySong;
+    }
 
     gTasks[taskId].tTransition = transition;
     PlayMapChosenOrBattleBGM(song);
+}
+
+static bool32 IsLegendaryEncounterSpecies(u16 species)
+{
+    const struct SpeciesInfo *speciesInfo;
+
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+
+    speciesInfo = &gSpeciesInfo[species];
+    return speciesInfo->isRestrictedLegendary || speciesInfo->isSubLegendary || speciesInfo->isMythical;
+}
+
+static bool32 IsSinnohDexSpecies(u16 species)
+{
+    enum NationalDexOrder nationalDex;
+
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+
+    nationalDex = SpeciesToNationalPokedexNum(species);
+    return nationalDex >= 387 && nationalDex <= 493;
+}
+
+static enum BattleTransition GetLegendaryGenericTransition(u16 species)
+{
+    static const enum BattleTransition sLegendTransitions[] =
+    {
+        B_TRANSITION_SHRED_SPLIT,
+        B_TRANSITION_RECTANGULAR_SPIRAL,
+        B_TRANSITION_BLACKHOLE,
+        B_TRANSITION_BLACKHOLE_PULSATE,
+        B_TRANSITION_ANGLED_WIPES,
+        B_TRANSITION_GRID_SQUARES,
+        B_TRANSITION_SWIRL,
+        B_TRANSITION_WAVE,
+    };
+    u32 index;
+
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return B_TRANSITION_SHRED_SPLIT;
+
+    index = ((u32)species * 1103515245u + 12345u) % ARRAY_COUNT(sLegendTransitions);
+    return sLegendTransitions[index];
+}
+
+static bool32 TryGetLegendaryBattleConfig(u16 species, enum BattleTransition *transition, u16 *song)
+{
+    species = SanitizeSpeciesId(species);
+
+    switch (species)
+    {
+    case SPECIES_GROUDON:
+    case SPECIES_GROUDON_PRIMAL:
+        *transition = B_TRANSITION_GROUDON;
+        *song = MUS_VS_KYOGRE_GROUDON;
+        return TRUE;
+    case SPECIES_KYOGRE:
+    case SPECIES_KYOGRE_PRIMAL:
+        *transition = B_TRANSITION_KYOGRE;
+        *song = MUS_VS_KYOGRE_GROUDON;
+        return TRUE;
+    case SPECIES_RAYQUAZA:
+    case SPECIES_RAYQUAZA_MEGA:
+        *transition = B_TRANSITION_RAYQUAZA;
+        *song = MUS_VS_RAYQUAZA;
+        return TRUE;
+    case SPECIES_DEOXYS_NORMAL:
+    case SPECIES_DEOXYS_ATTACK:
+    case SPECIES_DEOXYS_DEFENSE:
+    case SPECIES_DEOXYS_SPEED:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_RG_VS_DEOXYS;
+        return TRUE;
+    case SPECIES_MEWTWO:
+    case SPECIES_MEWTWO_MEGA_X:
+    case SPECIES_MEWTWO_MEGA_Y:
+        *transition = B_TRANSITION_BLUR;
+        *song = MUS_RG_VS_MEWTWO;
+        return TRUE;
+    case SPECIES_LUGIA:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_HG_VS_LUGIA;
+        return TRUE;
+    case SPECIES_HO_OH:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_HG_VS_HO_OH;
+        return TRUE;
+    case SPECIES_ENTEI:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_HG_VS_ENTEI;
+        return TRUE;
+    case SPECIES_RAIKOU:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_HG_VS_RAIKOU;
+        return TRUE;
+    case SPECIES_SUICUNE:
+        *transition = B_TRANSITION_BLUR;
+        *song = MUS_HG_VS_SUICUNE;
+        return TRUE;
+    case SPECIES_REGIROCK:
+        *transition = B_TRANSITION_REGIROCK;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_REGICE:
+        *transition = B_TRANSITION_REGICE;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_REGISTEEL:
+        *transition = B_TRANSITION_REGISTEEL;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_REGIGIGAS:
+        *transition = B_TRANSITION_RECTANGULAR_SPIRAL;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_REGIELEKI:
+        *transition = B_TRANSITION_WAVE;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_REGIDRAGO:
+        *transition = B_TRANSITION_BLACKHOLE_PULSATE;
+        *song = MUS_PL_VS_REGI;
+        return TRUE;
+    case SPECIES_CELEBI:
+    case SPECIES_ARTICUNO:
+    case SPECIES_ARTICUNO_GALAR:
+    case SPECIES_ZAPDOS:
+    case SPECIES_ZAPDOS_GALAR:
+    case SPECIES_MOLTRES:
+    case SPECIES_MOLTRES_GALAR:
+    case SPECIES_LATIAS:
+    case SPECIES_LATIAS_MEGA:
+    case SPECIES_LATIOS:
+    case SPECIES_LATIOS_MEGA:
+    case SPECIES_JIRACHI:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_RG_VS_LEGEND;
+        return TRUE;
+    case SPECIES_MEW:
+        *transition = B_TRANSITION_GRID_SQUARES;
+        *song = MUS_VS_MEW;
+        return TRUE;
+    case SPECIES_UXIE:
+    case SPECIES_MESPRIT:
+    case SPECIES_AZELF:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_DP_VS_UXIE_MESPRIT_AZELF;
+        return TRUE;
+    case SPECIES_DIALGA:
+    case SPECIES_DIALGA_ORIGIN:
+    case SPECIES_PALKIA:
+    case SPECIES_PALKIA_ORIGIN:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_DP_VS_DIALGA_PALKIA;
+        return TRUE;
+    case SPECIES_GIRATINA_ALTERED:
+    case SPECIES_GIRATINA_ORIGIN:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_PL_VS_GIRATINA;
+        return TRUE;
+    case SPECIES_ARCEUS_NORMAL:
+    case SPECIES_ARCEUS_FIGHTING:
+    case SPECIES_ARCEUS_FLYING:
+    case SPECIES_ARCEUS_POISON:
+    case SPECIES_ARCEUS_GROUND:
+    case SPECIES_ARCEUS_ROCK:
+    case SPECIES_ARCEUS_BUG:
+    case SPECIES_ARCEUS_GHOST:
+    case SPECIES_ARCEUS_STEEL:
+    case SPECIES_ARCEUS_FIRE:
+    case SPECIES_ARCEUS_WATER:
+    case SPECIES_ARCEUS_GRASS:
+    case SPECIES_ARCEUS_ELECTRIC:
+    case SPECIES_ARCEUS_PSYCHIC:
+    case SPECIES_ARCEUS_ICE:
+    case SPECIES_ARCEUS_DRAGON:
+    case SPECIES_ARCEUS_DARK:
+    case SPECIES_ARCEUS_FAIRY:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_DP_VS_ARCEUS;
+        return TRUE;
+    case SPECIES_HEATRAN:
+    case SPECIES_HEATRAN_MEGA:
+    case SPECIES_CRESSELIA:
+    case SPECIES_PHIONE:
+    case SPECIES_MANAPHY:
+    case SPECIES_DARKRAI:
+    case SPECIES_DARKRAI_MEGA:
+    case SPECIES_SHAYMIN_LAND:
+    case SPECIES_SHAYMIN_SKY:
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        *song = MUS_DP_VS_LEGEND;
+        return TRUE;
+    case SPECIES_VICTINI:
+    case SPECIES_COBALION:
+    case SPECIES_TERRAKION:
+    case SPECIES_VIRIZION:
+    case SPECIES_TORNADUS_INCARNATE:
+    case SPECIES_TORNADUS_THERIAN:
+    case SPECIES_THUNDURUS_INCARNATE:
+    case SPECIES_THUNDURUS_THERIAN:
+    case SPECIES_RESHIRAM:
+    case SPECIES_ZEKROM:
+    case SPECIES_LANDORUS_INCARNATE:
+    case SPECIES_LANDORUS_THERIAN:
+    case SPECIES_KYUREM:
+    case SPECIES_KYUREM_WHITE:
+    case SPECIES_KYUREM_BLACK:
+    case SPECIES_KELDEO_ORDINARY:
+    case SPECIES_KELDEO_RESOLUTE:
+    case SPECIES_MELOETTA_ARIA:
+    case SPECIES_MELOETTA_PIROUETTE:
+    case SPECIES_GENESECT:
+    case SPECIES_GENESECT_DOUSE:
+    case SPECIES_GENESECT_SHOCK:
+    case SPECIES_GENESECT_BURN:
+    case SPECIES_GENESECT_CHILL:
+    case SPECIES_XERNEAS_NEUTRAL:
+    case SPECIES_XERNEAS_ACTIVE:
+    case SPECIES_YVELTAL:
+    case SPECIES_ZYGARDE_10_AURA_BREAK:
+    case SPECIES_ZYGARDE_10_POWER_CONSTRUCT:
+    case SPECIES_ZYGARDE_50:
+    case SPECIES_ZYGARDE_50_POWER_CONSTRUCT:
+    case SPECIES_ZYGARDE_COMPLETE:
+    case SPECIES_ZYGARDE_MEGA:
+    case SPECIES_DIANCIE:
+    case SPECIES_DIANCIE_MEGA:
+    case SPECIES_HOOPA_CONFINED:
+    case SPECIES_HOOPA_UNBOUND:
+    case SPECIES_VOLCANION:
+    case SPECIES_TAPU_KOKO:
+    case SPECIES_TAPU_LELE:
+    case SPECIES_TAPU_BULU:
+    case SPECIES_TAPU_FINI:
+    case SPECIES_COSMOG:
+    case SPECIES_COSMOEM:
+    case SPECIES_SOLGALEO:
+    case SPECIES_LUNALA:
+    case SPECIES_NECROZMA:
+    case SPECIES_NECROZMA_DUSK_MANE:
+    case SPECIES_NECROZMA_DAWN_WINGS:
+    case SPECIES_NECROZMA_ULTRA:
+    case SPECIES_MAGEARNA:
+    case SPECIES_MAGEARNA_ORIGINAL:
+    case SPECIES_MAGEARNA_MEGA:
+    case SPECIES_MAGEARNA_ORIGINAL_MEGA:
+    case SPECIES_MARSHADOW:
+    case SPECIES_ZERAORA:
+    case SPECIES_ZERAORA_MEGA:
+    case SPECIES_MELTAN:
+    case SPECIES_MELMETAL:
+    case SPECIES_MELMETAL_GMAX:
+    case SPECIES_ZACIAN_HERO:
+    case SPECIES_ZACIAN_CROWNED:
+    case SPECIES_ZAMAZENTA_HERO:
+    case SPECIES_ZAMAZENTA_CROWNED:
+    case SPECIES_ETERNATUS:
+    case SPECIES_ETERNATUS_ETERNAMAX:
+    case SPECIES_KUBFU:
+    case SPECIES_URSHIFU_SINGLE_STRIKE:
+    case SPECIES_URSHIFU_RAPID_STRIKE:
+    case SPECIES_URSHIFU_SINGLE_STRIKE_GMAX:
+    case SPECIES_URSHIFU_RAPID_STRIKE_GMAX:
+    case SPECIES_GLASTRIER:
+    case SPECIES_SPECTRIER:
+    case SPECIES_CALYREX:
+    case SPECIES_CALYREX_ICE:
+    case SPECIES_CALYREX_SHADOW:
+    case SPECIES_ENAMORUS_INCARNATE:
+    case SPECIES_ENAMORUS_THERIAN:
+    case SPECIES_WO_CHIEN:
+    case SPECIES_CHIEN_PAO:
+    case SPECIES_TING_LU:
+    case SPECIES_CHI_YU:
+    case SPECIES_KORAIDON:
+    case SPECIES_MIRAIDON:
+    case SPECIES_OKIDOGI:
+    case SPECIES_MUNKIDORI:
+    case SPECIES_FEZANDIPITI:
+    case SPECIES_OGERPON_TEAL:
+    case SPECIES_OGERPON_WELLSPRING:
+    case SPECIES_OGERPON_HEARTHFLAME:
+    case SPECIES_OGERPON_CORNERSTONE:
+    case SPECIES_OGERPON_TEAL_TERA:
+    case SPECIES_OGERPON_WELLSPRING_TERA:
+    case SPECIES_OGERPON_HEARTHFLAME_TERA:
+    case SPECIES_OGERPON_CORNERSTONE_TERA:
+    case SPECIES_TERAPAGOS_NORMAL:
+    case SPECIES_TERAPAGOS_TERASTAL:
+    case SPECIES_TERAPAGOS_STELLAR:
+    case SPECIES_PECHARUNT:
+        *transition = GetLegendaryGenericTransition(species);
+        *song = MUS_RG_VS_LEGEND;
+        return TRUE;
+    default:
+        if (!IsLegendaryEncounterSpecies(species))
+            return FALSE;
+
+        *transition = B_TRANSITION_SHRED_SPLIT;
+        if (IsSinnohDexSpecies(species))
+            *song = MUS_DP_VS_LEGEND;
+        else
+            *song = MUS_RG_VS_LEGEND;
+        return TRUE;
+    }
 }
 
 static void Task_BattleStart_Debug(u8 taskId)
@@ -371,6 +695,10 @@ static void DoStandardWildBattle(bool32 isDouble)
         VarSet(VAR_TEMP_E, 0);
         gBattleTypeFlags |= BATTLE_TYPE_PYRAMID;
     }
+
+    if (IsLegendaryEncounterSpecies(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES)))
+        gBattleTypeFlags |= BATTLE_TYPE_LEGENDARY;
+
     CreateBattleStartTask(GetWildBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -544,62 +872,17 @@ void BattleSetup_StartLatiBattle(void)
 
 void BattleSetup_StartLegendaryBattle(void)
 {
+    enum BattleTransition transition;
+    u16 song;
+
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
 
-    switch (GetMonData(&gEnemyParty[0], MON_DATA_SPECIES))
-    {
-    case SPECIES_GROUDON:
-    case SPECIES_GROUDON_PRIMAL:
-        CreateBattleStartTask(B_TRANSITION_GROUDON, MUS_VS_KYOGRE_GROUDON);
-        break;
-    case SPECIES_KYOGRE:
-    case SPECIES_KYOGRE_PRIMAL:
-        CreateBattleStartTask(B_TRANSITION_KYOGRE, MUS_VS_KYOGRE_GROUDON);
-        break;
-    case SPECIES_RAYQUAZA:
-    case SPECIES_RAYQUAZA_MEGA:
-        CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_RAYQUAZA);
-        break;
-    case SPECIES_DEOXYS_NORMAL:
-    case SPECIES_DEOXYS_ATTACK:
-    case SPECIES_DEOXYS_DEFENSE:
-    case SPECIES_DEOXYS_SPEED:
-        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
-        break;
-    case SPECIES_LUGIA:
-    case SPECIES_HO_OH:
-    case SPECIES_CELEBI:
-    case SPECIES_MOLTRES:
-    case SPECIES_MOLTRES_GALAR:
-    case SPECIES_ZAPDOS:
-    case SPECIES_ZAPDOS_GALAR:
-    case SPECIES_ARTICUNO:
-    case SPECIES_ARTICUNO_GALAR:
-    case SPECIES_ENTEI:
-    case SPECIES_RAIKOU:
-    case SPECIES_SUICUNE:
-        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
-        break;
-    case SPECIES_MEW:
-        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
-        break;
-    case SPECIES_LANDORUS:
-        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_C_VS_LEGEND_BEAST);
-        break;
-
-    // ✅ Neu: Lake Trio (Uxie/Mesprit/Azelf)
-    case SPECIES_UXIE:
-    case SPECIES_MESPRIT:
-    case SPECIES_AZELF:
-        CreateBattleStartTask(B_TRANSITION_SHRED_SPLIT, MUS_DP_VS_UXIE_MESPRIT_AZELF);
-        break;
-    default:
-        // Fallback for randomized static encounters not covered by the legendary switch list.
+    if (TryGetLegendaryBattleConfig(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), &transition, &song))
+        CreateBattleStartTask(transition, song);
+    else
         CreateBattleStartTask(GetWildBattleTransition(), 0);
-        break;
-    }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_WILD_BATTLES);
@@ -947,6 +1230,13 @@ enum BattleTransition GetTrainerBattleTransition(void)
 
     if (trainerClass == TRAINER_CLASS_CHATGPT)
         return B_TRANSITION_CHATGPT;
+    
+    if (trainerClass == TRAINER_CLASS_TEAM_ROCKET
+        || trainerClass == TRAINER_CLASS_ROCKET_LEADER
+        || trainerClass == TRAINER_CLASS_JAMES_ROCKET
+        || trainerClass == TRAINER_CLASS_JESSIE_ROCKET
+        || trainerClass == TRAINER_CLASS_ROCKET_ADMIN)
+        return B_TRANSITION_ROCKET;
 
     if (IsTrainerDoubleBattle(trainerId))
         minPartyCount = 2;
@@ -1025,14 +1315,28 @@ void ChooseStarter(void)
 static void CB2_GiveStarter(void)
 {
     u16 starterMon;
-    struct Pokemon mon;
+    u8 savedRandomizerFlags = 0;
+    bool8 restoreGiftFlag = FALSE;
 
     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
     starterMon = GetStarterPokemon(gSpecialVar_Result);
-    // ScriptGiveMon würde den Starter nochmals via RANDOMIZER_MODE_GIFT randomisieren.
-    // Da sStarterMon[] bereits die randomisierte Art enthält, direkt übergeben.
-    CreateRandomMon(&mon, starterMon, 5);
-    GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
+    // Starter wurden bereits im Auswahlmenü randomisiert und dürfen hier nicht
+    // ein zweites Mal über den Geschenk-Randomizer laufen.
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsRandomizerEnabled == TRUE)
+    {
+        savedRandomizerFlags = gSaveBlock2Ptr->optionsRandomizerFlags;
+        if (savedRandomizerFlags & RANDOMIZER_FLAG_GIFT)
+        {
+            gSaveBlock2Ptr->optionsRandomizerFlags &= ~RANDOMIZER_FLAG_GIFT;
+            restoreGiftFlag = TRUE;
+        }
+    }
+
+    ScriptGiveMon(starterMon, 5, ITEM_NONE);
+
+    if (restoreGiftFlag)
+        gSaveBlock2Ptr->optionsRandomizerFlags = savedRandomizerFlags;
+
     ResetTasks();
     PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
@@ -1739,6 +2043,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_ASH:
             music = MUS_DP_ENCOUNTER_CHAMPION;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_DP_LADY:
+            music = MUS_DP_ENCOUNTER_LADY;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;

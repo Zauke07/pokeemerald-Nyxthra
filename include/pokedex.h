@@ -9,6 +9,7 @@ u16 GetNationalPokedexCount(u8 caseID);
 u32 GetRegionalPokedexCount(u8 caseID);
 u16 GetHoennPokedexCount(u8 caseID);
 u16 GetKantoPokedexCount(u8 caseID);
+bool32 GetSetPokedexFormSeenFlag(u16 species, bool32 setFlag);
 u8 DisplayCaughtMonDexPage(u16 species, bool32 isShiny, u32 personality);
 u32 Pokedex_CreateCaughtMonSprite(u32 species, s32 x, s32 y);
 s8 GetSetPokedexFlag(enum NationalDexOrder nationalDexNo, u8 caseID);

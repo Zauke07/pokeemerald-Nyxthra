@@ -1754,7 +1754,6 @@ void CreateEnemyEventMon(void)
     s32 species = gSpecialVar_0x8004;
     s32 level = gSpecialVar_0x8005;
     s32 itemId = gSpecialVar_0x8006;
-    u16 hp;
 
     species = Randomizer_GetStaticSpecies(species);
     species = SanitizeSpeciesId(species);
@@ -1771,6 +1770,9 @@ void CreateEnemyEventMon(void)
         level = 1;
     else if (level > MAX_LEVEL)
         level = MAX_LEVEL;
+
+    gSpecialVar_0x8004 = species;
+    gSpecialVar_0x8005 = level;
 
     ZeroEnemyPartyMons();
 
@@ -2024,6 +2026,11 @@ void GiveMonInitialMoveset(struct Pokemon *mon)
     GiveBoxMonInitialMoveset(&mon->box);
 }
 
+static enum Move GetRandomizedLearnsetMove(u16 species, const struct LevelUpMove *learnset, u32 index)
+{
+    return Randomizer_GetLevelUpMove(species, learnset[index].level, index, learnset[index].move);
+}
+
 void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEduardo
 {
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES);
@@ -2043,9 +2050,11 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEdua
         if (learnset[i].level == 0)
             continue;
 
+        enum Move learnsetMove = GetRandomizedLearnsetMove(species, learnset, i);
+
         for (j = 0; j < addedMoves; j++)
         {
-            if (moves[j] == learnset[i].move)
+            if (moves[j] == learnsetMove)
             {
                 alreadyKnown = TRUE;
                 break;
@@ -2056,14 +2065,14 @@ void GiveBoxMonInitialMoveset(struct BoxPokemon *boxMon) //Credit: AsparagusEdua
         {
             if (addedMoves < MAX_MON_MOVES)
             {
-                moves[addedMoves] = learnset[i].move;
+                moves[addedMoves] = learnsetMove;
                 addedMoves++;
             }
             else
             {
                 for (j = 0; j < MAX_MON_MOVES - 1; j++)
                     moves[j] = moves[j + 1];
-                moves[MAX_MON_MOVES - 1] = learnset[i].move;
+                moves[MAX_MON_MOVES - 1] = learnsetMove;
             }
         }
     }
@@ -2096,16 +2105,18 @@ void GiveBoxMonDefaultMove(struct BoxPokemon *boxMon, u32 slot)
         if (learnset[i].level == 0)
             continue;
 
+        enum Move learnsetMove = GetRandomizedLearnsetMove(species, learnset, i);
+
         for (j = 0; j < slot; j++)
         {
-            if (GetBoxMonData(boxMon, MON_DATA_MOVE1 + j) == learnset[i].move)
+            if (GetBoxMonData(boxMon, MON_DATA_MOVE1 + j) == learnsetMove)
             {
                 alreadyKnown = TRUE;
                 break;
             }
         }
         if (!alreadyKnown)
-            move = learnset[i].move;
+            move = learnsetMove;
     }
 
     SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot, &move);
@@ -2143,8 +2154,10 @@ enum Move MonTryLearningNewMoveAtLevel(struct Pokemon *mon, bool32 firstMove, u3
 
     for (u32 i = 0; formChanges != NULL && formChanges[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
+        enum Move learnsetMove = GetRandomizedLearnsetMove(species, learnset, sLearningMoveTableID);
+
         if (formChanges[i].method == FORM_CHANGE_END_BATTLE
-            && learnset[sLearningMoveTableID].move == formChanges[i].param3)
+            && learnsetMove == formChanges[i].param3)
         {
             for (u32 j = 0; j < MAX_MON_MOVES; j++)
             {
@@ -2156,7 +2169,7 @@ enum Move MonTryLearningNewMoveAtLevel(struct Pokemon *mon, bool32 firstMove, u3
 
     if (learnset[sLearningMoveTableID].level == level)
     {
-        gMoveToLearn = learnset[sLearningMoveTableID].move;
+        gMoveToLearn = GetRandomizedLearnsetMove(species, learnset, sLearningMoveTableID);
         sLearningMoveTableID++;
         retVal = GiveMoveToMon(mon, gMoveToLearn);
     }
@@ -3729,37 +3742,44 @@ enum Type GetSpeciesType(u16 species, u8 slot)
 
 enum Ability GetSpeciesAbility(u16 species, u8 slot)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].abilities[slot];
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetAbility(species, slot, gSpeciesInfo[species].abilities[slot]);
 }
 
 u32 GetSpeciesBaseHP(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseHP;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_HP, gSpeciesInfo[species].baseHP);
 }
 
 u32 GetSpeciesBaseAttack(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseAttack;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_ATK, gSpeciesInfo[species].baseAttack);
 }
 
 u32 GetSpeciesBaseDefense(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseDefense;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_DEF, gSpeciesInfo[species].baseDefense);
 }
 
 u32 GetSpeciesBaseSpAttack(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseSpAttack;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_SPATK, gSpeciesInfo[species].baseSpAttack);
 }
 
 u32 GetSpeciesBaseSpDefense(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseSpDefense;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_SPDEF, gSpeciesInfo[species].baseSpDefense);
 }
 
 u32 GetSpeciesBaseSpeed(u16 species)
 {
-    return gSpeciesInfo[SanitizeSpeciesId(species)].baseSpeed;
+    species = SanitizeSpeciesId(species);
+    return Randomizer_GetSpeciesBaseStatValue(species, STAT_SPEED, gSpeciesInfo[species].baseSpeed);
 }
 
 u32 GetSpeciesBaseStat(u16 species, u32 statIndex)
@@ -4616,6 +4636,9 @@ u8 *UseStatIncreaseItem(enum Item itemId)
         break;
     case ITEM1_X_ACCURACY:
         BufferStatRoseMessage(STAT_ACC);
+        break;
+    case ITEM1_X_EVASION:
+        BufferStatRoseMessage(STAT_EVASION);
         break;
     }
 
@@ -5555,7 +5578,10 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
         }
 
         mod = sFriendshipEventModifiers[event][friendshipLevel];
-        friendship += CalculateFriendshipBonuses(mon,mod,holdEffect);
+        if (event == FRIENDSHIP_EVENT_WALKING)
+            friendship += mod;
+        else
+            friendship += CalculateFriendshipBonuses(mon, mod, holdEffect);
 
         if (friendship < 0)
             friendship = 0;
@@ -5566,23 +5592,18 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     }
 }
 
-u8 CalculateFriendshipBonuses(struct Pokemon *mon, u32 modifier, enum HoldEffect itemHoldEffect)
+s32 CalculateFriendshipBonuses(struct Pokemon *mon, s32 modifier, enum HoldEffect itemHoldEffect)
 {
-    u32 bonus = 0;
+    s32 bonus = modifier;
 
-    if ((modifier > 0) && (itemHoldEffect == HOLD_EFFECT_FRIENDSHIP_UP))
-        bonus += 150 * modifier / 100;
-    else
-        bonus += modifier;
+    if (modifier > 0)
+    {
+        if (itemHoldEffect == HOLD_EFFECT_FRIENDSHIP_UP)
+            bonus = 150 * modifier / 100;
 
-    if (modifier == 0)
-        return bonus;
-
-    if (GetMonData(mon, MON_DATA_POKEBALL) == ITEM_LUXURY_BALL)
-        bonus += ITEM_FRIENDSHIP_LUXURY_BONUS;
-
-    if (GetMonData(mon, MON_DATA_MET_LOCATION) == GetCurrentRegionMapSectionId())
-        bonus += ITEM_FRIENDSHIP_MAPSEC_BONUS;
+        if (GetMonData(mon, MON_DATA_POKEBALL) == ITEM_LUXURY_BALL)
+            bonus += ITEM_FRIENDSHIP_LUXURY_BONUS;
+    }
 
     return bonus;
 }
@@ -5740,8 +5761,13 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
 u8 CanLearnTeachableMove(u16 species, enum Move move)
 {
     const u16 *teachableLearnset = GetSpeciesTeachableLearnset(species);
+
     if (species == SPECIES_EGG)
         return FALSE;
+
+    if (Randomizer_IsUniversalTmHmCompatibilityEnabled())
+        return TRUE;
+
     for (u32 i = 0; teachableLearnset[i] != MOVE_UNAVAILABLE; i++)
     {
         if (teachableLearnset[i] == move)
@@ -5757,9 +5783,9 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
     const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
 
     for (i = 0; i < MAX_LEVEL_UP_MOVES && learnset[i].move != LEVEL_UP_MOVE_END; i++)
-         moves[numMoves++] = learnset[i].move;
+        moves[numMoves++] = GetRandomizedLearnsetMove(species, learnset, i);
 
-     return numMoves;
+    return numMoves;
 }
 
 u16 SpeciesToPokedexNum(u16 species)
@@ -5817,9 +5843,9 @@ u16 GetBattleBGM(void)
         case SPECIES_REGIGIGAS:
         case SPECIES_REGIELEKI:
         case SPECIES_REGIDRAGO:
-            return MUS_VS_REGI;
+            return MUS_PL_VS_REGI;
         default:
-            return MUS_RG_VS_LEGEND;
+            return MUS_C_VS_LEGEND_BEAST;
         }
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
@@ -5977,7 +6003,78 @@ const u16 *GetMonSpritePalFromSpecies(u16 species, bool32 isShiny, bool32 isFema
 
 const u16 *GetMonSpritePalFromSpeciesIsEgg(u16 species, bool32 isShiny, bool32 isFemale, bool32 isEgg)
 {
+    u16 natDexNum;
+    u16 candidate;
+
     species = SanitizeSpeciesId(species);
+
+    if (!isEgg)
+    {
+        bool32 hasPalette;
+
+        if (isShiny)
+        {
+#if P_GENDER_DIFFERENCES
+            hasPalette = (isFemale && gSpeciesInfo[species].shinyPaletteFemale != NULL) || gSpeciesInfo[species].shinyPalette != NULL;
+#else
+            hasPalette = gSpeciesInfo[species].shinyPalette != NULL;
+#endif
+        }
+        else
+        {
+#if P_GENDER_DIFFERENCES
+            hasPalette = (isFemale && gSpeciesInfo[species].paletteFemale != NULL) || gSpeciesInfo[species].palette != NULL;
+#else
+            hasPalette = gSpeciesInfo[species].palette != NULL;
+#endif
+        }
+
+        if (!hasPalette)
+        {
+            natDexNum = gSpeciesInfo[species].natDexNum;
+            if (natDexNum != 0)
+            {
+                for (candidate = SPECIES_NONE + 1; candidate < NUM_SPECIES; candidate++)
+                {
+                    if (gSpeciesInfo[candidate].natDexNum != natDexNum)
+                        continue;
+
+                    if (isShiny)
+                    {
+#if P_GENDER_DIFFERENCES
+                        if ((isFemale && gSpeciesInfo[candidate].shinyPaletteFemale != NULL) || gSpeciesInfo[candidate].shinyPalette != NULL)
+                        {
+                            species = candidate;
+                            break;
+                        }
+#else
+                        if (gSpeciesInfo[candidate].shinyPalette != NULL)
+                        {
+                            species = candidate;
+                            break;
+                        }
+#endif
+                    }
+                    else
+                    {
+#if P_GENDER_DIFFERENCES
+                        if ((isFemale && gSpeciesInfo[candidate].paletteFemale != NULL) || gSpeciesInfo[candidate].palette != NULL)
+                        {
+                            species = candidate;
+                            break;
+                        }
+#else
+                        if (gSpeciesInfo[candidate].palette != NULL)
+                        {
+                            species = candidate;
+                            break;
+                        }
+#endif
+                    }
+                }
+            }
+        }
+    }
 
     if (isEgg)
     {
@@ -6425,12 +6522,22 @@ void HandleSetPokedexFlag(enum NationalDexOrder nationalNum, u8 caseId, u32 pers
     }
 }
 
+void HandleSetPokedexFlagFromSpecies(u16 species, u32 caseId, u32 personality)
+{
+    enum NationalDexOrder nationalNum = SpeciesToNationalPokedexNum(species);
+    bool32 canTrackForm = (species > SPECIES_NONE && species < NUM_SPECIES && species != SPECIES_EGG && IsSpeciesEnabled(species));
+
+    HandleSetPokedexFlag(nationalNum, caseId, personality);
+    if (canTrackForm && (caseId == FLAG_SET_SEEN || caseId == FLAG_SET_CAUGHT))
+        GetSetPokedexFormSeenFlag(species, TRUE);
+}
+
 void HandleSetPokedexFlagFromMon(struct Pokemon *mon, u32 caseId)
 {
     u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
-    enum NationalDexOrder nationalNum = SpeciesToNationalPokedexNum(GetMonData(mon, MON_DATA_SPECIES));
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
 
-    HandleSetPokedexFlag(nationalNum, caseId, personality);
+    HandleSetPokedexFlagFromSpecies(species, caseId, personality);
 }
 
 bool8 HasTwoFramesAnimation(u16 species)
@@ -6955,7 +7062,7 @@ u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
         while ((learnset[sLearningMoveTableID].level == 0 || learnset[sLearningMoveTableID].level == level)
              && !(P_EVOLUTION_LEVEL_1_LEARN >= GEN_8 && learnset[sLearningMoveTableID].level == 1))
         {
-            gMoveToLearn = learnset[sLearningMoveTableID].move;
+            gMoveToLearn = GetRandomizedLearnsetMove(GetMonData(mon, MON_DATA_SPECIES), learnset, sLearningMoveTableID);
             sLearningMoveTableID++;
             return GiveMoveToMon(mon, gMoveToLearn);
         }
@@ -7100,6 +7207,12 @@ bool32 TryFormChange(struct Pokemon *mon, enum FormChanges method)
         targetSpecies = battlePartyState->changedSpecies;
     }
 
+    if (targetSpecies == SPECIES_NONE
+        && (method == FORM_CHANGE_END_BATTLE || method == FORM_CHANGE_FAINT))
+    {
+        return FALSE;
+    }
+
     assertf(targetSpecies != SPECIES_NONE, "form change target returned NONE. cur:%d, method:%d", currentSpecies, method)
     {
         return FALSE;
@@ -7107,6 +7220,10 @@ bool32 TryFormChange(struct Pokemon *mon, enum FormChanges method)
 
     if (targetSpecies != currentSpecies)
     {
+        // Keep autogenerated species names in sync when a temporary battle form reverts.
+        if (method == FORM_CHANGE_END_BATTLE || method == FORM_CHANGE_FAINT)
+            EvolutionRenameMon(mon, currentSpecies, targetSpecies);
+
         TryToSetBattleFormChangeMoves(mon, method);
         SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
         TrySetDayLimitToFormChange(mon);

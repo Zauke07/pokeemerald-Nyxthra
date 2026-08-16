@@ -362,6 +362,10 @@ const u8 gItemEffect_XAccuracy[8] = {
     [1] = ITEM1_X_ACCURACY,
 };
 
+const u8 gItemEffect_XEvasion[8] = {
+    [1] = ITEM1_X_EVASION,
+};
+
 const u8 gItemEffect_XSpecialAttack[8] = {
     [1] = ITEM1_X_SPATK,
 };

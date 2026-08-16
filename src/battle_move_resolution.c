@@ -853,7 +853,12 @@ static bool32 HandleMoveTargetRedirection(enum MoveTarget moveTarget)
 
 static bool32 WasOriginalTargetAlly(enum MoveTarget moveTarget)
 {
-    if (!gProtectStructs[BATTLE_PARTNER(gBattlerAttacker)].usedAllySwitch)
+    enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
+
+    if (partner >= gBattlersCount)
+        return FALSE;
+
+    if (!gProtectStructs[partner].usedAllySwitch)
         return FALSE;
 
     if ((moveTarget == TARGET_ALLY || moveTarget == TARGET_USER_OR_ALLY) && gBattlerAttacker == gBattlerTarget)
@@ -865,6 +870,7 @@ static bool32 WasOriginalTargetAlly(enum MoveTarget moveTarget)
 static enum CancelerResult CancelerSetTargets(struct BattleContext *ctx)
 {
     enum MoveTarget moveTarget = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
+    enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
 
     if (!HandleMoveTargetRedirection(moveTarget))
     {
@@ -879,7 +885,13 @@ static enum CancelerResult CancelerSetTargets(struct BattleContext *ctx)
         }
         else if (moveTarget == TARGET_ALLY && !IsBattlerAlly(gBattlerTarget, gBattlerAttacker))
         {
-            gBattlerTarget = BATTLE_PARTNER(gBattlerAttacker);
+            if (partner >= gBattlersCount || !IsBattlerAlive(partner))
+            {
+                gBattlescriptCurrInstr = BattleScript_ButItFailed;
+                return CANCELER_RESULT_FAILURE;
+            }
+
+            gBattlerTarget = partner;
         }
         else if (IsDoubleBattle() && moveTarget == TARGET_FOES_AND_ALLY)
         {
@@ -1633,12 +1645,14 @@ static enum CancelerResult CancelerMoveSpecificMessage(struct BattleContext *ctx
 
 static bool32 NoTargetPresent(enum BattlerId battler, enum Move move, enum MoveTarget moveTarget)
 {
+    enum BattlerId partner = BATTLE_PARTNER(battler);
+
     switch (moveTarget)
     {
     case TARGET_USER_AND_ALLY:
         return FALSE; // At least user is present
     case TARGET_ALLY:
-        if (!IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))) // Seems like TARGET_ALLY is retargeting if no ally
+        if (partner >= gBattlersCount || !IsBattlerAlive(partner))
             return TRUE;
         break;
     case TARGET_SELECTED:
@@ -1675,6 +1689,7 @@ static enum CancelerResult CancelerNoTarget(struct BattleContext *ctx)
 
     if (ctx->battlerAtk == ctx->battlerDef
      && moveTarget == TARGET_ALLY
+     && BATTLE_PARTNER(ctx->battlerAtk) < gBattlersCount
      && gProtectStructs[BATTLE_PARTNER(ctx->battlerAtk)].usedAllySwitch)
     {
         gBattlescriptCurrInstr = BattleScript_ButItFailed;

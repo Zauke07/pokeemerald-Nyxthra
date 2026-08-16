@@ -14,6 +14,7 @@
 #include "item.h"
 #include "move.h"
 #include "pokemon.h"
+#include "randomizer.h"
 #include "random.h"
 #include "recorded_battle.h"
 #include "util.h"
@@ -376,7 +377,7 @@ static bool32 ShouldFailForIllusion(u32 illusionSpecies, enum BattlerId battlerI
         learnset = GetSpeciesLevelUpLearnset(illusionSpecies);
         for (learnsetMoveIndex = 0; learnset[learnsetMoveIndex].move != MOVE_UNAVAILABLE; learnsetMoveIndex++)
         {
-            if (learnset[learnsetMoveIndex].move == move)
+            if (Randomizer_GetLevelUpMove(illusionSpecies, learnset[learnsetMoveIndex].level, learnsetMoveIndex, learnset[learnsetMoveIndex].move) == move)
                 break;
         }
         // The used move is in the learnsets of the fake species.

@@ -68,6 +68,8 @@ EWRAM_DATA struct BattleMsgData *gBattleMsgDataPtr = NULL;
 // todo: make some of those names less vague: attacker/target vs pkmn, etc.
 
 static const u8 sText_EmptyString4[] = _("");
+static const u8 sText_ShinyPrefix[] = _("Shiny ");
+static const u8 sText_LeaderFemale[] = _("Leiterin");
 
 const u8 gText_PkmnShroudedInMist[] = _("{B_ATK_TEAM1} Team wurde in Nebel gehüllt!");
 const u8 gText_PkmnGettingPumped[] = _("{B_DEF_NAME_WITH_PREFIX} ist aufgeregt!");
@@ -75,7 +77,7 @@ const u8 gText_PkmnsXPreventsSwitching[] = _("{B_BUFF1} verhindert das Auswechse
 const u8 gText_StatSharply[] = _("stark ");
 const u8 gText_StatRose[] = _("steigt!");
 const u8 gText_StatFell[] = _("sinkt!");
-const u8 gText_DefendersStatRose[] = _("{B_BUFF1} von {B_DEF_NAME_WITH_PREFIX} {B_BUFF2}{B_BUFF3}");
+const u8 gText_DefendersStatRose[] = _("{B_DEF_NAME_WITH_PREFIX} {B_BUFF1} steigt {B_BUFF2}!");
 
 static const u8 sText_GotAwaySafely[] = _("{PLAY_SE SE_FLEE}Du bist sicher entkommen!\p");
 static const u8 sText_PlayerDefeatedLinkTrainer[] = _("Du hast {B_LINK_OPPONENT1_NAME} besiegt!");
@@ -390,7 +392,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNANCHORSITSELFWITH]                = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} verankert sich mit {B_DEF_ABILITY}!"),
     [STRINGID_PKMNCUTSATTACKWITH]                   = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}s {B_SCR_ABILITY} senkt {B_DEF_NAME_WITH_PREFIX2}s Angriff!"),
     [STRINGID_PKMNPREVENTSSTATLOSSWITH]             = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}s {B_SCR_ABILITY} verhindert Statusverlust!"),
-    [STRINGID_PKMNHURTSWITH]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde durch {B_DEF_NAME_WITH_PREFIX2}s {B_BUFF1} verletzt!"),
+    [STRINGID_PKMNHURTSWITH]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde durch {B_BUFF1} verletzt!"),
     [STRINGID_PKMNTRACED]                           = COMPOUND_STRING("Fährte kopierte {B_BUFF1}s {B_BUFF2}!"),
     [STRINGID_STATSHARPLY]                          = gText_StatSharply,
     [STRINGID_STATHARSHLY]                          = COMPOUND_STRING("stark!"),
@@ -398,7 +400,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_DEFENDERSSTATROSE]                    = gText_DefendersStatRose,
     [STRINGID_SCRIPTINGSTATROSE]                    = COMPOUND_STRING("{B_BUFF1} von {B_SCR_NAME_WITH_PREFIX} steigt {B_BUFF2}!"),
     [STRINGID_ATTACKERSSTATFELL]                    = COMPOUND_STRING("{B_BUFF1} von {B_ATK_NAME_WITH_PREFIX} sinkt {B_BUFF2}!"),
-    [STRINGID_DEFENDERSSTATFELL]                    = COMPOUND_STRING("{B_BUFF1} von {B_DEF_NAME_WITH_PREFIX} sinkt {B_BUFF2}!"),
+    [STRINGID_DEFENDERSSTATFELL]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} {B_BUFF1} sinkt {B_BUFF2}!"),
     [STRINGID_CRITICALHIT]                          = COMPOUND_STRING("Ein Volltreffer!"),
     [STRINGID_ONEHITKO]                             = COMPOUND_STRING("Ein K.O.-Treffer!"),
     [STRINGID_123POOF]                              = COMPOUND_STRING("Eins… {PAUSE 10}zwei… {PAUSE 10}und… {PAUSE 10}{PAUSE 20}{PLAY_SE SE_BALL_BOUNCE_1}tada!\p"),
@@ -435,7 +437,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_FAINTINTHREE]                         = COMPOUND_STRING("Alle Pokémon, die das Lied gehört haben, werden in drei Runden besiegt!"),
     [STRINGID_NOPPLEFT]                             = COMPOUND_STRING("Es gibt keine AP mehr für diesen Zug!\p"),
     [STRINGID_BUTNOPPLEFT]                          = COMPOUND_STRING("Aber es gab keine AP mehr für den Zug!"),
-    [STRINGID_PLAYERUSEDITEM]                       = COMPOUND_STRING("{PLAYER} setzt {B_LAST_ITEM} ein!"),
+    [STRINGID_PLAYERUSEDITEM]                       = COMPOUND_STRING("{B_PLAYER_NAME} setzt {B_LAST_ITEM} ein!"),
     [STRINGID_WALLYUSEDITEM]                        = COMPOUND_STRING("WALLY setzt {B_LAST_ITEM} ein!"),
     [STRINGID_TRAINERBLOCKEDBALL]                   = COMPOUND_STRING("Der Trainer hat deinen Pokéball abgewehrt!"),
     [STRINGID_DONTBEATHIEF]                         = COMPOUND_STRING("Sei kein Dieb!"),
@@ -1422,7 +1424,7 @@ const u16 gZenModeStringIds[] =
 };
 
 const u8 gText_PkmnIsEvolving[] = _("Was?\n{STR_VAR_1} entwickelt sich!");
-const u8 gText_CongratsPkmnEvolved[] = _("Herzlichen Glückwunsch! Dein {STR_VAR_1}\nentwickelte sich zu {STR_VAR_2}!{WAIT_SE}\p");
+const u8 gText_CongratsPkmnEvolved[] = _("Glückwunsch! Dein {STR_VAR_1}\nentwickelte sich zu {STR_VAR_2}!{WAIT_SE}\p");
 const u8 gText_PkmnStoppedEvolving[] = _("Wie? {STR_VAR_1}\nhat die Entwicklung abgebrochen!\p");
 const u8 gText_EllipsisQuestionMark[] = _("……?\p");
 const u8 gText_WhatWillPkmnDo[] = _("Was soll {B_BUFF1}\ntun?");
@@ -3108,6 +3110,15 @@ static const u8 *BattleStringGetTrainerName(u8 *text, u8 multiplayerId, enum Bat
         return BattleStringGetOpponentName(text, multiplayerId, battler);
 }
 
+static const u8 *BattleStringGetTrainerClassNameById(u16 trainerId, enum TrainerClassID trainerClass)
+{
+    if (GetTrainerStructFromId(trainerId)->gender
+     && (trainerClass == TRAINER_CLASS_LEADER || trainerClass == TRAINER_CLASS_LEADER_FRLG))
+        return sText_LeaderFemale;
+
+    return gTrainerClasses[trainerClass].name;
+}
+
 static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
 {
     const u8 *toCpy;
@@ -3127,7 +3138,7 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
         toCpy = gTrainerClasses[GetEreaderTrainerClassId()].name;
     else
-        toCpy = gTrainerClasses[GetTrainerClassFromId(trainerId)].name;
+        toCpy = BattleStringGetTrainerClassNameById(trainerId, GetTrainerClassFromId(trainerId));
 
     return toCpy;
 }
@@ -3225,15 +3236,15 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 break;
             case B_TXT_OPPONENT_MON1_SHINY: // Shiny indicator for first enemy poke
                 if (GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)), MON_DATA_IS_SHINY))
-                    toCpy = COMPOUND_STRING("Shiny ");
+                    toCpy = sText_ShinyPrefix;
                 else
-                    toCpy = COMPOUND_STRING("");
+                    toCpy = sText_EmptyString4;
                 break;
             case B_TXT_OPPONENT_MON2_SHINY: // Shiny indicator for second enemy poke
                 if (GetMonData(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)), MON_DATA_IS_SHINY))
-                    toCpy = COMPOUND_STRING("Shiny ");
+                    toCpy = sText_ShinyPrefix;
                 else
-                    toCpy = COMPOUND_STRING("");
+                    toCpy = sText_EmptyString4;
                 break;
             case B_TXT_PLAYER_MON2_NAME: // second player poke name
                 GetBattlerNick(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), text);
