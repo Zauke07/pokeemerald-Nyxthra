@@ -1,18 +1,22 @@
-gText_WouldYouLikeToRestYourPkmn::
-	.string "Willkommen im Wartezimmer des Todes.\p"
-	.string "Deine POKéMON sehen aus wie Hackfleisch.\n"
-	.string "Soll ich sie wieder zusammenflicken?$"
+gText_PkmnAlreadyFullyHealed::
+	.string "Hm? Was willst du schon wieder?\n"
+	.string "Deine Pokémon sind alle kerngesund!\p"
+	.string "Das wäre reine Energieverschwendung.\n"
+	.string "Geh lieber trainieren!$"
 
 gText_IllTakeYourPkmn::
-	.string "Gib her den Müll. Ich werf sie\n"
-	.string "in die Mikrowelle.$"
+	.string "Willkommen im Pokémon-Center!\p"
+	.string "Ich kümmere mich sofort um deine\n"
+	.string "Pokémon, einen Moment bitte.$"
 
 gText_RestoredPkmnToFullHealth::
-	.string "Fertig.\p"
-	.string "Sie leben wieder.$"
+	.string "Danke für deine Geduld!\p"
+	.string "Deine Pokémon sind wieder\n"
+	.string "vollkommen gesund und munter.$"
 
 gText_WeHopeToSeeYouAgain::
-	.string "Hau ab und lass dich nicht überfahren!$"
+	.string "Wir hoffen, dich jederzeit wieder\n"
+	.string "begrüßen zu dürfen!$"
 
 gText_WelcomeCutShort::
 	.string "Boah, du nervst.\p"

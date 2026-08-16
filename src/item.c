@@ -40,7 +40,7 @@ EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 #include "data/items.h"
 
 #define UNPACK_TM_ITEM_ID(_tm) [CAT(ENUM_TM_HM_, _tm) + 1] = { CAT(ITEM_TM_, _tm), CAT(MOVE_, _tm) },
-#define UNPACK_HM_ITEM_ID(_hm) [CAT(ENUM_TM_HM_, _hm) + 1] = { CAT(ITEM_HM_, _hm), CAT(MOVE_, _hm) },
+#define UNPACK_HM_ITEM_ID(_hm) [NUM_TECHNICAL_MACHINES + (CAT(ENUM_TM_HM_, _hm) - CAT(ENUM_TM_HM_, CUT) + 1)] = { CAT(ITEM_HM_, _hm), CAT(MOVE_, _hm) },
 
 const struct TmHmIndexKey gTMHMItemMoveIds[NUM_ALL_MACHINES + 1] =
 {
@@ -830,10 +830,9 @@ bool32 RemovePyramidBagItem(enum Item itemId, u16 count)
 
 static u16 SanitizeItemId(enum Item itemId)
 {
-    assertf(itemId < ITEMS_COUNT, "invalid item: %d", itemId)
-    {
+    // Don't hard-crash on corrupted/legacy item IDs from saves or scripts.
+    if (itemId >= ITEMS_COUNT)
         return ITEM_NONE;
-    }
 
     return itemId;
 }

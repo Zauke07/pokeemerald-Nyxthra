@@ -195,13 +195,31 @@ u16 AddTextPrinterParameterized2(u8 windowId, u8 fontId, const u8 *str, u8 speed
 void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && IsNpcDialogueDarkModePaletteOverrideEnabled())
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, 15, TEXT_COLOR_WHITE, 3);
+    }
+    else
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    }
 }
 
 void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonPress, u8 speed)
 {
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && IsNpcDialogueDarkModePaletteOverrideEnabled())
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, 15, TEXT_COLOR_WHITE, 3);
+    }
+    else
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    }
 }
 
 void LoadMessageBoxAndBorderGfx(void)
@@ -355,12 +373,20 @@ void LoadMessageBoxAndFrameGfx(u8 windowId, bool8 copyToVram)
 
 void Menu_LoadStdPal(void)
 {
+    // 1. Original-Palette normal in den Speicher laden
     LoadPalette(gStandardMenuPalette, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM), STD_WINDOW_PALETTE_SIZE);
+    
+    // 2. Den smarten Dark Mode Filter darueber jagen!
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(STD_WINDOW_PALETTE_NUM));
 }
 
 void Menu_LoadStdPalAt(u16 offset)
 {
+    // 1. Original-Palette normal in den Speicher laden
     LoadPalette(gStandardMenuPalette, offset, STD_WINDOW_PALETTE_SIZE);
+    
+    // 2. Den smarten Dark Mode Filter darueber jagen!
+    Nyxthra_ApplyDarkModeToWindowPalette(offset);
 }
 
 static UNUSED const u16* Menu_GetStdPal(void)
@@ -452,7 +478,16 @@ void RemoveMapNamePopUpWindow(void)
 void AddTextPrinterWithCallbackForMessage(bool8 canSpeedUp, void (*callback)(struct TextPrinterTemplate *, u16))
 {
     gTextFlags.canABSpeedUpPrint = canSpeedUp;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && IsNpcDialogueDarkModePaletteOverrideEnabled())
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, 15, TEXT_COLOR_WHITE, 3);
+    }
+    else
+    {
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    }
 }
 
 void EraseFieldMessageBox(bool8 copyToVram)
@@ -696,11 +731,27 @@ static u8 UNUSED InitMenuDefaultCursorHeight(u8 windowId, u8 fontId, u8 left, u8
 void RedrawMenuCursor(u8 oldPos, u8 newPos)
 {
     u8 width, height;
+    u8 color[3];
+
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = 15; // Weißer Pfeil
+        color[2] = 3;  // Schatten
+    }
+    else
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
+    }
 
     width = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     height = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
     FillWindowPixelRect(sMenu.windowId, PIXEL_FILL(1), sMenu.left, sMenu.optionHeight * oldPos + sMenu.top, width, height);
-    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0);
+    
+    // Pfeil mit unseren neuen Farben drucken!
+    AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, sMenu.left, sMenu.optionHeight * newPos + sMenu.top, 0, 0, color, 0, gText_SelectorArrow3);
 }
 
 u8 Menu_MoveCursor(s8 cursorDelta)
@@ -1075,6 +1126,20 @@ static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
 {
     u8 cursorWidth = GetMenuCursorDimensionByFont(sMenu.fontId, 0);
     u8 cursorHeight = GetMenuCursorDimensionByFont(sMenu.fontId, 1);
+    u8 color[3];
+
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = 15; // Weißer Pfeil
+        color[2] = 3;
+    }
+    else
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
+    }
 
     u8 xPos = (oldCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     u8 yPos = (oldCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
@@ -1082,7 +1147,9 @@ static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
 
     xPos = (newCursorPos % sMenu.columns) * sMenu.optionWidth + sMenu.left;
     yPos = (newCursorPos / sMenu.columns) * sMenu.optionHeight + sMenu.top;
-    AddTextPrinterParameterized(sMenu.windowId, sMenu.fontId, gText_SelectorArrow3, xPos, yPos, 0, 0);
+    
+    // Pfeil mit unseren neuen Farben drucken!
+    AddTextPrinterParameterized4(sMenu.windowId, sMenu.fontId, xPos, yPos, 0, 0, color, 0, gText_SelectorArrow3);
 }
 
 u8 ChangeMenuGridCursorPosition(s8 deltaX, s8 deltaY)
@@ -1762,13 +1829,23 @@ void AddTextPrinterParameterized6(u8 windowId, u8 fontId, u8 left, u8 top, u8 le
 
 void PrintPlayerNameOnWindow(u8 windowId, const u8 *src, u16 x, u16 y)
 {
-    int count = 0;
-    while (gSaveBlock2Ptr->playerName[count] != EOS)
-        count++;
+    u8 color[3];
+
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = 15; // HIER IST DER FIX: Wir nutzen Index 15
+        color[2] = 3;  // Schatten
+    }
+    else
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
+    }
 
     StringExpandPlaceholders(gStringVar4, src);
-
-    AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, x, y, TEXT_SKIP_DRAW, 0);
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 0, 0, color, TEXT_SKIP_DRAW, gStringVar4);
 }
 
 static void UNUSED UnusedBlitBitmapRect(const struct Bitmap *src, struct Bitmap *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height)

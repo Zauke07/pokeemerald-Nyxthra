@@ -67,7 +67,7 @@ const u8 gText_BButton[] = _("B Knopf");
 const u8 gText_RButton[] = _("R Knopf");
 const u8 gText_LButton[] = _("L Knopf");
 const u8 gText_Start[] = _("Start");
-const u8 gText_Select[] = _("Select");
+const u8 gText_Select[] = _("Wählen");
 const u8 gText_ControlPad[] = _("+ Steuerkreuz");
 const u8 gText_LButtonRButton[] = _("L Knopf  R Knopf");
 const u8 gText_Controls[] = _("Steuerung");
@@ -1133,7 +1133,7 @@ const u8 gText_PlayerScurriedToCenter[] = _(
     "{PLAYER}, das war erbärmlich.\n"
     "Deine Pokémon leiden nur,\n"
     "weil du ein miserabler Trainer bist.\n"
-    "Zieh ab ins Pokémon-CENTER!\p"
+    "Zieh ab ins Pokémon-Center!\p"
 );
 
 const u8 gText_PlayerScurriedBackHome[] = _(
@@ -1510,7 +1510,7 @@ ALIGNED(4) const u8 gText_FrontierFacilityRoomsCleared[] = _("Räume abgeschloss
 ALIGNED(4) const u8 gText_FrontierFacilityKOsStreak[] = _("KOs in Folge: {STR_VAR_2}");
 ALIGNED(4) const u8 gText_FrontierFacilityFloorsCleared[] = _("Stockwerke abgeschlossen: {STR_VAR_2}");
 ALIGNED(4) const u8 gText_123Dot[][3] = {_("1."), _("2."), _("3.")};
-const u8 gText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" and {STR_VAR_2} of the POKéMON species\nyou caught are inelegible");
+const u8 gText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" and {STR_VAR_2} of the Pokémon species\nyou caught are inelegible");
 const u8 gText_FrontierFacilityIncluding[] = _(".\pThese include ");
 const u8 gText_FrontierFacilityAreInelegible[] = _(" are inelegible");
 
@@ -1561,23 +1561,26 @@ const u8 gText_TimeOfDayHidden[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}Verst
 const u8 gText_GameVersionPrefix[] = _("Pokémon");
 const u8 gText_GameVersion[] = _("NYXTHRA");
 const u8 gText_GameVersionSpacer[] = _(" - ");
-const u8 gText_GameVersionSuffix[] = _("v1.0.8 Alpha"); // Hier kannst du später die Version aktualisieren
+const u8 gText_GameVersionSuffix[] = _("Beta v1.1.2"); // Hier kannst du später die Version aktualisieren
 const u8 gText_TextSpeed[] = _("Text Tempo");
 const u8 gText_BattleScene[] = _("Animation");
 const u8 gText_BattleStyle[] = _("Kampfstil");
 const u8 gText_Sound[] = _("Ton");
 const u8 gText_Frame[] = _("Rand");
+const u8 gText_UITheme[] = _("UI-Design");
+const u8 gText_UIThemeDark[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dunkel (Alpha)");
+const u8 gText_UIThemeLight[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hell");
 const u8 gText_OptionMenuCancel[] = _("Zurück");
 const u8 gText_ButtonMode[] = _("Knopfbelegung");
 const u8 gText_TextSpeedSlow[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1");
 const u8 gText_TextSpeedMid[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2");
 const u8 gText_TextSpeedFast[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3");
-const u8 gText_BattleSceneOn[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Ein");
-const u8 gText_BattleSceneOff[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Aus");
+const u8 gText_BattleSceneOn[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}Ein");
+const u8 gText_BattleSceneOff[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}Aus");
 const u8 gText_BattleStyleShift[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Wechsel");
 const u8 gText_BattleStyleSet[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Folge");
-const u8 gText_SoundMono[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mono");
-const u8 gText_SoundStereo[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Stereo");
+const u8 gText_SoundMono[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}Mono");
+const u8 gText_SoundStereo[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}Stereo");
 const u8 gText_FrameType[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Rand");
 const u8 gText_FrameTypeNumber[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}");
 const u8 gText_ButtonTypeNormal[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
@@ -1607,7 +1610,7 @@ const u8 gText_MenuExit[] = _("Beenden");
 const u8 gText_MenuRetire[] = _("Aufhören");
 const u8 gText_MenuRest[] = _("Ausruhen");
 const u8 gText_MenuDexNav[] = _("Dexnav");
-const u8 gText_SafariBallStock[] = _("SAFARI-BÄLLE\nBestand: {STR_VAR_1}");
+const u8 gText_SafariBallStock[] = _("Safari-Bälle\nBestand: {STR_VAR_1}");
 const u8 gText_MenuSafariStats[] = _("{STR_VAR_1}/{STR_VAR_2}\nBälle  {STR_VAR_3}");
 const u8 gText_BattlePyramidFloor[] = _("Kampfpyramide\n{STR_VAR_1}");
 const u8 gText_Floor1[] = _("Etage 1");
@@ -1640,10 +1643,10 @@ const u8 gText_ByeByeVar1[] = _("Tschüss, {STR_VAR_2}!");
 const u8 gText_XSentOverY[] = _("{STR_VAR_1} hat {STR_VAR_3} gesendet.");
 const u8 gText_TakeGoodCareOfX[] = _("Kümmere dich gut um {STR_VAR_3}!");
 const u8 gText_PkmnFainted_FldPsn[] = _("Oh nein! {STR_VAR_1} ist ohnmächtig geworden!");
-const u8 gText_SmoochumDoll32BP[] = _("Kuss Puppe{CLEAR_TO 0x5E}32BP");
+const u8 gText_SmoochumDoll32BP[] = _("Kussilla Puppe{CLEAR_TO 0x5E}32BP");
 const u8 gText_TogepiDoll48BP[] = _("Togepi Puppe{CLEAR_TO 0x5E}48BP");
 const u8 gText_MeowthDoll48BP[] = _("Mauzi Puppe{CLEAR_TO 0x5E}48BP");
-const u8 gText_ClefairyDoll48BP[] = _("Pixi Puppe{CLEAR_TO 0x5E}48BP");
+const u8 gText_ClefairyDoll48BP[] = _("Piepi Puppe{CLEAR_TO 0x5E}48BP");
 const u8 gText_DittoDoll48BP[] = _("Ditto Puppe{CLEAR_TO 0x5E}48BP");
 const u8 gText_CyndaquilDoll80BP[] = _("Feurigel Puppe{CLEAR_TO 0x5E}80BP");
 const u8 gText_ChikoritaDoll80BP[] = _("Endivie Puppe{CLEAR_TO 0x5E}80BP");
@@ -2608,8 +2611,8 @@ const u8 gText_Marshbadge[] = _("Sumpforden");
 const u8 gText_Volcanobadge[] = _("Vulkanorden");
 const u8 gText_Earthbadge[] = _("Erdorden");
 
-const u8 gText_OakImportantToGetToKnowPokemonThroughly[] = _("EICH: Es ist wichtig, deine POKéMON\ngründlich kennenzulernen.\p");
-const u8 gText_OakThisIsListOfPokemon[] = _("Dies ist eine Liste deiner POKéMON,\n{PLAYER}.\pÖffne sie, um die Werte und\nAttacken deiner POKéMON zu prüfen.\pWähle hier auch ein POKéMON aus,\nwenn du ein Item einsetzen willst.{PAUSE_UNTIL_PRESS}");
+const u8 gText_OakImportantToGetToKnowPokemonThroughly[] = _("EICH: Es ist wichtig, deine Pokémon\ngründlich kennenzulernen.\p");
+const u8 gText_OakThisIsListOfPokemon[] = _("Dies ist eine Liste deiner Pokémon,\n{PLAYER}.\pÖffne sie, um die Werte und\nAttacken deiner Pokémon zu prüfen.\pWähle hier auch ein Pokémon aus,\nwenn du ein Item einsetzen willst.{PAUSE_UNTIL_PRESS}");
 
 // German Plural of Balls (Items)
 
@@ -2650,7 +2653,7 @@ const u8 gJokeNpc_Text_Joke3[] = _("Wie nennt man ein PIEPI mit Sprachfehler?\nP
 const u8 gJokeNpc_Text_Joke4[] = _("Warum gibt’s keine SCHLURP-Wettessen mehr?\nWeil es den Tisch mitgegessen hat.");
 const u8 gJokeNpc_Text_Joke5[] = _("Ein BLUZUK geht zur Therapie...\nund fragt sich, ob es endlich klar sieht.");
 const u8 gJokeNpc_Text_Joke6[] = _("Was ist schlimmer als ein RATIKAL im Keller?\nEin RATTIKAL mit Steuerbescheid.");
-const u8 gJokeNpc_Text_Joke7[] = _("Wie nennt man ein POKÉMON, das keine\nAttacken mehr kennt?\pEin Praktikant.");
+const u8 gJokeNpc_Text_Joke7[] = _("Wie nennt man ein Pokémon, das keine\nAttacken mehr kennt?\pEin Praktikant.");
 const u8 gJokeNpc_Text_Joke8[] = _("Was sagt PROF. EICH zu seiner Frau\nim Bett? “Du kannst jetzt nur\pnoch ZERSCHNEIDER einsetzen.”");
 const u8 gJokeNpc_Text_Joke9[] = _("Ein KAPILZ geht ins Fitnessstudio.\nNach einem Satz sagt es: 'Ich spore!'");
 const u8 gJokeNpc_Text_Joke10[] = _("Warum kann PORYGON nicht ins Kino?\nEs hat kein echtes Leben.");

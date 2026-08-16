@@ -216,11 +216,11 @@ static void ConfirmSell(u8);
 static void CancelSell(u8);
 static void Task_FadeAndCloseBagMenuIfMulch(u8 taskId);
 
-static const u8 sText_Var1CantBeHeldHere[] = _("The {STR_VAR_1} can't be held\nhere.");
-static const u8 sText_DepositHowManyVar1[] = _("Deposit how many\n{STR_VAR_1}?");
-static const u8 sText_DepositedVar2Var1s[] = _("Deposited {STR_VAR_2}\n{STR_VAR_1}.");
-static const u8 sText_NoRoomForItems[] = _("There's no room to\nstore items.");
-static const u8 sText_CantStoreImportantItems[] = _("Important items\ncan't be stored in\nthe PC!");
+static const u8 sText_Var1CantBeHeldHere[] = _("Hier kann {STR_VAR_1}\nnicht getragen werden.");
+static const u8 sText_DepositHowManyVar1[] = _("Wie viele {STR_VAR_1}\nablegen?");
+static const u8 sText_DepositedVar2Var1s[] = _("{STR_VAR_2} {STR_VAR_1}\nabgelegt.");
+static const u8 sText_NoRoomForItems[] = _("Es ist kein Platz mehr\nfür Items vorhanden.");
+static const u8 sText_CantStoreImportantItems[] = _("Basis-Items können\nnicht im PC abgelegt\nwerden!");
 
 static void Task_LoadBagSortOptions(u8 taskId);
 static void ItemMenu_SortByName(u8 taskId);
@@ -406,6 +406,7 @@ static const u8 sRegisteredSelect_Gfx[] = INCBIN_U8("graphics/bag/select_button.
 
 enum {
     COLORID_NORMAL,
+    COLORID_DESCRIPTION,
     COLORID_POCKET_NAME,
     COLORID_GRAY_CURSOR,
     COLORID_UNUSED,
@@ -415,6 +416,7 @@ enum {
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
+    [COLORID_DESCRIPTION] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY,  TEXT_COLOR_DARK_GRAY},
     [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_RED},
     [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_GREEN},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
@@ -858,6 +860,14 @@ static bool8 LoadBagMenu_Graphics(void)
             LoadPalette(gBagScreenFemale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
         else
             LoadPalette(gBagScreenMale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+
+        if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+        {
+            gPlttBufferUnfaded[BG_PLTT_ID(0) + 1] = RGB(8, 9, 11);
+            gPlttBufferFaded[BG_PLTT_ID(0) + 1]   = RGB(8, 9, 11);
+            gPlttBufferUnfaded[BG_PLTT_ID(1) + 2] = RGB(8, 9, 11);
+            gPlttBufferFaded[BG_PLTT_ID(1) + 2]   = RGB(8, 9, 11);
+        }
         gBagMenu->graphicsLoadState++;
         break;
     case 3:
@@ -936,7 +946,14 @@ static void GetItemNameFromPocket(u8 *dest, enum Item itemId)
     switch (gBagPosition.pocket)
     {
     case POCKET_TM_HM:
-        end = StringCopy(gStringVar2, GetMoveName(ItemIdToBattleMoveId(itemId)));
+    {
+        enum Move move = ItemIdToBattleMoveId(itemId);
+
+        if (move != MOVE_NONE)
+            end = StringCopy(gStringVar2, GetMoveName(move));
+        else
+            end = CopyItemName(itemId, gStringVar2);
+
         PrependFontIdToFit(gStringVar2, end, FONT_NARROW, NUM_TECHNICAL_MACHINES >= 100 ? 60 : 65);
         if (GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
         {
@@ -951,6 +968,7 @@ static void GetItemNameFromPocket(u8 *dest, enum Item itemId)
             StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
         }
         break;
+    }
     case POCKET_BERRIES:
         ConvertIntToDecimalStringN(gStringVar1, itemId - FIRST_BERRY_INDEX + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
         end = CopyItemName(itemId, gStringVar2);
@@ -2579,6 +2597,7 @@ static void LoadBagMenuTextWindows(void)
     LoadMessageBoxGfx(0, 10, BG_PLTT_ID(13));
     ListMenuLoadStdPalAt(BG_PLTT_ID(12), 1);
     LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
     for (i = 0; i <= WIN_POCKET_NAME; i++)
     {
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
@@ -2590,6 +2609,14 @@ static void LoadBagMenuTextWindows(void)
 
 static void BagMenu_Print(u8 windowId, u8 fontId, const u8 *str, u8 left, u8 top, u8 letterSpacing, u8 lineSpacing, u8 speed, u8 colorIndex)
 {
+    if (windowId == WIN_DESCRIPTION
+     && colorIndex == COLORID_NORMAL
+     && gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme)
+    {
+        colorIndex = COLORID_DESCRIPTION;
+    }
+
     AddTextPrinterParameterized4(windowId, fontId, left, top, letterSpacing, lineSpacing, sFontColorTable[colorIndex], speed, str);
 }
 

@@ -17,9 +17,9 @@
 enum TMHMIndex
 {
     FOREACH_TMHM(UNPACK_TM_HM_ENUM)
-    NUM_ALL_MACHINES,
-    NUM_TECHNICAL_MACHINES = (0 FOREACH_TM(PLUS_ONE)),
-    NUM_HIDDEN_MACHINES = (0 FOREACH_HM(PLUS_ONE)),
+    NUM_TECHNICAL_MACHINES = ITEM_TM100 - ITEM_TM01 + 1,
+    NUM_HIDDEN_MACHINES = ITEM_HM08 - ITEM_HM01 + 1,
+    NUM_ALL_MACHINES = NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES,
 };
 #undef UNPACK_TM_HM_ENUM
 
@@ -114,39 +114,27 @@ extern const struct TmHmIndexKey gTMHMItemMoveIds[];
 
 static inline enum TMHMIndex GetItemTMHMIndex(enum Item item)
 {
-    switch (item)
-    {
-    /* Expands to:
-        * case ITEM_TM_FOCUS_PUNCH:
-        *     return 1;
-        * case ITEM_TM_DRAGON_CLAW:
-        *      return 2;
-        * etc */
-    FOREACH_TM(UNPACK_ITEM_TO_TM_INDEX)
-    FOREACH_HM(UNPACK_ITEM_TO_HM_INDEX)
-    default:
-        return 0;
-    }
+    if (item >= ITEM_TM01 && item <= ITEM_TM100)
+        return item - ITEM_TM01 + 1;
+
+    if (item >= ITEM_HM01 && item <= ITEM_HM08)
+        return NUM_TECHNICAL_MACHINES + (item - ITEM_HM01 + 1);
+
+    return 0;
 }
 
 static inline enum Move GetItemTMHMMoveId(enum Item item)
 {
+    enum TMHMIndex index = GetItemTMHMIndex(item);
     enum Move move;
 
-    switch (item)
-    {
-    /* Expands to:
-        * case ITEM_TM_FOCUS_PUNCH:
-        *     return MOVE_FOCUS_PUNCH;
-        * case ITEM_TM_DRAGON_CLAW:
-        *      return MOVE_DRAGON_CLAW;
-        * etc */
-    FOREACH_TM(UNPACK_ITEM_TO_TM_MOVE_ID)
-    FOREACH_HM(UNPACK_ITEM_TO_HM_MOVE_ID)
-    default:
-        move = MOVE_NONE;
-        break;
-    }
+    if (index == 0 || index > NUM_ALL_MACHINES)
+        return MOVE_NONE;
+
+    move = gTMHMItemMoveIds[index].moveId;
+
+    if (move == MOVE_NONE)
+        return MOVE_NONE;
 
     // HM moves are never randomized - they are required for story progression
     if (item >= ITEM_HM_CUT && item <= ITEM_HM_DIVE)
@@ -156,19 +144,23 @@ static inline enum Move GetItemTMHMMoveId(enum Item item)
 
 static inline enum Item GetTMHMItemIdFromMoveId(enum Move move)
 {
-    switch (move)
+    enum TMHMIndex index;
+    enum Move currentMove;
+
+    for (index = 1; index <= NUM_ALL_MACHINES; index++)
     {
-    /* Expands to:
-        * case MOVE_FOCUS_PUNCH:
-        *     return ITEM_TM_FOCUS_PUNCH;
-        * case MOVE_DRAGON_CLAW:
-        *      return ITEM_TM_DRAGON_CLAW;
-        * etc */
-    FOREACH_TM(UNPACK_TM_MOVE_TO_ITEM_ID)
-    FOREACH_HM(UNPACK_HM_MOVE_TO_ITEM_ID)
-    default:
-        return ITEM_NONE;
+        currentMove = gTMHMItemMoveIds[index].moveId;
+        if (currentMove == MOVE_NONE)
+            continue;
+
+        if (!(gTMHMItemMoveIds[index].itemId >= ITEM_HM_CUT && gTMHMItemMoveIds[index].itemId <= ITEM_HM_DIVE))
+            currentMove = Randomizer_GetMove(currentMove, RANDOMIZER_MODE_TMHM);
+
+        if (currentMove == move)
+            return gTMHMItemMoveIds[index].itemId;
     }
+
+    return ITEM_NONE;
 }
 
 #undef UNPACK_ITEM_TO_TM_INDEX
@@ -180,11 +172,20 @@ static inline enum Item GetTMHMItemIdFromMoveId(enum Move move)
 
 static inline enum Item GetTMHMItemId(enum TMHMIndex index)
 {
+    if (index == 0 || index > NUM_ALL_MACHINES)
+        return ITEM_NONE;
+
     return gTMHMItemMoveIds[index].itemId;
 }
 
 static inline u16 GetTMHMMoveId(enum TMHMIndex index)
 {
+    if (index == 0 || index > NUM_ALL_MACHINES)
+        return MOVE_NONE;
+
+    if (gTMHMItemMoveIds[index].moveId == MOVE_NONE)
+        return MOVE_NONE;
+
     // HM moves are never randomized - they are required for story progression
     if (gTMHMItemMoveIds[index].itemId >= ITEM_HM_CUT && gTMHMItemMoveIds[index].itemId <= ITEM_HM_DIVE)
         return gTMHMItemMoveIds[index].moveId;

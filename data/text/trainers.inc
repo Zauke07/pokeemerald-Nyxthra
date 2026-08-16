@@ -51,7 +51,7 @@ Route102_Text_AllenPostBattle:
 
 Route102_Text_RickIntro:
 	.string "Haha! Unsere Blicke haben sich\n"
-	.string "getroffen - jetzt gibt’s kein\n"
+	.string "getroffen - jetzt gibt’s kein\l"
 	.string "Zurück mehr! Kämpf!$"
 
 Route102_Text_RickDefeated:
@@ -203,7 +203,7 @@ Route103_Text_MiguelRematchPostBattle:
 
 Route104_Text_GinaIntro:
 	.string "Na los, komm schon!\n"
-	.string "Ich hau dich schneller um,\n"
+	.string "Ich hau dich schneller um,\l"
 	.string "als du 'Pokémon' sagen kannst!$"
 
 Route104_Text_GinaDefeat:
@@ -1935,8 +1935,8 @@ Route116_Text_ClarkIntro:
 	.string "aber du bist ja schneller weg als mein Mut.$"
 
 Route116_Text_ClarkDefeat:
-	.string "KÄFER-Pokémon entwickeln sich schnell.\n"
-	.string "Und ich entwickle mich anscheinend gar nicht.$"
+	.string "Ich dachte, ich stehe wie ein Berg.\n"
+	.string "Da bin ich wohl abgerutscht!$"
 
 Route116_Text_ClarkPostBattle:
 	.string "Ich zeig dir gleich, wie stark mein\n"
@@ -2071,12 +2071,12 @@ Route116_Text_SarahIntro:
 
 Route116_Text_SarahDefeat:
 	.string "Vielleicht sollte ich mal andere\n"
-	.string "Pokémon-Arten ausprobieren.\n"
+	.string "Pokémon-Arten ausprobieren.\l"
 	.string "Oder einfach weniger labern.$"
 
 Route116_Text_SarahPostBattle:
 	.string "Sackgasse. Langeweile.\n"
-	.string "Also: Kampf.\n"
+	.string "Also: Kampf.\l"
 	.string "Mach hin.$"
 
 Route116_Text_DawsonIntro:
@@ -2085,7 +2085,7 @@ Route116_Text_DawsonIntro:
 
 Route116_Text_DawsonDefeat:
 	.string "Willst du nicht hier bleiben\n"
-	.string "und mir Gesellschaft leisten?\n"
+	.string "und mir Gesellschaft leisten?\l"
 	.string "Mir ist mies langweilig.$"
 
 Route116_Text_DawsonPostBattle:
@@ -2094,7 +2094,8 @@ Route116_Text_DawsonPostBattle:
 
 Route116_Text_DevanIntro:
 	.string "Du hast echt großartige Pokémon…\n"
-	.string "Ich will gar nicht wissen, wie viel Arbeit da drin steckt.$"
+	.string "Ich will gar nicht wissen, wie viel Arbeit\l"
+    .string "da drin steckt.$"
 
 Route116_Text_DevanDefeat:
 	.string "Pokémon sind nicht nur Stärke.\p"
@@ -2103,7 +2104,7 @@ Route116_Text_DevanDefeat:
 
 Route116_Text_DevanPostBattle:
 	.string "Ich verdopple mein Training.\n"
-	.string "Und dann will ich Revanche.\n"
+	.string "Und dann will ich Revanche.\l"
 	.string "Ohne Ausreden.$"
 
 Route116_Text_JohnsonIntro:
@@ -4904,3 +4905,19 @@ Route127_Text_KojiRematchDefeat::
 Route127_Text_KojiPostRematch::
 	.string "Willst du mal barfuß gehen?\n"
 	.string "Dann probier ich mal deine Schuhe an.$"
+
+Route113_Text_AlinaIntro:
+	.string "Yee-haw! Mein Team und ich reiten\n"
+	.string "selbst durch diesen Ascheregen!$"
+
+Route113_Text_AlinaDefeat:
+	.string "Wow, du hast mich ja glatt\n"
+	.string "aus dem Sattel gehauen!$"
+
+Route113_Text_AlinaPostBattle:
+	.string "Auf der Farm arbeite ich hart, aber\n"
+	.string "auf Reisen werde ich noch stärker.\p"
+	.string "Irgendwann mache ich in dieser Region\n"
+	.string "meine ganz eigene POKéMON-Ranch auf!$"
+
+

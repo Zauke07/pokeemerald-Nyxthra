@@ -19,5 +19,6 @@ EventScript_AwakenSnorlax::
 	waitmessage
 	playfanfare MUS_RG_POKE_FLUTE
 	waitfanfare
+	bufferspeciesname STR_VAR_1, VAR_0x8004
 	msgbox Text_SnorlaxWokeUp
 	return

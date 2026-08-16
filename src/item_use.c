@@ -21,6 +21,7 @@
 #include "fishing.h"
 #include "fldeff.h"
 #include "follower_npc.h"
+#include "heal_location.h"
 #include "item.h"
 #include "item_menu.h"
 #include "item_use.h"
@@ -44,6 +45,7 @@
 #include "vs_seeker.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
+#include "constants/heal_locations.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
@@ -75,11 +77,17 @@ static void Task_StartUseRepel(u8);
 static void Task_StartUseLure(u8 taskId);
 static void Task_UseRepel(u8);
 static void Task_UseLure(u8 taskId);
+static void Task_UseTeleporterOnField(u8 taskId);
+static void Task_TeleporterChooseDestination(u8 taskId);
+static void Task_TeleporterHandleChoice(u8 taskId);
+static void Task_TeleporterProcessChoice(u8 taskId);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
 static void ItemUseOnFieldCB_Honey(u8 taskId);
 static bool32 IsValidLocationForVsSeeker(void);
+static void ItemUseOnFieldCB_Teleporter(u8 taskId);
+static bool32 HasVisitedPokemonCenterForTeleporter(void);
 
 static const u8 sText_CantDismountBike[] = _("Du kannst hier nicht von deinem FAHRRAD absteigen.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_ItemFinderNearby[] = _("Hm?\nDer ITEMFINDER reagiert!\pHier in der Nähe ist ein Item vergraben!{PAUSE_UNTIL_PRESS}");
@@ -89,18 +97,22 @@ static const u8 sText_CoinCase[] = _("Deine MÜNZEN:\n{STR_VAR_1}{PAUSE_UNTIL_PR
 static const u8 sText_PowderQty[] = _("PULVER-MENGE: {STR_VAR_1}{PAUSE_UNTIL_PRESS}");
 static const u8 sText_BootedUpTM[] = _("TM gestartet.");
 static const u8 sText_BootedUpHM[] = _("VM gestartet.");
+static const u8 sText_TMHMUnavailable[] = _("Diese TM ist noch nicht vollständig eingerichtet.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_TMHMContainedVar1[] = _("Sie enthält\n{STR_VAR_1}.\p{STR_VAR_1} einem POKéMON beibringen?");
 static const u8 sText_UsedVar2WildLured[] = _("{PLAYER} hat das\n{STR_VAR_2} benutzt.\pWilde POKéMON werden angelockt.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_UsedVar2WildRepelled[] = _("{PLAYER} hat das\n{STR_VAR_2} benutzt.\pWilde POKéMON werden ferngehalten.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFluteCatchy[] = _("Die POKéFLÖTE wurde gespielt.\pDas ist eine eingängige Melodie!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFlute[] = _("Die POKéFLÖTE wurde gespielt.");
 static const u8 sText_PokeFluteAwakenedMon[] = _("Die POKéFLÖTE hat schlafende\nPOKéMON geweckt.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_UsedTeleporter[] = _("{PLAYER} aktivierte den\nTELEPORTER.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_TeleporterChooseTarget[] = _("Ja = letztes Center.\nNein = Zuhause im Zimmer.");
 
 // EWRAM variables
 EWRAM_DATA static TaskFunc sItemUseOnFieldCB = NULL;
 
 // Below is set TRUE by UseRegisteredKeyItemOnField
 #define tUsingRegisteredKeyItem  data[3]
+#define tTeleporterWarpToRoom    data[1]
 
 // UB here if an item with type ITEM_USE_MAIL or ITEM_USE_BAG_MENU uses SetUpItemUseCallback
 // Never occurs in vanilla, but can occur with improperly created items
@@ -938,7 +950,15 @@ static void Task_ShowTMHMContainedMessage(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        StringCopy(gStringVar1, GetMoveName(ItemIdToBattleMoveId(gSpecialVar_ItemId)));
+        enum Move move = ItemIdToBattleMoveId(gSpecialVar_ItemId);
+
+        if (move == MOVE_NONE)
+        {
+            DisplayItemMessage(taskId, FONT_NORMAL, sText_TMHMUnavailable, CloseItemMessage);
+            return;
+        }
+
+        StringCopy(gStringVar1, GetMoveName(move));
         StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVar1);
         DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, UseTMHMYesNo);
     }
@@ -1111,6 +1131,66 @@ static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
     DisplayItemMessageOnField(taskId, gStringVar4, Task_UseDigEscapeRopeOnField);
 }
 
+static void Task_UseTeleporterOnField(u8 taskId)
+{
+    ResetInitialPlayerAvatarState();
+
+    if (gTasks[taskId].tTeleporterWarpToRoom)
+        RequestTeleportWarpToPlayerRoom();
+
+    Overworld_ResetStateAfterTeleport();
+    FldEff_TeleportWarpOut();
+    DestroyTask(taskId);
+}
+
+static bool32 HasVisitedPokemonCenterForTeleporter(void)
+{
+    if (GetHealLocationIndexByWarpData(&gSaveBlock1Ptr->lastHealLocation) == HEAL_LOCATION_NONE)
+        return FALSE;
+
+    return !IsLastHealLocationPlayerHouse();
+}
+
+static void Task_TeleporterChooseDestination(u8 taskId)
+{
+    if (!HasVisitedPokemonCenterForTeleporter())
+    {
+        gTasks[taskId].tTeleporterWarpToRoom = TRUE;
+        Task_UseTeleporterOnField(taskId);
+        return;
+    }
+
+    gTasks[taskId].tTeleporterWarpToRoom = FALSE;
+    DisplayItemMessageOnField(taskId, sText_TeleporterChooseTarget, Task_TeleporterHandleChoice);
+}
+
+static void Task_TeleporterHandleChoice(u8 taskId)
+{
+    DisplayYesNoMenuDefaultYes();
+    gTasks[taskId].func = Task_TeleporterProcessChoice;
+}
+
+static void Task_TeleporterProcessChoice(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0: // Yes -> Pokemon Center
+        gTasks[taskId].tTeleporterWarpToRoom = FALSE;
+        Task_UseTeleporterOnField(taskId);
+        break;
+    case 1: // No -> Player room
+    case MENU_B_PRESSED:
+        gTasks[taskId].tTeleporterWarpToRoom = TRUE;
+        Task_UseTeleporterOnField(taskId);
+        break;
+    }
+}
+
+static void ItemUseOnFieldCB_Teleporter(u8 taskId)
+{
+    DisplayItemMessageOnField(taskId, sText_UsedTeleporter, Task_TeleporterChooseDestination);
+}
+
 bool8 CanUseDigOrEscapeRopeOnCurMap(void)
 {
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
@@ -1133,6 +1213,12 @@ void ItemUseOutOfBattle_EscapeRope(u8 taskId)
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
     }
+}
+
+void ItemUseOutOfBattle_Teleporter(u8 taskId)
+{
+    sItemUseOnFieldCB = ItemUseOnFieldCB_Teleporter;
+    SetUpItemUseOnFieldCallback(taskId);
 }
 
 void ItemUseOutOfBattle_EvolutionStone(u8 taskId)

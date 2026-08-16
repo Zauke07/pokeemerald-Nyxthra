@@ -14,8 +14,10 @@
 #include "mail.h"
 #include "overworld.h"
 #include "decompress.h"
+#include "palette.h"
 #include "constants/songs.h"
 #include "constants/items.h"
+#include "constants/rgb.h"
 
 #define TAG_SWAP_LINE 109
 
@@ -120,6 +122,25 @@ void SetVBlankHBlankCallbacksToNull(void)
 
 void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
 {
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && paletteNum == DLG_WINDOW_PALETTE_NUM)
+    {
+        u32 palOffset = BG_PLTT_ID(paletteNum);
+
+        // Nur Hintergrund, Schatten und unser neues Weiß setzen!
+        gPlttBufferUnfaded[palOffset + 1] = RGB(8, 9, 11);
+        gPlttBufferFaded[palOffset + 1]   = RGB(8, 9, 11);
+        
+        gPlttBufferUnfaded[palOffset + 3] = RGB(0, 0, 0);
+        gPlttBufferFaded[palOffset + 3]   = RGB(0, 0, 0);
+        
+        gPlttBufferUnfaded[palOffset + 15] = RGB(31, 31, 31);
+        gPlttBufferFaded[palOffset + 15]   = RGB(31, 31, 31);
+        
+        LoadPalette(&gPlttBufferUnfaded[palOffset], palOffset, PLTT_SIZE_4BPP);
+    }
+
     sMessageWindowId = windowId;
     DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
 
@@ -127,7 +148,18 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
         StringExpandPlaceholders(gStringVar4, string);
 
     gTextFlags.canABSpeedUpPrint = 1;
-    AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && paletteNum == DLG_WINDOW_PALETTE_NUM)
+    {
+        AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 15, TEXT_COLOR_WHITE, 3);
+    }
+    else
+    {
+        AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    }
+    
     sMessageNextTask = taskFunc;
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
 }

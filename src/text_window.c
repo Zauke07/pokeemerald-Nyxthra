@@ -6,6 +6,10 @@
 #include "bg.h"
 #include "graphics.h"
 #include "menu.h"
+#include "constants/rgb.h"
+
+void Nyxthra_ApplyDarkModeToBorderPalette(u32 offset);
+void Nyxthra_ApplyDarkModeToWindowPalette(u32 offset);
 
 static const u16 sStdTextWindow_Gfx[]  = INCBIN_U16("graphics/text_window/std.4bpp");
 
@@ -60,6 +64,74 @@ static const u16 sTextWindowPalettes[][16] =
     INCBIN_U16("graphics/text_window/text_pal4.gbapal")
 };
 
+// static u16 sNyxthraDarkWindowPaletteBuffer[16];
+static bool8 sNyxthraNpcDialoguePaletteOverride = FALSE;
+
+void SetNpcDialogueDarkModePaletteOverride(bool8 enable)
+{
+    sNyxthraNpcDialoguePaletteOverride = enable;
+}
+
+bool8 IsNpcDialogueDarkModePaletteOverrideEnabled(void)
+{
+    return sNyxthraNpcDialoguePaletteOverride;
+}
+
+static const u8 *Nyxthra_GetMessageBoxGfxVariant(void)
+{
+    return gMessageBox_Gfx;
+}
+
+void Nyxthra_ApplyDarkModeToPaletteRange(u32 offset, u32 colorCount)
+{
+    u32 i;
+
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    for (i = 1; i < colorCount; i++)  // i=0 immer auslassen: Index 0 = Transparenz
+    {
+        u16 color = gPlttBufferUnfaded[offset + i];
+        u8 r = (color >> 0) & 0x1F;
+        u8 g = (color >> 5) & 0x1F;
+        u8 b = (color >> 10) & 0x1F;
+
+        if ((u16)(r + g + b) >= 72)
+        {
+            gPlttBufferUnfaded[offset + i] = RGB(16, 18, 20);
+            gPlttBufferFaded[offset + i]   = RGB(16, 18, 20);
+        }
+        else if ((u16)(r + g + b) >= 54)
+        {
+            gPlttBufferUnfaded[offset + i] = RGB(11, 13, 15);
+            gPlttBufferFaded[offset + i]   = RGB(11, 13, 15);
+        }
+    }
+}
+
+/*
+const u16 *Nyxthra_GetDarkWindowPaletteVariant(const u16 *src)
+{
+    u32 i;
+
+    // Wenn der Dark Mode aus ist, lade die normale Palette
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return src;
+
+    // Kopiere die Ursprungs-Palette in den Buffer
+    for (i = 0; i < 16; i++)
+        sNyxthraDarkWindowPaletteBuffer[i] = src[i];
+
+    // Fuer alle Fenster nur den Fuellhintergrund abdunkeln.
+    // Textfarben bleiben unveraendert; NPC-Dialog wird nun separat
+    // via Nyxthra_ApplyDarkModeToMessageBoxPalette (post-load) behandelt.
+    sNyxthraDarkWindowPaletteBuffer[1] = RGB(8, 9, 11);
+    sNyxthraDarkWindowPaletteBuffer[14] = RGB(8, 9, 11); // Lücke (Gap) abdunkeln
+
+    return sNyxthraDarkWindowPaletteBuffer;
+}
+*/
+
 static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
 {
     {gTextWindowFrame1_Gfx, gTextWindowFrame1_Pal},
@@ -96,22 +168,46 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
         return &sWindowFrames[id];
 }
 
+static void Nyxthra_ApplyDarkModeToMessageBoxPalette(u32 offset)
+{
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    // Index 1: Hintergrund der Box (dunkel)
+    gPlttBufferUnfaded[offset + 1] = RGB(8, 9, 11);
+    gPlttBufferFaded[offset + 1]   = RGB(8, 9, 11);
+
+    // Index 3: Schatten der Schrift (schwarz)
+    gPlttBufferUnfaded[offset + 3] = RGB(0, 0, 0);
+    gPlttBufferFaded[offset + 3]   = RGB(0, 0, 0);
+
+    // Index 15: Unsere neue Schriftfarbe (strahlend weiß)
+    gPlttBufferUnfaded[offset + 15] = RGB(31, 31, 31);
+    gPlttBufferFaded[offset + 15]   = RGB(31, 31, 31);
+
+    // WICHTIG: Keine Überschreibungen mehr für Index 2, 13 oder 14! 
+    // Der Rahmen bleibt unangetastet.
+}
+
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gMessageBox_Gfx, 0x1C0, destOffset);
-    LoadPalette(GetOverworldTextboxPalettePtr(), palOffset, PLTT_SIZE_4BPP);
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), Nyxthra_GetMessageBoxGfxVariant(), 0x1C0, destOffset);
+    LoadPalette(gMessageBox_Pal, palOffset, PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToMessageBoxPalette(palOffset);
 }
 
 void LoadStdWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sStdTextWindow_Gfx, 0x120, destOffset);
     LoadPalette(GetTextWindowPalette(3), palOffset, PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToWindowPalette(palOffset);
 }
 
 void LoadSignBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), gSignpostWindow_Gfx, 0x1C0, destOffset);
     LoadPalette(GetTextWindowPalette(1), palOffset, PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToWindowPalette(palOffset);
 }
 
 void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
@@ -123,6 +219,7 @@ void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
     LoadPalette(sWindowFrames[frameId].pal, palOffset, PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBorderPalette(palOffset);
 }
 
 void LoadUserWindowBorderGfx(u8 windowId, u16 destOffset, u8 palOffset)
@@ -207,11 +304,87 @@ const u16 *GetOverworldTextboxPalettePtr(void)
     return gMessageBox_Pal;
 }
 
+// Wendet Dark-Mode-Palette auf ein bereits geladenes Text-Fenster an (Direkt im VRAM!)
+void Nyxthra_ApplyDarkModeToWindowPalette(u32 offset)
+{
+    u32 i;
+
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    // Index 1 wird in den Textboxen als Fuellfarbe genutzt (Hintergrund)
+    gPlttBufferUnfaded[offset + 1] = RGB(8, 9, 11);
+    gPlttBufferFaded[offset + 1]   = RGB(8, 9, 11);
+
+    // Wir scannen den gesamten Rahmen (alles ab Index 4, damit die Textfarben 2 und 3 sicher sind!)
+    for (i = 4; i < 16; i++)
+    {
+        u16 c = gPlttBufferUnfaded[offset + i];
+        u8 r = (c >> 0) & 0x1F;
+        u8 g = (c >> 5) & 0x1F;
+        u8 b = (c >> 10) & 0x1F;
+        
+        u8 max = r;
+        u8 min = r;
+        if (g > max) max = g;
+        if (b > max) max = b;
+        if (g < min) min = g;
+        if (b < min) min = b;
+
+        // DER ULTIMATIVE FILTER: 
+        // Ist die Farbe neutral/grau (max - min <= 5) UND nicht komplett schwarz (>= 40)?
+        if ((u16)(r + g + b) >= 40 && (max - min) <= 5)
+        {
+            // RADIKAL ALLES AUF DEN DUNKLEN HINTERGRUND SETZEN!
+            // Das killt den fetten grauen Balken in der Speicher-Box sofort.
+            gPlttBufferUnfaded[offset + i] = RGB(8, 9, 11);
+            gPlttBufferFaded[offset + i]   = RGB(8, 9, 11);
+        }
+    }
+}
+
+// Da Rahmenpaletten je nach Frame unterschiedlich aufgebaut sind, werden hier nur
+// sehr helle neutrale (nahe weiss/grau) Eintraege abgedunkelt; Akzentfarben bleiben.
+void Nyxthra_ApplyDarkModeToBorderPalette(u32 offset)
+{
+    u32 i;
+
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    // Nur helle Toene scannen
+    for (i = 1; i < 16; i++)
+    {
+        u16 c = gPlttBufferUnfaded[offset + i];
+        u8 r = (c >> 0) & 0x1F;
+        u8 g = (c >> 5) & 0x1F;
+        u8 b = (c >> 10) & 0x1F;
+
+        u8 max = r;
+        u8 min = r;
+
+        if (g > max)
+            max = g;
+        if (b > max)
+            max = b;
+        if (g < min)
+            min = g;
+        if (b < min)
+            min = b;
+
+        if ((u16)(r + g + b) >= 80 && (max - min) <= 3)
+        {
+            gPlttBufferUnfaded[offset + i] = RGB(8, 9, 11);
+            gPlttBufferFaded[offset + i]   = RGB(8, 9, 11);
+        }
+    }
+}
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg
 void LoadUserWindowBorderGfxOnBg(u8 bg, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBorderPalette(palOffset);
 }
 
 void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset)

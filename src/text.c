@@ -14,6 +14,7 @@
 #include "sprite.h"
 #include "string_util.h"
 #include "text.h"
+#include "text_window.h"
 #include "window.h"
 #include "constants/songs.h"
 #include "constants/speaker_names.h"
@@ -642,6 +643,18 @@ static u32 RenderFont(struct TextPrinter *textPrinter)
 
 void GenerateFontHalfRowLookupTable(union TextColor color)
 {
+    // Der Türsteher greift NUR NOCH bei echten NPC-Dialogen ein!
+    if (gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme
+     && IsNpcDialogueDarkModePaletteOverrideEnabled())
+    {
+        if (color.foreground == TEXT_COLOR_DARK_GRAY || color.foreground == 2)
+        {
+            color.foreground = 15;
+            color.shadow = 3;
+        }
+    }
+
     if (color.asU32 == sLastTextColor.asU32)
     {
         return;
@@ -1387,13 +1400,6 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                     textPrinter->printerTemplate.color.foreground =
                         (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_BLUE : TEXT_COLOR_RED;
                 }
-                if (textPrinter->printerTemplate.color.foreground == TEXT_COLOR_RIVAL)
-                {
-                    // Rivalin rot, Rivale blau.
-                    // Standard-Logik: Rival ist immer das Gegen-Geschlecht des Spielers.
-                    textPrinter->printerTemplate.color.foreground =
-                        (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_RED : TEXT_COLOR_BLUE;
-                }
                 GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.color);
                 return RENDER_REPEAT; // WICHTIG: Das muss return RENDER_REPEAT sein!
             case EXT_CTRL_CODE_BACKGROUND:
@@ -2067,11 +2073,6 @@ u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str)
                 {
                     // Spieler: maennlich blau, weiblich rot.
                     textColor.foreground = (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_BLUE : TEXT_COLOR_RED;
-                }
-                if (textColor.foreground == TEXT_COLOR_RIVAL)
-                {
-                    // Rivalin rot, Rivale blau.
-                    textColor.foreground = (gSaveBlock2Ptr->playerGender == MALE) ? TEXT_COLOR_RED : TEXT_COLOR_BLUE;
                 }
                 GenerateFontHalfRowLookupTable(textColor);
                 continue;

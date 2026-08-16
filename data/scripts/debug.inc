@@ -333,8 +333,17 @@ Debug_ShowExpansionVersion::
 	release
 	end
 
+Debug_ShowNyxthraVersion::
+	callnative BufferNyxthraVersion
+	msgbox Debug_NyxthraVersion, MSGBOX_DEFAULT
+	release
+	end
+
 Debug_ExpansionVersion:
 	.string "pokeemerald-expansion {STR_VAR_1}$"
+
+Debug_NyxthraVersion:
+	.string "{STR_VAR_1}$"
 
 Debug_Follower_NPC_Not_Enabled::
 	msgbox Debug_Enable_To_Use_Follower_NPCs, MSGBOX_DEFAULT

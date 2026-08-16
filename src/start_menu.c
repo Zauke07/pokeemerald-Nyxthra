@@ -158,7 +158,7 @@ static bool8 FieldCB_ReturnToFieldStartMenu(void);
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 1,
+    .tilemapTop = 5,
     .width = 9,
     .height = 4,
     .paletteNum = 15,
@@ -350,7 +350,7 @@ static const struct WindowTemplate sWindowTemplate_Clock = {
     .width = 14,
     .height = 2,
     .paletteNum = 15,
-    .baseBlock = 0x8
+    .baseBlock = 0x60
 };
 
 // Tageszeit-Text (DE)
@@ -406,19 +406,45 @@ static void Task_UpdateClockWindow(u8 taskId)
         sClockColonInvisible ^= 1;
         FillWindowPixelBuffer(sClockWindowId, PIXEL_FILL(1));
 
+        // Neue Arrays für die Farben
+        u8 color[3];
+        u8 colonColor[3];
+
+        if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+        {
+            color[0] = TEXT_COLOR_TRANSPARENT;
+            color[1] = 15; // Weiß
+            color[2] = 3;  // Schatten
+            
+            // Blink-Logik für den Doppelpunkt im Dark Mode
+            colonColor[0] = TEXT_COLOR_TRANSPARENT;
+            colonColor[1] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : 15;
+            colonColor[2] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : 3;
+        }
+        else
+        {
+            color[0] = TEXT_COLOR_TRANSPARENT;
+            color[1] = TEXT_COLOR_DARK_GRAY;
+            color[2] = TEXT_COLOR_LIGHT_GRAY;
+            
+            colonColor[0] = sClockColonColors[sClockColonInvisible][0];
+            colonColor[1] = sClockColonColors[sClockColonInvisible][1];
+            colonColor[2] = sClockColonColors[sClockColonInvisible][2];
+        }
+
         u16 x = 0;
         ConvertIntToDecimalStringN(gStringVar4, hour, STR_CONV_MODE_LEADING_ZEROS, 2);
-        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, color, TEXT_SKIP_DRAW, gStringVar4);
         x += GetStringWidth(FONT_NORMAL, gStringVar4, 0);
 
-        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[sClockColonInvisible], TEXT_SKIP_DRAW, gText_Colon2);
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, colonColor, TEXT_SKIP_DRAW, gText_Colon2);
         x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
 
         ConvertIntToDecimalStringN(gStringVar1, minute, STR_CONV_MODE_LEADING_ZEROS, 2);
         StringCopy(gStringVar2, GetGermanDaytimeText());
         StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
         
-        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
+        AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, color, TEXT_SKIP_DRAW, gStringVar3);
 
         CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
     }
@@ -444,11 +470,26 @@ static void InitializeRTC(void)
 // Ersetze deine vorhandene ShowClockWindow Funktion
 void ShowClockWindow(void)
 {
+    u8 color[3];
+
+    // Unser bewährter Dark Mode Check mit Index 15
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = 15; // Strahlend weiß
+        color[2] = 3;  // Schatten
+    }
+    else
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
+    }
+
     sClockWindowId = AddWindow(&sWindowTemplate_Clock);
     PutWindowTilemap(sClockWindowId);
     DrawStdWindowFrame(sClockWindowId, FALSE);
 
-    // ✅ VERWENDE GAME-ENGINE-ZEIT:
     RtcCalcLocalTime();
     
     sClockColonInvisible = FALSE;
@@ -456,17 +497,19 @@ void ShowClockWindow(void)
 
     u16 x = 0;
     ConvertIntToDecimalStringN(gStringVar4, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
-    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar4);
+    
+    // Überall 'color' einsetzen
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, color, TEXT_SKIP_DRAW, gStringVar4);
     x += GetStringWidth(FONT_NORMAL, gStringVar4, 0);
 
-    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockColonColors[0], TEXT_SKIP_DRAW, gText_Colon2);
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, color, TEXT_SKIP_DRAW, gText_Colon2);
     x += GetStringWidth(FONT_NORMAL, gText_Colon2, 0);
 
     ConvertIntToDecimalStringN(gStringVar1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringCopy(gStringVar2, GetGermanDaytimeText());
     StringExpandPlaceholders(gStringVar3, gText_ClockTimeFormat);
     
-    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, sClockTextColor, TEXT_SKIP_DRAW, gStringVar3);
+    AddTextPrinterParameterized3(sClockWindowId, FONT_NORMAL, x, 1, color, TEXT_SKIP_DRAW, gStringVar3);
 
     CopyWindowToVram(sClockWindowId, COPYWIN_FULL);
     ScheduleBgCopyTilemapToVram(0);
@@ -530,6 +573,9 @@ static void BuildDebugStartMenu(void)
 
 static void BuildSafariZoneStartMenu(void)
 {
+#if DEBUG_OVERWORLD_MENU == TRUE
+    AddStartMenuAction(MENU_ACTION_DEBUG);
+#endif
     AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);
     AddStartMenuAction(MENU_ACTION_POKEDEX);
     AddStartMenuAction(MENU_ACTION_POKEMON);
@@ -652,6 +698,20 @@ static void RemoveExtraStartMenuWindows(void)
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 {
     s8 index = *pIndex;
+    u8 color[3]; // WICHTIG: Hier sagen wir dem Code, dass es 'color' gibt!
+
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = 15; // HIER IST DER FIX: Wir nutzen Index 15 (Strahlend weiß)
+        color[2] = 3;  // Index 3 für den schwarzen Schatten
+    }
+    else
+    {
+        color[0] = TEXT_COLOR_TRANSPARENT;
+        color[1] = TEXT_COLOR_DARK_GRAY;   // Normal: Dunkelgrau
+        color[2] = TEXT_COLOR_LIGHT_GRAY;  // Normaler Schatten
+    }
 
     do
     {
@@ -662,7 +722,8 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
         else
         {
             StringExpandPlaceholders(gStringVar4, sStartMenuItems[sCurrentStartMenuActions[index]].text);
-            AddTextPrinterParameterized(GetStartMenuWindowId(), FONT_NORMAL, gStringVar4, 8, (index << 4) + 9, TEXT_SKIP_DRAW, NULL);
+            // Hier nutzen wir AddTextPrinterParameterized4, um unsere Farben zu übergeben
+            AddTextPrinterParameterized4(GetStartMenuWindowId(), FONT_NORMAL, 8, (index << 4) + 9, 0, 0, color, TEXT_SKIP_DRAW, gStringVar4);
         }
 
         index++;
@@ -695,6 +756,23 @@ static bool32 InitStartMenuStep(void)
         break;
     case 2:
         LoadMessageBoxAndBorderGfx();
+        // Im Startmenue den originalen Spieler-Rahmen beibehalten.
+        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(14), PLTT_SIZE_4BPP);
+        Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(14));
+
+        // --- NEU: Dark Mode Text-Farbe KORREKT erzwingen ---
+        if (gSaveBlock2Ptr->optionsUITheme)
+        {
+            // Index 2 (Schrift) auf Weiß
+            gPlttBufferUnfaded[BG_PLTT_ID(14) + 2] = RGB(31, 31, 31); 
+            gPlttBufferFaded[BG_PLTT_ID(14) + 2]   = RGB(31, 31, 31); 
+            
+            // Index 3 (Schatten) auf Dunkelgrau/Fast Schwarz
+            gPlttBufferUnfaded[BG_PLTT_ID(14) + 3] = RGB(6, 6, 6);    
+            gPlttBufferFaded[BG_PLTT_ID(14) + 3]   = RGB(6, 6, 6);    
+        }
+        // ---------------------------------------------------
+
         DrawStdWindowFrame(AddStartMenuWindow(sNumStartMenuActions), FALSE);
         sInitStartMenuData[1] = 0;
         sInitStartMenuData[0]++;

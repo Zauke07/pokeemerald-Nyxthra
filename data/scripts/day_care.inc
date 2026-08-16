@@ -1,8 +1,15 @@
 Route117_EventScript_DaycareManNormal::
 	lock
 	faceplayer
-	checkflag FLAG_PLAYER_IN_GARDEN
-	goto_if 1, Route117_EventScript_DaycareManAskToExit @ Springt zu RAUS-Logik, wenn Flag gesetzt ist
+	goto_if_unset FLAG_DAYCARE_RESCUE_QUEST_COMPLETED, Route117_EventScript_DaycareManNormal_CheckGarden
+	goto_if_set FLAG_DAYCARE_MAN_FIRST_EXIT_DONE, Route117_EventScript_DaycareManNormal_CheckGarden
+	msgbox Route117_Text_DaycareManThankYouAgain, MSGBOX_DEFAULT
+	setflag FLAG_DAYCARE_MAN_FIRST_EXIT_DONE
+	setflag FLAG_PLAYER_IN_GARDEN
+	goto Route117_EventScript_DaycareManAskToExit
+
+Route117_EventScript_DaycareManNormal_CheckGarden:
+	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExit
 	specialvar VAR_RESULT, GetDaycareState
 	goto_if_eq VAR_RESULT, DAYCARE_EGG_WAITING, Route117_EventScript_DaycareEggWaiting
 	goto_if_eq VAR_RESULT, DAYCARE_TWO_MONS, Route117_EventScript_CheckOnTwoMons
@@ -14,44 +21,23 @@ Route117_EventScript_DaycareManNormal::
 	end
 
 Route117_EventScript_DaycareManAskToExit::
-	@ Prüfe ob Quest gerade abgeschlossen wurde (erstes Mal)
-	goto_if_unset FLAG_DAYCARE_MAN_FIRST_EXIT_DONE, Route117_EventScript_DaycareManFirstTimeExit
-	@ Ab dem 2. Mal: Normaler Dialog
 	msgbox Route117_Text_DaycareManWantToExit, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerOut
 	msgbox Route117_Text_DaycareManOkayStay, MSGBOX_DEFAULT
 	release
 	end
 
-Route117_EventScript_DaycareManFirstTimeExit::
-	@ KORREKTUR: Zeigt den Danke-Text, setzt den Flag, springt DANN zum RAUS-Dialog (MSGBOX_YESNO)
-	msgbox Route117_Text_DaycareManThankYouAgain, MSGBOX_DEFAULT
-	setflag FLAG_DAYCARE_MAN_FIRST_EXIT_DONE
-	goto Route117_EventScript_DaycareManAskToExit
-
-
 Route117_EventScript_DaycareManLetPlayerIn::
 	msgbox Route117_Text_DaycareManLetMeHelp, MSGBOX_DEFAULT
 	closemessage
-	
-	@ 1. Opa weicht aus (1h, 1r, schaut l)
 	applymovement LOCALID_DAYCARE_MAN, Route117_Movement_DaycareManMoveAsideIn
-	
-	@ 2. Spieler geht rein (2h, 1l, schaut r) - Gleichzeitig
 	applymovement OBJ_EVENT_ID_PLAYER, Route117_Movement_PlayerEnterGarden
-	
-	@ 3. Auf beide warten
 	waitmovement LOCALID_DAYCARE_MAN
 	waitmovement OBJ_EVENT_ID_PLAYER
 	delay 10
-	
-	@ 4. Dialog
 	msgbox Route117_Text_DaycareManEnjoyGarden, MSGBOX_DEFAULT
-	
-	@ 5. Opa geht zurück (1l, 1u, schaut u)
 	applymovement LOCALID_DAYCARE_MAN, Route117_Movement_DaycareManReturnIn
 	waitmovement LOCALID_DAYCARE_MAN
-	
 	setflag FLAG_PLAYER_IN_GARDEN
 	release
 	end
@@ -59,25 +45,14 @@ Route117_EventScript_DaycareManLetPlayerIn::
 Route117_EventScript_DaycareManLetPlayerOut::
 	msgbox Route117_Text_DaycareManLetMeHelp, MSGBOX_DEFAULT
 	closemessage
-	
-	@ 1. Opa weicht aus (2u, 1r, schaut l)
 	applymovement LOCALID_DAYCARE_MAN, Route117_Movement_DaycareManMoveAside
-	
-	@ 2. Spieler geht raus (3u, 1l, schaut r) - Gleichzeitig
 	applymovement OBJ_EVENT_ID_PLAYER, Route117_Movement_PlayerExitGarden
-	
-	@ 3. Auf beide warten
 	waitmovement LOCALID_DAYCARE_MAN
 	waitmovement OBJ_EVENT_ID_PLAYER
 	delay 10
-	
-	@ 4. Dialog
 	msgbox Route117_Text_DaycareManBackToNormal, MSGBOX_DEFAULT
-	
-	@ 5. Opa geht zurück (1l, 2h, schaut u)
 	applymovement LOCALID_DAYCARE_MAN, Route117_Movement_DaycareManReturn
 	waitmovement LOCALID_DAYCARE_MAN
-	
 	clearflag FLAG_PLAYER_IN_GARDEN
 	release
 	end
@@ -87,11 +62,7 @@ Route117_EventScript_CheckOnOneMon::
 	msgbox Route117_Text_YourMonIsDoingFine, MSGBOX_DEFAULT
 	setvar VAR_0x8004, 0
 	call Route117_EventScript_CheckMonReceivedMail
-	
-	@ ✅ WICHTIG: Prüfe ob Spieler IM GARTEN ist!
-	checkflag FLAG_PLAYER_IN_GARDEN
-	goto_if 1, Route117_EventScript_DaycareManAskToExitAfterCheck
-	
+	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExitAfterCheck
 	msgbox Route117_Text_DaycareManWantToGoInside, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerIn
 	release
@@ -115,11 +86,7 @@ Route117_EventScript_CheckOnTwoMons::
 	call Route117_EventScript_CheckMonReceivedMail
 	setvar VAR_0x8004, 1
 	call Route117_EventScript_CheckMonReceivedMail
-	
-	@ ✅ WICHTIG: Prüfe ob Spieler IM GARTEN ist!
-	checkflag FLAG_PLAYER_IN_GARDEN
-	goto_if 1, Route117_EventScript_DaycareManAskToExitAfterCheck
-	
+	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExitAfterCheck
 	msgbox Route117_Text_DaycareManWantToGoInside, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerIn
 	release
@@ -133,19 +100,13 @@ Route117_EventScript_DaycareEggWaiting::
 	msgbox Route117_Text_IllKeepIt, MSGBOX_DEFAULT
 	clearflag FLAG_PENDING_DAYCARE_EGG
 	special RejectEggFromDayCare
-	
-	@ ✅ WICHTIG: Prüfe ob Spieler IM GARTEN ist!
-	checkflag FLAG_PLAYER_IN_GARDEN
-	goto_if 1, Route117_EventScript_DaycareManAskToExitAfterEgg
-	
-	@ Wenn draußen: Frage nach REIN
+	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExitAfterEgg
 	msgbox Route117_Text_DaycareManWantToGoInside, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerIn
 	release
 	end
 
 Route117_EventScript_DaycareManAskToExitAfterEgg::
-	@ Wenn drinnen: Frage nach RAUS
 	msgbox Route117_Text_DaycareManWantToExit, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerOut
 	msgbox Route117_Text_DaycareManOkayStay, MSGBOX_DEFAULT
@@ -167,12 +128,7 @@ Route117_EventScript_DaycareReceiveEgg::
 	msgbox Route117_Text_TakeGoodCareOfIt, MSGBOX_DEFAULT
 	special GiveEggFromDaycare
 	clearflag FLAG_PENDING_DAYCARE_EGG
-	
-	@ ✅ WICHTIG: Prüfe ob Spieler IM GARTEN ist!
-	checkflag FLAG_PLAYER_IN_GARDEN
-	goto_if 1, Route117_EventScript_DaycareManAskToExitAfterEgg
-	
-	@ Wenn draußen: Frage nach REIN
+	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExitAfterEgg
 	msgbox Route117_Text_DaycareManWantToGoInside, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareManLetPlayerIn
 	release

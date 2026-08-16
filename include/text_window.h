@@ -25,7 +25,13 @@ void DrawTextBorderInner(u8 windowId, u16 tileNum, u8 palNum);
 void rbox_fill_rectangle(u8 windowId);
 const u16 *GetTextWindowPalette(u8 id);
 const u16 *GetOverworldTextboxPalettePtr(void);
+void SetNpcDialogueDarkModePaletteOverride(bool8 enable);
+bool8 IsNpcDialogueDarkModePaletteOverrideEnabled(void);
 void LoadSignPostWindowFrameGfx(void);
 void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset);
+// const u16 *Nyxthra_GetDarkWindowPaletteVariant(const u16 *src);
+void Nyxthra_ApplyDarkModeToWindowPalette(u32 offset);
+void Nyxthra_ApplyDarkModeToBorderPalette(u32 offset);
+void Nyxthra_ApplyDarkModeToPaletteRange(u32 offset, u32 colorCount);
 
 #endif // GUARD_TEXT_WINDOW_H

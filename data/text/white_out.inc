@@ -8,7 +8,7 @@ Text_MonsHealedShouldBuyPotions::
 	.string "Wenn sie wieder fast verrecken, komm\n"
 	.string "halt wieder her. Ist ja mein Job…\p"
 	.string "Wenn du schlau bist, kaufst du dir\n"
-	.string "TRÄNKE im SUPERMARKT. Dann muss ich\l"
+	.string "Tränke im Supermarkt. Dann muss ich\l"
 	.string "deine Hackfresse seltener sehen.\p"
 	.string "Und jetzt raus hier.$"
 
@@ -31,7 +31,7 @@ Text_MomExplainHPGetPotions::
 	.string "labert was von KP und Energie.\p"
 	.string "Wenn die KP weg sind, verreckt das\n"
 	.string "Vieh. Kapiert? Dann ab ins Center.\p"
-	.string "Oder du kaufst dir TRÄNKE.\n"
+	.string "Oder du kaufst dir Tränke.\n"
 	.string "Drogen helfen immer, merk dir das.\p"
 	.string "Mach mir keine Schande da draußen!\p"
 	.string "Und wehe, die Cops rufen an!$"

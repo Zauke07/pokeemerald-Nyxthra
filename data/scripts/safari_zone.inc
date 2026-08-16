@@ -1,29 +1,13 @@
 SafariZone_EventScript_OutOfBallsMidBattle::
-#ifdef IS_FRLG
-	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 3
-#else
 	setvar VAR_SAFARI_ZONE_STATE, 1
-#endif
 	special ExitSafariMode
-#ifdef IS_FRLG
-	setwarp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1
-#else
-	setwarp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 2, 5
-#endif
+	setwarp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 255, 2, 5
 	end
 
 SafariZone_EventScript_Exit::
-#ifdef IS_FRLG
-	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 1
-#else
 	setvar VAR_SAFARI_ZONE_STATE, 1
-#endif
 	special ExitSafariMode
-#ifdef IS_FRLG
-	warp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1
-#else
-	warp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 2, 5
-#endif
+	warp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 255, 2, 5
 	waitstate
 	end
 
@@ -189,7 +173,8 @@ SafariZone_South_Text_Boy::
 
 SafariZone_Southwest_Text_Woman::
 	.string "Manchmal werfe ich POKéMON einen\n"
-	.string "{POKEBLOCK} hin und die ignorieren mich einfach.\p"
+	.string "{POKEBLOCK} hin und die ignorieren\l"
+	.string "mich einfach.\p"
 	.string "Haben die Viecher echt so 'nen\n"
 	.string "anspruchsvollen Gaumen? Nervig!$"
 
@@ -234,7 +219,8 @@ SafariZone_RestHouse_Text_FatMan::
 	.string "Wenn du Futter in den Napf legst,\n"
 	.string "lockst du sie an.\p"
 	.string "Ich glaub, POKéMON mit demselben\n"
-	.string "schrägen Wesen stehen auf dasselbe Zeug.$"
+	.string "schrägen Wesen stehen auf\l"
+	.string "dasselbe Zeug.$"
 
 SafariZone_South_Text_AreaOffLimits1::
 SafariZone_South_Text_AreaOffLimits2::
@@ -276,6 +262,14 @@ SafariZone_South_Text_Robball::
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
 
+SafariZone_South_Text_RobballRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
+
 SafariZone_Southwest_Text_Chimpep::
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
@@ -283,6 +277,14 @@ SafariZone_Southwest_Text_Chimpep::
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+SafariZone_Southwest_Text_ChimpepRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 SafariZone_Northwest_Text_Hopplo::
 	.string "Tipp:\p"
@@ -292,6 +294,14 @@ SafariZone_Northwest_Text_Hopplo::
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
 
+SafariZone_Northwest_Text_HopploRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
+
 SafariZone_North_Text_Memmeon::
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
@@ -299,6 +309,14 @@ SafariZone_North_Text_Memmeon::
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+SafariZone_North_Text_MemmeonRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 SafariZone_Northeast_Text_Krokel::
 	.string "Tipp:\p"
@@ -308,6 +326,14 @@ SafariZone_Northeast_Text_Krokel::
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
 
+SafariZone_Northeast_Text_KrokelRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
+
 SafariZone_Southeast_Text_Felori::
 	.string "Tipp:\p"
 	.string "Auf dieser Route versteckt sich ein\n"
@@ -315,6 +341,14 @@ SafariZone_Southeast_Text_Felori::
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+SafariZone_Southeast_Text_FeloriRandomizer::
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 Route121_SafariZoneEntrance_Text_WelcomeFirstTime:
 	.string "Willkommen in der SAFARI-ZONE.\n"

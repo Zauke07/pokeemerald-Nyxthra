@@ -4,9 +4,14 @@ Common_EventScript_PkmnCenterNurse::
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars
 	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
-	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
-	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
+	specialvar VAR_RESULT, IsPartyFullyHealed
+	goto_if_eq VAR_RESULT, TRUE, EventScript_PkmnCenterNurse_AlreadyHealed
+	goto EventScript_PkmnCenterNurse_HealPkmn
+	end
+
+EventScript_PkmnCenterNurse_AlreadyHealed::
+	msgbox gText_PkmnAlreadyFullyHealed, MSGBOX_DEFAULT
+	release
 	end
 
 EventScript_PkmnCenterNurse_Goodbye::
@@ -65,6 +70,7 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
+	call EventScript_PkmnCenterNurse_MysteryGiftManHint
 	message gText_WeHopeToSeeYouAgain
 	return
 
@@ -73,6 +79,7 @@ EventScript_PkmnCenterNurse_ReturnPkmn2::
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
+	call EventScript_PkmnCenterNurse_MysteryGiftManHint
 	message gText_WeHopeToSeeYouAgain2
 	return
 
@@ -84,7 +91,17 @@ EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
+	call EventScript_PkmnCenterNurse_MysteryGiftManHint
 	message gText_WeHopeToSeeYouAgain
+	return
+
+EventScript_PkmnCenterNurse_MysteryGiftManHint::
+	goto_if_set FLAG_MYSTERY_GIFT_MAN_UNLOCKED, EventScript_PkmnCenterNurse_MysteryGiftManHint_Return
+	goto_if_unset FLAG_BADGE08_GET, EventScript_PkmnCenterNurse_MysteryGiftManHint_Return
+	setflag FLAG_MYSTERY_GIFT_MAN_UNLOCKED
+	msgbox gText_PkmnCenterNurseMysteryGiftManHint, MSGBOX_DEFAULT
+
+EventScript_PkmnCenterNurse_MysteryGiftManHint_Return::
 	return
 
 EventScript_PkmnCenterNurse_CheckPokerus::

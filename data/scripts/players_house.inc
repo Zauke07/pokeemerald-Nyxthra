@@ -422,6 +422,7 @@ PlayersHouse_1F_Movement_MovePlayerAwayFromDoor:
 
 PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV::
 	lockall
+	getplayerstyle
 	goto_if_eq VAR_RESULT, STYLE_BRENDAN, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale
 	goto_if_eq VAR_RESULT, STYLE_MAY, PlayersHouse_1F_EventScript_SetUpObjectEventVarsFemale
 	goto_if_eq VAR_RESULT, STYLE_RED, PlayersHouse_1F_EventScript_SetUpObjectEventVarsMale

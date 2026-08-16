@@ -66,6 +66,7 @@ enum {
 
 enum {
     COLORID_NORMAL,      // Item descriptions, quantity in bag, and quantity/price
+    COLORID_DESCRIPTION, // Item description text in dark mode (like bag)
     COLORID_ITEM_LIST,   // The text in the item list, and the cursor normally
     COLORID_GRAY_CURSOR, // When the cursor has selected an item to purchase
 };
@@ -344,6 +345,7 @@ static const struct WindowTemplate sShopBuyMenuYesNoWindowTemplates =
 static const u8 sShopBuyMenuTextColors[][3] =
 {
     [COLORID_NORMAL]      = {1, 2, 3},
+    [COLORID_DESCRIPTION] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_DARK_GRAY},
     [COLORID_ITEM_LIST]   = {0, 1, 2},
     [COLORID_GRAY_CURSOR] = {0, 1, 2},
 };
@@ -386,6 +388,46 @@ static void SetShopMenuCallback(void (*callback)(void))
     sMartInfo.callback = callback;
 }
 
+static bool32 IsDuplicateMartItem(u16 itemId, u16 count)
+{
+    u16 i;
+
+    for (i = 0; i < count; i++)
+    {
+        if (sRandomizedMartItems[i] == itemId)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+static u16 GetUniqueRandomizedMartItem(u16 originalItem, u16 slot, u16 count)
+{
+    u16 itemId = Randomizer_GetShopItem(originalItem, slot);
+    u16 tries;
+
+    if (!IsDuplicateMartItem(itemId, count))
+        return itemId;
+
+    if (GetItemPocket(originalItem) == POCKET_POKE_BALLS)
+        return itemId;
+
+    for (tries = 0; tries < ITEMS_COUNT; tries++)
+    {
+        itemId++;
+        if (itemId >= ITEMS_COUNT)
+            itemId = ITEM_NONE + 1;
+
+        if (!Randomizer_IsAllowedRandomizedItem(itemId))
+            continue;
+
+        if (!IsDuplicateMartItem(itemId, count))
+            return itemId;
+    }
+
+    return itemId;
+}
+
 static void SetShopItemsForSale(const u16 *items)
 {
     u16 i = 0;
@@ -394,7 +436,7 @@ static void SetShopItemsForSale(const u16 *items)
     {
         while (items[i] != ITEM_NONE && i < ARRAY_COUNT(sRandomizedMartItems) - 1)
         {
-            sRandomizedMartItems[i] = Randomizer_GetItem(items[i], RANDOMIZER_MODE_FIELD_ITEM);
+            sRandomizedMartItems[i] = GetUniqueRandomizedMartItem(items[i], i, i);
             i++;
         }
         sRandomizedMartItems[i] = ITEM_NONE;
@@ -777,6 +819,7 @@ static void BuyMenuDecompressBgGraphics(void)
     DecompressDataWithHeaderWram(gShopMenu_Tilemap, sShopData->tilemapBuffers[0]);
     DecompressDataWithHeaderWram(gShopMenu_ScrollTilemap, sShopData->tilemapBuffers[1]);
     LoadPalette(gShopMenu_Pal, BG_PLTT_ID(12), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(12));
 }
 
 static void BuyMenuInitWindows(void)
@@ -785,6 +828,10 @@ static void BuyMenuInitWindows(void)
     DeactivateAllTextPrinters();
     LoadUserWindowBorderGfx(WIN_MONEY, 1, BG_PLTT_ID(13));
     LoadMessageBoxGfx(WIN_MONEY, 0xA, BG_PLTT_ID(14));
+    // Gleiches Setup wie im Beutel: Standardfenster-Palette auf Slot 15 laden.
+    // Dadurch bekommen Description-Text/Icon-Bereich im Dark Mode denselben Look.
+    LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
     PutWindowTilemap(WIN_MONEY);
     PutWindowTilemap(WIN_ITEM_LIST);
     PutWindowTilemap(WIN_ITEM_DESCRIPTION);
@@ -792,6 +839,14 @@ static void BuyMenuInitWindows(void)
 
 static void BuyMenuPrint(u8 windowId, const u8 *text, u8 x, u8 y, s8 speed, u8 colorSet)
 {
+    if (windowId == WIN_ITEM_DESCRIPTION
+     && colorSet == COLORID_NORMAL
+     && gSaveBlock2Ptr != NULL
+     && gSaveBlock2Ptr->optionsUITheme)
+    {
+        colorSet = COLORID_DESCRIPTION;
+    }
+
     AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, 0, 0, sShopBuyMenuTextColors[colorSet], speed, text);
 }
 

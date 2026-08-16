@@ -2,6 +2,9 @@
 .set AMOUNT, VAR_0x8001
 
 Std_ObtainItem::
+	copyvar VAR_0x8004, ITEMID
+	special RandomizeGiftItemVar8004
+	copyvar ITEMID, VAR_0x8004
 	copyvar VAR_0x8006, ITEMID
 	additem ITEMID, AMOUNT
 	copyvar VAR_0x8007, VAR_RESULT

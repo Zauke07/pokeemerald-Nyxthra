@@ -1956,7 +1956,10 @@ static void LoadPalettes(void)
 {
     LoadPalette(gNamingScreenMenu_Pal, BG_PLTT_ID(0), sizeof(gNamingScreenMenu_Pal));
     LoadPalette(sKeyboard_Pal, BG_PLTT_ID(10), sizeof(sKeyboard_Pal));
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(10));
     LoadPalette(GetTextWindowPalette(2), BG_PLTT_ID(11), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(11));
+    Nyxthra_ApplyDarkModeToPaletteRange(BG_PLTT_ID(0), sizeof(gNamingScreenMenu_Pal) / 2);
 }
 
 static void DrawBgTilemap(u8 bg, const void *src)
@@ -2181,7 +2184,7 @@ static const struct NamingScreenTemplate sMonNamingScreenTemplate =
     .addGenderIcon = TRUE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 35,
-    .title = COMPOUND_STRING("{STR_VAR_1}'s Spitzname?"),
+    .title = gText_PkmnsNickname,
 };
 
 static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
@@ -2192,7 +2195,7 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 11,
-    .title = COMPOUND_STRING("Tell him the words."),
+    .title = COMPOUND_STRING("Sag ihm die Worte."),
 };
 
 static const struct NamingScreenTemplate sCodeScreenTemplate =
@@ -2203,7 +2206,7 @@ static const struct NamingScreenTemplate sCodeScreenTemplate =
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 35,
-    .title = COMPOUND_STRING("Enter code:"),
+    .title = COMPOUND_STRING("Gib den Code ein:"),
 };
 
 static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
