@@ -7955,7 +7955,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_RAICHU_ALOLAN] =
+    [SPECIES_RAICHU_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_SWIM,
         .spriteInfo = 
@@ -7980,7 +7980,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_DUGTRIO_ALOLAN] =
+    [SPECIES_DUGTRIO_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8005,7 +8005,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_GOLEM_ALOLAN] =
+    [SPECIES_GOLEM_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8030,7 +8030,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_MUK_ALOLAN] =
+    [SPECIES_MUK_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8055,7 +8055,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_EXEGGUTOR_ALOLAN] =
+    [SPECIES_EXEGGUTOR_ALOLA] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8080,7 +8080,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_RAPIDASH_GALARIAN] =
+    [SPECIES_RAPIDASH_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8105,7 +8105,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_SLOWBRO_GALARIAN] =
+    [SPECIES_SLOWBRO_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8130,7 +8130,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_WEEZING_GALARIAN] =
+    [SPECIES_WEEZING_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_FLY,
         .spriteInfo = 
@@ -8155,7 +8155,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_ARTICUNO_GALARIAN] =
+    [SPECIES_ARTICUNO_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_FLY,
         .spriteInfo = 
@@ -8180,7 +8180,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_ZAPDOS_GALARIAN] =
+    [SPECIES_ZAPDOS_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8205,7 +8205,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_MOLTRES_GALARIAN] =
+    [SPECIES_MOLTRES_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_FLY,
         .spriteInfo = 
@@ -8230,7 +8230,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_SLOWKING_GALARIAN] =
+    [SPECIES_SLOWKING_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8255,7 +8255,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_DARMANITAN_GALARIAN] =
+    [SPECIES_DARMANITAN_GALAR] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8280,7 +8280,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_ARCANINE_HISUIAN] =
+    [SPECIES_ARCANINE_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8305,7 +8305,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_ELECTRODE_HISUIAN] =
+    [SPECIES_ELECTRODE_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8330,7 +8330,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_TYPHLOSION_HISUIAN] =
+    [SPECIES_TYPHLOSION_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8355,7 +8355,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_SAMUROTT_HISUIAN] =
+    [SPECIES_SAMUROTT_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_SWIM,
         .spriteInfo = 
@@ -8380,7 +8380,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_LILLIGANT_HISUIAN] =
+    [SPECIES_LILLIGANT_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8405,7 +8405,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_ZOROARK_HISUIAN] =
+    [SPECIES_ZOROARK_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_CLIMB,
         .spriteInfo = 
@@ -8430,7 +8430,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_BRAVIARY_HISUIAN] =
+    [SPECIES_BRAVIARY_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_FLY,
         .spriteInfo = 
@@ -8455,7 +8455,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_GOODRA_HISUIAN] =
+    [SPECIES_GOODRA_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE,
         .spriteInfo = 
@@ -8480,7 +8480,7 @@ static const struct RideMonInfo sRideMonInfo[NUM_SPECIES] =
             },
         }
     },
-    [SPECIES_AVALUGG_HISUIAN] =
+    [SPECIES_AVALUGG_HISUI] =
     {
         .flags = RIDE_MON_FLAG_CAN_RIDE | RIDE_MON_FLAG_CAN_SWIM,
         .spriteInfo = 

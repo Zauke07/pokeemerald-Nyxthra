@@ -40,16 +40,16 @@ enum
 
 u16 TryBufferTwixPhrase(void)
 {
-    if (IsTwixPhraseEmpty())
+    if (IsWaldaPhraseEmpty())
         return FALSE;
 
-    StringCopy(gStringVar1, GetTwixPhrasePtr());
+    StringCopy(gStringVar1, GetWaldaPhrasePtr());
     return TRUE;
 }
 
 void DoTwixNamingScreen(void)
 {
-    StringCopy(gStringVar2, GetTwixPhrasePtr());
+    StringCopy(gStringVar2, GetWaldaPhrasePtr());
     DoNamingScreen(NAMING_SCREEN_WALDA, gStringVar2, 0, 0, 0, CB2_HandleGivenTwixPhrase);
 }
 
@@ -62,19 +62,19 @@ static void CB2_HandleGivenTwixPhrase(void)
     case PHRASE_EMPTY:
         // If saved phrase is also empty, set default phrase
         // Otherwise keep saved phrase
-        if (IsTwixPhraseEmpty())
-            SetTwixPhrase(gText_Peekaboo);
+        if (IsWaldaPhraseEmpty())
+            SetWaldaPhrase(gText_Peekaboo);
         else
             gSpecialVar_0x8004 = PHRASE_NO_CHANGE;
         break;
     case PHRASE_CHANGED:
-        SetTwixPhrase(gStringVar2);
+        SetWaldaPhrase(gStringVar2);
         break;
     case PHRASE_NO_CHANGE:
         break;
     }
 
-    StringCopy(gStringVar1, GetTwixPhrasePtr());
+    StringCopy(gStringVar1, GetWaldaPhrasePtr());
     gFieldCallback = FieldCB_ContinueScriptHandleMusic;
     SetMainCallback2(CB2_ReturnToField);
 }
@@ -86,7 +86,7 @@ static u32 GetTwixPhraseInputCase(u8 *inputPtr)
         return PHRASE_EMPTY;
 
     // Input given is the same as saved phrase
-    if (StringCompare(inputPtr, GetTwixPhrasePtr()) == 0)
+    if (StringCompare(inputPtr, GetWaldaPhrasePtr()) == 0)
         return PHRASE_NO_CHANGE;
 
     // Input is new phrase
@@ -98,16 +98,16 @@ u16 TryGetWallpaperWithTwixPhrase(void)
     u16 backgroundClr, foregroundClr;
     u8 patternId, iconId;
     u16 trainerId = GetTrainerId(gSaveBlock2Ptr->playerTrainerId);
-    gSpecialVar_Result = TryCalculateWallpaper(&backgroundClr, &foregroundClr, &iconId, &patternId, trainerId, GetTwixPhrasePtr());
+    gSpecialVar_Result = TryCalculateWallpaper(&backgroundClr, &foregroundClr, &iconId, &patternId, trainerId, GetWaldaPhrasePtr());
 
     if (gSpecialVar_Result)
     {
-        SetTwixWallpaperPatternId(patternId);
-        SetTwixWallpaperIconId(iconId);
-        SetTwixWallpaperColors(backgroundClr, foregroundClr);
+        SetWaldaWallpaperPatternId(patternId);
+        SetWaldaWallpaperIconId(iconId);
+        SetWaldaWallpaperColors(backgroundClr, foregroundClr);
     }
 
-    SetTwixWallpaperLockedOrUnlocked(gSpecialVar_Result);
+    SetWaldaWallpaperLockedOrUnlocked(gSpecialVar_Result);
     return (bool8)gSpecialVar_Result;
 }
 

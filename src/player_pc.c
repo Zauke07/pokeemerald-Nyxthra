@@ -479,7 +479,7 @@ void NewGameInitPCItems(void)
 
         itemId = sNewGamePCItems[i][0];
         if (itemId == ITEM_POTION)
-            itemId = Randomizer_GetItem(itemId, RANDOMIZER_MODE_FIELD_ITEM);
+            itemId = Randomizer_GetAllowedContextualItem(itemId, RANDOMIZER_MODE_GIFT, 0x50434954u);
 
         if (AddPCItem(itemId, sNewGamePCItems[i][1]) != TRUE)
             break;

@@ -6,11 +6,13 @@
 #include "field_effect.h"
 #include "field_player_avatar.h"
 #include "follower_npc.h"
+#include "overworld.h"
 #include "pokemon.h"
 #include "script.h"
 #include "script_movement.h"
 #include "sprite.h"
 #include "task.h"
+#include "battle_script_commands.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
@@ -494,6 +496,12 @@ bool8 CheckForTrainersWantingBattle(void)
             break;
     }
 
+
+    if (gNoOfApproachingTrainers > 0 && NoAliveMonsForPlayer())
+    {
+        DoWhiteOut();
+        return TRUE;
+    }
 
     if (InBattlePyramid_() || InTrainerHillChallenge())
     {

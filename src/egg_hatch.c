@@ -81,6 +81,8 @@ static void SpriteCB_EggShard(struct Sprite *);
 static void EggHatchPrintMessage(u8, u8 *, u8, u8, u8);
 static void CreateRandomEggShardSprite(void);
 static void CreateEggShardSprite(u8, u8, s16, s16, s16, u8);
+static u16 GetFallbackHatchSpecies(void);
+static u16 SanitizeEggHatchSpecies(u16 species);
 
 static struct EggHatchData *sEggHatchData;
 
@@ -306,6 +308,27 @@ static const s16 sEggShardVelocities[][GENDER_COUNT] =
     {Q_8_8(2.5),        Q_8_8(-7.5)},
 };
 
+static u16 GetFallbackHatchSpecies(void)
+{
+    u16 species;
+
+    for (species = SPECIES_BULBASAUR; species < NUM_SPECIES; species++)
+    {
+        if (species != SPECIES_EGG && IsSpeciesEnabled(species))
+            return species;
+    }
+
+    return SPECIES_BULBASAUR;
+}
+
+static u16 SanitizeEggHatchSpecies(u16 species)
+{
+    if (species <= SPECIES_NONE || species >= NUM_SPECIES || !IsSpeciesEnabled(species) || species == SPECIES_EGG)
+        return GetFallbackHatchSpecies();
+
+    return species;
+}
+
 static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
 {
     u16 species;
@@ -315,7 +338,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     enum Move moves[MAX_MON_MOVES];
     u32 ivs[NUM_STATS];
 
-    species = GetMonData(egg, MON_DATA_SPECIES);
+    species = SanitizeEggHatchSpecies(GetMonData(egg, MON_DATA_SPECIES));
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         moves[i] = GetMonData(egg, MON_DATA_MOVE1 + i);
@@ -370,9 +393,8 @@ static void AddHatchedMonToParty(u8 id)
     StringCopy(name, GetSpeciesName(species));
     SetMonData(mon, MON_DATA_NICKNAME, name);
 
-    species = SpeciesToNationalPokedexNum(species);
-    GetSetPokedexFlag(species, FLAG_SET_SEEN);
-    GetSetPokedexFlag(species, FLAG_SET_CAUGHT);
+    HandleSetPokedexFlagFromSpecies(species, FLAG_SET_SEEN, 0);
+    HandleSetPokedexFlagFromSpecies(species, FLAG_SET_CAUGHT, 0);
 
     GetMonNickname(mon, gStringVar1);
 
@@ -697,12 +719,15 @@ static void CB2_EggHatch(void)
         break;
     case 8:
         if (GetCurrentNicknameMode() == OPTIONS_NICKNAME_MODE_NEVER)
-            {
-                sEggHatchData->state = 11; // Direkt zum Fadeout
-            }
+        {
+            sEggHatchData->state = 11;
+            break;
+        }
         else
-        // Ready the nickname prompt
-        GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyId], gStringVar1);
+        {
+            // Ready the nickname prompt
+            GetMonNickname(&gPlayerParty[sEggHatchData->eggPartyId], gStringVar1);
+        }
         StringExpandPlaceholders(gStringVar4, gText_NicknameHatchPrompt);
         EggHatchPrintMessage(sEggHatchData->windowId, gStringVar4, 0, 2, 1);
         sEggHatchData->state++;

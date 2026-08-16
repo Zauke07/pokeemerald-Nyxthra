@@ -1,4 +1,4 @@
-# Pokémon Nyxthra - Alpha v1.0.8
+# Pokémon Nyxthra - Beta 1.1.2
 
 Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.15.0) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
 
@@ -11,19 +11,29 @@ https://github.com/rh-hideout/pokeemerald-expansion
 
 - Projektstart: 01.01.2024
 - Basis: pokeemerald-expansion v1.15.0
-- Aktuelle Nyxthra-Version: Alpha v1.0.8
+- Aktuelle Nyxthra-Version: Beta 1.1.5
 - Sprache: Deutsch
-- Status: Interne Testphase (ausgewählte Tester)
+- Status: Erste öffentliche Beta
 
 ---
 
 ## ✨ Features & Änderungen
 
 ### 🎮 Gameplay & Story
-- Vollständig überarbeitete Hauptstory mit eigenen Dialogen, Events und Szenen
+- Teilweise überarbeitete Hauptstory mit eigenen Dialogen, Events und Szenen
 - Neue Trainer, Teams und Begegnungen über mehrere Generationen hinweg
 - Überarbeitetes Balancing für Levelkurve, KI und Kampfverlauf
 - Freie Starterwahl: Starter aus Gen 1-9 statt klassischer Hoenn-Auswahl
+
+### 🎲 Randomizer & Progression
+- Integriertes Randomizer-Setup direkt vor Spielstart
+- Randomisierbare Wild-, Trainer-, Starter-, Evolutions-, Geschenk- und statische Pokémon
+- Randomisierbare Feld-Items, versteckte Items, Shops sowie NPC-Itemgeschenke mit kontextabhängiger Zuordnung
+- Separat randomisierbare TM-Attacken bei weiterhin fixen VMs
+- Optional randomisierbare Attacken-AP, Attacken-Stärke, Lernsets, Fähigkeiten und Basiswerte
+- Schutz wichtiger Progressions-Items: Keine Randomisierung von Key-Items, Platzhalter-Items oder VM/HM-Items
+- Nationaldex wird direkt beim ersten Erhalt des Pokédex freigeschaltet
+- Legendäre und statische Begegnungen wurden für das neue Encounter-System angepasst
 
 ### 🌞 Tag/Nacht, Uhr & Overworld
 - DNS-System (Day/Night) auf Nyxthra angepasst
@@ -55,7 +65,12 @@ https://github.com/rh-hideout/pokeemerald-expansion
   - Florian
   - Juliana
 - Rivalen, Dialoge und Eventabläufe reagieren dynamisch auf den gewählten Style
-- Hinweis: Für einige Styles sind noch nicht alle Sprite-Zustände final (z. B. Surf/Fishing/Field Move/Rival-Varianten). In diesen Fällen nutzt das Spiel aktuell bewusst Fallback-Grafiken, bis alle finalen Assets fertig sind.
+- Aktueller Grafikstatus (Beta 1.1.2):
+  - Vollständig mit allen Grafikzuständen: Hans, Brigitte, Red, Leaf, Ethan, Lyra, Lucas, Dawn
+  - Calem ist vollständig, außer bei Fahrrad-Zuständen (Eilrad/Kunstrad), dort wird Fallback genutzt
+  - Alle übrigen Styles nutzen aktuell je nach Zustand Fallback-Grafiken, bis die finalen Assets fertig sind
+  - Taucher-Zustand (Unterwasser) nutzt derzeit für alle Styles einen stabilen Fallback auf Hans bzw. Brigitte
+  - Rivalen-Fallback (nur für Elio, Florian, Gloria, Juliana, Nate, Rosa, Selene, Serena, Victor): nur Field Move sowie beide Fahrräder über Rival-Brendan/Rival-May-Fallback; sonst bleiben die normalen Zustände erhalten
 
 ### ⚙️ Komfortfunktionen
 - Spitznamen-Dialog beim Fangen/Erhalten optional überspringbar
@@ -68,21 +83,173 @@ https://github.com/rh-hideout/pokeemerald-expansion
 - 50+ neue Scripts und zusätzliche Funktionslogik
 - Geschlechterbasierte Checks weitgehend vereinheitlicht/ersetzt
 - Neue Grafiken, Paletten und Overworld-Sprites eingebunden
+- Fallback-Logik für fehlende Form-/Style-Grafiken, Paletten und Icons eingebunden
 
 ---
 
-## 🆕 Neu in Alpha v1.0.8
+## 🆕 Neu in Beta 1.1.5
+
+- Surf-Bug behoben: Charaktere bleiben nicht mehr nach Kämpfen auf Fuß auf dem Wasser
+- Pokédex-Anzeige korrigiert: Alle Formen werden jetzt korrekt in ihren individuellen Einträgen angezeigt, statt alle Formen als normales Pokémon zu zeigen
+- Stabilitätsfixes für Pokédex-Formeinträge im Ruf-Screen (u. a. Alola, Hisui, Galar, Shadow)
+- Ruf-Logik überarbeitet: Form-Sprite/-Name bleiben erhalten, während der Cry zuverlässig über die Basisform abgespielt wird
+- Mehrere Absturz- und Darstellungsfehler im Pokédex-Ruf-Screen behoben
+- Overworld-Style-Fallbacks überarbeitet, um Resets/Abstürze bei fehlenden Bewegungs-Sprites zu verhindern
+- Rivalen-Zustände für moderne Styles gezielt abgesichert: Fallback nur bei Field Move und beiden Fahrrädern
+- Pokémon-Boxen von 10 auf 12 erweitert
+- Dark Mode (Alpha) eingebaut
+  - Hinweis: Daran wird noch gearbeitet, da es bei einzelnen Anzeigen noch Darstellungsfehler gibt
+- Trainerpass farblich angepasst
+- Verbindungsschnur eingebaut
+  - Ermöglicht Tauschentwicklungen ohne Tausch
+- Fehler in `include/constants/event_objects.h` bereinigt, um Grafikfehler durch doppelte/inkonsistente IDs zu vermeiden
+- Battle-Speed-Optionen für Wildkämpfe, Trainerkämpfe und wichtige Kämpfe wegen Bugs vorübergehend entfernt
+
+## 🧩 Aktueller Dev-Stand (nach Beta 1.1.2)
+
+- Challenge-Menü (Dark Mode) lesbarer gemacht: weiße Texte mit schwarzem Schatten, grüner Titel ebenfalls mit schwarzem Schatten
+- Hauptmenü-Reihenfolge angepasst: Challenge-Menü steht vor Optionen, inklusive korrekter Cursor-/Rücksprunglogik
+- Warp-Randomizer stabilisiert:
+  - Dynamic-Warp-Indexing in der Overworld-Logik korrigiert
+  - Zusätzliche Bounds-Checks beim Warp-Setup ergänzt
+  - Tür-Zwillingswarps (linke/rechte Tür-Kachel) werden auf einen kanonischen Warp zusammengeführt, damit Rückwege stabil bleiben
+  - Zusätzliche Ziel-Validierung für Warp-Spawns (Map-Layout/Koordinaten) ergänzt
+  - Sicherer Fallback eingebaut: Bei ungültigem Override wird auf normalen Warp zurückgefallen statt Absturz
+- Harte Warp-Exclusions für kritische Bereiche aktiv:
+  - Wurzelheim
+  - LKW-Innenraum
+  - Testlabor-Maps
+  - Trainer Hill (inkl. Eingang, Etagen, Dach, Aufzug)
+  - Ruhmeshalle (Ever Grande + Pokémon-Liga-Hall of Fame)
+- Zusätzlicher Hinweis-NPC (Bill) vor dem Trainer-Hill-Eingang ergänzt:
+  - Klare Ingame-Warnung, dass der Bereich aktuell nicht final bearbeitet ist
+  - Hinweis auf mögliches Fehlverhalten/Softlocks bei erzwungenem Eintritt (z. B. via Debug)
+- Softlock-Schutz bei leerem Team nach Weißwerden ergänzt:
+  - Pokémon-Center und Mutter-Event prüfen die Party
+  - Bei 0 kampffähigen Pokémon wird ein Notfall-Zigzachs (Level 5) vergeben
+  - Zusätzliche Dialoge für Erfolgs-/Fehlerfälle ergänzt
+- Trainer-Whiteout-Guard korrigiert, um globale Eingabesperren zu verhindern (nur aktiv, wenn wirklich ein Trainerkampf unmittelbar startet)
+- Notfall-Teleporter in BIRKs Labor für aktiven Tür-Warp-Randomizer ergänzt:
+  - Item wird beim Pokédex-/Pokéball-Abschnitt nur einmal vergeben
+  - Dialogfluss im Labor angepasst, damit der Hinweis sichtbar von Prof. Birk kommt
+  - Teleporter nutzt Rückkehr zum letzten Heilpunkt als Softlock-Absicherung
+- Freundschaftssystem korrigiert:
+  - Ursache für Sprung auf 255 nach K.O./Weißwerden behoben (Signed/Unsigned-Fehler in der Bonus-Berechnung)
+  - Freundschafts-Eventwerte wieder auf normale Standard-Werte zurückgesetzt
+- Shiny-Rate leicht erhöht:
+  - Basisrate von 1/8192 auf 1/4096 (moderner Standard) angehoben
+- Fang-/Form-Fix für temporäre Kampfformen ergänzt:
+  - Gefangene Pokémon aus temporären Formen (z. B. Mega-/Kampf-Formen) werden beim Übergeben korrekt auf die Ursprungsform normalisiert
+  - Standard-Spitznamen werden dabei sauber auf den korrekten Formnamen zurückgeführt
+  - Pokédex-/Fang-Referenzen nutzen für diese Fälle jetzt ebenfalls die Ursprungsform
+- Gen-9-Lokalisierung fortgeführt:
+  - Erste größere Charge klar englischer Kategorie-/Beschreibungstexte auf Deutsch umgestellt
+  - Fokus in diesem Schritt auf Form-Makros und mehrere noch englische Spezies-Einträge
+
+## ⚠️ Wichtige Info
+
+- Der Spielstand kann in dieser Version als "beschädigt" angezeigt werden.
+- Grund: Es wurden Änderungen an der Save-Datenstruktur vorgenommen.
+- Mit dieser Version ist deshalb ein Neustart erforderlich.
+
+## 🆕 Enthalten aus Alpha v1.1.0
 
 - Weitere Story-/Eventanpassungen
+- Neues Randomizer-System mit Startkonfiguration vor Spielbeginn und erweiterten Toggle-Optionen
+- Überarbeitete statische Begegnungen und legendäre Encounter-Logik
+- Zusätzliche Randomizer-Optionen für TMs, Lernsets, Fähigkeiten, Basiswerte sowie Attackenwerte
+- Sofortiger Nationaldex beim Pokédex-Erhalt
 - Überarbeitungen an Overworld-Objekten und Lichtverhalten
 - Verbesserte Stabilität bei Stadt-/Gebäudewechseln
 - Diverse interne Codebereinigungen und Bugfixes
 
 ---
 
+## 📝 Melder- & Fix-Log
+
+Hier sammeln wir gemeldete Bugs mit Melder und Fix-Status.
+
+- Melder: ChaosOli
+  - Meldung: Blütenberg-NPC im PokéCenter hatte englischen Dialog.
+  - Status: Gefixt.
+
+- Melder: ChaosOli
+  - Meldung: Hinterer Teil bei der Eingabe war nicht übersetzt.
+  - Status: Gefixt.
+
+- Melder: ChaosOli
+  - Meldung: Freeze beim Einsatz von Zerschneider mit Elio.
+  - Ursache: Fehlende Fallback-/Graphics-Info-Zuordnung in den Style-Zuständen.
+  - Status: Gefixt.
+
+- Melder: Metze
+  - Meldung: Beim Angeln mit Red stürzt das Spiel ab.
+  - Status: Gefixt.
+  - Hinweis: Angeln wurde für alle Charaktere abgesichert; bei einzelnen Styles wird vorerst Fallback verwendet.
+
+- Melder: Metze
+  - Meldung: Battle-Style-Option (Wechsel/Folge) fehlte.
+  - Status: Gefixt.
+  - Hinweis: Battle-Style ist wieder im Optionsmenü verfügbar.
+
+- Melder: _JuliaN_
+  - Meldung: Gedankengut lässt das Spiel abstürzen.
+  - Status: Gefixt.
+
+- Melder: SurFaze
+  - Meldung: Nach Ende der Safari-Zone spawnt der Spieler in Wurzelheim.
+  - Status: Gefixt.
+
+- Melder: Metze
+  - Meldung: Purmel wurde fälschlicherweise mit dem Namen Fiaro angezeigt.
+  - Status: Gefixt.
+
+- Melder: Metze
+  - Meldung: Englischer Text bei Flavia.
+  - Status: Gefixt.
+  - Hinweis: Auf Deutsch angepasst und an Nyxthra-Ton angepasst.
+
+- Melder: Community (Randomizer-Tests)
+  - Meldung: Tür-Warp-Randomizer konnte in die Ruhmeshalle führen (frühes Spielende + Folgefehler/Softlock-Risiko).
+  - Status: Gefixt.
+  - Hinweis: Ruhmeshalle ist jetzt aus dem Tür-Warp-Pool ausgeschlossen.
+
+- Melder: Community (Randomizer-Tests)
+  - Meldung: Bei K.O./Weißwerden sprang Freundschaft teils direkt auf 255.
+  - Status: Gefixt.
+  - Ursache: Signed/Unsigned-Fehler in der Freundschaftsbonus-Berechnung.
+
+- Melder: Community (Randomizer-Tests)
+  - Meldung: Teleporter-Hinweis im BIRK-Labor wirkte im Ablauf wie Rivalen-Dialog.
+  - Status: Gefixt.
+  - Hinweis: Dialog-/Bewegungsablauf angepasst, damit der Hinweis eindeutig von Prof. Birk kommt.
+
+- Melder: Community (Randomizer-Tests)
+  - Meldung: Unklarer Status am Trainer-Hill-Eingang, obwohl Bereich derzeit instabil ist.
+  - Status: Gefixt.
+  - Hinweis: Bill-NPC mit expliziter Warnung vor Fehlern/Softlocks am Eingang ergänzt.
+
+- Melder: Community
+  - Meldung: Beim Fangen von temporären Formen (z. B. Mega) blieb nach dem Kampf teils ein falscher Name bestehen.
+  - Status: Gefixt.
+  - Ursache: Fang-/Dex-/Naming-Flow nutzte in Teilpfaden noch die temporäre Kampfform.
+
+- Melder: Community
+  - Meldung: Gen-9-Einträge enthielten weiterhin zahlreiche englische Kategorien/Beschreibungen.
+  - Status: In Arbeit (erste größere Charge gefixt).
+
+- Melder: _JuliaN_
+  - Meldung: Einige Charaktere bleiben nach Kämpfen beim Surfen auf Fuß auf dem Wasser statt auf dem Surfer-Zustand.
+  - Status: Gefixt.
+  - Hinweis: Avatar-State-Mapping für Surf-Flag wurde korrigiert; alle Styles sollten nun stabil surfen können.
+
+- Stand aktuell: Keine weiteren offenen Meldungen.
+
+---
+
 ## ℹ️ Hinweise für Tester
 
-- Dies ist eine Alpha-Version. Fehler, fehlende Assets oder falsche Trigger sind möglich.
+- Dies ist eine Beta-Version. Fehler, fehlende Assets oder falsche Trigger sind weiterhin möglich.
 - Das Debug-Menü ist nur für Testzwecke vorhanden und nicht vollständig abgesichert.
 - Falsche Debug-Auswahl kann Abstürze oder beschädigte Saves verursachen.
 - Bitte Bugs möglichst genau melden (Ort, Situation, Schritte, ggf. Screenshot/Video).
@@ -94,6 +261,7 @@ https://github.com/rh-hideout/pokeemerald-expansion
 - Eilrad/Kunstrad kann in Einzelfällen nach Kämpfen fehlerhaft weiterlaufen (Musik aktiv, Effekt in Teilen verloren)
 - Einige Field Moves können situativ fehlerhaft reagieren (z. B. Fliegen, Blitz)
 - Einzelne Overworld-Sprites besitzen noch grafische Ungenauigkeiten
+- Nicht alle Story-/Eventabschnitte sind bereits vollständig auf Nyxthra umgeschrieben
 
 ---
 

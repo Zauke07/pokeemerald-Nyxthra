@@ -1,12 +1,7 @@
 #ifndef GUARD_POKEMON_STORAGE_SYSTEM_H
 #define GUARD_POKEMON_STORAGE_SYSTEM_H
 
-#define ACTUAL_TOTAL_BOXES_COUNT       14
-
-// RogueNote: These boxes are put asside as extra storage
-#define LEFTOVER_BOXES_COUNT    4
-
-#define TOTAL_BOXES_COUNT       10
+#define TOTAL_BOXES_COUNT       12
 #define IN_BOX_ROWS             5 // Number of rows, 6 Pokémon per row
 #define IN_BOX_COLUMNS          6 // Number of columns, 5 Pokémon per column
 #define IN_BOX_COUNT            (IN_BOX_ROWS * IN_BOX_COLUMNS)
@@ -29,14 +24,6 @@ struct PokemonStorage
     /*0x8344*/ u8 boxNames[TOTAL_BOXES_COUNT][BOX_NAME_LENGTH + 1];
     /*0x83C2*/ u8 boxWallpapers[TOTAL_BOXES_COUNT];
     /*0x8432*/ struct Pokemon fusions[MAX_FUSION_STORAGE];
-};
-
-struct __UseablePokemonStorage
-{
-    u8 currentBox;
-    struct BoxPokemon boxes[TOTAL_BOXES_COUNT][IN_BOX_COUNT];
-    u8 boxNames[TOTAL_BOXES_COUNT][BOX_NAME_LENGTH + 1];
-    u8 boxWallpapers[TOTAL_BOXES_COUNT];
 };
 
 extern struct PokemonStorage *gPokemonStoragePtr;
@@ -71,17 +58,17 @@ u32 CountAllStorageMons(void);
 bool32 AnyStorageMonWithMove(enum Move move);
 
 void ResetWaldaWallpaper(void);
-void SetTwixWallpaperLockedOrUnlocked(bool32 unlocked);
+void SetWaldaWallpaperLockedOrUnlocked(bool32 unlocked);
 bool32 IsWaldaWallpaperUnlocked(void);
 u32 GetWaldaWallpaperPatternId(void);
-void SetTwixWallpaperPatternId(u8 id);
+void SetWaldaWallpaperPatternId(u8 id);
 u32 GetWaldaWallpaperIconId(void);
-void SetTwixWallpaperIconId(u8 id);
+void SetWaldaWallpaperIconId(u8 id);
 u16 *GetWaldaWallpaperColorsPtr(void);
-void SetTwixWallpaperColors(u16 color1, u16 color2);
-u8 *GetTwixPhrasePtr(void);
-void SetTwixPhrase(const u8 *src);
-bool32 IsTwixPhraseEmpty(void);
+void SetWaldaWallpaperColors(u16 color1, u16 color2);
+u8 *GetWaldaPhrasePtr(void);
+void SetWaldaPhrase(const u8 *src);
+bool32 IsWaldaPhraseEmpty(void);
 
 void ChooseMonFromStorage();
 u32 CountPartyNonEggMons(void);

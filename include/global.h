@@ -617,6 +617,7 @@ struct SaveBlock2
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
              u16 optionsManualEvolution:1; // whether level-up evolutions require manual confirmation
+             u16 optionsUITheme:1; // 0 = hell (Standard), 1 = dunkel (Dark Mode)
              u8 optionsPopupSoundOff;
              u8 timeOfDayVisuals;
              u8 seasonVisuals;
@@ -629,7 +630,8 @@ struct SaveBlock2
     /*0x90*/ u32 optionsRandomizerSeed;
     /*0x94*/ u8 optionsRandomizerEnabled;
              u8 optionsRandomizerFlags;
-             u8 filler_96[0x2];
+             u8 optionsRandomizerExtraFlags;
+             u8 optionsChallengeFlags;
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokémon Colosseum/XD

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "bg.h"
+#include "challenge_mode.h"
 #include "gpu_regs.h"
 #include "main.h"
 #include "main_menu.h"
@@ -27,6 +28,8 @@ enum
 {
     SCREEN_ASK,
     SCREEN_CONFIG,
+    SCREEN_LOCK_WARNING,
+    SCREEN_LOCK_WARNING_CONFIRM,
     SCREEN_START_CONFIRM,
 };
 
@@ -39,7 +42,8 @@ enum
 struct RandomizerSetupState
 {
     bool8 enabled;
-    u8 flags;
+    bool8 doorWarpEnabled;
+    u16 flags;
     u32 seed;
 };
 
@@ -83,11 +87,11 @@ static const struct WindowTemplate sWindowTemplates[] =
 
 static const u16 sMainMenuTextPal[] = INCBIN_U16("graphics/interface/main_menu_text.gbapal");
 static const u8 sTextColorTitle[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_GREEN, TEXT_COLOR_LIGHT_GRAY};
-static const u8 sTextColorHeader[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
-static const u8 sTextColorMain[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
-static const u8 sTextColorCursor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sTextColorHeader[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_3, TEXT_DYNAMIC_COLOR_2};
+static const u8 sTextColorMain[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_3, TEXT_DYNAMIC_COLOR_2};
+static const u8 sTextColorCursor[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_3, TEXT_DYNAMIC_COLOR_2};
 
-static const u8 sTextTitle[] = _("Randomizer Setup");
+static const u8 sTextTitle[] = _("Randomizer-Setup");
 static const u8 sTextAskEnable[] = _("Randomizer aktivieren?");
 static const u8 sTextYes[] = _("Ja");
 static const u8 sTextNo[] = _("Nein");
@@ -95,29 +99,54 @@ static const u8 sTextWild[] = _("Wild Pokémon");
 static const u8 sTextTrainer[] = _("Trainer-Pokémon");
 static const u8 sTextStarter[] = _("Starter-Pokémon");
 static const u8 sTextEvolution[] = _("Evolutionsziel");
-static const u8 sTextFieldItems[] = _("Field Items + TM/VM");
+static const u8 sTextFieldItems[] = _("Feld-Items");
+static const u8 sTextTmHm[] = _("TM/VM-Attacken");
+static const u8 sTextUniversalTmHm[] = _("Alle TM/VM lernen");
 static const u8 sTextGift[] = _("Geschenk-Pokémon");
 static const u8 sTextStatic[] = _("Statische Pokémon");
-static const u8 sTextKeepLegends[] = _("Static Legenden fix");
+static const u8 sTextKeepLegends[] = _("Legendäre fix");
+static const u8 sTextMovePp[] = _("Attacken-AP");
+static const u8 sTextMovePower[] = _("Attacken-Stärke");
+static const u8 sTextLearnset[] = _("Lernattacken");
+static const u8 sTextAbilities[] = _("Fähigkeiten");
+static const u8 sTextBaseStats[] = _("Pokémon-Werte");
+static const u8 sTextDoorWarp[] = _("Tür-Warp-Random");
 static const u8 sTextSeed[] = _("Seed");
 static const u8 sTextSave[] = _("Speichern");
-static const u8 sTextOn[] = _("{COLOR GREEN}ON");
-static const u8 sTextOff[] = _("{COLOR RED}OFF");
+static const u8 sTextOn[] = _("{COLOR GREEN}{SHADOW LIGHT_GRAY}ON");
+static const u8 sTextOff[] = _("{COLOR RED}{SHADOW LIGHT_GRAY}OFF");
 static const u8 sTextCursor[] = _("▶");
-static const u8 sTextStartConfirm[] = _("Randomizer so starten?");
+static const u8 sTextLockWarning[] = _(
+    "WARNUNG:\nDie Randomizer-\nEinstellungen können nach\nSpielstart nicht geändert werden.\n\n"
+    "Lies den Hinweis erst komplett,\n"
+    "bevor du bestätigst.");
+static const u8 sTextLockWarningConfirm[] = _("Fortfahren?");
+static const u8 sTextStartConfirm[] = _("Mit diesen Einstellungen\nwirklich starten?");
+static const u8 sTextStartConfirmPrompt[] = _("Jetzt starten?");
 static const u8 sTextMsgAskYes[] = _("Ja: Einstellungen öffnen.");
 static const u8 sTextMsgAskNo[] = _("Nein: Normal starten.");
 static const u8 sTextMsgWild[] = _("Wilde Pokémon werden\nneu zugeordnet.");
 static const u8 sTextMsgTrainer[] = _("Trainer-Pokémon werden\nneu zugeordnet.");
 static const u8 sTextMsgStarter[] = _("Starter-Pokémon werden\nneu zugeordnet.");
 static const u8 sTextMsgEvolution[] = _("Evolutionsziele werden\nneu zugeordnet.");
-static const u8 sTextMsgField[] = _("Feld-Items, versteckte Items,\nShops und TM/VM werden gemappt.");
+static const u8 sTextMsgField[] = _("Feld-Items, versteckte Items\nund Shops werden gemappt.");
+static const u8 sTextMsgTmHm[] = _("TM-Attacken werden separat\nrandomisiert. VMs bleiben fix\nund erscheinen nicht als TMs.");
+static const u8 sTextMsgUniversalTmHm[] = _("Klassisch: Jedes Pokémon\nkann jede TM und VM lernen.");
 static const u8 sTextMsgGift[] = _("Geschenk-Pokémon werden\nneu zugeordnet.");
 static const u8 sTextMsgStatic[] = _("Statische Begegnungen\nwerden neu zugeordnet.");
-static const u8 sTextMsgKeepLegends[] = _("Legenden/Mythicals bleiben\nbei statischen Encountern fix.");
+static const u8 sTextMsgKeepLegends[] = _("Legendäre und Mythische\nbleiben bei statischen Begegnungen fix.");
+static const u8 sTextMsgMovePp[] = _("Attacken bekommen zufällige\nAP-Werte.");
+static const u8 sTextMsgMovePower[] = _("Beschädigende Attacken bekommen\nzufällige Stärke. Typen bleiben.");
+static const u8 sTextMsgLearnset[] = _("Level-Up-Attacken werden\npro Pokémon neu zugeordnet.");
+static const u8 sTextMsgAbilities[] = _("Fähigkeiten werden pro Pokémon\nneu zugeordnet. Spezialfälle bleiben aus.");
+static const u8 sTextMsgBaseStats[] = _("Basiswerte werden pro Pokémon\nneu verteilt, Gesamtsumme bleibt.");
+static const u8 sTextMsgDoorWarp[] = _("Gebäudeeingänge/Türen werden\nzusätzlich randomisiert.");
 static const u8 sTextMsgSeed[] = _("A: Seed bearbeiten\nHoch/Runter: Menüpunkt.");
 static const u8 sTextMsgSeedEdit[] = _("Links/Rechts: Stelle wählen\nHoch/Runter: Ziffer ändern.");
 static const u8 sTextMsgSave[] = _("A: Start-Bestätigung  B: Zurück");
+static const u8 sTextMsgLockWarningContinue[] = _("A: Weiter  B: Zurück");
+static const u8 sTextMsgLockWarningYes[] = _("Ja: Zur finalen Bestätigung.");
+static const u8 sTextMsgLockWarningNo[] = _("Nein: Zurück zu Einstellungen.");
 static const u8 sTextMsgConfirmYes[] = _("Ja: Speichern und Intro starten.");
 static const u8 sTextMsgConfirmNo[] = _("Nein: Zurück zu Einstellungen.");
 
@@ -128,26 +157,42 @@ static const u8 *const sLabels[] =
     sTextStarter,
     sTextEvolution,
     sTextFieldItems,
+    sTextTmHm,
+    sTextUniversalTmHm,
     sTextGift,
     sTextStatic,
     sTextKeepLegends,
+    sTextMovePp,
+    sTextMovePower,
+    sTextLearnset,
+    sTextAbilities,
+    sTextBaseStats,
+    sTextDoorWarp,
 };
 
-static const u8 sBits[] =
+static const u16 sBits[] =
 {
     RANDOMIZER_FLAG_WILD,
     RANDOMIZER_FLAG_TRAINER,
     RANDOMIZER_FLAG_STARTER,
     RANDOMIZER_FLAG_EVOLUTION,
     RANDOMIZER_FLAG_FIELD_ITEM,
+    RANDOMIZER_FLAG_TMHM,
+    RANDOMIZER_FLAG_UNIVERSAL_TMHM,
     RANDOMIZER_FLAG_GIFT,
     RANDOMIZER_FLAG_STATIC,
     RANDOMIZER_FLAG_STATIC_KEEP_LEGENDS,
+    RANDOMIZER_FLAG_MOVE_PP,
+    RANDOMIZER_FLAG_MOVE_POWER,
+    RANDOMIZER_FLAG_LEARNSET,
+    RANDOMIZER_FLAG_ABILITIES,
+    RANDOMIZER_FLAG_BASE_STATS,
 };
 
 #define TOGGLE_COUNT ARRAY_COUNT(sLabels)
 #define CURSOR_SEED TOGGLE_COUNT
 #define CURSOR_CONFIRM (TOGGLE_COUNT + 1)
+#define DOOR_WARP_TOGGLE_INDEX (TOGGLE_COUNT - 1)
 
 static const u32 sSeedPlaceValues[] =
 {
@@ -192,14 +237,21 @@ static void VBlankCB_Randomizer(void)
 static void InitDefaultConfig(void)
 {
     sSetup.enabled = TRUE;
+    sSetup.doorWarpEnabled = FALSE;
     sSetup.flags = RANDOMIZER_FLAG_WILD
                  | RANDOMIZER_FLAG_TRAINER
                  | RANDOMIZER_FLAG_STARTER
                  | RANDOMIZER_FLAG_EVOLUTION
                  | RANDOMIZER_FLAG_FIELD_ITEM
+                 | RANDOMIZER_FLAG_TMHM
                  | RANDOMIZER_FLAG_GIFT
                  | RANDOMIZER_FLAG_STATIC
-                 | RANDOMIZER_FLAG_STATIC_KEEP_LEGENDS;
+                 | RANDOMIZER_FLAG_STATIC_KEEP_LEGENDS
+                 | RANDOMIZER_FLAG_MOVE_PP
+                 | RANDOMIZER_FLAG_MOVE_POWER
+                 | RANDOMIZER_FLAG_LEARNSET
+                 | RANDOMIZER_FLAG_ABILITIES
+                 | RANDOMIZER_FLAG_BASE_STATS;
     sSetup.seed = ((u32)Random() << 16) | Random();
     if (sSetup.seed == 0)
         sSetup.seed = 1;
@@ -207,8 +259,10 @@ static void InitDefaultConfig(void)
 
 static void DisableAndContinue(void)
 {
+    ChallengeMode_DisableDoorWarpRandom();
     gSaveBlock2Ptr->optionsRandomizerEnabled = FALSE;
     gSaveBlock2Ptr->optionsRandomizerFlags = 0;
+    gSaveBlock2Ptr->optionsRandomizerExtraFlags = 0;
     gSaveBlock2Ptr->optionsRandomizerSeed = 0;
     PlaySE(SE_SELECT);
     MainMenu_BeginBirchSpeechScene();
@@ -217,16 +271,59 @@ static void DisableAndContinue(void)
 static void SaveAndContinue(void)
 {
     gSaveBlock2Ptr->optionsRandomizerEnabled = sSetup.enabled;
-    gSaveBlock2Ptr->optionsRandomizerFlags = sSetup.flags;
+    gSaveBlock2Ptr->optionsRandomizerFlags = sSetup.flags & RANDOMIZER_BASE_FLAGS_MASK;
+    gSaveBlock2Ptr->optionsRandomizerExtraFlags = (sSetup.flags & RANDOMIZER_EXTRA_FLAGS_MASK) >> 8;
     gSaveBlock2Ptr->optionsRandomizerSeed = (sSetup.seed == 0) ? 1 : sSetup.seed;
+
+    if (sSetup.enabled && sSetup.doorWarpEnabled)
+        ChallengeMode_EnableDoorWarpRandom();
+    else
+        ChallengeMode_DisableDoorWarpRandom();
+
     PlaySE(SE_SELECT);
     MainMenu_BeginBirchSpeechScene();
+}
+
+static void Nyxthra_ApplyDarkModeToRandomizerBorderPalette(void)
+{
+    u32 i;
+
+    if (!gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    // Gleicher Filter wie beim korrekten Main-Menu-Fehlerfenster:
+    // nur sehr helle neutrale Eintraege ersetzen, Rahmenakzente bleiben.
+    for (i = 0; i < 16; i++)
+    {
+        u16 c = gPlttBufferUnfaded[BG_PLTT_ID(2) + i];
+        u8 r = (c >> 0) & 0x1F;
+        u8 g = (c >> 5) & 0x1F;
+        u8 b = (c >> 10) & 0x1F;
+        u8 max = r;
+        u8 min = r;
+
+        if (g > max)
+            max = g;
+        if (b > max)
+            max = b;
+        if (g < min)
+            min = g;
+        if (b < min)
+            min = b;
+
+        if ((u16)(r + g + b) >= 80 && (max - min) <= 3)
+        {
+            gPlttBufferUnfaded[BG_PLTT_ID(2) + i] = RGB(6, 7, 9);
+            gPlttBufferFaded[BG_PLTT_ID(2) + i]   = RGB(6, 7, 9);
+        }
+    }
 }
 
 static void LoadRandomizerWindowFrameTiles(u8 bgId, u16 tileOffset)
 {
     LoadBgTiles(bgId, GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->tiles, 0x120, tileOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToRandomizerBorderPalette();
 }
 
 static void InitRandomizerTextPalette(void)
@@ -235,11 +332,12 @@ static void InitRandomizerTextPalette(void)
 
     LoadPalette(sMainMenuTextPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
 
-    palette = RGB_WHITE;
+    // Im Dark-Mode Index 10 (PIXEL_FILL(0xA) = Fensterfuellfarbe) abdunkeln.
+    palette = gSaveBlock2Ptr->optionsUITheme ? RGB(6, 7, 9) : RGB_WHITE;
     LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
-    palette = RGB(12, 12, 12);
+    palette = RGB(8, 8, 8);
     LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
-    palette = RGB(26, 26, 25);
+    palette = RGB(30, 30, 30);
     LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
 
     if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
@@ -248,6 +346,9 @@ static void InitRandomizerTextPalette(void)
         palette = RGB(4, 16, 31);
 
     LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
+
+    // Dark-Mode fuer Indizes 1/2/3 anwenden.
+    Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
 }
 
 static void DrawRandomizerWindowBorder(u8 windowId, u16 baseTileNum)
@@ -303,11 +404,27 @@ static const u8 *GetConfigDescription(u8 cursor)
     case 4:
         return sTextMsgField;
     case 5:
-        return sTextMsgGift;
+        return sTextMsgTmHm;
     case 6:
-        return sTextMsgStatic;
+        return sTextMsgUniversalTmHm;
     case 7:
+        return sTextMsgGift;
+    case 8:
+        return sTextMsgStatic;
+    case 9:
         return sTextMsgKeepLegends;
+    case 10:
+        return sTextMsgMovePp;
+    case 11:
+        return sTextMsgMovePower;
+    case 12:
+        return sTextMsgLearnset;
+    case 13:
+        return sTextMsgAbilities;
+    case 14:
+        return sTextMsgBaseStats;
+    case 15:
+        return sTextMsgDoorWarp;
     case CURSOR_SEED:
         return sTextMsgSeed;
     case CURSOR_CONFIRM:
@@ -371,7 +488,13 @@ static void DrawConfigWindow(u8 taskId)
 
         if (itemId < TOGGLE_COUNT)
         {
-            bool8 enabled = (sSetup.flags & sBits[itemId]) != 0;
+            bool8 enabled;
+
+            if (itemId == DOOR_WARP_TOGGLE_INDEX)
+                enabled = sSetup.doorWarpEnabled;
+            else
+                enabled = (sSetup.flags & sBits[itemId]) != 0;
+
             AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 16, y, sTextColorMain, TEXT_SKIP_DRAW, sLabels[itemId]);
             AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 152, y, sTextColorMain, TEXT_SKIP_DRAW, enabled ? sTextOn : sTextOff);
         }
@@ -408,14 +531,45 @@ static void DrawStartConfirmWindow(u8 taskId)
     DrawUserFrame(RANDOMIZER_WINDOW_ID);
 
     AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 8, 1, sTextColorTitle, TEXT_SKIP_DRAW, sTextTitle);
-    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 16, 28, sTextColorMain, TEXT_SKIP_DRAW, sTextStartConfirm);
-    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 54, sTextColorMain, TEXT_SKIP_DRAW, sTextYes);
-    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 54 + lineHeight, sTextColorMain, TEXT_SKIP_DRAW, sTextNo);
-    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 20, 54 + (gTasks[taskId].data[0] * lineHeight), sTextColorMain, TEXT_SKIP_DRAW, sTextCursor);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 16, 31, sTextColorMain, TEXT_SKIP_DRAW, sTextStartConfirmPrompt);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 57, sTextColorMain, TEXT_SKIP_DRAW, sTextYes);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 57 + lineHeight, sTextColorMain, TEXT_SKIP_DRAW, sTextNo);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 20, 57 + (gTasks[taskId].data[0] * lineHeight), sTextColorMain, TEXT_SKIP_DRAW, sTextCursor);
+    DrawBottomMessage(sTextStartConfirm);
+
+    PutWindowTilemap(RANDOMIZER_WINDOW_ID);
+    CopyWindowToVram(RANDOMIZER_WINDOW_ID, COPYWIN_FULL);
+}
+
+static void DrawLockWarningWindow(u8 taskId)
+{
+    (void)taskId;
+
+    DrawUserFrame(RANDOMIZER_WINDOW_ID);
+
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 8, 1, sTextColorTitle, TEXT_SKIP_DRAW, sTextTitle);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 16, 24, sTextColorMain, TEXT_SKIP_DRAW, sTextLockWarning);
+    DrawBottomMessage(sTextMsgLockWarningContinue);
+
+    PutWindowTilemap(RANDOMIZER_WINDOW_ID);
+    CopyWindowToVram(RANDOMIZER_WINDOW_ID, COPYWIN_FULL);
+}
+
+static void DrawLockWarningConfirmWindow(u8 taskId)
+{
+    const u8 lineHeight = 16;
+
+    DrawUserFrame(RANDOMIZER_WINDOW_ID);
+
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 8, 1, sTextColorTitle, TEXT_SKIP_DRAW, sTextTitle);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 16, 31, sTextColorMain, TEXT_SKIP_DRAW, sTextLockWarningConfirm);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 57, sTextColorMain, TEXT_SKIP_DRAW, sTextYes);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 40, 57 + lineHeight, sTextColorMain, TEXT_SKIP_DRAW, sTextNo);
+    AddTextPrinterParameterized3(RANDOMIZER_WINDOW_ID, FONT_NORMAL, 20, 57 + (gTasks[taskId].data[0] * lineHeight), sTextColorMain, TEXT_SKIP_DRAW, sTextCursor);
     if (gTasks[taskId].data[0] == ASK_CURSOR_YES)
-        DrawBottomMessage(sTextMsgConfirmYes);
+        DrawBottomMessage(sTextMsgLockWarningYes);
     else
-        DrawBottomMessage(sTextMsgConfirmNo);
+        DrawBottomMessage(sTextMsgLockWarningNo);
 
     PutWindowTilemap(RANDOMIZER_WINDOW_ID);
     CopyWindowToVram(RANDOMIZER_WINDOW_ID, COPYWIN_FULL);
@@ -455,6 +609,61 @@ static void Task_Randomizer(u8 taskId)
         if (JOY_NEW(B_BUTTON))
         {
             DisableAndContinue();
+            return;
+        }
+    }
+    else if (gTasks[taskId].data[1] == SCREEN_LOCK_WARNING)
+    {
+        if (JOY_NEW(A_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            gTasks[taskId].data[1] = SCREEN_LOCK_WARNING_CONFIRM;
+            gTasks[taskId].data[0] = ASK_CURSOR_NO;
+            DrawLockWarningConfirmWindow(taskId);
+            return;
+        }
+        if (JOY_NEW(B_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            gTasks[taskId].data[1] = SCREEN_CONFIG;
+            gTasks[taskId].data[0] = CURSOR_CONFIRM;
+            UpdateConfigScroll(taskId);
+            DrawConfigWindow(taskId);
+            return;
+        }
+    }
+    else if (gTasks[taskId].data[1] == SCREEN_LOCK_WARNING_CONFIRM)
+    {
+        if (JOY_NEW(DPAD_LEFT) || JOY_NEW(DPAD_RIGHT) || JOY_NEW(DPAD_UP) || JOY_NEW(DPAD_DOWN))
+        {
+            cursor ^= 1;
+            redraw = TRUE;
+        }
+        if (JOY_NEW(A_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            if (cursor == ASK_CURSOR_YES)
+            {
+                gTasks[taskId].data[1] = SCREEN_START_CONFIRM;
+                gTasks[taskId].data[0] = ASK_CURSOR_NO;
+                DrawStartConfirmWindow(taskId);
+            }
+            else
+            {
+                gTasks[taskId].data[1] = SCREEN_CONFIG;
+                gTasks[taskId].data[0] = CURSOR_CONFIRM;
+                UpdateConfigScroll(taskId);
+                DrawConfigWindow(taskId);
+            }
+            return;
+        }
+        if (JOY_NEW(B_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            gTasks[taskId].data[1] = SCREEN_CONFIG;
+            gTasks[taskId].data[0] = CURSOR_CONFIRM;
+            UpdateConfigScroll(taskId);
+            DrawConfigWindow(taskId);
             return;
         }
     }
@@ -544,7 +753,10 @@ static void Task_Randomizer(u8 taskId)
                 {
                     if (JOY_NEW(A_BUTTON) || JOY_NEW(DPAD_LEFT) || JOY_NEW(DPAD_RIGHT))
                     {
-                        sSetup.flags ^= sBits[cursor];
+                        if (cursor == DOOR_WARP_TOGGLE_INDEX)
+                            sSetup.doorWarpEnabled ^= TRUE;
+                        else
+                            sSetup.flags ^= sBits[cursor];
                         redraw = TRUE;
                     }
                 }
@@ -557,9 +769,9 @@ static void Task_Randomizer(u8 taskId)
                 else if (cursor == CURSOR_CONFIRM && JOY_NEW(A_BUTTON))
                 {
                     PlaySE(SE_SELECT);
-                    gTasks[taskId].data[1] = SCREEN_START_CONFIRM;
-                    gTasks[taskId].data[0] = ASK_CURSOR_YES;
-                    DrawStartConfirmWindow(taskId);
+                    gTasks[taskId].data[1] = SCREEN_LOCK_WARNING;
+                    gTasks[taskId].data[0] = ASK_CURSOR_NO;
+                    DrawLockWarningWindow(taskId);
                     return;
                 }
             }
@@ -587,6 +799,10 @@ static void Task_Randomizer(u8 taskId)
     {
         if (gTasks[taskId].data[1] == SCREEN_ASK)
             DrawAskWindow(taskId);
+        else if (gTasks[taskId].data[1] == SCREEN_LOCK_WARNING)
+            DrawLockWarningWindow(taskId);
+        else if (gTasks[taskId].data[1] == SCREEN_LOCK_WARNING_CONFIRM)
+            DrawLockWarningConfirmWindow(taskId);
         else if (gTasks[taskId].data[1] == SCREEN_START_CONFIRM)
             DrawStartConfirmWindow(taskId);
         else

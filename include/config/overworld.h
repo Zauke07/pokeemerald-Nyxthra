@@ -102,7 +102,7 @@
 // Um die folgenden Features in Skripten zu nutzen, ersetze die 0 durch die gewünschte Flag-ID.
 // Beispiel: Ersetze durch FLAG_UNUSED_0x264, um das Feature per Flag zu steuern.
 #define OW_FLAG_PAUSE_TIME          0  // Wenn gesetzt und OW_USE_FAKE_RTC aktiviert ist, bleibt die Zeit im Spiel stehen.
-#define OW_FLAG_NO_ENCOUNTER        FLAG_UNUSED_0x266  // Wenn gesetzt, gibt es keine wilden Begegnungen.
+#define OW_FLAG_NO_ENCOUNTER        FLAG_DEBUG_NO_ENCOUNTER  // Wenn gesetzt, gibt es keine wilden Begegnungen.
 #define OW_FLAG_NO_TRAINER_SEE      FLAG_UNUSED_0x267  // Wenn gesetzt, kämpfen Trainer nur nach Ansprache, nicht beim Sehen.
 #define OW_FLAG_NO_COLLISION        FLAG_UNUSED_0x268  // Wenn gesetzt, kann der Spieler über Kollisionstiles laufen. Hauptsächlich für Debugging.
 #define OW_FLAG_POKE_RIDER          0  // Wenn gesetzt, kann man per Pokenav oder Town Map mit 'R' fliegen.

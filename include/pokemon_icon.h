@@ -11,6 +11,7 @@ const u8 *GetMonIconPtr(u16 species, u32 personality);
 const u8 *GetMonIconPtrIsEgg(u16 species, u32 personality, bool32 isEgg);
 const u16 *GetValidMonIconPalettePtr(u16 species);
 u16 GetIconSpecies(u16 species, u32 personality);
+u16 GetIconGraphicsSpeciesForPersonality(u16 species, u32 personality);
 u16 GetUnownLetterByPersonality(u32 personality);
 u16 GetIconSpeciesNoPersonality(u16 species);
 void LoadMonIconPalettes(void);

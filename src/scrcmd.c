@@ -2529,6 +2529,9 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     species = Randomizer_GetStaticSpecies(species);
     if (species2 != SPECIES_NONE)
         species2 = Randomizer_GetStaticSpecies(species2);
+    gSpecialVar_0x8004 = species;
+    gSpecialVar_0x8005 = level;
+    gSpecialVar_0x8006 = item;
 
     if (species2 == SPECIES_NONE)
     {
@@ -3151,7 +3154,8 @@ bool8 ScrCmd_checkobjectat(struct ScriptContext *ctx)
 
 bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
 {
-    enum NationalDexOrder speciesId = SpeciesToNationalPokedexNum(VarGet(ScriptReadHalfword(ctx)));
+    u16 species = VarGet(ScriptReadHalfword(ctx));
+    enum NationalDexOrder speciesId = SpeciesToNationalPokedexNum(species);
     u32 desiredFlag = VarGet(ScriptReadHalfword(ctx));
 
     if (desiredFlag == FLAG_SET_CAUGHT || desiredFlag == FLAG_SET_SEEN)
@@ -3159,10 +3163,17 @@ bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
     else
         Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = GetSetPokedexFlag(speciesId, desiredFlag);
-
-    if (desiredFlag == FLAG_SET_CAUGHT)
-        GetSetPokedexFlag(speciesId, FLAG_SET_SEEN);
+    if (desiredFlag == FLAG_SET_CAUGHT || desiredFlag == FLAG_SET_SEEN)
+    {
+        gSpecialVar_Result = GetSetPokedexFlag(speciesId, desiredFlag == FLAG_SET_CAUGHT ? FLAG_GET_CAUGHT : FLAG_GET_SEEN);
+        HandleSetPokedexFlagFromSpecies(species, desiredFlag, 0);
+        if (desiredFlag == FLAG_SET_CAUGHT)
+            HandleSetPokedexFlagFromSpecies(species, FLAG_SET_SEEN, 0);
+    }
+    else
+    {
+        gSpecialVar_Result = GetSetPokedexFlag(speciesId, desiredFlag);
+    }
 
     return FALSE;
 }

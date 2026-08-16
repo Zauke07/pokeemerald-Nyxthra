@@ -1134,11 +1134,76 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
 
+static u16 GetSpeciesGraphicsFallback(s32 species, bool8 isFrontPic, bool32 isFemale)
+{
+    u16 sanitizedSpecies = SanitizeSpeciesId(species);
+    u16 natDexNum;
+    u16 candidate;
+
+    if (sanitizedSpecies == SPECIES_NONE || sanitizedSpecies == SPECIES_EGG)
+        return sanitizedSpecies;
+
+    if (isFrontPic)
+    {
+#if P_GENDER_DIFFERENCES
+        if ((isFemale && gSpeciesInfo[sanitizedSpecies].frontPicFemale != NULL) || gSpeciesInfo[sanitizedSpecies].frontPic != NULL)
+            return sanitizedSpecies;
+#else
+        if (gSpeciesInfo[sanitizedSpecies].frontPic != NULL)
+            return sanitizedSpecies;
+#endif
+    }
+    else
+    {
+#if P_GENDER_DIFFERENCES
+        if ((isFemale && gSpeciesInfo[sanitizedSpecies].backPicFemale != NULL) || gSpeciesInfo[sanitizedSpecies].backPic != NULL)
+            return sanitizedSpecies;
+#else
+        if (gSpeciesInfo[sanitizedSpecies].backPic != NULL)
+            return sanitizedSpecies;
+#endif
+    }
+
+    natDexNum = gSpeciesInfo[sanitizedSpecies].natDexNum;
+    if (natDexNum == 0)
+        return sanitizedSpecies;
+
+    for (candidate = SPECIES_NONE + 1; candidate < NUM_SPECIES; candidate++)
+    {
+        if (gSpeciesInfo[candidate].natDexNum != natDexNum)
+            continue;
+
+        if (isFrontPic)
+        {
+#if P_GENDER_DIFFERENCES
+            if ((isFemale && gSpeciesInfo[candidate].frontPicFemale != NULL) || gSpeciesInfo[candidate].frontPic != NULL)
+                return candidate;
+#else
+            if (gSpeciesInfo[candidate].frontPic != NULL)
+                return candidate;
+#endif
+        }
+        else
+        {
+#if P_GENDER_DIFFERENCES
+            if ((isFemale && gSpeciesInfo[candidate].backPicFemale != NULL) || gSpeciesInfo[candidate].backPic != NULL)
+                return candidate;
+#else
+            if (gSpeciesInfo[candidate].backPic != NULL)
+                return candidate;
+#endif
+        }
+    }
+
+    return sanitizedSpecies;
+}
+
 void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isFrontPic, bool32 isEgg)
 {
     species = SanitizeSpeciesId(species);
     if (species == SPECIES_UNOWN)
         species = GetUnownSpeciesId(personality);
+    species = GetSpeciesGraphicsFallback(species, isFrontPic, IsPersonalityFemale(species, personality));
 
     if (isEgg)
     {

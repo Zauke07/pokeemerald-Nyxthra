@@ -69,15 +69,14 @@
 #define FLAG_DAILY_FOUGHT_ASH    0x30 // Täglicher Kampf gegen Ash durchgeführt
 #define FLAG_DEFEATED_ASH_ONCE    0x31 // Ash wurde mindestens einmal besiegt
 #define FLAG_CYCLING_ROAD_PASSED_FOR_ACRO    0x32 // Fahrradstraße für Akrobatik passiert
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
+#define FLAG_EVIL_NPC_RAN_AWAY    0x33 // Böser NPC ist weggelaufen
+#define FLAG_RECEIVED_LINKING_CORD    0x34 // Linking Cord erhalten
+#define FLAG_SMART_WILD_AI_FLAG    0x35 // Wenn gesetzt, werden wilde Pokémon „smart“ (alle AI-Flags aktiv). Wird in BattleConfigs.h als B_SMART_WILD_AI_FLAG verwendet.
+#define FLAG_HIDE_MAUVILLE_GAME_CORNER_ROCKET  0x36 // Rocket im Spielcenter ausblenden
+#define FLAG_UNLOCKED_MAUVILLE_GAME_CORNER_BACKROOM 0x37 // Hinterzimmer-Warps im Spielcenter freigeschaltet
+#define FLAG_CHALLENGE_OPPONENT_HIDDEN       0x39 // Challenge House: Protagonisten-NPC verstecken
+#define FLAG_CHALLENGE_HOUSE_BATTLE_ACTIVE     0x3A // Challenge House: Kampf aktiv (Niederlage-Erkennung)
+#define FLAG_CHALLENGE_HOUSE_REWARD_GIVEN  0x3B // Challenge House: Belohnung bereits ausgegeben
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
@@ -1185,7 +1184,7 @@
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MASTER_BALL                 0x465 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B1F_MAX_ELIXIR                  0x466 // Unused Flag, leftover from the Ruby Magma hideout
 #define FLAG_ITEM_OLD_MAGMA_HIDEOUT_B2F_NEST_BALL                   0x467 // Unused Flag, leftover from the Ruby Magma hideout
-#define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
+#define FLAG_ITEM_ROUTE_121_MASTER_BALL                             0x468
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
@@ -1193,7 +1192,7 @@
 #define FLAG_ITEM_MOSSDEEP_STEVENS_HOUSE_HM08                       0x46D // Unused Flag, leftover from R/S. HM08 is given to the player directly in Emerald
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-#define FLAG_UNUSED_0x470                                           0x470 // Unused Flag
+#define FLAG_ITEM_SOOTOPOLIS_CITY_MASTER_BALL                       0x470
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
 #define FLAG_UNUSED_0x472                                           0x472 // Unused Flag
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
@@ -1412,6 +1411,7 @@
 
 #define FLAG_BADGE16_GET                            (SYSTEM_FLAGS + 0x83) // Nutzt FLAG_UNUSED_0x88E
 #define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_MYSTERY_GIFT_MAN_UNLOCKED              FLAG_UNUSED_0x88F // Set once the Mystery Gift Man event is unlocked
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
@@ -1685,7 +1685,7 @@
 #define FLAG_ROGUE_COURIER_READY             0x97D
 #define FLAG_ROGUE_GIMICK_TUTORIAL           0x97E
 
-#define FLAG_DEBUG_NO_ENCOUNTER              0x97F // Unused Flag
+#define FLAG_DEBUG_NO_ENCOUNTER              0x97F
 #define FLAG_DEBUG_NO_TRAINER_SEE            0x980 // Unused Flag
 #define FLAG_DEBUG_NO_COLLISION              0x981 // Unused Flag
 

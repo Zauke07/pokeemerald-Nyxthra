@@ -39,9 +39,9 @@ static const u8 sFirePunchDescription[] = _(
 static const u8 sIcePunchDescription[] = _(
     "An icy punch that may\n"
 #if B_USE_FROSTBITE == TRUE
-    "leave the foe with frostbite.");
+    "Erfrierungen verursachen.");
 #else
-    "freeze the foe.");
+    "den Gegner einfrieren.");
 #endif
 
 static const u8 sThunderPunchDescription[] = _(
@@ -1109,8 +1109,8 @@ static const u8 sTauntDescription[] = _(
     "using attack moves.");
 
 static const u8 sHelpingHandDescription[] = _(
-    "Boosts the power of the\n"
-    "recipient's moves.");
+    "Erhöht die Kraft der\n"
+    "Attacken des Partners.");
 
 static const u8 sTrickDescription[] = _(
     "Tricks the foe into trading\n"
@@ -1709,8 +1709,8 @@ static const u8 sThunderFangDescription[] = _(
     "leave the foe paralyzed.");
 
 static const u8 sIceFangDescription[] = _(
-    "May cause flinching or\n"
-    "leave the foe frozen.");
+    "Kann Gegner zurückschrecken\n"
+    "lassen oder einfrieren.");
 
 static const u8 sFireFangDescription[] = _(
     "May cause flinching or\n"
@@ -2345,12 +2345,12 @@ static const u8 sSpikyShieldDescription[] = _(
     "the foe if struck.");
 
 static const u8 sAromaticMistDescription[] = _(
-    "Raises the Sp. Def of a\n"
-    "partner Pokémon.");
+    "Erhöht die SP.-VERT.\n"
+    "eines Partner-POKéMON.");
 
 static const u8 sEerieImpulseDescription[] = _(
-    "Exposes the foe to a pulse\n"
-    "that sharply cuts Sp. Atk.");
+    "Setzt den Gegner einem\n"
+    "Impuls aus, der Sp.-Ang. senkt.");
 
 static const u8 sVenomDrenchDescription[] = _(
     "Lowers the Attack, Sp. Atk\n"
@@ -2750,8 +2750,8 @@ static const u8 sTeatimeDescription[] = _(
     "and eat their Berries.");
 
 static const u8 sOctolockDescription[] = _(
-    "Traps the foe to lower Def\n"
-    "and Sp. Def fall each turn.");
+    "Hindert das Ziel an der Flucht\n"
+    "und senkt jede Runde die Vert.");
 
 static const u8 sBoltBeakDescription[] = _(
     "Double power if the user\n"
@@ -2950,12 +2950,8 @@ static const u8 sDragonEnergyDescription[] = _(
     "the more damage caused.");
 
 static const u8 sFreezingGlareDescription[] = _(
-    "Shoots psychic power from\n"
-#if B_USE_FROSTBITE == TRUE
-    "the eyes. May frostbite.");
-#else
-    "the eyes. May freeze the foe.");
-#endif
+    "Schießt psychische Kraft aus den\n"
+    "Augen. Kann Gegner einfrieren.");
 
 static const u8 sFieryWrathDescription[] = _(
     "An attack fueled by your\n"

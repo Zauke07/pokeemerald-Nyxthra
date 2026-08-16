@@ -5173,9 +5173,11 @@ static void RemoveSpeciesFromIconList(u16 species)
 static struct Sprite *CreateMonIconSprite(u16 species, u32 personality, s16 x, s16 y, u8 oamPriority, u8 subpriority, bool32 isEgg)
 {
     u16 tileNum;
+    u16 iconSpecies;
     u8 spriteId;
     struct SpriteTemplate template = sSpriteTemplate_MonIcon;
 
+    iconSpecies = GetIconGraphicsSpeciesForPersonality(species, personality);
     species = GetIconSpecies(species, personality);
     if (isEgg)
     {
@@ -5185,14 +5187,14 @@ static struct Sprite *CreateMonIconSprite(u16 species, u32 personality, s16 x, s
             template.paletteTag = PALTAG_MON_ICON_0 + gSpeciesInfo[SPECIES_EGG].iconPalIndex;
     }
 #if P_GENDER_DIFFERENCES
-    else if (gSpeciesInfo[species].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
+    else if (gSpeciesInfo[iconSpecies].iconSpriteFemale != NULL && IsPersonalityFemale(species, personality))
     {
-        template.paletteTag = PALTAG_MON_ICON_0 + gSpeciesInfo[species].iconPalIndexFemale;
+        template.paletteTag = PALTAG_MON_ICON_0 + gSpeciesInfo[iconSpecies].iconPalIndexFemale;
     }
 #endif
     else
     {
-        template.paletteTag = PALTAG_MON_ICON_0 + gSpeciesInfo[species].iconPalIndex;
+        template.paletteTag = PALTAG_MON_ICON_0 + gSpeciesInfo[iconSpecies].iconPalIndex;
     }
 
     tileNum = TryLoadMonIconTiles(species, personality, isEgg);
@@ -8077,7 +8079,7 @@ static const u8 *const sMenuTexts[] =
     [MENU_POKECENTER] = COMPOUND_STRING("Pokécenter"),
     [MENU_MACHINE]    = COMPOUND_STRING("Maschine"),
     [MENU_SIMPLE]     = COMPOUND_STRING("Einfach"),
-    [MENU_SELECT]     = COMPOUND_STRING("Select"),
+    [MENU_SELECT]     = COMPOUND_STRING("Wählen"),
 };
 
 static void SetMenuText(u8 textId)
@@ -9744,7 +9746,7 @@ void ResetWaldaWallpaper(void)
     gSaveBlock1Ptr->waldaPhrase.text[0] = EOS;
 }
 
-void SetTwixWallpaperLockedOrUnlocked(bool32 unlocked)
+void SetWaldaWallpaperLockedOrUnlocked(bool32 unlocked)
 {
     gSaveBlock1Ptr->waldaPhrase.patternUnlocked = unlocked;
 }
@@ -9759,7 +9761,7 @@ u32 GetWaldaWallpaperPatternId(void)
     return gSaveBlock1Ptr->waldaPhrase.patternId;
 }
 
-void SetTwixWallpaperPatternId(u8 id)
+void SetWaldaWallpaperPatternId(u8 id)
 {
     if (id < ARRAY_COUNT(sWaldaWallpapers))
         gSaveBlock1Ptr->waldaPhrase.patternId = id;
@@ -9770,7 +9772,7 @@ u32 GetWaldaWallpaperIconId(void)
     return gSaveBlock1Ptr->waldaPhrase.iconId;
 }
 
-void SetTwixWallpaperIconId(u8 id)
+void SetWaldaWallpaperIconId(u8 id)
 {
     if (id < ARRAY_COUNT(sWaldaWallpaperIcons))
         gSaveBlock1Ptr->waldaPhrase.iconId = id;
@@ -9781,23 +9783,23 @@ u16 *GetWaldaWallpaperColorsPtr(void)
     return gSaveBlock1Ptr->waldaPhrase.colors;
 }
 
-void SetTwixWallpaperColors(u16 color1, u16 color2)
+void SetWaldaWallpaperColors(u16 color1, u16 color2)
 {
     gSaveBlock1Ptr->waldaPhrase.colors[0] = color1;
     gSaveBlock1Ptr->waldaPhrase.colors[1] = color2;
 }
 
-u8 *GetTwixPhrasePtr(void)
+u8 *GetWaldaPhrasePtr(void)
 {
     return gSaveBlock1Ptr->waldaPhrase.text;
 }
 
-void SetTwixPhrase(const u8 *src)
+void SetWaldaPhrase(const u8 *src)
 {
     StringCopy(gSaveBlock1Ptr->waldaPhrase.text, src);
 }
 
-bool32 IsTwixPhraseEmpty(void)
+bool32 IsWaldaPhraseEmpty(void)
 {
     return (gSaveBlock1Ptr->waldaPhrase.text[0] == EOS);
 }

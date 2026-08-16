@@ -546,6 +546,8 @@ extern const u16 gItemIconPalette_SuperLure[];
 extern const u16 gItemIconPalette_MaxLure[];
 extern const u32 gItemIcon_EscapeRope[];
 extern const u16 gItemIconPalette_EscapeRope[];
+extern const u32 gItemIcon_Teleporter[];
+extern const u16 gItemIconPalette_Teleporter[];
 // X Items
 extern const u32 gItemIcon_BattleStatItem[];
 extern const u16 gItemIconPalette_XAttack[];
@@ -4715,6 +4717,11 @@ extern const u32 gMonBackPic_Lugia[];
 extern const u32 gMonStillFrontPic_Lugia[];
 extern const u8 gMonIcon_Lugia[];
 extern const u8 gMonFootprint_Lugia[];
+extern const u32 gMonFrontPic_LugiaShadow[];
+extern const u32 gMonBackPic_LugiaShadow[];
+extern const u32 gMonStillFrontPic_LugiaShadow[];
+extern const u8 gMonIcon_LugiaShadow[];
+extern const u8 gMonFootprint_LugiaShadow[];
 extern const u32 gMonFrontPic_HoOh[];
 extern const u32 gMonBackPic_HoOh[];
 extern const u32 gMonStillFrontPic_HoOh[];
@@ -5808,8 +5815,17 @@ extern const u32 gTrainerFrontPic_Rocky[];
 extern const u32 gTrainerFrontPic_BackpackerF[];
 extern const u32 gTrainerFrontPic_BackpackerM[];
 extern const u32 gTrainerFrontPic_James_Rocket[];
+extern const u32 gTrainerFrontPic_Jessie_Rocket[];
+extern const u32 gTrainerFrontPic_Admin_Proton[];
 extern const u32 gTrainerFrontPic_Ash[];
 extern const u32 gTrainerFrontPic_Klara[];
+extern const u32 gTrainerFrontPic_DP_Cowgirl[];
+extern const u32 gTrainerFrontPic_FlareGruntM[];
+extern const u32 gTrainerFrontPic_FlareGruntF[];
+extern const u32 gTrainerFrontPic_FlareLysandre[];
+extern const u32 gTrainerFrontPic_PlasmaGruntM[];
+extern const u32 gTrainerFrontPic_PlasmaGruntF[];
+extern const u32 gTrainerFrontPic_PlasmaGhetsis[];
 
 
 

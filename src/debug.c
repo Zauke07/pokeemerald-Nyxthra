@@ -90,6 +90,7 @@ enum FlagsVarsDebugMenu
 {
     DEBUG_FLAGVAR_MENU_ITEM_FLAGS,
     DEBUG_FLAGVAR_MENU_ITEM_VARS,
+    DEBUG_FLAGVAR_MENU_ITEM_DAYCARE_EGG,
     DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_ALL,
     DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_RESET,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKEDEX,
@@ -398,6 +399,7 @@ extern const u8 Debug_CheckSaveBlock[];
 extern const u8 Debug_CheckROMSpace[];
 extern const u8 Debug_BoxFilledMessage[];
 extern const u8 Debug_ShowExpansionVersion[];
+extern const u8 Debug_ShowNyxthraVersion[];
 extern const u8 Debug_EventScript_EWRAMCounters[];
 extern const u8 Debug_Follower_NPC_Event_Script[];
 extern const u8 Debug_Follower_NPC_Not_Enabled[];
@@ -712,6 +714,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_ROMInfo2[] =
     { COMPOUND_STRING("Save Block space"),  DebugAction_ExecuteScript, Debug_CheckSaveBlock },
     { COMPOUND_STRING("ROM space"),         DebugAction_ExecuteScript, Debug_CheckROMSpace },
     { COMPOUND_STRING("Expansion Version"), DebugAction_ExecuteScript, Debug_ShowExpansionVersion },
+    { COMPOUND_STRING("Nyxthra Version"),   DebugAction_ExecuteScript, Debug_ShowNyxthraVersion },
     { NULL }
 };
 
@@ -719,6 +722,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Flags[] =
 {
     [DEBUG_FLAGVAR_MENU_ITEM_FLAGS]                = { COMPOUND_STRING("Set Flag XYZ…"),                     DebugAction_FlagsVars_Flags },
     [DEBUG_FLAGVAR_MENU_ITEM_VARS]                 = { COMPOUND_STRING("Set Var XYZ…"),                      DebugAction_FlagsVars_Vars },
+    [DEBUG_FLAGVAR_MENU_ITEM_DAYCARE_EGG]          = { COMPOUND_STRING("Daycare Egg Ready"),                DebugAction_Give_DayCareEgg },
     [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_ALL]         = { COMPOUND_STRING("Pokédex Flags All"),                 DebugAction_FlagsVars_PokedexFlags_All },
     [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_RESET]       = { COMPOUND_STRING("Pokédex Flags Reset"),               DebugAction_FlagsVars_PokedexFlags_Reset },
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKEDEX]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Pokédex"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchDex },
@@ -1837,6 +1841,15 @@ void BufferExpansionVersion(struct ScriptContext *ctx)
         string = StringCopy(string, sText_Unreleased);
 }
 
+void BufferNyxthraVersion(struct ScriptContext *ctx)
+{
+    StringCopy(gStringVar1, gText_GameVersionPrefix);
+    StringAppend(gStringVar1, gText_Space2);
+    StringAppend(gStringVar1, gText_GameVersion);
+    StringAppend(gStringVar1, gText_GameVersionSpacer);
+    StringAppend(gStringVar1, gText_GameVersionSuffix);
+}
+
 void DebugMenu_CalculateTime(struct ScriptContext *ctx)
 {
     if (OW_USE_FAKE_RTC)
@@ -2459,11 +2472,22 @@ static void DebugAction_FlagsVars_SetValue(u8 taskId)
 static void DebugAction_FlagsVars_PokedexFlags_All(u8 taskId)
 {
     u16 i;
+
     for (i = 0; i < NATIONAL_DEX_COUNT; i++)
     {
         GetSetPokedexFlag(i + 1, FLAG_SET_CAUGHT);
         GetSetPokedexFlag(i + 1, FLAG_SET_SEEN);
     }
+
+    for (i = SPECIES_NONE + 1; i < NUM_SPECIES; i++)
+    {
+        if (!IsSpeciesEnabled(i))
+            continue;
+
+        HandleSetPokedexFlagFromSpecies(i, FLAG_SET_SEEN, 0);
+        HandleSetPokedexFlagFromSpecies(i, FLAG_SET_CAUGHT, 0);
+    }
+
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();
 }

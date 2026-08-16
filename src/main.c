@@ -268,7 +268,7 @@ void InitKeys(void)
 
 static void ReadKeys(void)
 {
-    u16 keyInput = REG_KEYINPUT ^ KEYS_MASK;
+    u16 keyInput = (~REG_KEYINPUT) & KEYS_MASK;
     gMain.newKeysRaw = keyInput & ~gMain.heldKeysRaw;
     gMain.newKeys = gMain.newKeysRaw;
     gMain.newAndRepeatedKeys = gMain.newKeysRaw;
@@ -305,6 +305,13 @@ static void ReadKeys(void)
         if (JOY_HELD(L_BUTTON))
             gMain.heldKeys |= A_BUTTON;
     }
+
+    // Keep all key states constrained to the hardware key mask.
+    gMain.heldKeysRaw &= KEYS_MASK;
+    gMain.newKeysRaw &= KEYS_MASK;
+    gMain.heldKeys &= KEYS_MASK;
+    gMain.newKeys &= KEYS_MASK;
+    gMain.newAndRepeatedKeys &= KEYS_MASK;
 
     if (JOY_NEW(gMain.watchedKeysMask))
         gMain.watchedKeysPressed = TRUE;

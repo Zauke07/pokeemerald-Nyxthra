@@ -35,6 +35,38 @@ static void CB2_ReturnFromChooseHalfParty(void);
 static void CB2_ReturnFromChooseBattleFrontierParty(void);
 static void HealPlayerBoxes(void);
 
+bool32 IsPartyFullyHealed(void)
+{
+    u32 i, j, pp, maxPP, ppBonuses, move;
+
+    for (i = 0; i < gPlayerPartyCount; i++)
+    {
+        struct Pokemon *mon = &gPlayerParty[i];
+
+        if (GetMonData(mon, MON_DATA_IS_EGG))
+            continue;
+
+        if (GetMonData(mon, MON_DATA_HP) < GetMonData(mon, MON_DATA_MAX_HP))
+            return FALSE;
+
+        if (GetMonData(mon, MON_DATA_STATUS) != STATUS1_NONE)
+            return FALSE;
+
+        ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
+            move = GetMonData(mon, MON_DATA_MOVE1 + j);
+            if (move == MOVE_NONE)
+                continue;
+            pp = GetMonData(mon, MON_DATA_PP1 + j);
+            maxPP = CalculatePPWithBonus(move, ppBonuses, j);
+            if (pp < maxPP)
+                return FALSE;
+        }
+    }
+    return TRUE;
+}
+
 void HealPlayerParty(void)
 {
     u32 i;

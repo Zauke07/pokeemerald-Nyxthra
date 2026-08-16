@@ -2122,7 +2122,9 @@
 	@ message indicates there is no room, and VAR_RESULT is set to FALSE.
 	@ Otherwise VAR_RESULT is set to TRUE, and the message indicates they have received the item(s).
 	.macro giveitem item:req, amount=1
-	setorcopyvar VAR_0x8000, \item
+	setorcopyvar VAR_0x8004, \item
+	special RandomizeGiftItemVar8004
+	copyvar VAR_0x8000, VAR_0x8004
 	setorcopyvar VAR_0x8001, \amount
 	callstd STD_OBTAIN_ITEM
 	.endm
@@ -2941,8 +2943,10 @@
 
 	@ Adds the specified item to the bag, then prints a message with fanfare. See description of msgreceiveditem.
 	.macro giveitem_msg msg:req, item:req, amount=1, fanfare=MUS_LEVEL_UP
-	additem \item, \amount
-	msgreceiveditem \msg, \item, \amount, \fanfare
+	setorcopyvar VAR_0x8004, \item
+	special RandomizeGiftItemVar8004
+	additem VAR_0x8004, \amount
+	msgreceiveditem \msg, VAR_0x8004, \amount, \fanfare
 	.endm
 
 	@ Depends on the provided function. With the default argument, unlocks the specified entry in the Fame Checker.

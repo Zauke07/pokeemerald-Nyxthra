@@ -134,6 +134,113 @@ static const u8 *const sRegionHeaderNames[STARTER_REGIONS_COUNT] =
     sText_Region_Paldea,
 };
 
+static bool8 AreStarterSpeciesEquivalent(u16 lhs, u16 rhs)
+{
+    u16 lhsDex;
+    u16 rhsDex;
+
+    if (lhs == rhs)
+        return TRUE;
+
+    lhsDex = SpeciesToNationalPokedexNum(lhs);
+    rhsDex = SpeciesToNationalPokedexNum(rhs);
+    return lhsDex != 0 && lhsDex == rhsDex;
+}
+
+static bool8 IsStarterRandomizerEnabled(void)
+{
+    return gSaveBlock2Ptr != NULL
+        && gSaveBlock2Ptr->optionsRandomizerEnabled == TRUE
+        && (gSaveBlock2Ptr->optionsRandomizerFlags & RANDOMIZER_FLAG_STARTER);
+}
+
+static bool8 CanSpeciesBeRandomizedStarter(u16 species, bool8 requireEvolution)
+{
+    const struct Evolution *evolutions;
+    u32 i;
+
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species == SPECIES_EGG)
+        return FALSE;
+    if (!IsSpeciesEnabled(species))
+        return FALSE;
+    if (!requireEvolution)
+        return TRUE;
+
+    evolutions = GetSpeciesEvolutions(species);
+    if (evolutions == NULL)
+        return FALSE;
+
+    for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
+    {
+        u16 target = SanitizeSpeciesId(evolutions[i].targetSpecies);
+        if (target != SPECIES_NONE && target != SPECIES_EGG && IsSpeciesEnabled(target))
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+static u16 AdvanceStarterSpecies(u16 species, bool8 requireEvolution)
+{
+    u16 i;
+
+    species = SanitizeSpeciesId(species);
+    if (species == SPECIES_NONE || species >= NUM_SPECIES)
+        species = SPECIES_NONE + 1;
+
+    for (i = 0; i < NUM_SPECIES; i++)
+    {
+        species++;
+        if (species >= NUM_SPECIES)
+            species = SPECIES_NONE + 1;
+
+        if (CanSpeciesBeRandomizedStarter(species, requireEvolution))
+            return species;
+    }
+
+    return SPECIES_TREECKO;
+}
+
+static u32 MixStarterHash32(u32 hash)
+{
+    hash ^= hash >> 16;
+    hash *= 0x7FEB352D;
+    hash ^= hash >> 15;
+    hash *= 0x846CA68B;
+    hash ^= hash >> 16;
+    return hash;
+}
+
+static u16 RandomizeStarterSpeciesForSlot(u16 originalSpecies, u8 region, u8 slot, bool8 requireEvolution)
+{
+    u32 hash;
+    u16 species;
+
+    hash = gSaveBlock2Ptr->optionsRandomizerSeed;
+    hash ^= (u32)(region + 1) * 0x9E3779B9;
+    hash ^= (u32)(slot + 1) * 0x85EBCA6B;
+    hash ^= (u32)SanitizeSpeciesId(originalSpecies) * 0xC2B2AE35;
+    hash = MixStarterHash32(hash);
+
+    species = (hash % (NUM_SPECIES - 1)) + 1;
+    if (!CanSpeciesBeRandomizedStarter(species, requireEvolution))
+        species = AdvanceStarterSpecies(species, requireEvolution);
+
+    return species;
+}
+
+static u16 EnsureStarterNotDuplicate(u16 species, u16 before0, u16 before1, bool8 requireEvolution)
+{
+    while (AreStarterSpeciesEquivalent(species, before0)
+        || AreStarterSpeciesEquivalent(species, before1))
+    {
+        species = AdvanceStarterSpecies(species, requireEvolution);
+    }
+
+    return species;
+}
+
 // WindowTemplate für den Header
 static const struct WindowTemplate sWindowTemplate_RegionHeader =
 {
@@ -285,6 +392,7 @@ void SetStarterMonListFromRegion(u8 region)
 {
     u8 i;
     u8 j;
+    bool8 requireEvolution;
 
     switch (region)
     {
@@ -340,8 +448,13 @@ void SetStarterMonListFromRegion(u8 region)
         break;
     }
 
-    for (i = 0; i < STARTER_MON_COUNT; i++)
-        sStarterMon[i] = Randomizer_GetSpecies(sStarterMon[i], RANDOMIZER_MODE_STARTER);
+    requireEvolution = IsStarterRandomizerEnabled();
+
+    if (requireEvolution)
+    {
+        for (i = 0; i < STARTER_MON_COUNT; i++)
+            sStarterMon[i] = RandomizeStarterSpeciesForSlot(sStarterMon[i], region, i, TRUE);
+    }
 
     for (i = 1; i < STARTER_MON_COUNT; i++)
     {
@@ -350,7 +463,7 @@ void SetStarterMonListFromRegion(u8 region)
             bool8 duplicate = FALSE;
             for (j = 0; j < i; j++)
             {
-                if (sStarterMon[i] == sStarterMon[j])
+                if (AreStarterSpeciesEquivalent(sStarterMon[i], sStarterMon[j]))
                 {
                     duplicate = TRUE;
                     break;
@@ -360,15 +473,10 @@ void SetStarterMonListFromRegion(u8 region)
             if (!duplicate)
                 break;
 
-            sStarterMon[i]++;
-            if (sStarterMon[i] >= NUM_SPECIES)
-                sStarterMon[i] = SPECIES_NONE + 1;
-            while (!IsSpeciesEnabled(sStarterMon[i]) || sStarterMon[i] == SPECIES_EGG)
-            {
-                sStarterMon[i]++;
-                if (sStarterMon[i] >= NUM_SPECIES)
-                    sStarterMon[i] = SPECIES_NONE + 1;
-            }
+            if (i == 1)
+                sStarterMon[i] = AdvanceStarterSpecies(sStarterMon[i], requireEvolution);
+            else
+                sStarterMon[i] = EnsureStarterNotDuplicate(sStarterMon[i], sStarterMon[0], sStarterMon[1], requireEvolution);
         }
     }
 }
@@ -601,7 +709,7 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
-    if (chosenStarterId > STARTER_MON_COUNT)
+    if (chosenStarterId >= STARTER_MON_COUNT)
         chosenStarterId = 0;
     return sStarterMon[chosenStarterId];
 }
@@ -673,6 +781,7 @@ void CB2_ChooseStarter(void)
     ResetAllPicSprites();
 
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(14), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(14));
     LoadPalette(gBirchBagGrass_Pal, BG_PLTT_ID(0), sizeof(gBirchBagGrass_Pal));
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);
     LoadCompressedSpriteSheet(&sSpriteSheet_StarterCircle[0]);

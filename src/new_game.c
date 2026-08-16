@@ -75,6 +75,7 @@ EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
 void Rogue_SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
+    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
 }
 
 static const struct ContestWinner sContestWinnerPicDummy =
@@ -115,6 +116,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 3;
     gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
+    gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsPopupSoundOff = FALSE;
     gSaveBlock2Ptr->optionsSoundChannelBGM = 10;
     gSaveBlock2Ptr->optionsSoundChannelSE = 10;
@@ -130,6 +132,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->weatherVisuals = TRUE;
     gSaveBlock2Ptr->optionsRandomizerEnabled = FALSE;
     gSaveBlock2Ptr->optionsRandomizerFlags = 0;
+    gSaveBlock2Ptr->optionsRandomizerExtraFlags = 0;
     gSaveBlock2Ptr->optionsRandomizerSeed = 0;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     VarSet(VAR_Password_TestLabor, 1337);
@@ -218,7 +221,7 @@ void NewGameInitData(void)
     ResetGabbyAndTy();
     ClearSecretBases();
     ClearBerryTrees();
-    SetMoney(&gSaveBlock1Ptr->money, 5000);
+    SetMoney(&gSaveBlock1Ptr->money, 10000);
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();

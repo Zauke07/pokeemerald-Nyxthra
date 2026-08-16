@@ -51,7 +51,57 @@
     F(STEEL_WING) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(OVERHEAT) \
+    F(MEGA_PUNCH) \
+    F(ICICLE_SPEAR) \
+    F(BOUNCE) \
+    F(MUD_SHOT) \
+    F(ROCK_BLAST) \
+    F(BRINE) \
+    F(U_TURN) \
+    F(PAYBACK) \
+    F(ASSURANCE) \
+    F(FLING) \
+    F(POWER_SWAP) \
+    F(GUARD_SWAP) \
+    F(SPEED_SWAP) \
+    F(DRAIN_PUNCH) \
+    F(AVALANCHE) \
+    F(SHADOW_CLAW) \
+    F(THUNDER_FANG) \
+    F(ICE_FANG) \
+    F(FIRE_FANG) \
+    F(PSYCHO_CUT) \
+    F(TRICK_ROOM) \
+    F(WONDER_ROOM) \
+    F(MAGIC_ROOM) \
+    F(POISON_JAB) \
+    F(VENOSHOCK) \
+    F(LOW_SWEEP) \
+    F(ROUND) \
+    F(HEX) \
+    F(ACROBATICS) \
+    F(RETALIATE) \
+    F(VOLT_SWITCH) \
+    F(BULLDOZE) \
+    F(ELECTROWEB) \
+    F(RAZOR_SHELL) \
+    F(TAIL_SLAP) \
+    F(SNARL) \
+    F(PHANTOM_FORCE) \
+    F(DRAINING_KISS) \
+    F(GRASSY_TERRAIN) \
+    F(MISTY_TERRAIN) \
+    F(ELECTRIC_TERRAIN) \
+    F(PSYCHIC_TERRAIN) \
+    F(MYSTICAL_FIRE) \
+    F(EERIE_IMPULSE) \
+    F(FALSE_SWIPE) \
+    F(AIR_SLASH) \
+    F(SMART_STRIKE) \
+    F(BRUTAL_SWING) \
+    F(STOMPING_TANTRUM) \
+    F(BREAKING_SWIPE)
 
 #define FOREACH_HM(F) \
     F(CUT) \

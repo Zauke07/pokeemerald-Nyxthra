@@ -42,6 +42,7 @@
 #include "strings.h"
 #include "task.h"
 #include "text.h"
+#include "text_window.h"
 #include "tv.h"
 #include "window.h"
 #include "constants/battle_move_effects.h"

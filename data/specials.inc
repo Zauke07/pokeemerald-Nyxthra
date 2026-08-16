@@ -16,6 +16,7 @@
 		.align 2
 gSpecials::
 	def_special HealPlayerParty
+	def_special IsPartyFullyHealed
 	def_special SetCableClubWarp
 	def_special DoCableClubWarp
 	def_special ReturnFromLinkRoom
@@ -670,3 +671,7 @@ gSpecials::
 	def_special IsWildRandomizerEnabled
 	def_special RandomizeFieldItemVar8004
 	def_special RandomizeFieldItemVar8005
+
+	def_special RandomizeGiftItemVar8004
+	def_special RandomizeStaticMonVar8004
+	def_special IsDoorWarpRandomizerActiveSpecial

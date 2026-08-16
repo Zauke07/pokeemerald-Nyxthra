@@ -62,6 +62,7 @@ enum
     MENUITEM_MENU_UI,
     MENUITEM_MENU_AUDIO,
     MENUITEM_TEXTSPEED,
+    MENUITEM_BATTLESTYLE,
     MENUITEM_BATTLESCENE_WILD_BATTLES,
     MENUITEM_BATTLESCENE_TRAINER_BATTLES,
     MENUITEM_BATTLESCENE_KEY_BATTLES,
@@ -79,6 +80,7 @@ enum
     MENUITEM_SOUND_LOW_HEALTH,
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
+    MENUITEM_UI_THEME,
     MENUITEM_CANCEL,
 };
 
@@ -119,6 +121,8 @@ static void SetMenuItemValue(u8 menuItem, u8 value);
 
 static u8 TextSpeed_ProcessInput(u8 menuOffset, u8 selection);
 static void TextSpeed_DrawChoices(u8 menuOffset, u8 selection);
+static u8 BattleStyle_ProcessInput(u8 menuOffset, u8 selection);
+static void BattleStyle_DrawChoices(u8 menuOffset, u8 selection);
 static u8 BattleScene_ProcessInput(u8 menuOffset, u8 selection);
 static void BattleScene_DrawChoices(u8 menuOffset, u8 selection);
 static u8 InvertedToggle_ProcessInput(u8 menuOffset, u8 selection);
@@ -143,6 +147,8 @@ static u8 ButtonMode_ProcessInput(u8 menuOffset, u8 selection);
 static void ButtonMode_DrawChoices(u8 menuOffset, u8 selection);
 static u8 FrameType_ProcessInput(u8 menuOffset, u8 selection);
 static void FrameType_DrawChoices(u8 menuOffset, u8 selection);
+static u8 UITheme_ProcessInput(u8 menuOffset, u8 selection);
+static void UITheme_DrawChoices(u8 menuOffset, u8 selection);
 static u8 Empty_ProcessInput(u8 menuOffset, u8 selection);
 static void Empty_DrawChoices(u8 menuOffset, u8 selection);
 
@@ -171,15 +177,15 @@ static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_m
 // note: this is only used in the Japanese release
 static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equals_sign.4bpp");
 
-static const u8 sText_HighlightOn[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}");
-static const u8 sText_HighlightOff[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}");
-static const u8 sText_HighlightMid[] = _("{SHADOW LIGHT_GREEN}");
+static const u8 sText_HighlightOn[] = _("{COLOR GREEN}{SHADOW DARK_GRAY}");
+static const u8 sText_HighlightOff[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}");
+static const u8 sText_HighlightMid[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
 
-static const u8 sText_BattleScene_1x[] = _("{COLOR LIGHT_BLUE}{SHADOW BLUE}1x Speed");
-static const u8 sText_BattleScene_2x[] = _("{SHADOW LIGHT_GREEN}2x Speed");
-static const u8 sText_BattleScene_3x[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}3x Speed");
-static const u8 sText_BattleScene_4x[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}4x Speed");
-static const u8 sText_BattleScene_Disabled[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}Disabled");
+static const u8 sText_BattleScene_1x[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}1x Speed");
+static const u8 sText_BattleScene_2x[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}2x Speed");
+static const u8 sText_BattleScene_3x[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}3x Speed");
+static const u8 sText_BattleScene_4x[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}4x Speed");
+static const u8 sText_BattleScene_Disabled[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}Disabled");
 
 typedef u8 (*MenuItemInputCallback)(u8, u8);
 typedef void (*MenuItemDrawCallback)(u8, u8);
@@ -228,6 +234,12 @@ static const struct MenuEntry sOptionMenuItems[] =
         .itemName = gText_TextSpeed,
         .processInput = TextSpeed_ProcessInput,
         .drawChoices = TextSpeed_DrawChoices
+    },
+    [MENUITEM_BATTLESTYLE] =
+    {
+        .itemName = gText_BattleStyle,
+        .processInput = BattleStyle_ProcessInput,
+        .drawChoices = BattleStyle_DrawChoices
     },
     [MENUITEM_BATTLESCENE_WILD_BATTLES] = 
     {
@@ -331,6 +343,12 @@ static const struct MenuEntry sOptionMenuItems[] =
         .processInput = FrameType_ProcessInput,
         .drawChoices = FrameType_DrawChoices
     },
+    [MENUITEM_UI_THEME] = 
+    {
+        .itemName = gText_UITheme,
+        .processInput = UITheme_ProcessInput,
+        .drawChoices = UITheme_DrawChoices
+    },
     [MENUITEM_CANCEL] = 
     {
         .itemName = gText_OptionMenuCancel,
@@ -359,6 +377,7 @@ static const struct MenuEntries sOptionMenuEntries[SUBMENUITEM_COUNT] =
         .menuOptions = 
         {
             MENUITEM_NICKNAME_MODE,
+            MENUITEM_BATTLESTYLE,
             MENUITEM_AUTORUN_TOGGLE,
             MENUITEM_MANUAL_EVOLUTION,
             MENUITEM_BUTTONMODE,
@@ -373,9 +392,6 @@ static const struct MenuEntries sOptionMenuEntries[SUBMENUITEM_COUNT] =
             MENUITEM_TIME_OF_DAY,
             MENUITEM_SEASON,
             MENUITEM_WEATHER,
-            MENUITEM_BATTLESCENE_WILD_BATTLES,
-            MENUITEM_BATTLESCENE_TRAINER_BATTLES,
-            MENUITEM_BATTLESCENE_KEY_BATTLES,
             MENUITEM_CANCEL
         }
     },
@@ -386,6 +402,7 @@ static const struct MenuEntries sOptionMenuEntries[SUBMENUITEM_COUNT] =
         {
             MENUITEM_TEXTSPEED,
             MENUITEM_FRAMETYPE,
+            MENUITEM_UI_THEME,
             MENUITEM_CANCEL
         }
     },
@@ -450,6 +467,72 @@ static const struct BgTemplate sOptionMenuBgTemplates[] =
 };
 
 static const u16 sOptionMenuBg_Pal[] = {RGB(17, 18, 31)};
+static void ApplyOptionMenuDarkModePalettes(void);
+
+static void ApplyOptionMenuDarkModePalettes(void)
+{
+    u32 i;
+
+    // Keep the option text window white in light theme and readable in dark theme.
+    if (!gSaveBlock2Ptr->optionsUITheme)
+    {
+        gPlttBufferUnfaded[16 + 1] = RGB_WHITE;
+        gPlttBufferFaded[16 + 1]   = RGB_WHITE;
+
+        // Restore default text + shadow colors from the loaded option palette.
+        gPlttBufferUnfaded[16 + 2] = sOptionMenuText_Pal[2];
+        gPlttBufferFaded[16 + 2]   = sOptionMenuText_Pal[2];
+        gPlttBufferUnfaded[16 + 3] = sOptionMenuText_Pal[3];
+        gPlttBufferFaded[16 + 3]   = sOptionMenuText_Pal[3];
+
+        return;
+    }
+
+    // Global menu background color.
+    gPlttBufferUnfaded[0] = RGB(4, 5, 7);
+    gPlttBufferFaded[0]   = RGB(4, 5, 7);
+
+    // Option menu text palette (loaded at offset 16):
+    // index 1 = window fill, index 2 = default text, index 3 = shadow.
+    gPlttBufferUnfaded[16 + 1] = RGB(6, 7, 9);
+    gPlttBufferFaded[16 + 1]   = RGB(6, 7, 9);
+    gPlttBufferUnfaded[16 + 2] = RGB(30, 30, 30);
+    gPlttBufferFaded[16 + 2]   = RGB(30, 30, 30);
+    gPlttBufferUnfaded[16 + 3] = RGB(2, 2, 2);
+    gPlttBufferFaded[16 + 3]   = RGB(2, 2, 2);
+
+    // Gruen/Rot behalten, aber ihre bisherigen hellen Schatten auf dunkel setzen.
+    gPlttBufferUnfaded[16 + TEXT_COLOR_LIGHT_GREEN] = RGB(2, 2, 2);
+    gPlttBufferFaded[16 + TEXT_COLOR_LIGHT_GREEN]   = RGB(2, 2, 2);
+
+    // Rahmenpalette (offset 0x70): Rahmenfarbe original lassen, aber den hellen
+    // Zwischenstreifen zur Fensterinnenfarbe angleichen.
+    for (i = 0; i < 16; i++)
+    {
+        u16 color = gPlttBufferUnfaded[0x70 + i];
+        u8 r = (color >> 0) & 0x1F;
+        u8 g = (color >> 5) & 0x1F;
+        u8 b = (color >> 10) & 0x1F;
+        u8 max = r;
+        u8 min = r;
+
+        if (g > max)
+            max = g;
+        if (b > max)
+            max = b;
+        if (g < min)
+            min = g;
+        if (b < min)
+            min = b;
+
+        // Nur sehr helle neutrale Farben (weiss/hellgrau) auf Innenfarbe setzen.
+        if ((u16)(r + g + b) >= 80 && (max - min) <= 3)
+        {
+            gPlttBufferUnfaded[0x70 + i] = RGB(6, 7, 9);
+            gPlttBufferFaded[0x70 + i]   = RGB(6, 7, 9);
+        }
+    }
+}
 
 // code
 static void MainCB2(void)
@@ -523,6 +606,7 @@ void CB2_InitOptionMenu(void)
         break;
     case 5:
         LoadPalette(sOptionMenuText_Pal, 16, sizeof(sOptionMenuText_Pal));
+        ApplyOptionMenuDarkModePalettes();
         gMain.state++;
         break;
     case 6:
@@ -782,6 +866,27 @@ static void TextSpeed_DrawChoices(u8 menuOffset, u8 selection)
         gText_TextSpeedSlow,
         gText_TextSpeedMid,
         gText_TextSpeedFast,
+    };
+    DrawChoiceSelection(menuOffset, selection, options, ARRAY_COUNT(options));
+}
+
+static u8 BattleStyle_ProcessInput(u8 menuOffset, u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void BattleStyle_DrawChoices(u8 menuOffset, u8 selection)
+{
+    u8 const *options[] =
+    {
+        gText_BattleStyleShift,
+        gText_BattleStyleSet,
     };
     DrawChoiceSelection(menuOffset, selection, options, ARRAY_COUNT(options));
 }
@@ -1096,6 +1201,7 @@ static u8 FrameType_ProcessInput(u8 menuOffset, u8 selection)
 
         LoadBgTiles(1, GetWindowFrameTilesPal(selection)->tiles, 0x120, 0x1A2);
         LoadPalette(GetWindowFrameTilesPal(selection)->pal, 0x70, 0x20);
+        ApplyOptionMenuDarkModePalettes();
         sArrowPressed = TRUE;
     }
     if (JOY_NEW(DPAD_LEFT))
@@ -1107,6 +1213,7 @@ static u8 FrameType_ProcessInput(u8 menuOffset, u8 selection)
 
         LoadBgTiles(1, GetWindowFrameTilesPal(selection)->tiles, 0x120, 0x1A2);
         LoadPalette(GetWindowFrameTilesPal(selection)->pal, 0x70, 0x20);
+        ApplyOptionMenuDarkModePalettes();
         sArrowPressed = TRUE;
     }
     return selection;
@@ -1187,6 +1294,26 @@ static void Empty_DrawChoices(u8 menuOffset, u8 selection)
 
 }
 
+static u8 UITheme_ProcessInput(u8 menuOffset, u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void UITheme_DrawChoices(u8 menuOffset, u8 selection)
+{
+    u8 const* options[] = 
+    {
+        gText_UIThemeLight,
+        gText_UIThemeDark,
+    };
+    DrawChoiceSelection(menuOffset, selection, options, ARRAY_COUNT(options));
+}
+
 static void DrawSubmenuTitle(u8 submenu)
 {
     FillWindowPixelBuffer(WIN_TEXT_OPTION, PIXEL_FILL(1));
@@ -1231,6 +1358,9 @@ static u8 GetMenuItemValue(u8 menuItem)
     {
     case MENUITEM_TEXTSPEED:
         return gSaveBlock2Ptr->optionsTextSpeed;
+
+    case MENUITEM_BATTLESTYLE:
+        return gSaveBlock2Ptr->optionsBattleStyle;
         
     case MENUITEM_BATTLESCENE_WILD_BATTLES:
         return gSaveBlock2Ptr->optionsWildBattleScene;
@@ -1282,6 +1412,9 @@ static u8 GetMenuItemValue(u8 menuItem)
         
     case MENUITEM_FRAMETYPE:
         return gSaveBlock2Ptr->optionsWindowFrameType;
+
+    case MENUITEM_UI_THEME:
+        return gSaveBlock2Ptr->optionsUITheme;
     }
 
     return 0;
@@ -1293,6 +1426,10 @@ static void SetMenuItemValue(u8 menuItem, u8 value)
     {
     case MENUITEM_TEXTSPEED:
         gSaveBlock2Ptr->optionsTextSpeed = value;
+        break;
+
+    case MENUITEM_BATTLESTYLE:
+        gSaveBlock2Ptr->optionsBattleStyle = value;
         break;
 
     case MENUITEM_BATTLESCENE_WILD_BATTLES:
@@ -1371,6 +1508,14 @@ static void SetMenuItemValue(u8 menuItem, u8 value)
     case MENUITEM_FRAMETYPE:
         gSaveBlock2Ptr->optionsWindowFrameType = value;
         break;
+
+    case MENUITEM_UI_THEME:
+        gSaveBlock2Ptr->optionsUITheme = value;
+        LoadPalette(sOptionMenuBg_Pal, 0, sizeof(sOptionMenuBg_Pal));
+        LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, 0x70, 0x20);
+        LoadPalette(sOptionMenuText_Pal, 16, sizeof(sOptionMenuText_Pal));
+        ApplyOptionMenuDarkModePalettes();
+        break;
     }
 }
 
@@ -1436,6 +1581,16 @@ bool8 RogueGift_CanRenameCustomMon(u32 id)
 
 bool8 Rogue_UseKeyBattleAnims(void)
 {
+#if !TESTING
+    // Treat rare/important wild encounters as key battles.
+    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) == 0
+        && (IsMonShiny(&gEnemyParty[0])
+            || (WILD_DOUBLE_BATTLE && IsMonShiny(&gEnemyParty[1]))
+            || RogueGift_GetCustomMonId(&gEnemyParty[0]) != 0
+            || (WILD_DOUBLE_BATTLE && RogueGift_GetCustomMonId(&gEnemyParty[1]) != 0)))
+        return TRUE;
+#endif
+
     // Key/Boss battles are detected via dedicated battle flags.
     return (gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY
                               | BATTLE_TYPE_FRONTIER
@@ -1455,47 +1610,11 @@ extern void Rogue_SetDefaultOptions(void);
 bool8 InBattleChoosingMoves();
 bool8 InBattleRunningActions();
 
-static u8 GetBattleSceneOption() 
-{
-    if(Rogue_UseKeyBattleAnims())
-        return gSaveBlock2Ptr->optionsBossBattleScene;
-    else if((gBattleTypeFlags & BATTLE_TYPE_TRAINER) != 0)
-        return gSaveBlock2Ptr->optionsTrainerBattleScene;
-    else
-        return gSaveBlock2Ptr->optionsWildBattleScene;
-}
-
 u8 Rogue_GetBattleSpeedScale(bool8 forHealthbar)
 {
-    u8 battleSceneOption = GetBattleSceneOption();
+    (void)forHealthbar;
 
-    // Hold L to slow down
-    if(JOY_HELD(L_BUTTON))
-        return 1;
-
-    // Keep health bars readable.
-    if (forHealthbar)
-        return 1;
-
-    switch (battleSceneOption)
-    {
-    case OPTIONS_BATTLE_SCENE_1X:
-        return 1;
-
-    case OPTIONS_BATTLE_SCENE_2X:
-        return 2;
-
-    case OPTIONS_BATTLE_SCENE_3X:
-        return 3;
-
-    case OPTIONS_BATTLE_SCENE_4X:
-        return 4;
-
-    // Disabled keeps battle flow readable while move animations are skipped elsewhere.
-    case OPTIONS_BATTLE_SCENE_DISABLED:
-        return 1;
-    }
-
+    // Battle speed options removed for stability: always run at 1x.
     return 1;
 }
 
@@ -1625,7 +1744,8 @@ bool8 RogueToD_ApplyTimeVisuals()
 
 bool8 Rogue_GetBattleAnimsEnabled(void)
 {
-    return GetBattleSceneOption() != OPTIONS_BATTLE_SCENE_DISABLED;
+    // Battle scene toggles removed for stability: always keep animations enabled.
+    return TRUE;
 }
 
 u32 RogueGift_GetCustomMonId(struct Pokemon* mon)

@@ -762,13 +762,13 @@
                             "SPECIES_NOIVERN",
 
                             "SPECIES_DECIDUEYE",
-                            "SPECIES_RATICATE_ALOLAN",
-                            "SPECIES_PERSIAN_ALOLAN",
-                            "SPECIES_MUK_ALOLAN",
+                            "SPECIES_RATICATE_ALOLA",
+                            "SPECIES_PERSIAN_ALOLA",
+                            "SPECIES_MUK_ALOLA",
                             "SPECIES_SALAZZLE",
-                            "SPECIES_MAROWAK_ALOLAN",
+                            "SPECIES_MAROWAK_ALOLA",
                             "SPECIES_TREVENANT",
-                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_NINETALES_ALOLA",
                             "SPECIES_DHELMISE",
 
                             "SPECIES_THIEVUL",
@@ -866,8 +866,8 @@
                         "SPECIES_JIRACHI",
                         
                         "#ifdef ROGUE_EXPANSION",
-                            "SPECIES_SANDSLASH_ALOLAN",
-                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_SANDSLASH_ALOLA",
+                            "SPECIES_NINETALES_ALOLA",
                             "SPECIES_RAPIDASH_GALARIAN",
                         
                             "SPECIES_EMPOLEON",
@@ -1036,8 +1036,8 @@
                         "SPECIES_RAYQUAZA",
                         
                         "#ifdef ROGUE_EXPANSION",
-                            "SPECIES_RAICHU_ALOLAN",
-                            "SPECIES_NINETALES_ALOLAN",
+                            "SPECIES_RAICHU_ALOLA",
+                            "SPECIES_NINETALES_ALOLA",
                             "SPECIES_MAGNEZONE",
                             "SPECIES_RAPIDASH_GALARIAN",
                         
@@ -1198,7 +1198,7 @@
                             "SPECIES_DIANCIE",
                         
                             "SPECIES_PRIMARINA",
-                            "SPECIES_RAICHU_ALOLAN",
+                            "SPECIES_RAICHU_ALOLA",
                             "SPECIES_BEWEAR",
                             "SPECIES_TAPU_LELE",
                         
@@ -1325,10 +1325,10 @@
                             "SPECIES_XURKITREE",
                             "SPECIES_ZERAORA",
                             "SPECIES_MELMETAL",
-                            "SPECIES_RAICHU_ALOLAN",
-                            "SPECIES_NINETALES_ALOLAN",
-                            "SPECIES_GOLEM_ALOLAN",
-                            "SPECIES_EXEGGUTOR_ALOLAN",
+                            "SPECIES_RAICHU_ALOLA",
+                            "SPECIES_NINETALES_ALOLA",
+                            "SPECIES_GOLEM_ALOLA",
+                            "SPECIES_EXEGGUTOR_ALOLA",
 
                             "SPECIES_CORVIKNIGHT",
                             "SPECIES_FLAPPLE",

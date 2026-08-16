@@ -9,6 +9,7 @@
 #include "constants/battle_string_ids.h"
 #include "constants/battle_z_move_effects.h"
 #include "constants/moves.h"
+#include "randomizer.h"
 
 // For defining EFFECT_HIT etc. with battle TV scores and flags etc.
 struct __attribute__((packed, aligned(2))) BattleMoveEffect
@@ -247,7 +248,8 @@ static inline enum DamageCategory GetMoveCategory(enum Move moveId)
 
 static inline u32 GetMovePower(enum Move moveId)
 {
-    return gMovesInfo[SanitizeMoveId(moveId)].power;
+    moveId = SanitizeMoveId(moveId);
+    return Randomizer_GetMovePower(moveId, gMovesInfo[moveId].power);
 }
 
 static inline u32 GetMoveAccuracy(enum Move moveId)
@@ -265,7 +267,8 @@ static inline enum MoveTarget GetMoveTarget(enum Move moveId)
 
 static inline u32 GetMovePP(enum Move moveId)
 {
-    return gMovesInfo[SanitizeMoveId(moveId)].pp;
+    moveId = SanitizeMoveId(moveId);
+    return Randomizer_GetMovePP(moveId, gMovesInfo[moveId].pp);
 }
 
 static inline enum ZEffect GetMoveZEffect(enum Move moveId)

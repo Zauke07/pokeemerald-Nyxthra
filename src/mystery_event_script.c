@@ -340,9 +340,8 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
 
         if (species != SPECIES_EGG)
         {
-            enum NationalDexOrder pokedexNum = SpeciesToNationalPokedexNum(species);
-            GetSetPokedexFlag(pokedexNum, FLAG_SET_SEEN);
-            GetSetPokedexFlag(pokedexNum, FLAG_SET_CAUGHT);
+            HandleSetPokedexFlagFromSpecies(species, FLAG_SET_SEEN, 0);
+            HandleSetPokedexFlagFromSpecies(species, FLAG_SET_CAUGHT, 0);
         }
 
         heldItem = GetMonData(&gPlayerParty[PARTY_SIZE - 1], MON_DATA_HELD_ITEM);

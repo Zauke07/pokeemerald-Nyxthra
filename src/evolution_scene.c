@@ -589,8 +589,8 @@ static void CreateShedinja(u32 preEvoSpecies, u32 postEvoSpecies, struct Pokemon
             CalculateMonStats(&gPlayerParty[gPlayerPartyCount]);
             CalculatePlayerPartyCount();
 
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[i].targetSpecies), FLAG_SET_SEEN);
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[i].targetSpecies), FLAG_SET_CAUGHT);
+            HandleSetPokedexFlagFromSpecies(evolutions[i].targetSpecies, FLAG_SET_SEEN, 0);
+            HandleSetPokedexFlagFromSpecies(evolutions[i].targetSpecies, FLAG_SET_CAUGHT, 0);
 
             if (GetMonData(shedinja, MON_DATA_SPECIES) == SPECIES_SHEDINJA
                 && GetMonData(shedinja, MON_DATA_LANGUAGE) == LANGUAGE_JAPANESE
@@ -785,8 +785,8 @@ static void Task_EvolutionScene(u8 taskId)
             SetMonData(mon, MON_DATA_EVOLUTION_TRACKER, &zero);
             CalculateMonStats(mon);
             EvolutionRenameMon(mon, gTasks[taskId].tPreEvoSpecies, gTasks[taskId].tPostEvoSpecies);
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
+            HandleSetPokedexFlagFromSpecies(gTasks[taskId].tPostEvoSpecies, FLAG_SET_SEEN, 0);
+            HandleSetPokedexFlagFromSpecies(gTasks[taskId].tPostEvoSpecies, FLAG_SET_CAUGHT, 0);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
         }
         break;
@@ -1212,8 +1212,8 @@ static void Task_TradeEvolutionScene(u8 taskId)
             SetMonData(mon, MON_DATA_EVOLUTION_TRACKER, &zero);
             CalculateMonStats(mon);
             EvolutionRenameMon(mon, gTasks[taskId].tPreEvoSpecies, gTasks[taskId].tPostEvoSpecies);
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
-            GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
+            HandleSetPokedexFlagFromSpecies(gTasks[taskId].tPostEvoSpecies, FLAG_SET_SEEN, 0);
+            HandleSetPokedexFlagFromSpecies(gTasks[taskId].tPostEvoSpecies, FLAG_SET_CAUGHT, 0);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
         }
         break;

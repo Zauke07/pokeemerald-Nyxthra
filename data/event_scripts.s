@@ -323,7 +323,6 @@ gStdScripts_End::
 	.include "data/maps/MossdeepCity_SpaceCenter_1F/scripts.inc"
 	.include "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc"
 	.include "data/maps/MossdeepCity_GameCorner_1F/scripts.inc"
-	.include "data/maps/MossdeepCity_GameCorner_B1F/scripts.inc"
 	.include "data/maps/SootopolisCity_Gym_1F/scripts.inc"
 	.include "data/maps/SootopolisCity_Gym_B1F/scripts.inc"
 	.include "data/maps/SootopolisCity_PokemonCenter_1F/scripts.inc"
@@ -1063,6 +1062,21 @@ EventScript_WhiteOut::
 
 EventScript_AfterWhiteOutHeal::
 	lockall
+	specialvar VAR_RESULT, CountPartyNonEggMons
+	goto_if_eq VAR_RESULT, 0, EventScript_AfterWhiteOutHeal_GiveEmergencyMon
+	goto EventScript_AfterWhiteOutHeal_DoHeal
+
+EventScript_AfterWhiteOutHeal_GiveEmergencyMon::
+	msgbox gText_NurseNoPokemonLeftEmergencyMon
+	givemon SPECIES_ZIGZAGOON, 5, ITEM_NONE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_AfterWhiteOutHeal_GiveEmergencyMonFailed
+	msgbox gText_NurseGaveEmergencyZigzagoon
+	goto EventScript_AfterWhiteOutHeal_DoHeal
+
+EventScript_AfterWhiteOutHeal_GiveEmergencyMonFailed::
+	msgbox gText_NurseEmergencyMonGiveFailed
+
+EventScript_AfterWhiteOutHeal_DoHeal::
 	msgbox gText_FirstShouldRestoreMonsHealth
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	call_if_unset FLAG_DEFEATED_RUSTBORO_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
@@ -1085,6 +1099,21 @@ EventScript_AfterWhiteOutMomHeal::
 	lockall
 	applymovement LOCALID_PLAYERS_HOUSE_1F_MOM, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
+	specialvar VAR_RESULT, CountPartyNonEggMons
+	goto_if_eq VAR_RESULT, 0, EventScript_AfterWhiteOutMomHeal_GiveEmergencyMon
+	goto EventScript_AfterWhiteOutMomHeal_DoHeal
+
+EventScript_AfterWhiteOutMomHeal_GiveEmergencyMon::
+	msgbox gText_MomNoPokemonLeftEmergencyMon
+	givemon SPECIES_ZIGZAGOON, 5, ITEM_NONE
+	goto_if_eq VAR_RESULT, FALSE, EventScript_AfterWhiteOutMomHeal_GiveEmergencyMonFailed
+	msgbox gText_MomGaveEmergencyZigzagoon
+	goto EventScript_AfterWhiteOutMomHeal_DoHeal
+
+EventScript_AfterWhiteOutMomHeal_GiveEmergencyMonFailed::
+	msgbox gText_MomEmergencyMonGiveFailed
+
+EventScript_AfterWhiteOutMomHeal_DoHeal::
 	msgbox gText_HadQuiteAnExperienceTakeRest
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox gText_MomExplainHPGetPotions
@@ -1352,6 +1381,7 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
+	.include "data/text/pkmn_center_nurse_mystery_gift_man_hint.inc"
 	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
 	.include "data/text/move_relearner.inc"
@@ -1360,11 +1390,11 @@ Common_EventScript_PlayerHandedOverTheItem::
 gText_PokemartSign::
 	.string "“Ausgewählte Items für Ihren\n"
 	.string "Gebrauch!”\l"
-	.string "Pokémon-SUPERMARKT$"
+	.string "Pokémon-Supermarkt$"
 
 gText_PokemonCenterSign::
 	.string "“Erfrische deine müden Partner!”\n"
-	.string "Pokémon-CENTER$"
+	.string "Pokémon-Center$"
 
 gText_MomOrDadMightLikeThisProgram::
 	.string "{STR_VAR_1} würde Prosieben gefallen.\p"
@@ -1412,46 +1442,75 @@ gText_PlayerWhitedOut::
 	.string "{PLAYER} wird ohnmächtig!$"
 
 gText_FirstShouldRestoreMonsHealth::
-	.string "Zuerst solltest du deine\n"
-	.string "POKéMON vollständig heilen.$"
+	.string "Du siehst sehr erschöpft aus.\n"
+	.string "Heile zuerst deine Pokémon!$"
 
 gText_MonsHealedShouldBuyPotions::
-	.string "Deine POKéMON wurden geheilt\n"
-	.string "und sind wieder topfit.\p"
-	.string "Wenn die Energie, KP, deiner\n"
-	.string "POKéMON niedrig ist, komm bitte zu uns.\p"
-	.string "Wenn du planst, weit ins Feld zu gehen,\n"
-	.string "solltest du einige TRÄNKE im\l"
-	.string "POKéMON-MARKT kaufen.\p"
-	.string "Wir hoffen, dass du erfolgreich bist!$"
+	.string "Deine Pokémon sind wieder topfit.\p"
+	.string "Ein kleiner Tipp für dich:\n"
+	.string "Wenn du die Stadt verlässt,\l"
+	.string "solltest du Tränke kaufen.\p"
+	.string "Pass gut auf deine Partner auf!$"
 
 gText_MonsHealed::
-	.string "Deine POKéMON wurden geheilt\n"
-	.string "und sind wieder topfit.\p"
-	.string "Wir hoffen, dass du erfolgreich bist!$"
+	.string "Deine Pokémon sind wieder topfit.\p"
+	.string "Pass gut auf deine Partner auf!$"
 
 gText_HadQuiteAnExperienceTakeRest::
-	.string "MOM: {PLAYER}!\n"
-	.string "Willkommen zu Hause.\p"
-	.string "Es klingt, als hättest du eine\n"
-	.string "ganz schöne Erfahrung gemacht.\p"
-	.string "Vielleicht solltest du dich kurz\n"
-	.string "ausruhen.$"
+	.string "MOM: {PLAYER}? Was willst du hier?\n"
+	.string "Ich dachte, du wärst ausgezogen!\p"
+	.string "Du siehst aus, als hättest du im\n"
+	.string "Müll geschlafen.\p"
+	.string "Geh dich gefälligst ausruhen, du\n"
+	.string "stinkst das ganze Haus voll!$"
 
 gText_MomExplainHPGetPotions::
-	.string "MOM: Oh, gut! Du und deine\n"
-	.string "POKéMON sehen großartig aus.\p"
-	.string "Ich habe gerade von PROF. Birk gehört.\p"
-	.string "Er sagte, dass die Energie von POKéMON\n"
-	.string "in KP gemessen wird.\p"
-	.string "Wenn deine POKéMON ihre KP verlieren,\n"
-	.string "kannst du sie in jedem\l"
-	.string "POKéMON-CENTER wiederherstellen.\p"
-	.string "Wenn du weit reisen willst,\n"
-	.string "sollte ein kluger TRAINER sich mit\l"
-	.string "TRÄNKEN im POKéMON-MARKT eindecken.\p"
-	.string "Mach mich stolz, Schatz!\p"
-	.string "Pass auf dich auf!$"
+	.string "MOM: Na endlich siehst du wieder\n"
+	.string "halbwegs wie ein Mensch aus.\p"
+	.string "Dieser Nerd PROF. BIRK hat\n"
+	.string "vorhin angerufen und genervt.\p"
+	.string "Irgendwas mit KP und dass Pokémon\n"
+	.string "Energie verlieren. Mir doch egal!\p"
+	.string "Geh in ein Pokémon-Center,\n"
+	.string "wenn die Viecher abkratzen.\p"
+	.string "Und kauf dir verdammt noch mal\n"
+	.string "Tränke im Markt!\p"
+	.string "Ich zahle sicher nicht für deine\n"
+	.string "Beerdigung. Also verschwinde!$"
+
+gText_NurseNoPokemonLeftEmergencyMon::
+	.string "Ohje… Du hast gar kein Pokémon\n"
+	.string "mehr bei dir.\p"
+	.string "So kann ich dich nicht einfach\n"
+	.string "wieder losschicken.$"
+
+gText_NurseGaveEmergencyZigzagoon::
+	.string "Hier, nimm dieses Zigzachs auf\n"
+	.string "Level 5 als Notfallpartner.\p"
+	.string "Bitte pass diesmal besser auf\n"
+	.string "deine Pokémon auf!$"
+
+gText_NurseEmergencyMonGiveFailed::
+	.string "Ich kann dir gerade kein Pokémon\n"
+	.string "geben."
+	.string "Mach erst Platz in deinem Team\n"
+	.string "und sprich erneut mit mir.$"
+
+gText_MomNoPokemonLeftEmergencyMon::
+	.string "MOM: Was?! Du hast nicht mal\n"
+	.string "ein einziges Pokémon mehr?!\p"
+	.string "So gehst du mir nicht wieder raus\n"
+	.string "vor die Tür.$"
+
+gText_MomGaveEmergencyZigzagoon::
+	.string "MOM: Hier. Zigzachs, Level 5.\n"
+	.string "Besser als gar nichts.\p"
+	.string "Und jetzt verlier es diesmal\n"
+	.string "nicht sofort wieder!$"
+
+gText_MomEmergencyMonGiveFailed::
+	.string "MOM: Dein Team ist voll.\n"
+	.string "Räum erst auf und komm dann wieder.$"
 
 gText_RegisteredTrainerinPokeNav::
 	.string "{STR_VAR_1} {STR_VAR_2} wurde(n) in\n"
@@ -1823,4 +1882,4 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/MeteorFalls_B1F_4R/scripts.inc"
 
-	.include "data/maps/Verborgene_Lichtung/scripts.inc"
+	.include "data/maps/MtPyre_6F_2/scripts.inc"
