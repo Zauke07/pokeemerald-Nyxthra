@@ -454,8 +454,14 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "Ordnung muss sein - selbst bei TRAINERN!$"
 
 Route116_EventScript_Geckabor::
-    msgbox Route116_Text_Geckabor, MSGBOX_NPC
-    end
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route116_EventScript_Geckabor_RandomizerText
+	msgbox Route116_Text_Geckabor, MSGBOX_NPC
+	end
+
+Route116_EventScript_Geckabor_RandomizerText::
+	msgbox Route116_Text_GeckaborRandomizer, MSGBOX_NPC
+	end
 
 Route116_Text_Geckabor:
 	.string "Hey {PLAYER}, ich bin ein\n"
@@ -470,3 +476,11 @@ Route116_Text_Geckabor:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route116_Text_GeckaborRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

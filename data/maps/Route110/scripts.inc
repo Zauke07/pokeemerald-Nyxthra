@@ -5414,7 +5414,13 @@ Route110_Text_KeepAnEyeOutForRival::
     .string "Man riecht sich, {PLAYER}{KUN}.$"
 
 Route110_EventScript_Flemmli::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route110_EventScript_Flemmli_RandomizerText
 	msgbox Route110_Text_Flemmli, MSGBOX_NPC
+	end
+
+Route110_EventScript_Flemmli_RandomizerText::
+	msgbox Route110_Text_FlemmliRandomizer, MSGBOX_NPC
 	end
 
 Route110_Text_Flemmli:
@@ -5424,6 +5430,14 @@ Route110_Text_Flemmli:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route110_Text_FlemmliRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 Route110_Text_SnorlaxSleeping::
 	.string "{COLOR PLAYER_CLR}{PLAYER}: Meine Fresse…\n"

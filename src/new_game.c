@@ -128,6 +128,9 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->timeOfDayVisuals = TRUE;
     gSaveBlock2Ptr->seasonVisuals = TRUE;
     gSaveBlock2Ptr->weatherVisuals = TRUE;
+    gSaveBlock2Ptr->optionsRandomizerEnabled = FALSE;
+    gSaveBlock2Ptr->optionsRandomizerFlags = 0;
+    gSaveBlock2Ptr->optionsRandomizerSeed = 0;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     VarSet(VAR_Password_TestLabor, 1337);
     Rogue_SetDefaultOptions();

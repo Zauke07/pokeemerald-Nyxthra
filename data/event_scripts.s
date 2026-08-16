@@ -1822,3 +1822,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Meteorfalls_B1F_3R/scripts.inc"
 
 	.include "data/maps/MeteorFalls_B1F_4R/scripts.inc"
+
+	.include "data/maps/Verborgene_Lichtung/scripts.inc"

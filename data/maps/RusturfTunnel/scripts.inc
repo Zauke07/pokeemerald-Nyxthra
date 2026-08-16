@@ -516,8 +516,14 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "Ich nehm alles zurück.$"
 
 RusturfTunnel_EventScript_Feueriegel::
-    msgbox RusturfTunnel_Text_Feueriegel, MSGBOX_NPC
-    end
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, RusturfTunnel_EventScript_Feueriegel_RandomizerText
+	msgbox RusturfTunnel_Text_Feueriegel, MSGBOX_NPC
+	end
+
+RusturfTunnel_EventScript_Feueriegel_RandomizerText::
+	msgbox RusturfTunnel_Text_FeueriegelRandomizer, MSGBOX_NPC
+	end
 
 RusturfTunnel_Text_Feueriegel:
     .string "Hey {PLAYER}, ich bin ein\n"
@@ -532,4 +538,12 @@ RusturfTunnel_Text_Feueriegel:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+RusturfTunnel_Text_FeueriegelRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 

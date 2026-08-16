@@ -1157,8 +1157,14 @@ Route104_Text_BrendanPostBattle:
 	.string "der wahre Cheatcode im Spiel.{COLOR DARK_GRAY}$"
 
 Route104_EventScript_Kanimani::
-    msgbox Route104_Text_Kanimani, MSGBOX_NPC
-    end
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_Kanimani_RandomizerText
+	msgbox Route104_Text_Kanimani, MSGBOX_NPC
+	end
+
+Route104_EventScript_Kanimani_RandomizerText::
+	msgbox Route104_Text_KanimaniRandomizer, MSGBOX_NPC
+	end
 
 Route104_Text_Kanimani:
     .string "Hey {PLAYER}, ich bin ein\n"
@@ -1173,3 +1179,11 @@ Route104_Text_Kanimani:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route104_Text_KanimaniRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

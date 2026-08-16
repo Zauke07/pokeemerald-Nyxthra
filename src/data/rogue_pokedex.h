@@ -6176,9 +6176,9 @@ const u16 sRogueDexVariant_PALDEA_KITAKAMI[] =
 	SPECIES_OGERPON,
 };
 
-const u8 sRogueDexVariantName_PALDEA_BLUEBERRY[] = _("Indigo Disk");
+const u8 sRogueDexVariantName_PALDEA_BLüberRY[] = _("Indigo Disk");
 
-const u16 sRogueDexVariant_PALDEA_BLUEBERRY[] = 
+const u16 sRogueDexVariant_PALDEA_BLüberRY[] = 
 {
 	SPECIES_DODUO,
 	SPECIES_DODRIO,
@@ -13171,7 +13171,7 @@ const u16 sRogueDexRegion_PALDEA[] =
 {
 	POKEDEX_VARIANT_PALDEA_SCVI,
 	POKEDEX_VARIANT_PALDEA_KITAKAMI,
-	POKEDEX_VARIANT_PALDEA_BLUEBERRY,
+	POKEDEX_VARIANT_PALDEA_BLüberRY,
 	POKEDEX_VARIANT_PALDEA_FULLDLC,
 };
 

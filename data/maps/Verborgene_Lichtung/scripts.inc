@@ -18,13 +18,11 @@ Verborgene_Lichtung_EventScript_TryShowCelebi::
 	goto_if_set FLAG_DEFEATED_VERBORGENE_LICHTUNG_CELEBI, Common_EventScript_NopReturn
 	setvar VAR_TEMP_0, 0
 	clearflag FLAG_HIDE_VERBORGENE_LICHTUNG_CELEBI
-	addobject LOCALID_LICHTUNG_CELEBI
 	return
 
 Verborgene_Lichtung_OnResume:
 	call_if_set   FLAG_SYS_CTRL_OBJ_DELETE, Verborgene_Lichtung_EventScript_TryRemoveCelebi
 	call_if_set   FLAG_CAUGHT_VERBORGENE_LICHTUNG_CELEBI,        Verborgene_Lichtung_EventScript_HideCelebi
-	call_if_unset FLAG_CAUGHT_VERBORGENE_LICHTUNG_CELEBI,        Verborgene_Lichtung_EventScript_TryShowCelebi
 	end
 
 Verborgene_Lichtung_EventScript_TryRemoveCelebi::
@@ -52,11 +50,11 @@ Verborgene_Lichtung_EventScript_TriggerCelebi::
 	goto Verborgene_Lichtung_EventScript_StartCelebiBattleNoMovement
 
 Verborgene_Lichtung_EventScript_StartCelebiBattleNoMovement:
-	playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
-	waitmoncry
-	delay 30
 	setvar VAR_LAST_TALKED, LOCALID_LICHTUNG_CELEBI
 	seteventmon SPECIES_CELEBI, 30
+	playmoncry VAR_0x8004, CRY_MODE_ENCOUNTER
+	waitmoncry
+	delay 30
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -66,17 +64,17 @@ Verborgene_Lichtung_EventScript_StartCelebiBattleNoMovement:
 	goto_if_eq VAR_RESULT, B_OUTCOME_RAN,               Verborgene_Lichtung_EventScript_RanFromCelebi
 	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Verborgene_Lichtung_EventScript_RanFromCelebi
 	setflag FLAG_CAUGHT_VERBORGENE_LICHTUNG_CELEBI
-	releaseall
+	setvar VAR_TEMP_0, 1
+	setflag FLAG_HIDE_VERBORGENE_LICHTUNG_CELEBI
+	goto Common_EventScript_RemoveStaticPokemon
 	end
 
 Verborgene_Lichtung_EventScript_DefeatedCelebi::
 	setflag FLAG_DEFEATED_VERBORGENE_LICHTUNG_CELEBI
-	setvar VAR_0x8004, SPECIES_CELEBI
 	goto Common_EventScript_LegendaryFlewAway
 	end
 
 Verborgene_Lichtung_EventScript_RanFromCelebi::
-	setvar VAR_0x8004, SPECIES_CELEBI
 	goto Common_EventScript_LegendaryFlewAway
 	end
 

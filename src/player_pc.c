@@ -31,6 +31,7 @@
 #include "menu_specialized.h"
 #include "trainer_pokemon_sprites.h"
 #include "event_data.h"
+#include "randomizer.h"
 #include "constants/layouts.h"
 
 // Top level PC menu options
@@ -471,9 +472,16 @@ void NewGameInitPCItems(void)
 
     while (TRUE)
     {
+        enum Item itemId;
+
         if (sNewGamePCItems[i][0] == ITEM_NONE || sNewGamePCItems[i][1] == 0)
             break;
-        if (AddPCItem(sNewGamePCItems[i][0], sNewGamePCItems[i][1]) != TRUE)
+
+        itemId = sNewGamePCItems[i][0];
+        if (itemId == ITEM_POTION)
+            itemId = Randomizer_GetItem(itemId, RANDOMIZER_MODE_FIELD_ITEM);
+
+        if (AddPCItem(itemId, sNewGamePCItems[i][1]) != TRUE)
             break;
         i++;
     }

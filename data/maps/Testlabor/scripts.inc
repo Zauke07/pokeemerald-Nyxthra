@@ -580,9 +580,11 @@ Testlabor_EventScript_CelebiRepeat::
 	playmoncry SPECIES_CELEBI, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	seteventmon SPECIES_CELEBI, 110
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	seteventmon SPECIES_CELEBI, 1
 	special BattleSetup_StartLegendaryBattle
 	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	release
 	end
 

@@ -171,7 +171,13 @@ Route113_Text_GlassWorkshopSign:
 	.string "“Glasdekor aus Vulkanasche.”$"
 
 Route113_EventScript_Floink::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route113_EventScript_Floink_RandomizerText
 	msgbox Route113_Text_Floink, MSGBOX_NPC
+	end
+
+Route113_EventScript_Floink_RandomizerText::
+	msgbox Route113_Text_FloinkRandomizer, MSGBOX_NPC
 	end
 
 Route113_Text_Floink:
@@ -181,3 +187,11 @@ Route113_Text_Floink:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route113_Text_FloinkRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"

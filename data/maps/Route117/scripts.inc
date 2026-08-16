@@ -314,7 +314,13 @@ Route117_Text_DayCareSign:
 	.string "“Lass uns deine Pokémon aufziehen.”$"
 
 Route117_EventScript_Chelast::
+	specialvar VAR_RESULT, IsWildRandomizerEnabled
+	goto_if_eq VAR_RESULT, TRUE, Route117_EventScript_Chelast_RandomizerText
 	msgbox Route117_Text_Chelast, MSGBOX_NPC
+	end
+
+Route117_EventScript_Chelast_RandomizerText::
+	msgbox Route117_Text_ChelastRandomizer, MSGBOX_NPC
 	end
 
 Route117_Text_Chelast:
@@ -324,6 +330,14 @@ Route117_Text_Chelast:
 	.string "einer Spawnrate von 1%!\p"
 	.string "Welches es ist, musst du selbst\n"
 	.string "herausfinden :D !$"
+
+Route117_Text_ChelastRandomizer:
+	.string "Tipp:\p"
+	.string "Wild-Randomizer ist aktiv.\n"
+	.string "Der feste 1%-Starter-Hinweis\l"
+	.string "gilt deshalb hier nicht.\p"
+	.string "Die Wild-Spawns werden über deinen\n"
+	.string "Seed neu gemappt!$"
 
 @ ========== POKEMON IM GARTEN ==========
 

@@ -626,7 +626,10 @@ struct SaveBlock2
     /*0x18*/ struct Pokedex pokedex;
              s8 playerStyles[8];
              u32 playerOutfitUnlockFlags;
-    /*0x90*/ u8 filler_90[0x8];
+    /*0x90*/ u32 optionsRandomizerSeed;
+    /*0x94*/ u8 optionsRandomizerEnabled;
+             u8 optionsRandomizerFlags;
+             u8 filler_96[0x2];
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
     /*0xA8*/ u32 gcnLinkFlags; // Read by Pokémon Colosseum/XD

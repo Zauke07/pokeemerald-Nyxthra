@@ -107,13 +107,14 @@ Std_FindItem::
 	lock
 	faceplayer
 	waitse
-	copyvar VAR_0x8006, ITEMID
 	copyvar VAR_0x8004, ITEMID
+	special RandomizeFieldItemVar8004
+	copyvar VAR_0x8006, VAR_0x8004
 	copyvar VAR_0x8005, AMOUNT
-	checkitemspace ITEMID, AMOUNT
+	checkitemspace VAR_0x8004, AMOUNT
 	copyvar VAR_0x8007, VAR_RESULT
-	bufferitemnameplural STR_VAR_2, ITEMID, AMOUNT
-	checkitemtype ITEMID
+	bufferitemnameplural STR_VAR_2, VAR_0x8004, AMOUNT
+	checkitemtype VAR_0x8004
 	call EventScript_BufferPocketNameAndTryFanfare
 	call_if_eq VAR_0x8007, TRUE, EventScript_PickUpItem
 	call_if_eq VAR_0x8007, FALSE, EventScript_NoRoomToPickUpItem
@@ -176,6 +177,7 @@ EventScript_HiddenItemScript::
 	lockall
 	waitse
 	goto_if_eq VAR_0x8005, 0, EventScript_TryPickUpHiddenCoins
+	special RandomizeFieldItemVar8005
 	copyvar VAR_0x8006, VAR_0x8005
 	additem VAR_0x8005, VAR_0x8009
 	copyvar VAR_0x8007, VAR_RESULT

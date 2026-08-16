@@ -1620,8 +1620,8 @@ const u16 gItemIconPalette_WatmelBerry[] = INCBIN_U16("graphics/items/icon_palet
 const u32 gItemIcon_DurinBerry[] = INCBIN_U32("graphics/items/icons/durin_berry.4bpp.smol");
 const u16 gItemIconPalette_DurinBerry[] = INCBIN_U16("graphics/items/icon_palettes/durin_berry.gbapal");
 
-const u32 gItemIcon_BelueBerry[] = INCBIN_U32("graphics/items/icons/belue_berry.4bpp.smol");
-const u16 gItemIconPalette_BelueBerry[] = INCBIN_U16("graphics/items/icon_palettes/belue_berry.gbapal");
+const u32 gItemIcon_Belüberry[] = INCBIN_U32("graphics/items/icons/belue_berry.4bpp.smol");
+const u16 gItemIconPalette_Belüberry[] = INCBIN_U16("graphics/items/icon_palettes/belue_berry.gbapal");
 
 const u32 gItemIcon_ChilanBerry[] = INCBIN_U32("graphics/items/icons/chilan_berry.4bpp.smol");
 const u16 gItemIconPalette_ChilanBerry[] = INCBIN_U16("graphics/items/icon_palettes/chilan_berry.gbapal");

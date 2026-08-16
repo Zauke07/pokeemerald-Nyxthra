@@ -595,6 +595,10 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_AZELF:
         CreateBattleStartTask(B_TRANSITION_SHRED_SPLIT, MUS_DP_VS_UXIE_MESPRIT_AZELF);
         break;
+    default:
+        // Fallback for randomized static encounters not covered by the legendary switch list.
+        CreateBattleStartTask(GetWildBattleTransition(), 0);
+        break;
     }
 
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
@@ -1021,10 +1025,14 @@ void ChooseStarter(void)
 static void CB2_GiveStarter(void)
 {
     u16 starterMon;
+    struct Pokemon mon;
 
     *GetVarPointer(VAR_STARTER_MON) = gSpecialVar_Result;
     starterMon = GetStarterPokemon(gSpecialVar_Result);
-    ScriptGiveMon(starterMon, 5, ITEM_NONE);
+    // ScriptGiveMon würde den Starter nochmals via RANDOMIZER_MODE_GIFT randomisieren.
+    // Da sStarterMon[] bereits die randomisierte Art enthält, direkt übergeben.
+    CreateRandomMon(&mon, starterMon, 5);
+    GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
     ResetTasks();
     PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);

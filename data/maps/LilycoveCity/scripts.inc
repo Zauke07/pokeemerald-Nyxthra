@@ -4770,7 +4770,7 @@ LilycoveCity_Text_MayDefeat::
 	.string "Ich erinner mich noch an unseren Kampf\n"
 	.string "auf ROUTE 103, {PLAYER}{KUN}.\p"
 	.string "Anscheinend hat dir die Abreibung damals\n"
-	.string "geholfen, so krass zu werden, was?$"
+	.string "damals geholfen, so krass zu werden, was?$"
 
 LilycoveCity_Text_MayGoingBackToLittleroot::
 	.string "{COLOR RIVAL_CLR}{RIVAL}: Ich werd wohl bald wieder nach\n"

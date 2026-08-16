@@ -42,6 +42,7 @@
 #include "field_player_avatar.h"
 #include "event_object_movement.h"
 #include "menu_helpers.h"
+#include "new_game_randomizer.h"
 #include "constants/maps.h"
 
 #define OPTION_MENU_FLAG (1 << 15)
@@ -50,6 +51,7 @@
 
 static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
+static EWRAM_DATA bool8 sStartBirchSpeechDirect = FALSE;
 static u8 sBirchSpeechMainTaskId;
 static u8 sStyleMenuTaskId;
 
@@ -91,6 +93,9 @@ static void DrawMainMenuWindowBorder(const struct WindowTemplate *, u16);
 static void Task_HighlightSelectedMainMenuItem(u8);
 static void PrintMainMenuVersionText(void);
 
+#define MAIN_MENU_WINDOW_FOOTER 7
+#define MAIN_MENU_WINDOW_ERROR 8
+
 static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8);
 static void Task_NewGameBirchSpeech_ChooseGender(u8);
 static void Task_NewGameBirchSpeech_AskStyle(u8);
@@ -122,7 +127,7 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
-static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
+// static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8); // unused
 static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y);
 static void Task_NewGameBirchSpeech_ShowPokemonText(u8 taskId);
 
@@ -131,9 +136,10 @@ static void NewGameBirchSpeech_ShowGenderMenu(void);
 
 static void Task_NewGameBirchSpeech_GenderMenuSlideOut(u8 taskId);
 static void Task_NewGameBirchSpeech_GenderMenuSlideIn(u8 taskId);
+static void StartBirchWelcomeText(u8 taskId);
 
-// static enum Gender NewGameBirchSpeech_ProcessGenderMenuInput(void);
-// static void NewGameBirchSpeech_ClearGenderWindow(u8 arg1, u8 arg2);
+// static enum Gender NewGameBirchSpeech_ProcessGenderMenuInput(void); // unused
+// static void NewGameBirchSpeech_ClearGenderWindow(u8 arg1, u8 arg2); // unused
 
 // ROM declarations
 static const u16 sBirchSpeechBgPals[][16] = {
@@ -156,8 +162,6 @@ static const u8 gText_MainMenuOption[] = _("Option");
 static const u8 gText_MainMenuMysteryGift[] = _("Geheim-Geschenk");
 static const u8 gText_MainMenuMysteryGift2[] = _("Geheim-Geschenk");
 static const u8 gText_MainMenuMysteryEvents[] = _("Geheim-Events");
-static const u8 gText_MainMenuNyxthraVersion[] = _("Pokemon Nyxthra - Version: Alpha v1.0.8");
-static const u8 gText_MainMenuExpansionVersion[] = _("pokeemerald-expansion v1.15.0");
 static const u8 gText_WirelessNotConnected[] = _("Der Wireless-Adapter ist nicht\nangeschlossen.");
 static const u8 gText_MysteryGiftCantUse[] = _("Geheim-Geschenk kann nicht verwendet werden,\nwährend der Wireless-Adapter angeschlossen ist.");
 static const u8 gText_MysteryEventsCantUse[] = _("Geheim-Events können nicht verwendet werden,\nwährend der Wireless-Adapter angeschlossen ist.");
@@ -170,6 +174,9 @@ static const u8 gText_ContinueMenuBadges[] = _("Orden");
 // NEU: Dialog-Texte für unser aufgeräumtes Menü
 //static const u8 gText_Birch_BoyOrGirl[] = _("Bist du ein Junge?\nOder ein Mädchen?");
 static const u8 gText_Birch_WhichStyle[] = _("Und welcher dieser\nProtagonisten bist du?");
+
+static const u8 sTextGameVersion[] = _("Pokémon Nyxthra - Alpha 1.1.0");
+static const u8 sTextGameBase[] = _("Base: pokeemerald-expansion 1.15.0");
 
 #define MENU_LEFT 2
 #define MENU_TOP_WIN0 1
@@ -193,6 +200,11 @@ static const u8 gText_Birch_WhichStyle[] = _("Und welcher dieser\nProtagonisten 
 #define MENU_WIDTH_ERROR 26
 #define MENU_HEIGHT_ERROR 4
 
+#define MENU_LEFT_FOOTER 2
+#define MENU_TOP_FOOTER 16
+#define MENU_WIDTH_FOOTER 27
+#define MENU_HEIGHT_FOOTER 3
+
 #define MENU_SHADOW_PADDING 1
 
 #define MENU_WIN_HCOORDS WIN_RANGE(((MENU_LEFT - 1) * 8) + MENU_SHADOW_PADDING, (MENU_LEFT + MENU_WIDTH + 1) * 8 - MENU_SHADOW_PADDING)
@@ -208,7 +220,8 @@ static const struct WindowTemplate sWindowTemplates_MainMenu[] =
     { .bg = 0, .tilemapLeft = MENU_LEFT, .tilemapTop = MENU_TOP_WIN4, .width = MENU_WIDTH, .height = MENU_HEIGHT_WIN4, .paletteNum = 15, .baseBlock = 0xD1 },
     { .bg = 0, .tilemapLeft = MENU_LEFT, .tilemapTop = MENU_TOP_WIN5, .width = MENU_WIDTH, .height = MENU_HEIGHT_WIN5, .paletteNum = 15, .baseBlock = 0x105 },
     { .bg = 0, .tilemapLeft = MENU_LEFT, .tilemapTop = MENU_TOP_WIN6, .width = MENU_WIDTH, .height = MENU_HEIGHT_WIN6, .paletteNum = 15, .baseBlock = 0x139 },
-    { .bg = 0, .tilemapLeft = MENU_LEFT_ERROR, .tilemapTop = MENU_TOP_ERROR, .width = MENU_WIDTH_ERROR, .height = MENU_HEIGHT_ERROR, .paletteNum = 15, .baseBlock = 0x16D },
+    { .bg = 0, .tilemapLeft = MENU_LEFT_FOOTER, .tilemapTop = MENU_TOP_FOOTER, .width = MENU_WIDTH_FOOTER, .height = MENU_HEIGHT_FOOTER, .paletteNum = 15, .baseBlock = 0x16D },
+    { .bg = 0, .tilemapLeft = MENU_LEFT_ERROR, .tilemapTop = MENU_TOP_ERROR, .width = MENU_WIDTH_ERROR, .height = MENU_HEIGHT_ERROR, .paletteNum = 15, .baseBlock = 0x1A5 },
     DUMMY_WIN_TEMPLATE
 };
 
@@ -250,7 +263,7 @@ static const u16 sMainMenuTextPal[] = INCBIN_U16("graphics/interface/main_menu_t
 static const u8 sTextColor_Headers[] = {TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_MenuInfo[] = {TEXT_DYNAMIC_COLOR_1, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_3};
 static const u8 sTextColor_Version[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
-static const u8 sTextColor_VersionSub[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GREEN, TEXT_COLOR_DARK_GRAY};
+static const u8 sTextColor_VersionSub[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_DARK_GRAY};
 
 const struct BgTemplate sMainMenuBgTemplates[] = {
     { .bg = 0, .charBaseIndex = 2, .mapBaseIndex = 30, .screenSize = 0, .paletteMode = 0, .priority = 0, .baseTile = 0 },
@@ -354,6 +367,11 @@ static void CB2_MainMenu(void) { RunTasks(); AnimateSprites(); BuildOamBuffer();
 static void VBlankCB_MainMenu(void) { LoadOam(); ProcessSpriteCopyRequests(); TransferPlttBuffer(); }
 void CB2_InitMainMenu(void) { InitMainMenu(FALSE); }
 void CB2_ReinitMainMenu(void) { InitMainMenu(TRUE); }
+void MainMenu_BeginBirchSpeechScene(void)
+{
+    sStartBirchSpeechDirect = TRUE;
+    SetMainCallback2(CB2_InitMainMenu);
+}
 
 static u32 InitMainMenu(bool8 returningFromOptionsMenu)
 {
@@ -408,6 +426,14 @@ static u32 InitMainMenu(bool8 returningFromOptionsMenu)
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     ShowBg(0);
     HideBg(1);
+
+    if (sStartBirchSpeechDirect)
+    {
+        sStartBirchSpeechDirect = FALSE;
+        CreateTask(Task_NewGameBirchSpeech_Init, 0);
+        return 0;
+    }
+
     CreateTask(Task_MainMenuCheckSaveFile, 0);
 
     return 0;
@@ -452,15 +478,6 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
             break;
         case SAVE_STATUS_ERROR:
             CreateMainMenuErrorWindow(gText_SaveFileCorrupted);
-            gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;
-            tMenuType = HAS_SAVED_GAME;
-            if (IsMysteryGiftEnabled() == TRUE)
-                tMenuType++;
-            break;
-        case SAVE_STATUS_EMPTY:
-        default:
-            tMenuType = HAS_NO_SAVED_GAME;
-            gTasks[taskId].func = Task_MainMenuCheckBattery;
             break;
         case SAVE_STATUS_NO_FLASH:
             CreateMainMenuErrorWindow(gJPText_No1MSubCircuit);
@@ -493,10 +510,10 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
 static void Task_WaitForSaveFileErrorWindow(u8 taskId)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActiveOnWindow(7) && (JOY_NEW(A_BUTTON)))
+    if (!IsTextPrinterActiveOnWindow(MAIN_MENU_WINDOW_ERROR) && (JOY_NEW(A_BUTTON)))
     {
-        ClearWindowTilemap(7);
-        ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
+        ClearWindowTilemap(MAIN_MENU_WINDOW_ERROR);
+        ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[MAIN_MENU_WINDOW_ERROR]);
         gTasks[taskId].func = Task_MainMenuCheckBattery;
     }
 }
@@ -678,13 +695,13 @@ static void Task_DisplayMainMenu(u8 taskId)
 
 static void PrintMainMenuVersionText(void)
 {
-    FillWindowPixelBuffer(7, PIXEL_FILL(0));
+    FillWindowPixelBuffer(MAIN_MENU_WINDOW_FOOTER, PIXEL_FILL(0));
 
-    AddTextPrinterParameterized3(7, FONT_SMALL, 2, 1, sTextColor_Version, TEXT_SKIP_DRAW, gText_MainMenuNyxthraVersion);
-    AddTextPrinterParameterized3(7, FONT_SMALL, 2, 13, sTextColor_VersionSub, TEXT_SKIP_DRAW, gText_MainMenuExpansionVersion);
+    AddTextPrinterParameterized3(MAIN_MENU_WINDOW_FOOTER, FONT_SMALL, 0, 0, sTextColor_Version, TEXT_SKIP_DRAW, sTextGameVersion);
+    AddTextPrinterParameterized3(MAIN_MENU_WINDOW_FOOTER, FONT_SMALL, 0, 10, sTextColor_VersionSub, TEXT_SKIP_DRAW, sTextGameBase);
 
-    PutWindowTilemap(7);
-    CopyWindowToVram(7, COPYWIN_GFX);
+    PutWindowTilemap(MAIN_MENU_WINDOW_FOOTER);
+    CopyWindowToVram(MAIN_MENU_WINDOW_FOOTER, COPYWIN_GFX);
 }
 
 static void Task_HighlightSelectedMainMenuItem(u8 taskId)
@@ -879,9 +896,10 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 return;
             }
 
-            gPlttBufferUnfaded[0] = RGB_BLACK;
-            gPlttBufferFaded[0] = RGB_BLACK;
-            gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+            FreeAllWindowBuffers();
+            sCurrItemAndOptionMenuCheck = 0;
+            SetMainCallback2(CB2_InitNewGameRandomizer);
+            DestroyTask(taskId);
             break;
         case ACTION_CONTINUE:
             gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1086,6 +1104,17 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tStyleSelectId         data[10]
 #define tDisplayedStyleId      data[11]
 
+static void StartBirchWelcomeText(u8 taskId)
+{
+    ClearStdWindowAndFrameToTransparent(2, TRUE);
+    ClearWindowTilemap(2);
+    CopyBgTilemapBufferToVram(0);
+    NewGameBirchSpeech_ClearWindow(0);
+    StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
+    AddTextPrinterForMessage(TRUE);
+    gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
+}
+
 void AddBirchSpeechObjects(u8 taskId)
 {
     u8 spriteId;
@@ -1133,11 +1162,16 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     gTasks[taskId].tPlayerSpriteId = SPRITE_NONE;
     gTasks[taskId].tDisplayedStyleId = NUM_PLAYER_STYLES;
     gTasks[taskId].tNewPlayerSpriteId = SPRITE_NONE;
+    InitWindows(sNewGameBirchSpeechTextWindows);
+    LoadMainMenuWindowFrameTiles(0, 0xF3);
+    LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
+    DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, COPYWIN_GFX);
     gTasks[taskId].tTimer = 0xD8;
-
     gTasks[taskId].func = Task_NewGameBirchSpeech_WaitToShowBirch;
-
     PlayBGM(MUS_ROUTE122);
+
     ShowBg(0);
     ShowBg(1);
 }
@@ -1173,16 +1207,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
         }
         else
         {
-            InitWindows(sNewGameBirchSpeechTextWindows);
-            LoadMainMenuWindowFrameTiles(0, 0xF3);
-            LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
-            DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
-            PutWindowTilemap(0);
-            CopyWindowToVram(0, COPYWIN_GFX);
-            NewGameBirchSpeech_ClearWindow(0);
-            StringExpandPlaceholders(gStringVar4, gText_Birch_Welcome);
-            AddTextPrinterForMessage(TRUE);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_ThisIsAPokemon;
+            StartBirchWelcomeText(taskId);
         }
     }
 }
@@ -2131,11 +2156,11 @@ void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
 
 static void CreateMainMenuErrorWindow(const u8 *str)
 {
-    FillWindowPixelBuffer(7, PIXEL_FILL(1));
-    AddTextPrinterParameterized(7, FONT_NORMAL, str, 0, 1, 2, 0);
-    PutWindowTilemap(7);
-    CopyWindowToVram(7, COPYWIN_GFX);
-    DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[7], MAIN_MENU_BORDER_TILE);
+    FillWindowPixelBuffer(MAIN_MENU_WINDOW_ERROR, PIXEL_FILL(1));
+    AddTextPrinterParameterized(MAIN_MENU_WINDOW_ERROR, FONT_NORMAL, str, 0, 1, 2, 0);
+    PutWindowTilemap(MAIN_MENU_WINDOW_ERROR);
+    CopyWindowToVram(MAIN_MENU_WINDOW_ERROR, COPYWIN_GFX);
+    DrawMainMenuWindowBorder(&sWindowTemplates_MainMenu[MAIN_MENU_WINDOW_ERROR], MAIN_MENU_BORDER_TILE);
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(9, DISPLAY_WIDTH - 9));
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(113, DISPLAY_HEIGHT - 1));
 }
@@ -2257,6 +2282,7 @@ void CreateYesNoMenuParameterized(u8 x, u8 y, u16 baseTileNum, u16 baseBlock, u8
     CreateYesNoMenu(&template, baseTileNum, yesNoPalNum, 0);
 }
 
+// unused
 /*
 static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
 {
@@ -2265,8 +2291,8 @@ static void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
     PutWindowTilemap(windowId);
     if (copyToVram == TRUE) CopyWindowToVram(windowId, COPYWIN_FULL);
 }
-*/
 
+// unused
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
 {
     FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM +  1, x-2,       y-1, 1,       1, palNum);
@@ -2283,6 +2309,7 @@ static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM + 5), x+width-1, y+height, 1,       1, palNum);
     FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM + 6), x+width,   y+height, 1,       1, palNum);
 }
+*/
 
 static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 {

@@ -39,6 +39,7 @@
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "pokemon_summary_screen.h"
+#include "randomizer.h"
 #include "random.h"
 #include "rayquaza_scene.h"
 #include "region_map.h"
@@ -5858,4 +5859,49 @@ bool8 CheckAddCoins(void)
         return FALSE;
     else
         return TRUE;
+}
+
+u16 IsWildRandomizerEnabled(void)
+{
+    u8 flags;
+
+    if (gSaveBlock2Ptr == NULL)
+        return FALSE;
+
+    if (gSaveBlock2Ptr->optionsRandomizerEnabled != TRUE)
+        return FALSE;
+
+    flags = gSaveBlock2Ptr->optionsRandomizerFlags;
+    if ((flags & ~(RANDOMIZER_FLAG_WILD
+                 | RANDOMIZER_FLAG_TRAINER
+                 | RANDOMIZER_FLAG_STARTER
+                 | RANDOMIZER_FLAG_EVOLUTION
+                 | RANDOMIZER_FLAG_FIELD_ITEM
+                 | RANDOMIZER_FLAG_GIFT
+                 | RANDOMIZER_FLAG_STATIC
+                 | RANDOMIZER_FLAG_STATIC_KEEP_LEGENDS)) != 0)
+    {
+        return FALSE;
+    }
+
+    if (flags == 0 || gSaveBlock2Ptr->optionsRandomizerSeed == 0)
+        return FALSE;
+
+    return (flags & RANDOMIZER_FLAG_WILD) != 0;
+}
+
+u16 RandomizeFieldItemVar8004(void)
+{
+    if (GetItemPocket(gSpecialVar_0x8004) != POCKET_KEY_ITEMS
+     && (gSpecialVar_0x8004 < ITEM_HM_CUT || gSpecialVar_0x8004 > ITEM_HM_DIVE))
+        gSpecialVar_0x8004 = Randomizer_GetItem(gSpecialVar_0x8004, RANDOMIZER_MODE_FIELD_ITEM);
+    return gSpecialVar_0x8004;
+}
+
+u16 RandomizeFieldItemVar8005(void)
+{
+    if (GetItemPocket(gSpecialVar_0x8005) != POCKET_KEY_ITEMS
+     && (gSpecialVar_0x8005 < ITEM_HM_CUT || gSpecialVar_0x8005 > ITEM_HM_DIVE))
+        gSpecialVar_0x8005 = Randomizer_GetItem(gSpecialVar_0x8005, RANDOMIZER_MODE_FIELD_ITEM);
+    return gSpecialVar_0x8005;
 }
