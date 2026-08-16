@@ -1,0 +1,6 @@
+#ifndef GUARD_CHALLENGE_MODE_MENU_H
+#define GUARD_CHALLENGE_MODE_MENU_H
+
+void CB2_InitChallengeModeMenu(void);
+
+#endif // GUARD_CHALLENGE_MODE_MENU_H
