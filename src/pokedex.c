@@ -3199,22 +3199,12 @@ static u8 ClearMonSprites(void)
 
 static u16 GetPokemonSpriteToDisplay(u16 index)
 {
-    const struct PokedexListItem *entry;
-
     if (index >= NATIONAL_DEX_COUNT || sPokedexView->pokedexList[index].dexNum == 0xFFFF)
         return 0xFFFF;
     else if (sPokedexView->pokedexList[index].seen)
         return sPokedexView->pokedexList[index].dexNum;
     else
         return 0;
-
-    entry = &sPokedexView->pokedexList[species];
-    if (species == sPokedexView->selectedPokemon
-     && IsDexSpeciesInEntry(sPokedexView->displaySpecies, entry)
-     && IsDexDisplaySpeciesUsable(sPokedexView->displaySpecies))
-        return sPokedexView->displaySpecies;
-
-    return GetDefaultDisplaySpeciesByDexNum(entry->dexNum);
 }
 
 static u16 CreateMonSpriteFromSpecies(u16 species, s16 x, s16 y, u16 paletteSlot)
@@ -5895,8 +5885,8 @@ static u32 GetPokedexMonPersonality(enum Species species)
 
 u16 CreateMonSpriteFromNationalDexNumber(enum NationalDexOrder nationalNum, s16 x, s16 y, u16 paletteSlot)
 {
-    nationalNum = NationalPokedexNumToSpecies(nationalNum);
-    return CreateMonPicSprite(nationalNum, FALSE, GetPokedexMonPersonality(nationalNum), TRUE, x, y, paletteSlot, TAG_NONE);
+    enum Species species = NationalPokedexNumToSpecies(nationalNum);
+    return CreateMonPicSprite(species, FALSE, GetPokedexMonPersonality(species), TRUE, x, y, paletteSlot, TAG_NONE);
 }
 
 static u16 CreateSizeScreenTrainerPic(u16 species, s16 x, s16 y, s8 paletteSlot)

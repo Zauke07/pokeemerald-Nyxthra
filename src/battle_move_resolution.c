@@ -905,7 +905,6 @@ static bool32 WasOriginalTargetAlly(enum BattlerId battlerAtk, enum BattlerId ba
 static enum CancelerResult CancelerSetTargets(struct BattleCalcValues *cv)
 {
     enum MoveTarget moveTarget = GetBattlerMoveTargetType(cv->battlerAtk, cv->move);
-    enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
     bool32 isDoubleBattle = IsDoubleBattle();
 
     if (!HandleMoveTargetRedirection(cv, moveTarget))
@@ -1887,7 +1886,6 @@ static enum CancelerResult CancelerMoveSpecificMessage(struct BattleCalcValues *
 
 static bool32 NoTargetPresent(enum BattlerId battler, enum Move move, enum MoveTarget moveTarget)
 {
-    enum BattlerId partner = BATTLE_PARTNER(battler);
 
     switch (moveTarget)
     {
@@ -1931,7 +1929,6 @@ static enum CancelerResult CancelerNoTarget(struct BattleCalcValues *cv)
 
     if (cv->battlerAtk == cv->battlerDef
      && moveTarget == TARGET_ALLY
-     && BATTLE_PARTNER(ctx->battlerAtk) < gBattlersCount
      && gProtectStructs[GetPartnerBattler(cv->battlerAtk)].usedAllySwitch)
     {
         gBattlescriptCurrInstr = BattleScript_ButItFailed;
@@ -4197,7 +4194,7 @@ static enum MoveEndResult MoveEndRampage(struct BattleCalcValues *cv)
 
     if (gBattleMons[cv->battlerAtk].volatiles.rampageTurns == 0
      || gSpecialStatuses[cv->battlerAtk].dancerUsedMove
-     || B_RAMPAGE_CONFUSION < GEN_5)
+     || GetConfig(B_RAMPAGE_CONFUSION) < GEN_5)
     {
         result = MOVEEND_RESULT_CONTINUE;
     }

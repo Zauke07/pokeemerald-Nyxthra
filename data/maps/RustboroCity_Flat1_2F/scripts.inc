@@ -9,7 +9,7 @@ RustboroCity_Flat1_2F_EventScript_TwixsDad::
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Flat1_2F_EventScript_TwixsDadNewPhrase
 
 RustboroCity_Flat1_2F_EventScript_GivePhrase::
-	special DoWaldaNamingScreen
+	special DoTwixNamingScreen
 	goto_if_eq VAR_0x8004, 1, RustboroCity_Flat1_2F_EventScript_CancelGivePhrase
 	goto_if_eq VAR_0x8004, 2, RustboroCity_Flat1_2F_EventScript_CancelGiveFirstPhrase
 	specialvar VAR_RESULT, TryGetWallpaperWithTwixPhrase

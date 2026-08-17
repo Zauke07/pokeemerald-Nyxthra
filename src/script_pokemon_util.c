@@ -40,9 +40,9 @@ bool32 IsPartyFullyHealed(void)
 {
     u32 i, j, pp, maxPP, ppBonuses, move;
 
-    for (i = 0; i < gPlayerPartyCount; i++)
+    for (i = 0; i < gPartiesCount[B_TRAINER_PLAYER]; i++)
     {
-        struct Pokemon *mon = &gPlayerParty[i];
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
 
         if (GetMonData(mon, MON_DATA_IS_EGG))
             continue;
@@ -511,7 +511,7 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, enum Species species, u8
         {
             return MON_CANT_GIVE;
         }
-        CopyMon(&gEnemyParty[slot], &mon, sizeof(struct Pokemon));
+        CopyMon(&gParties[B_TRAINER_OPPONENT_A][slot], &mon, sizeof(struct Pokemon));
         return MON_GIVEN_TO_PARTY;
 
     assertf(slot < PARTY_SIZE, "invalid slot: %d", slot)

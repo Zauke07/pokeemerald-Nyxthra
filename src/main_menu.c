@@ -1,5 +1,6 @@
 #include "global.h"
 #include "trainer_pokemon_sprites.h"
+#include "trainer.h"
 #include "bg.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -2516,9 +2517,11 @@ static void DestroyCurrentTrainerSprite(u8 taskId)
 
         if (displayedStyleId < NUM_PLAYER_STYLES)
         {
-            u16 trainerPic = PlayerStyleToFrontTrainerPicId(displayedStyleId, FALSE);
-            FreeSpriteTilesByTag(gTrainerSprites[trainerPic].frontPic.tag);
-            FreeSpritePaletteByTag(gTrainerSprites[trainerPic].palette.tag);
+            enum TrainerPicID trainerPic = (enum TrainerPicID)PlayerStyleToFrontTrainerPicId(displayedStyleId, FALSE);
+            u16 trainerTag = GetTrainerPicTag(trainerPic, TRUE);
+
+            FreeSpriteTilesByTag(trainerTag);
+            FreeSpritePaletteByTag(trainerTag);
         }
 
         DestroySprite(&gSprites[spriteId]);
@@ -2536,7 +2539,7 @@ void CreateTrainerSprites(u8 taskId, bool8 unused)
     if (styleId >= NUM_PLAYER_STYLES)
         styleId = STYLE_BRENDAN;
 
-    u16 trainerPic = PlayerStyleToFrontTrainerPicId(styleId, FALSE);
+    enum TrainerPicID trainerPic = (enum TrainerPicID)PlayerStyleToFrontTrainerPicId(styleId, FALSE);
     u8 spriteId = CreateTrainerSprite(trainerPic, 180, 60, 0, NULL);
 
     if (spriteId < MAX_SPRITES)

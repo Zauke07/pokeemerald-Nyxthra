@@ -2760,7 +2760,7 @@ void PlayFollowerCry(struct ScriptContext *ctx)
 
     if (FlagGet(FLAG_FOLLOWER_ACTIVE) && sCurrentFollowerSlotId < PARTY_SIZE)
     {
-        u16 species = GetMonData(&gPlayerParty[sCurrentFollowerSlotId], MON_DATA_SPECIES);
+        u16 species = GetMonData(&gParties[B_TRAINER_PLAYER][sCurrentFollowerSlotId], MON_DATA_SPECIES);
         PlayCry_Script(species, CRY_MODE_NORMAL);
     }
 }

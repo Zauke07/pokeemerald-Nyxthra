@@ -3,6 +3,7 @@ SafariZone_EventScript_OutOfBallsMidBattle::
 	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 3
 #else
 	setvar VAR_SAFARI_ZONE_STATE, 1
+#endif
 	special ExitSafariMode
 #if IS_FRLG
 	setwarp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1
@@ -16,6 +17,7 @@ SafariZone_EventScript_Exit::
 	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 1
 #else
 	setvar VAR_SAFARI_ZONE_STATE, 1
+#endif
 	special ExitSafariMode
 #if IS_FRLG
 	warp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1

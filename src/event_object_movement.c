@@ -2614,7 +2614,7 @@ void UpdateFollowingPokemon(void)
         return;
     }
 
-    mon = &gPlayerParty[sCurrentFollowerSlotId];
+    mon = &gParties[B_TRAINER_PLAYER][sCurrentFollowerSlotId];
     species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG);
 
     if (species == SPECIES_NONE || species >= NUM_SPECIES)

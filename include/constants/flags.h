@@ -77,7 +77,7 @@
 #define FLAG_CHALLENGE_OPPONENT_HIDDEN       0x39 // Challenge House: Protagonisten-NPC verstecken
 #define FLAG_CHALLENGE_HOUSE_BATTLE_ACTIVE     0x3A // Challenge House: Kampf aktiv (Niederlage-Erkennung)
 #define FLAG_CHALLENGE_HOUSE_REWARD_GIVEN  0x3B // Challenge House: Belohnung bereits ausgegeben
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
+#define FLAG_CAUGHT_MEWTWO_STATUE    0x3C // Mewtu-Statue wurde gefangen
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag

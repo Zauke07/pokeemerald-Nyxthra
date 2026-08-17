@@ -754,7 +754,8 @@ UNUSED static const struct BoxPokemon sBoxPokemonConstantsFit =
     },
     .secure.substructs[3].type3 = {
         .metLocation = min(MAPSEC_COUNT, min(METLOC_SPECIAL_EGG, min(METLOC_IN_GAME_TRADE, METLOC_FATEFUL_ENCOUNTER))),
-        .metLevel = MAX_LEVEL,
+        .metLevel = (MAX_LEVEL & 0x7F),
+        .metLevelHigh = ((MAX_LEVEL >> 7) & 1),
         .metGame = NUM_VERSIONS, // NOTE: NUM_VERSIONS is inclusive!
         .dynamaxLevel = MAX_DYNAMAX_LEVEL,
         .otGender = GENDER_COUNT - 1,
@@ -768,7 +769,7 @@ UNUSED static const struct BoxPokemon sBoxPokemonConstantsFit =
     },
 };
 
-STATIC_ASSERT(MAX_LEVEL <= 100, PokemonSubstruct0_experience_PotentiallyTooSmall); // Maximum of ~2 million exp.
+STATIC_ASSERT(MAX_LEVEL <= 200, PokemonSubstruct0_experience_PotentiallyTooSmall); // 24-Bit-EXP-Feld reicht für die verwendeten Wachstumskurven bis Level 200.
 
 static u32 CompressStatus(u32 status)
 {
@@ -2291,7 +2292,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = GetSubstruct3(boxMon)->metLocation;
             break;
         case MON_DATA_MET_LEVEL:
-            retVal = GetSubstruct3(boxMon)->metLevel;
+            retVal = GetSubstruct3(boxMon)->metLevel | (GetSubstruct3(boxMon)->metLevelHigh << 7);
             break;
         case MON_DATA_MET_GAME:
             retVal = GetSubstruct3(boxMon)->metGame;
@@ -2806,7 +2807,8 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(GetSubstruct3(boxMon)->metLocation);
             break;
         case MON_DATA_MET_LEVEL:
-            SET8(GetSubstruct3(boxMon)->metLevel);
+            GetSubstruct3(boxMon)->metLevel = *data & 0x7F;
+            GetSubstruct3(boxMon)->metLevelHigh = (*data >> 7) & 1;
             break;
         case MON_DATA_MET_GAME:
             SET8(GetSubstruct3(boxMon)->metGame);
@@ -5091,10 +5093,13 @@ s32 CalculateFriendshipBonuses(struct Pokemon *mon, s32 modifier, enum HoldEffec
 {
     s32 bonus = 0;
 
-    if (modifier > 0)
-    {
-        if (itemHoldEffect == HOLD_EFFECT_FRIENDSHIP_UP)
-            bonus = 150 * modifier / 100;
+    if ((modifier > 0) && (itemHoldEffect == HOLD_EFFECT_FRIENDSHIP_UP))
+        bonus += 150 * modifier / 100;
+    else
+        bonus += modifier;
+
+    if (modifier == 0)
+        return bonus;
 
     if (GetMonData(mon, MON_DATA_POKEBALL) == BALL_LUXURY)
         bonus += ITEM_FRIENDSHIP_LUXURY_BONUS;

@@ -1033,17 +1033,30 @@ u8 CreateTrainerSprite(enum TrainerPicID trainerPicId, s16 x, s16 y, u8 subprior
 
 u8 UpdateTrainerSprite(u8 spriteID, u16 trainerSpriteID, s16 x, s16 y, u8 subpriority, u8 *buffer)
 {
+    struct CompressedSpriteSheet spriteSheet;
     struct SpriteTemplate spriteTemplate;
+    enum TrainerPicID trainerPicId = (enum TrainerPicID)trainerSpriteID;
     u8 spriteId;
     bool32 alloced = FALSE;
 
-    LoadSpritePalette(&gTrainerSprites[trainerSpriteID].palette);
-    LoadCompressedSpriteSheetOverrideBuffer(&gTrainerSprites[trainerSpriteID].frontPic, buffer);
+    if (buffer == NULL)
+    {
+        buffer = Alloc(TRAINER_PIC_SIZE);
+        alloced = TRUE;
+    }
+
+    spriteSheet.data = GetTrainerFrontPicData(trainerPicId);
+    spriteSheet.size = TRAINER_PIC_SIZE;
+    spriteSheet.tag = GetTrainerPicTag(trainerPicId, TRUE);
+
+    LoadSpritePaletteWithTag(GetTrainerFrontPicPalette(trainerPicId), GetTrainerPicTag(trainerPicId, TRUE));
+    LoadCompressedSpriteSheetOverrideBuffer(&spriteSheet, buffer);
+
     if (alloced)
         Free(buffer);
 
-    spriteTemplate.tileTag = gTrainerSprites[trainerSpriteID].frontPic.tag;
-    spriteTemplate.paletteTag = gTrainerSprites[trainerSpriteID].palette.tag;
+    spriteTemplate.tileTag = GetTrainerPicTag(trainerPicId, TRUE);
+    spriteTemplate.paletteTag = GetTrainerPicTag(trainerPicId, TRUE);
     spriteTemplate.oam = &sOam_64x64;
     spriteTemplate.anims = gDummySpriteAnimTable;
     spriteTemplate.images = NULL;

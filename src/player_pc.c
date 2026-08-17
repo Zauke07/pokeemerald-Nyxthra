@@ -100,31 +100,31 @@ u16 GetPlayerOverworldSpriteId(u8 style)
     return playerSprites[style];
 }
 
-enum TrainerPicID GetTrainerPicFromStyle(u8 style)
+u16 GetTrainerPicFromStyle(u8 style)
 {
     switch (style)
     {
-        case STYLE_BRENDAN: return TRAINER_PIC_BACK_BRENDAN;
-        case STYLE_MAY:     return TRAINER_PIC_BACK_MAY;
-        case STYLE_RED:     return TRAINER_PIC_BACK_RED;
-        case STYLE_LEAF:    return TRAINER_PIC_BACK_LEAF;
-        case STYLE_ETHAN:   return TRAINER_PIC_BACK_ETHAN;
-        case STYLE_LYRA:    return TRAINER_PIC_BACK_LYRA;
-        case STYLE_LUCAS:   return TRAINER_PIC_BACK_LUCAS;
-        case STYLE_DAWN:    return TRAINER_PIC_BACK_DAWN;
-        case STYLE_HILBERT: return TRAINER_PIC_BACK_HILBERT;
-        case STYLE_HILDA:   return TRAINER_PIC_BACK_HILDA;
-        case STYLE_NATE:    return TRAINER_PIC_BACK_NATE;
-        case STYLE_ROSA:    return TRAINER_PIC_BACK_ROSA;
-        case STYLE_CALEM:   return TRAINER_PIC_BACK_CALEM;
-        case STYLE_SERENA:  return TRAINER_PIC_BACK_SERENA;
-        case STYLE_ELIO:    return TRAINER_PIC_BACK_ELIO;
-        case STYLE_SELENE:  return TRAINER_PIC_BACK_SELENE;
-        case STYLE_VICTOR:  return TRAINER_PIC_BACK_VICTOR;
-        case STYLE_GLORIA:  return TRAINER_PIC_BACK_GLORIA;
-        case STYLE_FLORIAN: return TRAINER_PIC_BACK_FLORIAN;
-        case STYLE_JULIANA: return TRAINER_PIC_BACK_JULIANA;
-        default:            return TRAINER_PIC_BACK_BRENDAN; // WICHTIG: Das fängt den letzten Fehler (Zeile 129) ab!
+        case STYLE_BRENDAN: return TRAINER_BACK_PIC_BRENDAN;
+        case STYLE_MAY:     return TRAINER_BACK_PIC_MAY;
+        case STYLE_RED:     return TRAINER_BACK_PIC_RED;
+        case STYLE_LEAF:    return TRAINER_BACK_PIC_LEAF;
+        case STYLE_ETHAN:   return TRAINER_BACK_PIC_ETHAN;
+        case STYLE_LYRA:    return TRAINER_BACK_PIC_LYRA;
+        case STYLE_LUCAS:   return TRAINER_BACK_PIC_LUCAS;
+        case STYLE_DAWN:    return TRAINER_BACK_PIC_DAWN;
+        case STYLE_HILBERT: return TRAINER_BACK_PIC_HILBERT;
+        case STYLE_HILDA:   return TRAINER_BACK_PIC_HILDA;
+        case STYLE_NATE:    return TRAINER_BACK_PIC_NATE;
+        case STYLE_ROSA:    return TRAINER_BACK_PIC_ROSA;
+        case STYLE_CALEM:   return TRAINER_BACK_PIC_CALEM;
+        case STYLE_SERENA:  return TRAINER_BACK_PIC_SERENA;
+        case STYLE_ELIO:    return TRAINER_BACK_PIC_ELIO;
+        case STYLE_SELENE:  return TRAINER_BACK_PIC_SELENE;
+        case STYLE_VICTOR:  return TRAINER_BACK_PIC_VICTOR;
+        case STYLE_GLORIA:  return TRAINER_BACK_PIC_GLORIA;
+        case STYLE_FLORIAN: return TRAINER_BACK_PIC_FLORIAN;
+        case STYLE_JULIANA: return TRAINER_BACK_PIC_JULIANA;
+        default:            return TRAINER_BACK_PIC_BRENDAN;
     }
 }
 

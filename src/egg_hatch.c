@@ -308,19 +308,6 @@ static const s16 sEggShardVelocities[][GENDER_COUNT] =
     {Q_8_8(2.5),        Q_8_8(-7.5)},
 };
 
-static u16 GetFallbackHatchSpecies(void)
-{
-    u16 species;
-
-    for (species = SPECIES_BULBASAUR; species < NUM_SPECIES; species++)
-    {
-        if (species != SPECIES_EGG && IsSpeciesEnabled(species))
-            return species;
-    }
-
-    return SPECIES_BULBASAUR;
-}
-
 static u16 SanitizeEggHatchSpecies(u16 species)
 {
     if (species <= SPECIES_NONE || species >= NUM_SPECIES || !IsSpeciesEnabled(species) || species == SPECIES_EGG)
@@ -340,14 +327,6 @@ static u16 GetFallbackHatchSpecies(void)
     }
 
     return SPECIES_BULBASAUR;
-}
-
-static u16 SanitizeEggHatchSpecies(u16 species)
-{
-    if (species <= SPECIES_NONE || species >= NUM_SPECIES || !IsSpeciesEnabled(species) || species == SPECIES_EGG)
-        return GetFallbackHatchSpecies();
-
-    return species;
 }
 
 static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)

@@ -3,7 +3,6 @@
   "name": "Route115",
   "layout": "LAYOUT_ROUTE115",
   "music": "MUS_ROUTE104",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_115",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -483,5 +482,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route115_EventScript_RouteSignBabyBootCamp"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

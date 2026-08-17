@@ -674,7 +674,7 @@ const u8 gText_Littleroot[] = _("Wurzelheim"); // Unused. Given the context, Bri
 const u8 gText_Lilycove[] = _("Seegrasulb City");     // Unused. Given the context, Briney may at one point have been able to sail the player here
 const u8 gText_Dewford[] = _("Faustauhaven");
 const u8 gText_Enter2[] = _("Enter");
-const u8 gText_Info2[] = _("Info");
+
 const u8 gText_WhatsAContest[] = _("Was ist ein Wettbewerb?");
 const u8 gText_TypesOfContests[] = _("Arten von Wettbewerben");
 const u8 gText_Ranks[] = _("Ränge");
@@ -684,10 +684,9 @@ const u8 gText_BeautyContest[] = _("Schönheits-Wettbewerb");
 const u8 gText_CutenessContest[] = _("Niedlichkeits-Wettbewerb");
 const u8 gText_SmartnessContest[] = _("Klugheits-Wettbewerb");
 const u8 gText_ToughnessContest[] = _("Härte-Wettbewerb");
-const u8 gText_Decoration2[] = _("dekoration");
-const u8 gText_PackUp[] = _("einpacken");
+
 const u8 gText_Count[] = _("zählen"); //unused
-const u8 gText_Registry[] = _("Grundbuch");
+
 const u8 gText_Information[] = _("Information");
 const u8 gText_Mach[] = _("Eil");
 const u8 gText_Acro[] = _("Kunst");
@@ -739,10 +738,7 @@ const u8 gText_50CoinsAndPrice[] = _("  50 Münzen    ¥1,000");
 const u8 gText_500CoinsAndPrice[] = _("500 Münzen  ¥10,000");
 const u8 gText_Excellent2[] = _("Ausgezeichnet");
 const u8 gText_NotSoGood[] = _("Nicht so gut");
-const u8 gText_RedShard[] = _("Roter Splitter");
-const u8 gText_YellowShard[] = _("Gelber Splitter");
-const u8 gText_BlueShard[] = _("Blauer Splitter");
-const u8 gText_GreenShard[] = _("Grüner Splitter");
+
 const u8 gText_BattleFrontier[] = _("Kampfzone");
 const u8 gText_Right[] = _("Rechts");
 const u8 gText_Left[] = _("Links");
@@ -776,9 +772,7 @@ const u8 gText_BillsPc[] = _("BILL'S PC");
 const u8 gText_PlayersPC[] = _("{PLAYER}'s PC");
 const u8 gText_HallOfFame[] = _("HALL OF FAME");
 const u8 gText_LogOff[] = _("Ausloggen");
-const u8 gText_Opponent[] = _("Gegner");
-const u8 gText_Tourney_Tree[] = _("Turnierbaum");
-const u8 gText_ReadyToStart[] = _("Bereit zu starten");
+
 const u8 gText_NormalRank[] = _("Normaler Rang");
 const u8 gText_SuperRank[] = _("Super Rang");
 const u8 gText_HyperRank[] = _("Hyper Rang");
@@ -822,10 +816,7 @@ const u8 gText_NormalTagMatch[] = _("Normaler tag-kampf");
 const u8 gText_VarietyTagMatch[] = _("Vielseitiger tag-kampf");
 const u8 gText_UniqueTagMatch[] = _("Einzigartiger tag-kampf");
 const u8 gText_ExpertTagMatch[] = _("Experten tag-kampf");
-const u8 gText_TradeCenter[] = _("Tausch-center");
-const u8 gText_Colosseum[] = _("Kolloseum");
-const u8 gText_RecordCorner[] = _("Rekord-ecke");
-const u8 gText_BerryCrush3[] = _("Beeren-crush");
+
 const u8 gText_EmptyLinkService[] = _(""); // Maybe Spin Trade?
 const u8 gText_PokemonJump[] = _("Pokémon-sprung");
 const u8 gText_DodrioBerryPicking[] = _("Dodriobeeren-pflücken");
@@ -843,17 +834,11 @@ const u8 gText_TowerInfo[] = _("Turm-info");
 const u8 gText_BattleMon[] = _("Kampf-{PKMN}");
 const u8 gText_BattleSalon[] = _("Kampf-salon");
 const u8 gText_MultiLink2[] = _("Multi-link");
-const u8 gText_BattleRules[] = _("Kampf-regeln");
-const u8 gText_JudgeMind[] = _("Richter: geist");
-const u8 gText_JudgeSkill[] = _("Richter: fähigkeit");
-const u8 gText_JudgeBody[] = _("Richter: körper");
+
 const u8 gText_Matchup[] = _("Matchup");
 const u8 gText_TourneyTree[] = _("Turnier-baum");
 const u8 gText_DoubleKO[] = _("Doppel-ko");
-const u8 gText_BasicRules[] = _("Grundregeln");
-const u8 gText_SwapPartners[] = _("Tausch: partner");
-const u8 gText_SwapNumber[] = _("Tausch: nummer");
-const u8 gText_SwapNotes[] = _("Tausch: notizen");
+
 const u8 gText_OpenLevel3[] = _("Offenes level");
 const u8 gText_BattleBasics[] = _("Kampf-grundlagen");
 const u8 gText_PokemonNature[] = _("Pokémon-wesen");
@@ -869,10 +854,7 @@ const u8 gText_HeldItems[] = _("Getragene items");
 const u8 gText_PokemonOrder[] = _("Pokémon-reihenfolge");
 const u8 gText_BattlePokemon[] = _("Kampf-Pokémon");
 const u8 gText_BattleTrainers[] = _("Kampf-trainer");
-const u8 gText_GoOn[] = _("Weiter");
-const u8 gText_Record2[] = _("Rekord");
-const u8 gText_Rest[] = _("Ausruhen");
-const u8 gText_Retire[] = _("Aufhören");
+
 const u8 gText_99TimesPlus[] = _("99 mal +");
 const u8 gText_1MinutePlus[] = _("1 minute +");
 const u8 gText_SpaceSeconds[] = _(" sekunden");
@@ -920,7 +902,7 @@ const u8 gText_HPUp1000[] = _("KP-Plus{CLEAR_TO 99}{FONT_SMALL}1,000");
 const u8 gText_PPUp3000[] = _("AP-Plus{CLEAR_TO 99}{FONT_SMALL}3,000");
 const u8 gText_RankingHall[] = _("Ranghalle");
 const u8 gText_ExchangeService[] = _("Tauschservice");
-const u8 gText_LilycoveCity[] = _("Seegrasulb city");
+
 const u8 gText_SlateportCity[] = _("Graphitport city");
 const u8 gText_CaveOfOrigin[] = _("Höhle des ursprungs");
 const u8 gText_MtPyre[] = _("Mt. pyre");

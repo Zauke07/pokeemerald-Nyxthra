@@ -2430,7 +2430,7 @@ u16 GetPlayerAvatarGraphicsIdByStyleAndFlags(u8 style, u8 flags)
 
 void SetPlayerAvatarExtraStateTransition(u16 graphicsId, u8 transitionFlag)
 {
-    u16 stateFlag = GetPlayerAvatarStateTransitionByGraphicsId(graphicsId, gPlayerAvatar.style);
+    u16 stateFlag = GetPlayerAvatarStateTransitionByGraphicsId(graphicsId, gSaveBlock2Ptr->playerStyles[0]);
 
     gPlayerAvatar.transitionFlags |= stateFlag | transitionFlag;
     DoPlayerAvatarTransition();
@@ -2758,7 +2758,7 @@ static void Task_WaitStopSurfing(u8 taskId)
     if (ObjectEventClearHeldMovementIfFinished(playerObjEvent))
     {
         ObjectEventSetGraphicsId(playerObjEvent,
-        GetPlayerAvatarGraphicsIdByStyleAndState(gPlayerAvatar.style, PLAYER_AVATAR_STATE_NORMAL));
+        GetPlayerAvatarGraphicsIdByStyleAndState(gSaveBlock2Ptr->playerStyles[0], PLAYER_AVATAR_STATE_NORMAL));
         ObjectEventSetHeldMovement(playerObjEvent, GetFaceDirectionMovementAction(playerObjEvent->facingDirection));
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();

@@ -6150,51 +6150,51 @@ u16 GetPlayerBackSpriteId(void)
     switch (style)
     {
     case STYLE_BRENDAN:
-        return TRAINER_PIC_BACK_BRENDAN;
+        return TRAINER_BACK_PIC_BRENDAN;
     case STYLE_MAY:
-        return TRAINER_PIC_BACK_MAY;
+        return TRAINER_BACK_PIC_MAY;
     case STYLE_RED:
-        return TRAINER_PIC_BACK_RED;
+        return TRAINER_BACK_PIC_RED;
     case STYLE_LEAF:
-        return TRAINER_PIC_BACK_LEAF;
+        return TRAINER_BACK_PIC_LEAF;
     case STYLE_ETHAN:
-        return TRAINER_PIC_BACK_ETHAN;
+        return TRAINER_BACK_PIC_ETHAN;
     case STYLE_LYRA:
-        return TRAINER_PIC_BACK_LYRA;
+        return TRAINER_BACK_PIC_LYRA;
     case STYLE_LUCAS:
-        return TRAINER_PIC_BACK_LUCAS;
+        return TRAINER_BACK_PIC_LUCAS;
     case STYLE_DAWN:
-        return TRAINER_PIC_BACK_DAWN;
+        return TRAINER_BACK_PIC_DAWN;
     case STYLE_HILBERT:
-        return TRAINER_PIC_BACK_HILBERT;
+        return TRAINER_BACK_PIC_HILBERT;
     case STYLE_HILDA:
-        return TRAINER_PIC_BACK_HILDA;
+        return TRAINER_BACK_PIC_HILDA;
     case STYLE_NATE:
-        return TRAINER_PIC_BACK_NATE;
+        return TRAINER_BACK_PIC_NATE;
     case STYLE_ROSA:
-        return TRAINER_PIC_BACK_ROSA;
+        return TRAINER_BACK_PIC_ROSA;
     case STYLE_CALEM:
-        return TRAINER_PIC_BACK_CALEM;
+        return TRAINER_BACK_PIC_CALEM;
     case STYLE_SERENA:
-        return TRAINER_PIC_BACK_SERENA;
+        return TRAINER_BACK_PIC_SERENA;
     case STYLE_ELIO:
-        return TRAINER_PIC_BACK_ELIO;
+        return TRAINER_BACK_PIC_ELIO;
     case STYLE_SELENE:
-        return TRAINER_PIC_BACK_SELENE;
+        return TRAINER_BACK_PIC_SELENE;
     case STYLE_VICTOR:
-        return TRAINER_PIC_BACK_VICTOR;
+        return TRAINER_BACK_PIC_VICTOR;
     case STYLE_GLORIA:
-        return TRAINER_PIC_BACK_GLORIA;
+        return TRAINER_BACK_PIC_GLORIA;
     case STYLE_FLORIAN:
-        return TRAINER_PIC_BACK_FLORIAN;
+        return TRAINER_BACK_PIC_FLORIAN;
     case STYLE_JULIANA:
-        return TRAINER_PIC_BACK_JULIANA;
+        return TRAINER_BACK_PIC_JULIANA;
     // case STYLE_WES:
-    //     return TRAINER_PIC_BACK_WES;
+    //     return TRAINER_BACK_PIC_WES;
     // case STYLE_ASH:
-    //     return TRAINER_PIC_BACK_ASH;
+    //     return TRAINER_BACK_PIC_ASH;
     default:
-        return TRAINER_PIC_BACK_BRENDAN;
+        return TRAINER_BACK_PIC_BRENDAN;
     }
 }
 

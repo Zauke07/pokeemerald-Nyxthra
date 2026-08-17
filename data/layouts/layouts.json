@@ -9639,6 +9639,16 @@
       "border_filepath": "data/layouts/MtPyre_6F_2/border.bin",
       "blockdata_filepath": "data/layouts/MtPyre_6F_2/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROUTE119_MISTERY",
+      "name": "Route119_Mistery_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Route119_Mistery/border.bin",
+      "blockdata_filepath": "data/layouts/Route119_Mistery/map.bin"
     }
   ]
 }

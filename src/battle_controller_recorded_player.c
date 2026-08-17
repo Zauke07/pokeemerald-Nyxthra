@@ -272,7 +272,7 @@ static void RecordedPlayerHandleDrawTrainerPic(enum BattlerId battler)
 {
     bool32 isFrontPic;
     s16 xPos, yPos;
-    enum TrainerPicID trainerPicId;
+    enum TrainerPicID trainerPicId = 0;
 
     if (TESTING)
     {
@@ -285,18 +285,21 @@ static void RecordedPlayerHandleDrawTrainerPic(enum BattlerId battler)
     }
     else
     {
-        enum Gender gender;
         if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
         {
+            enum Gender gender;
             if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
                 gender = GetBattlerLinkPlayerGender(battler);
             else
                 gender = gLinkPlayers[gRecordedBattleMultiplayerId].gender;
+            
+            trainerPicId = TRAINER_PIC_BRENDAN + gender;
         }
         else
         {
             trainerPicId = GetPlayerBackSpriteId();
         }
+
         if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
         {
             if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
@@ -304,7 +307,6 @@ static void RecordedPlayerHandleDrawTrainerPic(enum BattlerId battler)
             else // first mon
                 xPos = 32;
 
-            // !TESTING added as otherwise first test battle sprite is positioned incorrectly
             if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && !TESTING)
             {
                 xPos = 90;
@@ -413,13 +415,15 @@ static void RecordedPlayerHandleIntroTrainerBallThrow(enum BattlerId battler)
 
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
     {
-        trainerPicId = TRAINER_PIC_BACK_BRENDAN + gLinkPlayers[GetBattlerMultiplayerId(battler)].gender;
-    }
         gender = gLinkPlayers[GetBattlerMultiplayerId(battler)].gender;
+        trainerPicId = TRAINER_PIC_BRENDAN + gender;
+    }
     else
+    {
         gender = gSaveBlock2Ptr->playerGender;
+        trainerPicId = GetPlayerTrainerPic(gender, GAME_VERSION);
+    }
 
-    trainerPicId = GetPlayerTrainerPic(gender, GAME_VERSION);
     trainerPal = GetTrainerBackPicPalette(trainerPicId);
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F9, trainerPal, 24, Intro_TryShinyAnimShowHealthbox);
 }

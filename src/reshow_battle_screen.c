@@ -285,8 +285,9 @@ static bool8 LoadBattlerSpriteGfx(enum BattlerId battler)
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
         {
-            // Safari-Zone: Nutzt deinen gewählten Style (Nyxthra Custom)
-            DecompressTrainerBackPic(TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0], battler);
+            // Safari-Zone: Palette des aktuell gewählten Nyxthra-Styles laden.
+            u16 trainerPicId = GetTrainerPicFromStyle(gSaveBlock2Ptr->playerStyles[0]);
+            LoadSpritePaletteWithTag(GetTrainerBackPicPalette(trainerPicId), GetTrainerPicTag(trainerPicId, FALSE));
         }
         else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL && position == B_POSITION_PLAYER_LEFT)
         {
@@ -340,7 +341,7 @@ void CreateBattlerSprite(enum BattlerId battler)
         else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI && position == B_POSITION_PLAYER_LEFT)
         {
             // Nyxthra Custom Style System für Safari Zone
-            u16 trainerPicId = TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
+            u16 trainerPicId = GetTrainerPicFromStyle(gSaveBlock2Ptr->playerStyles[0]);
             SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, position);
             gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate, 0x50,
                                                 (8 - GetTrainerBackPicCoords(trainerPicId)->size) * 4 + 80,

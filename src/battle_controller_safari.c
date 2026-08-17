@@ -277,7 +277,7 @@ void SafariBufferExecCompleted(enum BattlerId battler)
 static void SafariHandleDrawTrainerPic(enum BattlerId battler)
 {
     // Wir addieren deinen gewählten Style auf die Start-ID der Backsprites
-    enum TrainerPicID trainerPicId = TRAINER_PIC_BACK_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
+    enum TrainerPicID trainerPicId = TRAINER_BACK_PIC_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, FALSE,
                                        80, 80 + 4 * (8 - GetTrainerBackPicCoords(trainerPicId)->size),

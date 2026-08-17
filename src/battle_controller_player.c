@@ -1905,11 +1905,11 @@ enum TrainerPicID LinkPlayerGetTrainerPicId(u32 multiplayerId)
     {
         // Für andere Link-Spieler: Identifikation anhand von Edition und Geschlecht
         if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
-            trainerPicId = gender + TRAINER_PIC_BACK_RED; // Neue RHH-Nomenklatur
+            trainerPicId = gender + TRAINER_BACK_PIC_RED; // Neue RHH-Nomenklatur
         else if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
-            trainerPicId = gender + TRAINER_PIC_BACK_RUBY_SAPPHIRE_BRENDAN;
+            trainerPicId = gender + TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN;
         else
-            trainerPicId = gender + TRAINER_PIC_BACK_BRENDAN;
+            trainerPicId = gender + TRAINER_BACK_PIC_BRENDAN;
     }
     else
     {
@@ -1925,27 +1925,27 @@ enum TrainerPicID GetTrainerBackPicIdByStyle(u8 style)
 {
     switch (style)
     {
-    case STYLE_BRENDAN: return TRAINER_PIC_BACK_BRENDAN;
-    case STYLE_MAY:     return TRAINER_PIC_BACK_MAY;
-    case STYLE_RED:     return TRAINER_PIC_BACK_RED;
-    case STYLE_LEAF:    return TRAINER_PIC_BACK_LEAF;
-    case STYLE_ETHAN:   return TRAINER_PIC_BACK_ETHAN;
-    case STYLE_LYRA:    return TRAINER_PIC_BACK_LYRA;
-    case STYLE_LUCAS:   return TRAINER_PIC_BACK_LUCAS;
-    case STYLE_DAWN:    return TRAINER_PIC_BACK_DAWN;
-    case STYLE_HILBERT: return TRAINER_PIC_BACK_HILBERT;
-    case STYLE_HILDA:   return TRAINER_PIC_BACK_HILDA;
-    case STYLE_NATE:    return TRAINER_PIC_BACK_NATE;
-    case STYLE_ROSA:    return TRAINER_PIC_BACK_ROSA;
-    case STYLE_CALEM:   return TRAINER_PIC_BACK_CALEM;
-    case STYLE_SERENA:  return TRAINER_PIC_BACK_SERENA;
-    case STYLE_ELIO:    return TRAINER_PIC_BACK_ELIO;
-    case STYLE_SELENE:  return TRAINER_PIC_BACK_SELENE;
-    case STYLE_VICTOR:  return TRAINER_PIC_BACK_VICTOR;
-    case STYLE_GLORIA:  return TRAINER_PIC_BACK_GLORIA;
-    case STYLE_FLORIAN: return TRAINER_PIC_BACK_FLORIAN;
-    case STYLE_JULIANA: return TRAINER_PIC_BACK_JULIANA;
-    default:            return TRAINER_PIC_BACK_BRENDAN;
+    case STYLE_BRENDAN: return (enum TrainerPicID)TRAINER_BACK_PIC_BRENDAN;
+    case STYLE_MAY:     return (enum TrainerPicID)TRAINER_BACK_PIC_MAY;
+    case STYLE_RED:     return (enum TrainerPicID)TRAINER_BACK_PIC_RED;
+    case STYLE_LEAF:    return (enum TrainerPicID)TRAINER_BACK_PIC_LEAF;
+    case STYLE_ETHAN:   return (enum TrainerPicID)TRAINER_BACK_PIC_ETHAN;
+    case STYLE_LYRA:    return (enum TrainerPicID)TRAINER_BACK_PIC_LYRA;
+    case STYLE_LUCAS:   return (enum TrainerPicID)TRAINER_BACK_PIC_LUCAS;
+    case STYLE_DAWN:    return (enum TrainerPicID)TRAINER_BACK_PIC_DAWN;
+    case STYLE_HILBERT: return (enum TrainerPicID)TRAINER_BACK_PIC_HILBERT;
+    case STYLE_HILDA:   return (enum TrainerPicID)TRAINER_BACK_PIC_HILDA;
+    case STYLE_NATE:    return (enum TrainerPicID)TRAINER_BACK_PIC_NATE;
+    case STYLE_ROSA:    return (enum TrainerPicID)TRAINER_BACK_PIC_ROSA;
+    case STYLE_CALEM:   return (enum TrainerPicID)TRAINER_BACK_PIC_CALEM;
+    case STYLE_SERENA:  return (enum TrainerPicID)TRAINER_BACK_PIC_SERENA;
+    case STYLE_ELIO:    return (enum TrainerPicID)TRAINER_BACK_PIC_ELIO;
+    case STYLE_SELENE:  return (enum TrainerPicID)TRAINER_BACK_PIC_SELENE;
+    case STYLE_VICTOR:  return (enum TrainerPicID)TRAINER_BACK_PIC_VICTOR;
+    case STYLE_GLORIA:  return (enum TrainerPicID)TRAINER_BACK_PIC_GLORIA;
+    case STYLE_FLORIAN: return (enum TrainerPicID)TRAINER_BACK_PIC_FLORIAN;
+    case STYLE_JULIANA: return (enum TrainerPicID)TRAINER_BACK_PIC_JULIANA;
+    default:            return (enum TrainerPicID)TRAINER_BACK_PIC_BRENDAN;
     }
 }
 
@@ -2262,7 +2262,7 @@ void PlayerHandleExpUpdate(enum BattlerId battler)
 {
     u8 monId = gBattleResources->bufferA[battler][1];
     s32 taskId, expPointsToGive;
-    u8 currentLevel = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
+    u8 currentLevel = GetMonData(&gParties[B_TRAINER_PLAYER][monId], MON_DATA_LEVEL);
     u32 currentExp = GetMonData(&gParties[B_TRAINER_PLAYER][monId], MON_DATA_EXP);
     (void)currentExp;
 /*

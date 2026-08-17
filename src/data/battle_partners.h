@@ -12,102 +12,108 @@
 #line 3
         .trainerClass = TRAINER_CLASS_PKMN_TRAINER_1,
 #line 4
-        .trainerPic = TRAINER_PIC_FRONT_BRENDAN,
+        .trainerPic = TRAINER_PIC_BRENDAN,
 #line 5
         .gender = TRAINER_GENDER_MALE,
 #line 6
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 7
-        .trainerBackPic = TRAINER_PIC_BACK_BRENDAN,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 0,
         .party = (const struct TrainerMon[])
         {
         },
     },
-#line 9
+#line 8
     [DIFFICULTY_NORMAL][PARTNER_STEVEN] =
     {
+#line 9
+        .trainerName = _("Troy"),
 #line 10
-        .trainerName = _("STEVEN"),
-#line 11
         .trainerClass = TRAINER_CLASS_RIVAL,
+#line 11
+        .trainerPic = TRAINER_PIC_STEVEN,
 #line 12
-        .trainerPic = TRAINER_PIC_FRONT_STEVEN,
-#line 13
         .gender = TRAINER_GENDER_MALE,
-#line 14
+#line 13
         .encounterMusic = TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 16
+#line 14
         .aiFlags = AI_FLAG_BASIC_TRAINER,
-#line 15
-        .trainerBackPic = TRAINER_PIC_BACK_STEVEN,
+#line 0
+        .multiTeamSize = MULTI_TEAM_SIZE_FULL,
         .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
-#line 18
-            .species = SPECIES_METANG,
+#line 16
+            .species = SPECIES_METAGROSS_MEGA,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 22
-            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
-#line 21
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 16
+            .heldItem = ITEM_METAGROSSITE,
 #line 20
-            .lvl = 42,
-            .ball = POKEBALL_COUNT,
+            .ev = TRAINER_PARTY_EVS(0, 252, 6, 252, 0, 0),
 #line 19
-            .nature = NATURE_BRAVE,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 18
+            .lvl = 44,
+            .ball = POKEBALL_COUNT,
+#line 17
+            .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 23
-                MOVE_LIGHT_SCREEN,
-                MOVE_PSYCHIC,
-                MOVE_REFLECT,
-                MOVE_METAL_CLAW,
+#line 21
+                MOVE_METEOR_MASH,
+                MOVE_ZEN_HEADBUTT,
+                MOVE_EARTHQUAKE,
+                MOVE_BULLET_PUNCH,
             },
             },
             {
-#line 28
+#line 26
             .species = SPECIES_SKARMORY,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 32
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
-#line 31
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 26
+            .heldItem = ITEM_LEFTOVERS,
 #line 30
+            .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 6),
+#line 29
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 28
             .lvl = 43,
             .ball = POKEBALL_COUNT,
-#line 29
+#line 27
             .nature = NATURE_IMPISH,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 33
-                MOVE_TOXIC,
-                MOVE_AERIAL_ACE,
-                MOVE_PROTECT,
-                MOVE_STEEL_WING,
+#line 31
+                MOVE_SPIKES,
+                MOVE_ROOST,
+                MOVE_BRAVE_BIRD,
+                MOVE_WHIRLWIND,
             },
             },
             {
-#line 38
+#line 36
             .species = SPECIES_AGGRON,
             .gender = TRAINER_MON_RANDOM_GENDER,
-#line 42
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 41
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 36
+            .heldItem = ITEM_SITRUS_BERRY,
 #line 40
-            .lvl = 44,
-            .ball = POKEBALL_COUNT,
+            .ev = TRAINER_PARTY_EVS(252, 252, 6, 0, 0, 0),
 #line 39
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 38
+            .lvl = 43,
+            .ball = POKEBALL_COUNT,
+#line 37
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 43
-                MOVE_THUNDER,
-                MOVE_PROTECT,
-                MOVE_SOLAR_BEAM,
-                MOVE_DRAGON_CLAW,
+#line 41
+                MOVE_HEAD_SMASH,
+                MOVE_HEAVY_SLAM,
+                MOVE_EARTHQUAKE,
+                MOVE_ROCK_SLIDE,
             },
             },
         },

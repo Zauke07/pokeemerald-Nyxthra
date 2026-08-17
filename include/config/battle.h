@@ -54,7 +54,7 @@
 #define B_UPROAR_IGNORE_SOUNDPROOF  GEN_LATEST // In Gen5+ ignoriert Aufruhr Lärmschutz.
 #define B_DISABLE_TURNS             GEN_LATEST // Dauer von Aussetzer. Siehe Cmd_disablelastusedattack.
 #define B_TAILWIND_TURNS            GEN_LATEST // In Gen5+ Rückenwind 4 statt 3 Runden.
-#define B_SLEEP_TURNS               GEN_LATEST // In Gen5+ Schlaf 1-3 Runden statt 2-5.
+#define B_SLEEP_TURNS               GEN_LATEST // In Gen5+ dauert Schlaf 2-4 Runden statt 2-5.
 #define B_TAUNT_TURNS               GEN_LATEST // In Gen5+: Verhöhner 3 Runden, wenn Nutzer schneller; 4, wenn Ziel zuerst handelte. Gen3: 2 Runden; Gen4: 3-5.
 #define B_ENCORE_TURNS              GEN_LATEST // Gen 5+: Zugabe hält 3 Runden (wenn Ziel diese Runde noch nicht dran war) oder 4 Runden (wenn es schon agiert hat). Gen 4: 3-7 Runden. Gen 2-3: 2-6 Runden.
 #define B_SPORT_TURNS               GEN_LATEST // In Gen6+ halten Wasser/Schlammsport 5 Runden, auch nach Wechsel.
@@ -73,9 +73,9 @@
 #define B_UPDATED_CONVERSION_2      GEN_LATEST // In Gen5+ wählt Umwandlung2 einen Typ, der den letzten Move des Ziels resistet. Struggle gilt vor Gen5 als Normal.
 #define B_PP_REDUCED_BY_SPITE       GEN_LATEST // In Gen4+ senkt Groll die AP des letzten Moves um 4 statt 2-5.
 #define B_EXTRAPOLATED_MOVE_FLAGS   TRUE       // Fügt Moves plausible Flags hinzu, die sie in den neuesten Spielen wahrscheinlich hätten.
-#define B_HIDDEN_POWER_COUNTER      GEN_LATEST // Prior to Gen4, Counter and Mirror Coat treat Hidden Power as Physical regardless of type.
-#define B_MODERN_TRICK_CHOICE_LOCK  GEN_LATEST // In Gen5+, if a Choice Item is swapped for a Choice Item, the Trick/Switcheroo user can pick another move, and then they'll be locked into it.
-#define B_PROTECT_FAILURE_RATE      GEN_LATEST // In Gen5+, protect moves fails 1/3 of the time instead of 1/2
+#define B_HIDDEN_POWER_COUNTER      GEN_LATEST // Vor Gen4 behandeln Konter und Spiegelcape Kraftreserve unabhängig vom Typ immer als physische Attacke.
+#define B_MODERN_TRICK_CHOICE_LOCK  GEN_LATEST // In Gen5+ kann der Anwender nach Trickbetrug/Wechseldich erneut eine Attacke wählen, wenn ein Wahl-Item gegen ein anderes Wahl-Item getauscht wurde; danach wird er wieder darauf festgelegt.
+#define B_PROTECT_FAILURE_RATE      GEN_LATEST // In Gen5+ sinkt die Erfolgsrate bei wiederholtem Einsatz von Schutz-Attacken um den Faktor 1/3 statt 1/2.
 
 // Fähigkeits-Daten
 #define B_UPDATED_ABILITY_DATA      GEN_LATEST // Beeinflusst Fähigkeits-Flags
@@ -92,11 +92,11 @@
 #define B_SPEED_BUFFING_RAPID_SPIN  GEN_LATEST // In Gen8 erhöht Turbodreher die Initiative um 1 Stufe.
 #define B_CHARGE_SPDEF_RAISE        GEN_LATEST // In Gen5+ erhöht Ladevorgang die Sp.-Vert. um 1 Stufe.
 #define B_MINIMIZE_EVASION          GEN_LATEST // In Gen5+ erhöht Komprimator die Fluchtwert um 2 statt 1 Stufe.
-#define B_GROWTH_STAT_RAISE         GEN_LATEST // In Gen5+ erhöht Wuchtschlag Angriff und Sp.-Angr. je 1 Stufe; bei Sonne je 2.
+#define B_GROWTH_STAT_RAISE         GEN_LATEST // In Gen5+ erhöht Wachstum bei Sonne Angriff und Sp.-Angriff um je 2 Stufen statt 1.
 #define B_FOCUS_ENERGY_CRIT_RATIO   GEN_2      // Fokus-Energie erhöht die Crit-Stufe nur um 1 statt um 2. Reduziert die Kritrate deutlich.
 #define B_PSYCH_UP_CRIT_RATIO       GEN_LATEST // In Gen6+: Psych Up kopiert auch das Kritische-Treffer-Verhältnis des Ziels.
 
-// Other move settings
+// Weitere Attacken-Einstellungen
 #define B_INCINERATE_GEMS           GEN_LATEST // In Gen6+: Verbrennung kann Juwelen zerstören.
 #define B_CAN_SPITE_FAIL            GEN_LATEST // In Gen4+: Groll schlägt nicht fehl, wenn der gegnerische letzte Move nur noch 1 AP hat.
 #define B_CRASH_IF_TARGET_IMMUNE    GEN_LATEST // In Gen4+: Moves mit Crash-Schaden treffen ihr Ziel und crashen, wenn das Ziel immun ist.
@@ -107,7 +107,7 @@
 #define B_SKILL_SWAP                GEN_LATEST // In Gen4+: Fähigkeitentausch triggert Switch-in-Fähigkeiten nach Einsatz.
 #define B_BRICK_BREAK               GEN_LATEST // In Gen4+: Kann eigene Seiten-Bildschirme zerstören. Gen5+: Bildschirme werden nicht entfernt, wenn Ziel immun.
 #define B_WISH_HP_SOURCE            GEN_LATEST // In Gen5+: Wunsch heilt 50% von Nutzer-KP statt Ziel-KP.
-#define B_RAMPAGE_CANCELLING        GEN_LATEST // In Gen5+: Fehlgeschlagene Wildnis etc. brechen ab außer in letzter Runde.
+#define B_RAMPAGE_CONFUSION         GEN_LATEST // In Gen5+ wird der Wutanfall direkt nach der Attacke statt erst am Rundenende beendet; ein fehlgeschlagener Wutanfall beendet den Zähler, außer es ist die letzte Runde.
 #define B_HEAL_BLOCKING             GEN_LATEST // In Gen5+: Heilsperre blockiert Black Sludge, Überreste, Glocke. KP-Beeren nicht verbraucht.
                                                // Drain-Fähigkeiten heilen nicht, verhindern aber Schaden. Gen6+: Blockiert meiste HP-Drain-Moves.
 #define B_ROOTED_GROUNDING          GEN_LATEST // In Gen4+: Verwurzelung lässt Pokémon am Boden haften.
@@ -119,12 +119,14 @@
 #define B_HEALING_WISH_SWITCH       GEN_LATEST // In Gen5+: Empfänger von Heilwunsch kommt am Rundenende rein.
                                                // Gen8+: Heilwunsch-Effekt speichert sich bis Nutzer in Status/verletztes Mon wechselt.
 #define B_DEFOG_EFFECT_CLEARING     GEN_LATEST // Gen5+: Auflockern senkt nicht Fluchtwert hinter Delegation. Gen6+: Löscht Stachler, Giftspitzen, Tarnsteine, Klebenetz. Gen8+: Löscht Terrain.
-#define B_STOCKPILE_RAISES_DEFS     GEN_LATEST // In Gen4+: Horten erhöht auch Vert./Sp.-Vert. Beim Einsatz von Entfessler/Verzehrer verloren.
+#define B_STOCKPILE_RAISES_DEFS     GEN_LATEST // ACHTUNG: Diese Config funktioniert derzeit nicht! In Gen4+ erhöht Horten auch Vert. und Sp.-Vert.; bei Entfessler/Verzehrer gehen diese Erhöhungen verloren.
 #define B_TRANSFORM_SEMI_INV_FAIL   GEN_LATEST // In Gen2+: Verwandlung schlägt fehl, wenn das Ziel halbunverwundbar ist.
 #define B_TRANSFORM_TARGET_FAIL     GEN_LATEST // In Gen2+: Verwandlung schlägt fehl, wenn das Ziel bereits verwandelt ist.
 #define B_TRANSFORM_USER_FAIL       GEN_LATEST // In Gen5+: Verwandlung schlägt fehl, wenn der Anwender bereits verwandelt ist.
 #define B_TRANSFORM_SUBSTITUTE_FAIL GEN_LATEST // In Gen5+: Verwandlung schlägt fehl, wenn sich das Ziel hinter einem Delegator befindet.
 #define B_TRANSFORM_SHINY           GEN_LATEST // In Gen4+: Verwandlung kopiert Glitzer-Zustand statt ihn beizubehalten.
+#define B_TRANSFORM_CATCH_RATE      GEN_LATEST // In Gen3 und Gen4 übernimmt ein verwandeltes Pokémon die Fangrate der kopierten Spezies; in anderen Generationen behält es seine ursprüngliche Fangrate.
+#define B_TRANSFORM_BATTLE_REWARDS  GEN_LATEST // In Gen3 und Gen4 gibt ein verwandeltes Pokémon EP und Fleißpunkte der kopierten Spezies; in anderen Generationen die der ursprünglichen Spezies.
 #define B_TRANSFORM_FORM_CHANGES    GEN_LATEST // In Gen5+: Verwandelte Pokémon können Formen nicht wechseln.
 #define B_WIDE_GUARD                GEN_LATEST // Gen5 nur: Rundumschutz kaum fehl bei wiederholtem Einsatz.
 #define B_QUICK_GUARD               GEN_LATEST // Gen5 nur: Rapidschutz kaum fehl bei wiederholtem Einsatz.
@@ -158,6 +160,8 @@
 #define B_RAGE_BUILDS               GEN_LATEST // In Gen4+ tritt der Effekt von Raserei nur ein, wenn die Attacke erfolgreich trifft. In Gen3 tritt der Effekt ein, egal ob sie trifft, danebengeht oder fehlschlägt.
 #define B_CHECK_USER_FAILURE        GEN_LATEST // In Gen5+ prüft der Anwender nicht mehr auf eigenes Fehlschlagen, z.B. blockiert Lärmschutz nicht mehr den eigenen Abgesang.
 #define B_ABSORB_MESSAGE            GEN_LATEST // In Gen5+: Keine Absorber-Nachricht wird angezeigt, wenn der Anwender bereits volle KP hat.
+#define B_UPROAR                    GEN_LATEST // In Gen5+ weckt Aufruhr beim ersten erfolgreichen Einsatz alle Kämpfer. In Gen3-4 können Kämpfer vor ihrer Aktion oder am Rundenende aufwachen.
+
 // Fähigkeits-Einstellungen
 #define B_GALE_WINGS                GEN_LATEST // In Gen7+ nur bei vollen KP aktiv.
 #define B_STANCE_CHANGE_FAIL        GEN_LATEST // In Gen7+ scheitert Taktikwechsel bei Status wie Paralyse/Verwirrung. In Gen6 nicht.
@@ -171,7 +175,6 @@
 #define B_PLUS_MINUS_INTERACTION    GEN_LATEST // In Gen5+ aktivieren Plus/Minus sich selbst und gegenseitig; zuvor nur gegnerische Fähigkeit.
 #define B_WEATHER_FORMS             GEN_LATEST // In Gen5+ formenwechseln Formeo/Kinoso zurück, wenn Fähigkeit weg ist. Kinoso braucht Floraschild.
 #define B_SYMBIOSIS_GEMS            GEN_LATEST // In Gen7+ reicht Mitnahme Item nach Juwelen-Boost erst nach dem Treffer weiter; zuvor davor, wodurch der Boost verloren gehen konnte.
-#define B_ABSORBING_ABILITY_STRING  GEN_LATEST // In Gen5+ verwenden absorbierende Fähigkeiten generische Texte für Stat-Änderungen.
 #define B_REDIRECT_ABILITY_IMMUNITY GEN_LATEST // In Gen5+ machen Blitzfänger/Sturmsog immun und erhöhen Sp.-Angr. um 1, zusätzlich zur Umleitung.
 #define B_REDIRECT_ABILITY_ALLIES   GEN_LATEST // In Gen4+ leiten Blitzfänger/Sturmsog auch Verbündeten-Moves um.
 #define B_LEAF_GUARD_PREVENTS_REST  GEN_LATEST // In Gen5+ verhindert Floraschild Erholung bei starker Sonne.
@@ -188,8 +191,10 @@
 #define B_BATTLE_BOND               GEN_LATEST // In Gen9+ erhöht Band des Kampfes Atk/SpA/Init um je 1 Stufe, einmal pro Kampf.
 #define B_ATE_MULTIPLIER            GEN_LATEST // In Gen7+ multiplizieren die -wandler-Fähigkeiten 1.2x, sonst 1.3x, außer Variabilität ohne Multiplikator.
 #define B_DEFIANT_STICKY_WEB        GEN_LATEST // In Gen9+ triggert Siegeswille durch Klebenetz unabhängig vom Urheber...
+#define B_MIRROR_ARMOR_STICKY_WEB   GEN_LATEST // In Gen9+ reflektiert Spiegelrüstung die Statussenkung durch Klebenetz nicht, selbst wenn dessen ursprünglicher Anwender noch auf dem Feld ist.
 #define B_POWDER_OVERCOAT           GEN_LATEST // In Gen6+ blockt Wetterfest Puder- und Sporen-Moves.
 #define B_INFILTRATOR_SUBSTITUTE    GEN_LATEST // In Gen6+ ignoriert Schwebedurch den gegnerischen Delegator.
+#define B_DANCER_ORDER              GEN_LATEST // In Gen8+ werden Tänzer-Aktivierungen nach Initiative inklusive Modifikatoren abgearbeitet. In Gen7 erfolgt die Reihenfolge von langsam nach schnell anhand der unveränderten Initiative.
 
 // Verschiedene temporäre Timer (Statusveränderungen)
 #define B_CONFUSION_TURNS    5
@@ -243,16 +248,12 @@
 // Orden-Boost-Flags
 #define B_FLAG_BADGE_BOOST_ATTACK   FLAG_BADGE01_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Angriff x1.1
 #define B_FLAG_BADGE_BOOST_DEFENSE  FLAG_BADGE05_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Verteidigung x1.1
-#define B_FLAG_BADGE_BOOST_SPEED    FLAG_BADGE03_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Initiative x1.1
+#define B_FLAG_BADGE_BOOST_SPEED    FLAG_BADGE03_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Initiative
 #define B_FLAG_BADGE_BOOST_SPATK    FLAG_BADGE07_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Sp.-Angriff x1.1
 #define B_FLAG_BADGE_BOOST_SPDEF    FLAG_BADGE07_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Sp.-Verteidigung x1.1
+
 // Weitere Kampf-Flags
 #define B_FLAG_INVERSE_BATTLE       0     // Wenn gesetzt, werden Typ-Effektivität invertiert. Feuer ist z. B. sehr effektiv gegen Wasser.
-#define B_FLAG_FORCE_DOUBLE_WILD    0     // Wenn gesetzt, sind alle Land/Surf-Wilde Kämpfe Doppelkämpfe.
-#define B_SMART_WILD_AI_FLAG        FLAG_SMART_WILD_AI_FLAG     // Wenn gesetzt, werden wilde Pokémon „smart“ (alle AI-Flags aktiv).
-#define B_FLAG_NO_BAG_USE           0     // Wenn gesetzt, keine Taschen-Nutzung im Kampf.
-#define B_FLAG_NO_CATCHING          0     // Wenn gesetzt, kann man keine wilden Pokémon fangen.
-#define B_FLAG_NO_RUNNING           0     // Wenn gesetzt, keine Flucht aus wilden Kämpfen. Brüllt/Wirbelwind und Teleport (Gen8) scheitern ebenfalls.
 #define B_FLAG_AI_VS_AI_BATTLE      0     // Wenn gesetzt, steuert die KI in den nächsten Kämpfen die Pokémon des Spielers.
 #define B_FLAG_DYNAMAX_BATTLE       0     // Wenn gesetzt, ist Dynamaxen für alle Trainerkämpfe aktiviert.
 #define B_FLAG_TERA_ORB_CHARGED     0     // Wenn gesetzt, ist der Tera-Orb geladen. Wird nach Heilen automatisch gesetzt und nach Terakristallisieren geleert, sobald konfiguriert.
@@ -260,9 +261,9 @@
 #define B_FLAG_SLEEP_CLAUSE         0     // Wenn gesetzt, Schlafklausel aktiv: Hat die Seite bereits ein gegnerisches Pokémon eingeschläfert, darf kein weiteres eingeschläfert werden. KI benötigt AI_FLAG_CHECK_BAD_MOVE.
 #define B_FLAG_NO_WHITEOUT          0     // Wenn gesetzt, kann der Spieler gegen Trainer nicht ohnmächtig werden. Hinweis: Team wird nicht automatisch geheilt!
 
-// Var Settings
-// To use the following features, change the 0 for a var present in include/constants/vars.h, preferably an unused one.
-// Eg: You may rename VAR_UNUSED_0x404E to a descriptive name and use it below.
+// Variablen-Einstellungen
+// Um die folgenden Funktionen zu nutzen, ersetze 0 durch eine Variable aus include/constants/vars.h, am besten eine ungenutzte.
+// Beispiel: VAR_UNUSED_0x404E passend umbenennen und anschließend unten verwenden.
 #define B_VAR_WILD_AI_FLAGS         0     // Wenn nicht 0, können hier zusätzliche Wild-AI-Flags gesetzt werden. WICHTIG: Nicht mit obigen Flags (1 << 15) nutzbar.
                                           // Diese Var darf nie lange genug ungleich 0 bleiben, um gespeichert zu werden.
                                           // Für bessere Wild-AI siehe GetWildAiFlags() in src/battle_ai_main.c
@@ -277,11 +278,10 @@
 
 #define B_VAR_NO_BAG_USE         0     // Wenn 1, ist die Fähigkeit, die Tasche im Kampf zu verwenden, in Trainerkämpfen deaktiviert. Wenn 2, ist sie auch in Wildkämpfen deaktiviert.
 
-
 // Himmelskämpfe
 #define B_FLAG_SKY_BATTLE                 0     // Wenn gesetzt, kann der Spieler in geskriptete Himmelskämpfe gehen.
 #define B_VAR_SKY_BATTLE                  0     // Wenn gesetzt, merkt sich das Spiel die Positionen der im Himmelskampf eingesetzten Pokémon.
-#define B_SKY_BATTLE_STRICT_ELIGIBILITY   FALSE // TRUE: Eligibility wie in X/Y. FALSE: Alle Flug-Typen oder Schwebe-Pokémon erlaubt.
+#define B_SKY_BATTLE_STRICT_ELIGIBILITY   FALSE // TRUE: Teilnahmebedingungen wie in X/Y. FALSE: Alle Flug-Pokémon oder Pokémon mit Schwebe sind erlaubt.
 
 // Flag/Var-Reset
 #define B_RESET_FLAGS_VARS_AFTER_WHITEOUT TRUE // TRUE: Overworld_ResetBattleFlagsAndVars setzt Kampf-Flags/Vars bei Ohnmacht zurück.
@@ -314,10 +314,9 @@
 #define B_SECRET_POWER_ANIMATION    GEN_LATEST // Animationen von Geheimpower variieren nach Terrain/Gen.
 #define B_NATURE_POWER_MOVES        GEN_LATEST // Natur-Kraft ruft je nach Terrain/Gen andere Moves. Siehe gBattleEnvironmentInfo.
 #define B_CAMOUFLAGE_TYPES          GEN_LATEST // Camouflage ändert Typ je nach Terrain/Gen. Siehe sTerrainToType.
-#define B_NEW_TERRAIN_BACKGROUNDS   TRUE      // TRUE: Neue Hintergründe für Elektro/Feen/Gras/Psycho-Terrain.
+#define B_NEW_TERRAIN_BACKGROUNDS   TRUE       // TRUE: Neue Hintergründe für Elektro/Feen/Gras/Psycho-Terrain.
 
 // Interface-Einstellungen
-#define B_ABILITY_POP_UP                    TRUE  // In Gen5+ erscheinen Fähigkeits-Pop-ups bei Aktivierung.
 #define B_FAST_INTRO_PKMN_TEXT              TRUE  // TRUE: Kampfintro-Texte laufen parallel zur Einlauf-Animation.
 #define B_FAST_INTRO_NO_SLIDE               FALSE // TRUE: Überspringt die Anfangs-Slide-Animation.
 #define B_FAST_HP_DRAIN                     TRUE  // TRUE: KP-Balken bewegen sich schneller.
@@ -333,12 +332,12 @@
 #define B_ANIMATE_MON_AFTER_KO              TRUE // TRUE: Nach K.O. des Gegners zeigt eigenes Mon Sieges-Animation.
 #define B_ANIMATE_MON_AFTER_FAILED_POKEBALL TRUE  // TRUE: Bricht ein Ball, zeigt wildes Mon seine Animation.
 #define B_SHOW_DYNAMAX_MESSAGE              FALSE // TRUE: Zusätzliche Meldung nach abgeschlossener Dynamax/Gigadynamax.
-#define B_HPBAR_COLOR_THRESHOLD             GEN_LATEST // In Gen 5+, HP bar color thresholds were changed to be based on the actual HP values instead of the pixel length of the HP bar, leading to more accurate HP bar colors.
+#define B_HPBAR_COLOR_THRESHOLD             GEN_LATEST // In Gen5+ richten sich die Farbgrenzen des KP-Balkens nach den tatsächlichen KP statt nach der Pixellänge des Balkens; dadurch sind die Farben genauer.
 
 // Fang-Einstellungen
 #define B_SEMI_INVULNERABLE_CATCH       GEN_LATEST // In Gen4+ kann man keine Bälle auf halb-unverwundbare Ziele (Schaufler/Flieger/etc.) werfen.
 #define B_CATCHING_CHARM_BOOST          100         // %-Bonus auf Krit-Fang mit Fang-Amulett.
-#define B_INCAPACITATED_CATCH_BONUS     GEN_LATEST // In Gen5+, the catch rate bonus for a mon with sleep or freeze is 2.5x. In Gen4 and below its only a 2x bonus.
+#define B_INCAPACITATED_CATCH_BONUS     GEN_LATEST // In Gen5+ beträgt der Fangbonus bei Schlaf oder Gefrieren x2,5. In Gen4 und älter beträgt er nur x2.
 #define B_LOW_LEVEL_CATCH_BONUS         GEN_3       // In Gen8 wird ein Bonus auf die Fangchance gewährt, wenn das Pokémon unter Level 20 ist. In Gen9 gilt der Bonus nur für Pokémon unter Level 13.
 #define B_MISSING_BADGE_CATCH_MALUS     GEN_LATEST // In Gen9 wird ein Malus auf die Fangchance angewendet, wenn das Pokémon mehr als 5 Level über dem aktuellen Gehorsamslevel liegt, basierend auf der Anzahl der erhaltenen Orden.
 #define B_CRITICAL_CAPTURE              TRUE       // Aktiviert Kritische Fangchance.
@@ -352,11 +351,8 @@
 #define B_CATCH_SWAP_CHECK_HMS      TRUE       // TRUE: Verhindert, dass HM-Träger in die Box geschickt werden.
 
 // Sonstiges
-#define B_DOUBLE_WILD_CHANCE            5          // %-Chance auf Doppel-Wilderkampf.
-#define B_DOUBLE_WILD_REQUIRE_2_MONS    TRUE      // TRUE: Doppel-Wildkampf wird zu Einzelkampf, wenn Spieler nur 1 einsetzbares Mon hat. Ignoriert B_DOUBLE_WILD_CHANCE und B_FLAG_FORCE_DOUBLE_WILD.
 #define B_MULTI_BATTLE_WHITEOUT         GEN_LATEST // In Gen4+ enden Multi-Kämpfe, wenn Spieler UND Partner keine kampffähigen Pokémon mehr haben.
 #define B_EVOLUTION_AFTER_WHITEOUT      GEN_LATEST // In Gen6+ entwickeln sich Pokémon nach Kampf auch bei Niederlage.
-#define B_WILD_NATURAL_ENEMIES          TRUE       // TRUE: Manche wilde Spezies greifen im Doppelkampf einander an (z. B. Vipitis vs. Sengo).
 #define B_AFFECTION_MECHANICS           TRUE       // In Gen6+: Zuneigung kann Effekte im Kampf auslösen. Ab LGPE nutzen diese Effekte stattdessen Freundschaft.
 #define B_TRAINER_CLASS_POKE_BALLS      GEN_LATEST // In Gen7+ benutzen Trainer je nach Klasse bestimmte Pokébälle.
 #define B_TRAINER_MON_RANDOM_ABILITY    FALSE      // TRUE: Trainer-Mon erhält zufällige legale Fähigkeit.
@@ -366,6 +362,7 @@
 #define B_TRY_CATCH_TRAINER_BALL        GEN_LATEST // In Gen4+ verbraucht der Versuch, ein Trainer-Mon zu fangen, keinen Ball.
 #define B_SLEEP_CLAUSE                  FALSE      // Aktiviert Schlafklausel immer und überall, überschreibt B_FLAG_SLEEP_CLAUSE. Nutze Flag für Modularität.
 #define B_PARTNER_MONS_MARKED_SEEN      TRUE      // TRUE: Partner-Pokémon im Doppelkampf werden als GESEHEN im Pokédex markiert, falls noch nicht begegnet.
+#define B_MULTI_HALF_TEAMS              FALSE      // TRUE: Bei zwei Trainern auf einer Seite sind beide Teams auf je 3 Pokémon begrenzt. Bei FALSE kann die Begrenzung weiterhin pro Kampf über „Multi Party: Half“ in trainers.party gesetzt werden.
 
 #define NUM_BEEPS_GEN_LATEST            4                    // Läuft 4 Schleifen
 #define NUM_BEEPS_GEN_3                 -1                   // Läuft unendlich
@@ -420,7 +417,7 @@
 #define B_POOL_RULE_EXCLUDE_FORMS           FALSE    // Schließt verschiedene Formen bei Species Clause aus.
 #define B_POOL_RULE_ITEM_CLAUSE             FALSE    // Jedes Item nur einmal.
 #define B_POOL_RULES_USE_ITEM_EXCLUSIONS    FALSE    // Items aus poolItemClauseExclusions ausschließen.
-#define B_POOL_RULE_MEGA_STONE_CLAUSE       FALSE    // Nur ein Mon mit Mega-Stein auswählen
-#define B_POOL_RULE_Z_CRYSTAL_CLAUSE        FALSE    // Nur ein Mon mit Z-Kristall auswählen
+#define B_POOL_RULE_MEGA_STONE_CLAUSE       FALSE    // Nur ein Mon mit Mega-Stein auswählen.
+#define B_POOL_RULE_Z_CRYSTAL_CLAUSE        FALSE    // Nur ein Mon mit Z-Kristall auswählen.
 
-#endif // GUARD_CONFIG_BATTLE_H
+#endif

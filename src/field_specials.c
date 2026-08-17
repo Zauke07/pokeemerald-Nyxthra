@@ -4677,65 +4677,6 @@ bool8 ShowFieldCmdGetExpDebug(void)
     return FALSE;
 }
 
-bool8 ShowFieldMessageVarObjGfxId0AndStyle(void)
-{
-    u16 gfxId = VarGet(VAR_OBJ_GFX_ID_0);
-    u8 style = gSaveBlock2Ptr->playerStyles[0];
-    u16 result = VarGet(VAR_RESULT);
-
-    ConvertIntToDecimalStringN(gStringVar1, gfxId, STR_CONV_MODE_LEFT_ALIGN, 3);
-    ConvertIntToDecimalStringN(gStringVar2, style, STR_CONV_MODE_LEFT_ALIGN, 2);
-    ConvertIntToDecimalStringN(gStringVar3, result, STR_CONV_MODE_LEFT_ALIGN, 2);
-
-    StringExpandPlaceholders(gStringVar4, gText_ObjGfxIdAndStyle); // ✅ Richtig: Ergebnis in gStringVar4
-    ShowFieldMessage(gStringVar4);                                 // ✅ Auch hier gStringVar4 verwenden
-
-    return FALSE;
-}
-
-void GetRivalStyleGraphicsIdAndSetVar(void)
-{
-    u8 style = gSaveBlock2Ptr->playerStyles[0];
-    u16 gfxId = GetRivalGraphicsIdByPlayerStyle(style, PLAYER_AVATAR_STATE_NORMAL);
-    VarSet(VAR_OBJ_GFX_ID_0, gfxId);
-}
-
-bool8 BufferIntToStringVar1(void)
-{
-    u16 value = VarGet(VAR_RESULT);
-    ConvertIntToDecimalStringN(gStringVar1, value, STR_CONV_MODE_LEFT_ALIGN, 3);
-    return FALSE;
-}
-
-bool8 BufferIntToStringVar2(void)
-{
-    u16 value = VarGet(VAR_RESULT);
-    ConvertIntToDecimalStringN(gStringVar2, value, STR_CONV_MODE_LEFT_ALIGN, 3);
-    return FALSE;
-}
-
-bool8 ShowFieldMessageStarterDebug(void)
-{
-    // z. B.: STR_VAR_1 = Style, STR_VAR_2 = Starter-Region
-    StringExpandPlaceholders(gStringVar4, gText_StyleAndStarterRegion);
-    ShowFieldMessage(gStringVar4);
-    return FALSE;
-}
-
-bool8 ShowFieldExpLevelDebug(void)
-{
-    StringExpandPlaceholders(gStringVar4, gText_DebugExpLevel);
-    ShowFieldMessage(gStringVar4);
-    return FALSE;
-}
-
-bool8 ShowFieldCmdGetExpDebug(void)
-{
-    StringExpandPlaceholders(gStringVar4, gText_DebugCmdGetExp);
-    ShowFieldMessage(gStringVar4);
-    return FALSE;
-}
-
 void SetAbility(void)
 {
     u32 ability = gSpecialVar_Result;
