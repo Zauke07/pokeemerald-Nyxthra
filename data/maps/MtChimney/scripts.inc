@@ -471,7 +471,7 @@ MtChimney_EventScript_MachineOff::
 	end
 
 MtChimney_EventScript_MachineOn::
-	msgbox MtChimney_Text_MetoriteFittedOnMachine, MSGBOX_DEFAULT
+	msgbox MtChimney_Text_MeteoriteFittedOnMachine, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -719,7 +719,7 @@ MtChimney_Text_YouveNotGotTheMoney::
 MtChimney_Text_OhFineThen::
 	.string "Dann eben nicht. Pech.$"
 
-MtChimney_Text_MetoriteFittedOnMachine::
+MtChimney_Text_MeteoriteFittedOnMachine::
 	.string "Ein METEORIT steckt in dieser\n"
 	.string "seltsamen Maschine…\p"
 	.string "Das Teil saugt den Stein förmlich leer.$"

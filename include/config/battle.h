@@ -56,6 +56,7 @@
 #define B_TAILWIND_TURNS            GEN_LATEST // In Gen5+ Rückenwind 4 statt 3 Runden.
 #define B_SLEEP_TURNS               GEN_LATEST // In Gen5+ Schlaf 1-3 Runden statt 2-5.
 #define B_TAUNT_TURNS               GEN_LATEST // In Gen5+: Verhöhner 3 Runden, wenn Nutzer schneller; 4, wenn Ziel zuerst handelte. Gen3: 2 Runden; Gen4: 3-5.
+#define B_ENCORE_TURNS              GEN_LATEST // Gen 5+: Zugabe hält 3 Runden (wenn Ziel diese Runde noch nicht dran war) oder 4 Runden (wenn es schon agiert hat). Gen 4: 3-7 Runden. Gen 2-3: 2-6 Runden.
 #define B_SPORT_TURNS               GEN_LATEST // In Gen6+ halten Wasser/Schlammsport 5 Runden, auch nach Wechsel.
 #define B_MEGA_EVO_TURN_ORDER       GEN_LATEST // In Gen7 bestimmt Initiative nach Mega-Entwicklung die Reihenfolge, nicht davor.
 #define B_RECALC_TURN_AFTER_ACTIONS GEN_LATEST // In Gen8 beeinflusst Wechsel/Move die aktuelle Rundenreihenfolge (dynamische Initiative).
@@ -272,6 +273,7 @@
 #define NO_BAG_RESTRICTION       0    // Keine Taschenbeschränkung
 #define NO_BAG_AGAINST_TRAINER   1    // Keine Tasche gegen Trainer
 #define NO_BAG_IN_BATTLE         2    // Keine Tasche im Kampf
+#define NO_BAG_INVALID_VALUE     3
 
 #define B_VAR_NO_BAG_USE         0     // Wenn 1, ist die Fähigkeit, die Tasche im Kampf zu verwenden, in Trainerkämpfen deaktiviert. Wenn 2, ist sie auch in Wildkämpfen deaktiviert.
 

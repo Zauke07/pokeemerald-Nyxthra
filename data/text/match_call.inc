@@ -1920,7 +1920,7 @@ MatchCall_Text_Mom3::
 	.string "Lauf in deinen TURBODRETERN,\n"
 	.string "bis sie auseinanderfallen, Schatz!$"
 
-MatchCall_Text_Roxanne1::
+MatchCall_Text_Roxanne_Preparing::
 	.string "FELIZIA: Oh, hallo {PLAYER}!\p"
 	.string "Ich lerne Tag und Nacht, seit wir\n"
 	.string "uns trafen.\p"
@@ -1928,7 +1928,7 @@ MatchCall_Text_Roxanne1::
 	.string "ARENA zu öffnen.\p"
 	.string "Ich studiere deine Schwachstellen!$"
 
-MatchCall_Text_Roxanne2::
+MatchCall_Text_Roxanne_PreparingPostGame::
 	.string "FELIZIA: Bist du das, {PLAYER}?\n"
 	.string "Glückwunsch!\l"
 	.string "Ich höre von dir!\p"
@@ -1937,17 +1937,17 @@ MatchCall_Text_Roxanne2::
 	.string "Wenn ich bereit bin, komm zur ARENA\n"
 	.string "für die Prüfung!$"
 
-MatchCall_Text_Roxanne3::
+MatchCall_Text_Roxanne_RematchReady::
 	.string "FELIZIA: {PLAYER}!\n"
 	.string "ARENA bereit!\p"
 	.string "Komm nach METAROST wann du willst!$"
 
-MatchCall_Text_Roxanne4::
+MatchCall_Text_Roxanne_PostRematch::
 	.string "FELIZIA: In der METAROST ARENA\n"
 	.string "ist unser Kampf, {PLAYER},\l"
 	.string "ein Lehrbeispiel.$"
 
-MatchCall_Text_Brawly1::
+MatchCall_Text_Brawly_Preparing::
 	.string "KAMILLO: Hey, {PLAYER}{KUN}!\p"
 	.string "Ich hab viel gelernt aus unserem\n"
 	.string "Kampf.\p"
@@ -1957,7 +1957,7 @@ MatchCall_Text_Brawly1::
 	.string "Aber wenn sie offen ist,\n"
 	.string "will ich Revanche.$"
 
-MatchCall_Text_Brawly2::
+MatchCall_Text_Brawly_PreparingPostGame::
 	.string "KAMILLO: Hey, {PLAYER}{KUN}!\n"
 	.string "Glückwunsch!\p"
 	.string "Die Wellen erzählen von dir!\p"
@@ -1966,17 +1966,17 @@ MatchCall_Text_Brawly2::
 	.string "Aber wenn sie offen ist,\n"
 	.string "will ich Revanche.$"
 
-MatchCall_Text_Brawly3::
+MatchCall_Text_Brawly_RematchReady::
 	.string "KAMILLO: Hey, {PLAYER}{KUN}!\n"
 	.string "ARENA ist bereit!\p"
 	.string "Komm nach FAUSTAUHAVEN!\n"
 	.string "Lass uns surfen!$"
 
-MatchCall_Text_Brawly4::
+MatchCall_Text_Brawly_PostRematch::
 	.string "KAMILLO: {PLAYER}{KUN}, Kämpfe gegen dich\n"
 	.string "sind wie die perfekte Welle!$"
 
-MatchCall_Text_Wattson1::
+MatchCall_Text_Wattson_Preparing::
 	.string "WALTER: Oh, du bist es!\p"
 	.string "Seit du weg bist, trainiere ich\n"
 	.string "von null an.\p"
@@ -1984,7 +1984,7 @@ MatchCall_Text_Wattson1::
 	.string "Warte noch!\n"
 	.string "Wahahahaha!$"
 
-MatchCall_Text_Wattson2::
+MatchCall_Text_Wattson_PreparingPostGame::
 	.string "WALTER: Wahahahaha!\p"
 	.string "Du hast es geschafft, was?\n"
 	.string "Ich höre von dir!\p"
@@ -1993,18 +1993,18 @@ MatchCall_Text_Wattson2::
 	.string "Warte noch!\n"
 	.string "Wahahahaha!$"
 
-MatchCall_Text_Wattson3::
+MatchCall_Text_Wattson_RematchReady::
 	.string "WALTER: Oh, du!\n"
 	.string "ARENA bereit!\p"
 	.string "Komm nach MALVENFROH!\n"
 	.string "Wahahahaha!$"
 
-MatchCall_Text_Wattson4::
+MatchCall_Text_Wattson_PostRematch::
 	.string "WALTER: Wahahaha!\p"
 	.string "Ein Kampf mit dir steht immer\n"
 	.string "unter Hochspannung!$"
 
-MatchCall_Text_Flannery1::
+MatchCall_Text_Flannery_Preparing::
 	.string "FLAVIA: {PLAYER}…\p"
 	.string "Ich habe gemerkt, wie schlecht ich\n"
 	.string "war.\p"
@@ -2014,7 +2014,7 @@ MatchCall_Text_Flannery1::
 	.string "Wenn es soweit ist, {PLAYER},\n"
 	.string "fordere mich heraus.$"
 
-MatchCall_Text_Flannery2::
+MatchCall_Text_Flannery_PreparingPostGame::
 	.string "FLAVIA: Hallo, {PLAYER}?\n"
 	.string "Glückwunsch!\p"
 	.string "Dein Erfolg brennt wie Feuer!\p"
@@ -2022,42 +2022,42 @@ MatchCall_Text_Flannery2::
 	.string "Wenn die ARENA bereit ist, siehst\n"
 	.string "du ein Zeichen im POKéNAV.$"
 
-MatchCall_Text_Flannery3::
+MatchCall_Text_Flannery_RematchReady::
 	.string "FLAVIA: Oh, {PLAYER}?\n"
 	.string "ARENA bereit!\p"
 	.string "Komm nach BAD LAVASTADT!\n"
 	.string "Es wird heiß!$"
 
-MatchCall_Text_Flannery4::
+MatchCall_Text_Flannery_PostRematch::
 	.string "FLAVIA: {PLAYER}…\n"
 	.string "Du wirst immer besser.\l"
 	.string "Ich verbrenne fast vor Neid.$"
 
-MatchCall_Text_Winona1::
+MatchCall_Text_Winona_Preparing::
 	.string "WIBKE: Hallo, {PLAYER}!\p"
 	.string "Dank dir kenne ich meine Schwächen!\p"
 	.string "Wenn ich die ARENA öffne, stürze ich\n"
 	.string "nicht mehr ab!$"
 
-MatchCall_Text_Winona2::
+MatchCall_Text_Winona_PreparingPostGame::
 	.string "WIBKE: Du hast es geschafft, {PLAYER}!\p"
 	.string "Neuer CHAMP?\n"
 	.string "Wir hörten es in BAUMHAUSEN!\p"
 	.string "Aber… Nächstes Mal gewinne ich.$"
 
-MatchCall_Text_Winona3::
+MatchCall_Text_Winona_RematchReady::
 	.string "WIBKE: Ist das {PLAYER}?\n"
 	.string "ARENA offen!\p"
 	.string "Wir warten in BAUMHAUSEN!$"
 
-MatchCall_Text_Winona4::
+MatchCall_Text_Winona_PostRematch::
 	.string "WIBKE: {PLAYER}…\n"
 	.string "Auch wenn ich verlor, meine Flügel\l"
 	.string "brechen nicht.\p"
 	.string "Genau wie du deinen Traum nie\n"
 	.string "aufgabst.$"
 
-MatchCall_Text_TateLiza1::
+MatchCall_Text_TateLiza_Preparing::
 	.string "BEN: Oh! Du bist…\n"
 	.string "SVENJA: {PLAYER}!\p"
 	.string "BEN: Wir trainieren…\n"
@@ -2067,7 +2067,7 @@ MatchCall_Text_TateLiza1::
 	.string "BEN: Ein Zeichen erscheint…\n"
 	.string "SVENJA: Im MATCH CALL.$"
 
-MatchCall_Text_TateLiza2::
+MatchCall_Text_TateLiza_PreparingPostGame::
 	.string "BEN: {PLAYER}, Glückwunsch!\n"
 	.string "SVENJA: {PLAYER}, Glückwunsch!\p"
 	.string "BEN: Wir beide sind…\n"
@@ -2077,7 +2077,7 @@ MatchCall_Text_TateLiza2::
 	.string "BEN: Ein Zeichen erscheint…\n"
 	.string "SVENJA: Im MATCH CALL.$"
 
-MatchCall_Text_TateLiza3::
+MatchCall_Text_TateLiza_RematchReady::
 	.string "BEN: {PLAYER}!\n"
 	.string "SVENJA: {PLAYER}!\p"
 	.string "BEN: ARENA bereit!\n"
@@ -2085,32 +2085,32 @@ MatchCall_Text_TateLiza3::
 	.string "BEN: Bitte besuche…\n"
 	.string "SVENJA: MOOSBACH CITY!$"
 
-MatchCall_Text_TateLiza4::
+MatchCall_Text_TateLiza_PostRematch::
 	.string "BEN: {PLAYER}, der Kampf…\n"
 	.string "SVENJA: War unbezahlbar.\p"
 	.string "BEN: Es wäre schön…\n"
 	.string "SVENJA: Wieder zu kämpfen!$"
 
-MatchCall_Text_Juan1::
+MatchCall_Text_Juan_Preparing::
 	.string "JUAN: Hmm…\n"
 	.string "{PLAYER}{KUN}… Warst du das?\p"
 	.string "Unser Kampf erinnerte mich an\n"
 	.string "WASSILI.\p"
 	.string "Vielleicht übertriffst du ihn!$"
 
-MatchCall_Text_Juan2::
+MatchCall_Text_Juan_PreparingPostGame::
 	.string "JUAN: Fufu… {PLAYER}{KUN}…\n"
 	.string "Ziel erreicht.\p"
 	.string "Ich hatte recht…\p"
 	.string "Ich will dich wiedersehen, du\n"
 	.string "Gipfelstürmer.$"
 
-MatchCall_Text_Juan3::
+MatchCall_Text_Juan_RematchReady::
 	.string "JUAN: Hoho… {PLAYER}{KUN}…\p"
 	.string "XENEROVILLE ARENA ist offen.\p"
 	.string "Besuche mich, wann du willst.$"
 
-MatchCall_Text_Juan4::
+MatchCall_Text_Juan_PostRematch::
 	.string "JUAN: {PLAYER}{KUN}…\p"
 	.string "Wie Musik, unsere Kämpfe sind\n"
 	.string "Inspiration…\p"
@@ -2497,25 +2497,25 @@ MatchCall_Text_Norman5::
 	.string "Kenn ich nicht.\p"
 	.string "Klingt nach Vulkan!$"
 
-MatchCall_Text_Norman6::
+MatchCall_Text_Norman_Preparing::
 	.string "DAD: Hiyah! Haah! Dwah!\p"
 	.string "…Oh? {PLAYER}!\p"
 	.string "Du störst mein Training!$"
 
-MatchCall_Text_Norman7::
+MatchCall_Text_Norman_PreparingPostGame::
 	.string "DAD: {PLAYER}!\p"
 	.string "CHAMP… Wer hätte das gedacht…\p"
 	.string "Okay!\n"
 	.string "Ich hole auf!$"
 
-MatchCall_Text_Norman8::
+MatchCall_Text_Norman_RematchReady::
 	.string "DAD: Hm? {PLAYER}?\n"
 	.string "Gutes Timing!\p"
 	.string "Ich fordere dich heraus.\p"
 	.string "Komm zur ARENA.\n"
 	.string "Ich warte!$"
 
-MatchCall_Text_Norman9::
+MatchCall_Text_Norman_PostRematch::
 	.string "DAD: …Du erstaunst mich, {PLAYER}.\n"
 	.string "Wie hoch fliegst du noch?$"
 

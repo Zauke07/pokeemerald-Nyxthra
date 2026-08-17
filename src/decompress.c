@@ -4,6 +4,7 @@
 #include "decompress.h"
 #include "decompress_error_handler.h"
 #include "pokemon.h"
+#include "pokemon_spots.h"
 #include "pokemon_sprite_visualizer.h"
 #include "text.h"
 #include "menu.h"
@@ -244,17 +245,12 @@ u32 LoadCompressedSpriteSheetByTemplate(const struct SpriteTemplate *template, s
 
 }
 
-void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer)
-{
-    DecompressDataWithHeaderWram(src->data, buffer);
-}
-
-void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality)
+void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, enum Species species, u32 personality)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
 
-void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, s32 species, u32 personality, bool32 isEgg)
+void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, enum Species species, u32 personality, bool32 isEgg)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, isEgg);
 }
@@ -1129,7 +1125,7 @@ static bool32 isModeSymDelta(enum CompressionMode mode)
     return FALSE;
 }
 
-void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontPic)
+void LoadSpecialPokePic(void *dest, enum Species species, u32 personality, bool8 isFrontPic)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
@@ -1198,7 +1194,71 @@ static u16 GetSpeciesGraphicsFallback(s32 species, bool8 isFrontPic, bool32 isFe
     return sanitizedSpecies;
 }
 
-void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isFrontPic, bool32 isEgg)
+static u16 GetSpeciesGraphicsFallback(s32 species, bool8 isFrontPic, bool32 isFemale)
+{
+    u16 sanitizedSpecies = SanitizeSpeciesId(species);
+    u16 natDexNum;
+    u16 candidate;
+
+    if (sanitizedSpecies == SPECIES_NONE || sanitizedSpecies == SPECIES_EGG)
+        return sanitizedSpecies;
+
+    if (isFrontPic)
+    {
+#if P_GENDER_DIFFERENCES
+        if ((isFemale && gSpeciesInfo[sanitizedSpecies].frontPicFemale != NULL) || gSpeciesInfo[sanitizedSpecies].frontPic != NULL)
+            return sanitizedSpecies;
+#else
+        if (gSpeciesInfo[sanitizedSpecies].frontPic != NULL)
+            return sanitizedSpecies;
+#endif
+    }
+    else
+    {
+#if P_GENDER_DIFFERENCES
+        if ((isFemale && gSpeciesInfo[sanitizedSpecies].backPicFemale != NULL) || gSpeciesInfo[sanitizedSpecies].backPic != NULL)
+            return sanitizedSpecies;
+#else
+        if (gSpeciesInfo[sanitizedSpecies].backPic != NULL)
+            return sanitizedSpecies;
+#endif
+    }
+
+    natDexNum = gSpeciesInfo[sanitizedSpecies].natDexNum;
+    if (natDexNum == 0)
+        return sanitizedSpecies;
+
+    for (candidate = SPECIES_NONE + 1; candidate < NUM_SPECIES; candidate++)
+    {
+        if (gSpeciesInfo[candidate].natDexNum != natDexNum)
+            continue;
+
+        if (isFrontPic)
+        {
+#if P_GENDER_DIFFERENCES
+            if ((isFemale && gSpeciesInfo[candidate].frontPicFemale != NULL) || gSpeciesInfo[candidate].frontPic != NULL)
+                return candidate;
+#else
+            if (gSpeciesInfo[candidate].frontPic != NULL)
+                return candidate;
+#endif
+        }
+        else
+        {
+#if P_GENDER_DIFFERENCES
+            if ((isFemale && gSpeciesInfo[candidate].backPicFemale != NULL) || gSpeciesInfo[candidate].backPic != NULL)
+                return candidate;
+#else
+            if (gSpeciesInfo[candidate].backPic != NULL)
+                return candidate;
+#endif
+        }
+    }
+
+    return sanitizedSpecies;
+}
+
+void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, bool8 isFrontPic, bool32 isEgg)
 {
     species = SanitizeSpeciesId(species);
     if (species == SPECIES_UNOWN)
@@ -1237,10 +1297,9 @@ void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isF
             DecompressDataWithHeaderWram(gSpeciesInfo[SPECIES_NONE].backPic, dest);
     }
 
-    if (species == SPECIES_SPINDA && isFrontPic)
+    if (ShouldDrawSpotsOnSpecies(species) && isFrontPic && !isEgg)
     {
-        DrawSpindaSpots(personality, dest, FALSE);
-        DrawSpindaSpots(personality, dest, TRUE);
+        DrawPokemonSpotsBothFrames(personality, species, dest);
     }
 }
 
@@ -1290,7 +1349,7 @@ static void UNUSED StitchObjectsOn8x8Canvas(s32 object_size, s32 object_count, u
                 }
             }
 
-            // Clear the columns to the left and right that wont be used completely
+            // Clear the columns to the left and right that won't be used completely
             // Unlike the previous loops, this will clear the later used space as well
             for (j = 0; j < 2; j++)
             {

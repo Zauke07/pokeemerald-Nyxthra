@@ -138,4 +138,14 @@
 // Trainer-Rematches
 #define OW_REMATCH_BADGE_COUNT      5 // Anzahl der benötigten Orden, bevor Match Call oder VS Seeker Rematches ermöglichen
 
+// Umgebungs-Rufe (Ambient Cries)
+// Konstanten
+#define OW_AMBIENT_CRIES_NONE           0   // Keine Umgebungs-Rufe abspielen.
+#define OW_AMBIENT_CRIES_VANILLA        1   // Umgebungs-Rufe aus den Encounter-Tabellen abspielen, wie im Original (Vanilla).
+#define OW_AMBIENT_CRIES_OWE_PRIORITY   2   // Umgebungs-Rufe basierend auf aktiven Overworld-Encountern abspielen (fällt auf Vanilla zurück, falls keine vorhanden sind).
+#define OW_AMBIENT_CRIES_OWE_ONLY       3   // Umgebungs-Rufe NUR basierend auf aktiven Overworld-Encountern abspielen.
+                                            // Overworld-Encounters spielen ihre Rufe basierend auf ihrer Position relativ zum Spieler ab.
+
+// Konfiguration
+#define OW_AMBIENT_CRIES                OW_AMBIENT_CRIES_VANILLA // Legt fest, wie (und ob) Umgebungs-Rufe abgespielt werden. Wie in Vanilla gilt: Egal was gewählt ist, es gibt keine Rufe, wenn die Map keine Land- oder Wasser-Encounter-Tabelle hat.
 #endif // GUARD_CONFIG_OVERWORLD_H

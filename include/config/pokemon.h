@@ -61,6 +61,7 @@
 #define P_ONLY_OBTAINABLE_SHINIES FALSE   // Wenn WAHR, werden Pokémon, die in der Kampfpyramide oder bei deaktiviertem Fang angetroffen werden, nicht Shiny sein.
 #define P_NO_SHINIES_WITHOUT_POKEBALLS FALSE // Wenn WAHR, werden Pokémon, die angetroffen werden, wenn der Spieler keine Pokébälle mehr hat, nicht Shiny sein.
 #define P_SHOW_DYNAMIC_TYPES TRUE        // Wenn WAHR, werden alle Attacken mit dynamischen Typenänderungen in Kampf-/Berichtsbildschirmen als ihr aktueller Typ angezeigt, anstatt nur ausgewählte wie in Vanilla.
+#define P_BASE_HP_1_SHEDINJA_HANDLING    FALSE       // Wenn TRUE, werden alle Spezies mit 1 Basis-KP genauso behandelt wie Ninjatom.
 
 // Schalter für Lernset-Helfer
 #define P_LEARNSET_HELPER_TEACHABLE TRUE  // Wenn WAHR, wird teachable_learnsets.h von tools/learnset_helpers/make_teachables.py anhand der enthaltenen JSON-Dateien und basierend auf verfügbaren TMs und Tutoren befüllt.

@@ -15,7 +15,7 @@ LilycoveCity_DepartmentStore_1F_Text_PleaseVisitAgain:
 
 LilycoveCity_DepartmentStore_1F_Text_PleasePickTicket:
 	.string "Zieh ein LOS.\n"
-	.string "Mach schon…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}$"
+	.string "Mach schon…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}…{PAUSE 15}{PAUSE 15}{PAUSE 15}{PAUSE 15}$"
 
 LilycoveCity_DepartmentStore_1F_Text_TicketNumberIsXPleaseWait:
 	.string "Die Nummer ist {STR_VAR_1}.\p"

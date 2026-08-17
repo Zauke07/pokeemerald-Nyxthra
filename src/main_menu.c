@@ -22,6 +22,7 @@
 #include "option_menu.h"
 #include "overworld.h"
 #include "palette.h"
+#include "party_menu.h"
 #include "pokeball.h"
 #include "pokedex.h"
 #include "pokemon.h"
@@ -67,7 +68,7 @@ static void Task_WaitForBatteryDryErrorWindow(u8);
 static void MainMenu_FormatSavegameText(void);
 static const u8 *GetMainMenuHeaderTextColor(void);
 static const u8 *GetMainMenuInfoTextColor(void);
-static void HighlightSelectedMainMenuItem(u8, u8, s16);
+static void HighlightSelectedMainMenuItem(enum PartyMenuType, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
@@ -146,13 +147,13 @@ static void StartBirchWelcomeText(u8 taskId);
 
 // ROM declarations
 static const u16 sBirchSpeechBgPals[][16] = {
-    INCBIN_U16("graphics/birch_speech/bg0.gbapal"),
-    INCBIN_U16("graphics/birch_speech/bg1.gbapal")
+    INCGFX_U16("graphics/birch_speech/bg0.pal", ".gbapal"),
+    INCGFX_U16("graphics/birch_speech/bg1.pal", ".gbapal")
 };
 
-static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.smol");
-static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.smolTM");
-static const u16 sBirchSpeechBgGradientPal[] = INCBIN_U16("graphics/birch_speech/bg2.gbapal");
+static const u32 sBirchSpeechShadowGfx[] = INCGFX_U32("graphics/birch_speech/shadow.png", ".4bpp.smol");
+static const u32 sBirchSpeechBgMap[] = INCGFX_U32("graphics/birch_speech/map.bin", ".smolTM");
+static const u16 sBirchSpeechBgGradientPal[] = INCGFX_U16("graphics/birch_speech/bg2.pal", ".gbapal");
 
 static const u8 gText_SaveFileCorrupted[] = _("Die Speicherdatei ist beschädigt. Die\nvorherige Speicherdatei wird geladen.");
 static const u8 gText_SaveFileErased[] = _("Die Speicherdatei wurde gelöscht\naufgrund von Beschädigung oder Fehlern.");
@@ -261,8 +262,8 @@ static const struct WindowTemplate sNewGameBirchSpeechTextWindows[] =
     DUMMY_WIN_TEMPLATE
 };
 
-static const u16 sMainMenuBgPal[] = INCBIN_U16("graphics/interface/main_menu_bg.gbapal");
-static const u16 sMainMenuTextPal[] = INCBIN_U16("graphics/interface/main_menu_text.gbapal");
+static const u16 sMainMenuBgPal[] = INCGFX_U16("graphics/interface/main_menu_bg.pal", ".gbapal");
+static const u16 sMainMenuTextPal[] = INCGFX_U16("graphics/interface/main_menu_text.pal", ".gbapal");
 
 static const u8 sTextColor_HeadersMaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE};
 static const u8 sTextColor_HeadersFemaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
@@ -1085,7 +1086,7 @@ static void Task_DisplayMainMenuInvalidActionError(u8 taskId)
 #undef tWirelessAdapterConnected
 #undef tArrowTaskIsScrolled
 
-static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 isScrolled)
+static void HighlightSelectedMainMenuItem(enum PartyMenuType menuType, u8 selectedMenuItem, s16 isScrolled)
 {
     SetGpuReg(REG_OFFSET_WIN0H, MENU_WIN_HCOORDS);
     switch (menuType)
@@ -1988,7 +1989,6 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
 static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
 {
     u8 taskId;
-    u16 savedIme;
 
     ResetBgsAndClearDma3BusyFlags(0);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
@@ -2063,10 +2063,7 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     ShowBg(0);
     ShowBg(1);
 
-    savedIme = REG_IME;
-    REG_IME = 0;
-    REG_IE |= 1;
-    REG_IME = savedIme;
+    IntrEnable(INTR_FLAG_VBLANK);
 
     SetVBlankCallback(VBlankCB_MainMenu);
     SetMainCallback2(CB2_MainMenu);

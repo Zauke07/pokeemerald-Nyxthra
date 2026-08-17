@@ -134,12 +134,12 @@ bool8 ShowFieldMessageFromBuffer(void)
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
-    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
     // Flag muss VOR AddTextPrinterForMessage gesetzt werden, damit die
     // dunklen Textfarben korrekt eingetragen werden (Timing-Fix).
     if (!gMsgIsSignPost)
         SetNpcDialogueDarkModePaletteOverride(TRUE);
+    TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
 }
