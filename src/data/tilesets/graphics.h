@@ -42,6 +42,32 @@ const u16 gTilesetPalettes_Rustboro[][16] =
     INCGFX_U16("data/tilesets/secondary/rustboro/palettes/15.pal", ".gbapal"),
 };
 
+// Nyxthra: private copy of gTileset_Rustboro, used only by Route104. Lets us
+// repaint tiles Route104 itself doesn't use (e.g. for the dried-up lake)
+// without touching the shared original used by Rustboro City, Route116,
+// Petalburg Woods, Southern/Faraway Island.
+const u32 gTilesetTiles_Route104[] = INCGFX_U32("data/tilesets/secondary/route104/tiles.png", ".4bpp.fastSmol");
+
+const u16 gTilesetPalettes_Route104[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/route104/palettes/15.pal", ".gbapal"),
+};
+
 const u32 gTilesetTiles_Dewford[] = INCGFX_U32("data/tilesets/secondary/dewford/tiles.png", ".4bpp.fastSmol", "-num_tiles 503 -Wnum_tiles");
 
 const u16 gTilesetPalettes_Dewford[][16] =

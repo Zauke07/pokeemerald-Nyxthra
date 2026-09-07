@@ -63,6 +63,18 @@ const struct Tileset gTileset_Rustboro =
     .callback = InitTilesetAnim_Rustboro,
 };
 
+// Nyxthra: Route104's own private copy of gTileset_Rustboro (see graphics.h).
+const struct Tileset gTileset_Route104 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Route104,
+    .palettes = gTilesetPalettes_Route104,
+    .metatiles = gMetatiles_Route104,
+    .metatileAttributes = gMetatileAttributes_Route104,
+    .callback = InitTilesetAnim_Rustboro,
+};
+
 const struct Tileset gTileset_Dewford =
 {
     .isCompressed = TRUE,

@@ -16,7 +16,16 @@ Route104_OnTransition:
 	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
+	call_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, Route104_EventScript_DryUpLake
 	end
+
+@ Nyxthra story: Groudon's awakening dries up the lake by the flower shop
+@ for good. Re-applied on every visit while the flag is set (cheap - it's
+@ just a metatile swap), matching how SetMirageTowerVisibility re-checks
+@ its own story flag on every map load.
+Route104_EventScript_DryUpLake::
+	special Nyxthra_DryUpRoute104Lake
+	return
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist::
 	goto_if_unset FLAG_MET_PRETTY_PETAL_SHOP_OWNER, Route104_EventScript_HideWhiteHerbFlorist
