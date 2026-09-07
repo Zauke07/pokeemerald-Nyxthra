@@ -520,8 +520,9 @@ const u8 gTrainerBackPic_Lucas[] = INCBIN_U8("graphics/trainers/back_pics/lucas_
 const u16 gTrainerPalette_LucasBack[] = INCBIN_U16("graphics/rogue_palettes/lucas/trainer_back_base.gbapal");
 const u8 gTrainerBackPic_Dawn[] = INCBIN_U8("graphics/trainers/back_pics/dawn_back_pic.4bpp");
 const u16 gTrainerPalette_DawnBack[] = INCBIN_U16("graphics/rogue_palettes/dawn/trainer_back_base.gbapal");
-const u8 gTrainerBackPic_Hilbert[] = INCBIN_U8("graphics/trainers/back_pics/hilbert_back_pic.4bpp");
-const u16 gTrainerPalette_HilbertBack[] = INCBIN_U16("graphics/trainers/back_pics/hilbert_back.gbapal");
+// Nyxthra: Hilbert's back pic was redrawn with 5 frames (like Ethan/Hilda) - auto-convert from the raw source instead of a stale pre-converted binary.
+const u8 gTrainerBackPic_Hilbert[] = INCGFX_U8("graphics/trainers/back_pics/hilbert_back_pic.png", ".4bpp");
+const u16 gTrainerPalette_HilbertBack[] = INCGFX_U16("graphics/trainers/palettes/hilbert_Back_pic.pal", ".gbapal");
 const u8 gTrainerBackPic_Nate[] = INCBIN_U8("graphics/trainers/back_pics/nate_back_pic.4bpp");
 const u16 gTrainerPalette_NateBack[] = INCBIN_U16("graphics/trainers/palettes/nate_back.gbapal");
 const u8 gTrainerBackPic_Calem[] = INCBIN_U8("graphics/trainers/back_pics/calem_back_pic.4bpp");
@@ -532,7 +533,9 @@ const u8 gTrainerBackPic_Elio[] = INCBIN_U8("graphics/trainers/back_pics/elio_ba
 const u16 gTrainerPalette_ElioBack[] = INCBIN_U16("graphics/trainers/palettes/elio_back.gbapal");
 const u8 gTrainerBackPic_Selene[] = INCBIN_U8("graphics/trainers/back_pics/selene_back_pic.4bpp");
 const u16 gTrainerPalette_SeleneBack[] = INCBIN_U16("graphics/trainers/palettes/selene_back.gbapal");
-const u8 gTrainerBackPic_Hilda[] = INCBIN_U8("graphics/trainers/back_pics/may_rs.4bpp");
+// Nyxthra: Hilda now has her own 5-frame back pic instead of the May (RS) fallback.
+const u8 gTrainerBackPic_Hilda[] = INCGFX_U8("graphics/trainers/back_pics/hilda_back_pic.png", ".4bpp");
+const u16 gTrainerPalette_HildaBack[] = INCGFX_U16("graphics/trainers/palettes/hilda_Back_pic.pal", ".gbapal");
 const u8 gTrainerBackPic_Rosa[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp");
 const u8 gTrainerBackPic_Victor[] = INCBIN_U8("graphics/trainers/back_pics/brendan.4bpp");
 const u8 gTrainerBackPic_Gloria[] = INCBIN_U8("graphics/trainers/back_pics/may.4bpp");
@@ -542,6 +545,8 @@ const u8 gTrainerBackPic_Juliana[] = INCBIN_U8("graphics/trainers/back_pics/may_
 // --- Nyxthra-Custom-Trainer ---
 const u32 gTrainerFrontPic_Ash[] = INCBIN_U32("graphics/trainers/front_pics/ash.4bpp.smol");
 const u16 gTrainerPalette_Ash[] = INCBIN_U16("graphics/trainers/palettes/ash.gbapal");
+const u32 gTrainerFrontPic_Wes[] = INCBIN_U32("graphics/trainers/front_pics/wes.4bpp.smol");
+const u16 gTrainerPalette_Wes[] = INCBIN_U16("graphics/trainers/palettes/wes.gbapal");
 const u32 gTrainerFrontPic_Nurse[] = INCBIN_U32("graphics/trainers/front_pics/nurse_joy.4bpp.smol");
 const u16 gTrainerPalette_Nurse[] = INCBIN_U16("graphics/trainers/palettes/nurse_joy.gbapal");
 const u32 gTrainerFrontPic_Rocky[] = INCBIN_U32("graphics/trainers/front_pics/rocky.4bpp.smol");
@@ -1213,6 +1218,7 @@ const struct SpriteFrameImage gTrainerBackPicTable_Hilbert[] =
     {gTrainerBackPic_Hilbert + TRAINER_PIC_SIZE * 1, TRAINER_PIC_SIZE},
     {gTrainerBackPic_Hilbert + TRAINER_PIC_SIZE * 2, TRAINER_PIC_SIZE},
     {gTrainerBackPic_Hilbert + TRAINER_PIC_SIZE * 3, TRAINER_PIC_SIZE},
+    {gTrainerBackPic_Hilbert + TRAINER_PIC_SIZE * 4, TRAINER_PIC_SIZE},
 };
 
 const struct SpriteFrameImage gTrainerBackPicTable_Hilda [] =
@@ -1221,6 +1227,7 @@ const struct SpriteFrameImage gTrainerBackPicTable_Hilda [] =
     {gTrainerBackPic_Hilda + TRAINER_PIC_SIZE * 1, TRAINER_PIC_SIZE},
     {gTrainerBackPic_Hilda + TRAINER_PIC_SIZE * 2, TRAINER_PIC_SIZE},
     {gTrainerBackPic_Hilda + TRAINER_PIC_SIZE * 3, TRAINER_PIC_SIZE},
+    {gTrainerBackPic_Hilda + TRAINER_PIC_SIZE * 4, TRAINER_PIC_SIZE},
 };
 
 const struct SpriteFrameImage gTrainerBackPicTable_Nate[] =
@@ -2025,11 +2032,11 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     },
     [TRAINER_PIC_HILBERT] = {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Hilbert, gTrainerPalette_Hilbert),
-        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Hilbert, gTrainerPalette_HilbertBack, sBackAnims_Hoenn),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Hilbert, gTrainerPalette_HilbertBack, sBackAnims_Kanto),
     },
     [TRAINER_PIC_HILDA] = {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Hilda, gTrainerPalette_Hilda),
-        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_RubySapphireMay, gTrainerPalette_RubySapphireMay, sBackAnims_Hoenn),
+        .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_Hilda, gTrainerPalette_HildaBack, sBackAnims_Kanto),
     },
     [TRAINER_PIC_NATE] = {
         .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nate, gTrainerPalette_Nate),
@@ -2074,6 +2081,7 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
 
     // --- Unique Nyxthra NPCs & Bosses ---
     [TRAINER_PIC_ASH] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Ash, gTrainerPalette_Ash) },
+    [TRAINER_PIC_WES] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Wes, gTrainerPalette_Wes) },
     [TRAINER_PIC_NURSE] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Nurse, gTrainerPalette_Nurse) },
     [TRAINER_PIC_ROCKY] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Rocky, gTrainerPalette_Rocky) },
     [TRAINER_PIC_BACKPACKER_F] = { .frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_BackpackerF, gTrainerPalette_BackpackerF) },
