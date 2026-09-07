@@ -41,7 +41,7 @@ Common_EventScript_SetupRivalGfxId::
     compare VAR_RESULT, STYLE_JULIANA
     goto_if_eq EventScript_SetupRivalGfxIdFlorian
 
-    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_RED @ Fallback (Brendan/May sind keine Spielerstyles mehr)
     return
 
 EventScript_SetupRivalGfxIdMay::
@@ -601,7 +601,7 @@ Common_EventScript_SetupRivalGfxId_FromPlayerStyle::
     goto_if_eq EventScript_SetupRivalGfxIdJuliana_Switch
     compare VAR_RESULT, STYLE_JULIANA
     goto_if_eq EventScript_SetupRivalGfxIdFlorian_Switch
-    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+    setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_RED @ Fallback (Brendan/May sind keine Spielerstyles mehr)
     return
 
 EventScript_SetupRivalGfxIdMay_Switch::

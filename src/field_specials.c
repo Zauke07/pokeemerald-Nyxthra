@@ -14,6 +14,7 @@
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_message_box.h"
+#include "field_move.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -5933,4 +5934,41 @@ u16 RandomizeStaticMonVar8004(void)
 {
     gSpecialVar_0x8004 = Randomizer_GetStaticSpecies(gSpecialVar_0x8004);
     return gSpecialVar_0x8004;
+}
+
+// Forces the mon set up by setwildbattle to be shiny.
+// Call after setwildbattle and before dowildbattle.
+void ForceShinyScriptedWildMon(void)
+{
+    bool32 isShiny = TRUE;
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_IS_SHINY, &isShiny);
+}
+
+// Unlike checkfieldmove (which stops at the first party mon that knows the
+// move), this searches the whole party for a specific shiny Metagross that
+// knows Rock Smash, since any other Rock Smash user shouldn't be able to
+// crack open the Jirachi rock in Mossdeep.
+u8 FindFieldMoveMonForJirachiRock(void)
+{
+    u32 i;
+
+    if (!IsFieldMoveUnlocked(FIELD_MOVE_ROCK_SMASH))
+        return PARTY_SIZE;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gPlayerParty[i];
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+
+        if (!species)
+            break;
+        if (GetMonData(mon, MON_DATA_IS_EGG))
+            continue;
+        if (species == SPECIES_METAGROSS
+            && GetMonData(mon, MON_DATA_IS_SHINY)
+            && MonKnowsMove(mon, MOVE_ROCK_SMASH))
+            return i;
+    }
+
+    return PARTY_SIZE;
 }

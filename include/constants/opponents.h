@@ -3999,12 +3999,17 @@
 #define TRAINER_CHALLENGE_HOUSE_FLORIAN          3593
 #define TRAINER_CHALLENGE_HOUSE_JULIANA          3594
 
+// Nyxthra story: whoever isn't the player's own style is the reigning Champion,
+// fought in EverGrandeCity_ChampionsRoom in place of Wallace.
+#define TRAINER_MAY_CHAMPION                     3595
+#define TRAINER_BRENDAN_CHAMPION                 3596
+
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
 #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
 #else
-#define TRAINERS_COUNT                      3595
-#define MAX_TRAINERS_COUNT                  3596
+#define TRAINERS_COUNT                      3597
+#define MAX_TRAINERS_COUNT                  3598
 #endif
 
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)

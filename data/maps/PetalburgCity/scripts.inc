@@ -8,8 +8,22 @@ PetalburgCity_OnTransition:
 	call_if_eq VAR_PETALBURG_CITY_STATE, 0, PetalburgCity_EventScript_MoveGymBoyToWestEntrance
 	call_if_eq VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_DisableMapNameAndMusic
+	call_if_eq VAR_PETALBURG_CITY_STATE, 5, PetalburgCity_EventScript_DisableMapNameAndMusic
 	call_if_eq VAR_PETALBURG_GYM_STATE, 8, PetalburgCity_EventScript_SetGymDoorsUnlocked
+	call PetalburgCity_EventScript_SetChampGfx
 	end
+
+@ Nyxthra story: same fixed Champion sprite as in the gym (see
+@ PetalburgCity_Gym_EventScript_SetChampGfx) - LOCALID_PETALBURG_CITY_CHAMP
+@ needs it resolved here too since it's a separate object on this map.
+PetalburgCity_EventScript_SetChampGfx::
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_EventScript_SetChampGfxMay
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	return
+PetalburgCity_EventScript_SetChampGfxMay:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	return
 
 PetalburgCity_EventScript_MoveGymBoyToWestEntrance::
 	setobjectxyperm LOCALID_GYM_BOY, 5, 11
@@ -27,7 +41,61 @@ PetalburgCity_EventScript_SetGymDoorsUnlocked::
 PetalburgCity_OnFrame:
 	map_script_2 VAR_PETALBURG_CITY_STATE, 2, PetalburgCity_EventScript_WallyTutorial
 	map_script_2 VAR_PETALBURG_CITY_STATE, 4, PetalburgCity_EventScript_WalkToWallyHouse
+	map_script_2 VAR_PETALBURG_CITY_STATE, 5, PetalburgCity_EventScript_ChampCatchDemo
 	.2byte 0
+
+@ Nyxthra story: the Champion's catching demo, triggered from Petalburg Gym
+@ (PetalburgCity_Gym_EventScript_ChampFirstAppearance) in place of Wally's
+@ tutorial. Reuses Wally's own movement scripts below (same start position,
+@ same walkable path) and, like Wally's own tutorial, BATTLE_TYPE_CATCH_TUTORIAL
+@ (so it plays out automatically - the AI throws the ball itself, the player
+@ just watches). That flag hardcodes the whole player side to Wally's own
+@ dedicated controller/trainer pic/name throughout - those spots were made
+@ Champion-aware instead of avoided (see battle_controller_wally.c,
+@ battle_message.c, reshow_battle_screen.c, all gated on
+@ gNyxthraForceBattleBackPic), so it still shows May/Brendan doing the
+@ catching with their own starter, not a loaner.
+@ No addobject here - FLAG_HIDE_PETALBURG_CITY_CHAMP is already cleared back
+@ in the gym before the warp (see ChampFirstAppearanceEnd), the same way
+@ Wally's own FLAG_HIDE_PETALBURG_CITY_WALLY is, so the Champ is standing
+@ here and visible from the moment this map loads - not just once this
+@ OnFrame script gets around to it a beat later.
+PetalburgCity_EventScript_ChampCatchDemo::
+	lockall
+	special SavePlayerParty
+	special LoadChampStarterForCatchDemo
+	special SetForcedChampBackPic
+	applymovement LOCALID_PETALBURG_CITY_CHAMP, PetalburgCity_Movement_WallyTutorialWally
+	applymovement LOCALID_PLAYER, PetalburgCity_Movement_WallyTutorialPlayer
+	waitmovement 0
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_EventScript_ChampCatchDemoMay
+	msgbox PetalburgCity_Text_ChampWatchMeCatchBrendan, MSGBOX_DEFAULT
+	goto PetalburgCity_EventScript_ChampCatchDemoBattle
+PetalburgCity_EventScript_ChampCatchDemoMay:
+	msgbox PetalburgCity_Text_ChampWatchMeCatchMay, MSGBOX_DEFAULT
+PetalburgCity_EventScript_ChampCatchDemoBattle:
+	special StartChampCatchDemoBattle
+	special ClearForcedBattleBackPic
+	msgbox PetalburgCity_Text_ChampIDidIt, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_CITY_CHAMP, Common_Movement_WalkInPlaceFasterLeft, MAP_PETALBURG_CITY
+	waitmovement LOCALID_PETALBURG_CITY_CHAMP, MAP_PETALBURG_CITY
+	msgbox PetalburgCity_Text_ChampLetsGoBack, MSGBOX_DEFAULT
+	closemessage
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	setvar VAR_PETALBURG_CITY_STATE, 3
+	fadedefaultbgm
+	clearflag FLAG_DONT_TRANSITION_MUSIC
+	special LoadPlayerParty
+	removeobject LOCALID_PETALBURG_CITY_CHAMP
+	setflag FLAG_HIDE_PETALBURG_CITY_CHAMP
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	special InitBirchState
+	setvar VAR_PETALBURG_GYM_STATE, 9
+	warp MAP_PETALBURG_CITY_GYM, 4, 108
+	waitstate
+	releaseall
+	end
 
 PetalburgCity_EventScript_WallyTutorial::
 	lockall
@@ -743,6 +811,26 @@ PetalburgCity_EventScript_ChatGPT_Declined::
     release
     end
 
+PetalburgCity_Text_ChampWatchMeCatchMay:
+	.string "Mai: {PLAYER}…\n"
+	.string "Pokémon verstecken sich oft im hohen\l"
+	.string "Gras, so wie hier.\p"
+	.string "Schau einfach zu, wie's geht.$"
+
+PetalburgCity_Text_ChampWatchMeCatchBrendan:
+	.string "Brix: {PLAYER}…\n"
+	.string "Pokémon verstecken sich oft im hohen\l"
+	.string "Gras, so wie hier.\p"
+	.string "Schau einfach zu, wie's geht.$"
+
+PetalburgCity_Text_ChampIDidIt:
+	.string "{PLAYER}, siehst du?\n"
+	.string "So einfach ist das.$"
+
+PetalburgCity_Text_ChampLetsGoBack:
+	.string "{PLAYER}, lass uns zurück\n"
+	.string "zur ARENA gehen.$"
+
 PetalburgCity_Text_WhereIsWally:
 	.string "Wo steckt HEIKO nur wieder…?\p"
 	.string "Wir wollten doch nach WIESENFLUR.\n"
@@ -778,7 +866,7 @@ PetalburgCity_Text_FullPartyExplanation:
 
 PetalburgCity_Text_GymSign:
 	.string "POKéMON ARENA von BLÜTENBURG CITY\n"
-	.string "LEITER: NORMAN\l"
+	.string "LEITER: MAREK\l"
 	.string "“Ein Mann, der nach Stärke strebt!”$"
 
 PetalburgCity_Text_CitySign:

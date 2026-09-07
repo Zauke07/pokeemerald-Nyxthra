@@ -43,5 +43,7 @@ bool8 ShowFieldExpLevelDebug(void);
 bool8 ShowFieldCmdGetExpDebug(void);
 bool8 CutMoveRuinValleyCheck(void);
 void CutMoveOpenDottedHoleDoor(void);
+void ForceShinyScriptedWildMon(void);
+u8 FindFieldMoveMonForJirachiRock(void);
 
 #endif // GUARD_FIELD_SPECIALS_H

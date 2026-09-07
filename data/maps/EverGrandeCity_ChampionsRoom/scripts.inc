@@ -5,7 +5,16 @@ EverGrandeCity_ChampionsRoom_MapScripts::
 	.byte 0
 
 EverGrandeCity_ChampionsRoom_OnTransition:
-	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
+	@ Nyxthra story: whoever isn't the player's own gender (May or Brendan -
+	@ see IsChampionMay()) is the reigning Champion of Hoenn and stands here
+	@ in Wallace's old spot, fixed regardless of the player's chosen style.
+	specialvar VAR_RESULT, IsChampionMay
+	compare VAR_RESULT, TRUE
+	goto_if_eq EverGrandeCity_ChampionsRoom_EventScript_SetChampionGfxMay
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	end
+EverGrandeCity_ChampionsRoom_EventScript_SetChampionGfxMay:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
 	end
 
 EverGrandeCity_ChampionsRoom_OnWarp:
@@ -39,8 +48,15 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
 
 EverGrandeCity_ChampionsRoom_EventScript_Wallace::
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
-	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
+	specialvar VAR_RESULT, IsChampionMay
+	compare VAR_RESULT, TRUE
+	goto_if_eq EverGrandeCity_ChampionsRoom_EventScript_FightMay
+	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeechBrendan, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_BRENDAN_CHAMPION, EverGrandeCity_ChampionsRoom_Text_DefeatBrendan
+	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
+EverGrandeCity_ChampionsRoom_EventScript_FightMay:
+	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeechMay, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_MAY_CHAMPION, EverGrandeCity_ChampionsRoom_Text_DefeatMay
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end
 
@@ -49,57 +65,27 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE
 	setmetatile 6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, FALSE
 	special DrawWholeMapView
-	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	@ Nyxthra story: the CHAMPION you just fought is fixed to May or Brendan
+	@ (IsChampionMay, independent of your own style) and reacts right where
+	@ they stand. Your own actual rival - still fully per-style/dynamic via
+	@ spawnrival_style, same as always - bursts in separately afterward.
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, EverGrandeCity_ChampionsRoom_EventScript_MayChampionReacts
+	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechBrendan, MSGBOX_DEFAULT
+	goto EverGrandeCity_ChampionsRoom_EventScript_RivalArrives
+EverGrandeCity_ChampionsRoom_EventScript_MayChampionReacts:
+	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechMay, MSGBOX_DEFAULT
+EverGrandeCity_ChampionsRoom_EventScript_RivalArrives:
 	closemessage
 	playse SE_DOOR
 	lockall
-    call Common_EventScript_SetupRivalMusic
+	call Common_EventScript_SetupRivalMusic
 	setvar VAR_0x8004, LOCALID_CHAMPIONS_ROOM_RIVAL
 	spawnrival_style
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer
-	getplayerstyle
-	goto_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-	goto_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-	goto_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-	goto_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    goto_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    goto_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-	end
-    getplayerstyle
-	call_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-	call_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-	call_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-	call_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
-    call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
+	goto EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_MayAdvice::
@@ -143,7 +129,9 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	delay 20
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe, MSGBOX_DEFAULT
+	specialvar VAR_RESULT, IsChampionMay
+	call_if_eq VAR_RESULT, TRUE, EverGrandeCity_ChampionsRoom_EventScript_ComeWithMeMay
+	call_if_eq VAR_RESULT, FALSE, EverGrandeCity_ChampionsRoom_EventScript_ComeWithMeBrendan
 	closemessage
 	delay 30
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExitStart
@@ -154,28 +142,12 @@ EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	delay 20
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside, MSGBOX_DEFAULT
-	
-	call_if_eq VAR_RESULT, STYLE_BRENDAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-	call_if_eq VAR_RESULT, STYLE_MAY, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-	call_if_eq VAR_RESULT, STYLE_RED, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-	call_if_eq VAR_RESULT, STYLE_LEAF, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_ETHAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_LYRA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_LUCAS, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_DAWN, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_HILBERT, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_HILDA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_NATE, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_ROSA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_CALEM, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_SERENA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_ELIO, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_SELENE, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_VICTOR, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_GLORIA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
-    call_if_eq VAR_RESULT, STYLE_FLORIAN, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
-    call_if_eq VAR_RESULT, STYLE_JULIANA, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
+	specialvar VAR_RESULT, IsChampionMay
+	call_if_eq VAR_RESULT, TRUE, EverGrandeCity_ChampionsRoom_EventScript_WaitOutsideMay
+	call_if_eq VAR_RESULT, FALSE, EverGrandeCity_ChampionsRoom_EventScript_WaitOutsideBrendan
+	specialvar VAR_RESULT, IsChampionMay
+	call_if_eq VAR_RESULT, TRUE, EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations
+	call_if_eq VAR_RESULT, FALSE, EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations
 	closemessage
 	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
 	applymovement LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
@@ -192,6 +164,22 @@ EverGrandeCity_ChampionsRoom_EventScript_MayCongratulations::
 
 EverGrandeCity_ChampionsRoom_EventScript_BrendanCongratulations::
 	msgbox EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations, MSGBOX_DEFAULT
+	return
+
+EverGrandeCity_ChampionsRoom_EventScript_ComeWithMeMay::
+	msgbox EverGrandeCity_ChampionsRoom_Text_ComeWithMeMay, MSGBOX_DEFAULT
+	return
+
+EverGrandeCity_ChampionsRoom_EventScript_ComeWithMeBrendan::
+	msgbox EverGrandeCity_ChampionsRoom_Text_ComeWithMeBrendan, MSGBOX_DEFAULT
+	return
+
+EverGrandeCity_ChampionsRoom_EventScript_WaitOutsideMay::
+	msgbox EverGrandeCity_ChampionsRoom_Text_WaitOutsideMay, MSGBOX_DEFAULT
+	return
+
+EverGrandeCity_ChampionsRoom_EventScript_WaitOutsideBrendan::
+	msgbox EverGrandeCity_ChampionsRoom_Text_WaitOutsideBrendan, MSGBOX_DEFAULT
 	return
 
 EverGrandeCity_ChampionsRoom_EventScript_RivalApproachPlayer::
@@ -269,52 +257,67 @@ EverGrandeCity_ChampionsRoom_Movement_BirchArrives:
 	walk_in_place_faster_left
 	step_end
 
-EverGrandeCity_ChampionsRoom_Text_IntroSpeech:
-	.string "Wallace: Willkommen, {PLAYER}{KUN}.\p"
-	.string "Dieses Ereignis in SEEGRASULB CITY…\n"
-	.string "Du hast die Krise ganz allein beendet.\p"
-	.string "Ups!\p"
-	.string "Es wäre nicht fair zu sagen, dass du\n"
-	.string "es allein geschafft hast.\p"
-	.string "Du hast diese schwierige Situation\n"
-	.string "überwunden, indem du mit deinen\l"
-	.string "POKéMON zusammengearbeitet hast.\p"
-	.string "Wir TRAINER stärken unsere POKéMON,\n"
-	.string "geben ihnen Items und bringen ihnen\l"
-	.string "neue Techniken bei.\p"
-	.string "Doch auch wir lernen viel von\n"
-	.string "unseren POKéMON.\p"
-	.string "Und hier werden deine Erfolge\n"
-	.string "gegen die anderer TRAINER gemessen.\p"
-	.string "Nun!\p"
-	.string "Wer kann am elegantesten mit seinen\n"
-	.string "POKéMON tanzen in HOENN?\p"
-	.string "Zeige es mir hier und jetzt!$"
+EverGrandeCity_ChampionsRoom_Text_IntroSpeechMay:
+	.string "Mai: Na, sieh mal einer an.\p"
+	.string "Ich hab schon gedacht, du traust dich\n"
+	.string "gar nicht mehr her.\p"
+	.string "Weißt du noch, wie du in LITTLEROOT\n"
+	.string "nicht mal wusstest, wie rum man einen\l"
+	.string "POKéBALL hält?\p"
+	.string "Und jetzt stehst du hier. Vor der\n"
+	.string "amtierenden CHAMPION von HOENN.\p"
+	.string "Das bin übrigens ich, falls das noch\n"
+	.string "nicht ganz angekommen ist.\p"
+	.string "Ich hab nicht die ganze Liga\n"
+	.string "durchgeboxt, um dir das jetzt einfach\l"
+	.string "so zu überlassen, {PLAYER}.\p"
+	.string "Zeig mir, was du drauf hast!$"
 
-EverGrandeCity_ChampionsRoom_Text_Defeat:
-	.string "Ich, der CHAMPION, wurde besiegt…\p"
-	.string "Das war eine unglaubliche Leistung.\n"
-	.string "Du warst elegant, fast schon\l"
-	.string "frustrierend gut.\p"
-	.string "Und doch war es absolut grandios!\p"
-	.string "Gratulation, {PLAYER}{KUN}!\p"
-	.string "Du bist ein wahrhaft edler POKéMON-\n"
-	.string "TRAINER!$"
+EverGrandeCity_ChampionsRoom_Text_IntroSpeechBrendan:
+	.string "Brix: Da bist du ja endlich.\p"
+	.string "Ich dachte schon, du hast dich\n"
+	.string "irgendwo verlaufen.\p"
+	.string "Erinnerst du dich noch an LITTLEROOT?\n"
+	.string "Du konntest kaum deinen RUCKSACK\l"
+	.string "richtig tragen.\p"
+	.string "Und jetzt stehst du vor mir. Dem\n"
+	.string "amtierenden CHAMPION von HOENN.\p"
+	.string "Klingt verrückt, oder? Mir kommt's\n"
+	.string "manchmal selbst so vor.\p"
+	.string "Aber glaub bloß nicht, ich mach's dir\n"
+	.string "leicht, nur weil wir uns kennen,\l"
+	.string "{PLAYER}.\p"
+	.string "Los, zeig mir, was in dir steckt!$"
 
-EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech:
-	.string "Wallace: Die POKéMON, die du in den\n"
-	.string "Kampf geschickt hast…\p"
-	.string "Mal bewegten sie sich anmutig wie\n"
-	.string "eine Frühlingsbrise, mal schlugen sie\l"
-	.string "ein wie ein Blitz.\p"
-	.string "Mit Leichtigkeit und doch sicherem\n"
-	.string "Schritt hast du sie angeführt.\p"
-	.string "Selbst ich war geblendet von deiner\n"
-	.string "meisterhaften Performance!\p"
-	.string "Nun stehst du auf dem höchsten Gipfel\n"
-	.string "der POKéMON-LIGA.\p"
-	.string "Ich erkläre dich hiermit zum neuen\n"
-	.string "CHAMPION von HOENN!$"
+EverGrandeCity_ChampionsRoom_Text_DefeatMay:
+	.string "Verdammt, hab ich tatsächlich\n"
+	.string "verloren? Als CHAMPION?!\p"
+	.string "Respekt, {PLAYER}. Richtig stark!$"
+
+EverGrandeCity_ChampionsRoom_Text_DefeatBrendan:
+	.string "Ha, kaum zu glauben…\n"
+	.string "Der CHAMPION, geschlagen von dir!\p"
+	.string "Nicht schlecht, {PLAYER}. Gar nicht\n"
+	.string "schlecht!$"
+
+EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechMay:
+	.string "Mai: …\p"
+	.string "Okay, wow.\p"
+	.string "Ich meine… wow.\p"
+	.string "Ich hab mich wirklich, wirklich auf\n"
+	.string "diesen Kampf vorbereitet, {PLAYER}.\p"
+	.string "Und du hast mich einfach so vom\n"
+	.string "Thron gefegt.$"
+
+EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechBrendan:
+	.string "Brix: …\p"
+	.string "Also gut.\p"
+	.string "Das musste ich mir jetzt erstmal\n"
+	.string "setzen lassen.\p"
+	.string "Monatelang hab ich für diesen einen\n"
+	.string "Moment trainiert, {PLAYER}.\p"
+	.string "Und du rauschst einfach so rein\n"
+	.string "und räumst ab.$"
 
 EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:
 	.string "Prof. Birk: Siehst du?\n"
@@ -324,9 +327,9 @@ EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:
 	.string "machen musst?\p"
 	.string "… … … … … … … …\n"
 	.string "{PLAYER}{KUN}, du hast es wirklich geschafft.\p"
-	.string "Als ich hörte, dass du deinen eigenen\n"
-	.string "Vater in der ARENA von BLÜTENBURG\l"
-	.string "besiegt hast, hatte ich Hoffnung…\p"
+	.string "Als ich hörte, dass du sogar den\n"
+	.string "Arenaleiter von BLÜTENBURG besiegt\l"
+	.string "hast, hatte ich Hoffnung…\p"
 	.string "Aber dass du es wirklich zum\n"
 	.string "CHAMPION geschafft hast!\p"
 	.string "Ach ja!\p"
@@ -338,18 +341,39 @@ EverGrandeCity_ChampionsRoom_Text_BirchCongratulations:
 	.string "herzlichen Glückwunsch!\p"
 	.string "Nun geh mit Stolz in den letzten Raum!$"
 
-EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe:
-	.string "Wallace: {PLAYER}{KUN}…\p"
-	.string "Nein, lass mich das richtig sagen.\p"
-	.string "Der neue CHAMPION!\p"
+EverGrandeCity_ChampionsRoom_Text_ComeWithMeMay:
+	.string "Mai: {PLAYER}…\p"
+	.string "Nee, warte, lass mich das nochmal\n"
+	.string "richtig sagen.\p"
+	.string "Der neue CHAMPION von HOENN!\p"
 	.string "Komm mit mir.$"
 
-EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside:
-	.string "Wallace: Es tut mir leid, aber…\p"
-	.string "Von hier an dürfen nur TRAINER, die\n"
-	.string "CHAMPIONS geworden sind, eintreten.\p"
-	.string "Du musst draußen mit Prof. Birk\n"
-	.string "warten.$"
+EverGrandeCity_ChampionsRoom_Text_ComeWithMeBrendan:
+	.string "Brix: {PLAYER}…\p"
+	.string "Nee, warte, lass mich das nochmal\n"
+	.string "richtig sagen.\p"
+	.string "Der neue CHAMPION von HOENN!\p"
+	.string "Komm mit mir.$"
+
+EverGrandeCity_ChampionsRoom_Text_WaitOutsideMay:
+	.string "Mai: Tut mir leid, Professor…\p"
+	.string "Aber ab hier kommen nur noch\n"
+	.string "TRAINER rein, die CHAMPION\l"
+	.string "geworden sind.\p"
+	.string "Regeln sind Regeln. Auch wenn ich\n"
+	.string "sie gerade selbst mache.\p"
+	.string "Du wartest hier draußen mit Prof.\n"
+	.string "Birk.$"
+
+EverGrandeCity_ChampionsRoom_Text_WaitOutsideBrendan:
+	.string "Brix: Tut mir leid, Professor…\p"
+	.string "Aber ab hier kommen nur noch\n"
+	.string "TRAINER rein, die CHAMPION\l"
+	.string "geworden sind.\p"
+	.string "Regeln sind Regeln. Auch wenn ich\n"
+	.string "sie gerade selbst mache.\p"
+	.string "Du wartest hier draußen mit Prof.\n"
+	.string "Birk.$"
 
 EverGrandeCity_ChampionsRoom_Text_MayAdvice:
 	.string "{COLOR RIVAL_CLR}{RIVAL}: {PLAYER}!\p"

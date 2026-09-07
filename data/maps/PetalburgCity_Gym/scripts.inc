@@ -37,9 +37,35 @@ PetalburgCity_Gym_EventScript_UnlockAllDoors::
 
 PetalburgCity_Gym_OnTransition:
 	call_if_eq VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_MoveWallyToEntrance
+	call_if_eq VAR_PETALBURG_GYM_STATE, 9, PetalburgCity_Gym_EventScript_MoveChampToEntrance
 	call_if_lt VAR_PETALBURG_GYM_STATE, 6, PetalburgCity_Gym_EventScript_MoveNormanToEntrance
+	call_if_eq VAR_PETALBURG_GYM_STATE, 9, PetalburgCity_Gym_EventScript_MoveNormanToEntrance
 	call_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_CheckNormanForRematch
+	call PetalburgCity_Gym_EventScript_SetChampGfx
 	end
+
+@ Nyxthra story: mirrors MoveWallyToEntrance above - the Champ's farewell
+@ walk (ReturnFromChampCatchDemo) needs him actually visible and standing
+@ just past the door again after the warp back in, same spot Wally uses for
+@ his own equivalent state. He was hidden again after leaving for the catch
+@ demo (see ChampFirstAppearanceEnd), so the hide flag has to be cleared
+@ here or he'd stay invisible for the whole farewell scene.
+PetalburgCity_Gym_EventScript_MoveChampToEntrance::
+	clearflag FLAG_HIDE_PETALBURG_GYM_CHAMP
+	setobjectxyperm LOCALID_PETALBURG_GYM_CHAMP, 5, 108
+	return
+
+@ Nyxthra story: the Champion (May or Brendan, fixed by IsChampionMay - not
+@ the per-style dynamic rival) makes their first appearance here to
+@ demonstrate catching, in place of Wally's old borrow-a-Pokemon tutorial.
+PetalburgCity_Gym_EventScript_SetChampGfx::
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_SetChampGfxMay
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL
+	return
+PetalburgCity_Gym_EventScript_SetChampGfxMay:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_RIVAL_MAY_NORMAL
+	return
 
 PetalburgCity_Gym_EventScript_MoveWallyToEntrance::
 	setobjectxyperm LOCALID_PETALBURG_GYM_WALLY, 5, 108
@@ -63,6 +89,7 @@ PetalburgCity_Gym_EventScript_DontMoveNormanToFront::
 
 PetalburgCity_Gym_OnWarp:
 	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_TurnPlayerNorth
+	map_script_2 VAR_PETALBURG_GYM_STATE, 9, PetalburgCity_Gym_EventScript_TurnPlayerNorth
 	.2byte 0
 
 PetalburgCity_Gym_EventScript_TurnPlayerNorth::
@@ -71,6 +98,7 @@ PetalburgCity_Gym_EventScript_TurnPlayerNorth::
 
 PetalburgCity_Gym_OnFrame:
 	map_script_2 VAR_PETALBURG_GYM_STATE, 1, PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial
+	map_script_2 VAR_PETALBURG_GYM_STATE, 9, PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemo
 	.2byte 0
 
 PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial::
@@ -114,12 +142,273 @@ PetalburgCity_Gym_EventScript_Norman::
 	msgbox PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon, MSGBOX_DEFAULT
 	closemessage
 	switch VAR_FACING
-	case DIR_SOUTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth
-	case DIR_NORTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialNorth
-	case DIR_WEST, PetalburgCity_Gym_EventScript_BeginWallyTutorialWest
-	case DIR_EAST, PetalburgCity_Gym_EventScript_BeginWallyTutorialEast
+	case DIR_SOUTH, PetalburgCity_Gym_EventScript_ChampFirstAppearanceSouth
+	case DIR_NORTH, PetalburgCity_Gym_EventScript_ChampFirstAppearanceNorth
+	case DIR_WEST, PetalburgCity_Gym_EventScript_ChampFirstAppearanceWest
+	case DIR_EAST, PetalburgCity_Gym_EventScript_ChampFirstAppearanceEast
 	end
 
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceSouth::
+	setvar VAR_0x8008, 0
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearance
+	end
+
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceNorth::
+	setvar VAR_0x8008, 1
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearance
+	end
+
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceWest::
+	setvar VAR_0x8008, 2
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearance
+	end
+
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceEast::
+	setvar VAR_0x8008, 3
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearance
+	end
+
+@ Nyxthra story: on your very first visit, the Champion (May or Brendan -
+@ see IsChampionMay/LOCALID_PETALBURG_GYM_CHAMP) shows up instead of Wally's
+@ old "borrow a Zigzagoon and go catch a Ralts" tutorial. Wally himself is
+@ untouched everywhere else - this only replaces his role in this one scene.
+@ Mirrors BeginWallyTutorial's own VAR_0x8008/VAR_FACING direction handling
+@ below - the player can reach Norman from any of the 4 sides of this gym's
+@ invisible-wall maze, and reuses Wally's exact arrival/exit movement
+@ scripts (they're plain relative step lists, not tied to a specific
+@ object) just applied to the Champ instead.
+PetalburgCity_Gym_EventScript_ChampFirstAppearance::
+	addobject LOCALID_PETALBURG_GYM_CHAMP
+	playse SE_DOOR
+	playse SE_PIN
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_ExclamationMark
+	waitmovement 0
+	call_if_eq VAR_0x8008, 0, PetalburgCity_Gym_EventScript_ChampArriveSouth
+	call_if_eq VAR_0x8008, 1, PetalburgCity_Gym_EventScript_ChampArriveNorth
+	call_if_eq VAR_0x8008, 2, PetalburgCity_Gym_EventScript_ChampArriveWestEast
+	call_if_eq VAR_0x8008, 3, PetalburgCity_Gym_EventScript_ChampArriveWestEast
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_ChampFirstAppearanceMay
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearanceBrendan
+	end
+
+PetalburgCity_Gym_EventScript_ChampArriveSouth::
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyArrive
+	waitmovement 0
+	return
+
+@ Nyxthra story: WallyArriveNorth (Wally's own version of this) has a deliberate
+@ extra walk_right baked in partway through - staging to end up beside Norman
+@ specifically. We want the Champ to end up beside the PLAYER instead (who's
+@ standing directly south of Marek here), so this uses the plain WallyArrive
+@ movement like the other directions, not the North-specific jog.
+@ Nyxthra story: Marek doesn't turn here (Wally's own version turns Norman
+@ to face right too, but Marek is already facing the player from earlier in
+@ this conversation - turning him away mid-scene looked wrong). The Champ
+@ just turns to face the player after arriving (no extra step - WallyArrive
+@ leaves them facing up/away from the player they just walked past).
+PetalburgCity_Gym_EventScript_ChampArriveNorth::
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyArrive
+	waitmovement 0
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	return
+
+PetalburgCity_Gym_EventScript_ChampArriveWestEast::
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyArrive
+	waitmovement 0
+	return
+
+@ Nyxthra story: the "who's looking at whom" turns below (FaceUp for Marek,
+@ FacePlayer/FaceRight for Champ<->Player) are only geometrically verified
+@ for the North approach (player standing south of Marek, facing up - the
+@ one that's been tested). They're harmless either way for South/West/East
+@ (just a turn in place), but may not point at exactly the right person
+@ there until those get checked too.
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceMay::
+	msgbox PetalburgCity_Gym_Text_ChampArrivesMay, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_KaiIntroducesPlayerMay, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampExplainsWhyHereMay, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_MarekBestFriendsRivals, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	special BufferChampReunionRegionName
+	msgbox PetalburgCity_Gym_Text_ChampReunionMemoryMay, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_PlayerDontRememberThat, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampFatherRavedAboutYouMay, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_MarekFatherWasProud, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_MarekFatherCouldntWalk, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampLaughsAtJokeMay, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampUsedToStandHereMay, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampOffersCatchDemoMay, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearanceEnd
+	end
+
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceBrendan::
+	msgbox PetalburgCity_Gym_Text_ChampArrivesBrendan, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_KaiIntroducesPlayerBrendan, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampExplainsWhyHereBrendan, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_MarekBestFriendsRivals, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	special BufferChampReunionRegionName
+	msgbox PetalburgCity_Gym_Text_ChampReunionMemoryBrendan, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_PlayerDontRememberThat, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampFatherRavedAboutYouBrendan, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FaceUp
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_MarekFatherWasProud, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_MarekFatherCouldntWalk, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampLaughsAtJokeBrendan, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampUsedToStandHereBrendan, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampOffersCatchDemoBrendan, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_ChampFirstAppearanceEnd
+	end
+
+@ Walk out to Petalburg City for the actual catch demo battle - same exit
+@ choreography/warp target Wally's tutorial used (direction-aware, just
+@ like ExitGymWithWallyX below), see PetalburgCity_EventScript_ChampCatchDemo
+@ for the battle itself.
+PetalburgCity_Gym_EventScript_ChampFirstAppearanceEnd::
+	closemessage
+	setflag FLAG_DONT_TRANSITION_MUSIC
+	playbgm MUS_FOLLOW_ME, FALSE
+	call_if_eq VAR_0x8008, 0, PetalburgCity_Gym_EventScript_ExitGymWithChampSouth
+	call_if_eq VAR_0x8008, 1, PetalburgCity_Gym_EventScript_ExitGymWithChampNorth
+	call_if_eq VAR_0x8008, 2, PetalburgCity_Gym_EventScript_ExitGymWithChampWest
+	call_if_eq VAR_0x8008, 3, PetalburgCity_Gym_EventScript_ExitGymWithChampEast
+	removeobject LOCALID_PETALBURG_GYM_CHAMP
+	setflag FLAG_HIDE_PETALBURG_GYM_CHAMP
+	@ Nyxthra story: clear the CITY object's own hide flag now, before the warp,
+	@ the same way Wally's own flow clears FLAG_HIDE_PETALBURG_CITY_WALLY here -
+	@ that way the Champ is already visible (standing at their spot) the instant
+	@ the city map loads, instead of only appearing a beat later once the
+	@ OnFrame-triggered catch-demo script gets around to an addobject.
+	clearflag FLAG_HIDE_PETALBURG_CITY_CHAMP
+	setvar VAR_PETALBURG_GYM_STATE, 9
+	setvar VAR_PETALBURG_CITY_STATE, 5
+	warp MAP_PETALBURG_CITY, 15, 8
+	waitstate
+	release
+	end
+
+PetalburgCity_Gym_EventScript_ExitGymWithChampSouth::
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyExitSouthWest
+	applymovement LOCALID_PLAYER, PetalburgCity_Gym_Movement_PlayerExitWithWallySouth
+	waitmovement 0
+	return
+
+@ Nyxthra story: uses the South/West exit movement (3x walk_down), not
+@ WallyExitNorth (4x walk_down) - that extra step was tuned for Wally's own
+@ North arrival endpoint (one row further up, see WallyArriveNorth), which
+@ ChampArriveNorth deliberately doesn't use (see its own comment above). The
+@ Champ's actual starting row here now matches the South/West case exactly,
+@ so the exit needs to match those too, or it overshoots by one tile.
+PetalburgCity_Gym_EventScript_ExitGymWithChampNorth::
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyExitSouthWest
+	applymovement LOCALID_PLAYER, PetalburgCity_Gym_Movement_PlayerExitWithWallyNorth
+	waitmovement 0
+	return
+
+PetalburgCity_Gym_EventScript_ExitGymWithChampWest::
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyExitSouthWest
+	applymovement LOCALID_PLAYER, PetalburgCity_Gym_Movement_PlayerExitWithWallyWest
+	waitmovement 0
+	return
+
+PetalburgCity_Gym_EventScript_ExitGymWithChampEast::
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyExitEast
+	applymovement LOCALID_PLAYER, PetalburgCity_Gym_Movement_PlayerExitWithWallyEast
+	waitmovement 0
+	return
+
+@ Triggered by PetalburgCity_Gym_OnFrame once the Champ's catch demo warps
+@ you back in (VAR_PETALBURG_GYM_STATE == 9) - mirrors
+@ PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial below (including the
+@ actual walk-to-the-door exit, which was missing before - the Champ needs
+@ to visibly and audibly leave, not just vanish), just with the Champ saying
+@ goodbye instead of Wally.
+@ Nyxthra story: Marek's parting question here is a quiet hook, not a
+@ reveal - the player has no reason yet to know this is literally the
+@ reigning Champion of Hoenn (that's only ever officially shown once you
+@ challenge the League). An astute player might clock it; the game never
+@ spells it out.
+PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemo::
+	lockall
+	specialvar VAR_RESULT, IsChampionMay
+	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemoMay
+	msgbox PetalburgCity_Gym_Text_DadSoDidItWorkOut, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampLikeAlwaysBrendan, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_MarekAskAboutCompetition, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampStayVigilantBrendan, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampSaysByeBrendan, MSGBOX_DEFAULT
+	goto PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemoEnd
+PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemoMay::
+	msgbox PetalburgCity_Gym_Text_DadSoDidItWorkOut, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampLikeAlwaysMay, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_MarekAskAboutCompetition, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_ChampStayVigilantMay, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, Common_Movement_FacePlayer
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_ChampSaysByeMay, MSGBOX_DEFAULT
+PetalburgCity_Gym_EventScript_ReturnFromChampCatchDemoEnd::
+	closemessage
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PETALBURG_GYM_CHAMP, PetalburgCity_Gym_Movement_WallyExitGym
+	waitmovement 0
+	playse SE_EXIT
+	removeobject LOCALID_PETALBURG_GYM_CHAMP
+	setflag FLAG_HIDE_PETALBURG_GYM_CHAMP
+	delay 30
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_DadGoCollectBadges, MSGBOX_DEFAULT
+	setvar VAR_PETALBURG_GYM_STATE, 2
+	releaseall
+	end
+
+@ Unused now that the Champion's first appearance (ChampFirstAppearance
+@ above) replaced this whole Wally tutorial trigger - left in place rather
+@ than deleted, harmless as dead code.
 PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth::
 	setvar VAR_0x8008, 0
 	goto PetalburgCity_Gym_EventScript_BeginWallyTutorial
@@ -1138,15 +1427,18 @@ PetalburgCity_Gym_EventScript_GymStatue::
 	end
 
 PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
-	.string "Dad: Hm?\p"
+	.string "Marek: Hm?\p"
 	.string "Na, wenn das nicht {PLAYER} ist!\n"
 	.string "Ihr habt also den Umzug gepackt?\p"
 	.string "Krass, dass du ganz alleine hergefunden\n"
 	.string "hast.\p"
+	.string "Mensch, ich hab dich zuletzt gesehen,\n"
+	.string "da warst du noch ein Baby.\p"
 	.string "Ah, verstehe.\n"
-	.string "Du bist sogar mit Pokémon unterwegs.\p"
+	.string "Du bist sogar schon mit Pokémon\l"
+	.string "unterwegs.\p"
 	.string "Ich hab das Gefühl, du trittst echt mal\n"
-	.string "in meine Fußstapfen, {PLAYER}.\p"
+	.string "in die Fußstapfen deines Vaters, {PLAYER}.\p"
 	.string "Das gefällt mir. Ich freu mich drauf.$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
@@ -1154,7 +1446,7 @@ PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
 	.string "ein Pokémon. Bitte…$"
 
 PetalburgCity_Gym_Text_DadOhYoureWallyRight:
-	.string "Dad: Hm? Du… Ach ja, stimmt.\n"
+	.string "Marek: Hm? Du… Ach ja, stimmt.\n"
 	.string "Du bist Heiko, oder?$"
 
 PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
@@ -1166,10 +1458,192 @@ PetalburgCity_Gym_Text_WallyIveNeverCaughtAPokemon:
 	.string "Aber ich hab noch nie eins gefangen…$"
 
 PetalburgCity_Gym_Text_DadHmISee:
-	.string "Dad: Hm, ich verstehe…$"
+	.string "Marek: Hm, ich verstehe…$"
+
+PetalburgCity_Gym_Text_ChampArrivesMay:
+	.string "Mai: Moment mal…\n"
+	.string "Bist du das wirklich, {PLAYER}?\p"
+	.string "Krass…\n"
+	.string "Dich hätte ich fast nicht erkannt.$"
+
+PetalburgCity_Gym_Text_ChampArrivesBrendan:
+	.string "Brix: Warte mal…\n"
+	.string "Bist du das wirklich, {PLAYER}?\p"
+	.string "Alter…\n"
+	.string "Dich hätte ich fast nicht erkannt.$"
+
+@ Nyxthra story: expanded first-meeting scene (Champ actually came to check
+@ in on Marek, not looking for the player at all - finding them here is the
+@ surprise) - split across several shorter texts instead of one long block
+@ so the facing changes above land between the right lines.
+PetalburgCity_Gym_Text_KaiIntroducesPlayerMay:
+	.string "Marek: Na, das nenn ich mal Timing.\p"
+	.string "Du wolltest doch sowieso wissen,\n"
+	.string "wie ich mich hier so schlage.\p"
+	.string "Wie du siehst - die Arena steht noch.$"
+
+PetalburgCity_Gym_Text_KaiIntroducesPlayerBrendan:
+	.string "Marek: Na, das nenn ich mal Timing.\p"
+	.string "Du wolltest doch sowieso wissen,\n"
+	.string "wie ich mich hier so schlage.\p"
+	.string "Wie du siehst - die Arena steht noch.$"
+
+PetalburgCity_Gym_Text_ChampExplainsWhyHereMay:
+	.string "Mai: Noch.\p"
+	.string "Ich wollte nur kurz vorbeischauen\n"
+	.string "und sehen, ob du hier klarkommst.\p"
+	.string "Aber mit {PLAYER} hab ich heute\n"
+	.string "wirklich nicht gerechnet.$"
+
+PetalburgCity_Gym_Text_ChampExplainsWhyHereBrendan:
+	.string "Brix: Noch.\p"
+	.string "Ich wollte nur kurz vorbeischauen\n"
+	.string "und sehen, ob du hier klarkommst.\p"
+	.string "Aber mit {PLAYER} hab ich heute\n"
+	.string "wirklich nicht gerechnet.$"
+
+PetalburgCity_Gym_Text_MarekBestFriendsRivals:
+	.string "Marek: Dein Vater und ich waren\n"
+	.string "jahrelang die dicksten Freunde.\p"
+	.string "Und gleichzeitig Rivalen.\p"
+	.string "Norman konnte verlieren wie kaum\n"
+	.string "ein anderer Mensch.\p"
+	.string "Vor allem gegen mich.$"
+
+PetalburgCity_Gym_Text_ChampReunionMemoryMay:
+	.string "Mai: Eigentlich kennen wir uns\n"
+	.string "sogar schon ziemlich lange.\p"
+	.string "Das letzte Mal hab ich dich in\n"
+	.string "{STR_VAR_1} gesehen.\p"
+	.string "Da warst du noch ein Baby.$"
+
+PetalburgCity_Gym_Text_ChampReunionMemoryBrendan:
+	.string "Brix: Eigentlich kennen wir uns\n"
+	.string "sogar schon ziemlich lange.\p"
+	.string "Das letzte Mal hab ich dich in\n"
+	.string "{STR_VAR_1} gesehen.\p"
+	.string "Da warst du noch ein Baby.$"
+
+PetalburgCity_Gym_Text_PlayerDontRememberThat:
+	.string "{PLAYER}: … Ernsthaft?\n"
+	.string "Daran erinnere ich mich überhaupt nicht.$"
+
+PetalburgCity_Gym_Text_ChampFatherRavedAboutYouMay:
+	.string "Mai: Würde mich auch wundern.\n"
+	.string "Du warst wirklich winzig.\p"
+	.string "Aber vergessen hab ich dich trotzdem\n"
+	.string "nicht.$"
+
+PetalburgCity_Gym_Text_ChampFatherRavedAboutYouBrendan:
+	.string "Brix: Würde mich auch wundern.\n"
+	.string "Du warst wirklich winzig.\p"
+	.string "Aber vergessen hab ich dich trotzdem\n"
+	.string "nicht.$"
+
+PetalburgCity_Gym_Text_MarekFatherWasProud:
+	.string "Marek: Norman dagegen hat damals\n"
+	.string "wirklich jedem von dir erzählt.\p"
+	.string "Der Kerl war unerträglich stolz.$"
+
+PetalburgCity_Gym_Text_MarekFatherCouldntWalk:
+	.string "Marek: Ich hab ihm immer gesagt,\n"
+	.string "er soll mal langsam machen.\p"
+	.string "Du konntest ja noch nicht mal laufen.$"
+
+PetalburgCity_Gym_Text_ChampLaughsAtJokeMay:
+	.string "Mai: Haha… ja.\n"
+	.string "Das klingt wirklich nach Norman.\p"
+	.string "Wenn der einmal stolz auf etwas war,\n"
+	.string "wusste es danach ganz Hoenn.$"
+
+PetalburgCity_Gym_Text_ChampLaughsAtJokeBrendan:
+	.string "Brix: Haha… ja.\n"
+	.string "Das klingt wirklich nach Norman.\p"
+	.string "Wenn der einmal stolz auf etwas war,\n"
+	.string "wusste es danach ganz Hoenn.$"
+
+PetalburgCity_Gym_Text_ChampUsedToStandHereMay:
+	.string "Mai: Aber genug von früher.\p"
+	.string "{PLAYER}, du bist jetzt selbst\n"
+	.string "mit einem Pokémon unterwegs.\p"
+	.string "Dann sollte dir wenigstens jemand\n"
+	.string "zeigen, wie man eins fängt.\p"
+	.string "Und wo ich schon mal hier bin…\n"
+	.string "übernehm ich das.$"
+
+PetalburgCity_Gym_Text_ChampUsedToStandHereBrendan:
+	.string "Brix: Aber genug von früher.\p"
+	.string "{PLAYER}, du bist jetzt selbst\n"
+	.string "mit einem Pokémon unterwegs.\p"
+	.string "Dann sollte dir wenigstens jemand\n"
+	.string "zeigen, wie man eins fängt.\p"
+	.string "Und wo ich schon mal hier bin…\n"
+	.string "übernehm ich das.$"
+
+PetalburgCity_Gym_Text_ChampOffersCatchDemoMay:
+	.string "Mai: Pass gut auf!$"
+
+PetalburgCity_Gym_Text_ChampOffersCatchDemoBrendan:
+	.string "Brix: Pass gut auf!$"
+
+PetalburgCity_Gym_Text_ChampCatchDemoMay:
+	.string "Mai: Los, FLEMMLI!\p"
+	.string "Ein wildes Zigzachs erscheint!\p"
+	.string "Mai: Ein Angriff reicht meistens\n"
+	.string "schon, um's zu schwächen.\p"
+	.string "So, und jetzt…\p"
+	.string "Mai: Pokéball, los!\p"
+	.string "Geschafft!\n"
+	.string "So einfach ist das.$"
+
+PetalburgCity_Gym_Text_ChampCatchDemoBrendan:
+	.string "Brix: Los, HYDROPI!\p"
+	.string "Ein wildes Zigzachs erscheint!\p"
+	.string "Brix: Ein Angriff reicht meistens\n"
+	.string "schon, um's zu schwächen.\p"
+	.string "So, und jetzt…\p"
+	.string "Brix: Pokéball, los!\p"
+	.string "Geschafft!\n"
+	.string "So einfach ist das.$"
+
+PetalburgCity_Gym_Text_ChampLikeAlwaysMay:
+	.string "Mai: Wie immer.$"
+
+PetalburgCity_Gym_Text_ChampLikeAlwaysBrendan:
+	.string "Brix: Wie immer.$"
+
+PetalburgCity_Gym_Text_MarekAskAboutCompetition:
+	.string "Marek: Und?\n"
+	.string "Zufrieden mit dem Laden?\p"
+	.string "Oder kommt jetzt wieder deine Liste\n"
+	.string "mit hundert Verbesserungsvorschlägen?$"
+
+PetalburgCity_Gym_Text_ChampStayVigilantMay:
+	.string "Mai: Heute nicht.\p"
+	.string "Du schlägst dich besser,\n"
+	.string "als ich erwartet hab.\p"
+	.string "Aber gewöhn dich nicht an das Lob.$"
+
+PetalburgCity_Gym_Text_ChampStayVigilantBrendan:
+	.string "Brix: Heute nicht.\p"
+	.string "Du schlägst dich besser,\n"
+	.string "als ich erwartet hab.\p"
+	.string "Aber gewöhn dich nicht an das Lob.$"
+
+PetalburgCity_Gym_Text_ChampSaysByeMay:
+	.string "Mai: So, {PLAYER}.\n"
+	.string "Jetzt weißt du, wie's geht.\p"
+	.string "Wir sehen uns bestimmt wieder.\p"
+	.string "Und… pass auf dich auf, ja?$"
+
+PetalburgCity_Gym_Text_ChampSaysByeBrendan:
+	.string "Brix: So, {PLAYER}.\n"
+	.string "Jetzt weißt du, wie's geht.\p"
+	.string "Wir sehen uns garantiert wieder.\p"
+	.string "Und… pass auf dich auf, ja?$"
 
 PetalburgCity_Gym_Text_DadPlayerGoWithWally:
-	.string "Dad: {PLAYER}, hast du das mitbekommen?\p"
+	.string "Marek: {PLAYER}, hast du das mitbekommen?\p"
 	.string "Hilf Heiko bitte beim Fangen\n"
 	.string "seines ersten Pokémon.$"
 
@@ -1181,7 +1655,7 @@ PetalburgCity_Gym_Text_IllLoanYouMyZigzagoon:
 PetalburgCity_Gym_Text_WallyThankYouAndDadGivesPokeBall:
 	.string "Heiko: Oh wow!!!\n"
 	.string "Ein Pokémon!\p"
-	.string "Dad: Hier, ich geb dir auch einen\n"
+	.string "Marek: Hier, ich geb dir auch einen\n"
 	.string "Pokéball. Viel Erfolg!\p"
 	.string "Heiko erhält einen Pokéball!$"
 
@@ -1193,7 +1667,7 @@ PetalburgCity_Gym_Text_WallyOhWowThankYou:
 	.string "Danke dir!$"
 
 PetalburgCity_Gym_Text_DadSoDidItWorkOut:
-	.string "Dad: Na? Hat's geklappt?$"
+	.string "Marek: Na? Hat's geklappt?$"
 
 PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "Heiko: Danke! Es war mega.\n"
@@ -1208,7 +1682,7 @@ PetalburgCity_Gym_Text_WallyThankYouBye:
 	.string "Bis bald, {PLAYER}!$"
 
 PetalburgCity_Gym_Text_DadGoCollectBadges:
-	.string "Dad: Also…\p"
+	.string "Marek: Also…\p"
 	.string "{PLAYER}, wenn du ein richtig guter\n"
 	.string "Trainer werden willst, hör zu:\p"
 	.string "Geh nach Metarost City, gleich hinter\n"
@@ -1219,15 +1693,15 @@ PetalburgCity_Gym_Text_DadGoCollectBadges:
 	.string "und sammelst dir die Orden.$"
 
 PetalburgCity_Gym_Text_NormanGoToRustboro:
-	.string "Dad: Hm? Wolltest du nicht zur Arena\n"
+	.string "Marek: Hm? Wolltest du nicht zur Arena\n"
 	.string "in Metarost City?\p"
-	.string "Ich kämpfe nicht gegen Frischlinge,\n"
-	.string "auch wenn du mein Kind bist… glaube ich.\p"
+	.string "Ich kämpfe nicht gegen Frischlinge -\n"
+	.string "tut mir leid, {PLAYER}.\p"
 	.string "Komm zurück, wenn du mindestens\n"
-	.string "vier Orden hast, {PLAYER}.$"
+	.string "vier Orden hast.$"
 
 PetalburgCity_Gym_Text_NormanGoToDewford:
-	.string "Dad: Ah, du hast Felizia in Metarost\n"
+	.string "Marek: Ah, du hast Felizia in Metarost\n"
 	.string "besiegt? Stark.\p"
 	.string "Aber da draußen warten noch\n"
 	.string "viel stärkere Trainer, {PLAYER}.\p"
@@ -1235,18 +1709,18 @@ PetalburgCity_Gym_Text_NormanGoToDewford:
 	.string "Der wird dich fordern.$"
 
 PetalburgCity_Gym_Text_YouHaveGottenStronger:
-	.string "Dad: Hm… {PLAYER}, du bist echt stärker\n"
+	.string "Marek: Hm… {PLAYER}, du bist echt stärker\n"
 	.string "geworden.\p"
 	.string "Man sieht's an deinen Orden.$"
 
 PetalburgCity_Gym_Text_NormanIntro:
-	.string "Dad: Hm…\n"
+	.string "Marek: Hm…\n"
 	.string "Du hast also vier Orden.\p"
 	.string "Wie versprochen gibt’s jetzt den Kampf.\p"
 	.string "{PLAYER}…\p"
-	.string "Ich bin stolz, dass mein eigenes Kind\n"
-	.string "stark genug ist, um mich herauszufordern.\p"
-	.string "Aber: Kampf ist Kampf!\p"
+	.string "Dein Vater wäre stolz, wenn er sehen\n"
+	.string "könnte, wie stark du geworden bist.\p"
+	.string "Aber jetzt bin ich dran, dich zu fordern.\p"
 	.string "Ich kämpfe als Arenaleiter - und gebe\n"
 	.string "alles.\p"
 	.string "Also los, {PLAYER}. Zeig, was du kannst!$"
@@ -1260,10 +1734,10 @@ PetalburgCity_Gym_Text_NormanDefeat:
 
 PetalburgCity_Gym_Text_ReceivedBalanceBadge:
 	.string "{PLAYER} bekommt den Balanceorden\n"
-	.string "von Dad!$"
+	.string "von Marek!$"
 
 PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
-	.string "Dad: Mit diesem Orden steigt die\n"
+	.string "Marek: Mit diesem Orden steigt die\n"
 	.string "Verteidigung deiner Pokémon.\p"
 	.string "Und Pokémon mit der VM Surfer können\n"
 	.string "jetzt übers Wasser gleiten.\p"
@@ -1271,7 +1745,7 @@ PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
 	.string "Mach was draus, {PLAYER}.$"
 
 PetalburgCity_Gym_Text_ExplainFacade:
-	.string "Dad: TM42 enthält Fassade.\p"
+	.string "Marek: TM42 enthält Fassade.\p"
 	.string "Die Attacke wird doppelt so stark,\n"
 	.string "wenn das Pokémon z. B. vergiftet,\l"
 	.string "verbrannt oder paralysiert ist.\p"
@@ -1279,9 +1753,11 @@ PetalburgCity_Gym_Text_ExplainFacade:
 	.string "einen Vorteil machen.$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
-	.string "Dad: Als Arenaleiter bin ich… enttäuscht.\p"
-	.string "Aber als Vater bin ich stolz - und\n"
-	.string "ein bisschen traurig. Komisches Gefühl.$"
+	.string "Marek: Als Arenaleiter bin ich… enttäuscht.\p"
+	.string "Aber als der, der dich aufwachsen sah,\n"
+	.string "bin ich unglaublich stolz.\p"
+	.string "Und ein bisschen wehmütig, ehrlich gesagt.\n"
+	.string "Dein Vater wäre das jetzt auch.$"
 
 PetalburgCity_Gym_Text_PleaseComeWithMe:
 	.string "Ah, da bist du ja, {PLAYER}{KUN}!\p"
@@ -1289,18 +1765,18 @@ PetalburgCity_Gym_Text_PleaseComeWithMe:
 	.string "etwas für dich.$"
 
 PetalburgCity_Gym_Text_LetMeBorrowPlayer:
-	.string "Norman, du hast doch nix dagegen?\p"
+	.string "Marek, du hast doch nix dagegen?\p"
 	.string "Ich entführ {PLAYER}{KUN} mal kurz\n"
 	.string "für ein paar Minuten.$"
 
 PetalburgCity_Gym_Text_DadGoingToKeepTraining:
-	.string "Dad: {PLAYER}, besuch deine Mom mal öfter.\p"
+	.string "Marek: {PLAYER}, besuch deinen Opa mal öfter.\p"
 	.string "Ich bleib hier und trainier doppelt so hart.\p"
 	.string "Ich will irgendwann Revanche - du bist\n"
 	.string "jetzt mein Ziel als Trainer.$"
 
 PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:
-	.string "Dad: {PLAYER}! Na, wie läuft’s?\p"
+	.string "Marek: {PLAYER}! Na, wie läuft’s?\p"
 	.string "Die Welt der Pokémon ist riesig…\p"
 	.string "Egal wie hart man trainiert -\n"
 	.string "man kommt nie ganz an alles ran.$"
@@ -1320,8 +1796,9 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Na dann… Viel Glück!$"
 
 PetalburgCity_Gym_Text_GymGuidePostVictory:
-	.string "{PLAYER}! Du hast sogar deinen eigenen\n"
-	.string "Dad besiegt!\p"
+	.string "{PLAYER}! Du hast sogar Marek besiegt!\p"
+	.string "Und der kennt dich schon, seit du ein\n"
+	.string "Baby warst!\p"
 	.string "Unfassbar! Was für ein Comeback!$"
 
 PetalburgCity_Gym_Text_RandallIntro:
@@ -1351,8 +1828,8 @@ PetalburgCity_Gym_Text_ParkerPostBattle:
 	.string "Mal sehen, wie du mit roher Power klarkommst.$"
 
 PetalburgCity_Gym_Text_ParkerPostBadge:
-	.string "Seit du Dad besiegt hast, ist das Training\n"
-	.string "in der Arena viel härter geworden.$"
+	.string "Seit du Marek besiegt hast, ist das\n"
+	.string "Training in der Arena viel härter geworden.$"
 
 PetalburgCity_Gym_Text_GeorgeIntro:
 	.string "Kurz vorm Sieg - zack, Gegner heilt sich.\p"
@@ -1362,7 +1839,8 @@ PetalburgCity_Gym_Text_GeorgeDefeat:
 	.string "Nicht mal Heilen hat gereicht…$"
 
 PetalburgCity_Gym_Text_GeorgePostBattle:
-	.string "Ich hab gehört, du bist Dads Kind…\p"
+	.string "Ich hab gehört, Marek kennt dich schon,\n"
+	.string "seit du ein Baby warst…\p"
 	.string "Dann wundert mich dein Können nicht.\p"
 	.string "Nächster Raum: K.O.-TREFFER-RAUM!$"
 
@@ -1371,7 +1849,7 @@ PetalburgCity_Gym_Text_GeorgePostBadge:
 	.string "Irgendwann.$"
 
 PetalburgCity_Gym_Text_BerkeIntro:
-	.string "Nur weil du Dads Kind bist,\n"
+	.string "Nur weil Marek dich kennt,\n"
 	.string "kriegst du keine Sonderbehandlung.\p"
 	.string "Ich zeig dir, wie sich ein Volltreffer\n"
 	.string "anfühlt!$"
@@ -1380,11 +1858,11 @@ PetalburgCity_Gym_Text_BerkeDefeat:
 	.string "Stark! Respekt.$"
 
 PetalburgCity_Gym_Text_BerkePostBattle:
-	.string "Dein Dad ist 'n Monster.\n"
+	.string "Marek ist echt ein Monster.\n"
 	.string "Und du? Ebenfalls gefährlich.$"
 
 PetalburgCity_Gym_Text_BerkePostBadge:
-	.string "Seit Dad hier Leiter ist, ist das Niveau\n"
+	.string "Seit Marek hier Leiter ist, ist das Niveau\n"
 	.string "deutlich gestiegen.$"
 
 PetalburgCity_Gym_Text_MaryIntro:
@@ -1419,15 +1897,17 @@ PetalburgCity_Gym_Text_AlexiaPostBadge:
 	.string "Hast du Surfer schon ausprobiert?$"
 
 PetalburgCity_Gym_Text_JodyIntro:
-	.string "Dad meinte: Gib alles gegen {PLAYER}!\p"
-	.string "Ist mir egal, ob du sein Kind bist!$"
+	.string "Marek meinte: Gib alles gegen {PLAYER}!\p"
+	.string "Ist mir egal, dass er dich schon als\n"
+	.string "Baby kannte!$"
 
 PetalburgCity_Gym_Text_JodyDefeat:
 	.string "Oof. Das war nix.$"
 
 PetalburgCity_Gym_Text_JodyPostBattle:
-	.string "Dein Kampfstil… Erinnert an Dad.\p"
-	.string "Er wartet schon auf dich.$"
+	.string "Dein Kampfstil… Erinnert an deinen\n"
+	.string "Vater, hab ich gehört.\p"
+	.string "Marek wartet schon auf dich.$"
 
 PetalburgCity_Gym_Text_JodyPostBadge:
 	.string "Stärke ist gut - aber ohne Vertrauen\n"
@@ -1488,17 +1968,17 @@ PetalburgCity_Gym_Text_GymStatue:
 
 PetalburgCity_Gym_Text_GymStatueCertified:
 	.string "POKéMON ARENA von BLÜTENBURG CITY\p"
-	.string "NORMANs ANERKANNTE TRAINER:\n"
+	.string "KAIs ANERKANNTE TRAINER:\n"
 	.string "{PLAYER}$"
 
 PetalburgCity_Gym_Text_NormanPreRematch:
-	.string "Dad: {PLAYER}…\n"
+	.string "Marek: {PLAYER}…\n"
 	.string "Ich wusste, dass du wiederkommst.\p"
 	.string "Ich würde niemals eine Herausforderung\n"
 	.string "von dir ablehnen.\p"
 	.string "Weißt du, was ich meine?\p"
-	.string "In der Arena zählt nicht, dass du\n"
-	.string "mein Kind bist.\p"
+	.string "In der Arena zählt nicht, dass wir\n"
+	.string "uns schon ewig kennen.\p"
 	.string "Im Gegenteil - gerade deshalb müssen\n"
 	.string "wir beide alles geben.\n"
 	.string "Oder, {PLAYER}?$"
@@ -1508,25 +1988,25 @@ PetalburgCity_Gym_Text_NormanRematchDefeat:
 	.string "Du bist wirklich ein harter Brocken.$"
 
 PetalburgCity_Gym_Text_NormanPostRematch:
-	.string "Dad: {PLAYER}…\n"
+	.string "Marek: {PLAYER}…\n"
 	.string "Was ist eigentlich dein Traum?\p"
 	.string "{COLOR PLAYER_CLR}{PLAYER}: Mein Traum…?\n"
 	.string "Hahaha…\l"
 	.string "Ich glaub, der ist längst wahr geworden.\p"
     .string "Spaß, natürlich der Stärkste werden!\p{COLOR WHITE}"
-    .string "Dad: Hm, das ist ein guter Traum.\p"
+    .string "Marek: Hm, das ist ein guter Traum.\p"
     .string "Ich bin stolz auf dich, {PLAYER}.\n"
     .string "Du bist ein toller Trainer geworden.\l"
     .string "Ich bin mir sicher, dass du es schaffst!$"
 
 PetalburgCity_Gym_Text_NormanRematchNeedTwoMons:
-	.string "Dad: {PLAYER}…\n"
+	.string "Marek: {PLAYER}…\n"
 	.string "Ich wusste, dass du wiederkommst.\p"
 	.string "Ich würde niemals eine Herausforderung\n"
 	.string "von dir ablehnen.\p"
 	.string "Weißt du, was ich meine?\p"
-	.string "In der Arena zählt nicht, dass du\n"
-	.string "mein Kind bist.\p"
+	.string "In der Arena zählt nicht, dass wir\n"
+	.string "uns schon ewig kennen.\p"
 	.string "Hm? Moment mal, {PLAYER}…\p"
 	.string "Du hast nur ein einziges Pokémon,\n"
 	.string "das kämpfen kann?\p"
