@@ -1,6 +1,6 @@
-# Pokémon Nyxthra - Beta 1.1.2
+# Pokémon Nyxthra - Beta 1.3.0
 
-Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.15.0) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
+Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.16.3) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
 
 Basisprojekt (RHH):  
 https://github.com/rh-hideout/pokeemerald-expansion
@@ -10,8 +10,8 @@ https://github.com/rh-hideout/pokeemerald-expansion
 ## 🧪 Projektstatus
 
 - Projektstart: 01.01.2024
-- Basis: pokeemerald-expansion v1.15.0
-- Aktuelle Nyxthra-Version: Beta 1.1.5
+- Basis: pokeemerald-expansion v1.16.3
+- Aktuelle Nyxthra-Version: Beta 1.3.0
 - Sprache: Deutsch
 - Status: Erste öffentliche Beta
 
@@ -25,7 +25,18 @@ https://github.com/rh-hideout/pokeemerald-expansion
 - Überarbeitetes Balancing für Levelkurve, KI und Kampfverlauf
 - Freie Starterwahl: Starter aus Gen 1-9 statt klassischer Hoenn-Auswahl
 
+### 🐉 Legendäre & besondere Begegnungen
+- Jirachi: verborgen in einem rissigen weißen Stein in Mossdeep City - bricht erst nach einem bestimmten Fortschritt auf; entkommt es beim ersten Versuch, roamt es danach frei durch Hoenn
+- Schillerndes Metagross als statische Begegnung in Granite Cave B6F
+- Lavados (Moltres): verstecktes Legendary im Mystery Hole
+- Mewtwo-Statue auf Route 119 (Mystery): erwacht nach Berührung zu einem echten Kampf
+- Celebi in der Verborgenen Lichtung - ein zweites, eigenständiges Celebi-Event zusätzlich zum regulären Celebi-Encounter
+- Uxie am Scorched Slab Secret *(vorläufig - dient aktuell als Platzhalter für Selfe/Mesprit, die noch nicht fertig implementiert ist; wird ersetzt, sobald Selfe fertig ist)*
+- Arktos (Articuno) in Meteor Falls B1F: in Vanilla Emerald eigentlich gar nicht fangbar, hier neu als Begegnung ergänzt
+- Easter Egg: geheimer Postgame-Trainer "ChatGPT" in Blütenburg City (nach Liga-Sieg) mit eigenem, überstarkem KI-Team
+
 ### 🎲 Randomizer & Progression
+- Eigenes Challenge-Modus-Menü im Hauptmenü (vor den Optionen): aktuell Heimat für den Warp-Randomizer, weitere Herausforderungs-Regeln sind als "Coming soon" vorgemerkt
 - Integriertes Randomizer-Setup direkt vor Spielstart
 - Randomisierbare Wild-, Trainer-, Starter-, Evolutions-, Geschenk- und statische Pokémon
 - Randomisierbare Feld-Items, versteckte Items, Shops sowie NPC-Itemgeschenke mit kontextabhängiger Zuordnung
@@ -44,8 +55,8 @@ https://github.com/rh-hideout/pokeemerald-expansion
 ### 👤 Stylesystem statt Geschlechterwahl
 - Komplettes Style-System als Kernmechanik
 - Verfügbare Styles zu Spielbeginn (aktuell 20):
-  - Hans (Brendan)
-  - Brigitte (May)
+  - Brix (Brendan)
+  - Mai (May)
   - Red
   - Leaf
   - Ethan
@@ -65,11 +76,12 @@ https://github.com/rh-hideout/pokeemerald-expansion
   - Florian
   - Juliana
 - Rivalen, Dialoge und Eventabläufe reagieren dynamisch auf den gewählten Style
-- Aktueller Grafikstatus (Beta 1.1.2):
-  - Vollständig mit allen Grafikzuständen: Hans, Brigitte, Red, Leaf, Ethan, Lyra, Lucas, Dawn
+- Aktueller Grafikstatus (Beta 1.3.0):
+  - Vollständig mit allen Grafikzuständen: Brix, Mai, Red, Leaf, Ethan, Lyra, Lucas, Dawn
   - Calem ist vollständig, außer bei Fahrrad-Zuständen (Eilrad/Kunstrad), dort wird Fallback genutzt
   - Alle übrigen Styles nutzen aktuell je nach Zustand Fallback-Grafiken, bis die finalen Assets fertig sind
-  - Taucher-Zustand (Unterwasser) nutzt derzeit für alle Styles einen stabilen Fallback auf Hans bzw. Brigitte
+  - Warren (Hilbert) und Lotta (Hilda): eigener Rücken-Sprite im Kampf aktualisiert (vorher teils fehlerhafte/veraltete Grafik); alle anderen Zustände nutzen weiterhin Fallback, bis auch die fertig sind
+  - Taucher-Zustand (Unterwasser) nutzt derzeit für alle Styles einen stabilen Fallback auf Brix bzw. Mai
   - Rivalen-Fallback (nur für Elio, Florian, Gloria, Juliana, Nate, Rosa, Selene, Serena, Victor): nur Field Move sowie beide Fahrräder über Rival-Brendan/Rival-May-Fallback; sonst bleiben die normalen Zustände erhalten
 
 ### ⚙️ Komfortfunktionen
@@ -86,6 +98,39 @@ https://github.com/rh-hideout/pokeemerald-expansion
 - Fallback-Logik für fehlende Form-/Style-Grafiken, Paletten und Icons eingebunden
 
 ---
+
+## 🆕 Neu in Beta 1.3.0
+
+- Update auf pokeemerald-expansion v1.16.3 (vorher v1.15.0)
+  - Hinweis: Upstream hat vor Kurzem v1.17.0 veröffentlicht - das Update darauf folgt zu einem späteren Zeitpunkt
+- Neue Nyxthra-Prolog-Cutscene vor Prof. Birks Rede (läuft bei jedem neuen Spiel einmal ab):
+  - Eigene Intro-Textkarten zur Vorgeschichte, gefolgt von der klassischen Groudon/Kyogre/Rayquaza-Szene
+  - Neue "Legendäre Energie"-Sequenz: Groudon, Kyogre und Rayquaza reagieren nacheinander mit ihren jeweiligen Kampf-Übergangseffekten auf etwas Unbekanntes, bevor eine finale Energie-Entladung die Szene beendet
+  - Eigenes Titel-Logo mit Versionsbanner statt reinem Textbildschirm vor der Übergabe an Prof. Birk
+  - Mehrere Freeze-/Darstellungsfehler in der "Legendäre Energie"-Sequenz behoben (u. a. Aufhänger nach Rayquazas Reaktion, Speicherleck bei wiederholtem Szenenaufbau)
+- Ever Grande City (Champions-Zimmer) komplett überarbeitet:
+  - Ein fixer Champion (Mai oder Brix, abhängig vom gewählten Charakter-Style) ersetzt Wallace als eigentlichen Endgegner der Liga, mit eigenem Kampfteam (geteilte Hoenn-Starter-Endstufen plus drei starke Hoenn-Pokémon, kein Mega-Entwicklung)
+  - Der tatsächliche dynamische Rivale (abhängig vom eigenen Style) bleibt als separate Figur erhalten und trifft weiterhin erst nach dem Champion-Kampf ein
+- Petalburg-Arena Story-Rework:
+  - Norman ist im Zuge der Nyxthra-Story gestorben; sein bester Freund und langjähriger Rivale Marek hat die Arena als neuer Arenaleiter übernommen
+  - Beim allerersten Arena-Besuch taucht anstelle von Heikos altem Fang-Tutorial überraschend der Champion auf (mit Ausrufezeichen-Auftritt), der zufällig vorbeischaut, um nach Marek zu sehen
+  - Ausführlicher neuer Dialog: Der Champion erzählt von einer Erinnerung an den Spieler als Baby (die genannte Region richtet sich dynamisch nach dem gewählten Charakter-Style), Marek erzählt Hintergrundgeschichten über den verstorbenen Vater (mit ein paar humorvollen Seitenhieben), und am Ende gibt's einen dezenten, nicht explizit erklärten Hinweis darauf, dass der Champion mehr ist, als er/sie zunächst scheint
+  - Der Champion zeigt dem Spieler danach automatisch (nicht spielergesteuert, wie bei Heikos Original-Tutorial) das Fangen mit dem eigenen Starter - korrekter Sprite, Name und Kampfansage je nach Champion
+- Lilycove Kaufhaus: zwei neue Verkäufer im 2. Stock
+  - Ein Verkäufer bietet alle verfügbaren Mega-Steine an
+  - Ein Verkäufer bietet alle klassischen Entwicklungssteine an
+- Dark Mode: größerer, systemweiter Fix
+  - Normale NPC-Dialoge zeigten bisher fälschlicherweise noch die helle statt die dunkle Textfarbe - betraf praktisch jeden normalen Dialog im Spiel, nicht nur einzelne Bildschirme
+  - Schattenfarbe bei der Geschlechts-/Charakterauswahl zu Spielbeginn korrigiert (war weiß statt schwarz und dadurch schlecht lesbar)
+- Charakter-Styles Hans/Brigitte in Brix/Mai umbenannt (Konsistenz mit dem neuen Champion-Feature)
+
+## 🧩 Aktueller Dev-Stand (nach Beta 1.3.0)
+
+- Overworld-Palettenfehler bei mehreren eigenen NPCs endgültig behoben (u. a. Opa/Gentleman, Barry, PokeKid):
+  - Ursache: Die interne Suchfunktion für Objekt-Paletten hat ihren Ergebnis-Index auf 8 Bit begrenzt zurückgegeben. Da die Palettentabelle inzwischen über 256 Einträge hat, wurde bei allen neueren, weiter hinten stehenden NPCs der Index umgebrochen (z. B. Index 274 wurde zu 18) - dadurch wurde dauerhaft die Palette eines völlig anderen, aber gültigen Charakters geladen (Opa zeigte z. B. Mais Farben, Barry die von Groudons Spiegelbild, PokeKid die des Rivalen)
+  - Betraf ausschließlich neuere, weiter hinten in der Tabelle stehende Charaktere - reguläre Standard-NPCs waren nie betroffen
+  - Aaron hatte zusätzlich einen eigenen, unabhängigen Fehler (falscher Palettentag verwies auf eine generische Passanten-Palette statt auf seine eigene) - ebenfalls behoben
+- Route 104: Der See beim Blumenladen (Pretty Petal) trocknet nach Groudons Erwachen (Dürre-Story) dauerhaft aus - eigene private Tileset-Kopie mit angepasster Erdton-Palette, wirkt sich ausschließlich auf Route 104 aus
 
 ## 🆕 Neu in Beta 1.1.5
 
@@ -262,6 +307,7 @@ Hier sammeln wir gemeldete Bugs mit Melder und Fix-Status.
 - Einige Field Moves können situativ fehlerhaft reagieren (z. B. Fliegen, Blitz)
 - Einzelne Overworld-Sprites besitzen noch grafische Ungenauigkeiten
 - Nicht alle Story-/Eventabschnitte sind bereits vollständig auf Nyxthra umgeschrieben
+- Die neue Champion-Szene in der Petalburg-Arena wurde bisher nur für einen Anlaufweg zu Marek vollständig getestet (Blickrichtungen/Bewegungsablauf bei den anderen 3 möglichen Anlaufwegen können noch leicht abweichen)
 
 ---
 
