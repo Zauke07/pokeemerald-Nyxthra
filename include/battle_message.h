@@ -274,6 +274,8 @@ extern const u8 gText_EllipsisQuestionMark[];
 extern const u8 gText_WhatWillPkmnDo[];
 extern const u8 gText_WhatWillPkmnDo2[];
 extern const u8 gText_WhatWillWallyDo[];
+extern const u8 gText_WhatWillMayDo[];
+extern const u8 gText_WhatWillBrendanDo[];
 extern const u8 gText_LinkStandby[];
 extern const u8 gText_BattleMenu[];
 extern const u8 gText_SafariZoneMenu[];

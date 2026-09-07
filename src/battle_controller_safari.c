@@ -2,6 +2,7 @@
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
+#include "battle_main.h"
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "bg.h"
@@ -276,8 +277,11 @@ void SafariBufferExecCompleted(enum BattlerId battler)
 
 static void SafariHandleDrawTrainerPic(enum BattlerId battler)
 {
-    // Wir addieren deinen gewählten Style auf die Start-ID der Backsprites
-    enum TrainerPicID trainerPicId = TRAINER_BACK_PIC_BRENDAN + gSaveBlock2Ptr->playerStyles[0];
+    // TRAINER_BACK_PIC_* (TrainerBackPicID) und TRAINER_PIC_* (TrainerPicID) sind
+    // zwei unterschiedliche, nicht deckungsgleiche Enums - gTrainerPicInfo[] wird
+    // aber ausschliesslich per TrainerPicID indiziert. Deshalb hier dieselbe
+    // Style->Pic-Zuordnung wie in normalen Kaempfen verwenden.
+    enum TrainerPicID trainerPicId = GetTrainerBackPicIdByStyle(gSaveBlock2Ptr->playerStyles[0]);
 
     BtlController_HandleDrawTrainerPic(battler, trainerPicId, FALSE,
                                        80, 80 + 4 * (8 - GetTrainerBackPicCoords(trainerPicId)->size),

@@ -1111,6 +1111,16 @@ static void SpriteCB_Ball_Bounce_Step(struct Sprite *sprite)
             sprite->sTimer = 0;
             sprite->callback = SpriteCB_Ball_Release;
         }
+        else if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_GUARANTEED_CAPTURE
+                 && !IsCriticalCapture())
+        {
+            // No shake RNG was rolled for this catch (e.g. Master Ball), so
+            // skip the suspenseful wobbling entirely and go straight to the
+            // capture effect. Critical captures still get their own flashy
+            // single-shake animation, so they're excluded here.
+            sprite->affineAnimPaused = TRUE;
+            sprite->callback = SpriteCB_Ball_Capture;
+        }
         else
         {
             sprite->callback = SpriteCB_Ball_Wobble;

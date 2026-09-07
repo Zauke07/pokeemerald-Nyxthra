@@ -19,6 +19,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "reshow_battle_screen.h"
+#include "battle_main.h"
 #include "sound.h"
 #include "string_util.h"
 #include "task.h"
@@ -280,16 +281,30 @@ void WallyBufferExecCompleted(enum BattlerId battler)
 
 #define sSpeedX data[0]
 
+// Nyxthra story: this whole controller is Wally's dedicated one for
+// BATTLE_TYPE_CATCH_TUTORIAL, hardcoded to his trainer pic throughout - the
+// Champion's own catching demo reuses the same automatic-battle mechanism
+// (see StartChampCatchDemoBattle in battle_setup.c) for its "AI throws the
+// ball itself" behavior, so this is what makes it show May/Brendan instead
+// of Wally whenever that demo (and only that demo) sets the override.
+static enum TrainerPicID GetWallyControllerTrainerPic(void)
+{
+    if (gNyxthraForceBattleBackPic)
+        return GetTrainerBackPicIdByStyle(gNyxthraForcedBattleBackPicStyle);
+    return TRAINER_PIC_WALLY;
+}
+
 static void WallyHandleDrawTrainerPic(enum BattlerId battler)
 {
-    BtlController_HandleDrawTrainerPic(battler, TRAINER_PIC_WALLY, FALSE,
-                                       80, 80 + 4 * (8 - GetTrainerBackPicCoords(TRAINER_PIC_WALLY)->size),
+    enum TrainerPicID pic = GetWallyControllerTrainerPic();
+    BtlController_HandleDrawTrainerPic(battler, pic, FALSE,
+                                       80, 80 + 4 * (8 - GetTrainerBackPicCoords(pic)->size),
                                        30);
 }
 
 static void WallyHandleTrainerSlide(enum BattlerId battler)
 {
-    BtlController_HandleTrainerSlide(battler, TRAINER_PIC_WALLY);
+    BtlController_HandleTrainerSlide(battler, GetWallyControllerTrainerPic());
 }
 
 #undef sSpeedX
@@ -315,7 +330,10 @@ static void WallyHandleChooseAction(enum BattlerId battler)
         ActionSelectionDestroyCursorAt(i);
 
     ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
-    BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillWallyDo);
+    if (gNyxthraForceBattleBackPic)
+        BattleStringExpandPlaceholdersToDisplayedString(gNyxthraForcedBattleBackPicStyle == STYLE_MAY ? gText_WhatWillMayDo : gText_WhatWillBrendanDo);
+    else
+        BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillWallyDo);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
 }
 
@@ -366,7 +384,7 @@ static void WallyHandleFaintingCry(enum BattlerId battler)
 
 static void WallyHandleIntroTrainerBallThrow(enum BattlerId battler)
 {
-    const u16 *trainerPal = GetTrainerBackPicPalette(TRAINER_PIC_WALLY);
+    const u16 *trainerPal = GetTrainerBackPicPalette(GetWallyControllerTrainerPic());
     BtlController_HandleIntroTrainerBallThrow(battler, 0xD6F8, trainerPal, 31, Intro_TryShinyAnimShowHealthbox);
 }
 

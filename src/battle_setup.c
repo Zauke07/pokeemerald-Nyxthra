@@ -817,6 +817,57 @@ void StartOldManTutorialBattle(void)
     CreateBattleStartTask(B_TRANSITION_SLICE, 0);
 }
 
+// Nyxthra story: this DOES use BATTLE_TYPE_CATCH_TUTORIAL, same as Wally's
+// battle above - that's what makes it play out automatically (the AI throws
+// the ball itself, see HandleAction_WallyBallThrow/B_ACTION_WALLY_THROW)
+// instead of handing control to the player, which is what we want here: the
+// Champion demonstrates catching, the player just watches. The flag does
+// hardcode the whole player side to battle_controller_wally.c's dedicated
+// controller and TRAINER_PIC_WALLY/"WALLY" text throughout - rather than
+// avoid the flag (and lose the automatic behavior), those spots were made
+// to check gNyxthraForceBattleBackPic and show the Champion's own pic/name
+// instead when it's set (see battle_controller_wally.c, battle_message.c,
+// reshow_battle_screen.c).
+void LoadChampStarterForCatchDemo(void)
+{
+    // Not Torchic/Mudkip like the Champion's canon starter pairing elsewhere
+    // (that's fine, this is just the tutorial demo mon) - the wild SQUIRTLE
+    // it's up against knows WATER_GUN, and a Fire type at level 5 could
+    // actually die to that (the AI doesn't hold back, and this "mon" is
+    // never supposed to be able to faint - see WallyHandleFaintingCry).
+    // Water and Grass both resist Water Gun, so neither can go here.
+    enum Species species = IsChampionMay() ? SPECIES_MUDKIP : SPECIES_TREECKO;
+    u16 move;
+
+    CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], species, 5);
+    move = (species == SPECIES_MUDKIP) ? MOVE_WATER_GUN : MOVE_POUND;
+    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &move);
+    move = MOVE_NONE;
+    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &move);
+    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE3, &move);
+    SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE4, &move);
+}
+
+void SetForcedChampBackPic(void)
+{
+    gNyxthraForcedBattleBackPicStyle = IsChampionMay() ? STYLE_MAY : STYLE_BRENDAN;
+    gNyxthraForceBattleBackPic = TRUE;
+}
+
+void ClearForcedBattleBackPic(void)
+{
+    gNyxthraForceBattleBackPic = FALSE;
+}
+
+void StartChampCatchDemoBattle(void)
+{
+    CreateMaleMon(&gParties[B_TRAINER_OPPONENT_A][0], SPECIES_SQUIRTLE, 5);
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
+    gBattleTypeFlags = BATTLE_TYPE_CATCH_TUTORIAL;
+    CreateBattleStartTask(B_TRANSITION_SLICE, 0);
+}
+
 void BattleSetup_StartScriptedWildBattle(void)
 {
     LockPlayerFieldControls();

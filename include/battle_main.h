@@ -137,6 +137,8 @@ extern const u8 *const gStatusConditionStringsTable[7][2];
 
 u16 GetPlayerBackSpriteId(void);
 enum TrainerPicID GetTrainerBackPicIdByStyle(u8 style);
+extern bool8 gNyxthraForceBattleBackPic;
+extern u8 gNyxthraForcedBattleBackPicStyle;
 
 
 #endif // GUARD_BATTLE_MAIN_H

@@ -190,6 +190,7 @@ enum {
     BALL_3_SHAKES_SUCCESS,
     BALL_TRAINER_BLOCK,
     BALL_GHOST_DODGE,
+    BALL_GUARANTEED_CAPTURE, // Master Ball etc. - no shake RNG was rolled, skip straight to the capture effect
 };
 
 enum {

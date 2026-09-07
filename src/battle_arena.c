@@ -163,6 +163,11 @@ u8 BattleArena_ShowJudgmentWindow(u8 *state)
         BeginNormalPaletteFade(0x7FFFFF1C, 4, 0, 8, RGB_BLACK);
         SetGpuReg(REG_OFFSET_WININ, (WININ_WIN0_ALL & ~WININ_WIN0_BG0) | WININ_WIN1_ALL);
         LoadCompressedSpriteSheet(sBattleArenaJudgmentSymbolsSpriteSheet);
+        // Nyxthra: same raw-slot-clobber issue as the Pokemon Summary Screen/
+        // DexNav move type icons - invalidate whatever tag sits in slot 15
+        // so field objects using the dynamic palette pool get reloaded
+        // properly (not silently skipped) once the battle ends.
+        FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(15));
         LoadPalette(gBattleArenaJudgmentSymbolsPalette, OBJ_PLTT_ID(15), PLTT_SIZE_4BPP);
         gBattle_WIN0H = 0xFF;
         gBattle_WIN0V = 0x70;

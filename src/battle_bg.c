@@ -959,11 +959,33 @@ void InitBattleBgsVideo(void)
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON | DISPCNT_WIN0_ON | DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
 }
 
+// The action menu ("FIGHT/BAG/POKEMON/RUN"), move name/PP boxes, and other
+// B_WIN_TYPE_NORMAL windows draw text with foreground=13/background=14/shadow=15
+// out of this palette (see sTextOnWindowsInfo_Normal in battle_message.c).
+// Index 14 is the box fill (plain white) and index 13 the dark gray text - both
+// tuned for a light box and unreadable once other UI goes dark. Swap them for a
+// dark navy fill with bright white text, matching the rest of Dark Mode.
+static void Nyxthra_ApplyDarkModeToBattleWindowTextPalette(void)
+{
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 13] = RGB(31, 31, 31);
+    gPlttBufferFaded[BG_PLTT_ID(5) + 13]   = RGB(31, 31, 31);
+
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(8, 9, 11);
+    gPlttBufferFaded[BG_PLTT_ID(5) + 14]   = RGB(8, 9, 11);
+
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB(0, 0, 0);
+    gPlttBufferFaded[BG_PLTT_ID(5) + 15]   = RGB(0, 0, 0);
+}
+
 void LoadBattleMenuWindowGfx(void)
 {
     LoadUserWindowBorderGfx(2, 0x12, BG_PLTT_ID(1));
     LoadUserWindowBorderGfx(2, 0x22, BG_PLTT_ID(1));
     LoadPalette(gBattleWindowTextPalette, BG_PLTT_ID(5), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBattleWindowTextPalette();
 
     if ((gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_POKEDUDE))
     || (IS_FRLG && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE)))

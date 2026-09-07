@@ -15,6 +15,7 @@
 #include "constants/trainers.h"
 #include "battle_interface.h"
 #include "battle_anim.h"
+#include "battle_main.h"
 #include "data.h"
 
 // this file's functions
@@ -25,7 +26,17 @@ static void CreateHealthboxSprite(enum BattlerId battler);
 static void ClearBattleBgCntBaseBlocks(void);
 static void CreateCaughtMonSprite(void);
 
-#define CATCH_TUTORIAL_TRAINER_PIC (IS_FRLG ? TRAINER_PIC_OLD_MAN : TRAINER_PIC_WALLY)
+// Nyxthra story: reshowing the battle screen (e.g. after opening the START
+// menu) mid-tutorial needs the same trainer pic the controller actually
+// drew - see GetWallyControllerTrainerPic in battle_controller_wally.c for
+// why this isn't always TRAINER_PIC_WALLY anymore.
+static enum TrainerPicID GetCatchTutorialTrainerPic(void)
+{
+    if (gNyxthraForceBattleBackPic)
+        return GetTrainerBackPicIdByStyle(gNyxthraForcedBattleBackPicStyle);
+    return IS_FRLG ? TRAINER_PIC_OLD_MAN : TRAINER_PIC_WALLY;
+}
+#define CATCH_TUTORIAL_TRAINER_PIC GetCatchTutorialTrainerPic()
 
 void ReshowBattleScreenDummy(void)
 {

@@ -372,6 +372,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_AI_MASTER] = { _("AI Master"), 20, BALL_MASTER },
     [TRAINER_CLASS_CHATGPT] = { _("ChatGPT"), 20, BALL_MASTER },
     [TRAINER_CLASS_ASH] = { _("{PKMN} Trainer"), 15 },
+    [TRAINER_CLASS_WES] = { _("{PKMN} Trainer"), 15 },
     [TRAINER_CLASS_TEAM_ROCKET] = { _("Team Rocket") },
     [TRAINER_CLASS_BACKPACKER_F] = { _("Rucksackturi") },
     [TRAINER_CLASS_BACKPACKER_M] = { _("Rucksackturi") },
@@ -492,6 +493,12 @@ const u8 *const gStatusConditionStringsTable[][2] =
 
 void CB2_InitBattle(void)
 {
+    // The overworld's looping rain sound effect isn't tied to map music, so it
+    // keeps playing over the battle BGM unless explicitly stopped here.
+    m4aSongNumStop(SE_RAIN);
+    m4aSongNumStop(SE_DOWNPOUR);
+    m4aSongNumStop(SE_THUNDERSTORM);
+
     if (!gTestRunnerEnabled)
         MoveSaveBlocks_ResetHeap();
     AllocateBattleResources();
@@ -5708,6 +5715,12 @@ static void ReturnFromBattleToOverworld(void)
 
     if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
     {
+        // Jirachi has no post-battle script to react to catching it while roaming
+        // (unlike the initial rock encounter), so flag it here instead - the NPC
+        // dialogue near the rock reacts to this flag the next time she's talked to.
+        if (gBattleOutcome == B_OUTCOME_CAUGHT && gSaveBlock1Ptr->roamer[gEncounteredRoamerIndex].species == SPECIES_JIRACHI)
+            FlagSet(FLAG_CAUGHT_JIRACHI);
+
         UpdateRoamerHPStatus(&gParties[B_TRAINER_OPPONENT_A][0]);
         ZeroEnemyPartyMons();
 
@@ -6150,51 +6163,47 @@ u16 GetPlayerBackSpriteId(void)
     switch (style)
     {
     case STYLE_BRENDAN:
-        return TRAINER_BACK_PIC_BRENDAN;
+        return TRAINER_PIC_BRENDAN;
     case STYLE_MAY:
-        return TRAINER_BACK_PIC_MAY;
+        return TRAINER_PIC_MAY;
     case STYLE_RED:
-        return TRAINER_BACK_PIC_RED;
+        return TRAINER_PIC_RED;
     case STYLE_LEAF:
-        return TRAINER_BACK_PIC_LEAF;
+        return TRAINER_PIC_LEAF;
     case STYLE_ETHAN:
-        return TRAINER_BACK_PIC_ETHAN;
+        return TRAINER_PIC_ETHAN;
     case STYLE_LYRA:
-        return TRAINER_BACK_PIC_LYRA;
+        return TRAINER_PIC_LYRA;
     case STYLE_LUCAS:
-        return TRAINER_BACK_PIC_LUCAS;
+        return TRAINER_PIC_LUCAS;
     case STYLE_DAWN:
-        return TRAINER_BACK_PIC_DAWN;
+        return TRAINER_PIC_DAWN;
     case STYLE_HILBERT:
-        return TRAINER_BACK_PIC_HILBERT;
+        return TRAINER_PIC_HILBERT;
     case STYLE_HILDA:
-        return TRAINER_BACK_PIC_HILDA;
+        return TRAINER_PIC_HILDA;
     case STYLE_NATE:
-        return TRAINER_BACK_PIC_NATE;
+        return TRAINER_PIC_NATE;
     case STYLE_ROSA:
-        return TRAINER_BACK_PIC_ROSA;
+        return TRAINER_PIC_ROSA;
     case STYLE_CALEM:
-        return TRAINER_BACK_PIC_CALEM;
+        return TRAINER_PIC_CALEM;
     case STYLE_SERENA:
-        return TRAINER_BACK_PIC_SERENA;
+        return TRAINER_PIC_SERENA;
     case STYLE_ELIO:
-        return TRAINER_BACK_PIC_ELIO;
+        return TRAINER_PIC_ELIO;
     case STYLE_SELENE:
-        return TRAINER_BACK_PIC_SELENE;
+        return TRAINER_PIC_SELENE;
     case STYLE_VICTOR:
-        return TRAINER_BACK_PIC_VICTOR;
+        return TRAINER_PIC_VICTOR;
     case STYLE_GLORIA:
-        return TRAINER_BACK_PIC_GLORIA;
+        return TRAINER_PIC_GLORIA;
     case STYLE_FLORIAN:
-        return TRAINER_BACK_PIC_FLORIAN;
+        return TRAINER_PIC_FLORIAN;
     case STYLE_JULIANA:
-        return TRAINER_BACK_PIC_JULIANA;
-    // case STYLE_WES:
-    //     return TRAINER_BACK_PIC_WES;
-    // case STYLE_ASH:
-    //     return TRAINER_BACK_PIC_ASH;
+        return TRAINER_PIC_JULIANA;
     default:
-        return TRAINER_BACK_PIC_BRENDAN;
+        return TRAINER_PIC_BRENDAN;
     }
 }
 

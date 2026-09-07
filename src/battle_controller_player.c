@@ -1905,11 +1905,11 @@ enum TrainerPicID LinkPlayerGetTrainerPicId(u32 multiplayerId)
     {
         // Für andere Link-Spieler: Identifikation anhand von Edition und Geschlecht
         if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN)
-            trainerPicId = gender + TRAINER_BACK_PIC_RED; // Neue RHH-Nomenklatur
+            trainerPicId = gender + TRAINER_PIC_RED;
         else if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
-            trainerPicId = gender + TRAINER_BACK_PIC_RUBY_SAPPHIRE_BRENDAN;
+            trainerPicId = gender + TRAINER_PIC_RS_BRENDAN;
         else
-            trainerPicId = gender + TRAINER_BACK_PIC_BRENDAN;
+            trainerPicId = gender + TRAINER_PIC_BRENDAN;
     }
     else
     {
@@ -1925,34 +1925,45 @@ enum TrainerPicID GetTrainerBackPicIdByStyle(u8 style)
 {
     switch (style)
     {
-    case STYLE_BRENDAN: return (enum TrainerPicID)TRAINER_BACK_PIC_BRENDAN;
-    case STYLE_MAY:     return (enum TrainerPicID)TRAINER_BACK_PIC_MAY;
-    case STYLE_RED:     return (enum TrainerPicID)TRAINER_BACK_PIC_RED;
-    case STYLE_LEAF:    return (enum TrainerPicID)TRAINER_BACK_PIC_LEAF;
-    case STYLE_ETHAN:   return (enum TrainerPicID)TRAINER_BACK_PIC_ETHAN;
-    case STYLE_LYRA:    return (enum TrainerPicID)TRAINER_BACK_PIC_LYRA;
-    case STYLE_LUCAS:   return (enum TrainerPicID)TRAINER_BACK_PIC_LUCAS;
-    case STYLE_DAWN:    return (enum TrainerPicID)TRAINER_BACK_PIC_DAWN;
-    case STYLE_HILBERT: return (enum TrainerPicID)TRAINER_BACK_PIC_HILBERT;
-    case STYLE_HILDA:   return (enum TrainerPicID)TRAINER_BACK_PIC_HILDA;
-    case STYLE_NATE:    return (enum TrainerPicID)TRAINER_BACK_PIC_NATE;
-    case STYLE_ROSA:    return (enum TrainerPicID)TRAINER_BACK_PIC_ROSA;
-    case STYLE_CALEM:   return (enum TrainerPicID)TRAINER_BACK_PIC_CALEM;
-    case STYLE_SERENA:  return (enum TrainerPicID)TRAINER_BACK_PIC_SERENA;
-    case STYLE_ELIO:    return (enum TrainerPicID)TRAINER_BACK_PIC_ELIO;
-    case STYLE_SELENE:  return (enum TrainerPicID)TRAINER_BACK_PIC_SELENE;
-    case STYLE_VICTOR:  return (enum TrainerPicID)TRAINER_BACK_PIC_VICTOR;
-    case STYLE_GLORIA:  return (enum TrainerPicID)TRAINER_BACK_PIC_GLORIA;
-    case STYLE_FLORIAN: return (enum TrainerPicID)TRAINER_BACK_PIC_FLORIAN;
-    case STYLE_JULIANA: return (enum TrainerPicID)TRAINER_BACK_PIC_JULIANA;
-    default:            return (enum TrainerPicID)TRAINER_BACK_PIC_BRENDAN;
+    case STYLE_BRENDAN: return TRAINER_PIC_BRENDAN;
+    case STYLE_MAY:     return TRAINER_PIC_MAY;
+    case STYLE_RED:     return TRAINER_PIC_RED;
+    case STYLE_LEAF:    return TRAINER_PIC_LEAF;
+    case STYLE_ETHAN:   return TRAINER_PIC_ETHAN;
+    case STYLE_LYRA:    return TRAINER_PIC_LYRA;
+    case STYLE_LUCAS:   return TRAINER_PIC_LUCAS;
+    case STYLE_DAWN:    return TRAINER_PIC_DAWN;
+    case STYLE_HILBERT: return TRAINER_PIC_HILBERT;
+    case STYLE_HILDA:   return TRAINER_PIC_HILDA;
+    case STYLE_NATE:    return TRAINER_PIC_NATE;
+    case STYLE_ROSA:    return TRAINER_PIC_ROSA;
+    case STYLE_CALEM:   return TRAINER_PIC_CALEM;
+    case STYLE_SERENA:  return TRAINER_PIC_SERENA;
+    case STYLE_ELIO:    return TRAINER_PIC_ELIO;
+    case STYLE_SELENE:  return TRAINER_PIC_SELENE;
+    case STYLE_VICTOR:  return TRAINER_PIC_VICTOR;
+    case STYLE_GLORIA:  return TRAINER_PIC_GLORIA;
+    case STYLE_FLORIAN: return TRAINER_PIC_FLORIAN;
+    case STYLE_JULIANA: return TRAINER_PIC_JULIANA;
+    default:            return TRAINER_PIC_RED; // Brendan/May sind keine Spielerstyles mehr
     }
 }
+
+// Nyxthra: lets a scripted cutscene battle (e.g. the Champion's Petalburg Gym
+// catching demo) temporarily show a specific style's back pic instead of the
+// real player's own - used so the Champion visibly appears to be the one
+// battling/catching. EWRAM_DATA must be zero-initialized, so "no override"
+// is its own flag rather than a sentinel value in the style field.
+// Must be cleared again once that battle ends, see ClearForcedBattleBackPic.
+EWRAM_DATA bool8 gNyxthraForceBattleBackPic = FALSE;
+EWRAM_DATA u8 gNyxthraForcedBattleBackPicStyle = 0;
 
 static enum TrainerPicID PlayerGetTrainerBackPicId(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         return LinkPlayerGetTrainerPicId(GetMultiplayerId());
+    else if (gNyxthraForceBattleBackPic)
+        return GetTrainerBackPicIdByStyle(gNyxthraForcedBattleBackPicStyle);
     else
         return GetTrainerBackPicIdByStyle(gSaveBlock2Ptr->playerStyles[0]);
 }

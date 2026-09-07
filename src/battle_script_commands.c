@@ -9663,7 +9663,7 @@ u8 GetCatchingBattler(void)
         return GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
 }
 
-static void FinalizeCapture(void)
+static void FinalizeCapture(bool32 guaranteed)
 {
     enum PokeBall ballId = ItemIdToBallId(gLastThrownBall);
     enum NationalDexOrder natDexNo = SpeciesToNationalPokedexNum(gBattleMons[gBattlerTarget].species);
@@ -9673,7 +9673,10 @@ static void FinalizeCapture(void)
         gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
         gBattleSpritesDataPtr->animationData->criticalCaptureSuccess = TRUE;
     }
-    BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_3_SHAKES_SUCCESS);
+    // Guaranteed catches (Master Ball, or odds so high they're capped) never rolled
+    // any shake RNG, so there's no suspense to build - skip straight to the capture
+    // effect instead of playing out the usual 3-shake success animation.
+    BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, guaranteed ? BALL_GUARANTEED_CAPTURE : BALL_3_SHAKES_SUCCESS);
     MarkBattlerForControllerExec(gBattlerAttacker);
     TryBattleFormChange(gBattlerTarget, FORM_CHANGE_END_BATTLE, GetBattlerAbility(gBattlerTarget));
     gBattlescriptCurrInstr = BattleScript_SuccessBallThrow;
@@ -10071,7 +10074,7 @@ static void Cmd_handleballthrow(void)
         //Master Ball check occurs before critical capture check
         if (odds == CAPTURE_GUARANTEED)
         {
-            FinalizeCapture();
+            FinalizeCapture(TRUE);
             return;
         }
 
@@ -10090,7 +10093,7 @@ static void Cmd_handleballthrow(void)
 
         if (odds > 254)
         {
-            FinalizeCapture();
+            FinalizeCapture(TRUE);
             return;
         }
         odds = ComputeBallShakeOdds(odds);
@@ -10102,7 +10105,7 @@ static void Cmd_handleballthrow(void)
 
         if (shakes == maxShakes) // mon caught, copy of the code above
         {
-            FinalizeCapture();
+            FinalizeCapture(FALSE);
             return;
         }
 
