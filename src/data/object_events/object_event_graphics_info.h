@@ -10078,7 +10078,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SeleneRiding = {
     .images = sPicTable_SeleneRiding,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
-/*
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_WES,
@@ -10097,7 +10097,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes = {
     .images = sPicTable_Wes,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
-
+/*
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_RIVAL_ASH,
@@ -10116,7 +10116,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash = {
     .images = sPicTable_AshTrainer,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
-
+*/
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_PLAYER_WES,
@@ -10135,7 +10135,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes = {
     .images = sPicTable_Wes,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
-*/
+
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash = {
     .tileTag = TAG_NONE,
@@ -10144,7 +10144,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash = {
     .size = 512,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_PLAYER,
+    // Nyxthra: Wes stands around as his own NPC while the real player is
+    // also on screen, so he needs the same dedicated slot Brendan/May (also
+    // player-look-alike NPCs) use - PALSLOT_PLAYER is the *actual* player's
+    // slot and collided with it, which is why he showed up miscolored.
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -12966,7 +12970,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Lady = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_1,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -13232,7 +13236,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeRangerM = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_1,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,

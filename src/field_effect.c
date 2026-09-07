@@ -882,16 +882,26 @@ void FieldEffectScript_LoadFadedPalette(u8 **script)
     struct SpritePalette *palette = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     u32 paletteSlot = LoadSpritePalette(palette);
     (*script) += 4;
-    SetPaletteColorMapType(paletteSlot + 16, T1_READ_8(*script));
+    if (paletteSlot != 0xFF)
+        SetPaletteColorMapType(paletteSlot + 16, T1_READ_8(*script));
     (*script)++;
-    UpdateSpritePaletteWithWeather(paletteSlot, ShouldFieldEffectBeFogBlended(*script));
+    // Nyxthra: guard against the dynamic pool being full - LoadSpritePalette
+    // returning 0xFF used to reach UpdateSpritePaletteWithWeather raw and
+    // crash (BlendPalette out of bounds); it now bails out safely on its
+    // own, but skip the call entirely here too since there's no valid
+    // slot to blend weather onto anyway.
+    if (paletteSlot != 0xFF)
+        UpdateSpritePaletteWithWeather(paletteSlot, ShouldFieldEffectBeFogBlended(*script));
 }
 
 void FieldEffect_LoadFadedPalette(struct SpritePalette *palette, enum ColorMapType colorMap)
 {
     u32 paletteSlot = LoadSpritePalette(palette);
-    SetPaletteColorMapType(paletteSlot + 16, colorMap);
-    UpdateSpritePaletteWithWeather(paletteSlot, TRUE);
+    if (paletteSlot != 0xFF)
+    {
+        SetPaletteColorMapType(paletteSlot + 16, colorMap);
+        UpdateSpritePaletteWithWeather(paletteSlot, TRUE);
+    }
 }
 
 void FieldEffectScript_LoadPalette(u8 **script)

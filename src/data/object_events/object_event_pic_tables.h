@@ -4921,11 +4921,11 @@ static const struct SpriteFrameImage sPicTable_OldMan2[] = {
     overworld_frame(gObjectEventPic_OldMan2, 2, 4, 0),
 };
 
-/*
+
 static const struct SpriteFrameImage sPicTable_Wes[] = {
     overworld_ascending_frames(gObjectEventPic_Wes, 2, 4),
 };
-*/
+
 
 static const struct SpriteFrameImage sPicTable_AshTrainer[] = {
     overworld_ascending_frames(gObjectEventPic_Ash, 2, 4),

@@ -191,9 +191,11 @@ static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
 static u8 UpdateSpritePalette(const struct SpritePalette *spritePalette, struct Sprite *sprite);
+static void Nyxthra_MaybeLogWatchedTag(u16 paletteTag, u8 resultSlot);
+static void Nyxthra_EnsureObjectEventPaletteLoaded(struct Sprite *sprite, u16 paletteTag);
 static void ResetObjectEventFldEffData(struct ObjectEvent *);
 static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *);
-static u8 FindObjectEventPaletteIndexByTag(u16);
+static u16 FindObjectEventPaletteIndexByTag(u16);
 static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *, u8);
 static void SpriteCB_CameraObject(struct Sprite *);
 static void CameraObject_Init(struct Sprite *);
@@ -577,7 +579,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Johto_NPC_Red,         OBJ_EVENT_PAL_TAG_JOHTO_NPC_RED},
     {gObjectEventPal_Wes,                   OBJ_EVENT_PAL_TAG_PLAYER_WES},
     {gObjectEventPal_Ash,                   OBJ_EVENT_PAL_TAG_PLAYER_ASH},
-//    {gObjectEventPal_WesReflection,         OBJ_EVENT_PAL_TAG_PLAYER_WES_REFLECTION},
+    {gObjectEventPal_WesReflection,         OBJ_EVENT_PAL_TAG_PLAYER_WES_REFLECTION},
+    {gObjectEventPal_WhiteRock,             OBJ_EVENT_PAL_TAG_WHITE_ROCK},
+    {gObjectEventPal_MetagrossShinyOW,      OBJ_EVENT_PAL_TAG_METAGROSS_SHINY},
 //    {gObjectEventPal_AshReflection,         OBJ_EVENT_PAL_TAG_PLAYER_ASH_REFLECTION},
     {gObjectEventPal_EnteiOld,                OBJ_EVENT_PAL_TAG_ENTEI},
     {gObjectEventPal_RaikouOld,               OBJ_EVENT_PAL_TAG_RAIKOU},
@@ -807,6 +811,82 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
+    // Nyxthra: these "DP_" (Diamond/Pearl-imported) NPC palettes had graphics
+    // info structs and .gbapal data already, but were never actually
+    // registered here - they rendered with a garbage/missing palette
+    // whenever placed (found via the Opa/DP_Gentleman sprite in Littleroot).
+    {gObjectEventPal_DP_Gentleman,          OBJ_EVENT_PAL_TAG_DP_GENTLEMAN},
+    {gObjectEventPal_DP_BugCatcher,         OBJ_EVENT_PAL_TAG_DP_BUG_CATCHER},
+    {gObjectEventPal_DP_Cowgirl,            OBJ_EVENT_PAL_TAG_DP_COWGIRL},
+    // Nyxthra: the rest of the DP_ cast had the exact same gap - every one of
+    // these had graphics info + .gbapal data but no entry here, so they all
+    // rendered with whatever garbage was left in their OBJ palette slot.
+    {gObjectEventPal_DP_Cynthia,        OBJ_EVENT_PAL_TAG_DP_CYNTHIA},
+    {gObjectEventPal_DP_Aaron,          OBJ_EVENT_PAL_TAG_DP_AARON},
+    {gObjectEventPal_DP_AceTrainer,     OBJ_EVENT_PAL_TAG_DP_ACE_TRAINERF},
+    {gObjectEventPal_DP_AceTrainer,     OBJ_EVENT_PAL_TAG_DP_ACE_TRAINERM},
+    {gObjectEventPal_DP_AceTrainerSnowM,OBJ_EVENT_PAL_TAG_DP_ACE_TRAINER_SNOWM},
+    {gObjectEventPal_DP_Barry,          OBJ_EVENT_PAL_TAG_DP_BARRY},
+    {gObjectEventPal_DP_BattleGirl,     OBJ_EVENT_PAL_TAG_DP_BATTLE_GIRL},
+    {gObjectEventPal_DP_Beauty,         OBJ_EVENT_PAL_TAG_DP_BEAUTY},
+    {gObjectEventPal_DP_Bertha,         OBJ_EVENT_PAL_TAG_DP_BERTHA},
+    {gObjectEventPal_DP_BlackBelt,      OBJ_EVENT_PAL_TAG_DP_BLACK_BELT},
+    {gObjectEventPal_DP_BreederF,       OBJ_EVENT_PAL_TAG_DP_BREEDERF},
+    {gObjectEventPal_DP_Byron,          OBJ_EVENT_PAL_TAG_DP_BYRON},
+    {gObjectEventPal_DP_CamperPicnicker,OBJ_EVENT_PAL_TAG_DP_CAMPER},
+    {gObjectEventPal_DP_Charon,         OBJ_EVENT_PAL_TAG_DP_CHARON},
+    {gObjectEventPal_DP_Cheryl,         OBJ_EVENT_PAL_TAG_DP_CHERYL},
+    {gObjectEventPal_DP_CrasherWake,    OBJ_EVENT_PAL_TAG_DP_CRASHER_WAKE},
+    {gObjectEventPal_DP_Cyrus,          OBJ_EVENT_PAL_TAG_DP_CYRUS},
+    {gObjectEventPal_DP_DragonTamer,    OBJ_EVENT_PAL_TAG_DP_DRAGON_TAMER},
+    {gObjectEventPal_DP_Fantina,        OBJ_EVENT_PAL_TAG_DP_FANTINA},
+    {gObjectEventPal_DP_Fisherman,      OBJ_EVENT_PAL_TAG_DP_FISHERMAN},
+    {gObjectEventPal_DP_GalacticGruntF, OBJ_EVENT_PAL_TAG_DP_GALACTIC_GRUNTF},
+    {gObjectEventPal_DP_GalacticGruntM, OBJ_EVENT_PAL_TAG_DP_GALACTIC_GRUNTM},
+    {gObjectEventPal_DP_Hiker,          OBJ_EVENT_PAL_TAG_DP_HIKER},
+    {gObjectEventPal_DP_Jupiter,        OBJ_EVENT_PAL_TAG_DP_JUPITER},
+    {gObjectEventPal_DP_Lady,           OBJ_EVENT_PAL_TAG_DP_LADY},
+    {gObjectEventPal_DP_Looker,         OBJ_EVENT_PAL_TAG_DP_LOOKER},
+    {gObjectEventPal_DP_Lucian,         OBJ_EVENT_PAL_TAG_DP_LUCIAN},
+    {gObjectEventPal_DP_Marley,         OBJ_EVENT_PAL_TAG_DP_MARLEY},
+    {gObjectEventPal_DP_Mars,           OBJ_EVENT_PAL_TAG_DP_MARS},
+    {gObjectEventPal_DP_Maylene,        OBJ_EVENT_PAL_TAG_DP_MAYLENE},
+    {gObjectEventPal_DP_Mira,           OBJ_EVENT_PAL_TAG_DP_MIRA},
+    {gObjectEventPal_DP_Officer,        OBJ_EVENT_PAL_TAG_DP_OFFICER},
+    {gObjectEventPal_DP_Painter,        OBJ_EVENT_PAL_TAG_DP_PAINTER},
+    {gObjectEventPal_DP_Palmer,         OBJ_EVENT_PAL_TAG_DP_PALMER},
+    {gObjectEventPal_DP_ParasolLady,    OBJ_EVENT_PAL_TAG_DP_PARASOL_LADY},
+    {gObjectEventPal_DP_CamperPicnicker,OBJ_EVENT_PAL_TAG_DP_PICNICKER},
+    {gObjectEventPal_DP_PokeKid,        OBJ_EVENT_PAL_TAG_DP_POKE_KID},
+    {gObjectEventPal_DP_PokeRanger,     OBJ_EVENT_PAL_TAG_DP_POKE_RANGERF},
+    {gObjectEventPal_DP_PokeRanger,     OBJ_EVENT_PAL_TAG_DP_POKE_RANGERM},
+    {gObjectEventPal_DP_PokeFanF,       OBJ_EVENT_PAL_TAG_DP_POKE_FAN_F},
+    {gObjectEventPal_DP_PokeFanM,       OBJ_EVENT_PAL_TAG_DP_POKE_FAN_M},
+    {gObjectEventPal_DP_Rowan,          OBJ_EVENT_PAL_TAG_DP_ROWAN},
+    {gObjectEventPal_DP_Psychic,        OBJ_EVENT_PAL_TAG_DP_PSYCHIC},
+    {gObjectEventPal_DP_Rancher,        OBJ_EVENT_PAL_TAG_DP_RANCHER},
+    {gObjectEventPal_DP_RichBoy,        OBJ_EVENT_PAL_TAG_DP_RICH_BOY},
+    {gObjectEventPal_DP_RichLady,       OBJ_EVENT_PAL_TAG_DP_RICH_LADY},
+    {gObjectEventPal_DP_Rocker,         OBJ_EVENT_PAL_TAG_DP_ROCKER},
+    {gObjectEventPal_DP_Roughneck,      OBJ_EVENT_PAL_TAG_DP_ROUGHNECK},
+    {gObjectEventPal_DP_RuinManiac,     OBJ_EVENT_PAL_TAG_DP_RUIN_MANIAC},
+    {gObjectEventPal_DP_Sailor,         OBJ_EVENT_PAL_TAG_DP_SAILOR},
+    {gObjectEventPal_DP_Saturn,         OBJ_EVENT_PAL_TAG_DP_SATURN},
+    {gObjectEventPal_DP_Scientist,      OBJ_EVENT_PAL_TAG_DP_SCIENTIST},
+    {gObjectEventPal_DP_SkierF,         OBJ_EVENT_PAL_TAG_DP_SKIERF},
+    {gObjectEventPal_DP_SkierM,         OBJ_EVENT_PAL_TAG_DP_SKIERM},
+    {gObjectEventPal_DP_Socialite,      OBJ_EVENT_PAL_TAG_DP_SOCIALITE},
+    {gObjectEventPal_DP_Supernerd,      OBJ_EVENT_PAL_TAG_DP_SUPERNERD},
+    {gObjectEventPal_DP_SwimmerF,       OBJ_EVENT_PAL_TAG_DP_SWIMMERF},
+    {gObjectEventPal_DP_SwimmerF2,      OBJ_EVENT_PAL_TAG_DP_SWIMMERF2},
+    {gObjectEventPal_DP_SwimmerM,       OBJ_EVENT_PAL_TAG_DP_SWIMMERM},
+    {gObjectEventPal_DP_Volkner,        OBJ_EVENT_PAL_TAG_DP_VOLKNER},
+    {gObjectEventPal_DP_Waiter,         OBJ_EVENT_PAL_TAG_DP_WAITER},
+    {gObjectEventPal_DP_Waitress,       OBJ_EVENT_PAL_TAG_DP_WAITRESS},
+    {gObjectEventPal_DP_Worker,         OBJ_EVENT_PAL_TAG_DP_WORKER},
+    {gObjectEventPal_DP_YoungCouple,    OBJ_EVENT_PAL_TAG_DP_YOUNG_COUPLEF},
+    {gObjectEventPal_DP_YoungCouple,    OBJ_EVENT_PAL_TAG_DP_YOUNG_COUPLEM},
+    {gObjectEventPal_DP_Youngster,      OBJ_EVENT_PAL_TAG_DP_YOUNGSTER},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else
@@ -2125,6 +2205,8 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     // Use palette from species palette table
     if (spriteTemplate->paletteTag == OBJ_EVENT_PAL_TAG_DYNAMIC)
         sprite->oam.paletteNum = LoadDynamicFollowerPalette(OW_SPECIES(objectEvent), OW_SHINY(objectEvent), OW_FEMALE(objectEvent));
+    else
+        Nyxthra_EnsureObjectEventPaletteLoaded(sprite, spriteTemplate->paletteTag);
     if (OW_GFX_COMPRESS && sprite->usingSheet)
         sprite->sheetSpan = GetSpanPerImage(sprite->oam.shape, sprite->oam.size);
     GetMapCoordsFromSpritePos(objectEvent->currentCoords.x + cameraX, objectEvent->currentCoords.y + cameraY, &sprite->x, &sprite->y);
@@ -2511,7 +2593,7 @@ static void RefreshFollowerGraphics(struct ObjectEvent *objEvent)
     bool32 female = OW_FEMALE(objEvent);
     const struct ObjectEventGraphicsInfo *graphicsInfo = SpeciesToGraphicsInfo(species, shiny, female);
     struct Sprite *sprite = &gSprites[objEvent->spriteId];
-    u32 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
+    u16 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
 
     if (graphicsInfo->oam->size != sprite->oam.size)
     {
@@ -2540,7 +2622,7 @@ static void RefreshFollowerGraphics(struct ObjectEvent *objEvent)
         sprite->inUse = TRUE;
         sprite->oam.paletteNum = LoadDynamicFollowerPalette(species, shiny, female);
     }
-    else if (i != 0xFF)
+    else if (i != 0xFFFF)
     {
         UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
         if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL) // don't want to weather blend in fog
@@ -3054,8 +3136,8 @@ void UpdateLightSprite(struct Sprite *sprite)
             sprite->invisible = FALSE;
             if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT_2)
             {
-                u8 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
-                if (paletteIndex != 0xFF)
+                u16 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
+                if (paletteIndex != 0xFFFF)
                     LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[paletteIndex], sprite->oam.paletteNum);
             }
         }
@@ -3064,8 +3146,8 @@ void UpdateLightSprite(struct Sprite *sprite)
             sprite->invisible = FALSE;
             if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT_2)
             {
-                u8 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
-                if (paletteIndex != 0xFF)
+                u16 paletteIndex = FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT);
+                if (paletteIndex != 0xFFFF)
                     LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[paletteIndex], sprite->oam.paletteNum);
             }
         }
@@ -3312,6 +3394,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     if (i != MAX_SPRITES)
     {
         sprite = &gSprites[i];
+        Nyxthra_EnsureObjectEventPaletteLoaded(sprite, spriteTemplate.paletteTag);
         // Use palette from species palette table
         if (OW_GFX_COMPRESS && sprite->usingSheet)
             sprite->sheetSpan = GetSpanPerImage(sprite->oam.shape, sprite->oam.size);
@@ -3365,6 +3448,16 @@ static void SetPlayerAvatarObjectEventIdAndObjectId(u8 objectEventId, u8 spriteI
 // Update sprite's palette, freeing old palette if necessary
 static u8 UpdateSpritePalette(const struct SpritePalette *spritePalette, struct Sprite *sprite)
 {
+    // Nyxthra: this used to unconditionally free-then-reload the sprite's
+    // own palette slot on every call, even when it already correctly held
+    // the requested tag - a pointless round trip through the tiny dynamic
+    // pool that we proved (via live instrumentation) intermittently loses
+    // the race against other sprites doing the same dance at the same
+    // moment, evicting tags that then never get reclaimed correctly. If
+    // it's already exactly right, there's nothing to do.
+    if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == spritePalette->tag)
+        return sprite->oam.paletteNum;
+
     // Free palette if otherwise unused
     sprite->inUse = FALSE;
     FieldEffectFreePaletteIfUnused(sprite->oam.paletteNum);
@@ -3379,15 +3472,21 @@ static u8 UpdateSpritePalette(const struct SpritePalette *spritePalette, struct 
         sprite->oam.paletteNum = LoadSpritePalette(spritePalette);
     }
 
+    // Nyxthra debug: this function frees its OWN sprite's palette slot
+    // (if nothing else is using it) and then immediately reloads it -
+    // record it here too, since this is a *third*, separate place a
+    // reload can fail, distinct from LoadObjectEventPalette/CreateSpriteAt.
+    Nyxthra_MaybeLogWatchedTag(spritePalette->tag, sprite->oam.paletteNum);
+
     return sprite->oam.paletteNum;
 }
 
 // Find and update based on template's paletteTag
 u8 UpdateSpritePaletteByTemplate(const struct SpriteTemplate *template, struct Sprite *sprite)
 {
-    u8 i = FindObjectEventPaletteIndexByTag(template->paletteTag);
-    if (i == 0xFF)
-        return i;
+    u16 i = FindObjectEventPaletteIndexByTag(template->paletteTag);
+    if (i == 0xFFFF)
+        return 0xFF;
     return UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
 }
 
@@ -3395,8 +3494,8 @@ u8 UpdateSpritePaletteByTemplate(const struct SpriteTemplate *template, struct S
 static void ObjectEventSetGraphics(struct ObjectEvent *objectEvent, const struct ObjectEventGraphicsInfo *graphicsInfo)
 {
     struct Sprite *sprite = &gSprites[objectEvent->spriteId];
-    u32 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
-    if (i != 0xFF)
+    u16 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
+    if (i != 0xFFFF)
         UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
 
     // If frame size changes, we need to reallocate tiles.
@@ -3602,17 +3701,285 @@ void FreeAndReserveObjectSpritePalettes(void)
     gReservedSpritePaletteCount = OBJ_PALSLOT_COUNT;
 }
 
+// Nyxthra debug: black-box recorder for LoadObjectEventPalette failures -
+// records the tag, gReservedSpritePaletteCount, and free-slot count at the
+// *exact moment* a load fails (not after the fact, when the pool may have
+// already changed), plus whether the tag wasn't even found in
+// sObjectEventSpritePalettes[] at all (missingFromTable).
+static struct {
+    u16 tag;
+    u8 reserved;
+    u8 free;
+    u8 failCount;
+    u8 missingFromTable;
+} sNyxthraLastPaletteLoadFailure = {0, 0, 0, 0, 0};
+
+void Nyxthra_GetLastPaletteLoadFailure(u16 *tag, u8 *reserved, u8 *free, u8 *failCount, u8 *missingFromTable)
+{
+    *tag = sNyxthraLastPaletteLoadFailure.tag;
+    *reserved = sNyxthraLastPaletteLoadFailure.reserved;
+    *free = sNyxthraLastPaletteLoadFailure.free;
+    *failCount = sNyxthraLastPaletteLoadFailure.failCount;
+    *missingFromTable = sNyxthraLastPaletteLoadFailure.missingFromTable;
+}
+
+// Nyxthra debug: unconditional call log for a small watch-list of tags -
+// records slot + call count EVERY time LoadObjectEventPalette is called
+// for one of these, success or not, so we can tell whether a tag's slot
+// assignment ever *changes* across multiple calls (vs. being assigned
+// once and then silently invalidated by something outside this function).
+#define NYXTHRA_WATCH_TAG_COUNT 4
+static const u16 sNyxthraWatchedTagValues[NYXTHRA_WATCH_TAG_COUNT] = {
+    0x1284, // DP_Gentleman
+    0x1271, // DP_Barry
+    0x1293, // DP_PokeKid
+    0x119F, // OBJ_EVENT_PAL_TAG_RIVAL_RED - showed up squatting on PokeKid's slot
+};
+static struct {
+    u8 lastSlot;
+    u8 callCount;
+} sNyxthraWatchedTagLog[NYXTHRA_WATCH_TAG_COUNT];
+
+void Nyxthra_GetWatchedTagLog(u8 index, u16 *tag, u8 *lastSlot, u8 *callCount)
+{
+    *tag = sNyxthraWatchedTagValues[index];
+    *lastSlot = sNyxthraWatchedTagLog[index].lastSlot;
+    *callCount = sNyxthraWatchedTagLog[index].callCount;
+}
+
+static void Nyxthra_MaybeLogWatchedTag(u16 paletteTag, u8 resultSlot)
+{
+    u8 i;
+    for (i = 0; i < NYXTHRA_WATCH_TAG_COUNT; i++)
+    {
+        if (sNyxthraWatchedTagValues[i] == paletteTag)
+        {
+            sNyxthraWatchedTagLog[i].lastSlot = resultSlot;
+            sNyxthraWatchedTagLog[i].callCount++;
+        }
+    }
+}
+
 u8 LoadObjectEventPalette(u16 paletteTag)
 {
     u16 i = FindObjectEventPaletteIndexByTag(paletteTag);
-    if (i == 0xFF)
-        return i;
-    return LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
+    u8 result;
+
+    if (i == 0xFFFF)
+    {
+        sNyxthraLastPaletteLoadFailure.tag = paletteTag;
+        sNyxthraLastPaletteLoadFailure.missingFromTable = TRUE;
+        sNyxthraLastPaletteLoadFailure.failCount++;
+        Nyxthra_MaybeLogWatchedTag(paletteTag, 0xFF);
+        return 0xFF;
+    }
+
+    result = LoadSpritePaletteIfTagExists(&sObjectEventSpritePalettes[i]);
+    Nyxthra_MaybeLogWatchedTag(paletteTag, result);
+    if (result == 0xFF)
+    {
+        u8 j, free = 0;
+        for (j = gReservedSpritePaletteCount; j < 16; j++)
+        {
+            if (GetSpritePaletteTagByPaletteNum(j) == TAG_NONE)
+                free++;
+        }
+        sNyxthraLastPaletteLoadFailure.tag = paletteTag;
+        sNyxthraLastPaletteLoadFailure.reserved = gReservedSpritePaletteCount;
+        sNyxthraLastPaletteLoadFailure.free = free;
+        sNyxthraLastPaletteLoadFailure.missingFromTable = FALSE;
+        sNyxthraLastPaletteLoadFailure.failCount++;
+    }
+    return result;
+}
+
+// Nyxthra: Faded and Unfaded both show the exact same wrong (but valid -
+// it's literally May's compiled overworld palette) color right after a
+// forced reload, which means the copy itself read from the wrong source -
+// not a post-load blend. This checks the actual link between Gentleman's
+// tag and his data: look up his table index the same way
+// LoadObjectEventPalette does, then read color 9 THROUGH the table entry's
+// own data pointer (not through the global symbol directly) and compare
+// that pointer against &gObjectEventPal_DP_Gentleman[0]. If the pointer
+// differs or the color read through it doesn't match the ROM value we
+// already confirmed (0x45EF), the table entry itself resolves to the
+// wrong array despite the source line naming the right one.
+void Nyxthra_DebugCheckTableEntry(u16 tag, u16 *indexOut, u16 *colorThroughTableOut, bool8 *pointerMatchesOut, u16 *tagAtIndexOut)
+{
+    u16 i = FindObjectEventPaletteIndexByTag(tag);
+    *indexOut = i;
+    if (i == 0xFFFF)
+    {
+        *colorThroughTableOut = 0xFFFF;
+        *pointerMatchesOut = FALSE;
+        *tagAtIndexOut = 0xFFFF;
+        return;
+    }
+    *colorThroughTableOut = sObjectEventSpritePalettes[i].data[9];
+    *pointerMatchesOut = (sObjectEventSpritePalettes[i].data == gObjectEventPal_DP_Gentleman);
+    // Nyxthra: read the raw tag value straight from the table entry the
+    // running game actually matched on, live - not re-derived externally.
+    // If this doesn't equal the tag we searched for, the equality check
+    // inside FindObjectEventPaletteIndexByTag itself is behaving
+    // differently than its source reads (memory corruption, ODR issue,
+    // or a stale build); if it DOES equal it, some entry genuinely holds
+    // this tag value at this index in the running ROM.
+    *tagAtIndexOut = sObjectEventSpritePalettes[i].tag;
+}
+
+// Nyxthra: safety net for the DP_Gentleman/DP_Barry/DP_PokeKid-style
+// palette bug - we proved via live instrumentation that LoadObjectEventPalette
+// itself basically never fails (plenty of free dynamic slots at the time),
+// yet CreateSpriteAt's own IndexOfSpritePaletteTag lookup, moments later,
+// intermittently can't find the tag it was just told is loaded (some other
+// sprite's own free-then-reload cycle evicts it in between, or on certain
+// respawn paths the load call and the sprite it applies to fall out of
+// sync). Rather than continuing to chase the exact interleaving, verify
+// right after creation that the sprite's paletteNum actually resolves back
+// to the tag it's supposed to have, and force a fresh reload if not -
+// there's no cost when everything's already correct (single tag compare).
+static void Nyxthra_EnsureObjectEventPaletteLoaded(struct Sprite *sprite, u16 paletteTag)
+{
+    if (paletteTag == TAG_NONE || paletteTag == OBJ_EVENT_PAL_TAG_DYNAMIC)
+        return;
+
+    if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) != paletteTag)
+    {
+        u8 paletteNum = LoadObjectEventPalette(paletteTag);
+        if (paletteNum != 0xFF)
+            sprite->oam.paletteNum = paletteNum;
+    }
+}
+
+// Nyxthra: we proved (forcing DP_Gentleman onto an isolated, hardcoded
+// slot and watching it get overwritten anyway) that this isn't an
+// allocation/timing bug at all - *something* keeps re-stomping whatever
+// slot these custom NPCs land on with unrelated standard content (May,
+// Groudon's reflection, the rival...), continuously, not just once at
+// spawn. We were not able to pin down the exact writer even with a
+// hardware watchpoint (it bottoms out in BIOS-level DMA copy code with no
+// useful call-site symbol). Rather than leave the game visibly broken,
+// re-assert every active object event's palette once a second - cheap,
+// and self-healing regardless of what's clobbering it or why.
+//
+// Important: LoadSpritePalette's "don't load twice" optimization means a
+// plain check-and-reload (Nyxthra_EnsureObjectEventPaletteLoaded) is not
+// enough here - if something overwrites the raw color bytes in
+// gPlttBufferFaded/Unfaded *without* touching sSpritePaletteTags[], the
+// tag bookkeeping still looks correct and LoadObjectEventPalette will
+// skip re-copying real data, since as far as it's concerned the tag is
+// already loaded. So for this periodic pass we force a genuine reload by
+// freeing the tag first, guaranteeing DoLoadSpritePalette actually runs.
+static u16 sNyxthraWatchdogTicks = 0;
+static u16 sNyxthraWatchdogFixAttempts = 0;
+static u16 sNyxthraWatchdogPerTagAttempts[3]; // Gentleman, Barry, PokeKid
+static u16 sNyxthraWatchdogPerTagLastSlot[3]; // 0 means "no fix attempted yet"
+static u16 sNyxthraWatchdogPerTagLastColor[3]; // sampled index 9 right after the fix
+// Nyxthra: same index-9 sample, but read directly from the ROM source array
+// (gObjectEventPal_DP_Gentleman) instead of the runtime palette buffer -
+// if this ALSO comes back wrong, the ROM constant itself is corrupted
+// (link-time issue); if it comes back correct (0x45EF) while the buffer
+// sample is wrong, the copy destination is being re-stomped after the load.
+static u16 sNyxthraWatchdogGentlemanRomColor = 0;
+// Nyxthra: gPlttBufferUnfaded sampled at the SAME offset, SAME instant, as
+// sNyxthraWatchdogPerTagLastColor[0] (which reads gPlttBufferFaded) - both
+// buffers are supposed to receive an identical copy from LoadPaletteFast.
+// If Unfaded is correct (0x45EF) while Faded is wrong, the corruption
+// happens strictly to the display copy, after the load, not to the load
+// itself - narrows the search to whatever last touches Faded alone
+// (time/weather blending) instead of the copy path.
+static u16 sNyxthraWatchdogGentlemanUnfadedColor = 0;
+
+void Nyxthra_GetWatchdogCounters(u16 *ticks, u16 *fixAttempts)
+{
+    *ticks = sNyxthraWatchdogTicks;
+    *fixAttempts = sNyxthraWatchdogFixAttempts;
+}
+
+void Nyxthra_GetWatchdogPerTagInfo(u8 index, u16 *attempts, u16 *lastSlot, u16 *lastColor)
+{
+    *attempts = sNyxthraWatchdogPerTagAttempts[index];
+    *lastSlot = sNyxthraWatchdogPerTagLastSlot[index];
+    *lastColor = sNyxthraWatchdogPerTagLastColor[index];
+}
+
+u16 Nyxthra_GetWatchdogGentlemanRomColor(void)
+{
+    return sNyxthraWatchdogGentlemanRomColor;
+}
+
+u16 Nyxthra_GetWatchdogGentlemanUnfadedColor(void)
+{
+    return sNyxthraWatchdogGentlemanUnfadedColor;
+}
+
+void Nyxthra_VerifyAllObjectEventPalettes(void)
+{
+    u8 i;
+    static u8 sFrameCounter = 0;
+
+    if (++sFrameCounter < 60)
+        return;
+    sFrameCounter = 0;
+    sNyxthraWatchdogTicks++;
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        struct ObjectEvent *objectEvent = &gObjectEvents[i];
+        const struct ObjectEventGraphicsInfo *graphicsInfo;
+        struct Sprite *sprite;
+        u16 paletteTag;
+        u8 paletteNum;
+
+        if (!objectEvent->active || objectEvent->isPlayer)
+            continue;
+
+        graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+        paletteTag = graphicsInfo->paletteTag;
+        sprite = &gSprites[objectEvent->spriteId];
+
+        // Only force-reload tags known to actually get corrupted this way
+        // (their own unique tag, not shared with anything else) - forcing
+        // this for every object risks moving a *shared* tag (e.g. a
+        // generic NPC style used by several NPCs at once) to a new slot
+        // without updating every sprite that was relying on the old one.
+        if (paletteTag == 0x1284 || paletteTag == 0x1271 || paletteTag == 0x1293)
+        {
+            u8 idx = (paletteTag == 0x1284) ? 0 : (paletteTag == 0x1271) ? 1 : 2;
+            sNyxthraWatchdogFixAttempts++;
+            sNyxthraWatchdogPerTagAttempts[idx]++;
+            FreeSpritePaletteByTag(paletteTag);
+            paletteNum = LoadObjectEventPalette(paletteTag);
+            // Nyxthra debug: record the RAW return value (even 0xFF), not
+            // sprite->oam.paletteNum - on failure that field is left
+            // untouched (stale), which would hide a failing call behind
+            // an old, seemingly-valid-looking slot number.
+            sNyxthraWatchdogPerTagLastSlot[idx] = paletteNum;
+            if (paletteNum != 0xFF)
+            {
+                sprite->oam.paletteNum = paletteNum;
+                sNyxthraWatchdogPerTagLastColor[idx] = gPlttBufferFaded[OBJ_PLTT_ID(paletteNum) + 9];
+                if (idx == 0)
+                {
+                    sNyxthraWatchdogGentlemanRomColor = gObjectEventPal_DP_Gentleman[9];
+                    sNyxthraWatchdogGentlemanUnfadedColor = gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum) + 9];
+                }
+            }
+            else
+            {
+                sNyxthraWatchdogPerTagLastColor[idx] = 0xFFFF;
+            }
+        }
+        else
+        {
+            Nyxthra_EnsureObjectEventPaletteLoaded(sprite, paletteTag);
+        }
+    }
 }
 
 u8 LoadObjectEventPaletteCopy(u16 originalTag, u16 copyTag)
 {
-    u32 i = FindObjectEventPaletteIndexByTag(originalTag);
+    u16 i = FindObjectEventPaletteIndexByTag(originalTag);
     const struct SpritePalette palette = {sObjectEventSpritePalettes[i].data, copyTag};
     return LoadSpritePalette(&palette);
 }
@@ -3734,7 +4101,7 @@ static u8 LoadSpritePaletteIfTagExists(const struct SpritePalette *spritePalette
 void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
 {
     // paletteTag is assumed to exist in sObjectEventSpritePalettes
-    u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
+    u16 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
 
     LoadPalette(sObjectEventSpritePalettes[paletteIndex].data, OBJ_PLTT_ID(paletteSlot), PLTT_SIZE_4BPP);
 }
@@ -3749,7 +4116,16 @@ void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
     }
 }
 
-static u8 FindObjectEventPaletteIndexByTag(u16 tag)
+// Nyxthra: this used to return u8 and truncate the index with (u8)i. That
+// was silently fine while the table had <=256 entries, but it has grown
+// well past that (357+, with community-added NPCs at the end) - any tag
+// whose real position is >=256 got aliased to (realIndex - 256), silently
+// loading a totally unrelated but valid palette from earlier in the table
+// (this is exactly what caused DP_Gentleman/DP_Barry/DP_PokeKid to show
+// May's/Groudon's Reflection's/Rival Red's colors - their real indices
+// were 274/282/313, aliasing to 18/26/57 respectively). Sentinel changed
+// from 0xFF to 0xFFFF since 0xFF (255) is now a real, valid index.
+static u16 FindObjectEventPaletteIndexByTag(u16 tag)
 {
     u16 i;
 
@@ -3758,9 +4134,9 @@ static u8 FindObjectEventPaletteIndexByTag(u16 tag)
         if (sObjectEventSpritePalettes[i].tag == OBJ_EVENT_PAL_TAG_NONE)
             break;
         if (sObjectEventSpritePalettes[i].tag == tag)
-            return (u8)i;
+            return i;
     }
-    return 0xFF;
+    return 0xFFFF;
 }
 
 void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
@@ -11479,8 +11855,8 @@ void SetVirtualObjectGraphics(u8 virtualObjId, u16 graphicsId)
         struct Sprite *sprite = &gSprites[spriteId];
         const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
         u16 tileNum = sprite->oam.tileNum;
-        u8 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
-        if (i != 0xFF)
+        u16 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
+        if (i != 0xFFFF)
             UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
 
         sprite->oam = *graphicsInfo->oam;

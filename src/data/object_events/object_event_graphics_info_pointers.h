@@ -293,12 +293,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 
 // NEW
-/*
+
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Wes;
-
-
+/*
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Rival_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HilbertWatering;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HildaWatering;
 */
@@ -1352,9 +1351,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_JESSIE_ROCKET] =                &gObjectEventGraphicsInfo_Jessie_Rocket,
     [OBJ_EVENT_GFX_ROGUE_EGG] =                    &gObjectEventGraphicsInfo_Rogue_Egg,
     [OBJ_EVENT_GFX_LUGIA_SHADOW] =                 &gObjectEventGraphicsInfo_Lugia_Shadow,
-/*
+
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,
+/*
     [OBJ_EVENT_GFX_RIVAL_ASH] =               &gObjectEventGraphicsInfo_Rival_Ash,
 
     [OBJ_EVENT_GFX_HILBERT_WATERING]   = &gObjectEventGraphicsInfo_HilbertWatering,

@@ -854,8 +854,20 @@ bool8 IsWeatherNotFadingIn(void)
 
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog)
 {
-    u16 paletteIndex = 16 + spritePaletteIndex;
+    u16 paletteIndex;
     u16 i;
+
+    // Nyxthra: callers occasionally pass through a raw 0xFF ("no slot
+    // found") from a palette-tag lookup that assumed it could never fail
+    // (e.g. the follower Pokemon palette loader's "Tag is always present"
+    // comment) - under real dynamic-pool contention it can. 0xFF here used
+    // to compute a wildly out-of-range palette RAM offset and crash
+    // (BlendPalette out of bounds). Bail out instead; skipping a weather
+    // blend on a sprite that has no valid palette slot yet is harmless.
+    if (spritePaletteIndex >= 16)
+        return;
+
+    paletteIndex = 16 + spritePaletteIndex;
 
     switch (gWeatherPtr->palProcessingState)
     {

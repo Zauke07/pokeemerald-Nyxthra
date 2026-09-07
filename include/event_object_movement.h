@@ -11,11 +11,11 @@
 #error "OW_POKEMON_OBJECT_EVENTS needs to be TRUE in order for OW_FOLLOWERS_ENABLED to work."
 #endif
 
-// Palette slots for overworld NPCs.
-// The same standard set of palettes for overworld objects are normally always loaded at the same
-// time while walking around the overworld. The only exceptions are the palettes for the player and
-// the "special" NPC, which can be swapped out. This also means that e.g. two "special" NPCs
-// with competing palettes cannot be properly loaded at the same time.
+// Paletten-Slots für NPCs in der Oberwelt.
+// Derselbe Standardsatz an Paletten für Oberweltobjekte wird normalerweise immer gleichzeitig
+// geladen, während man durch die Oberwelt läuft. Die einzigen Ausnahmen sind die Paletten für den
+// Spieler und den "speziellen" NPC, die ausgetauscht werden können. Das bedeutet auch, dass z. B.
+// zwei "spezielle" NPCs mit konkurrierenden Paletten nicht gleichzeitig korrekt geladen werden können.
 enum {
     PALSLOT_PLAYER,
     PALSLOT_PLAYER_REFLECTION,
@@ -176,6 +176,14 @@ void SetObjectInvisibility(u8 localId, u8 mapNum, u8 mapGroup, bool8 invisible);
 void FreeAndReserveObjectSpritePalettes(void);
 u8 LoadObjectEventPalette(u16 paletteTag);
 u8 LoadObjectEventPaletteCopy(u16 originalTag, u16 copyTag);
+void Nyxthra_GetLastPaletteLoadFailure(u16 *tag, u8 *reserved, u8 *free, u8 *failCount, u8 *missingFromTable);
+void Nyxthra_GetWatchedTagLog(u8 index, u16 *tag, u8 *lastSlot, u8 *callCount);
+void Nyxthra_VerifyAllObjectEventPalettes(void);
+void Nyxthra_GetWatchdogCounters(u16 *ticks, u16 *fixAttempts);
+void Nyxthra_GetWatchdogPerTagInfo(u8 index, u16 *attempts, u16 *lastSlot, u16 *lastColor);
+u16 Nyxthra_GetWatchdogGentlemanRomColor(void);
+u16 Nyxthra_GetWatchdogGentlemanUnfadedColor(void);
+void Nyxthra_DebugCheckTableEntry(u16 tag, u16 *indexOut, u16 *colorThroughTableOut, bool8 *pointerMatchesOut, u16 *tagAtIndexOut);
 u8 LoadPlayerObjectEventPalette(enum Gender gender);
 void SetObjectEventSpritePosByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
 void ResetObjectSubpriority(u8 localId, u8 mapNum, u8 mapGroup);

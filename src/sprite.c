@@ -7,6 +7,7 @@
 #include "text.h"
 #include "battle_anim.h"
 #include "test/test.h"
+#include "nyxthra_debug_palette.h"
 
 #define MAX_SPRITE_COPY_REQUESTS 64
 
@@ -532,7 +533,17 @@ u32 CreateSpriteAt(u32 index, const struct SpriteTemplate *template, s16 x, s16 
         InitSpriteAffineAnim(sprite);
 
     if (template->paletteTag != TAG_NONE)
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(template->paletteTag);
+    {
+        Nyxthra_RecordCreateSpriteWithTagCall();
+        // Nyxthra debug: oam.paletteNum is only a 4-bit field (max 15), so
+        // checking it for 0xFF *after* assigning would never trigger - the
+        // assignment itself already truncates 0xFF down to 15 first. Check
+        // the raw lookup result before it gets stuffed into the bitfield.
+        u8 paletteNumResult = IndexOfSpritePaletteTag(template->paletteTag);
+        sprite->oam.paletteNum = paletteNumResult;
+        if (paletteNumResult == 0xFF)
+            Nyxthra_RecordCreateSpriteTagMiss(template->paletteTag);
+    }
 
     return index;
 }

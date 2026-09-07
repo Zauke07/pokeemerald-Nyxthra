@@ -438,8 +438,12 @@ const u16 gObjectEventPal_DarkraiOld[] = INCBIN_U16("graphics/object_events/pics
 
 
 // NEW
-const u16 gObjectEventPal_Wes[] = INCBIN_U16("graphics/object_events/palettes/wes.gbapal");
-const u32 gObjectEventPic_Wes[] = INCBIN_U32("graphics/object_events/pics/people/wes/walking.4bpp");
+// Nyxthra: wes.gbapal was a completely different, unrelated color set from
+// walking.png (not just stale - the two files never matched at all).
+// Pulling the palette straight out of the same PNG the tiles come from
+// means they can never drift apart again.
+const u16 gObjectEventPal_Wes[] = INCGFX_U16("graphics/object_events/pics/people/wes/walking.png", ".gbapal");
+const u32 gObjectEventPic_Wes[] = INCGFX_U32("graphics/object_events/pics/people/wes/walking.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Ash[] = INCBIN_U32("graphics/object_events/pics/people/ash/walking.4bpp");
 const u16 gObjectEventPal_Ash[] = INCBIN_U16("graphics/object_events/palettes/ash.gbapal");
 const u32 gObjectEventPic_AzurillOW[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/azurill.4bpp");
@@ -476,7 +480,7 @@ const u16 gObjectEventPal_Rival_Gloria[] = INCBIN_U16("graphics/object_events/pa
 const u16 gObjectEventPal_Rival_Florian[] = INCBIN_U16("graphics/object_events/palettes/florian.gbapal");
 const u16 gObjectEventPal_Rival_Juliana[] = INCBIN_U16("graphics/object_events/palettes/juliana.gbapal");
 const u16 gObjectEventPal_Rival_Ash[] = INCBIN_U16("graphics/object_events/palettes/ash.gbapal");
-const u16 gObjectEventPal_Rival_Wes[] = INCBIN_U16("graphics/object_events/palettes/wes.gbapal");
+const u16 gObjectEventPal_Rival_Wes[] = INCGFX_U16("graphics/object_events/pics/people/wes/walking.png", ".gbapal");
 const u16 gObjectEventPal_RocketM_F[] = INCBIN_U16("graphics/object_events/palettes/rocket_m_f.gbapal");
 const u16 gObjectEventPal_Team_Flare_Gunt[] = INCBIN_U16("graphics/object_events/palettes/flare_gunt.gbapal");
 const u32 gObjectEventPic_James_Rocket[] = INCBIN_U32("graphics/object_events/pics/people/james_rocket.4bpp");
@@ -492,6 +496,7 @@ const u16 gObjectEventPal_LugiaShadowOld[] = INCBIN_U16("graphics/object_events/
 const u32 gObjectEventPic_OldMan1[] = INCBIN_U32("graphics/object_events/pics/people/old_man_1.4bpp");
 const u16 gObjectEventPal_OldMan1[] = INCBIN_U16("graphics/object_events/palettes/old_man_1.gbapal");
 const u16 gObjectEventPal_OldMan2[] = INCBIN_U16("graphics/object_events/palettes/old_man_2.gbapal");
+const u16 gObjectEventPal_WesReflection[] = INCBIN_U16("graphics/object_events/palettes/wes_reflection.gbapal");
 
 // NPC
 const u16 gObjectEventPal_Nurse_OW[] = INCBIN_U16("graphics/object_events/palettes/nurse_joy_OW.gbapal");
@@ -506,7 +511,7 @@ const u32 gObjectEventPic_DP_Aaron[] = INCBIN_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_DP_AceTrainerF[] = INCBIN_U32("graphics/object_events/pics/people/DP_ace_trainer_f.4bpp");
 const u32 gObjectEventPic_DP_AceTrainerM[] = INCBIN_U32("graphics/object_events/pics/people/DP_ace_trainer_m.4bpp");
 const u32 gObjectEventPic_DP_AceTrainerSnowM[] = INCBIN_U32("graphics/object_events/pics/people/DP_ace_trainer_snow_m.4bpp");
-const u32 gObjectEventPic_DP_Barry[] = INCBIN_U32("graphics/object_events/pics/people/DP_barry.4bpp");
+const u32 gObjectEventPic_DP_Barry[] = INCGFX_U32("graphics/object_events/pics/people/DP_barry.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DP_BattleGirl[] = INCBIN_U32("graphics/object_events/pics/people/DP_battle_girl.4bpp");
 const u32 gObjectEventPic_DP_Beauty[] = INCBIN_U32("graphics/object_events/pics/people/DP_beauty.4bpp");
 const u32 gObjectEventPic_DP_Bertha[] = INCBIN_U32("graphics/object_events/pics/people/DP_bertha.4bpp");
@@ -525,7 +530,7 @@ const u32 gObjectEventPic_DP_Fantina[] = INCBIN_U32("graphics/object_events/pics
 const u32 gObjectEventPic_DP_Fisherman[] = INCBIN_U32("graphics/object_events/pics/people/DP_fisherman.4bpp");
 const u32 gObjectEventPic_DP_GalacticGruntF[] = INCBIN_U32("graphics/object_events/pics/people/DP_galactic_grunt_f.4bpp");
 const u32 gObjectEventPic_DP_GalacticGruntM[] = INCBIN_U32("graphics/object_events/pics/people/DP_galactic_grunt_m.4bpp");
-const u32 gObjectEventPic_DP_Gentleman[] = INCBIN_U32("graphics/object_events/pics/people/DP_gentleman.4bpp");
+const u32 gObjectEventPic_DP_Gentleman[] = INCGFX_U32("graphics/object_events/pics/people/DP_gentleman.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DP_Hiker[] = INCBIN_U32("graphics/object_events/pics/people/DP_hiker.4bpp");
 const u32 gObjectEventPic_DP_Jupiter[] = INCBIN_U32("graphics/object_events/pics/people/DP_jupiter.4bpp");
 const u32 gObjectEventPic_DP_Lady[] = INCBIN_U32("graphics/object_events/pics/people/DP_lady.4bpp");
@@ -540,7 +545,7 @@ const u32 gObjectEventPic_DP_Painter[] = INCBIN_U32("graphics/object_events/pics
 const u32 gObjectEventPic_DP_Palmer[] = INCBIN_U32("graphics/object_events/pics/people/DP_palmer.4bpp");
 const u32 gObjectEventPic_DP_ParasolLady[] = INCBIN_U32("graphics/object_events/pics/people/DP_parasol_lady.4bpp");
 const u32 gObjectEventPic_DP_Picnicker[] = INCBIN_U32("graphics/object_events/pics/people/DP_picnicker.4bpp");
-const u32 gObjectEventPic_DP_PokeKid[] = INCBIN_U32("graphics/object_events/pics/people/DP_poke_kid.4bpp");
+const u32 gObjectEventPic_DP_PokeKid[] = INCGFX_U32("graphics/object_events/pics/people/DP_poke_kid.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_DP_PokeRangerF[] = INCBIN_U32("graphics/object_events/pics/people/DP_poke_ranger_f.4bpp");
 const u32 gObjectEventPic_DP_PokeRangerM[] = INCBIN_U32("graphics/object_events/pics/people/DP_poke_ranger_m.4bpp");
 const u32 gObjectEventPic_DP_PokeFanF[] = INCBIN_U32("graphics/object_events/pics/people/DP_pokefan_f.4bpp");
@@ -575,7 +580,7 @@ const u32 gObjectEventPic_DP_Youngster[] = INCBIN_U32("graphics/object_events/pi
 const u16 gObjectEventPal_DP_Aaron[] = INCBIN_U16("graphics/object_events/palettes/DP_aaron.gbapal");
 const u16 gObjectEventPal_DP_AceTrainer[] = INCBIN_U16("graphics/object_events/palettes/DP_ace_trainer.gbapal");
 const u16 gObjectEventPal_DP_AceTrainerSnowM[] = INCBIN_U16("graphics/object_events/palettes/DP_ace_trainer_snow_m.gbapal");
-const u16 gObjectEventPal_DP_Barry[] = INCBIN_U16("graphics/object_events/palettes/DP_barry.gbapal");
+const u16 gObjectEventPal_DP_Barry[] = INCGFX_U16("graphics/object_events/pics/people/DP_barry.png",".gbapal");
 const u16 gObjectEventPal_DP_BattleGirl[] = INCBIN_U16("graphics/object_events/palettes/DP_battle_girl.gbapal");
 const u16 gObjectEventPal_DP_Beauty[] = INCBIN_U16("graphics/object_events/palettes/DP_beauty.gbapal");
 const u16 gObjectEventPal_DP_Bertha[] = INCBIN_U16("graphics/object_events/palettes/DP_bertha.gbapal");
@@ -594,7 +599,11 @@ const u16 gObjectEventPal_DP_Fantina[] = INCBIN_U16("graphics/object_events/pale
 const u16 gObjectEventPal_DP_Fisherman[] = INCBIN_U16("graphics/object_events/palettes/DP_fisherman.gbapal");
 const u16 gObjectEventPal_DP_GalacticGruntF[] = INCBIN_U16("graphics/object_events/palettes/DP_galactic_grunt_f.gbapal");
 const u16 gObjectEventPal_DP_GalacticGruntM[] = INCBIN_U16("graphics/object_events/palettes/DP_galactic_grunt_m.gbapal");
-const u16 gObjectEventPal_DP_Gentleman[] = INCBIN_U16("graphics/object_events/palettes/DP_gentleman.gbapal");
+// Nyxthra: this file and the PNG's own embedded palette were byte-for-byte
+// identical when checked, so this wasn't the cause of Opa's colors - but
+// pulling straight from the PNG (like Wes above) rules it out for good and
+// keeps both in sync automatically going forward.
+const u16 gObjectEventPal_DP_Gentleman[] = INCGFX_U16("graphics/object_events/pics/people/DP_gentleman.png", ".gbapal");
 const u16 gObjectEventPal_DP_Hiker[] = INCBIN_U16("graphics/object_events/palettes/DP_hiker.gbapal");
 const u16 gObjectEventPal_DP_Jupiter[] = INCBIN_U16("graphics/object_events/palettes/DP_jupiter.gbapal");
 const u16 gObjectEventPal_DP_Lady[] = INCBIN_U16("graphics/object_events/palettes/DP_lady.gbapal");
@@ -608,7 +617,7 @@ const u16 gObjectEventPal_DP_Officer[] = INCBIN_U16("graphics/object_events/pale
 const u16 gObjectEventPal_DP_Painter[] = INCBIN_U16("graphics/object_events/palettes/DP_painter.gbapal");
 const u16 gObjectEventPal_DP_Palmer[] = INCBIN_U16("graphics/object_events/palettes/DP_palmer.gbapal");
 const u16 gObjectEventPal_DP_ParasolLady[] = INCBIN_U16("graphics/object_events/palettes/DP_parasol_lady.gbapal");
-const u16 gObjectEventPal_DP_PokeKid[] = INCBIN_U16("graphics/object_events/palettes/DP_poke_kid.gbapal");
+const u16 gObjectEventPal_DP_PokeKid[] = INCGFX_U16("graphics/object_events/pics/people/DP_poke_kid.png", ".gbapal");
 const u16 gObjectEventPal_DP_PokeRanger[] = INCBIN_U16("graphics/object_events/palettes/DP_poke_ranger.gbapal");
 const u16 gObjectEventPal_DP_PokeFanF[] = INCBIN_U16("graphics/object_events/palettes/DP_pokefan_f.gbapal");
 const u16 gObjectEventPal_DP_PokeFanM[] = INCBIN_U16("graphics/object_events/palettes/DP_pokefan_m.gbapal");
