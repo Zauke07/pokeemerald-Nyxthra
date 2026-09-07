@@ -61,6 +61,7 @@
 #include "script_pokemon_util.h"
 #include "secret_base.h"
 #include "sound.h"
+#include "sprite.h"
 #include "start_menu.h"
 #include "string_util.h"
 #include "task.h"
@@ -580,6 +581,66 @@ void SyncPlayerGenderToStyle(void)
 {
     if (gSaveBlock2Ptr != NULL)
         gSaveBlock2Ptr->playerGender = IsPlayerStyleMale(gSaveBlock2Ptr->playerStyles[0]) ? MALE : FEMALE;
+}
+
+// Nyxthra story: exactly one of May/Brendan is the current Champion of Hoenn,
+// chosen opposite to the player's own gender (male player -> May is Champ,
+// female player -> Brendan is Champ). Single source of truth for this so we
+// don't duplicate the same gender check everywhere a script needs to know
+// which Champion to reference.
+bool8 IsChampionMay(void)
+{
+    return (GetPlayerGenderFromStyle() == MALE);
+}
+
+// Nyxthra story: the Champion's "we've met before, when you were a baby"
+// line in the Petalburg Gym scene names whichever region the player's own
+// chosen crossover style hails from, into gStringVar1/{STR_VAR_1} - a nice
+// touch for the style system rather than one generic line for everyone.
+// Falls back to Hoenn for the two Hoenn styles themselves (their own gym
+// leader's kid meeting them at home doesn't need a region callout).
+void BufferChampReunionRegionName(void)
+{
+    switch (gSaveBlock2Ptr->playerStyles[0])
+    {
+    case STYLE_RED:
+    case STYLE_LEAF:
+        StringCopy(gStringVar1, COMPOUND_STRING("Kanto"));
+        break;
+    case STYLE_ETHAN:
+    case STYLE_LYRA:
+        StringCopy(gStringVar1, COMPOUND_STRING("Johto"));
+        break;
+    case STYLE_LUCAS:
+    case STYLE_DAWN:
+        StringCopy(gStringVar1, COMPOUND_STRING("Sinnoh"));
+        break;
+    case STYLE_HILBERT:
+    case STYLE_HILDA:
+    case STYLE_NATE:
+    case STYLE_ROSA:
+        StringCopy(gStringVar1, COMPOUND_STRING("Einall"));
+        break;
+    case STYLE_CALEM:
+    case STYLE_SERENA:
+        StringCopy(gStringVar1, COMPOUND_STRING("Kalos"));
+        break;
+    case STYLE_ELIO:
+    case STYLE_SELENE:
+        StringCopy(gStringVar1, COMPOUND_STRING("Alola"));
+        break;
+    case STYLE_VICTOR:
+    case STYLE_GLORIA:
+        StringCopy(gStringVar1, COMPOUND_STRING("Galar"));
+        break;
+    case STYLE_FLORIAN:
+    case STYLE_JULIANA:
+        StringCopy(gStringVar1, COMPOUND_STRING("Paldea"));
+        break;
+    default:
+        StringCopy(gStringVar1, COMPOUND_STRING("Hoenn"));
+        break;
+    }
 }
 
 // Hier nutzen wir jetzt enum Direction für die Typsicherheit der Expansion
@@ -2191,6 +2252,13 @@ void CB2_Overworld(void)
     if (fading)
         SetVBlankCallback(NULL);
     OverworldBasic();
+    // Nyxthra: custom NPCs with their own unique dynamic palette tag
+    // (DP_Gentleman etc.) intermittently get their OBJ palette slot
+    // silently overwritten by unrelated standard content while the game
+    // runs - we were unable to pin down the exact writer even with a
+    // hardware watchpoint. Self-heal it continuously instead of leaving
+    // them visibly wrong; this throttles itself to once a second.
+    Nyxthra_VerifyAllObjectEventPalettes();
     if (fading)
     {
         SetFieldVBlankCallback();
@@ -2961,7 +3029,14 @@ static void ResumeMap(bool32 a1)
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
     FreeAllSpritePalettes();
-
+    // Nyxthra: tried restoring gReservedSpritePaletteCount to 12 here
+    // (matching the pre-"Dynamic overworld palette system" convention),
+    // but reverted it - turns out FAR more of the game's overworld content
+    // (Wes, Brendan, Bea, Spencer, reflections, the grass-rustle effect...)
+    // relies on the *full* 16-slot dynamic pool than we assumed, so
+    // shrinking it to 4 (12-15) starved all of THAT instead. The real fix
+    // needs to actually resolve the eviction, not just narrow who it can
+    // happen to.
     FieldEffectActiveListClear();
     StartWeather();
     ResumePausedWeather();

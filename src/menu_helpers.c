@@ -153,7 +153,7 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
      && gSaveBlock2Ptr->optionsUITheme
      && paletteNum == DLG_WINDOW_PALETTE_NUM)
     {
-        AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, 15, TEXT_COLOR_WHITE, 3);
+        AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, 3);
     }
     else
     {

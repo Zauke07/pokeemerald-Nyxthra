@@ -335,81 +335,106 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	step_end
 
 PlayersHouse_1F_Text_IsntItNiceInHere:
-	.string "MOM: Naja, immerhin kein Schimmel an der\n"
+	.string "OPA: Naja, immerhin kein Schimmel an der\n"
 	.string "Wand.\p"
-    .string "Willkommen in deinem neuen Loch, {PLAYER}.$"
+	.string "Willkommen in unserem neuen Loch, {PLAYER}.$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "Die Pokémon haben geschuftet, ich\n"
-    .string "hab’s gefilmt.\p"
-	.string "Wird bei Insta gut laufen.\p"
+	.string "Die Pokémon haben geschuftet,\n"
+	.string "ich hab zugesehen.\p"
+	.string "Arbeitsteilung nennt man das.\p"
 	.string "{PLAYER}, dein Zimmer ist oben.\n"
-	.string "Ich hab sogar deine Uhr aufgehängt.\p"
+	.string "Deine Uhr hängt auch schon.\p"
 	.string "Stell sie aber selbst ein.\n"
-    .string "ich bin doch nicht dein Butler.$"
+	.string "Ich bin alt, nicht dein Butler.$"
 
 PlayersHouse_1F_Text_ArentYouInterestedInRoom:
-	.string "MOM: Echt jetzt, {PLAYER}?\p"
+	.string "OPA: Echt jetzt, {PLAYER}?\p"
 	.string "Nicht mal neugierig auf dein neues Reich?\n"
-	.string "Oben - wenn du’s findest.$"
+	.string "Oben. Treppe. Nicht zu übersehen.$"
 
 PlayersHouse_1F_Text_GoSetTheClock:
-	.string "MOM: {PLAYER}.\p"
-	.string "Stell deine scheiß Uhr in deinem Zimmer!$"
+	.string "OPA: {PLAYER}.\p"
+	.string "Stell deine scheiß Uhr ein.\p"
+	.string "Ich werde nicht jünger.$"
 
 PlayersHouse_1F_Text_OhComeQuickly:
-	.string "MOM: {PLAYER}! Schneller als dein\n"
-    .string "letztes Date!\p"
-	.string "Du verpasst was!$"
+	.string "OPA: {PLAYER}! Komm schnell!\p"
+	.string "Und diesmal wirklich schnell,\n"
+	.string "nicht dein übliches schnell.$"
 
 PlayersHouse_1F_Text_MaybeDadWillBeOn:
-	.string "MOM: Da! Das ist Blütenburgs Arena!\n"
-	.string "Vielleicht siehst du ja deinen alten mal.$"
+	.string "OPA: Da, guck! Irgendwas Wichtiges\n"
+	.string "im Fernsehen.$"
 
-PlayersHouse_1F_Text_ItsOverWeMissedHim:
-	.string "MOM: Na toll… Zu langsam wie immer.\p"
-	.string "DAD war grad im TV und du warst nicht da.\n"
-	.string "Schon fast wie früher.$"
+PlayersHouse_1F_Text_ChampRevealMay:
+	.string "OPA: MAY…\p"
+	.string "Ohne sie wäre damals vermutlich\n"
+	.string "noch viel mehr passiert.\p"
+	.string "Deine Eltern haben das alles\n"
+	.string "noch selbst miterlebt.\p"
+	.string "…\p"
+	.string "Egal.\n"
+	.string "Ist lange her.$"
+
+PlayersHouse_1F_Text_ChampRevealBrendan:
+	.string "OPA: BRENDAN…\p"
+	.string "Ohne ihn wäre damals vermutlich\n"
+	.string "noch viel mehr passiert.\p"
+	.string "Deine Eltern haben das alles\n"
+	.string "noch selbst miterlebt.\p"
+	.string "…\p"
+	.string "Egal.\n"
+	.string "Ist lange her.$"
 
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
-	.string "MOM: Nebenan wohnt dieser irre Professor.\n"
-	.string "Geh hin und sag hallo. Oder tu so.$"
+	.string "OPA: Nebenan wohnt dieser irre Professor.\p"
+	.string "BIRK.\n"
+	.string "Rennt ständig draußen Pokémon hinterher.\p"
+	.string "Geh mal rüber und sag Hallo.\n"
+	.string "Oder tu wenigstens so, als wärst du höflich.$"
 
 PlayersHouse_1F_Text_SeeYouHoney:
-	.string "MOM: So, ich chill jetzt.\p"
-	.string "Mach was du willst.$"
+	.string "OPA: So, ich setz mich jetzt hin.\p"
+	.string "Meine Knie haben für heute genug erlebt.\p"
+	.string "Mach keinen Scheiß.$"
 
 PlayersHouse_1F_Text_DidYouMeetProfBirch:
-	.string "MOM: Warst du schon beim bekloppten Prof?\n"
-	.string "Oder hast du dich wieder verlaufen?$"
+	.string "OPA: Warst du schon beim bekloppten Prof?\p"
+	.string "Oder hast du dich auf den zwanzig Metern\n"
+	.string "bis nach nebenan verlaufen?$"
 
 PlayersHouse_1F_Text_YouShouldRestABit:
-	.string "MOM: Du siehst aus wie durchgekaut.\p"
-	.string "Leg dich kurz hin oder trink\l"
-    .string "wenigstens Wasser.$"
+	.string "OPA: Du siehst aus wie durchgekaut.\p"
+	.string "Leg dich kurz hin.\n"
+	.string "Die Welt geht auch ohne dich fünf Minuten weiter.$"
 
 PlayersHouse_1F_Text_TakeCareHoney:
-	.string "MOM: Pass auf dich auf.\n"
-    .string "Und bring nix mit Flöhen.$"
+	.string "OPA: Pass auf dich auf.\p"
+	.string "Ich hab dich 15 Jahre durchgebracht.\n"
+	.string "Versau mir die Statistik nicht.$"
 
 PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
-	.string "MOM: Whoa, DAD hat dir echt 'nen Orden gegeben?\p"
-	.string "Hier, nimm das. Hab’s beim Flohmarkt geklaut.$"
+	.string "OPA: Noch ein Orden?\p"
+	.string "Nicht schlecht, {PLAYER}.\n"
+	.string "Vielleicht kannst du ja doch was.\p"
+	.string "Hier, nimm das.\n"
+	.string "Lag sowieso nur rum.$"
 
 PlayersHouse_1F_Text_DontPushYourselfTooHard:
-	.string "Mach dich nicht kaputt da draußen.\n"
-	.string "Aber wenn doch, ruf halt an.\p"
-	.string "Oder nicht. Deine Entscheidung.$"
+	.string "Mach dich nicht kaputt da draußen.\p"
+	.string "Deine Eltern würden mich vermutlich\n"
+	.string "persönlich aus dem Grab holen.$"
 
 PlayersHouse_1F_Text_IsThatAPokenav:
-	.string "MOM: Ist das dieses fancy Ding?\n"
-	.string "Hat dir jemand aus DEVON geschenkt?\p"
-	.string "Na komm, speicher wenigstens meine Nummer,\n"
-	.string "falls du mal Geld brauchst.$"
+	.string "OPA: Ist das dieses neumodische Ding?\p"
+	.string "Hat dir jemand von DEVON gegeben?\p"
+	.string "Na los, speicher meine Nummer.\n"
+	.string "Falls du dich irgendwo festfährst.$"
 
 PlayersHouse_1F_Text_RegisteredMom:
-	.string "MOM wurde in den Pokénav eingespeichert.\n"
-	.string "jetzt bist du offiziell verloren.$"
+	.string "OPA wurde im Pokénav eingespeichert.\p"
+	.string "Jetzt kann er dich auch unterwegs nerven.$"
 
 PlayersHouse_1F_Text_Vigoroth1:
 	.string "Fugiiiiih!$"
@@ -418,8 +443,12 @@ PlayersHouse_1F_Text_Vigoroth2:
 	.string "Huggoh, uggo uggo…$"
 
 PlayersHouse_1F_Text_ReportFromPetalburgGym:
-	.string "INTERVIEWER: Das haben wir mitgebracht\n"
-	.string "Bericht von vor der Blütenburg Arena.$"
+	.string "INTERVIEWER: Heute jährt sich erneut\n"
+	.string "die Katastrophe, die HOENN beinahe\l"
+	.string "vollständig verwüstete.\p"
+	.string "Der heutige Champ spielte damals eine\n"
+	.string "entscheidende Rolle bei der Rettung\l"
+	.string "der Region…$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
 	.string "Da läuft gerade Prosieben.\p"
@@ -434,28 +463,24 @@ PlayersHouse_1F_Text_RunningShoesManual:
 	.string "hast.“$"
 
 PlayersHouse_1F_Text_TicketFromBrineyCameForYou:
-	.string "DAD: Hm? Da ist ja mein Kind.\p"
-	.string "Schon groß geworden, oder hab ich Alzheimer?\p"
-	.string "Hier - irgendso'n alter Typ hat dir\n"
-    .string "das zugeschickt.$"
+	.string "OPA: {PLAYER}, da kam was für dich.\p"
+	.string "Irgendein alter Seebär hat das\n"
+	.string "geschickt.\p"
+	.string "Bevor du fragst:\n"
+	.string "Nein, ich hab's nicht aufgemacht.\p"
+	.string "Diesmal.$"
 
 PlayersHouse_1F_Text_PortsInSlateportLilycove:
-	.string "DAD: Ticket für 'ne Fähre?\p"
-	.string "Versuch’s in GRAPHITPORT oder SEEGRASULB.\n"
-	.string "Wenn du's findest, bist du gut.$"
-
-PlayersHouse_1F_Text_BetterGetBackToGym:
-	.string "Ich bin dann wieder in der Arena.\p"
-	.string "MOM passt auf die Bude auf. Hoffentlich.$"
-
-PlayersHouse_1F_Text_DadShouldStayLonger:
-	.string "MOM: DAD war kurz da - hat kaum Hallo gesagt.\p"
-	.string "Redet nur über Pokémon. Will kein Sex.\n"
-    .string "Typisch.$"
+	.string "OPA: Ein Fährticket?\p"
+	.string "Dann versuch's mal in GRAPHITPORT\n"
+	.string "oder SEEGRASULB.\p"
+	.string "Und fall nicht über Bord.\n"
+	.string "Ich hab keine Lust, dich da rauszufischen.$"
 
 
 PlayersHouse_1F_Text_IsThatABreakingStory:
-	.string "MOM: Ist das eine Eilmeldung?$"
+	.string "OPA: Ruhe mal kurz.\n"
+	.string "Das sieht nach 'ner Eilmeldung aus.$"
 
 PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 	.string "Hier sind die Sondernachrichten.\p"
@@ -468,9 +493,11 @@ PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
 	.string "unser laufendes Programm.$"
 
 PlayersHouse_1F_Text_WhatColorDidTheySay:
-	.string "MOM: Hast du’s gesehen, {PLAYER}?\p"
-	.string "Welche Farbe hatte das Pokémon?$"
+	.string "OPA: Hast du das gesehen, {PLAYER}?\p"
+	.string "Welche Farbe hatte das Vieh denn?$"
 
 PlayersHouse_1F_Text_StillUnknownPokemon:
-	.string "MOM: Na, das ist doch was!"
-	.string "Es gibt noch unbekannte Pokémon.$"
+	.string "OPA: Siehst du?\p"
+	.string "Schon wieder irgendein Pokémon,\n"
+	.string "das keiner richtig zuordnen kann.\p"
+	.string "Früher war das hier einfacher.$"

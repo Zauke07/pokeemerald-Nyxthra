@@ -2580,6 +2580,7 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
     Nyxthra_ApplyDarkModeToPaletteRange(BG_PLTT_ID(0) + 1, 6 * 16 - 1);
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(15));
+    Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(15));
 }
 
 static void FreeWindowAndBgBuffers(void)

@@ -95,7 +95,7 @@ u16 GetPlayerOverworldSpriteId(u8 style)
     };
     
     if (style >= NUM_PLAYER_CHARACTERS)
-        return OBJ_EVENT_GFX_BRENDAN_DECORATING; // Fallback auf Brendan
+        return OBJ_EVENT_GFX_RED; // Fallback auf Red (Brendan/May sind keine Spielerstyles mehr)
     
     return playerSprites[style];
 }
@@ -104,27 +104,27 @@ u16 GetTrainerPicFromStyle(u8 style)
 {
     switch (style)
     {
-        case STYLE_BRENDAN: return TRAINER_BACK_PIC_BRENDAN;
-        case STYLE_MAY:     return TRAINER_BACK_PIC_MAY;
-        case STYLE_RED:     return TRAINER_BACK_PIC_RED;
-        case STYLE_LEAF:    return TRAINER_BACK_PIC_LEAF;
-        case STYLE_ETHAN:   return TRAINER_BACK_PIC_ETHAN;
-        case STYLE_LYRA:    return TRAINER_BACK_PIC_LYRA;
-        case STYLE_LUCAS:   return TRAINER_BACK_PIC_LUCAS;
-        case STYLE_DAWN:    return TRAINER_BACK_PIC_DAWN;
-        case STYLE_HILBERT: return TRAINER_BACK_PIC_HILBERT;
-        case STYLE_HILDA:   return TRAINER_BACK_PIC_HILDA;
-        case STYLE_NATE:    return TRAINER_BACK_PIC_NATE;
-        case STYLE_ROSA:    return TRAINER_BACK_PIC_ROSA;
-        case STYLE_CALEM:   return TRAINER_BACK_PIC_CALEM;
-        case STYLE_SERENA:  return TRAINER_BACK_PIC_SERENA;
-        case STYLE_ELIO:    return TRAINER_BACK_PIC_ELIO;
-        case STYLE_SELENE:  return TRAINER_BACK_PIC_SELENE;
-        case STYLE_VICTOR:  return TRAINER_BACK_PIC_VICTOR;
-        case STYLE_GLORIA:  return TRAINER_BACK_PIC_GLORIA;
-        case STYLE_FLORIAN: return TRAINER_BACK_PIC_FLORIAN;
-        case STYLE_JULIANA: return TRAINER_BACK_PIC_JULIANA;
-        default:            return TRAINER_BACK_PIC_BRENDAN;
+        case STYLE_BRENDAN: return TRAINER_PIC_BRENDAN;
+        case STYLE_MAY:     return TRAINER_PIC_MAY;
+        case STYLE_RED:     return TRAINER_PIC_RED;
+        case STYLE_LEAF:    return TRAINER_PIC_LEAF;
+        case STYLE_ETHAN:   return TRAINER_PIC_ETHAN;
+        case STYLE_LYRA:    return TRAINER_PIC_LYRA;
+        case STYLE_LUCAS:   return TRAINER_PIC_LUCAS;
+        case STYLE_DAWN:    return TRAINER_PIC_DAWN;
+        case STYLE_HILBERT: return TRAINER_PIC_HILBERT;
+        case STYLE_HILDA:   return TRAINER_PIC_HILDA;
+        case STYLE_NATE:    return TRAINER_PIC_NATE;
+        case STYLE_ROSA:    return TRAINER_PIC_ROSA;
+        case STYLE_CALEM:   return TRAINER_PIC_CALEM;
+        case STYLE_SERENA:  return TRAINER_PIC_SERENA;
+        case STYLE_ELIO:    return TRAINER_PIC_ELIO;
+        case STYLE_SELENE:  return TRAINER_PIC_SELENE;
+        case STYLE_VICTOR:  return TRAINER_PIC_VICTOR;
+        case STYLE_GLORIA:  return TRAINER_PIC_GLORIA;
+        case STYLE_FLORIAN: return TRAINER_PIC_FLORIAN;
+        case STYLE_JULIANA: return TRAINER_PIC_JULIANA;
+        default:            return TRAINER_PIC_RED; // Brendan/May sind keine Spielerstyles mehr
     }
 }
 
@@ -184,7 +184,7 @@ u16 GetPlayerGraphicsId(u8 playerStyle)
             return OBJ_EVENT_GFX_RIVAL_ASH;
 */
         default:
-            return OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL; // Fallback auf Brendan
+            return OBJ_EVENT_GFX_RIVAL_RED; // Fallback auf Red (Brendan/May sind keine Spielerstyles mehr)
     }
 }
 struct ItemStorageMenu

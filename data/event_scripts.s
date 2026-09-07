@@ -1887,3 +1887,9 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/wild_encounter.inc"
 
 	.include "data/maps/Route119_Mistery/scripts.inc"
+
+	.include "data/maps/GraniteCave_B6F/scripts.inc"
+
+	.include "data/maps/GraniteCave_B5F/scripts.inc"
+
+	.include "data/maps/Test/scripts.inc"

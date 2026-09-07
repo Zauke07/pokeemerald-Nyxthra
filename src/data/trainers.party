@@ -55160,6 +55160,21 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
 
 
+=== TRAINER_WES_TEST ===
+Name: Wes
+Class: Wes
+Pic: Wes
+Gender: Male
+Music: MUS_HG_VS_CHAMPION
+Double Battle: No
+AI: Basic Trainer
+
+Magikarp
+Level: 1
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Splash
+
+
 === TRAINER_TRANSITION_TEST ===
 Name: Liv
 Class: Klara

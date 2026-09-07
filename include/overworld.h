@@ -207,6 +207,8 @@ bool8 IsPlayerStyleMale(u8 style);
 u8 GetPlayerGenderFromStyle(void);
 void SetObjectEventGraphicsId(struct ObjectEvent *objEvent, u16 graphicsId);
 void SyncPlayerGenderToStyle(void);
+bool8 IsChampionMay(void);
+void BufferChampReunionRegionName(void);
 void Debug_UpdatePlayerNameWithStyleInfo(void);
 u16 GetPlayerGraphicsId(u8 playerStyle);
 void InitOverworldGraphicsRegisters(void);

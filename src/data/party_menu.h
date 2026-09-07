@@ -152,9 +152,17 @@ static const u8 sFontColorTable[][3] =
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_GREEN},      // Unused
     {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_2,  TEXT_DYNAMIC_COLOR_3},  // Gender symbol
     {TEXT_COLOR_WHITE,       TEXT_COLOR_DARK_GRAY,  TEXT_COLOR_LIGHT_GRAY}, // Selection actions
-    {TEXT_COLOR_WHITE,       TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_BLUE}, // Field moves
+    // Nyxthra: shadow was TEXT_COLOR_LIGHT_BLUE/LIGHT_RED (a lighter shade of
+    // the same color as the text) - illegible in Dark Mode since it never
+    // gets darkened like the other rows' shadows do, but honestly a shadow
+    // lighter than its own text isn't great in either theme.
+    // NOTE: use LIGHT_GRAY here, not DARK_GRAY - Nyxthra_ApplyDarkModeToTextColorPalette
+    // (text_window.c) brightens DARK_GRAY to white (it's the *foreground*
+    // slot for plain text) and darkens LIGHT_GRAY to black (the matching
+    // *shadow* slot) - using DARK_GRAY here made the shadow turn white too.
+    {TEXT_COLOR_WHITE,       TEXT_COLOR_BLUE,       TEXT_COLOR_LIGHT_GRAY}, // Field moves
     {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_DARK_GRAY},  // Unused
-    {TEXT_COLOR_WHITE,       TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_RED},  // Move relearner
+    {TEXT_COLOR_WHITE,       TEXT_COLOR_RED,        TEXT_COLOR_LIGHT_GRAY}, // Move relearner
 };
 
 static const struct WindowTemplate sSinglePartyMenuWindowTemplate[] =

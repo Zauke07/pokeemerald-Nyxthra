@@ -13,9 +13,11 @@ Verborgene_Lichtung_EventScript_HideCelebi::
 	setflag FLAG_HIDE_VERBORGENE_LICHTUNG_CELEBI
 	return
 
+@ Nyxthra story: reappears on every revisit until actually caught, same as
+@ Mewtwo Statue/Lavados/Uxie - a mere defeat/flee no longer permanently
+@ hides it (FLAG_DEFEATED_VERBORGENE_LICHTUNG_CELEBI is still set for any
+@ other tracking purposes, just no longer checked here).
 Verborgene_Lichtung_EventScript_TryShowCelebi::
-	setvar VAR_TEMP_0, 1
-	goto_if_set FLAG_DEFEATED_VERBORGENE_LICHTUNG_CELEBI, Common_EventScript_NopReturn
 	setvar VAR_TEMP_0, 0
 	clearflag FLAG_HIDE_VERBORGENE_LICHTUNG_CELEBI
 	return

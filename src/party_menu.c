@@ -2396,8 +2396,10 @@ static void LoadPartyMenuWindows(void)
         FillWindowPixelBuffer(i, PIXEL_FILL(0));
     LoadUserWindowBorderGfx(0, 0x4F, BG_PLTT_ID(13));
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(13), PLTT_SIZE_4BPP);
+    Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(13));
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(14), PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(14));
+    Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(14));
     LoadPalette(gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
 }
@@ -8801,6 +8803,7 @@ static void Task_FirstBattleEnterParty_WaitFadeNormal(u8 taskId)
         LoadUserWindowBorderGfx(0, 0x4F, BG_PLTT_ID(13));
         LoadUserWindowBorderGfx_(0, 0x58, BG_PLTT_ID(13));
         LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, BG_PLTT_ID(13), PLTT_SIZE_4BPP);
+        Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(13));
         if (gPartyMenu.action == PARTY_ACTION_USE_ITEM)
             DisplayPartyMenuStdMessage(PARTY_MSG_USE_ON_WHICH_MON);
         else

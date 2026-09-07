@@ -835,7 +835,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 
 LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon:
 	.string "Prof. Birk: Du bist also {PLAYER}{KUN}.\p"
-	.string "Dein Dad hat gesagt, du bist kein Noob.\n"
+	.string "Dein Opa hat gesagt, du bist kein Noob.\n"
 	.string "Wie du eben gekämpft hast… Respekt!\p"
 	.string "Du hast mich gerettet, also behalt\n"
 	.string "das Pokémon. Ist jetzt deins.\p"
@@ -897,8 +897,11 @@ LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
 	.string "{PLAYER} erhält den Pokédex!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
-	.string "Prof. Birk: In dieser ROM-Hack-Edition\n"
-	.string "gibt es alle Pokémon.\p"
+	.string "Prof. Birk: Seit jenem Tag vor Jahren\n"
+	.string "ist einiges anders in Hoenn.\p"
+	.string "Pokémon aus aller Welt tauchen seitdem\n"
+	.string "auch hier auf, wo sie eigentlich gar\l"
+	.string "nicht hingehören.\p"
 	.string "Darum ist dein {COLOR RED}NATIONALDEX{COLOR DARK_GRAY}\n"
 	.string "direkt freigeschaltet.\p"
 	.string "Der POKéDEX scannt automatisch jedes\n"

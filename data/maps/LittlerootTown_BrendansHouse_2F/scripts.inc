@@ -338,14 +338,14 @@ PlayersHouse_2F_Text_ClockIsStopped:
 	.string "zeitlos in diesem Loch hängen.$"
 
 PlayersHouse_2F_Text_HowDoYouLikeYourRoom:
-	.string "MOM: Na, {PLAYER}?\n"
+	.string "OPA: Na, {PLAYER}?\n"
 	.string "Wie gefällt dir dein neuer Knast?\p"
-	.string "Sieht sauber aus.\l"
-	.string "Dank den Pokémon-Sklaven.\p"
+	.string "Sieht sogar sauber aus.\n"
+	.string "Verdächtig sauber.\p"
 	.string "Unten ist auch alles fertig.\n"
-	.string "Sogar der Fernseher steht schon.$\p"
-	.string "Ach ja, schau mal, ob dein Tisch\n"
-	.string "nicht schon wieder voller Müll ist.$"
+	.string "Sogar der Fernseher läuft.\p"
+	.string "Ach ja, schau mal nach deinem Tisch.\n"
+	.string "Vielleicht lebt da inzwischen was.$"
 
 PlayersHouse_2F_Text_Notebook:
 	.string "{PLAYER} schaut ins vergilbte Notizbuch…\p"

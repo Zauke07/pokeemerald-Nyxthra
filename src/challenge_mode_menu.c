@@ -115,15 +115,7 @@ static void InitChallengeTextPalette(void)
 
     palette = gSaveBlock2Ptr->optionsUITheme ? RGB(6, 7, 9) : RGB_WHITE;
     LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
-    if (gSaveBlock2Ptr->optionsUITheme)
-    {
-        // Dark mode: body text white with black shadow.
-        palette = RGB_BLACK;
-        LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
-        palette = RGB_WHITE;
-        LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
-    }
-    else
+    if (!gSaveBlock2Ptr->optionsUITheme)
     {
         palette = RGB(8, 8, 8);
         LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
@@ -139,6 +131,23 @@ static void InitChallengeTextPalette(void)
     LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
 
     Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
+
+    if (gSaveBlock2Ptr->optionsUITheme)
+    {
+        // Dark mode: body text white with black shadow. Must run AFTER
+        // Nyxthra_ApplyDarkModeToWindowPalette() above, which otherwise
+        // immediately darkens this bright white right back down again (it
+        // treats any bright neutral color as a leftover light-mode fill).
+        palette = RGB_BLACK;
+        LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
+        palette = RGB_WHITE;
+        LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+
+        // sTextColorTitle uses the raw TEXT_COLOR_GREEN, which was tuned for
+        // a light background and is nearly unreadable on the dark window fill.
+        palette = RGB(14, 30, 14);
+        LoadPalette(&palette, BG_PLTT_ID(15) + TEXT_COLOR_GREEN, PLTT_SIZEOF(1));
+    }
 
     // Keep title shadow black in both light and dark mode.
     palette = RGB_BLACK;

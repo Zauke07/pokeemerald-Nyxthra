@@ -17,8 +17,10 @@ ScorchedSlabSecret_EventScript_HideUxie::
 	setflag FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE
 	return
 
+@ Nyxthra story: reappears on every revisit until actually caught - matches
+@ Mewtwo Statue's behavior (Route119_Mistery), which never permanently hides
+@ on a mere defeat/flee either, only on FLAG_CAUGHT_MEWTWO_STATUE.
 ScorchedSlabSecret_EventScript_TryShowUxie::
-	goto_if_set FLAG_DEFEATED_UXIE, Common_EventScript_NopReturn
 	clearflag FLAG_HIDE_SCORCHED_SLAB_SECRET_UXIE
 	return
 

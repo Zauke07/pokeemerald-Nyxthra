@@ -335,10 +335,13 @@ static void InitRandomizerTextPalette(void)
     // Im Dark-Mode Index 10 (PIXEL_FILL(0xA) = Fensterfuellfarbe) abdunkeln.
     palette = gSaveBlock2Ptr->optionsUITheme ? RGB(6, 7, 9) : RGB_WHITE;
     LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
-    palette = RGB(8, 8, 8);
-    LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
-    palette = RGB(30, 30, 30);
-    LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+    if (!gSaveBlock2Ptr->optionsUITheme)
+    {
+        palette = RGB(8, 8, 8);
+        LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
+        palette = RGB(30, 30, 30);
+        LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+    }
 
     if (IsFemaleStyle(gSaveBlock2Ptr->playerStyles[0]))
         palette = RGB(31, 3, 21);
@@ -349,6 +352,29 @@ static void InitRandomizerTextPalette(void)
 
     // Dark-Mode fuer Indizes 1/2/3 anwenden.
     Nyxthra_ApplyDarkModeToWindowPalette(BG_PLTT_ID(15));
+
+    if (gSaveBlock2Ptr->optionsUITheme)
+    {
+        // Dark mode: body text white with black shadow. Must run AFTER
+        // Nyxthra_ApplyDarkModeToWindowPalette() above, which otherwise
+        // immediately darkens this bright white right back down again (it
+        // treats any bright neutral color as a leftover light-mode fill).
+        palette = RGB_BLACK;
+        LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
+        palette = RGB_WHITE;
+        LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
+
+        // sTextColorTitle uses the raw TEXT_COLOR_GREEN, which was tuned for
+        // a light background and is nearly unreadable on the dark window fill.
+        palette = RGB(14, 30, 14);
+        LoadPalette(&palette, BG_PLTT_ID(15) + TEXT_COLOR_GREEN, PLTT_SIZEOF(1));
+
+        // sTextOn/sTextOff use {SHADOW LIGHT_GRAY}, which reads as a bright
+        // white halo around the green/red text on the dark fill. Black shadow
+        // matches every other Dark Mode text in the game.
+        palette = RGB_BLACK;
+        LoadPalette(&palette, BG_PLTT_ID(15) + TEXT_COLOR_LIGHT_GRAY, PLTT_SIZEOF(1));
+    }
 }
 
 static void DrawRandomizerWindowBorder(u8 windowId, u16 baseTileNum)

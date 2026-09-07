@@ -15,9 +15,12 @@ MysteryHoeleL_F1_EventScript_HideLavados::
 	setflag FLAG_HIDE_LAVADOS
 	return
 
+@ Nyxthra story: shows again on every revisit as long as it hasn't actually
+@ been caught - only fleeing/defeating it used to permanently hide it too
+@ (FLAG_DEFEATED_LAVADOS), which meant losing your one shot forever if you
+@ didn't catch it that first time. Matches Mewtwo Statue's own behavior
+@ (Route119_Mistery) - that one only ever checks its CAUGHT flag too.
 MysteryHoeleL_F1_EventScript_TryShowLavados::
-	setvar VAR_TEMP_1, 1
-	goto_if_set FLAG_DEFEATED_LAVADOS, Common_EventScript_NopReturn
 	setvar VAR_TEMP_1, 0
 	clearflag FLAG_HIDE_LAVADOS
 	return

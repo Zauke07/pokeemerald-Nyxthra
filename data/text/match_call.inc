@@ -2469,54 +2469,54 @@ MatchCall_Text_Scott7::
 	.string "SCOTT ist außer Reichweite…$"
 
 MatchCall_Text_Norman1::
-	.string "DAD: In METAROST gibt es den\n"
+	.string "MAREK: In METAROST gibt es den\n"
 	.string "ZERSCHNEIDER.\p"
 	.string "Besuch ihn.$"
 
 MatchCall_Text_Norman2::
-	.string "DAD: Hm… Du wirst stärker,\n"
+	.string "MAREK: Hm… Du wirst stärker,\n"
 	.string "{PLAYER}.\p"
 	.string "Du entfernst dich von uns…\p"
 	.string "Schwer zu erklären.$"
 
 MatchCall_Text_Norman3::
-	.string "DAD: Aha…\n"
+	.string "MAREK: Aha…\n"
 	.string "Vier ORDEN…\p"
 	.string "Es ist soweit.\n"
 	.string "Komm her.\p"
 	.string "Ich warte!$"
 
 MatchCall_Text_Norman4::
-	.string "DAD: {PLAYER}! Besuch Mutter mal.\p"
+	.string "MAREK: {PLAYER}! Besuch deinen Opa mal.\p"
 	.string "Ich bleibe hier und trainiere.\p"
 	.string "Der Weg des Kampfes ist hart!$"
 
 MatchCall_Text_Norman5::
-	.string "DAD: Oh, hi, {PLAYER}!\p"
+	.string "MAREK: Oh, hi, {PLAYER}!\p"
 	.string "MAGMA-EMBLEM?\n"
 	.string "Kenn ich nicht.\p"
 	.string "Klingt nach Vulkan!$"
 
 MatchCall_Text_Norman_Preparing::
-	.string "DAD: Hiyah! Haah! Dwah!\p"
+	.string "MAREK: Hiyah! Haah! Dwah!\p"
 	.string "…Oh? {PLAYER}!\p"
 	.string "Du störst mein Training!$"
 
 MatchCall_Text_Norman_PreparingPostGame::
-	.string "DAD: {PLAYER}!\p"
+	.string "MAREK: {PLAYER}!\p"
 	.string "CHAMP… Wer hätte das gedacht…\p"
 	.string "Okay!\n"
 	.string "Ich hole auf!$"
 
 MatchCall_Text_Norman_RematchReady::
-	.string "DAD: Hm? {PLAYER}?\n"
+	.string "MAREK: Hm? {PLAYER}?\n"
 	.string "Gutes Timing!\p"
 	.string "Ich fordere dich heraus.\p"
 	.string "Komm zur ARENA.\n"
 	.string "Ich warte!$"
 
 MatchCall_Text_Norman_PostRematch::
-	.string "DAD: …Du erstaunst mich, {PLAYER}.\n"
+	.string "MAREK: …Du erstaunst mich, {PLAYER}.\n"
 	.string "Wie hoch fliegst du noch?$"
 
 MatchCall_Text_Steven1::

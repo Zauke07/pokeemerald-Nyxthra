@@ -3,7 +3,6 @@
   "name": "GraniteCave_B2F",
   "layout": "LAYOUT_GRANITE_CAVE_B2F",
   "music": "MUS_PETALBURG_WOODS",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_GRANITE_CAVE",
   "requires_flash": true,
   "weather": "WEATHER_NONE",
@@ -356,5 +355,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "GraniteCave_B2F_EventScript_BrailleWall"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -1076,36 +1076,35 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "Sonderbonbon geschnupft.$"
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
-	.string "Mom: {PLAYER}, wir sind da, Schatz!\p"
+	.string "OPA: {PLAYER}, wir sind da!\p"
 	.string "15 Jahre alt und schon im Umzugswagen\n"
 	.string "zwischen Kisten eingepfercht… herrlich!\p"
-	.string "Dank dieser endlosen Quarantäne\n"
-	.string "mussten wir aus der alten Stadt raus.\p"
 	.string "Aber hey - willkommen in WURZELHEIM!\p"
 	.string "Klein, friedlich,\n"
 	.string "kaum Empfang - perfekt!\p"
-	.string "Und… du bekommst dein eigenes Zimmer.\n"
-	.string "Lass uns mal reinschauen!$"
+	.string "Deine Eltern hätten wahrscheinlich\n"
+	.string "irgendwas Netteres dazu gesagt.\p"
+	.string "Ich bin aber nicht deine Eltern.\p"
+	.string "Komm, schauen wir uns die Bude an.$"
 
 LittlerootTown_Text_WaitPlayer:
-	.string "Mom: Warte, {PLAYER}!$"
-	.string "Mom: Warte, {PLAYER}!$"
+	.string "OPA: Warte, {PLAYER}!$"
+	.string "OPA: Warte, {PLAYER}!$"
 
 LittlerootTown_Text_WearTheseRunningShoes:
-	.string "Mom: {PLAYER}, schon mit PROF. BIRK\n"
-	.string "gequatscht? Hat er dich adoptiert?\p"
+	.string "OPA: {PLAYER}, schon mit PROF. BIRK\n"
+	.string "gequatscht?\p"
 	.string "Oh! Das POKéMON steht dir gut.\n"
-	.string "Wusste gar nicht, dass du so\l"
-	.string " heldenhaft bist!\p"
-	.string "Hier, zieh das an - TURBOTRETER!\n"
-	.string "Sind besser als deine alten\l"
-	.string "Quarantänelatschen.$"
+	.string "Fast so, als wüsstest du, was du tust.\p"
+	.string "Hier, nimm die TURBOTRETER.\p"
+	.string "Mit deinen alten Latschen holt dich ja\n"
+	.string "jedes Zigzachs ein.$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
 	.string "{PLAYER} zieht die TURBOTRETER an.$"
 
 LittlerootTown_Text_ExplainRunningShoes:
-	.string "Mom: Und bevor du losrennst…\n"
+	.string "OPA: Und bevor du damit abhaust…\n"
 	.string "kurz die Anleitung!\p"
 	.string "“Mit TURBOTRETERN:\n"
 	.string "Drück B einmal = Rennen AN.\l"
@@ -1113,8 +1112,8 @@ LittlerootTown_Text_ExplainRunningShoes:
 	.string "Wenn du willst, kannst du das in den\n"
 	.string "Optionen auch umstellen,\l"
 	.string "damit man B gedrückt halten muss.\p"
-	.string "Alles klar? Dann los.\n"
-	.string "Ab in die große, gefährliche Welt!$"
+	.string "Alles klar?\n"
+	.string "Dann verschwinde, bevor ich sentimental werde.$"
 
 LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "…\n"
@@ -1280,13 +1279,35 @@ Movement_TestlaborGuard_StepAside:
 	step_end
 
 TestlaborGuard_AskPassword:
-	.string "Zutritt nur für Entwickler!\nBitte nenne das Passwort:$"
+	.string "Zutritt nur für Entwickler!\n"
+	.string "Bitte nenne das Passwort:$"
 
 TestlaborGuard_CorrectPassword:
-	.string "Zugang bestätigt.\nTritt ein.$"
+	.string "Zugang bestätigt.\n"
+	.string "Tritt ein.$"
 
 TestlaborGuard_WrongPassword:
-	.string "Falsches Passwort.\nZutritt verweigert.$"
+	.string "Falsches Passwort.\n"
+	.string "Zutritt verweigert.$"
 
 TestlaborGuard_WelcomeBack:
-	.string "Du bist berechtigt.\nGeh ruhig rein.$"
+	.string "Du bist berechtigt.\n"
+	.string "Geh ruhig rein.$"
+
+LittlerootTown_EventScript_WesTest::
+	trainerbattle_single TRAINER_WES_TEST, LittlerootTown_Text_WesIntro, LittlerootTown_Text_WesDefeat
+	msgbox LittlerootTown_Text_WesPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_Text_WesIntro:
+	.string "WES: ...\n"
+	.string "Zeig mir, was du drauf hast.$"
+
+LittlerootTown_Text_WesDefeat:
+	.string "WES: ...\n"
+	.string "Nicht schlecht.$"
+
+LittlerootTown_Text_WesPostBattle:
+	.string "WES: ...$"
+

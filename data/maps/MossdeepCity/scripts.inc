@@ -49,11 +49,82 @@ MossdeepCity_EventScript_Girl::
 	end
 
 MossdeepCity_EventScript_Woman::
-	msgbox MossdeepCity_Text_SpecialSpaceCenterRock, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_CAUGHT_JIRACHI, MossdeepCity_EventScript_WomanJirachiCaught
+	goto_if_set FLAG_MOSSDEEP_JIRACHI_REVEALED, MossdeepCity_EventScript_WomanJirachiRevealed
+	msgbox MossdeepCity_Text_SpecialSpaceCenterRock, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_WomanJirachiRevealed::
+	msgbox MossdeepCity_Text_SpecialSpaceCenterRockAfterReveal, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_EventScript_WomanJirachiCaught::
+	msgbox MossdeepCity_Text_SpecialSpaceCenterRockCaught, MSGBOX_DEFAULT
+	release
 	end
 
 MossdeepCity_EventScript_WhiteRock::
 	msgbox MossdeepCity_Text_ItsAWhiteRock, MSGBOX_SIGN
+	end
+
+MossdeepCity_EventScript_CrackedRock::
+	lockall
+	goto_if_set FLAG_CAUGHT_JIRACHI, MossdeepCity_EventScript_CrackedRockCaughtAlready
+	goto_if_set FLAG_DEFEATED_JIRACHI_ROCK_ENCOUNTER, MossdeepCity_EventScript_CrackedRockEmpty
+	msgbox MossdeepCity_Text_RockHint, MSGBOX_DEFAULT
+	closemessage
+	specialvar VAR_RESULT, FindFieldMoveMonForJirachiRock
+	goto_if_eq VAR_RESULT, PARTY_SIZE, MossdeepCity_EventScript_CrackedRockNothingHappens
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	msgbox MossdeepCity_Text_MetagrossUsesRockSmash, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 4
+	special ShakeCamera
+	waitstate
+	fadescreen FADE_TO_WHITE
+	delay 20
+	playse SE_M_ROCK_THROW
+	setflag FLAG_MOSSDEEP_JIRACHI_REVEALED
+	fadescreen FADE_FROM_WHITE
+	msgbox MossdeepCity_Text_RockHasCracked, MSGBOX_DEFAULT
+	closemessage
+	setwildbattle SPECIES_JIRACHI, 30
+	special ForceShinyScriptedWildMon
+	dowildbattle
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, MossdeepCity_EventScript_JirachiCaughtNow
+	msgbox MossdeepCity_Text_JirachiEscaped, MSGBOX_DEFAULT
+	special InitJirachiRoamer
+	setflag FLAG_DEFEATED_JIRACHI_ROCK_ENCOUNTER
+	releaseall
+	end
+
+MossdeepCity_EventScript_CrackedRockNothingHappens::
+	msgbox MossdeepCity_Text_RockNothingHappens, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MossdeepCity_EventScript_JirachiCaughtNow::
+	setflag FLAG_CAUGHT_JIRACHI
+	msgbox MossdeepCity_Text_JirachiCaughtNow, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MossdeepCity_EventScript_CrackedRockEmpty::
+	msgbox MossdeepCity_Text_JirachiRockEmpty, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MossdeepCity_EventScript_CrackedRockCaughtAlready::
+	msgbox MossdeepCity_Text_JirachiRockCaughtAlready, MSGBOX_DEFAULT
+	releaseall
 	end
 
 MossdeepCity_EventScript_GymSign::
@@ -389,7 +460,68 @@ MossdeepCity_Text_SpecialSpaceCenterRock:
 	.string "man wenigstens was in der Hand.$"
 
 MossdeepCity_Text_ItsAWhiteRock:
-	.string "Ist halt ein weißer Stein. Spektakulär.$"
+	.string "Ein makellos weißer Stein.\n"
+	.string "Er wirkt seltsam... warm.$"
+
+MossdeepCity_Text_SpecialSpaceCenterRockAfterReveal:
+	.string "Hast du das Beben eben gespürt?!\p"
+	.string "Der heilige Stein hat auf einmal\n"
+	.string "einen Riss bekommen!\p"
+	.string "Die Nerds vom SPACE CENTER drehen\n"
+	.string "völlig durch deswegen.\p"
+	.string "Manche behaupten, sie hätten etwas\n"
+	.string "Goldenes durch die Luft fliegen sehen...$"
+
+MossdeepCity_Text_SpecialSpaceCenterRockCaught:
+	.string "Du hast es also wirklich gefangen,\n"
+	.string "was aus dem Stein kam?\p"
+	.string "Vielleicht sollte ich mir doch keine\n"
+	.string "Wunschzettel mehr schreiben.\p"
+	.string "Sternschnuppen scheinen ja doch\n"
+	.string "manchmal wahr zu werden.$"
+
+MossdeepCity_Text_RockHint:
+	.string "Der Stein fühlt sich warm an und\n"
+	.string "scheint auf etwas zu warten.\p"
+	.string "Nur die geballte Kraft eines ganz\n"
+	.string "besonderen, glänzenden Stahlkolosses\l"
+	.string "könnte ihn wohl aufbrechen...$"
+
+MossdeepCity_Text_RockNothingHappens:
+	.string "Nichts passiert.\n"
+	.string "Der Stein bleibt unversehrt.$"
+
+MossdeepCity_Text_MetagrossUsesRockSmash:
+	.string "{STR_VAR_1} setzt ZERTRÜMMERER ein!$"
+
+MossdeepCity_Text_RockHasCracked:
+	.string "Als der Blitz verklingt, siehst du\n"
+	.string "einen tiefen Riss im weißen Stein.\p"
+	.string "Ein schwaches, goldenes Leuchten\n"
+	.string "dringt aus dem Inneren hervor...$"
+
+MossdeepCity_Text_JirachiEscaped:
+	.string "Jirachi schlüpft aus deinem Griff\n"
+	.string "und schießt in den Himmel davon!\p"
+	.string "Es scheint, als würde es jetzt\n"
+	.string "irgendwo in der Gegend umherstreifen...$"
+
+MossdeepCity_Text_JirachiCaughtNow:
+	.string "Jirachi kuschelt sich zufrieden in\n"
+	.string "seinen Ball.\p"
+	.string "Es fühlt sich an, als hätte sich\n"
+	.string "gerade dein größter Wunsch erfüllt.$"
+
+MossdeepCity_Text_JirachiRockEmpty:
+	.string "Der Riss im Stein ist leer.\n"
+	.string "Was auch immer hier war, es ist\l"
+	.string "längst über alle Berge.$"
+
+MossdeepCity_Text_JirachiRockCaughtAlready:
+	.string "Der Riss im Stein ist leer und\n"
+	.string "still.\p"
+	.string "Aber irgendwie fühlt es sich hier\n"
+	.string "trotzdem warm und friedlich an.$"
 
 MossdeepCity_Text_GymSign:
 	.string "POKéMON ARENA von MOOSBACH CITY\n"

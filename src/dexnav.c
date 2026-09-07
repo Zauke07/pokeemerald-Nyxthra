@@ -2175,6 +2175,13 @@ static void CreateTypeIconSprites(void)
     u8 i;
 
     LoadCompressedSpriteSheet(&gSpriteSheet_MoveTypes);
+    // Nyxthra: same raw-slot-clobber issue as pokemon_summary_screen.c's
+    // move type icons - invalidate whatever tag currently sits in slots
+    // 13-15 so custom field objects using the dynamic palette pool get
+    // properly reloaded (not silently skipped) on return to the field.
+    FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(13));
+    FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(14));
+    FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(15));
     LoadPalette(gMoveTypes_Pal, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
     for (i = 0; i < 2; i++)
     {
