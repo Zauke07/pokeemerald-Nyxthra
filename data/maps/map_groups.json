@@ -153,7 +153,8 @@
     "LittlerootTown_ProfessorBirchsLab",
     "Testlabor",
     "Testlabor_fieldmoves",
-    "Testlabor_Unterwasser"
+    "Testlabor_Unterwasser",
+    "Test"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -495,7 +496,9 @@
     "Meteorfalls_B1F_3R",
     "MeteorFalls_B1F_4R",
     "MtPyre_6F_2",
-    "Route119_Mistery"
+    "Route119_Mistery",
+    "GraniteCave_B5F",
+    "GraniteCave_B6F"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

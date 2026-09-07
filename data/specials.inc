@@ -179,6 +179,10 @@ gSpecials::
 	def_special Special_ViewWallClock, waitstate=1
 	def_special ChooseStarter, waitstate=1
 	def_special StartWallyTutorialBattle, waitstate=1
+	def_special LoadChampStarterForCatchDemo
+	def_special SetForcedChampBackPic
+	def_special ClearForcedBattleBackPic
+	def_special StartChampCatchDemoBattle, waitstate=1
 	def_special ChangePokemonNickname, waitstate=1
 	def_special ChoosePartyMon, waitstate=1
 	def_special GetFirstFreePokeblockSlot
@@ -318,6 +322,11 @@ gSpecials::
 	def_special Script_FacePlayer
 	def_special Script_ClearHeldMovement
 	def_special InitRoamer
+	def_special InitJirachiRoamer
+	def_special ForceShinyScriptedWildMon
+	def_special FindFieldMoveMonForJirachiRock
+	def_special IsChampionMay
+	def_special BufferChampReunionRegionName
 	def_special Nyxthra_DryUpRoute104Lake
 	def_special Nyxthra_DebugShowObjectIdentity
 	def_special Nyxthra_DebugShowWatchdogGentleman

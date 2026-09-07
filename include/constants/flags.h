@@ -78,13 +78,13 @@
 #define FLAG_CHALLENGE_HOUSE_BATTLE_ACTIVE     0x3A // Challenge House: Kampf aktiv (Niederlage-Erkennung)
 #define FLAG_CHALLENGE_HOUSE_REWARD_GIVEN  0x3B // Challenge House: Belohnung bereits ausgegeben
 #define FLAG_CAUGHT_MEWTWO_STATUE    0x3C // Mewtu-Statue wurde gefangen
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
-#define FLAG_UNUSED_0x042    0x42 // Unused Flag
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_MOSSDEEP_JIRACHI_REVEALED    0x3D // Weißer Stein in Mossdeep ist aufgebrochen (für immer)
+#define FLAG_HIDE_PETALBURG_GYM_CHAMP    0x3E // Nyxthra: the Champion's one-time catching-demo appearance in Petalburg Gym
+#define FLAG_CAUGHT_JIRACHI    0x3F // Jirachi wurde gefangen (sofort oder später als Roamer)
+#define FLAG_DEFEATED_JIRACHI_ROCK_ENCOUNTER    0x40 // Erstbegegnung am Stein vorbei (Jirachi ist entkommen und roamt jetzt)
+#define FLAG_CAUGHT_SHINY_METAGROSS    0x41 // Schillerndes Metagross in GraniteCave_B6F wurde gefangen
+#define FLAG_HIDE_PETALBURG_CITY_CHAMP    0x42 // Champion object on the PetalburgCity map (separate from FLAG_HIDE_PETALBURG_GYM_CHAMP, which is the gym's own copy of the object)
+#define FLAG_CAUGHT_ARTICUNO    0x43 // Arktos in Meteor Falls B1F wurde gefangen (getrennt von FLAG_DEFEATED_METEOR_FALLS_ARTICUNO, das nur fuer Tracking bleibt)
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -675,7 +675,7 @@
 #define FLAG_UNUSED_0x266  0x266 // keine wilden pkmn
 #define FLAG_UNUSED_0x267  0x267 // trainer kämpfen nur nach ansprache
 #define FLAG_UNUSED_0x268  0x268 // über Kollisionstiles laufen NUR FÜR DEBUGGING
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+#define FLAG_UNUSED_0x269  0x269 // per pokenav mit R fliegen
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag

@@ -442,6 +442,30 @@ const u16 gTilesetPalettes_Cave[][16] =
     INCGFX_U16("data/tilesets/secondary/cave/palettes/15.pal", ".gbapal"),
 };
 
+// Test tileset for tiles_cave.png - a reskin candidate for gTileset_Cave.
+// Not used by any map; assign it in Porymap to a scratch layout to preview it.
+const u32 gTilesetTiles_CaveTest[] = INCGFX_U32("data/tilesets/secondary/cave_test/tiles.png", ".4bpp.fastSmol", "-num_tiles 425 -Wnum_tiles");
+
+const u16 gTilesetPalettes_CaveTest[][16] =
+{
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/00.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/01.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/02.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/03.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/04.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/05.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/06.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/07.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/08.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/09.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/10.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/11.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/12.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/13.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/14.pal", ".gbapal"),
+    INCGFX_U16("data/tilesets/secondary/cave_test/palettes/15.pal", ".gbapal"),
+};
+
 const u32 gTilesetTiles_PokemonSchool[] = INCGFX_U32("data/tilesets/secondary/pokemon_school/tiles.png", ".4bpp.fastSmol", "-num_tiles 278 -Wnum_tiles");
 
 const u16 gTilesetPalettes_PokemonSchool[][16] =

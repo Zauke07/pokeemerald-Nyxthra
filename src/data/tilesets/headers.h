@@ -262,6 +262,18 @@ const struct Tileset gTileset_Cave =
     .callback = InitTilesetAnim_Cave,
 };
 
+// Test tileset for previewing tiles_cave.png in Porymap - see graphics.h.
+const struct Tileset gTileset_CaveTest =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveTest,
+    .palettes = gTilesetPalettes_CaveTest,
+    .metatiles = gMetatiles_CaveTest,
+    .metatileAttributes = gMetatileAttributes_CaveTest,
+    .callback = InitTilesetAnim_Cave,
+};
+
 const struct Tileset gTileset_PokemonSchool =
 {
     .isCompressed = TRUE,

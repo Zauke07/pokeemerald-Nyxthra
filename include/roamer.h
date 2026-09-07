@@ -13,8 +13,10 @@ void UpdateRoamerHPStatus(struct Pokemon *mon);
 void SetRoamerInactive(u32 roamerIndex);
 void GetRoamerLocation(u32 roamerIndex, u8 *mapGroup, u8 *mapNum);
 bool8 TryAddRoamer(enum Species species, u8 level);
+bool8 TryAddShinyRoamer(enum Species species, u8 level);
 void MoveAllRoamersToOtherLocationSets(void);
 void MoveAllRoamers(void);
+void InitJirachiRoamer(void);
 
 extern u8 gEncounteredRoamerIndex;
 

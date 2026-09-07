@@ -98,7 +98,7 @@ void MoveAllRoamers(void)
         RoamerMove(i);
 }
 
-static void CreateInitialRoamerMon(u8 index, enum Species species, u8 level)
+static void CreateInitialRoamerMon(u8 index, enum Species species, u8 level, bool8 forceShiny)
 {
     ClearRoamerLocationHistory(index);
     u32 personality = GetMonPersonality(species,
@@ -107,6 +107,11 @@ static void CreateInitialRoamerMon(u8 index, enum Species species, u8 level)
         RANDOM_UNOWN_LETTER);
     CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
     GiveMonInitialMoveset(&gParties[B_TRAINER_OPPONENT_A][0]);
+    if (forceShiny)
+    {
+        bool32 isShiny = TRUE;
+        SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_IS_SHINY, &isShiny);
+    }
     ROAMER(index)->ivs = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_IVS);
     ROAMER(index)->personality = GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_PERSONALITY);
     ROAMER(index)->species = species;
@@ -144,11 +149,24 @@ bool8 TryAddRoamer(enum Species species, u8 level)
     if (index < ROAMER_COUNT)
     {
         // Create the roamer and stop searching
-        CreateInitialRoamerMon(index, species, level);
+        CreateInitialRoamerMon(index, species, level, FALSE);
         return TRUE;
     }
 
     // Maximum active roamers found: do nothing and let the calling function know
+    return FALSE;
+}
+
+bool8 TryAddShinyRoamer(enum Species species, u8 level)
+{
+    u8 index = GetFirstInactiveRoamerIndex();
+
+    if (index < ROAMER_COUNT)
+    {
+        CreateInitialRoamerMon(index, species, level, TRUE);
+        return TRUE;
+    }
+
     return FALSE;
 }
 
@@ -159,6 +177,11 @@ void InitRoamer(void)
         TryAddRoamer(SPECIES_LATIAS, 40);
     else
         TryAddRoamer(SPECIES_LATIOS, 40);
+}
+
+void InitJirachiRoamer(void)
+{
+    TryAddShinyRoamer(SPECIES_JIRACHI, 30);
 }
 
 void UpdateLocationHistoryForRoamer(void)
