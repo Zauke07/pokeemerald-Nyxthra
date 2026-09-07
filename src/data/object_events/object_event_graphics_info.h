@@ -1382,6 +1382,46 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BreakableRock = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_WhiteRock = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_WHITE_ROCK,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 128,
+    .width = 16,
+    .height = 16,
+    .paletteSlot = PALSLOT_NPC_1,
+    .shadowSize = SHADOW_SIZE_S,
+    .inanimate = TRUE,
+    .compressed = FALSE,
+    .tracks = TRACKS_NONE,
+    .oam = &gObjectEventBaseOam_16x16,
+    .subspriteTables = sOamTables_16x16,
+    .anims = sAnimTable_Inanimate,
+    .images = sPicTable_WhiteRock,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
+// Static shiny Metagross NPC (not the dynamic follower one - see
+// object_event_pic_tables_followers.h for that) for the cave encounter.
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MetagrossShinyOW = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_METAGROSS_SHINY,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .compressed = FALSE,
+    .tracks = TRACKS_FOOT,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_MetagrossShinyOW,
+    .affineAnims = gDummySpriteAffineAnimTable,
+};
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MrBrineysBoat = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
@@ -10124,7 +10164,11 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wes = {
     .size = 512,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_PLAYER,
+    // Nyxthra: Wes stands around as his own NPC while the real player is
+    // also on screen, so he needs the same dedicated slot Brendan/May (also
+    // player-look-alike NPCs) use - PALSLOT_PLAYER is the *actual* player's
+    // slot and collided with it, which is why he showed up miscolored.
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -10144,11 +10188,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash = {
     .size = 512,
     .width = 16,
     .height = 32,
-    // Nyxthra: Wes stands around as his own NPC while the real player is
-    // also on screen, so he needs the same dedicated slot Brendan/May (also
-    // player-look-alike NPCs) use - PALSLOT_PLAYER is the *actual* player's
-    // slot and collided with it, which is why he showed up miscolored.
-    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .paletteSlot = PALSLOT_PLAYER,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -12913,7 +12953,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Gentleman = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_1,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -12970,7 +13010,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_Lady = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .paletteSlot = PALSLOT_NPC_1,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -13198,7 +13238,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeKid = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_1,
+    .paletteSlot = PALSLOT_NPC_SPECIAL,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
@@ -13236,7 +13276,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DP_PokeRangerM = {
     .size = 256,
     .width = 16,
     .height = 32,
-    .paletteSlot = PALSLOT_NPC_SPECIAL,
+    .paletteSlot = PALSLOT_NPC_1,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
