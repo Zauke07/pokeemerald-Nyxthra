@@ -5,6 +5,8 @@
 extern const u8 gSignpostWindow_Gfx[];
 extern const u8 gMessageBox_Gfx[];
 extern const u16 gMessageBox_Pal[];
+extern const u8 gMessageBoxDark_Gfx[];
+extern const u16 gMessageBoxDark_Pal[];
 
 // pokeballs
 extern const u32 gBallGfx_Strange[];
@@ -2006,7 +2008,9 @@ extern const u32 gPokenavRibbonsSummaryBg_Gfx[];
 extern const u32 gPokenavRibbonsSummaryBg_Tilemap[];
 
 extern const u32 gSummaryScreen_Gfx[];
+extern const u32 gSummaryScreenDark_Gfx[];
 extern const u16 gSummaryScreen_Pal[];
+extern const u16 gSummaryScreenDark_Pal[];
 extern const u32 gSummaryPage_Info_Tilemap[];
 extern const u32 gSummaryPage_InfoEgg_Tilemap[];
 extern const u32 gSummaryPage_Skills_Tilemap[];
@@ -2088,14 +2092,14 @@ extern const u16 gBattlePyramidFloor_Pal[][16];
 
 extern const u16 gStandardMenuPalette[];
 
-extern const u32 gTitleScreenEmeraldVersionGfx[];
+extern const u32 gTitleScreenNyxthraVersionGfx[];
 extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
 extern const u32 gTitleScreenPokemonLogoTilemap[];
 extern const u32 gTitleScreenCloudsTilemap[];
 extern const u16 gTitleScreenBgPalettes[];
 extern const u16 gTitleScreenPressStartPal[];
-extern const u16 gTitleScreenEmeraldVersionPal[];
+extern const u16 gTitleScreenNyxthraVersionPal[];
 
 // Battle Dome
 extern const u32 gDomeTourneyInfoCard_Gfx[];

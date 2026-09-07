@@ -47,7 +47,16 @@ static void Task_DrawFieldMessage(u8 taskId)
     {
         u32 nameboxWinId = GetNameboxWindowId();
         DrawDialogueFrame(0, TRUE);
-        SetNpcDialogueDarkModePaletteOverride(FALSE);
+        // Nyxthra story: this used to turn the override back off right here -
+        // but the actual character-by-character text rendering only starts
+        // in case 2 below (RunTextPrintersAndIsPrinter0Active), which can run
+        // for many frames while the message scrolls in. GenerateFontHalfRowLookupTable
+        // (text.c) checks this flag on every single glyph it draws, so turning
+        // it off this early meant almost the entire message printed with it
+        // disabled - exactly why normal field dialogue kept showing the old
+        // light-mode (blue) text instead of Dark Mode white. It's correctly
+        // left on now until HideFieldMessageBox/StopFieldMessage actually
+        // close the box.
         if (nameboxWinId != WINDOW_NONE)
             DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
         task->tState++;

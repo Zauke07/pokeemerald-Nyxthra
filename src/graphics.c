@@ -1717,10 +1717,13 @@ const u16 gSummaryMoveSelect_Pal[] = INCGFX_U16("graphics/summary_screen/move_se
 
 #if P_SUMMARY_SCREEN_IV_EV_TILESET
 const u32 gSummaryScreen_Gfx[]                = INCGFX_U32("graphics/summary_screen/iv_ev_tiles.png", ".4bpp.smol");
+const u32 gSummaryScreenDark_Gfx[]            = INCGFX_U32("graphics/summary_screen/iv_ev_tiles_dark.png", ".4bpp.smol");
 #else
 const u32 gSummaryScreen_Gfx[]                = INCGFX_U32("graphics/summary_screen/tiles.png", ".4bpp.smol");
+const u32 gSummaryScreenDark_Gfx[]            = INCGFX_U32("graphics/summary_screen/tiles_dark.png", ".4bpp.smol");
 #endif // P_SUMMARY_SCREEN_IV_EV_TILESET
 const u16 gSummaryScreen_Pal[]                = INCGFX_U16("graphics/summary_screen/tiles.png", ".gbapal");
+const u16 gSummaryScreenDark_Pal[]            = INCGFX_U16("graphics/summary_screen/tiles_dark.png", ".gbapal");
 const u32 gSummaryPage_Info_Tilemap[]         = INCGFX_U32("graphics/summary_screen/page_info.bin", ".smolTM");
 const u32 gSummaryPage_Skills_Tilemap[]       = INCGFX_U32("graphics/summary_screen/page_skills.bin", ".smolTM");
 const u32 gSummaryPage_BattleMoves_Tilemap[]  = INCGFX_U32("graphics/summary_screen/page_battle_moves.bin", ".smolTM");
@@ -2067,6 +2070,8 @@ const u16 gTradeMenuMonBox_Tilemap[] = INCBIN_U16("graphics/trade/menu_mon_box.b
 
 const u16 gMessageBox_Pal[] = INCGFX_U16("graphics/text_window/message_box.png", ".gbapal");
 const u8 gMessageBox_Gfx[] = INCGFX_U8("graphics/text_window/message_box.png", ".4bpp");
+const u16 gMessageBoxDark_Pal[] = INCGFX_U16("graphics/text_window/message_box_dark.png", ".gbapal");
+const u8 gMessageBoxDark_Gfx[] = INCGFX_U8("graphics/text_window/message_box_dark.png", ".4bpp");
 const u8 gSignpostWindow_Gfx[] = INCGFX_U8("graphics/text_window/signpost.png", ".4bpp");
 
 const u32 gWallpaperIcon_Cross[] = INCGFX_U32("graphics/pokemon_storage/wallpapers/icons/cross.png", ".4bpp.smol");
@@ -2108,10 +2113,10 @@ const u16 gMonIconPalettes[][16] =
 
 const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal",
                                                         "graphics/title_screen/rayquaza_and_clouds.gbapal");
-const u16 gTitleScreenEmeraldVersionPal[]  = INCGFX_U16("graphics/title_screen/emerald_version.png", ".gbapal");
+const u16 gTitleScreenNyxthraVersionPal[]  = INCGFX_U16("graphics/title_screen/nyxthra_version.png", ".gbapal");
 const u32 gTitleScreenCloudsTilemap[]      = INCGFX_U32("graphics/title_screen/clouds.bin", ".smolTM");
 const u32 gTitleScreenPokemonLogoGfx[]     = INCGFX_U32("graphics/title_screen/pokemon_logo.png", ".8bpp.smol");
-const u32 gTitleScreenEmeraldVersionGfx[]  = INCGFX_U32("graphics/title_screen/emerald_version.png", ".8bpp.smol", "-mwidth 8 -mheight 4");
+const u32 gTitleScreenNyxthraVersionGfx[]  = INCGFX_U32("graphics/title_screen/nyxthra_version.png", ".8bpp.smol", "-mwidth 8 -mheight 4");
 const u16 gTitleScreenPressStartPal[]      = INCGFX_U16("graphics/title_screen/press_start.png", ".gbapal");
 const u32 gTitleScreenPressStartGfx[]      = INCGFX_U32("graphics/title_screen/press_start.png", ".4bpp.smol", "-mwidth 4 -mheight 1 -num_tiles 48 -Wnum_tiles");
 const u32 gTitleScreenPokemonLogoTilemap[] = INCGFX_U32("graphics/title_screen/pokemon_logo.bin", ".smolTM");

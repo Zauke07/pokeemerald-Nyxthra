@@ -662,8 +662,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_Give[] =
 
 static const struct DebugMenuOption sDebugMenu_Actions_Player_SelectStyle[] =
 {
-    [STYLE_BRENDAN] = { COMPOUND_STRING("Brendan"), DebugAction_Player_SetStyle },
-    [STYLE_MAY]     = { COMPOUND_STRING("May"),     DebugAction_Player_SetStyle },
+    [STYLE_BRENDAN] = { COMPOUND_STRING("Brix"), DebugAction_Player_SetStyle },
+    [STYLE_MAY]     = { COMPOUND_STRING("Mai"),     DebugAction_Player_SetStyle },
     [STYLE_RED]     = { COMPOUND_STRING("Red"),     DebugAction_Player_SetStyle },
     [STYLE_LEAF]    = { COMPOUND_STRING("Leaf"),    DebugAction_Player_SetStyle },
     [STYLE_ETHAN]   = { COMPOUND_STRING("Ethan"),   DebugAction_Player_SetStyle },
@@ -947,7 +947,11 @@ static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *
     menuTemplate.item_X = 8;
     menuTemplate.cursor_X = 0;
     menuTemplate.upText_Y = 1;
-    menuTemplate.cursorPal = 2;
+    // cursorPal doubles as the foreground color for unselected list text.
+    // Index 2 (dark gray) is meant for a light background and is barely
+    // readable on the dark-mode navy fill, so use the bright white slot
+    // (index 15) that LoadMessageBoxGfx sets up for dark mode instead.
+    menuTemplate.cursorPal = (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme) ? 15 : 2;
     menuTemplate.fillValue = 1;
     menuTemplate.cursorShadowPal = 3;
     menuTemplate.lettersSpacing = 1;

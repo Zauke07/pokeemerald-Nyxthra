@@ -201,7 +201,7 @@ void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
      && gSaveBlock2Ptr->optionsUITheme
      && IsNpcDialogueDarkModePaletteOverrideEnabled())
     {
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, 15, TEXT_COLOR_WHITE, 3);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, 3);
     }
     else
     {
@@ -216,7 +216,7 @@ void AddTextPrinterWithCustomSpeedForMessage(bool8 allowSkippingDelayWithButtonP
      && gSaveBlock2Ptr->optionsUITheme
      && IsNpcDialogueDarkModePaletteOverrideEnabled())
     {
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, 15, TEXT_COLOR_WHITE, 3);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, speed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, 3);
     }
     else
     {
@@ -484,7 +484,7 @@ void AddTextPrinterWithCallbackForMessage(bool8 canSpeedUp, TextPrinterCallback 
      && gSaveBlock2Ptr->optionsUITheme
      && IsNpcDialogueDarkModePaletteOverrideEnabled())
     {
-        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, 15, TEXT_COLOR_WHITE, 3);
+        AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, 3);
     }
     else
     {
@@ -738,8 +738,8 @@ void RedrawMenuCursor(u8 oldPos, u8 newPos)
     if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
     {
         color[0] = TEXT_COLOR_TRANSPARENT;
-        color[1] = 15; // Weißer Pfeil
-        color[2] = 3;  // Schatten
+        color[1] = TEXT_COLOR_DARK_GRAY; // Weißer Pfeil (Index 15 wird von Skripten dynamisch belegt, siehe RIVAL_CLR)
+        color[2] = TEXT_COLOR_LIGHT_GRAY;  // Schatten
     }
     else
     {
@@ -1133,8 +1133,8 @@ static void MoveMenuGridCursor(u8 oldCursorPos, u8 newCursorPos)
     if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
     {
         color[0] = TEXT_COLOR_TRANSPARENT;
-        color[1] = 15; // Weißer Pfeil
-        color[2] = 3;
+        color[1] = TEXT_COLOR_DARK_GRAY; // Index 15 wird von Skripten dynamisch belegt, siehe RIVAL_CLR
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
     }
     else
     {
@@ -1837,8 +1837,8 @@ void PrintPlayerNameOnWindow(u8 windowId, const u8 *src, u16 x, u16 y)
     if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
     {
         color[0] = TEXT_COLOR_TRANSPARENT;
-        color[1] = 15; // HIER IST DER FIX: Wir nutzen Index 15
-        color[2] = 3;  // Schatten
+        color[1] = TEXT_COLOR_DARK_GRAY; // Index 15 wird von Skripten dynamisch belegt, siehe RIVAL_CLR
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
     }
     else
     {
@@ -1974,7 +1974,12 @@ void BufferSaveMenuText(u8 textId, u8 *dest, u8 color)
     *(string++) = color;
     *(string++) = EXT_CTRL_CODE_BEGIN;
     *(string++) = EXT_CTRL_CODE_SHADOW;
-    *(string++) = color + 1;
+    // color + 1 (e.g. GREEN -> LIGHT_GREEN) is the classic light-mode bevel
+    // shadow. On Dark Mode's dark window fill that reads as a bright green/
+    // blue/red halo instead of a shadow, since those LIGHT_x slots are still
+    // their original bright accent colors. Index 3 (LIGHT_GRAY) is already
+    // forced black for Dark Mode on this window's palette bank.
+    *(string++) = (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme) ? TEXT_COLOR_LIGHT_GRAY : (color + 1);
 
     switch (textId)
     {

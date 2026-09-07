@@ -1447,7 +1447,10 @@ static bool8 DecompressGraphics(void)
     {
     case 0:
         ResetTempTileDataBuffers();
-        DecompressAndCopyTileDataToVram(1, &gSummaryScreen_Gfx, 0, 0, 0);
+        if (gSaveBlock2Ptr->optionsUITheme)
+            DecompressAndCopyTileDataToVram(1, &gSummaryScreenDark_Gfx, 0, 0, 0);
+        else
+            DecompressAndCopyTileDataToVram(1, &gSummaryScreen_Gfx, 0, 0, 0);
         sMonSummaryScreen->switchCounter++;
         break;
     case 1:
@@ -1474,7 +1477,32 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 6:
-        LoadPalette(gSummaryScreen_Pal, BG_PLTT_ID(0), 8 * PLTT_SIZE_4BPP);
+        // tiles.png bakes both the light data panels (dark text) and the dark
+        // label tabs (white text) into one hand-drawn image, so a generic
+        // brightness-based darken would also break the panels' black text.
+        // tiles_dark.png is a dedicated recolor for Dark Mode instead - see
+        // graphics/summary_screen/tiles_dark.png.
+        if (gSaveBlock2Ptr->optionsUITheme)
+        {
+            LoadPalette(gSummaryScreenDark_Pal, BG_PLTT_ID(0), 8 * PLTT_SIZE_4BPP);
+            // Bank 6 (paletteNum 6) is the shared text overlay for both pages -
+            // ability name/description, trainer memo and the plain stat numbers
+            // all default to index 1/index 2 here, which this hand-drawn
+            // tileset bakes as black-on-light-gray for every theme. Nature-
+            // colored memo values (Wesen/Level/Fundort) and boosted/lowered
+            // stats stay their own color (index 5/6/8), but get their shadow
+            // forced dark too instead of the tan/light-gray they'd keep otherwise.
+            gPlttBufferUnfaded[BG_PLTT_ID(6) + 1] = RGB(31, 31, 31);
+            gPlttBufferFaded[BG_PLTT_ID(6) + 1]   = RGB(31, 31, 31);
+            gPlttBufferUnfaded[BG_PLTT_ID(6) + 2] = RGB(0, 0, 0);
+            gPlttBufferFaded[BG_PLTT_ID(6) + 2]   = RGB(0, 0, 0);
+            gPlttBufferUnfaded[BG_PLTT_ID(6) + 6] = RGB(0, 0, 0);
+            gPlttBufferFaded[BG_PLTT_ID(6) + 6]   = RGB(0, 0, 0);
+        }
+        else
+        {
+            LoadPalette(gSummaryScreen_Pal, BG_PLTT_ID(0), 8 * PLTT_SIZE_4BPP);
+        }
         LoadPalette(&gPPTextPalette, BG_PLTT_ID(8) + 1, PLTT_SIZEOF(16 - 1));
         sMonSummaryScreen->switchCounter++;
         break;
@@ -1499,6 +1527,21 @@ static bool8 DecompressGraphics(void)
         sMonSummaryScreen->switchCounter++;
         break;
     case 12:
+        // Nyxthra: this raw LoadPalette bypasses the sprite-palette-tag
+        // system entirely, so whatever tag the engine *thinks* still owns
+        // slots 13-15 is never told its data just got overwritten. For
+        // vanilla NPCs that's harmless (their colors get force-rewritten by
+        // InitObjectEventPalettes on every return to the field regardless),
+        // but custom field objects using the small dynamic palette pool
+        // (e.g. DP_Gentleman/DP_PokeKid) rely on LoadObjectEventPalette's
+        // "already loaded, skip" tag cache - which stays stale here, so
+        // they silently keep showing these move-type colors after leaving
+        // the summary screen. Free whatever tags currently sit in the 3
+        // slots we're about to clobber so that cache gets invalidated and
+        // the next LoadObjectEventPalette call actually reloads them.
+        FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(13));
+        FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(14));
+        FreeSpritePaletteByTag(GetSpritePaletteTagByPaletteNum(15));
         LoadPalette(gMoveTypes_Pal, OBJ_PLTT_ID(13), 3 * PLTT_SIZE_4BPP);
         LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
         LoadSpritePalette(&gSpritePal_CategoryIcons);

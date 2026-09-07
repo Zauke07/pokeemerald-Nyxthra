@@ -79,7 +79,18 @@ bool8 IsNpcDialogueDarkModePaletteOverrideEnabled(void)
 
 static const u8 *Nyxthra_GetMessageBoxGfxVariant(void)
 {
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+        return gMessageBoxDark_Gfx;
+
     return gMessageBox_Gfx;
+}
+
+static const u16 *Nyxthra_GetMessageBoxPalVariant(void)
+{
+    if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
+        return gMessageBoxDark_Pal;
+
+    return gMessageBox_Pal;
 }
 
 void Nyxthra_ApplyDarkModeToPaletteRange(u32 offset, u32 colorCount)
@@ -164,9 +175,19 @@ const struct TilesPal *GetWindowFrameTilesPal(u8 id)
 {
     if (id >= WINDOW_FRAMES_COUNT)
         return &sWindowFrames[0];
-    else
-        return &sWindowFrames[id];
+
+    return &sWindowFrames[id];
 }
+
+// Nyxthra story: this used to suppress Dark Mode recoloring specifically
+// during Birch's speech (on the assumption gSaveBlock2Ptr wasn't valid yet
+// for a brand new game at that point) - turned out to be an unnecessary
+// workaround that just broke Birch's dialogue box back to its non-Dark-Mode
+// (blue) colors instead, which is worse than whatever it was guarding
+// against. Kept as a no-op TRUE/FALSE toggle (still set from main_menu.c)
+// in case something else needs it later, but it no longer affects anything
+// here.
+bool8 gNyxthraBirchSpeechInProgress = FALSE;
 
 static void Nyxthra_ApplyDarkModeToMessageBoxPalette(u32 offset)
 {
@@ -177,22 +198,44 @@ static void Nyxthra_ApplyDarkModeToMessageBoxPalette(u32 offset)
     gPlttBufferUnfaded[offset + 1] = RGB(8, 9, 11);
     gPlttBufferFaded[offset + 1]   = RGB(8, 9, 11);
 
+    // Index 10-12: Übergangsfarben zwischen Rahmen und Füllung.
+    // Diese waren im PNG noch hell (248,248,248 / 224,232,224) und blieben
+    // dadurch als heller Spalt zwischen Rahmen und Text sichtbar.
+    gPlttBufferUnfaded[offset + 10] = RGB(8, 9, 11);
+    gPlttBufferFaded[offset + 10]   = RGB(8, 9, 11);
+    gPlttBufferUnfaded[offset + 11] = RGB(8, 9, 11);
+    gPlttBufferFaded[offset + 11]   = RGB(8, 9, 11);
+    gPlttBufferUnfaded[offset + 12] = RGB(8, 9, 11);
+    gPlttBufferFaded[offset + 12]   = RGB(8, 9, 11);
+
     // Index 3: Schatten der Schrift (schwarz)
     gPlttBufferUnfaded[offset + 3] = RGB(0, 0, 0);
     gPlttBufferFaded[offset + 3]   = RGB(0, 0, 0);
 
-    // Index 15: Unsere neue Schriftfarbe (strahlend weiß)
-    gPlttBufferUnfaded[offset + 15] = RGB(31, 31, 31);
-    gPlttBufferFaded[offset + 15]   = RGB(31, 31, 31);
+    // NOTE: Index 15 (TEXT_DYNAMIC_COLOR_6 / RIVAL_CLR) is intentionally left
+    // alone. It used to be forced to white here for AddTextPrinterForMessage's
+    // Dark Mode text, but that's a "dynamic" slot scripts also set explicitly
+    // via {COLOR RIVAL_CLR}/{COLOR DYNAMIC_COLOR6} (e.g. rival dialogue) -
+    // forcing it broke every one of those. AddTextPrinterForMessage now uses
+    // index 2 for its white text instead (see below), so this is free for
+    // scripts to keep using as intended.
 
-    // WICHTIG: Keine Überschreibungen mehr für Index 2, 13 oder 14! 
+    // Index 2 (TEXT_COLOR_DARK_GRAY): FONT_NORMAL's default foreground when no
+    // explicit color is given (e.g. the Yes/No box, several plain menu prints).
+    // Was left dark before, which is invisible against the now-dark index 1
+    // fill. Every window using this bank already has a dark background once
+    // Dark Mode is on, so brightening it here can only help contrast.
+    gPlttBufferUnfaded[offset + 2] = RGB(31, 31, 31);
+    gPlttBufferFaded[offset + 2]   = RGB(31, 31, 31);
+
+    // WICHTIG: Keine Überschreibungen mehr für Index 13 oder 14!
     // Der Rahmen bleibt unangetastet.
 }
 
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), Nyxthra_GetMessageBoxGfxVariant(), 0x1C0, destOffset);
-    LoadPalette(gMessageBox_Pal, palOffset, PLTT_SIZE_4BPP);
+    LoadPalette(Nyxthra_GetMessageBoxPalVariant(), palOffset, PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToMessageBoxPalette(palOffset);
 }
 
@@ -217,8 +260,9 @@ void LoadUserWindowBorderGfx_(u8 windowId, u16 destOffset, u8 palOffset)
 
 void LoadWindowGfx(u8 windowId, u8 frameId, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), sWindowFrames[frameId].tiles, 0x120, destOffset);
-    LoadPalette(sWindowFrames[frameId].pal, palOffset, PLTT_SIZE_4BPP);
+    const struct TilesPal *frame = GetWindowFrameTilesPal(frameId);
+    LoadBgTiles(GetWindowAttribute(windowId, WINDOW_BG), frame->tiles, 0x120, destOffset);
+    LoadPalette(frame->pal, palOffset, PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToBorderPalette(palOffset);
 }
 
@@ -341,6 +385,17 @@ void Nyxthra_ApplyDarkModeToWindowPalette(u32 offset)
             gPlttBufferFaded[offset + i]   = RGB(8, 9, 11);
         }
     }
+
+    // Index 2/3 (TEXT_COLOR_DARK_GRAY/LIGHT_GRAY): FONT_NORMAL's default
+    // foreground/shadow when a plain AddTextPrinterParameterized() call gives
+    // no explicit color (e.g. party menu's "Choose a Pokemon or Cancel"
+    // message). Left alone, dark-gray-on-now-dark-navy is unreadable. Same
+    // fix as the message box and text-color-palette variants of this idea.
+    gPlttBufferUnfaded[offset + TEXT_COLOR_DARK_GRAY] = RGB(31, 31, 31);
+    gPlttBufferFaded[offset + TEXT_COLOR_DARK_GRAY]   = RGB(31, 31, 31);
+
+    gPlttBufferUnfaded[offset + TEXT_COLOR_LIGHT_GRAY] = RGB(0, 0, 0);
+    gPlttBufferFaded[offset + TEXT_COLOR_LIGHT_GRAY]   = RGB(0, 0, 0);
 }
 
 // Da Rahmenpaletten je nach Frame unterschiedlich aufgebaut sind, werden hier nur
@@ -379,11 +434,54 @@ void Nyxthra_ApplyDarkModeToBorderPalette(u32 offset)
         }
     }
 }
+
+// Screens that reuse GetOverworldTextboxPalettePtr() (message_box.png) as a generic
+// window palette rely on its indices 4/6/8 (TEXT_COLOR_RED/GREEN/BLUE) for inline
+// {COLOR RED}/{COLOR GREEN}/{COLOR BLUE} control codes (e.g. region names, categories).
+// Those raw colors were tuned for a light background and are hard to read once the
+// window fill is darkened for Dark Mode. Brighten just those three slots, keeping the
+// hue but not touching anything else (frame accents, shadows, etc.).
+void Nyxthra_ApplyDarkModeToTextColorPalette(u32 offset)
+{
+    if (gSaveBlock2Ptr == NULL || !gSaveBlock2Ptr->optionsUITheme)
+        return;
+
+    gPlttBufferUnfaded[offset + TEXT_COLOR_RED] = RGB(31, 16, 19);
+    gPlttBufferFaded[offset + TEXT_COLOR_RED]   = RGB(31, 16, 19);
+
+    gPlttBufferUnfaded[offset + TEXT_COLOR_GREEN] = RGB(14, 30, 14);
+    gPlttBufferFaded[offset + TEXT_COLOR_GREEN]   = RGB(14, 30, 14);
+
+    gPlttBufferUnfaded[offset + TEXT_COLOR_BLUE] = RGB(15, 20, 31);
+    gPlttBufferFaded[offset + TEXT_COLOR_BLUE]   = RGB(15, 20, 31);
+    // NOTE: LIGHT_RED/LIGHT_BLUE are intentionally NOT forced dark here.
+    // They're also used as a plain foreground color elsewhere on this same
+    // bank (e.g. starter_choose.c's region names: "{COLOR LIGHT_BLUE}Sinnoh").
+    // Where LIGHT_RED/LIGHT_BLUE are used as a *shadow* instead (gender/style
+    // select in main_menu.c), those strings were changed to use
+    // {SHADOW DYNAMIC_COLOR2} so they get a dark shadow without touching this
+    // shared slot.
+
+    // FONT_NORMAL's default colors (TEXT_COLOR_DARK_GRAY foreground on a
+    // TEXT_COLOR_WHITE background/accent with a TEXT_COLOR_LIGHT_GRAY shadow)
+    // are used by lots of plain menu prints that never override color - e.g.
+    // party menu's action popup and "Choose a Pokemon" message. Index 1 is
+    // already forced dark by Nyxthra_ApplyDarkModeToBorderPalette(), so the
+    // dark-gray foreground and light-gray shadow need the same swap as the
+    // message box gets: bright foreground, black shadow.
+    gPlttBufferUnfaded[offset + TEXT_COLOR_DARK_GRAY] = RGB(31, 31, 31);
+    gPlttBufferFaded[offset + TEXT_COLOR_DARK_GRAY]   = RGB(31, 31, 31);
+
+    gPlttBufferUnfaded[offset + TEXT_COLOR_LIGHT_GRAY] = RGB(0, 0, 0);
+    gPlttBufferFaded[offset + TEXT_COLOR_LIGHT_GRAY]   = RGB(0, 0, 0);
+}
+
 // Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg
 void LoadUserWindowBorderGfxOnBg(u8 bg, u16 destOffset, u8 palOffset)
 {
-    LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
-    LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, PLTT_SIZE_4BPP);
+    const struct TilesPal *frame = GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType);
+    LoadBgTiles(bg, frame->tiles, 0x120, destOffset);
+    LoadPalette(frame->pal, palOffset, PLTT_SIZE_4BPP);
     Nyxthra_ApplyDarkModeToBorderPalette(palOffset);
 }
 

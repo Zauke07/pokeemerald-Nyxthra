@@ -15,6 +15,7 @@
 #include "link.h"
 #include "main.h"
 #include "main_menu.h"
+#include "nyxthra_prologue.h"
 #include "menu.h"
 #include "list_menu.h"
 #include "mystery_event_menu.h"
@@ -268,12 +269,16 @@ static const u16 sMainMenuTextPal[] = INCGFX_U16("graphics/interface/main_menu_t
 
 static const u8 sTextColor_HeadersMaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE};
 static const u8 sTextColor_HeadersFemaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
-static const u8 sTextColor_HeadersMaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_DARK_GRAY};
-static const u8 sTextColor_HeadersFemaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY};
+// Dark mode keeps the male=blue/female=red branding, just with a shadow index
+// (LIGHT_GRAY) that Nyxthra_ApplyDarkModeToWindowPalette() actually forces to
+// black on this bank - DARK_GRAY was the bug, since that index gets forced to
+// white here and turned the shadow white instead.
+static const u8 sTextColor_HeadersMaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sTextColor_HeadersFemaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
 static const u8 sTextColor_MenuInfoMaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_BLUE};
 static const u8 sTextColor_MenuInfoFemaleLight[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED};
-static const u8 sTextColor_MenuInfoMaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_DARK_GRAY};
-static const u8 sTextColor_MenuInfoFemaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY};
+static const u8 sTextColor_MenuInfoMaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_GRAY};
+static const u8 sTextColor_MenuInfoFemaleDark[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY};
 static const u8 sTextColor_Version[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY};
 static const u8 sTextColor_VersionSub[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_DARK_GRAY};
 
@@ -313,36 +318,38 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
 extern const struct ListMenuItem sBirchStyleList[20];
 
 // --- MÄNNLICHE LISTE ---
+// STYLE_BRENDAN ist absichtlich nicht wählbar - Hans/Brendan ist jetzt der
+// damalige Held und heutige Champ von Hoenn, keine Spielerfigur mehr.
 const struct ListMenuItem sMaleStyleList[] = {
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Hans"), STYLE_BRENDAN},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Red"), STYLE_RED},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Ethan"), STYLE_ETHAN},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Lukas"), STYLE_LUCAS},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Warren"), STYLE_HILBERT},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Nate"), STYLE_NATE},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Kalem"), STYLE_CALEM},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Elio"), STYLE_ELIO},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Victor"), STYLE_VICTOR},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Florian"), STYLE_FLORIAN},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Red"), STYLE_RED},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Ethan"), STYLE_ETHAN},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Lukas"), STYLE_LUCAS},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Warren"), STYLE_HILBERT},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Nate"), STYLE_NATE},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Kalem"), STYLE_CALEM},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Elio"), STYLE_ELIO},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Victor"), STYLE_VICTOR},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Florian"), STYLE_FLORIAN},
 };
 
 // --- WEIBLICHE LISTE ---
+// STYLE_MAY ist absichtlich nicht wählbar - Brigitte/May ist jetzt die
+// damalige Heldin und heutige Champ von Hoenn, keine Spielerfigur mehr.
 const struct ListMenuItem sFemaleStyleList[] = {
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Brigitte"), STYLE_MAY},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Leaf"), STYLE_LEAF},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lyra"), STYLE_LYRA},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lucia"), STYLE_DAWN},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lotta"), STYLE_HILDA},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Rosy"), STYLE_ROSA},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Serena"), STYLE_SERENA},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Selene"), STYLE_SELENE},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Gloria"), STYLE_GLORIA},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Juliana"), STYLE_JULIANA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Leaf"), STYLE_LEAF},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lyra"), STYLE_LYRA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lucia"), STYLE_DAWN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lotta"), STYLE_HILDA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Rosy"), STYLE_ROSA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Serena"), STYLE_SERENA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Selene"), STYLE_SELENE},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Gloria"), STYLE_GLORIA},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Juliana"), STYLE_JULIANA},
 };
 
 const struct ListMenuTemplate sBirchStyleListTemplate = {
     .items = NULL, // wird dynamisch gesetzt
-    .totalItems = 10,
+    .totalItems = 9,
     .maxShowed = 6,
     .windowId = STYLE_MENU_WINDOW_ID,
     .header_X = 0,
@@ -360,8 +367,8 @@ const struct ListMenuTemplate sBirchStyleListTemplate = {
 };
 
 static const struct MenuAction sMenuActions_Gender[] = {
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Junge"), {NULL}},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Mädchen"), {NULL}}
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Junge"), {NULL}},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Mädchen"), {NULL}}
 };
 
 const u8 *const sMalePresetNames[] = { COMPOUND_STRING("Zauke07"), COMPOUND_STRING("MILTON"), COMPOUND_STRING("TOM"), COMPOUND_STRING("KENNY"), COMPOUND_STRING("REID"), COMPOUND_STRING("JUDE"), COMPOUND_STRING("JAXSON"), COMPOUND_STRING("EASTON"), COMPOUND_STRING("WALKER"), COMPOUND_STRING("TERU"), COMPOUND_STRING("JOHNNY"), COMPOUND_STRING("BRETT"), COMPOUND_STRING("SETH"), COMPOUND_STRING("TERRY"), COMPOUND_STRING("CASEY"), COMPOUND_STRING("DARREN"), COMPOUND_STRING("LANDON"), COMPOUND_STRING("COLLIN"), COMPOUND_STRING("STANLEY"), COMPOUND_STRING("QUINCY") };
@@ -380,6 +387,15 @@ static void VBlankCB_MainMenu(void) { LoadOam(); ProcessSpriteCopyRequests(); Tr
 void CB2_InitMainMenu(void) { InitMainMenu(FALSE); }
 void CB2_ReinitMainMenu(void) { InitMainMenu(TRUE); }
 void MainMenu_BeginBirchSpeechScene(void)
+{
+    // Nyxthra story: every "start a new game" path funnels through here, so
+    // this is the one place to show the prologue before Birch's speech ever
+    // begins. The prologue itself calls MainMenu_StartBirchSpeechDirect()
+    // (the old body of this function) once it's done.
+    SetMainCallback2(CB2_InitNyxthraPrologue);
+}
+
+void MainMenu_StartBirchSpeechDirect(void)
 {
     sStartBirchSpeechDirect = TRUE;
     SetMainCallback2(CB2_InitMainMenu);
@@ -629,6 +645,16 @@ static void Task_DisplayMainMenu(u8 taskId)
             LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
             palette = RGB(8, 9, 11);
             LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
+
+            // Header/Info-Text nutzt TEXT_COLOR_BLUE/RED (Index 8/4) als Vordergrund.
+            // Diese Farben waren fuer einen hellen Hintergrund gedacht und sind auf dem
+            // dunklen Hintergrund kaum lesbar. Hier werden sie durch helle, aber weiterhin
+            // klar blaue/rote Toene ersetzt, die auf dunklem Grund aehnlich gut lesbar sind
+            // wie der weisse Text im Ingame-Menue.
+            palette = RGB(15, 20, 31);
+            LoadPalette(&palette, BG_PLTT_ID(15) + 8, PLTT_SIZEOF(1));
+            palette = RGB(31, 16, 19);
+            LoadPalette(&palette, BG_PLTT_ID(15) + 4, PLTT_SIZEOF(1));
         }
 
         // Pal-Setup abgeschlossen – Dark-Mode fuer Index 1/2/3 anwenden.
@@ -1221,6 +1247,12 @@ void AddBirchSpeechObjects(u8 taskId)
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {
+    // gSaveBlock2Ptr isn't reset for the new game yet (CB2_NewGame does that
+    // once this whole sequence finishes), so its optionsUITheme could still
+    // reflect whatever save was last loaded - suppress Dark Mode styling
+    // until then so it doesn't leak into a brand new game.
+    gNyxthraBirchSpeechInProgress = TRUE;
+
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
     InitBgFromTemplate(&sBirchBgTemplate);
 
@@ -1252,6 +1284,23 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     InitWindows(sNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
+    // AddTextPrinterForMessage() only uses the dark-mode text colors while this
+    // override is enabled - without it, all Birch speech text prints with the
+    // old light-mode dark-gray-on-white colors regardless of optionsUITheme.
+    SetNpcDialogueDarkModePaletteOverride(TRUE);
+    // Junge/Maedchen and the protagonist style list use {COLOR BLUE}/{COLOR RED}
+    // straight out of this same bank - brighten them for Dark Mode like everywhere else.
+    Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(15));
+    if (gSaveBlock2Ptr->optionsUITheme)
+    {
+        // Junge/Maedchen and the style list use {SHADOW DYNAMIC_COLOR2} (index 11)
+        // as their shadow. Previously forced to white on the theory that a dark
+        // shadow wouldn't show up against this scene's black/green background -
+        // in practice that just washes out the pale BLUE/RED foreground text
+        // (shadow blends into it instead of outlining it). Black reads properly.
+        gPlttBufferUnfaded[BG_PLTT_ID(15) + 11] = RGB_BLACK;
+        gPlttBufferFaded[BG_PLTT_ID(15) + 11]   = RGB_BLACK;
+    }
     DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
     PutWindowTilemap(0);
     CopyWindowToVram(0, COPYWIN_GFX);
@@ -1917,6 +1966,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
 
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
+        NewGameBirchSpeech_ClearWindow(0);
         StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
         AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_WaitPressAfterAreYouReady;
@@ -1982,6 +2032,7 @@ static void Task_NewGameBirchSpeech_Cleanup(u8 taskId)
         FreeAllWindowBuffers();
         FreeAndDestroyMonPicSprite(gTasks[taskId].tkoraidonSpriteId);
         ResetAllPicSprites();
+        gNyxthraBirchSpeechInProgress = FALSE;
         SetMainCallback2(CB2_NewGame);
         DestroyTask(taskId);
     }
@@ -2072,6 +2123,14 @@ static void CB2_NewGameBirchSpeech_ReturnFromNamingScreen(void)
     InitWindows(sNewGameBirchSpeechTextWindows);
     LoadMainMenuWindowFrameTiles(0, 0xF3);
     LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
+    SetNpcDialogueDarkModePaletteOverride(TRUE);
+    Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(15));
+    if (gSaveBlock2Ptr->optionsUITheme)
+    {
+        // See Task_NewGameBirchSpeech_Init - black shadow for the same reason.
+        gPlttBufferUnfaded[BG_PLTT_ID(15) + 11] = RGB_BLACK;
+        gPlttBufferFaded[BG_PLTT_ID(15) + 11]   = RGB_BLACK;
+    }
     PutWindowTilemap(0);
     CopyWindowToVram(0, COPYWIN_FULL);
 }
@@ -2486,26 +2545,26 @@ u16 PlayerStyleToFacilityClass(u8 style)
 }
 
 const struct ListMenuItem sBirchStyleList[] = {
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Hans"), STYLE_BRENDAN},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Brigitte"), STYLE_MAY},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Red"), STYLE_RED},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Leaf"), STYLE_LEAF},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Ethan"), STYLE_ETHAN},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lyra"), STYLE_LYRA},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Lukas"), STYLE_LUCAS},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lucia"), STYLE_DAWN},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Warren"), STYLE_HILBERT},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Lotta"), STYLE_HILDA},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Nate"), STYLE_NATE},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Rosy"), STYLE_ROSA},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Kalem"), STYLE_CALEM},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Serena"), STYLE_SERENA},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Elio"), STYLE_ELIO},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Selene"), STYLE_SELENE},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Victor"), STYLE_VICTOR},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Gloria"), STYLE_GLORIA},
-    {COMPOUND_STRING("{COLOR BLUE}{SHADOW LIGHT_BLUE}Florian"), STYLE_FLORIAN},
-    {COMPOUND_STRING("{COLOR RED}{SHADOW LIGHT_RED}Juliana"), STYLE_JULIANA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Brix"), STYLE_BRENDAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Mai"), STYLE_MAY},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Red"), STYLE_RED},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Leaf"), STYLE_LEAF},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Ethan"), STYLE_ETHAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lyra"), STYLE_LYRA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Lukas"), STYLE_LUCAS},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lucia"), STYLE_DAWN},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Warren"), STYLE_HILBERT},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Lotta"), STYLE_HILDA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Nate"), STYLE_NATE},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Rosy"), STYLE_ROSA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Kalem"), STYLE_CALEM},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Serena"), STYLE_SERENA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Elio"), STYLE_ELIO},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Selene"), STYLE_SELENE},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Victor"), STYLE_VICTOR},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Gloria"), STYLE_GLORIA},
+    {COMPOUND_STRING("{COLOR BLUE}{SHADOW DYNAMIC_COLOR2}Florian"), STYLE_FLORIAN},
+    {COMPOUND_STRING("{COLOR RED}{SHADOW DYNAMIC_COLOR2}Juliana"), STYLE_JULIANA},
 };
 
 static void DestroyCurrentTrainerSprite(u8 taskId)

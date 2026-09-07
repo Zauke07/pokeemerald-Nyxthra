@@ -12,6 +12,13 @@ struct TilesPal
 extern const u8 gTextWindowFrame1_Gfx[];
 extern const u16 gTextWindowFrame1_Pal[];
 
+// Nyxthra: set by main_menu.c while Birch's new-game speech is running.
+// gSaveBlock2Ptr isn't reset for the new save yet at that point (that only
+// happens once CB2_NewGame runs afterward), so optionsUITheme could still be
+// whatever the last-loaded save had - this keeps Dark Mode from leaking into
+// a brand new game's character creation because of that.
+extern bool8 gNyxthraBirchSpeechInProgress;
+
 const struct TilesPal *GetWindowFrameTilesPal(u8 id);
 void LoadMessageBoxGfx(u8 windowId, u16 destOffset, u8 palOffset);
 void LoadStdWindowGfx(u8 windowId, u16 tileStart, u8 palette);
@@ -32,6 +39,7 @@ void LoadDexNavWindowGfx(u8 windowId, u16 destOffset, u8 palOffset);
 // const u16 *Nyxthra_GetDarkWindowPaletteVariant(const u16 *src);
 void Nyxthra_ApplyDarkModeToWindowPalette(u32 offset);
 void Nyxthra_ApplyDarkModeToBorderPalette(u32 offset);
+void Nyxthra_ApplyDarkModeToTextColorPalette(u32 offset);
 void Nyxthra_ApplyDarkModeToPaletteRange(u32 offset, u32 colorCount);
 
 #endif // GUARD_TEXT_WINDOW_H

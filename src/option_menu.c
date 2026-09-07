@@ -177,15 +177,22 @@ static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_m
 // note: this is only used in the Japanese release
 static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equals_sign.png", ".4bpp");
 
-static const u8 sText_HighlightOn[] = _("{COLOR GREEN}{SHADOW DARK_GRAY}");
-static const u8 sText_HighlightOff[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}");
-static const u8 sText_HighlightMid[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
+// SHADOW DARK_GRAY (index 2) used to look right, but that index doubles as the
+// bright "default text" color elsewhere on this screen and gets forced to
+// white for Dark Mode - which turned this into a white shadow. LIGHT_GREEN
+// (index 7) is already forced dark for Dark Mode with no such conflict, so use
+// that as a universal dark shadow instead. HighlightMid's own foreground had
+// the same problem (LIGHT_GRAY/index 3 gets forced near-black), so it's
+// switched to DARK_GRAY, which is forced bright white for Dark Mode.
+static const u8 sText_HighlightOn[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}");
+static const u8 sText_HighlightOff[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}");
+static const u8 sText_HighlightMid[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GREEN}");
 
-static const u8 sText_BattleScene_1x[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}1x Speed");
-static const u8 sText_BattleScene_2x[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}2x Speed");
-static const u8 sText_BattleScene_3x[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}3x Speed");
-static const u8 sText_BattleScene_4x[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}4x Speed");
-static const u8 sText_BattleScene_Disabled[] = _("{COLOR LIGHT_RED}{SHADOW DARK_GRAY}Disabled");
+static const u8 sText_BattleScene_1x[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GREEN}1x Speed");
+static const u8 sText_BattleScene_2x[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GREEN}2x Speed");
+static const u8 sText_BattleScene_3x[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}3x Speed");
+static const u8 sText_BattleScene_4x[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}4x Speed");
+static const u8 sText_BattleScene_Disabled[] = _("{COLOR LIGHT_RED}{SHADOW LIGHT_GREEN}Disabled");
 
 typedef u8 (*MenuItemInputCallback)(u8, u8);
 typedef void (*MenuItemDrawCallback)(u8, u8);
@@ -504,6 +511,12 @@ static void ApplyOptionMenuDarkModePalettes(void)
     // Gruen/Rot behalten, aber ihre bisherigen hellen Schatten auf dunkel setzen.
     gPlttBufferUnfaded[16 + TEXT_COLOR_LIGHT_GREEN] = RGB(2, 2, 2);
     gPlttBufferFaded[16 + TEXT_COLOR_LIGHT_GREEN]   = RGB(2, 2, 2);
+
+    // Das eigentliche Gruen (SLOW/FAST/ON/OFF/...) war fuer einen hellen
+    // Hintergrund gedacht und ist auf dem dunklen Fenster kaum lesbar.
+    // Aufhellen, ohne den Gruenton zu verlieren.
+    gPlttBufferUnfaded[16 + TEXT_COLOR_GREEN] = RGB(14, 30, 14);
+    gPlttBufferFaded[16 + TEXT_COLOR_GREEN]   = RGB(14, 30, 14);
 
     // Rahmenpalette (offset 0x70): Rahmenfarbe original lassen, aber den hellen
     // Zwischenstreifen zur Fensterinnenfarbe angleichen.

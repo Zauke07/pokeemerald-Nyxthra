@@ -412,14 +412,18 @@ static void Task_UpdateClockWindow(u8 taskId)
 
         if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
         {
+            // Index 15 is the shared "dynamic" rival-color slot scripts repoint
+            // at runtime - hardcoding it here made the clock inherit whatever
+            // color a rival/NPC last set there. Use DARK_GRAY instead, which is
+            // force-set to white for this bank.
             color[0] = TEXT_COLOR_TRANSPARENT;
-            color[1] = 15; // Weiß
-            color[2] = 3;  // Schatten
-            
+            color[1] = TEXT_COLOR_DARK_GRAY;
+            color[2] = TEXT_COLOR_LIGHT_GRAY;
+
             // Blink-Logik für den Doppelpunkt im Dark Mode
             colonColor[0] = TEXT_COLOR_TRANSPARENT;
-            colonColor[1] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : 15;
-            colonColor[2] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : 3;
+            colonColor[1] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : TEXT_COLOR_DARK_GRAY;
+            colonColor[2] = sClockColonInvisible ? TEXT_COLOR_TRANSPARENT : TEXT_COLOR_LIGHT_GRAY;
         }
         else
         {
@@ -472,12 +476,14 @@ void ShowClockWindow(void)
 {
     u8 color[3];
 
-    // Unser bewährter Dark Mode Check mit Index 15
+    // Index 15 is the shared "dynamic" rival-color slot scripts repoint at
+    // runtime - hardcoding it here made the clock inherit whatever color a
+    // rival/NPC last set there. DARK_GRAY is force-set to white for this bank.
     if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
     {
         color[0] = TEXT_COLOR_TRANSPARENT;
-        color[1] = 15; // Strahlend weiß
-        color[2] = 3;  // Schatten
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
     }
     else
     {
@@ -702,9 +708,13 @@ static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
 
     if (gSaveBlock2Ptr != NULL && gSaveBlock2Ptr->optionsUITheme)
     {
+        // Index 15 is the shared "dynamic" rival-color slot that scripts repoint
+        // at runtime (blue/red depending on rival gender) - hardcoding it here
+        // made the start menu inherit whatever color a rival/NPC last set there.
+        // Index 2 is force-set to white for this bank a few lines above instead.
         color[0] = TEXT_COLOR_TRANSPARENT;
-        color[1] = 15; // HIER IST DER FIX: Wir nutzen Index 15 (Strahlend weiß)
-        color[2] = 3;  // Index 3 für den schwarzen Schatten
+        color[1] = TEXT_COLOR_DARK_GRAY;
+        color[2] = TEXT_COLOR_LIGHT_GRAY;
     }
     else
     {
