@@ -2135,6 +2135,9 @@ static bool8 DoHandshake(void)
     u8 i;
     u8 playerCount;
     u16 minRecv;
+#ifdef UBFIX
+    u64 recvSiomlt;
+#endif
 
     playerCount = 0;
     minRecv = 0xFFFF;
@@ -2146,7 +2149,12 @@ static bool8 DoHandshake(void)
     {
         REG_SIOMLT_SEND = SLAVE_HANDSHAKE;
     }
+#ifdef UBFIX
+    recvSiomlt = REG_SIOMLT_RECV;
+    memcpy(gLink.handshakeBuffer, &recvSiomlt, sizeof(gLink.handshakeBuffer));
+#else
     *(u64 *)gLink.handshakeBuffer = REG_SIOMLT_RECV;
+#endif
     REG_SIOMLT_RECV = 0;
     gLink.handshakeAsMaster = FALSE;
     for (i = 0; i < MAX_LINK_PLAYERS; i++)
@@ -2186,8 +2194,13 @@ static void DoRecv(void)
     u16 recv[4];
     u8 i;
     u8 index;
+#ifdef UBFIX
+    u64 recvSiomlt = REG_SIOMLT_RECV;
 
+    memcpy(recv, &recvSiomlt, sizeof(recv));
+#else
     *(u64 *)recv = REG_SIOMLT_RECV;
+#endif
     if (gLink.sendCmdIndex == 0)
     {
         for (i = 0; i < gLink.playerCount; i++)
@@ -2285,20 +2298,6 @@ static void SendRecvDone(void)
     else if (gLink.isMaster)
     {
         REG_TM3CNT_H |= TIMER_ENABLE;
-    }
-}
-
-void ResetSendBuffer(void)
-{
-    u8 i;
-    u8 j;
-
-    gLink.sendQueue.count = 0;
-    gLink.sendQueue.pos = 0;
-    for (i = 0; i < CMD_LENGTH; i++)
-    {
-        for (j = 0; j < QUEUE_CAPACITY; j++)
-            gLink.sendQueue.data[i][j] = LINKCMD_NONE;
     }
 }
 

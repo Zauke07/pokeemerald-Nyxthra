@@ -148,4 +148,11 @@
 
 // Konfiguration
 #define OW_AMBIENT_CRIES                OW_AMBIENT_CRIES_VANILLA // Legt fest, wie (und ob) Umgebungs-Rufe abgespielt werden. Wie in Vanilla gilt: Egal was gewählt ist, es gibt keine Rufe, wenn die Map keine Land- oder Wasser-Encounter-Tabelle hat.
+
+// Tages-Seed
+#define OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES     FALSE // Wenn TRUE, wird der Tages-Seed zur Berechnung der Fata-Morgana-Insel-Chance und der Lotterie-Tickets verwendet.
+                                                          // Das hat den Nebeneffekt, dass der deterministische/anti-save-scumming Aspekt der Fata-Morgana-Insel-Zufallsauswahl entfällt.
+
+// Skript-Konfiguration
+#define OW_CHECK_FOR_TOTAL_EVS TRUE        // Wenn FALSE, prüfen givemon und createmon nicht auf die Gesamt-EV-Grenze beim Erzeugen eines neuen Pokémon.
 #endif // GUARD_CONFIG_OVERWORLD_H

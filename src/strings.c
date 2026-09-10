@@ -77,6 +77,10 @@ ALIGNED(4) const u8 gText_NextBack[] = _("{A_BUTTON}Weiter {B_BUTTON}Zurück");
 ALIGNED(4) const u8 gText_PickNextCancel[] = _("{DPAD_UPDOWN}Wählen {A_BUTTON}Weiter {B_BUTTON}Abbrechen");
 ALIGNED(4) const u8 gText_PickCancel[] = _("{DPAD_UPDOWN}Wählen {A_BUTTON}{B_BUTTON}Abbrechen");
 ALIGNED(4) const u8 gText_AButtonExit[] = _("{A_BUTTON}EXIT");
+// Nyxthra: nicht mehr aktiv erreichbar (Stylesystem ersetzt die klassische
+// Geschlechtswahl), aber oak_speech.c referenziert diese Strings noch.
+const u8 gText_Boy[] = _("BOY");
+const u8 gText_Girl[] = _("GIRL");
 const u8 gText_BirchBoy[] = _("Hans");
 const u8 gText_BirchGirl[] = _("Brigitte");
 const u8 gText_BirchRed[] = _("Red");

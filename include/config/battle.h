@@ -195,6 +195,23 @@
 #define B_POWDER_OVERCOAT           GEN_LATEST // In Gen6+ blockt Wetterfest Puder- und Sporen-Moves.
 #define B_INFILTRATOR_SUBSTITUTE    GEN_LATEST // In Gen6+ ignoriert Schwebedurch den gegnerischen Delegator.
 #define B_DANCER_ORDER              GEN_LATEST // In Gen8+ werden Tänzer-Aktivierungen nach Initiative inklusive Modifikatoren abgearbeitet. In Gen7 erfolgt die Reihenfolge von langsam nach schnell anhand der unveränderten Initiative.
+// Neu in 1.17.0 (Kommentare noch nicht uebersetzt)
+#define B_PARALYSIS_CHANCE          GEN_LATEST // In Champions, paralysis has a 12.5% chance of not moving, instead of 25%.
+#define B_MEGA_EVO_SPEED_SWAP       GEN_LATEST // In Champions, Mega Evolution does not overwrite the speed stat swapped via Speed Swap.
+#define B_FREEZE_TURNS              GEN_LATEST // Prior to Champions, freeze has a 20% chance of being thawed out.
+#define B_FIRST_TURN_MOVE               GEN_LATEST // In Champions, Fake Out and First Impression cannot be selected past the user's first turn.
+#define B_SALT_CURE_DAMAGE              GEN_LATEST // In Gen9, Salt Cure deals 1/8 max HP (1/4 max HP to Steel and Water)
+#define B_BELCH_SELECTABLE              GEN_LATEST // In Gen6-9, Belch cannot be selected unless the user has eaten a Berry
+#define B_STUFF_CHEEKS_SELECTABLE       GEN_LATEST // In Gen8-9, Stuff Cheeks cannot be selected unless the user is holding a Berry
+#define B_SPIT_UP_SELECTABLE            GEN_LATEST // In Champions, Spit Up cannot be selected unless the user has Stockpile stacks
+#define B_MOVES_THAT_REMOVE_TYPE        GEN_LATEST // In Champions, Burn Up cannot be selected if the user is not Fire-type
+#define B_LAST_RESORT_SELECTABLE        GEN_LATEST // In Champions, Last Resort cannot be selected if the user hasn't used all its other moves
+#define B_FAINT_MOVE_EFFECT_TIMING      GEN_LATEST // In Champions, some move effects now apply even if the user faints from Rough Skin, Iron Barbs, etc.
+#define B_SHEER_FORCE_AGAINST_ABILITIES GEN_LATEST // As of Champions, Sheer Force no longer prevents the activation of Berserk and Pickpocket
+#define B_ENCORE_PRIORITY               GEN_LATEST // In Champions, Encore uses the priority of the Encored move instead of the selected move
+#define B_RAGE_FIST                     GEN_LATEST // In Champions, Rage Fist stacks reset upon switching out or fainting
+#define B_MOVE_EFFECTS_BEFORE_MOVES     GEN_LATEST // In Champions, Beak Blast will work when Encored into from a different move
+#define B_UNSEEN_FIST_PIERCING_DRILL    GEN_LATEST // In Gen8-9, Unseen Fist/Piercing Drill deals 100% of the damage dealt to protected targets while also bypassing the contact effects of protect moves.
 
 // Verschiedene temporäre Timer (Statusveränderungen)
 #define B_CONFUSION_TURNS    5
@@ -251,6 +268,14 @@
 #define B_FLAG_BADGE_BOOST_SPEED    FLAG_BADGE03_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Initiative
 #define B_FLAG_BADGE_BOOST_SPATK    FLAG_BADGE07_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Sp.-Angriff x1.1
 #define B_FLAG_BADGE_BOOST_SPDEF    FLAG_BADGE07_GET // Wenn gesetzt und B_BADGE_BOOST == GEN_3: Sp.-Verteidigung x1.1
+// Neu in 1.17.0 (Kommentare noch nicht uebersetzt)
+#define B_FLAG_INVERSE_BATTLE       0     // If this flag is set, the battle's type chart inverted. For example, Fire is super effective against Water.
+#define B_FLAG_AI_VS_AI_BATTLE      0     // If this flag is set, the player's Pokémon will be controlled by the AI in the next battle.
+#define B_FLAG_DYNAMAX_BATTLE       0     // If this flag is set, the ability to Dynamax in battle is enabled for all Trainers.
+#define B_FLAG_TERA_ORB_CHARGED     0     // If this flag is set, the Tera Orb is charged. It is automatically set upon healing and cleared upon Terastallizing once configured.
+#define B_FLAG_TERA_ORB_NO_COST     0     // If this flag is set, the Tera Orb does not use up its charge upon Terastallization. In SV, this occurs after an event with Terapagos.
+#define B_FLAG_SLEEP_CLAUSE         0     // If this flag is set, sleep clause is enabled; if a Pokémon on the one side of the field is asleep, another one on that side cannot be put to sleep. AI requires AI_FLAG_CHECK_BAD_MOVE to understand.
+#define B_FLAG_NO_WHITEOUT          0     // If this flag is set, the player can not white out against Trainers. Please note that the party is not healed automatically!
 
 // Weitere Kampf-Flags
 #define B_FLAG_INVERSE_BATTLE       0     // Wenn gesetzt, werden Typ-Effektivität invertiert. Feuer ist z. B. sehr effektiv gegen Wasser.
@@ -355,7 +380,7 @@
 #define B_EVOLUTION_AFTER_WHITEOUT      GEN_LATEST // In Gen6+ entwickeln sich Pokémon nach Kampf auch bei Niederlage.
 #define B_AFFECTION_MECHANICS           TRUE       // In Gen6+: Zuneigung kann Effekte im Kampf auslösen. Ab LGPE nutzen diese Effekte stattdessen Freundschaft.
 #define B_TRAINER_CLASS_POKE_BALLS      GEN_LATEST // In Gen7+ benutzen Trainer je nach Klasse bestimmte Pokébälle.
-#define B_TRAINER_MON_RANDOM_ABILITY    FALSE      // TRUE: Trainer-Mon erhält zufällige legale Fähigkeit.
+#define B_TRAINER_MON_RANDOM_ABILITY    0          // If this is set to 0, trainers mons with no set ability only use the first ability of a mon. If set to 1 it will roll a random non-hidden ability. If set to 2, it will roll any ability (including hidden ability) with equal chance
 #define B_OBEDIENCE_MECHANICS           GEN_LATEST // In PLA+ (hier Gen8+): Gehorsam gilt auch für Nicht-Tausch-Pokémon, basierend auf Fang-Level statt aktuellem Level.
 #define B_USE_FROSTBITE                 FALSE      // In PLA ersetzt Erfrierung den Gefrier-Zustand. Aktiviert dies hier. Moves können einzeln auf Freeze/Erfrierung gestellt werden. Frost-/Geheimkraft/Triplette hängen davon ab.
 #define B_TOXIC_REVERSAL                GEN_LATEST // In Gen5+ wird Toxin am Kampfende zu normaler Vergiftung.
@@ -419,5 +444,11 @@
 #define B_POOL_RULES_USE_ITEM_EXCLUSIONS    FALSE    // Items aus poolItemClauseExclusions ausschließen.
 #define B_POOL_RULE_MEGA_STONE_CLAUSE       FALSE    // Nur ein Mon mit Mega-Stein auswählen.
 #define B_POOL_RULE_Z_CRYSTAL_CLAUSE        FALSE    // Nur ein Mon mit Z-Kristall auswählen.
+// Neu in 1.17.0 (Kommentare noch nicht uebersetzt)
+#define B_OVERWORLD_WEATHER_OVERRIDE    GEN_LATEST // In Gen9+, overworld weather cannot be overridden.
+#define B_HP_PERCENTAGE_DISPLAY             FALSE      // If set to TRUE, Pokémon on the opposing side's HP will be displayed in percentage alongside the HP bar. In single battles, this extends the healthbox to add the percentage below the HP bar. In double battles, the same input used to toggle your side's HP values will also toggle the opposing side's percentage display.
+#define B_FLAG_VICTORY_CATCH_RANDOM     0          // If set, you will be prompted to throw a ball after the encounter has been defeated, catch rate is random. You can't capture the encounter in any other way.
+#define B_FLAG_VICTORY_CATCH_GUARANTEED 0          // If set, you will be prompted to throw a ball after the encounter has been defeated, guaranteed to catch. You can't capture the encounter in any other way.
+#define B_TERA_ORB_ALWAYS_CHARGED       FALSE      // If TRUE, causes the Tera Orb to always be charged all the time in every case, overriding B_FLAG_TERA_ORB_CHARGED. Use that for modularity.
 
 #endif

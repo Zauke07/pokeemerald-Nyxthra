@@ -23,16 +23,15 @@
 #define P_FRIENDSHIP_EVO_THRESHOLD GEN_LATEST // Seit Gen. 8 entwickeln sich Pokémon, die sich durch Freundschaft entwickeln, bei oder über 160 Freundschaft statt bei 220.
 
 // Zuchteinstellungen
-#define P_NIDORAN_M_DITTO_BREED GEN_LATEST    // Seit Gen. 5 kann Nidoran♂ bei der Zucht mit Ditto auch Nidoran♀-Nachkommen produzieren. Zuvor wurden nur männliche Nachkommen erzeugt. Diese Änderung gilt auch für Volbeat.
-#define P_INCENSE_BREEDING GEN_LATEST         // Seit Gen. 9 benötigen Baby-Pokémon aus verschiedenen Generationen kein Räucherwerk der Eltern mehr, um durch Zucht erhalten zu werden.
-#define P_EGG_HATCH_LEVEL GEN_LATEST          // Seit Gen. 4 schlüpfen Pokémon auf Level 1 statt auf Level 5 aus Eiern.
-#define P_BALL_INHERITING GEN_LATEST          // Seit Gen. 6 erben Eier aus der Pension den Pokéball der Mutter. Ab Gen. 7 kann auch der Vater den Ball weitergeben, solange er derselben Spezies wie die Mutter angehört.
-#define P_TM_INHERITANCE GEN_LATEST           // Seit Gen. 6 gibt der Vater keine TMs mehr an das Baby weiter.
-#define P_MOTHER_EGG_MOVE_INHERITANCE GEN_LATEST // Seit Gen. 6 kann auch die Mutter Zuchtattacken (Egg Moves) weitergeben.
-#define P_NATURE_INHERITANCE GEN_LATEST       // In Gen. 3 gibt der Ewigstein Ditto und Müttern eine 50%ige Chance, das Wesen zu vererben. Seit Gen. 4 kann jeder das Wesen weitergeben. Seit Gen. 5 beträgt die Chance 100%.
-#define P_ABILITY_INHERITANCE GEN_LATEST      // In S2W2 hat ein weibliches Pokémon eine 80%ige Chance, seine Fähigkeit weiterzugeben, wenn es mit einem Männchen gezüchtet wird. Seit Gen. 6 beträgt die Chance 80% für normale Fähigkeit und 60% für Versteckte Fähigkeit, und jeder kann seine Fähigkeiten weitergeben, wenn mit Ditto gezüchtet wird. HINWEIS: Der Effekt von SW: 60% Chance zur Weitergabe von VF und zufällig für normale Fähigkeit, wurde weggelassen.
-#define P_EGG_MOVE_TRANSFER GEN_LATEST        // Ab Gen. 8 erhält ein Pokémon eine Zuchtattacke auf dem leeren Platz, wenn zwei Pokémon derselben Spezies in der Pension sind, und eines eine Zuchtattacke kennt, während das andere einen leeren Platz hat. In Gen. 9 erhält ein Pokémon Zuchtattacken vom anderen (unabhängig von der Spezies), wenn es ein Spiegelsamen hält.
-#define P_SCATTERBUG_LINE_FORM_BREED SPECIES_SCATTERBUG_FANCY // Wähle die Purmel-Form, in die sich alle Vivillon/Puponcho/Purmel züchten lassen, im Grunde angepasst an den "Standort" des Spieler-Spiels.
+#define P_NIDORAN_M_DITTO_BREED        GEN_LATEST                // Seit Gen. 5 kann Nidoran♂ bei der Zucht mit Ditto auch Nidoran♀-Nachkommen produzieren. Zuvor wurden nur männliche Nachkommen erzeugt. Diese Änderung gilt auch für Volbeat.
+#define P_INCENSE_BREEDING             GEN_LATEST                // Seit Gen. 9 benötigen Baby-Pokémon aus verschiedenen Generationen kein Räucherwerk der Eltern mehr, um durch Zucht erhalten zu werden.
+#define P_EGG_HATCH_LEVEL              GEN_LATEST                // Seit Gen. 4 schlüpfen Pokémon auf Level 1 statt auf Level 5 aus Eiern.
+#define P_BALL_INHERITANCE             GEN_LATEST                // Seit Gen. 6 erben Eier aus der Pension den Pokéball der Mutter. Ab Gen. 7 kann auch der Vater den Ball weitergeben, solange er derselben Spezies wie die Mutter angehört.
+#define P_MOVE_INHERITANCE             GEN_LATEST                // Vor Gen. 6 erbten Eier Zuchtattacken vom Vater, dann TM-Attacken vom Vater, dann von beiden Eltern gemeinsam gelernte Level-Attacken. Ab Gen. 6 erben Eier zuerst von beiden Eltern gemeinsam gelernte Level-Attacken, dann Zuchtattacken vom Vater, dann Zuchtattacken von der Mutter.
+#define P_NATURE_INHERITANCE           GEN_LATEST                // In Gen. 3 gibt der Ewigstein Ditto und Müttern eine 50%ige Chance, das Wesen zu vererben. Seit Gen. 4 kann jeder das Wesen weitergeben. Seit Gen. 5 beträgt die Chance 100%.
+#define P_ABILITY_INHERITANCE          GEN_LATEST                // In S2W2 hat ein weibliches Pokémon eine 80%ige Chance, seine Fähigkeit weiterzugeben, wenn es mit einem Männchen gezüchtet wird. Seit Gen. 6 beträgt die Chance 80% für normale Fähigkeit und 60% für Versteckte Fähigkeit, und jeder kann seine Fähigkeiten weitergeben, wenn mit Ditto gezüchtet wird. HINWEIS: Der Effekt von SW: 60% Chance zur Weitergabe von VF und zufällig für normale Fähigkeit, wurde weggelassen.
+#define P_EGG_MOVE_TRANSFER            GEN_LATEST                // Ab Gen. 8 erhält ein Pokémon eine Zuchtattacke auf dem leeren Platz, wenn zwei Pokémon derselben Spezies in der Pension sind, und eines eine Zuchtattacke kennt, während das andere einen leeren Platz hat. In Gen. 9 erhält ein Pokémon Zuchtattacken vom anderen (unabhängig von der Spezies), wenn es ein Spiegelsamen hält.
+#define P_SCATTERBUG_LINE_FORM_BREED   SPECIES_SCATTERBUG_FANCY  // Wähle die Purmel-Form, in die sich alle Vivillon/Puponcho/Purmel züchten lassen, im Grunde angepasst an den "Standort" des Spieler-Spiels.
 
 // Speziesspezifische Einstellungen
 #define P_SHEDINJA_BALL GEN_LATEST        // Seit Gen. 4 benötigt Ninjatom einen Pokéball für seine Entwicklung. In Gen. 3 erbt Ninjatom den Ball von Nincada.
@@ -80,5 +79,12 @@
 // Sound related settings
 #define P_MODIFIED_MEGA_CRIES            P_MEGA_EVOLUTIONS  // If TRUE, will use the extra separate Mega Cries (approx. 3% space of ROM). if FALSE, will use the same cry for all Mega Evolutions except modified with P_MODIFIED_MEGA_CRY_MODE. By default, this is set based on if mega evolutions are enabled.
 #define P_MODIFIED_MEGA_CRY_MODE         CRY_MODE_HIGH_PITCH
+
+// Pokédex
+#define DONT_SKIP_GAPS                   0              // Does not skip any gaps in the Pokédex.
+#define SKIP_GAPS_EXCEPT_ONE             1              // Skips all gaps in the Pokédex other than one blank entry in between seen entries.
+#define SKIP_GAPS_EXCEPT_BEFORE_AFTER    2              // Skips all gaps in the Pokédex other than one before and after seen entries. Most similar to whats seen in Pokémon SV.
+#define SKIP_ALL_GAPS                    3              // Skips all gaps in the Pokédex.
+#define P_SKIP_POKEDEX_GAPS              DONT_SKIP_GAPS // Pokémon SV skip large gaps in the Pokédex.
 
 #endif // GUARD_CONFIG_POKEMON_H

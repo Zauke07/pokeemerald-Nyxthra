@@ -115,6 +115,8 @@ static const u8 sText_TwoLinkTrainersWantToBattle[] = _("Du wirst von {B_LINK_OP
 static const u8 sText_Trainer1SentOutPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_OPPONENT_MON1_NAME} in den Kampf!");
 static const u8 sText_Trainer1SentOutTwoPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} in den Kampf!");
 static const u8 sText_Trainer1SentOutPkmn2[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_BUFF1} in den Kampf!");
+static const u8 sText_LinkTrainerIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} sent out {B_LINK_OPPONENT_MON1_NAME}!");
+static const u8 sText_TwoLinkTrainersIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} sent out {B_LINK_OPPONENT_MON1_NAME}! {B_LINK_OPPONENT2_NAME} sent out {B_LINK_OPPONENT_MON2_NAME}!");
 
 static const u8 sText_LinkTrainerSentOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} schickt {B_OPPONENT_MON1_NAME} in den Kampf!");
 static const u8 sText_LinkTrainer2SentOutPkmn2[] = _("{B_LINK_OPPONENT2_NAME} schickt {B_OPPONENT_MON2_NAME} in den Kampf!");
@@ -128,6 +130,7 @@ static const u8 sText_GoTwoPkmn[] = _("Los! {B_PLAYER_MON1_NAME} und {B_PLAYER_M
 static const u8 sText_GoPkmn2[] = _("Los! {B_BUFF1}!");
 static const u8 sText_DoItPkmn[] = _("Du bist dran, {B_BUFF1}!");
 static const u8 sText_GoForItPkmn[] = _("Gib dein Bestes, {B_BUFF1}!");
+static const u8 sText_BeCarefulPkmn[] = _("Be careful, {B_PLAYER_MON1_NAME}!");
 static const u8 sText_JustALittleMorePkmn[] = _("Nur noch ein bisschen! Halte durch, {B_BUFF1}!"); 
 static const u8 sText_YourFoesWeakGetEmPkmn[] = _("Dein Gegner ist schwach! Schnapp ihn dir, {B_BUFF1}!");
 
@@ -626,7 +629,6 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SLOWSTARTENTERS]                      = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} kommt nur schwer in die Gänge!"),
     [STRINGID_SLOWSTARTEND]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} hat endlich zu voller Kraft gefunden!"),
     [STRINGID_SOLARPOWERHPDROP]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} leidet unter der Solarkraft!"),
-    [STRINGID_AFTERMATHDMG]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde verletzt!"),
     [STRINGID_ANTICIPATIONACTIVATES]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} erschauderte!"),
     [STRINGID_FOREWARNACTIVATES]                    = COMPOUND_STRING("{B_SCR_ABILITY} warnte {B_SCR_NAME_WITH_PREFIX2} vor {B_EFF_NAME_WITH_PREFIX2}s {B_BUFF1}!"),
     [STRINGID_ICEBODYHPGAIN]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}s Eishaut heilte es ein wenig!"),
@@ -893,6 +895,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_NOTVERYEFFECTIVETWOFOES]              = COMPOUND_STRING("Das war nicht sehr effektiv gegen beide Gegner!"),
 //    [STRINGID_ITDOESNTAFFECTTWOFOES]                = COMPOUND_STRING("Das hat keine Wirkung auf beide Gegner…"),
     [STRINGID_SENDCAUGHTMONPARTYORBOX]              = COMPOUND_STRING("Möchtest du {B_DEF_NAME} ins Team aufnehmen?"),
+    [STRINGID_PKMNWASHURT]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde verletzt!"),
+    [STRINGID_ITDOESNTAFFECTTWOFOES]                = COMPOUND_STRING("It doesn't affect {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}…"),
     [STRINGID_PKMNSENTTOPCAFTERCATCH]               = gText_PkmnSentToPCAfterCatch,
     [STRINGID_PKMNDYNAMAXED]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde riesig per Dynamax!"),
     [STRINGID_PKMNGIGANTAMAXED]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} wurde riesig per Gigadynamax!"),
@@ -926,10 +930,23 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PARTYCUREDFREEZE]                     = COMPOUND_STRING("{B_BUFF1} thawed out!"),
     [STRINGID_PARTYCUREDFROSTBITE]                  = COMPOUND_STRING("{B_BUFF1}'s frostbite was cured!"),
     [STRINGID_PKMNATKNOTLOWERED]                    = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s Attack was not lowered!"),
-    [STRINGID_REFLECTWOREOFF]                       = COMPOUND_STRING("{B_DEF_TEAM1} team's Reflect wore off!"),
-    [STRINGID_LIGHTSCREENWOREOFF]                   = COMPOUND_STRING("{B_DEF_TEAM1} team's Light Screen wore off!"),
-    [STRINGID_AURORAVEILWOREOFF]                    = COMPOUND_STRING("{B_DEF_TEAM1} team's Aurora Veil wore off!"),
-    [STRINGID_STICKYWEBDISAPPEAREDFROMYOU]          = COMPOUND_STRING("The sticky web has disappeared from the ground around you!"),
+    [STRINGID_VICTORYCATCH]                         = COMPOUND_STRING("{B_DEF_NAME} is weak!\nThrow a Poké Ball now!"),
+    [STRINGID_CANTUSEMOVE]                          = COMPOUND_STRING("This move can't be used!\p"),
+    [STRINGID_REFLECTWOREOFF]                       = COMPOUND_STRING("{B_DEF_TEAM1} side's Reflect wore off!"),
+    [STRINGID_LIGHTSCREENWOREOFF]                   = COMPOUND_STRING("{B_DEF_TEAM1} side's Light Screen wore off!"),
+    [STRINGID_AURORAVEILWOREOFF]                    = COMPOUND_STRING("{B_DEF_TEAM1} side's Aurora Veil wore off!"),
+    [STRINGID_MOSTLYINEFFECTIVE]                    = COMPOUND_STRING("It's mostly ineffective…"),
+    [STRINGID_EXTREMELYEFFECTIVE]                   = COMPOUND_STRING("It's extremely effective!"),
+    [STRINGID_NOTVERYEFFECTIVEONDEF]                = COMPOUND_STRING("It's not very effective on {B_DEF_NAME_WITH_PREFIX2}."),
+    [STRINGID_SUPEREFFECTIVEONDEF]                  = COMPOUND_STRING("It's super effective on {B_DEF_NAME_WITH_PREFIX2}!"),
+    [STRINGID_MOSTLYINEFFECTIVEONDEF]               = COMPOUND_STRING("It's mostly ineffective on {B_DEF_NAME_WITH_PREFIX2}."),
+    [STRINGID_EXTREMELYEFFECTIVEONDEF]              = COMPOUND_STRING("It's extremely effective on {B_DEF_NAME_WITH_PREFIX2}!"),
+    [STRINGID_EXTREMELYEFFECTIVETWOFOES]            = COMPOUND_STRING("It's extremely effective on {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}!"),
+    [STRINGID_MOSTLYINEFFECTIVETWOFOES]             = COMPOUND_STRING("It's mostly ineffective on {B_DEF_NAME_WITH_PREFIX2} and {B_DEF_PARTNER_NAME}."),
+    [STRINGID_CRITICALHITONDEF]                     = COMPOUND_STRING("A critical hit on {B_DEF_NAME_WITH_PREFIX2}!"),
+    [STRINGID_S]                                    = COMPOUND_STRING("s"),
+    [STRINGID_LOSTSOMEOFITSHP]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} lost some of its HP!"),
+    [STRINGID_BELCHCANTUSE]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} hasn't eaten any held Berries, so it can't possibly belch!\p"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1107,8 +1124,8 @@ const u16 gProtectLikeUsedStringIds[] =
 
 const u16 gBrokeProtectionStringIds[] =
 {
-    [B_MSG_FEINT]           = STRINGID_FELLFORFEINT,
-    [B_MSG_HYPERSPACE_FURY] = STRINGID_BROKETHROUGHPROTECTION,
+    [B_MSG_FEINT]                 = STRINGID_FELLFORFEINT,
+    [B_MSG_BROKE_THROUGH_PROTECT] = STRINGID_BROKETHROUGHPROTECTION,
 };
 
 const u16 gReflectLightScreenSafeguardStringIds[] =
@@ -1479,7 +1496,7 @@ const u16 gPartyCureStatusStringIds[] =
 
 const u16 gHurtByStringIds[] =
 {
-    [B_MSG_HURT] = STRINGID_AFTERMATHDMG,
+    [B_MSG_HURT] = STRINGID_PKMNWASHURT,
     [B_MSG_HURT_BY_ITEM] = STRINGID_PKMNHURTSWITH,
 };
 
@@ -1504,11 +1521,13 @@ const u8 gText_WhatWillBrendanDo[] = _("Was wird\nBrix tun?");
 const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
 const u8 gText_BattleMenu[] = _("Kampf{CLEAR_TO 56}Beutel\nPokémon{CLEAR_TO 56}Flucht");
 const u8 gText_SafariZoneMenu[] = _("Ball{CLEAR_TO 56}{POKEBLOCK}\nNähern{CLEAR_TO 56}Flucht");
+const u8 gText_SafariZoneMenuFrlg[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW 13 14 15}BALL{CLEAR_TO 56}BAIT\nROCK{CLEAR_TO 56}RUN");
 const u8 gText_MoveInterfacePP[] = _("AP ");
 const u8 gText_MoveInterfaceType[] = _("Typ/");
 const u8 gText_MoveInterfacePPType[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}AP\nTYP/");
 const u8 gText_MoveInterfaceDynamicColors[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
 const u8 gText_WhichMoveToForget4[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Welche Attacke\nsoll vergessen werden?");
+const u8 gText_BattleCatchOrNot[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Fangen\nNicht fangen");
 const u8 gText_BattleYesNoChoice[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Ja\nNein");
 const u8 gText_BattleSwitchWhich[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}Wechseln\nwelches?");
 const u8 gText_BattleSwitchWhich2[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNAMIC_COLOR4 DYNAMIC_COLOR5 DYNAMIC_COLOR6}");
@@ -1873,6 +1892,17 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .color.background = TEXT_DYNAMIC_COLOR_5,
         .color.accent = TEXT_DYNAMIC_COLOR_5,
         .color.shadow = TEXT_DYNAMIC_COLOR_6,
+    },
+    [B_CATCH_OR_NOT] = {
+        .fillValue = PIXEL_FILL(0xE),
+        .fontId = FONT_NORMAL,
+        .x = 0,
+        .y = 1,
+        .speed = 0,
+        .color.foreground = 13,
+        .color.background = 14,
+        .color.accent = 14,
+        .color.shadow = 15,
     },
 };
 
@@ -2567,6 +2597,10 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                         stringPtr = sText_InGamePartnerSentOutZGoN; // Player is on left
                     else
                         stringPtr = sText_InGamePartnerSentOutNGoZ; // Partner on left
+                }
+                else if (gBattleTypeFlags & BATTLE_TYPE_RAID)
+                {
+                    stringPtr = sText_BeCarefulPkmn;
                 }
                 else
                 {

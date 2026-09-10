@@ -98,7 +98,6 @@ Route117_EventScript_DaycareEggWaiting::
 	msgbox Route117_Text_IWillKeepDoYouWantIt, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route117_EventScript_DaycareAcceptEgg
 	msgbox Route117_Text_IllKeepIt, MSGBOX_DEFAULT
-	clearflag FLAG_PENDING_DAYCARE_EGG
 	special RejectEggFromDayCare
 	goto_if_set FLAG_PLAYER_IN_GARDEN, Route117_EventScript_DaycareManAskToExitAfterEgg
 	msgbox Route117_Text_DaycareManWantToGoInside, MSGBOX_YESNO
