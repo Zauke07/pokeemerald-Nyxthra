@@ -1,5 +1,14 @@
 GraniteCave_B6F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GraniteCave_B6F_OnTransition
 	.byte 0
+
+GraniteCave_B6F_OnTransition:
+	setflag FLAG_HIDE_GRANITE_CAVE_METAGROSS
+	goto_if_set FLAG_CAUGHT_SHINY_METAGROSS, GraniteCave_B6F_OnTransition_Done
+	goto_if_unset FLAG_BADGE06_GET, GraniteCave_B6F_OnTransition_Done
+	clearflag FLAG_HIDE_GRANITE_CAVE_METAGROSS
+GraniteCave_B6F_OnTransition_Done:
+	end
 
 GraniteCave_B6F_EventScript_Metagross::
 	lock

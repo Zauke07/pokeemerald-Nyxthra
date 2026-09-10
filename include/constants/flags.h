@@ -85,7 +85,7 @@
 #define FLAG_CAUGHT_SHINY_METAGROSS    0x41 // Schillerndes Metagross in GraniteCave_B6F wurde gefangen
 #define FLAG_HIDE_PETALBURG_CITY_CHAMP    0x42 // Champion object on the PetalburgCity map (separate from FLAG_HIDE_PETALBURG_GYM_CHAMP, which is the gym's own copy of the object)
 #define FLAG_CAUGHT_ARTICUNO    0x43 // Arktos in Meteor Falls B1F wurde gefangen (getrennt von FLAG_DEFEATED_METEOR_FALLS_ARTICUNO, das nur fuer Tracking bleibt)
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_HIDE_GRANITE_CAVE_METAGROSS    0x44 // Schillerndes Metagross in GraniteCave_B6F ausblenden (bis 6. Orden erhalten bzw. nach dem Fang)
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag
