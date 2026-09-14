@@ -2332,21 +2332,24 @@ bool8 IsPlayerFacingSurfableFishableWater(void)
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     s16 x = playerObjEvent->currentCoords.x;
     s16 y = playerObjEvent->currentCoords.y;
-    enum Collision collision;
     u8 nextBehavior;
 
+    if (PlayerGetElevation() != ELEVATION_DEFAULT)
+        return FALSE;
+
     MoveCoords(playerObjEvent->facingDirection, &x, &y);
-    collision = GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection);
     nextBehavior = MapGridGetMetatileBehaviorAt(x, y);
-    // Lava tiles are ordinary impassable terrain (not the elevation-mismatch trick water uses),
-    // so allow COLLISION_IMPASSABLE too when the tile is specifically lava.
-    if ((collision == COLLISION_ELEVATION_MISMATCH
-      || (collision == COLLISION_IMPASSABLE && MetatileBehavior_IsLava(nextBehavior)))
-     && PlayerGetElevation() == ELEVATION_DEFAULT
+
+    // Lava doesn't rely on the elevation-mismatch trick regular water uses to block
+    // movement, so it's accepted regardless of how exactly it blocks the player.
+    if (MetatileBehavior_IsLava(nextBehavior))
+        return TRUE;
+
+    if (GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
      && MetatileBehavior_IsSurfableFishableWater(nextBehavior))
         return TRUE;
-    else
-        return FALSE;
+
+    return FALSE;
 }
 
 void ClearPlayerAvatarInfo(void)
