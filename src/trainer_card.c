@@ -1941,7 +1941,7 @@ static u8 VersionToCardType(enum GameVersion version)
 static void CreateTrainerCardTrainerPic(void)
 {
     u8 style = sData->trainerCard.style;
-    u8 picIndex = FacilityClassToPicIndex(PlayerStyleToFacilityClass(style));
+    enum TrainerPicID picIndex = FacilityClassToPicIndex(PlayerStyleToFacilityClass(style));
     u8 xOffset = sTrainerPicOffset[sData->isHoenn][IsPlayerStyleMale(style)][0];
     u8 yOffset = sTrainerPicOffset[sData->isHoenn][IsPlayerStyleMale(style)][1];
 
