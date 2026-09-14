@@ -1125,10 +1125,19 @@ bool8 MetatileBehavior_IsSurfableFishableWater(u8 metatileBehavior)
      || metatileBehavior == MB_INTERIOR_DEEP_WATER
      || metatileBehavior == MB_DEEP_WATER
      || metatileBehavior == MB_SOOTOPOLIS_DEEP_WATER
+     || metatileBehavior == MB_LAVA
      || (metatileBehavior == MB_EASTWARD_CURRENT
       || metatileBehavior == MB_WESTWARD_CURRENT
       || metatileBehavior == MB_NORTHWARD_CURRENT
       || metatileBehavior == MB_SOUTHWARD_CURRENT))
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsLava(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_LAVA)
         return TRUE;
     else
         return FALSE;
