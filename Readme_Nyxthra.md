@@ -131,6 +131,24 @@ https://github.com/rh-hideout/pokeemerald-expansion
   - Betraf ausschließlich neuere, weiter hinten in der Tabelle stehende Charaktere - reguläre Standard-NPCs waren nie betroffen
   - Aaron hatte zusätzlich einen eigenen, unabhängigen Fehler (falscher Palettentag verwies auf eine generische Passanten-Palette statt auf seine eigene) - ebenfalls behoben
 - Route 104: Der See beim Blumenladen (Pretty Petal) trocknet nach Groudons Erwachen (Dürre-Story) dauerhaft aus - eigene private Tileset-Kopie mit angepasster Erdton-Palette, wirkt sich ausschließlich auf Route 104 aus
+- Update auf pokeemerald-expansion v1.17.0 (vorher v1.16.3):
+  - 227 Upstream-Commits eingespielt, u. a. überarbeitetes Trainerkampf-System, neue "Garantierter Fang"-Mechanik, überarbeitete Mass-Outbreak-Struktur und Pokédex-Formularanzeige
+  - Alle eigenen Nyxthra-Anpassungen beim Merge erhalten (Randomizer-Integration, Stylesystem, Geister-Partner-Fix im Doppelkampf, Whiteout-Softlock-Schutz)
+- Trainerpass zeigte ab Ethan aufwärts (Ethan, Lyra, Lucas, Dawn, Hilbert und alle weiteren modernen Styles) ein falsches oder das Spiel abstürzendes Bild:
+  - Ursache: interner Index für Trainerbilder wurde auf 8 Bit begrenzt zurückgegeben; bei inzwischen über 400 Einträgen wurde der Index für alle neueren Styles umgebrochen
+  - Status: Gefixt
+- Debug-Menü (Flags/Vars) zeigte eine Zeile mit Datenmüll statt Text:
+  - Ursache: verwaister Menüeintrag ohne zugehörigen Text (Merge-Artefakt)
+  - Status: Gefixt; zusätzlich neuer Debug-Eintrag "Facing Tile Info" (unter Player) zur direkten Diagnose von Tile-Verhalten/Kollision vor dem Spieler
+- Schillerndes Metagross in Granite Cave B6F ist jetzt erst nach dem 6. Orden sichtbar und fangbar (vorher von Spielbeginn an)
+- Neu: Angeln in Lava möglich
+  - Eigenes Metatile-Behavior (MB_LAVA) sowie ein eigener Kampfhintergrund (Vulkan-Optik) für Kämpfe, die beim Lava-Angeln starten
+  - Aktuell nutzbar in der Mystery-Höhle (Erdgeschoss) sowie im Magma-Versteck (3F)
+  - Fishing-Mons an den jeweiligen Lava-Stellen strikt thematisch passend (ausschließlich Feuer-Pokémon)
+- Angel-Tabellen aller bisher unbearbeiteten Hoenn-Routen und -Städte überarbeitet: keine Art kommt jetzt noch doppelt vor, breite Streuung über den gesamten verfügbaren Pokédex statt der immer gleichen Standard-Fische
+- Magma-Versteck und Team-Aqua-Versteck: Wildpokémon komplett überarbeitet
+  - Magma-Versteck: jede Etage hat jetzt eine eigene, unterschiedliche Pokémon-Auswahl (vorher überall identisch), strikt Feuer/Boden-Pokémon plus vereinzelt Unlicht-Pokémon für die "böse" Team-Magma-Atmosphäre; Level orientieren sich an der tatsächlichen Entwicklungsstufe der jeweiligen Art
+  - Team-Aqua-Versteck: Wasser- und Angel-Pokémon ausschließlich im Erdgeschoss (dort gibt es befahrbares Wasser), strikt wasserthematisch; die übrigen Etagen haben bewusst keine Wildbegegnungen
 
 ## 🆕 Neu in Beta 1.1.5
 
