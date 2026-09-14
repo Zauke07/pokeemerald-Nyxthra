@@ -217,9 +217,9 @@
             "encounter_rate": 4,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 30,
-                "species": "SPECIES_GASTRODON_WEST"
+                "min_level": 10,
+                "max_level": 18,
+                "species": "SPECIES_GOLDEEN"
               },
               {
                 "min_level": 10,
@@ -227,8 +227,8 @@
                 "species": "SPECIES_MAREANIE"
               },
               {
-                "min_level": 30,
-                "max_level": 35,
+                "min_level": 20,
+                "max_level": 30,
                 "species": "SPECIES_GASTRODON_EAST"
               },
               {
@@ -239,7 +239,7 @@
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_GOLDEEN"
+                "species": "SPECIES_GASTRODON_WEST"
               }
             ]
           },
@@ -258,43 +258,43 @@
               },
               {
                 "min_level": 10,
-                "max_level": 30,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 10,
-                "max_level": 30,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 10,
-                "max_level": 30,
+                "max_level": 21,
                 "species": "SPECIES_CORPHISH"
+              },
+              {
+                "min_level": 10,
+                "max_level": 20,
+                "species": "SPECIES_POLIWAG"
+              },
+              {
+                "min_level": 10,
+                "max_level": 23,
+                "species": "SPECIES_HORSEA"
               },
               {
                 "min_level": 25,
                 "max_level": 30,
-                "species": "SPECIES_CORPHISH"
+                "species": "SPECIES_BARBOACH"
               },
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_CORPHISH"
+                "species": "SPECIES_SEAKING"
               },
               {
-                "min_level": 20,
-                "max_level": 25,
-                "species": "SPECIES_CORPHISH"
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_GYARADOS"
               },
               {
-                "min_level": 35,
-                "max_level": 40,
-                "species": "SPECIES_CORPHISH"
+                "min_level": 28,
+                "max_level": 35,
+                "species": "SPECIES_WHISCASH"
               },
               {
                 "min_level": 40,
                 "max_level": 45,
-                "species": "SPECIES_CORPHISH"
+                "species": "SPECIES_GYARADOS_MEGA"
               }
             ]
           }
@@ -13456,6 +13456,61 @@
                 "min_level": 27,
                 "max_level": 29,
                 "species": "SPECIES_HEATMOR"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 20,
+                "max_level": 21,
+                "species": "SPECIES_SLUGMA"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_SALANDIT"
+              },
+              {
+                "min_level": 21,
+                "max_level": 23,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 22,
+                "max_level": 24,
+                "species": "SPECIES_CAMERUPT"
+              },
+              {
+                "min_level": 23,
+                "max_level": 25,
+                "species": "SPECIES_MAGMAR"
+              },
+              {
+                "min_level": 24,
+                "max_level": 26,
+                "species": "SPECIES_SALAZZLE"
+              },
+              {
+                "min_level": 25,
+                "max_level": 27,
+                "species": "SPECIES_LAMPENT"
+              },
+              {
+                "min_level": 26,
+                "max_level": 28,
+                "species": "SPECIES_TURTONATOR"
+              },
+              {
+                "min_level": 27,
+                "max_level": 29,
+                "species": "SPECIES_COALOSSAL"
+              },
+              {
+                "min_level": 28,
+                "max_level": 30,
+                "species": "SPECIES_VOLCARONA"
               }
             ]
           }
