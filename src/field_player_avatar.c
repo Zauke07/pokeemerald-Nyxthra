@@ -2334,18 +2334,17 @@ bool8 IsPlayerFacingSurfableFishableWater(void)
     s16 y = playerObjEvent->currentCoords.y;
     u8 nextBehavior;
 
-    if (PlayerGetElevation() != ELEVATION_DEFAULT)
-        return FALSE;
-
     MoveCoords(playerObjEvent->facingDirection, &x, &y);
     nextBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
     // Lava doesn't rely on the elevation-mismatch trick regular water uses to block
-    // movement, so it's accepted regardless of how exactly it blocks the player.
+    // movement, so it's accepted purely by behavior, regardless of the player's own
+    // elevation or how exactly the tile blocks movement.
     if (MetatileBehavior_IsLava(nextBehavior))
         return TRUE;
 
-    if (GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
+    if (PlayerGetElevation() == ELEVATION_DEFAULT
+     && GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection) == COLLISION_ELEVATION_MISMATCH
      && MetatileBehavior_IsSurfableFishableWater(nextBehavior))
         return TRUE;
 
