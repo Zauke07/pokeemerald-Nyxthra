@@ -1,6 +1,6 @@
-# Pokémon Nyxthra - Beta 1.3.0
+# Pokémon Nyxthra - Beta 1.3.2
 
-Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.16.3) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
+Pokémon Nyxthra ist eine deutschsprachige Modifikation auf Basis von pokeemerald-expansion (v1.17.0) mit eigener Story, neuen Systemen und stark erweitertem Gameplay.
 
 Basisprojekt (RHH):  
 https://github.com/rh-hideout/pokeemerald-expansion
@@ -10,8 +10,8 @@ https://github.com/rh-hideout/pokeemerald-expansion
 ## 🧪 Projektstatus
 
 - Projektstart: 01.01.2024
-- Basis: pokeemerald-expansion v1.16.3
-- Aktuelle Nyxthra-Version: Beta 1.3.0
+- Basis: pokeemerald-expansion v1.17.0
+- Aktuelle Nyxthra-Version: Beta 1.3.2
 - Sprache: Deutsch
 - Status: Erste öffentliche Beta
 
@@ -124,7 +124,7 @@ https://github.com/rh-hideout/pokeemerald-expansion
   - Schattenfarbe bei der Geschlechts-/Charakterauswahl zu Spielbeginn korrigiert (war weiß statt schwarz und dadurch schlecht lesbar)
 - Charakter-Styles Hans/Brigitte in Brix/Mai umbenannt (Konsistenz mit dem neuen Champion-Feature)
 
-## 🧩 Aktueller Dev-Stand (nach Beta 1.3.0)
+## 🆕 Neu in Beta 1.3.2
 
 - Overworld-Palettenfehler bei mehreren eigenen NPCs endgültig behoben (u. a. Opa/Gentleman, Barry, PokeKid):
   - Ursache: Die interne Suchfunktion für Objekt-Paletten hat ihren Ergebnis-Index auf 8 Bit begrenzt zurückgegeben. Da die Palettentabelle inzwischen über 256 Einträge hat, wurde bei allen neueren, weiter hinten stehenden NPCs der Index umgebrochen (z. B. Index 274 wurde zu 18) - dadurch wurde dauerhaft die Palette eines völlig anderen, aber gültigen Charakters geladen (Opa zeigte z. B. Mais Farben, Barry die von Groudons Spiegelbild, PokeKid die des Rivalen)
