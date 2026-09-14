@@ -75,6 +75,7 @@
 #include "fake_rtc.h"
 #include "save.h"
 #include "field_player_avatar.h"
+#include "fieldmap.h"
 #include "vs_seeker.h"
 #include "load_save.h"
 #include "battle_partner.h"
@@ -361,6 +362,7 @@ static void DebugAction_Player_Name(u8 taskId);
 //static void DebugAction_Player_Gender(u8 taskId);
 static void DebugAction_Player_SetStyle(u8 taskId);
 static void DebugAction_Player_Id(u8 taskId);
+static void DebugAction_ShowFacingTileInfo(u8 taskId);
 
 static void Debug_CreateInputDisplayWindow(u8 taskId);
 static void DebugNativeStep_DelayedSelection(u8 taskId);
@@ -699,6 +701,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Player[] =
     { COMPOUND_STRING("Player name"),    DebugAction_Player_Name },
     { COMPOUND_STRING("Select Style…"),  DebugAction_OpenSubMenu, sDebugMenu_Actions_Player_SelectStyle }, // ← GEÄNDERT!
     { COMPOUND_STRING("New Trainer ID"), DebugAction_Player_Id },
+    { COMPOUND_STRING("Facing Tile Info"), DebugAction_ShowFacingTileInfo },
     { NULL }
 };
 
@@ -2008,6 +2011,34 @@ static void DebugAction_Util_WatchCredits(u8 taskId)
 static void DebugAction_Player_Name(u8 taskId)
 {
     DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldContinueScript);
+}
+
+static void DebugAction_ShowFacingTileInfo(u8 taskId)
+{
+    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+    s16 x = playerObjEvent->currentCoords.x;
+    s16 y = playerObjEvent->currentCoords.y;
+    u8 behavior;
+    u8 collision;
+    u8 elevation;
+    bool8 fishable;
+
+    MoveCoords(playerObjEvent->facingDirection, &x, &y);
+    behavior = MapGridGetMetatileBehaviorAt(x, y);
+    collision = (u8)GetCollisionAtCoords(playerObjEvent, x, y, playerObjEvent->facingDirection);
+    elevation = PlayerGetElevation();
+    fishable = IsPlayerFacingSurfableFishableWater();
+
+    StringCopy(gStringVar4, COMPOUND_STRING("Behavior: "));
+    ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), behavior, STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringAppend(gStringVar4, COMPOUND_STRING("\nKollision: "));
+    ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), collision, STR_CONV_MODE_LEFT_ALIGN, 2);
+    StringAppend(gStringVar4, COMPOUND_STRING(" Elev: "));
+    ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), elevation, STR_CONV_MODE_LEFT_ALIGN, 2);
+    StringAppend(gStringVar4, COMPOUND_STRING("\nFischbar: "));
+    ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), fishable, STR_CONV_MODE_LEFT_ALIGN, 1);
+
+    Debug_DestroyMenu_Full_Script(taskId, Debug_ShowFieldMessageStringVar4);
 }
 
 /*
