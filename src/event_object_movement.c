@@ -3187,6 +3187,11 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType)
         sprite->centerToCornerVecX = -(32 >> 1);
         sprite->centerToCornerVecY = -(32 >> 1);
         sprite->oam.priority = 2;
+        // Draw behind every other sprite on this priority level. The GBA can't
+        // blend one sprite with another (a semi-transparent sprite only blends
+        // with the background), so a glow drawn in front of the player would
+        // replace the player's pixels and make them vanish.
+        sprite->subpriority = 0xFF;
         sprite->oam.objMode = ST_OAM_OBJ_BLEND;
         sprite->oam.affineMode = ST_OAM_AFFINE_NORMAL;
         sprite->x += 8;
@@ -3201,6 +3206,105 @@ static void SpawnLightSprite(s16 x, s16 y, s16 camX, s16 camY, u32 lightType)
         sprite->oam.objMode = ST_OAM_OBJ_BLEND;
         break;
     }
+}
+
+// At night, warm up the player's palette while they stand in a lamp's light.
+// The glow sprite itself has to stay behind the player (see SpawnLightSprite),
+// since the GBA can't blend one sprite over another; tinting the player is
+// what makes them look lit instead of just standing on top of the light.
+#define LAMP_TINT_RADIUS      24 // px, no tint beyond this distance
+#define LAMP_TINT_FULL_RADIUS 8  // px, full tint within this distance
+#define LAMP_TINT_MAX_COEFF   5  // out of 16
+#define LAMP_TINT_COLOR       RGB(31, 27, 16)
+
+static EWRAM_DATA bool8 sLampTintActive = FALSE;
+static EWRAM_DATA u8 sLampTintPalNum = 0;
+static EWRAM_DATA u16 sLampTintBase[16] = {0};
+static EWRAM_DATA u16 sLampTintWritten[16] = {0};
+
+static u32 GetPlayerLampTintCoeff(struct Sprite *player)
+{
+    u32 i, best = 0;
+
+    if (gTimeOfDay != TIME_NIGHT || !MapHasNaturalLight(gMapHeader.mapType))
+        return 0;
+
+    for (i = 0; i < MAX_SPRITES; i++)
+    {
+        struct Sprite *light = &gSprites[i];
+        s32 dx, dy, dist;
+        u32 coeff;
+
+        if (!light->inUse || light->callback != UpdateLightSprite || light->sLightType != LIGHT_TYPE_BALL)
+            continue;
+
+        dx = abs((player->x + player->x2) - light->x);
+        dy = abs((player->y + player->y2) - light->y);
+        dist = max(dx, dy);
+        if (dist >= LAMP_TINT_RADIUS)
+            continue;
+        if (dist <= LAMP_TINT_FULL_RADIUS)
+            coeff = LAMP_TINT_MAX_COEFF;
+        else
+            coeff = (LAMP_TINT_RADIUS - dist) * LAMP_TINT_MAX_COEFF / (LAMP_TINT_RADIUS - LAMP_TINT_FULL_RADIUS);
+        best = max(best, coeff);
+    }
+    return best;
+}
+
+void UpdatePlayerLampTint(void)
+{
+    struct Sprite *player;
+    u16 *pal;
+    u32 i, coeff, palNum;
+
+    if (gPaletteFade.active || gPlayerAvatar.spriteId >= MAX_SPRITES)
+    {
+        // A fade rebuilds every palette from scratch; don't restore over it.
+        sLampTintActive = FALSE;
+        return;
+    }
+
+    player = &gSprites[gPlayerAvatar.spriteId];
+    palNum = player->oam.paletteNum;
+    pal = &gPlttBufferFaded[OBJ_PLTT_ID(palNum)];
+
+    if (sLampTintActive)
+    {
+        if (palNum != sLampTintPalNum)
+            sLampTintActive = FALSE; // slot changed, old base no longer applies
+        else if (memcmp(pal, sLampTintWritten, sizeof(sLampTintWritten)) != 0)
+            memcpy(sLampTintBase, pal, sizeof(sLampTintBase)); // game rewrote it (time/weather), take that as new base
+    }
+
+    coeff = GetPlayerLampTintCoeff(player);
+    if (coeff == 0)
+    {
+        if (sLampTintActive)
+        {
+            memcpy(pal, sLampTintBase, sizeof(sLampTintBase));
+            sLampTintActive = FALSE;
+        }
+        return;
+    }
+
+    if (!sLampTintActive)
+    {
+        memcpy(sLampTintBase, pal, sizeof(sLampTintBase));
+        sLampTintPalNum = palNum;
+        sLampTintActive = TRUE;
+    }
+
+    for (i = 0; i < 16; i++)
+    {
+        u32 c = sLampTintBase[i];
+        s32 r = GET_R(c), g = GET_G(c), b = GET_B(c);
+        r += ((GET_R(LAMP_TINT_COLOR) - r) * (s32)coeff) >> 4;
+        g += ((GET_G(LAMP_TINT_COLOR) - g) * (s32)coeff) >> 4;
+        b += ((GET_B(LAMP_TINT_COLOR) - b) * (s32)coeff) >> 4;
+        pal[i] = RGB(r, g, b);
+    }
+    memcpy(sLampTintWritten, pal, sizeof(sLampTintWritten));
 }
 
 #undef sLightType
