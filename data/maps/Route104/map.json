@@ -5,7 +5,7 @@
   "music": "MUS_DP_ROUTE201_DAY",
   "region_map_section": "MAPSEC_ROUTE_104",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY",
+  "weather": "WEATHER_SUNNY_CLOUDS",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -330,7 +330,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route104_EventScript_Gina",
-      "flag": "0"
+      "flag": "FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN",
@@ -343,7 +343,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route104_EventScript_Mia",
-      "flag": "0"
+      "flag": "FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",

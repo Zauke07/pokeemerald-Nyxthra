@@ -1,6 +1,7 @@
 Route104_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route104_OnFrame
 	map_script MAP_SCRIPT_ON_TRANSITION, Route104_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Route104_OnLoad
 	.byte 0
 
 Route104_OnFrame:
@@ -16,15 +17,33 @@ Route104_OnTransition:
 	call Common_EventScript_SetupRivalGfxId_FromPlayerStyle
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
+	call_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, Route104_EventScript_SetDroughtWeather
+	end
+
+@ Runs on MAP_SCRIPT_ON_LOAD (after InitMap() has already copied the raw,
+@ unmodified layout data into the render grid) rather than ON_TRANSITION.
+@ ON_TRANSITION fires BEFORE that copy (see LoadMapFromWarp/InitMapView in
+@ overworld.c: RunOnTransitionMapScript() runs, then InitMap() unconditionally
+@ overwrites the grid from the stored map.bin) - a metatile edit made during
+@ ON_TRANSITION gets silently wiped out a moment later and never renders.
+Route104_OnLoad:
 	call_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, Route104_EventScript_DryUpLake
 	end
 
 @ Nyxthra story: Groudon's awakening dries up the lake by the flower shop
 @ for good. Re-applied on every visit while the flag is set (cheap - it's
-@ just a metatile swap), matching how SetMirageTowerVisibility re-checks
-@ its own story flag on every map load.
+@ just a metatile swap).
 Route104_EventScript_DryUpLake::
 	special Nyxthra_DryUpRoute104Lake
+	return
+
+@ Same permanent-drought weather Groudon's awakening causes region-wide in
+@ vanilla Emerald, mirroring how SootopolisCity_EventScript_SetDownpour
+@ pins WEATHER_DOWNPOUR for Kyogre. Re-applied every visit since the map's
+@ own default weather (WEATHER_SUNNY_CLOUDS) would otherwise take over
+@ again on a fresh map load.
+Route104_EventScript_SetDroughtWeather::
+	setweather WEATHER_DROUGHT
 	return
 
 Route104_EventScript_ShowOrHideWhiteHerbFlorist::
@@ -336,7 +355,13 @@ Route104_EventScript_ExpertF::
 	end
 
 Route104_EventScript_ReceivedBerry::
+	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, Route104_EventScript_ExpertFLakeDriedUp
 	msgbox Route104_Text_TrainersOftenMakeMonHoldBerries, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_EventScript_ExpertFLakeDriedUp::
+	msgbox Route104_Text_ExpertFLakeDriedUp, MSGBOX_DEFAULT
 	release
 	end
 
@@ -352,7 +377,13 @@ Route104_EventScript_WhiteHerbFlorist::
 	end
 
 Route104_EventScript_ReceivedWhiteHerb::
+	goto_if_set FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, Route104_EventScript_FlowerShopDriedUp
 	msgbox Route104_Text_FlowerShopSellingSaplings, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_EventScript_FlowerShopDriedUp::
+	msgbox Route104_Text_FlowerShopDriedUp, MSGBOX_DEFAULT
 	release
 	end
 
@@ -1230,6 +1261,14 @@ Route104_Text_TMsAreOneTimeUse:
 	.string "sachen. Einmal genutzt - nie wieder.\n"
 	.string "Also überleg gut, wem du's gibst.$"
 
+Route104_Text_ExpertFLakeDriedUp:
+	.string "Seit GROUDON aufgewacht ist, knallt\n"
+	.string "hier non-stop die Sonne.\p"
+	.string "Der See? Komplett ausgetrocknet.\n"
+	.string "Nur noch rissiger Boden übrig.\p"
+	.string "Meine Beeren nehmen's locker - die\n"
+	.string "sind härter im Nehmen als ich.$"
+
 Route104_Text_DontNeedThisTakeIt:
 	.string "Der BLUMENLADEN verkauft jetzt kleine\n"
 	.string "Bäume. Ich war übermotiviert…\p"
@@ -1240,6 +1279,14 @@ Route104_Text_FlowerShopSellingSaplings:
 	.string "Der BLUMENLADEN hat jetzt Bäume im\n"
 	.string "Angebot. Richtig cute, aber wohin damit?\p"
 	.string "Vielleicht züchte ich ne Plantage.$"
+
+Route104_Text_FlowerShopDriedUp:
+	.string "Seit der See ausgetrocknet ist, wird's\n"
+	.string "hart für den BLUMENLADEN.\p"
+	.string "Ohne Wasser nebenan welkt hier\n"
+	.string "leider so einiges.\p"
+	.string "GROUDON hat echt keine Ahnung, was\n"
+	.string "er der Gärtnerei angetan hat.$"
 
 Route104_Text_MrBrineysCottage:
 	.string "MR. BRACKS MÖWEN-VILLA$"
