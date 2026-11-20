@@ -1174,12 +1174,17 @@ void DoSpinExitWarp(void)
     CreateTask(Task_SpinExitWarp, 10);
 }
 
-static void LoadOrbEffectPalette(bool8 blueOrb)
+// Nyxthra: 0 = rot, 1 = blau, 2 = Albtraum-Violett (Darkrai)
+#define ORB_EFFECT_NIGHTMARE 2
+
+static void LoadOrbEffectPalette(u8 orbColor)
 {
     int i;
     u16 color[1];
 
-    if (!blueOrb)
+    if (orbColor == ORB_EFFECT_NIGHTMARE)
+        color[0] = RGB(10, 0, 18);
+    else if (!orbColor)
         color[0] = RGB_RED;
     else
         color[0] = RGB_BLUE;
@@ -1334,6 +1339,15 @@ void DoOrbEffect(void)
     {
         tBlueOrb = FALSE;
         tCenterX = 120;
+    }
+    else if (gSpecialVar_Result == 4)
+    {
+        // Nyxthra: Darkrai im Pyroberg, der Kreis startet am schwarzen Loch
+        // zwei Felder über dem Spieler.
+        tBlueOrb = ORB_EFFECT_NIGHTMARE;
+        tCenterX = 120;
+        tCenterY = 48;
+        return;
     }
     else
     {

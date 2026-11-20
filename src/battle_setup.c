@@ -479,13 +479,17 @@ static bool32 TryGetLegendaryBattleConfig(u16 species, enum BattleTransition *tr
         *transition = B_TRANSITION_SHRED_SPLIT;
         *song = MUS_DP_VS_ARCEUS;
         return TRUE;
+    case SPECIES_DARKRAI:
+    case SPECIES_DARKRAI_MEGA:
+        // Nyxthra: Darkrai zieht den Bildschirm in ein schwarzes Loch.
+        *transition = B_TRANSITION_BLACKHOLE;
+        *song = MUS_DP_VS_LEGEND;
+        return TRUE;
     case SPECIES_HEATRAN:
     case SPECIES_HEATRAN_MEGA:
     case SPECIES_CRESSELIA:
     case SPECIES_PHIONE:
     case SPECIES_MANAPHY:
-    case SPECIES_DARKRAI:
-    case SPECIES_DARKRAI_MEGA:
     case SPECIES_SHAYMIN_LAND:
     case SPECIES_SHAYMIN_SKY:
         *transition = B_TRANSITION_SHRED_SPLIT;

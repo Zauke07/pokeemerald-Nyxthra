@@ -164,31 +164,35 @@ MtPyre_6F_2_EventScript_BlackHoleCutscene::
 	msgbox MtPyre_6F_2_Text_VeilTears, MSGBOX_DEFAULT
 	closemessage
 	fadeoutbgm 1
+	@ Violetter Albtraum-Schein breitet sich vom Loch aus, der Boden bebt
+	setvar VAR_RESULT, 4
+	playse SE_ORB
+	special DoOrbEffect
+	delay 30
 	playse SE_M_NIGHTMARE
-	waitse
-	fadescreen FADE_TO_BLACK
+	waitstate
+	@ Das schwarze Loch reißt auf
 	clearflag FLAG_TEMP_14
 	addobject LOCALID_MT_PYRE_6F_2_BLACK_HOLE
-	delay 8
-	fadescreen FADE_FROM_BLACK
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
-	setvar VAR_0x8006, 16
-	setvar VAR_0x8007, 4
-	special ShakeCamera
-	waitstate
 	playse SE_M_CONFUSE_RAY
-	delay 40
-	playmoncry SPECIES_DARKRAI, CRY_MODE_ENCOUNTER
-	delay 40
-	waitmoncry
+	delay 60
+	@ Darkrai steht zuerst im Loch und tritt dann heraus vor das Nordgrab
 	clearflag FLAG_TEMP_13
 	addobject LOCALID_MT_PYRE_6F_2_DARKRAI
-	delay 16
-	@ Darkrai steht zuerst im Loch und tritt dann heraus vor das Nordgrab
+	delay 24
 	applymovement LOCALID_MT_PYRE_6F_2_DARKRAI, MtPyre_6F_2_Movement_DarkraiEmerge
 	waitmovement 0
-	delay 16
+	@ Der Ruf, dann verblasst der Schein mit einem letzten Beben
+	playmoncry SPECIES_DARKRAI, CRY_MODE_ENCOUNTER
+	waitmoncry
+	special FadeOutOrbEffect
+	waitstate
+	setvar VAR_0x8004, 2
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 12
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
 	msgbox MtPyre_6F_2_Text_DarkraiAppears, MSGBOX_DEFAULT
 	closemessage
 	goto MtPyre_6F_2_EventScript_StartDarkraiBattle
