@@ -62,7 +62,7 @@
 #define FLAG_PLAYER_IN_GARDEN                  0x29 // Spieler ist im Garten
 #define FLAG_DAYCARE_MAN_FIRST_EXIT_DONE       0x2A // Alter Mann hat ersten Ausgang erledigt
 #define FLAG_SHINY_MODE_ON                      0x2B // Shiny-Mode ist AN
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_CAUGHT_DARKRAI  0x2C // Darkrai im Pyroberg (MtPyre_6F_2) wurde gefangen
 #define FLAG_CAUGHT_LAVADOS      0x2D // Lavados wurde gefangen
 #define FLAG_DEFEATED_LAVADOS    0x2E // Lavados wurde besiegt
 #define FLAG_HIDE_LAVADOS        0x2F // Lavados verstecken

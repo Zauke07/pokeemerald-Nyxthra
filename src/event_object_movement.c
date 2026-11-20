@@ -811,6 +811,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
+    {gObjectEventPal_BlackHole,             OBJ_EVENT_PAL_TAG_BLACK_HOLE},
     // Nyxthra: these "DP_" (Diamond/Pearl-imported) NPC palettes had graphics
     // info structs and .gbapal data already, but were never actually
     // registered here - they rendered with a garbage/missing palette

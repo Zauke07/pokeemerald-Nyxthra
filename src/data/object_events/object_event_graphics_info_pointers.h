@@ -994,6 +994,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Celebi;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kabuto;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Darkrai;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlackHole;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysD;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysA;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_DeoxysN;
@@ -1355,6 +1356,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_JESSIE_ROCKET] =                &gObjectEventGraphicsInfo_Jessie_Rocket,
     [OBJ_EVENT_GFX_ROGUE_EGG] =                    &gObjectEventGraphicsInfo_Rogue_Egg,
     [OBJ_EVENT_GFX_LUGIA_SHADOW] =                 &gObjectEventGraphicsInfo_Lugia_Shadow,
+    [OBJ_EVENT_GFX_BLACK_HOLE] =                   &gObjectEventGraphicsInfo_BlackHole,
 
     [OBJ_EVENT_GFX_WES] =                     &gObjectEventGraphicsInfo_Wes,
     [OBJ_EVENT_GFX_RIVAL_WES] =               &gObjectEventGraphicsInfo_Rival_Wes,

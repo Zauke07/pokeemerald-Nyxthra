@@ -6780,3 +6780,8 @@ static const struct SpriteFrameImage sPicTable_MomFrlg[] = {
 };
 
 #endif // IS_FRLG
+
+// Nyxthra: Schwarzes Loch (Darkrai-Event im Pyroberg)
+static const struct SpriteFrameImage sPicTable_BlackHole[] = {
+    overworld_ascending_frames(gObjectEventPic_BlackHole, 4, 4),
+};

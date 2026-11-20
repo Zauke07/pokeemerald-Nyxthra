@@ -15,7 +15,8 @@
   "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_DARKRAI",
+      "local_id": "LOCALID_MT_PYRE_6F_2_BLACK_HOLE",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_HOLE",
       "x": 6,
       "y": 7,
       "elevation": 0,
@@ -24,20 +25,35 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "MtPyre_6F_2_EventScript_BlackHole",
+      "flag": "FLAG_TEMP_14"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_DEVIL_MAN",
-      "x": 2,
-      "y": 3,
+      "local_id": "LOCALID_MT_PYRE_6F_2_DARKRAI",
+      "graphics_id": "OBJ_EVENT_GFX_DARKRAI",
+      "x": 6,
+      "y": 7,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MtPyre_6F_2_EventScript_Darkrai",
+      "flag": "FLAG_TEMP_13"
+    },
+    {
+      "local_id": "LOCALID_MT_PYRE_6F_2_DEVIL_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_DEVIL_MAN",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MtPyre_6F_2_EventScript_DevilMan",
       "flag": "0"
     }
   ],
@@ -50,169 +66,47 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
+  "coord_events": [],
+  "bg_events": [
     {
-      "type": "trigger",
+      "type": "sign",
+      "x": 0,
+      "y": 10,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MtPyre_6F_2_EventScript_GraveWest"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 12,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MtPyre_6F_2_EventScript_GraveSouth"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 10,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MtPyre_6F_2_EventScript_GraveEast"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 8,
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MtPyre_6F_2_EventScript_GraveNorth"
+    },
+    {
+      "type": "sign",
       "x": 6,
       "y": 2,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 6,
-      "y": 10,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 9,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 2,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 1,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 7,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
-    },
-    {
-      "type": "trigger",
-      "x": 0,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "MtPyre_6F_2_EventScript_NotFinishedTrigger"
+      "elevation": 3,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MtPyre_6F_2_EventScript_Tablet"
     }
-  ],
-  "bg_events": []
+  ]
 }

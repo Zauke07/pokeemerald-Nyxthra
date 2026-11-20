@@ -1774,3 +1774,17 @@ static const union AnimCmd *const sAnimTable_RedGreenVSSeeker[] = {
 static const union AnimCmd *const sAnimTable_RedGreenVSSeekerBike[] = {
     sAnim_VSSeekerBike,
 };
+
+// Nyxthra: Schwarzes Loch (Darkrai-Event im Pyroberg)
+static const union AnimCmd sAnim_BlackHole[] =
+{
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(1, 6),
+    ANIMCMD_FRAME(2, 6),
+    ANIMCMD_FRAME(3, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_BlackHole[] = {
+    [ANIM_STAY_STILL] = sAnim_BlackHole,
+};
