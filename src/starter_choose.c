@@ -740,6 +740,11 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
+    // sStarterMon liegt im EWRAM und ist nach einem Neustart leer (z. B. Rivalenkampf,
+    // Credits, Champ-Raum nach dem Laden). Dann aus der gespeicherten Region neu aufbauen;
+    // der Randomizer ist über den Seed im Spielstand deterministisch.
+    if (sStarterMon[0] == SPECIES_NONE)
+        SetStarterMonListFromRegion(VarGet(VAR_STARTER_REGION));
     if (chosenStarterId >= STARTER_MON_COUNT)
         chosenStarterId = 0;
     return sStarterMon[chosenStarterId];
