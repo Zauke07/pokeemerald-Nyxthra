@@ -14245,9 +14245,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Eilrad"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Klapprad, das dop-\n"
-            "pelt so schnell ist\n"
-            "wie ein Fußgänger."),
+            "Ein Rad, doppelt so\n"
+            "schnell wie ein\n"
+            "Fußgänger."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,
@@ -14262,9 +14262,8 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Kunstrad"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Klapprad ermög-\n"
-            "licht Sprünge und\n"
-            "Wheelies."),
+            "Ein Rad für Sprünge\n"
+            "und Wheelies."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,

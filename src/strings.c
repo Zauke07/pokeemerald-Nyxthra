@@ -272,7 +272,7 @@ const u8 gMenuText_Give2[] = _("Geben");
 const u8 gText_xVar1[] = _("×{STR_VAR_1}");
 const u8 gText_Berry2[] = _(" Beere"); // Unused
 const u8 gText_Coins[] = _("{STR_VAR_1} Münz.");
-const u8 gText_CloseBag[] = _("Beutel Schliesen");
+const u8 gText_CloseBag[] = _("Beutel schließen");
 const u8 gText_Var1IsSelected[] = _("{STR_VAR_1} ist\nausgewählt.");
 const u8 gText_CantWriteMail[] = _("Du kannst keinen\nBRIEF schreiben.");
 const u8 gText_NoPokemon[] = _("Es gibt kein\nPokémon.");
@@ -336,7 +336,7 @@ const u8 *const gPyramidBagMenu_ReturnToStrings[] =
     [PYRAMIDBAG_LOC_CHOOSE_TOSS] = gText_TheField
 };
 
-const u8 gText_ReturnToVar1[] = _("Zurück zu\n{STR_VAR_1}.");
+const u8 gText_ReturnToVar1[] = _("Zurück\n{STR_VAR_1}.");
 const u8 gText_ItemsPocket[] = _("Items");
 const u8 gText_PokeBallsPocket[] = _("Bälle");
 const u8 gText_TMHMPocket[] = _("TMs & VMs");
@@ -495,7 +495,7 @@ const u8 gText_MoveToWhere[] = _("An wessen Stelle setzen?");
 const u8 gText_TeachWhichPokemon[] = _("Welches Pokémon lehren?");
 const u8 gText_UseOnWhichPokemon[] = _("Welches Pokémon?");
 const u8 gText_GiveToWhichPokemon[] = _("Welchem Pokémon geben?");
-const u8 gText_DoWhatWithPokemon[] = _("Was tun mit {PKMN}?");
+const u8 gText_DoWhatWithPokemon[] = _("Was tun mit dem Pokémon?");
 const u8 gText_NothingToCut[] = _("Hier nicht einsetzbar.");
 const u8 gText_CantSurfHere[] = _("Surfer nicht einsetzbar.");
 const u8 gText_AlreadySurfing[] = _("Surfer ist eingesetzt.");
