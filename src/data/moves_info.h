@@ -19266,7 +19266,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_EXPANDING_FORCE] =
     {
-        .name = COMPOUND_STRING("Entfesselte Kraft"),
+        .name = COMPOUND_STRING("Entfessel. Kraft"),
         .description = COMPOUND_STRING(
             "Die Kraft steigt und fügt allen\n"
             "Feinden im Psychofeld Schaden zu."),
@@ -20108,7 +20108,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SPRINGTIDE_STORM] =
     {
-        .name = COMPOUND_STRING("Frühlingsflutsturm"),
+        .name = COMPOUND_STRING("Frühlingsflut"),
         .description = COMPOUND_STRING(
             "Hüllt einen Gegner in heftige Winde.\n"
             "Variiert je nach Form des Benutzers."),
@@ -20440,7 +20440,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CEASELESS_EDGE] =
     {
-        .name = COMPOUND_STRING("Unaufhörliche Klinge"),
+        .name = COMPOUND_STRING("Unaufhörl. Klinge"),
         .description = COMPOUND_STRING(
             "Hohe kritische Trefferquote. Setzt\n"
             "Splitter, die dem Gegner Schaden zufügen."),
@@ -20464,8 +20464,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Frostwindsturm"),
         .description = COMPOUND_STRING(
-            "Schläge mInit.utalen, kalteverringernn"
-            "Kann die Init. des Gegners verringern."),
+            "Greift mit eisigem Sturmwind an.\n"
+            "Kann die Init. des Gegners senken."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 100 : 95,
         .type = TYPE_FLYING,
@@ -21852,7 +21852,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TERA_STARSTORM] =
     {
-        .name = COMPOUND_STRING("Tera-Sternensturm"),
+        .name = COMPOUND_STRING("Tera-Sternsturm"),
         .description = COMPOUND_STRING(
             "In Terapagos' Stellarform\n"
             "trifft es alle Gegner."),
@@ -21890,7 +21890,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BURNING_BULWARK] =
     {
-        .name = COMPOUND_STRING("Brennende Schutzmauer"),
+        .name = COMPOUND_STRING("Brennschutzmauer"),
         .description = COMPOUND_STRING(
             "Weicht Angriffen aus und verbrennt\n"
             "den Gegner, wenn er getroffen wird."),
@@ -21952,7 +21952,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_TACHYON_CUTTER] =
     {
-        .name = COMPOUND_STRING("Tachyon-Schneider"),
+        .name = COMPOUND_STRING("Tachyon-Schnitt"),
         .description = COMPOUND_STRING(
             "Schleudert Partikelklingen auf\n"
             "das Ziel. Trifft zweimal."),
@@ -22006,7 +22006,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_ALLURING_VOICE] =
     {
-        .name = COMPOUND_STRING("Verführerische Stimme"),
+        .name = COMPOUND_STRING("Verführ. Stimme"),
         .description = COMPOUND_STRING(
             "Verwirrt das Ziel, wenn seine Werte\n"
             "in dieser Runde erhöht wurden."),
@@ -22048,7 +22048,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SUPERCELL_SLAM] =
     {
-        .name = COMPOUND_STRING("Superzellen-Schlag"),
+        .name = COMPOUND_STRING("Superzellschlag"),
         .description = COMPOUND_STRING(
             "Ein elektrisierter Knall. Wenn es\n"
             "fehlschlägt, ist der Benutzer verletzt."),
