@@ -2129,6 +2129,7 @@ const u32 gNyxthraPrologueStars_Gfx[] = INCGFX_U32("graphics/nyxthra/prologue_st
 const u16 gNyxthraPrologueStars_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_stars.pal", ".gbapal");
 const u16 gNyxthraPrologueGlobeRain_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_globe_rain.pal", ".gbapal");
 const u16 gNyxthraPrologueGlobeDrought_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_globe_drought.pal", ".gbapal");
+const u16 gNyxthraPrologueGlobeSunrise_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_globe_sunrise.pal", ".gbapal");
 const u32 gNyxthraPrologueRain_Gfx[] = INCGFX_U32("graphics/nyxthra/prologue_rain.png", ".4bpp");
 const u16 gNyxthraPrologueRain_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_rain.pal", ".gbapal");
 const u32 gNyxthraPrologueKyogreSil_Gfx[] = INCGFX_U32("graphics/nyxthra/prologue_kyogre_sil.png", ".4bpp");

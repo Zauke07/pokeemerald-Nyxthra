@@ -2107,6 +2107,7 @@ extern const u32 gNyxthraPrologueStars_Gfx[];
 extern const u16 gNyxthraPrologueStars_Pal[];
 extern const u16 gNyxthraPrologueGlobeRain_Pal[];
 extern const u16 gNyxthraPrologueGlobeDrought_Pal[];
+extern const u16 gNyxthraPrologueGlobeSunrise_Pal[];
 extern const u32 gNyxthraPrologueRain_Gfx[];
 extern const u16 gNyxthraPrologueRain_Pal[];
 extern const u32 gNyxthraPrologueKyogreSil_Gfx[];

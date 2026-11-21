@@ -41,10 +41,9 @@
       -> Zoom auf Hoenn ("Doch zwei Gewalten ruhten darin: Land und Meer.")
       -> Regen/Dürre wechseln sich auf dem Planeten immer schneller ab
       -> Rayquaza kreist um den Planeten und beendet den Streit
-      -> v1: die drei Legendären reagieren auf die rätselhafte Energie
-      (reusing the original Emerald cutscene as-is) -> mysterious energy
-      burst -> "Jahre vergingen." / "Hoenn begann sich zu verändern." ->
-      title card -> hand off to Birch's speech.
+      -> Stille: Sonnenaufgang, "Jahrhunderte vergingen. Man vergaß, was damals erwachte."
+      -> "Doch niemand wusste, was an diesem Tag wirklich freigesetzt wurde."
+      -> Darkrai-Teaser -> Titelkarte -> Birchs Rede.
 
     Deliberately silent on what the energy actually was, and the hero from
     that day is never shown (matches the later per-player-gender Champion
@@ -62,25 +61,15 @@ struct PrologueCard
     bool8 shake;     // Nyxthra: Bildschirm bebt, sobald die Karte fertig getippt ist
 };
 
-static const u8 sText_Prologue_Intro1[] = _("Vor vielen Jahren…");
-static const u8 sText_Prologue_Intro2[] = _("…stand Hoenn kurz vor der");
-static const u8 sText_Prologue_Intro2b[] = _("vollkommenen Vernichtung.");
 static const u8 sText_Prologue_Mystery[] = _("Doch niemand wusste, was an diesem Tag");
 static const u8 sText_Prologue_Mysteryb[] = _("wirklich freigesetzt wurde.");
-static const u8 sText_Prologue_YearsPassed[] = _("Jahre vergingen.");
-static const u8 sText_Prologue_HoennChanges[] = _("Und Hoenn begann sich zu verändern.");
 
-static const struct PrologueCard sIntroCards[] =
-{
-    { sText_Prologue_Intro1, NULL, FALSE },
-    { sText_Prologue_Intro2, sText_Prologue_Intro2b, TRUE },
-};
-
+// Nur noch die Mystery-Tafel: "Jahre vergingen." / "Und Hoenn begann
+// sich zu verändern." wiederholt Szene 5 und wird in Szene 6 neu erzählt.
 static const struct PrologueCard sOutroCards[] =
 {
     { sText_Prologue_Mystery, sText_Prologue_Mysteryb, FALSE },
-    // Nach dieser ersten Karte folgt der Darkrai-Teaser (Task_Prologue_DarkraiTeaser).
-    { sText_Prologue_YearsPassed, sText_Prologue_HoennChanges, FALSE },
+    // Danach folgt der Darkrai-Teaser, danach die Titelkarte.
 };
 
 // Nyxthra story: closing title card. Reuses the real title screen's own
@@ -188,12 +177,9 @@ static const struct WindowTemplate sPrologueWindowTemplates[] =
     DUMMY_WIN_TEMPLATE,
 };
 
-static void Task_Prologue_IntroCards(u8 taskId);
 static void Task_Prologue_OutroCards(u8 taskId);
-static void Task_Prologue_LegendaryEnergyScene(u8 taskId);
 static void Task_Prologue_TitleLogo(u8 taskId);
 static void Task_Prologue_DarkraiTeaser(u8 taskId);
-static void CB2_NyxthraPrologue_AfterRayquaza(void);
 static void Task_Prologue_GlobeScenes(u8 taskId);
 static void CB2_NyxthraPrologueGlobe(void);
 static void VBlankCB_NyxthraPrologueGlobe(void);
@@ -326,9 +312,9 @@ static void PrintPrologueLineTyped(const u8 *string, u8 y)
     AddTextPrinterParameterized4(0, FONT_NORMAL, x, y, 1, 0, color, TEXT_SPEED_PROLOGUE, string);
 }
 
-// Generic card driver shared by the intro and outro card sequences: the fog
-// fades in while the first line types itself out, then the second line,
-// an optional quake, a short hold (A/B/Start skips), and a fade to black.
+// Generic card driver for the remaining prologue cards: the fog fades in
+// while the first line types itself out, then the second line, an optional
+// quake, a short hold (A/B/Start skips), and a fade to black.
 enum
 {
     CARD_STATE_FADE_IN,
@@ -414,25 +400,10 @@ static bool8 RunPrologueCard(u8 taskId, const struct PrologueCard *card)
     return FALSE;
 }
 
-static void Task_Prologue_IntroCards(u8 taskId)
-{
-    if (RunPrologueCard(taskId, &sIntroCards[gTasks[taskId].tCardIdx]))
-    {
-        gTasks[taskId].tCardIdx++;
-        if (gTasks[taskId].tCardIdx >= ARRAY_COUNT(sIntroCards))
-        {
-            DestroyTask(taskId);
-            FreePrologueBgAndWindow();
-            // Groudon vs. Kyogre, then Rayquaza steps in to separate them -
-            // reusing Emerald's own cutscene engine verbatim (see
-            // rayquaza_scene.c). animId 1 (RAY_ANIM_DUO_FIGHT) with
-            // endEarly=FALSE runs the whole chain through Rayquaza chasing
-            // them off on its own; we pick back up in the exit callback.
-            DoRayquazaSceneSkippable(1, TRUE, CB2_NyxthraPrologue_AfterRayquaza);
-        }
-    }
-}
-
+// Die Trio-Energieszene gehört chronologisch zum "Tag des Streits" und
+// käme nach "Jahrhunderte vergingen" zu spät. Der Code bleibt für Szene 6
+// erhalten, wird im Intro 2.0 aber nicht mehr aufgerufen.
+#if 0
 #define tBurstStep    tTimer
 #define tGroudonSprite data[3]
 #define tKyogreSprite  data[4]
@@ -655,6 +626,8 @@ static void Task_Prologue_LegendaryEnergyScene(u8 taskId)
     }
 }
 
+#endif
+
 static void Task_Prologue_OutroCards(u8 taskId)
 {
     if (RunPrologueCard(taskId, &sOutroCards[gTasks[taskId].tCardIdx]))
@@ -820,7 +793,15 @@ static void Task_Prologue_DarkraiTeaser(u8 taskId)
         {
             tState = CARD_STATE_FADE_IN;
             tTimer = 0;
-            gTasks[taskId].func = Task_Prologue_OutroCards; // weiter mit "Jahre vergingen."
+            if (gTasks[taskId].tCardIdx >= (s16)ARRAY_COUNT(sOutroCards))
+            {
+                gTasks[taskId].tState = 0;
+                gTasks[taskId].func = Task_Prologue_TitleLogo;
+            }
+            else
+            {
+                gTasks[taskId].func = Task_Prologue_OutroCards;
+            }
         }
         break;
     }
@@ -893,6 +874,7 @@ static void Task_Prologue_TitleLogo(u8 taskId)
     }
 }
 
+#if 0
 static void CB2_NyxthraPrologue_AfterRayquaza(void)
 {
     u8 taskId;
@@ -913,9 +895,10 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
     gTasks[taskId].tBurstStep = 0;
 }
 
+#endif
 
 // ---------------------------------------------------------------------------
-// Intro 2.0, Szenen 1–4: Erde, Zoom, Regen/Dürre, dann Rayquaza.
+// Intro 2.0, Szenen 1–5: Erde, Zoom, Regen/Dürre, Rayquaza, dann Stille.
 // Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sterne oder Regen (4bpp),
 // BG2 Planet (affin, 8bpp, Paletten 0–1 / 32 Farben). Atmosphären-
 // Farben liegen fest auf den Indizes 28–31, damit sie pulsieren können.
@@ -951,6 +934,8 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 #define GLOBE_SCENE4_FRAMES      330 // 5,5 s
 #define GLOBE_RAY_FLY_START      28
 #define GLOBE_RAY_FLY_FRAMES     200
+#define GLOBE_SCENE5_LEAD_FRAMES 30
+#define GLOBE_SCENE5_SILENCE_FRAMES 60
 
 #define WEATHER_RAIN             0
 #define WEATHER_DROUGHT          1
@@ -962,6 +947,8 @@ static const u8 sText_Globe_Forces2[] = _("Land und Meer.");
 static const u8 sText_Globe_Rain[] = _("Regen.");
 static const u8 sText_Globe_Drought[] = _("Dürre.");
 static const u8 sText_Globe_Rayquaza[] = _("Rayquaza beendete den Streit.");
+static const u8 sText_Globe_Centuries1[] = _("Jahrhunderte vergingen.");
+static const u8 sText_Globe_Centuries2[] = _("Man vergaß, was damals erwachte.");
 
 // Intervalle in Frames: 2,0 → 1,5 → 1,0 → 0,6 s, danach 0,4 s bis ~10 s.
 static const u16 sWeatherDurations[] = {
@@ -988,6 +975,13 @@ static const u16 sGlobeRayAtmos[GLOBE_ATMOS_COUNT] = {
     RGB(22, 28, 6),
     RGB(8, 20, 4),
     RGB(4, 10, 2),
+};
+
+static const u16 sGlobeSunriseAtmos[GLOBE_ATMOS_COUNT] = {
+    RGB(31, 27, 17),
+    RGB(31, 19, 10),
+    RGB(24, 10, 6),
+    RGB(12, 4, 4),
 };
 
 // Fest aus prologue_globe.pal, Indizes 28–31 (bereits auf 5 Bit gerundet).
@@ -1700,10 +1694,8 @@ static void UpdateScene3Effects(u16 pulse, s16 scale, u16 angle)
     }
 }
 
-// Nach den Globus-Szenen 1–4 folgt nicht mehr die v1-Tafel
-// ("Vor vielen Jahren…") und nicht mehr die Emerald-Rayquaza-Cutscene,
-// weil Szene 3–4 denselben Streit bereits gezeigt haben. Weiter geht es
-// mit der rätselhaften Energie der drei Legendären.
+// Nach den Globus-Szenen 1–5 folgen die Mystery-Tafel und der Darkrai-
+// Teaser. "Jahre vergingen." entfällt, weil Szene 5 das bereits sagt.
 static void StartPrologueIntroCards(u8 taskId)
 {
     StopScene3Effects();
@@ -1713,9 +1705,8 @@ static void StartPrologueIntroCards(u8 taskId)
     InitPrologueBgAndWindow();
     SetVBlankCallback(VBlankCB_NyxthraPrologue);
     SetMainCallback2(CB2_NyxthraPrologue);
-    gTasks[taskId].func = Task_Prologue_LegendaryEnergyScene;
-    gTasks[taskId].tState = 0;
-    gTasks[taskId].tBurstStep = 0;
+    gTasks[taskId].func = Task_Prologue_OutroCards;
+    gTasks[taskId].tState = CARD_STATE_FADE_IN;
     gTasks[taskId].tCardIdx = 0;
     gTasks[taskId].tTimer = 0;
 }
@@ -1734,6 +1725,8 @@ enum
     GLOBE_STATE_SCENE3,
     GLOBE_STATE_SCENE4_START,
     GLOBE_STATE_SCENE4,
+    GLOBE_STATE_SCENE5_START,
+    GLOBE_STATE_SCENE5,
     GLOBE_STATE_FADE_OUT,
     GLOBE_STATE_DONE,
 };
@@ -1755,7 +1748,7 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
     s16 scale;
     u16 angle;
 
-    // Skip: Szenen 1–4 abbrechen und zur Energieszene der drei Legendären springen.
+    // Skip: Szenen 1–5 abbrechen und zur Mystery-Tafel plus Darkrai-Teaser springen.
     if (skip && tState > GLOBE_STATE_INIT && tState < GLOBE_STATE_FADE_OUT)
     {
         if (!gPaletteFade.active)
@@ -2049,13 +2042,56 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
             FadeOutBGM(4);
 
         if (tTimer >= GLOBE_SCENE4_FRAMES)
+            tState = GLOBE_STATE_SCENE5_START;
+        break;
+    }
+
+    case GLOBE_STATE_SCENE5_START:
+        // Kein Fade ins Schwarze: die Erde bleibt stehen, der Streit ist
+        // vorbei, und der Sonnenaufgang setzt ein.
+        StopScene3Effects();
+        ClearGlobeText();
+        LoadPalette(gNyxthraPrologueGlobeSunrise_Pal, BG_PLTT_ID(0), 32 * sizeof(u16));
+        LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16));
+        FillBg1Stars();
+        m4aMPlayStop(&gMPlayInfo_BGM);
+        sGlobeFlashTimer = 0;
+        sGlobeMosaic = 0;
+        sGlobeShakeTimer = 0;
+        tTimer = 0;
+        tTypedScene2 = 0;
+        tGlobePulse = 0;
+        tState = GLOBE_STATE_SCENE5;
+        break;
+
+    case GLOBE_STATE_SCENE5:
+        tTimer++;
+        tGlobePulse++;
+        SetGlobeAffine(GLOBE_SCR_Y_END, GLOBE_SCALE_1_0, GLOBE_ANGLE_END + tTimer);
+
+        PulseAtmosphereColors(tGlobePulse, sGlobeSunriseAtmos, 31, 28, 18);
+
+        if (tTypedScene2 == 0 && tTimer >= GLOBE_SCENE5_LEAD_FRAMES)
         {
-            StopScene3Effects();
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            PrintPrologueLineTyped(sText_Globe_Centuries1, GLOBE_TEXT_Y1);
+            tTypedScene2 = 1;
+        }
+        else if (tTypedScene2 == 1 && !IsTextPrinterActiveOnWindow(0))
+        {
+            PrintPrologueLineTyped(sText_Globe_Centuries2, GLOBE_TEXT_Y2);
+            tTypedScene2 = 2;
+        }
+        else if (tTypedScene2 == 2 && !IsTextPrinterActiveOnWindow(0))
+        {
+            tTimer = 0;
+            tTypedScene2 = 3;
+        }
+        else if (tTypedScene2 == 3 && tTimer >= GLOBE_SCENE5_SILENCE_FRAMES)
+        {
+            BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
             tState = GLOBE_STATE_FADE_OUT;
         }
         break;
-    }
 
     case GLOBE_STATE_FADE_OUT:
         if (!gPaletteFade.active)
@@ -2084,8 +2120,8 @@ void CB2_InitNyxthraPrologue(void)
     ResetPaletteFade();
     ResetTasks();
 
-    // Intro 2.0: ruhige Sootopolis-Musik über den neuen Erd-Szenen,
-    // danach übernimmt v1 mit MUS_ABNORMAL_WEATHER.
+    // Intro 2.0: ruhige Sootopolis-Musik über den neuen Erd-Szenen.
+    // Szene 5 ist stumm; der Darkrai-Teaser setzt später eigene Musik an.
     InitPrologueGlobeScene();
 
     EnableInterrupts(INTR_FLAG_VBLANK);
@@ -2101,4 +2137,3 @@ void CB2_InitNyxthraPrologue(void)
 #undef tState
 #undef tTimer
 #undef tCardIdx
-#undef tBurstStep
