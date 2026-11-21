@@ -26,6 +26,7 @@
 #include "constants/species.h"
 #include "constants/sound.h"
 #include "scanline_effect.h"
+#include "trig.h"
 
 /*
     Nyxthra story prologue - shown once, before Birch's speech, on every
@@ -34,10 +35,13 @@
     screens are (its own BG + borderless text window, own task chain, no map
     or script engine involved) since no save file exists yet at this point.
 
-    Minimal first version:
-      black screen -> "Vor vielen Jahren..." -> Groudon/Kyogre/Rayquaza
+    Intro 2.0 (milestone 1) plays two new globe scenes first, then the
+    existing v1 cards and cutscenes:
+      space + Erde steigt auf ("Hoenn." / "Ein Land im Gleichgewicht.")
+      -> Zoom auf Hoenn ("Doch zwei Gewalten ruhten darin: Land und Meer.")
+      -> v1: "Vor vielen Jahren..." -> Groudon/Kyogre/Rayquaza
       (reusing the original Emerald cutscene as-is) -> mysterious energy
-      burst -> "Jahre vergingen." / "Hoenn begann sich zu veraendern." ->
+      burst -> "Jahre vergingen." / "Hoenn begann sich zu verändern." ->
       title card -> hand off to Birch's speech.
 
     Deliberately silent on what the energy actually was, and the hero from
@@ -184,6 +188,13 @@ static void Task_Prologue_LegendaryEnergyScene(u8 taskId);
 static void Task_Prologue_TitleLogo(u8 taskId);
 static void Task_Prologue_DarkraiTeaser(u8 taskId);
 static void CB2_NyxthraPrologue_AfterRayquaza(void);
+static void Task_Prologue_GlobeScenes(u8 taskId);
+static void CB2_NyxthraPrologueGlobe(void);
+static void VBlankCB_NyxthraPrologueGlobe(void);
+static void InitPrologueGlobeScene(void);
+static void StartPrologueIntroCards(u8 taskId);
+static void ApplyGlobeAffine(void);
+static void PulseGlobeAtmosphere(u16 timer);
 
 static void VBlankCB_NyxthraPrologue(void)
 {
@@ -288,6 +299,10 @@ static void FreePrologueBgAndWindow(void)
     if (ptr)
         Free(ptr);
     SetBgTilemapBuffer(1, NULL);
+    ptr = GetBgTilemapBuffer(2);
+    if (ptr)
+        Free(ptr);
+    SetBgTilemapBuffer(2, NULL);
 }
 
 // Nyxthra: Zeilen erscheinen Buchstabe für Buchstabe (Text-Printer mit Tempo,
@@ -892,6 +907,441 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
     gTasks[taskId].tBurstStep = 0;
 }
 
+
+// ---------------------------------------------------------------------------
+// Intro 2.0, Szenen 1–2: Erde aus dem All, dann Zoom auf Hoenn.
+// Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sternenhimmel (4bpp, Palette 2),
+// BG2 Planet (affin, 8bpp, nur Paletten 0–1 / 32 Farben). Atmosphären-
+// Farben liegen fest auf den Indizes 28–31, damit sie pulsieren können.
+// A/Start blendet die neuen Szenen aus und setzt den v1-Prolog fort.
+// ---------------------------------------------------------------------------
+#define PROLOGUE_STARS_PAL 2
+#define GLOBE_ATMOS_INDEX  28
+#define GLOBE_ATMOS_COUNT  4
+
+#define GLOBE_TEX_CENTER   0x4000 // 64px in 8.8
+#define GLOBE_SCR_X        120
+#define GLOBE_SCR_Y_END    68
+#define GLOBE_SCR_Y_START  220
+#define GLOBE_SCALE_1_0    256
+#define GLOBE_SCALE_1_8    142    // 256 / 1.8 ≈ 142
+#define GLOBE_ANGLE_END    0x0600 // leichte Drehung, ≈ 8,4°
+
+#define GLOBE_STARS_FADE_FRAMES  50
+#define GLOBE_RISE_FRAMES        140
+#define GLOBE_SCENE1_FRAMES      360 // 6 s
+#define GLOBE_ZOOM_FRAMES        280
+#define GLOBE_SCENE2_FRAMES      300 // 5 s
+
+static const u8 sText_Globe_Hoenn[] = _("Hoenn.");
+static const u8 sText_Globe_Balance[] = _("Ein Land im Gleichgewicht.");
+static const u8 sText_Globe_Forces1[] = _("Doch zwei Gewalten ruhten darin:");
+static const u8 sText_Globe_Forces2[] = _("Land und Meer.");
+
+// Fest aus prologue_globe.pal, Indizes 28–31 (bereits auf 5 Bit gerundet).
+static const u16 sGlobeAtmosPal[GLOBE_ATMOS_COUNT] = {
+    RGB(13, 21, 31),
+    RGB(7, 12, 24),
+    RGB(4, 6, 15),
+    RGB(2, 3, 9),
+};
+
+static const struct BgTemplate sGlobeBgTemplates[] =
+{
+    {
+        .bg = 0,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 28,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0,
+    },
+    {
+        .bg = 1,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0,
+    },
+    {
+        .bg = 2,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 26,
+        .screenSize = 0, // 128×128 affiner BG, 256 Kacheln
+        .paletteMode = 1, // 8bpp
+        .priority = 1,
+        .baseTile = 0,
+    },
+};
+
+// Nur die unteren Textzeilen: ein volles 30×20-Fenster würde aus Charblock 2
+// hinaus in die Planeten-Tilemap laufen.
+static const struct WindowTemplate sGlobeWindowTemplates[] =
+{
+    {
+        .bg = 0,
+        .tilemapLeft = 0,
+        .tilemapTop = 14,
+        .width = DISPLAY_TILE_WIDTH,
+        .height = 6,
+        .paletteNum = 8,
+        .baseBlock = 1,
+    },
+    DUMMY_WIN_TEMPLATE,
+};
+
+// Fenster ab Pixelzeile 14*8=112, Höhe 48 px. Texte auf dem dunklen
+// Sternenhimmel unter dem Planeten (Bildschirm-Y 128/144).
+#define GLOBE_TEXT_Y1 16
+#define GLOBE_TEXT_Y2 32
+
+struct GlobeAffine
+{
+    s32 texX;
+    s32 texY;
+    s16 scrX;
+    s16 scrY;
+    s16 scale;
+    u16 angle;
+};
+
+static EWRAM_DATA struct GlobeAffine sGlobeAffine = {0};
+
+static void ApplyGlobeAffine(void)
+{
+    SetBgAffine(2,
+                sGlobeAffine.texX,
+                sGlobeAffine.texY,
+                sGlobeAffine.scrX,
+                sGlobeAffine.scrY,
+                sGlobeAffine.scale,
+                sGlobeAffine.scale,
+                sGlobeAffine.angle);
+}
+
+static void SetGlobeAffine(s16 scrY, s16 scale, u16 angle)
+{
+    sGlobeAffine.texX = GLOBE_TEX_CENTER;
+    sGlobeAffine.texY = GLOBE_TEX_CENTER;
+    sGlobeAffine.scrX = GLOBE_SCR_X;
+    sGlobeAffine.scrY = scrY;
+    sGlobeAffine.scale = scale;
+    sGlobeAffine.angle = angle;
+    ApplyGlobeAffine();
+}
+
+static void PulseGlobeAtmosphere(u16 timer)
+{
+    u32 i;
+    s16 k = (Sin(timer & 0xFF, 10) + 10); // 0..20, langsamer Atem
+
+    for (i = 0; i < GLOBE_ATMOS_COUNT; i++)
+    {
+        u16 c = sGlobeAtmosPal[i];
+        u8 r = GET_R(c);
+        u8 g = GET_G(c);
+        u8 b = GET_B(c);
+        // Leicht Richtung helleres Cyan, nie über 31.
+        r = r + ((20 - r) * k / 40);
+        g = g + ((26 - g) * k / 40);
+        b = b + ((31 - b) * k / 40);
+        if (r > 31)
+            r = 31;
+        if (g > 31)
+            g = 31;
+        if (b > 31)
+            b = 31;
+        gPlttBufferUnfaded[GLOBE_ATMOS_INDEX + i] = RGB(r, g, b);
+        gPlttBufferFaded[GLOBE_ATMOS_INDEX + i] = RGB(r, g, b);
+    }
+}
+
+static void VBlankCB_NyxthraPrologueGlobe(void)
+{
+    LoadOam();
+    ProcessSpriteCopyRequests();
+    TransferPlttBuffer();
+    ApplyGlobeAffine();
+}
+
+static void CB2_NyxthraPrologueGlobe(void)
+{
+    RunTextPrinters();
+    // Sternenhimmel driftet sehr langsam
+    ChangeBgX(1, 16, BG_COORD_ADD);
+    RunTasks();
+    AnimateSprites();
+    BuildOamBuffer();
+    UpdatePaletteFade();
+}
+
+static void InitPrologueGlobeScene(void)
+{
+    u32 x, y;
+    u8 *globeMap;
+    u16 *starsMap;
+
+    SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    DmaFill16(3, 0, (void *)VRAM, VRAM_SIZE);
+    DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
+    DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
+    LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16));
+    ScanlineEffect_Stop();
+    SetHBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetGpuReg(REG_OFFSET_WININ, 0);
+    SetGpuReg(REG_OFFSET_WINOUT, 0);
+    SetGpuReg(REG_OFFSET_WIN0H, 0);
+    SetGpuReg(REG_OFFSET_WIN0V, 0);
+    SetGpuReg(REG_OFFSET_WIN1H, 0);
+    SetGpuReg(REG_OFFSET_WIN1V, 0);
+    sPrologueShakeTimer = 0;
+
+    ResetBgsAndClearDma3BusyFlags(0);
+    InitBgsFromTemplates(1, sGlobeBgTemplates, ARRAY_COUNT(sGlobeBgTemplates));
+    SetBgAttribute(2, BG_ATTR_WRAPAROUND, 0);
+
+    SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
+
+    starsMap = AllocZeroed(BG_SCREEN_SIZE);
+    for (y = 0; y < 32; y++)
+        for (x = 0; x < 32; x++)
+            starsMap[y * 32 + x] = ((y % 16) * 16 + (x % 16)) | (PROLOGUE_STARS_PAL << 12);
+    SetBgTilemapBuffer(1, starsMap);
+    LoadBgTiles(1, gNyxthraPrologueStars_Gfx, 16 * 16 * TILE_SIZE_4BPP, 0);
+    LoadPalette(gNyxthraPrologueStars_Pal, BG_PLTT_ID(PROLOGUE_STARS_PAL), PLTT_SIZE_4BPP);
+    CopyBgTilemapBufferToVram(1);
+
+    globeMap = AllocZeroed(0x100);
+    for (x = 0; x < 256; x++)
+        globeMap[x] = x;
+    SetBgTilemapBuffer(2, globeMap);
+    LoadBgTiles(2, gNyxthraPrologueGlobe_Gfx, 256 * TILE_SIZE_8BPP, 0);
+    LoadPalette(gNyxthraPrologueGlobe_Pal, BG_PLTT_ID(0), 32 * sizeof(u16));
+    // Index 0 ist in der Grafik transparent; als Backdrop muss er schwarz bleiben.
+    LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16));
+    CopyBgTilemapBufferToVram(2);
+
+    LoadPalette(sPrologueTextPal, BG_PLTT_ID(8), sizeof(sPrologueTextPal));
+    InitWindows(sGlobeWindowTemplates);
+    DeactivateAllTextPrinters();
+    FillWindowPixelBuffer(0, PIXEL_FILL(0));
+    PutWindowTilemap(0);
+    CopyWindowToVram(0, COPYWIN_FULL);
+
+    SetGlobeAffine(GLOBE_SCR_Y_START, GLOBE_SCALE_1_0, 0);
+    // Paletten sind geladen, Bildschirm bleibt schwarz, bis die Sterne einblenden.
+    BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+
+    ShowBg(0);
+    ShowBg(1);
+    ShowBg(2);
+}
+
+static void ClearGlobeText(void)
+{
+    DeactivateAllTextPrinters();
+    FillWindowPixelBuffer(0, PIXEL_FILL(0));
+    CopyWindowToVram(0, COPYWIN_FULL);
+}
+
+static void StartPrologueIntroCards(u8 taskId)
+{
+    FreePrologueBgAndWindow();
+    InitPrologueBgAndWindow();
+    SetVBlankCallback(VBlankCB_NyxthraPrologue);
+    SetMainCallback2(CB2_NyxthraPrologue);
+    m4aSongNumStart(MUS_ABNORMAL_WEATHER);
+    gTasks[taskId].func = Task_Prologue_IntroCards;
+    gTasks[taskId].tState = CARD_STATE_FADE_IN;
+    gTasks[taskId].tCardIdx = 0;
+    gTasks[taskId].tTimer = 0;
+}
+
+enum
+{
+    GLOBE_STATE_INIT,
+    GLOBE_STATE_STARS_FADE,
+    GLOBE_STATE_EARTH_RISE,
+    GLOBE_STATE_TYPE_LINE1,
+    GLOBE_STATE_TYPE_LINE2,
+    GLOBE_STATE_HOLD1,
+    GLOBE_STATE_SCENE2_START,
+    GLOBE_STATE_ZOOM,
+    GLOBE_STATE_FADE_OUT,
+    GLOBE_STATE_DONE,
+};
+
+#define tGlobePulse data[6]
+#define tTypedScene2 data[7]
+#define tBgmFaded data[8]
+
+static void Task_Prologue_GlobeScenes(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    bool8 skip = JOY_NEW(A_BUTTON | START_BUTTON);
+    s16 riseT;
+    s16 zoomT;
+    s16 eased;
+    s16 y;
+    s16 scale;
+    u16 angle;
+
+    // Skip: Szenen 1–2 abbrechen und zum bestehenden v1-Prolog springen.
+    if (skip && tState > GLOBE_STATE_INIT && tState < GLOBE_STATE_FADE_OUT)
+    {
+        if (!gPaletteFade.active)
+        {
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            FadeOutBGM(4);
+            tState = GLOBE_STATE_FADE_OUT;
+        }
+    }
+
+    switch (tState)
+    {
+    case GLOBE_STATE_INIT:
+        if (IsDma3ManagerBusyWithBgCopy())
+            return;
+        // Sicherstellen, dass die 256 affinen Kachelindizes wirklich in VRAM
+        // liegen (eine vorherige DMA-Kopie kann in der Init-Warteschlange
+        // untergegangen sein).
+        {
+            u8 *map = GetBgTilemapBuffer(2);
+            if (map != NULL)
+                CpuCopy16(map, (void *)(BG_SCREEN_ADDR(26)), 0x100);
+        }
+        tTimer = 0;
+        tState = GLOBE_STATE_STARS_FADE;
+        BeginNormalPaletteFade((1 << PROLOGUE_STARS_PAL), 1, 16, 0, RGB_BLACK);
+        break;
+
+    case GLOBE_STATE_STARS_FADE:
+        tTimer++;
+        if (!gPaletteFade.active && tTimer >= GLOBE_STARS_FADE_FRAMES)
+        {
+            tTimer = 0;
+            tState = GLOBE_STATE_EARTH_RISE;
+            BeginNormalPaletteFade((1 << 0) | (1 << 1) | (1 << 8), 1, 16, 0, RGB_BLACK);
+        }
+        break;
+
+    case GLOBE_STATE_EARTH_RISE:
+        tTimer++;
+        riseT = tTimer;
+        if (riseT > GLOBE_RISE_FRAMES)
+            riseT = GLOBE_RISE_FRAMES;
+        // Ease-out: 1 - (1-t)^2
+        eased = riseT * 128 / GLOBE_RISE_FRAMES;          // 0..128
+        eased = 128 - ((128 - eased) * (128 - eased) / 128);
+        y = GLOBE_SCR_Y_START + (GLOBE_SCR_Y_END - GLOBE_SCR_Y_START) * eased / 128;
+        SetGlobeAffine(y, GLOBE_SCALE_1_0, 0);
+        if (!gPaletteFade.active)
+            PulseGlobeAtmosphere(tTimer);
+        if (tTimer >= GLOBE_RISE_FRAMES)
+        {
+            SetGlobeAffine(GLOBE_SCR_Y_END, GLOBE_SCALE_1_0, 0);
+            PrintPrologueLineTyped(sText_Globe_Hoenn, GLOBE_TEXT_Y1);
+            tTimer = 0;
+            tGlobePulse = 0;
+            tState = GLOBE_STATE_TYPE_LINE1;
+        }
+        break;
+
+    case GLOBE_STATE_TYPE_LINE1:
+        tGlobePulse++;
+        SetGlobeAffine(GLOBE_SCR_Y_END, GLOBE_SCALE_1_0 + Sin(tGlobePulse, 3), 0);
+        PulseGlobeAtmosphere(tGlobePulse);
+        if (!IsTextPrinterActiveOnWindow(0))
+        {
+            PrintPrologueLineTyped(sText_Globe_Balance, GLOBE_TEXT_Y2);
+            tState = GLOBE_STATE_TYPE_LINE2;
+        }
+        break;
+
+    case GLOBE_STATE_TYPE_LINE2:
+        tGlobePulse++;
+        SetGlobeAffine(GLOBE_SCR_Y_END, GLOBE_SCALE_1_0 + Sin(tGlobePulse, 3), 0);
+        PulseGlobeAtmosphere(tGlobePulse);
+        if (!IsTextPrinterActiveOnWindow(0))
+        {
+            tTimer = 0;
+            tState = GLOBE_STATE_HOLD1;
+        }
+        break;
+
+    case GLOBE_STATE_HOLD1:
+        tGlobePulse++;
+        tTimer++;
+        SetGlobeAffine(GLOBE_SCR_Y_END, GLOBE_SCALE_1_0 + Sin(tGlobePulse, 3), 0);
+        PulseGlobeAtmosphere(tGlobePulse);
+        // Rest von Szene 1 (6 s ab Start der Sterne). Rise+Fade ~190 Frames,
+        // der Rest ist Tippen + Halten. Wir halten nach dem Tippen noch kurz.
+        if (tTimer >= 90)
+            tState = GLOBE_STATE_SCENE2_START;
+        break;
+
+    case GLOBE_STATE_SCENE2_START:
+        ClearGlobeText();
+        tTimer = 0;
+        tTypedScene2 = 0;
+        tBgmFaded = 0;
+        tState = GLOBE_STATE_ZOOM;
+        PrintPrologueLineTyped(sText_Globe_Forces1, GLOBE_TEXT_Y1);
+        break;
+
+    case GLOBE_STATE_ZOOM:
+        tTimer++;
+        tGlobePulse++;
+        zoomT = tTimer;
+        if (zoomT > GLOBE_ZOOM_FRAMES)
+            zoomT = GLOBE_ZOOM_FRAMES;
+        // Ease-in-out über eine halbe Cosinus-Periode (0..128).
+        eased = (128 - Cos((zoomT * 128) / GLOBE_ZOOM_FRAMES, 128)) / 2;
+        scale = GLOBE_SCALE_1_0 + (GLOBE_SCALE_1_8 - GLOBE_SCALE_1_0) * eased / 128;
+        angle = (u16)(GLOBE_ANGLE_END * (u32)eased / 128);
+        SetGlobeAffine(GLOBE_SCR_Y_END, scale, angle);
+        PulseGlobeAtmosphere(tGlobePulse);
+
+        if (tTypedScene2 == 0 && !IsTextPrinterActiveOnWindow(0))
+        {
+            PrintPrologueLineTyped(sText_Globe_Forces2, GLOBE_TEXT_Y2);
+            tTypedScene2 = 1;
+        }
+
+        if (tBgmFaded == 0 && tTimer >= GLOBE_ZOOM_FRAMES - 80)
+        {
+            FadeOutBGM(4);
+            tBgmFaded = 1;
+        }
+
+        if (tTimer >= GLOBE_SCENE2_FRAMES)
+        {
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            tState = GLOBE_STATE_FADE_OUT;
+        }
+        break;
+
+    case GLOBE_STATE_FADE_OUT:
+        if (!gPaletteFade.active)
+            tState = GLOBE_STATE_DONE;
+        break;
+
+    case GLOBE_STATE_DONE:
+        StartPrologueIntroCards(taskId);
+        break;
+    }
+}
+
+#undef tGlobePulse
+#undef tTypedScene2
+#undef tBgmFaded
+
 void CB2_InitNyxthraPrologue(void)
 {
     u8 taskId;
@@ -901,17 +1351,19 @@ void CB2_InitNyxthraPrologue(void)
     FreeAllSpritePalettes();
     ResetPaletteFade();
     ResetTasks();
-    InitPrologueBgAndWindow();
+
+    // Intro 2.0: ruhige Sootopolis-Musik über den neuen Erd-Szenen,
+    // danach übernimmt v1 mit MUS_ABNORMAL_WEATHER.
+    InitPrologueGlobeScene();
 
     EnableInterrupts(INTR_FLAG_VBLANK);
-    SetVBlankCallback(VBlankCB_NyxthraPrologue);
-    SetMainCallback2(CB2_NyxthraPrologue);
+    SetVBlankCallback(VBlankCB_NyxthraPrologueGlobe);
+    SetMainCallback2(CB2_NyxthraPrologueGlobe);
 
-    // Nyxthra: düstere Musik von Anfang an (Emeralds "Unwetter"-Thema)
-    m4aSongNumStart(MUS_ABNORMAL_WEATHER);
-    taskId = CreateTask(Task_Prologue_IntroCards, 0);
-    gTasks[taskId].tState = CARD_STATE_FADE_IN;
-    gTasks[taskId].tCardIdx = 0;
+    m4aSongNumStart(MUS_SOOTOPOLIS);
+    taskId = CreateTask(Task_Prologue_GlobeScenes, 0);
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tTimer = 0;
 }
 
 #undef tState
