@@ -47,6 +47,7 @@
 #include "mirage_tower.h"
 #include "money.h"
 #include "new_game.h"
+#include "nyxthra_flashback.h"
 #include "oras_dowse.h"
 #include "palette.h"
 #include "play_time.h"
@@ -2258,7 +2259,9 @@ void CB2_Overworld(void)
     bool32 fading = (gPaletteFade.active != 0);
     if (fading)
         SetVBlankCallback(NULL);
+    NyxthraFlashback_ProcessInput();
     OverworldBasic();
+    NyxthraFlashback_OnOverworldTick();
     // Nyxthra: custom NPCs with their own unique dynamic palette tag
     // (DP_Gentleman etc.) intermittently get their OBJ palette slot
     // silently overwritten by unrelated standard content while the game
@@ -2328,6 +2331,24 @@ void CB2_NewGame(void)
     // Wall clock now track local time so we set it to 10AM to match initial wall clock time
     RtcCalcLocalTimeOffset(0, 10, 0, 0);
 #endif
+}
+
+void Overworld_StartFromNewGameWarp(void (*fieldCallback)(void))
+{
+    FieldClearVBlankHBlankCallbacks();
+    StopMapMusic();
+    ResetSafariZoneFlag_();
+    ResetInitialPlayerAvatarState();
+    PlayTimeCounter_Start();
+    ScriptContext_Init();
+    LockPlayerFieldControls();
+    gFieldCallback = fieldCallback;
+    gFieldCallback2 = NULL;
+    gMain.state = 0;
+    DoMapLoadLoop(&gMain.state);
+    SetFieldVBlankCallback();
+    SetMainCallback1(CB1_Overworld);
+    SetMainCallback2(CB2_Overworld);
 }
 
 void CB2_WhiteOut(void)

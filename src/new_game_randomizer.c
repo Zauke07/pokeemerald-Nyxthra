@@ -4,6 +4,7 @@
 #include "gpu_regs.h"
 #include "main.h"
 #include "main_menu.h"
+#include "nyxthra_flashback.h"
 #include "menu.h"
 #include "palette.h"
 #include "random.h"
@@ -265,7 +266,7 @@ static void DisableAndContinue(void)
     gSaveBlock2Ptr->optionsRandomizerExtraFlags = 0;
     gSaveBlock2Ptr->optionsRandomizerSeed = 0;
     PlaySE(SE_SELECT);
-    MainMenu_BeginBirchSpeechScene();
+    CB2_StartNyxthraFlashback();
 }
 
 static void SaveAndContinue(void)
@@ -281,7 +282,7 @@ static void SaveAndContinue(void)
         ChallengeMode_DisableDoorWarpRandom();
 
     PlaySE(SE_SELECT);
-    MainMenu_BeginBirchSpeechScene();
+    CB2_StartNyxthraFlashback();
 }
 
 static void Nyxthra_ApplyDarkModeToRandomizerBorderPalette(void)

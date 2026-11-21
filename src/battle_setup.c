@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_flashback.h"
 #include "data.h"
 #include "main.h"
 #include "battle.h"
@@ -1436,6 +1437,13 @@ static void CB2_GiveStarter(void)
         gSaveBlock2Ptr->optionsRandomizerFlags = savedRandomizerFlags;
 
     ResetTasks();
+    if (NyxthraFlashback_IsActive())
+    {
+        // Der Zigzachs-Kampf gehört zu späteren Autokampf-Clips.
+        // Clip 1 endet nach der Starterwahl.
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        return;
+    }
     PlayBattleBGM();
     SetMainCallback2(CB2_StartFirstBattle);
     BattleTransition_Start(B_TRANSITION_BLUR);

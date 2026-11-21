@@ -5,6 +5,7 @@
 #include "gpu_regs.h"
 #include "main.h"
 #include "main_menu.h"
+#include "nyxthra_flashback.h"
 #include "menu.h"
 #include "palette.h"
 #include "scanline_effect.h"
@@ -296,7 +297,7 @@ static void Task_ChallengeModeMenu(u8 taskId)
             if (cursor == CHALLENGE_CONFIRM_YES)
             {
                 ChallengeMode_EnableDoorWarpRandom();
-                MainMenu_BeginBirchSpeechScene();
+                CB2_StartNyxthraFlashback();
             }
             else
             {

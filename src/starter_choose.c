@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_flashback.h"
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
@@ -773,6 +774,18 @@ void CB2_ChooseStarter(void)
 {
     sRegionHeaderWindowId = WINDOW_NONE;
     sCurrentRegionIndex = 0;
+    if (NyxthraFlashback_IsActive())
+    {
+        u8 i;
+        for (i = 0; i < STARTER_REGIONS_COUNT; i++)
+        {
+            if (sStarterRegionIds[i] == STARTER_REGION_HOENN)
+            {
+                sCurrentRegionIndex = i;
+                break;
+            }
+        }
+    }
     SetStarterMonListFromRegion(sStarterRegionIds[sCurrentRegionIndex]);
     u8 taskId;
     u8 spriteId;
@@ -854,7 +867,7 @@ void CB2_ChooseStarter(void)
 
     taskId = CreateTask(Task_StarterChoose, 0);
     gTasks[taskId].tLRDelay = 0;
-    gTasks[taskId].tStarterSelection = 1;
+    gTasks[taskId].tStarterSelection = NyxthraFlashback_IsActive() ? 0 : 1;
 
     // Create hand sprite
     spriteId = CreateSprite(&sSpriteTemplate_Hand, 120, 56, 2);
@@ -883,10 +896,22 @@ static void CB2_StarterChoose(void)
     BuildOamBuffer();
     DoScheduledBgTilemapCopiesToVram();
     UpdatePaletteFade();
+    NyxthraFlashback_ApplyDreamTint();
+}
+
+static EWRAM_DATA u8 sFlashbackStarterTimer = 0;
+static EWRAM_DATA u8 sFlashbackStarterPhase = 0;
+
+static void ResetFlashbackStarterAuto(void)
+{
+    sFlashbackStarterTimer = 0;
+    sFlashbackStarterPhase = 0;
 }
 
 static void Task_StarterChoose(u8 taskId)
 {
+    if (NyxthraFlashback_IsActive() && sFlashbackStarterPhase == 0)
+        ResetFlashbackStarterAuto();
     CreateStarterPokemonLabel(gTasks[taskId].tStarterSelection);
     DrawStdFrameWithCustomTileAndPalette(0, FALSE, 0x2A8, 0xD);
     AddTextPrinterParameterized(0, FONT_NORMAL, gText_BirchInTrouble, 0, 1, 0, NULL);
@@ -945,8 +970,42 @@ static void Task_HandleStarterChooseInput(u8 taskId)
 
     u8 selection = gTasks[taskId].tStarterSelection;
 
+    if (NyxthraFlashback_IsActive())
+    {
+        if (JOY_NEW(START_BUTTON))
+        {
+            NyxthraFlashback_Finish();
+            return;
+        }
+
+        sFlashbackStarterTimer++;
+        // Von Bisasai/Geckarbor nach rechts auf Hydropi, dann A.
+        if (sFlashbackStarterPhase == 0 && sFlashbackStarterTimer >= 30 && selection < STARTER_MON_COUNT - 1)
+        {
+            sFlashbackStarterTimer = 0;
+            gTasks[taskId].tStarterSelection++;
+            gTasks[taskId].func = Task_MoveStarterChooseCursor;
+            return;
+        }
+        if (sFlashbackStarterPhase == 0 && sFlashbackStarterTimer >= 30 && selection == STARTER_MON_COUNT - 1)
+        {
+            sFlashbackStarterPhase = 1;
+            sFlashbackStarterTimer = 0;
+        }
+        if (sFlashbackStarterPhase == 1 && sFlashbackStarterTimer >= 40)
+        {
+            sFlashbackStarterTimer = 0;
+            gMain.newKeys |= A_BUTTON;
+        }
+        // L/R während des Rückblicks ignorieren
+    }
+    else
+    {
+        ResetFlashbackStarterAuto();
+    }
+
     // --- NEU: L und R Tasten Logik ---
-    if (JOY_NEW(L_BUTTON) && gTasks[taskId].tLRDelay == 0)
+    if (!NyxthraFlashback_IsActive() && JOY_NEW(L_BUTTON) && gTasks[taskId].tLRDelay == 0)
     {
         gTasks[taskId].tLRDelay = 60; // ~1 Sekunde
         PlaySE(SE_SELECT);
@@ -1029,6 +1088,21 @@ static void Task_AskConfirmStarter(u8 taskId)
 static void Task_HandleConfirmStarterInput(u8 taskId)
 {
     u8 spriteId;
+
+    if (NyxthraFlashback_IsActive())
+    {
+        if (JOY_NEW(START_BUTTON))
+        {
+            NyxthraFlashback_Finish();
+            return;
+        }
+        sFlashbackStarterTimer++;
+        if (sFlashbackStarterTimer >= 70)
+        {
+            sFlashbackStarterTimer = 0;
+            gMain.newKeys |= A_BUTTON;
+        }
+    }
 
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
