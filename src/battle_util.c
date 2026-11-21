@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "battle_anim.h"
 #include "battle_anim_scripts.h"
 #include "battle_arena.h"
@@ -5659,6 +5660,8 @@ enum Obedience GetAttackerObedienceForAction(void)
     u8 levelReferenced;
 
     if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
+        return OBEYS;
+    if (NyxthraFlashback_IsActive())
         return OBEYS;
     if (BattlerHasAi(gBattlerAttacker))
         return OBEYS;

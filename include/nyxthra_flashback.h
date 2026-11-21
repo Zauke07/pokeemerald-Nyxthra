@@ -14,6 +14,9 @@ void NyxthraFlashback_ApplyDreamTint(void);
 
 // Wiederverwendbarer Autokampf für die Rückblick-Clips (Arena, Liga, Bosse).
 void NyxthraFlashback_PrepareScriptedBattle(void);
+void NyxthraFlashback_PrepareScriptedBattleFinish(void);
+bool8 NyxthraFlashback_PreventFaint(void);
+void NyxthraFlashback_ClampMoveDamage(u32 battler);
 void NyxthraFlashback_OnTrainerPartyCreated(void);
 void NyxthraFlashback_OnBattleEnded(void);
 bool8 NyxthraFlashback_IsScriptedBattle(void);

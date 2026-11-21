@@ -178,6 +178,7 @@ gSpecials::
 	def_special ChooseStarter, waitstate=1
 	def_special NyxthraFlashback_Finish, waitstate=1
 	def_special NyxthraFlashback_PrepareScriptedBattle
+	def_special NyxthraFlashback_PrepareScriptedBattleFinish
 	def_special StartWallyTutorialBattle, waitstate=1
 	def_special LoadChampStarterForCatchDemo
 	def_special SetForcedChampBackPic

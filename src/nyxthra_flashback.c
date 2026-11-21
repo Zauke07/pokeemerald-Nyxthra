@@ -34,6 +34,7 @@
 #include "constants/moves.h"
 #include "constants/species.h"
 #include "constants/pokemon.h"
+#include "constants/items.h"
 
 // Architektur (für spätere Clips):
 //
@@ -107,27 +108,80 @@ static EWRAM_DATA u16 sFlashbackPlayerMove = 0;
 static EWRAM_DATA u16 sFlashbackOpponentMove = 0;
 static EWRAM_DATA bool8 sFlashbackCountThisMenu = 0;
 static EWRAM_DATA u8 sFlashbackBattleTextTimer = 0;
+static EWRAM_DATA u8 sFlashbackNosepassMenus = 0;
+static EWRAM_DATA u8 sFlashbackBattlePhase = 0;
 
-static void Flashback_SetPartyForBattle(struct Pokemon *mon, u16 move)
+#define FLASHBACK_BATTLE_START  1
+#define FLASHBACK_BATTLE_FINISH 2
+
+static const u8 sText_NickKleinstein[] = _("KLEINSTEIN");
+static const u8 sText_NickNasgnet[] = _("NASGNET");
+
+static void Flashback_GiveMoves(struct Pokemon *mon, u16 m0, u16 m1, u16 m2, u16 m3)
 {
-    u8 level = 22;
-    u16 none = MOVE_NONE;
-    u8 pp = 40;
-    u16 hp;
+    SetMonMoveSlot(mon, m0, 0);
+    SetMonMoveSlot(mon, m1, 1);
+    SetMonMoveSlot(mon, m2, 2);
+    SetMonMoveSlot(mon, m3, 3);
+}
 
-    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE)
+// Brix tritt in der Arena mit Moorabbel auf Stufe 16 an. Level und KP
+// kommen aus CreateMon/CalculateMonStats, keine künstlichen Werte.
+
+static void Flashback_SetCurrentHpFraction(struct Pokemon *mon, u32 num, u32 den)
+{
+    u16 max = GetMonData(mon, MON_DATA_MAX_HP);
+    u16 cur;
+    if (max < 2)
         return;
+    cur = (u16)((max * num) / den);
+    if (cur < 1)
+        cur = 1;
+    if (cur >= max)
+        cur = max - 1;
+    SetMonData(mon, MON_DATA_HP, &cur);
+}
 
-    SetMonData(mon, MON_DATA_LEVEL, &level);
-    SetMonData(mon, MON_DATA_MOVE1, &move);
-    SetMonData(mon, MON_DATA_MOVE2, &none);
-    SetMonData(mon, MON_DATA_MOVE3, &none);
-    SetMonData(mon, MON_DATA_MOVE4, &none);
-    SetMonData(mon, MON_DATA_PP1, &pp);
+static void Flashback_GivePlayerMarshtomp(void)
+{
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][0];
+    u32 i;
+
+    ZeroPlayerPartyMons();
+    for (i = 1; i < PARTY_SIZE; i++)
+        ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
+    CreateMon(mon, SPECIES_MARSHTOMP, 16, 0, OTID_STRUCT_PLAYER_ID);
     CalculateMonStats(mon);
-    hp = 220;
-    SetMonData(mon, MON_DATA_MAX_HP, &hp);
-    SetMonData(mon, MON_DATA_HP, &hp);
+    Flashback_GiveMoves(mon, MOVE_WATER_GUN, MOVE_MUD_SHOT, MOVE_MUD_SLAP, MOVE_TACKLE);
+    gPartiesCount[B_TRAINER_PLAYER] = 1;
+}
+
+// Originales Smaragd-Team von Felizia laut pret/pokeemerald:
+// Kleinstein Lv12, Kleinstein Lv12, Nasgnet Lv15 (Oranbeere).
+// Nicht das Nyxthra-Team (Nacli/Geosali usw.).
+static void Flashback_CreateVanillaRoxanneParty(void)
+{
+    struct Pokemon *party = gParties[B_TRAINER_OPPONENT_A];
+    u16 item = ITEM_ORAN_BERRY;
+    u32 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+        ZeroMonData(&party[i]);
+
+    CreateMonWithIVs(&party[0], SPECIES_GEODUDE, 12, 0, OTID_STRUCT_RANDOM_NO_SHINY, 12);
+    Flashback_GiveMoves(&party[0], MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB);
+    SetMonData(&party[0], MON_DATA_NICKNAME, sText_NickKleinstein);
+
+    CreateMonWithIVs(&party[1], SPECIES_GEODUDE, 12, 0, OTID_STRUCT_RANDOM_NO_SHINY, 12);
+    Flashback_GiveMoves(&party[1], MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB);
+    SetMonData(&party[1], MON_DATA_NICKNAME, sText_NickKleinstein);
+
+    CreateMonWithIVs(&party[2], SPECIES_NOSEPASS, 15, 0, OTID_STRUCT_RANDOM_NO_SHINY, 24);
+    Flashback_GiveMoves(&party[2], MOVE_BLOCK, MOVE_HARDEN, MOVE_TACKLE, MOVE_ROCK_TOMB);
+    SetMonData(&party[2], MON_DATA_HELD_ITEM, &item);
+    SetMonData(&party[2], MON_DATA_NICKNAME, sText_NickNasgnet);
+
+    gPartiesCount[B_TRAINER_OPPONENT_A] = 3;
 }
 
 bool8 NyxthraFlashback_IsActive(void)
@@ -396,16 +450,59 @@ void NyxthraFlashback_PrepareScriptedBattle(void)
     sFlashbackActionMenus = 0;
     sFlashbackAutoTimer = 0;
     sFlashbackBattleTextTimer = 0;
+    sFlashbackNosepassMenus = 0;
+    sFlashbackBattlePhase = FLASHBACK_BATTLE_START;
     sFlashbackCountThisMenu = TRUE;
 
-    Flashback_SetPartyForBattle(&gParties[B_TRAINER_PLAYER][0], sFlashbackPlayerMove);
+    Flashback_GivePlayerMarshtomp();
+}
+
+void NyxthraFlashback_PrepareScriptedBattleFinish(void)
+{
+    if (!sFlashbackActive)
+        return;
+
+    // Ende: Moorabbel ist angeschlagen, nur noch Nasgnet, eine letzte Aquaknarre.
+    sFlashbackPlayerMove = MOVE_WATER_GUN;
+    sFlashbackOpponentMove = MOVE_ROCK_TOMB;
+    sFlashbackMaxTurns = 1;
+    sFlashbackBattleActive = TRUE;
+    sFlashbackActionMenus = 0;
+    sFlashbackAutoTimer = 0;
+    sFlashbackBattleTextTimer = 0;
+    sFlashbackNosepassMenus = 0;
+    sFlashbackBattlePhase = FLASHBACK_BATTLE_FINISH;
+    sFlashbackCountThisMenu = TRUE;
+
+    Flashback_GivePlayerMarshtomp();
+    Flashback_SetCurrentHpFraction(&gParties[B_TRAINER_PLAYER][0], 1, 3);
 }
 
 void NyxthraFlashback_OnTrainerPartyCreated(void)
 {
     if (!sFlashbackBattleActive)
         return;
-    Flashback_SetPartyForBattle(&gParties[B_TRAINER_OPPONENT_A][0], sFlashbackOpponentMove);
+
+    if (sFlashbackBattlePhase == FLASHBACK_BATTLE_FINISH)
+    {
+        struct Pokemon *party = gParties[B_TRAINER_OPPONENT_A];
+        u32 i;
+
+        for (i = 0; i < PARTY_SIZE; i++)
+            ZeroMonData(&party[i]);
+        CreateMonWithIVs(&party[0], SPECIES_NOSEPASS, 15, 0, OTID_STRUCT_RANDOM_NO_SHINY, 24);
+        Flashback_GiveMoves(&party[0], MOVE_BLOCK, MOVE_HARDEN, MOVE_TACKLE, MOVE_ROCK_TOMB);
+        SetMonData(&party[0], MON_DATA_NICKNAME, sText_NickNasgnet);
+        // Wenig KP, keine Beere: eine Aquaknarre soll den Kampf beenden.
+        {
+            u16 hp = 8;
+            SetMonData(&party[0], MON_DATA_HP, &hp);
+        }
+        gPartiesCount[B_TRAINER_OPPONENT_A] = 1;
+        return;
+    }
+
+    Flashback_CreateVanillaRoxanneParty();
 }
 
 bool8 NyxthraFlashback_IsScriptedBattle(void)
@@ -423,21 +520,49 @@ u16 NyxthraFlashback_GetOpponentMove(void)
     return sFlashbackOpponentMove;
 }
 
+static u16 Flashback_OpponentSpecies(void)
+{
+    return gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].species;
+}
+
 void NyxthraFlashback_NotePlayerActionMenu(void)
 {
     // Nur einmal pro Aktionsmenü zählen, nicht jeden Frame.
-    if (sFlashbackCountThisMenu)
-    {
-        if (sFlashbackActionMenus < 0xFF)
-            sFlashbackActionMenus++;
-        sFlashbackCountThisMenu = FALSE;
-    }
+    if (!sFlashbackCountThisMenu)
+        return;
+
+    if (sFlashbackActionMenus < 0xFF)
+        sFlashbackActionMenus++;
+    if (Flashback_OpponentSpecies() == SPECIES_NOSEPASS && sFlashbackNosepassMenus < 0xFF)
+        sFlashbackNosepassMenus++;
+    sFlashbackCountThisMenu = FALSE;
 }
 
 bool8 NyxthraFlashback_ShouldAbortBattle(void)
 {
-    // Erstes Aktionsmenü = vor den Zügen, jedes weitere = nächste Runde.
-    return (sFlashbackActionMenus > sFlashbackMaxTurns);
+    if (sFlashbackBattlePhase == FLASHBACK_BATTLE_FINISH)
+        return FALSE; // Natürlicher Sieg nach der letzten Attacke
+
+    // Startphase: nach einer Runde (eine Attacke je Seite) ausblenden.
+    if (sFlashbackActionMenus > 1)
+        return TRUE;
+    return FALSE;
+}
+
+bool8 NyxthraFlashback_PreventFaint(void)
+{
+    return (sFlashbackActive && sFlashbackBattleActive
+         && sFlashbackBattlePhase == FLASHBACK_BATTLE_START);
+}
+
+void NyxthraFlashback_ClampMoveDamage(u32 battler)
+{
+    if (!NyxthraFlashback_PreventFaint())
+        return;
+    if (gBattleStruct->moveDamage[battler] > 0
+     && gBattleMons[battler].hp > 1
+     && gBattleStruct->moveDamage[battler] >= gBattleMons[battler].hp)
+        gBattleStruct->moveDamage[battler] = gBattleMons[battler].hp - 1;
 }
 
 bool8 NyxthraFlashback_TickAutoInput(u8 delay)
@@ -459,6 +584,8 @@ void NyxthraFlashback_OnBattleEnded(void)
     sFlashbackActionMenus = 0;
     sFlashbackAutoTimer = 0;
     sFlashbackBattleTextTimer = 0;
+    sFlashbackNosepassMenus = 0;
+    sFlashbackBattlePhase = 0;
     sFlashbackCountThisMenu = TRUE;
 }
 

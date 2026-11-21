@@ -1,6 +1,7 @@
 #include "global.h"
 #include "malloc.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "pokemon.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
@@ -3184,6 +3185,8 @@ static void DestroyLastUsedBallGfx(struct Sprite *sprite)
 
 void TryToAddMoveInfoWindow(void)
 {
+    if (NyxthraFlashback_IsActive())
+        return;
     if (!B_SHOW_MOVE_DESCRIPTION)
         return;
 

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "battle_arena.h"
 #include "battle_environment.h"
 #include "battle_hold_effects.h"
@@ -2788,6 +2789,7 @@ static enum CancelerResult CancelerMoveAnimation(struct BattleCalcValues *cv)
         gBattleScripting.animTurn = 1;
 
     u32 multiHit = gMultiHitCounter;
+    NyxthraFlashback_ClampMoveDamage(cv->battlerDef);
     bool32 willDamageFaintBattler = (gBattleMons[cv->battlerDef].hp <= gBattleStruct->moveDamage[cv->battlerDef]);
     if (!gBattleMons[cv->battlerDef].volatiles.substitute && willDamageFaintBattler)
         multiHit = 1;
@@ -2952,6 +2954,7 @@ static enum CancelerResult CancelerHealthBarUpdate(struct BattleCalcValues *cv)
          || DoesIceFaceBlockMove(battlerDef, cv->move))
             continue;
 
+        NyxthraFlashback_ClampMoveDamage(battlerDef);
         s32 dmgUpdate = min(gBattleStruct->moveDamage[battlerDef], 10000);
         BtlController_EmitHealthBarUpdate(battlerDef, B_COMM_TO_CONTROLLER, dmgUpdate);
         MarkBattlerForControllerExec(battlerDef);
@@ -3010,6 +3013,7 @@ static bool32 TryMoveDamageUpdate(struct BattleCalcValues *cv)
             u16 hpBefore;
             u16 hpLost;
 
+            NyxthraFlashback_ClampMoveDamage(cv->battlerDef);
             gBideDmg[cv->battlerDef] += gBattleStruct->moveDamage[cv->battlerDef];
             gBideTarget[cv->battlerDef] = cv->battlerAtk;
 

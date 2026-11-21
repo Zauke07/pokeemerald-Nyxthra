@@ -427,6 +427,13 @@ static void OpponentHandleTrainerSlideBack(enum BattlerId battler)
 
 static void OpponentHandleChooseAction(enum BattlerId battler)
 {
+    if (NyxthraFlashback_IsScriptedBattle())
+    {
+        // Kein Trank, kein Wechsel: nur die festgelegte Attacke.
+        BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
+        BtlController_Complete(battler);
+        return;
+    }
     AI_TrySwitchOrUseItem(battler);
     BtlController_Complete(battler);
 }

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "battle_hold_effects.h"
 #include "battle_message.h"
 #include "battle_anim.h"
@@ -1200,6 +1201,18 @@ static void Cmd_waitanimation(void)
     }
 }
 
+
+static void Flashback_ClampPassiveDamage(enum BattlerId battler)
+{
+    s32 dmg;
+
+    if (!NyxthraFlashback_PreventFaint())
+        return;
+    dmg = gBattleStruct->passiveHpUpdate[battler];
+    if (dmg > 0 && gBattleMons[battler].hp > 1 && dmg >= gBattleMons[battler].hp)
+        gBattleStruct->passiveHpUpdate[battler] = gBattleMons[battler].hp - 1;
+}
+
 static void Cmd_healthbarupdate(void)
 {
     CMD_ARGS(u8 battler);
@@ -1208,6 +1221,7 @@ static void Cmd_healthbarupdate(void)
     if (gBattleControllerExecFlags)
         return;
 
+    Flashback_ClampPassiveDamage(battler);
     BtlController_EmitHealthBarUpdate(battler, B_COMM_TO_CONTROLLER, min(gBattleStruct->passiveHpUpdate[battler], 10000));
     MarkBattlerForControllerExec(battler);
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -1221,6 +1235,7 @@ static void Cmd_datahpupdate(void)
     if (gBattleControllerExecFlags)
         return;
 
+    Flashback_ClampPassiveDamage(battler);
     if (gBattleStruct->passiveHpUpdate[battler] < 0)
     {
         // Negative damage is HP gain
