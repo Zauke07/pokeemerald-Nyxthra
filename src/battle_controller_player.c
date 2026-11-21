@@ -246,10 +246,12 @@ static void HandleInputChooseAction(enum BattlerId battler)
             NyxthraFlashback_Finish();
             return;
         }
+        if (NyxthraFlashback_IsTimeSkipping())
+            return;
         NyxthraFlashback_NotePlayerActionMenu();
         if (NyxthraFlashback_ShouldAbortBattle())
         {
-            NyxthraFlashback_BeginAbortBattle();
+            NyxthraFlashback_BeginTimeSkip();
             return;
         }
         if (NyxthraFlashback_TickAutoInput(40))

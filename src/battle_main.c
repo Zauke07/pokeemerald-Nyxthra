@@ -1757,6 +1757,7 @@ void BattleMainCB2(void)
 {
     // Vor RunTextPrinters: sonst löscht ReadKeys im nächsten Frame das injizierte A,
     // bevor der Drucker das Absatz-Prompt (\p) sieht.
+    NyxthraFlashback_ClearKeepScreenBlack();
     NyxthraFlashback_ProcessBattleInput();
     AnimateSprites();
     BuildOamBuffer();

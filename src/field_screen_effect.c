@@ -10,6 +10,7 @@
 #include "event_scripts.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
+#include "nyxthra_flashback.h"
 #include "field_special_scene.h"
 #include "field_weather.h"
 #include "follower_npc.h"
@@ -181,14 +182,20 @@ void FieldCB_ContinueScriptHandleMusic(void)
 {
     LockPlayerFieldControls();
     Overworld_PlaySpecialMapMusic();
-    FadeInFromBlack();
+    if (NyxthraFlashback_ShouldKeepScreenBlack())
+        FillPalBufferBlack();
+    else
+        FadeInFromBlack();
     CreateTask(Task_WaitForFadeAndEnableScriptCtx, 10);
 }
 
 void FieldCB_ContinueScript(void)
 {
     LockPlayerFieldControls();
-    FadeInFromBlack();
+    if (NyxthraFlashback_ShouldKeepScreenBlack())
+        FillPalBufferBlack();
+    else
+        FadeInFromBlack();
     CreateTask(Task_WaitForFadeAndEnableScriptCtx, 10);
 }
 

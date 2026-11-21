@@ -485,6 +485,14 @@ void HandleAction_UseMove(void)
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
     }
+    // Nach dem Zeitsprung im Rückblick darf nur Brix noch angreifen.
+    if (NyxthraFlashback_IsScriptedBattle()
+     && !NyxthraFlashback_PreventFaint()
+     && !IsOnPlayerSide(gBattlerAttacker))
+    {
+        gCurrentActionFuncId = B_ACTION_FINISHED;
+        return;
+    }
 
     gCurrMovePos = gChosenMovePos = gBattleStruct->chosenMovePositions[gBattlerAttacker];
 

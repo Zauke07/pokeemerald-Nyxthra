@@ -42,7 +42,7 @@ NyxthraFlashback_EventScript_Clip1::
 	special ChooseStarter
 	delay 40
 	fadescreen FADE_TO_BLACK
-	warpsilent MAP_FLASHBACK_RUSTBORO_GYM, 5, 18
+	warpsilent MAP_FLASHBACK_RUSTBORO_GYM, 5, 5
 	waitstate
 	end
 
@@ -58,28 +58,9 @@ NyxthraFlashback_Text_ReceivedStoneBadge:
 	.string "{PLAYER} erhält den STEINORDEN von\n"
 	.string "FELIZIA!$"
 
-@ Echter Weg durch die Metarost-Arena: in der Mitte bis
-@ vor die Wand bei Y7, links um sie herum, dann zu Felizia.
+@ Nur 2 Schritte vor Felizia: der komplette Arenaweg würde
+@ andere Trainer zeigen, die im Rückblick nicht vorkommen.
 NyxthraFlashback_Movement_ApproachRoxanne:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_right
-	walk_right
-	walk_right
 	walk_up
 	walk_up
 	step_end
@@ -94,10 +75,6 @@ NyxthraFlashback_EventScript_Clip2::
 	msgbox NyxthraFlashback_Text_RoxanneIntro, MSGBOX_DEFAULT
 	closemessage
 	special NyxthraFlashback_PrepareScriptedBattle
-	trainerbattle_no_intro TRAINER_ROXANNE_1, NyxthraFlashback_Text_RoxanneDefeat
-	fadescreen FADE_TO_BLACK
-	delay 20
-	special NyxthraFlashback_PrepareScriptedBattleFinish
 	trainerbattle_no_intro TRAINER_ROXANNE_1, NyxthraFlashback_Text_RoxanneDefeat
 	delay 20
 	message NyxthraFlashback_Text_ReceivedStoneBadge

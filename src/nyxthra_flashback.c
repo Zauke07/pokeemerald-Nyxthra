@@ -30,6 +30,10 @@
 #include "nyxthra_flashback.h"
 #include "pokemon.h"
 #include "battle.h"
+#include "sprite.h"
+#include "battle_scripts.h"
+#include "battle_util.h"
+#include "battle_interface.h"
 #include "battle_setup.h"
 #include "constants/moves.h"
 #include "constants/species.h"
@@ -110,9 +114,16 @@ static EWRAM_DATA bool8 sFlashbackCountThisMenu = 0;
 static EWRAM_DATA u8 sFlashbackBattleTextTimer = 0;
 static EWRAM_DATA u8 sFlashbackNosepassMenus = 0;
 static EWRAM_DATA u8 sFlashbackBattlePhase = 0;
+static EWRAM_DATA bool8 sFlashbackKeepBlack = 0;
+static EWRAM_DATA u8 sFlashbackSkipState = 0;
 
 #define FLASHBACK_BATTLE_START  1
 #define FLASHBACK_BATTLE_FINISH 2
+
+#define FLASHBACK_SKIP_NONE    0
+#define FLASHBACK_SKIP_FADEOUT 1
+#define FLASHBACK_SKIP_FADEIN  2
+#define FLASHBACK_SKIP_SWITCH  3
 
 static const u8 sText_NickKleinstein[] = _("KLEINSTEIN");
 static const u8 sText_NickNasgnet[] = _("NASGNET");
@@ -189,12 +200,34 @@ bool8 NyxthraFlashback_IsActive(void)
     return sFlashbackActive;
 }
 
+bool8 NyxthraFlashback_ShouldKeepScreenBlack(void)
+{
+    return (sFlashbackActive && sFlashbackKeepBlack);
+}
+
+void NyxthraFlashback_ClearKeepScreenBlack(void)
+{
+    sFlashbackKeepBlack = FALSE;
+}
+
 void NyxthraFlashback_ApplyDreamTint(void)
 {
     u32 i;
     u16 *pal;
 
     if (!sFlashbackActive)
+        return;
+
+    if (sFlashbackKeepBlack)
+    {
+        CpuFastFill16(RGB_BLACK, gPlttBufferFaded, PLTT_SIZE);
+        return;
+    }
+
+    // Während einer Überblendung die Palette nicht überschreiben.
+    if (gPaletteFade.active
+     || sFlashbackSkipState == FLASHBACK_SKIP_FADEOUT
+     || sFlashbackSkipState == FLASHBACK_SKIP_FADEIN)
         return;
 
     // Immer aus Unfaded tönen, sonst würde die Tönung ohne PaletteFade
@@ -397,6 +430,8 @@ void NyxthraFlashback_Finish(void)
     sAutoATimer = 0;
     sAutoAArmed = FALSE;
     sFlashbackBattleActive = FALSE;
+    sFlashbackKeepBlack = FALSE;
+    sFlashbackSkipState = 0;
 
     if (gMain.inBattle)
     {
@@ -557,12 +592,24 @@ bool8 NyxthraFlashback_PreventFaint(void)
 
 void NyxthraFlashback_ClampMoveDamage(u32 battler)
 {
+    u16 hp;
+    u16 minRemain;
+
     if (!NyxthraFlashback_PreventFaint())
         return;
-    if (gBattleStruct->moveDamage[battler] > 0
-     && gBattleMons[battler].hp > 1
-     && gBattleStruct->moveDamage[battler] >= gBattleMons[battler].hp)
-        gBattleStruct->moveDamage[battler] = gBattleMons[battler].hp - 1;
+    if (gBattleStruct->moveDamage[battler] <= 0)
+        return;
+
+    hp = gBattleMons[battler].hp;
+    if (hp <= 1)
+        return;
+
+    // Sichtbar überleben, nicht bei 1 KP wie nach einem K.O. aussehen.
+    minRemain = hp / 2;
+    if (minRemain < 1)
+        minRemain = 1;
+    if (gBattleStruct->moveDamage[battler] > (s32)(hp - minRemain))
+        gBattleStruct->moveDamage[battler] = hp - minRemain;
 }
 
 bool8 NyxthraFlashback_TickAutoInput(u8 delay)
@@ -587,6 +634,97 @@ void NyxthraFlashback_OnBattleEnded(void)
     sFlashbackNosepassMenus = 0;
     sFlashbackBattlePhase = 0;
     sFlashbackCountThisMenu = TRUE;
+    sFlashbackSkipState = 0;
+}
+
+
+static void Flashback_ApplyTimeSkipState(void)
+{
+    enum BattlerId player = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
+    enum BattlerId opp = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+    struct Pokemon *oppParty = gParties[B_TRAINER_OPPONENT_A];
+    struct Pokemon *playerMon = &gParties[B_TRAINER_PLAYER][gBattlerPartyIndexes[player]];
+    u32 i;
+    u16 hp;
+    u16 noItem = ITEM_NONE;
+
+    // Beide Kleinstein sind im Zeitsprung besiegt, Nasgnet bleibt mit wenig KP.
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&oppParty[i], MON_DATA_SPECIES);
+        if (species == SPECIES_GEODUDE)
+        {
+            hp = 0;
+            SetMonData(&oppParty[i], MON_DATA_HP, &hp);
+        }
+        else if (species == SPECIES_NOSEPASS)
+        {
+            hp = 8;
+            SetMonData(&oppParty[i], MON_DATA_HP, &hp);
+            SetMonData(&oppParty[i], MON_DATA_HELD_ITEM, &noItem);
+        }
+    }
+
+    gBattleMons[opp].hp = 0;
+    gHitMarker |= HITMARKER_FAINTED(opp);
+
+    Flashback_SetCurrentHpFraction(playerMon, 1, 3);
+    gBattleMons[player].hp = GetMonData(playerMon, MON_DATA_HP);
+    UpdateHealthboxAttribute(gHealthboxSpriteIds[player], playerMon, HEALTHBOX_ALL);
+
+    // Kleinstein nicht mehr sichtbar, wenn wir wieder einblenden.
+    if (gBattlerSpriteIds[opp] != 0xFF)
+        gSprites[gBattlerSpriteIds[opp]].invisible = TRUE;
+    if (gHealthboxSpriteIds[opp] != 0xFF)
+        gSprites[gHealthboxSpriteIds[opp]].invisible = TRUE;
+}
+
+static void Flashback_StartNasgnetSwitchIn(void)
+{
+    enum BattlerId opp = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+
+    gBattlerFainted = gBattlerTarget = opp;
+    gHitMarker |= HITMARKER_FAINTED(opp);
+    gBattleOutcome = 0;
+    gBattleScripting.battleStyle = OPTIONS_BATTLE_STYLE_SET;
+    gBattleControllerExecFlags = 0;
+    sFlashbackBattlePhase = FLASHBACK_BATTLE_FINISH;
+    {
+        enum BattlerId i;
+        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        {
+            if (!IsOnPlayerSide(i))
+                gChosenActionByBattler[i] = B_ACTION_FINISHED;
+        }
+    }
+    BattleScriptExecute(BattleScript_HandleFaintedMon);
+}
+
+void NyxthraFlashback_BeginTimeSkip(void)
+{
+    if (!sFlashbackBattleActive || sFlashbackSkipState != FLASHBACK_SKIP_NONE)
+        return;
+
+    sFlashbackSkipState = FLASHBACK_SKIP_FADEOUT;
+    gBattle_BG0_Y = 0;
+    TryHideLastUsedBall();
+    // Gegner hat für diese (abgebrochene) Runde schon eine Attacke gewählt.
+    {
+        enum BattlerId i;
+        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        {
+            if (!IsOnPlayerSide(i))
+                gChosenActionByBattler[i] = B_ACTION_FINISHED;
+        }
+    }
+    if (!gPaletteFade.active)
+        BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
+}
+
+bool8 NyxthraFlashback_IsTimeSkipping(void)
+{
+    return (sFlashbackSkipState == FLASHBACK_SKIP_FADEOUT
+         || sFlashbackSkipState == FLASHBACK_SKIP_FADEIN);
 }
 
 void NyxthraFlashback_BeginAbortBattle(void)
@@ -595,6 +733,7 @@ void NyxthraFlashback_BeginAbortBattle(void)
         return;
 
     gBattleOutcome = B_OUTCOME_WON;
+    sFlashbackKeepBlack = TRUE;
     if (!gPaletteFade.active)
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     SetMainCallback2(CB2_QuitRecordedBattle);
@@ -603,7 +742,7 @@ void NyxthraFlashback_BeginAbortBattle(void)
 
 void NyxthraFlashback_ProcessBattleInput(void)
 {
-    if (!NyxthraFlashback_IsScriptedBattle())
+    if (!sFlashbackActive)
         return;
 
     if (JOY_NEW(START_BUTTON))
@@ -611,6 +750,29 @@ void NyxthraFlashback_ProcessBattleInput(void)
         NyxthraFlashback_Finish();
         return;
     }
+
+    if (sFlashbackSkipState == FLASHBACK_SKIP_FADEOUT)
+    {
+        if (!gPaletteFade.active)
+        {
+            Flashback_ApplyTimeSkipState();
+            sFlashbackSkipState = FLASHBACK_SKIP_FADEIN;
+            BeginNormalPaletteFade(PALETTES_ALL, 2, 16, 0, RGB_BLACK);
+        }
+        return;
+    }
+    if (sFlashbackSkipState == FLASHBACK_SKIP_FADEIN)
+    {
+        if (!gPaletteFade.active)
+        {
+            sFlashbackSkipState = FLASHBACK_SKIP_NONE;
+            Flashback_StartNasgnetSwitchIn();
+        }
+        return;
+    }
+
+    if (!NyxthraFlashback_IsScriptedBattle())
+        return;
 
     if (gPaletteFade.active)
         return;

@@ -1906,17 +1906,22 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) == B_SIDE_OPPONENT && IsGhostBattleWithoutScope())
         gender = 100;
 
-    switch (gender)
+    // Im Rückblick kein Geschlechtssymbol: "Moorabbel" plus Symbol
+    // würde in die Lv-Hälfte ragen und den letzten Buchstaben überdecken.
+    if (!NyxthraFlashback_IsActive())
     {
-    default:
-        StringCopy(ptr, gText_HealthboxGender_None);
-        break;
-    case MON_MALE:
-        StringCopy(ptr, gText_HealthboxGender_Male);
-        break;
-    case MON_FEMALE:
-        StringCopy(ptr, gText_HealthboxGender_Female);
-        break;
+        switch (gender)
+        {
+        default:
+            StringCopy(ptr, gText_HealthboxGender_None);
+            break;
+        case MON_MALE:
+            StringCopy(ptr, gText_HealthboxGender_Male);
+            break;
+        case MON_FEMALE:
+            StringCopy(ptr, gText_HealthboxGender_Female);
+            break;
+        }
     }
 
     // Sprite-Daten temporär sichern (RHH Standard)
@@ -1925,17 +1930,23 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     gSprites[healthboxSpriteId].data[1] = healthboxSpriteId2;
     gSprites[healthboxSpriteId2].data[1] = SPRITE_NONE;
 
-    u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, 55);
+    {
+        u32 nameX = IsOnPlayerSide(gSprites[healthboxSpriteId].hMain_Battler) ? 16 : 8;
+        u32 nameWidth = 55;
+        u32 startFont = FONT_SMALL;
 
-    if (IsOnPlayerSide(gSprites[healthboxSpriteId].hMain_Battler))
-    {
-        FillSpriteRectColor(healthboxSpriteId, 16, 5, 55, 11, HEALTHBOX_BG_INDEX);
-        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 16, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
-    }
-    else
-    {
-        FillSpriteRectColor(healthboxSpriteId, 8, 5, 55, 11, HEALTHBOX_BG_INDEX);
-        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, 8, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
+        if (NyxthraFlashback_IsActive())
+        {
+            nameX = 2;
+            nameWidth = 60;
+            startFont = FONT_SMALL_NARROW;
+            // Nicht in die rechte Sprite-Hälfte schreiben, dort liegt Lv.
+            gSprites[healthboxSpriteId].data[1] = SPRITE_NONE;
+        }
+
+        u32 fontId = GetFontIdToFit(gDisplayedStringBattle, startFont, 0, nameWidth);
+        FillSpriteRectColor(healthboxSpriteId, nameX, 5, nameWidth, 11, HEALTHBOX_BG_INDEX);
+        AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, nameX, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
     }
 
     gSprites[healthboxSpriteId].data[1] = savedValue1;

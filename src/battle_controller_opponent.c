@@ -429,8 +429,12 @@ static void OpponentHandleChooseAction(enum BattlerId battler)
 {
     if (NyxthraFlashback_IsScriptedBattle())
     {
-        // Kein Trank, kein Wechsel: nur die festgelegte Attacke.
-        BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
+        // Besiegte Pokémon greifen nicht. Nach dem Zeitsprung nur noch
+        // Brix' letzte Aquaknarre, Nasgnet soll nicht nochmal angreifen.
+        if (!IsBattlerAlive(battler) || !NyxthraFlashback_PreventFaint())
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_FINISHED, 0);
+        else
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
         BtlController_Complete(battler);
         return;
     }
@@ -445,6 +449,13 @@ static void OpponentHandleChooseMove(enum BattlerId battler)
         u32 i, slot = 0;
         u16 want = NyxthraFlashback_GetOpponentMove();
         struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
+        if (!IsBattlerAlive(battler))
+        {
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_FINISHED, 0);
+            BtlController_Complete(battler);
+            return;
+        }
 
         for (i = 0; i < MAX_MON_MOVES; i++)
         {
