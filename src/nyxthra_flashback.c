@@ -28,6 +28,12 @@
 #include "constants/vars.h"
 #include "constants/rgb.h"
 #include "nyxthra_flashback.h"
+#include "pokemon.h"
+#include "battle.h"
+#include "battle_setup.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+#include "constants/pokemon.h"
 
 // Architektur (für spätere Clips):
 //
@@ -89,6 +95,40 @@ static void Flashback_EnsureDirector(void);
 static void Flashback_ApplyBrixIdentity(void);
 static void Flashback_RestoreIdentity(void);
 static void Flashback_WarpToRoute101(void);
+
+#define FLASHBACK_BATTLE_AUTO_DELAY 40
+#define FLASHBACK_DEFAULT_MAX_MOVES 2
+
+static EWRAM_DATA bool8 sFlashbackBattleActive = FALSE;
+static EWRAM_DATA u8 sFlashbackActionMenus = 0;
+static EWRAM_DATA u8 sFlashbackAutoTimer = 0;
+static EWRAM_DATA u8 sFlashbackMaxTurns = 0;
+static EWRAM_DATA u16 sFlashbackPlayerMove = 0;
+static EWRAM_DATA u16 sFlashbackOpponentMove = 0;
+static EWRAM_DATA bool8 sFlashbackCountThisMenu = 0;
+static EWRAM_DATA u8 sFlashbackBattleTextTimer = 0;
+
+static void Flashback_SetPartyForBattle(struct Pokemon *mon, u16 move)
+{
+    u8 level = 22;
+    u16 none = MOVE_NONE;
+    u8 pp = 40;
+    u16 hp;
+
+    if (GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE)
+        return;
+
+    SetMonData(mon, MON_DATA_LEVEL, &level);
+    SetMonData(mon, MON_DATA_MOVE1, &move);
+    SetMonData(mon, MON_DATA_MOVE2, &none);
+    SetMonData(mon, MON_DATA_MOVE3, &none);
+    SetMonData(mon, MON_DATA_MOVE4, &none);
+    SetMonData(mon, MON_DATA_PP1, &pp);
+    CalculateMonStats(mon);
+    hp = 220;
+    SetMonData(mon, MON_DATA_MAX_HP, &hp);
+    SetMonData(mon, MON_DATA_HP, &hp);
+}
 
 bool8 NyxthraFlashback_IsActive(void)
 {
@@ -281,6 +321,17 @@ static void Task_FlashbackDirector(u8 taskId)
         DestroyTask(taskId);
 }
 
+static void CB2_FlashbackFinishAfterBattle(void)
+{
+    ScriptContext_Stop();
+    StopMapMusic();
+    Flashback_RestoreIdentity();
+    sFlashbackBattleActive = FALSE;
+    sFlashbackActive = FALSE;
+    sFlashbackFinishing = FALSE;
+    MainMenu_BeginBirchSpeechScene();
+}
+
 void NyxthraFlashback_Finish(void)
 {
     u8 i;
@@ -291,6 +342,16 @@ void NyxthraFlashback_Finish(void)
     sFlashbackFinishing = TRUE;
     sAutoATimer = 0;
     sAutoAArmed = FALSE;
+    sFlashbackBattleActive = FALSE;
+
+    if (gMain.inBattle)
+    {
+        if (!gPaletteFade.active)
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gMain.savedCallback = CB2_FlashbackFinishAfterBattle;
+        SetMainCallback2(CB2_QuitRecordedBattle);
+        return;
+    }
 
     for (i = 0; i < NUM_TASKS; i++)
     {
@@ -312,8 +373,126 @@ static void Task_FlashbackCleanup(u8 taskId)
     ScriptContext_Stop();
     StopMapMusic();
     Flashback_RestoreIdentity();
+    sFlashbackBattleActive = FALSE;
     sFlashbackActive = FALSE;
     sFlashbackFinishing = FALSE;
     DestroyTask(taskId);
     MainMenu_BeginBirchSpeechScene();
+}
+
+void NyxthraFlashback_PrepareScriptedBattle(void)
+{
+    u16 playerMove = gSpecialVar_0x8004;
+    u16 opponentMove = gSpecialVar_0x8005;
+    u16 maxTurns = gSpecialVar_0x8006;
+
+    if (!sFlashbackActive)
+        return;
+
+    sFlashbackPlayerMove = playerMove ? playerMove : MOVE_WATER_GUN;
+    sFlashbackOpponentMove = opponentMove ? opponentMove : MOVE_ROCK_TOMB;
+    sFlashbackMaxTurns = maxTurns ? maxTurns : 1;
+    sFlashbackBattleActive = TRUE;
+    sFlashbackActionMenus = 0;
+    sFlashbackAutoTimer = 0;
+    sFlashbackBattleTextTimer = 0;
+    sFlashbackCountThisMenu = TRUE;
+
+    Flashback_SetPartyForBattle(&gParties[B_TRAINER_PLAYER][0], sFlashbackPlayerMove);
+}
+
+void NyxthraFlashback_OnTrainerPartyCreated(void)
+{
+    if (!sFlashbackBattleActive)
+        return;
+    Flashback_SetPartyForBattle(&gParties[B_TRAINER_OPPONENT_A][0], sFlashbackOpponentMove);
+}
+
+bool8 NyxthraFlashback_IsScriptedBattle(void)
+{
+    return (sFlashbackActive && sFlashbackBattleActive && !sFlashbackFinishing);
+}
+
+u16 NyxthraFlashback_GetPlayerMove(void)
+{
+    return sFlashbackPlayerMove;
+}
+
+u16 NyxthraFlashback_GetOpponentMove(void)
+{
+    return sFlashbackOpponentMove;
+}
+
+void NyxthraFlashback_NotePlayerActionMenu(void)
+{
+    // Nur einmal pro Aktionsmenü zählen, nicht jeden Frame.
+    if (sFlashbackCountThisMenu)
+    {
+        if (sFlashbackActionMenus < 0xFF)
+            sFlashbackActionMenus++;
+        sFlashbackCountThisMenu = FALSE;
+    }
+}
+
+bool8 NyxthraFlashback_ShouldAbortBattle(void)
+{
+    // Erstes Aktionsmenü = vor den Zügen, jedes weitere = nächste Runde.
+    return (sFlashbackActionMenus > sFlashbackMaxTurns);
+}
+
+bool8 NyxthraFlashback_TickAutoInput(u8 delay)
+{
+    if (sFlashbackAutoTimer < 0xFF)
+        sFlashbackAutoTimer++;
+    if (sFlashbackAutoTimer >= delay)
+    {
+        sFlashbackAutoTimer = 0;
+        sFlashbackCountThisMenu = TRUE; // nächstes Menü wieder zählen
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void NyxthraFlashback_OnBattleEnded(void)
+{
+    sFlashbackBattleActive = FALSE;
+    sFlashbackActionMenus = 0;
+    sFlashbackAutoTimer = 0;
+    sFlashbackBattleTextTimer = 0;
+    sFlashbackCountThisMenu = TRUE;
+}
+
+void NyxthraFlashback_BeginAbortBattle(void)
+{
+    if (!sFlashbackBattleActive)
+        return;
+
+    gBattleOutcome = B_OUTCOME_WON;
+    if (!gPaletteFade.active)
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    SetMainCallback2(CB2_QuitRecordedBattle);
+}
+
+
+void NyxthraFlashback_ProcessBattleInput(void)
+{
+    if (!NyxthraFlashback_IsScriptedBattle())
+        return;
+
+    if (JOY_NEW(START_BUTTON))
+    {
+        NyxthraFlashback_Finish();
+        return;
+    }
+
+    if (gPaletteFade.active)
+        return;
+
+    if (sFlashbackBattleTextTimer < 0xFF)
+        sFlashbackBattleTextTimer++;
+    if (sFlashbackBattleTextTimer >= 45)
+    {
+        sFlashbackBattleTextTimer = 0;
+        gMain.newKeys |= A_BUTTON;
+    }
 }

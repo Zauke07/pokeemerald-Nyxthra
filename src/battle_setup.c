@@ -824,10 +824,15 @@ static void DoTrainerBattle(void)
     CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_A][0], TRAINER_BATTLE_PARAM.opponentA);
     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
         CreateNPCTrainerParty(&gParties[B_TRAINER_OPPONENT_B][0], TRAINER_BATTLE_PARAM.opponentB);
+    if (NyxthraFlashback_IsActive())
+        NyxthraFlashback_OnTrainerPartyCreated();
     CreateBattleStartTask(GetTrainerBattleTransition(), 0);
-    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
-    IncrementGameStat(GAME_STAT_TRAINER_BATTLES);
-    TryUpdateGymLeaderRematchFromTrainer();
+    if (!NyxthraFlashback_IsActive())
+    {
+        IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+        IncrementGameStat(GAME_STAT_TRAINER_BATTLES);
+        TryUpdateGymLeaderRematchFromTrainer();
+    }
 }
 
 static void DoBattlePyramidTrainerHillBattle(void)
@@ -2008,6 +2013,14 @@ static void HandleBattleVariantEndParty(void)
 static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
+
+    if (NyxthraFlashback_IsActive())
+    {
+        NyxthraFlashback_OnBattleEnded();
+        DowngradeBadPoison();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        return;
+    }
 
     gIsDebugBattle = FALSE;
     if (FollowerNPCIsBattlePartner())

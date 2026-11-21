@@ -12,4 +12,17 @@ void NyxthraFlashback_ProcessInput(void);
 void NyxthraFlashback_OnOverworldTick(void);
 void NyxthraFlashback_ApplyDreamTint(void);
 
+// Wiederverwendbarer Autokampf für die Rückblick-Clips (Arena, Liga, Bosse).
+void NyxthraFlashback_PrepareScriptedBattle(void);
+void NyxthraFlashback_OnTrainerPartyCreated(void);
+void NyxthraFlashback_OnBattleEnded(void);
+bool8 NyxthraFlashback_IsScriptedBattle(void);
+u16 NyxthraFlashback_GetPlayerMove(void);
+u16 NyxthraFlashback_GetOpponentMove(void);
+bool8 NyxthraFlashback_ShouldAbortBattle(void);
+bool8 NyxthraFlashback_TickAutoInput(u8 delay);
+void NyxthraFlashback_BeginAbortBattle(void);
+void NyxthraFlashback_NotePlayerActionMenu(void);
+void NyxthraFlashback_ProcessBattleInput(void);
+
 #endif // GUARD_NYXTHRA_FLASHBACK_H

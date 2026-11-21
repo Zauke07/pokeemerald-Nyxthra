@@ -1896,3 +1896,4 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Test/scripts.inc"
 
 	.include "data/maps/Flashback_Route101/scripts.inc"
+	.include "data/maps/Flashback_RustboroGym/scripts.inc"

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "battle_ai_switch.h"
 #include "battle_ai_util.h"
 #include "constants/battle.h"
@@ -432,6 +433,25 @@ static void OpponentHandleChooseAction(enum BattlerId battler)
 
 static void OpponentHandleChooseMove(enum BattlerId battler)
 {
+    if (NyxthraFlashback_IsScriptedBattle())
+    {
+        u32 i, slot = 0;
+        u16 want = NyxthraFlashback_GetOpponentMove();
+        struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            if (moveInfo->moves[i] == want)
+            {
+                slot = i;
+                break;
+            }
+        }
+        BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, slot | (GetBattlerAtPosition(B_POSITION_PLAYER_LEFT) << 8));
+        BtlController_Complete(battler);
+        return;
+    }
+
     if (gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_SAFARI | BATTLE_TYPE_ROAMER)
      || IsWildMonSmart())
     {

@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "option_menu.h"
 #include "battle_anim.h"
 #include "battle_ai_main.h"
@@ -1754,10 +1755,14 @@ static void CB2_HandleStartMultiBattle(void)
 
 void BattleMainCB2(void)
 {
+    // Vor RunTextPrinters: sonst löscht ReadKeys im nächsten Frame das injizierte A,
+    // bevor der Drucker das Absatz-Prompt (\p) sieht.
+    NyxthraFlashback_ProcessBattleInput();
     AnimateSprites();
     BuildOamBuffer();
     RunTextPrinters();
     UpdatePaletteFade();
+    NyxthraFlashback_ApplyDreamTint();
     RunTasks();
 
     if (JOY_HELD(B_BUTTON) && gBattleTypeFlags & BATTLE_TYPE_RECORDED && RecordedBattle_CanStopPlayback())

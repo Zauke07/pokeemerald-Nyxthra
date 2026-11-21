@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "nyxthra_flashback.h"
 #include "battle_anim.h"
 #include "battle_arena.h"
 #include "battle_controllers.h"
@@ -237,6 +238,31 @@ static enum Item GetNextBall(enum Item ballId)
 static void HandleInputChooseAction(enum BattlerId battler)
 {
     enum Item itemId = gBattleResources->bufferA[battler][2] | (gBattleResources->bufferA[battler][3] << 8);
+
+    if (NyxthraFlashback_IsScriptedBattle())
+    {
+        if (JOY_NEW(START_BUTTON))
+        {
+            NyxthraFlashback_Finish();
+            return;
+        }
+        NyxthraFlashback_NotePlayerActionMenu();
+        if (NyxthraFlashback_ShouldAbortBattle())
+        {
+            NyxthraFlashback_BeginAbortBattle();
+            return;
+        }
+        if (NyxthraFlashback_TickAutoInput(40))
+        {
+            PlaySE(SE_SELECT);
+            TryHideLastUsedBall();
+            gActionSelectionCursor[battler] = 0;
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
+            BtlController_Complete(battler);
+            return;
+        }
+        // Cursor sichtbar halten, bis die automatische Bestätigung kommt
+    }
 
     DoBounceEffect(battler, BOUNCE_HEALTHBOX, 7, 1);
     DoBounceEffect(battler, BOUNCE_MON, 7, 1);
@@ -681,6 +707,36 @@ void HandleInputChooseMove(enum BattlerId battler)
 {
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+
+    if (NyxthraFlashback_IsScriptedBattle())
+    {
+        u32 i, slot = 0;
+        u16 want = NyxthraFlashback_GetPlayerMove();
+
+        if (JOY_NEW(START_BUTTON))
+        {
+            NyxthraFlashback_Finish();
+            return;
+        }
+        for (i = 0; i < MAX_MON_MOVES; i++)
+        {
+            if (moveInfo->moves[i] == want)
+            {
+                slot = i;
+                break;
+            }
+        }
+        if (NyxthraFlashback_TickAutoInput(25))
+        {
+            PlaySE(SE_SELECT);
+            gMoveSelectionCursor[battler] = slot;
+            gMultiUsePlayerCursor = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, slot | (gMultiUsePlayerCursor << 8));
+            BtlController_Complete(battler);
+            return;
+        }
+        return;
+    }
 
     if (JOY_HELD(DPAD_ANY) && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         gPlayerDpadHoldFrames++;

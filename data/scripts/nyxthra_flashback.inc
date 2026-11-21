@@ -42,6 +42,48 @@ NyxthraFlashback_EventScript_Clip1::
 	special ChooseStarter
 	delay 40
 	fadescreen FADE_TO_BLACK
+	warpsilent MAP_FLASHBACK_RUSTBORO_GYM, 5, 8
+	waitstate
+	end
+
+NyxthraFlashback_Text_RoxanneIntro:
+	.string "Hi, ich bin FELIZIA,\n"
+	.string "LEITERIN der METAROST ARENA.\p"
+	.string "Lass uns sehen, wie du kämpfst!$"
+
+NyxthraFlashback_Text_RoxanneDefeat:
+	.string "Oh… verloren…$"
+
+NyxthraFlashback_Text_ReceivedStoneBadge:
+	.string "{PLAYER} erhält den STEINORDEN von\n"
+	.string "FELIZIA!$"
+
+NyxthraFlashback_Movement_ApproachRoxanne:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+NyxthraFlashback_EventScript_Clip2::
+	lockall
+	setvar VAR_TEMP_0, 1
+	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_ApproachRoxanne
+	waitmovement 0
+	applymovement LOCALID_FLASHBACK_ROXANNE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox NyxthraFlashback_Text_RoxanneIntro, MSGBOX_DEFAULT
+	closemessage
+	special NyxthraFlashback_PrepareScriptedBattle
+	trainerbattle_no_intro TRAINER_ROXANNE_1, NyxthraFlashback_Text_RoxanneDefeat
+	delay 20
+	message NyxthraFlashback_Text_ReceivedStoneBadge
+	waitmessage
+	call Common_EventScript_PlayGymBadgeFanfare
+	waitmessage
+	closemessage
+	delay 50
+	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
 	end
