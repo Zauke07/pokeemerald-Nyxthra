@@ -24,6 +24,7 @@
 #include "util.h"
 #include "title_screen.h"
 #include "expansion_intro.h"
+#include "nyxthra_prologue.h"
 #include "battle_anim.h"
 #include "intro_frlg.h"
 #include "constants/rgb.h"
@@ -1034,7 +1035,7 @@ void MainCB2_Intro(void)
 static void MainCB2_EndIntro(void)
 {
     if (!UpdatePaletteFade())
-        SetMainCallback2(CB2_InitTitleScreen);
+        SetMainCallback2(CB2_InitNyxthraPrologue);
 }
 
 static void LoadCopyrightGraphics(u16 tilesetAddress, u16 tilemapAddress, u16 paletteOffset)

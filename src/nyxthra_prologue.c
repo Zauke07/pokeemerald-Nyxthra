@@ -15,6 +15,7 @@
 #include "gba/m4a_internal.h"
 #include "rayquaza_scene.h"
 #include "main_menu.h"
+#include "title_screen.h"
 #include "nyxthra_prologue.h"
 #include "intro.h"
 #include "decompress.h"
@@ -2075,22 +2076,19 @@ static void UpdateScene3Effects(u16 pulse, s16 scale, u16 angle)
     }
 }
 
-// Nach den Globus-Szenen 1–7 folgt die Titelkarte. Mystery-Tafel und
-// der alte Darkrai-Teaser entfallen, weil Szene 7 dasselbe erzählt.
+// Nach den Globus-Szenen 1–7 folgt der Titel-Slam auf den
+// Mitternachtsmond-Bildschirm. Mystery-Tafel, Darkrai-Teaser und die
+// alte Logo-Karte entfallen.
 static void StartPrologueIntroCards(u8 taskId)
 {
     StopScene3Effects();
     ResetSpriteData();
     FreeAllSpritePalettes();
     FreePrologueBgAndWindow();
-    InitPrologueBgAndWindow();
-    SetVBlankCallback(VBlankCB_NyxthraPrologue);
-    SetMainCallback2(CB2_NyxthraPrologue);
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_NORMAL);
-    gTasks[taskId].func = Task_Prologue_TitleLogo;
-    gTasks[taskId].tState = CARD_STATE_FADE_IN;
-    gTasks[taskId].tCardIdx = 0;
-    gTasks[taskId].tTimer = 0;
+    DestroyTask(taskId);
+    TitleScreen_EnableSlam();
+    SetMainCallback2(CB2_InitTitleScreen);
 }
 
 enum

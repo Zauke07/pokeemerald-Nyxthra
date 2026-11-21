@@ -388,11 +388,9 @@ void CB2_InitMainMenu(void) { InitMainMenu(FALSE); }
 void CB2_ReinitMainMenu(void) { InitMainMenu(TRUE); }
 void MainMenu_BeginBirchSpeechScene(void)
 {
-    // Nyxthra story: every "start a new game" path funnels through here, so
-    // this is the one place to show the prologue before Birch's speech ever
-    // begins. The prologue itself calls MainMenu_StartBirchSpeechDirect()
-    // (the old body of this function) once it's done.
-    SetMainCallback2(CB2_InitNyxthraPrologue);
+    // Das Prolog-Intro läuft schon vor dem Titelbildschirm. New Game
+    // geht deshalb direkt zu Prof. Birchs Ansprache.
+    MainMenu_StartBirchSpeechDirect();
 }
 
 void MainMenu_StartBirchSpeechDirect(void)
