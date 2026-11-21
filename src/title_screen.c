@@ -29,6 +29,7 @@ enum {
     TAG_VERSION = 1000,
     TAG_PRESS_START_COPYRIGHT,
     TAG_LOGO_SHINE,
+    TAG_COPYRIGHT_CREDIT,
 };
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
@@ -38,6 +39,10 @@ enum {
 #define VERSION_BANNER_Y_GOAL 66
 #define START_BANNER_X 128
 #define START_BANNER_Y 134
+#define COPYRIGHT_BANNER_Y 152
+// Mittelpunkt des 64×64-Glanzfensters: deckt das Nyxthra-Logo (y=4–67) ab.
+// Im Original-Smaragd steht das Logo tiefer, dort war 68 korrekt.
+#define LOGO_SHINE_Y 36
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -63,6 +68,7 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 
 static EWRAM_DATA bool8 sTitleScreenSlam = FALSE;
 static EWRAM_DATA bool8 sTitleAtmosphereOn = FALSE;
+static EWRAM_DATA bool8 sTitleShineActive = FALSE;
 
 void TitleScreen_EnableSlam(void)
 {
@@ -75,6 +81,7 @@ static const u16 sUnusedUnknownPal[] = INCGFX_U16("graphics/title_screen/unused.
 static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/mitternachtsmond.png", ".4bpp.smol");
 static const u32 sTitleScreenRayquazaTilemap[] = INCGFX_U32("graphics/title_screen/mitternachtsmond.bin", ".smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCGFX_U32("graphics/title_screen/logo_shine.png", ".4bpp.smol");
+static const u32 sCopyrightCreditGfx[] = INCGFX_U32("graphics/title_screen/copyright_credit.png", ".4bpp.smol", "-mwidth 4 -mheight 2");
 static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clouds.png", ".4bpp.smol");
 
 // The Emerald cloud tiles use color 0 (transparent), 2 and 12. Loaded as
@@ -387,6 +394,64 @@ static const struct CompressedSpriteSheet sPokemonLogoShineSpriteSheet[] =
     {},
 };
 
+static const struct OamData sOamData_CopyrightCredit =
+{
+    .y = DISPLAY_HEIGHT,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x16),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x16),
+    .tileNum = 0,
+    .priority = 0,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sAnim_CopyrightCredit_0[] = { ANIMCMD_FRAME(0, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_1[] = { ANIMCMD_FRAME(8, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_2[] = { ANIMCMD_FRAME(16, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_3[] = { ANIMCMD_FRAME(24, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_4[] = { ANIMCMD_FRAME(32, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_5[] = { ANIMCMD_FRAME(40, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_6[] = { ANIMCMD_FRAME(48, 4), ANIMCMD_END };
+static const union AnimCmd sAnim_CopyrightCredit_7[] = { ANIMCMD_FRAME(56, 4), ANIMCMD_END };
+
+static const union AnimCmd *const sCopyrightCreditAnimTable[] =
+{
+    sAnim_CopyrightCredit_0,
+    sAnim_CopyrightCredit_1,
+    sAnim_CopyrightCredit_2,
+    sAnim_CopyrightCredit_3,
+    sAnim_CopyrightCredit_4,
+    sAnim_CopyrightCredit_5,
+    sAnim_CopyrightCredit_6,
+    sAnim_CopyrightCredit_7,
+};
+
+static const struct SpriteTemplate sCopyrightCreditSpriteTemplate =
+{
+    .tileTag = TAG_COPYRIGHT_CREDIT,
+    .paletteTag = TAG_PRESS_START_COPYRIGHT,
+    .oam = &sOamData_CopyrightCredit,
+    .anims = sCopyrightCreditAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_CopyrightCredit[] =
+{
+    {
+        .data = sCopyrightCreditGfx,
+        .size = 0x800,
+        .tag = TAG_COPYRIGHT_CREDIT
+    },
+    {},
+};
+
+
 // Task data for the main title screen tasks (Task_TitleScreenPhase#)
 #define tCounter    data[0]
 #define tSkipToNext data[1]
@@ -468,11 +533,15 @@ static void CreateCopyrightBanner(s16 x, s16 y)
     u8 i;
     u8 spriteId;
 
-    x -= 64;
-    for (i = 0; i < NUM_COPYRIGHT_FRAMES; i++, x += 32)
+    // 8 Segmente à 32×16, zwei Zeilen: "© 2024 Zauke07" und
+    // "Pokémon © Nintendo/Game Freak". y ist die Mitte der 16-px-Leiste.
+    (void)x;
+    x = 16;
+    for (i = 0; i < 8; i++, x += 32)
     {
-        spriteId = CreateSprite(&sStartCopyrightBannerSpriteTemplate, x, y, 0);
-        StartSpriteAnim(&gSprites[spriteId], i + NUM_PRESS_START_FRAMES);
+        spriteId = CreateSprite(&sCopyrightCreditSpriteTemplate, x, y, 0);
+        if (spriteId != MAX_SPRITES)
+            StartSpriteAnim(&gSprites[spriteId], i);
     }
 }
 
@@ -587,16 +656,49 @@ static void StartPokemonLogoShine(u8 mode)
 
 #define CLAMP31(x) (((x) < 0) ? 0 : ((x) > 31) ? 31 : (x))
 
+static bool8 TitleShineSpriteExists(void)
+{
+    u8 i;
+
+    for (i = 0; i < MAX_SPRITES; i++)
+    {
+        if (gSprites[i].inUse && gSprites[i].template->tileTag == TAG_LOGO_SHINE)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static void RestoreTitleFogBlend(void)
+{
+    if (!sTitleShineActive)
+        return;
+
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
+    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(5, 11));
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+    sTitleShineActive = FALSE;
+}
+
 static void StartTitleLogoShine(void)
 {
-    u8 spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+    u8 i;
 
-    if (spriteId != MAX_SPRITES)
+    // Wie im Original: der Glanz ist ein Objektfenster, das nur BG2
+    // (das Pokémon-Logo) aufhellt — nicht den Hintergrund oder Darkrai.
+    StartPokemonLogoShine(SHINE_MODE_SINGLE_NO_BG_COLOR);
+    for (i = 0; i < MAX_SPRITES; i++)
     {
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
-        gSprites[spriteId].oam.priority = 1;
-        gSprites[spriteId].data[0] = SHINE_MODE_SINGLE_NO_BG_COLOR;
+        if (gSprites[i].inUse && gSprites[i].template->tileTag == TAG_LOGO_SHINE)
+            gSprites[i].y = LOGO_SHINE_Y;
     }
+    SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG_ALL | WININ_WIN1_OBJ);
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WINOBJ_ALL);
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_EFFECT_LIGHTEN);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 12);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+    sTitleShineActive = TRUE;
 }
 
 static void StartTitleAtmosphere(void)
@@ -610,7 +712,6 @@ static void StartTitleAtmosphere(void)
     SetGpuReg(REG_OFFSET_BLDY, 0);
     SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
     ScanlineEffect_InitWave(0, DISPLAY_HEIGHT, 4, 4, 0, SCANLINE_EFFECT_REG_BG1HOFS, TRUE);
-    StartTitleLogoShine();
     sTitleAtmosphereOn = TRUE;
 }
 
@@ -666,6 +767,7 @@ void CB2_InitTitleScreen(void)
         DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
         ResetPaletteFade();
         sTitleAtmosphereOn = FALSE;
+        sTitleShineActive = FALSE;
         gMain.state = 1;
         break;
     case 1:
@@ -695,6 +797,7 @@ void CB2_InitTitleScreen(void)
         LoadCompressedSpriteSheet(&sSpriteSheet_EmeraldVersion[0]);
         LoadCompressedSpriteSheet(&sSpriteSheet_PressStart[0]);
         LoadCompressedSpriteSheet(&sPokemonLogoShineSpriteSheet[0]);
+        LoadCompressedSpriteSheet(&sSpriteSheet_CopyrightCredit[0]);
         LoadPalette(gTitleScreenNyxthraVersionPal, OBJ_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadSpritePalette(&sSpritePalette_PressStart[0]);
         gMain.state = 2;
@@ -860,7 +963,7 @@ static void Task_TitleScreenSlam(u8 taskId)
         spriteId = CreateSprite(&sVersionBannerRightSpriteTemplate, VERSION_BANNER_RIGHT_X, VERSION_BANNER_Y, 0);
         gSprites[spriteId].sParentTaskId = taskId;
         CreatePressStartBanner(START_BANNER_X, START_BANNER_Y);
-        CreateCopyrightBanner(START_BANNER_X, 148);
+        CreateCopyrightBanner(START_BANNER_X, COPYRIGHT_BANNER_Y);
         m4aSongNumStart(MUS_TITLE);
         gTasks[taskId].tSkipToNext = FALSE;
         gTasks[taskId].tBg1Y = 0;
@@ -943,7 +1046,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
         CreatePressStartBanner(START_BANNER_X, START_BANNER_Y);
-        CreateCopyrightBanner(START_BANNER_X, 148);
+        CreateCopyrightBanner(START_BANNER_X, COPYRIGHT_BANNER_Y);
         if (QUICKSTART && QUICKSTART_HUD)
             CreateQuickstartHud();
         gTasks[taskId].tBg1Y = 0;
@@ -1010,8 +1113,14 @@ static void Task_TitleScreenPhase3(u8 taskId)
             gTasks[taskId].tSkipToNext = TRUE;
             StartTitleAtmosphere();
         }
+        if (sTitleShineActive && !TitleShineSpriteExists())
+            RestoreTitleFogBlend();
+        // Erst den Nebel einblenden, dann den Logoglanz (t=140, danach alle 256 Frames).
         if (sTitleAtmosphereOn
-         && (gTasks[taskId].tCounter & 0xFF) == 0x50)
+         && !sTitleShineActive
+         && (gTasks[taskId].tCounter == 140
+          || (gTasks[taskId].tCounter > 140
+           && (gTasks[taskId].tCounter & 0xFF) == 0x50)))
             StartTitleLogoShine();
         if (!gPaletteFade.active)
             PulseTitleMood(gTasks[taskId].tCounter);
