@@ -25,6 +25,7 @@
 #include "constants/songs.h"
 #include "constants/species.h"
 #include "constants/sound.h"
+#include "scanline_effect.h"
 
 /*
     Nyxthra story prologue - shown once, before Birch's speech, on every
@@ -52,6 +53,7 @@ struct PrologueCard
 {
     const u8 *line1;
     const u8 *line2; // NULL if the card is only one line
+    bool8 shake;     // Nyxthra: Bildschirm bebt, sobald die Karte fertig getippt ist
 };
 
 static const u8 sText_Prologue_Intro1[] = _("Vor vielen Jahren…");
@@ -64,15 +66,15 @@ static const u8 sText_Prologue_HoennChanges[] = _("Und Hoenn begann sich zu ver�
 
 static const struct PrologueCard sIntroCards[] =
 {
-    { sText_Prologue_Intro1, NULL },
-    { sText_Prologue_Intro2, sText_Prologue_Intro2b },
+    { sText_Prologue_Intro1, NULL, FALSE },
+    { sText_Prologue_Intro2, sText_Prologue_Intro2b, TRUE },
 };
 
 static const struct PrologueCard sOutroCards[] =
 {
-    { sText_Prologue_Mystery, sText_Prologue_Mysteryb },
-    { sText_Prologue_YearsPassed, NULL },
-    { sText_Prologue_HoennChanges, NULL },
+    { sText_Prologue_Mystery, sText_Prologue_Mysteryb, FALSE },
+    // Nach dieser ersten Karte folgt der Darkrai-Teaser (Task_Prologue_DarkraiTeaser).
+    { sText_Prologue_YearsPassed, sText_Prologue_HoennChanges, FALSE },
 };
 
 // Nyxthra story: closing title card. Reuses the real title screen's own
@@ -131,8 +133,14 @@ static const struct CompressedSpriteSheet sPrologueVersionBannerSpriteSheet[] =
 #define VERSION_BANNER_RIGHT_X 162
 #define VERSION_BANNER_Y_GOAL  66
 
-// Palette: 0 backdrop/transparent, 1 white text, 2 dark gray shadow.
-static const u16 sPrologueTextPal[] = { RGB_BLACK, RGB(28, 28, 28), RGB(12, 12, 12) };
+// Palette: 0 backdrop/transparent, 1 white text, 2 dark gray shadow,
+// 3/4 Darkrais rote Augen im Teaser.
+static const u16 sPrologueTextPal[] = { RGB_BLACK, RGB(28, 28, 28), RGB(12, 12, 12), RGB(31, 4, 4), RGB(16, 0, 2) };
+
+// Nyxthra: violetter Nebel auf BG1 hinter den Texttafeln.
+#define PROLOGUE_FOG_PAL 1
+#define TEXT_SPEED_PROLOGUE 2
+static EWRAM_DATA u8 sPrologueShakeTimer = 0;
 
 static const struct BgTemplate sPrologueBgTemplates[] =
 {
@@ -143,6 +151,15 @@ static const struct BgTemplate sPrologueBgTemplates[] =
         .screenSize = 0,
         .paletteMode = 0,
         .priority = 0,
+        .baseTile = 0,
+    },
+    {
+        .bg = 1,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 1,
         .baseTile = 0,
     },
 };
@@ -165,6 +182,7 @@ static void Task_Prologue_IntroCards(u8 taskId);
 static void Task_Prologue_OutroCards(u8 taskId);
 static void Task_Prologue_LegendaryEnergyScene(u8 taskId);
 static void Task_Prologue_TitleLogo(u8 taskId);
+static void Task_Prologue_DarkraiTeaser(u8 taskId);
 static void CB2_NyxthraPrologue_AfterRayquaza(void);
 
 static void VBlankCB_NyxthraPrologue(void)
@@ -174,8 +192,32 @@ static void VBlankCB_NyxthraPrologue(void)
     TransferPlttBuffer();
 }
 
+static void UpdatePrologueFogAndShake(void)
+{
+    // Nebel driftet langsam schräg
+    ChangeBgX(1, 40, BG_COORD_ADD);
+    ChangeBgY(1, 12, BG_COORD_ADD);
+
+    if (sPrologueShakeTimer != 0)
+    {
+        sPrologueShakeTimer--;
+        if (sPrologueShakeTimer == 0)
+        {
+            ChangeBgX(0, 0, BG_COORD_SET);
+            ChangeBgY(0, 0, BG_COORD_SET);
+        }
+        else
+        {
+            ChangeBgX(0, ((sPrologueShakeTimer & 2) ? 3 : -3) << 8, BG_COORD_SET);
+            ChangeBgY(0, ((sPrologueShakeTimer & 4) ? 2 : -2) << 8, BG_COORD_SET);
+        }
+    }
+}
+
 static void CB2_NyxthraPrologue(void)
 {
+    RunTextPrinters();
+    UpdatePrologueFogAndShake();
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
@@ -197,9 +239,35 @@ static void InitPrologueBgAndWindow(void)
     DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
     DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
     LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16)); // pin the backdrop color to black too
+    // Reste von Kampfübergängen / Rayquaza-Szene (Fenster, Blending, HBlank) zurücksetzen
+    ScanlineEffect_Stop();
+    SetHBlankCallback(NULL);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetGpuReg(REG_OFFSET_WININ, 0);
+    SetGpuReg(REG_OFFSET_WINOUT, 0);
+    SetGpuReg(REG_OFFSET_WIN0H, 0);
+    SetGpuReg(REG_OFFSET_WIN0V, 0);
+    SetGpuReg(REG_OFFSET_WIN1H, 0);
+    SetGpuReg(REG_OFFSET_WIN1V, 0);
+    sPrologueShakeTimer = 0;
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sPrologueBgTemplates, ARRAY_COUNT(sPrologueBgTemplates));
     SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
+    {
+        // Nyxthra: Nebel-Kacheln (16x16 Kacheln, kachelbar) über die ganze BG1-Map wiederholen
+        u16 *fogMap = AllocZeroed(BG_SCREEN_SIZE);
+        u32 x, y;
+        for (y = 0; y < 32; y++)
+            for (x = 0; x < 32; x++)
+                fogMap[y * 32 + x] = ((y % 16) * 16 + (x % 16)) | (PROLOGUE_FOG_PAL << 12);
+        SetBgTilemapBuffer(1, fogMap);
+        LoadBgTiles(1, gNyxthraPrologueFog_Gfx, 16 * 16 * TILE_SIZE_4BPP, 0);
+        LoadPalette(gNyxthraPrologueFog_Pal, BG_PLTT_ID(PROLOGUE_FOG_PAL), PLTT_SIZE_4BPP);
+        CopyBgTilemapBufferToVram(1);
+        ShowBg(1);
+    }
     LoadPalette(sPrologueTextPal, BG_PLTT_ID(8), sizeof(sPrologueTextPal));
     InitWindows(sPrologueWindowTemplates);
     DeactivateAllTextPrinters();
@@ -216,9 +284,15 @@ static void FreePrologueBgAndWindow(void)
     ptr = GetBgTilemapBuffer(0);
     if (ptr)
         Free(ptr);
+    ptr = GetBgTilemapBuffer(1);
+    if (ptr)
+        Free(ptr);
+    SetBgTilemapBuffer(1, NULL);
 }
 
-static void PrintPrologueLine(const u8 *string, u8 y)
+// Nyxthra: Zeilen erscheinen Buchstabe für Buchstabe (Text-Printer mit Tempo,
+// RunTextPrinters() läuft im CB2).
+static void PrintPrologueLineTyped(const u8 *string, u8 y)
 {
     u8 x;
     u8 color[3];
@@ -228,67 +302,89 @@ static void PrintPrologueLine(const u8 *string, u8 y)
     color[2] = TEXT_COLOR_DARK_GRAY;
 
     x = GetStringCenterAlignXOffsetWithLetterSpacing(FONT_NORMAL, string, DISPLAY_WIDTH, 1);
-    AddTextPrinterParameterized4(0, FONT_NORMAL, x, y, 1, 0, color, TEXT_SKIP_DRAW, string);
+    AddTextPrinterParameterized4(0, FONT_NORMAL, x, y, 1, 0, color, TEXT_SPEED_PROLOGUE, string);
 }
 
-static void ShowPrologueCard(const struct PrologueCard *card)
-{
-    FillWindowPixelBuffer(0, PIXEL_FILL(0));
-    if (card->line2 == NULL)
-    {
-        PrintPrologueLine(card->line1, 76);
-    }
-    else
-    {
-        PrintPrologueLine(card->line1, 68);
-        PrintPrologueLine(card->line2, 84);
-    }
-    CopyWindowToVram(0, COPYWIN_FULL);
-}
-
-// Generic "fade up on the card's text, wait for input or a timeout, fade back
-// to black" driver shared by the intro and outro card sequences. tState/
-// tTimer/tCardIdx are reused; the card table + what to do when the list ends
-// differ, so this only handles a single card and the caller's task func
-// decides what happens next.
-//
-// The text is printed *before* the fade-in starts (not after it finishes) -
-// that way the fade-in is the actual reveal, and there's never a moment
-// where the previous card's now-stale text is still sitting in the window
-// while the screen brightens back up.
+// Generic card driver shared by the intro and outro card sequences: the fog
+// fades in while the first line types itself out, then the second line,
+// an optional quake, a short hold (A/B/Start skips), and a fade to black.
 enum
 {
     CARD_STATE_FADE_IN,
+    CARD_STATE_TYPE_LINE1,
+    CARD_STATE_TYPE_LINE2,
     CARD_STATE_WAIT,
     CARD_STATE_FADE_OUT,
     CARD_STATE_DONE,
 };
 
+#define CARD_HOLD_FRAMES 100
+
 static bool8 RunPrologueCard(u8 taskId, const struct PrologueCard *card)
 {
+    bool8 pressed = JOY_NEW(A_BUTTON | B_BUTTON | START_BUTTON);
+
     switch (gTasks[taskId].tState)
     {
     case CARD_STATE_FADE_IN:
-        ShowPrologueCard(card);
+        DeactivateAllTextPrinters();
+        FillWindowPixelBuffer(0, PIXEL_FILL(0));
+        CopyWindowToVram(0, COPYWIN_FULL);
+        PrintPrologueLineTyped(card->line1, card->line2 == NULL ? 76 : 68);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
         gTasks[taskId].tTimer = 0;
-        gTasks[taskId].tState = CARD_STATE_WAIT;
+        gTasks[taskId].tState = CARD_STATE_TYPE_LINE1;
+        break;
+    case CARD_STATE_TYPE_LINE1:
+        if (pressed)
+            gTasks[taskId].tState = CARD_STATE_FADE_OUT;
+        else if (!IsTextPrinterActiveOnWindow(0))
+        {
+            if (card->line2 != NULL)
+            {
+                PrintPrologueLineTyped(card->line2, 84);
+                gTasks[taskId].tState = CARD_STATE_TYPE_LINE2;
+            }
+            else
+            {
+                gTasks[taskId].tState = CARD_STATE_WAIT;
+            }
+        }
+        break;
+    case CARD_STATE_TYPE_LINE2:
+        if (pressed)
+            gTasks[taskId].tState = CARD_STATE_FADE_OUT;
+        else if (!IsTextPrinterActiveOnWindow(0))
+        {
+            if (card->shake)
+            {
+                PlaySE(SE_M_EARTHQUAKE);
+                sPrologueShakeTimer = 40;
+            }
+            gTasks[taskId].tState = CARD_STATE_WAIT;
+        }
         break;
     case CARD_STATE_WAIT:
         if (!gPaletteFade.active)
         {
             gTasks[taskId].tTimer++;
-            if (JOY_NEW(A_BUTTON | B_BUTTON | START_BUTTON) || gTasks[taskId].tTimer > 240)
+            if (pressed || gTasks[taskId].tTimer > CARD_HOLD_FRAMES)
                 gTasks[taskId].tState = CARD_STATE_FADE_OUT;
         }
         break;
     case CARD_STATE_FADE_OUT:
+        if (gPaletteFade.active)
+            break;
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].tState = CARD_STATE_DONE;
         break;
     case CARD_STATE_DONE:
         if (!gPaletteFade.active)
         {
+            DeactivateAllTextPrinters();
+            sPrologueShakeTimer = 0;
+            ChangeBgX(0, 0, BG_COORD_SET);
+            ChangeBgY(0, 0, BG_COORD_SET);
             gTasks[taskId].tState = CARD_STATE_FADE_IN;
             return TRUE; // this card is finished, caller should advance
         }
@@ -311,7 +407,7 @@ static void Task_Prologue_IntroCards(u8 taskId)
             // rayquaza_scene.c). animId 1 (RAY_ANIM_DUO_FIGHT) with
             // endEarly=FALSE runs the whole chain through Rayquaza chasing
             // them off on its own; we pick back up in the exit callback.
-            DoRayquazaScene(1, FALSE, CB2_NyxthraPrologue_AfterRayquaza);
+            DoRayquazaSceneSkippable(1, TRUE, CB2_NyxthraPrologue_AfterRayquaza);
         }
     }
 }
@@ -402,8 +498,24 @@ static void ShowLegendaryTrio(u8 taskId)
         SpriteCallbackDummy, LEGENDARY_RAYQUAZA_X, LEGENDARY_RAYQUAZA_Y, 2);
 }
 
+static const u16 sTrioCrySpecies[] = { SPECIES_GROUDON, SPECIES_KYOGRE, SPECIES_RAYQUAZA };
+static const u16 sTrioPulseColors[] = { RGB(31, 6, 0), RGB(0, 10, 31), RGB(4, 28, 8) };
+
 static void Task_Prologue_LegendaryEnergyScene(u8 taskId)
 {
+    // Nyxthra: A/Start überspringt direkt zum Schwarzblenden
+    if (JOY_NEW(A_BUTTON | START_BUTTON)
+     && gTasks[taskId].tState > LEGENDARY_STATE_CALM
+     && gTasks[taskId].tState < LEGENDARY_STATE_HOLD_WHITE)
+    {
+        SetGpuReg(REG_OFFSET_BG0HOFS, 0);
+        m4aMPlayStop(&gMPlayInfo_BGM);
+        ResetPaletteFade();
+        BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+        gTasks[taskId].tBurstStep = 0;
+        gTasks[taskId].tState = LEGENDARY_STATE_FADE_BLACK;
+        return;
+    }
     gTasks[taskId].tBurstStep++;
     switch (gTasks[taskId].tState)
     {
@@ -414,121 +526,44 @@ static void Task_Prologue_LegendaryEnergyScene(u8 taskId)
         gTasks[taskId].tState = LEGENDARY_STATE_CALM;
         break;
     case LEGENDARY_STATE_CALM: // brief silence - looks like the fight is really over
-        if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 60)
+        if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 30)
         {
             gTasks[taskId].tBurstStep = 0;
+            gTasks[taskId].tFlashCount = 0;
             gTasks[taskId].tState = LEGENDARY_STATE_GROUDON_CRY;
         }
         break;
 
-    case LEGENDARY_STATE_GROUDON_CRY:
-        PlayCry_Script(SPECIES_GROUDON, CRY_MODE_ENCOUNTER);
+    // Nyxthra (gestrafft): statt drei kompletter Kampfübergänge ruft jedes
+    // Legendäre nur kurz, während der Bildschirm in seiner Farbe aufleuchtet.
+    // tFlashCount zählt 0 = Groudon, 1 = Kyogre, 2 = Rayquaza.
+    case LEGENDARY_STATE_GROUDON_CRY: // Ruf + Farbpuls starten
+        PlayCry_Script(sTrioCrySpecies[gTasks[taskId].tFlashCount], CRY_MODE_ENCOUNTER);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 8, sTrioPulseColors[gTasks[taskId].tFlashCount]);
         gTasks[taskId].tBurstStep = 0;
         gTasks[taskId].tState = LEGENDARY_STATE_GROUDON_TRANSITION;
         break;
-    case LEGENDARY_STATE_GROUDON_TRANSITION:
-        if (gTasks[taskId].tBurstStep > 30) // let the cry breathe before the flashy part
+    case LEGENDARY_STATE_GROUDON_TRANSITION: // Puls wieder abklingen lassen
+        if (!gPaletteFade.active)
         {
-            BattleTransition_Start(B_TRANSITION_GROUDON);
+            BeginNormalPaletteFade(PALETTES_ALL, 1, 8, 0, sTrioPulseColors[gTasks[taskId].tFlashCount]);
             gTasks[taskId].tState = LEGENDARY_STATE_GROUDON_TRANSITION_WAIT;
         }
         break;
     case LEGENDARY_STATE_GROUDON_TRANSITION_WAIT:
-        if (IsBattleTransitionDone())
+        if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 40)
         {
-            // The transition tasks swap in their own VBlank callback and never
-            // restore it themselves (normally CB2_InitBattle does that right
-            // after) - without this, the screen stops updating entirely once
-            // the transition ends.
-            SetVBlankCallback(VBlankCB_NyxthraPrologue);
+            gTasks[taskId].tFlashCount++;
             gTasks[taskId].tBurstStep = 0;
-            gTasks[taskId].tState = LEGENDARY_STATE_KYOGRE_CRY;
-        }
-        break;
-
-    case LEGENDARY_STATE_KYOGRE_CRY:
-        ShowLegendaryTrio(taskId);
-        // A battle transition always ends with the screen faded to black
-        // (that's normally left to the real battle scene's own fade-in
-        // right after) - without fading back in here, the redraw above is
-        // there but invisible, and the scene just looks stuck black.
-        // ResetPaletteFade() first because BeginNormalPaletteFade() silently
-        // refuses to start a new fade while gPaletteFade.active is already
-        // true - and some transitions (Rayquaza's especially, see below)
-        // drive gPaletteFade/BlendPalettes directly as part of their own
-        // choreography, so it can still read as "active" here otherwise.
-        ResetPaletteFade();
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-        PlayCry_Script(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER);
-        gTasks[taskId].tBurstStep = 0;
-        gTasks[taskId].tState = LEGENDARY_STATE_KYOGRE_TRANSITION;
-        break;
-    case LEGENDARY_STATE_KYOGRE_TRANSITION:
-        if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 30)
-        {
-            BattleTransition_Start(B_TRANSITION_KYOGRE);
-            gTasks[taskId].tState = LEGENDARY_STATE_KYOGRE_TRANSITION_WAIT;
-        }
-        break;
-    case LEGENDARY_STATE_KYOGRE_TRANSITION_WAIT:
-        if (IsBattleTransitionDone())
-        {
-            SetVBlankCallback(VBlankCB_NyxthraPrologue);
-            gTasks[taskId].tBurstStep = 0;
-            gTasks[taskId].tState = LEGENDARY_STATE_RAYQUAZA_CRY;
-        }
-        break;
-
-    case LEGENDARY_STATE_RAYQUAZA_CRY:
-        ShowLegendaryTrio(taskId);
-        ResetPaletteFade();
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-        PlayCry_Script(SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER);
-        gTasks[taskId].tBurstStep = 0;
-        gTasks[taskId].tState = LEGENDARY_STATE_RAYQUAZA_TRANSITION;
-        break;
-    case LEGENDARY_STATE_RAYQUAZA_TRANSITION:
-        if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 30)
-        {
-            BattleTransition_Start(B_TRANSITION_RAYQUAZA);
-            gTasks[taskId].tState = LEGENDARY_STATE_RAYQUAZA_TRANSITION_WAIT;
-        }
-        break;
-    case LEGENDARY_STATE_RAYQUAZA_TRANSITION_WAIT:
-        if (IsBattleTransitionDone())
-        {
-            // Rayquaza's own transition (VBlankCB_Rayquaza) is the one that
-            // actually needs this - without it the screen stayed black and
-            // frozen forever right here.
-            SetVBlankCallback(VBlankCB_NyxthraPrologue);
-            gTasks[taskId].tBurstStep = 0;
-            gTasks[taskId].tState = LEGENDARY_STATE_REGROUP;
-        }
-        break;
-
-    case LEGENDARY_STATE_REGROUP: // all three back on screen - now their energies start reacting to each other
-        if (gTasks[taskId].tBurstStep == 1) // first frame of this state - redraw and fade back in once
-        {
-            ShowLegendaryTrio(taskId);
-            // This is the fade-in right after Rayquaza's own transition,
-            // which is the one that actually needs the ResetPaletteFade()
-            // safety call (see KYOGRE_CRY above) - Rayquaza_WaitFade/
-            // Rayquaza_SetBlack in battle_transition.c drive gPaletteFade
-            // and BlendPalettes directly through several phases of their
-            // own, and without this the fade below was silently rejected
-            // and the scene never got past this point at all.
-            ResetPaletteFade();
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-        }
-        else if (!gPaletteFade.active && gTasks[taskId].tBurstStep > 20)
-        {
-            // Reset tBurstStep right as we hand off to ESCALATE_FLASHES, since
-            // that state's first pulse relies on catching tBurstStep == 1 on
-            // its very next frame - waiting on the fade here first (instead of
-            // guessing how many frames it takes) is what keeps that reliable.
-            gTasks[taskId].tBurstStep = 0;
-            gTasks[taskId].tFlashCount = 0;
-            gTasks[taskId].tState = LEGENDARY_STATE_ESCALATE_FLASHES;
+            if (gTasks[taskId].tFlashCount < (s16)ARRAY_COUNT(sTrioCrySpecies))
+            {
+                gTasks[taskId].tState = LEGENDARY_STATE_GROUDON_CRY;
+            }
+            else
+            {
+                gTasks[taskId].tFlashCount = 0;
+                gTasks[taskId].tState = LEGENDARY_STATE_ESCALATE_FLASHES;
+            }
         }
         break;
     case LEGENDARY_STATE_ESCALATE_FLASHES: // a handful of quick, tightening white pulses
@@ -604,13 +639,173 @@ static void Task_Prologue_OutroCards(u8 taskId)
     if (RunPrologueCard(taskId, &sOutroCards[gTasks[taskId].tCardIdx]))
     {
         gTasks[taskId].tCardIdx++;
-        if (gTasks[taskId].tCardIdx >= ARRAY_COUNT(sOutroCards))
+        if (gTasks[taskId].tCardIdx == 1)
+        {
+            // Nyxthra: nach "Doch niemand wusste…" erscheint Darkrai
+            gTasks[taskId].tState = 0;
+            gTasks[taskId].tTimer = 0;
+            gTasks[taskId].func = Task_Prologue_DarkraiTeaser;
+        }
+        else if (gTasks[taskId].tCardIdx >= ARRAY_COUNT(sOutroCards))
         {
             gTasks[taskId].tState = 0;
             gTasks[taskId].func = Task_Prologue_TitleLogo;
         }
     }
 }
+
+// Nyxthra: Darkrai-Teaser. Rote Augen blinzeln in der Dunkelheit, Darkrai
+// ruft, der Nebel glüht violett und der Bildschirm bebt, dann verschluckt
+// der Schwarzes-Loch-Übergang (derselbe wie beim Darkrai-Kampf) alles.
+enum
+{
+    TEASER_STATE_INIT,
+    TEASER_STATE_BLINK_IN,
+    TEASER_STATE_BLINK_HOLD,
+    TEASER_STATE_BLINK_OUT,
+    TEASER_STATE_EYES_OPEN,
+    TEASER_STATE_GLOW,
+    TEASER_STATE_GLOW_WAIT,
+    TEASER_STATE_BLACK_HOLE,
+    TEASER_STATE_BLACK_HOLE_WAIT,
+    TEASER_STATE_HOLD_BLACK,
+};
+
+#define tBlinks data[3]
+
+static void DrawDarkraiEyes(void)
+{
+    // Zwei schräge, nach innen abfallende Augen (Farbe 3 hell, 4 dunkel)
+    FillWindowPixelBuffer(0, PIXEL_FILL(0));
+    FillWindowPixelRect(0, PIXEL_FILL(4), 90, 66, 6, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 92, 68, 10, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 94, 70, 13, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 98, 72, 13, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 102, 74, 9, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(4), 106, 76, 5, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(4), 144, 66, 6, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 138, 68, 10, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 133, 70, 13, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 129, 72, 13, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(3), 129, 74, 9, 2);
+    FillWindowPixelRect(0, PIXEL_FILL(4), 129, 76, 5, 2);
+    CopyWindowToVram(0, COPYWIN_FULL);
+}
+
+static void Task_Prologue_DarkraiTeaser(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    tTimer++;
+    if (JOY_NEW(A_BUTTON | START_BUTTON) && tState > TEASER_STATE_INIT && tState < TEASER_STATE_BLACK_HOLE)
+    {
+        ResetPaletteFade();
+        sPrologueShakeTimer = 0;
+        tState = TEASER_STATE_BLACK_HOLE;
+    }
+
+    switch (tState)
+    {
+    case TEASER_STATE_INIT:
+        // Bildschirm ist schwarz (vorherige Karte ausgeblendet); Nebel erst mal aus
+        DeactivateAllTextPrinters();
+        HideBg(1);
+        DrawDarkraiEyes();
+        tBlinks = 0;
+        tTimer = 0;
+        tState = TEASER_STATE_BLINK_IN;
+        break;
+    case TEASER_STATE_BLINK_IN:
+        if (tTimer > 20 && !gPaletteFade.active)
+        {
+            PlaySE(SE_M_NIGHTMARE);
+            BeginNormalPaletteFade(PALETTES_ALL, -1, 16, 0, RGB_BLACK);
+            tTimer = 0;
+            tState = TEASER_STATE_BLINK_HOLD;
+        }
+        break;
+    case TEASER_STATE_BLINK_HOLD:
+        if (!gPaletteFade.active && tTimer > 14)
+        {
+            BeginNormalPaletteFade(PALETTES_ALL, -1, 0, 16, RGB_BLACK);
+            tTimer = 0;
+            tState = TEASER_STATE_BLINK_OUT;
+        }
+        break;
+    case TEASER_STATE_BLINK_OUT:
+        if (!gPaletteFade.active)
+        {
+            tBlinks++;
+            tTimer = 0;
+            tState = (tBlinks < 2) ? TEASER_STATE_BLINK_IN : TEASER_STATE_EYES_OPEN;
+        }
+        break;
+    case TEASER_STATE_EYES_OPEN:
+        if (tTimer > 24)
+        {
+            ShowBg(1);
+            PlayCry_Script(SPECIES_DARKRAI, CRY_MODE_ENCOUNTER);
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+            tTimer = 0;
+            tState = TEASER_STATE_GLOW;
+        }
+        break;
+    case TEASER_STATE_GLOW:
+        if (!gPaletteFade.active)
+        {
+            // Nebel glüht violett auf, der Boden bebt
+            PlaySE(SE_ORB);
+            BeginNormalPaletteFade(1 << PROLOGUE_FOG_PAL, 1, 0, 7, RGB(20, 2, 28));
+            sPrologueShakeTimer = 70;
+            tTimer = 0;
+            tState = TEASER_STATE_GLOW_WAIT;
+        }
+        break;
+    case TEASER_STATE_GLOW_WAIT:
+        if (!gPaletteFade.active && tTimer > 60)
+            tState = TEASER_STATE_BLACK_HOLE;
+        break;
+    case TEASER_STATE_BLACK_HOLE:
+        sPrologueShakeTimer = 0;
+        ChangeBgX(0, 0, BG_COORD_SET);
+        ChangeBgY(0, 0, BG_COORD_SET);
+        PlaySE(SE_M_NIGHTMARE);
+        // Die Übergänge erwarten (wie in der Oberwelt) ein aktives Fenster 0,
+        // sonst bleibt die Schwarzes-Loch-Maske unsichtbar.
+        SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, DISPLAY_WIDTH));
+        SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, DISPLAY_HEIGHT));
+        SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_ALL);
+        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_ALL);
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON);
+        BattleTransition_Start(B_TRANSITION_BLACKHOLE);
+        tState = TEASER_STATE_BLACK_HOLE_WAIT;
+        break;
+    case TEASER_STATE_BLACK_HOLE_WAIT:
+        if (IsBattleTransitionDone())
+        {
+            // Übergänge setzen eigene VBlank/HBlank-Callbacks und Fenster -
+            // alles zurück auf den Prolog (siehe LegendaryEnergyScene).
+            SetVBlankCallback(VBlankCB_NyxthraPrologue);
+            FreePrologueBgAndWindow();
+            InitPrologueBgAndWindow();
+            ResetPaletteFade();
+            BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+            tTimer = 0;
+            tState = TEASER_STATE_HOLD_BLACK;
+        }
+        break;
+    case TEASER_STATE_HOLD_BLACK:
+        if (tTimer > 30)
+        {
+            tState = CARD_STATE_FADE_IN;
+            tTimer = 0;
+            gTasks[taskId].func = Task_Prologue_OutroCards; // weiter mit "Jahre vergingen."
+        }
+        break;
+    }
+}
+
+#undef tBlinks
 
 static void ShowPrologueTitleLogo(void)
 {
@@ -658,7 +853,7 @@ static void Task_Prologue_TitleLogo(u8 taskId)
         if (!gPaletteFade.active)
         {
             gTasks[taskId].tTimer++;
-            if (JOY_NEW(A_BUTTON | B_BUTTON | START_BUTTON) || gTasks[taskId].tTimer > 240)
+            if (JOY_NEW(A_BUTTON | B_BUTTON | START_BUTTON) || gTasks[taskId].tTimer > 150)
                 gTasks[taskId].tState = CARD_STATE_FADE_OUT;
         }
         break;
@@ -712,6 +907,8 @@ void CB2_InitNyxthraPrologue(void)
     SetVBlankCallback(VBlankCB_NyxthraPrologue);
     SetMainCallback2(CB2_NyxthraPrologue);
 
+    // Nyxthra: düstere Musik von Anfang an (Emeralds "Unwetter"-Thema)
+    m4aSongNumStart(MUS_ABNORMAL_WEATHER);
     taskId = CreateTask(Task_Prologue_IntroCards, 0);
     gTasks[taskId].tState = CARD_STATE_FADE_IN;
     gTasks[taskId].tCardIdx = 0;

@@ -2120,6 +2120,9 @@ const u16 gTitleScreenNyxthraVersionPal[]  = INCGFX_U16("graphics/title_screen/n
 const u32 gTitleScreenCloudsTilemap[]      = INCGFX_U32("graphics/title_screen/clouds.bin", ".smolTM");
 const u32 gTitleScreenPokemonLogoGfx[]     = INCGFX_U32("graphics/title_screen/pokemon_logo.png", ".8bpp.smol");
 const u32 gTitleScreenNyxthraVersionGfx[]  = INCGFX_U32("graphics/title_screen/nyxthra_version.png", ".8bpp.smol", "-mwidth 8 -mheight 4");
+// Nyxthra: violetter Nebel hinter den Prolog-Texttafeln (128x128, kachelbar)
+const u32 gNyxthraPrologueFog_Gfx[] = INCGFX_U32("graphics/nyxthra/prologue_fog.png", ".4bpp");
+const u16 gNyxthraPrologueFog_Pal[] = INCGFX_U16("graphics/nyxthra/prologue_fog.png", ".gbapal");
 const u16 gTitleScreenPressStartPal[]      = INCGFX_U16("graphics/title_screen/press_start.png", ".gbapal");
 const u32 gTitleScreenPressStartGfx[]      = INCGFX_U32("graphics/title_screen/press_start.png", ".4bpp.smol", "-mwidth 4 -mheight 1 -num_tiles 48 -Wnum_tiles");
 const u32 gTitleScreenPokemonLogoTilemap[] = INCGFX_U32("graphics/title_screen/pokemon_logo.bin", ".smolTM");

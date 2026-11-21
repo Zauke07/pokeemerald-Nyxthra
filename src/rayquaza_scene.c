@@ -17,6 +17,7 @@
 #include "constants/rgb.h"
 #include "constants/event_objects.h"
 #include "random.h"
+#include "m4a.h"
 
 /*
     This file handles the cutscene showing Rayquaza arriving to settle the Groudon/Kyogre fight
@@ -70,9 +71,10 @@ struct RayquazaScene
     u16 unk; // never read
     u8 animId;
     bool8 endEarly;
+    bool8 skippable; // Nyxthra: A/Start bricht die Szene ab (nur im Prolog)
     s16 revealedLightLine;
     s16 revealedLightTimer;
-    u8 unused[12];
+    u8 unused[11];
 };
 
 static EWRAM_DATA struct RayquazaScene *sRayScene = NULL;
@@ -1255,8 +1257,39 @@ static void CB2_InitRayquazaScene(void)
     SetMainCallback2(CB2_RayquazaScene);
 }
 
+// Nyxthra: Prolog-Variante, die sich mit A/Start überspringen lässt.
+void DoRayquazaSceneSkippable(u8 animId, bool8 endEarly, MainCallback exitCallback)
+{
+    DoRayquazaScene(animId, endEarly, exitCallback);
+    sRayScene->skippable = TRUE;
+}
+
+static void RayquazaScene_SkipToEnd(void)
+{
+    MainCallback exitCallback = sRayScene->exitCallback;
+
+    ResetTasks();
+    ScanlineEffect_Stop();
+    SetHBlankCallback(NULL);
+    ResetSpriteData();
+    FreeAllSpritePalettes();
+    ResetPaletteFade();
+    BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
+    m4aMPlayStop(&gMPlayInfo_SE1);
+    m4aMPlayStop(&gMPlayInfo_SE2);
+    m4aMPlayStop(&gMPlayInfo_SE3);
+    Free(sRayScene);
+    sRayScene = NULL;
+    SetMainCallback2(exitCallback);
+}
+
 static void CB2_RayquazaScene(void)
 {
+    if (sRayScene != NULL && sRayScene->skippable && JOY_NEW(A_BUTTON | START_BUTTON))
+    {
+        RayquazaScene_SkipToEnd();
+        return;
+    }
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();

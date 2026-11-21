@@ -2706,9 +2706,13 @@ static void PrintBattlerOnAbilityPopUp(enum BattlerId battler, u8 spriteId1, u8 
     while (gStringVar1[totalChar] != EOS)
         totalChar++;
 
+    // Nyxthra: deutscher Genitiv ("Darkrais Alptraum", "Gluraks Solarkraft"),
+    // Apostroph nur nach s/x/z ("Lucarios' ..."), wie im Duden.
     lastChar = gStringVar1[totalChar - 1];
-    StringAppend(gStringVar1, COMPOUND_STRING("'"));
-    if (lastChar != CHAR_S && lastChar != CHAR_s)
+    if (lastChar == CHAR_S || lastChar == CHAR_s || lastChar == CHAR_X || lastChar == CHAR_x
+     || lastChar == CHAR_Z || lastChar == CHAR_z)
+        StringAppend(gStringVar1, COMPOUND_STRING("'"));
+    else
         StringAppend(gStringVar1, COMPOUND_STRING("s"));
 
     u32 x;
