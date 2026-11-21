@@ -431,7 +431,7 @@ static void OpponentHandleChooseAction(enum BattlerId battler)
     {
         // Besiegte Pokémon greifen nicht. Nach dem Zeitsprung nur noch
         // Brix' letzte Aquaknarre, Nasgnet soll nicht nochmal angreifen.
-        if (!IsBattlerAlive(battler) || !NyxthraFlashback_PreventFaint())
+        if (!IsBattlerAlive(battler) || !NyxthraFlashback_OpponentShouldMove())
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_FINISHED, 0);
         else
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);

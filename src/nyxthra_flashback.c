@@ -555,6 +555,13 @@ u16 NyxthraFlashback_GetOpponentMove(void)
     return sFlashbackOpponentMove;
 }
 
+bool8 NyxthraFlashback_OpponentShouldMove(void)
+{
+    // Nach dem Zeitsprung nur noch Brix' letzte Attacke, kein Gegnerzug.
+    return (NyxthraFlashback_IsScriptedBattle()
+         && sFlashbackBattlePhase == FLASHBACK_BATTLE_START);
+}
+
 static u16 Flashback_OpponentSpecies(void)
 {
     return gBattleMons[GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT)].species;

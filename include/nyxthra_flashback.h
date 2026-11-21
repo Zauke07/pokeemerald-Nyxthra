@@ -24,6 +24,7 @@ void NyxthraFlashback_OnBattleEnded(void);
 bool8 NyxthraFlashback_IsScriptedBattle(void);
 u16 NyxthraFlashback_GetPlayerMove(void);
 u16 NyxthraFlashback_GetOpponentMove(void);
+bool8 NyxthraFlashback_OpponentShouldMove(void);
 bool8 NyxthraFlashback_ShouldAbortBattle(void);
 bool8 NyxthraFlashback_TickAutoInput(u8 delay);
 void NyxthraFlashback_BeginAbortBattle(void);
