@@ -35,10 +35,11 @@
     screens are (its own BG + borderless text window, own task chain, no map
     or script engine involved) since no save file exists yet at this point.
 
-    Intro 2.0 (milestone 1) plays two new globe scenes first, then the
-    existing v1 cards and cutscenes:
+    Intro 2.0 plays new globe scenes first, then the existing v1 cards
+    and cutscenes:
       space + Erde steigt auf ("Hoenn." / "Ein Land im Gleichgewicht.")
       -> Zoom auf Hoenn ("Doch zwei Gewalten ruhten darin: Land und Meer.")
+      -> Regen/Dürre wechseln sich auf dem Planeten immer schneller ab
       -> v1: "Vor vielen Jahren..." -> Groudon/Kyogre/Rayquaza
       (reusing the original Emerald cutscene as-is) -> mysterious energy
       burst -> "Jahre vergingen." / "Hoenn begann sich zu verändern." ->
@@ -139,7 +140,11 @@ static const struct CompressedSpriteSheet sPrologueVersionBannerSpriteSheet[] =
 
 // Palette: 0 backdrop/transparent, 1 white text, 2 dark gray shadow,
 // 3/4 Darkrais rote Augen im Teaser.
-static const u16 sPrologueTextPal[] = { RGB_BLACK, RGB(28, 28, 28), RGB(12, 12, 12), RGB(31, 4, 4), RGB(16, 0, 2) };
+static const u16 sPrologueTextPal[] = {
+    RGB_BLACK, RGB(28, 28, 28), RGB(12, 12, 12), RGB(31, 4, 4), RGB(16, 0, 2),
+    RGB(16, 26, 31), RGB(2, 6, 12), // 5/6 Regen
+    RGB(31, 22, 6), RGB(12, 5, 0),  // 7/8 Dürre
+};
 
 // Nyxthra: violetter Nebel auf BG1 hinter den Texttafeln.
 #define PROLOGUE_FOG_PAL 1
@@ -909,9 +914,9 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 
 
 // ---------------------------------------------------------------------------
-// Intro 2.0, Szenen 1–2: Erde aus dem All, dann Zoom auf Hoenn.
-// Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sternenhimmel (4bpp, Palette 2),
-// BG2 Planet (affin, 8bpp, nur Paletten 0–1 / 32 Farben). Atmosphären-
+// Intro 2.0, Szenen 1–3: Erde aus dem All, Zoom auf Hoenn, dann Regen/Dürre.
+// Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sterne oder Regen (4bpp),
+// BG2 Planet (affin, 8bpp, Paletten 0–1 / 32 Farben). Atmosphären-
 // Farben liegen fest auf den Indizes 28–31, damit sie pulsieren können.
 // A/Start blendet die neuen Szenen aus und setzt den v1-Prolog fort.
 // ---------------------------------------------------------------------------
@@ -932,11 +937,42 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 #define GLOBE_SCENE1_FRAMES      360 // 6 s
 #define GLOBE_ZOOM_FRAMES        280
 #define GLOBE_SCENE2_FRAMES      300 // 5 s
+#define GLOBE_SCALE_SCENE3       170 // ~1.5×, etwas Luft für Silhouetten
+#define GLOBE_RAIN_TILE          256
+#define PROLOGUE_RAIN_PAL        3
+#define GLOBE_SIL_SIZE           (64 * 64 / 2)
+#define TAG_KYOGRE_SIL           0x4E01
+#define TAG_GROUDON_SIL          0x4E02
+
+#define WEATHER_RAIN             0
+#define WEATHER_DROUGHT          1
 
 static const u8 sText_Globe_Hoenn[] = _("Hoenn.");
 static const u8 sText_Globe_Balance[] = _("Ein Land im Gleichgewicht.");
 static const u8 sText_Globe_Forces1[] = _("Doch zwei Gewalten ruhten darin:");
 static const u8 sText_Globe_Forces2[] = _("Land und Meer.");
+static const u8 sText_Globe_Rain[] = _("Regen.");
+static const u8 sText_Globe_Drought[] = _("Dürre.");
+
+// Intervalle in Frames: 2,0 → 1,5 → 1,0 → 0,6 s, danach 0,4 s bis ~10 s.
+static const u16 sWeatherDurations[] = {
+    120, 90, 60, 36,
+    24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
+};
+
+static const u16 sGlobeRainAtmos[GLOBE_ATMOS_COUNT] = {
+    RGB(19, 26, 31),
+    RGB(8, 15, 27),
+    RGB(3, 6, 17),
+    RGB(1, 2, 8),
+};
+
+static const u16 sGlobeDroughtAtmos[GLOBE_ATMOS_COUNT] = {
+    RGB(31, 26, 10),
+    RGB(29, 17, 4),
+    RGB(22, 8, 2),
+    RGB(12, 3, 1),
+};
 
 // Fest aus prologue_globe.pal, Indizes 28–31 (bereits auf 5 Bit gerundet).
 static const u16 sGlobeAtmosPal[GLOBE_ATMOS_COUNT] = {
@@ -1009,6 +1045,81 @@ struct GlobeAffine
 };
 
 static EWRAM_DATA struct GlobeAffine sGlobeAffine = {0};
+static EWRAM_DATA bool8 sGlobeRainScroll = FALSE;
+static EWRAM_DATA u8 sGlobeMosaic = 0;
+static EWRAM_DATA u8 sGlobeShakeTimer = 0;
+static EWRAM_DATA u8 sGlobeFlashTimer = 0;
+static EWRAM_DATA u8 sGlobeKyogreSprite = 0;
+static EWRAM_DATA u8 sGlobeGroudonSprite = 0;
+static EWRAM_DATA u8 sGlobeWeather = 0;
+static EWRAM_DATA u8 sGlobeLabelTimer = 0;
+
+static const struct SpriteSheet sKyogreSilhouetteSheet =
+{
+    .data = gNyxthraPrologueKyogreSil_Gfx,
+    .size = GLOBE_SIL_SIZE,
+    .tag = TAG_KYOGRE_SIL,
+};
+
+static const struct SpriteSheet sGroudonSilhouetteSheet =
+{
+    .data = gNyxthraPrologueGroudonSil_Gfx,
+    .size = GLOBE_SIL_SIZE,
+    .tag = TAG_GROUDON_SIL,
+};
+
+static const struct SpritePalette sKyogreSilhouettePal =
+{
+    .data = gNyxthraPrologueKyogreSil_Pal,
+    .tag = TAG_KYOGRE_SIL,
+};
+
+static const struct SpritePalette sGroudonSilhouettePal =
+{
+    .data = gNyxthraPrologueGroudonSil_Pal,
+    .tag = TAG_GROUDON_SIL,
+};
+
+static const struct OamData sOam_Silhouette64 =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .size = SPRITE_SIZE(64x64),
+    .priority = 0,
+};
+
+static void SpriteCB_Silhouette(struct Sprite *sprite)
+{
+    sprite->data[0]++;
+    sprite->y2 = Sin((sprite->data[0] * 2) & 0xFF, 2);
+}
+
+static const struct SpriteTemplate sKyogreSilhouetteTemplate =
+{
+    .tileTag = TAG_KYOGRE_SIL,
+    .paletteTag = TAG_KYOGRE_SIL,
+    .oam = &sOam_Silhouette64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Silhouette,
+};
+
+static const struct SpriteTemplate sGroudonSilhouetteTemplate =
+{
+    .tileTag = TAG_GROUDON_SIL,
+    .paletteTag = TAG_GROUDON_SIL,
+    .oam = &sOam_Silhouette64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Silhouette,
+};
 
 static void ApplyGlobeAffine(void)
 {
@@ -1033,21 +1144,20 @@ static void SetGlobeAffine(s16 scrY, s16 scale, u16 angle)
     ApplyGlobeAffine();
 }
 
-static void PulseGlobeAtmosphere(u16 timer)
+static void PulseAtmosphereColors(u16 timer, const u16 *base, u8 tr, u8 tg, u8 tb)
 {
     u32 i;
-    s16 k = (Sin(timer & 0xFF, 10) + 10); // 0..20, langsamer Atem
+    s16 k = (Sin(timer & 0xFF, 10) + 10); // 0..20
 
     for (i = 0; i < GLOBE_ATMOS_COUNT; i++)
     {
-        u16 c = sGlobeAtmosPal[i];
+        u16 c = base[i];
         u8 r = GET_R(c);
         u8 g = GET_G(c);
         u8 b = GET_B(c);
-        // Leicht Richtung helleres Cyan, nie über 31.
-        r = r + ((20 - r) * k / 40);
-        g = g + ((26 - g) * k / 40);
-        b = b + ((31 - b) * k / 40);
+        r = r + ((tr - r) * k / 40);
+        g = g + ((tg - g) * k / 40);
+        b = b + ((tb - b) * k / 40);
         if (r > 31)
             r = 31;
         if (g > 31)
@@ -1059,19 +1169,33 @@ static void PulseGlobeAtmosphere(u16 timer)
     }
 }
 
+static void PulseGlobeAtmosphere(u16 timer)
+{
+    PulseAtmosphereColors(timer, sGlobeAtmosPal, 20, 26, 31);
+}
+
 static void VBlankCB_NyxthraPrologueGlobe(void)
 {
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
     ApplyGlobeAffine();
+    SetGpuReg(REG_OFFSET_MOSAIC, (sGlobeMosaic << 4) | sGlobeMosaic);
 }
 
 static void CB2_NyxthraPrologueGlobe(void)
 {
     RunTextPrinters();
-    // Sternenhimmel driftet sehr langsam
-    ChangeBgX(1, 16, BG_COORD_ADD);
+    if (sGlobeRainScroll)
+    {
+        // Diagonaler Regen, etwa 2 px/Frame horizontal und vertikal.
+        ChangeBgX(1, 512, BG_COORD_ADD);
+        ChangeBgY(1, 448, BG_COORD_ADD);
+    }
+    else
+    {
+        ChangeBgX(1, 16, BG_COORD_ADD);
+    }
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
@@ -1101,10 +1225,19 @@ static void InitPrologueGlobeScene(void)
     SetGpuReg(REG_OFFSET_WIN1H, 0);
     SetGpuReg(REG_OFFSET_WIN1V, 0);
     sPrologueShakeTimer = 0;
+    sGlobeRainScroll = FALSE;
+    sGlobeMosaic = 0;
+    sGlobeShakeTimer = 0;
+    sGlobeFlashTimer = 0;
+    sGlobeKyogreSprite = SPRITE_NONE;
+    sGlobeGroudonSprite = SPRITE_NONE;
+    sGlobeWeather = 0;
+    sGlobeLabelTimer = 0;
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(1, sGlobeBgTemplates, ARRAY_COUNT(sGlobeBgTemplates));
     SetBgAttribute(2, BG_ATTR_WRAPAROUND, 0);
+    SetBgAttribute(2, BG_ATTR_MOSAIC, 1);
 
     SetBgTilemapBuffer(0, AllocZeroed(BG_SCREEN_SIZE));
 
@@ -1115,6 +1248,8 @@ static void InitPrologueGlobeScene(void)
     SetBgTilemapBuffer(1, starsMap);
     LoadBgTiles(1, gNyxthraPrologueStars_Gfx, 16 * 16 * TILE_SIZE_4BPP, 0);
     LoadPalette(gNyxthraPrologueStars_Pal, BG_PLTT_ID(PROLOGUE_STARS_PAL), PLTT_SIZE_4BPP);
+    LoadBgTiles(1, gNyxthraPrologueRain_Gfx, 64 * TILE_SIZE_4BPP, GLOBE_RAIN_TILE);
+    LoadPalette(gNyxthraPrologueRain_Pal, BG_PLTT_ID(PROLOGUE_RAIN_PAL), PLTT_SIZE_4BPP);
     CopyBgTilemapBufferToVram(1);
 
     globeMap = AllocZeroed(0x100);
@@ -1141,6 +1276,7 @@ static void InitPrologueGlobeScene(void)
     ShowBg(0);
     ShowBg(1);
     ShowBg(2);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
 }
 
 static void ClearGlobeText(void)
@@ -1148,10 +1284,229 @@ static void ClearGlobeText(void)
     DeactivateAllTextPrinters();
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
     CopyWindowToVram(0, COPYWIN_FULL);
+    sGlobeLabelTimer = 0;
+}
+
+static void PrintGlobeLabel(const u8 *string, u8 fg, u8 shadow)
+{
+    u8 x;
+    u8 color[3];
+
+    color[0] = TEXT_COLOR_TRANSPARENT;
+    color[1] = fg;
+    color[2] = shadow;
+    DeactivateAllTextPrinters();
+    FillWindowPixelBuffer(0, PIXEL_FILL(0));
+    x = GetStringCenterAlignXOffsetWithLetterSpacing(FONT_SMALL, string, DISPLAY_WIDTH, 1);
+    AddTextPrinterParameterized4(0, FONT_SMALL, x, GLOBE_TEXT_Y1, 1, 0, color, 0, string);
+}
+
+static void FillBg1Stars(void)
+{
+    u16 *map = GetBgTilemapBuffer(1);
+    u32 x, y;
+
+    for (y = 0; y < 32; y++)
+        for (x = 0; x < 32; x++)
+            map[y * 32 + x] = ((y % 16) * 16 + (x % 16)) | (PROLOGUE_STARS_PAL << 12);
+    CopyBgTilemapBufferToVram(1);
+}
+
+static void FillBg1Rain(void)
+{
+    u16 *map = GetBgTilemapBuffer(1);
+    u32 x, y;
+
+    for (y = 0; y < 32; y++)
+        for (x = 0; x < 32; x++)
+            map[y * 32 + x] = (GLOBE_RAIN_TILE + ((y % 8) * 8 + (x % 8))) | (PROLOGUE_RAIN_PAL << 12);
+    CopyBgTilemapBufferToVram(1);
+}
+
+static void SetRainOverlay(bool8 enabled)
+{
+    if (enabled)
+    {
+        FillBg1Rain();
+        SetBgAttribute(1, BG_ATTR_PRIORITY, 0);
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BD);
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(8, 10));
+        sGlobeRainScroll = TRUE;
+    }
+    else
+    {
+        sGlobeRainScroll = FALSE;
+        SetBgAttribute(1, BG_ATTR_PRIORITY, 2);
+        SetGpuReg(REG_OFFSET_BLDCNT, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        FillBg1Stars();
+        ChangeBgY(1, 0, BG_COORD_SET);
+    }
+}
+
+static void LoadGlobeWeatherPalette(u8 weather)
+{
+    if (weather == WEATHER_RAIN)
+        LoadPalette(gNyxthraPrologueGlobeRain_Pal, BG_PLTT_ID(0), 32 * sizeof(u16));
+    else
+        LoadPalette(gNyxthraPrologueGlobeDrought_Pal, BG_PLTT_ID(0), 32 * sizeof(u16));
+    LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16));
+}
+
+static void DestroyGlobeSilhouettes(void)
+{
+    if (sGlobeKyogreSprite != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sGlobeKyogreSprite]);
+        sGlobeKyogreSprite = SPRITE_NONE;
+    }
+    if (sGlobeGroudonSprite != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sGlobeGroudonSprite]);
+        sGlobeGroudonSprite = SPRITE_NONE;
+    }
+}
+
+static void CreateGlobeSilhouettes(void)
+{
+    DestroyGlobeSilhouettes();
+    LoadSpriteSheet(&sKyogreSilhouetteSheet);
+    LoadSpriteSheet(&sGroudonSilhouetteSheet);
+    LoadSpritePalette(&sKyogreSilhouettePal);
+    LoadSpritePalette(&sGroudonSilhouettePal);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    sGlobeKyogreSprite = CreateSprite(&sKyogreSilhouetteTemplate, 44, 78, 0);
+    sGlobeGroudonSprite = CreateSprite(&sGroudonSilhouetteTemplate, 196, 82, 0);
+    if (sGlobeKyogreSprite != MAX_SPRITES)
+        gSprites[sGlobeKyogreSprite].invisible = TRUE;
+    else
+        sGlobeKyogreSprite = SPRITE_NONE;
+    if (sGlobeGroudonSprite != MAX_SPRITES)
+        gSprites[sGlobeGroudonSprite].invisible = TRUE;
+    else
+        sGlobeGroudonSprite = SPRITE_NONE;
+}
+
+static void ShowWeatherSilhouette(u8 weather)
+{
+    if (sGlobeKyogreSprite != SPRITE_NONE)
+        gSprites[sGlobeKyogreSprite].invisible = (weather != WEATHER_RAIN);
+    if (sGlobeGroudonSprite != SPRITE_NONE)
+        gSprites[sGlobeGroudonSprite].invisible = (weather != WEATHER_DROUGHT);
+}
+
+static void StopScene3Effects(void)
+{
+    sGlobeRainScroll = FALSE;
+    sGlobeMosaic = 0;
+    sGlobeShakeTimer = 0;
+    sGlobeFlashTimer = 0;
+    sGlobeLabelTimer = 0;
+    SetGpuReg(REG_OFFSET_MOSAIC, 0);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetBgAttribute(1, BG_ATTR_PRIORITY, 2);
+    SetBgAttribute(2, BG_ATTR_MOSAIC, 0);
+    DestroyGlobeSilhouettes();
+    FreeSpriteTilesByTag(TAG_KYOGRE_SIL);
+    FreeSpriteTilesByTag(TAG_GROUDON_SIL);
+    FreeSpritePaletteByTag(TAG_KYOGRE_SIL);
+    FreeSpritePaletteByTag(TAG_GROUDON_SIL);
+    PlaySE(SE_THUNDERSTORM_STOP);
+}
+
+static void StartWeatherPhase(u8 weather, u16 duration)
+{
+    sGlobeWeather = weather;
+    LoadGlobeWeatherPalette(weather);
+    SetRainOverlay(weather == WEATHER_RAIN);
+    ShowWeatherSilhouette(weather);
+    sGlobeMosaic = 7;
+    sGlobeShakeTimer = 10;
+    sGlobeFlashTimer = 3;
+    sGlobeLabelTimer = (duration < 40) ? duration : 40;
+
+    if (weather == WEATHER_RAIN)
+    {
+        PrintGlobeLabel(sText_Globe_Rain, 5, 6);
+        PlaySE(SE_M_RAIN_DANCE);
+        if (duration >= 60)
+            PlaySE(SE_THUNDERSTORM);
+        if (duration >= 36)
+        {
+            PlaySE(SE_THUNDER);
+            PlayCry_Script(SPECIES_KYOGRE, CRY_MODE_ENCOUNTER);
+        }
+    }
+    else
+    {
+        PlaySE(SE_THUNDERSTORM_STOP);
+        PrintGlobeLabel(sText_Globe_Drought, 7, 8);
+        PlaySE(SE_M_HEAT_WAVE);
+        if (duration >= 36)
+            PlayCry_Script(SPECIES_GROUDON, CRY_MODE_ENCOUNTER);
+    }
+}
+
+static void UpdateScene3Effects(u16 pulse, s16 scale, u16 angle)
+{
+    s16 shakeX = 0;
+    s16 shakeY = 0;
+    s32 texX = GLOBE_TEX_CENTER;
+
+    if (sGlobeShakeTimer != 0)
+    {
+        shakeX = (sGlobeShakeTimer & 1) ? 1 : -1;
+        shakeY = (sGlobeShakeTimer & 2) ? 1 : 0;
+        sGlobeShakeTimer--;
+    }
+
+    if (sGlobeMosaic != 0)
+        sGlobeMosaic--;
+
+    if (sGlobeWeather == WEATHER_DROUGHT)
+    {
+        // Hitzeflimmern: Textur und Maßstab zittern leicht.
+        texX += Sin((pulse * 8) & 0xFF, 3) * 256;
+        scale += Sin((pulse * 11) & 0xFF, 2);
+        PulseAtmosphereColors(pulse, sGlobeDroughtAtmos, 31, 30, 16);
+    }
+    else
+    {
+        PulseAtmosphereColors(pulse, sGlobeRainAtmos, 24, 29, 31);
+    }
+
+    sGlobeAffine.texX = texX;
+    sGlobeAffine.texY = GLOBE_TEX_CENTER;
+    sGlobeAffine.scrX = GLOBE_SCR_X + shakeX;
+    sGlobeAffine.scrY = GLOBE_SCR_Y_END + shakeY;
+    sGlobeAffine.scale = scale;
+    sGlobeAffine.angle = angle;
+    ApplyGlobeAffine();
+
+    if (sGlobeFlashTimer != 0)
+    {
+        u8 coeff = (sGlobeFlashTimer == 3) ? 16 : (sGlobeFlashTimer == 2) ? 10 : 4;
+        BlendPalettes(PALETTES_ALL, coeff, RGB_WHITE);
+        sGlobeFlashTimer--;
+        if (sGlobeFlashTimer == 0)
+            BlendPalettes(PALETTES_ALL, 0, RGB_WHITE);
+    }
+
+    if (sGlobeLabelTimer != 0)
+    {
+        sGlobeLabelTimer--;
+        if (sGlobeLabelTimer == 0)
+            ClearGlobeText();
+    }
 }
 
 static void StartPrologueIntroCards(u8 taskId)
 {
+    StopScene3Effects();
+    ResetSpriteData();
+    FreeAllSpritePalettes();
     FreePrologueBgAndWindow();
     InitPrologueBgAndWindow();
     SetVBlankCallback(VBlankCB_NyxthraPrologue);
@@ -1173,6 +1528,8 @@ enum
     GLOBE_STATE_HOLD1,
     GLOBE_STATE_SCENE2_START,
     GLOBE_STATE_ZOOM,
+    GLOBE_STATE_SCENE3_START,
+    GLOBE_STATE_SCENE3,
     GLOBE_STATE_FADE_OUT,
     GLOBE_STATE_DONE,
 };
@@ -1180,6 +1537,8 @@ enum
 #define tGlobePulse data[6]
 #define tTypedScene2 data[7]
 #define tBgmFaded data[8]
+#define tWeatherStep data[9]
+#define tScene3Timer data[10]
 
 static void Task_Prologue_GlobeScenes(u8 taskId)
 {
@@ -1192,11 +1551,12 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
     s16 scale;
     u16 angle;
 
-    // Skip: Szenen 1–2 abbrechen und zum bestehenden v1-Prolog springen.
+    // Skip: Szenen 1–3 abbrechen und zum bestehenden v1-Prolog springen.
     if (skip && tState > GLOBE_STATE_INIT && tState < GLOBE_STATE_FADE_OUT)
     {
         if (!gPaletteFade.active)
         {
+            StopScene3Effects();
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             FadeOutBGM(4);
             tState = GLOBE_STATE_FADE_OUT;
@@ -1322,10 +1682,70 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
 
         if (tTimer >= GLOBE_SCENE2_FRAMES)
         {
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-            tState = GLOBE_STATE_FADE_OUT;
+            tState = GLOBE_STATE_SCENE3_START;
+            tTimer = 0;
         }
         break;
+
+    case GLOBE_STATE_SCENE3_START:
+        ClearGlobeText();
+        CreateGlobeSilhouettes();
+        m4aSongNumStart(MUS_ABNORMAL_WEATHER);
+        tWeatherStep = 0;
+        tScene3Timer = 0;
+        tGlobePulse = 0;
+        tTimer = sWeatherDurations[0];
+        StartWeatherPhase(WEATHER_RAIN, sWeatherDurations[0]);
+        tState = GLOBE_STATE_SCENE3;
+        break;
+
+    case GLOBE_STATE_SCENE3:
+    {
+        u16 duration = sWeatherDurations[tWeatherStep];
+        s16 scale = GLOBE_SCALE_1_8;
+        u16 angle;
+
+        tScene3Timer++;
+        tGlobePulse++;
+
+        // Vom Zoom 1,8x etwas zurück, damit Silhouetten Platz haben.
+        if (tScene3Timer < 48)
+            scale = GLOBE_SCALE_1_8 + (GLOBE_SCALE_SCENE3 - GLOBE_SCALE_1_8) * tScene3Timer / 48;
+        else
+            scale = GLOBE_SCALE_SCENE3;
+
+        angle = GLOBE_ANGLE_END + tScene3Timer * 4;
+        UpdateScene3Effects(tGlobePulse, scale, angle);
+
+        // In längeren Regenphasen ein zweiter Blitz in der Mitte.
+        if (sGlobeWeather == WEATHER_RAIN
+            && duration >= 60
+            && tTimer == duration / 2
+            && sGlobeFlashTimer == 0)
+        {
+            sGlobeFlashTimer = 3;
+            PlaySE(SE_THUNDER);
+        }
+
+        tTimer--;
+        if (tTimer <= 0)
+        {
+            tWeatherStep++;
+            if (tWeatherStep >= (s16)ARRAY_COUNT(sWeatherDurations))
+            {
+                StopScene3Effects();
+                BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+                tState = GLOBE_STATE_FADE_OUT;
+            }
+            else
+            {
+                u8 nextWeather = (tWeatherStep & 1) ? WEATHER_DROUGHT : WEATHER_RAIN;
+                tTimer = sWeatherDurations[tWeatherStep];
+                StartWeatherPhase(nextWeather, sWeatherDurations[tWeatherStep]);
+            }
+        }
+        break;
+    }
 
     case GLOBE_STATE_FADE_OUT:
         if (!gPaletteFade.active)
@@ -1341,6 +1761,8 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
 #undef tGlobePulse
 #undef tTypedScene2
 #undef tBgmFaded
+#undef tWeatherStep
+#undef tScene3Timer
 
 void CB2_InitNyxthraPrologue(void)
 {
