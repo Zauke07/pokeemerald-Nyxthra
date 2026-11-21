@@ -3,10 +3,14 @@
 #include "main_menu.h"
 #include "new_game.h"
 #include "overworld.h"
+#include "rtc.h"
+#include "constants/rtc.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "field_control_avatar.h"
 #include "field_screen_effect.h"
+#include "fieldmap.h"
+#include "field_weather.h"
 #include "palette.h"
 #include "script.h"
 #include "sound.h"
@@ -60,9 +64,11 @@ enum {
 };
 
 #define FLASHBACK_AUTO_A_FRAMES 50
-#define FLASHBACK_TINT_R Q_8_8(1.15)
-#define FLASHBACK_TINT_G Q_8_8(1.00)
-#define FLASHBACK_TINT_B Q_8_8(1.22)
+// Sanfte Traumtönung: nur leicht entsättigt und kühl, nicht volles Grau.
+#define FLASHBACK_DESAT 90          // /256 ≈ 35 % Richtung Grau
+#define FLASHBACK_TONE_R 268        // /256 ≈ 1.05
+#define FLASHBACK_TONE_G 250        // /256 ≈ 0.98
+#define FLASHBACK_TONE_B 276        // /256 ≈ 1.08
 
 static EWRAM_DATA bool8 sFlashbackActive = FALSE;
 static EWRAM_DATA bool8 sFlashbackFinishing = FALSE;
@@ -91,10 +97,36 @@ bool8 NyxthraFlashback_IsActive(void)
 
 void NyxthraFlashback_ApplyDreamTint(void)
 {
+    u32 i;
+    u16 *pal;
+
     if (!sFlashbackActive)
         return;
 
-    TintPalette_CustomTone(gPlttBufferFaded, PLTT_BUFFER_SIZE, FLASHBACK_TINT_R, FLASHBACK_TINT_G, FLASHBACK_TINT_B);
+    // Immer aus Unfaded tönen, sonst würde die Tönung ohne PaletteFade
+    // jeden Frame erneut auf Faded liegen und alles schwarz färben.
+    pal = gPaletteFade.active ? gPlttBufferFaded : gPlttBufferUnfaded;
+    for (i = 0; i < PLTT_BUFFER_SIZE; i++, pal++)
+    {
+        s32 r = GET_R(*pal);
+        s32 g = GET_G(*pal);
+        s32 b = GET_B(*pal);
+        s32 gray = (r * 77 + g * 151 + b * 28) >> 8;
+        s32 keep = 256 - FLASHBACK_DESAT;
+
+        r = (r * keep + gray * FLASHBACK_DESAT) >> 8;
+        g = (g * keep + gray * FLASHBACK_DESAT) >> 8;
+        b = (b * keep + gray * FLASHBACK_DESAT) >> 8;
+
+        r = (r * FLASHBACK_TONE_R) >> 8;
+        g = (g * FLASHBACK_TONE_G) >> 8;
+        b = (b * FLASHBACK_TONE_B) >> 8;
+
+        if (r > 31) r = 31;
+        if (g > 31) g = 31;
+        if (b > 31) b = 31;
+        gPlttBufferFaded[i] = RGB(r, g, b);
+    }
 }
 
 static void Flashback_EnsureDirector(void)
@@ -119,6 +151,8 @@ void NyxthraFlashback_OnOverworldTick(void)
 
     Flashback_EnsureDirector();
     NyxthraFlashback_ApplyDreamTint();
+    // Vignette via WIN0+DARKEN made the map black after the first message;
+    // left disabled. Soft tint is the dream frame for now.
 }
 
 static void Flashback_SnapshotIdentity(void)
@@ -149,7 +183,9 @@ static void Flashback_RestoreIdentity(void)
 
 static void Flashback_WarpToRoute101(void)
 {
-    SetWarpDestination(MAP_GROUP(MAP_ROUTE101), MAP_NUM(MAP_ROUTE101), WARP_ID_NONE, 10, 19);
+    // Eigene Karte mit den originalen Smaragd-Kacheln von 2005,
+    // unabhängig von den später geänderten Nyxthra-Tilesets.
+    SetWarpDestination(MAP_GROUP(MAP_FLASHBACK_ROUTE101), MAP_NUM(MAP_FLASHBACK_ROUTE101), WARP_ID_NONE, 10, 19);
     WarpIntoMap();
 }
 
@@ -166,12 +202,25 @@ void CB2_StartNyxthraFlashback(void)
     Flashback_ApplyBrixIdentity();
     Flashback_WarpToRoute101();
     FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
-    VarSet(VAR_ROUTE101_STATE, 1);
+    FlagSet(FLAG_HIDE_ROUTE_101_BIRCH);
+    FlagSet(FLAG_HIDE_ROUTE_101_BOY);
+    FlagClear(FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE);
+    FlagClear(FLAG_HIDE_ROUTE_101_ZIGZAGOON);
+    FlagClear(FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG);
+    VarSet(VAR_ROUTE101_STATE, 0);
     Overworld_StartFromNewGameWarp(FieldCB_FlashbackEnter);
 }
 
 static void FieldCB_FlashbackEnter(void)
 {
+    // Originales Smaragd hatte keine Tageszeiten-Tönung. Nach dem Warp
+    // (der die Stunden-Override löscht) Mittag setzen und Paletten neu
+    // laden, damit der Fade-in nicht mit der Nachtmischung startet.
+    SetTimeOfDay(12);
+    gTimeOfDay = TIME_DAY;
+    UpdateTimeOfDay(TRUE);
+    LoadMapTilesetPalettes(gMapHeader.mapLayout);
+    CpuCopy16(gPlttBufferUnfaded, gPlttBufferFaded, PLTT_SIZE);
     FadeInFromBlack();
     LockPlayerFieldControls();
     Flashback_EnsureDirector();

@@ -9679,6 +9679,17 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/Test/border.bin",
       "blockdata_filepath": "data/layouts/Test/map.bin"
+    },
+    {
+      "id": "LAYOUT_FLASHBACK_ROUTE101",
+      "name": "Flashback_Route101_Layout",
+      "width": 20,
+      "height": 20,
+      "primary_tileset": "gTileset_FlashbackGeneral",
+      "secondary_tileset": "gTileset_FlashbackPetalburg",
+      "border_filepath": "data/layouts/Flashback_Route101/border.bin",
+      "blockdata_filepath": "data/layouts/Flashback_Route101/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

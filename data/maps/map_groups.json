@@ -654,7 +654,8 @@
     "NavelRock_Bottom",
     "TrainerHill_Elevator",
     "ScorchedSlabUnderwater",
-    "ScorchedSlabUnderwater_2"
+    "ScorchedSlabUnderwater_2",
+    "Flashback_Route101"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",

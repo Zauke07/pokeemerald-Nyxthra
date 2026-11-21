@@ -830,11 +830,14 @@ void CB2_ChooseStarter(void)
     ResetAllPicSprites();
 
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(14), PLTT_SIZE_4BPP);
-    Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(14));
-    Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(14));
+    if (!NyxthraFlashback_IsActive())
+    {
+        Nyxthra_ApplyDarkModeToBorderPalette(BG_PLTT_ID(14));
+        Nyxthra_ApplyDarkModeToTextColorPalette(BG_PLTT_ID(14));
+    }
     LoadPalette(gBirchBagGrass_Pal, BG_PLTT_ID(0), sizeof(gBirchBagGrass_Pal));
     LoadCompressedSpriteSheet(&sSpriteSheet_PokeballSelect[0]);
-    if (gSaveBlock2Ptr->optionsUITheme)
+    if (gSaveBlock2Ptr->optionsUITheme && !NyxthraFlashback_IsActive())
     {
         LoadCompressedSpriteSheet(&sSpriteSheet_StarterCircleDark[0]);
         LoadSpritePalettes(sSpritePalettes_StarterChooseDark);
@@ -863,7 +866,9 @@ void CB2_ChooseStarter(void)
     ShowBg(2);
     ShowBg(3);
 
-    DrawRegionHeader(sCurrentRegionIndex);
+    if (!NyxthraFlashback_IsActive())
+        DrawRegionHeader(sCurrentRegionIndex);
+
 
     taskId = CreateTask(Task_StarterChoose, 0);
     gTasks[taskId].tLRDelay = 0;
@@ -960,7 +965,8 @@ static void UpdateStarterRegion(u8 taskId)
     ClearStarterLabel();
     CreateStarterPokemonLabel(gTasks[taskId].tStarterSelection);
 
-    DrawRegionHeader(sCurrentRegionIndex);
+    if (!NyxthraFlashback_IsActive())
+        DrawRegionHeader(sCurrentRegionIndex);
 }
 
 static void Task_HandleStarterChooseInput(u8 taskId)
@@ -1017,7 +1023,7 @@ static void Task_HandleStarterChooseInput(u8 taskId)
 
         UpdateStarterRegion(taskId);
     }
-    else if (JOY_NEW(R_BUTTON) && gTasks[taskId].tLRDelay == 0)
+    else if (!NyxthraFlashback_IsActive() && JOY_NEW(R_BUTTON) && gTasks[taskId].tLRDelay == 0)
     {
         gTasks[taskId].tLRDelay = 60;
         PlaySE(SE_SELECT);
@@ -1039,7 +1045,8 @@ static void Task_HandleStarterChooseInput(u8 taskId)
         // WICHTIG: Jetzt speichern wir die Region in der Variable für das Spiel
         // Damit weiß das Spiel später, aus welcher Region der Starter kam
         VarSet(VAR_STARTER_REGION, sStarterRegionIds[sCurrentRegionIndex]);
-        DrawRegionHeader(sCurrentRegionIndex);
+        if (!NyxthraFlashback_IsActive())
+            DrawRegionHeader(sCurrentRegionIndex);
 
         spriteId = CreateSprite(&sSpriteTemplate_StarterCircle, sPokeballCoords[selection][0], sPokeballCoords[selection][1], 1);
         gTasks[taskId].tCircleSpriteId = spriteId;
@@ -1081,7 +1088,8 @@ static void Task_AskConfirmStarter(u8 taskId)
     AddTextPrinterParameterized(0, FONT_NORMAL, gText_ConfirmStarterChoice, 0, 1, 0, NULL);
     ScheduleBgCopyTilemapToVram(0);
     CreateYesNoMenu(&sWindowTemplate_ConfirmStarter, 0x2A8, 0xD, 0);
-    DrawRegionHeader(sCurrentRegionIndex);
+    if (!NyxthraFlashback_IsActive())
+        DrawRegionHeader(sCurrentRegionIndex);
     gTasks[taskId].func = Task_HandleConfirmStarterInput;
 }
 
@@ -1153,7 +1161,7 @@ static void CreateStarterPokemonLabel(u8 selection)
     sStarterLabelWindowId = AddWindow(&winTemplate);
     FillWindowPixelBuffer(sStarterLabelWindowId, PIXEL_FILL(0));
 
-    const u8 *textColors = (gSaveBlock2Ptr->optionsUITheme) ? sTextColorsDark : sTextColors;
+    const u8 *textColors = (gSaveBlock2Ptr->optionsUITheme && !NyxthraFlashback_IsActive()) ? sTextColorsDark : sTextColors;
 
     width = GetStringCenterAlignXOffset(FONT_NARROW, categoryText, 0x68);
     AddTextPrinterParameterized3(sStarterLabelWindowId, FONT_NARROW, width, 1, textColors, 0, categoryText);

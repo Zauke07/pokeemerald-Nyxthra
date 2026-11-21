@@ -2147,6 +2147,9 @@ void UpdateTimeOfDay(bool32 updateBlend)
 // Whether a map type is naturally lit/outside
 bool32 MapHasNaturalLight(enum MapType mapType)
 {
+    // Originales Smaragd 2005 hatte keine Tageszeiten-Tönung.
+    if (NyxthraFlashback_IsActive())
+        return FALSE;
     return (OW_ENABLE_DNS
          && (mapType == MAP_TYPE_TOWN
           || mapType == MAP_TYPE_CITY

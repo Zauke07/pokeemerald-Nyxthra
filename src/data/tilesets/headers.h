@@ -52,6 +52,29 @@ const struct Tileset gTileset_Petalburg =
     .callback = InitTilesetAnim_Petalburg,
 };
 
+// Vanilla Emerald 2005 copies, only used by the 2005 flashback maps.
+const struct Tileset gTileset_FlashbackGeneral =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_FlashbackGeneral,
+    .palettes = gTilesetPalettes_FlashbackGeneral,
+    .metatiles = gMetatiles_FlashbackGeneral,
+    .metatileAttributes = gMetatileAttributes_FlashbackGeneral,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_FlashbackPetalburg =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_FlashbackPetalburg,
+    .palettes = gTilesetPalettes_FlashbackPetalburg,
+    .metatiles = gMetatiles_FlashbackPetalburg,
+    .metatileAttributes = gMetatileAttributes_FlashbackPetalburg,
+    .callback = NULL,
+};
+
 const struct Tileset gTileset_Rustboro =
 {
     .isCompressed = TRUE,
