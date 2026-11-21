@@ -40,7 +40,8 @@
       space + Erde steigt auf ("Hoenn." / "Ein Land im Gleichgewicht.")
       -> Zoom auf Hoenn ("Doch zwei Gewalten ruhten darin: Land und Meer.")
       -> Regen/Dürre wechseln sich auf dem Planeten immer schneller ab
-      -> v1: "Vor vielen Jahren..." -> Groudon/Kyogre/Rayquaza
+      -> Rayquaza kreist um den Planeten und beendet den Streit
+      -> v1: die drei Legendären reagieren auf die rätselhafte Energie
       (reusing the original Emerald cutscene as-is) -> mysterious energy
       burst -> "Jahre vergingen." / "Hoenn begann sich zu verändern." ->
       title card -> hand off to Birch's speech.
@@ -914,7 +915,7 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 
 
 // ---------------------------------------------------------------------------
-// Intro 2.0, Szenen 1–3: Erde aus dem All, Zoom auf Hoenn, dann Regen/Dürre.
+// Intro 2.0, Szenen 1–4: Erde, Zoom, Regen/Dürre, dann Rayquaza.
 // Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sterne oder Regen (4bpp),
 // BG2 Planet (affin, 8bpp, Paletten 0–1 / 32 Farben). Atmosphären-
 // Farben liegen fest auf den Indizes 28–31, damit sie pulsieren können.
@@ -943,6 +944,13 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 #define GLOBE_SIL_SIZE           (64 * 64 / 2)
 #define TAG_KYOGRE_SIL           0x4E01
 #define TAG_GROUDON_SIL          0x4E02
+#define TAG_RAYQUAZA_SIL         0x4E03
+#define TAG_SPARK                0x4E04
+#define SPARK_COUNT              8
+#define SPARK_SIZE               (16 * 16 / 2)
+#define GLOBE_SCENE4_FRAMES      330 // 5,5 s
+#define GLOBE_RAY_FLY_START      28
+#define GLOBE_RAY_FLY_FRAMES     200
 
 #define WEATHER_RAIN             0
 #define WEATHER_DROUGHT          1
@@ -953,6 +961,7 @@ static const u8 sText_Globe_Forces1[] = _("Doch zwei Gewalten ruhten darin:");
 static const u8 sText_Globe_Forces2[] = _("Land und Meer.");
 static const u8 sText_Globe_Rain[] = _("Regen.");
 static const u8 sText_Globe_Drought[] = _("Dürre.");
+static const u8 sText_Globe_Rayquaza[] = _("Rayquaza beendete den Streit.");
 
 // Intervalle in Frames: 2,0 → 1,5 → 1,0 → 0,6 s, danach 0,4 s bis ~10 s.
 static const u16 sWeatherDurations[] = {
@@ -972,6 +981,13 @@ static const u16 sGlobeDroughtAtmos[GLOBE_ATMOS_COUNT] = {
     RGB(29, 17, 4),
     RGB(22, 8, 2),
     RGB(12, 3, 1),
+};
+
+static const u16 sGlobeRayAtmos[GLOBE_ATMOS_COUNT] = {
+    RGB(31, 31, 14),
+    RGB(22, 28, 6),
+    RGB(8, 20, 4),
+    RGB(4, 10, 2),
 };
 
 // Fest aus prologue_globe.pal, Indizes 28–31 (bereits auf 5 Bit gerundet).
@@ -1051,8 +1067,11 @@ static EWRAM_DATA u8 sGlobeShakeTimer = 0;
 static EWRAM_DATA u8 sGlobeFlashTimer = 0;
 static EWRAM_DATA u8 sGlobeKyogreSprite = 0;
 static EWRAM_DATA u8 sGlobeGroudonSprite = 0;
+static EWRAM_DATA u8 sGlobeRaySprite = 0;
+static EWRAM_DATA u8 sGlobeSparks[SPARK_COUNT] = {0};
 static EWRAM_DATA u8 sGlobeWeather = 0;
 static EWRAM_DATA u8 sGlobeLabelTimer = 0;
+static EWRAM_DATA u16 sGlobeRayFlyTimer = 0;
 
 static const struct SpriteSheet sKyogreSilhouetteSheet =
 {
@@ -1119,6 +1138,88 @@ static const struct SpriteTemplate sGroudonSilhouetteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Silhouette,
+};
+
+static const struct SpriteSheet sRayquazaSilhouetteSheet =
+{
+    .data = gNyxthraPrologueRayquazaSil_Gfx,
+    .size = GLOBE_SIL_SIZE * 2, // zwei Flug-Frames
+    .tag = TAG_RAYQUAZA_SIL,
+};
+
+static const struct SpritePalette sRayquazaSilhouettePal =
+{
+    .data = gNyxthraPrologueRayquazaSil_Pal,
+    .tag = TAG_RAYQUAZA_SIL,
+};
+
+static const union AnimCmd sAnim_RayquazaFly[] =
+{
+    ANIMCMD_FRAME(0, 6),
+    ANIMCMD_FRAME(64, 6),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnims_RayquazaFly[] =
+{
+    sAnim_RayquazaFly,
+};
+
+static const struct SpriteTemplate sRayquazaSilhouetteTemplate =
+{
+    .tileTag = TAG_RAYQUAZA_SIL,
+    .paletteTag = TAG_RAYQUAZA_SIL,
+    .oam = &sOam_Silhouette64,
+    .anims = sAnims_RayquazaFly,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteSheet sSparkSheet =
+{
+    .data = gNyxthraPrologueSpark_Gfx,
+    .size = SPARK_SIZE,
+    .tag = TAG_SPARK,
+};
+
+static const struct SpritePalette sSparkPal =
+{
+    .data = gNyxthraPrologueSpark_Pal,
+    .tag = TAG_SPARK,
+};
+
+static const struct OamData sOam_Spark16 =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(16x16),
+    .x = 0,
+    .size = SPRITE_SIZE(16x16),
+    .priority = 0,
+};
+
+static void SpriteCB_Spark(struct Sprite *sprite)
+{
+    sprite->data[0]++;
+    if ((sprite->data[0] & 1) == 0)
+        sprite->y--;
+    if (sprite->data[0] > 18)
+        sprite->invisible = TRUE;
+}
+
+static const struct SpriteTemplate sSparkTemplate =
+{
+    .tileTag = TAG_SPARK,
+    .paletteTag = TAG_SPARK,
+    .oam = &sOam_Spark16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Spark,
 };
 
 static void ApplyGlobeAffine(void)
@@ -1231,8 +1332,15 @@ static void InitPrologueGlobeScene(void)
     sGlobeFlashTimer = 0;
     sGlobeKyogreSprite = SPRITE_NONE;
     sGlobeGroudonSprite = SPRITE_NONE;
+    sGlobeRaySprite = SPRITE_NONE;
     sGlobeWeather = 0;
     sGlobeLabelTimer = 0;
+    sGlobeRayFlyTimer = 0;
+    {
+        u32 i;
+        for (i = 0; i < SPARK_COUNT; i++)
+            sGlobeSparks[i] = SPRITE_NONE;
+    }
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(1, sGlobeBgTemplates, ARRAY_COUNT(sGlobeBgTemplates));
@@ -1297,8 +1405,8 @@ static void PrintGlobeLabel(const u8 *string, u8 fg, u8 shadow)
     color[2] = shadow;
     DeactivateAllTextPrinters();
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
-    x = GetStringCenterAlignXOffsetWithLetterSpacing(FONT_SMALL, string, DISPLAY_WIDTH, 1);
-    AddTextPrinterParameterized4(0, FONT_SMALL, x, GLOBE_TEXT_Y1, 1, 0, color, 0, string);
+    x = GetStringCenterAlignXOffsetWithLetterSpacing(FONT_SMALL_NARROW, string, DISPLAY_WIDTH, 0);
+    AddTextPrinterParameterized4(0, FONT_SMALL_NARROW, x, GLOBE_TEXT_Y1, 0, 0, color, 0, string);
 }
 
 static void FillBg1Stars(void)
@@ -1375,7 +1483,7 @@ static void CreateGlobeSilhouettes(void)
     LoadSpritePalette(&sKyogreSilhouettePal);
     LoadSpritePalette(&sGroudonSilhouettePal);
     SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
-    sGlobeKyogreSprite = CreateSprite(&sKyogreSilhouetteTemplate, 44, 78, 0);
+    sGlobeKyogreSprite = CreateSprite(&sKyogreSilhouetteTemplate, 64, 78, 0);
     sGlobeGroudonSprite = CreateSprite(&sGroudonSilhouetteTemplate, 196, 82, 0);
     if (sGlobeKyogreSprite != MAX_SPRITES)
         gSprites[sGlobeKyogreSprite].invisible = TRUE;
@@ -1395,6 +1503,91 @@ static void ShowWeatherSilhouette(u8 weather)
         gSprites[sGlobeGroudonSprite].invisible = (weather != WEATHER_DROUGHT);
 }
 
+static void DestroyGlobeRayquaza(void)
+{
+    u32 i;
+
+    if (sGlobeRaySprite != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sGlobeRaySprite]);
+        sGlobeRaySprite = SPRITE_NONE;
+    }
+    for (i = 0; i < SPARK_COUNT; i++)
+    {
+        if (sGlobeSparks[i] != SPRITE_NONE)
+        {
+            DestroySprite(&gSprites[sGlobeSparks[i]]);
+            sGlobeSparks[i] = SPRITE_NONE;
+        }
+    }
+}
+
+static void CreateGlobeRayquaza(void)
+{
+    LoadSpriteSheet(&sRayquazaSilhouetteSheet);
+    LoadSpritePalette(&sRayquazaSilhouettePal);
+    LoadSpriteSheet(&sSparkSheet);
+    LoadSpritePalette(&sSparkPal);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    sGlobeRaySprite = CreateSprite(&sRayquazaSilhouetteTemplate, -40, 80, 0);
+    if (sGlobeRaySprite != MAX_SPRITES)
+    {
+        gSprites[sGlobeRaySprite].hFlip = TRUE;
+        gSprites[sGlobeRaySprite].invisible = TRUE;
+        StartSpriteAnim(&gSprites[sGlobeRaySprite], 0);
+    }
+    else
+    {
+        sGlobeRaySprite = SPRITE_NONE;
+    }
+}
+
+static void SpawnSpark(s16 x, s16 y)
+{
+    u32 i;
+
+    for (i = 0; i < SPARK_COUNT; i++)
+    {
+        if (sGlobeSparks[i] == SPRITE_NONE)
+        {
+            sGlobeSparks[i] = CreateSprite(&sSparkTemplate, x, y, 1);
+            if (sGlobeSparks[i] == MAX_SPRITES)
+                sGlobeSparks[i] = SPRITE_NONE;
+            return;
+        }
+        if (gSprites[sGlobeSparks[i]].invisible)
+        {
+            gSprites[sGlobeSparks[i]].x = x;
+            gSprites[sGlobeSparks[i]].y = y;
+            gSprites[sGlobeSparks[i]].y2 = 0;
+            gSprites[sGlobeSparks[i]].invisible = FALSE;
+            gSprites[sGlobeSparks[i]].data[0] = 0;
+            return;
+        }
+    }
+}
+
+static void SetRayquazaFlightPos(u16 t)
+{
+    u8 ang;
+    s16 x, y;
+
+    if (t > GLOBE_RAY_FLY_FRAMES)
+        t = GLOBE_RAY_FLY_FRAMES;
+    // 112 (unten links) über 192 (oben) nach 0 (rechts).
+    ang = 112 + (t * 144) / GLOBE_RAY_FLY_FRAMES;
+    x = GLOBE_SCR_X + Cos(ang, 84);
+    y = GLOBE_SCR_Y_END + Sin(ang, 62);
+    if (sGlobeRaySprite != SPRITE_NONE)
+    {
+        gSprites[sGlobeRaySprite].x = x;
+        gSprites[sGlobeRaySprite].y = y;
+        gSprites[sGlobeRaySprite].invisible = FALSE;
+    }
+    if ((t & 3) == 0)
+        SpawnSpark(x + 10, y + 6);
+}
+
 static void StopScene3Effects(void)
 {
     sGlobeRainScroll = FALSE;
@@ -1409,10 +1602,15 @@ static void StopScene3Effects(void)
     SetBgAttribute(1, BG_ATTR_PRIORITY, 2);
     SetBgAttribute(2, BG_ATTR_MOSAIC, 0);
     DestroyGlobeSilhouettes();
+    DestroyGlobeRayquaza();
     FreeSpriteTilesByTag(TAG_KYOGRE_SIL);
     FreeSpriteTilesByTag(TAG_GROUDON_SIL);
+    FreeSpriteTilesByTag(TAG_RAYQUAZA_SIL);
+    FreeSpriteTilesByTag(TAG_SPARK);
     FreeSpritePaletteByTag(TAG_KYOGRE_SIL);
     FreeSpritePaletteByTag(TAG_GROUDON_SIL);
+    FreeSpritePaletteByTag(TAG_RAYQUAZA_SIL);
+    FreeSpritePaletteByTag(TAG_SPARK);
     PlaySE(SE_THUNDERSTORM_STOP);
 }
 
@@ -1502,6 +1700,10 @@ static void UpdateScene3Effects(u16 pulse, s16 scale, u16 angle)
     }
 }
 
+// Nach den Globus-Szenen 1–4 folgt nicht mehr die v1-Tafel
+// ("Vor vielen Jahren…") und nicht mehr die Emerald-Rayquaza-Cutscene,
+// weil Szene 3–4 denselben Streit bereits gezeigt haben. Weiter geht es
+// mit der rätselhaften Energie der drei Legendären.
 static void StartPrologueIntroCards(u8 taskId)
 {
     StopScene3Effects();
@@ -1511,9 +1713,9 @@ static void StartPrologueIntroCards(u8 taskId)
     InitPrologueBgAndWindow();
     SetVBlankCallback(VBlankCB_NyxthraPrologue);
     SetMainCallback2(CB2_NyxthraPrologue);
-    m4aSongNumStart(MUS_ABNORMAL_WEATHER);
-    gTasks[taskId].func = Task_Prologue_IntroCards;
-    gTasks[taskId].tState = CARD_STATE_FADE_IN;
+    gTasks[taskId].func = Task_Prologue_LegendaryEnergyScene;
+    gTasks[taskId].tState = 0;
+    gTasks[taskId].tBurstStep = 0;
     gTasks[taskId].tCardIdx = 0;
     gTasks[taskId].tTimer = 0;
 }
@@ -1530,6 +1732,8 @@ enum
     GLOBE_STATE_ZOOM,
     GLOBE_STATE_SCENE3_START,
     GLOBE_STATE_SCENE3,
+    GLOBE_STATE_SCENE4_START,
+    GLOBE_STATE_SCENE4,
     GLOBE_STATE_FADE_OUT,
     GLOBE_STATE_DONE,
 };
@@ -1551,7 +1755,7 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
     s16 scale;
     u16 angle;
 
-    // Skip: Szenen 1–3 abbrechen und zum bestehenden v1-Prolog springen.
+    // Skip: Szenen 1–4 abbrechen und zur Energieszene der drei Legendären springen.
     if (skip && tState > GLOBE_STATE_INIT && tState < GLOBE_STATE_FADE_OUT)
     {
         if (!gPaletteFade.active)
@@ -1733,9 +1937,8 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
             tWeatherStep++;
             if (tWeatherStep >= (s16)ARRAY_COUNT(sWeatherDurations))
             {
-                StopScene3Effects();
-                BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-                tState = GLOBE_STATE_FADE_OUT;
+                tState = GLOBE_STATE_SCENE4_START;
+                tTimer = 0;
             }
             else
             {
@@ -1743,6 +1946,113 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
                 tTimer = sWeatherDurations[tWeatherStep];
                 StartWeatherPhase(nextWeather, sWeatherDurations[tWeatherStep]);
             }
+        }
+        break;
+    }
+
+    case GLOBE_STATE_SCENE4_START:
+        StopScene3Effects();
+        ClearGlobeText();
+        LoadPalette(gNyxthraPrologueGlobe_Pal, BG_PLTT_ID(0), 32 * sizeof(u16));
+        LoadPalette(&(u16){RGB_BLACK}, BG_PLTT_ID(0), sizeof(u16));
+        FillBg1Stars();
+        CreateGlobeRayquaza();
+        m4aSongNumStart(MUS_RAYQUAZA_APPEARS);
+        sGlobeFlashTimer = 8;
+        sGlobeShakeTimer = 16;
+        sGlobeMosaic = 6;
+        sGlobeRayFlyTimer = 0;
+        tTimer = 0;
+        tGlobePulse = 0;
+        tState = GLOBE_STATE_SCENE4;
+        break;
+
+    case GLOBE_STATE_SCENE4:
+    {
+        s16 scale;
+        u16 angle;
+
+        tTimer++;
+        tGlobePulse++;
+
+        // Nach der Nahaufnahme von Szene 3 zoomen wir zurück, damit
+        // Rayquaza um die ganze Erde kreisen kann.
+        if (tTimer < 48)
+            scale = GLOBE_SCALE_SCENE3 + (GLOBE_SCALE_1_0 - GLOBE_SCALE_SCENE3) * tTimer / 48;
+        else
+            scale = GLOBE_SCALE_1_0;
+
+        angle = GLOBE_ANGLE_END + tTimer * 2;
+
+        if (tTimer == GLOBE_RAY_FLY_START)
+        {
+            PlayCry_Script(SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER);
+            PlaySE(SE_M_DRAGON_RAGE);
+            PlaySE(SE_M_FLY);
+            sGlobeFlashTimer = 4;
+            sGlobeShakeTimer = 12;
+            PrintGlobeLabel(sText_Globe_Rayquaza, 5, 6);
+            sGlobeLabelTimer = 0; // Text bleibt stehen
+        }
+
+        if (tTimer >= GLOBE_RAY_FLY_START)
+        {
+            if (sGlobeRayFlyTimer < GLOBE_RAY_FLY_FRAMES)
+            {
+                sGlobeRayFlyTimer++;
+                SetRayquazaFlightPos(sGlobeRayFlyTimer);
+            }
+            else if (sGlobeRaySprite != SPRITE_NONE)
+            {
+                gSprites[sGlobeRaySprite].invisible = TRUE;
+            }
+        }
+
+        // Gold-grünes Licht, gegen Ende zurück zur normalen Atmosphäre.
+        if (tTimer < 240)
+            PulseAtmosphereColors(tGlobePulse, sGlobeRayAtmos, 31, 31, 20);
+        else
+            PulseGlobeAtmosphere(tGlobePulse);
+
+        {
+            s16 shakeX = 0;
+            s16 shakeY = 0;
+            if (sGlobeShakeTimer != 0)
+            {
+                shakeX = (sGlobeShakeTimer & 1) ? 1 : -1;
+                shakeY = (sGlobeShakeTimer & 2) ? 1 : 0;
+                sGlobeShakeTimer--;
+            }
+            if (sGlobeMosaic != 0)
+                sGlobeMosaic--;
+            sGlobeAffine.texX = GLOBE_TEX_CENTER;
+            sGlobeAffine.texY = GLOBE_TEX_CENTER;
+            sGlobeAffine.scrX = GLOBE_SCR_X + shakeX;
+            sGlobeAffine.scrY = GLOBE_SCR_Y_END + shakeY;
+            sGlobeAffine.scale = scale;
+            sGlobeAffine.angle = angle;
+            ApplyGlobeAffine();
+        }
+
+        if (sGlobeFlashTimer != 0)
+        {
+            u8 coeff = (sGlobeFlashTimer > 5) ? 16 : (sGlobeFlashTimer * 3);
+            if (coeff > 16)
+                coeff = 16;
+            BlendPalettes(PALETTES_ALL, coeff, RGB_WHITE);
+            sGlobeFlashTimer--;
+            if (sGlobeFlashTimer == 0)
+                BlendPalettes(PALETTES_ALL, 0, RGB_WHITE);
+        }
+
+        if (tTimer == 280)
+            FadeOutBGM(4);
+
+        if (tTimer >= GLOBE_SCENE4_FRAMES)
+        {
+            StopScene3Effects();
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            tState = GLOBE_STATE_FADE_OUT;
         }
         break;
     }
