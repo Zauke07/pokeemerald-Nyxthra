@@ -12,6 +12,7 @@
 #include "sound.h"
 #include "gpu_regs.h"
 #include "m4a.h"
+#include "gba/m4a_internal.h"
 #include "rayquaza_scene.h"
 #include "main_menu.h"
 #include "nyxthra_prologue.h"
@@ -43,8 +44,8 @@
       -> Rayquaza kreist um den Planeten und beendet den Streit
       -> Stille: Sonnenaufgang, "Jahrhunderte vergingen. Man vergaß, was damals erwachte."
       -> Nebel + Herzschlag: "Die Welt begann sich zu verändern … / … und die Pokémon mit ihr."
-      -> "Doch niemand wusste, was an diesem Tag wirklich freigesetzt wurde."
-      -> Darkrai-Teaser -> Titelkarte -> Birchs Rede.
+      -> Augen: "Etwas beobachtet uns." / "Nyxthra.", Darkrai-Blitz, Schwarzes Loch
+      -> Titelkarte -> Birchs Rede.
 
     Deliberately silent on what the energy actually was, and the hero from
     that day is never shown (matches the later per-player-gender Champion
@@ -919,7 +920,7 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 #endif
 
 // ---------------------------------------------------------------------------
-// Intro 2.0, Szenen 1–6: Erde, Zoom, Regen/Dürre, Rayquaza, Stille, dann Nebel.
+// Intro 2.0, Szenen 1–7: Erde, Zoom, Regen/Dürre, Rayquaza, Stille, Nebel, Augen.
 // Mode 1: BG0 Text (4bpp, Palette 8), BG1 Sterne oder Regen (4bpp),
 // BG2 Planet (affin, 8bpp, Paletten 0–1 / 32 Farben). Atmosphären-
 // Farben liegen fest auf den Indizes 28–31, damit sie pulsieren können.
@@ -968,6 +969,15 @@ static void CB2_NyxthraPrologue_AfterRayquaza(void)
 #define GLOBE_FOG_ALPHA_MAX      12
 #define GLOBE_HEART_INTERVAL_START 60
 #define GLOBE_HEART_INTERVAL_END   30
+#define GLOBE_BGM_VOL_NORMAL       256
+#define GLOBE_BGM_VOL_DUCK         16
+#define GLOBE_EYES_SIZE            (64 * 32 / 2)
+#define TAG_DARKRAI_EYES           0x4E05
+#define TAG_DARKRAI_SIL            0x4E06
+#define GLOBE_SCENE7_EYES_FRAMES   24
+#define GLOBE_SCENE7_FLASH_FRAMES  210
+#define GLOBE_SCENE7_HOLD_FRAMES   90
+#define GLOBE_SCENE7_SIL_HOLD_FRAMES 60
 
 #define WEATHER_RAIN             0
 #define WEATHER_DROUGHT          1
@@ -983,6 +993,8 @@ static const u8 sText_Globe_Centuries1[] = _("Jahrhunderte vergingen.");
 static const u8 sText_Globe_Centuries2[] = _("Man vergaß, was damals erwachte.");
 static const u8 sText_Globe_Change1[] = _("Die Welt begann sich zu verändern…");
 static const u8 sText_Globe_Change2[] = _("…und die Pokémon mit ihr.");
+static const u8 sText_Globe_Watched[] = _("Etwas beobachtet uns.");
+static const u8 sText_Globe_Nyxthra[] = _("Nyxthra.");
 
 // Intervalle in Frames: 2,0 → 1,5 → 1,0 → 0,6 s, danach 0,4 s bis ~10 s.
 static const u16 sWeatherDurations[] = {
@@ -1105,6 +1117,8 @@ static EWRAM_DATA u8 sGlobeFlashTimer = 0;
 static EWRAM_DATA u8 sGlobeKyogreSprite = 0;
 static EWRAM_DATA u8 sGlobeGroudonSprite = 0;
 static EWRAM_DATA u8 sGlobeRaySprite = 0;
+static EWRAM_DATA u8 sGlobeEyesSprite = 0;
+static EWRAM_DATA u8 sGlobeDarkraiSprite = 0;
 static EWRAM_DATA u8 sGlobeSparks[SPARK_COUNT] = {0};
 static EWRAM_DATA u8 sGlobeWeather = 0;
 static EWRAM_DATA u8 sGlobeLabelTimer = 0;
@@ -1259,6 +1273,77 @@ static const struct SpriteTemplate sSparkTemplate =
     .callback = SpriteCB_Spark,
 };
 
+static const struct SpriteSheet sDarkraiEyesSheet =
+{
+    .data = gNyxthraPrologueDarkraiEyes_Gfx,
+    .size = GLOBE_EYES_SIZE,
+    .tag = TAG_DARKRAI_EYES,
+};
+
+static const struct SpritePalette sDarkraiEyesPal =
+{
+    .data = gNyxthraPrologueDarkraiEyes_Pal,
+    .tag = TAG_DARKRAI_EYES,
+};
+
+static const struct SpriteSheet sDarkraiSilSheet =
+{
+    .data = gNyxthraPrologueDarkraiSil_Gfx,
+    .size = GLOBE_SIL_SIZE,
+    .tag = TAG_DARKRAI_SIL,
+};
+
+static const struct SpritePalette sDarkraiSilPal =
+{
+    .data = gNyxthraPrologueDarkraiSil_Pal,
+    .tag = TAG_DARKRAI_SIL,
+};
+
+static const struct OamData sOam_Eyes64x32 =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .x = 0,
+    .size = SPRITE_SIZE(64x32),
+    .priority = 0,
+};
+
+static void SpriteCB_EyesPulse(struct Sprite *sprite)
+{
+    u8 amt = 0;
+
+    if (sGlobeHeartPulse != 0)
+        amt = (sGlobeHeartPulse > 6) ? (GLOBE_HEART_PULSE_FRAMES - sGlobeHeartPulse) : sGlobeHeartPulse;
+    sprite->y2 = -(amt / 2);
+}
+
+static const struct SpriteTemplate sDarkraiEyesTemplate =
+{
+    .tileTag = TAG_DARKRAI_EYES,
+    .paletteTag = TAG_DARKRAI_EYES,
+    .oam = &sOam_Eyes64x32,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_EyesPulse,
+};
+
+static const struct SpriteTemplate sDarkraiSilTemplate =
+{
+    .tileTag = TAG_DARKRAI_SIL,
+    .paletteTag = TAG_DARKRAI_SIL,
+    .oam = &sOam_Silhouette64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+
 static void ApplyGlobeAffine(void)
 {
     SetBgAffine(2,
@@ -1319,6 +1404,7 @@ static void VBlankCB_NyxthraPrologueGlobe(void)
     TransferPlttBuffer();
     ApplyGlobeAffine();
     SetGpuReg(REG_OFFSET_MOSAIC, (sGlobeMosaic << 4) | sGlobeMosaic);
+    ScanlineEffect_InitHBlankDmaTransfer();
 }
 
 static void CB2_NyxthraPrologueGlobe(void)
@@ -1378,6 +1464,8 @@ static void InitPrologueGlobeScene(void)
     sGlobeKyogreSprite = SPRITE_NONE;
     sGlobeGroudonSprite = SPRITE_NONE;
     sGlobeRaySprite = SPRITE_NONE;
+    sGlobeEyesSprite = SPRITE_NONE;
+    sGlobeDarkraiSprite = SPRITE_NONE;
     sGlobeWeather = 0;
     sGlobeLabelTimer = 0;
     sGlobeRayFlyTimer = 0;
@@ -1552,8 +1640,29 @@ static u16 GetScene6HeartInterval(u16 t)
 static void TriggerHeartbeat(void)
 {
     PlaySE(SE_M_MEGA_KICK);
+    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_DUCK);
     sGlobeHeartPulse = GLOBE_HEART_PULSE_FRAMES;
     sGlobeShakeTimer = 6;
+}
+
+static u8 UpdateHeartbeatPulse(void)
+{
+    u8 pulseAmt = 0;
+    u16 vol;
+
+    if (sGlobeHeartPulse != 0)
+    {
+        pulseAmt = (sGlobeHeartPulse > 6) ? (GLOBE_HEART_PULSE_FRAMES - sGlobeHeartPulse) : sGlobeHeartPulse;
+        vol = GLOBE_BGM_VOL_DUCK
+            + (GLOBE_BGM_VOL_NORMAL - GLOBE_BGM_VOL_DUCK)
+            * (GLOBE_HEART_PULSE_FRAMES - sGlobeHeartPulse)
+            / GLOBE_HEART_PULSE_FRAMES;
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, vol);
+        sGlobeHeartPulse--;
+        if (sGlobeHeartPulse == 0)
+            m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_NORMAL);
+    }
+    return pulseAmt;
 }
 
 static void RecolorSilhouette(u8 spriteId, const u16 *pal)
@@ -1569,6 +1678,7 @@ static void RecolorSilhouette(u8 spriteId, const u16 *pal)
 
 static void DestroyGlobeSilhouettes(void);
 static void DestroyGlobeRayquaza(void);
+static void DestroyScene7Sprites(void);
 
 static void CreateScene6Silhouettes(void)
 {
@@ -1616,6 +1726,43 @@ static void ShowScene6Silhouettes(void)
         gSprites[sGlobeGroudonSprite].invisible = FALSE;
     if (sGlobeRaySprite != SPRITE_NONE)
         gSprites[sGlobeRaySprite].invisible = FALSE;
+}
+
+static void DestroyScene7Sprites(void)
+{
+    if (sGlobeEyesSprite != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sGlobeEyesSprite]);
+        sGlobeEyesSprite = SPRITE_NONE;
+    }
+    if (sGlobeDarkraiSprite != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sGlobeDarkraiSprite]);
+        sGlobeDarkraiSprite = SPRITE_NONE;
+    }
+}
+
+static void CreateScene7Sprites(void)
+{
+    DestroyScene7Sprites();
+    LoadSpriteSheet(&sDarkraiEyesSheet);
+    LoadSpriteSheet(&sDarkraiSilSheet);
+    LoadSpritePalette(&sDarkraiEyesPal);
+    LoadSpritePalette(&sDarkraiSilPal);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+
+    sGlobeEyesSprite = CreateSprite(&sDarkraiEyesTemplate, 120, 64, 0);
+    sGlobeDarkraiSprite = CreateSprite(&sDarkraiSilTemplate, 120, 84, 0);
+
+    if (sGlobeEyesSprite != MAX_SPRITES)
+        gSprites[sGlobeEyesSprite].invisible = TRUE;
+    else
+        sGlobeEyesSprite = SPRITE_NONE;
+
+    if (sGlobeDarkraiSprite != MAX_SPRITES)
+        gSprites[sGlobeDarkraiSprite].invisible = TRUE;
+    else
+        sGlobeDarkraiSprite = SPRITE_NONE;
 }
 
 static void ShiftNextNyxthraSilhouette(s16 *shiftCount)
@@ -1825,14 +1972,20 @@ static void StopScene3Effects(void)
     SetBgAttribute(2, BG_ATTR_MOSAIC, 0);
     DestroyGlobeSilhouettes();
     DestroyGlobeRayquaza();
+    DestroyScene7Sprites();
     FreeSpriteTilesByTag(TAG_KYOGRE_SIL);
     FreeSpriteTilesByTag(TAG_GROUDON_SIL);
     FreeSpriteTilesByTag(TAG_RAYQUAZA_SIL);
     FreeSpriteTilesByTag(TAG_SPARK);
+    FreeSpriteTilesByTag(TAG_DARKRAI_EYES);
+    FreeSpriteTilesByTag(TAG_DARKRAI_SIL);
     FreeSpritePaletteByTag(TAG_KYOGRE_SIL);
     FreeSpritePaletteByTag(TAG_GROUDON_SIL);
     FreeSpritePaletteByTag(TAG_RAYQUAZA_SIL);
     FreeSpritePaletteByTag(TAG_SPARK);
+    FreeSpritePaletteByTag(TAG_DARKRAI_EYES);
+    FreeSpritePaletteByTag(TAG_DARKRAI_SIL);
+    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_NORMAL);
     PlaySE(SE_THUNDERSTORM_STOP);
 }
 
@@ -1922,8 +2075,8 @@ static void UpdateScene3Effects(u16 pulse, s16 scale, u16 angle)
     }
 }
 
-// Nach den Globus-Szenen 1–6 folgen die Mystery-Tafel und der Darkrai-
-// Teaser. "Jahre vergingen." entfällt, weil Szenen 5–6 das bereits sagen.
+// Nach den Globus-Szenen 1–7 folgt die Titelkarte. Mystery-Tafel und
+// der alte Darkrai-Teaser entfallen, weil Szene 7 dasselbe erzählt.
 static void StartPrologueIntroCards(u8 taskId)
 {
     StopScene3Effects();
@@ -1933,7 +2086,8 @@ static void StartPrologueIntroCards(u8 taskId)
     InitPrologueBgAndWindow();
     SetVBlankCallback(VBlankCB_NyxthraPrologue);
     SetMainCallback2(CB2_NyxthraPrologue);
-    gTasks[taskId].func = Task_Prologue_OutroCards;
+    m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_NORMAL);
+    gTasks[taskId].func = Task_Prologue_TitleLogo;
     gTasks[taskId].tState = CARD_STATE_FADE_IN;
     gTasks[taskId].tCardIdx = 0;
     gTasks[taskId].tTimer = 0;
@@ -1957,6 +2111,8 @@ enum
     GLOBE_STATE_SCENE5,
     GLOBE_STATE_SCENE6_START,
     GLOBE_STATE_SCENE6,
+    GLOBE_STATE_SCENE7_START,
+    GLOBE_STATE_SCENE7,
     GLOBE_STATE_FADE_OUT,
     GLOBE_STATE_DONE,
 };
@@ -1978,7 +2134,7 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
     s16 scale;
     u16 angle;
 
-    // Skip: Szenen 1–6 abbrechen und zur Mystery-Tafel plus Darkrai-Teaser springen.
+    // Skip: Szenen 1–7 abbrechen und zur Titelkarte springen.
     if (skip && tState > GLOBE_STATE_INIT && tState < GLOBE_STATE_FADE_OUT)
     {
         if (!gPaletteFade.active)
@@ -2354,12 +2510,9 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
 
         tTimer++;
 
-        if (sGlobeHeartPulse != 0)
-        {
-            pulseAmt = (sGlobeHeartPulse > 6) ? (GLOBE_HEART_PULSE_FRAMES - sGlobeHeartPulse) : sGlobeHeartPulse;
+        pulseAmt = UpdateHeartbeatPulse();
+        if (pulseAmt != 0)
             scale = GLOBE_SCALE_1_0 - (10 * pulseAmt / 6); // etwa +4 % Zoom
-            sGlobeHeartPulse--;
-        }
 
         if (sGlobeShakeTimer != 0)
         {
@@ -2407,10 +2560,160 @@ static void Task_Prologue_GlobeScenes(u8 taskId)
         }
 
         if (tTimer >= GLOBE_SCENE6_END_FRAMES && tTypedScene2 >= 2 && !IsTextPrinterActiveOnWindow(0))
+            tState = GLOBE_STATE_SCENE7_START;
+        break;
+    }
+
+    case GLOBE_STATE_SCENE7_START:
+        // Der Planet bleibt im Nebel, die Legendären verschwinden, und
+        // aus der Stille blicken rote Augen.
+        DestroyGlobeSilhouettes();
+        DestroyGlobeRayquaza();
+        ClearGlobeText();
+        FillBg1Fog();
+        sGlobeFogScroll = TRUE;
+        sGlobeHeartPulse = 0;
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, GLOBE_BGM_VOL_NORMAL);
+        m4aSongNumStart(MUS_DP_LEGEND_APPEARS);
+        CreateScene7Sprites();
+        tTimer = 0;
+        tTypedScene2 = 0;
+        tBgmFaded = 0; // 0 = vor dem Blitz, 1 = Silhouette sichtbar, 2 = danach, 3 = Loch
+        tWeatherStep = 20;
+        tState = GLOBE_STATE_SCENE7;
+        break;
+
+    case GLOBE_STATE_SCENE7:
+    {
+        s16 scale = GLOBE_SCALE_1_0;
+        u16 angle;
+        s16 shakeX = 0;
+        s16 shakeY = 0;
+        u8 pulseAmt;
+
+        tTimer++;
+        pulseAmt = UpdateHeartbeatPulse();
+        if (pulseAmt != 0)
+            scale = GLOBE_SCALE_1_0 - (10 * pulseAmt / 6);
+        if (tTypedScene2 == 5)
+            scale = GLOBE_SCALE_1_0 + tTimer * 28;
+
+        if (sGlobeShakeTimer != 0)
         {
-            FadeOutBGM(4);
-            BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
-            tState = GLOBE_STATE_FADE_OUT;
+            shakeX = (sGlobeShakeTimer & 1) ? 1 : -1;
+            shakeY = (sGlobeShakeTimer & 2) ? 1 : 0;
+            sGlobeShakeTimer--;
+        }
+
+        // Planet verdunkelt sich, der Nebel bleibt.
+        if (sGlobeFlashTimer == 0 && tTypedScene2 < 5)
+        {
+            LerpGlobePalette(gNyxthraPrologueGlobeMist_Pal, gNyxthraPrologueGlobeMist_Pal, 16, 16);
+            {
+                u16 dark = (tTimer < 60) ? (tTimer * 12 / 60) : 12;
+                BlendPalettes(0x0003, dark, RGB_BLACK); // pals 0–1 = globe
+            }
+        }
+
+        angle = GLOBE_ANGLE_END + tTimer;
+        sGlobeAffine.texX = GLOBE_TEX_CENTER;
+        sGlobeAffine.texY = GLOBE_TEX_CENTER;
+        sGlobeAffine.scrX = GLOBE_SCR_X + shakeX;
+        sGlobeAffine.scrY = GLOBE_SCR_Y_END + shakeY;
+        sGlobeAffine.scale = scale;
+        sGlobeAffine.angle = angle;
+        ApplyGlobeAffine();
+        UpdateScene6Fog(GLOBE_SCENE6_WIPE_FRAMES + tTimer, sGlobeHeartPulse);
+
+        tWeatherStep--;
+        if (tWeatherStep <= 0 && tBgmFaded < 3)
+        {
+            TriggerHeartbeat();
+            tWeatherStep = GLOBE_HEART_INTERVAL_END;
+        }
+
+        if (tTypedScene2 == 0 && tTimer >= GLOBE_SCENE7_EYES_FRAMES)
+        {
+            if (sGlobeEyesSprite != SPRITE_NONE)
+                gSprites[sGlobeEyesSprite].invisible = FALSE;
+            PlaySE(SE_M_NIGHTMARE);
+            PrintPrologueLineTypedFit(sText_Globe_Watched, GLOBE_TEXT_Y1);
+            tTypedScene2 = 1;
+        }
+        else if (tTypedScene2 == 1 && !IsTextPrinterActiveOnWindow(0) && tTimer >= GLOBE_SCENE7_FLASH_FRAMES)
+        {
+            // Blitz: Darkrai-Silhouette, Ruf, Augen kurz verdeckt.
+            if (sGlobeEyesSprite != SPRITE_NONE)
+                gSprites[sGlobeEyesSprite].invisible = TRUE;
+            if (sGlobeDarkraiSprite != SPRITE_NONE)
+                gSprites[sGlobeDarkraiSprite].invisible = FALSE;
+            sGlobeFlashTimer = 10;
+            sGlobeShakeTimer = 14;
+            tScene3Timer = 0;
+            PlayCry_Script(SPECIES_DARKRAI, CRY_MODE_ENCOUNTER);
+            PlaySE(SE_ORB);
+            tBgmFaded = 1;
+            tTypedScene2 = 2;
+        }
+        else if (tTypedScene2 == 2)
+        {
+            // Nach dem Blitz bleibt Darkrai eine Sekunde sichtbar.
+            if (sGlobeFlashTimer == 0)
+                tScene3Timer++;
+            if (tScene3Timer >= GLOBE_SCENE7_SIL_HOLD_FRAMES)
+            {
+                if (sGlobeDarkraiSprite != SPRITE_NONE)
+                    gSprites[sGlobeDarkraiSprite].invisible = TRUE;
+                if (sGlobeEyesSprite != SPRITE_NONE)
+                    gSprites[sGlobeEyesSprite].invisible = FALSE;
+                PrintPrologueLineTypedFit(sText_Globe_Nyxthra, GLOBE_TEXT_Y2);
+                tBgmFaded = 2;
+                tTypedScene2 = 3;
+            }
+        }
+        else if (tTypedScene2 == 3 && !IsTextPrinterActiveOnWindow(0))
+        {
+            tScene3Timer = 0;
+            tTypedScene2 = 4;
+        }
+        else if (tTypedScene2 == 4)
+        {
+            tScene3Timer++;
+            if (tScene3Timer >= GLOBE_SCENE7_HOLD_FRAMES)
+            {
+                // Augen schließen, der Planet fällt in die Schwärze.
+                if (sGlobeEyesSprite != SPRITE_NONE)
+                    gSprites[sGlobeEyesSprite].invisible = TRUE;
+                DestroyScene7Sprites();
+                ClearGlobeText();
+                FadeOutBGM(4);
+                tTimer = 0;
+                tBgmFaded = 3;
+                tTypedScene2 = 5;
+            }
+        }
+        else if (tTypedScene2 == 5)
+        {
+            u16 coeff = (tTimer * 16) / 70;
+            if (coeff > 16)
+                coeff = 16;
+            BlendPalettes(PALETTES_ALL, coeff, RGB_BLACK);
+            if (tTimer >= 90)
+            {
+                BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+                tState = GLOBE_STATE_FADE_OUT;
+            }
+        }
+
+        if (sGlobeFlashTimer != 0)
+        {
+            u8 coeff = (sGlobeFlashTimer > 5) ? 16 : (sGlobeFlashTimer * 3);
+            if (coeff > 16)
+                coeff = 16;
+            BlendPalettes(PALETTES_ALL, coeff, RGB_WHITE);
+            sGlobeFlashTimer--;
+            if (sGlobeFlashTimer == 0)
+                BlendPalettes(PALETTES_ALL, 0, RGB_WHITE);
         }
         break;
     }
@@ -2443,8 +2746,8 @@ void CB2_InitNyxthraPrologue(void)
     ResetTasks();
 
     // Intro 2.0: ruhige Sootopolis-Musik über den neuen Erd-Szenen.
-    // Szene 5 ist stumm, Szene 6 setzt MUS_PL_DISTORTION_WORLD an.
-    // Der Darkrai-Teaser übernimmt später eigene Musik.
+    // Szene 5 ist stumm, Szene 6 setzt MUS_PL_DISTORTION_WORLD an,
+    // Szene 7 MUS_DP_LEGEND_APPEARS.
     InitPrologueGlobeScene();
 
     EnableInterrupts(INTR_FLAG_VBLANK);
