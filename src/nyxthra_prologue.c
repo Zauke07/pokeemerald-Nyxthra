@@ -64,7 +64,7 @@ struct PrologueCard
     bool8 shake;     // Nyxthra: Bildschirm bebt, sobald die Karte fertig getippt ist
 };
 
-static const u8 sText_Prologue_Mystery[] = _("Doch niemand wusste, was an diesem Tag");
+static const u8 sText_Prologue_Mystery[] = _("Niemand wusste, was an diesem Tag");
 static const u8 sText_Prologue_Mysteryb[] = _("wirklich freigesetzt wurde.");
 
 // Nur noch die Mystery-Tafel: "Jahre vergingen." / "Und Hoenn begann
@@ -360,7 +360,7 @@ static bool8 RunPrologueCard(u8 taskId, const struct PrologueCard *card)
         DeactivateAllTextPrinters();
         FillWindowPixelBuffer(0, PIXEL_FILL(0));
         CopyWindowToVram(0, COPYWIN_FULL);
-        PrintPrologueLineTyped(card->line1, card->line2 == NULL ? 76 : 68);
+        PrintPrologueLineTypedFit(card->line1, card->line2 == NULL ? 76 : 68);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
         gTasks[taskId].tTimer = 0;
         gTasks[taskId].tState = CARD_STATE_TYPE_LINE1;
@@ -372,7 +372,7 @@ static bool8 RunPrologueCard(u8 taskId, const struct PrologueCard *card)
         {
             if (card->line2 != NULL)
             {
-                PrintPrologueLineTyped(card->line2, 84);
+                PrintPrologueLineTypedFit(card->line2, 84);
                 gTasks[taskId].tState = CARD_STATE_TYPE_LINE2;
             }
             else
@@ -1161,7 +1161,7 @@ static const struct OamData sOam_Silhouette64 =
     .shape = SPRITE_SHAPE(64x64),
     .x = 0,
     .size = SPRITE_SIZE(64x64),
-    .priority = 0,
+    .priority = 1,
 };
 
 static void SpriteCB_Silhouette(struct Sprite *sprite)
@@ -1251,7 +1251,7 @@ static const struct OamData sOam_Spark16 =
     .shape = SPRITE_SHAPE(16x16),
     .x = 0,
     .size = SPRITE_SIZE(16x16),
-    .priority = 0,
+    .priority = 1,
 };
 
 static void SpriteCB_Spark(struct Sprite *sprite)
@@ -1310,7 +1310,7 @@ static const struct OamData sOam_Eyes64x32 =
     .shape = SPRITE_SHAPE(64x32),
     .x = 0,
     .size = SPRITE_SIZE(64x32),
-    .priority = 0,
+    .priority = 1,
 };
 
 static void SpriteCB_EyesPulse(struct Sprite *sprite)

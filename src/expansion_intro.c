@@ -12,6 +12,7 @@
 #include "intro_frlg.h"
 #include "m4a.h"
 #include "expansion_intro.h"
+#include "nyxthra_prologue.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
@@ -276,15 +277,9 @@ void Task_HandleExpansionIntro(u8 taskId)
             ResetSpriteData();
             FreeAllSpritePalettes();
             DestroyTask(taskId);
-            if (IS_FRLG)
-            {
-                SetMainCallback2(CB2_SetUpIntroFrlg);
-            }
-            else
-            {
-                CreateTask(Task_Scene1_Load, 0);
-                SetMainCallback2(MainCB2_Intro);
-            }
+            // Nyxthra: nach dem RHH-Logo direkt ins eigene Intro, ohne
+            // das originale Smaragd-Intro (Flygon, Fahrrad, Latios).
+            SetMainCallback2(CB2_InitNyxthraPrologue);
         }
         break;
     }

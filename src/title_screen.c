@@ -37,6 +37,7 @@ enum {
 #define VERSION_BANNER_Y 2
 #define VERSION_BANNER_Y_GOAL 66
 #define START_BANNER_X 128
+#define START_BANNER_Y 134
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -61,6 +62,7 @@ static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite);
 static void SpriteCB_PokemonLogoShine(struct Sprite *sprite);
 
 static EWRAM_DATA bool8 sTitleScreenSlam = FALSE;
+static EWRAM_DATA bool8 sTitleAtmosphereOn = FALSE;
 
 void TitleScreen_EnableSlam(void)
 {
@@ -74,6 +76,29 @@ static const u32 sTitleScreenRayquazaGfx[] = INCGFX_U32("graphics/title_screen/m
 static const u32 sTitleScreenRayquazaTilemap[] = INCGFX_U32("graphics/title_screen/mitternachtsmond.bin", ".smolTM");
 static const u32 sTitleScreenLogoShineGfx[] = INCGFX_U32("graphics/title_screen/logo_shine.png", ".4bpp.smol");
 static const u32 sTitleScreenCloudsGfx[] = INCGFX_U32("graphics/title_screen/clouds.png", ".4bpp.smol");
+
+// The Emerald cloud tiles use color 0 (transparent), 2 and 12. Loaded as
+// pal 15 so the wisps can sit over the Mitternachtsmond scene as night fog.
+static const u16 sTitleFogPal[] =
+{
+    RGB(0, 0, 0),
+    RGB(3, 1, 6),
+    RGB(8, 3, 14),
+    RGB(5, 2, 10),
+    RGB(7, 3, 13),
+    RGB(9, 4, 15),
+    RGB(10, 5, 16),
+    RGB(12, 6, 18),
+    RGB(13, 7, 19),
+    RGB(14, 8, 20),
+    RGB(15, 9, 21),
+    RGB(16, 10, 22),
+    RGB(13, 6, 20),
+    RGB(18, 11, 24),
+    RGB(20, 13, 26),
+    RGB(22, 15, 28),
+};
+
 
 
 
@@ -560,6 +585,47 @@ static void StartPokemonLogoShine(u8 mode)
 #undef sMode
 #undef sBgColor
 
+#define CLAMP31(x) (((x) < 0) ? 0 : ((x) > 31) ? 31 : (x))
+
+static void StartTitleLogoShine(void)
+{
+    u8 spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_NORMAL;
+        gSprites[spriteId].oam.priority = 1;
+        gSprites[spriteId].data[0] = SHINE_MODE_SINGLE_NO_BG_COLOR;
+    }
+}
+
+static void StartTitleAtmosphere(void)
+{
+    if (sTitleAtmosphereOn)
+        return;
+
+    gBattle_BG1_Y = 0;
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
+    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(5, 11));
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_BG1_ON);
+    ScanlineEffect_InitWave(0, DISPLAY_HEIGHT, 4, 4, 0, SCANLINE_EFFECT_REG_BG1HOFS, TRUE);
+    StartTitleLogoShine();
+    sTitleAtmosphereOn = TRUE;
+}
+
+// Pulsierender Mond und ein leichtes Glühen an Darkrais rotem Kragen.
+static void PulseTitleMood(u16 frame)
+{
+    s16 moon = Sin(frame & 0xFF, 4);
+    s16 glow = Sin((frame + 64) & 0xFF, 3);
+
+    gPlttBufferFaded[BG_PLTT_ID(14) + 9]  = RGB(CLAMP31(26 + moon), CLAMP31(25 + moon), CLAMP31(30 + moon));
+    gPlttBufferFaded[BG_PLTT_ID(14) + 10] = RGB(CLAMP31(29 + moon), CLAMP31(27 + moon), CLAMP31(31 + moon));
+    gPlttBufferFaded[BG_PLTT_ID(14) + 11] = RGB(CLAMP31(29 + glow), CLAMP31(2 + glow / 2), CLAMP31(3 + glow / 2));
+    gPlttBufferFaded[BG_PLTT_ID(14) + 12] = RGB(CLAMP31(18 + glow), CLAMP31(5 + glow / 2), CLAMP31(8 + glow / 2));
+}
+
 static void VBlankCB(void)
 {
     ScanlineEffect_InitHBlankDmaTransfer();
@@ -599,6 +665,7 @@ void CB2_InitTitleScreen(void)
         DmaFill32(3, 0, (void *)OAM, OAM_SIZE);
         DmaFill16(3, 0, (void *)(PLTT + 2), PLTT_SIZE - 2);
         ResetPaletteFade();
+        sTitleAtmosphereOn = FALSE;
         gMain.state = 1;
         break;
     case 1:
@@ -612,6 +679,14 @@ void CB2_InitTitleScreen(void)
         // bg1
         DecompressDataWithHeaderVram(sTitleScreenCloudsGfx, (void *)(BG_CHAR_ADDR(3)));
         DecompressDataWithHeaderVram(gTitleScreenCloudsTilemap, (void *)(BG_SCREEN_ADDR(27)));
+        {
+            u32 i;
+            u16 *map = (u16 *)BG_SCREEN_ADDR(27);
+
+            for (i = 0; i < 32 * 32; i++)
+                map[i] = (map[i] & 0x0FFF) | (15 << 12);
+        }
+        LoadPalette(sTitleFogPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
@@ -784,7 +859,7 @@ static void Task_TitleScreenSlam(u8 taskId)
         gSprites[spriteId].sParentTaskId = taskId;
         spriteId = CreateSprite(&sVersionBannerRightSpriteTemplate, VERSION_BANNER_RIGHT_X, VERSION_BANNER_Y, 0);
         gSprites[spriteId].sParentTaskId = taskId;
-        CreatePressStartBanner(START_BANNER_X, 108);
+        CreatePressStartBanner(START_BANNER_X, START_BANNER_Y);
         CreateCopyrightBanner(START_BANNER_X, 148);
         m4aSongNumStart(MUS_TITLE);
         gTasks[taskId].tSkipToNext = FALSE;
@@ -862,19 +937,17 @@ static void Task_TitleScreenPhase2(u8 taskId)
     else
     {
         gTasks[taskId].tSkipToNext = TRUE;
-        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
-        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15));
-        SetGpuReg(REG_OFFSET_BLDY, 0);
         SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
                                     | DISPCNT_OBJ_1D_MAP
                                     | DISPCNT_BG0_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 108);
+        CreatePressStartBanner(START_BANNER_X, START_BANNER_Y);
         CreateCopyrightBanner(START_BANNER_X, 148);
         if (QUICKSTART && QUICKSTART_HUD)
             CreateQuickstartHud();
         gTasks[taskId].tBg1Y = 0;
+        StartTitleAtmosphere();
         gTasks[taskId].func = Task_TitleScreenPhase3;
     }
 
@@ -931,7 +1004,17 @@ static void Task_TitleScreenPhase3(u8 taskId)
             gBattle_BG1_Y = gTasks[taskId].tBg1Y / 2;
             gBattle_BG1_X = 0;
         }
-        // Rayquazas Markierungsfarbe gibt es auf dem neuen Titelbild nicht mehr.
+        if (!sTitleAtmosphereOn && gTasks[taskId].tCounter == 70)
+        {
+            // Nach dem Slam erst das Banner einblenden, dann Nebel und Glanz.
+            gTasks[taskId].tSkipToNext = TRUE;
+            StartTitleAtmosphere();
+        }
+        if (sTitleAtmosphereOn
+         && (gTasks[taskId].tCounter & 0xFF) == 0x50)
+            StartTitleLogoShine();
+        if (!gPaletteFade.active)
+            PulseTitleMood(gTasks[taskId].tCounter);
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
