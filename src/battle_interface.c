@@ -1932,19 +1932,9 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     {
         u32 nameX = IsOnPlayerSide(gSprites[healthboxSpriteId].hMain_Battler) ? 16 : 8;
-        u32 nameWidth = 55;
-        u32 startFont = FONT_SMALL;
-
-        if (NyxthraFlashback_IsActive())
-        {
-            nameX = 2;
-            nameWidth = 60;
-            startFont = FONT_SMALL_NARROW;
-            // Nicht in die rechte Sprite-Hälfte schreiben, dort liegt Lv.
-            gSprites[healthboxSpriteId].data[1] = SPRITE_NONE;
-        }
-
-        u32 fontId = GetFontIdToFit(gDisplayedStringBattle, startFont, 0, nameWidth);
+        // Nur so viel Breite, dass der Name in der linken 64px-Box bleibt.
+        u32 nameWidth = 63 - nameX;
+        u32 fontId = GetFontIdToFit(gDisplayedStringBattle, FONT_SMALL, 0, nameWidth);
         FillSpriteRectColor(healthboxSpriteId, nameX, 5, nameWidth, 11, HEALTHBOX_BG_INDEX);
         AddSpriteTextPrinterParameterized6(healthboxSpriteId, fontId, nameX, 3, 0, 0, *nameColor, 0, gDisplayedStringBattle);
     }

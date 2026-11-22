@@ -30,10 +30,13 @@
 #include "nyxthra_flashback.h"
 #include "pokemon.h"
 #include "battle.h"
+#include "battle_main.h"
 #include "sprite.h"
 #include "battle_scripts.h"
 #include "battle_util.h"
 #include "battle_interface.h"
+#include "battle_gfx_sfx_util.h"
+#include "battle_anim.h"
 #include "battle_setup.h"
 #include "constants/moves.h"
 #include "constants/species.h"
@@ -125,9 +128,6 @@ static EWRAM_DATA u8 sFlashbackSkipState = 0;
 #define FLASHBACK_SKIP_FADEIN  2
 #define FLASHBACK_SKIP_SWITCH  3
 
-static const u8 sText_NickKleinstein[] = _("KLEINSTEIN");
-static const u8 sText_NickNasgnet[] = _("NASGNET");
-
 static void Flashback_GiveMoves(struct Pokemon *mon, u16 m0, u16 m1, u16 m2, u16 m3)
 {
     SetMonMoveSlot(mon, m0, 0);
@@ -181,16 +181,13 @@ static void Flashback_CreateVanillaRoxanneParty(void)
 
     CreateMonWithIVs(&party[0], SPECIES_GEODUDE, 12, 0, OTID_STRUCT_RANDOM_NO_SHINY, 12);
     Flashback_GiveMoves(&party[0], MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB);
-    SetMonData(&party[0], MON_DATA_NICKNAME, sText_NickKleinstein);
 
     CreateMonWithIVs(&party[1], SPECIES_GEODUDE, 12, 0, OTID_STRUCT_RANDOM_NO_SHINY, 12);
     Flashback_GiveMoves(&party[1], MOVE_TACKLE, MOVE_DEFENSE_CURL, MOVE_ROCK_THROW, MOVE_ROCK_TOMB);
-    SetMonData(&party[1], MON_DATA_NICKNAME, sText_NickKleinstein);
 
     CreateMonWithIVs(&party[2], SPECIES_NOSEPASS, 15, 0, OTID_STRUCT_RANDOM_NO_SHINY, 24);
     Flashback_GiveMoves(&party[2], MOVE_BLOCK, MOVE_HARDEN, MOVE_TACKLE, MOVE_ROCK_TOMB);
     SetMonData(&party[2], MON_DATA_HELD_ITEM, &item);
-    SetMonData(&party[2], MON_DATA_NICKNAME, sText_NickNasgnet);
 
     gPartiesCount[B_TRAINER_OPPONENT_A] = 3;
 }
@@ -527,7 +524,6 @@ void NyxthraFlashback_OnTrainerPartyCreated(void)
             ZeroMonData(&party[i]);
         CreateMonWithIVs(&party[0], SPECIES_NOSEPASS, 15, 0, OTID_STRUCT_RANDOM_NO_SHINY, 24);
         Flashback_GiveMoves(&party[0], MOVE_BLOCK, MOVE_HARDEN, MOVE_TACKLE, MOVE_ROCK_TOMB);
-        SetMonData(&party[0], MON_DATA_NICKNAME, sText_NickNasgnet);
         // Wenig KP, keine Beere: eine Aquaknarre soll den Kampf beenden.
         {
             u16 hp = 8;
@@ -645,6 +641,34 @@ void NyxthraFlashback_OnBattleEnded(void)
 }
 
 
+static void Flashback_ShowOpponentMon(enum BattlerId battler)
+{
+    struct Pokemon *mon = GetBattlerMon(battler);
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+    u8 y;
+
+    if (gBattlerSpriteIds[battler] < MAX_SPRITES && gSprites[gBattlerSpriteIds[battler]].inUse)
+    {
+        FreeSpriteOamMatrix(&gSprites[gBattlerSpriteIds[battler]]);
+        DestroySprite(&gSprites[gBattlerSpriteIds[battler]]);
+    }
+
+    BattleLoadMonSpriteGfx(mon, battler);
+    y = GetBattlerSpriteDefault_Y(battler);
+    SetMultiuseSpriteTemplateToPokemon(species, GetBattlerPosition(battler));
+    gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate,
+                                              GetBattlerSpriteCoord(battler, BATTLER_COORD_X_2),
+                                              y,
+                                              GetBattlerSpriteSubpriority(battler));
+    gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
+    gSprites[gBattlerSpriteIds[battler]].data[2] = species;
+    gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+    gSprites[gBattlerSpriteIds[battler]].x2 = 0;
+    gSprites[gBattlerSpriteIds[battler]].invisible = FALSE;
+    StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
+    SetBattlerShadowSpriteCallback(battler, species);
+}
+
 static void Flashback_ApplyTimeSkipState(void)
 {
     enum BattlerId player = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
@@ -652,10 +676,12 @@ static void Flashback_ApplyTimeSkipState(void)
     struct Pokemon *oppParty = gParties[B_TRAINER_OPPONENT_A];
     struct Pokemon *playerMon = &gParties[B_TRAINER_PLAYER][gBattlerPartyIndexes[player]];
     u32 i;
+    u32 nasgnetSlot = PARTY_SIZE;
     u16 hp;
     u16 noItem = ITEM_NONE;
 
-    // Beide Kleinstein sind im Zeitsprung besiegt, Nasgnet bleibt mit wenig KP.
+    // Im Schwarzen: beide Kleinstein sind besiegt, Nasgnet steht bereits
+    // auf dem Feld, Moorabbel ist angeschlagen. Kein Austausch-Text.
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u16 species = GetMonData(&oppParty[i], MON_DATA_SPECIES);
@@ -669,42 +695,32 @@ static void Flashback_ApplyTimeSkipState(void)
             hp = 8;
             SetMonData(&oppParty[i], MON_DATA_HP, &hp);
             SetMonData(&oppParty[i], MON_DATA_HELD_ITEM, &noItem);
+            nasgnetSlot = i;
         }
     }
 
-    gBattleMons[opp].hp = 0;
-    gHitMarker |= HITMARKER_FAINTED(opp);
+    if (nasgnetSlot < PARTY_SIZE)
+    {
+        struct Volatiles emptyVolatiles = {0};
+
+        gBattlerPartyIndexes[opp] = nasgnetSlot;
+        gBattleStruct->monToSwitchIntoId[opp] = nasgnetSlot;
+        PokemonToBattleMon(&oppParty[nasgnetSlot], &gBattleMons[opp]);
+        SwitchInClearSetData(opp, &emptyVolatiles);
+        gHitMarker &= ~HITMARKER_FAINTED(opp);
+        Flashback_ShowOpponentMon(opp);
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[opp], &oppParty[nasgnetSlot], HEALTHBOX_ALL);
+        SetHealthboxSpriteVisible(gHealthboxSpriteIds[opp]);
+    }
 
     Flashback_SetCurrentHpFraction(playerMon, 1, 3);
     gBattleMons[player].hp = GetMonData(playerMon, MON_DATA_HP);
     UpdateHealthboxAttribute(gHealthboxSpriteIds[player], playerMon, HEALTHBOX_ALL);
 
-    // Kleinstein nicht mehr sichtbar, wenn wir wieder einblenden.
-    if (gBattlerSpriteIds[opp] != 0xFF)
-        gSprites[gBattlerSpriteIds[opp]].invisible = TRUE;
-    if (gHealthboxSpriteIds[opp] != 0xFF)
-        gSprites[gHealthboxSpriteIds[opp]].invisible = TRUE;
-}
-
-static void Flashback_StartNasgnetSwitchIn(void)
-{
-    enum BattlerId opp = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-
-    gBattlerFainted = gBattlerTarget = opp;
-    gHitMarker |= HITMARKER_FAINTED(opp);
-    gBattleOutcome = 0;
-    gBattleScripting.battleStyle = OPTIONS_BATTLE_STYLE_SET;
-    gBattleControllerExecFlags = 0;
     sFlashbackBattlePhase = FLASHBACK_BATTLE_FINISH;
-    {
-        enum BattlerId i;
-        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
-        {
-            if (!IsOnPlayerSide(i))
-                gChosenActionByBattler[i] = B_ACTION_FINISHED;
-        }
-    }
-    BattleScriptExecute(BattleScript_HandleFaintedMon);
+    sFlashbackCountThisMenu = TRUE;
+    sFlashbackAutoTimer = 0;
+    gBattleOutcome = 0;
 }
 
 void NyxthraFlashback_BeginTimeSkip(void)
@@ -773,7 +789,6 @@ void NyxthraFlashback_ProcessBattleInput(void)
         if (!gPaletteFade.active)
         {
             sFlashbackSkipState = FLASHBACK_SKIP_NONE;
-            Flashback_StartNasgnetSwitchIn();
         }
         return;
     }
