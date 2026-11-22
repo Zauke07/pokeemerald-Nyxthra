@@ -1497,7 +1497,10 @@ static void Cmd_printstring(void)
         u16 id = (cmd->id == 0 ? gBattleScripting.savedStringId : cmd->id);
 
         gBattlescriptCurrInstr = cmd->nextInstr;
-        if (NyxthraFlashback_IsActive() && id == STRINGID_PLAYERGOTMONEY)
+        if (NyxthraFlashback_IsActive()
+         && (id == STRINGID_PLAYERGOTMONEY
+          || id == STRINGID_PKMNGAINEDEXP
+          || id == STRINGID_TEAMGAINEDEXP))
             return;
         PrepareStringBattleWithWait(id, gBattlerAttacker);
     }
@@ -2181,7 +2184,8 @@ static void Cmd_getexp(void)
     case 0: // check if should receive exp at all
         if (IsOnPlayerSide(gBattlerFainted)
             || IsAiVsAiBattle()
-            || !BattleTypeAllowsExp())
+            || !BattleTypeAllowsExp()
+            || NyxthraFlashback_IsActive())
         {
             gBattleScripting.getexpState = 6; // goto last case
         }

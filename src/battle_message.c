@@ -9,6 +9,7 @@
 #include "battle_special.h"
 #include "battle_z_move.h"
 #include "data.h"
+#include "nyxthra_flashback.h"
 #include "event_data.h"
 #include "frontier_util.h"
 #include "graphics.h"
@@ -3034,6 +3035,13 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
             toCpy = GetExpandedPlaceholder(PLACEHOLDER_ID_RIVAL);
         else
             toCpy = GetTrainerNameFromId(trainerId);
+    }
+
+    if (NyxthraFlashback_IsActive())
+    {
+        const u8 *override = NyxthraFlashback_GetTrainerNameOverride();
+        if (override != NULL)
+            toCpy = override;
     }
 
     assertf(DoesStringProperlyTerminate(toCpy, TRAINER_NAME_LENGTH + 1),"Opponent needs a valid name")

@@ -16,6 +16,7 @@
 #include "main.h"
 #include "menu.h"
 #include "overworld.h"
+#include "nyxthra_flashback.h"
 #include "palette.h"
 #include "pokedex.h"
 #include "pokemon.h"
@@ -532,6 +533,8 @@ void TradeEvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, u8 pr
 
 static void CB2_EvolutionSceneUpdate(void)
 {
+    if (NyxthraFlashback_IsActive())
+        NyxthraFlashback_ProcessInput();
     AnimateSprites();
     BuildOamBuffer();
     RunTextPrinters();

@@ -1,6 +1,8 @@
 #ifndef GUARD_NYXTHRA_FLASHBACK_H
 #define GUARD_NYXTHRA_FLASHBACK_H
 
+#include "constants/nyxthra_flashback.h"
+
 // Traum-Rückblick 2005: echte In-Game-Clips nach dem Randomizer
 // und vor Prof. Birks Ansprache. Start überspringt alles.
 // Der Spielstand des neuen Spiels bleibt danach unberührt.
@@ -32,5 +34,8 @@ void NyxthraFlashback_BeginTimeSkip(void);
 bool8 NyxthraFlashback_IsTimeSkipping(void);
 void NyxthraFlashback_NotePlayerActionMenu(void);
 void NyxthraFlashback_ProcessBattleInput(void);
+void NyxthraFlashback_BeginEvolution(void);
+void NyxthraFlashback_RequestClip(u8 clip);
+const u8 *NyxthraFlashback_GetTrainerNameOverride(void);
 
 #endif // GUARD_NYXTHRA_FLASHBACK_H

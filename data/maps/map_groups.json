@@ -656,7 +656,19 @@
     "ScorchedSlabUnderwater",
     "ScorchedSlabUnderwater_2",
     "Flashback_Route101",
-    "Flashback_RustboroGym"
+    "Flashback_RustboroGym",
+    "Flashback_LavaridgeGym",
+    "Flashback_SootopolisGym",
+    "Flashback_MagmaHideout",
+    "Flashback_SeafloorCavern",
+    "Flashback_PhoebesRoom",
+    "Flashback_ChampionsRoom",
+    "Flashback_TerraCave",
+    "Flashback_MarineCave",
+    "Flashback_SkyPillar",
+    "Flashback_DesertRuins",
+    "Flashback_IslandCave",
+    "Flashback_AncientTomb"
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",
