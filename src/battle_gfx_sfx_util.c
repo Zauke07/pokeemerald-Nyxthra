@@ -13,6 +13,7 @@
 #include "random.h"
 #include "util.h"
 #include "pokemon.h"
+#include "nyxthra_forms.h"
 #include "constants/moves.h"
 #include "task.h"
 #include "sprite.h"
@@ -634,7 +635,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     if (GetMonData(mon, MON_DATA_IS_EGG) || GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NONE) // Don't load GFX of egg Pokémon.
         return;
 
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    isShiny = GetMonPaletteVariant(mon);
     species = GetMonData(mon, MON_DATA_SPECIES);
     personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
 
@@ -944,7 +945,7 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
         else
         {
             personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
-            isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
+            isShiny = GetMonPaletteVariant(monAtk);
         }
         HandleLoadSpecialPokePic(!IsOnPlayerSide(battlerAtk),
                                  gMonSpritesGfxPtr->spritesGfx[position],

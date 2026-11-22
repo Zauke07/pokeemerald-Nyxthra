@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
@@ -2167,7 +2168,7 @@ void TryShinyAnimation(enum BattlerId battler, struct Pokemon *mon)
     u8 taskCirc, taskDgnl;
     struct Pokemon* illusionMon;
 
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    isShiny = GetMonData(mon, MON_DATA_IS_SHINY) || Nyxthra_IsMonNyxthra(mon); // Nyxthra funkelt auch
     gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = TRUE;
     illusionMon = GetIllusionMonPtr(battler);
     if (illusionMon != NULL)

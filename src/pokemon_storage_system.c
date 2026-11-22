@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "malloc.h"
 #include "bg.h"
 #include "data.h"
@@ -7022,7 +7023,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
         sStorage->displayMonSpecies = GetBoxMonData(pokemon, MON_DATA_SPECIES);
         if (sStorage->displayMonSpecies != SPECIES_NONE)
         {
-            bool32 isShiny = GetBoxMonData(boxMon, MON_DATA_IS_SHINY);
+            u32 isShiny = GetBoxMonPaletteVariant(boxMon);
             sanityIsBadEgg = GetBoxMonData(boxMon, MON_DATA_SANITY_IS_BAD_EGG);
             if (sanityIsBadEgg)
                 sStorage->displayMonIsEgg = TRUE;
@@ -10049,7 +10050,7 @@ static void TilemapUtil_Draw(u8 id)
 void UpdateSpeciesSpritePSS(struct BoxPokemon *boxMon)
 {
     enum Species species = GetBoxMonData(boxMon, MON_DATA_SPECIES);
-    bool32 isShiny = GetBoxMonData(boxMon, MON_DATA_IS_SHINY);
+    u32 isShiny = GetBoxMonPaletteVariant(boxMon);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY);
     bool32 isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG);
 

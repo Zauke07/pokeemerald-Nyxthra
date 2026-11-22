@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_ai_record.h"
@@ -99,6 +100,9 @@ static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} erschei
 static const u8 sText_WildPkmnAppeared[] = _("Ein wildes {B_OPPONENT_MON1_NAME} taucht auf!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("Das legendäre {B_OPPONENT_MON1_NAME} taucht auf!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("Ein wildes {B_OPPONENT_MON1_NAME} taucht auf!{PAUSE 127}");
+static const u8 sText_WildNyxthraPkmnAppeared[] = _("Ein wildes {B_OPPONENT_MON1_NAME} taucht auf!\pEine Nyxthra-Form erscheint!\p");
+static const u8 sText_LegendaryNyxthraPkmnAppeared[] = _("Das legendäre {B_OPPONENT_MON1_NAME} taucht auf!\pEine Nyxthra-Form erscheint!\p");
+static const u8 sText_TwoWildNyxthraPkmnAppeared[] = _("Oh! Ein wildes {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} erscheinen!\pEine Nyxthra-Form erscheint!\p");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! Ein wildes {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} erscheinen!\p");
 
 // Neue Texte für die Lavandia-Geister (aus Update, übersetzt)
@@ -2555,6 +2559,17 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                 stringPtr = sText_GhostAppearedCantId;
             else if (gBattleTypeFlags & BATTLE_TYPE_GHOST)
                 stringPtr = sText_TheGhostAppeared;
+            else if (Nyxthra_AnyOpponentIsNyxthra())
+            {
+                // Nyxthra-Form: eigene Meldung und im Pokédex als gesehen merken
+                Nyxthra_MarkOpponentsSeen();
+                if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
+                    stringPtr = sText_LegendaryNyxthraPkmnAppeared;
+                else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
+                    stringPtr = sText_TwoWildNyxthraPkmnAppeared;
+                else
+                    stringPtr = sText_WildNyxthraPkmnAppeared;
+            }
             else if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
                 stringPtr = sText_LegendaryPkmnAppeared;
             else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))

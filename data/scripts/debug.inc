@@ -335,6 +335,32 @@ Debug_ShowNyxthraVersion::
 	release
 	end
 
+Debug_NyxthraForceNext::
+	callnative Nyxthra_DebugForceNext
+	playse SE_SHINY
+	msgbox Debug_Text_NyxthraForceNext, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_Text_NyxthraForceNext:
+	.string "Die nächste passende Begegnung wird\neine Nyxthra-Form.$"
+
+@ Testkampf wie in der Meereshöhle, mit erzwungener Nyxthra-Form
+@ und einem Meisterball zum Fangen.
+Debug_NyxthraTestKyogre::
+	lockall
+	additem ITEM_MASTER_BALL, 1
+	callnative Nyxthra_DebugForceNext
+	setwildbattle SPECIES_KYOGRE, 70
+	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	releaseall
+	end
+
 Debug_ExpansionVersion:
 	.string "pokeemerald-expansion {STR_VAR_1}$"
 

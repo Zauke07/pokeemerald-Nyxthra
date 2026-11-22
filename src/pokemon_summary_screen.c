@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "main.h"
 #include "battle.h"
 #include "battle_anim.h"
@@ -138,7 +139,8 @@ static EWRAM_DATA struct PokemonSummaryScreenData
             enum Species species2; // 0x2
             u8 isEgg:1; // 0x4
             u8 isShiny:1;
-            u8 padding:6;
+            u8 isNyxthra:1;
+            u8 padding:5;
             u8 level; // 0x5
             u8 ribbonCount; // 0x6
             u8 ailment; // 0x7
@@ -1615,6 +1617,7 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
         sum->teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
         sum->isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+        sum->isNyxthra = Nyxthra_IsMonNyxthra(mon);
         return TRUE;
     }
     sMonSummaryScreen->switchCounter++;
@@ -4656,7 +4659,7 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
         (*state)++;
         return 0xFF;
     case 1:
-        LoadSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonalityIsEgg(summary->species, summary->isShiny, summary->pid, summary->isEgg), summary->species2);
+        LoadSpritePaletteWithTag(GetMonSpritePalFromSpeciesAndPersonalityIsEgg(summary->species, summary->isNyxthra ? NYXTHRA_PAL_VARIANT : summary->isShiny, summary->pid, summary->isEgg), summary->species2);
         SetMultiuseSpriteTemplateToPokemon(summary->species2, B_POSITION_OPPONENT_LEFT);
         (*state)++;
         return 0xFF;

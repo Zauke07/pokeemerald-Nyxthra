@@ -38,6 +38,7 @@
 #include "pokedex.h"
 #include "pokeblock.h"
 #include "pokemon.h"
+#include "nyxthra_forms.h"
 #include "pokemon_animation.h"
 #include "pokemon_icon.h"
 #include "randomizer.h"
@@ -977,6 +978,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, enum Species species, u8 level, u32
     u32 value;
     u16 checksum;
     bool32 isShiny;
+    bool32 playerIsOT = FALSE;
 
     ZeroBoxMonData(boxMon);
     // Determine original trainer ID
@@ -994,6 +996,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, enum Species species, u8 level, u32
     {
         value = READ_OTID_FROM_SAVE;
         isShiny = ComputePlayerShinyOdds(personality, value);
+        playerIsOT = TRUE;
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
@@ -1008,6 +1011,12 @@ void CreateBoxMon(struct BoxPokemon *boxMon, enum Species species, u8 level, u32
     SetBoxMonData(boxMon, MON_DATA_LANGUAGE, &gGameLanguage);
     SetBoxMonData(boxMon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetBoxMonData(boxMon, MON_DATA_SPECIES, &species);
+    // Nyxthra-Form: nur bei wilden/geschenkten Pokémon (Spieler ist OT)
+    if (playerIsOT && Nyxthra_RollForSpecies(species))
+    {
+        u8 isNyxthra = TRUE;
+        SetBoxMonData(boxMon, MON_DATA_IS_NYXTHRA, &isNyxthra);
+    }
     {
         u32 targetExp;
         u8 lvl = level > MAX_LEVEL ? MAX_LEVEL : level;
@@ -2532,6 +2541,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = (shinyValue < SHINY_ODDS) ^ boxMon->shinyModifier;
             break;
         }
+        case MON_DATA_IS_NYXTHRA:
+            retVal = boxMon->isNyxthra;
+            break;
         case MON_DATA_HIDDEN_NATURE:
         {
             u32 nature = GetNatureFromPersonality(boxMon->personality);
@@ -2963,6 +2975,13 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             bool32 isShiny;
             SET8(isShiny);
             boxMon->shinyModifier = (shinyValue < SHINY_ODDS) ^ isShiny;
+            break;
+        }
+        case MON_DATA_IS_NYXTHRA:
+        {
+            u8 isNyxthra;
+            SET8(isNyxthra);
+            boxMon->isNyxthra = (isNyxthra != 0);
             break;
         }
         case MON_DATA_HIDDEN_NATURE:
@@ -5380,7 +5399,7 @@ static void Task_PlayMapChosenOrBattleBGM(u8 taskId)
 const u16 *GetMonFrontSpritePal(struct Pokemon *mon)
 {
     enum Species species = GetMonData(mon, MON_DATA_SPECIES);
-    bool32 isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    u32 isShiny = GetMonPaletteVariant(mon);
     u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
     bool32 isEgg = GetMonData(mon, MON_DATA_IS_EGG);
     return GetMonSpritePalFromSpeciesAndPersonalityIsEgg(species, isShiny, personality, isEgg);
@@ -5407,6 +5426,14 @@ const u16 *GetMonSpritePalFromSpeciesIsEgg(enum Species species, bool32 isShiny,
     u16 candidate;
 
     species = SanitizeSpeciesId(species);
+
+    if (isShiny == NYXTHRA_PAL_VARIANT)
+    {
+        const u16 *nyxthraPal = isEgg ? NULL : Nyxthra_GetPalette(species);
+        if (nyxthraPal != NULL)
+            return nyxthraPal;
+        isShiny = FALSE;
+    }
 
     if (!isEgg)
     {
@@ -6950,6 +6977,8 @@ u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot)
 {
     u32 sentToPc;
     u32 i = 0;
+    if (Nyxthra_IsMonNyxthra(mon))
+        Nyxthra_SetSeen(GetMonData(mon, MON_DATA_SPECIES));
     if (slot < PARTY_SIZE)
     {
         CopyMon(&gParties[B_TRAINER_PLAYER][slot], mon, sizeof(struct Pokemon));

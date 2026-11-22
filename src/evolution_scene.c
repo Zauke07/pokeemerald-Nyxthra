@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "malloc.h"
 #include "battle.h"
 #include "battle_message.h"
@@ -259,7 +260,7 @@ void EvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, bool32 can
 
     // preEvo sprite
     currSpecies = GetMonData(mon, MON_DATA_SPECIES);
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    isShiny = GetMonData(mon, MON_DATA_IS_NYXTHRA) ? NYXTHRA_PAL_VARIANT : GetMonData(mon, MON_DATA_IS_SHINY);
     personality = GetMonData(mon, MON_DATA_PERSONALITY);
     LoadSpecialPokePic(gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_LEFT],
                         currSpecies,
@@ -319,7 +320,7 @@ static void CB2_EvolutionSceneLoadGraphics(void)
     bool32 isShiny;
 
     postEvoSpecies = gTasks[sEvoStructPtr->evoTaskId].tPostEvoSpecies;
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    isShiny = GetMonData(mon, MON_DATA_IS_NYXTHRA) ? NYXTHRA_PAL_VARIANT : GetMonData(mon, MON_DATA_IS_SHINY);
     personality = GetMonData(mon, MON_DATA_PERSONALITY);
 
     SetHBlankCallback(NULL);
@@ -425,7 +426,7 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
         break;
     case 4:
         {
-            bool8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+            u32 isShiny = GetMonData(mon, MON_DATA_IS_NYXTHRA) ? NYXTHRA_PAL_VARIANT : GetMonData(mon, MON_DATA_IS_SHINY);
             u32 personality = GetMonData(mon, MON_DATA_PERSONALITY);
             LoadSpecialPokePic(gMonSpritesGfxPtr->spritesGfx[B_POSITION_OPPONENT_RIGHT],
                                 postEvoSpecies,
@@ -486,7 +487,7 @@ void TradeEvolutionScene(struct Pokemon *mon, enum Species postEvoSpecies, u8 pr
     // preEvo sprite
     currSpecies = GetMonData(mon, MON_DATA_SPECIES);
     personality = GetMonData(mon, MON_DATA_PERSONALITY);
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    isShiny = GetMonData(mon, MON_DATA_IS_NYXTHRA) ? NYXTHRA_PAL_VARIANT : GetMonData(mon, MON_DATA_IS_SHINY);
 
     sEvoStructPtr = AllocZeroed(sizeof(struct EvoInfo));
     sEvoStructPtr->preEvoSpriteId = preEvoSpriteId;

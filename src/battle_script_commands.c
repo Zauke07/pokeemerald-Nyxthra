@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "battle.h"
 #include "nyxthra_flashback.h"
 #include "battle_hold_effects.h"
@@ -8548,7 +8549,7 @@ static void Cmd_displaydexinfo(void)
         {
             CloseMainBattleScreen();
             gBattleCommunication[TASK_ID] = DisplayCaughtMonDexPage(species,
-                                                                    GetMonData(mon, MON_DATA_IS_SHINY),
+                                                                    GetMonPaletteVariant(mon),
                                                                     GetMonData(mon, MON_DATA_PERSONALITY));
             gBattleCommunication[0]++;
         }

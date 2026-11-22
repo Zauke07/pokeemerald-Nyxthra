@@ -698,22 +698,22 @@
 #define FLAG_UNUSED_0x27D  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27E  0x27E // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
-#define FLAG_UNUSED_0x280  0x280 // Unused Flag
-#define FLAG_UNUSED_0x281  0x281 // Unused Flag
-#define FLAG_UNUSED_0x282  0x282 // Unused Flag
-#define FLAG_UNUSED_0x283  0x283 // Unused Flag
-#define FLAG_UNUSED_0x284  0x284 // Unused Flag
-#define FLAG_UNUSED_0x285  0x285 // Unused Flag
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
+#define FLAG_NYXTHRA_SEEN_00  0x280 // Nyxthra-Form im Pokédex gesehen (Slot 0)
+#define FLAG_NYXTHRA_SEEN_01  0x281 // Nyxthra-Form im Pokédex gesehen (Slot 1)
+#define FLAG_NYXTHRA_SEEN_02  0x282 // Nyxthra-Form im Pokédex gesehen (Slot 2)
+#define FLAG_NYXTHRA_SEEN_03  0x283 // Nyxthra-Form im Pokédex gesehen (Slot 3)
+#define FLAG_NYXTHRA_SEEN_04  0x284 // Nyxthra-Form im Pokédex gesehen (Slot 4)
+#define FLAG_NYXTHRA_SEEN_05  0x285 // Nyxthra-Form im Pokédex gesehen (Slot 5)
+#define FLAG_NYXTHRA_SEEN_06  0x286 // Nyxthra-Form im Pokédex gesehen (Slot 6)
+#define FLAG_NYXTHRA_SEEN_07  0x287 // Nyxthra-Form im Pokédex gesehen (Slot 7)
+#define FLAG_NYXTHRA_SEEN_08  0x288 // Nyxthra-Form im Pokédex gesehen (Slot 8)
+#define FLAG_NYXTHRA_SEEN_09  0x289 // Nyxthra-Form im Pokédex gesehen (Slot 9)
+#define FLAG_NYXTHRA_SEEN_10  0x28A // Nyxthra-Form im Pokédex gesehen (Slot 10)
+#define FLAG_NYXTHRA_SEEN_11  0x28B // Nyxthra-Form im Pokédex gesehen (Slot 11)
+#define FLAG_NYXTHRA_SEEN_12  0x28C // Nyxthra-Form im Pokédex gesehen (Slot 12)
+#define FLAG_NYXTHRA_SEEN_13  0x28D // Nyxthra-Form im Pokédex gesehen (Slot 13)
+#define FLAG_NYXTHRA_SEEN_14  0x28E // Nyxthra-Form im Pokédex gesehen (Slot 14)
+#define FLAG_NYXTHRA_SEEN_15  0x28F // Nyxthra-Form im Pokédex gesehen (Slot 15)
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag
 #define FLAG_UNUSED_0x291  0x291 // Unused Flag
 #define FLAG_UNUSED_0x292  0x292 // Unused Flag

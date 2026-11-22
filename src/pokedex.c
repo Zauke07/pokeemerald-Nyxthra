@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "battle_main.h"
 #include "battle_script_commands.h"
 #include "assertf.h"
@@ -729,7 +730,7 @@ static const u8 sText_UnkHeight[] = _("{CLEAR_TO 12}??'??”");
 static const u8 sText_UnkHeightMetric[] = _("???.? m");
 static const u8 sText_UnkWeight[] = _("????.? lbs.");
 static const u8 sText_UnkWeightMetric[] = _("???.? kg.");
-static const u8 sText_PokedexRegistration[] = _("POKéDEX registration completed.");
+static const u8 sText_PokedexRegistration[] = _("Neuer Eintrag im Pokédex!");
 static const u8 sText_HTHeight[] = _("HT");
 static const u8 sText_WTWeight[] = _("WT");
 static const u8 sText_SearchingPleaseWait[] = _("Searching…\nPlease wait.");
@@ -1413,6 +1414,10 @@ static const u8 sText_FormSuffix_Mega[]    = _(" (Mega)");
 static const u8 sText_FormSuffix_Gmax[]    = _(" (GMAX)");
 static const u8 sText_FormSuffix_Generic[] = _(" (Form)");
 static const u8 sText_FormSwitchHint[] = _("{L_BUTTON}/{R_BUTTON} Form");
+static const u8 sText_NyxthraShowHint[] = _("{SELECT_BUTTON} Nyxthra");
+static const u8 sText_NyxthraHideHint[] = _("{SELECT_BUTTON} Normal");
+// Art, deren Nyxthra-Form auf der Infoseite gerade gezeigt wird (0 = keine)
+static EWRAM_DATA u16 sDexNyxthraSpecies = 0;
 
 // .text
 
@@ -3158,8 +3163,11 @@ static u16 GetPokemonSpriteToDisplay(u16 index)
 
 static u16 CreateMonSpriteFromSpecies(u16 species, s16 x, s16 y, u16 paletteSlot)
 {
+    u32 palVariant;
+
     species = SanitizeSpeciesId(species);
-    return CreateMonPicSprite(species, FALSE, GetPokedexMonPersonality(species), TRUE, x, y, paletteSlot, TAG_NONE);
+    palVariant = (species == sDexNyxthraSpecies && Nyxthra_IsSeen(species)) ? NYXTHRA_PAL_VARIANT : FALSE;
+    return CreateMonPicSprite(species, palVariant, GetPokedexMonPersonality(species), TRUE, x, y, paletteSlot, TAG_NONE);
 }
 
 static bool32 IsValidSpriteId(u16 spriteId)
@@ -3722,6 +3730,7 @@ static u8 LoadInfoScreen(struct PokedexListItem *item, u8 monSpriteId)
     u8 taskId;
 
     sPokedexListItem = item;
+    sDexNyxthraSpecies = 0;
     if (!IsDexSpeciesInEntry(sPokedexView->displaySpecies, item))
         ResetDisplayedDexSpecies();
 
@@ -3768,6 +3777,7 @@ static bool8 IsInfoScreenScrolling(u8 taskId)
 static u8 StartInfoScreenScroll(struct PokedexListItem *item, u8 taskId)
 {
     sPokedexListItem = item;
+    sDexNyxthraSpecies = 0;
     if (!IsDexSpeciesInEntry(sPokedexView->displaySpecies, item))
         ResetDisplayedDexSpecies();
     gTasks[taskId].tScrolling = TRUE;
@@ -4029,6 +4039,16 @@ void Task_HandleInfoScreenInput(u8 taskId)
         }
         return;
     }
+    // Nyxthra-Form (nur wenn schon einmal gesehen) mit SELECT ein-/ausblenden
+    if (JOY_NEW(SELECT_BUTTON) && !isCryPlaying && Nyxthra_IsSeen(GetSafeInfoDisplaySpecies()))
+    {
+        u16 species = GetSafeInfoDisplaySpecies();
+        sDexNyxthraSpecies = (sDexNyxthraSpecies == species) ? 0 : species;
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        gTasks[taskId].func = Task_ReloadInfoScreenFormWaitFadeOut;
+        PlaySE(SE_DEX_PAGE);
+        return;
+    }
     if (canCycleForms && JOY_NEW(L_BUTTON) && !isCryPlaying && TryCycleDisplayedDexForm(TRUE))
     {
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
@@ -4169,6 +4189,7 @@ static void Task_ExitInfoScreen(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        sDexNyxthraSpecies = 0;
         if (IsValidSpriteId(gTasks[taskId].tMonSpriteId))
             FreeAndDestroyMonPicSprite(gTasks[taskId].tMonSpriteId);
         gTasks[taskId].tMonSpriteId = SPRITE_NONE;
@@ -5003,7 +5024,8 @@ static void Task_DisplayCaughtMonDexPage(u8 taskId)
         // We're using a different mon sprite creation method, because we don't have enough memory to safely use CreateMonPicSprite.
         spriteId = Pokedex_CreateCaughtMonSprite(species, MON_PAGE_X, MON_PAGE_Y);
         gTasks[taskId].tCaughtMonSpriteId = spriteId;
-        LoadDexMonPalette(taskId, FALSE);
+        // Nyxthra-Formen zeigt der Pokédex direkt in ihren Farben
+        LoadDexMonPalette(taskId, gTasks[taskId].tIsShiny == NYXTHRA_PAL_VARIANT ? NYXTHRA_PAL_VARIANT : FALSE);
         gSprites[spriteId].oam.priority = 0;
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
         SetVBlankCallback(gPokedexVBlankCB);
@@ -5182,6 +5204,8 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
 
     if (CanCycleDisplayedDexForm())
         PrintInfoScreenText(sText_FormSwitchHint, 175, 15);
+    if (!newEntry && species != SPECIES_NONE && Nyxthra_IsSeen(species))
+        PrintInfoScreenText(sDexNyxthraSpecies == species ? sText_NyxthraHideHint : sText_NyxthraShowHint, 164, 143);
 }
 
 void PrintMonMeasurements(enum Species species, u32 owned)
