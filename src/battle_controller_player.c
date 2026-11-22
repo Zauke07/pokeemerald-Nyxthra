@@ -246,6 +246,15 @@ static void HandleInputChooseAction(enum BattlerId battler)
             NyxthraFlashback_Finish();
             return;
         }
+        if (NyxthraFlashback_TakeInstantAction())
+        {
+            // Im Schwarzen nach dem Zeitsprung: sofort angreifen, ohne Menü.
+            TryHideLastUsedBall();
+            gActionSelectionCursor[battler] = 0;
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_USE_MOVE, 0);
+            BtlController_Complete(battler);
+            return;
+        }
         if (NyxthraFlashback_IsTimeSkipping())
             return;
         NyxthraFlashback_NotePlayerActionMenu();
@@ -727,6 +736,14 @@ void HandleInputChooseMove(enum BattlerId battler)
                 slot = i;
                 break;
             }
+        }
+        if (NyxthraFlashback_TakeInstantMove())
+        {
+            gMoveSelectionCursor[battler] = slot;
+            gMultiUsePlayerCursor = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_EXEC_SCRIPT, slot | (gMultiUsePlayerCursor << 8));
+            BtlController_Complete(battler);
+            return;
         }
         if (NyxthraFlashback_TickAutoInput(25))
         {
@@ -2120,6 +2137,9 @@ static void HandleChooseActionAfterDma3(enum BattlerId battler)
     {
         gBattle_BG0_X = 0;
         gBattle_BG0_Y = DISPLAY_HEIGHT;
+        // Rückblick: Menü, nach dem sofort ausgeblendet wird, gar nicht erst zeigen.
+        if (NyxthraFlashback_WillFadeAtThisMenu())
+            gBattle_BG0_Y = 0;
         if (gBattleStruct->aiDelayTimer != 0)
         {
             if (DEBUG_AI_DELAY_TIMER)

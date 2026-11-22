@@ -118,6 +118,10 @@ static EWRAM_DATA u8 sFlashbackNosepassMenus = 0;
 static EWRAM_DATA u8 sFlashbackBattlePhase = 0;
 static EWRAM_DATA bool8 sFlashbackKeepBlack = 0;
 static EWRAM_DATA u8 sFlashbackSkipState = 0;
+// Nach dem Zeitsprung Aktion und Attacke noch im Schwarzen wählen,
+// damit nach dem Fade kein Kampf-/Attackenmenü aufblitzt.
+static EWRAM_DATA u8 sFlashbackInstantPick = 0;
+static EWRAM_DATA u8 sFlashbackPickWait = 0;
 static EWRAM_DATA bool8 sFlashbackLegendary = FALSE;
 
 #define FLASHBACK_BATTLE_START  1
@@ -127,6 +131,11 @@ static EWRAM_DATA bool8 sFlashbackLegendary = FALSE;
 #define FLASHBACK_SKIP_FADEOUT 1
 #define FLASHBACK_SKIP_FADEIN  2
 #define FLASHBACK_SKIP_SWITCH  3
+#define FLASHBACK_SKIP_PICK    4 // schwarz halten, bis die letzte Attacke gewählt ist
+
+#define FLASHBACK_PICK_NONE    0
+#define FLASHBACK_PICK_ACTION  1
+#define FLASHBACK_PICK_MOVE    2
 
 static void Flashback_SetCurrentHpFraction(struct Pokemon *mon, u32 num, u32 den)
 {
@@ -166,7 +175,9 @@ void NyxthraFlashback_ApplyDreamTint(void)
     if (!sFlashbackActive)
         return;
 
-    if (sFlashbackKeepBlack)
+    // Auch während der Auswahl im Schwarzen (Zeitsprung) schwarz bleiben,
+    // obwohl dabei Sprite-Paletten neu geladen werden.
+    if (sFlashbackKeepBlack || sFlashbackSkipState == FLASHBACK_SKIP_PICK)
     {
         CpuFastFill16(RGB_BLACK, gPlttBufferFaded, PLTT_SIZE);
         return;
@@ -394,6 +405,7 @@ void NyxthraFlashback_Finish(void)
     sFlashbackBattleActive = FALSE;
     sFlashbackKeepBlack = FALSE;
     sFlashbackSkipState = 0;
+    sFlashbackInstantPick = 0;
 
     if (gMain.inBattle)
     {
@@ -552,6 +564,18 @@ bool8 NyxthraFlashback_ShouldAbortBattle(void)
     return FALSE;
 }
 
+bool8 NyxthraFlashback_WillFadeAtThisMenu(void)
+{
+    u32 menus;
+
+    if (!NyxthraFlashback_IsScriptedBattle()
+     || sFlashbackBattlePhase == FLASHBACK_BATTLE_FINISH
+     || sFlashbackSkipState != FLASHBACK_SKIP_NONE)
+        return FALSE;
+    menus = sFlashbackActionMenus + (sFlashbackCountThisMenu ? 1 : 0);
+    return menus > 1;
+}
+
 bool8 NyxthraFlashback_PreventFaint(void)
 {
     return (sFlashbackActive && sFlashbackBattleActive
@@ -621,6 +645,7 @@ void NyxthraFlashback_OnBattleEnded(void)
     sFlashbackBattlePhase = 0;
     sFlashbackCountThisMenu = TRUE;
     sFlashbackSkipState = 0;
+    sFlashbackInstantPick = 0;
     sFlashbackLegendary = FALSE;
 }
 
@@ -803,9 +828,26 @@ void NyxthraFlashback_BeginTimeSkip(void)
         BeginNormalPaletteFade(PALETTES_ALL, 2, 0, 16, RGB_BLACK);
 }
 
+bool8 NyxthraFlashback_TakeInstantAction(void)
+{
+    if (sFlashbackInstantPick != FLASHBACK_PICK_ACTION)
+        return FALSE;
+    sFlashbackInstantPick = FLASHBACK_PICK_MOVE;
+    return TRUE;
+}
+
+bool8 NyxthraFlashback_TakeInstantMove(void)
+{
+    if (sFlashbackInstantPick != FLASHBACK_PICK_MOVE)
+        return FALSE;
+    sFlashbackInstantPick = FLASHBACK_PICK_NONE;
+    return TRUE;
+}
+
 bool8 NyxthraFlashback_IsTimeSkipping(void)
 {
     return (sFlashbackSkipState == FLASHBACK_SKIP_FADEOUT
+         || sFlashbackSkipState == FLASHBACK_SKIP_PICK
          || sFlashbackSkipState == FLASHBACK_SKIP_FADEIN);
 }
 
@@ -838,8 +880,28 @@ void NyxthraFlashback_ProcessBattleInput(void)
         if (!gPaletteFade.active)
         {
             Flashback_ApplyTimeSkipState();
-            sFlashbackSkipState = FLASHBACK_SKIP_FADEIN;
-            BeginNormalPaletteFade(PALETTES_ALL, 2, 16, 0, RGB_BLACK);
+            sFlashbackInstantPick = FLASHBACK_PICK_ACTION;
+            sFlashbackPickWait = 0;
+            sFlashbackSkipState = FLASHBACK_SKIP_PICK;
+        }
+        return;
+    }
+    if (sFlashbackSkipState == FLASHBACK_SKIP_PICK)
+    {
+        // Erst einblenden, wenn Aktion und Attacke im Schwarzen gewählt sind.
+        Flashback_KeepOpponentStatic(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
+        // Danach noch schwarz bleiben, bis „… setzt … ein!“ gedruckt wird,
+        // sonst sieht man beim Einblenden kurz das Attackenmenü.
+        if (sFlashbackInstantPick == FLASHBACK_PICK_NONE)
+        {
+            if (sFlashbackPickWait < 0xFF)
+                sFlashbackPickWait++;
+            if (IsTextPrinterActiveOnWindow(B_WIN_MSG) || sFlashbackPickWait >= 90)
+            {
+                sFlashbackPickWait = 0;
+                sFlashbackSkipState = FLASHBACK_SKIP_FADEIN;
+                BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
+            }
         }
         return;
     }
