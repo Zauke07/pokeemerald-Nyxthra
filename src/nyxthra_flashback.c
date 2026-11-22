@@ -656,6 +656,9 @@ static void Flashback_ShowOpponentMon(enum BattlerId battler)
     BattleLoadMonSpriteGfx(mon, battler);
     y = GetBattlerSpriteDefault_Y(battler);
     SetMultiuseSpriteTemplateToPokemon(species, GetBattlerPosition(battler));
+    // Callback schon vor CreateSprite ersetzen, sonst läuft SpriteCB_WildMon
+    // einmal und startet den Einschub von links.
+    gMultiuseSpriteTemplate.callback = SpriteCallbackDummy;
     gBattlerSpriteIds[battler] = CreateSprite(&gMultiuseSpriteTemplate,
                                               GetBattlerSpriteCoord(battler, BATTLER_COORD_X_2),
                                               y,
@@ -663,10 +666,39 @@ static void Flashback_ShowOpponentMon(enum BattlerId battler)
     gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
     gSprites[gBattlerSpriteIds[battler]].data[2] = species;
     gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+    // Nicht SpriteCB_WildMon: der schiebt das Pokémon nach dem Fade von links rein.
+    gSprites[gBattlerSpriteIds[battler]].callback = SpriteCallbackDummy;
     gSprites[gBattlerSpriteIds[battler]].x2 = 0;
+    gSprites[gBattlerSpriteIds[battler]].y2 = 0;
     gSprites[gBattlerSpriteIds[battler]].invisible = FALSE;
     StartSpriteAnim(&gSprites[gBattlerSpriteIds[battler]], 0);
     SetBattlerShadowSpriteCallback(battler, species);
+}
+
+static void Flashback_PinHealthbox(enum BattlerId battler)
+{
+    u8 box = gHealthboxSpriteIds[battler];
+    struct Sprite *main = &gSprites[box];
+
+    main->x2 = 0;
+    main->y2 = 0;
+    main->callback = SpriteCallbackDummy;
+    main->invisible = FALSE;
+    SetHealthboxSpriteVisible(box);
+}
+
+static void Flashback_KeepOpponentStatic(enum BattlerId battler)
+{
+    u8 spriteId = gBattlerSpriteIds[battler];
+
+    if (spriteId < MAX_SPRITES && gSprites[spriteId].inUse)
+    {
+        gSprites[spriteId].callback = SpriteCallbackDummy;
+        gSprites[spriteId].x2 = 0;
+        gSprites[spriteId].y2 = 0;
+        gSprites[spriteId].invisible = FALSE;
+    }
+    Flashback_PinHealthbox(battler);
 }
 
 static void Flashback_ApplyTimeSkipState(void)
@@ -710,7 +742,7 @@ static void Flashback_ApplyTimeSkipState(void)
         gHitMarker &= ~HITMARKER_FAINTED(opp);
         Flashback_ShowOpponentMon(opp);
         UpdateHealthboxAttribute(gHealthboxSpriteIds[opp], &oppParty[nasgnetSlot], HEALTHBOX_ALL);
-        SetHealthboxSpriteVisible(gHealthboxSpriteIds[opp]);
+        Flashback_PinHealthbox(opp);
     }
 
     Flashback_SetCurrentHpFraction(playerMon, 1, 3);
@@ -786,6 +818,7 @@ void NyxthraFlashback_ProcessBattleInput(void)
     }
     if (sFlashbackSkipState == FLASHBACK_SKIP_FADEIN)
     {
+        Flashback_KeepOpponentStatic(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT));
         if (!gPaletteFade.active)
         {
             sFlashbackSkipState = FLASHBACK_SKIP_NONE;
