@@ -3147,7 +3147,7 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
     }
 
     u8 style = gSaveBlock2Ptr->playerStyles[0];
-    task->tPlayerSpriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(style, TRUE),
+    task->tPlayerSpriteId = CreateTrainerSprite(PlayerStyleToFrontTrainerPicId(style, FALSE),
                                             DISPLAY_WIDTH + 32,
                                             106,
                                             0, NULL);

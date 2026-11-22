@@ -314,25 +314,33 @@ NyxthraFlashback_EventScript_Wassili::
 	releaseall
 	end
 
-@ --- Legendäre Begegnungen: Annäherung, Ruf, Animation, Melodie. Kein Kampf. ---
-NyxthraFlashback_EventScript_LegendaryFanfare::
-	delay 40
-	waitmoncry
-	delay 30
-	return
+@ --- Legendäre Begegnungen (Originalablauf: Auftritt, Ruf, Kampfbeginn mit
+@ Kampfmusik und Übergangsanimation, dann ein Angriffspaar, dann Fade). ---
+NyxthraFlashback_Movement_StepUp:
+	walk_up
+	step_end
 
 NyxthraFlashback_EventScript_Groudon::
 	lockall
-	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_ApproachLeader
+	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_StepUp
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement LOCALID_FLASHBACK_GROUDON, NyxthraFlashback_Movement_GroudonApproach
 	waitmovement 0
 	waitse
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_GROUDON, 70
+	special NyxthraFlashback_PrepareWildOpponent
 	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_VS_KYOGRE_GROUDON, FALSE
-	delay 480
+	special BattleSetup_StartLegendaryBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
@@ -340,31 +348,74 @@ NyxthraFlashback_EventScript_Groudon::
 
 NyxthraFlashback_EventScript_Kyogre::
 	lockall
-	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_ApproachLeader
+	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_StepUp
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement LOCALID_FLASHBACK_KYOGRE, NyxthraFlashback_Movement_GroudonApproach
 	waitmovement 0
 	waitse
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_KYOGRE, 70
+	special NyxthraFlashback_PrepareWildOpponent
 	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_VS_KYOGRE_GROUDON, FALSE
-	delay 480
+	special BattleSetup_StartLegendaryBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
 	end
 
+@ Rayquaza: Erwachen wie in der Himmelsäule (Kamerafahrt, Rühren, zwei Rufe
+@ mit Kamerawackeln), dann der Kampf.
 NyxthraFlashback_EventScript_Rayquaza::
 	lockall
-	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_ApproachLeader
+	applymovement LOCALID_PLAYER, NyxthraFlashback_Movement_StepUp
+	waitmovement 0
+	fadeoutbgm 1
+	applymovement LOCALID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement LOCALID_CAMERA, SkyPillar_Top_Movement_CameraPanUp
+	waitmovement 0
+	special RemoveCameraObject
+	applymovement LOCALID_FLASHBACK_RAYQUAZA, SkyPillar_Top_Movement_RayquazaStir
 	waitmovement 0
 	waitse
 	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 1
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 3
+	special ShakeCamera
+	waitstate
+	waitse
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	setvar VAR_0x8004, 1
+	setvar VAR_0x8005, 2
+	setvar VAR_0x8006, 8
+	setvar VAR_0x8007, 5
+	special ShakeCamera
+	waitstate
+	waitmoncry
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_RAYQUAZA, 70
+	special NyxthraFlashback_PrepareWildOpponent
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_RAYQUAZA_APPEARS, FALSE
-	delay 480
+	special BattleSetup_StartLegendaryBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
@@ -377,11 +428,18 @@ NyxthraFlashback_EventScript_Regirock::
 	applymovement LOCALID_FLASHBACK_REGIROCK, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	waitse
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_REGIROCK, 40
+	special NyxthraFlashback_PrepareWildOpponent
 	playmoncry SPECIES_REGIROCK, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_VS_REGI, FALSE
-	delay 480
+	special StartRegiBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
@@ -394,11 +452,18 @@ NyxthraFlashback_EventScript_Regice::
 	applymovement LOCALID_FLASHBACK_REGICE, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	waitse
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_REGICE, 40
+	special NyxthraFlashback_PrepareWildOpponent
 	playmoncry SPECIES_REGICE, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_VS_REGI, FALSE
-	delay 480
+	special StartRegiBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall
@@ -411,11 +476,30 @@ NyxthraFlashback_EventScript_Registeel::
 	applymovement LOCALID_FLASHBACK_REGISTEEL, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	waitse
+	setvar VAR_0x8004, 0
+	setvar VAR_0x8005, 0
+	setvar VAR_0x8006, 0
+	special NyxthraFlashback_PrepareScriptedBattle
+	setwildbattle SPECIES_REGISTEEL, 40
+	special NyxthraFlashback_PrepareWildOpponent
 	playmoncry SPECIES_REGISTEEL, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	playbgm MUS_VS_REGI, FALSE
-	delay 480
+	special StartRegiBattle
+	@ Nach einer Kampfrunde blendet der Autokampf aus und kehrt zurück.
+	delay 30
+	fadescreen FADE_TO_BLACK
+	special NyxthraFlashback_Finish
+	releaseall
+	end
+
+@ --- Entwicklung Hydropi → Moorabbel (Lv16) ---
+NyxthraFlashback_EventScript_EvolutionMudkip::
+	lockall
+	delay 30
+	special NyxthraFlashback_BeginEvolution
+	@ waitstate already in special
+	delay 80
 	fadescreen FADE_TO_BLACK
 	special NyxthraFlashback_Finish
 	releaseall

@@ -21,6 +21,7 @@ void NyxthraFlashback_PrepareScriptedBattle(void);
 void NyxthraFlashback_PrepareScriptedBattleFinish(void);
 bool8 NyxthraFlashback_PreventFaint(void);
 void NyxthraFlashback_ClampMoveDamage(u32 battler);
+bool8 NyxthraFlashback_ForceFinisherHit(u32 battlerAtk);
 void NyxthraFlashback_OnTrainerPartyCreated(void);
 void NyxthraFlashback_OnBattleEnded(void);
 bool8 NyxthraFlashback_IsScriptedBattle(void);
@@ -35,6 +36,7 @@ bool8 NyxthraFlashback_IsTimeSkipping(void);
 void NyxthraFlashback_NotePlayerActionMenu(void);
 void NyxthraFlashback_ProcessBattleInput(void);
 void NyxthraFlashback_BeginEvolution(void);
+void NyxthraFlashback_PrepareWildOpponent(void);
 void NyxthraFlashback_RequestClip(u8 clip);
 const u8 *NyxthraFlashback_GetTrainerNameOverride(void);
 

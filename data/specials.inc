@@ -179,6 +179,7 @@ gSpecials::
 	def_special NyxthraFlashback_Finish, waitstate=1
 	def_special NyxthraFlashback_PrepareScriptedBattle
 	def_special NyxthraFlashback_PrepareScriptedBattleFinish
+	def_special NyxthraFlashback_PrepareWildOpponent
 	def_special NyxthraFlashback_BeginEvolution, waitstate=1
 	def_special StartWallyTutorialBattle, waitstate=1
 	def_special LoadChampStarterForCatchDemo

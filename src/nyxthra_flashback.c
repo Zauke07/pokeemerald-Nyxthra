@@ -118,6 +118,7 @@ static EWRAM_DATA u8 sFlashbackNosepassMenus = 0;
 static EWRAM_DATA u8 sFlashbackBattlePhase = 0;
 static EWRAM_DATA bool8 sFlashbackKeepBlack = 0;
 static EWRAM_DATA u8 sFlashbackSkipState = 0;
+static EWRAM_DATA bool8 sFlashbackLegendary = FALSE;
 
 #define FLASHBACK_BATTLE_START  1
 #define FLASHBACK_BATTLE_FINISH 2
@@ -456,8 +457,17 @@ void NyxthraFlashback_PrepareScriptedBattle(void)
     sFlashbackNosepassMenus = 0;
     sFlashbackBattlePhase = FLASHBACK_BATTLE_START;
     sFlashbackCountThisMenu = TRUE;
+    sFlashbackLegendary = Flashback_GetClipDesc(sFlashbackClip)->legendary;
 
     Flashback_GiveClipPlayerParty(sFlashbackClip);
+}
+
+// Nach setwildbattle: sinnvolle Angriffe für den wilden Legendären.
+void NyxthraFlashback_PrepareWildOpponent(void)
+{
+    if (!sFlashbackActive)
+        return;
+    Flashback_GiveClipWildMoves(sFlashbackClip, &gParties[B_TRAINER_OPPONENT_A][0]);
 }
 
 void NyxthraFlashback_PrepareScriptedBattleFinish(void)
@@ -548,10 +558,28 @@ bool8 NyxthraFlashback_PreventFaint(void)
          && sFlashbackBattlePhase == FLASHBACK_BATTLE_START);
 }
 
+// Die letzte Attacke im Rückblick trifft immer und besiegt den Gegner.
+bool8 NyxthraFlashback_ForceFinisherHit(u32 battlerAtk)
+{
+    return (sFlashbackActive && sFlashbackBattleActive
+         && sFlashbackBattlePhase == FLASHBACK_BATTLE_FINISH
+         && IsOnPlayerSide(battlerAtk));
+}
+
 void NyxthraFlashback_ClampMoveDamage(u32 battler)
 {
     u16 hp;
     u16 minRemain;
+
+    if (sFlashbackActive && sFlashbackBattleActive
+     && sFlashbackBattlePhase == FLASHBACK_BATTLE_FINISH
+     && !IsOnPlayerSide(battler)
+     && gBattleStruct->moveDamage[battler] > 0)
+    {
+        if (gBattleStruct->moveDamage[battler] < (s32)gBattleMons[battler].hp)
+            gBattleStruct->moveDamage[battler] = gBattleMons[battler].hp;
+        return;
+    }
 
     if (!NyxthraFlashback_PreventFaint())
         return;
@@ -593,6 +621,7 @@ void NyxthraFlashback_OnBattleEnded(void)
     sFlashbackBattlePhase = 0;
     sFlashbackCountThisMenu = TRUE;
     sFlashbackSkipState = 0;
+    sFlashbackLegendary = FALSE;
 }
 
 
@@ -716,9 +745,29 @@ static void Flashback_ApplyTimeSkipState(void)
     if (desc->finishOppMove)
         sFlashbackOpponentMove = desc->finishOppMove;
 
-    Flashback_SetCurrentHpFraction(playerMon, 1, 3);
-    gBattleMons[player].hp = GetMonData(playerMon, MON_DATA_HP);
-    UpdateHealthboxAttribute(gHealthboxSpriteIds[player], playerMon, HEALTHBOX_ALL);
+    if (gPartiesCount[B_TRAINER_PLAYER] >= 2)
+    {
+        // Brix' erstes Pokémon ist angeschlagen, sein zweites steht jetzt
+        // schon im Feld: stiller Wechsel im Schwarzen, ohne Text/Einwechseln.
+        struct Volatiles emptyVolatiles = {0};
+
+        Flashback_SetCurrentHpFraction(playerMon, 1, 4);
+        gBattlerPartyIndexes[player] = 1;
+        gBattleStruct->monToSwitchIntoId[player] = 1;
+        playerMon = &gParties[B_TRAINER_PLAYER][1];
+        PokemonToBattleMon(playerMon, &gBattleMons[player]);
+        SwitchInClearSetData(player, &emptyVolatiles);
+        gHitMarker &= ~HITMARKER_FAINTED(player);
+        Flashback_ShowOpponentMon(player);
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[player], playerMon, HEALTHBOX_ALL);
+        Flashback_PinHealthbox(player);
+    }
+    else
+    {
+        Flashback_SetCurrentHpFraction(playerMon, 1, 3);
+        gBattleMons[player].hp = GetMonData(playerMon, MON_DATA_HP);
+        UpdateHealthboxAttribute(gHealthboxSpriteIds[player], playerMon, HEALTHBOX_ALL);
+    }
 
     sFlashbackBattlePhase = FLASHBACK_BATTLE_FINISH;
     sFlashbackCountThisMenu = TRUE;
@@ -730,6 +779,13 @@ void NyxthraFlashback_BeginTimeSkip(void)
 {
     if (!sFlashbackBattleActive || sFlashbackSkipState != FLASHBACK_SKIP_NONE)
         return;
+
+    if (sFlashbackLegendary)
+    {
+        // Legendärer Kampf: nach einer Runde ausblenden, Kampf beenden.
+        NyxthraFlashback_BeginAbortBattle();
+        return;
+    }
 
     sFlashbackSkipState = FLASHBACK_SKIP_FADEOUT;
     gBattle_BG0_Y = 0;
@@ -823,6 +879,17 @@ void NyxthraFlashback_BeginEvolution(void)
     ZeroPlayerPartyMons();
     for (i = 1; i < PARTY_SIZE; i++)
         ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
+    if (sFlashbackClip == FLASHBACK_CLIP_EVOLUTION_MUDKIP)
+    {
+        // Hydropi → Moorabbel mit Lv16, wie im Originalspiel.
+        CreateMon(mon, SPECIES_MUDKIP, 16, 0, OTID_STRUCT_PLAYER_ID);
+        CalculateMonStats(mon);
+        Flashback_GiveMoves(mon, MOVE_TACKLE, MOVE_GROWL, MOVE_WATER_GUN, MOVE_NONE);
+        gPartiesCount[B_TRAINER_PLAYER] = 1;
+        gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
+        BeginEvolutionScene(mon, SPECIES_MARSHTOMP, FALSE, 0);
+        return;
+    }
     CreateMon(mon, SPECIES_MARSHTOMP, 36, 0, OTID_STRUCT_PLAYER_ID);
     CalculateMonStats(mon);
     Flashback_GiveMoves(mon, MOVE_WATER_GUN, MOVE_MUD_SHOT, MOVE_TAKE_DOWN, MOVE_MUD_SLAP);
@@ -831,7 +898,6 @@ void NyxthraFlashback_BeginEvolution(void)
     gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
     BeginEvolutionScene(mon, SPECIES_SWAMPERT, FALSE, 0);
 }
-
 
 const u8 *NyxthraFlashback_GetTrainerNameOverride(void)
 {

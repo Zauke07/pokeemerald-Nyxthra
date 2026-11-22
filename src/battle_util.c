@@ -10377,6 +10377,7 @@ bool32 CanMoveSkipAccuracyCalc(struct BattleCalcValues *cv, u32 weather, enum Re
     bool32 shouldAvoidSkyDropBattlers = (moveEffect != EFFECT_SKY_DROP && IsBattlerInvolvedInSkyDrop(battlerDef));
 
     if (gBattleMons[battlerAtk].volatiles.battlerWithSureHit == battlerDef + 1
+     || NyxthraFlashback_ForceFinisherHit(battlerAtk)
      || CanMoveSkipAccuracyCheck(battlerAtk, cv->move)
      || gBattleMons[battlerDef].volatiles.glaiveRush)
     {

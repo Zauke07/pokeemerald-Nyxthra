@@ -11,6 +11,7 @@ struct FlashbackClipDesc
     u8 y;
     const u8 *script;
     bool8 hasBattle;
+    bool8 legendary;      // wilder Legendärenkampf: eine Runde, dann Ausblenden
     u16 startPlayerMove;
     u16 startOppMove;
     u16 finishPlayerMove;
@@ -20,6 +21,7 @@ struct FlashbackClipDesc
 const struct FlashbackClipDesc *Flashback_GetClipDesc(u8 clip);
 void Flashback_GiveClipPlayerParty(u8 clip);
 void Flashback_GiveClipOpponentParty(u8 clip);
+void Flashback_GiveClipWildMoves(u8 clip, struct Pokemon *mon);
 void Flashback_GiveMoves(struct Pokemon *mon, u16 m0, u16 m1, u16 m2, u16 m3);
 
 #endif
