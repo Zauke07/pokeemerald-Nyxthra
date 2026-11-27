@@ -3,14 +3,14 @@ const struct Decoration gDecorations[] =
     [DECOR_NONE] =
     {
         .id = DECOR_NONE,
-        .name = _("SMALL DESK"),
+        .name = _("KLEINER TISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DESK,
         .price = 0,
         .description = COMPOUND_STRING(
-            "A small desk built\n"
-            "for one."),
+            "Ein kleiner Tisch\n"
+            "für eine Person."),
         .tiles = DecorGfx_SMALL_DESK,
         .icon = {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     },
@@ -18,14 +18,14 @@ const struct Decoration gDecorations[] =
     [DECOR_SMALL_DESK] =
     {
         .id = DECOR_SMALL_DESK,
-        .name = _("SMALL DESK"),
+        .name = _("KLEINER TISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DESK,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A small desk built\n"
-            "for one."),
+            "Ein kleiner Tisch\n"
+            "für eine Person."),
         .tiles = DecorGfx_SMALL_DESK,
         .icon = {NULL, NULL},
     },
@@ -33,15 +33,15 @@ const struct Decoration gDecorations[] =
     [DECOR_POKEMON_DESK] =
     {
         .id = DECOR_POKEMON_DESK,
-        .name = _("POKéMON DESK"),
+        .name = _("POKéMON-TISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DESK,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A small desk built in\n"
-            "the shape of a POKé\n"
-            "BALL."),
+            "Ein kleiner Tisch\n"
+            "in Form eines\n"
+            "POKéBALLS."),
         .tiles = DecorGfx_POKEMON_DESK,
         .icon = {NULL, NULL},
     },
@@ -49,15 +49,15 @@ const struct Decoration gDecorations[] =
     [DECOR_HEAVY_DESK] =
     {
         .id = DECOR_HEAVY_DESK,
-        .name = _("HEAVY DESK"),
+        .name = _("STAHLTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x2,
         .category = DECORCAT_DESK,
         .price = 6000,
         .description = COMPOUND_STRING(
-            "A large desk made\n"
-            "of steel. Put some\n"
-            "decorations on it."),
+            "Ein großer Tisch\n"
+            "aus Stahl. Stelle\n"
+            "Deko darauf."),
         .tiles = DecorGfx_HEAVY_DESK,
         .icon = {gDecorIcon_HeavyDesk, gDecorIconPalette_HeavyDesk},
     },
@@ -65,15 +65,15 @@ const struct Decoration gDecorations[] =
     [DECOR_RAGGED_DESK] =
     {
         .id = DECOR_RAGGED_DESK,
-        .name = _("RAGGED DESK"),
+        .name = _("HOLZTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x2,
         .category = DECORCAT_DESK,
         .price = 6000,
         .description = COMPOUND_STRING(
-            "A large desk made\n"
-            "of wood. Put some\n"
-            "decorations on it."),
+            "Ein großer Tisch\n"
+            "aus Holz. Stelle\n"
+            "Deko darauf."),
         .tiles = DecorGfx_RAGGED_DESK,
         .icon = {gDecorIcon_RaggedDesk, gDecorIconPalette_RaggedDesk},
     },
@@ -81,15 +81,15 @@ const struct Decoration gDecorations[] =
     [DECOR_COMFORT_DESK] =
     {
         .id = DECOR_COMFORT_DESK,
-        .name = _("COMFORT DESK"),
+        .name = _("BLATTTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x2,
         .category = DECORCAT_DESK,
         .price = 6000,
         .description = COMPOUND_STRING(
-            "A large desk made\n"
-            "of leaves. Put some\n"
-            "decorations on it."),
+            "Ein großer Tisch\n"
+            "aus Blättern. Stelle\n"
+            "Deko darauf."),
         .tiles = DecorGfx_COMFORT_DESK,
         .icon = {gDecorIcon_ComfortDesk, gDecorIconPalette_ComfortDesk},
     },
@@ -97,15 +97,15 @@ const struct Decoration gDecorations[] =
     [DECOR_PRETTY_DESK] =
     {
         .id = DECOR_PRETTY_DESK,
-        .name = _("PRETTY DESK"),
+        .name = _("GLASTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_DESK,
         .price = 9000,
         .description = COMPOUND_STRING(
-            "A huge desk made\n"
-            "of glass. Holds lots\n"
-            "of decorations."),
+            "Ein riesiger Tisch\n"
+            "aus Glas. Bietet\n"
+            "viel Platz für Deko."),
         .tiles = DecorGfx_PRETTY_DESK,
         .icon = {gDecorIcon_PrettyDesk, gDecorIconPalette_PrettyDesk},
     },
@@ -113,15 +113,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BRICK_DESK] =
     {
         .id = DECOR_BRICK_DESK,
-        .name = _("BRICK DESK"),
+        .name = _("ZIEGELTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_DESK,
         .price = 9000,
         .description = COMPOUND_STRING(
-            "A huge desk made\n"
-            "of brick. Holds lots\n"
-            "of decorations."),
+            "Ein riesiger Tisch\n"
+            "aus Ziegeln. Bietet\n"
+            "viel Platz für Deko."),
         .tiles = DecorGfx_BRICK_DESK,
         .icon = {gDecorIcon_BrickDesk, gDecorIconPalette_BrickDesk},
     },
@@ -129,15 +129,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CAMP_DESK] =
     {
         .id = DECOR_CAMP_DESK,
-        .name = _("CAMP DESK"),
+        .name = _("BLOCKTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_DESK,
         .price = 9000,
         .description = COMPOUND_STRING(
-            "A huge desk made\n"
-            "of logs. Put lots of\n"
-            "decorations on it."),
+            "Ein riesiger Tisch\n"
+            "aus Baumstämmen.\n"
+            "Viel Platz für Deko."),
         .tiles = DecorGfx_CAMP_DESK,
         .icon = {gDecorIcon_CampDesk, gDecorIconPalette_CampDesk},
     },
@@ -145,15 +145,15 @@ const struct Decoration gDecorations[] =
     [DECOR_HARD_DESK] =
     {
         .id = DECOR_HARD_DESK,
-        .name = _("HARD DESK"),
+        .name = _("FELSTISCH"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_DESK,
         .price = 9000,
         .description = COMPOUND_STRING(
-            "A huge desk made\n"
-            "of rocks. Holds\n"
-            "many decorations."),
+            "Ein riesiger Tisch\n"
+            "aus Felsen. Bietet\n"
+            "viel Platz für Deko."),
         .tiles = DecorGfx_HARD_DESK,
         .icon = {gDecorIcon_HardDesk, gDecorIconPalette_HardDesk},
     },
@@ -161,14 +161,14 @@ const struct Decoration gDecorations[] =
     [DECOR_SMALL_CHAIR] =
     {
         .id = DECOR_SMALL_CHAIR,
-        .name = _("SMALL CHAIR"),
+        .name = _("KLEINER STUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "for one."),
+            "Ein kleiner Stuhl\n"
+            "für eine Person."),
         .tiles = DecorGfx_SMALL_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -176,15 +176,15 @@ const struct Decoration gDecorations[] =
     [DECOR_POKEMON_CHAIR] =
     {
         .id = DECOR_POKEMON_CHAIR,
-        .name = _("POKéMON CHAIR"),
+        .name = _("POKéMON-STUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair built\n"
-            "in the shape of a\n"
-            "POKé BALL."),
+            "Ein kleiner Stuhl\n"
+            "in Form eines\n"
+            "POKéBALLS."),
         .tiles = DecorGfx_POKEMON_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -192,14 +192,14 @@ const struct Decoration gDecorations[] =
     [DECOR_HEAVY_CHAIR] =
     {
         .id = DECOR_HEAVY_CHAIR,
-        .name = _("HEAVY CHAIR"),
+        .name = _("STAHLSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of steel."),
+            "Ein kleiner Stuhl\n"
+            "aus Stahl."),
         .tiles = DecorGfx_HEAVY_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -207,14 +207,14 @@ const struct Decoration gDecorations[] =
     [DECOR_PRETTY_CHAIR] =
     {
         .id = DECOR_PRETTY_CHAIR,
-        .name = _("PRETTY CHAIR"),
+        .name = _("GLASSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of glass."),
+            "Ein kleiner Stuhl\n"
+            "aus Glas."),
         .tiles = DecorGfx_PRETTY_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -222,14 +222,14 @@ const struct Decoration gDecorations[] =
     [DECOR_COMFORT_CHAIR] =
     {
         .id = DECOR_COMFORT_CHAIR,
-        .name = _("COMFORT CHAIR"),
+        .name = _("BLATTSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of leaves."),
+            "Ein kleiner Stuhl\n"
+            "aus Blättern."),
         .tiles = DecorGfx_COMFORT_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -237,14 +237,14 @@ const struct Decoration gDecorations[] =
     [DECOR_RAGGED_CHAIR] =
     {
         .id = DECOR_RAGGED_CHAIR,
-        .name = _("RAGGED CHAIR"),
+        .name = _("HOLZSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of wood."),
+            "Ein kleiner Stuhl\n"
+            "aus Holz."),
         .tiles = DecorGfx_RAGGED_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -252,14 +252,14 @@ const struct Decoration gDecorations[] =
     [DECOR_BRICK_CHAIR] =
     {
         .id = DECOR_BRICK_CHAIR,
-        .name = _("BRICK CHAIR"),
+        .name = _("ZIEGELSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of brick."),
+            "Ein kleiner Stuhl\n"
+            "aus Ziegeln."),
         .tiles = DecorGfx_BRICK_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -267,14 +267,14 @@ const struct Decoration gDecorations[] =
     [DECOR_CAMP_CHAIR] =
     {
         .id = DECOR_CAMP_CHAIR,
-        .name = _("CAMP CHAIR"),
+        .name = _("BLOCKSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of logs."),
+            "Ein kleiner Stuhl\n"
+            "aus Baumstämmen."),
         .tiles = DecorGfx_CAMP_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -282,14 +282,14 @@ const struct Decoration gDecorations[] =
     [DECOR_HARD_CHAIR] =
     {
         .id = DECOR_HARD_CHAIR,
-        .name = _("HARD CHAIR"),
+        .name = _("FELSSTUHL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CHAIR,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A small chair made\n"
-            "of rock."),
+            "Ein kleiner Stuhl\n"
+            "aus Stein."),
         .tiles = DecorGfx_HARD_CHAIR,
         .icon = {NULL, NULL},
     },
@@ -297,14 +297,14 @@ const struct Decoration gDecorations[] =
     [DECOR_RED_PLANT] =
     {
         .id = DECOR_RED_PLANT,
-        .name = _("RED PLANT"),
+        .name = _("ROTE PFLANZE"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_PLANT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A vivid red potted\n"
-            "plant."),
+            "Eine leuchtend rote\n"
+            "Topfpflanze."),
         .tiles = DecorGfx_RED_PLANT,
         .icon = {gDecorIcon_RedPlant, gDecorIconPalette_RedPlant},
     },
@@ -312,14 +312,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TROPICAL_PLANT] =
     {
         .id = DECOR_TROPICAL_PLANT,
-        .name = _("TROPICAL PLANT"),
+        .name = _("TROPENPFLANZE"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_PLANT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A flowering tropical\n"
-            "plant in a pot."),
+            "Eine blühende\n"
+            "tropische Pflanze\n"
+            "im Topf."),
         .tiles = DecorGfx_TROPICAL_PLANT,
         .icon = {gDecorIcon_TropicalPlant, gDecorIconPalette_TropicalPlant},
     },
@@ -327,14 +328,14 @@ const struct Decoration gDecorations[] =
     [DECOR_PRETTY_FLOWERS] =
     {
         .id = DECOR_PRETTY_FLOWERS,
-        .name = _("PRETTY FLOWERS"),
+        .name = _("SCHÖNE BLUMEN"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_PLANT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A pot of cute\n"
-            "flowers."),
+            "Ein Topf mit\n"
+            "niedlichen Blumen."),
         .tiles = DecorGfx_PRETTY_FLOWERS,
         .icon = {gDecorIcon_PrettyFlowers, gDecorIconPalette_PrettyFlowers},
     },
@@ -342,15 +343,15 @@ const struct Decoration gDecorations[] =
     [DECOR_COLORFUL_PLANT] =
     {
         .id = DECOR_COLORFUL_PLANT,
-        .name = _("COLORFUL PLANT"),
+        .name = _("BUNTE PFLANZE"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_2x2,
         .category = DECORCAT_PLANT,
         .price = 5000,
         .description = COMPOUND_STRING(
-            "A large pot with\n"
-            "many colorful\n"
-            "flowers."),
+            "Ein großer Topf mit\n"
+            "vielen bunten\n"
+            "Blumen."),
         .tiles = DecorGfx_COLORFUL_PLANT,
         .icon = {gDecorIcon_ColorfulPlant, gDecorIconPalette_ColorfulPlant},
     },
@@ -358,15 +359,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BIG_PLANT] =
     {
         .id = DECOR_BIG_PLANT,
-        .name = _("BIG PLANT"),
+        .name = _("GROSSE PFLANZE"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_2x2,
         .category = DECORCAT_PLANT,
         .price = 5000,
         .description = COMPOUND_STRING(
-            "A large, umbrella-\n"
-            "shaped plant in a\n"
-            "big pot."),
+            "Eine große, schirm-\n"
+            "förmige Pflanze\n"
+            "im großen Topf."),
         .tiles = DecorGfx_BIG_PLANT,
         .icon = {gDecorIcon_BigPlant, gDecorIconPalette_BigPlant},
     },
@@ -374,14 +375,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GORGEOUS_PLANT] =
     {
         .id = DECOR_GORGEOUS_PLANT,
-        .name = _("GORGEOUS PLANT"),
+        .name = _("PRACHTPFLANZE"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_2x2,
         .category = DECORCAT_PLANT,
         .price = 5000,
         .description = COMPOUND_STRING(
-            "A large, impressive\n"
-            "plant in a big pot."),
+            "Eine große, präch-\n"
+            "tige Pflanze im\n"
+            "großen Topf."),
         .tiles = DecorGfx_GORGEOUS_PLANT,
         .icon = {gDecorIcon_GorgeousPlant, gDecorIconPalette_GorgeousPlant},
     },
@@ -389,15 +391,15 @@ const struct Decoration gDecorations[] =
     [DECOR_RED_BRICK] =
     {
         .id = DECOR_RED_BRICK,
-        .name = _("RED BRICK"),
+        .name = _("ROTER ZIEGEL"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A red-colored brick.\n"
-            "Decorations can be\n"
-            "placed on top."),
+            "Ein roter Ziegel.\n"
+            "Darauf kann man\n"
+            "Deko stellen."),
         .tiles = DecorGfx_RED_BRICK,
         .icon = {gDecorIcon_RedBrick, gDecorIconPalette_RedBrick},
     },
@@ -405,15 +407,15 @@ const struct Decoration gDecorations[] =
     [DECOR_YELLOW_BRICK] =
     {
         .id = DECOR_YELLOW_BRICK,
-        .name = _("YELLOW BRICK"),
+        .name = _("GELBER ZIEGEL"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A yellow-colored\n"
-            "brick. Put some\n"
-            "decorations on top."),
+            "Ein gelber Ziegel.\n"
+            "Stelle Deko\n"
+            "darauf."),
         .tiles = DecorGfx_YELLOW_BRICK,
         .icon = {gDecorIcon_YellowBrick, gDecorIconPalette_YellowBrick},
     },
@@ -421,15 +423,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BLUE_BRICK] =
     {
         .id = DECOR_BLUE_BRICK,
-        .name = _("BLUE BRICK"),
+        .name = _("BLAUER ZIEGEL"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A blue-colored\n"
-            "brick. Put some\n"
-            "decorations on top."),
+            "Ein blauer Ziegel.\n"
+            "Stelle Deko\n"
+            "darauf."),
         .tiles = DecorGfx_BLUE_BRICK,
         .icon = {gDecorIcon_BlueBrick, gDecorIconPalette_BlueBrick},
     },
@@ -437,15 +439,15 @@ const struct Decoration gDecorations[] =
     [DECOR_RED_BALLOON] =
     {
         .id = DECOR_RED_BALLOON,
-        .name = _("RED BALLOON"),
+        .name = _("ROTER BALLON"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A red balloon filled\n"
-            "with water. Bursts\n"
-            "if stepped on."),
+            "Ein wassergefüllter\n"
+            "roter Ballon. Platzt\n"
+            "beim Drauftreten."),
         .tiles = DecorGfx_RED_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -453,15 +455,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BLUE_BALLOON] =
     {
         .id = DECOR_BLUE_BALLOON,
-        .name = _("BLUE BALLOON"),
+        .name = _("BLAUER BALLON"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A blue balloon filled\n"
-            "with water. Bursts\n"
-            "if stepped on."),
+            "Ein wassergefüllter\n"
+            "blauer Ballon. Platzt\n"
+            "beim Drauftreten."),
         .tiles = DecorGfx_BLUE_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -469,15 +471,15 @@ const struct Decoration gDecorations[] =
     [DECOR_YELLOW_BALLOON] =
     {
         .id = DECOR_YELLOW_BALLOON,
-        .name = _("YELLOW BALLOON"),
+        .name = _("GELBER BALLON"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A yellow balloon\n"
-            "filled with water.\n"
-            "Pops if stepped on."),
+            "Ein wassergefüllter\n"
+            "gelber Ballon. Platzt\n"
+            "beim Drauftreten."),
         .tiles = DecorGfx_YELLOW_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -485,15 +487,15 @@ const struct Decoration gDecorations[] =
     [DECOR_RED_TENT] =
     {
         .id = DECOR_RED_TENT,
-        .name = _("RED TENT"),
+        .name = _("ROTES ZELT"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_ORNAMENT,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large red tent.\n"
-            "You can hide inside\n"
-            "it."),
+            "Ein großes rotes\n"
+            "Zelt. Man kann sich\n"
+            "darin verstecken."),
         .tiles = DecorGfx_RED_TENT,
         .icon = {gDecorIcon_RedTent, gDecorIconPalette_RedTent},
     },
@@ -501,15 +503,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BLUE_TENT] =
     {
         .id = DECOR_BLUE_TENT,
-        .name = _("BLUE TENT"),
+        .name = _("BLAUES ZELT"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_ORNAMENT,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large blue tent.\n"
-            "You can hide inside\n"
-            "it."),
+            "Ein großes blaues\n"
+            "Zelt. Man kann sich\n"
+            "darin verstecken."),
         .tiles = DecorGfx_BLUE_TENT,
         .icon = {gDecorIcon_BlueTent, gDecorIconPalette_BlueTent},
     },
@@ -517,15 +519,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SOLID_BOARD] =
     {
         .id = DECOR_SOLID_BOARD,
-        .name = _("SOLID BOARD"),
+        .name = _("STABILES BRETT"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Place over a hole to\n"
-            "cross to the other\n"
-            "side."),
+            "Über ein Loch legen,\n"
+            "um auf die andere\n"
+            "Seite zu gelangen."),
         .tiles = DecorGfx_SOLID_BOARD,
         .icon = {gDecorIcon_SolidBoard, gDecorIconPalette_SolidBoard},
     },
@@ -533,14 +535,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SLIDE] =
     {
         .id = DECOR_SLIDE,
-        .name = _("SLIDE"),
+        .name = _("RUTSCHE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_2x4,
         .category = DECORCAT_ORNAMENT,
         .price = 8000,
         .description = COMPOUND_STRING(
-            "Use to slide down\n"
-            "from the platform."),
+            "Zum Hinunterrut-\n"
+            "schen von der\n"
+            "Plattform."),
         .tiles = DecorGfx_SLIDE,
         .icon = {gDecorIcon_Slide, gDecorIconPalette_Slide},
     },
@@ -548,14 +551,15 @@ const struct Decoration gDecorations[] =
     [DECOR_FENCE_LENGTH] =
     {
         .id = DECOR_FENCE_LENGTH,
-        .name = _("FENCE LENGTH"),
+        .name = _("ZAUN (LANG)"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A small fence that\n"
-            "blocks passage."),
+            "Ein kleiner Zaun,\n"
+            "der den Weg\n"
+            "versperrt."),
         .tiles = DecorGfx_FENCE_LENGTH,
         .icon = {NULL, NULL},
     },
@@ -563,14 +567,15 @@ const struct Decoration gDecorations[] =
     [DECOR_FENCE_WIDTH] =
     {
         .id = DECOR_FENCE_WIDTH,
-        .name = _("FENCE WIDTH"),
+        .name = _("ZAUN (BREIT)"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A small fence that\n"
-            "blocks passage."),
+            "Ein kleiner Zaun,\n"
+            "der den Weg\n"
+            "versperrt."),
         .tiles = DecorGfx_FENCE_WIDTH,
         .icon = {NULL, NULL},
     },
@@ -578,15 +583,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TIRE] =
     {
         .id = DECOR_TIRE,
-        .name = _("TIRE"),
+        .name = _("REIFEN"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_2x2,
         .category = DECORCAT_ORNAMENT,
         .price = 800,
         .description = COMPOUND_STRING(
-            "An old large tire.\n"
-            "Decorations can be\n"
-            "placed on top."),
+            "Ein großer alter\n"
+            "Reifen. Darauf kann\n"
+            "man Deko stellen."),
         .tiles = DecorGfx_TIRE,
         .icon = {gDecorIcon_Tire, gDecorIconPalette_Tire},
     },
@@ -594,14 +599,14 @@ const struct Decoration gDecorations[] =
     [DECOR_STAND] =
     {
         .id = DECOR_STAND,
-        .name = _("STAND"),
+        .name = _("PODEST"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_4x2,
         .category = DECORCAT_ORNAMENT,
         .price = 7000,
         .description = COMPOUND_STRING(
-            "A large pedestal\n"
-            "with steps."),
+            "Ein großes Podest\n"
+            "mit Stufen."),
         .tiles = DecorGfx_STAND,
         .icon = {gDecorIcon_Stand, gDecorIconPalette_Stand},
     },
@@ -609,15 +614,15 @@ const struct Decoration gDecorations[] =
     [DECOR_MUD_BALL] =
     {
         .id = DECOR_MUD_BALL,
-        .name = _("MUD BALL"),
+        .name = _("SCHLAMMBALL"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 200,
         .description = COMPOUND_STRING(
-            "A large ball of mud.\n"
-            "Crumbles if stepped\n"
-            "on."),
+            "Ein großer Ball aus\n"
+            "Schlamm. Zerfällt,\n"
+            "wenn man drauftritt."),
         .tiles = DecorGfx_MUD_BALL,
         .icon = {NULL, NULL},
     },
@@ -625,15 +630,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BREAKABLE_DOOR] =
     {
         .id = DECOR_BREAKABLE_DOOR,
-        .name = _("BREAKABLE DOOR"),
+        .name = _("BRECHTÜR"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A weird door that\n"
-            "people can walk\n"
-            "right through."),
+            "Eine seltsame Tür,\n"
+            "durch die man\n"
+            "einfach gehen kann."),
         .tiles = DecorGfx_BREAKABLE_DOOR,
         .icon = {gDecorIcon_BreakableDoor, gDecorIconPalette_BreakableDoor},
     },
@@ -641,15 +646,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SAND_ORNAMENT] =
     {
         .id = DECOR_SAND_ORNAMENT,
-        .name = _("SAND ORNAMENT"),
+        .name = _("SANDFIGUR"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "An ornament made\n"
-            "of sand. Crumbles if\n"
-            "touched."),
+            "Eine Figur aus\n"
+            "Sand. Zerfällt bei\n"
+            "Berührung."),
         .tiles = DecorGfx_SAND_ORNAMENT,
         .icon = {gDecorIcon_SandOrnament, gDecorIconPalette_SandOrnament},
     },
@@ -657,15 +662,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SILVER_SHIELD] =
     {
         .id = DECOR_SILVER_SHIELD,
-        .name = _("SILVER SHIELD"),
+        .name = _("SILBERSCHILD"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 0,
         .description = COMPOUND_STRING(
-            "Awarded for 50\n"
-            "straight wins at\n"
-            "the BATTLE TOWER."),
+            "Für 50 Siege in\n"
+            "Folge im KAMPF-\n"
+            "TURM verliehen."),
         .tiles = DecorGfx_SILVER_SHIELD,
         .icon = {NULL, NULL},
     },
@@ -673,15 +678,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GOLD_SHIELD] =
     {
         .id = DECOR_GOLD_SHIELD,
-        .name = _("GOLD SHIELD"),
+        .name = _("GOLDSCHILD"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 0,
         .description = COMPOUND_STRING(
-            "Awarded for 100\n"
-            "straight wins at\n"
-            "the BATTLE TOWER."),
+            "Für 100 Siege in\n"
+            "Folge im KAMPF-\n"
+            "TURM verliehen."),
         .tiles = DecorGfx_GOLD_SHIELD,
         .icon = {NULL, NULL},
     },
@@ -689,15 +694,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GLASS_ORNAMENT] =
     {
         .id = DECOR_GLASS_ORNAMENT,
-        .name = _("GLASS ORNAMENT"),
+        .name = _("GLASFIGUR"),
         .permission = DECORPERM_BEHIND_FLOOR,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_ORNAMENT,
         .price = 0,
         .description = COMPOUND_STRING(
-            "A glass replica of\n"
-            "a famous sculpture\n"
-            "at the ART MUSEUM."),
+            "Ein Glasnachbau\n"
+            "einer berühmten\n"
+            "Skulptur im MUSEUM."),
         .tiles = DecorGfx_GLASS_ORNAMENT,
         .icon = {gDecorIcon_GlassOrnament, gDecorIconPalette_GlassOrnament},
     },
@@ -705,14 +710,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TV] =
     {
         .id = DECOR_TV,
-        .name = _("TV"),
+        .name = _("FERNSEHER"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A small, gray-\n"
-            "colored toy TV."),
+            "Ein kleiner grauer\n"
+            "Spielzeug-\n"
+            "Fernseher."),
         .tiles = DecorGfx_TV,
         .icon = {NULL, NULL},
     },
@@ -720,15 +726,15 @@ const struct Decoration gDecorations[] =
     [DECOR_ROUND_TV] =
     {
         .id = DECOR_ROUND_TV,
-        .name = _("ROUND TV"),
+        .name = _("RUNDER TV"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A toy TV modeled\n"
-            "in the image of a\n"
-            "SEEDOT."),
+            "Ein Spielzeug-\n"
+            "Fernseher in Form\n"
+            "eines SAMURZEL."),
         .tiles = DecorGfx_ROUND_TV,
         .icon = {NULL, NULL},
     },
@@ -736,15 +742,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CUTE_TV] =
     {
         .id = DECOR_CUTE_TV,
-        .name = _("CUTE TV"),
+        .name = _("NIEDLICHER TV"),
         .permission = DECORPERM_SOLID_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_ORNAMENT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A toy TV modeled\n"
-            "in the image of a\n"
-            "SKITTY."),
+            "Ein Spielzeug-\n"
+            "Fernseher in Form\n"
+            "eines ENECO."),
         .tiles = DecorGfx_CUTE_TV,
         .icon = {NULL, NULL},
     },
@@ -752,15 +758,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GLITTER_MAT] =
     {
         .id = DECOR_GLITTER_MAT,
-        .name = _("GLITTER MAT"),
+        .name = _("GLITZERMATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "An odd mat that\n"
-            "glitters if stepped\n"
-            "on."),
+            "Eine seltsame Matte,\n"
+            "die glitzert, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_GLITTER_MAT,
         .icon = {NULL, NULL},
     },
@@ -768,15 +774,15 @@ const struct Decoration gDecorations[] =
     [DECOR_JUMP_MAT] =
     {
         .id = DECOR_JUMP_MAT,
-        .name = _("JUMP MAT"),
+        .name = _("SPRUNGMATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A trick mat that\n"
-            "jumps when it is\n"
-            "stepped on."),
+            "Eine Trickmatte, die\n"
+            "hüpft, wenn man\n"
+            "drauftritt."),
         .tiles = DecorGfx_JUMP_MAT,
         .icon = {NULL, NULL},
     },
@@ -784,15 +790,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SPIN_MAT] =
     {
         .id = DECOR_SPIN_MAT,
-        .name = _("SPIN MAT"),
+        .name = _("DREHMATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A trick mat that\n"
-            "spins around when\n"
-            "stepped on."),
+            "Eine Trickmatte, die\n"
+            "sich dreht, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_SPIN_MAT,
         .icon = {NULL, NULL},
     },
@@ -800,15 +806,15 @@ const struct Decoration gDecorations[] =
     [DECOR_C_LOW_NOTE_MAT] =
     {
         .id = DECOR_C_LOW_NOTE_MAT,
-        .name = _("C Low NOTE MAT"),
+        .name = _("TIEFES-C-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "a low C note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "tiefes C spielt,\n"
+            "wenn man drauftritt."),
         .tiles = DecorGfx_C_LOW_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -816,15 +822,15 @@ const struct Decoration gDecorations[] =
     [DECOR_D_NOTE_MAT] =
     {
         .id = DECOR_D_NOTE_MAT,
-        .name = _("D NOTE MAT"),
+        .name = _("D-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "a D note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "D spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_D_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -832,15 +838,15 @@ const struct Decoration gDecorations[] =
     [DECOR_E_NOTE_MAT] =
     {
         .id = DECOR_E_NOTE_MAT,
-        .name = _("E NOTE MAT"),
+        .name = _("E-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "an E note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "E spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_E_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -848,15 +854,15 @@ const struct Decoration gDecorations[] =
     [DECOR_F_NOTE_MAT] =
     {
         .id = DECOR_F_NOTE_MAT,
-        .name = _("F NOTE MAT"),
+        .name = _("F-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "an F note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "F spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_F_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -864,15 +870,15 @@ const struct Decoration gDecorations[] =
     [DECOR_G_NOTE_MAT] =
     {
         .id = DECOR_G_NOTE_MAT,
-        .name = _("G NOTE MAT"),
+        .name = _("G-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "a G note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "G spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_G_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -880,15 +886,15 @@ const struct Decoration gDecorations[] =
     [DECOR_A_NOTE_MAT] =
     {
         .id = DECOR_A_NOTE_MAT,
-        .name = _("A NOTE MAT"),
+        .name = _("A-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "an A note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "A spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_A_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -896,15 +902,15 @@ const struct Decoration gDecorations[] =
     [DECOR_B_NOTE_MAT] =
     {
         .id = DECOR_B_NOTE_MAT,
-        .name = _("B NOTE MAT"),
+        .name = _("H-TON-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "a B note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "H spielt, wenn\n"
+            "man drauftritt."),
         .tiles = DecorGfx_B_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -912,15 +918,15 @@ const struct Decoration gDecorations[] =
     [DECOR_C_HIGH_NOTE_MAT] =
     {
         .id = DECOR_C_HIGH_NOTE_MAT,
-        .name = _("C High NOTE MAT"),
+        .name = _("HOHES-C-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_MAT,
         .price = 500,
         .description = COMPOUND_STRING(
-            "A mat that plays\n"
-            "a high C note when\n"
-            "stepped on."),
+            "Eine Matte, die ein\n"
+            "hohes C spielt,\n"
+            "wenn man drauftritt."),
         .tiles = DecorGfx_C_HIGH_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -928,15 +934,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SURF_MAT] =
     {
         .id = DECOR_SURF_MAT,
-        .name = _("SURF MAT"),
+        .name = _("SURFER-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "a SURF image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "SURFER-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_SURF_MAT,
         .icon = {gDecorIcon_SurfMat, gDecorIconPalette_SurfMat},
     },
@@ -944,15 +950,15 @@ const struct Decoration gDecorations[] =
     [DECOR_THUNDER_MAT] =
     {
         .id = DECOR_THUNDER_MAT,
-        .name = _("THUNDER MAT"),
+        .name = _("DONNER-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "a THUNDER image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "DONNER-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_THUNDER_MAT,
         .icon = {gDecorIcon_ThunderMat, gDecorIconPalette_ThunderMat},
     },
@@ -960,15 +966,15 @@ const struct Decoration gDecorations[] =
     [DECOR_FIRE_BLAST_MAT] =
     {
         .id = DECOR_FIRE_BLAST_MAT,
-        .name = _("FIRE BLAST MAT"),
+        .name = _("FEUERSTURMMATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "a FIRE BLAST image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "FEUERSTURM-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_FIRE_BLAST_MAT,
         .icon = {gDecorIcon_FireBlastMat, gDecorIconPalette_FireBlastMat},
     },
@@ -976,15 +982,15 @@ const struct Decoration gDecorations[] =
     [DECOR_POWDER_SNOW_MAT] =
     {
         .id = DECOR_POWDER_SNOW_MAT,
-        .name = _("POWDER SNOW MAT"),
+        .name = _("SCHNEE-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat with a POWDER\n"
-            "SNOW image design.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "PUDERSCHNEE-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_POWDER_SNOW_MAT,
         .icon = {gDecorIcon_PowderSnowMat, gDecorIconPalette_PowderSnowMat},
     },
@@ -992,15 +998,15 @@ const struct Decoration gDecorations[] =
     [DECOR_ATTRACT_MAT] =
     {
         .id = DECOR_ATTRACT_MAT,
-        .name = _("ATTRACT MAT"),
+        .name = _("ATTRAKT.-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "an ATTRACT image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "ATTRAKTION-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_ATTRACT_MAT,
         .icon = {gDecorIcon_AttractMat, gDecorIconPalette_AttractMat},
     },
@@ -1008,15 +1014,15 @@ const struct Decoration gDecorations[] =
     [DECOR_FISSURE_MAT] =
     {
         .id = DECOR_FISSURE_MAT,
-        .name = _("FISSURE MAT"),
+        .name = _("ERDSPALT-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "a FISSURE image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "ERDSPALT-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_FISSURE_MAT,
         .icon = {gDecorIcon_FissureMat, gDecorIconPalette_FissureMat},
     },
@@ -1024,15 +1030,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SPIKES_MAT] =
     {
         .id = DECOR_SPIKES_MAT,
-        .name = _("SPIKES MAT"),
+        .name = _("STACHELN-MATTE"),
         .permission = DECORPERM_PASS_FLOOR,
         .shape = DECORSHAPE_3x3,
         .category = DECORCAT_MAT,
         .price = 4000,
         .description = COMPOUND_STRING(
-            "A mat designed with\n"
-            "a SPIKES image.\n"
-            "Put items on top."),
+            "Eine Matte mit\n"
+            "STACHELN-Motiv.\n"
+            "Stelle Items darauf."),
         .tiles = DecorGfx_SPIKES_MAT,
         .icon = {gDecorIcon_SpikesMat, gDecorIconPalette_SpikesMat},
     },
@@ -1040,15 +1046,14 @@ const struct Decoration gDecorations[] =
     [DECOR_BALL_POSTER] =
     {
         .id = DECOR_BALL_POSTER,
-        .name = _("BALL POSTER"),
+        .name = _("BALL-POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_POSTER,
         .price = 1000,
         .description = COMPOUND_STRING(
-            "A small poster\n"
-            "printed with POKé\n"
-            "BALLS."),
+            "Ein kleines Poster\n"
+            "mit POKéBÄLLEN."),
         .tiles = DecorGfx_BALL_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1056,14 +1061,14 @@ const struct Decoration gDecorations[] =
     [DECOR_GREEN_POSTER] =
     {
         .id = DECOR_GREEN_POSTER,
-        .name = _("GREEN POSTER"),
+        .name = _("GRÜNES POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_POSTER,
         .price = 1000,
         .description = COMPOUND_STRING(
-            "A small poster with\n"
-            "a TREECKO print."),
+            "Ein kleines Poster\n"
+            "mit GECKARBOR."),
         .tiles = DecorGfx_GREEN_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1071,14 +1076,14 @@ const struct Decoration gDecorations[] =
     [DECOR_RED_POSTER] =
     {
         .id = DECOR_RED_POSTER,
-        .name = _("RED POSTER"),
+        .name = _("ROTES POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_POSTER,
         .price = 1000,
         .description = COMPOUND_STRING(
-            "A small poster with\n"
-            "a TORCHIC print."),
+            "Ein kleines Poster\n"
+            "mit FLEMMLI."),
         .tiles = DecorGfx_RED_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1086,14 +1091,14 @@ const struct Decoration gDecorations[] =
     [DECOR_BLUE_POSTER] =
     {
         .id = DECOR_BLUE_POSTER,
-        .name = _("BLUE POSTER"),
+        .name = _("BLAUES POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_POSTER,
         .price = 1000,
         .description = COMPOUND_STRING(
-            "A small poster with\n"
-            "a MUDKIP print."),
+            "Ein kleines Poster\n"
+            "mit HYDROPI."),
         .tiles = DecorGfx_BLUE_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1101,14 +1106,14 @@ const struct Decoration gDecorations[] =
     [DECOR_CUTE_POSTER] =
     {
         .id = DECOR_CUTE_POSTER,
-        .name = _("CUTE POSTER"),
+        .name = _("NIEDL. POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_POSTER,
         .price = 1000,
         .description = COMPOUND_STRING(
-            "A small poster with\n"
-            "an AZURILL print."),
+            "Ein kleines Poster\n"
+            "mit AZURILL."),
         .tiles = DecorGfx_CUTE_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1116,15 +1121,15 @@ const struct Decoration gDecorations[] =
     [DECOR_PIKA_POSTER] =
     {
         .id = DECOR_PIKA_POSTER,
-        .name = _("PIKA POSTER"),
+        .name = _("PIKA-POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_2x1,
         .category = DECORCAT_POSTER,
         .price = 1500,
         .description = COMPOUND_STRING(
-            "A large poster with\n"
-            "a PIKACHU and\n"
-            "PICHU print."),
+            "Ein großes Poster\n"
+            "mit PIKACHU und\n"
+            "PICHU."),
         .tiles = DecorGfx_PIKA_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1132,14 +1137,14 @@ const struct Decoration gDecorations[] =
     [DECOR_LONG_POSTER] =
     {
         .id = DECOR_LONG_POSTER,
-        .name = _("LONG POSTER"),
+        .name = _("LANGES POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_2x1,
         .category = DECORCAT_POSTER,
         .price = 1500,
         .description = COMPOUND_STRING(
-            "A large poster with\n"
-            "a SEVIPER print."),
+            "Ein großes Poster\n"
+            "mit VIPITIS."),
         .tiles = DecorGfx_LONG_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1147,14 +1152,14 @@ const struct Decoration gDecorations[] =
     [DECOR_SEA_POSTER] =
     {
         .id = DECOR_SEA_POSTER,
-        .name = _("SEA POSTER"),
+        .name = _("MEER-POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_2x1,
         .category = DECORCAT_POSTER,
         .price = 1500,
         .description = COMPOUND_STRING(
-            "A large poster with\n"
-            "a RELICANTH print."),
+            "Ein großes Poster\n"
+            "mit RELICANTH."),
         .tiles = DecorGfx_SEA_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1162,14 +1167,14 @@ const struct Decoration gDecorations[] =
     [DECOR_SKY_POSTER] =
     {
         .id = DECOR_SKY_POSTER,
-        .name = _("SKY POSTER"),
+        .name = _("HIMMELS-POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_2x1,
         .category = DECORCAT_POSTER,
         .price = 1500,
         .description = COMPOUND_STRING(
-            "A large poster with\n"
-            "a WINGULL print."),
+            "Ein großes Poster\n"
+            "mit WINGULL."),
         .tiles = DecorGfx_SKY_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1177,14 +1182,14 @@ const struct Decoration gDecorations[] =
     [DECOR_KISS_POSTER] =
     {
         .id = DECOR_KISS_POSTER,
-        .name = _("KISS POSTER"),
+        .name = _("KUSS-POSTER"),
         .permission = DECORPERM_NA_WALL,
         .shape = DECORSHAPE_2x1,
         .category = DECORCAT_POSTER,
         .price = 1500,
         .description = COMPOUND_STRING(
-            "A large poster with\n"
-            "a SMOOCHUM print."),
+            "Ein großes Poster\n"
+            "mit KUSSILLA."),
         .tiles = DecorGfx_KISS_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1192,15 +1197,15 @@ const struct Decoration gDecorations[] =
     [DECOR_PICHU_DOLL] =
     {
         .id = DECOR_PICHU_DOLL,
-        .name = _("PICHU DOLL"),
+        .name = _("PICHU-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A PICHU doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "PICHU-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_PICHU_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1208,15 +1213,15 @@ const struct Decoration gDecorations[] =
     [DECOR_PIKACHU_DOLL] =
     {
         .id = DECOR_PIKACHU_DOLL,
-        .name = _("PIKACHU DOLL"),
+        .name = _("PIKACHU-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A PIKACHU doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "PIKACHU-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_PIKACHU_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1224,15 +1229,15 @@ const struct Decoration gDecorations[] =
     [DECOR_MARILL_DOLL] =
     {
         .id = DECOR_MARILL_DOLL,
-        .name = _("MARILL DOLL"),
+        .name = _("MARILL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A MARILL doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "MARILL-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_MARILL_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1240,15 +1245,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TOGEPI_DOLL] =
     {
         .id = DECOR_TOGEPI_DOLL,
-        .name = _("TOGEPI DOLL"),
+        .name = _("TOGEPI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A TOGEPI doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "TOGEPI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_TOGEPI_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1256,15 +1261,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CYNDAQUIL_DOLL] =
     {
         .id = DECOR_CYNDAQUIL_DOLL,
-        .name = _("CYNDAQUIL DOLL"),
+        .name = _("FEURIGEL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A CYNDAQUIL doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "FEURIGEL-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_CYNDAQUIL_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1272,15 +1277,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CHIKORITA_DOLL] =
     {
         .id = DECOR_CHIKORITA_DOLL,
-        .name = _("CHIKORITA DOLL"),
+        .name = _("ENDIVIE-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A CHIKORITA doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "ENDIVIE-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_CHIKORITA_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1288,15 +1293,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TOTODILE_DOLL] =
     {
         .id = DECOR_TOTODILE_DOLL,
-        .name = _("TOTODILE DOLL"),
+        .name = _("KARNIMANI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A TOTODILE doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "KARNIMANI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_TOTODILE_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1304,15 +1309,15 @@ const struct Decoration gDecorations[] =
     [DECOR_JIGGLYPUFF_DOLL] =
     {
         .id = DECOR_JIGGLYPUFF_DOLL,
-        .name = _("JIGGLYPUFF DOLL"),
+        .name = _("PUMMELUFF-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A JIGGLYPUFF doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "PUMMELUFF-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_JIGGLYPUFF_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1320,15 +1325,15 @@ const struct Decoration gDecorations[] =
     [DECOR_MEOWTH_DOLL] =
     {
         .id = DECOR_MEOWTH_DOLL,
-        .name = _("MEOWTH DOLL"),
+        .name = _("MAUZI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A MEOWTH doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "MAUZI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_MEOWTH_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1336,15 +1341,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CLEFAIRY_DOLL] =
     {
         .id = DECOR_CLEFAIRY_DOLL,
-        .name = _("CLEFAIRY DOLL"),
+        .name = _("PIEPI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A CLEFAIRY doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "PIEPI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_CLEFAIRY_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1352,15 +1357,15 @@ const struct Decoration gDecorations[] =
     [DECOR_DITTO_DOLL] =
     {
         .id = DECOR_DITTO_DOLL,
-        .name = _("DITTO DOLL"),
+        .name = _("DITTO-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A DITTO doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "DITTO-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_DITTO_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1368,15 +1373,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SMOOCHUM_DOLL] =
     {
         .id = DECOR_SMOOCHUM_DOLL,
-        .name = _("SMOOCHUM DOLL"),
+        .name = _("KUSSILLA-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A SMOOCHUM doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "KUSSILLA-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SMOOCHUM_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1384,15 +1389,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TREECKO_DOLL] =
     {
         .id = DECOR_TREECKO_DOLL,
-        .name = _("TREECKO DOLL"),
+        .name = _("GECKARBOR-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A TREECKO doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "GECKARBOR-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_TREECKO_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1400,15 +1405,15 @@ const struct Decoration gDecorations[] =
     [DECOR_TORCHIC_DOLL] =
     {
         .id = DECOR_TORCHIC_DOLL,
-        .name = _("TORCHIC DOLL"),
+        .name = _("FLEMMLI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A TORCHIC doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "FLEMMLI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_TORCHIC_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1416,15 +1421,15 @@ const struct Decoration gDecorations[] =
     [DECOR_MUDKIP_DOLL] =
     {
         .id = DECOR_MUDKIP_DOLL,
-        .name = _("MUDKIP DOLL"),
+        .name = _("HYDROPI-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A MUDKIP doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "HYDROPI-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_MUDKIP_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1432,15 +1437,15 @@ const struct Decoration gDecorations[] =
     [DECOR_DUSKULL_DOLL] =
     {
         .id = DECOR_DUSKULL_DOLL,
-        .name = _("DUSKULL DOLL"),
+        .name = _("ZWIRRL.-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A DUSKULL doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "ZWIRRLICHT-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_DUSKULL_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1448,15 +1453,15 @@ const struct Decoration gDecorations[] =
     [DECOR_WYNAUT_DOLL] =
     {
         .id = DECOR_WYNAUT_DOLL,
-        .name = _("WYNAUT DOLL"),
+        .name = _("ISSO-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A WYNAUT doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "ISSO-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_WYNAUT_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1464,15 +1469,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BALTOY_DOLL] =
     {
         .id = DECOR_BALTOY_DOLL,
-        .name = _("BALTOY DOLL"),
+        .name = _("PUPPANCE-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A BALTOY doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "PUPPANCE-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_BALTOY_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1480,15 +1485,15 @@ const struct Decoration gDecorations[] =
     [DECOR_KECLEON_DOLL] =
     {
         .id = DECOR_KECLEON_DOLL,
-        .name = _("KECLEON DOLL"),
+        .name = _("KECLEON-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A KECLEON doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "KECLEON-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_KECLEON_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1496,15 +1501,15 @@ const struct Decoration gDecorations[] =
     [DECOR_AZURILL_DOLL] =
     {
         .id = DECOR_AZURILL_DOLL,
-        .name = _("AZURILL DOLL"),
+        .name = _("AZURILL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "An AZURILL doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "AZURILL-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_AZURILL_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1512,15 +1517,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SKITTY_DOLL] =
     {
         .id = DECOR_SKITTY_DOLL,
-        .name = _("SKITTY DOLL"),
+        .name = _("ENECO-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A SKITTY doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "ENECO-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SKITTY_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1528,15 +1533,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SWABLU_DOLL] =
     {
         .id = DECOR_SWABLU_DOLL,
-        .name = _("SWABLU DOLL"),
+        .name = _("WABLU-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A SWABLU doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "WABLU-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SWABLU_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1544,15 +1549,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GULPIN_DOLL] =
     {
         .id = DECOR_GULPIN_DOLL,
-        .name = _("GULPIN DOLL"),
+        .name = _("SCHLUPP.-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A GULPIN doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "SCHLUPPUCK-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_GULPIN_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1560,15 +1565,15 @@ const struct Decoration gDecorations[] =
     [DECOR_LOTAD_DOLL] =
     {
         .id = DECOR_LOTAD_DOLL,
-        .name = _("LOTAD DOLL"),
+        .name = _("LOTURZEL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A LOTAD doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "LOTURZEL-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_LOTAD_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1576,15 +1581,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SEEDOT_DOLL] =
     {
         .id = DECOR_SEEDOT_DOLL,
-        .name = _("SEEDOT DOLL"),
+        .name = _("SAMURZEL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
-            "A SEEDOT doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "SAMURZEL-Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SEEDOT_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1592,15 +1597,15 @@ const struct Decoration gDecorations[] =
     [DECOR_PIKA_CUSHION] =
     {
         .id = DECOR_PIKA_CUSHION,
-        .name = _("PIKA CUSHION"),
+        .name = _("PIKA-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A PIKACHU cushion.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Ein PIKACHU-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_PIKA_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1608,15 +1613,15 @@ const struct Decoration gDecorations[] =
     [DECOR_ROUND_CUSHION] =
     {
         .id = DECOR_ROUND_CUSHION,
-        .name = _("ROUND CUSHION"),
+        .name = _("RUNDES KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A MARILL cushion.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Ein MARILL-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_ROUND_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1624,15 +1629,15 @@ const struct Decoration gDecorations[] =
     [DECOR_KISS_CUSHION] =
     {
         .id = DECOR_KISS_CUSHION,
-        .name = _("KISS CUSHION"),
+        .name = _("KUSS-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A SMOOCHUM\n"
-            "cushion. Place it on\n"
-            "a mat or a desk."),
+            "Ein Kussilla-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_KISS_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1640,15 +1645,15 @@ const struct Decoration gDecorations[] =
     [DECOR_ZIGZAG_CUSHION] =
     {
         .id = DECOR_ZIGZAG_CUSHION,
-        .name = _("ZIGZAG CUSHION"),
+        .name = _("ZIGZACHS-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A ZIGZAGOON\n"
-            "cushion. Place it on\n"
-            "a mat or a desk."),
+            "Ein Zigzachs-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_ZIGZAG_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1656,15 +1661,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SPIN_CUSHION] =
     {
         .id = DECOR_SPIN_CUSHION,
-        .name = _("SPIN CUSHION"),
+        .name = _("PANDIR-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A SPINDA cushion.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Ein PANDIR-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SPIN_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1672,15 +1677,15 @@ const struct Decoration gDecorations[] =
     [DECOR_DIAMOND_CUSHION] =
     {
         .id = DECOR_DIAMOND_CUSHION,
-        .name = _("DIAMOND CUSHION"),
+        .name = _("ZOBIRIS-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A SABLEYE cushion.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Ein ZOBIRIS-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_DIAMOND_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1688,15 +1693,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BALL_CUSHION] =
     {
         .id = DECOR_BALL_CUSHION,
-        .name = _("BALL CUSHION"),
+        .name = _("BALL-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A BALL cushion.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Ein BALL-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_BALL_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1704,15 +1709,15 @@ const struct Decoration gDecorations[] =
     [DECOR_GRASS_CUSHION] =
     {
         .id = DECOR_GRASS_CUSHION,
-        .name = _("GRASS CUSHION"),
+        .name = _("PFLANZEN-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A grass-mark\n"
-            "cushion. Place it on\n"
-            "a mat or a desk."),
+            "Kissen mit Pflanzen-\n"
+            "Symbol. Auf Matte\n"
+            "oder Tisch."),
         .tiles = DecorGfx_GRASS_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1720,15 +1725,15 @@ const struct Decoration gDecorations[] =
     [DECOR_FIRE_CUSHION] =
     {
         .id = DECOR_FIRE_CUSHION,
-        .name = _("FIRE CUSHION"),
+        .name = _("FEUER-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A fire-mark\n"
-            "cushion. Place it on\n"
-            "a mat or a desk."),
+            "Kissen mit Feuer-\n"
+            "Symbol. Auf Matte\n"
+            "oder Tisch."),
         .tiles = DecorGfx_FIRE_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1736,15 +1741,15 @@ const struct Decoration gDecorations[] =
     [DECOR_WATER_CUSHION] =
     {
         .id = DECOR_WATER_CUSHION,
-        .name = _("WATER CUSHION"),
+        .name = _("WASSER-KISSEN"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "A water-mark\n"
-            "cushion. Place it on\n"
-            "a mat or a desk."),
+            "Kissen mit Wasser-\n"
+            "Symbol. Auf Matte\n"
+            "oder Tisch."),
         .tiles = DecorGfx_WATER_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1752,15 +1757,15 @@ const struct Decoration gDecorations[] =
     [DECOR_SNORLAX_DOLL] =
     {
         .id = DECOR_SNORLAX_DOLL,
-        .name = _("SNORLAX DOLL"),
+        .name = _("RELAXO-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_SNORLAX_DOLL,
         .icon = {gDecorIcon_SnorlaxDoll, gDecorIconPalette_SnorlaxDoll},
     },
@@ -1768,15 +1773,15 @@ const struct Decoration gDecorations[] =
     [DECOR_RHYDON_DOLL] =
     {
         .id = DECOR_RHYDON_DOLL,
-        .name = _("RHYDON DOLL"),
+        .name = _("RIZEROS-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_RHYDON_DOLL,
         .icon = {gDecorIcon_RhydonDoll, gDecorIconPalette_RhydonDoll},
     },
@@ -1784,15 +1789,15 @@ const struct Decoration gDecorations[] =
     [DECOR_LAPRAS_DOLL] =
     {
         .id = DECOR_LAPRAS_DOLL,
-        .name = _("LAPRAS DOLL"),
+        .name = _("LAPRAS-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_LAPRAS_DOLL,
         .icon = {gDecorIcon_LaprasDoll, gDecorIconPalette_LaprasDoll},
     },
@@ -1800,15 +1805,15 @@ const struct Decoration gDecorations[] =
     [DECOR_VENUSAUR_DOLL] =
     {
         .id = DECOR_VENUSAUR_DOLL,
-        .name = _("VENUSAUR DOLL"),
+        .name = _("BISAFLOR-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_VENUSAUR_DOLL,
         .icon = {gDecorIcon_VenusaurDoll, gDecorIconPalette_VenusaurDoll},
     },
@@ -1816,15 +1821,15 @@ const struct Decoration gDecorations[] =
     [DECOR_CHARIZARD_DOLL] =
     {
         .id = DECOR_CHARIZARD_DOLL,
-        .name = _("CHARIZARD DOLL"),
+        .name = _("GLURAK-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_CHARIZARD_DOLL,
         .icon = {gDecorIcon_CharizardDoll, gDecorIconPalette_CharizardDoll},
     },
@@ -1832,15 +1837,15 @@ const struct Decoration gDecorations[] =
     [DECOR_BLASTOISE_DOLL] =
     {
         .id = DECOR_BLASTOISE_DOLL,
-        .name = _("BLASTOISE DOLL"),
+        .name = _("TURTOK-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_BLASTOISE_DOLL,
         .icon = {gDecorIcon_BlastoiseDoll, gDecorIconPalette_BlastoiseDoll},
     },
@@ -1848,15 +1853,15 @@ const struct Decoration gDecorations[] =
     [DECOR_WAILMER_DOLL] =
     {
         .id = DECOR_WAILMER_DOLL,
-        .name = _("WAILMER DOLL"),
+        .name = _("WAILMER-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_WAILMER_DOLL,
         .icon = {gDecorIcon_WailmerDoll, gDecorIconPalette_WailmerDoll},
     },
@@ -1864,15 +1869,15 @@ const struct Decoration gDecorations[] =
     [DECOR_REGIROCK_DOLL] =
     {
         .id = DECOR_REGIROCK_DOLL,
-        .name = _("REGIROCK DOLL"),
+        .name = _("REGIROCK-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_REGIROCK_DOLL,
         .icon = {gDecorIcon_RegirockDoll, gDecorIconPalette_RegirockDoll},
     },
@@ -1880,15 +1885,15 @@ const struct Decoration gDecorations[] =
     [DECOR_REGICE_DOLL] =
     {
         .id = DECOR_REGICE_DOLL,
-        .name = _("REGICE DOLL"),
+        .name = _("REGICE-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_REGICE_DOLL,
         .icon = {gDecorIcon_RegiceDoll, gDecorIconPalette_RegiceDoll},
     },
@@ -1896,15 +1901,15 @@ const struct Decoration gDecorations[] =
     [DECOR_REGISTEEL_DOLL] =
     {
         .id = DECOR_REGISTEEL_DOLL,
-        .name = _("REGISTEEL DOLL"),
+        .name = _("REGISTEEL-PUPPE"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x2,
         .category = DECORCAT_DOLL,
         .price = 10000,
         .description = COMPOUND_STRING(
-            "A large doll.\n"
-            "Place it on a mat\n"
-            "or a desk."),
+            "Eine große Puppe.\n"
+            "Stelle sie auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_REGISTEEL_DOLL,
         .icon = {gDecorIcon_RegisteelDoll, gDecorIconPalette_RegisteelDoll},
     }
