@@ -156,10 +156,10 @@ static void SpriteCB_SelectionIconCancel(struct Sprite *);
 static void SpriteCB_MonPic(struct Sprite *);
 static void SpriteCB_Condition(struct Sprite *);
 
-static const u8 sText_GetsAPokeBlockQuestion[] = _(" gets a {POKEBLOCK}?");
-static const u8 sText_WasEnhanced[] = _("was enhanced!");
-static const u8 sText_NothingChanged[] = _("Nothing changed!");
-static const u8 sText_WontEatAnymore[] = _("It won't eat anymore…");
+static const u8 sText_GetsAPokeBlockQuestion[] = _(" bekommt einen {POKEBLOCK}?");
+static const u8 sText_WasEnhanced[] = _("wurde verbessert!");
+static const u8 sText_NothingChanged[] = _("Nichts hat sich geändert!");
+static const u8 sText_WontEatAnymore[] = _("Es will nichts mehr fressen…");
 static const u8 sText_NatureSlash[] = _("NATURE/");
 
 extern const u16 gConditionGraphData_Pal[];

@@ -1119,7 +1119,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_ILLUSION] =
     {
-        .name = _("Illusion"),
+        .name = _("Trugbild"),
         .description = COMPOUND_STRING("Tritt als letztes in Kampf."),
         .aiRating = 8,
         .cantBeCopied = TRUE,
@@ -1546,7 +1546,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_TRIAGE] =
     {
-        .name = _("Triage"),
+        .name = _("Heilwandel"),
         .description = COMPOUND_STRING("Heil-Attacken Priorität."),
         .aiRating = 7,
     },
@@ -2245,7 +2245,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_OPPORTUNIST] =
     {
-        .name = _("Opportunist"),
+        .name = _("Profiteur"),
         .description = COMPOUND_STRING("Kopiert Statserhöhungen."),
         .aiRating = 5,
     },
@@ -2427,49 +2427,49 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_PIERCING_DRILL] =
     {
-        .name = _("Piercing Drill"),
-        .description = COMPOUND_STRING("Contact evades protection."),
+        .name = _("Stichbohrer"),
+        .description = COMPOUND_STRING("Kontakt umgeht Schutz."),
     },
 
     [ABILITY_DRAGONIZE] =
     {
-        .name = _("Dragonize"),
-        .description = COMPOUND_STRING("Normal moves turn Dragon."),
+        .name = _("Drachenschicht"),
+        .description = COMPOUND_STRING("Normal-Att. werden Drache."),
     },
 
     [ABILITY_EELEVATE] =
     {
-        .name = _("Eelevate"),
-        .description = COMPOUND_STRING("Levitate and Beast Boost."),
+        .name = _("Emporwindung"),
+        .description = COMPOUND_STRING("Schwebe und Ultrakraft."),
     },
 
     [ABILITY_314] =
     {
         .name = _("-------"),
-        .description = COMPOUND_STRING("No special ability."),
+        .description = COMPOUND_STRING("Keine besond. Fähigkeit."),
     },
 
     [ABILITY_MEGA_SOL] =
     {
-        .name = _("Mega Sol"),
-        .description = COMPOUND_STRING("Acts like under sun."),
+        .name = _("Mega-Solarkraft"),
+        .description = COMPOUND_STRING("Wirkt wie unter Sonne."),
     },
 
     [ABILITY_FIRE_MANE] =
     {
-        .name = _("Fire Mane"),
-        .description = COMPOUND_STRING("Ups Fire-type moves."),
+        .name = _("Flammenmähne"),
+        .description = COMPOUND_STRING("Stärkt Feuer-Attacken."),
     },
 
     [ABILITY_317] =
     {
         .name = _("-------"),
-        .description = COMPOUND_STRING("No special ability."),
+        .description = COMPOUND_STRING("Keine besond. Fähigkeit."),
     },
 
     [ABILITY_SPICY_SPRAY] =
     {
-        .name = _("Spicy Spray"),
-        .description = COMPOUND_STRING("Burns the foe when damaged."),
+        .name = _("Chilispritzer"),
+        .description = COMPOUND_STRING("Verbrennt Gegner bei Schaden."),
     },
 };

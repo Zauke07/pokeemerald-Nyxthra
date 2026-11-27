@@ -63,113 +63,120 @@ SSTidalRooms_EventScript_Naomi::
 	end
 
 SSTidalRooms_Text_TakeRestOnBed:
-	.string "There's a bed…\n"
-	.string "Let's take a rest.$"
+	.string "Da ist ein Bett…\n"
+	.string "Ruhen wir uns aus.$"
 
 SSTidalRooms_Text_ColtonIntro:
-	.string "I often sail to LILYCOVE CITY.\p"
-	.string "I enjoy attending CONTESTS,\n"
-	.string "you see.$"
+	.string "Ich segle oft nach SEEGRASULB CITY.\p"
+	.string "Ich besuche nämlich gern\n"
+	.string "Wettbewerbe.$"
 
 SSTidalRooms_Text_ColtonDefeat:
-	.string "That was an enjoyable match!$"
+	.string "Das war ein schöner Kampf!$"
 
 SSTidalRooms_Text_ColtonPostBattle:
-	.string "I get so excited imagining what kinds\n"
-	.string "of POKéMON I'll get to see in the next\l"
-	.string "CONTEST. The anticipation of it thrills!$"
+	.string "Ich bin so aufgeregt, wenn ich mir\n"
+	.string "vorstelle, welche Pokémon ich im\l"
+	.string "nächsten Wettbewerb sehe. Die\l"
+	.string "Vorfreude begeistert mich!$"
 
 SSTidalRooms_Text_MicahIntro:
-	.string "Are your friends strong?$"
+	.string "Sind deine Freunde stark?$"
 
 SSTidalRooms_Text_MicahDefeat:
-	.string "Your friends are, indeed, strong.$"
+	.string "Deine Freunde sind tatsächlich stark.$"
 
 SSTidalRooms_Text_MicahPostBattle:
-	.string "Friends need not be human.\n"
-	.string "For me, POKéMON are treasured friends!$"
+	.string "Freunde müssen keine Menschen sein.\n"
+	.string "Für mich sind Pokémon wertvolle\l"
+	.string "Freunde!$"
 
 SSTidalRooms_Text_ThomasIntro:
-	.string "Child…\n"
-	.string "Did you knock on the door?$"
+	.string "Kind…\n"
+	.string "Hast du an die Tür geklopft?$"
 
 SSTidalRooms_Text_ThomasDefeat:
-	.string "A loss is to be accepted without haste\n"
-	.string "or panic.$"
+	.string "Eine Niederlage nimmt man ohne Eile\n"
+	.string "oder Panik hin.$"
 
 SSTidalRooms_Text_ThomasPostBattle:
-	.string "To be never ruffled in any situation is\n"
-	.string "the GENTLEMAN's code of conduct.$"
+	.string "In keiner Lage aus der Fassung zu\n"
+	.string "geraten, ist der Verhaltenskodex des\l"
+	.string "GENTLEMANS.$"
 
 SSTidalRooms_Text_JedIntro:
-	.string "JED: I feel a little shy about this, but…\n"
-	.string "We'll show you our lovey-dovey power!$"
+	.string "JED: Mir ist das ein bisschen peinlich,\n"
+	.string "aber… Wir zeigen dir unsere\l"
+	.string "Turtelkraft!$"
 
 SSTidalRooms_Text_JedDefeat:
-	.string "JED: Sigh…$"
+	.string "JED: Seufz…$"
 
 SSTidalRooms_Text_JedPostBattle:
-	.string "JED: It's the first time that our lovey-\n"
-	.string "dovey power couldn't prevail!\l"
-	.string "You must be an awesome TRAINER!$"
+	.string "JED: Zum ersten Mal hat unsere\n"
+	.string "Turtelkraft nicht gesiegt!\l"
+	.string "Du musst ein toller Trainer sein!$"
 
 SSTidalRooms_Text_JedNotEnoughMons:
-	.string "JED: You only have one POKéMON?\n"
-	.string "Isn't that just too lonesome?$"
+	.string "JED: Du hast nur ein Pokémon?\n"
+	.string "Ist das nicht viel zu einsam?$"
 
 SSTidalRooms_Text_LeaIntro:
-	.string "LEA: I feel a little silly, but…\n"
-	.string "We'll show you our lovey-dovey power!$"
+	.string "LEA: Ich komme mir ein bisschen albern\n"
+	.string "vor, aber… Wir zeigen dir unsere\l"
+	.string "Turtelkraft!$"
 
 SSTidalRooms_Text_LeaDefeat:
-	.string "LEA: Oh, boo!$"
+	.string "LEA: Menno!$"
 
 SSTidalRooms_Text_LeaPostBattle:
-	.string "LEA: I can't believe it!\n"
-	.string "Our lovey-dovey power failed…\l"
-	.string "You must be an awesome TRAINER!$"
+	.string "LEA: Das glaube ich nicht!\n"
+	.string "Unsere Turtelkraft hat versagt…\l"
+	.string "Du musst ein toller Trainer sein!$"
 
 SSTidalRooms_Text_LeaNotEnoughMons:
-	.string "LEA: I wanted to battle…\n"
-	.string "But you don't even have two POKéMON…$"
+	.string "LEA: Ich wollte kämpfen…\n"
+	.string "Aber du hast ja nicht mal zwei Pokémon…$"
 
 SSTidalRooms_Text_GarretIntro:
-	.string "Ah, you've come just in time.\p"
-	.string "I'm bored, you see.\n"
-	.string "You may entertain me.$"
+	.string "Ah, du kommst gerade recht.\p"
+	.string "Mir ist langweilig, weißt du.\n"
+	.string "Du darfst mich unterhalten.$"
 
 SSTidalRooms_Text_GarretDefeat:
-	.string "…That will do.$"
+	.string "…Das genügt.$"
 
 SSTidalRooms_Text_GarretPostBattle:
-	.string "Perhaps I shall get Father to acquire\n"
-	.string "a yacht for me.\l"
-	.string "A yacht for me and POKéMON!$"
+	.string "Vielleicht bringe ich Vater dazu, mir\n"
+	.string "eine Yacht zu kaufen.\l"
+	.string "Eine Yacht für mich und meine Pokémon!$"
 
 SSTidalRooms_Text_NaomiIntro:
-	.string "Oh, you're such an adorable TRAINER.\n"
-	.string "Would you like to have tea?\l"
-	.string "Or would you rather battle?$"
+	.string "Oh, was für ein reizender Trainer.\n"
+	.string "Möchtest du Tee trinken?\l"
+	.string "Oder lieber kämpfen?$"
 
 SSTidalRooms_Text_NaomiDefeat:
-	.string "I see.\n"
-	.string "You're the active sort.$"
+	.string "Ich verstehe.\n"
+	.string "Du bist der aktive Typ.$"
 
 SSTidalRooms_Text_NaomiPostBattle:
-	.string "A world cruise on a luxury liner has its\n"
-	.string "charms, I must say…\p"
-	.string "But, I will admit there is an appealing\n"
-	.string "side to touring HOENN by ferry.$"
+	.string "Eine Weltreise auf einem Luxusliner hat\n"
+	.string "ihren Reiz, muss ich sagen…\p"
+	.string "Aber ich gebe zu, dass es auch etwas\n"
+	.string "Reizvolles hat, Hoenn mit der Fähre zu\l"
+	.string "bereisen.$"
 
 SSTidalRooms_Text_NotSuspiciousTakeThis:
-	.string "Uh… Hi! I… I'm not acting suspicious!\n"
-	.string "Uh… You can have this! For free!\p"
-	.string "It… Honestly, I didn't SNATCH it from\n"
-	.string "someone! I'd never do such a thing!\l"
-	.string "It's clean! You can use it!$"
+	.string "Äh… Hi! Ich… ich verhalte mich nicht\n"
+	.string "verdächtig! Äh… Das kannst du haben!\l"
+	.string "Gratis!\p"
+	.string "Ehrlich, ich habe es niemandem GEKLAUT!\n"
+	.string "So etwas würde ich nie tun! Es ist\l"
+	.string "sauber! Du kannst es benutzen!$"
 
 SSTidalRooms_Text_ExplainSnatch:
-	.string "SNATCH steals the beneficial effects\n"
-	.string "of certain moves before they can be\l"
-	.string "used by a foe or ally.$"
+	.string "KLAUBER stiehlt die Vorteile bestimmter\n"
+	.string "Attacken, bevor ein Gegner oder\l"
+	.string "Verbündeter sie nutzen kann.$"
 

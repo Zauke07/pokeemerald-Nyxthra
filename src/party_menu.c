@@ -535,11 +535,11 @@ static void Task_FirstBattleEnterParty_RunPrinterMsg2(u8 taskId);
 static void Task_FirstBattleEnterParty_FadeNormal(u8 taskId);
 static void Task_FirstBattleEnterParty_WaitFadeNormal(u8 taskId);
 
-static const u8 sText_askText[] = _("Would you like to change {STR_VAR_1}'s\nability to {STR_VAR_2}?");
-static const u8 sText_doneText[] = _("{STR_VAR_1}'s ability became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
-static const u8 sText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
-static const u8 sText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
-static const u8 sText_CannotSendMonToBoxPartner[] = _("Cannot send a mon that doesn't\nbelong to you to the box.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_askText[] = _("Soll die Fähigkeit von {STR_VAR_1}\nzu {STR_VAR_2} geändert werden?");
+static const u8 sText_doneText[] = _("Die Fähigkeit von {STR_VAR_1} ist\nnun {STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+static const u8 sText_BasePointsResetToZero[] = _("Alle Basispunkte von {STR_VAR_1}\nwurden auf null gesetzt!{PAUSE_UNTIL_PRESS}");
+static const u8 sText_CannotSendMonToBoxHM[] = _("Dieses Pokémon kann nicht in die\nBox, da es eine VM-Attacke kennt.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_CannotSendMonToBoxPartner[] = _("Fremde Pokémon können nicht\nin die Box geschickt werden.{PAUSE_UNTIL_PRESS}");
 
 // static const data
 #include "data/party_menu.h"
@@ -5187,8 +5187,8 @@ void ItemUseCB_AbilityPatch(u8 taskId, TaskFunc task)
 
 void Task_Mint(u8 taskId)
 {
-    static const u8 sText_askText[] = _("It might affect {STR_VAR_1}'s stats.\nAre you sure you want to use it?");
-    static const u8 sText_doneText[] = _("{STR_VAR_1}'s stats may have changed due\nto the effects of the {STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+    static const u8 sText_askText[] = _("Das könnte die Werte von {STR_VAR_1}\nverändern. Wirklich benutzen?");
+    static const u8 sText_doneText[] = _("Die Werte von {STR_VAR_1} haben sich\ndurch {STR_VAR_2} geändert!{PAUSE_UNTIL_PRESS}");
     s16 *data = gTasks[taskId].data;
 
     switch (tState)
@@ -6144,7 +6144,7 @@ static void BufferMonStatsToTaskData(struct Pokemon *mon, s16 *data)
 
 void Task_DynamaxCandy(u8 taskId)
 {
-    static const u8 sText_doneText[] = _("{STR_VAR_1}'s Dynamax Level\nincreased by 1!{PAUSE_UNTIL_PRESS}");
+    static const u8 sText_doneText[] = _("Das Dynamax-Level von {STR_VAR_1}\nsteigt um 1!{PAUSE_UNTIL_PRESS}");
     s16 *data = gTasks[taskId].data;
 
     switch (tState)

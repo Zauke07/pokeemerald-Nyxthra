@@ -120,8 +120,8 @@ static const u8 sText_TwoLinkTrainersWantToBattle[] = _("Du wirst von {B_LINK_OP
 static const u8 sText_Trainer1SentOutPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_OPPONENT_MON1_NAME} in den Kampf!");
 static const u8 sText_Trainer1SentOutTwoPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_OPPONENT_MON1_NAME} und {B_OPPONENT_MON2_NAME} in den Kampf!");
 static const u8 sText_Trainer1SentOutPkmn2[] = _("{B_TRAINER1_NAME_WITH_CLASS} schickt {B_BUFF1} in den Kampf!");
-static const u8 sText_LinkTrainerIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} sent out {B_LINK_OPPONENT_MON1_NAME}!");
-static const u8 sText_TwoLinkTrainersIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} sent out {B_LINK_OPPONENT_MON1_NAME}! {B_LINK_OPPONENT2_NAME} sent out {B_LINK_OPPONENT_MON2_NAME}!");
+static const u8 sText_LinkTrainerIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} schickt {B_LINK_OPPONENT_MON1_NAME}!");
+static const u8 sText_TwoLinkTrainersIntroSendOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} schickt {B_LINK_OPPONENT_MON1_NAME}! {B_LINK_OPPONENT2_NAME} schickt {B_LINK_OPPONENT_MON2_NAME}!");
 
 static const u8 sText_LinkTrainerSentOutPkmn[] = _("{B_LINK_OPPONENT1_NAME} schickt {B_OPPONENT_MON1_NAME} in den Kampf!");
 static const u8 sText_LinkTrainer2SentOutPkmn2[] = _("{B_LINK_OPPONENT2_NAME} schickt {B_OPPONENT_MON2_NAME} in den Kampf!");
@@ -135,7 +135,7 @@ static const u8 sText_GoTwoPkmn[] = _("Los! {B_PLAYER_MON1_NAME} und {B_PLAYER_M
 static const u8 sText_GoPkmn2[] = _("Los! {B_BUFF1}!");
 static const u8 sText_DoItPkmn[] = _("Du bist dran, {B_BUFF1}!");
 static const u8 sText_GoForItPkmn[] = _("Gib dein Bestes, {B_BUFF1}!");
-static const u8 sText_BeCarefulPkmn[] = _("Be careful, {B_PLAYER_MON1_NAME}!");
+static const u8 sText_BeCarefulPkmn[] = _("Sei vorsichtig, {B_PLAYER_MON1_NAME}!");
 static const u8 sText_JustALittleMorePkmn[] = _("Nur noch ein bisschen! Halte durch, {B_BUFF1}!"); 
 static const u8 sText_YourFoesWeakGetEmPkmn[] = _("Dein Gegner ist schwach! Schnapp ihn dir, {B_BUFF1}!");
 
@@ -1523,7 +1523,7 @@ const u8 gText_WhatWillWallyDo[] = _("Was wird\nHeiko tun?");
 // catching demo (see gNyxthraForceBattleBackPic, battle_controller_wally.c).
 const u8 gText_WhatWillMayDo[] = _("Was wird\nMai tun?");
 const u8 gText_WhatWillBrendanDo[] = _("Was wird\nBrix tun?");
-const u8 gText_LinkStandby[] = _("{PAUSE 16}Link standby…");
+const u8 gText_LinkStandby[] = _("{PAUSE 16}Verbindung wird gehalten…");
 const u8 gText_BattleMenu[] = _("Kampf{CLEAR_TO 56}Beutel\nPokémon{CLEAR_TO 56}Flucht");
 const u8 gText_SafariZoneMenu[] = _("Ball{CLEAR_TO 56}{POKEBLOCK}\nNähern{CLEAR_TO 56}Flucht");
 const u8 gText_SafariZoneMenuFrlg[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW 13 14 15}BALL{CLEAR_TO 56}BAIT\nROCK{CLEAR_TO 56}RUN");

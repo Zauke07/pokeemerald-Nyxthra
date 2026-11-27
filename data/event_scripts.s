@@ -1438,8 +1438,8 @@ gText_PokeblockLinkCanceled::
 	.string "Die Verbindung wurde abgebrochen.$"
 
 gText_UnusedNicknameReceivedPokemon::
-	.string "Want to give a nickname to\n"
-	.string "the {STR_VAR_2} you received?$"
+	.string "Möchtest du dem erhaltenen\n"
+	.string "{STR_VAR_2} einen Spitznamen geben?$"
 
 gText_PlayerWhitedOut::
 	.string "{PLAYER} hat kein kampffähiges Pokémon\n"
@@ -1589,7 +1589,7 @@ gText_LegendaryFlewAway::
 	.string "{STR_VAR_1} flog davon!$"
 
 gText_WantWhichFloor::
-	.string "Which floor do you want?$"
+	.string "Welches Stockwerk möchtest du?$"
 
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/questionnaire.inc"
@@ -1744,7 +1744,7 @@ EventScript_TryDarkenRuins::
 	return
 
 Text_MonFlewAway::
-	.string "The {STR_VAR_1} flew away!$"
+	.string "{STR_VAR_1} ist davongeflogen!$"
 
 @ Call for legendary bird trio
 Text_Gyaoo::

@@ -733,20 +733,20 @@ static const u8 sText_UnkWeightMetric[] = _("???.? kg.");
 static const u8 sText_PokedexRegistration[] = _("Neuer Eintrag im Pokédex!");
 static const u8 sText_HTHeight[] = _("HT");
 static const u8 sText_WTWeight[] = _("WT");
-static const u8 sText_SearchingPleaseWait[] = _("Searching…\nPlease wait.");
-static const u8 sText_SearchCompleted[] = _("Search completed.");
-static const u8 sText_NoMatchingPkmnWereFound[] = _("No matching POKéMON were found.");
-static const u8 sText_SearchForPkmnBasedOnParameters[] = _("Search for POKéMON based on\nselected parameters.");
-static const u8 sText_SwitchPokedexListings[] = _("Switch POKéDEX listings.");
-static const u8 sText_ReturnToPokedex[] = _("Return to the POKéDEX.");
-static const u8 sText_SelectPokedexMode[] = _("Select the POKéDEX mode.");
-static const u8 sText_SelectPokedexListingMode[] = _("Select the POKéDEX listing mode.");
-static const u8 sText_ListByFirstLetter[] = _("List by the first letter in the name.\nSpotted POKéMON only.");
-static const u8 sText_ListByBodyColor[] = _("List by body color.\nSpotted POKéMON only.");
-static const u8 sText_ListByType[] = _("List by type.\nOwned POKéMON only.");
+static const u8 sText_SearchingPleaseWait[] = _("Suche läuft…\nBitte warten.");
+static const u8 sText_SearchCompleted[] = _("Suche abgeschlossen.");
+static const u8 sText_NoMatchingPkmnWereFound[] = _("Kein passendes Pokémon gefunden.");
+static const u8 sText_SearchForPkmnBasedOnParameters[] = _("Sucht Pokémon anhand der\ngewählten Parameter.");
+static const u8 sText_SwitchPokedexListings[] = _("Wechselt die Pokédex-Listen.");
+static const u8 sText_ReturnToPokedex[] = _("Zurück zum Pokédex.");
+static const u8 sText_SelectPokedexMode[] = _("Wähle den Pokédex-Modus.");
+static const u8 sText_SelectPokedexListingMode[] = _("Wähle die Sortierung.");
+static const u8 sText_ListByFirstLetter[] = _("Nach Anfangsbuchstaben.\nNur gesehene Pokémon.");
+static const u8 sText_ListByBodyColor[] = _("Nach Körperfarbe.\nNur gesehene Pokémon.");
+static const u8 sText_ListByType[] = _("Nach Typ.\nNur gefangene Pokémon.");
 static const u8 sText_ExecuteSearchSwitch[] = _("Execute search/switch.");
 static const u8 sText_DexEmptyString[] = _("");
-static const u8 sText_DexSearchDontSpecify[] = _("DON'T SPECIFY.");
+static const u8 sText_DexSearchDontSpecify[] = _("KEINE ANGABE.");
 static const u8 sText_DexSearchTypeNone[] = _("NONE");
 
 ALIGNED(4) static const u8 sExpandedPlaceholder_PokedexDescription[] = _("");
@@ -1235,19 +1235,19 @@ static const u8 sSearchMovementMap_ShiftHoennDex[SEARCH_COUNT][4] =
 
 static const struct SearchOptionText sDexModeOptions[] =
 {
-    [DEX_MODE_HOENN]    = {COMPOUND_STRING("HOENN region's POKéDEX"),   COMPOUND_STRING("HOENN DEX")},
-    [DEX_MODE_NATIONAL] = {COMPOUND_STRING("National edition POKéDEX"), COMPOUND_STRING("NATIONAL DEX")},
+    [DEX_MODE_HOENN]    = {COMPOUND_STRING("Pokédex von Hoenn"),   COMPOUND_STRING("HOENN-DEX")},
+    [DEX_MODE_NATIONAL] = {COMPOUND_STRING("Nationaler Pokédex"), COMPOUND_STRING("NATIONAL-DEX")},
     {},
 };
 
 static const struct SearchOptionText sDexOrderOptions[] =
 {
-    [ORDER_NUMERICAL]    = {COMPOUND_STRING("POKéMON are listed according to their\nnumber."),               COMPOUND_STRING("NUMERICAL MODE")},
-    [ORDER_ALPHABETICAL] = {COMPOUND_STRING("Spotted and owned POKéMON are listed\nalphabetically."),        COMPOUND_STRING("A TO Z MODE")},
-    [ORDER_HEAVIEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nheaviest to the lightest."), COMPOUND_STRING("HEAVIEST MODE")},
-    [ORDER_LIGHTEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nlightest to the heaviest."), COMPOUND_STRING("LIGHTEST MODE")},
-    [ORDER_TALLEST]      = {COMPOUND_STRING("Owned POKéMON are listed from the\ntallest to the smallest."),  COMPOUND_STRING("TALLEST MODE")},
-    [ORDER_SMALLEST]     = {COMPOUND_STRING("Owned POKéMON are listed from the\nsmallest to the tallest."),  COMPOUND_STRING("SMALLEST MODE")},
+    [ORDER_NUMERICAL]    = {COMPOUND_STRING("Pokémon nach ihrer\nNummer sortiert."),               COMPOUND_STRING("NUMMERN")},
+    [ORDER_ALPHABETICAL] = {COMPOUND_STRING("Gesehene und gefangene Pokémon\nalphabetisch sortiert."),        COMPOUND_STRING("A BIS Z")},
+    [ORDER_HEAVIEST]     = {COMPOUND_STRING("Gefangene Pokémon vom\nschwersten zum leichtesten."), COMPOUND_STRING("SCHWERSTE")},
+    [ORDER_LIGHTEST]     = {COMPOUND_STRING("Gefangene Pokémon vom\nleichtesten zum schwersten."), COMPOUND_STRING("LEICHTESTE")},
+    [ORDER_TALLEST]      = {COMPOUND_STRING("Gefangene Pokémon vom\ngrößten zum kleinsten."),  COMPOUND_STRING("GRÖSSTE")},
+    [ORDER_SMALLEST]     = {COMPOUND_STRING("Gefangene Pokémon vom\nkleinsten zum größten."),  COMPOUND_STRING("KLEINSTE")},
     {},
 };
 

@@ -108,7 +108,7 @@ static const u32 sPokenavDeviceBgTilemap[] = INCGFX_U32("graphics/pokenav/device
 static const u16 sMatchCallBlueLightPal[] = INCGFX_U16("graphics/pokenav/blue_light.png", ".gbapal");
 static const u32 sMatchCallBlueLightTiles[] = INCGFX_U32("graphics/pokenav/blue_light.png", ".4bpp.smol");
 
-static const u8 gText_NoRibbonWinners[] = _("There are no RIBBON winners.");
+static const u8 gText_NoRibbonWinners[] = _("Es gibt keine Band-Gewinner.");
 
 static const struct BgTemplate sPokenavMainMenuBgTemplates[] = {
     {
@@ -269,20 +269,20 @@ static const struct WindowTemplate sOptionDescWindowTemplate =
 
 static const u8 *const sPageDescriptions[] =
 {
-    [POKENAV_MENUITEM_MAP]                     = COMPOUND_STRING("Check the map of the HOENN region"),
-    [POKENAV_MENUITEM_CONDITION]               = COMPOUND_STRING("Check POKéMON in detail."),
-    [POKENAV_MENUITEM_MATCH_CALL]              = COMPOUND_STRING("Call a registered TRAINER."),
-    [POKENAV_MENUITEM_RIBBONS]                 = COMPOUND_STRING("Check obtained RIBBONS."),
-    [POKENAV_MENUITEM_SWITCH_OFF]              = COMPOUND_STRING("Put away the POKéNAV."),
-    [POKENAV_MENUITEM_CONDITION_PARTY]         = COMPOUND_STRING("Check party POKéMON in detail."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH]        = COMPOUND_STRING("Check all POKéMON in detail."),
-    [POKENAV_MENUITEM_CONDITION_CANCEL]        = COMPOUND_STRING("Return to the POKéNAV menu."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_COOL]   = COMPOUND_STRING("Find cool POKéMON."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_BEAUTY] = COMPOUND_STRING("Find beautiful POKéMON."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_CUTE]   = COMPOUND_STRING("Find cute POKéMON."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_SMART]  = COMPOUND_STRING("Find smart POKéMON."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_TOUGH]  = COMPOUND_STRING("Find tough POKéMON."),
-    [POKENAV_MENUITEM_CONDITION_SEARCH_CANCEL] = COMPOUND_STRING("Return to the CONDITION menu.")
+    [POKENAV_MENUITEM_MAP]                     = COMPOUND_STRING("Zeigt die Karte von Hoenn."),
+    [POKENAV_MENUITEM_CONDITION]               = COMPOUND_STRING("Pokémon im Detail ansehen."),
+    [POKENAV_MENUITEM_MATCH_CALL]              = COMPOUND_STRING("Einen Trainer anrufen."),
+    [POKENAV_MENUITEM_RIBBONS]                 = COMPOUND_STRING("Erhaltene Bänder ansehen."),
+    [POKENAV_MENUITEM_SWITCH_OFF]              = COMPOUND_STRING("POKéNAV wegstecken."),
+    [POKENAV_MENUITEM_CONDITION_PARTY]         = COMPOUND_STRING("Team-Pokémon im Detail ansehen."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH]        = COMPOUND_STRING("Alle Pokémon im Detail ansehen."),
+    [POKENAV_MENUITEM_CONDITION_CANCEL]        = COMPOUND_STRING("Zurück zum POKéNAV-Menü."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_COOL]   = COMPOUND_STRING("Coole Pokémon finden."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_BEAUTY] = COMPOUND_STRING("Schöne Pokémon finden."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_CUTE]   = COMPOUND_STRING("Niedliche Pokémon finden."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_SMART]  = COMPOUND_STRING("Clevere Pokémon finden."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_TOUGH]  = COMPOUND_STRING("Robuste Pokémon finden."),
+    [POKENAV_MENUITEM_CONDITION_SEARCH_CANCEL] = COMPOUND_STRING("Zurück zum ZUSTANDS-Menü.")
 };
 
 static const u8 sOptionDescTextColors[]  = {TEXT_COLOR_GREEN, TEXT_COLOR_BLUE, TEXT_COLOR_LIGHT_GREEN};

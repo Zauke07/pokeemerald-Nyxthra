@@ -287,10 +287,10 @@ BerryTree_Text_BerryGrowthStage3:
 .endif
 
 BerryTree_Text_BerryGrowthStageTrunk:
-	.string "The {STR_VAR_1}'s trunk is getting bigger!$"
+	.string "Der Stamm von {STR_VAR_1} wird dicker!$"
 
 BerryTree_Text_BerryGrowthStageBudding:
-	.string "The {STR_VAR_1} tree has buds!$"
+	.string "Der {STR_VAR_1}-Baum hat Knospen!$"
 
 BerryTree_Text_BerryGrowthStage4:
 .if OW_BERRY_SIX_STAGES == TRUE
@@ -380,29 +380,29 @@ BerryTree_EventScript_PickBerry_Mutation::
 	end
 
 BerryTree_Text_WantToPick_Mutation:
-	.string "You found {STR_VAR_2} {STR_VAR_1}\n"
-	.string "and 1 {STR_VAR_3}!\p"
-	.string "Do you want to pick them?$"
+	.string "Du hast {STR_VAR_2} {STR_VAR_1}\n"
+	.string "und 1 {STR_VAR_3} gefunden!\p"
+	.string "Möchtest du sie pflücken?$"
 
 BerryTree_Text_BerryLeftUnpicked_Mutation:
-	.string "{PLAYER} left the {STR_VAR_1}\n"
-	.string "and the {STR_VAR_3} unpicked.$"
+	.string "{PLAYER} hat {STR_VAR_1}\n"
+	.string "und {STR_VAR_3} hängen lassen.$"
 
 BerryTree_Text_BerryPocketFull_Mutation:
-	.string "The BAG's BERRIES POCKET is full.\p"
-	.string "The {STR_VAR_1} and the\n"
-	.string "{STR_VAR_3} couldn't be taken.$"
+	.string "Das BEEREN-FACH des BEUTELS ist voll.\p"
+	.string "{STR_VAR_1} und {STR_VAR_3} konnten nicht\n"
+	.string "mitgenommen werden.$"
 
 BerryTree_Text_PickedTheBerry_Mutation:
-	.string "{PLAYER} picked the {STR_VAR_2} {STR_VAR_1}\n"
-	.string "and the {STR_VAR_3}.$"
+	.string "{PLAYER} hat {STR_VAR_2} {STR_VAR_1}\n"
+	.string "und {STR_VAR_3} gepflückt.$"
 
 BerryTree_Text_PutAwayBerry_Mutation:
-	.string "{PLAYER} put away the {STR_VAR_1}\n"
-	.string "and the {STR_VAR_3} in the BAG's\l"
-	.string "BERRIES POCKET.\p"
-	.string "The soil returned to its soft and\n"
-	.string "loamy state.$"
+	.string "{PLAYER} hat {STR_VAR_1}\n"
+	.string "und {STR_VAR_3} im BEEREN-FACH\l"
+	.string "des BEUTELS verstaut.\p"
+	.string "Der Boden wurde wieder weich\n"
+	.string "und locker.$"
 .endif
 
 .if OW_BERRY_MULCH_USAGE == TRUE
@@ -414,12 +414,12 @@ BerryTree_EventScript_UseMulch::
 	return
 
 BerryTree_Text_WantToMulch:
-	.string "It's soft, loamy soil.\n"
-	.string "Put down some fertilizer?$"
+	.string "Der Boden ist weich und locker.\n"
+	.string "Dünger ausbringen?$"
 
 BerryTree_Text_ScatteredMulch:
-	.string "{PLAYER} scattered the {STR_VAR_1}\n"
-	.string "on the soft, loamy soil.$"
+	.string "{PLAYER} hat {STR_VAR_1} auf dem weichen,\n"
+	.string "lockeren Boden verteilt.$"
 .endif
 
 .if OW_BERRY_WEEDS == TRUE
@@ -441,11 +441,11 @@ BerryTree_EventScript_PullOutWeed::
 	return
 
 BerryTree_Text_WeedIsGrowing:
-	.string "A weed is growing here.\n"
-	.string "Do you want to pull it out?$"
+	.string "Hier wächst Unkraut.\n"
+	.string "Möchtest du es ausreißen?$"
 
 BerryTree_Text_PulledOutTheWeed:
-	.string "{PLAYER} pulled out the weed!$"
+	.string "{PLAYER} hat das Unkraut ausgerissen!$"
 .endif
 
 .if OW_BERRY_PESTS == TRUE
@@ -462,5 +462,5 @@ BerryTree_EventScript_EncounterPests::
 	return
 
 BerryTree_Text_APokemonAppeared:
-	.string "A Pokémon appeared!$"
+	.string "Ein Pokémon ist aufgetaucht!$"
 .endif

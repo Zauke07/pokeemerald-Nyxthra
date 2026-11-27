@@ -85,7 +85,7 @@ static const u8* const sDayTexts[] = {sCondMsg43, sCondMsg44, NULL};
 static const u8 sCondMsg45[] = _("Dein Pokémon schaut verzaubert\nin den Nachthimmel!");
 static const u8 sCondMsg46[] = _("Dein Pokémon blickt fröhlich zum\nsternenklaren Himmel!");
 static const u8* const sNightTexts[] = {sCondMsg45, sCondMsg46, NULL};
-static const u8 sCondMsg50[] = _("{STR_VAR_1} is disturbed by the\nabnormal weather!");
+static const u8 sCondMsg50[] = _("{STR_VAR_1} ist vom seltsamen\nWetter beunruhigt!");
 
 // See the struct definition in follower_helper.h for more info
 const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT] =

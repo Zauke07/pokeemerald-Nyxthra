@@ -449,51 +449,51 @@ static const struct DebugSelection sPartnerSelection;
 // Text
 // General
 static const u8 sDebugText_Arrow[] =         _("{CLEAR_TO 110}{RIGHT_ARROW}");
-static const u8 sDebugText_True[] =          _("TRUE");
-static const u8 sDebugText_False[] =         _("FALSE");
-static const u8 sDebugText_Colored_True[] =  _("{COLOR GREEN}TRUE");
-static const u8 sDebugText_Colored_False[] = _("{COLOR RED}FALSE");
+static const u8 sDebugText_True[] =          _("JA");
+static const u8 sDebugText_False[] =         _("NEIN");
+static const u8 sDebugText_Colored_True[] =  _("{COLOR GREEN}JA");
+static const u8 sDebugText_Colored_False[] = _("{COLOR RED}NEIN");
 static const u8 sDebugText_Dashes[] =        _("---");
 static const u8 sDebugText_Empty[] =         _("");
-static const u8 sDebugText_Continue[] =      _("Continue…");
+static const u8 sDebugText_Continue[] =      _("Weiter…");
 
 //Time Menu
 
 static const u8 *const gDayNameStringsTable[WEEKDAY_COUNT] = {
-    COMPOUND_STRING("Sunday"),
-    COMPOUND_STRING("Monday"),
-    COMPOUND_STRING("Tuesday"),
-    COMPOUND_STRING("Wednesday"),
-    COMPOUND_STRING("Thursday"),
-    COMPOUND_STRING("Friday"),
-    COMPOUND_STRING("Saturday"),
+    COMPOUND_STRING("Sonntag"),
+    COMPOUND_STRING("Montag"),
+    COMPOUND_STRING("Dienstag"),
+    COMPOUND_STRING("Mittwoch"),
+    COMPOUND_STRING("Donnerstag"),
+    COMPOUND_STRING("Freitag"),
+    COMPOUND_STRING("Samstag"),
 };
 
 static const u8 *const gTimeOfDayStringsTable[TIMES_OF_DAY_COUNT] = {
-    COMPOUND_STRING("Morning"),
-    COMPOUND_STRING("Day"),
-    COMPOUND_STRING("Evening"),
-    COMPOUND_STRING("Night"),
+    COMPOUND_STRING("Morgen"),
+    COMPOUND_STRING("Tag"),
+    COMPOUND_STRING("Abend"),
+    COMPOUND_STRING("Nacht"),
 };
 
 // Follower NPC
 
 static const u8 *const gFollowerNPCStringsTable[DEBUG_FNPC_COUNT] = {
-    COMPOUND_STRING("Brendan"),
-    COMPOUND_STRING("May"),
-    COMPOUND_STRING("Steven"),
-    COMPOUND_STRING("Wally"),
+    COMPOUND_STRING("Brix"),
+    COMPOUND_STRING("Mai"),
+    COMPOUND_STRING("Troy"),
+    COMPOUND_STRING("Walter"),
     COMPOUND_STRING("Red"),
     COMPOUND_STRING("Leaf"),
 };
 
 // Give Menu
-static const u8 sDebugText_PokemonShiny[] =             _("Shiny:{CLEAR_TO 90}\n   {STR_VAR_2}{CLEAR_TO 90}\n{CLEAR_TO 90}\n{CLEAR_TO 90}");
+static const u8 sDebugText_PokemonShiny[] =             _("Schillernd:{CLEAR_TO 90}\n   {STR_VAR_2}{CLEAR_TO 90}\n{CLEAR_TO 90}\n{CLEAR_TO 90}");
 static const u8 sDebugText_IVs[] =                      _("IV {STR_VAR_1}:{CLEAR_TO 90}\n    {STR_VAR_3}{CLEAR_TO 90}\n{CLEAR_TO 90}\n{STR_VAR_2}{CLEAR_TO 90}");
 static const u8 sDebugText_EVs[] =                      _("EV {STR_VAR_1}:{CLEAR_TO 90}\n    {STR_VAR_3}{CLEAR_TO 90}\n{CLEAR_TO 90}\n{STR_VAR_2}{CLEAR_TO 90}");
 // Sound Menu
-static const u8 sDebugText_Sound_SFX_ID[] =             _("SFX ID: {STR_VAR_3}   {START_BUTTON} Stop\n{STR_VAR_1}    \n{STR_VAR_2}");
-static const u8 sDebugText_Sound_Music_ID[] =           _("Music ID: {STR_VAR_3}   {START_BUTTON} Stop\n{STR_VAR_1}    \n{STR_VAR_2}");
+static const u8 sDebugText_Sound_SFX_ID[] =             _("SFX-ID: {STR_VAR_3}   {START_BUTTON} Stopp\n{STR_VAR_1}    \n{STR_VAR_2}");
+static const u8 sDebugText_Sound_Music_ID[] =           _("Musik-ID: {STR_VAR_3}   {START_BUTTON} Stopp\n{STR_VAR_1}    \n{STR_VAR_2}");
 
 const u8 *const gText_DigitIndicator[] =
 {
@@ -565,111 +565,111 @@ static const struct DebugMenuOption sDebugMenu_Actions_FollowerNPCMenu_Create[] 
 
 static const struct DebugMenuOption sDebugMenu_Actions_TimeMenu[] =
 {
-    { COMPOUND_STRING("Get time…"),         DebugAction_ExecuteScript, Debug_EventScript_TellTheTime },
-    { COMPOUND_STRING("Get time of day…"),  DebugAction_ExecuteScript, Debug_EventScript_PrintTimeOfDay },
-    { COMPOUND_STRING("Set time of day…"),  DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_TimesOfDay },
-    { COMPOUND_STRING("Set weekday…"),      DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_Weekdays },
-    { COMPOUND_STRING("Redo daily events"), DebugAction_TimeMenu_RedoDailyEvents },
-    { COMPOUND_STRING("Check wall clock…"), DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_CheckWallClock },
-    { COMPOUND_STRING("Set wall clock…"),   DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_SetWallClock },
+    { COMPOUND_STRING("Uhrzeit anzeigen…"),         DebugAction_ExecuteScript, Debug_EventScript_TellTheTime },
+    { COMPOUND_STRING("Tageszeit anzeigen…"),  DebugAction_ExecuteScript, Debug_EventScript_PrintTimeOfDay },
+    { COMPOUND_STRING("Tageszeit setzen…"),  DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_TimesOfDay },
+    { COMPOUND_STRING("Wochentag setzen…"),      DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_Weekdays },
+    { COMPOUND_STRING("Tagesereignisse neu"), DebugAction_TimeMenu_RedoDailyEvents },
+    { COMPOUND_STRING("Wanduhr ansehen…"), DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_CheckWallClock },
+    { COMPOUND_STRING("Wanduhr stellen…"),   DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_SetWallClock },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_BerryFunctions[] =
 {
-    { COMPOUND_STRING("Clear map trees"),      DebugAction_BerryFunctions_ClearAll },
-    { COMPOUND_STRING("Ready map trees"),      DebugAction_BerryFunctions_Ready },
-    { COMPOUND_STRING("Grow map trees"),       DebugAction_BerryFunctions_NextStage },
-    { COMPOUND_STRING("Give map trees pests"), DebugAction_BerryFunctions_Pests },
-    { COMPOUND_STRING("Give map trees weeds"), DebugAction_BerryFunctions_Weeds },
+    { COMPOUND_STRING("Beerenbäume leeren"),      DebugAction_BerryFunctions_ClearAll },
+    { COMPOUND_STRING("Beerenbäume reif"),      DebugAction_BerryFunctions_Ready },
+    { COMPOUND_STRING("Beerenbäume wachsen"),       DebugAction_BerryFunctions_NextStage },
+    { COMPOUND_STRING("Beerenbäume: Schädlinge"), DebugAction_BerryFunctions_Pests },
+    { COMPOUND_STRING("Beerenbäume: Unkraut"), DebugAction_BerryFunctions_Weeds },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_FollowerNPCMenu[] =
 {
-    { COMPOUND_STRING("Create Follower"),  DebugAction_OpenSubMenuCreateFollowerNPC, sDebugMenu_Actions_FollowerNPCMenu_Create },
-    { COMPOUND_STRING("Destroy Follower"), DebugAction_DestroyFollowerNPC },
+    { COMPOUND_STRING("Begleiter erstellen"),  DebugAction_OpenSubMenuCreateFollowerNPC, sDebugMenu_Actions_FollowerNPCMenu_Create },
+    { COMPOUND_STRING("Begleiter entfernen"), DebugAction_DestroyFollowerNPC },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Utilities[] =
 {
-    { COMPOUND_STRING("Fly to map…"),               DebugAction_Util_Fly },
-    { COMPOUND_STRING("Warp to map warp…"),         DebugAction_Selection_Init, &sWarpSelection},
-    { COMPOUND_STRING("Set weather…"),              DebugAction_Selection_Init, &sSetWeatherSelection },
-    { COMPOUND_STRING("Font Test…"),                DebugAction_ExecuteScript, Debug_EventScript_FontTest },
-    { COMPOUND_STRING("Time Functions…"),           DebugAction_OpenSubMenu, sDebugMenu_Actions_TimeMenu, },
-    { COMPOUND_STRING("Watch credits…"),            DebugAction_Util_WatchCredits },
-    { COMPOUND_STRING("Cheat start"),               DebugAction_Util_CheatStart },
-    { COMPOUND_STRING("Berry Functions…"),          DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryFunctions },
-    { COMPOUND_STRING("EWRAM Counters…"),           DebugAction_ExecuteScript, Debug_EventScript_EWRAMCounters },
-    { COMPOUND_STRING("Follower NPC…"),             DebugAction_OpenSubMenu, sDebugMenu_Actions_FollowerNPCMenu },
-    { COMPOUND_STRING("Test Species Randomizer"),   DebugAction_Selection_Init, &sSpeciesGeneratorSelection },
-    { COMPOUND_STRING("Test Item Randomizer"),      DebugAction_Selection_Init, &sItemGeneratorSelection },
-    { COMPOUND_STRING("Wally Tutorial"),            DebugAction_ExecuteScript, Debug_EventScript_WallyTutorial },
-    { COMPOUND_STRING("Steven Multi"),              DebugAction_ExecuteScript, Debug_EventScript_Steven_Multi },
+    { COMPOUND_STRING("Zu Karte fliegen…"),               DebugAction_Util_Fly },
+    { COMPOUND_STRING("Zu Warp springen…"),         DebugAction_Selection_Init, &sWarpSelection},
+    { COMPOUND_STRING("Wetter setzen…"),              DebugAction_Selection_Init, &sSetWeatherSelection },
+    { COMPOUND_STRING("Schrifttest…"),                DebugAction_ExecuteScript, Debug_EventScript_FontTest },
+    { COMPOUND_STRING("Zeitfunktionen…"),           DebugAction_OpenSubMenu, sDebugMenu_Actions_TimeMenu, },
+    { COMPOUND_STRING("Abspann ansehen…"),            DebugAction_Util_WatchCredits },
+    { COMPOUND_STRING("Cheat-Start"),               DebugAction_Util_CheatStart },
+    { COMPOUND_STRING("Beerenfunktionen…"),          DebugAction_OpenSubMenu, sDebugMenu_Actions_BerryFunctions },
+    { COMPOUND_STRING("EWRAM-Zähler…"),           DebugAction_ExecuteScript, Debug_EventScript_EWRAMCounters },
+    { COMPOUND_STRING("Begleiter-NPC…"),             DebugAction_OpenSubMenu, sDebugMenu_Actions_FollowerNPCMenu },
+    { COMPOUND_STRING("Arten-Zufall testen"),   DebugAction_Selection_Init, &sSpeciesGeneratorSelection },
+    { COMPOUND_STRING("Item-Zufall testen"),      DebugAction_Selection_Init, &sItemGeneratorSelection },
+    { COMPOUND_STRING("Walter-Tutorial"),            DebugAction_ExecuteScript, Debug_EventScript_WallyTutorial },
+    { COMPOUND_STRING("Troy Multikampf"),              DebugAction_ExecuteScript, Debug_EventScript_Steven_Multi },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_PCBag_Fill[] =
 {
-    { COMPOUND_STRING("Fill PC Boxes Fast"),        DebugAction_PCBag_Fill_PCBoxes_Fast },
-    { COMPOUND_STRING("Fill PC Boxes Slow (LAG!)"), DebugAction_PCBag_Fill_PCBoxes_Slow },
-    { COMPOUND_STRING("Fill PC Items") ,            DebugAction_PCBag_Fill_PCItemStorage },
-    { COMPOUND_STRING("Fill Pocket Items"),         DebugAction_PCBag_Fill_PocketItems },
-    { COMPOUND_STRING("Fill Pocket Poké Balls"),    DebugAction_PCBag_Fill_PocketPokeBalls },
-    { COMPOUND_STRING("Fill Pocket TMHM"),          DebugAction_PCBag_Fill_PocketTMHM },
-    { COMPOUND_STRING("Fill Pocket Berries"),       DebugAction_PCBag_Fill_PocketBerries },
-    { COMPOUND_STRING("Fill Pocket Key Items"),     DebugAction_PCBag_Fill_PocketKeyItems },
+    { COMPOUND_STRING("PC-Boxen füllen (schnell)"),        DebugAction_PCBag_Fill_PCBoxes_Fast },
+    { COMPOUND_STRING("PC-Boxen füllen (LAG!)"), DebugAction_PCBag_Fill_PCBoxes_Slow },
+    { COMPOUND_STRING("PC-Items füllen") ,            DebugAction_PCBag_Fill_PCItemStorage },
+    { COMPOUND_STRING("Beutel: Items füllen"),         DebugAction_PCBag_Fill_PocketItems },
+    { COMPOUND_STRING("Beutel: Bälle füllen"),    DebugAction_PCBag_Fill_PocketPokeBalls },
+    { COMPOUND_STRING("Beutel: TM/VM füllen"),          DebugAction_PCBag_Fill_PocketTMHM },
+    { COMPOUND_STRING("Beutel: Beeren füllen"),       DebugAction_PCBag_Fill_PocketBerries },
+    { COMPOUND_STRING("Beutel: Basis-Items füllen"),     DebugAction_PCBag_Fill_PocketKeyItems },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_PCBag[] =
 {
-    { COMPOUND_STRING("Access PC"),           DebugAction_ExecuteScript, EventScript_PC },
-    { COMPOUND_STRING("Fill…"),               DebugAction_OpenSubMenu, sDebugMenu_Actions_PCBag_Fill },
-    { COMPOUND_STRING("Clear Bag"),           DebugAction_PCBag_ClearBag },
-    { COMPOUND_STRING("Clear Storage Boxes"), DebugAction_PCBag_ClearBoxes },
+    { COMPOUND_STRING("PC öffnen"),           DebugAction_ExecuteScript, EventScript_PC },
+    { COMPOUND_STRING("Füllen…"),               DebugAction_OpenSubMenu, sDebugMenu_Actions_PCBag_Fill },
+    { COMPOUND_STRING("Beutel leeren"),           DebugAction_PCBag_ClearBag },
+    { COMPOUND_STRING("PC-Boxen leeren"), DebugAction_PCBag_ClearBoxes },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_EditPokemon[] =
 {
-    { COMPOUND_STRING("Inflict Status1"),    DebugAction_ExecuteScript, Debug_EventScript_InflictStatus1 },
-    { COMPOUND_STRING("Faint Pokemon"),      DebugAction_ExecuteScript, Debug_EventScript_KoPokemon },
-    { COMPOUND_STRING("Set Hidden Nature"),  DebugAction_ExecuteScript, Debug_EventScript_SetHiddenNature },
-    { COMPOUND_STRING("Set Friendship"),     DebugAction_ExecuteScript, Debug_EventScript_SetFriendship },
-    { COMPOUND_STRING("Set Ability"),        DebugAction_ExecuteScript, Debug_EventScript_SetAbility },
+    { COMPOUND_STRING("Status zufügen"),    DebugAction_ExecuteScript, Debug_EventScript_InflictStatus1 },
+    { COMPOUND_STRING("Pokémon besiegen"),      DebugAction_ExecuteScript, Debug_EventScript_KoPokemon },
+    { COMPOUND_STRING("Verst. Wesen setzen"),  DebugAction_ExecuteScript, Debug_EventScript_SetHiddenNature },
+    { COMPOUND_STRING("Freundschaft setzen"),     DebugAction_ExecuteScript, Debug_EventScript_SetFriendship },
+    { COMPOUND_STRING("Fähigkeit setzen"),        DebugAction_ExecuteScript, Debug_EventScript_SetAbility },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Party[] =
 {
-    { COMPOUND_STRING("Move Relearner"),     DebugAction_ExecuteScript, Common_EventScript_MoveRelearner },
-    { COMPOUND_STRING("Hatch an Egg"),       DebugAction_ExecuteScript, Debug_HatchAnEgg },
-    { COMPOUND_STRING("Heal party"),         DebugAction_Party_HealParty },
-    { COMPOUND_STRING("Edit Pokemon"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_EditPokemon },
-    { COMPOUND_STRING("Check EVs"),          DebugAction_ExecuteScript, Debug_EventScript_CheckEVs },
-    { COMPOUND_STRING("Check IVs"),          DebugAction_ExecuteScript, Debug_EventScript_CheckIVs },
-    { COMPOUND_STRING("Give Pokerus"),       DebugAction_ExecuteScript, Debug_EventScript_GivePokerus },
-    { COMPOUND_STRING("Clear Pokerus"),      DebugAction_Party_ClearPokerus},
-    { COMPOUND_STRING("Clear Party"),        DebugAction_Party_ClearParty },
-    { COMPOUND_STRING("Set Party"),          DebugAction_Party_SetParty },
-    { COMPOUND_STRING("Start Debug Battle"), DebugAction_Party_BattleSingle },
+    { COMPOUND_STRING("Attacken-Lehrer"),     DebugAction_ExecuteScript, Common_EventScript_MoveRelearner },
+    { COMPOUND_STRING("Ei ausbrüten"),       DebugAction_ExecuteScript, Debug_HatchAnEgg },
+    { COMPOUND_STRING("Team heilen"),         DebugAction_Party_HealParty },
+    { COMPOUND_STRING("Pokémon bearbeiten"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_EditPokemon },
+    { COMPOUND_STRING("EVs ansehen"),          DebugAction_ExecuteScript, Debug_EventScript_CheckEVs },
+    { COMPOUND_STRING("IVs ansehen"),          DebugAction_ExecuteScript, Debug_EventScript_CheckIVs },
+    { COMPOUND_STRING("Pokérus geben"),       DebugAction_ExecuteScript, Debug_EventScript_GivePokerus },
+    { COMPOUND_STRING("Pokérus entfernen"),      DebugAction_Party_ClearPokerus},
+    { COMPOUND_STRING("Team leeren"),        DebugAction_Party_ClearParty },
+    { COMPOUND_STRING("Team setzen"),          DebugAction_Party_SetParty },
+    { COMPOUND_STRING("Debug-Kampf starten"), DebugAction_Party_BattleSingle },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Give[] =
 {
-    { COMPOUND_STRING("Give item XYZ…"),    DebugAction_Selection_Init, &sGiveItemSelection },
-    { COMPOUND_STRING("Pokémon (Basic)"),   DebugAction_Selection_Init, &sSimplePokemonSelection },
-    { COMPOUND_STRING("Pokémon (Complex)"), DebugAction_Selection_Init, &sComplexPokemonSelection },
-    { COMPOUND_STRING("Give Egg"),          DebugAction_Selection_Init, &sEggPokemonSelection },
-    { COMPOUND_STRING("Give Decoration…"),  DebugAction_Selection_Init, &sGiveDecorationSelection },
-    { COMPOUND_STRING("Max Money"),         DebugAction_Give_MaxMoney },
-    { COMPOUND_STRING("Max Coins"),         DebugAction_Give_MaxCoins },
-    { COMPOUND_STRING("Max Battle Points"), DebugAction_Give_MaxBattlePoints },
-    { COMPOUND_STRING("Daycare Egg"),       DebugAction_Give_DayCareEgg },
+    { COMPOUND_STRING("Item XYZ geben…"),    DebugAction_Selection_Init, &sGiveItemSelection },
+    { COMPOUND_STRING("Pokémon (einfach)"),   DebugAction_Selection_Init, &sSimplePokemonSelection },
+    { COMPOUND_STRING("Pokémon (komplex)"), DebugAction_Selection_Init, &sComplexPokemonSelection },
+    { COMPOUND_STRING("Ei geben"),          DebugAction_Selection_Init, &sEggPokemonSelection },
+    { COMPOUND_STRING("Dekoration geben…"),  DebugAction_Selection_Init, &sGiveDecorationSelection },
+    { COMPOUND_STRING("Max. Geld"),         DebugAction_Give_MaxMoney },
+    { COMPOUND_STRING("Max. Münzen"),         DebugAction_Give_MaxCoins },
+    { COMPOUND_STRING("Max. Kampfpunkte"), DebugAction_Give_MaxBattlePoints },
+    { COMPOUND_STRING("Pensions-Ei"),       DebugAction_Give_DayCareEgg },
     { NULL }
 };
 
@@ -700,57 +700,57 @@ static const struct DebugMenuOption sDebugMenu_Actions_Player_SelectStyle[] =
 
 static const struct DebugMenuOption sDebugMenu_Actions_Player[] =
 {
-    { COMPOUND_STRING("Player name"),    DebugAction_Player_Name },
-    { COMPOUND_STRING("Select Style…"),  DebugAction_OpenSubMenu, sDebugMenu_Actions_Player_SelectStyle }, // ← GEÄNDERT!
-    { COMPOUND_STRING("New Trainer ID"), DebugAction_Player_Id },
-    { COMPOUND_STRING("Facing Tile Info"), DebugAction_ShowFacingTileInfo },
+    { COMPOUND_STRING("Spielername"),    DebugAction_Player_Name },
+    { COMPOUND_STRING("Stil wählen…"),  DebugAction_OpenSubMenu, sDebugMenu_Actions_Player_SelectStyle }, // ← GEÄNDERT!
+    { COMPOUND_STRING("Neue Trainer-ID"), DebugAction_Player_Id },
+    { COMPOUND_STRING("Info zum Feld vor dir"), DebugAction_ShowFacingTileInfo },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Scripts[] =
 {
-    { COMPOUND_STRING("Script 1"), DebugAction_ExecuteScript, Debug_EventScript_Script_1 },
-    { COMPOUND_STRING("Script 2"), DebugAction_ExecuteScript, Debug_EventScript_Script_2 },
-    { COMPOUND_STRING("Script 3"), DebugAction_ExecuteScript, Debug_EventScript_Script_3 },
-    { COMPOUND_STRING("Script 4"), DebugAction_ExecuteScript, Debug_EventScript_Script_4 },
-    { COMPOUND_STRING("Script 5"), DebugAction_ExecuteScript, Debug_EventScript_Script_5 },
-    { COMPOUND_STRING("Script 6"), DebugAction_ExecuteScript, Debug_EventScript_Script_6 },
-    { COMPOUND_STRING("Script 7"), DebugAction_ExecuteScript, Debug_EventScript_Script_7 },
-    { COMPOUND_STRING("Script 8"), DebugAction_ExecuteScript, Debug_EventScript_Script_8 },
+    { COMPOUND_STRING("Skript 1"), DebugAction_ExecuteScript, Debug_EventScript_Script_1 },
+    { COMPOUND_STRING("Skript 2"), DebugAction_ExecuteScript, Debug_EventScript_Script_2 },
+    { COMPOUND_STRING("Skript 3"), DebugAction_ExecuteScript, Debug_EventScript_Script_3 },
+    { COMPOUND_STRING("Skript 4"), DebugAction_ExecuteScript, Debug_EventScript_Script_4 },
+    { COMPOUND_STRING("Skript 5"), DebugAction_ExecuteScript, Debug_EventScript_Script_5 },
+    { COMPOUND_STRING("Skript 6"), DebugAction_ExecuteScript, Debug_EventScript_Script_6 },
+    { COMPOUND_STRING("Skript 7"), DebugAction_ExecuteScript, Debug_EventScript_Script_7 },
+    { COMPOUND_STRING("Skript 8"), DebugAction_ExecuteScript, Debug_EventScript_Script_8 },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Trainers[] =
 {
-    { COMPOUND_STRING("Choose trainer from map"), DebugAction_Selection_Init, &sTrainerFromMapSelection},
+    { COMPOUND_STRING("Trainer von Karte"), DebugAction_Selection_Init, &sTrainerFromMapSelection},
     { COMPOUND_STRING("Trainer 1: {STR_VAR_1}"), DebugAction_Selection_Init, &sTrainer1Selection},
     { COMPOUND_STRING("Trainer 2: {STR_VAR_1}"), DebugAction_Selection_Init, &sTrainer2Selection},
     { COMPOUND_STRING("Partner: {STR_VAR_1}"), DebugAction_Selection_Init, &sPartnerSelection},
-    { COMPOUND_STRING("Double Battle: {STR_VAR_1}"), DebugAction_ToggleFlag, DebugAction_Trainers_SwitchDoublesFlag },
-    { COMPOUND_STRING("Matches {STR_VAR_1}/{STR_VAR_2}"), DebugAction_ToggleFlag, DebugAction_Trainers_SetRematch },
-    { COMPOUND_STRING("Rematch Ready {STR_VAR_1}"), DebugAction_ToggleFlag, DebugAction_Trainers_SetRematchReadiness },
-    { COMPOUND_STRING("Try Battle"), DebugAction_Trainers_TryBattle },
-    { COMPOUND_STRING("Recharge VS Seeker"), DebugAction_Trainers_RechargeVsSeeker },
+    { COMPOUND_STRING("Doppelkampf: {STR_VAR_1}"), DebugAction_ToggleFlag, DebugAction_Trainers_SwitchDoublesFlag },
+    { COMPOUND_STRING("Treffer {STR_VAR_1}/{STR_VAR_2}"), DebugAction_ToggleFlag, DebugAction_Trainers_SetRematch },
+    { COMPOUND_STRING("Rückkampf bereit {STR_VAR_1}"), DebugAction_ToggleFlag, DebugAction_Trainers_SetRematchReadiness },
+    { COMPOUND_STRING("Kampf testen"), DebugAction_Trainers_TryBattle },
+    { COMPOUND_STRING("Sucher aufladen"), DebugAction_Trainers_RechargeVsSeeker },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_MassOutbreak[] =
 {
-    { COMPOUND_STRING("Set Static Outbreak"), DebugAction_Selection_Init, &sStaticMassOutbreakSelection },
-    { COMPOUND_STRING("Clear Active Outbreak"), DebugAction_Outbreak_ClearActive },
-    { COMPOUND_STRING("Species: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakSpeciesSelection },
-    { COMPOUND_STRING("Map: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakLocationSelection },
+    { COMPOUND_STRING("Feste Invasion setzen"), DebugAction_Selection_Init, &sStaticMassOutbreakSelection },
+    { COMPOUND_STRING("Aktive Invasion löschen"), DebugAction_Outbreak_ClearActive },
+    { COMPOUND_STRING("Art: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakSpeciesSelection },
+    { COMPOUND_STRING("Karte: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakLocationSelection },
     { COMPOUND_STRING("Level: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakLevelSelection },
-    { COMPOUND_STRING("Moves"), DebugAction_Selection_Init, &sMassOutbreakMovesSelection },
-    { COMPOUND_STRING("Probability: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakProbabilitySelection },
-    { COMPOUND_STRING("Days Left: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakDaysLeftSelection },
-    { COMPOUND_STRING("Set Dynamic Outbreak"), DebugAction_Selection_Init, &sDynamicMassOutbreakSelection },
+    { COMPOUND_STRING("Attacken"), DebugAction_Selection_Init, &sMassOutbreakMovesSelection },
+    { COMPOUND_STRING("Wahrsch.: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakProbabilitySelection },
+    { COMPOUND_STRING("Tage übrig: {STR_VAR_1}"), DebugAction_Selection_Init, &sMassOutbreakDaysLeftSelection },
+    { COMPOUND_STRING("Dyn. Invasion setzen"), DebugAction_Selection_Init, &sDynamicMassOutbreakSelection },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Encounters[] =
 {
-    { COMPOUND_STRING("Mass outbreak…"), DebugAction_OpenOutbreakMenu, sDebugMenu_Actions_MassOutbreak },
+    { COMPOUND_STRING("Massenausbruch…"), DebugAction_OpenOutbreakMenu, sDebugMenu_Actions_MassOutbreak },
     { COMPOUND_STRING("Nächste: Nyxthra-Form"), DebugAction_ExecuteScript, Debug_NyxthraForceNext },
     { COMPOUND_STRING("Nyxthra-Test: Kyogre"), DebugAction_ExecuteScript, Debug_NyxthraTestKyogre },
     { NULL }
@@ -758,65 +758,65 @@ static const struct DebugMenuOption sDebugMenu_Actions_Encounters[] =
 
 static const struct DebugMenuOption sDebugMenu_Actions_Sound[] =
 {
-    { COMPOUND_STRING("SFX…"),   DebugAction_Sound_SE },
-    { COMPOUND_STRING("Music…"), DebugAction_Sound_MUS },
+    { COMPOUND_STRING("Soundeffekte…"),   DebugAction_Sound_SE },
+    { COMPOUND_STRING("Musik…"), DebugAction_Sound_MUS },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_ROMInfo2[] =
 {
-    { COMPOUND_STRING("Save Block space"),  DebugAction_ExecuteScript, Debug_CheckSaveBlock },
-    { COMPOUND_STRING("ROM space"),         DebugAction_ExecuteScript, Debug_CheckROMSpace },
-    { COMPOUND_STRING("Expansion Version"), DebugAction_ExecuteScript, Debug_ShowExpansionVersion },
-    { COMPOUND_STRING("Nyxthra Version"),   DebugAction_ExecuteScript, Debug_ShowNyxthraVersion },
+    { COMPOUND_STRING("Speicherblock-Platz"),  DebugAction_ExecuteScript, Debug_CheckSaveBlock },
+    { COMPOUND_STRING("ROM-Platz"),         DebugAction_ExecuteScript, Debug_CheckROMSpace },
+    { COMPOUND_STRING("Expansion-Version"), DebugAction_ExecuteScript, Debug_ShowExpansionVersion },
+    { COMPOUND_STRING("Nyxthra-Version"),   DebugAction_ExecuteScript, Debug_ShowNyxthraVersion },
     { NULL }
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Flags[] =
 {
-    [DEBUG_FLAGVAR_MENU_ITEM_FLAGS]                = { COMPOUND_STRING("Set Flag XYZ…"),                     DebugAction_Selection_Init, &sToggleFlagSelection },
-    [DEBUG_FLAGVAR_MENU_ITEM_VARS]                 = { COMPOUND_STRING("Set Var XYZ…"),                      DebugAction_Selection_Init, &sSetVarSelection},
-    [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_ALL]         = { COMPOUND_STRING("Pokédex Flags All"),                 DebugAction_FlagsVars_PokedexFlags_All },
-    [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_RESET]       = { COMPOUND_STRING("Pokédex Flags Reset"),               DebugAction_FlagsVars_PokedexFlags_Reset },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKEDEX]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Pokédex"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchDex },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_NATDEX]        = { COMPOUND_STRING("Toggle {STR_VAR_1}National Dex"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchNatDex },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKENAV]       = { COMPOUND_STRING("Toggle {STR_VAR_1}PokéNav"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchPokeNav },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_MATCH_CALL]    = { COMPOUND_STRING("Toggle {STR_VAR_1}Match Call"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchMatchCall },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_RUN_SHOES]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Running Shoes"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_RunningShoes },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Fly Flags"),       DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleFlyFlags },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BADGES_ALL]    = { COMPOUND_STRING("Toggle {STR_VAR_1}All badges"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleBadgeFlags },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_GAME_CLEAR]    = { COMPOUND_STRING("Toggle {STR_VAR_1}Game clear"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleGameClear },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_FRONTIER_PASS] = { COMPOUND_STRING("Toggle {STR_VAR_1}Frontier Pass"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleFrontierPass },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_COLLISION]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Collision OFF"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_CollisionOnOff },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER]     = { COMPOUND_STRING("Toggle {STR_VAR_1}Encounter OFF"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_EncounterOnOff },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE]   = { COMPOUND_STRING("Toggle {STR_VAR_1}Trainer See OFF"), DebugAction_ToggleFlag, DebugAction_FlagsVars_TrainerSeeOnOff },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING]      = { COMPOUND_STRING("Toggle {STR_VAR_1}Catching OFF"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_CatchingOnOff },
-    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = { COMPOUND_STRING("Toggle {STR_VAR_1}Bag Use OFF"),     DebugAction_ToggleFlag, DebugAction_FlagsVars_BagUseOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_FLAGS]                = { COMPOUND_STRING("Flag XYZ setzen…"),                     DebugAction_Selection_Init, &sToggleFlagSelection },
+    [DEBUG_FLAGVAR_MENU_ITEM_VARS]                 = { COMPOUND_STRING("Var XYZ setzen…"),                      DebugAction_Selection_Init, &sSetVarSelection},
+    [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_ALL]         = { COMPOUND_STRING("Pokédex-Flags alle"),                 DebugAction_FlagsVars_PokedexFlags_All },
+    [DEBUG_FLAGVAR_MENU_ITEM_DEXFLAGS_RESET]       = { COMPOUND_STRING("Pokédex-Flags zurück"),               DebugAction_FlagsVars_PokedexFlags_Reset },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKEDEX]       = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Pokédex"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchDex },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_NATDEX]        = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Nat. Dex"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchNatDex },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_POKENAV]       = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}PokéNav"),         DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchPokeNav },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_MATCH_CALL]    = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Match Call"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_SwitchMatchCall },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_RUN_SHOES]     = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Laufschuhe"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_RunningShoes },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_LOCATIONS]     = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Flug-Flags"),       DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleFlyFlags },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BADGES_ALL]    = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Alle Orden"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleBadgeFlags },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_GAME_CLEAR]    = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Spiel besiegt"),      DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleGameClear },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_FRONTIER_PASS] = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Kampfzone-Pass"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_ToggleFrontierPass },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_COLLISION]     = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Kollision aus"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_CollisionOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_ENCOUNTER]     = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Begegn. aus"),   DebugAction_ToggleFlag, DebugAction_FlagsVars_EncounterOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_TRAINER_SEE]   = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Trainer-Sicht aus"), DebugAction_ToggleFlag, DebugAction_FlagsVars_TrainerSeeOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING]      = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Fangen aus"),    DebugAction_ToggleFlag, DebugAction_FlagsVars_CatchingOnOff },
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = { COMPOUND_STRING("Ein/Aus: {STR_VAR_1}Beutel aus"),     DebugAction_ToggleFlag, DebugAction_FlagsVars_BagUseOnOff },
     { NULL }
 };
 
 static const u8 *const sDebugMenu_Actions_BagUse_Options[] =
 {
-    COMPOUND_STRING("No Bag: {STR_VAR_1}Inactive"),
-    COMPOUND_STRING("No Bag: {STR_VAR_1}VS Trainers"),
-    COMPOUND_STRING("No Bag: {STR_VAR_1}Active"),
-    COMPOUND_STRING("No Bag: {STR_VAR_1}Invalid value"),
+    COMPOUND_STRING("Kein Beutel: {STR_VAR_1}Inaktiv"),
+    COMPOUND_STRING("Kein Beutel: {STR_VAR_1}Trainer"),
+    COMPOUND_STRING("Kein Beutel: {STR_VAR_1}Aktiv"),
+    COMPOUND_STRING("Kein Beutel: {STR_VAR_1}Ungültig"),
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
 {
-    { COMPOUND_STRING("Utilities…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
-    { COMPOUND_STRING("PC/Bag…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_PCBag, },
-    { COMPOUND_STRING("Party…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Party, },
-    { COMPOUND_STRING("Give X…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_Give, },
-    { COMPOUND_STRING("Player…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_Player, },
-    { COMPOUND_STRING("Scripts…"),      DebugAction_OpenSubMenu, sDebugMenu_Actions_Scripts, },
-    { COMPOUND_STRING("Trainers…"),     DebugAction_OpenSubMenuTrainers, sDebugMenu_Actions_Trainers, },
-    { COMPOUND_STRING("Encounters…"),   DebugAction_OpenSubMenu, sDebugMenu_Actions_Encounters, },
+    { COMPOUND_STRING("Werkzeuge…"),    DebugAction_OpenSubMenu, sDebugMenu_Actions_Utilities, },
+    { COMPOUND_STRING("PC/Beutel…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_PCBag, },
+    { COMPOUND_STRING("Team…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Party, },
+    { COMPOUND_STRING("Geben…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_Give, },
+    { COMPOUND_STRING("Spieler…"),       DebugAction_OpenSubMenu, sDebugMenu_Actions_Player, },
+    { COMPOUND_STRING("Skripte…"),      DebugAction_OpenSubMenu, sDebugMenu_Actions_Scripts, },
+    { COMPOUND_STRING("Trainer…"),     DebugAction_OpenSubMenuTrainers, sDebugMenu_Actions_Trainers, },
+    { COMPOUND_STRING("Begegnungen…"),   DebugAction_OpenSubMenu, sDebugMenu_Actions_Encounters, },
     { COMPOUND_STRING("Flags & Vars…"), DebugAction_OpenSubMenuFlagsVars, sDebugMenu_Actions_Flags, },
     { COMPOUND_STRING("Sound…"),        DebugAction_OpenSubMenu, sDebugMenu_Actions_Sound, },
-    { COMPOUND_STRING("ROM Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
-    { COMPOUND_STRING("Cancel"),        DebugAction_Cancel, },
+    { COMPOUND_STRING("ROM-Info…"),     DebugAction_OpenSubMenu, sDebugMenu_Actions_ROMInfo2, },
+    { COMPOUND_STRING("Abbrechen"),        DebugAction_Cancel, },
     { NULL }
 };
 
@@ -1406,21 +1406,21 @@ static u32 Debug_GenerateListTrainerMenu(const struct DebugMenuOption *items)
             break;
         case 2:
             if (trainer2Id == TRAINER_NONE)
-                StringCopy(gStringVar1, COMPOUND_STRING("None"));
+                StringCopy(gStringVar1, COMPOUND_STRING("Keine"));
             else
                 ConvertIntToDecimalStringN(gStringVar1, trainer2Id, STR_CONV_MODE_LEADING_ZEROS, 3);
             break;
         case 3:
             if (partnerId == PARTNER_NONE)
-                StringCopy(gStringVar1, COMPOUND_STRING("None"));
+                StringCopy(gStringVar1, COMPOUND_STRING("Keine"));
             else
                 ConvertIntToDecimalStringN(gStringVar1, partnerId, STR_CONV_MODE_LEADING_ZEROS, 3);
             break;
         case 4:
             if (sDebugMenuListData->data[5] || trainer2Id != TRAINER_NONE || partnerId != PARTNER_NONE)
-                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR GREEN} TRUE"));
+                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR GREEN} JA"));
             else
-                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} FALSE"));
+                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} NEIN"));
             break;
         case 5:
             if (!isRealFight)
@@ -1449,9 +1449,9 @@ static u32 Debug_GenerateListTrainerMenu(const struct DebugMenuOption *items)
                 break;
             }
             if (GetActiveTrainerRematches(rematchTableId))
-                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR GREEN} TRUE"));
+                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR GREEN} JA"));
             else
-                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} FALSE"));
+                StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} NEIN"));
             break;
         case 8:
             if (FREE_MATCH_CALL || I_VS_SEEKER_CHARGING == 0)
@@ -1794,7 +1794,7 @@ static void DebugSelectionStep_UpdateMapGroup(u8 taskId, u8 digits, u32 min, u32
 {
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     ConvertIntToDecimalStringN(gStringVar3, max, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Group: {STR_VAR_2} / {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Gruppe: {STR_VAR_2} / {STR_VAR_3}"));
     StringCopy(gStringVar2, COMPOUND_STRING(""));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -1805,8 +1805,8 @@ static void DebugSelectionStep_UpdateMapNum(u8 taskId, u8 digits, u32 min, u32 m
     u16 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     ConvertIntToDecimalStringN(gStringVar3, max, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Map: {STR_VAR_2} / {STR_VAR_3}"));
-    StringCopy(gStringVar2, COMPOUND_STRING("MapSec:"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Karte: {STR_VAR_2} / {STR_VAR_3}"));
+    StringCopy(gStringVar2, COMPOUND_STRING("Kartenabschn.:"));
     GetMapName(gStringVar3, Overworld_GetMapHeaderByGroupAndId(mapGroup, gTasks[taskId].tInput)->regionMapSectionId, 0);
     DebugNativeStep_PrintWindowSelection(taskId);
 }
@@ -1977,7 +1977,7 @@ static void DebugSelectionStep_UpdateWeather(u8 taskId, u8 digits, u32 min, u32 
             gTasks[taskId].tInput++;
     }
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Weather ID: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Wetter-ID: {STR_VAR_3}"));
     StringCopy(gStringVar2, GetWeatherName(gTasks[taskId].tInput));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -2033,11 +2033,11 @@ static void DebugAction_ShowFacingTileInfo(u8 taskId)
     elevation = PlayerGetElevation();
     fishable = IsPlayerFacingSurfableFishableWater();
 
-    StringCopy(gStringVar4, COMPOUND_STRING("Behavior: "));
+    StringCopy(gStringVar4, COMPOUND_STRING("Verhalten: "));
     ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), behavior, STR_CONV_MODE_LEFT_ALIGN, 3);
     StringAppend(gStringVar4, COMPOUND_STRING("\nKollision: "));
     ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), collision, STR_CONV_MODE_LEFT_ALIGN, 2);
-    StringAppend(gStringVar4, COMPOUND_STRING(" Elev: "));
+    StringAppend(gStringVar4, COMPOUND_STRING(" Höhe: "));
     ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), elevation, STR_CONV_MODE_LEFT_ALIGN, 2);
     StringAppend(gStringVar4, COMPOUND_STRING("\nFischbar: "));
     ConvertIntToDecimalStringN(gStringVar4 + StringLength(gStringVar4), fishable, STR_CONV_MODE_LEFT_ALIGN, 1);
@@ -2100,8 +2100,8 @@ static void DebugAction_Util_CheatStart(u8 taskId)
 
 void BufferExpansionVersion(struct ScriptContext *ctx)
 {
-    static const u8 sText_Released[] = _("\nRelease Build");
-    static const u8 sText_Unreleased[] = _("\nDevelopment Build");
+    static const u8 sText_Released[] = _("\nRelease-Version");
+    static const u8 sText_Unreleased[] = _("\nEntwicklerversion");
     u8 *string = gStringVar1;
     *string++ = CHAR_v;
     string = ConvertIntToDecimalStringN(string, EXPANSION_VERSION_MAJOR, STR_CONV_MODE_LEFT_ALIGN, 3);
@@ -2245,7 +2245,7 @@ static void DebugSelectionStep_UpdateGeneratorArgs(u8 taskId, u8 digits, u32 min
 {
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tSubstep + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Arg {STR_VAR_2}: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Arg. {STR_VAR_2}: {STR_VAR_3}"));
     StringCopy(gStringVar2, COMPOUND_STRING(""));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -2254,7 +2254,7 @@ static void DebugSelectionStep_UpdateGeneratorArgs(u8 taskId, u8 digits, u32 min
 static void DebugSelectionStep_UpdateGeneratorOption(u8 taskId, u8 digits, u32 min, u32 max)
 {
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Options ID: {STR_VAR_2}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Optionen-ID: {STR_VAR_2}"));
     StringCopy(gStringVar2, COMPOUND_STRING(""));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -2385,10 +2385,10 @@ static void DebugSelectionStep_UpdateMapTrainer(u8 taskId, u8 digits, u32 min, u
         DebugSelection_SetData(taskId, 0, gTasks[taskId].tInput);
     Debug_CreateTrainerIcon(taskId);
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Local ID: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Lokale ID: {STR_VAR_3}"));
     u8 *end;
     if (trainerId == TRAINER_NONE)
-        end = StringCopy(gStringVar2, COMPOUND_STRING("Not a Trainer"));
+        end = StringCopy(gStringVar2, COMPOUND_STRING("Kein Trainer"));
     else
         end = StringCopy(gStringVar2, GetTrainerNameFromId(trainerId));
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
@@ -2437,7 +2437,7 @@ static void DebugSelectionStep_PrepareTrainerDisplay(u8 taskId, u8 digits, u32 t
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("ID: {STR_VAR_3}"));
     u8 *end;
     if (gTasks[taskId].tInput == TRAINER_NONE )
-        end = StringCopy(gStringVar2, COMPOUND_STRING("None"));
+        end = StringCopy(gStringVar2, COMPOUND_STRING("Keine"));
     else
         end = StringCopy(gStringVar2, GetTrainerNameFromId(trainerId));
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
@@ -2644,9 +2644,9 @@ static void DebugSelectionStep_PrintGenericBooleanInput(u8 taskId, const u8 *str
 {
     StringCopy(gStringVar1, str);
     if (gTasks[taskId].tInput == 0)
-        StringCopy(gStringVar2, COMPOUND_STRING("FALSE"));
+        StringCopy(gStringVar2, COMPOUND_STRING("NEIN"));
     else
-        StringCopy(gStringVar2, COMPOUND_STRING("TRUE"));
+        StringCopy(gStringVar2, COMPOUND_STRING("JA"));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
 }
@@ -2669,7 +2669,7 @@ static void DebugSelectionStep_UpdateSpecies(u8 taskId, u8 digits, u32 min, u32 
     }
     gTasks[taskId].tInput = species;
     ConvertIntToDecimalStringN(gStringVar3, species, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Species: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Art: {STR_VAR_3}"));
     u8 *end = StringCopy(gStringVar2, GetSpeciesName(species));
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
@@ -2682,10 +2682,10 @@ static void DebugSelectionStep_UpdateMoves(u8 taskId, u8 digits, u32 min, u32 ma
     u32 moveId = gTasks[taskId].tInput;
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tSubstep + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
     ConvertIntToDecimalStringN(gStringVar3, moveId, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Move {STR_VAR_2}: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Attacke {STR_VAR_2}: {STR_VAR_3}"));
     u8 *end;
     if (moveId == MOVES_COUNT)
-        end = StringCopy(gStringVar2, COMPOUND_STRING("Default"));
+        end = StringCopy(gStringVar2, COMPOUND_STRING("Standard"));
     else
         end = StringCopy(gStringVar2, GetMoveName(moveId));
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
@@ -2946,7 +2946,7 @@ static void DebugSelectionStep_PrepareVarDisplay(u32 varId)
     u8 *end;
     end = StringCopy(gStringVar1, COMPOUND_STRING("Var: 0x"));
     ConvertIntToHexStringN(end, varId, STR_CONV_MODE_LEFT_ALIGN, 4);
-    end = StringCopy(gStringVar2, COMPOUND_STRING("Val: "));
+    end = StringCopy(gStringVar2, COMPOUND_STRING("Wert: "));
     ConvertIntToDecimalStringN(end, VarGet(varId), STR_CONV_MODE_LEADING_ZEROS, 5);
 }
 
@@ -2962,7 +2962,7 @@ static void DebugSelectionStep_UpdateVarValue(u8 taskId, u8 digits, u32 min, u32
 {
     u8 *end;
     DebugSelectionStep_PrepareVarDisplay(DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1));
-    end = StringCopy(gStringVar3, COMPOUND_STRING("New: "));
+    end = StringCopy(gStringVar3, COMPOUND_STRING("Neu: "));
     ConvertIntToDecimalStringN(end, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, 5);
     DebugNativeStep_PrintWindowSelection(taskId);
 }
@@ -3253,7 +3253,7 @@ static void DebugSelectionStep_UpdateItem(u8 taskId, u8 digits, u32 min, u32 max
     u32 itemId = gTasks[taskId].tInput;
     Debug_DisplayItemIcon(taskId, itemId);
     ConvertIntToDecimalStringN(gStringVar3, itemId, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Item ID: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Item-ID: {STR_VAR_3}"));
     u8* end = CopyItemName(itemId, gStringVar2);
     enum Move moveId = ItemIdToBattleMoveId(itemId);
     if (moveId != MOVE_NONE)
@@ -3263,7 +3263,7 @@ static void DebugSelectionStep_UpdateItem(u8 taskId, u8 digits, u32 min, u32 max
     }
     else if (CheckIfItemIsTMHMOrEvolutionStone(itemId) == ITEM_IS_TM_HM)
     {
-        end = StringCopy(end, COMPOUND_STRING(" None"));
+        end = StringCopy(end, COMPOUND_STRING(" Keins"));
     }
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
@@ -3328,14 +3328,14 @@ static void DebugSelectionStep_UpdateGender(u8 taskId, u8 digits, u32 min, u32 m
     enum Species species = DebugSelection_GetData(taskId, 0);
     u32 gender = GetGenderFromSpeciesAndPersonality(species, gTasks[taskId].tInput);
     if (gender == MON_FEMALE)
-        StringCopy(gStringVar1, COMPOUND_STRING("FEMALE"));
+        StringCopy(gStringVar1, COMPOUND_STRING("WEIBLICH"));
     else if (gender == MON_MALE)
-        StringCopy(gStringVar1, COMPOUND_STRING("MALE"));
+        StringCopy(gStringVar1, COMPOUND_STRING("MÄNNLICH"));
     else
-        StringCopy(gStringVar1, COMPOUND_STRING("GENDERLESS"));
+        StringCopy(gStringVar1, COMPOUND_STRING("GESCHLECHTSLOS"));
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringExpandPlaceholders(gStringVar2, COMPOUND_STRING("{STR_VAR_1} ({STR_VAR_3})"));
-    StringCopy(gStringVar1, COMPOUND_STRING("Gender Value:"));
+    StringCopy(gStringVar1, COMPOUND_STRING("Geschlechtswert:"));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
 }
@@ -3349,7 +3349,7 @@ static void DebugSelectionStep_GenderConfirm(u8 taskId)
 
 static void DebugSelectionStep_UpdateShinyness(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    DebugSelectionStep_PrintGenericBooleanInput(taskId, COMPOUND_STRING("Shiny:"));
+    DebugSelectionStep_PrintGenericBooleanInput(taskId, COMPOUND_STRING("Schillernd:"));
 }
 
 static u32 DebugSelectionStep_GetMaxAbility(u8 taskId)
@@ -3380,7 +3380,7 @@ static void DebugSelectionStep_UpdateAbility(u8 taskId, u8 digits, u32 min, u32 
     }
 
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringCopy(gStringVar1, COMPOUND_STRING("Ability:"));
+    StringCopy(gStringVar1, COMPOUND_STRING("Fähigkeit:"));
     StringCopy(gStringVar2, gAbilitiesInfo[abilities[gTasks[taskId].tInput]].name);
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -3401,7 +3401,7 @@ static void DebugSelectionStep_AbilityConfirm(u8 taskId)
 static void DebugSelectionStep_UpdateNature(u8 taskId, u8 digits, u32 min, u32 max)
 {
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Nature: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Wesen: {STR_VAR_3}"));
     StringCopy(gStringVar2, gNaturesInfo[gTasks[taskId].tInput].name);
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -3427,12 +3427,12 @@ static void DebugSelectionStep_UpdateEVs(u8 taskId, u8 digits, u32 min, u32 max)
 
 static void DebugSelectionStep_UpdateDynamaxLevel(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    DebugSelectionStep_PrintGenericInput(taskId, digits, COMPOUND_STRING("Dynamax Level:"));
+    DebugSelectionStep_PrintGenericInput(taskId, digits, COMPOUND_STRING("Dynamax-Level:"));
 }
 
 static void DebugSelectionStep_UpdateGigantamaxFactor(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    DebugSelectionStep_PrintGenericBooleanInput(taskId, COMPOUND_STRING("Gmax Factor:"));
+    DebugSelectionStep_PrintGenericBooleanInput(taskId, COMPOUND_STRING("Gigamax-Faktor:"));
 }
 
 static void DebugSelectionStep_UpdateTeraType(u8 taskId, u8 digits, u32 min, u32 max)
@@ -3445,7 +3445,7 @@ static void DebugSelectionStep_UpdateTeraType(u8 taskId, u8 digits, u32 min, u32
             gTasks[taskId].tInput++;
     }
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Tera Type: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Tera-Typ: {STR_VAR_3}"));
     StringCopy(gStringVar2, gTypesInfo[gTasks[taskId].tInput].name);
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -3622,7 +3622,7 @@ static void DebugSelectionStep_UpdateDecoration(u8 taskId, u8 digits, u32 min, u
         DEBUG_ICON_TAG, DEBUG_ICON_TAG);
 
     ConvertIntToDecimalStringN(gStringVar3, decorationId, STR_CONV_MODE_LEADING_ZEROS, digits);
-    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Decor ID: {STR_VAR_3}"));
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Deko-ID: {STR_VAR_3}"));
     u8* end = StringCopy(gStringVar2, gDecorations[decorationId].name);
     WrapFontIdToFit(gStringVar2, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
@@ -4762,7 +4762,7 @@ static void DebugSelectionStep_UpdateFriendship(u8 taskId, u8 digits, u32 min, u
     ConvertIntToDecimalStringN(gStringVar1, DebugSelection_GetData(taskId, 0), STR_CONV_MODE_LEADING_ZEROS, digits);
     ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringExpandPlaceholders(gStringVar2, COMPOUND_STRING("{STR_VAR_1} {RIGHT_ARROW} {STR_VAR_3}"));
-    StringCopy(gStringVar1, COMPOUND_STRING("Friendship:"));
+    StringCopy(gStringVar1, COMPOUND_STRING("Freundschaft:"));
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
 }
@@ -4810,7 +4810,7 @@ void DebugNative_Party_SetFriendship(void)
 
 static void DebugSelectionStep_UpdatePokerusStrain(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    StringCopy(gStringVar1, COMPOUND_STRING("Strain:"));
+    StringCopy(gStringVar1, COMPOUND_STRING("Stamm:"));
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);
@@ -4818,15 +4818,15 @@ static void DebugSelectionStep_UpdatePokerusStrain(u8 taskId, u8 digits, u32 min
 
 static void DebugSelectionStep_UpdatePokerusDaysLeft(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    StringCopy(gStringVar1, COMPOUND_STRING("Days Left:"));
+    StringCopy(gStringVar1, COMPOUND_STRING("Tage übrig:"));
     s16 daysLeft = gTasks[taskId].tInput;
     u16 strain = DebugSelection_GetData(taskId, gTasks[taskId].tStepsDataIndex - 1);
     ConvertIntToDecimalStringN(gStringVar2, daysLeft, STR_CONV_MODE_LEADING_ZEROS, digits);
 
     if (daysLeft == 0 && strain == 0)
-        StringCopy(gStringVar3, COMPOUND_STRING("No Pokerus"));
+        StringCopy(gStringVar3, COMPOUND_STRING("Kein Pokérus"));
     else if (daysLeft == 0)
-        StringCopy(gStringVar3, COMPOUND_STRING("Inactive"));
+        StringCopy(gStringVar3, COMPOUND_STRING("Inaktiv"));
     else
         StringCopy(gStringVar3, COMPOUND_STRING(""));
     DebugNativeStep_PrintWindowSelection(taskId);

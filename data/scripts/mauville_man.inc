@@ -87,63 +87,64 @@ MauvilleCity_PokemonCenter_1F_EventScript_TeachWord::
 
 @ Trader
 MauvilleCity_PokemonCenter_1F_Text_WantToTradeDecor:
-	.string "Hi, I'm the TRADER.\n"
-	.string "Want to trade decorations with me?$"
+	.string "Hi, ich bin der TAUSCHER. Willst du\n"
+	.string "Dekorationen mit mir tauschen?$"
 
 MauvilleCity_PokemonCenter_1F_Text_TraderFeelingTheBlues:
 	.string "Oh…\n"
-	.string "You've left me feeling the blues…$"
+	.string "Du hast mich ganz traurig gemacht…$"
 
 MauvilleCity_PokemonCenter_1F_Text_WeveAlreadyTraded:
-	.string "But we've traded decorations already,\n"
-	.string "you and I.$"
+	.string "Aber wir haben doch schon\n"
+	.string "Dekorationen getauscht, du und ich.$"
 
 MauvilleCity_PokemonCenter_1F_Text_PickADecorItem:
-	.string "If you see any decorative item that\n"
-	.string "you want of mine, speak up.$"
+	.string "Wenn du eine Dekoration von mir\n"
+	.string "haben willst, sag es einfach.$"
 
 MauvilleCity_PokemonCenter_1F_Text_YouDontWantAnything:
-	.string "You don't want anything?\n"
-	.string "I feel unwanted…$"
+	.string "Du willst nichts?\n"
+	.string "Ich fühle mich unerwünscht…$"
 
 MauvilleCity_PokemonCenter_1F_Text_OnceBelongedToPlayerDoYouWantIt:
-	.string "That decorative item once belonged\n"
-	.string "to {STR_VAR_1}.\p"
-	.string "Do you want it?$"
+	.string "Diese Dekoration gehörte einmal\n"
+	.string "{STR_VAR_1}.\p"
+	.string "Möchtest du sie?$"
 
 MauvilleCity_PokemonCenter_1F_Text_YouDontHaveAnyDecor:
-	.string "Uh… Wait a second. You don't have a\n"
-	.string "single piece of decoration!$"
+	.string "Äh… Moment mal. Du hast ja kein\n"
+	.string "einziges Stück Dekoration!$"
 
 MauvilleCity_PokemonCenter_1F_Text_PickTheDecorToTrade:
-	.string "Okay, pick the decoration that you'll\n"
-	.string "trade to me.$"
+	.string "Okay, such die Dekoration aus, die\n"
+	.string "du mir eintauschen willst.$"
 
 MauvilleCity_PokemonCenter_1F_Text_YouDontWantToTrade:
-	.string "You won't trade with me?\n"
-	.string "I feel unwanted…$"
+	.string "Du willst nicht mit mir tauschen?\n"
+	.string "Ich fühle mich unerwünscht…$"
 
 MauvilleCity_PokemonCenter_1F_Text_YouveNoRoomForThis:
-	.string "You've got all the {STR_VAR_2}S that can\n"
-	.string "be stored. You've no room for this.$"
+	.string "Du hast schon alle {STR_VAR_2}, die\n"
+	.string "gelagert werden können. Kein Platz mehr.$"
 
 MauvilleCity_PokemonCenter_1F_Text_SoWellTradeTheseDecor:
-	.string "Okay, so we'll trade my {STR_VAR_3}\n"
-	.string "for your {STR_VAR_2}?$"
+	.string "Okay, wir tauschen also mein {STR_VAR_3}\n"
+	.string "gegen dein {STR_VAR_2}?$"
 
 MauvilleCity_PokemonCenter_1F_Text_ThatDecorIsInUse:
-	.string "That piece of decoration is in use.\n"
-	.string "You can't trade it.$"
+	.string "Diese Dekoration wird gerade benutzt.\n"
+	.string "Du kannst sie nicht tauschen.$"
 
 MauvilleCity_PokemonCenter_1F_Text_SendDecorToYourPC:
-	.string "Then we'll trade!\n"
-	.string "I'll send my decoration to your PC.$"
+	.string "Dann tauschen wir! Ich schicke meine\n"
+	.string "Dekoration an deinen PC.$"
 
 MauvilleCity_PokemonCenter_1F_Text_CantTradeThatOne:
-	.string "Oops! Sorry! That's a really rare\n"
-	.string "piece of decoration.\l"
-	.string "I can't trade that one away!\p"
-	.string "Can I interest you in something else?$"
+	.string "Huch! Tut mir leid! Das ist eine richtig\n"
+	.string "seltene Dekoration. Die kann ich nicht\l"
+	.string "hergeben!\p"
+	.string "Kann ich dich für etwas anderes\n"
+	.string "begeistern?$"
 
 MauvilleCity_PokemonCenter_1F_EventScript_Trader::
 	lock
