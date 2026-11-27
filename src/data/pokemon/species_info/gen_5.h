@@ -3013,10 +3013,10 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 75,
         .genderRatio = MON_MALE,
         .description = POKEDEX_DESC_STRING(
-            "Clads itself in the souls of comrades that\n"
-            "perished before fulfilling their goals of\n"
-            "journeying upstream. No other species in\n"
-            "all Hisui's rivers is Basculegion's equal."),
+            "Es hüllt sich in die Seelen von Gefährten,\n"
+            "die starben, bevor sie ihr Ziel erreichten,\n"
+            "den Fluss hinaufzuziehen. Keine andere Art\n"
+            "in Hisuis Flüssen kommt Barschwa gleich."),
         FRONT_PIC(BasculegionMale, 64, 64),
         BACK_PIC(BasculegionMale, 64, 64),
         PALETTES(BasculegionMale),
@@ -3034,9 +3034,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 75,
         .genderRatio = MON_FEMALE,
         .description = POKEDEX_DESC_STRING(
-            "The souls of its comrades cloak its\n"
-            "body and propel it effortlessly\n"
-            "through even raging rapids."),
+            "Die Seelen seiner Gefährten umhüllen\n"
+            "seinen Körper und tragen es mühelos\n"
+            "selbst durch reißende Stromschnellen."),
         FRONT_PIC(BasculegionFemale, 64, 64),
         BACK_PIC(BasculegionFemale, 64, 64),
         PALETTES(BasculegionFemale),

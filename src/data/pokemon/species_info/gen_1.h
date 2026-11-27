@@ -9212,10 +9212,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 14,
         .weight = 568,
         .description = POKEDEX_DESC_STRING(
-            "Its talent is tap-dancing. It can radiate\n"
-            "chilliness from the bottoms of its feet to\n"
-            "to create a floor of ice, which this\n"
-            "Pokémon can kick up to use as a barrier."),
+            "Sein Talent ist der Stepptanz. Es kann\n"
+            "Kälte aus seinen Fußsohlen abstrahlen\n"
+            "und so einen Eisboden erschaffen, den\n"
+            "es als Schutzwall hochtreten kann."),
         .pokemonScale = 258,
         .pokemonOffset = 6,
         .trainerScale = 256,

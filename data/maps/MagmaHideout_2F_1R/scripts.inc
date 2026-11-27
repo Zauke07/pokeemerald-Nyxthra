@@ -68,7 +68,7 @@ MagmaHideout_2F_1R_Text_Grunt5Intro:
 	.string "Ein Eindringling!$"
 
 MagmaHideout_2F_1R_Text_Grunt5Defeat:
-	.string "Mutter…$"
+	.string "Murmel…$"
 
 MagmaHideout_2F_1R_Text_Grunt5PostBattle:
 	.string "Ehrlich gesagt bin ich kein Profi im Kämpfen…$"

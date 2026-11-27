@@ -545,7 +545,7 @@ const u8 gText_PauseUntilPress[] = _("{PAUSE_UNTIL_PRESS}");
 const u8 gJPText_AreYouSureYouWantToSpinTradeMon[] = _("{STR_VAR_1}を ぐるぐるこうかんに\nだして よろしいですか？");
 ALIGNED(4) const u8 gText_OnlyPkmnForBattle[] = _("Das ist dein einziges\nPokémon.");
 ALIGNED(4) const u8 gText_PkmnCantBeTradedNow[] = _("Das Pokémon kann nicht getauscht werden.");
-ALIGNED(4) const u8 gText_PkmnCantBeTraded[] = _("That Pokémon can't be traded.");
+ALIGNED(4) const u8 gText_PkmnCantBeTraded[] = _("Dieses Pokémon kann nicht getauscht werden.");
 ALIGNED(4) const u8 gText_EggCantBeTradedNow[] = _("Ein Ei kann nicht getauscht werden.");
 ALIGNED(4) const u8 gText_OtherTrainersPkmnCantBeTraded[] = _("Das Pokémon des anderen\nTrainers kann nicht getauscht werden");
 ALIGNED(4) const u8 gText_OtherTrainerCantAcceptPkmn[] = _("Der andere Trainer kann dieses\nPokémon nicht akzeptieren.");
@@ -774,7 +774,7 @@ const u8 gText_SomeonesPC[] = _("JEMANDES PC");
 const u8 gText_LanettesPC[] = _("LANETTES PC");
 const u8 gText_BillsPc[] = _("BILLS PC");
 const u8 gText_PlayersPC[] = _("{PLAYER}'s PC");
-const u8 gText_HallOfFame[] = _("HALL OF FAME");
+const u8 gText_HallOfFame[] = _("RUHMESHALLE");
 const u8 gText_LogOff[] = _("Ausloggen");
 
 const u8 gText_NormalRank[] = _("Normaler Rang");
@@ -1496,7 +1496,7 @@ ALIGNED(4) const u8 gText_FrontierFacilityRoomsCleared[] = _("Räume abgeschloss
 ALIGNED(4) const u8 gText_FrontierFacilityKOsStreak[] = _("KOs in Folge: {STR_VAR_2}");
 ALIGNED(4) const u8 gText_FrontierFacilityFloorsCleared[] = _("Stockwerke abgeschlossen: {STR_VAR_2}");
 ALIGNED(4) const u8 gText_123Dot[][3] = {_("1."), _("2."), _("3.")};
-const u8 gText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" and {STR_VAR_2} of the Pokémon species\nyou caught are inelegible");
+const u8 gText_FrontierFacilityTotalCaughtSpeciesBanned[] = _(" und {STR_VAR_2} der gefangenen Pokémon-\nArten sind nicht zugelassen");
 const u8 gText_FrontierFacilityIncluding[] = _(".\pDazu zählen ");
 const u8 gText_FrontierFacilityAreInelegible[] = _(" sind nicht zugelassen");
 

@@ -3631,10 +3631,9 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_RED,
         .cryId = CRY_TATSUGIRI_CURLY,
         .description = POKEDEX_DESC_STRING(
-            "This is a small dragon Pokémon. It\n"
-            "lives inside the mouth of Dondozo to\n"
-            "protect itself from enemies on the\n"
-            "outside."),
+            "Dies ist ein kleines Drachen-Pokémon.\n"
+            "Es lebt im Maul von Heerashai, um sich\n"
+            "vor Feinden außerhalb zu schützen."),
         FRONT_PIC(TatsugiriCurly, 64, 64),
         BACK_PIC(TatsugiriCurly, 64, 64),
         PALETTES(TatsugiriCurly),
@@ -3647,9 +3646,9 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_PINK,
         .cryId = CRY_TATSUGIRI_DROOPY,
         .description = POKEDEX_DESC_STRING(
-            "This Pokémon tricks its opponents\n"
-            "by playing dead. It is small and\n"
-            "weak, but it uses its smarts to survive."),
+            "Dieses Pokémon täuscht seine Gegner,\n"
+            "indem es sich tot stellt. Es ist klein\n"
+            "und schwach, überlebt aber durch List."),
         FRONT_PIC(TatsugiriDroopy, 64, 64),
         BACK_PIC(TatsugiriDroopy, 64, 64),
         PALETTES(TatsugiriDroopy),
@@ -3662,9 +3661,9 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_YELLOW,
         .cryId = CRY_TATSUGIRI_STRETCHY,
         .description = POKEDEX_DESC_STRING(
-            "It's one of the most intelligent\n"
-            "dragon Pokémon. It camouflages itself\n"
-            "by inflating its throat sac."),
+            "Es ist eines der intelligentesten\n"
+            "Drachen-Pokémon. Es tarnt sich, indem\n"
+            "es seinen Kehlsack aufbläht."),
         FRONT_PIC(TatsugiriStretchy, 64, 64),
         BACK_PIC(TatsugiriStretchy, 64, 64),
         PALETTES(TatsugiriStretchy),

@@ -267,23 +267,23 @@ BerryTree_Text_PlantedOneBerry:
 
 BerryTree_Text_BerryGrowthStage1:
 .if OW_BERRY_SIX_STAGES == TRUE
-	.string "This is where you planted the\n{STR_VAR_1}!$"
+	.string "Hier hast du {STR_VAR_1}\ngepflanzt!$"
 .else
-	.string "One {STR_VAR_1} was planted here.$"
+	.string "Hier wurde {STR_VAR_1} gepflanzt.$"
 .endif
 
 BerryTree_Text_BerryGrowthStage2:
 .if OW_BERRY_SIX_STAGES == TRUE
-	.string "The {STR_VAR_1} is sprouting!$"
+	.string "{STR_VAR_1} sprießt!$"
 .else
-	.string "{STR_VAR_1} has sprouted.$"
+	.string "{STR_VAR_1} ist gesprossen.$"
 .endif
 
 BerryTree_Text_BerryGrowthStage3:
 .if OW_BERRY_SIX_STAGES == TRUE
-	.string "The {STR_VAR_1}'s seedling is growing well!$"
+	.string "Der Setzling von {STR_VAR_1} wächst gut!$"
 .else
-	.string "This {STR_VAR_1} plant is growing taller.$"
+	.string "Diese Pflanze von {STR_VAR_1} wächst höher.$"
 .endif
 
 BerryTree_Text_BerryGrowthStageTrunk:
@@ -294,9 +294,9 @@ BerryTree_Text_BerryGrowthStageBudding:
 
 BerryTree_Text_BerryGrowthStage4:
 .if OW_BERRY_SIX_STAGES == TRUE
-	.string "The {STR_VAR_1} tree is in bloom!$"
+	.string "Der {STR_VAR_1}-Baum blüht!$"
 .else
-	.string "These {STR_VAR_1} flowers are blooming\n"
+	.string "Die Blüten von {STR_VAR_1} blühen\n"
 	.string "{STR_VAR_2}.$"
 .endif
 

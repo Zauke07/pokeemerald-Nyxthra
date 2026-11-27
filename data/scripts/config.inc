@@ -7,8 +7,9 @@ Debug_FlagsAndVarNotSetBattleConfigMessage::
 	end
 
 Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
-	.string "Feature unavailable! Please define a\n"
-	.string "usable flag and a usable var in:\l"
+	.string "Funktion nicht verfügbar! Bitte lege\n"
+	.string "ein nutzbares Flag und eine nutzbare\l"
+	.string "Variable fest in:\l"
 	.string "'include/config/battle.h'!$"
 
 Common_EventScript_ShowRivalId_Debug::

@@ -466,12 +466,12 @@ EventScript_EndRockClimb::
 	end
 
 Text_WantToRockClimb:
-	.string "The cliff is steep.\n"
-	.string "Would you like to use Rock Climb?$"
+	.string "Die Klippe ist steil.\n"
+	.string "Möchtest du KRAXLER einsetzen?$"
 
 Text_MonUsedRockClimb:
-	.string "{STR_VAR_1} used Rock Climb!$"
+	.string "{STR_VAR_1} hat KRAXLER eingesetzt!$"
 
 Text_CantRockClimb:
-	.string "The cliff is steep.\n"
-	.string "A Pokémon may be able to climb it.$"
+	.string "Die Klippe ist steil. Vielleicht kann ein\n"
+	.string "Pokémon hinaufklettern.$"

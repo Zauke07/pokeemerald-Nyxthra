@@ -161,6 +161,6 @@ ProfileMan_Text_FantasticProfile:
 @ Unused
 ProfileMan_Text_YouKnowSecretSaying:
 	.string "Oh?\n"
-	.string "You know the secret saying!\p"
-	.string "That means you're now a fellow member\n"
-	.string "of the MYSTERY EVENT CLUB!$"
+	.string "Du kennst den Geheimspruch!\p"
+	.string "Das heißt, du bist jetzt Mitglied\n"
+	.string "des GEHEIMEVENT-CLUBS!$"

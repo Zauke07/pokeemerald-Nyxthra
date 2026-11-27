@@ -3263,10 +3263,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 36,
         .weight = 392,
         .description = POKEDEX_DESC_STRING(
-            "This Pokémon uses its hard tail to\n"
-            "make its nest by boring holes into\n"
-            "bedrock deep underground. The nest\n"
-            "can reach lengths of over six miles."),
+            "Mit seinem harten Schwanz bohrt es\n"
+            "Löcher in den Grundfels tief unter der\n"
+            "Erde und baut so sein Nest. Es kann\n"
+            "über zehn Kilometer lang werden."),
     },
 
     [SPECIES_DUDUNSPARCE_THREE_SEGMENT] =
@@ -3275,10 +3275,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 45,
         .weight = 474,
         .description = POKEDEX_DESC_STRING(
-            "A recent study uncovered that the\n"
-            "number of segments a\n"
-            "Dudunsparce's body has is determined by the\n"
-            "Pokémon's genes."),
+            "Eine neue Studie ergab, dass die Zahl\n"
+            "der Körpersegmente eines Dummisel\n"
+            "von den Genen des Pokémon\n"
+            "bestimmt wird."),
     },
 #endif //P_GEN_9_CROSS_EVOS
 #endif //P_FAMILY_DUNSPARCE
@@ -4072,9 +4072,9 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 24,
         .weight = 2900,
         .description = POKEDEX_DESC_STRING(
-            "Swampy terrain gives Ursaluna its burly\n"
-            "physique and newfound capacity to\n"
-            "manipulate peat at will."),
+            "Das sumpfige Gelände verleiht Ursaluna\n"
+            "seinen kräftigen Körperbau und die neue\n"
+            "Fähigkeit, Torf nach Belieben zu formen."),
         .pokemonScale = 256,
         .pokemonOffset = 3,
         .trainerScale = 369,
@@ -4108,10 +4108,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 27,
         .weight = 3330,
         .description = POKEDEX_DESC_STRING(
-            "It crossed the sea and drifted\n"
-            "ashore in a new land. Surviving in this\n"
-            "place led it to take on a unique\n"
-            "appearance and gain special powers."),
+            "Es überquerte das Meer und wurde an\n"
+            "das Ufer eines neuen Landes getrieben.\n"
+            "Das Überleben dort verlieh ihm ein\n"
+            "einzigartiges Aussehen und Kräfte."),
         .pokemonScale = 256,
         .pokemonOffset = 3,
         .trainerScale = 369,
