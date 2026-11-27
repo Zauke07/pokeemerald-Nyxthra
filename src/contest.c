@@ -364,29 +364,29 @@ EWRAM_DATA u8 gCurContestWinnerSaveIdx = 0;
 COMMON_DATA rng_value_t gContestRngValue = {0};
 
 //Text
-const u8 gText_LinkStandby4[] = _("Link standby!");
+const u8 gText_LinkStandby4[] = _("Warte auf Verbindung!");
 
-const u8 gText_AppealNumWhichMoveWillBePlayed[] = _("Appeal no. {STR_VAR_1}!\nWhich move will be played?");
-const u8 gText_AppealNumButItCantParticipate[] = _("Appeal no. {STR_VAR_1}!\nBut it can't participate!");
-const u8 gText_MonAppealedWithMove[] = _("{STR_VAR_1} appealed with\n{STR_VAR_2}!");
-const u8 gText_MonWasWatchingOthers[] = _("{STR_VAR_1} was watching\nthe others.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_AllOutOfAppealTime[] = _("We're all out of\nAppeal Time!{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_JudgeLookedAtMonExpectantly[] = _("The JUDGE looked at\n{STR_VAR_1} expectantly.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_AppealComboWentOverWell[] = _("The appeal combo went\nover well.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_AppealComboWentOverVeryWell[] = _("The appeal combo went\nover very well.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_AppealComboWentOverExcellently[] = _("The appeal combo went\nover excellently.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonWasTooNervousToMove[] = _("{STR_VAR_1} was too\nnervous to move.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_CouldntImproveItsCondition[] = _("But it couldn't improve\nits condition…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_BadConditionResultedInWeakAppeal[] = _("Its bad condition\nresulted in a weak appeal.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonWasUnaffected[] = _("{STR_VAR_1} was\nunaffected.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_RepeatedAppeal[] = _("{STR_VAR_1} disappointed\nby repeating an appeal.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonsXWentOverGreat[] = _("{STR_VAR_1}'s {STR_VAR_3}\nwent over great.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonsXDidntGoOverWell[] = _("{STR_VAR_1}'s {STR_VAR_3}\ndidn't go over well here…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonsXGotTheCrowdGoing[] = _("{STR_VAR_1}'s {STR_VAR_3}\ngot the crowd going.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonCantAppealNextTurn[] = _("{STR_VAR_1} can't appeal\nnext turn…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_AttractedCrowdsAttention[] = _("It attracted the crowd's\nattention.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_CrowdContinuesToWatchMon[] = _("The crowd continues to\nwatch {STR_VAR_3}.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
-const u8 gText_MonsMoveIsIgnored[] = _("{STR_VAR_1}'s\n{STR_VAR_2} is ignored.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AppealNumWhichMoveWillBePlayed[] = _("Auftritt Nr. {STR_VAR_1}!\nWelche Attacke wird gezeigt?");
+const u8 gText_AppealNumButItCantParticipate[] = _("Auftritt Nr. {STR_VAR_1}!\nAber es kann nicht teilnehmen!");
+const u8 gText_MonAppealedWithMove[] = _("{STR_VAR_1} trat mit\n{STR_VAR_2} auf!");
+const u8 gText_MonWasWatchingOthers[] = _("{STR_VAR_1} sah den\nanderen zu.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AllOutOfAppealTime[] = _("Die Auftrittszeit\nist abgelaufen!{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_JudgeLookedAtMonExpectantly[] = _("Der RICHTER sah\n{STR_VAR_1} erwartungsvoll an.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AppealComboWentOverWell[] = _("Die Auftritts-Kombination\nkam gut an.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AppealComboWentOverVeryWell[] = _("Die Auftritts-Kombination\nkam sehr gut an.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AppealComboWentOverExcellently[] = _("Die Auftritts-Kombination\nkam ausgezeichnet an.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonWasTooNervousToMove[] = _("{STR_VAR_1} war zu nervös,\num sich zu bewegen.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_CouldntImproveItsCondition[] = _("Aber die Verfassung\nverbesserte sich nicht…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_BadConditionResultedInWeakAppeal[] = _("Die schlechte Verfassung\nführte zu einem schwachen Auftritt.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonWasUnaffected[] = _("{STR_VAR_1} blieb\nunbeeindruckt.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_RepeatedAppeal[] = _("{STR_VAR_1} enttäuschte,\nweil es den Auftritt wiederholte.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonsXWentOverGreat[] = _("{STR_VAR_3} von {STR_VAR_1}\nkam großartig an.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonsXDidntGoOverWell[] = _("{STR_VAR_3} von {STR_VAR_1}\nkam hier nicht gut an…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonsXGotTheCrowdGoing[] = _("{STR_VAR_3} von {STR_VAR_1}\nbegeisterte das Publikum.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonCantAppealNextTurn[] = _("{STR_VAR_1} kann in der\nnächsten Runde nicht auftreten…{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_AttractedCrowdsAttention[] = _("Es zog die Aufmerksamkeit\ndes Publikums auf sich.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_CrowdContinuesToWatchMon[] = _("Das Publikum sieht\nweiter {STR_VAR_3} zu.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
+const u8 gText_MonsMoveIsIgnored[] = _("{STR_VAR_2} von\n{STR_VAR_1} wird ignoriert.{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}{PAUSE 0x0F}");
 
 static const u32 sPictureFrameTiles_Cool[]     = INCGFX_U32("graphics/picture_frame/cool.png", ".4bpp.smol");
 static const u32 sPictureFrameTiles_Beauty[]   = INCGFX_U32("graphics/picture_frame/beauty.png", ".4bpp.smol");
@@ -691,10 +691,10 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 {
     [CONTEST_CATEGORY_COOL] =
     {
-        .name = COMPOUND_STRING("COOL"),
-        .condition = COMPOUND_STRING("coolness"),
-        .generic = COMPOUND_STRING("COOL Move"),
-        .negativeTrait = COMPOUND_STRING("shyness"),
+        .name = COMPOUND_STRING("COOLNESS"),
+        .condition = COMPOUND_STRING("Coolness"),
+        .generic = COMPOUND_STRING("COOLNESS-Attacke"),
+        .negativeTrait = COMPOUND_STRING("Schüchternheit"),
         .ribbon = MON_DATA_COOL_RIBBON,
         .imageEffect = IMAGE_EFFECT_OUTLINE_COLORED,
         .paintingTiles = sPictureFrameTiles_Cool,
@@ -710,10 +710,10 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 
     [CONTEST_CATEGORY_BEAUTY] =
     {
-        .name = COMPOUND_STRING("BEAUTY"),
-        .condition = COMPOUND_STRING("beauty"),
-        .generic = COMPOUND_STRING("BEAUTY Move"),
-        .negativeTrait = COMPOUND_STRING("anxiety"),
+        .name = COMPOUND_STRING("SCHÖNHEIT"),
+        .condition = COMPOUND_STRING("Schönheit"),
+        .generic = COMPOUND_STRING("SCHÖNHEITS-Attacke"),
+        .negativeTrait = COMPOUND_STRING("Besorgnis"),
         .ribbon = MON_DATA_BEAUTY_RIBBON,
         .imageEffect = IMAGE_EFFECT_SHIMMER,
         .paintingTiles = sPictureFrameTiles_Beauty,
@@ -729,10 +729,10 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 
     [CONTEST_CATEGORY_CUTE] =
     {
-        .name = COMPOUND_STRING("CUTE"),
-        .condition = COMPOUND_STRING("cuteness"),
-        .generic = COMPOUND_STRING("CUTE Move"),
-        .negativeTrait = COMPOUND_STRING("laziness"),
+        .name = COMPOUND_STRING("ANMUT"),
+        .condition = COMPOUND_STRING("Anmut"),
+        .generic = COMPOUND_STRING("ANMUT-Attacke"),
+        .negativeTrait = COMPOUND_STRING("Faulheit"),
         .ribbon = MON_DATA_CUTE_RIBBON,
         .imageEffect = IMAGE_EFFECT_POINTILLISM,
         .paintingTiles = sPictureFrameTiles_Cute,
@@ -748,10 +748,10 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 
     [CONTEST_CATEGORY_SMART] =
     {
-        .name = COMPOUND_STRING("SMART"),
-        .condition = COMPOUND_STRING("smartness"),
-        .generic = COMPOUND_STRING("SMART Move"),
-        .negativeTrait = COMPOUND_STRING("hesitancy"),
+        .name = COMPOUND_STRING("KLUGHEIT"),
+        .condition = COMPOUND_STRING("Klugheit"),
+        .generic = COMPOUND_STRING("KLUGHEITS-Attacke"),
+        .negativeTrait = COMPOUND_STRING("Zögern"),
         .ribbon = MON_DATA_SMART_RIBBON,
         .imageEffect = IMAGE_EFFECT_CHARCOAL,
         .paintingTiles = sPictureFrameTiles_Smart,
@@ -767,10 +767,10 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 
     [CONTEST_CATEGORY_TOUGH] =
     {
-        .name = COMPOUND_STRING("TOUGH"),
-        .condition = COMPOUND_STRING("toughness"),
-        .generic = COMPOUND_STRING("TOUGH Move"),
-        .negativeTrait = COMPOUND_STRING("fear"),
+        .name = COMPOUND_STRING("STÄRKE"),
+        .condition = COMPOUND_STRING("Stärke"),
+        .generic = COMPOUND_STRING("STÄRKE-Attacke"),
+        .negativeTrait = COMPOUND_STRING("Furcht"),
         .ribbon = MON_DATA_TOUGH_RIBBON,
         .imageEffect = IMAGE_EFFECT_GRAYSCALE_LIGHT,
         .paintingTiles = sPictureFrameTiles_Tough,
@@ -793,12 +793,12 @@ const struct ContestCategory gContestCategoryInfo[CONTEST_CATEGORIES_COUNT + 1] 
 // Takes the .attentionLevel of a contestant as an index.
 static const u8 *const sRoundResultTexts[] =
 {
-    COMPOUND_STRING("{STR_VAR_1} failed to\nstand out at all…{PAUSE_UNTIL_PRESS}"),
-    COMPOUND_STRING("{STR_VAR_1} didn't stand\nout very much…{PAUSE_UNTIL_PRESS}"),
-    COMPOUND_STRING("{STR_VAR_1} caught a\nlittle attention.{PAUSE_UNTIL_PRESS}"),
-    COMPOUND_STRING("{STR_VAR_1} attracted a\nlot of attention.{PAUSE_UNTIL_PRESS}"),
-    COMPOUND_STRING("{STR_VAR_1} commanded\ntotal attention.{PAUSE_UNTIL_PRESS}"),
-    COMPOUND_STRING("{STR_VAR_1} hasn't made\nits appeal.{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} fiel überhaupt\nnicht auf…{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} fiel nicht\nsehr auf…{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} erregte ein\nwenig Aufmerksamkeit.{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} erregte viel\nAufmerksamkeit.{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} hatte die\nvolle Aufmerksamkeit.{PAUSE_UNTIL_PRESS}"),
+    COMPOUND_STRING("{STR_VAR_1} hatte noch\nkeinen Auftritt.{PAUSE_UNTIL_PRESS}"),
 };
 
 static const struct BgTemplate sContestBgTemplates[] =

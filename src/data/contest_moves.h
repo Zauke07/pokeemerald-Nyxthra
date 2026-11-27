@@ -178,7 +178,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_COOL_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nCOOL-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nCOOLNESS-Auftritten stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -194,7 +194,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_CUTE_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nNIEDLICH-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nANMUT-Auftritten stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -202,7 +202,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_SMART_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nCLEVER-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nKLUGHEITS-Auftritten stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -210,7 +210,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_TOUGH_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nROBUST-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nSTÄRKE-Auftritten stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
