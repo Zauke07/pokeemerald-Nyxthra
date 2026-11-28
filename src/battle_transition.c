@@ -305,6 +305,7 @@ static bool8 Rocket_SetGfx(struct Task *);
 
 static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite);
 static void Task_ShinyEncounter(u8 taskId);
+static void Task_NyxthraEncounter(u8 taskId);
 
 static s16 sDebug_RectangularSpiralData;
 static u8 sTestingTransitionId;
@@ -367,6 +368,7 @@ const u32 sShinyEncounter_Tilemap[] = INCBIN_U32("graphics/battle_transitions/sh
 const u16 sShinyEncounter_Palette[] = INCBIN_U16("graphics/battle_transitions/shiny_encounter.gbapal");
 
 #define SHINY_SPARKLE_TILE_TAG 0x45E0
+static bool8 sNyxthraTransition;
 #define SHINY_SPARKLE_PAL_TAG  0x45E1
 
 // All battle transitions use the same intro
@@ -420,6 +422,7 @@ static const TaskFunc sTasks_Main[B_TRANSITION_COUNT] =
     [B_TRANSITION_FRONTIER_CIRCLES_ASYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesAsymmetricSpiralInSeq,
     [B_TRANSITION_FRONTIER_CIRCLES_SYMMETRIC_SPIRAL_IN_SEQ] = Task_FrontierCirclesSymmetricSpiralInSeq,
     [B_TRANSITION_SHINY_ENCOUNTER] = Task_ShinyEncounter,
+    [B_TRANSITION_NYXTHRA_ENCOUNTER] = Task_NyxthraEncounter,
     [B_TRANSITION_ROCKET] = Task_Rocket,
 };
 
@@ -2126,7 +2129,26 @@ static bool8 ShinyEncounter_Init(struct Task *task)
     }
 
     LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_ShinySparkle);
-    LoadSpritePalette(&sSpritePalette_ShinySparkle);
+    {
+        u32 palIdx = LoadSpritePalette(&sSpritePalette_ShinySparkle);
+        // Nyxthra: Funken mitternachtsviolett umfärben + unheimlicher Klang
+        if (sNyxthraTransition && palIdx != 0xFF)
+        {
+            u32 i;
+            for (i = 1; i < 16; i++)
+            {
+                u16 c = gPlttBufferUnfaded[OBJ_PLTT_ID(palIdx) + i];
+                u32 l = (GET_R(c) + GET_G(c) + GET_B(c)) / 3;
+                u32 b = l + 8;
+                if (b > 31)
+                    b = 31;
+                c = RGB(l * 21 / 31, l * 8 / 31, b);
+                gPlttBufferUnfaded[OBJ_PLTT_ID(palIdx) + i] = c;
+                gPlttBufferFaded[OBJ_PLTT_ID(palIdx) + i] = c;
+            }
+            PlaySE(SE_M_NIGHTMARE);
+        }
+    }
 
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, DISPLAY_WIDTH));
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, DISPLAY_HEIGHT));
@@ -2168,12 +2190,54 @@ static bool8 ShinyEncounter_DarkenBg(struct Task *task)
     return FALSE;
 }
 
+// Fix: Bei vollen Sprite-Slots (viele Overworld-Objekte) blieb das Spiel
+// im Shiny-Übergang hängen. Funken nur erzeugen, solange genug Slots frei sind.
+static bool32 ShinyEncounter_HasFreeSpriteSlots(void)
+{
+    u32 i, freeSlots = 0;
+    for (i = 0; i < MAX_SPRITES; i++)
+    {
+        if (!gSprites[i].inUse && ++freeSlots >= 12)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 static bool8 ShinyEncounter_SparkleBurst(struct Task *task)
 {
+    if (sNyxthraTransition)
+    {
+        // Nyxthra: Ringe aus violetten Funken breiten sich vom Spieler aus (Mondhof)
+        u32 t = task->tSparkleTimer;
+        u32 ring = t % 44;
+        s16 radius = 6 + ring * 3;
+        u8 angle = (t * 37) + ((t / 44) * 20);
+        s16 x = task->tPlayerScreenX + Sin(angle, radius) - 16;
+        s16 y = task->tPlayerScreenY - 8 + Cos(angle, radius * 3 / 4) - 16;
+        u8 spriteId;
+
+        if (t == 66)
+            PlaySE(SE_M_MOONLIGHT);
+        spriteId = ShinyEncounter_HasFreeSpriteSlots() ? CreateSprite(&sSpriteTemplate_ShinySparkle, x + 16, y + 16, 0) : MAX_SPRITES;
+        if (spriteId != MAX_SPRITES)
+        {
+            gSprites[spriteId].data[0] = 0;
+            gSprites[spriteId].data[1] = 1;
+            gSprites[spriteId].data[2] = 1;
+            gSprites[spriteId].oam.priority = 0;
+        }
+        if (++task->tSparkleTimer > 130)
+        {
+            task->tHoldTimer = 0;
+            task->tState++;
+        }
+        return FALSE;
+    }
+
     // Wir spawnen jetzt JEDEN Tick einen Stern für maximale Dichte
     s16 x = (Random() % 240); // Exakt Bildschirmbreite
     s16 y = (Random() % 160); // Exakt Bildschirmhöhe
-    u8 spriteId = CreateSprite(&sSpriteTemplate_ShinySparkle, x, y, 0);
+    u8 spriteId = ShinyEncounter_HasFreeSpriteSlots() ? CreateSprite(&sSpriteTemplate_ShinySparkle, x, y, 0) : MAX_SPRITES;
 
     if (spriteId != MAX_SPRITES)
     {
@@ -2215,7 +2279,7 @@ static bool8 ShinyEncounter_End(struct Task *task)
     FreeSpriteTilesByTag(SHINY_SPARKLE_TILE_TAG);
     FreeSpritePaletteByTag(SHINY_SPARKLE_PAL_TAG);
     FadeScreenBlack();
-    DestroyTask(FindTaskIdByFunc(Task_ShinyEncounter));
+    DestroyTask(sNyxthraTransition ? FindTaskIdByFunc(Task_NyxthraEncounter) : FindTaskIdByFunc(Task_ShinyEncounter));
     return FALSE;
 }
 
@@ -2234,6 +2298,16 @@ static void SpriteCB_ShinyTransitionSparkle(struct Sprite *sprite)
 
 static void Task_ShinyEncounter(u8 taskId)
 {
+    sNyxthraTransition = FALSE;
+    while (sShinyEncounter_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
+}
+
+// B_TRANSITION_NYXTHRA_ENCOUNTER: gleicher Ablauf wie der Shiny-Übergang
+// (abdunkeln, Funken, halten), aber violett, als wachsender Ring um den
+// Spieler und mit Albtraum-/Mondschein-Klang.
+static void Task_NyxthraEncounter(u8 taskId)
+{
+    sNyxthraTransition = TRUE;
     while (sShinyEncounter_Funcs[gTasks[taskId].tState](&gTasks[taskId]));
 }
 

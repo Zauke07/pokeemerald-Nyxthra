@@ -1,5 +1,6 @@
 #include "global.h"
 #include "nyxthra_flashback.h"
+#include "nyxthra_forms.h"
 #include "data.h"
 #include "main.h"
 #include "battle.h"
@@ -293,6 +294,13 @@ static void CreateBattleStartTask(enum BattleTransition transition, u16 song)
         transition = legendaryTransition;
         song = legendarySong;
     }
+
+    // Nyxthra-Form: eigener Übergang (hat Vorrang vor Shiny und Legendären-Übergängen)
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_SAFARI))
+     && !NyxthraFlashback_IsActive()
+     && (Nyxthra_IsMonNyxthra(&gEnemyParty[0])
+      || ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && Nyxthra_IsMonNyxthra(&gEnemyParty[1]))))
+        transition = B_TRANSITION_NYXTHRA_ENCOUNTER;
 
     gTasks[taskId].tTransition = transition;
     PlayMapChosenOrBattleBGM(song);

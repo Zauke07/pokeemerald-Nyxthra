@@ -83,6 +83,7 @@ enum BattleTransition
     B_TRANSITION_GALACTIC,
     B_TRANSITION_ROCKET,
     B_TRANSITION_SHINY_ENCOUNTER,
+    B_TRANSITION_NYXTHRA_ENCOUNTER, // violetter Mondring statt Goldfunkeln
     B_TRANSITION_COUNT
 };
 
