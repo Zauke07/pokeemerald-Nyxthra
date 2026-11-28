@@ -3385,26 +3385,21 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
 === TRAINER_DUDLEY ===
-Name: Mads
-Class: Swimmer M
-Pic: Swimmer M
-Gender: Male
-Music: Swimmer
+Name: Rüpel
+Class: Team Rocket
+Pic: Rocket Grunt F
+Gender: Female
+Music: Rocket
 Double Battle: No
 AI: Check Bad Move
 
-Tentacool
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ekans
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Wingull
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Tentacruel
-Level: 33
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
+Meowth
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_CHAD ===
 Name: Tino
@@ -9469,22 +9464,21 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
 === TRAINER_KAYLEE ===
-Name: Julia
-Class: Swimmer F
-Pic: Swimmer F
-Gender: Female
-Music: Swimmer
+Name: Rüpel
+Class: Team Rocket
+Pic: Rocket Grunt M
+Gender: Male
+Music: Rocket
 Double Battle: No
 AI: Check Bad Move
 
-Lanturn
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Koffing
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Pelipper
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
+Geodude
+Level: 21
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_LAUREL ===
 Name: Antonia
@@ -11759,21 +11753,20 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_GRUNT_UNUSED ===
 Name: Rüpel
-Class: Team Magma
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
+Class: Team Rocket
+Pic: Rocket Grunt M
+Gender: Male
+Music: Rocket
 Double Battle: No
 AI: Check Bad Move
 
-Wailmer
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Rattata
+Level: 19
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 Zubat
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
+Level: 20
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_GRUNT_MT_PYRE_4 ===
 Name: Rüpel
@@ -11997,18 +11990,21 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
 === TRAINER_TERRY ===
-Name: Hanna
-Class: Psychic
-Pic: Psychic F
+Name: Rüpel
+Class: Team Rocket
+Pic: Rocket Grunt F
 Gender: Female
-Music: Intense
+Music: Rocket
 Double Battle: No
 AI: Check Bad Move
 
-Girafarig
-Level: 37
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Gastly
+Level: 21
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
+Golbat
+Level: 21
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_NATE ===
 Name: Oskar
@@ -12956,40 +12952,59 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 
 === TRAINER_LUCAS_2 ===
-Name: Tim
-Class: Hiker
-Pic: Hiker
+Name: Rüpel
+Class: Team Rocket
+Pic: Rocket Grunt M
 Gender: Male
-Music: Hiker
+Music: Rocket
 Double Battle: No
 AI: Check Bad Move
 
-Wailmer
-Level: 23
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Raticate
+Level: 21
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
+Koffing
+Level: 21
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+
+Murkrow
+Level: 22
+IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MIKE_1 ===
-Name: Nils
-Class: Hiker
-Pic: Hiker
-Gender: Male
-Music: Hiker
+Name: Jessie
+Class: Team Rocket
+Pic: Jessie Rocket
+Gender: Female
+Music: Rocket
+Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Try To Faint
 
-Stufful
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Gust
-- Growl
-
-Toedscool
-Level: 10
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Seviper
+Level: 22
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Poison Tail
 - Bite
-- Scary Face
+- Glare
+- Screech
 
+Wobbuffet
+Level: 22
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Counter
+- Mirror Coat
+- Safeguard
+- Destiny Bond
+
+Arbok @ Oran Berry
+Level: 24
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Acid Spray
+- Bite
+- Glare
+- Poison Fang
 
 === TRAINER_MIKE_2 ===
 Name: Nils

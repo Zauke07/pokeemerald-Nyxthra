@@ -4004,6 +4004,16 @@
 #define TRAINER_MAY_CHAMPION                     3595
 #define TRAINER_BRENDAN_CHAMPION                 3596
 
+// Nyxthra story: Team-Rocket-Versteck unter der Rosalhöhle (Rosalia City).
+// Diese IDs waren in Smaragd ungenutzt und werden hier wiederverwendet, damit
+// MAX_TRAINERS_COUNT und damit alle Flags in alten Spielständen gleich bleiben.
+#define TRAINER_ROSAL_ROCKET_1                   TRAINER_GRUNT_UNUSED
+#define TRAINER_ROSAL_ROCKET_2                   TRAINER_DUDLEY
+#define TRAINER_ROSAL_ROCKET_3                   TRAINER_KAYLEE
+#define TRAINER_ROSAL_ROCKET_4                   TRAINER_TERRY
+#define TRAINER_ROSAL_ROCKET_5                   TRAINER_LUCAS_2
+#define TRAINER_ROSAL_JESSIE                     TRAINER_MIKE_1
+
 #if IS_FRLG
 #define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
 #define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG

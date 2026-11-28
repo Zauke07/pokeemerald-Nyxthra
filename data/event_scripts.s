@@ -1831,6 +1831,8 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/text/joke_npc_text.inc"
 
 	.include "data/maps/Rosalhoehle/scripts.inc"
+	.include "data/maps/Rosalhoehle_B1F/scripts.inc"
+	.include "data/maps/Rosalhoehle_B2F/scripts.inc"
 	.include "data/maps/SecretPetalburgWoods/scripts.inc"
 	.include "data/maps/Speicherort/scripts.inc"
 	.include "data/maps/BabyBootCamp/scripts.inc"

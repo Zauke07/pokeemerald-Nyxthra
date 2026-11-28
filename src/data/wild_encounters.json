@@ -1961,6 +1961,75 @@
           }
         },
         {
+          "map": "MAP_ROSALHOEHLE_B1F",
+          "base_label": "gRosalhoehle_B1F",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 18,
+                "max_level": 19,
+                "species": "SPECIES_ZUBAT"
+              },
+              {
+                "min_level": 18,
+                "max_level": 19,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 18,
+                "max_level": 19,
+                "species": "SPECIES_GEODUDE"
+              },
+              {
+                "min_level": 18,
+                "max_level": 20,
+                "species": "SPECIES_KOFFING"
+              },
+              {
+                "min_level": 18,
+                "max_level": 20,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 19,
+                "max_level": 19,
+                "species": "SPECIES_MEOWTH"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_SABLEYE"
+              },
+              {
+                "min_level": 19,
+                "max_level": 20,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 21,
+                "max_level": 21,
+                "species": "SPECIES_GOLBAT"
+              },
+              {
+                "min_level": 20,
+                "max_level": 20,
+                "species": "SPECIES_MURKROW"
+              },
+              {
+                "min_level": 21,
+                "max_level": 21,
+                "species": "SPECIES_RATICATE"
+              },
+              {
+                "min_level": 18,
+                "max_level": 18,
+                "species": "SPECIES_LARVITAR"
+              }
+            ]
+          }
+        },
+        {
           "map": "MAP_GRANITE_CAVE_1F",
           "base_label": "gGraniteCave_1F",
           "land_mons": {

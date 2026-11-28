@@ -9468,6 +9468,28 @@
       "layout_version": "emerald"
     },
     {
+      "id": "LAYOUT_ROSALHOEHLE_B1F",
+      "name": "Rosalhoehle_B1F_Layout",
+      "width": 30,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Rosalhoehle_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/Rosalhoehle_B1F/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROSALHOEHLE_B2F",
+      "name": "Rosalhoehle_B2F_Layout",
+      "width": 26,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Facility",
+      "border_filepath": "data/layouts/Rosalhoehle_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/Rosalhoehle_B2F/map.bin",
+      "layout_version": "emerald"
+    },
+    {
       "id": "LAYOUT_ROUTE104_PROTOTYPE_2",
       "name": "Route104_Prototype_2_Layout",
       "width": 1,

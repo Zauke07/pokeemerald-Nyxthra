@@ -8,7 +8,21 @@ OldaleTown_OnTransition:
     call_if_unset FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_BlockWestEntrance
     call_if_unset FLAG_RECEIVED_POTION_OLDALE, OldaleTown_EventScript_MoveMartEmployee
     call_if_set FLAG_ADVENTURE_STARTED, OldaleTown_EventScript_SetOldaleState
+    call OldaleTown_EventScript_SetupRocketHint
     end
+
+@ Nyxthra: Wanderer vor der Rosalhöhle gibt einen Hinweis auf Team Rocket,
+@ solange der Spieler den EP-Teiler hat und JESSIE noch nicht besiegt ist.
+OldaleTown_EventScript_SetupRocketHint::
+	setflag FLAG_HIDE_OLDALE_ROCKET_HINT
+	goto_if_unset FLAG_RECEIVED_EXP_SHARE, Common_EventScript_NopReturn
+	goto_if_set FLAG_DEFEATED_ROSAL_JESSIE, Common_EventScript_NopReturn
+	clearflag FLAG_HIDE_OLDALE_ROCKET_HINT
+	return
+
+OldaleTown_EventScript_RocketHintHiker::
+	msgbox OldaleTown_Text_RocketHintHiker, MSGBOX_NPC
+	end
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState::
@@ -441,3 +455,11 @@ OldaleTown_Text_BrendanLetsGoBack:
 OldaleTown_Text_TownSign:
 	.string "ROSALTSTADT\n"
 	.string "“Die Höhle flüstert - hörst du es auch?”$"
+
+OldaleTown_Text_RocketHintHiker:
+	.string "Hörst du das? Aus der ROSALHÖHLE\n"
+	.string "kommt seit Tagen ein Bohren.\p"
+	.string "Gestern Nacht sind Leute in\n"
+	.string "schwarzen Uniformen hineingegangen.\p"
+	.string "Auf ihren Shirts stand ein großes\n"
+	.string "rotes “R”… Das gefällt mir nicht.$"

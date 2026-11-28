@@ -677,16 +677,16 @@
 #define FLAG_UNUSED_0x268  0x268 // über Kollisionstiles laufen NUR FÜR DEBUGGING
 #define FLAG_UNUSED_0x269  0x269 // per pokenav mit R fliegen
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
-#define FLAG_UNUSED_0x26B  0x26B // Unused Flag
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_ROSAL_ROCKET_SPUREN_GESEHEN  0x26B // Nyxthra: Rosalhöhle: Rocket-Spuren an der Leiter entdeckt
+#define FLAG_DEFEATED_ROSAL_JESSIE  0x26C // Nyxthra: Rocket-Labor: Jessie besiegt
+#define FLAG_HIDE_ROSAL_JESSIE  0x26D // Nyxthra: Rocket-Labor: Jessie ausblenden
+#define FLAG_ITEM_ROSAL_B1F_SUPER_POTION  0x26E // Nyxthra: Rosalhöhle UG: Item
+#define FLAG_ITEM_ROSAL_B1F_REVIVE  0x26F // Nyxthra: Rosalhöhle UG: Item
+#define FLAG_ITEM_ROSAL_B2F_MOON_STONE  0x270 // Nyxthra: Rocket-Labor: Item
+#define FLAG_ITEM_ROSAL_B2F_ESCAPE_ROPE  0x271 // Nyxthra: Rocket-Labor: Item
+#define FLAG_HIDE_ROSAL_CAGED_MONS  0x272 // Nyxthra: Rocket-Labor: befreite Käfig-Pokémon ausblenden
+#define FLAG_HIDE_OLDALE_ROCKET_HINT  0x273 // Nyxthra: Rosalia City: Hinweis-Wanderer ausblenden
+#define FLAG_ROSAL_GOT_TM06  0x274 // Nyxthra: Rocket-Labor: TM06 vom Forscher erhalten
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
