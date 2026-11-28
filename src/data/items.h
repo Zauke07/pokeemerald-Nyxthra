@@ -12505,9 +12505,9 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("TM06"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Vergiftet den Geg-\n"
-            "ner und schadet \n"
-            "ihm zunehmend."),
+            "Vergiftet den\n"
+            "Gegner. Schaden\n"
+            "steigt jede Runde."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
