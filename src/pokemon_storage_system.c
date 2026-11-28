@@ -9325,7 +9325,7 @@ static void PrintItemDescription(void)
         description = GetItemDescription(sStorage->displayMonItemId);
 
     FillWindowPixelBuffer(WIN_ITEM_DESC, PIXEL_FILL(1));
-    AddTextPrinterParameterized5(WIN_ITEM_DESC, FONT_NORMAL, description, 4, 0, 0, NULL, 0, 1);
+    AddTextPrinterParameterized5(WIN_ITEM_DESC, GetFontIdForDescription(description, 102), description, 4, 0, 0, NULL, 0, 1);
 }
 
 static void InitItemInfoWindow(void)

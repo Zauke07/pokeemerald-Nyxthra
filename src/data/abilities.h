@@ -814,7 +814,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_UNAWARE] =
     {
         .name = _("Ignoranz"),
-        .description = COMPOUND_STRING("Ignoriert Statusänderungen des Gegners."),
+        .description = COMPOUND_STRING("Ignoriert Statusänd. des Gegners."),
         .aiRating = 6,
         .breakable = TRUE,
     },
@@ -822,7 +822,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_TINTED_LENS] =
     {
         .name = _("Färberlinse"),
-        .description = COMPOUND_STRING("Verstärkt “nicht sehr effektive” Attacken."),
+        .description = COMPOUND_STRING("Stärkt nicht sehr effektive Attacken."),
         .aiRating = 7,
     },
 
@@ -892,14 +892,14 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_FRISK] =
     {
         .name = _("Schnüffler"),
-        .description = COMPOUND_STRING("Überprüft das getragene Item des Gegners."),
+        .description = COMPOUND_STRING("Prüft das Item des Gegners."),
         .aiRating = 3,
     },
 
     [ABILITY_RECKLESS] =
     {
         .name = _("Achtlos"),
-        .description = COMPOUND_STRING("Verstärkt Attacken mit Rückstoßschaden."),
+        .description = COMPOUND_STRING("Stärkt Attacken mit Rückstoß."),
         .aiRating = 6,
     },
 
@@ -929,7 +929,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_BAD_DREAMS] =
     {
         .name = _("Alptraum"),
-        .description = COMPOUND_STRING("Reduziert die KP eines schlafenden Gegners."),
+        .description = COMPOUND_STRING("Senkt KP eines schlafenden Gegners."),
         .aiRating = 4,
     },
 
@@ -950,7 +950,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_CONTRARY] =
     {
         .name = _("Umkehrung"),
-        .description = COMPOUND_STRING("Statusänderungen haben den gegenteiligen Effekt."),
+        .description = COMPOUND_STRING("Statusänderungen wirken umgekehrt."),
         .aiRating = 8,
         .breakable = TRUE,
     },
@@ -979,14 +979,14 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_CURSED_BODY] =
     {
         .name = _("Fluchkörper"),
-        .description = COMPOUND_STRING("Kann eine Attacke des Gegners deaktivieren."),
+        .description = COMPOUND_STRING("Kann Attacke des Gegners sperren."),
         .aiRating = 4,
     },
 
     [ABILITY_HEALER] =
     {
         .name = _("Heilherz"),
-        .description = COMPOUND_STRING("Kann Statusprobleme eines Verbündeten heilen."),
+        .description = COMPOUND_STRING("Heilt Statusprobleme von Verbündeten."),
         .aiRating = 0,
     },
 
@@ -1032,21 +1032,21 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_TOXIC_BOOST] =
     {
         .name = _("Gift-Boost"),
-        .description = COMPOUND_STRING("Verstärkt physische Angriffe bei Vergiftung."),
+        .description = COMPOUND_STRING("Stärkt phys. Angriffe bei Vergiftung."),
         .aiRating = 6,
     },
 
     [ABILITY_FLARE_BOOST] =
     {
         .name = _("Hitzesturm"),
-        .description = COMPOUND_STRING("Verstärkt Spezial-Angriffe bei Verbrennung."),
+        .description = COMPOUND_STRING("Stärkt Spez.-Angriffe bei Verbrennung."),
         .aiRating = 5,
     },
 
     [ABILITY_HARVEST] =
     {
         .name = _("Ernte"),
-        .description = COMPOUND_STRING("Kann eine verbrauchte Beere wiederherstellen."),
+        .description = COMPOUND_STRING("Kann eine verbrauchte Beere erneuern."),
         .aiRating = 5,
     },
 
@@ -1504,7 +1504,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_WATER_BUBBLE] =
     {
         .name = _("Blubb-Blubb"),
-        .description = COMPOUND_STRING("0,5x Feuerschaden, 2x Wasser, kein Brand."),
+        .description = COMPOUND_STRING("0,5x Feuer, 2x Wasser, kein Brand."),
         .aiRating = 8,
         .breakable = TRUE,
     },
@@ -1669,7 +1669,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_FLUFFY] =
     {
         .name = _("Flauschig"),
-        .description = COMPOUND_STRING("Halbiert Kontakt-Schaden, verdoppelt Feuer-Schaden."),
+        .description = COMPOUND_STRING("Halber Kontaktschaden, 2x Feuer."),
         .aiRating = 5,
         .breakable = TRUE,
     },
@@ -1842,7 +1842,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_GULP_MISSILE] =
     {
         .name = _("Schluckgeschosse"),
-        .description = COMPOUND_STRING("Kehrt mit Beute nach Surfer/Taucher zurück."),
+        .description = COMPOUND_STRING("Bringt Beute vom Surfen/Tauchen mit."),
         .aiRating = 3,
         .cantBeSwapped = B_UPDATED_ABILITY_DATA < GEN_9,
         .cantBeCopied = B_UPDATED_ABILITY_DATA < GEN_9,
@@ -2041,7 +2041,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_AS_ONE_ICE_RIDER] =
     {
         .name = _("Als Eins"),
-        .description = COMPOUND_STRING("Effekt von Anspannung+Schreckensmähne."),
+        .description = COMPOUND_STRING("Anspannung + Schreckensmähne."),
         .aiRating = 10,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
@@ -2053,7 +2053,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_AS_ONE_SHADOW_RIDER] =
     {
         .name = _("Als Eins"),
-        .description = COMPOUND_STRING("Effekt von Anspannung+Schreckensmähne."),
+        .description = COMPOUND_STRING("Anspannung + Schreckensmähne."),
         .aiRating = 10,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
@@ -2118,7 +2118,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_GUARD_DOG] =
     {
         .name = _("Wachhund"),
-        .description = COMPOUND_STRING("Angr.+ bei Einschüchterung, kein Zwangswechsel."),
+        .description = COMPOUND_STRING("Angr.+ bei Einschüchterung."),
         .aiRating = 5,
         .breakable = TRUE,
     },
@@ -2170,7 +2170,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_PROTOSYNTHESIS] =
     {
         .name = _("Protosynthese"),
-        .description = COMPOUND_STRING("Höchster Wert erhöht bei Sonne oder Booster."),
+        .description = COMPOUND_STRING("Höchster Wert steigt bei Sonne/Boost."),
         .aiRating = 7,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
@@ -2181,7 +2181,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_QUARK_DRIVE] =
     {
         .name = _("Quantenantrieb"),
-        .description = COMPOUND_STRING("Höchster Wert erhöht bei Elektrofeld oder Booster."),
+        .description = COMPOUND_STRING("Höchster Wert steigt bei E-Feld/Boost."),
         .aiRating = 7,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,
@@ -2304,7 +2304,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MYCELIUM_MIGHT] =
     {
         .name = _("Myzel-Kraft"),
-        .description = COMPOUND_STRING("Status-Att. zuletzt, ignoriert Fähigkeiten."),
+        .description = COMPOUND_STRING("Status zuletzt, ignoriert Fähigk."),
         .aiRating = 2,
     },
 
@@ -2318,7 +2318,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MINDS_EYE] =
     {
         .name = _("Geistiges Auge"),
-        .description = COMPOUND_STRING("Norm./Kampf trifft Geist, ignoriert Ausweichen."),
+        .description = COMPOUND_STRING("Trifft Geister, ignoriert Ausweichen."),
         .aiRating = 8,
         .breakable = TRUE,
     },
@@ -2377,7 +2377,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SUPERSWEET_SYRUP] =
     {
         .name = _("Supersüßer Sirup"),
-        .description = COMPOUND_STRING("Senkt gegnerische Ausweichquote beim Eintritt."),
+        .description = COMPOUND_STRING("Senkt gegn. Ausweichwert beim Eintritt."),
         .aiRating = 5,
     },
 

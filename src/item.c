@@ -911,6 +911,17 @@ u32 GetItemHoldEffectParam(enum Item itemId)
     return gItemsInfo[SanitizeItemId(itemId)].holdEffectParam;
 }
 
+// Waehlt die breiteste Schrift, in der jede Zeile der Beschreibung in widthPx passt
+// (deutsche Texte sind laenger als die englischen Originale).
+u8 GetFontIdForDescription(const u8 *str, u32 widthPx)
+{
+    if (GetStringWidth(FONT_NORMAL, str, 0) <= widthPx)
+        return FONT_NORMAL;
+    if (GetStringWidth(FONT_NARROW, str, 0) <= widthPx)
+        return FONT_NARROW;
+    return FONT_NARROWER;
+}
+
 const u8 *GetItemDescription(enum Item itemId)
 {
     return gItemsInfo[SanitizeItemId(itemId)].description;
