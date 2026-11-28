@@ -89,6 +89,8 @@ static void Task_ShinyStars(u8);
 static void SpriteCB_ShinyStars_Encircle(struct Sprite *);
 static void SpriteCB_ShinyStars_Diagonal(struct Sprite *);
 static void Task_ShinyStars_Wait(u8);
+static void Task_NyxthraAppear(u8);
+static void SpriteCB_NyxthraRingStar(struct Sprite *);
 static void SpriteCB_PokeBlock_LiftArm(struct Sprite *);
 static void SpriteCB_PokeBlock_Arc(struct Sprite *);
 static void SpriteCB_ThrowPokeBlock_Free(struct Sprite *);
@@ -537,6 +539,7 @@ void FreeHealthboxPalsForLevelUp(enum BattlerId battler)
     gSprites[healthBoxSpriteId].oam.paletteNum = paletteId1;
     gSprites[spriteId1].oam.paletteNum = paletteId1;
     gSprites[spriteId2].oam.paletteNum = paletteId2;
+    Nyxthra_RefreshHealthboxPalette(battler); // Nyxthra-Violett nach dem Level-Up-Blinken behalten
 }
 
 void AnimTask_FreeHealthboxPalsForLevelUp(u8 taskId)
@@ -2168,7 +2171,8 @@ void TryShinyAnimation(enum BattlerId battler, struct Pokemon *mon)
     u8 taskCirc, taskDgnl;
     struct Pokemon* illusionMon;
 
-    isShiny = GetMonData(mon, MON_DATA_IS_SHINY) || Nyxthra_IsMonNyxthra(mon); // Nyxthra funkelt auch
+    bool8 isNyxthra = Nyxthra_IsMonNyxthra(mon);
+    isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
     gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = TRUE;
     illusionMon = GetIllusionMonPtr(battler);
     if (illusionMon != NULL)
@@ -2176,6 +2180,15 @@ void TryShinyAnimation(enum BattlerId battler, struct Pokemon *mon)
 
     if (IsBattlerSpriteVisible(battler) && IsValidForBattle(mon) && (!gTestRunnerHeadless || gBattleTestRunnerState->forceMoveAnim))
     {
+        // Nyxthra hat Vorrang vor Shiny: eigener "Mondring" statt Goldsternen.
+        if (isNyxthra)
+        {
+            if (GetSpriteTileStartByTag(ANIM_TAG_GOLD_STARS) == 0xFFFF)
+                LoadCompressedSpriteSheetUsingHeap(&gBattleAnimTable[GET_TRUE_SPRITE_INDEX(ANIM_TAG_GOLD_STARS)].pic);
+            taskCirc = CreateTask(Task_NyxthraAppear, 10);
+            gTasks[taskCirc].tBattler = battler;
+            return;
+        }
         if (isShiny)
         {
             if (GetSpriteTileStartByTag(ANIM_TAG_GOLD_STARS) == 0xFFFF)
@@ -2319,6 +2332,158 @@ static void SpriteCB_ShinyStars_Diagonal(struct Sprite *sprite)
         }
     }
 }
+
+
+// ---------------------------------------------------------------------------
+// Nyxthra-Erscheinung ("Mondring")
+// Die Szene verdunkelt sich zu Mitternachtsviolett, das Pokémon pulsiert
+// zweimal in einem violetten Schein, und zwei Ringe aus violetten Sternen
+// breiten sich gegenläufig wie ein Mondhof aus. Dazu Albtraum + Mondschein.
+// ---------------------------------------------------------------------------
+#define NYX_ANIM_LEN   104
+#define NYX_BG_COLOR   RGB(3, 0, 8)
+#define NYX_GLOW_COLOR RGB(14, 2, 26)
+
+#define nyxStarTask   data[0]
+#define nyxStarAngle  data[1]
+#define nyxStarRadius data[2]
+#define nyxStarDir    data[3]
+#define nyxStarLife   data[4]
+
+static void Nyxthra_LoadStarPalette(void)
+{
+    struct SpritePalette pal;
+    u32 idx, i;
+
+    if (IndexOfSpritePaletteTag(TAG_NYXTHRA_STARS_PAL) != 0xFF)
+        return;
+    pal.data = gBattleAnimTable[GET_TRUE_SPRITE_INDEX(ANIM_TAG_GOLD_STARS)].palette.data;
+    pal.tag = TAG_NYXTHRA_STARS_PAL;
+    idx = LoadSpritePalette(&pal);
+    if (idx == 0xFF)
+        return;
+    for (i = 1; i < 16; i++)
+    {
+        u16 c = gPlttBufferUnfaded[OBJ_PLTT_ID(idx) + i];
+        u32 l = (GET_R(c) + GET_G(c) + GET_B(c)) / 3;
+        u32 b = l + 9;
+        if (b > 31)
+            b = 31;
+        c = RGB(l * 22 / 31, l * 9 / 31, b);
+        gPlttBufferUnfaded[OBJ_PLTT_ID(idx) + i] = c;
+        gPlttBufferFaded[OBJ_PLTT_ID(idx) + i] = c;
+    }
+}
+
+static void Nyxthra_SpawnRing(u8 taskId, enum BattlerId battler, s16 dir, u16 tileAdd, u16 phase)
+{
+    struct SpriteTemplate tmpl = gMiniTwinklingStarSpriteTemplate;
+    s16 x = GetBattlerSpriteCoord(battler, BATTLER_COORD_X);
+    s16 y = GetBattlerSpriteCoord(battler, BATTLER_COORD_Y);
+    u32 i;
+
+    tmpl.paletteTag = TAG_NYXTHRA_STARS_PAL;
+    tmpl.callback = SpriteCB_NyxthraRingStar;
+    for (i = 0; i < 8; i++)
+    {
+        u8 spriteId = CreateSprite(&tmpl, x, y, 4);
+        if (spriteId == MAX_SPRITES)
+            continue;
+        gSprites[spriteId].oam.tileNum += tileAdd;
+        gSprites[spriteId].nyxStarTask = taskId;
+        gSprites[spriteId].nyxStarAngle = phase + i * 32;
+        gSprites[spriteId].nyxStarRadius = 4;
+        gSprites[spriteId].nyxStarDir = dir;
+        gSprites[spriteId].nyxStarLife = 0;
+        gTasks[taskId].tNumStars++;
+    }
+}
+
+static void SpriteCB_NyxthraRingStar(struct Sprite *sprite)
+{
+    sprite->nyxStarAngle = (sprite->nyxStarAngle + sprite->nyxStarDir) & 0xFF;
+    if (sprite->nyxStarRadius < 40)
+        sprite->nyxStarRadius++;
+    sprite->x2 = Sin(sprite->nyxStarAngle, sprite->nyxStarRadius);
+    sprite->y2 = Cos(sprite->nyxStarAngle, sprite->nyxStarRadius * 3 / 4); // flacher Mondhof
+    sprite->nyxStarLife++;
+    if (sprite->nyxStarLife > 36)
+        sprite->invisible = (sprite->nyxStarLife & 2) != 0; // Ausblinken
+    if (sprite->nyxStarLife > 48)
+    {
+        gTasks[sprite->nyxStarTask].tNumStars--;
+        DestroySprite(sprite);
+    }
+}
+
+static void Task_NyxthraAppear(u8 taskId)
+{
+    enum BattlerId battler = gTasks[taskId].tBattler;
+    u32 monPal = gSprites[gBattlerSpriteIds[battler]].oam.paletteNum;
+    s16 f;
+    u32 bgCoef, glowCoef, tri;
+    s8 pan = IsOnPlayerSide(battler) ? -64 : 63;
+
+    if (gTasks[taskId].tTimer < 60)
+    {
+        gTasks[taskId].tTimer++;
+        return;
+    }
+    if (gBattleSpritesDataPtr->animationData->numBallParticles)
+        return;
+
+    f = gTasks[taskId].tStarTimer++;
+    if (f == 0)
+    {
+        Nyxthra_LoadStarPalette();
+        PlaySE12WithPanning(SE_M_NIGHTMARE, pan);
+    }
+    if (f == 14)
+        Nyxthra_SpawnRing(taskId, battler, 3, 4, 0);    // mittlere Sterne, im Uhrzeigersinn
+    if (f == 38)
+    {
+        PlaySE12WithPanning(SE_M_MOONLIGHT, pan);
+        Nyxthra_SpawnRing(taskId, battler, -3, 5, 16);  // kleine Sterne, gegenläufig
+    }
+
+    if (f < NYX_ANIM_LEN)
+    {
+        // Szene abdunkeln (nur Hintergrund), am Ende wieder aufhellen
+        if (f < 16)
+            bgCoef = f / 2;
+        else if (f > NYX_ANIM_LEN - 16)
+            bgCoef = (NYX_ANIM_LEN - f) / 2;
+        else
+            bgCoef = 8;
+        BlendPalettes(0x0000FFFF, bgCoef, NYX_BG_COLOR);
+
+        // zwei violette Pulse auf dem Pokémon
+        tri = (f + 8) % 48;
+        glowCoef = (tri < 24) ? tri / 2 : (47 - tri) / 2;
+        if (f < 8)
+            glowCoef = 0;
+        BlendPalette(OBJ_PLTT_ID(monPal), 16, glowCoef, NYX_GLOW_COLOR);
+        return;
+    }
+
+    if (f == NYX_ANIM_LEN)
+    {
+        BlendPalettes(0x0000FFFF, 0, NYX_BG_COLOR);
+        BlendPalette(OBJ_PLTT_ID(monPal), 16, 0, NYX_GLOW_COLOR);
+    }
+
+    if (gTasks[taskId].tNumStars <= 0)
+    {
+        gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = TRUE;
+        DestroyTask(taskId);
+    }
+}
+
+#undef nyxStarTask
+#undef nyxStarAngle
+#undef nyxStarRadius
+#undef nyxStarDir
+#undef nyxStarLife
 
 #undef tBattler
 #undef tStarMove

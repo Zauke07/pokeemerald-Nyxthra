@@ -1,4 +1,5 @@
 #include "global.h"
+#include "nyxthra_forms.h"
 #include "battle.h"
 #include "battle_ai_main.h"
 #include "battle_ai_util.h"
@@ -3314,6 +3315,7 @@ void FreeShinyStars(void)
     }
     FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
     FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+    FreeSpritePaletteByTag(TAG_NYXTHRA_STARS_PAL);
 }
 
 enum BattleTrainer GetBattlerTrainer(enum BattlerId battler)

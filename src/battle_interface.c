@@ -2,6 +2,7 @@
 #include "malloc.h"
 #include "battle.h"
 #include "nyxthra_flashback.h"
+#include "nyxthra_forms.h"
 #include "pokemon.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
@@ -590,6 +591,52 @@ static const union TextColor sHealthBoxTextColorShiny =
     .shadow = 3,
     .accent = 0
 };
+
+// Nyxthra: gleicher Farbindex wie Shiny (9), aber die Healthbox bekommt eine
+// eigene Palettenkopie, in der Index 9 Nyxthra-Violett statt Gold ist.
+// Ist ein Pokémon Shiny UND Nyxthra, gewinnt Nyxthra.
+static bool32 Nyxthra_SetHealthboxPalette(u8 healthboxSpriteId, bool32 nyxthra)
+{
+    u32 healthboxSpriteId2 = gSprites[healthboxSpriteId].oam.affineParam;
+    u32 basePal = IndexOfSpritePaletteTag(TAG_HEALTHBOX_PAL);
+    u32 nyxPal = IndexOfSpritePaletteTag(TAG_NYXTHRA_HEALTHBOX_PAL);
+    u32 curPal = gSprites[healthboxSpriteId].oam.paletteNum;
+
+    if (!nyxthra)
+    {
+        if (nyxPal != 0xFF && curPal == nyxPal && basePal != 0xFF)
+        {
+            gSprites[healthboxSpriteId].oam.paletteNum = basePal;
+            gSprites[healthboxSpriteId2].oam.paletteNum = basePal;
+        }
+        return FALSE;
+    }
+
+    if (nyxPal == 0xFF)
+    {
+        nyxPal = AllocSpritePalette(TAG_NYXTHRA_HEALTHBOX_PAL);
+        if (nyxPal == 0xFF)
+            return FALSE; // keine Palette frei -> Fallback auf Gold
+    }
+    if (curPal != nyxPal)
+    {
+        // aktuelle Healthbox-Palette übernehmen (inkl. Statusfarbe 12-15)
+        LoadPalette(&gPlttBufferUnfaded[OBJ_PLTT_ID(curPal)], OBJ_PLTT_ID(nyxPal), PLTT_SIZE_4BPP);
+        gPlttBufferUnfaded[OBJ_PLTT_ID(nyxPal) + 9] = NYXTHRA_NAME_COLOR;
+        gPlttBufferFaded[OBJ_PLTT_ID(nyxPal) + 9] = NYXTHRA_NAME_COLOR;
+        gSprites[healthboxSpriteId].oam.paletteNum = nyxPal;
+        gSprites[healthboxSpriteId2].oam.paletteNum = nyxPal;
+    }
+    return TRUE;
+}
+
+void Nyxthra_RefreshHealthboxPalette(enum BattlerId battler)
+{
+    struct Pokemon *mon = GetIllusionMonPtr(battler);
+    if (mon == NULL)
+        mon = GetBattlerMon(battler);
+    Nyxthra_SetHealthboxPalette(gHealthboxSpriteIds[battler], Nyxthra_IsMonNyxthra(mon));
+}
 
 // Because the healthbox is too large to fit into one sprite, it is divided into two sprites.
 // healthboxLeft  or healthboxMain  is the left part that is used as the 'main' sprite.
@@ -1890,7 +1937,9 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     if (illusionMon != NULL)
         mon = illusionMon;
     
-    if (GetMonData(mon, MON_DATA_IS_SHINY))
+    if (Nyxthra_SetHealthboxPalette(healthboxSpriteId, Nyxthra_IsMonNyxthra(mon)))
+        nameColor = &sHealthBoxTextColorShiny; // Index 9 = Violett in der Nyxthra-Palette
+    else if (GetMonData(mon, MON_DATA_IS_SHINY))
         nameColor = &sHealthBoxTextColorShiny;
 
     GetMonData(mon, MON_DATA_NICKNAME, nickname);

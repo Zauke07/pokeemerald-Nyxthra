@@ -12,6 +12,11 @@
 // Wird statt TRUE/FALSE als "isShiny" an die Paletten-Funktionen übergeben.
 #define NYXTHRA_PAL_VARIANT 2
 
+// Kampf-Präsentation (eigene Sprite-Paletten-Tags)
+#define TAG_NYXTHRA_HEALTHBOX_PAL 0xD7F0 // Healthbox-Kopie, Index 9 = Nyxthra-Violett
+#define TAG_NYXTHRA_STARS_PAL     0xD7F1 // violett umgefärbte Sterne für den Mondring
+#define NYXTHRA_NAME_COLOR        RGB(17, 5, 28) // Namensfarbe im Kampf (Shiny: Gold)
+
 struct Pokemon;
 struct BoxPokemon;
 struct ScriptContext;
