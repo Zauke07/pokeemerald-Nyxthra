@@ -17,6 +17,8 @@ EWRAM_DATA bool8 gNyxthraForceNext = FALSE;
 // Paletten. Nur vom Ersteller freigegebene Entwürfe hier eintragen!
 // ---------------------------------------------------------------------------
 static const u16 sNyxthraPalette_Kyogre[] = INCGFX_U16("graphics/pokemon/kyogre/nyxthra.pal", ".gbapal"); // „Abgrund“
+static const u16 sNyxthraPalette_Groudon[] = INCGFX_U16("graphics/pokemon/groudon/nyxthra.pal", ".gbapal"); // „Mondstein“ (Abstimmung 28.11.)
+static const u16 sNyxthraPalette_Rayquaza[] = INCGFX_U16("graphics/pokemon/rayquaza/nyxthra.pal", ".gbapal"); // „Himmelblau“ (Abstimmung 28.11.)
 
 struct NyxthraForm
 {
@@ -27,10 +29,11 @@ struct NyxthraForm
 
 // Neue Form hinzufügen: Palette oben einbinden und hier eine Zeile mit
 // einem freien FLAG_NYXTHRA_SEEN_xx ergänzen. Mehr ist nicht nötig.
-// Groudon und Rayquaza folgen nach der Discord-Abstimmung (28.11.).
 static const struct NyxthraForm sNyxthraForms[] =
 {
-    { SPECIES_KYOGRE, FLAG_NYXTHRA_SEEN_00, sNyxthraPalette_Kyogre },
+    { SPECIES_KYOGRE,   FLAG_NYXTHRA_SEEN_00, sNyxthraPalette_Kyogre },
+    { SPECIES_GROUDON,  FLAG_NYXTHRA_SEEN_01, sNyxthraPalette_Groudon },
+    { SPECIES_RAYQUAZA, FLAG_NYXTHRA_SEEN_02, sNyxthraPalette_Rayquaza },
 };
 
 static const struct NyxthraForm *FindForm(u32 species)

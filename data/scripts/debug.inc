@@ -361,6 +361,34 @@ Debug_NyxthraTestKyogre::
 	releaseall
 	end
 
+Debug_NyxthraTestGroudon::
+	lockall
+	additem ITEM_MASTER_BALL, 1
+	callnative Nyxthra_DebugForceNext
+	setwildbattle SPECIES_GROUDON, 70
+	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	releaseall
+	end
+
+Debug_NyxthraTestRayquaza::
+	lockall
+	additem ITEM_MASTER_BALL, 1
+	callnative Nyxthra_DebugForceNext
+	setwildbattle SPECIES_RAYQUAZA, 70
+	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	releaseall
+	end
+
 Debug_ExpansionVersion:
 	.string "pokeemerald-expansion {STR_VAR_1}$"
 

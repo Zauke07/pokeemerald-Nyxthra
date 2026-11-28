@@ -1412,10 +1412,13 @@ static const u8 sText_FormSuffix_Hisui[] = _(" (Hisui)");
 static const u8 sText_FormSuffix_Paldea[] = _(" (Paldea)");
 static const u8 sText_FormSuffix_Mega[]    = _(" (Mega)");
 static const u8 sText_FormSuffix_Gmax[]    = _(" (GMAX)");
+static const u8 sText_FormSuffix_Primal[]  = _(" (Proto)");
 static const u8 sText_FormSuffix_Generic[] = _(" (Form)");
 static const u8 sText_FormSwitchHint[] = _("{L_BUTTON}/{R_BUTTON} Form");
-static const u8 sText_NyxthraShowHint[] = _("{SELECT_BUTTON} Nyxthra");
-static const u8 sText_NyxthraHideHint[] = _("{SELECT_BUTTON} Normal");
+static const u8 sText_FormSuffix_Nyxthra[] = _(" (Nyxthra)");
+// Nyxthra-Formen sind zusätzliche Einträge in der L/R-Formenliste. Im Eintrag
+// (Art | DEX_FORM_NYXTHRA_FLAG) steckt die Art mit Nyxthra-Farben.
+#define DEX_FORM_NYXTHRA_FLAG 0x8000
 // Art, deren Nyxthra-Form auf der Infoseite gerade gezeigt wird (0 = keine)
 static EWRAM_DATA u16 sDexNyxthraSpecies = 0;
 
@@ -1605,7 +1608,7 @@ static u16 GetDefaultDisplaySpeciesByDexNum(u16 dexNum)
         return rememberedSpecies;
 
     if (speciesCount != 0)
-        return seenSpecies[0];
+        return seenSpecies[0] & ~DEX_FORM_NYXTHRA_FLAG;
 
     if (IsDexDisplaySpeciesUsable(baseSpecies))
         return baseSpecies;
@@ -1699,6 +1702,15 @@ static u16 BuildSeenDexFormSpeciesList(u16 dexNum, u16 *speciesList, u16 maxCoun
     // FIX: Prüft, ob wirklich die Basisform gesehen wurde, nicht nur die Dex-Nummer!
     if (IsDexDisplaySpeciesUsable(baseSpecies) && GetSetPokedexFormSeenFlag(baseSpecies, FALSE))
         speciesList[speciesCount++] = baseSpecies;
+
+    // Nyxthra-Form direkt hinter der Grundform, sobald sie einmal gesehen wurde
+    if (Nyxthra_IsSeen(baseSpecies) && IsDexDisplaySpeciesUsable(baseSpecies))
+    {
+        if (speciesCount == 0)
+            speciesList[speciesCount++] = baseSpecies;
+        if (speciesCount < maxCount)
+            speciesList[speciesCount++] = baseSpecies | DEX_FORM_NYXTHRA_FLAG;
+    }
 
     if (formTable == NULL)
         return speciesCount;
@@ -1829,6 +1841,8 @@ static bool32 TryCycleDisplayedDexForm(bool32 reverse)
         return FALSE;
 
     currentSpecies = GetDisplayedDexSpecies();
+    if (sDexNyxthraSpecies != 0 && sDexNyxthraSpecies == currentSpecies)
+        currentSpecies |= DEX_FORM_NYXTHRA_FLAG;
     for (i = 0; i < speciesCount; i++)
     {
         if (speciesList[i] == currentSpecies)
@@ -1843,7 +1857,8 @@ static bool32 TryCycleDisplayedDexForm(bool32 reverse)
     else
         currentIndex = (currentIndex + 1) % speciesCount;
 
-    sPokedexView->displaySpecies = speciesList[currentIndex];
+    sPokedexView->displaySpecies = speciesList[currentIndex] & ~DEX_FORM_NYXTHRA_FLAG;
+    sDexNyxthraSpecies = (speciesList[currentIndex] & DEX_FORM_NYXTHRA_FLAG) ? sPokedexView->displaySpecies : 0;
     RememberDisplayedDexSpecies();
     return TRUE;
 }
@@ -1857,7 +1872,14 @@ static void GetPokedexFormDisplayName(u16 species, u8 *dest, u8 destSize)
     species = SanitizeSpeciesId(species);
     baseSpecies = SanitizeSpeciesId(GET_BASE_SPECIES_ID(species));
     copied = StringLength(StringCopy(dest, GetSpeciesName(species)));
-    if (species == SPECIES_NONE || species == baseSpecies || copied >= destSize - 1)
+    if (species == SPECIES_NONE || copied >= destSize - 1)
+        return;
+    if (sDexNyxthraSpecies != 0 && species == sDexNyxthraSpecies)
+    {
+        StringAppendN(dest, sText_FormSuffix_Nyxthra, destSize - copied - 1);
+        return;
+    }
+    if (species == baseSpecies)
         return;
 
     if (gSpeciesInfo[species].isAlolanForm)
@@ -1872,6 +1894,8 @@ static void GetPokedexFormDisplayName(u16 species, u8 *dest, u8 destSize)
         suffix = sText_FormSuffix_Mega;
     else if (gSpeciesInfo[species].isGigantamax)
         suffix = sText_FormSuffix_Gmax;
+    else if (gSpeciesInfo[species].isPrimalReversion)
+        suffix = sText_FormSuffix_Primal;
     else
         suffix = sText_FormSuffix_Generic;
 
@@ -4039,16 +4063,6 @@ void Task_HandleInfoScreenInput(u8 taskId)
         }
         return;
     }
-    // Nyxthra-Form (nur wenn schon einmal gesehen) mit SELECT ein-/ausblenden
-    if (JOY_NEW(SELECT_BUTTON) && !isCryPlaying && Nyxthra_IsSeen(GetSafeInfoDisplaySpecies()))
-    {
-        u16 species = GetSafeInfoDisplaySpecies();
-        sDexNyxthraSpecies = (sDexNyxthraSpecies == species) ? 0 : species;
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        gTasks[taskId].func = Task_ReloadInfoScreenFormWaitFadeOut;
-        PlaySE(SE_DEX_PAGE);
-        return;
-    }
     if (canCycleForms && JOY_NEW(L_BUTTON) && !isCryPlaying && TryCycleDisplayedDexForm(TRUE))
     {
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
@@ -5160,7 +5174,12 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
         name = sText_TenDashes2;
     }
 
-    PrintInfoScreenText(name, 114 + (6 * digitCount), 0x19);
+    {
+        // Lange Formnamen ("Rayquaza (Nyxthra)") in schmalerer Schrift, damit sie im Feld bleiben
+        u8 color[3] = { TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_LIGHT_GRAY };
+        u32 nameX = 114 + (6 * digitCount);
+        AddTextPrinterParameterized4(0, GetFontIdToFit(name, FONT_NORMAL, 0, 232 - nameX), nameX, 0x19, 0, 0, color, TEXT_SKIP_DRAW, name);
+    }
 
     if (owned && species != SPECIES_NONE)
     {
@@ -5204,8 +5223,6 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
 
     if (CanCycleDisplayedDexForm())
         PrintInfoScreenText(sText_FormSwitchHint, 175, 15);
-    if (!newEntry && species != SPECIES_NONE && Nyxthra_IsSeen(species))
-        PrintInfoScreenText(sDexNyxthraSpecies == species ? sText_NyxthraHideHint : sText_NyxthraShowHint, 164, 143);
 }
 
 void PrintMonMeasurements(enum Species species, u32 owned)

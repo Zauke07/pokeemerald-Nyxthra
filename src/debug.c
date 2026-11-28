@@ -406,6 +406,8 @@ extern const u8 Debug_ShowExpansionVersion[];
 extern const u8 Debug_ShowNyxthraVersion[];
 extern const u8 Debug_NyxthraForceNext[];
 extern const u8 Debug_NyxthraTestKyogre[];
+extern const u8 Debug_NyxthraTestGroudon[];
+extern const u8 Debug_NyxthraTestRayquaza[];
 extern const u8 Debug_EventScript_EWRAMCounters[];
 extern const u8 Debug_Follower_NPC_Event_Script[];
 extern const u8 Debug_Follower_NPC_Not_Enabled[];
@@ -753,6 +755,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_Encounters[] =
     { COMPOUND_STRING("Massenausbruch…"), DebugAction_OpenOutbreakMenu, sDebugMenu_Actions_MassOutbreak },
     { COMPOUND_STRING("Nächste: Nyxthra-Form"), DebugAction_ExecuteScript, Debug_NyxthraForceNext },
     { COMPOUND_STRING("Nyxthra-Test: Kyogre"), DebugAction_ExecuteScript, Debug_NyxthraTestKyogre },
+    { COMPOUND_STRING("Nyxthra-Test: Groudon"), DebugAction_ExecuteScript, Debug_NyxthraTestGroudon },
+    { COMPOUND_STRING("Nyxthra-Test: Rayquaza"), DebugAction_ExecuteScript, Debug_NyxthraTestRayquaza },
     { NULL }
 };
 
