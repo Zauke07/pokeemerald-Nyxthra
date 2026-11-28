@@ -2103,7 +2103,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         #endif
         .effect = EFFECT_GROWTH,
         .power = 0,
-        .type = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? TYPE_GRASS : TYPE_NORMAL,
+        .type = B_UPDATED_MOVE_TYPES >= GEN_CHAMPIONS ? TYPE_GRASS : TYPE_NORMAL,
         .accuracy = 0,
         .pp = B_UPDATED_MOVE_DATA >= GEN_6 ? 20 : 40,
         .target = TARGET_USER,
@@ -4564,7 +4564,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Hieb mit Klauen o. ä. Hohe\n"
             "Volltrefferquote."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = B_UPDATED_MOVE_DATA == GEN_CHAMPIONS ? 80 : 70,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3 ? 1 : 2,
@@ -4635,7 +4635,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .argument = { .recoilPercentage = 50 },
         #endif
         .power = 50,
-        .type = TYPE_NORMAL,
+        .type = B_UPDATED_MOVE_TYPES >= GEN_2 ? TYPE_MYSTERY : TYPE_NORMAL,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -7458,9 +7458,27 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_CHARGE] =
     {
         .name = COMPOUND_STRING("Ladevorgang"),
+    #if B_CHARGE >= GEN_9
+        #if B_CHARGE_SPDEF_RAISE >= GEN_5
+        .description = COMPOUND_STRING(
+            "Stärkt die nächste Elektro-\n"
+            "Att. und erhöht SPEZ. VERT."),
+        #else
+        .description = COMPOUND_STRING(
+            "Lädt Energie für die nächste\n"
+            "Elektro-Attacke auf."),
+        #endif
+    #else
+        #if B_CHARGE_SPDEF_RAISE >= GEN_5
+        .description = COMPOUND_STRING(
+            "Stärkt eine Elektro-Att. in der\n"
+            "nächsten Runde, +SPEZ. VERT."),
+        #else
         .description = COMPOUND_STRING(
             "Lädt Energie für den kom-\n"
             "menden Elektro-Angr. auf."),
+        #endif
+    #endif
         .effect = EFFECT_CHARGE,
         .power = 0,
         .type = TYPE_ELECTRIC,
@@ -7604,7 +7622,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -8043,7 +8061,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Angriff, dessen Auswirkung\n"
             "abhängig vom Ort ist."),
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_SECRET_POWER,
         .power = 70,
         .type = TYPE_NORMAL,
         .accuracy = 100,
@@ -8051,9 +8069,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
+        .argument = { .secondaryEffectChance = 30 },
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SECRET_POWER,
-            .chance = 30,
+            .sheerForceOverride = TRUE,
         }),
         .contestEffect = CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION,
         .contestCategory = CONTEST_CATEGORY_SMART,
@@ -16878,7 +16896,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_GRASS,
         .accuracy = 100,
-        .pp = 10,
+        .pp = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 5 : 10,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -18801,7 +18819,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "in einer Schlagfalle."),
         .effect = EFFECT_HIT,
         .power = 35,
-        .type = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? TYPE_STEEL : TYPE_GRASS,
+        .type = B_UPDATED_MOVE_TYPES >= GEN_CHAMPIONS ? TYPE_STEEL : TYPE_GRASS,
         .accuracy = 100,
         .pp = 15,
         .target = TARGET_SELECTED,
@@ -19196,7 +19214,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Angriffe mit dickem Lauch.\n"
             "Der Benutzer muss dann Chillen."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = B_UPDATED_MOVE_DATA >= GEN_CHAMPIONS ? 170 : 150,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 5,
@@ -21478,6 +21496,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .punchingMove = B_UPDATED_MOVE_FLAGS >= GEN_CHAMPIONS,
         .metronomeBanned = TRUE,
         .argument = { .type = TYPE_ELECTRIC },
         .additionalEffects = ADDITIONAL_EFFECTS({

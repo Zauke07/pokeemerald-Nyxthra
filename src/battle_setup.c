@@ -8,6 +8,7 @@
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
+#include "battle_special.h"
 #include "battle_partner.h"
 #include "battle_tower.h"
 #include "battle_transition.h"
@@ -682,6 +683,9 @@ void BattleSetup_StartDoubleWildBattle(void)
 
 void BattleSetup_StartMultiBattle(void)
 {
+    gBattleScripting.specialTrainerBattleType = SPECIAL_BATTLE_MULTI;
+    gMain.savedCallback = CB2_EndSpecialTrainerBattle;
+
     if (gSpecialVar_0x8005 & MULTI_BATTLE_2_VS_WILD) // Player + AI against wild mon
     {
         gBattleTypeFlags = BATTLE_TYPE_DOUBLE | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
@@ -730,9 +734,12 @@ static void DoStandardWildBattle(bool32 isDouble)
     if (IsNPCFollowerWildBattle())
     {
         gBattleTypeFlags |= BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE;
+        SavePlayerParty();
     }
     else if (isDouble)
+    {
         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    }
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         VarSet(VAR_TEMP_E, 0);
@@ -2190,65 +2197,8 @@ void PlayTrainerEncounterMusic(void)
     else
         trainerId = TRAINER_BATTLE_PARAM.opponentB;
 
-    switch (GetTrainerEncounterMusicId(trainerId))
-    {
-    case TRAINER_ENCOUNTER_MUSIC_MALE:
-        music = MUS_ENCOUNTER_MALE;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_FEMALE:
-        music = MUS_ENCOUNTER_FEMALE;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_GIRL:
-        music = MUS_ENCOUNTER_GIRL;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_INTENSE:
-        music = MUS_ENCOUNTER_INTENSE;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_COOL:
-        music = MUS_ENCOUNTER_COOL;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_AQUA:
-        music = MUS_ENCOUNTER_AQUA;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_MAGMA:
-        music = MUS_ENCOUNTER_MAGMA;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_SWIMMER:
-        music = MUS_ENCOUNTER_SWIMMER;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_TWINS:
-        music = MUS_ENCOUNTER_TWINS;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR:
-        music = MUS_ENCOUNTER_ELITE_FOUR;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_HIKER:
-        music = MUS_ENCOUNTER_HIKER;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_INTERVIEWER:
-        music = MUS_ENCOUNTER_INTERVIEWER;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_RICH:
-        music = MUS_ENCOUNTER_RICH;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_CHATGPT:
-        music = MUS_HG_VS_CHAMPION;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_ROCKET:
-        music = MUS_RG_ENCOUNTER_ROCKET;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_GALACTIC:
-        music = MUS_DP_ENCOUNTER_GALACTIC;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_ASH:
-        music = MUS_DP_ENCOUNTER_CHAMPION;
-        break;
-    case TRAINER_ENCOUNTER_MUSIC_DP_LADY:
-        music = MUS_DP_ENCOUNTER_LADY;
-        break;
-    default:
-        music = MUS_ENCOUNTER_SUSPICIOUS;
-    }
+    enum TrainerApproachMusic musicStyle = GetTrainerEncounterMusicId(trainerId);
+    music = gTrainerApproachMusicStyles[musicStyle];
     PlayNewMapMusic(music);
 
 }

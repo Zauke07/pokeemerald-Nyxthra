@@ -1,6 +1,11 @@
 #include "global.h"
 #include "test/battle.h"
 
+ASSUMPTIONS
+{
+    ASSUME(GetMoveEffect(MOVE_ACUPRESSURE) == EFFECT_ACUPRESSURE);
+}
+
 DOUBLE_BATTLE_TEST("Acupressure fails on the user if it targeted its ally but switched positions via Ally Switch")
 {
     GIVEN {
@@ -163,10 +168,164 @@ DOUBLE_BATTLE_TEST("Acupressure will target self if both side allies fainted")
     }
 }
 
-TO_DO_BATTLE_TEST("Acupressure fails on the user if all of its stats are maximized");
-TO_DO_BATTLE_TEST("Acupressure fails on the ally if all of its stats are maximized");
-TO_DO_BATTLE_TEST("Acupressure doesn't try to increase a stat that has been maximized");
-TO_DO_BATTLE_TEST("Acupressure increases one of its stats by 2 stages at random");
+SINGLE_BATTLE_TEST("Acupressure fails on the user if all of its stats are maximized")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_CLANGOROUS_SOUL) == EFFECT_CLANGOROUS_SOUL);
+        ASSUME_STAT_CHANGE(MOVE_HONE_CLAWS, attack: +1, accuracy: +1);
+        ASSUME_STAT_CHANGE(MOVE_DOUBLE_TEAM, evasion: +1);
+        PLAYER(SPECIES_BIBAREL) { Ability(ABILITY_SIMPLE); HP(601); MaxHP(601); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CLANGOROUS_SOUL); }
+        TURN { MOVE(player, MOVE_CLANGOROUS_SOUL); }
+        TURN { MOVE(player, MOVE_CLANGOROUS_SOUL); }
+        for (u32 j = 0; j < 3; j++)
+            TURN { MOVE(player, MOVE_HONE_CLAWS); }
+        for (u32 j = 0; j < 3; j++)
+            TURN { MOVE(player, MOVE_DOUBLE_TEAM); }
+        TURN { MOVE(player, MOVE_ACUPRESSURE, target: player); }
+    } SCENE {
+        MESSAGE("Bibarel used Acupressure!");
+        NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, player);
+        MESSAGE("But it failed!");
+    } THEN {
+        for (enum Stat stat = STAT_ATK; stat < NUM_BATTLE_STATS; stat++)
+            EXPECT_EQ(player->statStages[stat], MAX_STAT_STAGE);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Acupressure fails on the ally if all of its stats are maximized")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_CLANGOROUS_SOUL) == EFFECT_CLANGOROUS_SOUL);
+        ASSUME_STAT_CHANGE(MOVE_HONE_CLAWS, attack: +1, accuracy: +1);
+        ASSUME_STAT_CHANGE(MOVE_DOUBLE_TEAM, evasion: +1);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_BIBAREL) { Ability(ABILITY_SIMPLE); HP(601); MaxHP(601); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(playerRight, MOVE_CLANGOROUS_SOUL); }
+        TURN { MOVE(playerRight, MOVE_CLANGOROUS_SOUL); }
+        TURN { MOVE(playerRight, MOVE_CLANGOROUS_SOUL); }
+        for (u32 j = 0; j < 3; j++)
+            TURN { MOVE(playerRight, MOVE_HONE_CLAWS); }
+        for (u32 j = 0; j < 3; j++)
+            TURN { MOVE(playerRight, MOVE_DOUBLE_TEAM); }
+        TURN { MOVE(playerLeft, MOVE_ACUPRESSURE, target: playerRight); }
+    } SCENE {
+        MESSAGE("Wobbuffet used Acupressure!");
+        NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, playerLeft);
+        MESSAGE("But it failed!");
+    } THEN {
+        for (enum Stat stat = STAT_ATK; stat < NUM_BATTLE_STATS; stat++)
+            EXPECT_EQ(playerRight->statStages[stat], MAX_STAT_STAGE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Acupressure doesn't try to increase a stat that has been maximized")
+{
+    u32 boostedStats = 0;
+
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_BELLY_DRUM) == EFFECT_BELLY_DRUM);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_BELLY_DRUM); }
+        TURN { MOVE(player, MOVE_ACUPRESSURE, target: player); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BELLY_DRUM, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], MAX_STAT_STAGE);
+        for (enum Stat stat = STAT_DEF; stat < NUM_BATTLE_STATS; stat++) {
+            if (player->statStages[stat] == DEFAULT_STAT_STAGE + 2)
+                boostedStats++;
+            else
+                EXPECT_EQ(player->statStages[stat], DEFAULT_STAT_STAGE);
+        }
+        EXPECT_EQ(boostedStats, 1);
+    }
+}
+
+SINGLE_BATTLE_TEST("Acupressure increases one of its stats by 2 stages at random")
+{
+    u32 boostedStats = 0;
+
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_ACUPRESSURE, target: player); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+    } THEN {
+        for (enum Stat stat = STAT_ATK; stat < NUM_BATTLE_STATS; stat++) {
+            if (player->statStages[stat] == DEFAULT_STAT_STAGE + 2)
+                boostedStats++;
+            else
+                EXPECT_EQ(player->statStages[stat], DEFAULT_STAT_STAGE);
+        }
+        EXPECT_EQ(boostedStats, 1);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Acupressure called by Sleep Talk raises the user's own stats")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_SLEEP_TALK) == EFFECT_SLEEP_TALK);
+        ASSUME(GetMoveTarget(MOVE_ACUPRESSURE) == TARGET_USER_OR_ALLY);
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); Moves(MOVE_SLEEP_TALK, MOVE_ACUPRESSURE); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponentLeft, MOVE_SLEEP_TALK); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_TALK, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, opponentLeft);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+        }
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
+    }
+}
+
+SINGLE_BATTLE_TEST("Acupressure is affected by Contrary and Simple")
+{
+    u32 boostedStats = 0;
+    enum Species species;
+    enum Ability ability;
+    s32 stages;
+
+    PARAMETRIZE { species = SPECIES_WOBBUFFET; ability = ABILITY_SHADOW_TAG; stages = 2; }
+    PARAMETRIZE { species = SPECIES_BIBAREL;   ability = ABILITY_SIMPLE;     stages = 4; }
+    PARAMETRIZE { species = SPECIES_SNIVY;     ability = ABILITY_CONTRARY;   stages = -2; }
+
+    GIVEN {
+        PLAYER(species) { Ability(ability); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_ACUPRESSURE, target: player); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ACUPRESSURE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+    } THEN {
+        for (enum Stat stat = STAT_ATK; stat < NUM_BATTLE_STATS; stat++)
+        {
+            if (player->statStages[stat] == DEFAULT_STAT_STAGE + stages)
+                boostedStats++;
+            else
+                EXPECT_EQ(player->statStages[stat], DEFAULT_STAT_STAGE);
+        }
+        EXPECT_EQ(boostedStats, 1);
+    }
+}
 
 // Triple Battles required to test
 //TO_DO_BATTLE_TEST("Acupressure works on the ally if the user targeted itself but switched positions via Triple Battle shift before execution");

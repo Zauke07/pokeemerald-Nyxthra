@@ -64,35 +64,40 @@ bool32 IsAiVsAiBattle(void)
 
 bool32 BattlerIsPlayer(enum BattlerId battlerId)
 {
-    return (gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_PLAYER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_PLAYER);
+    enum BattleController controller = gBattlerBattleController[battlerId];
+    return (controller == BATTLE_CONTROLLER_PLAYER
+         || controller == BATTLE_CONTROLLER_RECORDED_PLAYER);
 }
 
 bool32 BattlerIsPartner(enum BattlerId battlerId)
 {
-    return (gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_PLAYER_PARTNER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_PARTNER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_LINK_PARTNER);
+    enum BattleController controller = gBattlerBattleController[battlerId];
+    return (controller == BATTLE_CONTROLLER_PLAYER_PARTNER
+         || controller == BATTLE_CONTROLLER_RECORDED_PARTNER
+         || controller == BATTLE_CONTROLLER_LINK_PARTNER);
 }
 
 bool32 BattlerIsOpponent(enum BattlerId battlerId)
 {
-    return (gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_OPPONENT
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_OPPONENT
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_LINK_OPPONENT);
+    enum BattleController controller = gBattlerBattleController[battlerId];
+    return (controller == BATTLE_CONTROLLER_OPPONENT
+         || controller == BATTLE_CONTROLLER_RECORDED_OPPONENT
+         || controller == BATTLE_CONTROLLER_LINK_OPPONENT);
 }
 
 bool32 BattlerIsRecorded(enum BattlerId battlerId)
 {
-    return (gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_PLAYER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_PARTNER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_RECORDED_OPPONENT);
+    enum BattleController controller = gBattlerBattleController[battlerId];
+    return (controller == BATTLE_CONTROLLER_RECORDED_PLAYER
+         || controller == BATTLE_CONTROLLER_RECORDED_PARTNER
+         || controller == BATTLE_CONTROLLER_RECORDED_OPPONENT);
 }
 
 bool32 BattlerIsLink(enum BattlerId battlerId)
 {
-    return (gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_LINK_PARTNER
-         || gBattlerBattleController[battlerId] == BATTLE_CONTROLLER_LINK_OPPONENT);
+    enum BattleController controller = gBattlerBattleController[battlerId];
+    return (controller == BATTLE_CONTROLLER_LINK_PARTNER
+         || controller == BATTLE_CONTROLLER_LINK_OPPONENT);
 }
 
 bool32 BattlerIsWally(enum BattlerId battlerId)
@@ -115,6 +120,14 @@ bool32 BattlerHasAi(enum BattlerId battlerId)
 
     if (IsAiVsAiBattle())
         return TRUE;
+
+    if (gBattleTypeFlags & BATTLE_TYPE_RECORDED
+     && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER
+     && !(gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
+     && battlerId == B_BATTLER_2)
+    {
+        return TRUE;
+    }
 
     return FALSE;
 }
@@ -185,6 +198,12 @@ void InitBattleControllers(void)
         *((u8 *)(&gBattleStruct->tv) + i) = 0;
 }
 
+static void SetBattlerControllerFunc(enum BattlerPosition position, BattleControllerFunc func)
+{
+    assertf(position < MAX_POSITION_COUNT, "invalid battler position: %d", position);
+    gBattlerControllerFuncs[position] = func;
+}
+
 static void InitBtlControllersInternal(void)
 {
     s32 i;
@@ -233,21 +252,24 @@ static void InitBtlControllersInternal(void)
         if (isLink)
         {
             if (isDouble && isMulti && !isMaster)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToLinkPartner;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToLinkPartner);
             else
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToPlayer;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToPlayer);
 
             if (!isDouble || !isMulti || !isMaster)
             {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToLinkOpponent;
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayer;
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToLinkOpponent;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_1), SetControllerToLinkOpponent);
+                if (isDouble)
+                {
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToPlayer);
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_3), SetControllerToLinkOpponent);
+                }
             }
             else
             {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToOpponent;
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToLinkPartner;
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToOpponent;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_1), SetControllerToOpponent);
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToLinkPartner);
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_3), SetControllerToOpponent);
             }
 
             // Set gBattlerBattleController early for link multis so GetBattlerTrainer can use it
@@ -270,17 +292,17 @@ static void InitBtlControllersInternal(void)
         {
             // Player 1
             if (isRecorded)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToRecordedPlayer;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToRecordedPlayer);
             else if (gBattleTypeFlags & BATTLE_TYPE_SAFARI)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToSafari;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToSafari);
             else if (gBattleTypeFlags & BATTLE_TYPE_CATCH_TUTORIAL)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = IS_FRLG ? SetControllerToOakOrOldMan : SetControllerToWally;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), IS_FRLG ? SetControllerToOakOrOldMan : SetControllerToWally);
             else if (IS_FRLG && (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE))
-                gBattlerControllerFuncs[gBattlerPositions[B_BATTLER_0]] = SetControllerToOakOrOldMan;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToOakOrOldMan);
             else if (isAIvsAI)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToPlayerPartner;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToPlayerPartner);
             else
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_0)] = SetControllerToPlayer;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_0), SetControllerToPlayer);
 
             // Opponent 1
             bool32 isOpponent1Recorded;
@@ -290,45 +312,49 @@ static void InitBtlControllersInternal(void)
                 isOpponent1Recorded = isRecorded && isRecordedLink;
 
             if (isOpponent1Recorded)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToRecordedOpponent;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_1), SetControllerToRecordedOpponent);
             else
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_1)] = SetControllerToOpponent;
+                SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_1), SetControllerToOpponent);
 
-            // Player 2
-            if (TESTING && isMulti && isRecordedLink)
+            // Singles leave the second pair of positions at B_POSITION_ABSENT.
+            if (isDouble)
             {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToRecordedPartner;
-            }
-            else if (TESTING && isMulti && isRecorded && !isRecordedLink)
-            { // Sets to PlayerPartner if EXPECT_XXXX used in test for partner trainer, else sets to RecordedPartner.
+                // Player 2
+                if (TESTING && isMulti && isRecordedLink)
+                {
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToRecordedPartner);
+                }
+                else if (TESTING && isMulti && isRecorded && !isRecordedLink)
+                { // Sets to PlayerPartner if EXPECT_XXXX used in test for partner trainer, else sets to RecordedPartner.
 #if TESTING
-                if (gBattleTestRunnerState->data.expectedAiActions[B_BATTLER_2][0].actionSet == TRUE)
-                    gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayerPartner;
-                else
+                    if (gBattleTestRunnerState->data.expectedAiActions[B_BATTLER_2][0].actionSet == TRUE)
+                        SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToPlayerPartner);
+                    else
 #endif
-                    gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToRecordedPartner;
-            }
-            else if ((isInGamePartner && !isRecorded)
-                    || isAIvsAI)
-            {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayerPartner;
-            }
-            else if (isRecorded)
-            {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToRecordedPlayer;
-            }
-            else
-            {
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_2)] = SetControllerToPlayer;
-            }
+                        SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToRecordedPartner);
+                }
+                else if ((isInGamePartner && !isRecorded)
+                        || isAIvsAI)
+                {
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToPlayerPartner);
+                }
+                else if (isRecorded)
+                {
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToRecordedPlayer);
+                }
+                else
+                {
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_2), SetControllerToPlayer);
+                }
 
-            // Opponent 2
-            if (TESTING && isMulti && isRecordedLink)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToRecordedOpponent;
-            else if (isInGamePartner || !isRecorded || isMulti || !isRecordedLink)
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToOpponent;
-            else
-                gBattlerControllerFuncs[GetBattlerPosition(B_BATTLER_3)] = SetControllerToRecordedOpponent;
+                // Opponent 2
+                if (TESTING && isMulti && isRecordedLink)
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_3), SetControllerToRecordedOpponent);
+                else if (isInGamePartner || !isRecorded || isMulti || !isRecordedLink)
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_3), SetControllerToOpponent);
+                else
+                    SetBattlerControllerFunc(GetBattlerPosition(B_BATTLER_3), SetControllerToRecordedOpponent);
+            }
         }
 
         bool32 bufferPartyOrders;
@@ -408,64 +434,62 @@ bool32 IsValidForBattleButDead(struct Pokemon *mon)
 
 static inline bool32 IsControllerPlayer(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == PlayerBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_PLAYER);
 }
 
 static inline bool32 IsControllerRecordedPlayer(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == RecordedPlayerBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_RECORDED_PLAYER);
 }
 
 static inline bool32 IsControllerRecordedPartner(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == RecordedPartnerBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_RECORDED_PARTNER);
 }
 
 static inline bool32 IsControllerOpponent(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == OpponentBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_OPPONENT);
 }
 
 static inline bool32 IsControllerPlayerPartner(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == PlayerPartnerBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_PLAYER_PARTNER);
 }
 
 static inline bool32 IsControllerWally(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == WallyBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_WALLY);
 }
 
 static inline bool32 IsControllerOakOldMan(u32 battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == OakOldManBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_OAK_OLD_MAN);
 }
 
 static inline bool32 IsControllerRecordedOpponent(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == RecordedOpponentBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_RECORDED_OPPONENT);
 }
 
 static inline bool32 IsControllerLinkOpponent(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == LinkOpponentBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_LINK_OPPONENT);
 }
 
 static inline bool32 IsControllerLinkPartner(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == LinkPartnerBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_LINK_PARTNER);
 }
 
 static inline bool32 IsControllerSafari(enum BattlerId battler)
 {
-    return (gBattlerControllerEndFuncs[battler] == SafariBufferExecCompleted);
+    return (gBattlerBattleController[battler] == BATTLE_CONTROLLER_SAFARI);
 }
 
 bool32 ShouldUpdateTvData(enum BattlerId battler)
 {
-    return (IsControllerPlayer(battler)
-         || IsControllerLinkPartner(battler)
-         || IsControllerLinkOpponent(battler));
+    return (IsControllerPlayer(battler) || BattlerIsLink(battler));
 }
 
 static void SetBattlePartyIds(void)
@@ -2376,7 +2400,7 @@ void BtlController_HandleLoadMonSprite(enum BattlerId battler)
     if (!(gBattleTypeFlags & BATTLE_TYPE_GHOST))
         SetBattlerShadowSpriteCallback(battler, species);
 
-    if (IsControllerOpponent(battler) || IsControllerLinkOpponent(battler) || IsControllerRecordedOpponent(battler))
+    if (BattlerIsOpponent(battler))
         gBattlerControllerFuncs[battler] = TryShinyAnimAfterMonAnim;
     else
         gBattlerControllerFuncs[battler] = WaitForMonAnimAfterLoad;
@@ -2384,11 +2408,7 @@ void BtlController_HandleLoadMonSprite(enum BattlerId battler)
 
 void BtlController_HandleSwitchInAnim(enum BattlerId battler)
 {
-    bool32 isPlayerSide = (IsControllerPlayer(battler)
-                        || IsControllerPlayerPartner(battler)
-                        || IsControllerRecordedPlayer(battler)
-                        || IsControllerRecordedPartner(battler)
-                        || IsControllerLinkPartner(battler));
+    bool32 isPlayerSide = (BattlerIsPlayer(battler) || BattlerIsPartner(battler));
 
     if (IsControllerPlayer(battler))
     {
@@ -2709,8 +2729,7 @@ void BtlController_HandleHealthBarUpdate(enum BattlerId battler)
     else
     {
         SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], maxHP, 0, hpVal);
-        if (IsControllerPlayer(battler)
-         || IsControllerRecordedPlayer(battler)
+        if (BattlerIsPlayer(battler)
          || IsControllerRecordedPartner(battler)
          || IsControllerOakOldMan(battler)
          || IsControllerWally(battler))
@@ -3140,9 +3159,7 @@ void BtlController_HandleSwitchInShowSubstitute(enum BattlerId battler)
         if (gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
             InitAndLaunchSpecialAnimation(battler, battler, battler, B_ANIM_MON_TO_SUBSTITUTE);
 
-        if (IsControllerOpponent(battler)
-         && IsControllerLinkOpponent(battler)
-         && IsControllerRecordedOpponent(battler))
+        if (BattlerIsOpponent(battler))
             gBattlerControllerFuncs[battler] = BtlController_HandleSwitchInSoundAndEnd;
         else
             gBattlerControllerFuncs[battler] = BtlController_HandleSwitchInWaitAndEnd;

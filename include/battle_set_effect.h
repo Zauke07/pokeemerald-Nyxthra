@@ -16,6 +16,7 @@ struct SetEffect
     u16 primary:1;
     u16 certain:1;
     u16 onSide:1;
+    u16 bypassSheerForce:1;
 };
 
 void SetMoveEffect(struct BattleCalcValues *cv, struct SetEffect *se);

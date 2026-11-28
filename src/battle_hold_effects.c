@@ -173,7 +173,8 @@ static enum ItemEffect TryKingsRock(enum BattlerId battlerAtk, enum BattlerId ba
         holdEffectParam *= 2;
     if (ability != ABILITY_STENCH && RandomPercentage(RNG_HOLD_EFFECT_FLINCH, holdEffectParam))
     {
-        SetMoveEffectHelper(battlerAtk, battlerDef, MOVE_EFFECT_FLINCH, gBattlescriptCurrInstr, NO_FLAGS);
+        // This item effect is independent of Sheer Force; moves that natively flinch were rejected above.
+        SetMoveEffectHelper(battlerAtk, battlerDef, MOVE_EFFECT_FLINCH, gBattlescriptCurrInstr, EFFECT_BYPASS_SHEER_FORCE);
         effect = ITEM_EFFECT_OTHER;
     }
 
@@ -351,7 +352,7 @@ static enum ItemEffect TrySetEnigmaBerry(enum BattlerId battlerDef, enum Battler
 
     if (((IsBattlerTurnDamaged(battlerDef, EXCLUDING_SUBSTITUTES) && gBattleStruct->moveResultFlags[battlerDef] & MOVE_RESULT_HIGH_EFFECTIVENESS) || gBattleScripting.overrideBerryRequirements)
      && !(gBattleScripting.overrideBerryRequirements && gBattleMons[battlerDef].hp == gBattleMons[battlerDef].maxHP)
-     && !(B_HEAL_BLOCKING >= GEN_5 && gBattleMons[battlerDef].volatiles.healBlockTimer))
+     && !(GetConfig(B_HEAL_BLOCKING) >= GEN_5 && gBattleMons[battlerDef].volatiles.healBlockTimer))
     {
         s32 healAmount = gBattleMons[battlerDef].maxHP * 25 / 100;
         if (GetBattlerAbility(battlerDef) == ABILITY_RIPEN)
@@ -498,7 +499,7 @@ static enum ItemEffect TryShellBell(enum BattlerId battlerAtk)
      && GetMoveEffect(gCurrentMove) != EFFECT_FUTURE_SIGHT
      && gBattleStruct->battlerState[battlerAtk].originalBattlerPartyId == PARTY_SIZE
      && !IsBattlerAtMaxHp(battlerAtk)
-     && !(B_HEAL_BLOCKING >= GEN_5 && gBattleMons[battlerAtk].volatiles.healBlockTimer))
+     && !(GetConfig(B_HEAL_BLOCKING) >= GEN_5 && gBattleMons[battlerAtk].volatiles.healBlockTimer))
     {
         if (EmergencyExitCanBeTriggered(battlerAtk, GetBattlerAbility(battlerAtk)))
             gSpecialStatuses[battlerAtk].shellBellEmergencyExit = TRUE;
@@ -540,7 +541,7 @@ static enum ItemEffect TryStickyBarbOnTargetHit(enum BattlerId battlerDef, enum 
     {
         // No sticky hold checks.
         gEffectBattler = battlerDef;
-        StealTargetItem(battlerAtk, battlerDef, ITEM_NONE);  // Attacker takes target's barb
+        StealTargetItem(battlerAtk, battlerDef, ITEM_NONE, FALSE);  // Attacker takes target's barb
         BattleScriptCall(BattleScript_StickyBarbTransfer);
         effect = ITEM_EFFECT_OTHER;
     }
@@ -568,7 +569,11 @@ static enum ItemEffect TryToxicOrb(enum BattlerId battler)
     enum ItemEffect effect = ITEM_NO_EFFECT;
     enum Ability ability = GetBattlerAbility(battler);
 
-    if (CanBePoisoned(battler, battler, ability, ability)) // Corrosion bypasses Poison/Steel-type poison immunity
+    gBattleStruct->ignoreOrbFailure = TRUE;
+    bool32 canBePoisoned = CanBePoisoned(battler, battler, ability, ability);
+    gBattleStruct->ignoreOrbFailure = FALSE;
+
+    if (canBePoisoned) // Corrosion bypasses Poison/Steel-type poison immunity
     {
         gBattleMons[battler].status1 = STATUS1_TOXIC_POISON;
         gEffectBattler = battler;
@@ -585,7 +590,11 @@ static enum ItemEffect TryFlameOrb(enum BattlerId battler)
     enum ItemEffect effect = ITEM_NO_EFFECT;
     enum Ability ability = GetBattlerAbility(battler);
 
-    if (CanBeBurned(battler, battler, ability))
+    gBattleStruct->ignoreOrbFailure = TRUE;
+    bool32 canBeBurned = CanBeBurned(battler, battler, ability);
+    gBattleStruct->ignoreOrbFailure = FALSE;
+
+    if (canBeBurned)
     {
         gBattleMons[battler].status1 = STATUS1_BURN;
         gEffectBattler = battler;
@@ -602,7 +611,7 @@ static enum ItemEffect TryLeftovers(enum BattlerId battler, enum HoldEffect hold
     enum ItemEffect effect = ITEM_NO_EFFECT;
 
     if (gBattleMons[battler].hp < gBattleMons[battler].maxHP
-     && !(B_HEAL_BLOCKING >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer))
+     && !(GetConfig(B_HEAL_BLOCKING) >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer))
     {
         SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
         RecordItemEffectBattle(battler, holdEffect);
@@ -798,7 +807,7 @@ static enum ItemEffect ItemHealHp(enum BattlerId battler, enum Item itemId, enum
     enum Ability ability = GetBattlerAbility(battler);
 
     if (!(gBattleScripting.overrideBerryRequirements && gBattleMons[battler].hp == gBattleMons[battler].maxHP)
-     && !(B_HEAL_BLOCKING >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer)
+     && !(GetConfig(B_HEAL_BLOCKING) >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer)
      && HasEnoughHpToEatBerry(battler, ability, 2, itemId))
     {
         s32 healAmount = 0;
@@ -894,7 +903,7 @@ static enum ItemEffect HealConfuseBerry(enum BattlerId battler, enum Item itemId
     enum Ability ability = GetBattlerAbility(battler);
 
     if (HasEnoughHpToEatBerry(battler, ability, hpFraction, itemId)
-     && !(B_HEAL_BLOCKING >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer))
+     && !(GetConfig(B_HEAL_BLOCKING) >= GEN_5 && gBattleMons[battler].volatiles.healBlockTimer))
     {
         s32 healAmount = GetNonDynamaxMaxHP(battler) / GetItemHoldEffectParam(itemId);
         if (ability == ABILITY_RIPEN)

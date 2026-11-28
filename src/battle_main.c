@@ -496,7 +496,7 @@ void CB2_InitBattle(void)
     m4aSongNumStop(SE_DOWNPOUR);
     m4aSongNumStop(SE_THUNDERSTORM);
 
-    if (!gTestRunnerEnabled)
+    if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
         MoveSaveBlocks_ResetHeap();
     AllocateBattleResources();
     AllocateBattleSpritesData();
@@ -1818,19 +1818,6 @@ void CB2_QuitRecordedBattle(void)
     }
 }
 
-void ModifyPersonalityForNature(u32 *personality, u32 newNature)
-{
-    u32 nature = GetNatureFromPersonality(*personality);
-    s32 diff = abs((s32)nature - (s32)newNature);
-    s32 sign = (nature > newNature) ? 1 : -1;
-    if (diff > NUM_NATURES / 2)
-    {
-        diff = NUM_NATURES - diff;
-        sign *= -1;
-    }
-    *personality -= (diff * sign);
-}
-
 void VBlankCB_Battle(void)
 {
     // Change gRngSeed every vblank unless the battle could be recorded.
@@ -2830,6 +2817,7 @@ static void BattleStartClearSetData(void)
         gBattleStruct->lastTakenMoveFrom[i][2] = MOVE_NONE;
         gBattleStruct->lastTakenMoveFrom[i][3] = MOVE_NONE;
         gBattleStruct->AI_monToSwitchIntoId[i] = PARTY_SIZE;
+        gBattleStruct->monToSwitchIntoId[i] = PARTY_SIZE;
     }
 
     gLastUsedMove = 0;
@@ -2892,14 +2880,13 @@ static void BattleStartClearSetData(void)
     }
     gBattleStruct->beatUpSlot = 0;
 
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (u32 partySlot = 0; partySlot < PARTY_SIZE; partySlot++)
     {
         for (enum BattleTrainer trainer = B_TRAINER_PLAYER; trainer < MAX_BATTLE_TRAINERS; trainer++)
         {
-            gBattleStruct->partyState[trainer][i].usedHeldItem = ITEM_NONE;
-            gBattleStruct->itemLost[trainer][i].originalItem = GetMonData(&gParties[trainer][i], MON_DATA_HELD_ITEM);
-            gPartyCriticalHits[i] = 0;
+            SetItemsToRestoreAfterBattle(trainer, partySlot);
         }
+        gPartyCriticalHits[partySlot] = 0;
     }
 
     ClearPursuitValues();
@@ -3052,6 +3039,10 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
         gBattleMons[battler].volatiles.battlerPreventingEscape = volatilesCopy->battlerPreventingEscape;
         gBattleMons[battler].volatiles.embargoTimer = volatilesCopy->embargoTimer;
         gBattleMons[battler].volatiles.healBlockTimer = volatilesCopy->healBlockTimer;
+        if (IsTelekinesisBannedSpecies(gBattleMons[battler].species))
+            gBattleMons[battler].volatiles.telekinesis = FALSE;
+        else
+            gBattleMons[battler].volatiles.telekinesisTimer = volatilesCopy->telekinesisTimer;
     }
     else if (effect == EFFECT_SHED_TAIL)
     {
@@ -3830,8 +3821,6 @@ static void HandleTurnActionSelectionState(void)
 {
     s32 i;
 
-    gAiLogicData->reverseBattlerLogicOrder = RandomPercentage(RNG_AI_REVERSE_BATTLER_LOGIC_ORDER, GetConfig(AI_REVERSE_BATTLER_LOGIC_ORDER_CHANCE)) && IsDoubleBattle();
-
     gBattleCommunication[ACTIONS_CONFIRMED_COUNT] = 0;
     for (enum BattlerId battlerIndex = 0; battlerIndex < gBattlersCount; battlerIndex++)
     {
@@ -4485,6 +4474,9 @@ s32 GetChosenMovePriority(enum BattlerId battler, enum Ability ability)
     gProtectStructs[battler].pranksterElevated = FALSE;
     if (gProtectStructs[battler].noValidMoves)
         move = MOVE_STRUGGLE;
+    else if (gLockedMoves[battler] != MOVE_NONE
+          && (gBattleMons[battler].volatiles.multipleTurns || gBattleMons[battler].volatiles.rechargeTimer > 0))
+        move = gLockedMoves[battler];
     else if (gBattleMons[battler].volatiles.encoredMove != MOVE_NONE && GetConfig(B_ENCORE_PRIORITY) >= GEN_CHAMPIONS)
         move = gBattleMons[battler].volatiles.encoredMove;
     else
@@ -4832,20 +4824,16 @@ static void PopulateArrayWithBattlers(enum BattlerId *battlers)
 
 static bool32 TryTrainerSlideGimmick(enum BattlerId battler)
 {
-    bool32 doSlide = TRUE;
-    if (ShouldDoTrainerSlide(battler, gGimmicksInfo[gBattleStruct->gimmick.usableGimmick[battler]].attackerSlideType))
-        gBattleScripting.battler = battler;
-    else if (ShouldDoTrainerSlide(GetBattlerLeftFoe(battler), gGimmicksInfo[gBattleStruct->gimmick.usableGimmick[battler]].opponentSlideType))
-        gBattleScripting.battler = GetBattlerLeftFoe(battler);
-    else if (ShouldDoTrainerSlide(GetBattlerRightFoe(battler), gGimmicksInfo[gBattleStruct->gimmick.usableGimmick[battler]].opponentSlideType))
-        gBattleScripting.battler = GetBattlerRightFoe(battler);
-    else
-        doSlide = FALSE;
-    if (doSlide)
+    enum Gimmick gimmick = gBattleStruct->gimmick.usableGimmick[battler];
+
+    if (ShouldDoTrainerSlide(battler, gGimmicksInfo[gimmick].attackerSlideType)
+     || ShouldDoTrainerSlide(GetBattlerLeftFoe(battler), gGimmicksInfo[gimmick].opponentSlideType)
+     || ShouldDoTrainerSlide(GetBattlerRightFoe(battler), gGimmicksInfo[gimmick].opponentSlideType))
     {
         BattleScriptPushCursorAndCallback(BattleScript_TrainerSlideMsg);
         return TRUE;
     }
+
     return FALSE;
 }
 
@@ -5807,6 +5795,7 @@ void SetTypeBeforeUsingMove(enum Move move, enum BattlerId battler, enum Ability
 {
     enum Item heldItem = gBattleMons[battler].item;
 
+    gBattleStruct->dynamicMoveType = TYPE_NONE;
     gBattleStruct->dynamicMoveCategory = DAMAGE_CATEGORY_NONE;
     gBattleStruct->battlerState[battler].ateBoost = FALSE;
     gSpecialStatuses[battler].gemBoost = FALSE;
@@ -5860,11 +5849,7 @@ void ScriptSetTotemBoost(struct ScriptContext *ctx)
 
 bool32 IsWildMonSmart(void)
 {
-#if WE_SMART_WILD_AI_FLAG != 0
     return (FlagGet(WE_SMART_WILD_AI_FLAG));
-#else
-    return FALSE;
-#endif
 }
 
 s32 Factorial(s32 n)

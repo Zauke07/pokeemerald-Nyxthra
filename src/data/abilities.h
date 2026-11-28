@@ -2472,4 +2472,10 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Chilispritzer"),
         .description = COMPOUND_STRING("Verbrennt Gegner bei Schaden."),
     },
+
+    [ABILITY_AURA_GUARD] =
+    {
+        .name = _("Aura Guard"),
+        .description = COMPOUND_STRING("Nicht implementiert."),
+    },
 };

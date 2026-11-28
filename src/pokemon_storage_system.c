@@ -97,6 +97,7 @@ enum {
     MSG_HOLDING_POKE,
     MSG_WHICH_ONE_WILL_TAKE,
     MSG_CANT_RELEASE_EGG,
+    MSG_CANT_RELEASE_FUSED_MON,
     MSG_CONTINUE_BOX,
     MSG_CAME_BACK,
     MSG_WORRIED,
@@ -1067,6 +1068,7 @@ static const struct StorageMessage sMessages[] =
     [MSG_HOLDING_POKE]         = {COMPOUND_STRING("Du hältst ein POKéMON!"),  MSG_VAR_NONE},
     [MSG_WHICH_ONE_WILL_TAKE]  = {COMPOUND_STRING("Welches möchtest du nehmen?"),   MSG_VAR_NONE},
     [MSG_CANT_RELEASE_EGG]     = {COMPOUND_STRING("Du kannst kein EI freilassen."),  MSG_VAR_NONE},
+    [MSG_CANT_RELEASE_FUSED_MON] = {COMPOUND_STRING("Fusion nicht freilassbar."), MSG_VAR_NONE},
     [MSG_CONTINUE_BOX]         = {COMPOUND_STRING("BOX-Vorgänge fortsetzen?"),   MSG_VAR_NONE},
     [MSG_CAME_BACK]            = {COMPOUND_STRING("{DYNAMIC 0} ist zurückgekommen!"),     MSG_VAR_MON_NAME_1},
     [MSG_WORRIED]              = {COMPOUND_STRING("War es besorgt um dich?"),  MSG_VAR_NONE},
@@ -2648,6 +2650,10 @@ static void Task_OnSelectedMon(u8 taskId)
             {
                 sStorage->state = 4;
             }
+            else if (IsAFusedMon(sStorage->displayMonSpecies))
+            {
+                sStorage->state = 7;
+            }
             else
             {
                 PlaySE(SE_SELECT);
@@ -2727,6 +2733,11 @@ static void Task_OnSelectedMon(u8 taskId)
             ClearBottomWindow();
             SetPokeStorageTask(Task_PokeStorageMain);
         }
+        break;
+    case 7:
+        PlaySE(SE_FAILURE);
+        PrintMessage(MSG_CANT_RELEASE_FUSED_MON);
+        sStorage->state = 6;
         break;
     }
 }

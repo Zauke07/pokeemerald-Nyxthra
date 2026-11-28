@@ -4479,7 +4479,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_SAND_VEIL, ABILITY_NONE, ABILITY_ROUGH_SKIN },
+        .abilities = { ABILITY_LEVITATE, ABILITY_LEVITATE, ABILITY_LEVITATE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Knakrack Z"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4753,7 +4753,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_STEADFAST, ABILITY_INNER_FOCUS, ABILITY_JUSTIFIED },
+        .abilities = { ABILITY_AURA_GUARD, ABILITY_AURA_GUARD, ABILITY_AURA_GUARD },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Lucario Z"),
     #if P_MODIFIED_MEGA_CRIES
@@ -7768,7 +7768,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         SHADOW(-1, 15, SHADOW_SIZE_XL_BATTLE_ONLY)                                  \
         FOOTPRINT(Arceus)                                                           \
         OVERWORLD(                                                                  \
-            sPicTable_Arceus ##typeName,                                            \
+            sPicTable_Arceus,                                                       \
             SIZE_64x64,                                                             \
             SHADOW_SIZE_M,                                                          \
             TRACKS_FOOT,                                                            \

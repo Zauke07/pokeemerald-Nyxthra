@@ -142,6 +142,7 @@ void GetNumMovesSelectedMonHas(void);
 void MoveDeleterChooseMoveToForget(void);
 bool8 ShowFieldMessageFollowerDebug(void);
 bool8 BufferFollowerNicknameToVar1(void);
+bool32 IsAFusedMon(enum Species species);
 
 bool32 SetUpFieldMove_Surf(void);
 bool32 SetUpFieldMove_Fly(void);
