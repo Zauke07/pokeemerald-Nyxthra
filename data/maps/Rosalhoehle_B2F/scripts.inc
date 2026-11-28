@@ -37,6 +37,11 @@ Rosalhoehle_B2F_EventScript_JessieTrigger::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	applymovement LOCALID_ROSAL_JESSIE, Rosalhoehle_B2F_Movement_JessieApproach
 	waitmovement 0
+	getplayerxy VAR_0x8004, VAR_0x8005
+	setvar VAR_0x8006, 13
+	call Rosalhoehle_B2F_EventScript_JessieLineUp
+	applymovement LOCALID_ROSAL_JESSIE, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
 Rosalhoehle_B2F_EventScript_JessieScene::
 	playbgm MUS_HG_ENCOUNTER_ROCKET, FALSE
 	msgbox Rosalhoehle_B2F_Text_JessieIntro, MSGBOX_DEFAULT
@@ -67,6 +72,25 @@ Rosalhoehle_B2F_EventScript_JessieScene::
 	msgbox Rosalhoehle_B2F_Text_MonsFled, MSGBOX_DEFAULT
 	releaseall
 	end
+
+@ JESSIE geht in Reihe 9 genau über den Spieler (der in Reihe 10 steht).
+Rosalhoehle_B2F_EventScript_JessieLineUp::
+	goto_if_eq VAR_0x8006, VAR_0x8004, Common_EventScript_NopReturn
+	call_if_gt VAR_0x8006, VAR_0x8004, Rosalhoehle_B2F_EventScript_JessieStepLeft
+	call_if_lt VAR_0x8006, VAR_0x8004, Rosalhoehle_B2F_EventScript_JessieStepRight
+	goto Rosalhoehle_B2F_EventScript_JessieLineUp
+
+Rosalhoehle_B2F_EventScript_JessieStepLeft::
+	applymovement LOCALID_ROSAL_JESSIE, Common_Movement_WalkLeft
+	waitmovement 0
+	subvar VAR_0x8006, 1
+	return
+
+Rosalhoehle_B2F_EventScript_JessieStepRight::
+	applymovement LOCALID_ROSAL_JESSIE, Common_Movement_WalkRight
+	waitmovement 0
+	addvar VAR_0x8006, 1
+	return
 
 Rosalhoehle_B2F_Movement_JessieApproach:
 	walk_down
