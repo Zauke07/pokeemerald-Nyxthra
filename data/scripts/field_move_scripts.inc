@@ -470,7 +470,7 @@ Text_WantToRockClimb:
 	.string "Möchtest du KRAXLER einsetzen?$"
 
 Text_MonUsedRockClimb:
-	.string "{STR_VAR_1} hat KRAXLER eingesetzt!$"
+	.string "{STR_VAR_1} setzt KRAXLER ein.$"
 
 Text_CantRockClimb:
 	.string "Die Klippe ist steil. Vielleicht kann ein\n"

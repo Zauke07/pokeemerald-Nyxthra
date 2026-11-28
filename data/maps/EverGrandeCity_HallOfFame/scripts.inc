@@ -98,7 +98,7 @@ EverGrandeCity_HallOfFame_Movement_WalkIntoHallOfFame2:
 	step_end
 
 EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
-	.string "Wallace: Dieser Raum…\p"
+	.string "Wassili: Dieser Raum…\p"
 	.string "Hier bewahren wir die Aufzeichnungen\n"
 	.string "der POKéMON auf, die sich durch harte\l"
 	.string "Kämpfe durchgesetzt haben.\p"
@@ -106,7 +106,7 @@ EverGrandeCity_HallOfFame_Text_HereWeHonorLeagueChampions:
 	.string "geehrt.$"
 
 EverGrandeCity_HallOfFame_Text_LetsRecordYouAndYourPartnersNames:
-	.string "Wallace: Komm, lass uns deinen Namen\n"
+	.string "Wassili: Komm, lass uns deinen Namen\n"
 	.string "als TRAINER verewigen, der die POKéMON-\l"
 	.string "LIGA bezwungen hat, sowie die Namen\l"
 	.string "der Partner, die an deiner Seite kämpften.$"

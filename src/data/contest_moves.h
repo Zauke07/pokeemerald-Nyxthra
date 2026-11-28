@@ -3,9 +3,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_HIGHLY_APPEALING] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Eine recht ansprechende Attacke."),
+        .description = COMPOUND_STRING("Eine recht ansprechende\nAttacke."),
         #else
-        .description = COMPOUND_STRING("Eine äußerst ansprechende Attacke."),
+        .description = COMPOUND_STRING("Eine äußerst ansprechende\nAttacke."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_APPEAL,
         .appeal = 40,
@@ -14,7 +14,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_USER_MORE_EASILY_STARTLED] =
     {
-        .description = COMPOUND_STRING("Danach lässt sich der Anwender\nleichter erschrecken."),
+        .description = COMPOUND_STRING("Danach erschrickt der\nAnwender leichter."),
         .effectType = CONTEST_EFFECT_TYPE_APPEAL,
         .appeal = 60,
         .jam = 0,
@@ -22,7 +22,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_GREAT_APPEAL_BUT_NO_MORE_MOVES] =
     {
-        .description = COMPOUND_STRING("Ein toller Auftritt, danach sind\nkeine Attacken mehr möglich."),
+        .description = COMPOUND_STRING("Toller Auftritt, doch\nkeine Attacken danach."),
         .effectType = CONTEST_EFFECT_TYPE_APPEAL,
         .appeal = 80,
         .jam = 0,
@@ -30,7 +30,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_REPETITION_NOT_BORING] =
     {
-        .description = COMPOUND_STRING("Kann wiederholt eingesetzt werden,\nohne den RICHTER zu langweilen."),
+        .description = COMPOUND_STRING("Wiederholbar, ohne den\nRICHTER zu langweilen."),
         .effectType = CONTEST_EFFECT_TYPE_APPEAL,
         .appeal = 30,
         .jam = 0,
@@ -38,7 +38,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_AVOID_STARTLE_ONCE] =
     {
-        .description = COMPOUND_STRING("Kann einmal verhindern, von\nanderen erschreckt zu werden."),
+        .description = COMPOUND_STRING("Verhindert einmal, dass\nandere einen erschrecken."),
         .effectType = CONTEST_EFFECT_TYPE_AVOID_STARTLE,
         .appeal = 20,
         .jam = 0,
@@ -46,7 +46,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_AVOID_STARTLE] =
     {
-        .description = COMPOUND_STRING("Kann verhindern, von\nanderen erschreckt zu werden."),
+        .description = COMPOUND_STRING("Verhindert, von anderen\nerschreckt zu werden."),
         .effectType = CONTEST_EFFECT_TYPE_AVOID_STARTLE,
         .appeal = 10,
         .jam = 0,
@@ -54,7 +54,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_AVOID_STARTLE_SLIGHTLY] =
     {
-        .description = COMPOUND_STRING("Kann ein wenig verhindern, von\nanderen erschreckt zu werden."),
+        .description = COMPOUND_STRING("Verhindert ein wenig, dass\nandere einen erschrecken."),
         .effectType = CONTEST_EFFECT_TYPE_AVOID_STARTLE,
         .appeal = 30,
         .jam = 0,
@@ -62,7 +62,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_USER_LESS_EASILY_STARTLED] =
     {
-        .description = COMPOUND_STRING("Danach lässt sich der Anwender\nschwerer erschrecken."),
+        .description = COMPOUND_STRING("Danach erschrickt der\nAnwender schwerer."),
         .effectType = CONTEST_EFFECT_TYPE_AVOID_STARTLE,
         .appeal = 30,
         .jam = 0,
@@ -78,7 +78,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_SLIGHTLY_STARTLE_PREV_MONS] =
     {
-        .description = COMPOUND_STRING("Erschreckt alle, die schon\nihren Auftritt hatten, ein wenig."),
+        .description = COMPOUND_STRING("Erschreckt alle, die schon\ndran waren, ein wenig."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 30,
         .jam = 10,
@@ -87,9 +87,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_STARTLE_PREV_MON] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Erschreckt das Pokémon, das\nvor dem Anwender dran war."),
+        .description = COMPOUND_STRING("Erschreckt das Pokémon\ndirekt vor dem Anwender."),
         #else
-        .description = COMPOUND_STRING("Erschreckt das Pokémon, das\nvor dem Anwender aufgetreten ist."),
+        .description = COMPOUND_STRING("Erschreckt das Pokémon\nvor dem Anwender."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MON,
         .appeal = 20,
@@ -99,9 +99,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_STARTLE_PREV_MONS] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Erschreckt alle Pokémon, die\nvor dem Anwender dran waren."),
+        .description = COMPOUND_STRING("Erschreckt alle Pokémon\nvor dem Anwender."),
         #else
-        .description = COMPOUND_STRING("Erschreckt alle Pokémon, die\nbereits aufgetreten sind."),
+        .description = COMPOUND_STRING("Erschreckt alle Pokémon,\ndie schon dran waren."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
@@ -118,7 +118,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS] =
     {
-        .description = COMPOUND_STRING("Erschreckt alle, die schon\nihren Auftritt hatten, stark."),
+        .description = COMPOUND_STRING("Erschreckt alle, die schon\naufgetreten sind, stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 10,
         .jam = 30,
@@ -126,7 +126,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_PREV_MON_2] =
     {
-        .description = COMPOUND_STRING("Erschreckt das Pokémon, das\nvor dem Anwender aufgetreten ist."),
+        .description = COMPOUND_STRING("Erschreckt das Pokémon\nvor dem Anwender."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MON,
         .appeal = 30,
         .jam = 20,
@@ -134,7 +134,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_PREV_MONS_2] =
     {
-        .description = COMPOUND_STRING("Erschreckt alle Pokémon, die\nbereits aufgetreten sind."),
+        .description = COMPOUND_STRING("Erschreckt alle Pokémon,\ndie schon dran waren."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 30,
         .jam = 10,
@@ -143,9 +143,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Das Publikum erwartet von den\nanderen Teilnehmern wenig."),
+        .description = COMPOUND_STRING("Das Publikum erwartet von\nden anderen wenig."),
         #else
-        .description = COMPOUND_STRING("Lenkt die Aufmerksamkeit des\nRICHTERS von den anderen ab."),
+        .description = COMPOUND_STRING("Lenkt die Aufmerksamkeit\ndes RICHTERS ab."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_WORSEN,
         .appeal = 30,
@@ -154,7 +154,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MON_WITH_JUDGES_ATTENTION] =
     {
-        .description = COMPOUND_STRING("Erschreckt das Pokémon, das die\nAufmerksamkeit des RICHTERS hat."),
+        .description = COMPOUND_STRING("Erschreckt den Liebling\ndes RICHTERS."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -162,7 +162,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_JAMS_OTHERS_BUT_MISS_ONE_TURN] =
     {
-        .description = COMPOUND_STRING("Stört die anderen, setzt aber\neinen Auftritt aus."),
+        .description = COMPOUND_STRING("Stört die anderen, setzt\naber einen Auftritt aus."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 40,
         .jam = 40,
@@ -170,7 +170,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon, die einen\nAuftritt desselben Typs hatten."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon mit\ngleichem Auftrittstyp."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -178,7 +178,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_COOL_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nCOOLNESS-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon, die\nCOOLNESS zeigten, stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -186,7 +186,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_BEAUTY_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nSCHÖNHEITS-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon, die\nSCHÖNHEIT zeigten, stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -202,7 +202,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_STARTLE_MONS_SMART_APPEAL] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon mit\nKLUGHEITS-Auftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt Pokémon, die\nKLUGHEIT zeigten, stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -218,7 +218,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_MAKE_FOLLOWING_MON_NERVOUS] =
     {
-        .description = COMPOUND_STRING("Macht ein Pokémon nach dem\nAnwender nervös."),
+        .description = COMPOUND_STRING("Macht ein Pokémon nach\ndem Anwender nervös."),
         .effectType = CONTEST_EFFECT_TYPE_WORSEN,
         .appeal = 20,
         .jam = 0,
@@ -229,7 +229,7 @@ const struct ContestEffect gContestEffects[] =
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
         .description = COMPOUND_STRING("Macht die übrigen\nPokémon nervös."),
         #else
-        .description = COMPOUND_STRING("Macht alle Pokémon nach dem\nAnwender nervös."),
+        .description = COMPOUND_STRING("Macht alle nach dem\nAnwender nervös."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_WORSEN,
         .appeal = 20,
@@ -238,7 +238,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS] =
     {
-        .description = COMPOUND_STRING("Verschlechtert die Verfassung\naller, die schon aufgetreten sind."),
+        .description = COMPOUND_STRING("Verschlechtert die Laune\nder Aufgetretenen."),
         .effectType = CONTEST_EFFECT_TYPE_WORSEN,
         .appeal = 30,
         .jam = 0,
@@ -246,7 +246,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BADLY_STARTLES_MONS_IN_GOOD_CONDITION] =
     {
-        .description = COMPOUND_STRING("Erschreckt Pokémon in guter\nVerfassung stark."),
+        .description = COMPOUND_STRING("Erschreckt gut gelaunte\nPokémon stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 30,
         .jam = 10,
@@ -254,7 +254,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_IF_FIRST] =
     {
-        .description = COMPOUND_STRING("Der Auftritt wirkt sehr gut,\nwenn er als Erster erfolgt."),
+        .description = COMPOUND_STRING("Wirkt sehr gut, wenn der\nAuftritt als Erster ist."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 20,
         .jam = 0,
@@ -262,7 +262,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_IF_LAST] =
     {
-        .description = COMPOUND_STRING("Der Auftritt wirkt sehr gut,\nwenn er als Letzter erfolgt."),
+        .description = COMPOUND_STRING("Wirkt sehr gut, wenn der\nAuftritt als Letzter ist."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 20,
         .jam = 0,
@@ -270,7 +270,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONES] =
     {
-        .description = COMPOUND_STRING("Macht den Auftritt so gut wie\ndie davor."),
+        .description = COMPOUND_STRING("Macht den Auftritt so gut\nwie die davor."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
         .jam = 0,
@@ -278,7 +278,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE] =
     {
-        .description = COMPOUND_STRING("Macht den Auftritt so gut wie\nden davor."),
+        .description = COMPOUND_STRING("Macht den Auftritt so gut\nwie den davor."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
         .jam = 0,
@@ -295,9 +295,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_QUALITY_DEPENDS_ON_TIMING] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Die Wirkung hängt davon ab,\nwann sie eingesetzt wird."),
+        .description = COMPOUND_STRING("Die Wirkung hängt vom\nEinsatzzeitpunkt ab."),
         #else
-        .description = COMPOUND_STRING("Die Qualität des Auftritts hängt\nvom Zeitpunkt ab."),
+        .description = COMPOUND_STRING("Der Auftritt hängt vom\nZeitpunkt ab."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
@@ -306,7 +306,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_IF_SAME_TYPE] =
     {
-        .description = COMPOUND_STRING("Wirkt gut, wenn sie denselben Typ\nwie die davor hat."),
+        .description = COMPOUND_STRING("Wirkt gut bei gleichem Typ\nwie die davor."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 20,
         .jam = 0,
@@ -314,7 +314,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_IF_DIFF_TYPE] =
     {
-        .description = COMPOUND_STRING("Wirkt gut, wenn sie einen anderen\nTyp als die davor hat."),
+        .description = COMPOUND_STRING("Wirkt gut bei anderem Typ\nals die davor."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 20,
         .jam = 0,
@@ -323,9 +323,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Hängt davon ab, wie gut die Attacke\ndes vorherigen Pokémon lief."),
+        .description = COMPOUND_STRING("Hängt vom Erfolg der\nvorigen Attacke ab."),
         #else
-        .description = COMPOUND_STRING("Hängt davon ab, wie gut der\nAuftritt davor lief."),
+        .description = COMPOUND_STRING("Hängt davon ab, wie gut\nder Auftritt davor lief."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 30,
@@ -334,7 +334,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS] =
     {
-        .description = COMPOUND_STRING("Verbessert die Verfassung des\nAnwenders. Hilft gegen Nervosität."),
+        .description = COMPOUND_STRING("Bessert die Verfassung.\nHilft gegen Nervosität."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
         .jam = 0,
@@ -342,7 +342,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_WITH_GOOD_CONDITION] =
     {
-        .description = COMPOUND_STRING("Der Auftritt wirkt gut, wenn die\nVerfassung des Anwenders gut ist."),
+        .description = COMPOUND_STRING("Wirkt gut, wenn die\nVerfassung gut ist."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
         .jam = 0,
@@ -351,9 +351,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_NEXT_APPEAL_EARLIER] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Der Anwender ist in der nächsten\nRunde früher dran."),
+        .description = COMPOUND_STRING("Der Anwender ist nächste\nRunde früher dran."),
         #else
-        .description = COMPOUND_STRING("Der nächste Auftritt kann in der\nnächsten Runde früher erfolgen."),
+        .description = COMPOUND_STRING("Nächster Auftritt eine\nRunde früher möglich."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_TURN_ORDER,
         .appeal = 30,
@@ -363,9 +363,9 @@ const struct ContestEffect gContestEffects[] =
     [CONTEST_EFFECT_NEXT_APPEAL_LATER] =
     {
         #if C_UPDATED_MOVE_EFFECTS >= GEN_6
-        .description = COMPOUND_STRING("Der Anwender ist in der nächsten\nRunde später dran."),
+        .description = COMPOUND_STRING("Der Anwender ist nächste\nRunde später dran."),
         #else
-        .description = COMPOUND_STRING("Der nächste Auftritt kann in der\nnächsten Runde später erfolgen."),
+        .description = COMPOUND_STRING("Nächster Auftritt eine\nRunde später möglich."),
         #endif
         .effectType = CONTEST_EFFECT_TYPE_TURN_ORDER,
         .appeal = 30,
@@ -374,7 +374,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_MAKE_SCRAMBLING_TURN_ORDER_EASIER] =
     {
-        .description = COMPOUND_STRING("Die Reihenfolge der nächsten Runde\nwird leichter durcheinandergebracht."),
+        .description = COMPOUND_STRING("Die Reihenfolge nächste\nRunde wird leicht gestört."),
         .effectType = CONTEST_EFFECT_TYPE_TURN_ORDER,
         .appeal = 30,
         .jam = 0,
@@ -382,7 +382,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_SCRAMBLE_NEXT_TURN_ORDER] =
     {
-        .description = COMPOUND_STRING("Bringt die Reihenfolge der Auftritte\nder nächsten Runde durcheinander."),
+        .description = COMPOUND_STRING("Verwirrt die Reihenfolge\nder nächsten Runde."),
         .effectType = CONTEST_EFFECT_TYPE_TURN_ORDER,
         .appeal = 30,
         .jam = 0,
@@ -390,7 +390,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_EXCITE_AUDIENCE_IN_ANY_CONTEST] =
     {
-        .description = COMPOUND_STRING("Ein Auftritt, der das Publikum in\njedem WETTBEWERB begeistert."),
+        .description = COMPOUND_STRING("Begeistert das Publikum in\njedem WETTBEWERB."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? 20 : 10,
         .jam = 0,
@@ -398,7 +398,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS] =
     {
-        .description = COMPOUND_STRING("Erschreckt alle Pokémon mit guten\nAuftritten stark."),
+        .description = COMPOUND_STRING("Erschreckt alle mit guten\nAuftritten stark."),
         .effectType = CONTEST_EFFECT_TYPE_STARTLE_MONS,
         .appeal = 20,
         .jam = 10,
@@ -406,7 +406,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED] =
     {
-        .description = COMPOUND_STRING("Der Auftritt wirkt umso besser,\nje begeisterter das Publikum ist."),
+        .description = COMPOUND_STRING("Besser, je begeisterter\ndas Publikum ist."),
         .effectType = CONTEST_EFFECT_TYPE_SPECIAL_APPEAL,
         .appeal = 10,
         .jam = 0,
@@ -414,7 +414,7 @@ const struct ContestEffect gContestEffects[] =
     },
     [CONTEST_EFFECT_DONT_EXCITE_AUDIENCE] =
     {
-        .description = COMPOUND_STRING("Hält das Publikum vorübergehend\ndavon ab, sich zu begeistern."),
+        .description = COMPOUND_STRING("Hält das Publikum vorerst\nvom Begeistern ab."),
         .effectType = CONTEST_EFFECT_TYPE_WORSEN,
         .appeal = 30,
         .jam = 0,

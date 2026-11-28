@@ -8883,3 +8883,20 @@ static void Task_FirstBattleEnterParty_WaitFadeNormal(u8 taskId)
         gTasks[taskId].func = Task_HandleChooseMonInput;
     }
 }
+
+#if TESTING
+s8 Test_UpdatePartySelectionSingleLayout(s8 slotId, s8 movementDir, bool8 chooseHalf, u8 lastSelectedSlot)
+{
+    struct PartyMenuInternal internal = {0};
+    struct PartyMenuInternal *savedInternal = sPartyMenuInternal;
+
+    internal.chooseHalf = chooseHalf;
+    internal.lastSelectedSlot = lastSelectedSlot;
+    sPartyMenuInternal = &internal;
+
+    UpdatePartySelectionSingleLayout(&slotId, movementDir);
+
+    sPartyMenuInternal = savedInternal;
+    return slotId;
+}
+#endif

@@ -124,8 +124,8 @@ static const u16 sListWindow_Pal[] = INCGFX_U16("graphics/pokenav/match_call/lis
 static const u16 sPokeball_Pal[] = INCGFX_U16("graphics/pokenav/match_call/pokeball.pal", ".gbapal");
 static const u32 sPokeball_Gfx[] = INCGFX_U32("graphics/pokenav/match_call/pokeball.png", ".4bpp.smol");
 
-static const u8 gText_NumberRegistered[] = _("Nr. registriert");
-static const u8 gText_NumberOfBattles[] = _("Nr. Kämpfe");
+static const u8 gText_NumberRegistered[] = _("Registriert");
+static const u8 gText_NumberOfBattles[] = _("Kämpfe");
 static const u8 gText_TrainerCloseBy[] = _("Der TRAINER ist in der Nähe.\nSprich den TRAINER persönlich an!");
 static const u8 gText_Unknown[] = _("UNBEKANNT");
 

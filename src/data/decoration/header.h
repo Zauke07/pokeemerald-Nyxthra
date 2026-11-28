@@ -446,8 +446,8 @@ const struct Decoration gDecorations[] =
         .price = 500,
         .description = COMPOUND_STRING(
             "Ein wassergefüllter\n"
-            "roter Ballon. Platzt\n"
-            "beim Drauftreten."),
+            "Ballon in Rot.\n"
+            "Platzt bei Druck."),
         .tiles = DecorGfx_RED_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -462,8 +462,8 @@ const struct Decoration gDecorations[] =
         .price = 500,
         .description = COMPOUND_STRING(
             "Ein wassergefüllter\n"
-            "blauer Ballon. Platzt\n"
-            "beim Drauftreten."),
+            "Ballon in Blau.\n"
+            "Platzt bei Druck."),
         .tiles = DecorGfx_BLUE_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -478,8 +478,8 @@ const struct Decoration gDecorations[] =
         .price = 500,
         .description = COMPOUND_STRING(
             "Ein wassergefüllter\n"
-            "gelber Ballon. Platzt\n"
-            "beim Drauftreten."),
+            "Ballon in Gelb.\n"
+            "Platzt bei Druck."),
         .tiles = DecorGfx_YELLOW_BALLOON,
         .icon = {NULL, NULL},
     },
@@ -622,7 +622,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Ein großer Ball aus\n"
             "Schlamm. Zerfällt,\n"
-            "wenn man drauftritt."),
+            "beim Drauftreten."),
         .tiles = DecorGfx_MUD_BALL,
         .icon = {NULL, NULL},
     },
@@ -764,9 +764,9 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_MAT,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Eine seltsame Matte,\n"
-            "die glitzert, wenn\n"
-            "man drauftritt."),
+            "Eine Matte, die\n"
+            "glitzert, wenn man\n"
+            "drauftritt."),
         .tiles = DecorGfx_GLITTER_MAT,
         .icon = {NULL, NULL},
     },
@@ -814,7 +814,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte, die ein\n"
             "tiefes C spielt,\n"
-            "wenn man drauftritt."),
+            "beim Drauftreten."),
         .tiles = DecorGfx_C_LOW_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -926,7 +926,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte, die ein\n"
             "hohes C spielt,\n"
-            "wenn man drauftritt."),
+            "beim Drauftreten."),
         .tiles = DecorGfx_C_HIGH_NOTE_MAT,
         .icon = {NULL, NULL},
     },
@@ -942,7 +942,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "SURFER-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_SURF_MAT,
         .icon = {gDecorIcon_SurfMat, gDecorIconPalette_SurfMat},
     },
@@ -958,7 +958,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "DONNER-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_THUNDER_MAT,
         .icon = {gDecorIcon_ThunderMat, gDecorIconPalette_ThunderMat},
     },
@@ -974,7 +974,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "FEUERSTURM-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_FIRE_BLAST_MAT,
         .icon = {gDecorIcon_FireBlastMat, gDecorIconPalette_FireBlastMat},
     },
@@ -990,7 +990,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "PUDERSCHNEE-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_POWDER_SNOW_MAT,
         .icon = {gDecorIcon_PowderSnowMat, gDecorIconPalette_PowderSnowMat},
     },
@@ -1006,7 +1006,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "ATTRAKTION-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_ATTRACT_MAT,
         .icon = {gDecorIcon_AttractMat, gDecorIconPalette_AttractMat},
     },
@@ -1022,7 +1022,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "ERDSPALT-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_FISSURE_MAT,
         .icon = {gDecorIcon_FissureMat, gDecorIconPalette_FissureMat},
     },
@@ -1038,7 +1038,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
             "Eine Matte mit\n"
             "STACHELN-Motiv.\n"
-            "Stelle Items darauf."),
+            "Stelle Items drauf."),
         .tiles = DecorGfx_SPIKES_MAT,
         .icon = {gDecorIcon_SpikesMat, gDecorIconPalette_SpikesMat},
     },
@@ -1603,7 +1603,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein PIKACHU-Kissen.\n"
+            "PIKACHU-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_PIKA_CUSHION,
@@ -1619,7 +1619,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein MARILL-Kissen.\n"
+            "MARILL-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_ROUND_CUSHION,
@@ -1635,7 +1635,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein Kussilla-Kissen.\n"
+            "KUSSILLA-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_KISS_CUSHION,
@@ -1651,7 +1651,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein Zigzachs-Kissen.\n"
+            "ZIGZACHS-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_ZIGZAG_CUSHION,
@@ -1667,7 +1667,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein PANDIR-Kissen.\n"
+            "PANDIR-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_SPIN_CUSHION,
@@ -1683,7 +1683,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein ZOBIRIS-Kissen.\n"
+            "ZOBIRIS-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_DIAMOND_CUSHION,
@@ -1699,7 +1699,7 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Ein BALL-Kissen.\n"
+            "BALL-Kissen.\n"
             "Stelle es auf\n"
             "Matte oder Tisch."),
         .tiles = DecorGfx_BALL_CUSHION,
@@ -1715,9 +1715,9 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Kissen mit Pflanzen-\n"
-            "Symbol. Auf Matte\n"
-            "oder Tisch."),
+            "Pflanzen-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_GRASS_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1731,9 +1731,9 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Kissen mit Feuer-\n"
-            "Symbol. Auf Matte\n"
-            "oder Tisch."),
+            "Feuer-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_FIRE_CUSHION,
         .icon = {NULL, NULL},
     },
@@ -1747,9 +1747,9 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_CUSHION,
         .price = 2000,
         .description = COMPOUND_STRING(
-            "Kissen mit Wasser-\n"
-            "Symbol. Auf Matte\n"
-            "oder Tisch."),
+            "Wasser-Kissen.\n"
+            "Stelle es auf\n"
+            "Matte oder Tisch."),
         .tiles = DecorGfx_WATER_CUSHION,
         .icon = {NULL, NULL},
     },
